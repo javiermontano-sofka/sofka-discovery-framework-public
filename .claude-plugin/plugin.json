@@ -1,7 +1,7 @@
 {
   "name": "sofka-discovery-framework",
-  "version": "6.0.0",
-  "description": "Enterprise technical discovery & consulting framework — 8-agent dream team orchestrates 48 specialized skills across 8 pipeline phases. Output excellence: markdown-first with Mermaid diagrams, A/B variants (ejecutiva/técnica), smart HITL modes (piloto-auto default), 5% innovation margin. No final prices — drivers, magnitudes, and models only.",
+  "version": "7.0.0",
+  "description": "Enterprise technical discovery & consulting framework v7 — NL-HP v3.0 prompts, 8-agent dream team, 48 skills, 17 commands (10 document + 3 pipeline + 4 operations), 3 quality gates, checkpoint model (CP-0→CP-4). Markdown-excellence standard. No prices — only drivers, magnitudes, and models.",
   "author": {
     "name": "Javier Montaño",
     "url": "https://sofka.com.co"
@@ -12,6 +12,7 @@
   "keywords": [
     "discovery", "consulting", "architecture", "assessment", "enterprise",
     "modernization", "due-diligence", "dream-team", "orchestration",
+    "NL-HP", "checkpoint-model", "quality-gates", "markdown-excellence",
     "data-architecture", "cloud-native", "mobile", "security", "devops",
     "cost-drivers", "testing-strategy", "performance", "observability",
     "handover", "operations", "commercial-model", "governance-transition",

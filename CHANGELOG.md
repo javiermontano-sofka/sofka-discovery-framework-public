@@ -2,6 +2,32 @@
 
 All notable changes to the Sofka Discovery Framework plugin.
 
+## [7.0.0] — 2026-03-12
+
+### Added — NL-HP v3.0 Integration
+- **10 document commands**: `plan`, `stakeholders`, `brief`, `asis`, `flows`, `scenarios`, `roadmap`, `spec`, `pitch`, `handover` — individual deliverable generation following NL-HP v3.0 checkpoint protocol (CP-0→CP-4)
+- **3 pipeline flow commands**: `express` (Go/No-Go, 3 deliverables), `intermediate` (architectural direction, 7 deliverables), full pipeline updated to NL-HP v3.0
+- **1 rescue command**: `rescue` — diagnose, repair, and complete stalled discoveries
+- **Checkpoint model**: CP-0 (Ingesta), CP-1 (Plan), CP-N (Phase), CP-F (Final validation) embedded in all commands
+- **Cross-reference system**: all deliverables linked via `→ See 03_AS-IS § Section` convention
+- **Mermaid diagram catalog**: prescribed diagrams per deliverable (C4Context, sequenceDiagram, gantt, quadrantChart, etc.)
+
+### Changed
+- `discovery` command: rewritten with NL-HP v3.0 full pipeline protocol (completo.md)
+- `discovery-auto` command: rewritten with NL-HP v3.0 autonomous mode (desatendido)
+- `discovery-review` command: rewritten with NL-HP v3.0 audit protocol (revisar.md) — per-deliverable criteria, cross-consistency matrix, verdict system
+- `discovery-improve` command: rewritten with NL-HP v3.0 evolution protocol (evolucionar.md) — delta reporting, preservation rules
+- CLAUDE.md: comprehensive command reference with all 17 commands organized by category
+- Plugin version bumped to 7.0.0
+
+### Architecture
+- Total commands: 17 (was 4) — 10 document + 3 pipeline + 4 operations
+- Total agents: 8 (unchanged)
+- Total skills: 48 (unchanged)
+- NL-HP v3.0 prompts fully integrated into plugin command structure
+- Evidence tagging standard: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA]
+- Quality standard: markdown-excellence with TL;DR, 🟢/🟡/🔴 tables, Mermaid, callouts
+
 ## [6.1.0] — 2026-03-12
 
 ### Added

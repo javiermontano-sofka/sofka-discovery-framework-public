@@ -2,70 +2,72 @@
 
 ## Quick Reference
 
-- Start guided: `/sofka-discovery-framework:discovery`
-- Start autonomous: `/sofka-discovery-framework:discovery-auto`
-- Review output: `/sofka-discovery-framework:discovery-review`
-- Improve output: `/sofka-discovery-framework:discovery-improve`
+### Pipeline Commands (Flows)
+- `/sofka-discovery-framework:discovery` — Guided full pipeline (8 phases, 3 gates, 10+ deliverables)
+- `/sofka-discovery-framework:discovery-auto` — Autonomous full pipeline (zero interruptions)
+- `/sofka-discovery-framework:express` — Go/No-Go in 1 session (3 deliverables)
+- `/sofka-discovery-framework:intermediate` — Architectural direction (7 deliverables, 2 gates)
+
+### Document Commands (Individual Deliverables)
+- `/sofka-discovery-framework:plan` — 00_Discovery_Plan (governance document)
+- `/sofka-discovery-framework:stakeholders` — 01_Stakeholder_Map (influence, RACI, communication)
+- `/sofka-discovery-framework:brief` — 02_Brief_Tecnico (executive summary, max 3 pages)
+- `/sofka-discovery-framework:asis` — 03_Analisis_AS-IS (10-section exhaustive analysis)
+- `/sofka-discovery-framework:flows` — 04_Mapeo_Flujos (DDD, E2E flows, integration matrix)
+- `/sofka-discovery-framework:scenarios` — 05_Escenarios_ToT (Tree-of-Thought, 6D scoring, GATE 1)
+- `/sofka-discovery-framework:roadmap` — 06_Solution_Roadmap (5 phases, Monte Carlo, GATE 2)
+- `/sofka-discovery-framework:spec` — 07_Especificacion_Funcional (use cases, business rules)
+- `/sofka-discovery-framework:pitch` — 08_Pitch_Ejecutivo (C-level business case)
+- `/sofka-discovery-framework:handover` — 09_Handover_Operaciones (90-day transition)
+
+### Operations Commands
+- `/sofka-discovery-framework:discovery-review` — Audit deliverables (scorecard, cross-checks, verdict)
+- `/sofka-discovery-framework:discovery-improve` — Evolve deliverables (diagnose, improve, validate delta)
+- `/sofka-discovery-framework:rescue` — Rescue stalled discovery (triage, repair, complete)
+
+## NL-HP v3.0 Checkpoint Model
+
+All commands follow the checkpoint protocol:
+
+| CP | Name | Purpose |
+|---|---|---|
+| CP-0 | Ingesta | Repo scanned, attachments classified, gaps declared |
+| CP-1 | Plan | Skill/agent composition proposed and approved |
+| CP-N | Phase N | Deliverable validated against criteria |
+| CP-F | Final | Cross-consistency, compliance, formal closure |
 
 ## Default Output Behavior
 
 - **Default format**: Markdown (markdown-excellence standard)
 - **Default variant**: Técnica (full depth)
 - **Default mode**: piloto-auto (autonomous for routine, HITL for decisions)
-- HTML, DOCX, or dual output: only when user requests via {FORMATO} parameter
+- HTML, DOCX, or dual: only when requested via {FORMATO}
 
 ## Orchestration Rules
 
-1. **Always start with the orchestrator**: `discovery-orchestrator` is the single entry point. Never invoke pipeline skills directly — the orchestrator manages sequencing, data contracts, and quality gates.
+1. **Pipeline flows orchestrate, document commands generate individual deliverables.** Use flows for end-to-end engagements, document commands for targeted generation.
+2. **Respect phase dependencies**: Plan (00) → Stakeholders (01) → Brief+AS-IS (02,03) → Flows (04) → Scenarios (05) → Roadmap (06) → Spec (07) → Pitch (08) → Handover (09)
+3. **Quality gates are hard stops**: G1 (scenario), G2 (magnitudes), G3 (final). In piloto-auto: pause for approval.
+4. **Cost outputs**: NEVER prices. Only FTE-months + mandatory disclaimers. 5% innovation margin.
+5. **Evidence tagging**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER].
+6. **Governance is transversal**: project-program-management + risk-controlling-dynamics on ALL phases.
 
-2. **Respect the pipeline sequence**: Phase 0→1→2→3→3b→G1→4→4b→G2→5a→5b→G3→6. Skip phases only when the user explicitly requests a reduced pipeline variant (Minimal or Quick Reference).
+## Agent Delegation
 
-3. **Quality gates are hard stops**: G1 (scenario approval), G2 (budget/roadmap approval), G3 (proposal QA). In piloto-auto mode, pause for human approval. In desatendido mode, auto-approve with documented assumptions.
-
-4. **Data contracts between phases**: Each phase produces specific outputs consumed by the next. The orchestrator validates completeness before advancing.
-
-5. **Agent delegation**: The discovery-conductor activates the right agents per phase:
-   - Phase 0: domain-analyst, change-catalyst
-   - Phase 1: technical-architect, data-strategist
-   - Phase 2: domain-analyst, full-stack-generalist
-   - Phase 3: technical-architect, domain-analyst
-   - Phase 3b: technical-architect, quality-guardian
-   - Phase 4: delivery-manager, data-strategist
-   - Phase 5: quality-guardian, change-catalyst
-   - Phase 6: delivery-manager, change-catalyst
-
-6. **Governance is transversal**: project-program-management and risk-controlling-dynamics run alongside EVERY phase, not just at gates.
-
-7. **Cost outputs**: NEVER produce final prices. Only drivers, inductors, magnitudes, and models. Include 5% innovation margin. Costear ≠ Cobrar.
-
-8. **Evidence tagging**: All claims must be tagged: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER].
-
-## Skill Activation
-
-When a prompt or command activates the orchestrator:
-1. Parse parameters ({MODO}, {FORMATO}, {VARIANTE}, {ADJUNTOS}, {PROFUNDIDAD})
-2. Scan repository/inputs (CP-0: Ingesta)
-3. Propose skill composition (CP-1: Plan)
-4. Execute phases sequentially with data contract validation
-5. Apply quality gates at G1, G2, G3
-6. Produce deliverables per format protocol
+| Phase | Lead Agent | Support |
+|-------|-----------|---------|
+| 0 | domain-analyst | change-catalyst |
+| 1 | technical-architect | data-strategist |
+| 2 | domain-analyst | full-stack-generalist |
+| 3 | technical-architect | domain-analyst |
+| 3b | technical-architect | quality-guardian |
+| 4 | delivery-manager | data-strategist |
+| 5 | quality-guardian | change-catalyst |
+| 6 | delivery-manager | change-catalyst |
 
 ## Output Standards
 
-All outputs follow `markdown-excellence.md`:
-- TL;DR section (3-5 bullets)
-- Dense prose (every sentence carries information)
-- Tables with 🟢/🟡/🔴 status indicators
-- Mermaid diagrams (replace ≥3 sentences, max 4 per deliverable)
-- Callouts: 💡 Insight | ⚖️ Trade-off | ⚠️ Risk | 🔍 Evidence
-- Footnotes for methodology, sources, assumptions
-
-## Tool Use Defaults
-
-- **Primary output**: Artifact file (not inline text). Save to project directory.
-- **Format**: Markdown by default. HTML/DOCX only on explicit request.
-- **Diagrams**: Mermaid syntax embedded in markdown. Rendered via CDN in HTML.
-- **References**: Load from `${CLAUDE_SKILL_DIR}/references/` when available.
+Markdown-excellence: TL;DR (3-5 bullets), dense prose, tables 🟢/🟡/🔴, Mermaid diagrams, callouts (💡⚖️⚠️🔍), footnotes, cross-references.
 
 ## Common Parameters
 
