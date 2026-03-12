@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>A-02 Technical Feasibility — Acme Corp Banking Modernization</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; }
+    body { font-family: 'Inter', sans-serif; max-width: 1100px; margin: 0 auto; padding: 2rem; background: var(--bg); color: var(--text); line-height: 1.6; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; }
+    h3 { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border: 1px solid #e2e8f0; }
+    tr:nth-child(even) { background: #edf2f7; }
+    .callout { background: #ebf8ff; border-left: 4px solid var(--primary); padding: 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .callout-warning { background: #fffaf0; border-left: 4px solid #d69e2e; padding: 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #742a2a; }
+    .verdict-box { background: #1a365d; color: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; white-space: pre-line; }
+    .verdict-box .score { font-size: 1.4rem; font-weight: bold; color: #fbd38d; }
+    .meta { color: #718096; font-size: 0.9rem; margin-bottom: 2rem; }
+    .score-bar { display: flex; align-items: center; gap: 0.5rem; margin: 0.3rem 0; }
+    .score-fill { height: 12px; border-radius: 6px; }
+    .score-label { min-width: 140px; font-weight: 600; }
+    .mermaid { margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+
+<h1>A-02 Technical Feasibility &mdash; Acme Corp Banking Modernization</h1>
+<p class="meta">
+  <strong>Proyecto:</strong> Modernizaci&oacute;n de Core Bancario &mdash; Acme Corp &nbsp;|&nbsp;
+  <strong>Escenario:</strong> B &mdash; Domain-Driven Decomposition + Cloud Migration &nbsp;|&nbsp;
+  <strong>Fecha:</strong> 12 de marzo de 2026 &nbsp;|&nbsp;
+  <strong>Variante:</strong> T&eacute;cnica (full) &nbsp;|&nbsp;
+  <strong>Modo:</strong> piloto-auto
+</p>
+
+<!-- S1 -->
+<h2>S1: Claim Inventory &amp; Evidence Mapping</h2>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Claim</th><th>Evidence</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C1</td>
+      <td>DDD reduces inter-service coupling by 60%</td>
+      <td>[BENCHMARK] &mdash; Thoughtworks DDD adoption studies show 40-70% coupling reduction in banking</td>
+      <td><span class="badge badge-green">VALIDATED</span></td>
+    </tr>
+    <tr>
+      <td>C2</td>
+      <td>PostgreSQL handles transactional volume for accounts domain</td>
+      <td>[BENCHMARK] &mdash; PostgreSQL 15K TPS; current peak 8K TPS, 3-year projection 12K TPS</td>
+      <td><span class="badge badge-green">VALIDATED</span></td>
+    </tr>
+    <tr>
+      <td>C3</td>
+      <td>Kafka enables event-driven account-to-ledger sync</td>
+      <td>[C&Oacute;DIGO] &mdash; LedgerService uses synchronous JDBC with 2-phase commit; no async patterns</td>
+      <td><span class="badge badge-yellow">UNVALIDATED</span></td>
+    </tr>
+    <tr>
+      <td>C4</td>
+      <td>Team can adopt Kubernetes in 3 months</td>
+      <td>[CONFIG] &mdash; Zero K8s manifests; 0/12 engineers with container orchestration experience</td>
+      <td><span class="badge badge-red">AT RISK</span></td>
+    </tr>
+    <tr>
+      <td>C5</td>
+      <td>Cloud migration achieves 30% infrastructure cost reduction</td>
+      <td>[VENDOR-DOC] &mdash; AWS TCO calculator estimates 22-35% for similar banking workloads</td>
+      <td><span class="badge badge-green">VALIDATED</span></td>
+    </tr>
+    <tr>
+      <td>C6</td>
+      <td>API Gateway centralizes auth for all bounded contexts</td>
+      <td>[C&Oacute;DIGO] &mdash; 4 monolith modules with different token formats (JWT, session, SAML)</td>
+      <td><span class="badge badge-yellow">UNVALIDATED</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>Summary:</strong> 3 VALIDATED | 2 UNVALIDATED | 1 AT RISK | 0 REFUTED
+</div>
+
+<!-- S2 -->
+<h2>S2: Multidimensional Feasibility Analysis</h2>
+
+<h3>Dimension Scores</h3>
+
+<div class="score-bar">
+  <span class="score-label">Technical</span>
+  <div style="width:200px;background:#e2e8f0;border-radius:6px;overflow:hidden">
+    <div class="score-fill" style="width:80%;background:#38a169">&nbsp;</div>
+  </div>
+  <strong>4/5</strong>
+</div>
+<div class="score-bar">
+  <span class="score-label">Organizational</span>
+  <div style="width:200px;background:#e2e8f0;border-radius:6px;overflow:hidden">
+    <div class="score-fill" style="width:60%;background:#d69e2e">&nbsp;</div>
+  </div>
+  <strong>3/5</strong>
+</div>
+<div class="score-bar">
+  <span class="score-label">Timeline</span>
+  <div style="width:200px;background:#e2e8f0;border-radius:6px;overflow:hidden">
+    <div class="score-fill" style="width:60%;background:#d69e2e">&nbsp;</div>
+  </div>
+  <strong>3/5</strong>
+</div>
+<div class="score-bar">
+  <span class="score-label">Financial</span>
+  <div style="width:200px;background:#e2e8f0;border-radius:6px;overflow:hidden">
+    <div class="score-fill" style="width:80%;background:#38a169">&nbsp;</div>
+  </div>
+  <strong>4/5</strong>
+</div>
+<div class="score-bar">
+  <span class="score-label">Regulatory</span>
+  <div style="width:200px;background:#e2e8f0;border-radius:6px;overflow:hidden">
+    <div class="score-fill" style="width:80%;background:#38a169">&nbsp;</div>
+  </div>
+  <strong>4/5</strong>
+</div>
+<div class="score-bar">
+  <span class="score-label">Operational</span>
+  <div style="width:200px;background:#e2e8f0;border-radius:6px;overflow:hidden">
+    <div class="score-fill" style="width:60%;background:#d69e2e">&nbsp;</div>
+  </div>
+  <strong>3/5</strong>
+</div>
+
+<h3>D1: Technical Feasibility &mdash; 4/5</h3>
+<p>Core architecture patterns (DDD, event-driven, cloud-native) are proven in banking. PostgreSQL handles projected volume. Main risk is Kafka integration with legacy 2-phase commit patterns and 47 Oracle stored procedures requiring migration.</p>
+
+<h3>D2: Organizational Feasibility &mdash; 3/5</h3>
+<p>Team of 12 has strong Java/Spring skills but zero Kubernetes, limited event-driven, and no DDD experience. Conway&rsquo;s Law alignment requires restructuring into 3 domain teams. Hire 1 senior platform engineer + contract DDD coach for Sprints 0-1.</p>
+
+<h3>D3: Timeline Feasibility &mdash; 3/5</h3>
+<p>Proposed 9-month timeline is aggressive given skill gaps. Critical path runs through K8s setup + first domain extraction + data migration. Recommend 11-month timeline with Sprint 0 buffer for spikes.</p>
+
+<h3>D4: Financial Feasibility &mdash; 4/5</h3>
+<p>Effort magnitudes align with industry benchmarks. Cloud cost projections validated by AWS TCO calculator. Hidden costs from hiring and extended timeline are manageable within contingency.</p>
+
+<h3>D5: Regulatory Feasibility &mdash; 4/5</h3>
+<p>Target architecture supports PCI-DSS and SOC 2. Data residency satisfied by AWS region selection. Audit trail maintained through event sourcing. Cloud certification is a parallel activity.</p>
+
+<h3>D6: Operational Feasibility &mdash; 3/5</h3>
+<p>Operations team has zero experience with K8s monitoring, distributed tracing, or event-driven debugging. Current stack is Nagios + custom scripts. Requires Grafana + Prometheus + Jaeger in Sprint 0.</p>
+
+<!-- S3 -->
+<h2>S3: Spike &amp; PoC Recommendations</h2>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Claim</th><th>Validation Method</th><th>Effort</th><th>Success Criteria</th><th>Priority</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SP1</td>
+      <td>C3: Kafka event-driven ledger sync</td>
+      <td>PoC: Async account-to-ledger flow for 2 transaction types. Validate eventual consistency with reconciliation.</td>
+      <td>2 sprints</td>
+      <td>Reconciliation &lt;5s at p95; zero data loss in 10K txn test</td>
+      <td><span class="badge badge-red">MUST-DO</span></td>
+    </tr>
+    <tr>
+      <td>SP2</td>
+      <td>C4: K8s adoption in 3 months</td>
+      <td>Spike: Deploy AccountService to EKS. Configure HPA, test auto-scaling at 2x peak load.</td>
+      <td>1 sprint</td>
+      <td>Scale 0&rarr;5 pods in &lt;3min; &lt;1% error rate during scale event</td>
+      <td><span class="badge badge-red">MUST-DO</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout-warning">
+  <strong>Dependency:</strong> SP2 blocks all cloud deployment work. SP1 blocks ledger domain extraction. Both must complete before Phase 4 commitment.
+</div>
+
+<!-- S4 -->
+<h2>S4: Blocker &amp; Showstopper Analysis</h2>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Blocker</th><th>Type</th><th>Prob.</th><th>Impact</th><th>Mitigation</th><th>Fallback</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>B1</td>
+      <td>Legacy Oracle DB: 47 stored procedures with undocumented business logic</td>
+      <td>Technical</td>
+      <td>Medium (40%)</td>
+      <td>Critical</td>
+      <td>Dual-write pattern + phased procedure migration. 2 engineers reverse-engineer top 12.</td>
+      <td>Maintain Oracle for ledger; migrate other domains only. Accept hybrid 12-18 months.</td>
+    </tr>
+    <tr>
+      <td>B2</td>
+      <td>No team member has Kafka expertise</td>
+      <td>Organizational</td>
+      <td>High (70%)</td>
+      <td>High</td>
+      <td>Hire Kafka specialist + 2-week training for 3 leads. Confluent setup review.</td>
+      <td>Replace Kafka with RabbitMQ for initial phase. Limits event sourcing but unblocks progress.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout-warning">
+  <strong>Kill criteria:</strong> If SP1 (Kafka PoC) fails AND RabbitMQ fallback cannot meet reconciliation SLA (5s p95), recommend pivoting to Scenario A (modular monolith).
+</div>
+
+<!-- S5 -->
+<h2>S5: Feasibility Verdict</h2>
+
+<div class="verdict-box">
+FEASIBILITY VERDICT
+===================
+Scenario: B &mdash; Domain-Driven Decomposition + Cloud Migration
+Overall: <span class="score">FEASIBLE WITH CONDITIONS</span>
+
+Dimensions:
+  Technical:      4/5 &mdash; Architecture proven; Kafka + stored procs need validation
+  Organizational: 3/5 &mdash; Skill gaps in K8s and event-driven; hiring required
+  Timeline:       3/5 &mdash; 9-month aggressive; recommend 11-month with buffer
+  Financial:      4/5 &mdash; Magnitudes reasonable; hidden costs manageable
+  Regulatory:     4/5 &mdash; Cloud supports compliance; certification parallel
+  Operational:    3/5 &mdash; Ops team needs tooling + training
+
+  <span class="score">Composite Score: 3.5/5.0</span>
+
+Conditions:
+  1. Kafka PoC (SP1) must demonstrate &lt;5s reconciliation at p95
+  2. K8s spike (SP2) must achieve &lt;3min scale-up, &lt;1% error rate
+  3. Hire senior platform engineer before end of Sprint 1
+  4. Oracle stored procedure reverse-engineering for top 12 (Sprint 0-1)
+  5. Compliance team engaged for cloud certification by Sprint 0
+
+Recommendation:
+  HOLD FOR SPIKES &mdash; Execute SP1 and SP2 in Sprint 0.
+  If both succeed &rarr; PROCEED TO PHASE 4
+  If SP1 fails &rarr; Evaluate RabbitMQ fallback
+  If SP2 fails &rarr; PIVOT TO SCENARIO A (modular monolith)
+</div>
+
+<!-- S6 -->
+<h2>S6: Updated Risk Register</h2>
+
+<table>
+  <thead>
+    <tr><th>ID</th><th>Risk</th><th>Source</th><th>Prob.</th><th>Impact</th><th>Status</th><th>Mitigation</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>R-12</td>
+      <td>Kafka expertise gap delays event-driven implementation</td>
+      <td>Feasibility D2</td>
+      <td>High</td>
+      <td>High</td>
+      <td><span class="badge badge-red">NEW</span></td>
+      <td>Hire specialist + training</td>
+    </tr>
+    <tr>
+      <td>R-13</td>
+      <td>Oracle stored procedure migration reveals undocumented logic</td>
+      <td>Feasibility D1</td>
+      <td>Medium</td>
+      <td>Critical</td>
+      <td><span class="badge badge-red">NEW</span></td>
+      <td>Reverse-engineering sprint + dual-write</td>
+    </tr>
+    <tr>
+      <td>R-14</td>
+      <td>Operations overwhelmed by distributed system monitoring</td>
+      <td>Feasibility D6</td>
+      <td>Medium</td>
+      <td>High</td>
+      <td><span class="badge badge-red">NEW</span></td>
+      <td>Observability stack Sprint 0 + training</td>
+    </tr>
+    <tr>
+      <td>R-07</td>
+      <td>Cloud cost exceeds projections</td>
+      <td>Phase 3</td>
+      <td>Low</td>
+      <td>Medium</td>
+      <td><span class="badge badge-green">MITIGATED</span></td>
+      <td>AWS TCO validated; reserved instances confirmed</td>
+    </tr>
+    <tr>
+      <td>R-04</td>
+      <td>Team attrition during transformation</td>
+      <td>Phase 2</td>
+      <td>Medium</td>
+      <td>High</td>
+      <td><span class="badge badge-yellow">UPGRADED</span></td>
+      <td>Retention plan needed; restructuring increases risk</td>
+    </tr>
+    <tr>
+      <td>R-09</td>
+      <td>Regulatory certification delays cloud go-live</td>
+      <td>Phase 3</td>
+      <td>Medium</td>
+      <td>Critical</td>
+      <td><span class="badge badge-yellow">UNCHANGED</span></td>
+      <td>Parallel process; compliance engaged Sprint 0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Claim Evidence Chain</h3>
+
+<div class="mermaid">
+flowchart TD
+    subgraph Claims
+        C1[C1: DDD reduces coupling 60%]
+        C2[C2: PostgreSQL handles volume]
+        C3[C3: Kafka event-driven sync]
+        C4[C4: K8s adoption in 3 months]
+        C5[C5: Cloud 30% cost reduction]
+        C6[C6: API Gateway centralizes auth]
+    end
+
+    subgraph Evidence
+        E1[[BENCHMARK: Thoughtworks DDD studies]]
+        E2[[BENCHMARK: PostgreSQL 15K TPS]]
+        E3[[CODIGO: LedgerService sync JDBC]]
+        E4[[CONFIG: 0/12 K8s experience]]
+        E5[[VENDOR-DOC: AWS TCO calculator]]
+        E6[[CODIGO: 4 auth formats in monolith]]
+    end
+
+    subgraph Verdict
+        V1[/VALIDATED/]
+        V2[/UNVALIDATED/]
+        V3[/AT RISK/]
+    end
+
+    C1 --> E1 --> V1
+    C2 --> E2 --> V1
+    C3 --> E3 --> V2
+    C4 --> E4 --> V3
+    C5 --> E5 --> V1
+    C6 --> E6 --> V2
+
+    V2 -->|Requires| SP[Sprint 0 Spikes]
+    V3 -->|Requires| SP
+    SP -->|Success| P4[Proceed to Phase 4]
+    SP -->|Failure| ALT[Pivot to Scenario A]
+
+    style V1 fill:#c6f6d5,stroke:#22543d,color:#22543d
+    style V2 fill:#fefcbf,stroke:#744210,color:#744210
+    style V3 fill:#fed7d7,stroke:#742a2a,color:#742a2a
+    style P4 fill:#c6f6d5,stroke:#22543d,color:#22543d
+    style ALT fill:#fed7d7,stroke:#742a2a,color:#742a2a
+</div>
+
+<hr>
+<p class="meta">
+  <strong>Autor:</strong> Javier Monta&ntilde;o &nbsp;|&nbsp;
+  <strong>Generado por:</strong> technical-feasibility skill v6.0 &nbsp;|&nbsp;
+  <strong>Fecha:</strong> 12 de marzo de 2026
+</p>
+
+<script>mermaid.initialize({ startOnLoad: true, theme: 'default' });</script>
+</body>
+</html>

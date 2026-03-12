@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-01 User Representative Review — Acme Corp Banking Modernization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+    <style>
+        :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --surface: #ffffff; --muted: #718096; --success: #38a169; --warning: #d69e2e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+        h2 { color: var(--primary); font-size: 1.4rem; margin: 2.5rem 0 1rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; }
+        h3 { color: var(--text); font-size: 1.1rem; margin: 1.5rem 0 0.75rem; font-weight: 600; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+        .summary { background: var(--surface); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+        th { background: var(--primary); color: #fff; text-align: left; padding: 0.6rem 0.75rem; }
+        td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: rgba(26,54,93,0.04); }
+        .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
+        .badge-pass { background: #c6f6d5; color: #22543d; }
+        .badge-fail { background: #fed7d7; color: #9b2c2c; }
+        .badge-warn { background: #fefcbf; color: #744210; }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 0.4rem 0; padding-left: 1.75rem; position: relative; }
+        .checklist li::before { content: "\2713"; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+        .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+        code { background: #edf2f7; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+        .mermaid { background: var(--surface); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border); }
+        .callout { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+        .callout-warn { background: #fffff0; border-left-color: var(--warning); }
+        .verdict { background: var(--surface); border: 2px solid var(--warning); padding: 1.25rem; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<h1>A-01 User Representative Review</h1>
+<p class="meta">Acme Corp Banking Modernization | 12 de marzo de 2026 | Modo: piloto-auto | Variante: t&eacute;cnica</p>
+
+<div class="summary">
+    <strong>Deliverable Reviewed:</strong> A-01 Solutions Architecture Deep (Loan Origination Microservices)<br>
+    <strong>Audience:</strong> VP Lending (executive), Engineering Lead (technical), Loan Officers (business)<br>
+    <strong>Executive Summary:</strong> The Solutions Architecture document is technically thorough but presents significant cognitive load for the VP Lending audience and buries critical decisions in dense tables. Two dimensions score below threshold (Comprehension: 6/10, Cognitive Load: 5/10). Ten micro-adjustments are proposed, with the top 5 expected to raise all scores above the 7/10 threshold.
+</div>
+
+<h2>5-Dimension Scorecard</h2>
+
+<h3>Score Summary</h3>
+<div class="mermaid">
+graph LR
+    subgraph Scorecard
+        A[Comprehension<br/>6/10] --> V{CONDITIONAL}
+        B[Cognitive Load<br/>5/10] --> V
+        C[Scannability<br/>8/10] --> V
+        D[Adoption Risks<br/>3 found] --> V
+        E[Bias Flags<br/>2 found] --> V
+    end
+
+    style A fill:#e53e3e,color:#fff
+    style B fill:#e53e3e,color:#fff
+    style C fill:#38a169,color:#fff
+</div>
+
+<h3>Dimension 1: Comprehension (6/10 &mdash; Below Threshold)</h3>
+<table>
+    <thead><tr><th>Criterion</th><th>Score</th><th>Evidence</th></tr></thead>
+    <tbody>
+        <tr><td>Target audience can understand without external help</td><td>5/10</td><td>VP Lending unlikely to parse "mTLS via Istio sidecar" or "STRIDE per-element analysis"</td></tr>
+        <tr><td>Acronyms/jargon explained on first use</td><td>4/10</td><td>14 unexplained acronyms: mTLS, RBAC, ABAC, PKCE, SPIFFE, DFD, ACL, CMK, TDE, SAST, DAST, SCA, SBOM, SLSA</td></tr>
+        <tr><td>Complex concepts illustrated with examples</td><td>7/10</td><td>Architecture diagrams present but lack banking-specific analogies for executive audience</td></tr>
+        <tr><td>Terminology consistent throughout</td><td>8/10</td><td>Generally consistent; "loan origination" and "loan application" used interchangeably (minor)</td></tr>
+    </tbody>
+</table>
+<div class="callout-warn callout"><strong>Key Finding:</strong> The document assumes security architecture vocabulary. VP Lending will stop reading at "STRIDE threat model" without an explanation like "systematic analysis of 6 types of security risks."</div>
+
+<h3>Dimension 2: Cognitive Load (5/10 &mdash; Below Threshold)</h3>
+<table>
+    <thead><tr><th>Criterion</th><th>Score</th><th>Evidence</th></tr></thead>
+    <tbody>
+        <tr><td>Information chunked into digestible sections</td><td>6/10</td><td>Sections exist but S1 Threat Modeling is 45 lines with no sub-summary</td></tr>
+        <tr><td>Sections &lt; 2 pages each</td><td>4/10</td><td>S3 Identity &amp; Access Management spans 3+ pages with no break</td></tr>
+        <tr><td>Clear hierarchy (heading &gt; subheading &gt; content)</td><td>7/10</td><td>H2/H3 structure present but no H3 within S6 Compliance</td></tr>
+        <tr><td>Tables &gt; 5 rows have key insight callout</td><td>3/10</td><td>STRIDE (10 rows), compliance mapping (7 rows), auth flows (5 rows) &mdash; none have summary callouts</td></tr>
+    </tbody>
+</table>
+
+<h3>Dimension 3: Scannability (8/10 &mdash; Passes)</h3>
+<table>
+    <thead><tr><th>Criterion</th><th>Score</th><th>Evidence</th></tr></thead>
+    <tbody>
+        <tr><td>Reader gets 80% value in 20% reading time</td><td>7/10</td><td>Executive Summary exists but lacks specific numbers (cost, timeline, risk count)</td></tr>
+        <tr><td>Key findings highlighted</td><td>8/10</td><td>Bold text used effectively for critical decisions</td></tr>
+        <tr><td>TL;DR per section</td><td>6/10</td><td>No per-section summaries; reader must read full section</td></tr>
+        <tr><td>Navigation works (TOC, links)</td><td>9/10</td><td>Clear H2 sections; HTML version has natural scrolling</td></tr>
+    </tbody>
+</table>
+
+<h2>Adoption Risks (3 Found)</h2>
+<table>
+    <thead><tr><th>Risk</th><th>Stakeholder</th><th>Impact</th><th>Recommended Fix</th></tr></thead>
+    <tbody>
+        <tr><td>VP Lending may reject document as "too technical"</td><td>Executive sponsor</td><td>High &mdash; delays security approval 2&ndash;4 weeks</td><td>Add 1-page "Executive Decision Brief" with 5 decisions requiring VP approval</td></tr>
+        <tr><td>Loan officers cannot validate their workflow is preserved</td><td>Business users</td><td>Medium &mdash; resistance during UAT</td><td>Add "Loan Officer Impact" section: current vs. new workflow comparison</td></tr>
+        <tr><td>Engineering team may disagree on Zero Trust timeline</td><td>Engineering Lead</td><td>Medium &mdash; scope creep if team pushes faster</td><td>Add trade-off callout: "Accelerating to 18 months increases budget 40%"</td></tr>
+    </tbody>
+</table>
+
+<h2>Detected Biases (2 Found)</h2>
+<table>
+    <thead><tr><th>Bias Type</th><th>Location</th><th>Example</th><th>Fix</th></tr></thead>
+    <tbody>
+        <tr><td>Technical bias</td><td>S2: Zero Trust, S3: IAM</td><td>Assumes reader understands OAuth2 flows, ABAC vs RBAC</td><td>Add 1-sentence plain-language explanation before each section</td></tr>
+        <tr><td>Optimism bias</td><td>S6: Compliance</td><td>"Continuous compliance automation" implies full automation; many OCC controls require manual evidence</td><td>Add caveat: "Automation covers 70%; 30% requires manual preparation"</td></tr>
+    </tbody>
+</table>
+
+<h2>Top 10 Micro-Adjustments</h2>
+
+<h3>Priority 1&ndash;5 (High Impact)</h3>
+<table>
+    <thead><tr><th>#</th><th>Type</th><th>Location</th><th>Current</th><th>Proposed</th></tr></thead>
+    <tbody>
+        <tr><td>1</td><td><strong>Structure</strong></td><td>Before S1</td><td>No executive decision brief</td><td>Add "Executive Decision Brief" &mdash; 5 bullet points requiring VP approval</td></tr>
+        <tr><td>2</td><td><strong>Copy</strong></td><td>S1: Threat table</td><td>"STRIDE Threat Enumeration &mdash; Top 10"</td><td>"Top 10 Security Risks &mdash; What Could Go Wrong" with callout: "3 rated Critical"</td></tr>
+        <tr><td>3</td><td><strong>Visual</strong></td><td>Above tables &gt;5 rows</td><td>No summary</td><td>Add callout box: "Key insight: [1&ndash;2 sentence summary]"</td></tr>
+        <tr><td>4</td><td><strong>Copy</strong></td><td>Throughout</td><td>14 unexplained acronyms</td><td>First use: "mutual TLS (mTLS) &mdash; both parties verify identity"</td></tr>
+        <tr><td>5</td><td><strong>Structure</strong></td><td>New section after S6</td><td>No impact analysis</td><td>Add "Loan Officer Impact" &mdash; current vs. new workflow</td></tr>
+    </tbody>
+</table>
+
+<h3>Priority 6&ndash;10 (Medium Impact)</h3>
+<table>
+    <thead><tr><th>#</th><th>Type</th><th>Location</th><th>Current</th><th>Proposed</th></tr></thead>
+    <tbody>
+        <tr><td>6</td><td>Simplification</td><td>S3: Auth table</td><td>5 auth flows in one table</td><td>Split into "Customer Auth" and "Internal/Service Auth"</td></tr>
+        <tr><td>7</td><td>Navigation</td><td>Document top</td><td>No jump links</td><td>Add jump links: Executive Decisions | Security Risks | Timeline | Compliance</td></tr>
+        <tr><td>8</td><td>Copy</td><td>Executive Summary</td><td>Generic overview</td><td>Add specifics: "10 risks, 3 Critical. $48K annual identity platform cost."</td></tr>
+        <tr><td>9</td><td>Visual</td><td>S2: Zero Trust</td><td>Gantt chart only</td><td>Add traffic-light: Crawl (green), Walk (yellow), Run (gray)</td></tr>
+        <tr><td>10</td><td>Copy</td><td>S6: Compliance</td><td>"Continuous compliance automation"</td><td>"Automated monitoring covers 70%. Manual effort for quarterly reviews."</td></tr>
+    </tbody>
+</table>
+
+<h2>Readability Metrics</h2>
+<table>
+    <thead><tr><th>Metric</th><th>Current</th><th>Target</th><th>Status</th></tr></thead>
+    <tbody>
+        <tr><td>Flesch-Kincaid Grade</td><td>16.2 (college+)</td><td>&lt;12 for exec sections</td><td><span class="badge badge-fail">Needs work</span></td></tr>
+        <tr><td>Average sentence length</td><td>22 words</td><td>15&ndash;20 words</td><td><span class="badge badge-warn">Slightly high</span></td></tr>
+        <tr><td>Passive voice usage</td><td>18%</td><td>&lt;15%</td><td><span class="badge badge-warn">Minor fix</span></td></tr>
+        <tr><td>Unexplained jargon density</td><td>3.2 terms/paragraph</td><td>&lt;1 term/paragraph</td><td><span class="badge badge-fail">Needs work</span></td></tr>
+        <tr><td>Document length</td><td>14 pages</td><td>N/A</td><td><span class="badge badge-pass">Acceptable</span></td></tr>
+    </tbody>
+</table>
+
+<h2>Verdict: CONDITIONAL</h2>
+
+<div class="verdict">
+    <h3>Assessment Summary</h3>
+    <table>
+        <thead><tr><th>Dimension</th><th>Score</th><th>Threshold</th><th>Status</th></tr></thead>
+        <tbody>
+            <tr><td>Comprehension</td><td>6/10</td><td>&ge; 7</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+            <tr><td>Cognitive Load</td><td>5/10</td><td>&ge; 7</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+            <tr><td>Scannability</td><td>8/10</td><td>&ge; 7</td><td><span class="badge badge-pass">PASS</span></td></tr>
+            <tr><td>Adoption Risks</td><td>3 found</td><td>Mitigated</td><td><span class="badge badge-warn">NEEDS WORK</span></td></tr>
+            <tr><td>Bias Flags</td><td>2 found</td><td>Resolved</td><td><span class="badge badge-warn">NEEDS WORK</span></td></tr>
+        </tbody>
+    </table>
+
+    <h3>Path to PASS</h3>
+    <p>Implement micro-adjustments 1&ndash;5 (estimated 2 hours of rework). After these 5 changes, projected scores: Comprehension 8/10, Cognitive Load 7/10 &mdash; all dimensions above threshold.</p>
+</div>
+
+<h2>Validation</h2>
+<ul class="checklist">
+    <li>All 5 dimensions scored with specific evidence</li>
+    <li>Micro-adjustments are specific and actionable (current vs. proposed text)</li>
+    <li>Adoption risks identify specific stakeholder resistance points</li>
+    <li>Bias flags include both the bias and the fix</li>
+    <li>Verdict is clear (CONDITIONAL) with explicit path to PASS</li>
+    <li>Reader personas identified: VP Lending, Engineering Lead, Loan Officers</li>
+</ul>
+
+<div class="footer">
+    <strong>Autor:</strong> Javier Montano | <strong>Generado por:</strong> sofka-user-representative | <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+</body>
+</html>

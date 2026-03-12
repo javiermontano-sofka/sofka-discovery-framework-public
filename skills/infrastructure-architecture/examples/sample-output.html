@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infrastructure Architecture — Acme Corp Banking Modernization</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2a4a7f;
+      --primary-dim: rgba(26,54,93,0.08);
+      --accent: #e53e3e;
+      --accent-dim: rgba(229,62,62,0.08);
+      --bg: #f7fafc;
+      --text: #2d3748;
+      --muted: #718096;
+      --white: #ffffff;
+      --black: #1a202c;
+      --border: #e2e8f0;
+      --positive: #FFD700;
+      --positive-dim: rgba(255,215,0,0.10);
+      --warning: #D97706;
+      --warning-dim: rgba(217,119,6,0.08);
+      --critical: #DC2626;
+      --critical-dim: rgba(220,38,38,0.07);
+      --info: #2563EB;
+      --info-dim: rgba(37,99,235,0.07);
+      --font: 'Inter', system-ui, sans-serif;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); }
+    a { color: var(--primary); text-decoration: none; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: var(--white); padding: 8px 16px; z-index: 1000; }
+    .skip-link:focus { top: 0; }
+
+    .hero { background: var(--primary); border-bottom: 6px solid var(--accent); padding: 3rem 2rem 2.5rem; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero h1 { color: var(--white); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero .subtitle { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 700px; }
+    .meta-badges { display: flex; gap: 0.75rem; margin: 1.5rem 0 0; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; background: var(--accent); color: var(--white); border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-outline { display: inline-block; padding: 0.25rem 0.75rem; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.8); border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+
+    .sticky-nav { background: var(--white); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); padding: 0 2rem; }
+    .sticky-nav ul { list-style: none; display: flex; gap: 1.5rem; max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+    .sticky-nav a { display: block; padding: 0.75rem 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .sticky-nav a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 3.5rem 0; scroll-margin-top: 60px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-number { width: 56px; height: 56px; background: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; border-radius: 8px; }
+    .section-title { font-size: 2rem; font-weight: 700; }
+    h3 { font-size: 1.3rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--primary); }
+
+    .card { background: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .callout { padding: 1.25rem 1.5rem; border-radius: var(--radius); margin: 1.5rem 0; border-left: 4px solid; }
+    .callout-info { background: var(--info-dim); border-color: var(--info); }
+    .callout-warning { background: var(--warning-dim); border-color: var(--warning); }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: var(--primary); color: var(--white); padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+    tr:hover td { background: var(--primary-dim); }
+
+    .mermaid { margin: 2rem 0; text-align: center; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .kpi-card { background: var(--white); padding: 1.25rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
+    .kpi-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .kpi-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    .footer { background: var(--primary); border-top: 6px solid var(--accent); color: var(--white); padding: 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer .meta { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
+
+    @media print { .sticky-nav { display: none; } .card { box-shadow: none; border: 1px solid var(--border); } }
+    @media (max-width: 768px) { .hero, .main, .footer { padding-left: 1rem; padding-right: 1rem; } }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="meta-badges">
+        <span class="badge">Confidencial</span>
+        <span class="badge-outline">Infrastructure Architecture</span>
+        <span class="badge-outline">2026-03-12</span>
+      </div>
+      <h1>Infrastructure — <span>Banking Modernization</span></h1>
+      <p class="subtitle">AWS multi-VPC landing zone for 2.4M customers. 99.99% availability, PCI-DSS compliance, 12,000 TPS peak. Primary us-east-1, DR us-west-2.</p>
+      <div class="kpi-grid" style="margin-top:1.5rem;">
+        <div class="kpi-card"><div class="kpi-value">99.99%</div><div class="kpi-label">Availability SLA</div></div>
+        <div class="kpi-card"><div class="kpi-value">$30K</div><div class="kpi-label">Monthly Cost</div></div>
+        <div class="kpi-card"><div class="kpi-value">29%</div><div class="kpi-label">Cost Savings</div></div>
+        <div class="kpi-card"><div class="kpi-value">3 AZs</div><div class="kpi-label">Multi-AZ</div></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sticky-nav" aria-label="Secciones del documento">
+    <ul>
+      <li><a href="#s1">Network</a></li>
+      <li><a href="#s2">Compute</a></li>
+      <li><a href="#s3">Storage</a></li>
+      <li><a href="#s4">HA/DR</a></li>
+      <li><a href="#s5">IAM</a></li>
+      <li><a href="#s6">Landing Zone</a></li>
+      <li><a href="#s7">Cost</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" class="main">
+
+    <section id="s1" class="section">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Network Topology</h2>
+      </div>
+
+      <h3>VPC Architecture</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>VPC</th><th>CIDR</th><th>Purpose</th><th>Subnets</th><th>AZs</th></tr></thead>
+          <tbody>
+            <tr><td>Production</td><td>10.0.0.0/16</td><td>Core banking workloads</td><td>9</td><td>3</td></tr>
+            <tr><td>Staging</td><td>10.1.0.0/16</td><td>Pre-production</td><td>6</td><td>3</td></tr>
+            <tr><td>Shared Services</td><td>10.2.0.0/16</td><td>Logging, monitoring, CI/CD</td><td>6</td><td>3</td></tr>
+            <tr><td>DMZ</td><td>10.3.0.0/16</td><td>API Gateway, partner integrations</td><td>6</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Network Diagram</h3>
+      <div class="mermaid">
+flowchart TB
+    Internet([Internet]) --> WAF[AWS WAF + Shield]
+    WAF --> NLB[Network Load Balancer]
+
+    subgraph ProdVPC["Production VPC 10.0.0.0/16"]
+        subgraph Public["Public Subnets"]
+            NLB
+            NAT[NAT Gateways x3]
+        end
+        subgraph Private["Private Subnets"]
+            EKS[EKS Workers - 12 nodes]
+            Kafka[MSK Kafka]
+        end
+        subgraph Protected["Protected Subnets"]
+            Aurora[(Aurora PostgreSQL)]
+            Redis[(ElastiCache Redis)]
+        end
+        NLB --> EKS
+        EKS --> Aurora
+        EKS --> Redis
+        EKS --> Kafka
+    end
+
+    subgraph Shared["Shared Services VPC"]
+        Mon[Prometheus + Grafana]
+        Logs[OpenSearch]
+    end
+
+    ProdVPC <-->|Transit Gateway| Shared
+      </div>
+    </section>
+
+    <section id="s2" class="section">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Compute & Containers</h2>
+      </div>
+
+      <h3>EKS Cluster</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Node Group</th><th>Instance</th><th>Count</th><th>Type</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Base</td><td>m7i.2xlarge</td><td>6</td><td>On-demand</td><td>Steady-state capacity</td></tr>
+            <tr><td>Burst</td><td>m7i.xlarge</td><td>0-18</td><td>Spot + on-demand</td><td>Peak hours, month-end</td></tr>
+            <tr><td>Critical</td><td>m7i.xlarge</td><td>3</td><td>On-demand (dedicated)</td><td>Payment processing</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Resource Budgets</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Workload</th><th>CPU</th><th>Memory</th><th>Replicas</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td>Payment Service</td><td>1000m</td><td>2Gi</td><td>6</td><td>Critical</td></tr>
+            <tr><td>Account Service</td><td>500m</td><td>1Gi</td><td>4</td><td>High</td></tr>
+            <tr><td>Fraud Engine</td><td>2000m</td><td>4Gi</td><td>3</td><td>Critical</td></tr>
+            <tr><td>Notification Service</td><td>250m</td><td>512Mi</td><td>3</td><td>Normal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s3" class="section">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Storage & Data</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Service</th><th>Technology</th><th>HA</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Core Banking DB</td><td>Aurora PostgreSQL 15</td><td>3-node cluster</td><td>Accounts, customers, transactions</td></tr>
+            <tr><td>Fraud Analytics</td><td>Amazon OpenSearch</td><td>Multi-AZ</td><td>Real-time fraud detection</td></tr>
+            <tr><td>Cache</td><td>ElastiCache Redis 7.2</td><td>Cluster mode, 3 shards</td><td>Session, balance cache</td></tr>
+            <tr><td>Event Store</td><td>Amazon MSK (Kafka)</td><td>3 AZs, replication=3</td><td>Event sourcing, CQRS</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Backup & Recovery</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Component</th><th>RPO</th><th>RTO</th><th>Method</th></tr></thead>
+          <tbody>
+            <tr><td>Aurora PostgreSQL</td><td>5 min</td><td>15 min</td><td>Continuous backup + cross-region</td></tr>
+            <tr><td>ElastiCache Redis</td><td>1 hour</td><td>10 min</td><td>Daily RDB + AOF</td></tr>
+            <tr><td>MSK Kafka</td><td>0</td><td>5 min</td><td>3x replication, multi-AZ</td></tr>
+            <tr><td>S3</td><td>0</td><td>Instant</td><td>Cross-region replication</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s4" class="section">
+      <div class="section-header">
+        <div class="section-number">04</div>
+        <h2 class="section-title">HA & Disaster Recovery</h2>
+      </div>
+
+      <h3>Cross-Region DR (Warm Standby)</h3>
+      <div class="mermaid">
+flowchart LR
+    subgraph Primary["us-east-1 Primary"]
+        P_NLB[NLB] --> P_EKS[EKS 12 nodes]
+        P_EKS --> P_Aurora[(Aurora Writer)]
+        P_EKS --> P_MSK[MSK 6 brokers]
+    end
+
+    subgraph DR["us-west-2 Warm Standby"]
+        DR_NLB[NLB] --> DR_EKS[EKS 4 nodes]
+        DR_EKS --> DR_Aurora[(Aurora Reader)]
+        DR_EKS --> DR_MSK[MSK 3 brokers]
+    end
+
+    P_Aurora -->|Global DB Replication| DR_Aurora
+    P_MSK -->|MirrorMaker 2| DR_MSK
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-value">5 min</div><div class="kpi-label">RPO Achieved</div></div>
+        <div class="kpi-card"><div class="kpi-value">20 min</div><div class="kpi-label">RTO Achieved</div></div>
+        <div class="kpi-card"><div class="kpi-value">2/yr</div><div class="kpi-label">DR Drills</div></div>
+        <div class="kpi-card"><div class="kpi-value">3 AZs</div><div class="kpi-label">Per Region</div></div>
+      </div>
+
+      <h3>Chaos Testing</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Frequency</th><th>Test</th><th>Tool</th><th>Blast Radius</th></tr></thead>
+          <tbody>
+            <tr><td>Weekly</td><td>Random pod termination</td><td>LitmusChaos</td><td>Single namespace</td></tr>
+            <tr><td>Monthly</td><td>AZ failure simulation</td><td>AWS FIS</td><td>Full AZ</td></tr>
+            <tr><td>Quarterly</td><td>Database failover</td><td>AWS FIS</td><td>Aurora cluster</td></tr>
+            <tr><td>Semi-annual</td><td>Full region failover</td><td>Manual runbook</td><td>All services</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s5" class="section">
+      <div class="section-header">
+        <div class="section-number">05</div>
+        <h2 class="section-title">IAM & Platform Security</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Role</th><th>EKS</th><th>RDS</th><th>S3</th><th>Secrets</th></tr></thead>
+          <tbody>
+            <tr><td>Platform Admin</td><td>Full</td><td>Full</td><td>Full</td><td>Full</td></tr>
+            <tr><td>SRE</td><td>Namespace-scoped</td><td>Read + failover</td><td>Read</td><td>Read</td></tr>
+            <tr><td>Developer</td><td>Own namespace</td><td>Read replica only</td><td>App bucket</td><td>Own service</td></tr>
+            <tr><td>CI/CD Pipeline</td><td>Deploy to namespace</td><td>None</td><td>Artifacts</td><td>Read</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>PCI-DSS Compliance</strong>
+        Cardholder data encrypted with CloudHSM (FIPS 140-2 Level 3). Field-level encryption for PAN, CVV. All access via IRSA -- zero long-lived credentials.
+      </div>
+    </section>
+
+    <section id="s6" class="section">
+      <div class="section-header">
+        <div class="section-number">06</div>
+        <h2 class="section-title">Cloud Landing Zone</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>OU</th><th>Account</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Management</td><td>Billing & Governance</td><td>SCPs, consolidated billing</td></tr>
+            <tr><td>Security</td><td>Security Hub</td><td>GuardDuty, Config, CloudTrail</td></tr>
+            <tr><td>Shared Services</td><td>Logging</td><td>Centralized CloudWatch, OpenSearch</td></tr>
+            <tr><td>Shared Services</td><td>CI/CD</td><td>GitHub Actions, ECR</td></tr>
+            <tr><td>Workloads</td><td>Production</td><td>Core banking services</td></tr>
+            <tr><td>Workloads</td><td>Staging</td><td>Pre-production</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-warning">
+        <strong>SCP Guardrails</strong>
+        Deny: public S3, unencrypted storage, unauthorized regions. Require: CloudTrail, Config recording, mandatory tagging, VPC Flow Logs.
+      </div>
+    </section>
+
+    <section id="s7" class="section">
+      <div class="section-header">
+        <div class="section-number">07</div>
+        <h2 class="section-title">Cost Optimization</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th>On-Demand</th><th>Optimized</th><th>Savings</th><th>Method</th></tr></thead>
+          <tbody>
+            <tr><td>Compute (EKS)</td><td>$18,400</td><td>$11,960</td><td>35%</td><td>Spot, RI, Karpenter</td></tr>
+            <tr><td>Database (Aurora)</td><td>$8,200</td><td>$5,740</td><td>30%</td><td>Reserved Instance</td></tr>
+            <tr><td>Cache (Redis)</td><td>$3,600</td><td>$2,520</td><td>30%</td><td>Reserved Nodes</td></tr>
+            <tr><td>Kafka (MSK)</td><td>$4,800</td><td>$4,800</td><td>0%</td><td>No RI available</td></tr>
+            <tr><td>Storage (S3)</td><td>$1,200</td><td>$780</td><td>35%</td><td>Lifecycle policies</td></tr>
+            <tr><td>Network</td><td>$3,800</td><td>$2,660</td><td>30%</td><td>VPC endpoints, CDN</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-value">$42K</div><div class="kpi-label">On-Demand Cost</div></div>
+        <div class="kpi-card"><div class="kpi-value">$30K</div><div class="kpi-label">Optimized Cost</div></div>
+        <div class="kpi-card"><div class="kpi-value" style="color:var(--accent);">29%</div><div class="kpi-label">Total Savings</div></div>
+        <div class="kpi-card"><div class="kpi-value">$144K</div><div class="kpi-label">Annual Savings</div></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Acme Corp Banking Modernization</strong>
+        <div class="meta-badges" style="margin-top:0.5rem;">
+          <span class="badge">Confidencial</span>
+          <span class="badge-outline">Infrastructure Architecture</span>
+        </div>
+      </div>
+      <div class="meta">
+        Documento confidencial. Generado con Design System v4.<br>
+        Autor: Javier Montano | Sofka | 2026-03-12
+      </div>
+    </div>
+  </footer>
+
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>

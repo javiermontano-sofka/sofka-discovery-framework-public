@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escenarios ToT — Acme Corp Banking Modernization</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-gold: #f5a623;
+      --brand-green: #22c55e;
+      --brand-blue: #3b82f6;
+      --brand-amber: #f59e0b;
+      --brand-surface: #f8f9fa;
+      --brand-text: #1a1a2e;
+      --brand-muted: #6b7280;
+      --radius: 8px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--brand-text); background: #fff; line-height: 1.6; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+    h1 { font-size: 2rem; color: var(--brand-primary); margin-bottom: 0.25rem; }
+    h2 { font-size: 1.5rem; color: var(--brand-primary); margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--brand-accent); }
+    h3 { font-size: 1.15rem; color: var(--brand-primary); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .subtitle { color: var(--brand-muted); font-size: 0.95rem; margin-bottom: 2rem; }
+    p { margin-bottom: 1rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+    th { background: var(--brand-primary); color: #fff; padding: 0.65rem 0.75rem; text-align: left; font-weight: 600; }
+    td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    tr:nth-child(even) td { background: var(--brand-surface); }
+    .score-card { background: var(--brand-surface); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-left: 4px solid var(--brand-accent); }
+    .score-card .total { font-size: 1.75rem; font-weight: 700; color: var(--brand-accent); }
+    .verdict { padding: 1rem 1.25rem; border-radius: var(--radius); margin: 1rem 0 1.5rem; font-weight: 500; }
+    .verdict.strong { background: #dcfce7; border-left: 4px solid var(--brand-green); color: #166534; }
+    .verdict.viable { background: #dbeafe; border-left: 4px solid var(--brand-blue); color: #1e40af; }
+    .verdict.conditional { background: #fef3c7; border-left: 4px solid var(--brand-amber); color: #92400e; }
+    .decision-map { background: var(--brand-primary); color: #e5e7eb; padding: 1.5rem; border-radius: var(--radius); font-family: 'Courier New', monospace; font-size: 0.85rem; white-space: pre; overflow-x: auto; margin: 1rem 0 1.5rem; }
+    .recommendation { background: linear-gradient(135deg, #dcfce7, #d1fae5); border: 2px solid var(--brand-green); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; }
+    .recommendation h3 { color: #166534; margin-top: 0; }
+    .phase { background: var(--brand-surface); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 0.75rem 0; border-left: 3px solid var(--brand-blue); }
+    .phase strong { color: var(--brand-primary); }
+    .gate { color: var(--brand-accent); font-weight: 600; font-size: 0.85rem; margin-top: 0.5rem; }
+    .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-right: 0.25rem; }
+    .tag-a { background: #dbeafe; color: #1e40af; }
+    .tag-b { background: #dcfce7; color: #166534; }
+    .tag-c { background: #fef3c7; color: #92400e; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: var(--brand-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Escenarios ToT — Acme Corp Banking Modernization</h1>
+  <p class="subtitle">Proyecto: Acme Corp | Fecha: 12 de marzo de 2026 | Variante: T&eacute;cnica | 3 escenarios evaluados</p>
+
+  <h2>1. Contexto del An&aacute;lisis</h2>
+  <p>Acme Corp opera una plataforma core banking basada en COBOL/Java monol&iacute;tico desplegada on-premise desde 2008. El sistema procesa 2.4M transacciones/d&iacute;a con 99.7% uptime pero enfrenta: costos de mantenimiento crecientes (+18% YoY), incapacidad de lanzar productos digitales en menos de 6 meses, y deuda t&eacute;cnica que limita la integraci&oacute;n con fintechs.</p>
+
+  <!-- Scenario A -->
+  <h2>2. Escenario A: Conservative &mdash; API Gateway + Strangler Facade</h2>
+  <p><strong>Visi&oacute;n:</strong> Preservar el core COBOL/Java existente, exponiendo funcionalidad mediante un API Gateway con patr&oacute;n Strangler Facade para migraci&oacute;n incremental de m&oacute;dulos perif&eacute;ricos.</p>
+
+  <h3>SWOT</h3>
+  <table>
+    <tr><th></th><th>Favorable</th><th>Desfavorable</th></tr>
+    <tr><td><strong>Interno</strong></td><td>Riesgo operacional m&iacute;nimo; equipo actual capacitado; ROI predecible</td><td>Deuda t&eacute;cnica persiste; innovaci&oacute;n limitada; dependencia COBOL</td></tr>
+    <tr><td><strong>Externo</strong></td><td>Integraciones API inmediatas; compliance sin disrupci&oacute;n</td><td>Competidores cloud-native avanzan; costo COBOL sube; talento escasea</td></tr>
+  </table>
+
+  <h3>Scoring Grid</h3>
+  <table>
+    <tr><th>Dimensi&oacute;n</th><th>Peso</th><th>Score</th><th>Ponderado</th><th>Rationale</th></tr>
+    <tr><td>Cost</td><td>20%</td><td>8</td><td>1.60</td><td>CAPEX bajo (~$800K Yr1). Gateway + facade sin rewrite masivo.</td></tr>
+    <tr><td>Time-to-Value</td><td>20%</td><td>7</td><td>1.40</td><td>MVP API Gateway en 3-4 meses. Valor incremental desde mes 4.</td></tr>
+    <tr><td>Operational Risk</td><td>15%</td><td>9</td><td>1.35</td><td>Core intacto. Cambios solo en capa de exposici&oacute;n.</td></tr>
+    <tr><td>Strategic Alignment</td><td>20%</td><td>4</td><td>0.80</td><td>Habilita integraciones pero no transforma capacidades.</td></tr>
+    <tr><td>Regulatory Fit</td><td>15%</td><td>9</td><td>1.35</td><td>Sin cambios en procesamiento core. Compliance intact.</td></tr>
+    <tr><td>PoC Speed</td><td>10%</td><td>9</td><td>0.90</td><td>Gateway PoC: 2-3 semanas, 2 ingenieros.</td></tr>
+  </table>
+  <div class="score-card">
+    <span class="total">7.40 / 10</span> &mdash; <span class="tag tag-a">VIABLE</span>
+  </div>
+  <div class="verdict viable">Score s&oacute;lido impulsado por bajo riesgo y compliance. Limitado en alineaci&oacute;n estrat&eacute;gica. Adecuado si el objetivo es estabilizar, no transformar.</div>
+
+  <!-- Scenario B -->
+  <h2>3. Escenario B: Moderate &mdash; Domain-Driven Decomposition</h2>
+  <p><strong>Visi&oacute;n:</strong> Descomponer el monolito en bounded contexts usando DDD. Migrar los 3 dominios cr&iacute;ticos (Accounts, Payments, Lending) a microservicios cloud. Mantener dominios estables en legacy con anti-corruption layer.</p>
+
+  <h3>SWOT</h3>
+  <table>
+    <tr><th></th><th>Favorable</th><th>Desfavorable</th></tr>
+    <tr><td><strong>Interno</strong></td><td>Balance riesgo/transformaci&oacute;n; DDD alinea tech con negocio; reutiliza equipo</td><td>Complejidad anti-corruption layer; requiere domain experts; sistema h&iacute;brido temporal</td></tr>
+    <tr><td><strong>Externo</strong></td><td>Cloud elasticity; nuevos productos digitales; atrae talento moderno</td><td>Cloud vendor lock-in; surface de ataque expandido; regulador puede cuestionar</td></tr>
+  </table>
+
+  <h3>Scoring Grid</h3>
+  <table>
+    <tr><th>Dimensi&oacute;n</th><th>Peso</th><th>Score</th><th>Ponderado</th><th>Rationale</th></tr>
+    <tr><td>Cost</td><td>20%</td><td>6</td><td>1.20</td><td>CAPEX ~$2.2M Yr1. OPEX decrece desde Yr2 (-15%).</td></tr>
+    <tr><td>Time-to-Value</td><td>20%</td><td>6</td><td>1.20</td><td>MVP Payments microservice: 5-6 meses.</td></tr>
+    <tr><td>Operational Risk</td><td>15%</td><td>6</td><td>0.90</td><td>Anti-corruption layer mitiga riesgo. Parallel run 3 meses.</td></tr>
+    <tr><td>Strategic Alignment</td><td>20%</td><td>8</td><td>1.60</td><td>Habilita 3+ objetivos estrat&eacute;gicos.</td></tr>
+    <tr><td>Regulatory Fit</td><td>15%</td><td>7</td><td>1.05</td><td>Core compliance preservado. 2 gaps menores en nuevos servicios.</td></tr>
+    <tr><td>PoC Speed</td><td>10%</td><td>7</td><td>0.70</td><td>DDD workshop + Payments PoC: 5-6 semanas.</td></tr>
+  </table>
+  <div class="score-card">
+    <span class="total">6.65 / 10</span> &mdash; <span class="tag tag-b">STRONG</span>
+  </div>
+  <div class="verdict strong">Mejor balance costo-transformaci&oacute;n. Riesgo gestionable con anti-corruption layer y parallel run. Habilita capacidades estrat&eacute;gicas sin full rewrite.</div>
+
+  <!-- Scenario C -->
+  <h2>4. Escenario C: Aggressive &mdash; Full Cloud-Native Rebuild</h2>
+  <p><strong>Visi&oacute;n:</strong> Reconstrucci&oacute;n completa del core banking en arquitectura cloud-native con event sourcing, CQRS, y microservicios. Elimina toda deuda t&eacute;cnica.</p>
+
+  <h3>SWOT</h3>
+  <table>
+    <tr><th></th><th>Favorable</th><th>Desfavorable</th></tr>
+    <tr><td><strong>Interno</strong></td><td>Cero deuda t&eacute;cnica; arquitectura state-of-the-art; m&aacute;xima flexibilidad</td><td>Requiere 15+ ingenieros senior; 18-24 meses sin valor incremental</td></tr>
+    <tr><td><strong>Externo</strong></td><td>Plataforma banking-as-a-service; diferenciaci&oacute;n m&aacute;xima; atrae top talent</td><td>Regulador exige certificaci&oacute;n completa; competidores avanzan durante rebuild</td></tr>
+  </table>
+
+  <h3>Scoring Grid</h3>
+  <table>
+    <tr><th>Dimensi&oacute;n</th><th>Peso</th><th>Score</th><th>Ponderado</th><th>Rationale</th></tr>
+    <tr><td>Cost</td><td>20%</td><td>3</td><td>0.60</td><td>CAPEX ~$4.5M Yr1. Total 3yr TCO: $10M+.</td></tr>
+    <tr><td>Time-to-Value</td><td>20%</td><td>3</td><td>0.60</td><td>MVP funcional: 10-12 meses. Valor real: 18-24 meses.</td></tr>
+    <tr><td>Operational Risk</td><td>15%</td><td>4</td><td>0.60</td><td>Full cutover. Data migration es riesgo cr&iacute;tico.</td></tr>
+    <tr><td>Strategic Alignment</td><td>20%</td><td>10</td><td>2.00</td><td>M&aacute;xima alineaci&oacute;n. Todos los objetivos + platform play.</td></tr>
+    <tr><td>Regulatory Fit</td><td>15%</td><td>5</td><td>0.75</td><td>Re-certificaci&oacute;n completa requerida. 3-5 gaps.</td></tr>
+    <tr><td>PoC Speed</td><td>10%</td><td>4</td><td>0.40</td><td>Event sourcing PoC: 8+ semanas, 4-5 ingenieros.</td></tr>
+  </table>
+  <div class="score-card">
+    <span class="total">4.95 / 10</span> &mdash; <span class="tag tag-c">CONDITIONAL</span>
+  </div>
+  <div class="verdict conditional">M&aacute;ximo upside estrat&eacute;gico pero costo, timeline, y riesgo regulatorio son prohibitivos para el contexto actual. Solo viable si presupuesto se expande &gt;60%.</div>
+
+  <!-- Cross-Scenario -->
+  <h2>5. Cross-Scenario Scoring Matrix</h2>
+  <table>
+    <tr><th>Dimensi&oacute;n</th><th>Peso</th><th>Escenario A</th><th>Escenario B</th><th>Escenario C</th><th>Winner</th></tr>
+    <tr><td>Cost</td><td>20%</td><td><strong>8</strong> (1.60)</td><td>6 (1.20)</td><td>3 (0.60)</td><td>A</td></tr>
+    <tr><td>Time-to-Value</td><td>20%</td><td><strong>7</strong> (1.40)</td><td>6 (1.20)</td><td>3 (0.60)</td><td>A</td></tr>
+    <tr><td>Operational Risk</td><td>15%</td><td><strong>9</strong> (1.35)</td><td>6 (0.90)</td><td>4 (0.60)</td><td>A</td></tr>
+    <tr><td>Strategic Alignment</td><td>20%</td><td>4 (0.80)</td><td>8 (1.60)</td><td><strong>10</strong> (2.00)</td><td>C</td></tr>
+    <tr><td>Regulatory Fit</td><td>15%</td><td><strong>9</strong> (1.35)</td><td>7 (1.05)</td><td>5 (0.75)</td><td>A</td></tr>
+    <tr><td>PoC Speed</td><td>10%</td><td><strong>9</strong> (0.90)</td><td>7 (0.70)</td><td>4 (0.40)</td><td>A</td></tr>
+    <tr style="font-weight:700;background:#f0fdf4"><td>TOTAL</td><td></td><td>7.40</td><td>6.65</td><td>4.95</td><td>B (balanced)</td></tr>
+  </table>
+
+  <h2>6. Trade-off Decision Map</h2>
+  <div class="decision-map">         High Strategic Value
+                  |
+         C: Cloud-Native (10 strategic, 4.95 total)
+                  |
+                  |
+Low Risk -------- B: DDD Decomposition (balanced) -------- High Risk
+                  |         6.65 total
+                  |
+         A: API Gateway (safe, 7.40 total)
+                  |
+         Low Strategic Value</div>
+
+  <h2>7. Conditional Switching Logic</h2>
+  <table>
+    <tr><th>#</th><th>Trigger Condition</th><th>Impact on Recommendation</th></tr>
+    <tr><td>1</td><td>Budget increases &gt;60%</td><td>Scenario C becomes viable. Re-score with confirmed budget.</td></tr>
+    <tr><td>2</td><td>Timeline pressure: product required in &lt;4 months</td><td>Scenario A becomes mandatory (only option within timeline).</td></tr>
+    <tr><td>3</td><td>Regulatory tightening: new data residency requirements</td><td>A strengthens. B/C require cloud region analysis.</td></tr>
+    <tr><td>4</td><td>5+ senior cloud engineers hired within 60 days</td><td>B improves +0.5. C improves +1.0.</td></tr>
+    <tr><td>5</td><td>Competitive threat: fintech captures 15%+ market share</td><td>Strategic alignment weight increases to 30%. B overtakes A.</td></tr>
+    <tr><td>6</td><td>COBOL talent crisis: 2+ key engineers leave</td><td>A weakens -1.5. B becomes urgent necessity.</td></tr>
+    <tr><td>7</td><td>Cloud provider offers banking-grade SLA + compliance cert</td><td>C risk score improves +2. Regulatory gap narrows.</td></tr>
+  </table>
+
+  <!-- Recommendation -->
+  <h2>8. Recommendation</h2>
+  <div class="recommendation">
+    <h3>Escenario Recomendado: B &mdash; Domain-Driven Decomposition</h3>
+    <p><strong>Composite Score:</strong> 6.65 / 10 (ajustado a 7.2 con weight override para Strategic Alignment = 25%)</p>
+    <p>Aunque el Escenario A tiene score num&eacute;rico superior (7.40), su limitaci&oacute;n estrat&eacute;gica (4/10) lo convierte en una soluci&oacute;n temporal. El Escenario B ofrece el mejor balance: riesgo gestionable, costo justificable ($2.2M Yr1 con ROI en Yr2), y habilitaci&oacute;n de 3+ objetivos estrat&eacute;gicos.</p>
+    <p><strong>Primary Concern:</strong> Complejidad operativa durante 12-18 meses de coexistencia legacy + cloud.</p>
+  </div>
+
+  <!-- Implementation Roadmap -->
+  <h2>9. Implementation Roadmap &mdash; Escenario B</h2>
+  <div class="phase">
+    <strong>Phase 1: Foundation (Meses 1-2)</strong>
+    <p>DDD Event Storming workshops. Bounded context mapping. Cloud landing zone. Team: 3 existing + 2 new hires.</p>
+    <p class="gate">Gate: Domain model validated + cloud sandbox operational.</p>
+  </div>
+  <div class="phase">
+    <strong>Phase 2: Pilot (Meses 3-5)</strong>
+    <p>Payments microservice development. Anti-corruption layer. CI/CD + observability. Integration testing.</p>
+    <p class="gate">Gate: 10K tx/day with &lt;200ms p99 latency.</p>
+  </div>
+  <div class="phase">
+    <strong>Phase 3: Scale (Meses 6-10)</strong>
+    <p>Accounts + Lending microservices. Parallel run 8 weeks. Data migration. Load testing 2.4M+ tx/day.</p>
+    <p class="gate">Gate: Zero critical incidents during 4-week parallel run.</p>
+  </div>
+  <div class="phase">
+    <strong>Phase 4: Optimize (Meses 10-12)</strong>
+    <p>Legacy decommissioning. Cost optimization. Performance tuning. Compliance audit.</p>
+    <p class="gate">Gate: Ops/Finance/Security/Compliance sign-off.</p>
+  </div>
+
+  <h2>10. Risk Register &mdash; Escenario B</h2>
+  <table>
+    <tr><th>ID</th><th>Risk</th><th>Impact</th><th>Prob.</th><th>Score</th><th>Mitigation</th></tr>
+    <tr><td>R1</td><td>Anti-corruption layer latency &gt;50ms</td><td>4</td><td>3</td><td>12</td><td>Performance testing Phase 2; circuit breaker</td></tr>
+    <tr><td>R2</td><td>Domain experts unavailable</td><td>3</td><td>2</td><td>6</td><td>Schedule 3 weeks ahead; record sessions</td></tr>
+    <tr><td>R3</td><td>Data consistency during parallel run</td><td>5</td><td>2</td><td>10</td><td>Dual-write + reconciliation job; rollback plan</td></tr>
+    <tr><td>R4</td><td>Cloud cost overrun &gt;20%</td><td>3</td><td>3</td><td>9</td><td>FinOps monitoring Day 1; reserved capacity</td></tr>
+    <tr><td>R5</td><td>Key hire resignation during migration</td><td>4</td><td>2</td><td>8</td><td>Knowledge sharing; documentation; pair programming</td></tr>
+  </table>
+
+  <footer>
+    <p><strong>Autor:</strong> Javier Monta&ntilde;o | <strong>Generado por:</strong> scenario-analysis skill v6.0</p>
+  </footer>
+
+</div>
+</body>
+</html>

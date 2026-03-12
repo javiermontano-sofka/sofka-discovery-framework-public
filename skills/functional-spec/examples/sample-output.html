@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Especificacion Funcional Deep -- Acme Digital Banking</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-gold: #f5a623;
+      --brand-bg: #f8f9fa;
+      --brand-text: #2d3436;
+      --brand-border: #dfe6e9;
+      --brand-success: #00b894;
+      --brand-warning: #fdcb6e;
+      --brand-danger: #d63031;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--brand-text); background: var(--brand-bg); line-height: 1.6; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+    header { background: var(--brand-primary); color: #fff; padding: 2rem; border-radius: 8px 8px 0 0; margin-bottom: 0; }
+    header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    header .meta { font-size: 0.875rem; opacity: 0.8; }
+    .content { background: #fff; padding: 2rem; border-radius: 0 0 8px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    h2 { color: var(--brand-primary); border-bottom: 2px solid var(--brand-accent); padding-bottom: 0.5rem; margin: 2rem 0 1rem; font-size: 1.35rem; }
+    h3 { color: var(--brand-primary); margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th { background: var(--brand-primary); color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
+    td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--brand-border); }
+    tr:nth-child(even) { background: #f1f3f5; }
+    .module-card { border: 1px solid var(--brand-border); border-radius: 6px; padding: 1.25rem; margin: 0.75rem 0; background: #fff; }
+    .module-card h4 { color: var(--brand-accent); margin-bottom: 0.5rem; }
+    .module-card .ratings { display: flex; gap: 1.5rem; margin-top: 0.5rem; font-size: 0.85rem; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+    .badge-critical { background: var(--brand-danger); color: #fff; }
+    .badge-high { background: var(--brand-warning); color: var(--brand-text); }
+    .badge-validated { background: var(--brand-success); color: #fff; }
+    .badge-unvalidated { background: var(--brand-danger); color: #fff; }
+    .use-case { border-left: 3px solid var(--brand-accent); padding-left: 1rem; margin: 1rem 0; }
+    .matrix-grid { display: grid; grid-template-columns: 80px repeat(3, 1fr); gap: 2px; margin: 1rem 0; }
+    .matrix-cell { padding: 0.75rem; text-align: center; font-size: 0.8rem; border-radius: 4px; }
+    .matrix-header { background: var(--brand-primary); color: #fff; font-weight: 600; }
+    .matrix-label { background: var(--brand-primary); color: #fff; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    .risk-high-high { background: #ff7675; }
+    .risk-mid-high { background: #ffeaa7; }
+    .risk-low-low { background: #55efc4; }
+    .risk-mid-mid { background: #74b9ff; }
+    .scope-in { color: var(--brand-success); }
+    .scope-out { color: #636e72; }
+    ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+    ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li::before { content: "\2610 "; font-size: 1.1rem; }
+    footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; color: #636e72; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Especificacion Funcional Deep</h1>
+  <p style="font-size:1.1rem; margin-bottom:0.5rem;">Acme Digital Banking -- MVP</p>
+  <div class="meta">
+    Cliente: Acme Corp &bull; Fecha: 12 de marzo de 2026 &bull;
+    Variante: tecnica &bull; Modulos: 4 &bull; Use Cases: 4 &bull; Business Rules: 4
+  </div>
+</header>
+
+<div class="content">
+
+<!-- Section 1 -->
+<h2>Section 1: MVP Module Inventory</h2>
+
+<div class="module-card">
+  <h4>MOD-01 Account Management</h4>
+  <p>Gestion del ciclo de vida de cuentas bancarias -- apertura, actualizacion, cierre y consultas de saldo.</p>
+  <p><strong>Features:</strong> Apertura digital, KYC automatizado, multi-moneda, estados de cuenta PDF.</p>
+  <p><strong>Use Cases:</strong> UC-01 &bull; <strong>Rules:</strong> BR-01, BR-02</p>
+  <div class="ratings">
+    <span>Complejidad: 3/5</span>
+    <span>Riesgo: 3/5</span>
+    <span>Deps: &rarr; MOD-02, MOD-03</span>
+  </div>
+</div>
+
+<div class="module-card">
+  <h4>MOD-02 Payment Processing</h4>
+  <p>Transferencias nacionales e internacionales, pagos de servicios, y procesamiento batch nocturno.</p>
+  <p><strong>Features:</strong> SPEI en tiempo real, pagos programados, limites dinamicos, notificaciones push.</p>
+  <p><strong>Use Cases:</strong> UC-02 &bull; <strong>Rules:</strong> BR-03</p>
+  <div class="ratings">
+    <span>Complejidad: 4/5</span>
+    <span>Riesgo: 4/5</span>
+    <span>Deps: MOD-01 &rarr; MOD-04</span>
+  </div>
+</div>
+
+<div class="module-card">
+  <h4>MOD-03 Loan Origination</h4>
+  <p>Solicitud, evaluacion crediticia, aprobacion y desembolso de prestamos personales y PyME.</p>
+  <p><strong>Features:</strong> Scoring automatizado, documentacion digital, firma electronica, simulador de pagos.</p>
+  <p><strong>Use Cases:</strong> UC-03 &bull; <strong>Rules:</strong> BR-04</p>
+  <div class="ratings">
+    <span>Complejidad: 4/5</span>
+    <span>Riesgo: 3/5</span>
+    <span>Deps: MOD-01 &rarr; MOD-02</span>
+  </div>
+</div>
+
+<div class="module-card">
+  <h4>MOD-04 Customer Portal</h4>
+  <p>Dashboard unificado para el cliente: resumen de cuentas, movimientos, notificaciones y soporte.</p>
+  <p><strong>Features:</strong> Dashboard responsivo, exportacion CSV/PDF, chat de soporte, preferencias de notificacion.</p>
+  <p><strong>Use Cases:</strong> UC-04 &bull; <strong>Rules:</strong> Ninguna propia</p>
+  <div class="ratings">
+    <span>Complejidad: 2/5</span>
+    <span>Riesgo: 2/5</span>
+    <span>Deps: MOD-01, MOD-02, MOD-03 &rarr;</span>
+  </div>
+</div>
+
+<!-- Section 2 -->
+<h2>Section 2: Use Cases</h2>
+
+<div class="use-case">
+  <h3>UC-01 Abrir Cuenta Digital</h3>
+  <table>
+    <tr><th>Actor primario</th><td>Cliente nuevo</td></tr>
+    <tr><th>Prioridad</th><td>High</td></tr>
+    <tr><th>Frecuencia</th><td>Daily</td></tr>
+    <tr><th>Precondiciones</th><td>Cliente no tiene cuenta activa. Dispositivo con camara para INE.</td></tr>
+  </table>
+  <h4>Flujo principal</h4>
+  <ol>
+    <li>Cliente selecciona "Abrir Cuenta" en la app.</li>
+    <li>Sistema solicita datos personales (nombre, CURP, RFC, correo, telefono).</li>
+    <li>Cliente captura foto de INE (frente y reverso).</li>
+    <li>Sistema ejecuta verificacion KYC con proveedor externo.</li>
+    <li>Sistema valida CURP contra RENAPO.</li>
+    <li>Sistema aplica BR-01 (edad minima) y BR-02 (duplicados).</li>
+    <li>Sistema genera numero de cuenta y CLABE.</li>
+    <li>Sistema envia correo de confirmacion con contrato digital.</li>
+  </ol>
+  <h4>Flujos alternativos</h4>
+  <ul>
+    <li><strong>4a.</strong> KYC rechazado por calidad de imagen: recaptura (max 3 intentos).</li>
+    <li><strong>6a.</strong> Menor de edad: mensaje de rechazo. Caso termina.</li>
+  </ul>
+  <h4>Excepcion</h4>
+  <ul>
+    <li><strong>4x.</strong> Proveedor KYC no disponible: encola solicitud, notifica procesamiento en 24h.</li>
+  </ul>
+  <p><strong>Postcondiciones:</strong> Cuenta ACTIVA creada. Cliente puede operar.</p>
+</div>
+
+<div class="use-case">
+  <h3>UC-02 Transferir Fondos via SPEI</h3>
+  <table>
+    <tr><th>Actor primario</th><td>Cliente titular</td></tr>
+    <tr><th>Prioridad</th><td>High</td></tr>
+    <tr><th>Frecuencia</th><td>Daily</td></tr>
+  </table>
+  <h4>Flujo principal</h4>
+  <ol>
+    <li>Cliente selecciona "Transferir" y elige cuenta origen.</li>
+    <li>Sistema muestra saldo disponible.</li>
+    <li>Cliente ingresa CLABE destino, monto y concepto.</li>
+    <li>Sistema aplica BR-03 (limites).</li>
+    <li>Sistema solicita segundo factor.</li>
+    <li>Sistema envia orden SPEI.</li>
+    <li>Sistema confirma y actualiza saldo.</li>
+    <li>Notificacion push y correo.</li>
+  </ol>
+</div>
+
+<div class="use-case">
+  <h3>UC-03 Solicitar Prestamo Personal</h3>
+  <table>
+    <tr><th>Actor primario</th><td>Cliente titular</td></tr>
+    <tr><th>Prioridad</th><td>High</td></tr>
+    <tr><th>Frecuencia</th><td>Session</td></tr>
+  </table>
+  <h4>Flujo principal</h4>
+  <ol>
+    <li>Cliente selecciona "Solicitar Prestamo".</li>
+    <li>Sistema muestra productos segun perfil.</li>
+    <li>Cliente selecciona producto, monto y plazo.</li>
+    <li>Simulacion de pagos (monto, tasa, CAT, pago mensual).</li>
+    <li>Cliente confirma solicitud.</li>
+    <li>Motor de scoring (BR-04).</li>
+    <li>Resolucion: aprobado / rechazado / documentacion adicional.</li>
+    <li>Si aprobado: contrato digital + desembolso programado.</li>
+  </ol>
+</div>
+
+<div class="use-case">
+  <h3>UC-04 Consultar Dashboard</h3>
+  <table>
+    <tr><th>Actor primario</th><td>Cliente titular</td></tr>
+    <tr><th>Prioridad</th><td>Medium</td></tr>
+    <tr><th>Frecuencia</th><td>Daily</td></tr>
+  </table>
+  <h4>Flujo principal</h4>
+  <ol>
+    <li>Cliente accede al portal/app.</li>
+    <li>Sistema muestra resumen: saldos, ultimos 5 movimientos, alertas.</li>
+    <li>Cliente selecciona cuenta para detalle.</li>
+    <li>Movimientos con filtros (fecha, tipo, monto).</li>
+    <li>Exportacion CSV o PDF.</li>
+  </ol>
+</div>
+
+<!-- Section 3 -->
+<h2>Section 3: Business Rules</h2>
+<table>
+  <thead>
+    <tr><th>ID</th><th>Rule</th><th>Validation Logic</th><th>Severity</th><th>Module</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BR-01</td><td>Edad minima 18+</td>
+      <td><code>IF edad &lt; 18 THEN REJECT</code></td>
+      <td><span class="badge badge-critical">CRITICAL</span></td>
+      <td>MOD-01</td>
+      <td><span class="badge badge-validated">VALIDATED</span></td>
+    </tr>
+    <tr>
+      <td>BR-02</td><td>Cuenta duplicada</td>
+      <td><code>IF EXISTS cuenta activa mismo tipo THEN REJECT</code></td>
+      <td><span class="badge badge-high">HIGH</span></td>
+      <td>MOD-01</td>
+      <td><span class="badge badge-validated">VALIDATED</span></td>
+    </tr>
+    <tr>
+      <td>BR-03</td><td>Limites transferencia</td>
+      <td><code>IF sum(dia) + monto > limite THEN REJECT</code></td>
+      <td><span class="badge badge-critical">CRITICAL</span></td>
+      <td>MOD-02</td>
+      <td><span class="badge badge-validated">VALIDATED</span></td>
+    </tr>
+    <tr>
+      <td>BR-04</td><td>Scoring crediticio</td>
+      <td><code>IF score >= 650 AUTO; >= 500 MANUAL; ELSE REJECT</code></td>
+      <td><span class="badge badge-critical">CRITICAL</span></td>
+      <td>MOD-03</td>
+      <td><span class="badge badge-unvalidated">UNVALIDATED</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Section 4 -->
+<h2>Section 4: Complexity &amp; Risk Matrix</h2>
+<div class="matrix-grid">
+  <div class="matrix-cell"></div>
+  <div class="matrix-cell matrix-header">Low</div>
+  <div class="matrix-cell matrix-header">Mid</div>
+  <div class="matrix-cell matrix-header">High</div>
+
+  <div class="matrix-cell matrix-label">High</div>
+  <div class="matrix-cell"></div>
+  <div class="matrix-cell risk-mid-high">MOD-03</div>
+  <div class="matrix-cell risk-high-high">MOD-02</div>
+
+  <div class="matrix-cell matrix-label">Mid</div>
+  <div class="matrix-cell"></div>
+  <div class="matrix-cell risk-mid-mid">MOD-01</div>
+  <div class="matrix-cell"></div>
+
+  <div class="matrix-cell matrix-label">Low</div>
+  <div class="matrix-cell risk-low-low">MOD-04</div>
+  <div class="matrix-cell"></div>
+  <div class="matrix-cell"></div>
+</div>
+<p><strong>Recomendacion:</strong> Iniciar con MOD-04 (quick win) + MOD-01 (habilitador), luego MOD-02, finalmente MOD-03.</p>
+
+<!-- Section 5 -->
+<h2>Section 5: Scope Definition</h2>
+<h3 class="scope-in">In Scope (MVP)</h3>
+<ul>
+  <li>Apertura de cuenta digital con KYC automatizado</li>
+  <li>Transferencias SPEI en tiempo real</li>
+  <li>Solicitud y evaluacion de prestamos personales</li>
+  <li>Dashboard de consulta con exportacion</li>
+  <li>Autenticacion de segundo factor</li>
+  <li>Notificaciones push y correo transaccional</li>
+</ul>
+<h3 class="scope-out">Out of Scope (Future)</h3>
+<ul>
+  <li>Prestamos PyME -- Phase 2</li>
+  <li>Pagos de servicios -- Phase 2</li>
+  <li>Tarjeta de debito virtual -- Phase 3</li>
+  <li>Inversion y CETES -- Phase 3</li>
+  <li>Chat de soporte con IA -- Phase 2</li>
+</ul>
+
+<h3>Boundary Conditions</h3>
+<table>
+  <tr><th>Parametro</th><th>Valor</th></tr>
+  <tr><td>Max registros/consulta</td><td>1,000</td></tr>
+  <tr><td>Usuarios concurrentes</td><td>5,000</td></tr>
+  <tr><td>SLA SPEI</td><td>99.5%</td></tr>
+  <tr><td>Retencion de datos</td><td>5 anos</td></tr>
+  <tr><td>Uptime objetivo</td><td>99.9%</td></tr>
+</table>
+
+<!-- Section 7 (abbreviated) -->
+<h2>Section 7: Data Model Overview</h2>
+<p><em>See Markdown version for full Mermaid ER diagram.</em></p>
+<table>
+  <thead><tr><th>Entidad</th><th>Campos clave</th><th>Relaciones</th><th>Business Rules</th></tr></thead>
+  <tbody>
+    <tr><td>CLIENTE</td><td>id, nombre, curp, rfc, tipo</td><td>has-many: CUENTA, PRESTAMO, DOCUMENTO_KYC</td><td>BR-01, BR-02</td></tr>
+    <tr><td>CUENTA</td><td>id, numero, clabe, tipo, estado, saldo</td><td>belongs-to: CLIENTE; has-many: TRANSFERENCIA</td><td>BR-02</td></tr>
+    <tr><td>TRANSFERENCIA</td><td>id, monto, estado, referencia_spei</td><td>belongs-to: CUENTA</td><td>BR-03</td></tr>
+    <tr><td>PRESTAMO</td><td>id, monto, tasa, cat, plazo, score, estado</td><td>belongs-to: CLIENTE, CUENTA</td><td>BR-04</td></tr>
+    <tr><td>DOCUMENTO_KYC</td><td>id, tipo, estado</td><td>belongs-to: CLIENTE</td><td>--</td></tr>
+  </tbody>
+</table>
+
+<!-- Section 8 -->
+<h2>Section 8: Integration Specifications</h2>
+<table>
+  <thead><tr><th>Sistema</th><th>Metodo</th><th>SLA</th><th>Fallback</th></tr></thead>
+  <tbody>
+    <tr><td>SPEI (Banxico)</td><td>POST/GET REST</td><td>99.5%, &lt;3s</td><td>Cola + reintentos cada 5 min</td></tr>
+    <tr><td>KYC (Mati/Truora)</td><td>REST API v2</td><td>99.0%, &lt;5s</td><td>Cola asincrona 24h</td></tr>
+    <tr><td>Scoring (interno)</td><td>gRPC</td><td>99.9%</td><td>Analista manual</td></tr>
+  </tbody>
+</table>
+
+</div><!-- /content -->
+
+<footer>
+  <strong>Autor:</strong> Javier Montano &bull; <strong>Generado:</strong> 12 de marzo de 2026
+</footer>
+
+</div><!-- /container -->
+</body>
+</html>

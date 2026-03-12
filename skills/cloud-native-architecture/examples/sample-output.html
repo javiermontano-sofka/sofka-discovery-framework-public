@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud-Native Architecture — Acme Corp Banking Modernization</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    pre { background: #1a202c; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; font-size: 0.875rem; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body>
+<div class="container">
+
+  <h1>A-01: Cloud-Native Architecture — Acme Corp Banking Modernization</h1>
+  <p><strong>Cliente:</strong> Acme Corp | <strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Variante:</strong> T&eacute;cnica</p>
+
+  <h2>Resumen Ejecutivo</h2>
+  <p>Acme Corp est&aacute; transformando su plataforma bancaria de VMs on-premises a cloud-native sobre EKS. Este documento define 12-factor assessment, estrategia de containers, Kubernetes, service mesh (Istio Ambient), serverless, portabilidad multi-cloud, y FinOps.</p>
+
+  <h3>Decisiones Clave</h3>
+  <table>
+    <tr><th>Decisi&oacute;n</th><th>Selecci&oacute;n</th><th>Rationale</th></tr>
+    <tr><td>Orquestaci&oacute;n</td><td>EKS + Karpenter</td><td>Provisioning 30-60s, spot/OD mix</td></tr>
+    <tr><td>Service Mesh</td><td>Istio Ambient Mode</td><td>mTLS sin sidecars, 90% menos overhead</td></tr>
+    <tr><td>Serverless</td><td>Lambda (event-driven)</td><td>Notificaciones, alertas fraude</td></tr>
+    <tr><td>Ingress</td><td>Gateway API (Envoy Gateway)</td><td>Multi-tenancy, NGINX retiring</td></tr>
+    <tr><td>GitOps</td><td>ArgoCD + Helm</td><td>Auditable, SOX compliance</td></tr>
+    <tr><td>FinOps</td><td>OpenCost + Kubecost</td><td>Cost allocation per namespace</td></tr>
+  </table>
+
+  <h2>S1: Cloud-Native Assessment</h2>
+
+  <h3>12-Factor Compliance</h3>
+  <table>
+    <tr><th>Factor</th><th>State</th><th>Compliance</th><th>Effort</th></tr>
+    <tr><td>1. Codebase</td><td>Monorepo with 3 apps</td><td><span class="badge badge-yellow">Partial</span></td><td>M</td></tr>
+    <tr><td>2. Dependencies</td><td>Maven/Gradle</td><td><span class="badge badge-green">Compliant</span></td><td>&mdash;</td></tr>
+    <tr><td>3. Config</td><td>Properties in WAR</td><td><span class="badge badge-red">Non-compliant</span></td><td>M</td></tr>
+    <tr><td>4. Backing services</td><td>Hardcoded JDBC</td><td><span class="badge badge-red">Non-compliant</span></td><td>S</td></tr>
+    <tr><td>5. Build/release/run</td><td>CI builds, manual deploy</td><td><span class="badge badge-yellow">Partial</span></td><td>M</td></tr>
+    <tr><td>6. Processes</td><td>Session in JVM</td><td><span class="badge badge-red">Non-compliant</span></td><td>L</td></tr>
+    <tr><td>7. Port binding</td><td>Embedded Tomcat</td><td><span class="badge badge-green">Compliant</span></td><td>&mdash;</td></tr>
+    <tr><td>8. Concurrency</td><td>Vertical scaling</td><td><span class="badge badge-red">Non-compliant</span></td><td>M</td></tr>
+    <tr><td>9. Disposability</td><td>45s startup, no graceful</td><td><span class="badge badge-red">Non-compliant</span></td><td>M</td></tr>
+    <tr><td>10. Dev/prod parity</td><td>3 different configs</td><td><span class="badge badge-yellow">Partial</span></td><td>S</td></tr>
+    <tr><td>11. Logs</td><td>Log4j to files</td><td><span class="badge badge-red">Non-compliant</span></td><td>S</td></tr>
+    <tr><td>12. Admin processes</td><td>Manual SQL scripts</td><td><span class="badge badge-red">Non-compliant</span></td><td>M</td></tr>
+  </table>
+  <p><strong>Score:</strong> 3/12 compliant, 3/12 partial, 6/12 non-compliant. Remediation: 8-10 sprints.</p>
+
+  <h2>S2: Container &amp; Orchestration Strategy</h2>
+
+  <h3>Cluster Architecture</h3>
+  <div class="mermaid">
+graph TB
+    subgraph EKS Cluster
+        subgraph System
+            A[ArgoCD]
+            B[Istio Ambient]
+            C[OpenCost]
+            D[Karpenter]
+        end
+        subgraph banking-prod
+            E[Account Svc x3]
+            F[Payment Svc x5]
+            G[Card Svc x3]
+            H[Risk Engine x2]
+        end
+        subgraph banking-batch
+            I[ETL Jobs - Spot]
+        end
+    end
+    J[Envoy Gateway] --> E & F & G
+    D --> K[NodePool: m6i + m7g + spot]
+  </div>
+
+  <h3>Resource Configuration</h3>
+  <table>
+    <tr><th>Service</th><th>CPU Req</th><th>Mem Req</th><th>Mem Limit</th><th>Replicas</th><th>Autoscaler</th></tr>
+    <tr><td>Account Service</td><td>500m</td><td>512Mi</td><td>1Gi</td><td>3-8</td><td>HPA CPU 70%</td></tr>
+    <tr><td>Payment Service</td><td>1000m</td><td>1Gi</td><td>2Gi</td><td>5-15</td><td>HPA CPU 60%</td></tr>
+    <tr><td>Card Service</td><td>500m</td><td>768Mi</td><td>1.5Gi</td><td>3-6</td><td>HPA CPU 70%</td></tr>
+    <tr><td>Risk Engine</td><td>2000m</td><td>2Gi</td><td>4Gi</td><td>2-4</td><td>KEDA queue depth</td></tr>
+    <tr><td>Notification Worker</td><td>250m</td><td>256Mi</td><td>512Mi</td><td>0-10</td><td>KEDA SQS</td></tr>
+  </table>
+
+  <h2>S3: Service Mesh &amp; Networking</h2>
+
+  <h3>Istio Ambient Mode</h3>
+  <div class="mermaid">
+graph TB
+    subgraph Node 1
+        A[ztunnel L4 mTLS]
+        B[Account Svc]
+        C[Payment Svc]
+    end
+    subgraph Node 2
+        D[ztunnel L4 mTLS]
+        E[Card Svc]
+        F[Risk Engine]
+    end
+    subgraph Waypoint
+        G[banking-prod waypoint<br/>L7 policy]
+    end
+    B & C --> A
+    E & F --> D
+    A <-->|mTLS| D
+    A & D --> G
+  </div>
+
+  <h3>Traffic Management</h3>
+  <table>
+    <tr><th>Pattern</th><th>Use Case</th><th>Config</th></tr>
+    <tr><td>Canary</td><td>Payment releases</td><td>5% &rarr; 25% &rarr; 50% &rarr; 100% over 4h</td></tr>
+    <tr><td>Circuit Breaker</td><td>Credit bureau calls</td><td>Open at 50% error, half-open 30s</td></tr>
+    <tr><td>Retry</td><td>Account reads</td><td>Max 3, exponential, only 503</td></tr>
+    <tr><td>Rate Limit</td><td>External APIs</td><td>1000 req/min, 429 + Retry-After</td></tr>
+  </table>
+
+  <h2>S4: Serverless Decision Framework</h2>
+
+  <table>
+    <tr><th>Workload</th><th>Pattern</th><th>Duration</th><th>Decision</th><th>Cost/mo</th></tr>
+    <tr><td>Transaction notifications</td><td>Spiky, event-driven</td><td>&lt; 5s</td><td><span class="badge badge-green">Lambda</span></td><td>$285</td></tr>
+    <tr><td>Fraud alert processing</td><td>Spiky, event-driven</td><td>&lt; 10s</td><td><span class="badge badge-green">Lambda</span></td><td>$145</td></tr>
+    <tr><td>Account Service API</td><td>Steady 24/7</td><td>Long-running</td><td>EKS</td><td>$2,675</td></tr>
+    <tr><td>Payment processing</td><td>Steady + spikes</td><td>Long-running</td><td>EKS</td><td>$4,730</td></tr>
+    <tr><td>PDF statements</td><td>Monthly burst</td><td>&lt; 5 min</td><td><span class="badge badge-green">Lambda</span></td><td>$92</td></tr>
+  </table>
+
+  <h2>S5: Multi-Cloud &amp; Portability</h2>
+
+  <table>
+    <tr><th>Layer</th><th>Approach</th><th>Lock-in Risk</th></tr>
+    <tr><td>Compute</td><td>Kubernetes (EKS)</td><td><span class="badge badge-green">Low</span></td></tr>
+    <tr><td>Database</td><td>PostgreSQL on RDS</td><td><span class="badge badge-green">Low</span></td></tr>
+    <tr><td>Messaging</td><td>Kafka on MSK</td><td><span class="badge badge-green">Low</span></td></tr>
+    <tr><td>IaC</td><td>Terraform</td><td><span class="badge badge-yellow">Medium</span></td></tr>
+    <tr><td>Serverless</td><td>Lambda</td><td><span class="badge badge-red">High</span> (accepted)</td></tr>
+    <tr><td>Observability</td><td>OpenTelemetry</td><td><span class="badge badge-green">Low</span></td></tr>
+  </table>
+
+  <h2>S6: FinOps Integration</h2>
+
+  <h3>Monthly Cost by Namespace</h3>
+  <table>
+    <tr><th>Namespace</th><th>Compute</th><th>Storage</th><th>Network</th><th>Total</th><th>%</th></tr>
+    <tr><td>banking-prod (Account)</td><td>$2,400</td><td>$180</td><td>$95</td><td>$2,675</td><td>18%</td></tr>
+    <tr><td>banking-prod (Payment)</td><td>$4,200</td><td>$320</td><td>$210</td><td>$4,730</td><td>32%</td></tr>
+    <tr><td>banking-prod (Card)</td><td>$1,800</td><td>$150</td><td>$85</td><td>$2,035</td><td>14%</td></tr>
+    <tr><td>banking-prod (Risk)</td><td>$2,100</td><td>$280</td><td>$120</td><td>$2,500</td><td>17%</td></tr>
+    <tr><td>banking-batch</td><td>$800</td><td>$90</td><td>$45</td><td>$935</td><td>6%</td></tr>
+    <tr><td>monitoring</td><td>$600</td><td>$240</td><td>$30</td><td>$870</td><td>6%</td></tr>
+    <tr><td><strong>Total</strong></td><td></td><td></td><td></td><td><strong>$14,790</strong></td><td></td></tr>
+  </table>
+
+  <h3>Optimization Opportunities</h3>
+  <table>
+    <tr><th>Action</th><th>Savings</th><th>Priority</th></tr>
+    <tr><td>Spot for batch workloads</td><td>$560/mo (70%)</td><td><span class="badge badge-red">P1</span></td></tr>
+    <tr><td>Graviton (arm64) for Java</td><td>$1,680/mo (20%)</td><td><span class="badge badge-red">P1</span></td></tr>
+    <tr><td>KEDA scale-to-zero</td><td>$360/mo (80%)</td><td><span class="badge badge-yellow">P2</span></td></tr>
+    <tr><td>Karpenter consolidation</td><td>$420/mo (20%)</td><td><span class="badge badge-yellow">P2</span></td></tr>
+    <tr><td>Reserved Instances (1yr)</td><td>$4,440/mo (30%)</td><td>P3</td></tr>
+  </table>
+
+  <h2>Conclusiones y Recomendaciones</h2>
+  <ol>
+    <li><strong>Remediar 12-factor</strong> en los 6 factores non-compliant antes de containerizar.</li>
+    <li><strong>Adoptar Istio Ambient Mode</strong> &mdash; 2.3GB overhead ahorrado vs sidecar en 23 servicios.</li>
+    <li><strong>Karpenter desde el d&iacute;a uno</strong> &mdash; provisioning 30-60s cr&iacute;tico para Payment Service.</li>
+    <li><strong>Graviton (arm64) en Sprint 1</strong> &mdash; 20% ahorro, zero code changes.</li>
+    <li><strong>OpenCost desde el primer cluster</strong> &mdash; no se puede optimizar lo que no se mide.</li>
+  </ol>
+
+  <footer><p><strong>Autor:</strong> Javier Monta&ntilde;o — Sofka Discovery Framework v6.0</p></footer>
+</div>
+</body>
+</html>

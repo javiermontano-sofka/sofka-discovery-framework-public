@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Architecture — Acme Corp Banking Modernization</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2a4a7f;
+      --primary-dim: rgba(26,54,93,0.08);
+      --accent: #e53e3e;
+      --accent-dim: rgba(229,62,62,0.08);
+      --bg: #f7fafc;
+      --text: #2d3748;
+      --muted: #718096;
+      --white: #ffffff;
+      --black: #1a202c;
+      --border: #e2e8f0;
+      --positive: #FFD700;
+      --positive-dim: rgba(255,215,0,0.10);
+      --warning: #D97706;
+      --warning-dim: rgba(217,119,6,0.08);
+      --critical: #DC2626;
+      --critical-dim: rgba(220,38,38,0.07);
+      --info: #2563EB;
+      --info-dim: rgba(37,99,235,0.07);
+      --font: 'Inter', system-ui, sans-serif;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); }
+    a { color: var(--primary); text-decoration: none; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: var(--white); padding: 8px 16px; z-index: 1000; }
+    .skip-link:focus { top: 0; }
+
+    .hero { background: var(--primary); border-bottom: 6px solid var(--accent); padding: 3rem 2rem 2.5rem; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero h1 { color: var(--white); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero .subtitle { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 700px; }
+    .meta-badges { display: flex; gap: 0.75rem; margin: 1.5rem 0 0; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; background: var(--accent); color: var(--white); border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-outline { display: inline-block; padding: 0.25rem 0.75rem; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.8); border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+
+    .sticky-nav { background: var(--white); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); padding: 0 2rem; }
+    .sticky-nav ul { list-style: none; display: flex; gap: 2rem; max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+    .sticky-nav a { display: block; padding: 0.75rem 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .sticky-nav a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 3.5rem 0; scroll-margin-top: 60px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-number { width: 56px; height: 56px; background: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; border-radius: 8px; }
+    .section-title { font-size: 2rem; font-weight: 700; }
+    h3 { font-size: 1.3rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--primary); }
+
+    .card { background: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .callout { padding: 1.25rem 1.5rem; border-radius: var(--radius); margin: 1.5rem 0; border-left: 4px solid; }
+    .callout-info { background: var(--info-dim); border-color: var(--info); }
+    .callout-warning { background: var(--warning-dim); border-color: var(--warning); }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: var(--primary); color: var(--white); padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+    tr:hover td { background: var(--primary-dim); }
+
+    .code-block { background: var(--black); color: #e2e8f0; padding: 1.5rem; border-radius: var(--radius); font-family: 'SF Mono', Menlo, monospace; font-size: 0.85rem; line-height: 1.5; overflow-x: auto; margin: 1rem 0; white-space: pre; }
+
+    .mermaid { margin: 2rem 0; text-align: center; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .kpi-card { background: var(--white); padding: 1.25rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
+    .kpi-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .kpi-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    .footer { background: var(--primary); border-top: 6px solid var(--accent); color: var(--white); padding: 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer .meta { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
+
+    @media print { .sticky-nav { display: none; } .card { box-shadow: none; border: 1px solid var(--border); } }
+    @media (max-width: 768px) { .hero, .main, .footer { padding-left: 1rem; padding-right: 1rem; } }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="meta-badges">
+        <span class="badge">Confidencial</span>
+        <span class="badge-outline">Event Architecture</span>
+        <span class="badge-outline">2026-03-12</span>
+      </div>
+      <h1>Event Architecture — <span>Banking Modernization</span></h1>
+      <p class="subtitle">Acme Corp core banking event-driven architecture: event catalog, Kafka broker, schema registry, orchestrated sagas, CQRS, and operational excellence for 2.4M customers.</p>
+    </div>
+  </header>
+
+  <nav class="sticky-nav" aria-label="Secciones del documento">
+    <ul>
+      <li><a href="#s1">Event Catalog</a></li>
+      <li><a href="#s2">Broker Architecture</a></li>
+      <li><a href="#s3">Schema Registry</a></li>
+      <li><a href="#s4">Consistency Patterns</a></li>
+      <li><a href="#s5">CQRS & Event Sourcing</a></li>
+      <li><a href="#s6">Operational Excellence</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" class="main">
+
+    <section id="s1" class="section">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Event Catalog & Taxonomy</h2>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Naming Convention</strong>
+        All events follow <code>&lt;Domain&gt;.&lt;Entity&gt;.&lt;Action&gt;</code> with CloudEvents v1.0 envelope.
+      </div>
+
+      <h3>Domain Events</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Event Name</th><th>Type</th><th>Aggregate</th><th>Bounded Context</th><th>Payload</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Account.Customer.Onboarded</td><td>Domain</td><td>Customer</td><td>Customer Mgmt</td><td>State Transfer</td></tr>
+            <tr><td>2</td><td>Account.Savings.Opened</td><td>Domain</td><td>Account</td><td>Account Lifecycle</td><td>State Transfer</td></tr>
+            <tr><td>3</td><td>Txn.Transfer.Initiated</td><td>Domain</td><td>Transaction</td><td>Payments</td><td>Notification</td></tr>
+            <tr><td>4</td><td>Txn.Transfer.Completed</td><td>Domain</td><td>Transaction</td><td>Payments</td><td>Delta</td></tr>
+            <tr><td>5</td><td>Txn.Transfer.Failed</td><td>Domain</td><td>Transaction</td><td>Payments</td><td>State Transfer</td></tr>
+            <tr><td>6</td><td>Fraud.Alert.Raised</td><td>Domain</td><td>FraudCase</td><td>Fraud Detection</td><td>State Transfer</td></tr>
+            <tr><td>7</td><td>Loan.Application.Submitted</td><td>Domain</td><td>LoanApplication</td><td>Lending</td><td>State Transfer</td></tr>
+            <tr><td>8</td><td>Compliance.KYC.Completed</td><td>Integration</td><td>KYCProfile</td><td>Compliance</td><td>State Transfer</td></tr>
+            <tr><td>9</td><td>Notification.Email.Queued</td><td>Integration</td><td>Notification</td><td>Notifications</td><td>Notification</td></tr>
+            <tr><td>10</td><td>System.HealthCheck.Failed</td><td>System</td><td>ServiceHealth</td><td>Platform Ops</td><td>State Transfer</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Account Opening Event Flow</h3>
+      <div class="mermaid">
+sequenceDiagram
+    participant C as Customer Portal
+    participant AM as Account Mgmt
+    participant KYC as KYC Service
+    participant CB as Core Banking
+    participant PS as Payment Service
+    participant NS as Notification Service
+
+    C->>AM: Submit application
+    AM->>KYC: Account.Customer.Onboarded
+    KYC->>AM: Compliance.KYC.Completed
+    AM->>CB: Account.Savings.Opened
+    CB->>NS: Notification.Email.Queued
+    C->>PS: Initiate first deposit
+    PS->>CB: Txn.Transfer.Initiated
+    CB->>PS: Txn.Transfer.Completed
+      </div>
+    </section>
+
+    <section id="s2" class="section">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Message Broker Architecture</h2>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Broker Selection: Apache Kafka (Confluent Cloud)</strong>
+        12,000 txn/sec peak throughput, native log-based replay for regulatory audit, per-partition ordering by accountId.
+      </div>
+
+      <h3>Topic Architecture</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Topic</th><th>Partitions</th><th>Retention</th><th>Key</th></tr></thead>
+          <tbody>
+            <tr><td><code>acme.account.lifecycle</code></td><td>24</td><td>90 days</td><td>accountId</td></tr>
+            <tr><td><code>acme.txn.payments</code></td><td>48</td><td>365 days</td><td>accountId</td></tr>
+            <tr><td><code>acme.fraud.alerts</code></td><td>12</td><td>365 days</td><td>caseId</td></tr>
+            <tr><td><code>acme.compliance.kyc</code></td><td>12</td><td>7 years</td><td>customerId</td></tr>
+            <tr><td><code>acme.notifications</code></td><td>24</td><td>7 days</td><td>customerId</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-value">12K</div><div class="kpi-label">Peak TPS</div></div>
+        <div class="kpi-card"><div class="kpi-value">120</div><div class="kpi-label">Total Partitions</div></div>
+        <div class="kpi-card"><div class="kpi-value">3x</div><div class="kpi-label">Replication Factor</div></div>
+        <div class="kpi-card"><div class="kpi-value">acks=all</div><div class="kpi-label">Durability</div></div>
+      </div>
+    </section>
+
+    <section id="s3" class="section">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Event Schema Registry</h2>
+      </div>
+
+      <h3>Schema Inventory (Confluent Schema Registry / Avro)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Schema</th><th>Version</th><th>Compatibility</th><th>Key Fields</th></tr></thead>
+          <tbody>
+            <tr><td>Txn.Transfer.Initiated</td><td>v3</td><td>Backward</td><td>transactionId, fromAccount, toAccount, amount, currency</td></tr>
+            <tr><td>Txn.Transfer.Completed</td><td>v2</td><td>Backward</td><td>transactionId, status, completedAt, balanceAfter</td></tr>
+            <tr><td>Fraud.Alert.Raised</td><td>v4</td><td>Full</td><td>caseId, accountId, riskScore, triggeredBy</td></tr>
+            <tr><td>Account.Savings.Opened</td><td>v2</td><td>Backward</td><td>accountId, customerId, initialDeposit, currency</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Schema Evolution Flow</h3>
+      <div class="mermaid">
+flowchart TD
+    A[Schema Change Proposed] --> B{Breaking change?}
+    B -->|Yes| C[Reject in CI]
+    B -->|No| D{Adds required field?}
+    D -->|Yes| E[Must have default value]
+    D -->|No| F[Auto-approve]
+    E --> G[Schema Registry validates]
+    F --> G
+    G --> H{Compatible?}
+    H -->|Yes| I[Register new version]
+    H -->|No| J[Block deployment]
+    C --> K[Requires RFC + migration plan]
+      </div>
+    </section>
+
+    <section id="s4" class="section">
+      <div class="section-header">
+        <div class="section-number">04</div>
+        <h2 class="section-title">Consistency Patterns</h2>
+      </div>
+
+      <h3>Fund Transfer Saga (Orchestrated)</h3>
+      <div class="mermaid">
+stateDiagram-v2
+    [*] --> TransferInitiated
+    TransferInitiated --> FraudScreening: Check fraud rules
+    FraudScreening --> BalanceCheck: Fraud cleared
+    FraudScreening --> TransferRejected: Fraud detected
+    BalanceCheck --> DebitSource: Sufficient funds
+    BalanceCheck --> TransferRejected: Insufficient funds
+    DebitSource --> CreditDestination: Debit confirmed
+    CreditDestination --> TransferCompleted: Credit confirmed
+    CreditDestination --> CompensateDebit: Credit failed
+    CompensateDebit --> TransferFailed: Debit reversed
+    TransferCompleted --> [*]
+    TransferRejected --> [*]
+    TransferFailed --> [*]
+      </div>
+
+      <h3>Compensation Table</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Step</th><th>Action</th><th>Compensation</th><th>Timeout</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Fraud screening</td><td>No compensation needed</td><td>5s</td></tr>
+            <tr><td>2</td><td>Balance check</td><td>No compensation needed</td><td>2s</td></tr>
+            <tr><td>3</td><td>Debit source account</td><td>Credit source (reverse debit)</td><td>10s</td></tr>
+            <tr><td>4</td><td>Credit destination</td><td>Debit destination + credit source</td><td>10s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-warning">
+        <strong>Outbox Pattern with Debezium CDC</strong>
+        All services write events to an outbox table in the same DB transaction as the domain change. Debezium reads the PostgreSQL WAL and streams outbox rows to Kafka with near-real-time latency.
+      </div>
+    </section>
+
+    <section id="s5" class="section">
+      <div class="section-header">
+        <div class="section-number">05</div>
+        <h2 class="section-title">CQRS & Event Sourcing</h2>
+      </div>
+
+      <h3>CQRS Read Models</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Read Model</th><th>Source Events</th><th>Storage</th><th>Refresh</th></tr></thead>
+          <tbody>
+            <tr><td>Account Balance</td><td>Transfer.Completed, Transfer.Failed</td><td>Redis (hot), PostgreSQL (warm)</td><td>Real-time (&lt;500ms)</td></tr>
+            <tr><td>Transaction History</td><td>Transfer.*</td><td>PostgreSQL + Elasticsearch</td><td>Real-time</td></tr>
+            <tr><td>Monthly Statement</td><td>Transfer.Completed</td><td>S3 (PDF)</td><td>Batch (nightly)</td></tr>
+            <tr><td>Fraud Dashboard</td><td>Fraud.Alert.*</td><td>Elasticsearch</td><td>Real-time</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Event Sourcing: Loan Applications</strong>
+        Loan applications use event sourcing for full audit trail (regulatory requirement). Snapshots every 5 events to minimize replay overhead.
+      </div>
+    </section>
+
+    <section id="s6" class="section">
+      <div class="section-header">
+        <div class="section-number">06</div>
+        <h2 class="section-title">Operational Excellence</h2>
+      </div>
+
+      <h3>Dead-Letter Topic Management</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>DLT</th><th>Source</th><th>Alert Threshold</th><th>Replay Process</th></tr></thead>
+          <tbody>
+            <tr><td><code>acme.txn.payments.DLT</code></td><td>acme.txn.payments</td><td>&gt;0 (immediate)</td><td>Fix consumer, manual replay, verify balances</td></tr>
+            <tr><td><code>acme.fraud.alerts.DLT</code></td><td>acme.fraud.alerts</td><td>&gt;0 (immediate)</td><td>Escalate to fraud team, replay after fix</td></tr>
+            <tr><td><code>acme.notifications.DLT</code></td><td>acme.notifications</td><td>&gt;10 (5 min)</td><td>Auto-retry 3x, manual investigation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Consumer Lag Monitoring</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Consumer Group</th><th>Warning</th><th>Critical</th><th>Auto-Scale</th></tr></thead>
+          <tbody>
+            <tr><td>payment-processor</td><td>500 msgs</td><td>2,000 msgs</td><td>Yes (max 48)</td></tr>
+            <tr><td>fraud-engine</td><td>200 msgs</td><td>1,000 msgs</td><td>Yes (max 12)</td></tr>
+            <tr><td>balance-projection</td><td>1,000 msgs</td><td>5,000 msgs</td><td>Yes (max 24)</td></tr>
+            <tr><td>notification-sender</td><td>5,000 msgs</td><td>20,000 msgs</td><td>No (rate-limited)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-value">14</div><div class="kpi-label">Consumer Services</div></div>
+        <div class="kpi-card"><div class="kpi-value">&lt;500ms</div><div class="kpi-label">Projection Lag</div></div>
+        <div class="kpi-card"><div class="kpi-value">0</div><div class="kpi-label">DLT Target</div></div>
+        <div class="kpi-card"><div class="kpi-value">3x</div><div class="kpi-label">Retry + Backoff</div></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Acme Corp Banking Modernization</strong>
+        <div class="meta-badges" style="margin-top: 0.5rem;">
+          <span class="badge">Confidencial</span>
+          <span class="badge-outline">Event Architecture</span>
+        </div>
+      </div>
+      <div class="meta">
+        Documento confidencial. Generado con Design System v4.<br>
+        Autor: Javier Montano | Sofka | 2026-03-12
+      </div>
+    </div>
+  </footer>
+
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>

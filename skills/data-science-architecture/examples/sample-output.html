@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Science Architecture — Acme Corp</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body><div class="container">
+
+  <h1>Data Science Architecture — Acme Corp Banking Modernization</h1>
+  <p><strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Dominio ML:</strong> Fraud Detection, Credit Scoring, Customer Churn | <strong>MLOps Level:</strong> 1 &rarr; 2</p>
+
+  <h2>S1: ML System Topology</h2>
+
+  <h3>Model Inventory</h3>
+  <table>
+    <tr><th>Model</th><th>Type</th><th>Serving</th><th>Latency SLA</th><th>Frequency</th><th>Business Impact</th></tr>
+    <tr><td>Fraud Detection v3.2</td><td>XGBoost ensemble</td><td>Real-time</td><td>&lt; 50ms P99</td><td>Weekly + drift</td><td>Prevents ~$2.1M/month</td></tr>
+    <tr><td>Credit Scoring v2.1</td><td>LightGBM</td><td>Near-real-time</td><td>&lt; 200ms P99</td><td>Monthly</td><td>8,400 applications/month</td></tr>
+    <tr><td>Customer Churn v1.4</td><td>Random Forest</td><td>Batch (daily)</td><td>N/A</td><td>Monthly</td><td>~$340K/quarter saved</td></tr>
+  </table>
+
+  <h3>System Topology</h3>
+  <div class="mermaid">
+    flowchart TB
+      subgraph Data Layer
+        A[Core Banking DB] --> B[CDC Stream]
+        C[Transaction Events] --> D[Kafka]
+        E[Credit Bureau] --> F[API Ingestion]
+      end
+      subgraph Feature Engineering
+        B --> G[Batch - Spark]
+        D --> H[Streaming - Flink]
+        F --> I[On-Demand]
+        G --> J[Feast Offline - S3]
+        H --> K[Feast Online - Redis]
+        I --> K
+      end
+      subgraph Training
+        J --> L[SageMaker Training]
+        L --> M[MLflow Tracking]
+        M --> N[Model Registry]
+      end
+      subgraph Serving
+        N --> O[Model Endpoint]
+        K --> O
+        O --> P[Fraud API]
+        O --> Q[Credit API]
+        O --> R[Churn Batch]
+      end
+      subgraph Monitoring
+        P --> S[Evidently]
+        Q --> S
+        S --> T{Drift?}
+        T -->|Yes| L
+        T -->|No| U[Continue]
+      end
+  </div>
+
+  <h2>S2: Feature Engineering &amp; Store</h2>
+
+  <h3>Feature Groups</h3>
+  <table>
+    <tr><th>Group</th><th>Computation</th><th>Features</th><th>Freshness</th><th>Storage</th></tr>
+    <tr><td>Transaction Aggregates</td><td>Spark batch (hourly)</td><td>tx_count_24h, tx_amount_sum_7d, tx_avg_30d</td><td>1 hour</td><td>Offline + Online</td></tr>
+    <tr><td>Account Profile</td><td>dbt model (daily)</td><td>account_age_days, product_count, avg_balance_30d</td><td>24 hours</td><td>Offline + Online</td></tr>
+    <tr><td>Credit Bureau</td><td>API (on-demand)</td><td>credit_score, delinquency_count, utilization_ratio</td><td>On request</td><td>Online only</td></tr>
+    <tr><td>Behavioral Signals</td><td>Flink streaming</td><td>login_frequency_7d, unusual_time_flag, geo_anomaly</td><td>Real-time</td><td>Online only</td></tr>
+  </table>
+
+  <h3>Feature Computation Paths</h3>
+  <div class="mermaid">
+    flowchart LR
+      subgraph Batch Path
+        A[Core Banking DB] --> B[Spark]
+        B --> C[Validation]
+        C --> D[Feast Offline]
+        D --> E[Training]
+      end
+      subgraph Online Path
+        A --> F[CDC/Kafka]
+        F --> G[Flink]
+        G --> H[Validation]
+        H --> I[Feast Online - Redis]
+        I --> J[Model Endpoint]
+      end
+      D -->|Materialization| I
+  </div>
+
+  <h2>S3: Experiment Tracking &amp; Model Registry</h2>
+
+  <h3>Recent Experiments: Fraud Detection</h3>
+  <table>
+    <tr><th>Run</th><th>Algorithm</th><th>AUC-ROC</th><th>Precision @1% FPR</th><th>Latency P99</th><th>Status</th></tr>
+    <tr><td>fraud-v3.0</td><td>XGBoost</td><td>0.961</td><td>0.78</td><td>42ms</td><td>Retired</td></tr>
+    <tr><td>fraud-v3.1</td><td>XGBoost + SMOTE</td><td>0.968</td><td>0.82</td><td>45ms</td><td>Retired</td></tr>
+    <tr><td>fraud-v3.2</td><td>XGBoost ensemble</td><td>0.974</td><td>0.86</td><td>48ms</td><td><span class="badge badge-green">Production</span></td></tr>
+    <tr><td>fraud-v3.3</td><td>LightGBM ensemble</td><td>0.972</td><td>0.85</td><td>35ms</td><td><span class="badge badge-yellow">Staging</span></td></tr>
+    <tr><td>fraud-v3.4</td><td>Neural network</td><td>0.976</td><td>0.87</td><td>120ms</td><td><span class="badge badge-red">Rejected (latency)</span></td></tr>
+  </table>
+
+  <h2>S4: Model Serving Architecture</h2>
+
+  <h3>A/B Test: Fraud v3.2 vs v3.3</h3>
+  <table>
+    <tr><th>Metric</th><th>v3.2 (Control, 90%)</th><th>v3.3 (Treatment, 10%)</th><th>Significance</th></tr>
+    <tr><td>Fraud catch rate</td><td>86.2%</td><td>85.8%</td><td>p = 0.42 (not sig)</td></tr>
+    <tr><td>False positive rate</td><td>1.02%</td><td>0.88%</td><td>p = 0.03 (sig)</td></tr>
+    <tr><td>P99 latency</td><td>48ms</td><td>35ms</td><td>p &lt; 0.001 (sig)</td></tr>
+    <tr><td>Revenue impact</td><td>Baseline</td><td>+$42K/month</td><td>--</td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>Decision:</strong> Continue test 2 more weeks for statistical power on fraud catch rate. Preliminary results favor v3.3 on operational metrics.
+  </div>
+
+  <h2>S5: MLOps Pipeline Design</h2>
+
+  <h3>Retraining Triggers</h3>
+  <table>
+    <tr><th>Trigger</th><th>Detection</th><th>Action</th><th>Frequency</th></tr>
+    <tr><td>Scheduled</td><td>Cron</td><td>Full retrain</td><td>Weekly (fraud), monthly (credit)</td></tr>
+    <tr><td>Data drift</td><td>PSI &gt; 0.2</td><td>Alert + auto-retrain</td><td>Continuous</td></tr>
+    <tr><td>Performance decay</td><td>AUC drop &gt; 2%</td><td>Investigation + retrain</td><td>Continuous</td></tr>
+    <tr><td>Regulatory change</td><td>Manual</td><td>Retrain with updated rules</td><td>As needed</td></tr>
+  </table>
+
+  <h3>GPU Cost Optimization</h3>
+  <table>
+    <tr><th>Optimization</th><th>Current</th><th>Proposed</th><th>Annual Savings</th></tr>
+    <tr><td>Training instances</td><td>On-demand p3.2xlarge</td><td>Spot (70% discount)</td><td>$18,200</td></tr>
+    <tr><td>Inference right-sizing</td><td>c5.xlarge (28% util)</td><td>c5.large (65% target)</td><td>$9,400</td></tr>
+    <tr><td>Batch scoring</td><td>6h daily window</td><td>2h off-peak spot</td><td>$4,800</td></tr>
+    <tr><td>Quantization</td><td>FP32</td><td>FP16 inference</td><td>$3,100</td></tr>
+    <tr><td colspan="3"><strong>Total Annual Savings</strong></td><td><strong>$35,500</strong></td></tr>
+  </table>
+
+  <h2>S6: Governance &amp; Responsible AI</h2>
+
+  <h3>Bias Audit: Fraud Detection v3.2</h3>
+  <table>
+    <tr><th>Subgroup</th><th>AUC-ROC</th><th>False Positive Rate</th><th>Demographic Parity Diff</th><th>Assessment</th></tr>
+    <tr><td>Age &lt; 25</td><td>0.968</td><td>1.4%</td><td>0.038</td><td><span class="badge badge-green">OK</span></td></tr>
+    <tr><td>Age 25-55</td><td>0.975</td><td>0.95%</td><td>Baseline</td><td>Baseline</td></tr>
+    <tr><td>Age &gt; 55</td><td>0.971</td><td>1.1%</td><td>0.015</td><td><span class="badge badge-green">OK</span></td></tr>
+    <tr><td>High-income</td><td>0.979</td><td>0.72%</td><td>-0.023</td><td><span class="badge badge-green">OK</span></td></tr>
+    <tr><td>Low-income</td><td>0.962</td><td>1.8%</td><td>0.085</td><td><span class="badge badge-yellow">Monitor</span></td></tr>
+    <tr><td>Rural</td><td>0.964</td><td>1.6%</td><td>0.072</td><td><span class="badge badge-green">OK</span></td></tr>
+  </table>
+
+  <h2>Investment Estimate</h2>
+  <table>
+    <tr><th>Component</th><th>Setup Cost</th><th>Monthly Run</th><th>Timeline</th></tr>
+    <tr><td>Feature store (Feast + Redis + S3)</td><td>$15K</td><td>$2,800</td><td>6 weeks</td></tr>
+    <tr><td>MLflow cluster (EKS)</td><td>$8K</td><td>$1,200</td><td>3 weeks</td></tr>
+    <tr><td>CI/CD pipeline (ML)</td><td>$12K</td><td>$400</td><td>4 weeks</td></tr>
+    <tr><td>Monitoring (Evidently + Grafana)</td><td>$6K</td><td>$600</td><td>2 weeks</td></tr>
+    <tr><td>Governance framework</td><td>$10K</td><td>$200</td><td>4 weeks</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>$51K</strong></td><td><strong>$5,200/mo</strong></td><td><strong>12 weeks</strong></td></tr>
+  </table>
+
+  <footer><p><strong>Autor:</strong> Javier Montano — Sofka Discovery Framework v6.0</p></footer>
+</div></body></html>

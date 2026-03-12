@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Pitch: Acme Corp Banking — Digital Core Modernization</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-gold: #f5a623;
+      --brand-success: #27ae60;
+      --brand-bg: #f8f9fa;
+      --brand-card: #ffffff;
+      --brand-text: #2d3436;
+      --brand-muted: #636e72;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--brand-bg);
+      color: var(--brand-text);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      color: var(--brand-primary);
+      border-bottom: 3px solid var(--brand-accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: var(--brand-primary);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--brand-accent);
+      padding-left: 0.75rem;
+    }
+    h3 {
+      font-size: 1.15rem;
+      color: var(--brand-primary);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--brand-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .hero-card {
+      background: var(--brand-primary);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .hero-card .value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--brand-gold);
+    }
+    .hero-card .label {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      margin-top: 0.25rem;
+    }
+    .narrative {
+      background: var(--brand-card);
+      border-left: 4px solid var(--brand-gold);
+      padding: 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--brand-primary);
+      color: #fff;
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+    tr:nth-child(even) { background: #f1f3f5; }
+    .severity-critical { color: var(--brand-accent); font-weight: 700; }
+    .severity-high { color: var(--brand-gold); font-weight: 600; }
+    .callout {
+      background: #fff3cd;
+      border-left: 4px solid var(--brand-gold);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.5rem 0;
+      font-weight: 600;
+    }
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .pillar-card {
+      background: var(--brand-card);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-top: 3px solid var(--brand-accent);
+    }
+    .pillar-card h4 {
+      color: var(--brand-accent);
+      margin-bottom: 0.5rem;
+    }
+    .pillar-card .metric {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+    }
+    .pillar-card p {
+      font-size: 0.85rem;
+      color: var(--brand-muted);
+      margin-top: 0.35rem;
+    }
+    .recommended { background: #e8f5e9; border: 2px solid var(--brand-success); }
+    .option-label {
+      display: inline-block;
+      background: var(--brand-success);
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .budget-card {
+      background: var(--brand-card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-top: 3px solid var(--brand-gold);
+      margin: 1rem 0;
+    }
+    .budget-total {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      text-align: center;
+      margin: 1rem 0;
+    }
+    .cta-box {
+      background: var(--brand-primary);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    .cta-box .deadline {
+      font-size: 1.3rem;
+      color: var(--brand-gold);
+      font-weight: 700;
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #dee2e6;
+      color: var(--brand-muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Executive Pitch: Acme Corp Banking</h1>
+<p class="subtitle">Digital Core Modernization | Prepared for: Maria Elena Rodriguez, CEO | March 2026 | Confidential</p>
+
+<!-- Section 1: Hero -->
+<h2>Section 1: Executive Summary</h2>
+
+<div class="hero-grid">
+  <div class="hero-card">
+    <div class="value">$1.8M/yr</div>
+    <div class="label">Annual Cost Savings (Year 2)</div>
+  </div>
+  <div class="hero-card">
+    <div class="value">18 months</div>
+    <div class="label">Implementation Timeline</div>
+  </div>
+  <div class="hero-card">
+    <div class="value">14 months</div>
+    <div class="label">ROI Payback</div>
+  </div>
+  <div class="hero-card">
+    <div class="value">72%</div>
+    <div class="label">Fewer Critical Incidents</div>
+  </div>
+</div>
+
+<div class="narrative">
+  Acme Corp Banking processes 2.3M transactions daily on a core platform averaging 14 years old. Manual reconciliation, fragmented customer data, and mounting compliance gaps cost <strong>$2.4M annually</strong> in operational inefficiency and regulatory exposure. This pitch presents a phased modernization that pays for itself in 14 months, reduces critical incidents by 72%, and positions Acme to capture the $340M digital banking segment growing at 23% CAGR in the region.
+  <br><br>
+  <strong>Recommendation:</strong> Approve Option C (Phased Modernization) at $3.8M over 18 months. Every month of delay costs $200K in compounding inefficiency and competitive erosion.
+</div>
+
+<!-- Section 2: Problem Statement -->
+<h2>Section 2: Problem Statement &amp; Current Pain</h2>
+
+<h3>Business Impact Metrics</h3>
+<table>
+  <thead>
+    <tr><th>Metric</th><th>Current</th><th>Target</th><th>Gap</th><th>Annual Impact</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Manual reconciliation hours</td><td>4,200 hrs/yr</td><td>420 hrs/yr</td><td>-90%</td><td>$840K</td></tr>
+    <tr><td>Customer onboarding time</td><td>12 days</td><td>2 days</td><td>-83%</td><td>$520K</td></tr>
+    <tr><td>Regulatory findings</td><td>14 findings</td><td>0 critical</td><td>-100%</td><td>$680K</td></tr>
+    <tr><td>System downtime (unplanned)</td><td>47 hrs/yr</td><td>&lt;4 hrs/yr</td><td>-91%</td><td>$360K</td></tr>
+  </tbody>
+</table>
+
+<h3>Pain Points</h3>
+<table>
+  <thead>
+    <tr><th>#</th><th>Pain Point</th><th>Severity</th><th>Root Cause</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Reconciliation errors cause month-end delays of 5+ days</td><td class="severity-critical">CRITICAL</td><td>Legacy batch processing</td></tr>
+    <tr><td>2</td><td>Customer data fragmented across 7 systems</td><td class="severity-critical">CRITICAL</td><td>No unified data layer</td></tr>
+    <tr><td>3</td><td>Compliance reporting takes 3 weeks per cycle</td><td class="severity-high">HIGH</td><td>Manual aggregation</td></tr>
+    <tr><td>4</td><td>New product launch cycle: 9 months average</td><td class="severity-high">HIGH</td><td>Monolithic architecture</td></tr>
+  </tbody>
+</table>
+
+<h3>Cost of Inaction (3-Year Projection)</h3>
+<table>
+  <thead>
+    <tr><th>Year</th><th>Operational Waste</th><th>Regulatory Risk</th><th>Competitive Loss</th><th>Cumulative Total</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Year 1</td><td>$2.4M</td><td>$680K</td><td>$410K</td><td>$3.5M</td></tr>
+    <tr><td>Year 2</td><td>$2.6M</td><td>$750K</td><td>$620K</td><td>$7.5M</td></tr>
+    <tr><td>Year 3</td><td>$2.8M</td><td>$820K</td><td>$940K</td><td>$12.1M</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">Burn rate of inaction: $200K/month — compounding as regulatory requirements tighten and competitors digitize.</div>
+
+<!-- Section 3: Value Pillars -->
+<h2>Section 3: Strategic Value — 4-Pillar Proposition</h2>
+
+<div class="pillar-grid">
+  <div class="pillar-card">
+    <h4>Cost Reduction</h4>
+    <div class="metric">$1.8M/yr</div>
+    <p>Automated reconciliation, unified data layer, self-service onboarding. Year 1: $720K.</p>
+  </div>
+  <div class="pillar-card">
+    <h4>Revenue Acceleration</h4>
+    <div class="metric">$2.1M/yr</div>
+    <p>Product launch from 9 months to 6 weeks. Cross-sell via unified customer view. Year 1: $340K.</p>
+  </div>
+  <div class="pillar-card">
+    <h4>Risk Mitigation</h4>
+    <div class="metric">72% reduction</div>
+    <p>Real-time monitoring, automated compliance, DR upgrade. Year 1: $420K avoided exposure.</p>
+  </div>
+  <div class="pillar-card">
+    <h4>Technical Modernization</h4>
+    <div class="metric">99.97% uptime</div>
+    <p>API-first architecture. Strangler fig migration. 3x faster feature delivery.</p>
+  </div>
+</div>
+
+<h3>Cumulative 3-Year Financial Metrics</h3>
+<table>
+  <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Total Cost of Ownership (TCO)</td><td>$4.2M</td></tr>
+    <tr><td>Net Present Value (NPV)</td><td>$3.1M (discount rate: 12%)</td></tr>
+    <tr><td>Internal Rate of Return (IRR)</td><td>38%</td></tr>
+    <tr><td>Payback Period</td><td>14 months</td></tr>
+  </tbody>
+</table>
+
+<!-- Section 4: Options -->
+<h2>Section 4: Approach Comparison</h2>
+
+<table>
+  <thead>
+    <tr><th>Dimension</th><th>A: Do Nothing</th><th>B: Point Solutions</th><th>C: Phased Modernization</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Upfront Cost</td><td>$0</td><td>$1.2M</td><td class="recommended">$3.8M</td></tr>
+    <tr><td>Annual Cost</td><td>$2.4M (waste)</td><td>$1.6M</td><td class="recommended">$0.8M</td></tr>
+    <tr><td>3-Year TCO</td><td>$7.2M</td><td>$6.0M</td><td class="recommended">$4.2M</td></tr>
+    <tr><td>Payback</td><td>Never</td><td>28 months</td><td class="recommended">14 months</td></tr>
+    <tr><td>Risk Reduction</td><td>0%</td><td>35%</td><td class="recommended">72%</td></tr>
+    <tr><td>Tech Debt</td><td>+15%/yr</td><td>Stabilizes</td><td class="recommended">-60%</td></tr>
+    <tr><td>Scalability</td><td>Limited</td><td>Moderate</td><td class="recommended">High (API-first)</td></tr>
+    <tr><td>Compliance</td><td>Deteriorating</td><td>Partial</td><td class="recommended">Full automation</td></tr>
+  </tbody>
+</table>
+
+<!-- Section 5: Investment -->
+<h2>Section 5: Investment Summary</h2>
+
+<h3>Timeline &amp; Phases</h3>
+<table>
+  <thead><tr><th>Phase</th><th>Duration</th><th>Team</th><th>Key Deliverable</th><th>Gate</th></tr></thead>
+  <tbody>
+    <tr><td>1: Foundation</td><td>Months 1-6</td><td>12 FTE</td><td>Data layer + API gateway + reconciliation automation</td><td>$720K savings validated</td></tr>
+    <tr><td>2: Migration</td><td>Months 7-12</td><td>16 FTE</td><td>Core transaction migration + compliance automation</td><td>99.95% uptime achieved</td></tr>
+    <tr><td>3: Optimization</td><td>Months 13-18</td><td>8 FTE</td><td>Legacy decommission + analytics + new products</td><td>Full run-rate confirmed</td></tr>
+  </tbody>
+</table>
+
+<div class="budget-card">
+  <h3>Budget Breakdown</h3>
+  <div class="budget-total">$3.8M over 18 months</div>
+  <table>
+    <thead><tr><th>Category</th><th>Amount</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>Professional Services</td><td>$2.28M</td><td>60%</td></tr>
+      <tr><td>Cloud Infrastructure</td><td>$760K</td><td>20%</td></tr>
+      <tr><td>Licenses &amp; Tools</td><td>$380K</td><td>10%</td></tr>
+      <tr><td>Contingency (10%)</td><td>$380K</td><td>10%</td></tr>
+    </tbody>
+  </table>
+  <p style="text-align:center; color:var(--brand-muted); margin-top:0.75rem;">Monthly burn rate: $211K/month average</p>
+</div>
+
+<!-- Section 6: CTA -->
+<h2>Section 6: Call to Action</h2>
+
+<div class="cta-box">
+  <p>Approve <strong>Option C: Phased Modernization</strong></p>
+  <p>Budget: <strong>$3.8M</strong> | Timeline: <strong>18 months</strong> | Start: <strong>April 2026</strong></p>
+  <p class="deadline">Decision Deadline: March 28, 2026</p>
+  <p style="margin-top:0.75rem; opacity:0.85;">Every month of delay costs $200K in compounding waste and competitive erosion.</p>
+</div>
+
+<h3>Approval Checklist</h3>
+<table>
+  <thead><tr><th>Stakeholder</th><th>Role</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>CFO — Carlos Mendez</td><td>Budget approval</td><td>Pending</td></tr>
+    <tr><td>CTO — Ana Lucia Vargas</td><td>Technical sign-off</td><td>Aligned</td></tr>
+    <tr><td>Business Sponsor — Roberto Fuentes</td><td>Business case owner</td><td>Aligned</td></tr>
+    <tr><td>Steering Committee</td><td>Governance oversight</td><td>Scheduled April 1</td></tr>
+  </tbody>
+</table>
+
+<h3>Next Steps (Post-Approval)</h3>
+<table>
+  <thead><tr><th>Week</th><th>Action</th></tr></thead>
+  <tbody>
+    <tr><td>Week 1</td><td>Kick-off; team onboarding; environment provisioning</td></tr>
+    <tr><td>Week 2</td><td>Detailed Phase 1 planning; architecture design sessions</td></tr>
+    <tr><td>Week 3</td><td>Sprint 1 begins; data layer foundation</td></tr>
+    <tr><td>Week 4</td><td>First stakeholder demo; progress report to steering</td></tr>
+  </tbody>
+</table>
+
+<!-- Section 7: Risks -->
+<h2>Section 7: Risk Assessment &amp; Mitigation</h2>
+
+<table>
+  <thead><tr><th>#</th><th>Risk</th><th>Prob.</th><th>Impact</th><th>Mitigation</th><th>Owner</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Legacy data migration quality</td><td>Medium</td><td>High</td><td>Parallel-run validation 30 days per module</td><td>CTO</td></tr>
+    <tr><td>2</td><td>Scope creep from business units</td><td>High</td><td>Medium</td><td>Fixed scope per phase; change control board</td><td>Steering</td></tr>
+    <tr><td>3</td><td>Key resource attrition</td><td>Medium</td><td>Medium</td><td>Cross-training; 2 backups per critical role</td><td>PM</td></tr>
+    <tr><td>4</td><td>Vendor dependency (cloud)</td><td>Low</td><td>High</td><td>Multi-cloud architecture; 90-day exit clause</td><td>CTO</td></tr>
+    <tr><td>5</td><td>Regulatory timeline shifts</td><td>Medium</td><td>High</td><td>Compliance automation in Phase 1; regulator liaison</td><td>CFO + Legal</td></tr>
+  </tbody>
+</table>
+
+<footer>
+  <p><strong>Assumptions:</strong> Discount rate 12% | Cost escalation 8%/yr (Acme trend) | Dedicated FTEs | Cloud committed-use pricing</p>
+  <p><strong>Sources:</strong> Acme FY2025 operational report | Gartner Banking Technology Modernization 2025 | Central Bank Circular 047-2025</p>
+  <br>
+  <p>Generated by executive-pitch skill | Sofka Discovery Framework v6.0</p>
+</footer>
+
+</body>
+</html>

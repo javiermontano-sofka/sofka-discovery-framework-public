@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Architecture — Acme Corp Banking Modernization</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    pre { background: #1a202c; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; font-size: 0.875rem; }
+    code { font-family: 'Fira Code', monospace; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body>
+<div class="container">
+
+  <h1>A-01: API Architecture — Acme Corp Banking Modernization</h1>
+  <p><strong>Cliente:</strong> Acme Corp | <strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Variante:</strong> T&eacute;cnica</p>
+
+  <h2>Resumen Ejecutivo</h2>
+  <p>Acme Corp requiere exponer servicios bancarios modernizados a trav&eacute;s de APIs para consumidores internos (front-end web/mobile, backoffice), partners (fintech integrations), y terceros (Open Banking PSD2). Este documento define la estrategia de APIs: selecci&oacute;n de estilos, dise&ntilde;o contract-first, versionamiento, seguridad, developer experience, y governance del portfolio.</p>
+
+  <h3>Decisiones Clave</h3>
+  <table>
+    <tr><th>Decisi&oacute;n</th><th>Selecci&oacute;n</th><th>Rationale</th></tr>
+    <tr><td>Estilo principal</td><td>REST (OpenAPI 3.1)</td><td>Public-facing, cacheable, amplio tooling</td></tr>
+    <tr><td>Estilo interno</td><td>gRPC (Protobuf)</td><td>Alta performance, streaming bidireccional</td></tr>
+    <tr><td>Real-time</td><td>AsyncAPI 3.0 (WebSocket)</td><td>Notificaciones, alertas de fraude</td></tr>
+    <tr><td>Versionamiento</td><td>URI path (/v1/)</td><td>Expl&iacute;cito para partners y Open Banking</td></tr>
+    <tr><td>Gateway</td><td>Kong Gateway (Enterprise)</td><td>Plugin ecosystem, rate limiting, mTLS</td></tr>
+  </table>
+
+  <h2>S1: API Strategy &amp; Style Selection</h2>
+
+  <h3>API Landscape</h3>
+  <div class="mermaid">
+graph TB
+    subgraph External
+        A[Mobile App]
+        B[Web SPA]
+        C[Partner Fintechs]
+        D[Open Banking PSD2]
+    end
+    subgraph Gateway
+        E[Kong Gateway<br/>Auth + Rate Limiting]
+    end
+    subgraph Services
+        F[Account Service<br/>REST]
+        G[Payment Service<br/>REST + gRPC]
+        H[Card Service<br/>REST]
+        I[Notification<br/>WebSocket]
+    end
+    A & B & C & D --> E
+    E --> F & G & H & I
+  </div>
+
+  <h3>Style Selection per Domain</h3>
+  <table>
+    <tr><th>Dominio</th><th>Estilo</th><th>Consumers</th><th>Justificaci&oacute;n</th></tr>
+    <tr><td>Accounts</td><td>REST</td><td>Mobile, Web, Partners, Open Banking</td><td>CRUD, HTTP caching, regulatory compliance</td></tr>
+    <tr><td>Payments</td><td>REST + gRPC</td><td>Mobile, Web (REST); Risk (gRPC)</td><td>REST para initiation, gRPC para fraud &lt;50ms</td></tr>
+    <tr><td>Cards</td><td>REST</td><td>Mobile, Web, Partners</td><td>Standard CRUD, card issuance workflows</td></tr>
+    <tr><td>Notifications</td><td>AsyncAPI (WS)</td><td>Mobile, Web</td><td>Real-time transaction alerts</td></tr>
+    <tr><td>Risk Scoring</td><td>gRPC</td><td>Internal only</td><td>15K req/s, latencia &lt;20ms</td></tr>
+  </table>
+
+  <h3>Richardson Maturity Assessment</h3>
+  <table>
+    <tr><th>API</th><th>Actual</th><th>Target</th><th>Gap</th></tr>
+    <tr><td>Account API</td><td>Level 1</td><td><span class="badge badge-green">Level 3</span></td><td>Add HTTP verbs, HATEOAS links</td></tr>
+    <tr><td>Payment API</td><td><span class="badge badge-red">Level 0</span></td><td>Level 2</td><td>Full redesign from RPC-over-HTTP</td></tr>
+    <tr><td>Card API</td><td>Level 2</td><td>Level 2</td><td>Add HATEOAS for lifecycle</td></tr>
+    <tr><td>Legacy Loan API</td><td><span class="badge badge-red">Level 0 (SOAP)</span></td><td>Level 2</td><td>Complete redesign</td></tr>
+  </table>
+
+  <h2>S2: Contract-First Design</h2>
+
+  <h3>Contract Tooling Pipeline</h3>
+  <table>
+    <tr><th>Fase</th><th>Herramienta</th><th>Acci&oacute;n</th></tr>
+    <tr><td>Authoring</td><td>Stoplight Studio</td><td>Visual spec editor, team collaboration</td></tr>
+    <tr><td>Linting</td><td>Spectral + custom ruleset</td><td>Enforce naming, security schemes, pagination</td></tr>
+    <tr><td>Mock Server</td><td>Prism</td><td>Auto-generated from OpenAPI, parallel dev</td></tr>
+    <tr><td>Code Gen</td><td>openapi-generator</td><td>Server stubs (Spring Boot), SDKs (TS, Kotlin)</td></tr>
+    <tr><td>Contract Testing</td><td>Schemathesis</td><td>Property-based testing vs live API</td></tr>
+    <tr><td>Diff Detection</td><td>oasdiff</td><td>PR comment with breaking changes</td></tr>
+  </table>
+
+  <h2>S3: Versioning &amp; Evolution</h2>
+
+  <h3>Lifecycle Management</h3>
+  <div class="mermaid">
+stateDiagram-v2
+    [*] --> Alpha: Design Review
+    Alpha --> Beta: Contract Tests Pass
+    Beta --> Stable: 30-day Soak
+    Stable --> Deprecated: New Version
+    Deprecated --> Sunset: Migration Expired
+    Sunset --> [*]: Removed
+  </div>
+
+  <h3>Deprecation Policy</h3>
+  <table>
+    <tr><th>Tipo</th><th>Notice</th><th>Sunset Header</th><th>Migration Guide</th></tr>
+    <tr><td>Open Banking</td><td>12 meses</td><td>RFC 8594</td><td>Mandatory</td></tr>
+    <tr><td>Partner</td><td>12 meses</td><td>RFC 8594</td><td>Mandatory</td></tr>
+    <tr><td>Internal REST</td><td>6 meses</td><td>Header + Slack</td><td>Recommended</td></tr>
+    <tr><td>gRPC Internal</td><td>3 meses</td><td>Proto annotation</td><td>README update</td></tr>
+  </table>
+
+  <h2>S4: Security &amp; Access Control</h2>
+
+  <h3>Authentication Architecture</h3>
+  <table>
+    <tr><th>Consumer</th><th>Auth Method</th><th>Token Lifetime</th></tr>
+    <tr><td>Mobile App</td><td>OAuth 2.0 AuthZ Code + PKCE</td><td>Access: 15m, Refresh: 30d</td></tr>
+    <tr><td>Web SPA</td><td>OAuth 2.0 AuthZ Code + PKCE</td><td>Access: 15m, Refresh: 7d</td></tr>
+    <tr><td>Partner Fintech</td><td>OAuth 2.0 Client Credentials + mTLS</td><td>Access: 1h</td></tr>
+    <tr><td>Open Banking</td><td>OAuth 2.0 FAPI 2.0</td><td>Access: 5m</td></tr>
+    <tr><td>Internal gRPC</td><td>mTLS (Istio-managed)</td><td>Cert-based, auto-rotated</td></tr>
+  </table>
+
+  <h3>Rate Limiting Tiers</h3>
+  <table>
+    <tr><th>Tier</th><th>L&iacute;mite</th><th>Algoritmo</th><th>Consumer Type</th></tr>
+    <tr><td>Open Banking</td><td>500 req/min</td><td>Sliding window counter</td><td>Regulated third parties</td></tr>
+    <tr><td>Partner Standard</td><td>1,000 req/min</td><td>Token bucket</td><td>Fintech partners (basic)</td></tr>
+    <tr><td>Partner Premium</td><td>5,000 req/min</td><td>Token bucket</td><td>Fintech partners (enterprise)</td></tr>
+    <tr><td>Internal</td><td>10,000 req/min</td><td>Fixed window</td><td>Internal services</td></tr>
+  </table>
+
+  <h2>S5: Developer Experience</h2>
+
+  <h3>Developer Portal Structure</h3>
+  <table>
+    <tr><th>Secci&oacute;n</th><th>Contenido</th><th>Audiencia</th></tr>
+    <tr><td>Getting Started</td><td>Auth setup, first API call in &lt;5 min</td><td>All developers</td></tr>
+    <tr><td>API Reference</td><td>Interactive OpenAPI docs (Redoc)</td><td>All developers</td></tr>
+    <tr><td>Guides</td><td>Payment flows, webhook integration</td><td>Partners</td></tr>
+    <tr><td>Sandbox</td><td>Isolated test env, sample data, test accounts</td><td>Partners, Internal</td></tr>
+    <tr><td>SDKs</td><td>TypeScript, Kotlin, Python, Java (auto-gen)</td><td>All developers</td></tr>
+    <tr><td>Status Page</td><td>Uptime, latency p99, incident history</td><td>All consumers</td></tr>
+  </table>
+
+  <h2>S6: API Governance &amp; Lifecycle</h2>
+
+  <h3>API Health Score</h3>
+  <table>
+    <tr><th>API</th><th>Design (25)</th><th>Docs (20)</th><th>Adoption (20)</th><th>Reliability (20)</th><th>Security (15)</th><th>Total</th></tr>
+    <tr><td>Account API v1</td><td>20</td><td>18</td><td>20</td><td>19</td><td>15</td><td><span class="badge badge-green">92</span></td></tr>
+    <tr><td>Payment API v1</td><td>22</td><td>16</td><td>18</td><td>17</td><td>15</td><td><span class="badge badge-green">88</span></td></tr>
+    <tr><td>Card API v1</td><td>18</td><td>14</td><td>12</td><td>18</td><td>13</td><td><span class="badge badge-yellow">75</span></td></tr>
+    <tr><td>Legacy Loan API</td><td>5</td><td>4</td><td>8</td><td>15</td><td>8</td><td><span class="badge badge-red">40</span></td></tr>
+  </table>
+
+  <h3>API Catalog Summary</h3>
+  <table>
+    <tr><th>API</th><th>Version</th><th>Status</th><th>Consumers</th><th>Monthly Calls</th><th>Error Rate</th></tr>
+    <tr><td>Account API</td><td>v1.3</td><td><span class="badge badge-green">Stable</span></td><td>14</td><td>45M</td><td>0.12%</td></tr>
+    <tr><td>Payment API</td><td>v1.1</td><td><span class="badge badge-green">Stable</span></td><td>9</td><td>28M</td><td>0.34%</td></tr>
+    <tr><td>Card API</td><td>v1.0</td><td><span class="badge badge-yellow">Beta</span></td><td>4</td><td>3.2M</td><td>0.89%</td></tr>
+    <tr><td>Risk Scoring gRPC</td><td>v2.0</td><td><span class="badge badge-green">Stable</span></td><td>3</td><td>180M</td><td>0.02%</td></tr>
+    <tr><td>Legacy Loan API</td><td>v0.9</td><td><span class="badge badge-red">Deprecated</span></td><td>2</td><td>800K</td><td>2.1%</td></tr>
+  </table>
+
+  <h2>Conclusiones y Recomendaciones</h2>
+  <ol>
+    <li><strong>Redesign urgente del Payment API</strong> de Level 0 a Level 2 RESTful &mdash; mayor volumen de consumidores y mayor potencial de Open Banking.</li>
+    <li><strong>Implementar contract-first workflow</strong> con Spectral linting en CI &mdash; specs inconsistentes generan 15+ horas/mes de debugging.</li>
+    <li><strong>Migrar Legacy Loan API</strong> a REST v1 con facade pattern, manteniendo backward compatibility 12 meses.</li>
+    <li><strong>Desplegar sandbox environment</strong> para partners &mdash; actualmente integraci&oacute;n se hace contra staging.</li>
+    <li><strong>Establecer API Health Score</strong> como gate de calidad: APIs con score &lt;60 en plan de remediaci&oacute;n obligatorio.</li>
+  </ol>
+
+  <footer><p><strong>Autor:</strong> Javier Monta&ntilde;o — Sofka Discovery Framework v6.0</p></footer>
+</div>
+</body>
+</html>

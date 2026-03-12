@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-01 Security Architecture — Acme Corp Banking Modernization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+    <style>
+        :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --surface: #ffffff; --muted: #718096; --success: #38a169; --warning: #d69e2e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+        h2 { color: var(--primary); font-size: 1.4rem; margin: 2.5rem 0 1rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; }
+        h3 { color: var(--text); font-size: 1.1rem; margin: 1.5rem 0 0.75rem; font-weight: 600; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+        .summary { background: var(--surface); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+        th { background: var(--primary); color: #fff; text-align: left; padding: 0.6rem 0.75rem; }
+        td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: rgba(26,54,93,0.04); }
+        .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
+        .badge-high { background: #fed7d7; color: #9b2c2c; }
+        .badge-medium { background: #fefcbf; color: #744210; }
+        .badge-low { background: #c6f6d5; color: #22543d; }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 0.4rem 0; padding-left: 1.75rem; position: relative; }
+        .checklist li::before { content: "\2713"; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+        .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+        code { background: #edf2f7; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+        .mermaid { background: var(--surface); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border); }
+        .callout { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+        .callout-warn { background: #fffff0; border-left-color: var(--warning); }
+    </style>
+</head>
+<body>
+
+<h1>A-01 Security Architecture</h1>
+<p class="meta">Acme Corp Banking Modernization | 12 de marzo de 2026 | Modo: piloto-auto | Variante: t&eacute;cnica</p>
+
+<div class="summary">
+    <strong>Executive Summary:</strong> Acme Corp's core banking platform processes 12M daily transactions across loan origination, payments, and account management. This security architecture establishes STRIDE threat modeling for all critical flows, a 36-month Zero Trust adoption roadmap (Crawl/Walk/Run), RBAC+ABAC hybrid authorization with 7 role definitions, AES-256 encryption at rest and TLS 1.3 in transit, a 6-stage security pipeline integrated into CI/CD, and compliance mapping for PCI-DSS 4.0, SOC 2 Type II, and OCC regulatory requirements.
+</div>
+
+<h2>S1: Threat Modeling (STRIDE)</h2>
+
+<h3>STRIDE Threat Enumeration &mdash; Loan Origination Flow</h3>
+<table>
+    <thead><tr><th>Element</th><th>Threat</th><th>Category</th><th>Risk</th><th>Mitigation</th></tr></thead>
+    <tbody>
+        <tr><td>API Gateway</td><td>Spoofed identity bypasses auth</td><td>Spoofing</td><td><span class="badge badge-high">High</span></td><td>OAuth 2.0 + PKCE, JWT validation</td></tr>
+        <tr><td>Loan Service</td><td>Tampered loan amount in request</td><td>Tampering</td><td><span class="badge badge-high">High</span></td><td>Request signing, TLS 1.3, input validation</td></tr>
+        <tr><td>Audit Log</td><td>Deleted audit trail hides fraud</td><td>Repudiation</td><td><span class="badge badge-high">High</span></td><td>Immutable append-only log, WORM storage</td></tr>
+        <tr><td>PostgreSQL</td><td>Unauthorized read of loan records</td><td>Info Disclosure</td><td><span class="badge badge-high">High</span></td><td>AES-256 TDE, column-level access control</td></tr>
+        <tr><td>Payment Service</td><td>DDoS on payment endpoint</td><td>DoS</td><td><span class="badge badge-high">High</span></td><td>WAF, rate limiting, auto-scaling</td></tr>
+        <tr><td>Admin Console</td><td>Privilege escalation to admin</td><td>Elevation</td><td><span class="badge badge-medium">Medium</span></td><td>RBAC + MFA + WebAuthn for admin</td></tr>
+        <tr><td>Kafka Broker</td><td>Message replay causes duplicate payments</td><td>Repudiation</td><td><span class="badge badge-high">High</span></td><td>Idempotency keys, deduplication window</td></tr>
+        <tr><td>Credit Bureau API</td><td>Man-in-the-middle on external call</td><td>Info Disclosure</td><td><span class="badge badge-medium">Medium</span></td><td>Certificate pinning, TLS 1.3</td></tr>
+        <tr><td>S3 Documents</td><td>Unauthorized access to loan documents</td><td>Info Disclosure</td><td><span class="badge badge-medium">Medium</span></td><td>Bucket policies, encryption, pre-signed URLs</td></tr>
+        <tr><td>KYC Service</td><td>Bypassed identity verification</td><td>Spoofing</td><td><span class="badge badge-high">High</span></td><td>Multi-factor verification, document validation</td></tr>
+    </tbody>
+</table>
+
+<h3>Trust Boundary Diagram</h3>
+<div class="mermaid">
+graph TB
+    subgraph Internet - Untrusted
+        Client[Web/Mobile Client]
+        Partner[Partner API]
+    end
+    subgraph DMZ
+        WAF[AWS WAF]
+        GW[API Gateway<br/>Kong]
+    end
+    subgraph Internal - Service Mesh
+        Loan[Loan Service]
+        Pay[Payment Service]
+        Fraud[Fraud Detection]
+        Acct[Account Service]
+    end
+    subgraph Data - Highest Trust
+        DB[(PostgreSQL<br/>AES-256 TDE)]
+        Kafka[Kafka<br/>Encrypted]
+        S3[S3<br/>SSE-KMS]
+    end
+    Client --> WAF
+    Partner --> WAF
+    WAF --> GW
+    GW --> Loan
+    GW --> Pay
+    GW --> Acct
+    Loan --> Fraud
+    Loan --> DB
+    Pay --> Kafka
+    Kafka --> Fraud
+    Loan --> S3
+    style WAF fill:#e53e3e,color:#fff
+    style GW fill:#e53e3e,color:#fff
+</div>
+
+<h2>S2: Zero Trust Architecture</h2>
+
+<h3>Maturity Roadmap</h3>
+<table>
+    <thead><tr><th>Phase</th><th>Scope</th><th>Controls</th><th>Timeline</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Crawl</strong></td><td>Perimeter + Identity</td><td>MFA everywhere, network segmentation, Auth0 OIDC</td><td>Month 0&ndash;6</td></tr>
+        <tr><td><strong>Walk</strong></td><td>Micro-segmentation</td><td>Istio mTLS, per-service auth policies, device trust</td><td>Month 6&ndash;18</td></tr>
+        <tr><td><strong>Run</strong></td><td>Continuous Adaptive</td><td>Real-time risk scoring, behavioral analytics, JIT access</td><td>Month 18&ndash;36</td></tr>
+    </tbody>
+</table>
+
+<h3>Zero Trust Implementation Gantt</h3>
+<div class="mermaid">
+gantt
+    title Zero Trust Adoption — 36 Months
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %Y
+
+    section Crawl
+    MFA rollout (all users)        :a1, 2026-04-01, 60d
+    Network segmentation           :a2, 2026-04-01, 90d
+    Auth0 OIDC integration         :a3, 2026-05-01, 60d
+
+    section Walk
+    Istio service mesh deployment  :b1, 2026-10-01, 90d
+    mTLS all internal traffic      :b2, 2027-01-01, 60d
+    Device trust policies          :b3, 2027-03-01, 90d
+
+    section Run
+    Behavioral analytics engine    :c1, 2027-10-01, 120d
+    JIT access provisioning        :c2, 2028-02-01, 90d
+    Continuous risk scoring        :c3, 2028-05-01, 120d
+</div>
+
+<div class="callout"><strong>Service-to-Service:</strong> All internal calls via Istio sidecar proxy with mTLS. Latency overhead ~2ms per hop — justified for financial system requiring full encryption.</div>
+
+<h2>S3: Identity &amp; Access Management</h2>
+
+<h3>Authentication Flows</h3>
+<table>
+    <thead><tr><th>Flow</th><th>Use Case</th><th>Implementation</th></tr></thead>
+    <tbody>
+        <tr><td>OAuth 2.0 Auth Code + PKCE</td><td>Customer loan portal</td><td>Auth0, OIDC, short-lived tokens (15min)</td></tr>
+        <tr><td>Client Credentials + mTLS</td><td>Service-to-service</td><td>SPIFFE IDs, auto-rotated certificates</td></tr>
+        <tr><td>WebAuthn/FIDO2</td><td>Admin passwordless access</td><td>YubiKey, biometric fallback</td></tr>
+    </tbody>
+</table>
+
+<h3>Authorization: RBAC + ABAC Hybrid</h3>
+<table>
+    <thead><tr><th>Role</th><th>Permissions</th><th>MFA Required</th><th>ABAC Conditions</th></tr></thead>
+    <tbody>
+        <tr><td><code>loan:read</code></td><td>View own loan status</td><td>Yes</td><td>Own data only</td></tr>
+        <tr><td><code>loan:write</code></td><td>Submit loan applications</td><td>Yes</td><td>Business hours + geo-fence</td></tr>
+        <tr><td><code>payment:admin</code></td><td>Refunds, manual adjustments</td><td>Yes + WebAuthn</td><td>Dual approval for &gt;$10K</td></tr>
+        <tr><td><code>compliance:audit</code></td><td>Full read-only for audit</td><td>Yes + WebAuthn</td><td>90-day access window</td></tr>
+        <tr><td><code>platform:admin</code></td><td>System configuration</td><td>Yes + WebAuthn + approval</td><td>JIT provisioning, 4-hour max</td></tr>
+    </tbody>
+</table>
+
+<h2>S4: Data Protection</h2>
+
+<h3>Data Classification &amp; Encryption</h3>
+<table>
+    <thead><tr><th>Classification</th><th>Examples</th><th>At Rest</th><th>In Transit</th><th>Retention</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Restricted</strong></td><td>SSN, account numbers, credit scores</td><td>AES-256-GCM field-level</td><td>TLS 1.3</td><td>7 years (OCC)</td></tr>
+        <tr><td><strong>Confidential</strong></td><td>Loan applications, income data</td><td>AES-256 TDE</td><td>TLS 1.3</td><td>7 years</td></tr>
+        <tr><td><strong>Internal</strong></td><td>Audit logs, system metrics</td><td>AES-256 TDE</td><td>TLS 1.3</td><td>90 days (logs), 2 years (audit)</td></tr>
+        <tr><td><strong>Public</strong></td><td>Product rates, branch info</td><td>Standard</td><td>TLS 1.3</td><td>Current</td></tr>
+    </tbody>
+</table>
+
+<h3>Key Management</h3>
+<div class="callout"><strong>AWS KMS (FIPS 140-2 Level 3):</strong> Master key (annual rotation) &rarr; Data encryption keys (monthly rotation). Customer-managed keys available for enterprise data sovereignty requirements.</div>
+
+<h2>S5: Application Security</h2>
+
+<h3>Security Pipeline</h3>
+<table>
+    <thead><tr><th>Stage</th><th>Tool</th><th>Gate Policy</th><th>Frequency</th></tr></thead>
+    <tbody>
+        <tr><td>SAST</td><td>Semgrep + CodeQL</td><td>Block PR on critical finding</td><td>Every PR</td></tr>
+        <tr><td>SCA</td><td>Snyk</td><td>Block deploy on critical CVE</td><td>Every PR</td></tr>
+        <tr><td>Secret Scanning</td><td>GitLeaks</td><td>Block commit on detection</td><td>Pre-commit hook</td></tr>
+        <tr><td>DAST</td><td>OWASP ZAP</td><td>Block release on high finding</td><td>Weekly + pre-release</td></tr>
+        <tr><td>Container Scan</td><td>Trivy</td><td>Block deploy on critical</td><td>Every image build</td></tr>
+        <tr><td>SBOM</td><td>Syft (CycloneDX)</td><td>Required for every release</td><td>Every release</td></tr>
+    </tbody>
+</table>
+
+<h3>Vulnerability SLAs</h3>
+<table>
+    <thead><tr><th>Severity</th><th>SLA</th><th>Escalation</th></tr></thead>
+    <tbody>
+        <tr><td><span class="badge badge-high">Critical</span></td><td>&lt;24 hours</td><td>Page on-call, block all deploys</td></tr>
+        <tr><td><span class="badge badge-high">High</span></td><td>&lt;7 days</td><td>Ticket, daily standup tracking</td></tr>
+        <tr><td><span class="badge badge-medium">Medium</span></td><td>&lt;30 days</td><td>Sprint backlog</td></tr>
+        <tr><td><span class="badge badge-low">Low</span></td><td>&lt;90 days</td><td>Quarterly cleanup sprint</td></tr>
+    </tbody>
+</table>
+
+<h2>S6: Compliance &amp; Regulatory</h2>
+
+<h3>Control Mapping</h3>
+<table>
+    <thead><tr><th>Control Area</th><th>PCI-DSS 4.0</th><th>SOC 2</th><th>OCC</th><th>Implementation</th><th>Evidence</th></tr></thead>
+    <tbody>
+        <tr><td>Access Control</td><td>Req 7&ndash;8</td><td>CC6.1</td><td>12 CFR 30</td><td>RBAC + MFA + Vault</td><td>Auth0 access logs</td></tr>
+        <tr><td>Encryption</td><td>Req 3&ndash;4</td><td>CC6.7</td><td>App. E</td><td>TDE + TLS 1.3 + field-level</td><td>KMS rotation logs</td></tr>
+        <tr><td>Logging &amp; Monitoring</td><td>Req 10</td><td>CC7.2</td><td>12 CFR 30</td><td>Structured logs, 2-year retention</td><td>CloudWatch + Loki</td></tr>
+        <tr><td>Incident Response</td><td>Req 12.10</td><td>CC7.3</td><td>OCC 2023-11</td><td>PagerDuty + runbooks</td><td>Incident records</td></tr>
+        <tr><td>Change Management</td><td>Req 6</td><td>CC8.1</td><td>App. E</td><td>PR review + CI gates</td><td>GitHub audit log</td></tr>
+    </tbody>
+</table>
+
+<div class="callout"><strong>Continuous Compliance:</strong> OPA policies for infrastructure drift detection. Vanta for SOC 2 evidence collection (70% automated; 30% requires manual quarterly preparation).</div>
+
+<h2>Validation</h2>
+<ul class="checklist">
+    <li>STRIDE analysis covers all 6 threat categories with 10 specific threats</li>
+    <li>Trust boundary diagram identifies 4 zones (Internet, DMZ, Service Mesh, Data)</li>
+    <li>Zero Trust roadmap spans 36 months in 3 phases with specific controls</li>
+    <li>RBAC + ABAC hybrid authorization with 5 roles and contextual conditions</li>
+    <li>Data classified into 4 tiers with encryption and retention policies</li>
+    <li>6-stage security pipeline integrated into CI/CD with gate policies</li>
+    <li>Vulnerability SLAs defined: Critical &lt;24h, High &lt;7d, Medium &lt;30d, Low &lt;90d</li>
+    <li>PCI-DSS 4.0, SOC 2 Type II, and OCC controls mapped to implementations</li>
+</ul>
+
+<div class="footer">
+    <strong>Autor:</strong> Javier Montano | <strong>Generado por:</strong> sofka-security-architecture | <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+</body>
+</html>

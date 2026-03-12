@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Architecture — Acme Corp</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body><div class="container">
+
+  <h1>Database Architecture — Acme Corp Banking Modernization</h1>
+  <p><strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Motor:</strong> PostgreSQL 16 (RDS) + Redis + TimescaleDB</p>
+
+  <h2>S1: Schema Design &amp; Modeling</h2>
+
+  <h3>Entity-Relationship Diagram</h3>
+  <div class="mermaid">
+    erDiagram
+      CUSTOMER ||--o{ ACCOUNT : owns
+      CUSTOMER ||--o{ KYC_DOCUMENT : provides
+      ACCOUNT ||--o{ TRANSACTION : generates
+      ACCOUNT ||--o{ LOAN : secures
+      LOAN ||--o{ AMORTIZATION : schedules
+      TRANSACTION ||--o{ AUDIT_LOG : triggers
+  </div>
+
+  <h3>Normalization Analysis</h3>
+  <table>
+    <tr><th>Table</th><th>Normal Form</th><th>Denormalization</th><th>Justification</th></tr>
+    <tr><td>customers</td><td>3NF</td><td>None</td><td>Master data; integrity paramount</td></tr>
+    <tr><td>accounts</td><td>3NF</td><td>balance (derived)</td><td>Cached; reconciled nightly vs SUM(transactions)</td></tr>
+    <tr><td>transactions</td><td>3NF</td><td>account_balance_after</td><td>Avoids running-sum for statements</td></tr>
+    <tr><td>loans</td><td>3NF</td><td>None</td><td>Regulatory requirement</td></tr>
+    <tr><td>amortization_schedule</td><td>3NF</td><td>remaining_balance</td><td>Pre-computed; recalculated on prepayment</td></tr>
+  </table>
+
+  <h2>S2: Indexing Strategy</h2>
+
+  <table>
+    <tr><th>Table</th><th>Index</th><th>Type</th><th>Columns</th><th>Rationale</th></tr>
+    <tr><td>transactions</td><td>idx_transactions_account_created</td><td>B-tree (composite)</td><td>(account_id, created_at DESC)</td><td>Account statements (85% of reads)</td></tr>
+    <tr><td>transactions</td><td>idx_transactions_reference</td><td>B-tree (unique)</td><td>(reference_id)</td><td>Idempotency check</td></tr>
+    <tr><td>transactions</td><td>idx_transactions_created_brin</td><td>BRIN</td><td>(created_at)</td><td>Time-range queries on 47M+ rows</td></tr>
+    <tr><td>transactions</td><td>idx_transactions_status_partial</td><td>Partial B-tree</td><td>WHERE status = 'pending'</td><td>Pending queue processing</td></tr>
+    <tr><td>customers</td><td>idx_customers_document</td><td>Unique B-tree</td><td>(document_type, document_number)</td><td>KYC lookup</td></tr>
+    <tr><td>customers</td><td>idx_customers_email_gin</td><td>GIN (trigram)</td><td>(email)</td><td>Fuzzy search in CS portal</td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>Unused index detected:</strong> <code>idx_transactions_channel</code> (1.8 GB, 0 scans in 30 days). Recommended for removal to reduce write overhead.
+  </div>
+
+  <h2>S3: Partitioning &amp; Sharding</h2>
+
+  <h3>Partition Layout</h3>
+  <div class="mermaid">
+    flowchart TD
+      A[transactions] --> B[transactions_2026_01]
+      A --> C[transactions_2026_02]
+      A --> D[transactions_2026_03]
+      A --> E[... monthly partitions]
+      A --> F[transactions_default]
+      B --> G[12.1 GB, 47.8M rows]
+      C --> H[11.8 GB, 46.9M rows]
+      D --> I[12.4 GB, 48.2M rows]
+  </div>
+
+  <table>
+    <tr><th>Table</th><th>Strategy</th><th>Key</th><th>Size/Partition</th><th>Retention</th></tr>
+    <tr><td>transactions</td><td>Range (monthly)</td><td>created_at</td><td>~12 GB</td><td>10 years (archive to Glacier)</td></tr>
+    <tr><td>audit_logs</td><td>Range (weekly)</td><td>logged_at</td><td>~2 GB</td><td>7 years (TimescaleDB)</td></tr>
+    <tr><td>sessions</td><td>Hash (16 partitions)</td><td>session_id</td><td>~500 MB</td><td>90 days (auto-drop)</td></tr>
+  </table>
+
+  <h2>S4: Replication &amp; High Availability</h2>
+
+  <h3>Topology</h3>
+  <table>
+    <tr><th>Component</th><th>Configuration</th><th>RPO</th><th>RTO</th></tr>
+    <tr><td>Primary</td><td>RDS r6g.4xlarge, Multi-AZ</td><td>0 (sync)</td><td>&lt; 60s</td></tr>
+    <tr><td>Read Replica 1</td><td>Same AZ, async, r6g.2xlarge</td><td>&lt; 1s</td><td>N/A</td></tr>
+    <tr><td>DR Replica</td><td>Cross-region, async</td><td>&lt; 30s</td><td>&lt; 15 min</td></tr>
+    <tr><td>Analytics Replica</td><td>Dedicated for BI, async</td><td>&lt; 5 min</td><td>N/A</td></tr>
+  </table>
+
+  <h3>Read Routing</h3>
+  <div class="mermaid">
+    flowchart LR
+      A[Application] --> B{Query Type}
+      B -->|Write| C[Primary via PgBouncer]
+      B -->|Read after write| C
+      B -->|Transactional read| D[Read Replica 1]
+      B -->|Analytics read| E[Analytics Replica]
+  </div>
+
+  <h2>S5: Migration &amp; Evolution</h2>
+
+  <table>
+    <tr><th>Migration</th><th>Pattern</th><th>Downtime</th><th>Rollback Window</th></tr>
+    <tr><td>Add channel to transactions</td><td>Add nullable column</td><td><span class="badge badge-green">Zero</span></td><td>72h</td></tr>
+    <tr><td>Rename cust_name to first_name</td><td>Expand-contract (3-phase)</td><td><span class="badge badge-green">Zero</span></td><td>7 days</td></tr>
+    <tr><td>Add risk_score NOT NULL</td><td>Shadow column + backfill</td><td><span class="badge badge-green">Zero</span></td><td>48h</td></tr>
+    <tr><td>Partition audit_logs (800M rows)</td><td>pg_partman + background</td><td><span class="badge badge-green">Zero</span></td><td>N/A (irreversible)</td></tr>
+  </table>
+
+  <h2>S6: Performance Tuning</h2>
+
+  <h3>Memory Configuration</h3>
+  <table>
+    <tr><th>Parameter</th><th>Value</th><th>Rationale</th></tr>
+    <tr><td>shared_buffers</td><td>32 GB (25% of 128 GB)</td><td>Standard for dedicated DB</td></tr>
+    <tr><td>effective_cache_size</td><td>96 GB (75%)</td><td>Planner hint; includes OS cache</td></tr>
+    <tr><td>work_mem</td><td>32 MB</td><td>200 conn * 32 MB = 6.4 GB worst case</td></tr>
+    <tr><td>maintenance_work_mem</td><td>2 GB</td><td>Fast VACUUM and index rebuilds</td></tr>
+    <tr><td>wal_buffers</td><td>64 MB</td><td>High-write workload</td></tr>
+  </table>
+
+  <h3>Monitoring Thresholds</h3>
+  <table>
+    <tr><th>Metric</th><th>Warning</th><th>Critical</th><th>Current</th></tr>
+    <tr><td>Buffer cache hit ratio</td><td>&lt; 97%</td><td>&lt; 95%</td><td><span class="badge badge-green">98.4%</span></td></tr>
+    <tr><td>Slow queries (&gt; 100ms)</td><td>&gt; 50/hour</td><td>&gt; 200/hour</td><td><span class="badge badge-green">12/hour</span></td></tr>
+    <tr><td>Connection pool util</td><td>&gt; 70%</td><td>&gt; 85%</td><td><span class="badge badge-green">52%</span></td></tr>
+    <tr><td>Replication lag</td><td>&gt; 500ms</td><td>&gt; 2s</td><td><span class="badge badge-green">120ms</span></td></tr>
+    <tr><td>Table bloat (transactions)</td><td>&gt; 15%</td><td>&gt; 25%</td><td><span class="badge badge-green">8.2%</span></td></tr>
+  </table>
+
+  <h2>Infrastructure Cost</h2>
+  <table>
+    <tr><th>Component</th><th>Instance</th><th>Monthly Cost</th></tr>
+    <tr><td>Primary (Multi-AZ)</td><td>db.r6g.4xlarge</td><td>$4,200</td></tr>
+    <tr><td>Read Replica 1</td><td>db.r6g.2xlarge</td><td>$1,400</td></tr>
+    <tr><td>DR Replica (cross-region)</td><td>db.r6g.2xlarge</td><td>$1,600</td></tr>
+    <tr><td>Analytics Replica</td><td>db.r6g.4xlarge</td><td>$2,100</td></tr>
+    <tr><td>ElastiCache (Redis)</td><td>cache.r6g.xlarge (3 nodes)</td><td>$1,800</td></tr>
+    <tr><td>Storage (GP3, 2 TB)</td><td>--</td><td>$320</td></tr>
+    <tr><td><strong>Total</strong></td><td></td><td><strong>$11,420/month</strong></td></tr>
+  </table>
+
+  <footer><p><strong>Autor:</strong> Javier Montano — Sofka Discovery Framework v6.0</p></footer>
+</div></body></html>

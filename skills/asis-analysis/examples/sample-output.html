@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>03 Analisis AS-IS — Acme Corp</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<style>
+:root{--primary:#1a365d;--accent:#e53e3e;--bg:#f7fafc;--text:#2d3748}
+body{font-family:'Inter',sans-serif;max-width:1100px;margin:0 auto;padding:2rem;background:var(--bg);color:var(--text);line-height:1.6}
+h1{color:var(--primary);border-bottom:3px solid var(--accent);padding-bottom:.5rem}
+h2{color:var(--primary);margin-top:2rem}
+h3{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:1rem 0}
+th{background:var(--primary);color:#fff;padding:.75rem;text-align:left}
+td{padding:.75rem;border:1px solid #e2e8f0}
+tr:nth-child(even){background:#edf2f7}
+.callout{background:#ebf8ff;border-left:4px solid var(--primary);padding:1rem;margin:1rem 0;border-radius:0 4px 4px 0}
+.critical{color:var(--accent);font-weight:700}
+.warning{color:#d69e2e;font-weight:700}
+.ok{color:#38a169;font-weight:700}
+</style>
+</head>
+<body>
+
+<h1>03 Analisis AS-IS — Acme Corp Banking Modernization</h1>
+
+<p><strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Analista:</strong> Discovery Agent (asis-analysis v6.0) | <strong>Variante:</strong> Tecnica (full)</p>
+
+<!-- S0 -->
+<h2>S0: Executive Dashboard</h2>
+
+<table>
+<tr><th>Metrica</th><th>Valor</th></tr>
+<tr><td>LOC totales</td><td><strong>340,000</strong></td></tr>
+<tr><td>Modulos</td><td><strong>12</strong></td></tr>
+<tr><td>Integraciones externas</td><td><strong>8</strong></td></tr>
+<tr><td>Equipo</td><td><strong>24 desarrolladores (4 squads)</strong></td></tr>
+<tr><td>Anios en produccion</td><td><strong>7</strong></td></tr>
+<tr><td>Health Score</td><td><span class="critical">5.2 / 10</span></td></tr>
+</table>
+
+<div class="callout">
+<strong>Veredicto:</strong> El sistema requiere intervencion estrategica. No es candidato a rewrite completo, pero necesita refactorizacion arquitectonica progresiva con enfoque en deuda de testing y seguridad.
+</div>
+
+<!-- S1 -->
+<h2>S1: Technology Inventory</h2>
+
+<h3>Stack por Capa</h3>
+<table>
+<tr><th>Capa</th><th>Tecnologia</th><th>Version</th><th>EOL Status</th><th>Currency Score</th></tr>
+<tr><td>Backend</td><td>Java</td><td>11</td><td><span class="warning">LTS (sep 2026)</span></td><td>6/10</td></tr>
+<tr><td>Framework</td><td>Spring Boot</td><td>2.6.x</td><td><span class="critical">EOL (nov 2023)</span></td><td>3/10</td></tr>
+<tr><td>Frontend</td><td>Angular</td><td>14</td><td><span class="critical">EOL (nov 2024)</span></td><td>2/10</td></tr>
+<tr><td>Base de datos</td><td>PostgreSQL</td><td>13</td><td><span class="warning">Active (nov 2025)</span></td><td>5/10</td></tr>
+<tr><td>Cache</td><td>Redis</td><td>7.0</td><td><span class="ok">Active</span></td><td>8/10</td></tr>
+<tr><td>Mensajeria</td><td>RabbitMQ</td><td>3.11</td><td><span class="ok">Active</span></td><td>7/10</td></tr>
+<tr><td>Contenedores</td><td>Docker</td><td>24.0</td><td><span class="ok">Active</span></td><td>9/10</td></tr>
+<tr><td>Cloud</td><td>AWS (ECS)</td><td>N/A</td><td><span class="ok">Active</span></td><td>8/10</td></tr>
+</table>
+
+<h3>Dependencias Criticas</h3>
+<ul>
+<li><strong>Spring Boot 2.6</strong> — 2 versiones mayor detras de current (3.2). Bloquea adopcion de Java 21, virtual threads, y GraalVM native image.</li>
+<li><strong>Angular 14</strong> — 3 versiones detras. Sin soporte de seguridad. Migrar a Angular 17+ requiere refactor de modulos standalone.</li>
+<li><strong>Jackson 2.13</strong> — Vulnerable a CVE-2022-42003 (deserialization). Actualizar a 2.16+.</li>
+</ul>
+
+<!-- S2 -->
+<h2>S2: Code Organization</h2>
+
+<h3>Anti-Patrones Detectados</h3>
+<table>
+<tr><th>Anti-Patron</th><th>Instancias</th><th>Severidad</th><th>Ubicacion</th></tr>
+<tr><td>God Classes</td><td>3</td><td><span class="critical">CRITICO</span></td><td>TransactionProcessor.java (2,847 LOC), CustomerService.java (1,923 LOC), PaymentOrchestrator.java (1,456 LOC)</td></tr>
+<tr><td>Circular Dependencies</td><td>6</td><td><span class="critical">ALTO</span></td><td>core-banking &lt;-&gt; payment-gateway, auth-service &lt;-&gt; shared-libs, reporting &lt;-&gt; core-banking</td></tr>
+<tr><td>Feature Envy</td><td>12</td><td><span class="warning">MEDIO</span></td><td>Multiples servicios accediendo directamente a tablas de otros modulos</td></tr>
+<tr><td>Shotgun Surgery</td><td>8</td><td><span class="warning">MEDIO</span></td><td>Cambios en modelo de cliente requieren modificaciones en 8+ archivos</td></tr>
+</table>
+
+<!-- S3 -->
+<h2>S3: Architecture — C4 Model</h2>
+
+<h3>C4 Context Diagram</h3>
+<div class="mermaid">
+C4Context
+    title Acme Corp Banking System — Context
+
+    Person(customer, "Cliente Bancario", "Usuario final de banca en linea")
+    Person(admin, "Administrador", "Backoffice y operaciones")
+
+    System(acme, "Acme Banking Platform", "Sistema bancario principal")
+
+    System_Ext(swift, "SWIFT Network", "Transferencias internacionales")
+    System_Ext(visa, "Visa/Mastercard", "Procesamiento de tarjetas")
+    System_Ext(regulator, "Superintendencia Financiera", "Reportes regulatorios")
+    System_Ext(email, "SendGrid", "Notificaciones email")
+    System_Ext(sms, "Twilio", "Notificaciones SMS")
+    System_Ext(credit, "TransUnion", "Bureau de credito")
+    System_Ext(identity, "Gov ID Service", "Verificacion de identidad")
+    System_Ext(monitoring, "Datadog", "Monitoreo basico")
+
+    Rel(customer, acme, "Opera cuentas, pagos, transferencias")
+    Rel(admin, acme, "Gestiona clientes, aprueba operaciones")
+    Rel(acme, swift, "Envia transferencias SWIFT")
+    Rel(acme, visa, "Procesa transacciones de tarjeta")
+    Rel(acme, regulator, "Envia reportes mensuales")
+    Rel(acme, email, "Envia notificaciones")
+    Rel(acme, sms, "Envia OTP y alertas")
+    Rel(acme, credit, "Consulta score crediticio")
+    Rel(acme, identity, "Verifica identidad")
+</div>
+
+<h3>C4 Container Diagram</h3>
+<div class="mermaid">
+C4Container
+    title Acme Banking Platform — Containers
+
+    Container(portal, "Customer Portal", "Angular 14", "SPA para clientes")
+    Container(admin_ui, "Admin Console", "Angular 14", "Backoffice")
+    Container(gateway, "API Gateway", "Spring Cloud Gateway", "Routing, rate limiting")
+    Container(core, "Core Banking", "Spring Boot 2.6", "Logica de negocio principal")
+    Container(payments, "Payment Gateway", "Spring Boot 2.6", "Procesamiento de pagos")
+    Container(auth, "Auth Service", "Spring Boot 2.6 + Spring Security", "JWT, OAuth2")
+    Container(notif, "Notification Service", "Spring Boot 2.6", "Email, SMS, Push")
+    Container(reports, "Reporting Engine", "Spring Boot + JasperReports", "Reportes regulatorios")
+    ContainerDb(db, "PostgreSQL 13", "PostgreSQL", "Datos transaccionales")
+    ContainerDb(cache, "Redis 7.0", "Redis", "Sesiones, cache")
+    Container(queue, "RabbitMQ 3.11", "RabbitMQ", "Mensajeria asincrona")
+
+    Rel(portal, gateway, "HTTPS/REST")
+    Rel(admin_ui, gateway, "HTTPS/REST")
+    Rel(gateway, core, "HTTP")
+    Rel(gateway, payments, "HTTP")
+    Rel(gateway, auth, "HTTP")
+    Rel(core, db, "JDBC")
+    Rel(payments, db, "JDBC")
+    Rel(core, cache, "Redis Protocol")
+    Rel(core, queue, "AMQP")
+    Rel(queue, notif, "AMQP")
+    Rel(reports, db, "JDBC read-only")
+</div>
+
+<!-- S4 -->
+<h2>S4: Code Quality Metrics</h2>
+
+<table>
+<tr><th>Metrica</th><th>Valor</th><th>Umbral Aceptable</th><th>Estado</th></tr>
+<tr><td>Test Coverage</td><td>34%</td><td>&gt;70%</td><td><span class="critical">CRITICO</span></td></tr>
+<tr><td>Complejidad Ciclomatica (avg)</td><td>18</td><td>&lt;10</td><td><span class="critical">CRITICO</span></td></tr>
+<tr><td>Complejidad Ciclomatica (p95)</td><td>47</td><td>&lt;20</td><td><span class="critical">CRITICO</span></td></tr>
+<tr><td>Duplicacion</td><td>12%</td><td>&lt;5%</td><td><span class="critical">ALTO</span></td></tr>
+<tr><td>Code Smells</td><td>847</td><td>&lt;100</td><td><span class="critical">CRITICO</span></td></tr>
+<tr><td>Profundidad de Dependencia (max)</td><td>7</td><td>&lt;5</td><td><span class="critical">ALTO</span></td></tr>
+<tr><td>Metodos &gt;50 LOC</td><td>134</td><td>&lt;20</td><td><span class="critical">ALTO</span></td></tr>
+</table>
+
+<div class="callout">
+<strong>Tendencia negativa sostenida.</strong> La calidad del codigo se degrada a un ritmo de ~3% por trimestre. Sin intervencion, el sistema alcanzara un punto de no retorno en 12-18 meses.
+</div>
+
+<!-- S5 -->
+<h2>S5: Technical Debt Inventory</h2>
+
+<p><strong>Items totales:</strong> 12 | <strong>Criticos:</strong> 3 | <strong>Altos:</strong> 5 | <strong>Medios:</strong> 4 | <strong>Costo estimado:</strong> 847 dias-ingeniero</p>
+
+<h3>Items Criticos</h3>
+<table>
+<tr><th>ID</th><th>Categoria</th><th>Descripcion</th><th>Impacto Negocio</th><th>Esfuerzo</th></tr>
+<tr><td>TD-01</td><td>Test</td><td>Cobertura de pruebas al 34%</td><td>2-3 incidentes/mes en produccion</td><td>120 dias</td></tr>
+<tr><td>TD-02</td><td>Design</td><td>3 God Classes (&gt;1,500 LOC cada una)</td><td>Features retrasados 2-3x</td><td>60 dias</td></tr>
+<tr><td>TD-03</td><td>Dependency</td><td>Spring Boot 2.6 (EOL) + Angular 14 (EOL)</td><td>Exposicion a vulnerabilidades</td><td>90 dias</td></tr>
+</table>
+
+<!-- S6 -->
+<h2>S6: NFR Heatmap</h2>
+
+<table>
+<tr><th>Atributo</th><th>Score</th><th>Evidencia</th><th>Gap</th><th>Prioridad</th></tr>
+<tr><td>Performance</td><td>5/10</td><td>P95 latency 2.3s (objetivo &lt;500ms)</td><td>-5</td><td><span class="critical">ALTA</span></td></tr>
+<tr><td>Security</td><td>4/10</td><td>3 CVEs activos, API key hardcoded</td><td>-5</td><td><span class="critical">CRITICA</span></td></tr>
+<tr><td>Maintainability</td><td>3/10</td><td>CC=18, coverage=34%, 3 god classes</td><td>-6</td><td><span class="critical">CRITICA</span></td></tr>
+<tr><td>Scalability</td><td>5/10</td><td>Monolito con DB compartida</td><td>-4</td><td><span class="critical">ALTA</span></td></tr>
+<tr><td>Reliability</td><td>6/10</td><td>MTTR 4h, no circuit breakers</td><td>-3</td><td><span class="warning">MEDIA</span></td></tr>
+<tr><td>Usability</td><td>7/10</td><td>Portal funcional, mobile-responsive</td><td>-1</td><td><span class="ok">BAJA</span></td></tr>
+<tr><td>Interoperability</td><td>6/10</td><td>REST APIs documentadas parcialmente</td><td>-2</td><td><span class="warning">MEDIA</span></td></tr>
+</table>
+
+<div class="mermaid">
+quadrantChart
+    title NFR Heatmap — Impacto de Negocio vs Estado Actual
+    x-axis "Estado Actual (bajo)" --> "Estado Actual (alto)"
+    y-axis "Impacto Negocio (bajo)" --> "Impacto Negocio (alto)"
+    quadrant-1 "Fortalezas"
+    quadrant-2 "Invertir Ya"
+    quadrant-3 "Monitorear"
+    quadrant-4 "Mantener"
+    "Security": [0.35, 0.95]
+    "Maintainability": [0.25, 0.85]
+    "Performance": [0.45, 0.80]
+    "Scalability": [0.45, 0.70]
+    "Reliability": [0.55, 0.65]
+    "Interoperability": [0.55, 0.50]
+    "Usability": [0.70, 0.40]
+</div>
+
+<!-- S7 -->
+<h2>S7: Security Assessment</h2>
+
+<h3>CVEs Activos</h3>
+<table>
+<tr><th>CVE</th><th>Componente</th><th>Severidad</th><th>CVSS</th><th>Remediacion</th></tr>
+<tr><td>CVE-2022-42003</td><td>Jackson Databind 2.13</td><td><span class="critical">ALTA</span></td><td>7.5</td><td>Upgrade a 2.16+</td></tr>
+<tr><td>CVE-2023-20873</td><td>Spring Boot 2.6 Actuator</td><td><span class="critical">ALTA</span></td><td>7.3</td><td>Upgrade a 2.7.11+</td></tr>
+<tr><td>CVE-2023-34055</td><td>Spring Boot 2.6</td><td><span class="warning">MEDIA</span></td><td>5.3</td><td>Upgrade a 3.x</td></tr>
+</table>
+
+<h3>Hallazgos Adicionales</h3>
+<table>
+<tr><th>Hallazgo</th><th>Severidad</th><th>Ubicacion</th><th>Remediacion</th></tr>
+<tr><td>API Key hardcoded</td><td><span class="critical">CRITICO</span></td><td>integration-hub/src/config/ExternalServices.java:47</td><td>Migrar a AWS Secrets Manager / Vault</td></tr>
+<tr><td>JWT sin rotacion de claves</td><td><span class="critical">ALTO</span></td><td>auth-service/src/security/JwtProvider.java</td><td>Key rotation cada 90 dias</td></tr>
+<tr><td>SQL queries sin parametrizar</td><td><span class="warning">MEDIO</span></td><td>3 instancias en reporting/</td><td>PreparedStatement/JPA named params</td></tr>
+<tr><td>CORS configurado como *</td><td><span class="warning">MEDIO</span></td><td>api-gateway/src/config/CorsConfig.java</td><td>Restringir a dominios conocidos</td></tr>
+<tr><td>Logs con datos sensibles</td><td><span class="warning">MEDIO</span></td><td>core-banking/ (PII en logs)</td><td>Log sanitization</td></tr>
+</table>
+
+<!-- S8 -->
+<h2>S8: Operational Model</h2>
+
+<h3>DORA Metrics (estimados)</h3>
+<table>
+<tr><th>Metrica</th><th>Valor Actual</th><th>Benchmark Elite</th></tr>
+<tr><td>Deployment Frequency</td><td>Quincenal</td><td>On-demand (multiple/dia)</td></tr>
+<tr><td>Lead Time for Changes</td><td>14 dias</td><td>&lt;1 dia</td></tr>
+<tr><td>Change Failure Rate</td><td>~18%</td><td>&lt;5%</td></tr>
+<tr><td>MTTR</td><td>4 horas</td><td>&lt;1 hora</td></tr>
+</table>
+
+<div class="callout">
+<strong>Clasificacion DORA: Low performer.</strong> El equipo opera en modo reactivo con ciclos largos y alta tasa de fallo. La ausencia de CI/CD y APM son los blockers principales.
+</div>
+
+<!-- S9 -->
+<h2>S9: Risk Register</h2>
+
+<table>
+<tr><th>#</th><th>Riesgo</th><th>Prob</th><th>Impacto</th><th>Score</th><th>Accion Recomendada</th><th>Velocidad</th></tr>
+<tr><td>R1</td><td>Brecha de seguridad por CVEs no parcheados</td><td>0.8</td><td>0.9</td><td><span class="critical">0.72</span></td><td>Upgrade Spring Boot + Jackson inmediato</td><td>Creciente</td></tr>
+<tr><td>R2</td><td>Regresion en produccion por baja cobertura de tests</td><td>0.7</td><td>0.7</td><td><span class="critical">0.49</span></td><td>Plan de testing automatizado</td><td>Creciente</td></tr>
+<tr><td>R3</td><td>Fuga de datos sensibles</td><td>0.6</td><td>0.9</td><td><span class="critical">0.54</span></td><td>Secrets manager + log sanitization</td><td>Estable</td></tr>
+<tr><td>R4</td><td>Indisponibilidad prolongada</td><td>0.5</td><td>0.8</td><td><span class="warning">0.40</span></td><td>APM + distributed tracing</td><td>Creciente</td></tr>
+<tr><td>R5</td><td>Deuda tecnica bloquea delivery</td><td>0.8</td><td>0.6</td><td><span class="warning">0.48</span></td><td>20% del sprint a reduccion de deuda</td><td>Creciente</td></tr>
+</table>
+
+<!-- S10 -->
+<h2>S10: Recommendations</h2>
+
+<h3>Quick Wins (&lt; 5 dias-ingeniero)</h3>
+<table>
+<tr><th>#</th><th>Accion</th><th>Esfuerzo</th><th>Impacto</th><th>Ref</th></tr>
+<tr><td>QW-1</td><td>Rotar API key hardcoded a Secrets Manager</td><td>2 dias</td><td>Elimina riesgo critico R3</td><td>S7</td></tr>
+<tr><td>QW-2</td><td>Restringir CORS a dominios conocidos</td><td>0.5 dias</td><td>Cierra OWASP A01</td><td>S7</td></tr>
+<tr><td>QW-3</td><td>Configurar Actuator endpoints con autenticacion</td><td>1 dia</td><td>Cierra CVE-2023-20873</td><td>S7</td></tr>
+<tr><td>QW-4</td><td>Parametrizar 3 SQL queries en reporting</td><td>1 dia</td><td>Cierra OWASP A03</td><td>S7</td></tr>
+<tr><td>QW-5</td><td>Implementar log sanitization para PII</td><td>3 dias</td><td>Reduce riesgo R3</td><td>S7, S8</td></tr>
+</table>
+
+<h3>Roadmap Estrategico</h3>
+<table>
+<tr><th>Horizonte</th><th>Iniciativa</th><th>Esfuerzo</th><th>Impacto</th><th>Ref</th></tr>
+<tr><td>Inmediato (0-30 dias)</td><td>Quick wins de seguridad</td><td>7.5 dias</td><td>Cierra 3 vulnerabilidades criticas</td><td>S7, R1, R3</td></tr>
+<tr><td>Corto plazo (1-3 meses)</td><td>Upgrade Spring Boot 2.6 -&gt; 3.2</td><td>90 dias</td><td>Elimina CVEs, habilita Java 21</td><td>S1, TD-03</td></tr>
+<tr><td>Corto plazo (1-3 meses)</td><td>CI/CD pipeline completo</td><td>30 dias</td><td>Deploy frequency: diario</td><td>S8, TD-05</td></tr>
+<tr><td>Medio plazo (3-6 meses)</td><td>Plan de testing (34% -&gt; 70%)</td><td>120 dias</td><td>Reduce regresiones 60%</td><td>S4, TD-01</td></tr>
+<tr><td>Medio plazo (3-6 meses)</td><td>Refactoring god classes</td><td>60 dias</td><td>Reduce CC promedio a &lt;12</td><td>S2, TD-02</td></tr>
+<tr><td>Largo plazo (6-12 meses)</td><td>APM + distributed tracing</td><td>40 dias</td><td>MTTR &lt;1h</td><td>S8, R4</td></tr>
+<tr><td>Largo plazo (6-12 meses)</td><td>Angular 14 -&gt; 17 migration</td><td>60 dias</td><td>Soporte LTS, performance</td><td>S1, TD-03</td></tr>
+</table>
+
+<h3>Decision Tree: Refactor vs Rewrite vs Replace</h3>
+<table>
+<tr><th>Componente</th><th>Decision</th><th>Justificacion</th></tr>
+<tr><td>core-banking</td><td><strong>Refactor</strong></td><td>Alto valor de negocio, logica compleja, riesgoso reescribir</td></tr>
+<tr><td>payment-gateway</td><td><strong>Refactor</strong></td><td>Integraciones criticas, refactorizar incrementalmente</td></tr>
+<tr><td>customer-portal</td><td><strong>Rewrite parcial</strong></td><td>Angular 14 EOL, migrar a Angular 17 standalone components</td></tr>
+<tr><td>reporting</td><td><strong>Replace</strong></td><td>JasperReports legacy, evaluar Metabase/Superset</td></tr>
+<tr><td>batch-processing</td><td><strong>Refactor</strong></td><td>Funcional, actualizar con upgrade de Boot</td></tr>
+</table>
+
+<hr>
+
+<h2>Trazabilidad Cruzada</h2>
+<table>
+<tr><th>Recomendacion</th><th>Evidencia S0-S9</th></tr>
+<tr><td>Upgrade Spring Boot 3.2</td><td>S1 (EOL), S7 (CVEs), R1</td></tr>
+<tr><td>Plan de testing 70%</td><td>S4 (34% coverage), S5 (TD-01), R2</td></tr>
+<tr><td>Secrets Manager</td><td>S7 (hardcoded key), R3</td></tr>
+<tr><td>CI/CD pipeline</td><td>S8 (manual deploy), S5 (TD-05), R4</td></tr>
+<tr><td>God class refactoring</td><td>S2 (3 god classes), S4 (CC=18), S5 (TD-02), R5</td></tr>
+<tr><td>APM + observabilidad</td><td>S8 (no APM), S6 (reliability 6/10), R4</td></tr>
+</table>
+
+<hr>
+<p><strong>Generado por:</strong> asis-analysis v6.0 | <strong>Formato:</strong> HTML (Design System) | <strong>Variante:</strong> Tecnica (full)</p>
+
+<script>mermaid.initialize({startOnLoad:true,theme:'neutral'});</script>
+</body>
+</html>
