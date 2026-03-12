@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Engineering — Acme Corp Banking Modernization</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    pre { background: #1a202c; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; font-size: 0.875rem; }
+    code { font-family: 'Fira Code', monospace; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body>
+<div class="container">
+
+  <h1>A-01: Analytics Engineering — Acme Corp Banking Modernization</h1>
+  <p><strong>Cliente:</strong> Acme Corp | <strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Variante:</strong> T&eacute;cnica</p>
+
+  <h2>Resumen Ejecutivo</h2>
+  <p>Acme Corp est&aacute; modernizando su plataforma bancaria core, migrando de procedimientos almacenados en Oracle a un stack de transformaci&oacute;n basado en dbt sobre Snowflake. Este documento define la arquitectura de transformaci&oacute;n anal&iacute;tica: source-to-target mapping, patrones de modelado dimensional, framework de testing, documentaci&oacute;n, y optimizaci&oacute;n de costos de warehouse.</p>
+
+  <h3>Decisiones Clave</h3>
+  <table>
+    <tr><th>Decisi&oacute;n</th><th>Selecci&oacute;n</th><th>Rationale</th></tr>
+    <tr><td>Framework</td><td>dbt Core 1.9 + Snowflake</td><td>Equipo familiarizado con SQL, CI/CD maduro</td></tr>
+    <tr><td>Modelado</td><td>Star Schema</td><td>4 herramientas BI consumen marts</td></tr>
+    <tr><td>Incremental</td><td>Merge con unique_key</td><td>Transacciones mutan (reversals, adjustments)</td></tr>
+    <tr><td>Testing</td><td>Schema + unit + contracts</td><td>Mart layer regulado (SOX compliance)</td></tr>
+    <tr><td>Semantic Layer</td><td>dbt Metrics + MetricFlow</td><td>Integraci&oacute;n nativa, API para Tableau y Looker</td></tr>
+  </table>
+
+  <h2>S1: Source-to-Target Mapping</h2>
+
+  <h3>Inventario de Fuentes</h3>
+  <table>
+    <tr><th>Sistema Fuente</th><th>Tablas</th><th>Extracci&oacute;n</th><th>Freshness SLA</th><th>Volumen</th></tr>
+    <tr><td>Core Banking (Oracle)</td><td>47</td><td>CDC via Fivetran</td><td>15 min</td><td>2.3 TB</td></tr>
+    <tr><td>CRM (Salesforce)</td><td>12</td><td>API via Fivetran</td><td>1 hora</td><td>180 GB</td></tr>
+    <tr><td>Card Processing (ISO 8583)</td><td>8</td><td>Kafka streaming</td><td>Real-time</td><td>450 GB/d&iacute;a</td></tr>
+    <tr><td>Risk Engine (REST API)</td><td>5</td><td>Batch API pull</td><td>6 horas</td><td>12 GB</td></tr>
+    <tr><td>Regulatory Feeds (SWIFT)</td><td>3</td><td>SFTP file drop</td><td>Daily</td><td>2 GB</td></tr>
+  </table>
+
+  <h3>DAG de Transformaci&oacute;n</h3>
+  <div class="mermaid">
+graph LR
+    subgraph Sources
+        A[Core Banking<br/>Oracle CDC]
+        B[Salesforce<br/>API]
+        C[Card Processing<br/>Kafka]
+        D[Risk Engine<br/>API]
+    end
+    subgraph Staging
+        E[stg_core_banking__accounts]
+        F[stg_core_banking__transactions]
+        G[stg_salesforce__contacts]
+        H[stg_card_processing__authorizations]
+    end
+    subgraph Marts
+        M[fct_transactions]
+        N[fct_daily_balances]
+        O[dim_customers]
+        P[dim_accounts]
+    end
+    A --> E & F
+    B --> G
+    C --> H
+    E --> P
+    F --> M
+    G --> O
+    H --> M
+    M --> N
+  </div>
+
+  <h2>S2: Data Modeling Patterns</h2>
+
+  <h3>Star Schema — Finance Domain</h3>
+  <div class="mermaid">
+erDiagram
+    fct_transactions ||--o{ dim_accounts : "account_key"
+    fct_transactions ||--o{ dim_customers : "customer_key"
+    fct_transactions ||--o{ dim_date : "transaction_date_key"
+    fct_transactions ||--o{ dim_branch : "branch_key"
+    fct_transactions ||--o{ dim_currency : "currency_key"
+    fct_transactions {
+        bigint transaction_key PK
+        bigint account_key FK
+        bigint customer_key FK
+        int transaction_date_key FK
+        varchar transaction_type
+        decimal amount_local
+        decimal amount_usd
+    }
+    dim_accounts {
+        bigint account_key PK
+        varchar account_number
+        varchar account_type
+        varchar status
+        decimal credit_limit
+    }
+    dim_customers {
+        bigint customer_key PK
+        varchar customer_id
+        varchar full_name
+        varchar segment
+        varchar kyc_status
+    }
+  </div>
+
+  <h3>Grain Definitions</h3>
+  <table>
+    <tr><th>Modelo</th><th>Grain</th><th>Justificaci&oacute;n</th></tr>
+    <tr><td>fct_transactions</td><td>Una fila por transacci&oacute;n</td><td>Auditor&iacute;a y regulaci&oacute;n requieren detalle individual</td></tr>
+    <tr><td>fct_daily_balances</td><td>Una fila por cuenta por d&iacute;a</td><td>Balance de cierre para conciliaci&oacute;n</td></tr>
+    <tr><td>fct_risk_events</td><td>Una fila por evento de riesgo</td><td>Trazabilidad de cada alerta</td></tr>
+    <tr><td>mrt_monthly_revenue</td><td>Una fila por producto por mes</td><td>Pre-agregado para dashboards ejecutivos</td></tr>
+  </table>
+
+  <h3>SCD Strategy</h3>
+  <table>
+    <tr><th>Dimensi&oacute;n</th><th>SCD Type</th><th>Columnas Tracked</th><th>Rationale</th></tr>
+    <tr><td>dim_customers</td><td><span class="badge badge-red">Type 2</span></td><td>segment, kyc_status</td><td>Regulaci&oacute;n requiere historial KYC</td></tr>
+    <tr><td>dim_accounts</td><td><span class="badge badge-red">Type 2</span></td><td>status, risk_rating, credit_limit</td><td>Auditor&iacute;a SOX</td></tr>
+    <tr><td>dim_branch</td><td><span class="badge badge-green">Type 1</span></td><td>address, manager_name</td><td>No se requiere historial</td></tr>
+    <tr><td>dim_product</td><td><span class="badge badge-red">Type 2</span></td><td>interest_rate, fee_structure</td><td>Pricing changes trazables</td></tr>
+  </table>
+
+  <h2>S3: Transformation Framework</h2>
+
+  <h3>Materialization Strategy</h3>
+  <table>
+    <tr><th>Capa</th><th>Materializaci&oacute;n</th><th>Rationale</th></tr>
+    <tr><td>Staging</td><td>View</td><td>Datos siempre frescos, zero storage cost</td></tr>
+    <tr><td>Intermediate</td><td>Ephemeral</td><td>L&oacute;gica inline, no tablas intermedias</td></tr>
+    <tr><td>Facts (&gt;10M rows)</td><td>Incremental (merge)</td><td>fct_transactions: 850M rows</td></tr>
+    <tr><td>Dimensions</td><td>Table</td><td>SCD Type 2 via snapshots</td></tr>
+    <tr><td>Pre-aggregates</td><td>Table</td><td>mrt_monthly_revenue: rebuild mensual</td></tr>
+  </table>
+
+  <h2>S4: Testing &amp; Data Contracts</h2>
+
+  <h3>Test Coverage — Mart Layer</h3>
+  <table>
+    <tr><th>Modelo</th><th>not_null</th><th>unique</th><th>relationships</th><th>custom</th><th>Coverage</th></tr>
+    <tr><td>fct_transactions</td><td>12/12</td><td>transaction_key</td><td>6 FKs</td><td>balance_reconciliation</td><td><span class="badge badge-green">100%</span></td></tr>
+    <tr><td>fct_daily_balances</td><td>8/8</td><td>account_key + date_key</td><td>2 FKs</td><td>opening_closing_match</td><td><span class="badge badge-green">100%</span></td></tr>
+    <tr><td>dim_customers</td><td>10/10</td><td>customer_key</td><td>N/A</td><td>kyc_completeness</td><td><span class="badge badge-green">100%</span></td></tr>
+    <tr><td>dim_accounts</td><td>9/9</td><td>account_key</td><td>1 FK</td><td>credit_limit_range</td><td><span class="badge badge-green">100%</span></td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>CI/CD:</strong> PR builds usan <code>dbt build --select state:modified+ --defer --state prod-artifacts/</code>. Bot comenta modelos cambiados, resultados de tests, y costo estimado en Snowflake.
+  </div>
+
+  <h2>S5: Documentation &amp; Discovery</h2>
+
+  <h3>Exposures Definidas</h3>
+  <table>
+    <tr><th>Exposure</th><th>Tipo</th><th>Modelos Dependientes</th><th>Owner</th></tr>
+    <tr><td>Executive Financial Dashboard</td><td>Dashboard</td><td>fct_transactions, fct_daily_balances, dim_accounts</td><td>CFO Office Analytics</td></tr>
+    <tr><td>Risk Monitoring Dashboard</td><td>Dashboard</td><td>fct_risk_events, dim_customers, dim_accounts</td><td>Risk Management</td></tr>
+    <tr><td>ML Churn Prediction</td><td>ML Pipeline</td><td>fct_transactions, fct_customer_interactions, dim_customers</td><td>Data Science Team</td></tr>
+  </table>
+
+  <h3>Catalog Integration</h3>
+  <p><strong>Tool:</strong> Atlan &mdash; auto-sync de metadatos dbt en cada build de producci&oacute;n. Clasificaci&oacute;n PII automatizada para SSN, n&uacute;meros de cuenta, email, tel&eacute;fono.</p>
+
+  <h2>S6: Performance &amp; Cost Optimization</h2>
+
+  <h3>Warehouse Sizing</h3>
+  <table>
+    <tr><th>Warehouse</th><th>Size</th><th>Auto-Suspend</th><th>Uso</th></tr>
+    <tr><td>TRANSFORM_WH</td><td>LARGE</td><td>5 min</td><td>dbt producci&oacute;n (daily, incremental)</td></tr>
+    <tr><td>TRANSFORM_DEV_WH</td><td>SMALL</td><td>2 min</td><td>dbt desarrollo, CI/CD</td></tr>
+    <tr><td>BI_WH</td><td>MEDIUM</td><td>5 min</td><td>Tableau, Looker queries</td></tr>
+    <tr><td>ADHOC_WH</td><td>X-SMALL</td><td>1 min</td><td>Analyst ad-hoc queries</td></tr>
+  </table>
+
+  <h3>Clustering Strategy</h3>
+  <table>
+    <tr><th>Tabla</th><th>Cluster Keys</th><th>Rationale</th></tr>
+    <tr><td>fct_transactions</td><td>transaction_date_key, account_key</td><td>95% queries filtran por fecha + cuenta</td></tr>
+    <tr><td>fct_daily_balances</td><td>date_key</td><td>Queries time-series dominan</td></tr>
+    <tr><td>fct_risk_events</td><td>event_date_key, risk_category</td><td>Dashboards de riesgo filtran por fecha + categor&iacute;a</td></tr>
+  </table>
+
+  <h2>Conclusiones y Recomendaciones</h2>
+  <ol>
+    <li><strong>Priorizar migraci&oacute;n de los 12 stored procedures m&aacute;s cr&iacute;ticos</strong> del Core Banking Oracle a modelos dbt intermedios durante Sprint 1-3.</li>
+    <li><strong>Implementar contratos de datos</strong> en los 5 modelos de mart regulados antes de habilitar consumo por equipos de riesgo y compliance.</li>
+    <li><strong>Activar MetricFlow</strong> como semantic layer para unificar definiciones de NII y Cost-to-Income entre Tableau y Looker.</li>
+    <li><strong>Configurar Slim CI</strong> desde el d&iacute;a uno &mdash; el build completo ya toma 22 minutos.</li>
+    <li><strong>Establecer costos por modelo</strong> via query tagging para identificar modelos costosos.</li>
+  </ol>
+
+  <footer><p><strong>Autor:</strong> Javier Monta&ntilde;o — Sofka Discovery Framework v6.0</p></footer>
+</div>
+</body>
+</html>

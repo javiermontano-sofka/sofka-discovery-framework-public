@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Architecture — Acme Corp</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .badge-blue { background: #bee3f8; color: #2a4365; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    .maturity { display: inline-block; width: 2rem; height: 2rem; line-height: 2rem; text-align: center; border-radius: 50%; font-weight: 700; font-size: 0.85rem; color: white; }
+    .m1 { background: #e53e3e; }
+    .m2 { background: #dd6b20; }
+    .m3 { background: #d69e2e; color: #1a365d; }
+    .m4 { background: #38a169; }
+    .m5 { background: #276749; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body><div class="container">
+
+  <h1>Enterprise Architecture — Acme Corp Banking Modernization</h1>
+  <p><strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Industria:</strong> Financial Services | <strong>Customers:</strong> 2.1M retail | <strong>Branches:</strong> 85</p>
+
+  <div class="callout">
+    <strong>Executive Summary:</strong> Maps 5 L1 capabilities with maturity assessments, 6 DDD bounded contexts, 12-entry technology radar, ARB governance aligned with SFC requirements, 6 strategic initiatives for 2026-2027, and target operating model with team topologies and DORA metrics.
+  </div>
+
+  <h2>S1: Capability Map (Maturity 1-5)</h2>
+
+  <h3>Level 1 Capabilities</h3>
+  <table>
+    <tr><th>L1 Capability</th><th>Current</th><th>Target</th><th>Gap</th><th>Owner</th><th>Key Systems</th></tr>
+    <tr><td><strong>Customer Management</strong></td><td><span class="maturity m3">3</span></td><td><span class="maturity m5">5</span></td><td><span class="badge badge-red">+2</span></td><td>Chief Customer Officer</td><td>CRM, KYC, Portal</td></tr>
+    <tr><td><strong>Core Banking</strong></td><td><span class="maturity m4">4</span></td><td><span class="maturity m5">5</span></td><td><span class="badge badge-yellow">+1</span></td><td>VP Retail Banking</td><td>Temenos, Account Mgmt</td></tr>
+    <tr><td><strong>Lending &amp; Credit</strong></td><td><span class="maturity m2">2</span></td><td><span class="maturity m4">4</span></td><td><span class="badge badge-red">+2</span></td><td>Director Credit Risk</td><td>Legacy Loan Origination</td></tr>
+    <tr><td><strong>Payments &amp; Transfers</strong></td><td><span class="maturity m3">3</span></td><td><span class="maturity m5">5</span></td><td><span class="badge badge-red">+2</span></td><td>Head of Payments</td><td>Payment Gateway, SWIFT</td></tr>
+    <tr><td><strong>Risk &amp; Compliance</strong></td><td><span class="maturity m3">3</span></td><td><span class="maturity m4">4</span></td><td><span class="badge badge-yellow">+1</span></td><td>Chief Risk Officer</td><td>AML/SARLAFT, Fraud Detection</td></tr>
+  </table>
+
+  <h3>Capability Heat Map</h3>
+  <div class="mermaid">
+    quadrantChart
+      title Capability Maturity vs Strategic Importance
+      x-axis Low Maturity --> High Maturity
+      y-axis Low Strategic Value --> High Strategic Value
+      quadrant-1 Invest Heavily
+      quadrant-2 Maintain Leadership
+      quadrant-3 Monitor
+      quadrant-4 Optimize Cost
+      Customer Onboarding: [0.3, 0.95]
+      Lending and Credit: [0.35, 0.85]
+      Payments: [0.55, 0.9]
+      Core Banking: [0.8, 0.8]
+      Risk and Compliance: [0.6, 0.7]
+      Loyalty: [0.15, 0.65]
+  </div>
+
+  <h2>S2: Domain Model (DDD)</h2>
+
+  <h3>Bounded Contexts</h3>
+  <table>
+    <tr><th>#</th><th>Context</th><th>Type</th><th>Team</th><th>Key Aggregates</th></tr>
+    <tr><td>1</td><td><strong>Core Banking</strong></td><td><span class="badge badge-red">Core</span></td><td>Core Banking Squad</td><td>Account, Balance, Statement, Product</td></tr>
+    <tr><td>2</td><td><strong>Customer</strong></td><td><span class="badge badge-red">Core</span></td><td>Customer Squad</td><td>Profile, KYC, Preferences, Consent</td></tr>
+    <tr><td>3</td><td><strong>Lending</strong></td><td><span class="badge badge-red">Core</span></td><td>Lending Squad</td><td>Application, Credit Decision, Amortization</td></tr>
+    <tr><td>4</td><td><strong>Payments</strong></td><td><span class="badge badge-red">Core</span></td><td>Payments Squad</td><td>Transfer, SWIFT Message, ACH Batch</td></tr>
+    <tr><td>5</td><td><strong>Risk</strong></td><td><span class="badge badge-yellow">Supporting</span></td><td>Risk Team</td><td>Risk Score, AML Alert, Regulatory Report</td></tr>
+    <tr><td>6</td><td><strong>Treasury</strong></td><td><span class="badge badge-yellow">Supporting</span></td><td>Treasury Squad</td><td>Position, Hedge, Liquidity</td></tr>
+  </table>
+
+  <h3>Context Map</h3>
+  <div class="mermaid">
+    graph LR
+      CoreBanking -->|Published Language| Payments
+      CoreBanking -->|Customer/Supplier| Customer
+      CoreBanking -->|Published Language| Lending
+      Lending -->|ACL| Risk
+      Payments -->|ACL| Risk
+      Customer -->|Shared Kernel| CoreBanking
+      Treasury -->|Conformist| CoreBanking
+      Risk -->|Published Language| CoreBanking
+  </div>
+
+  <h2>S3: Technology Radar</h2>
+
+  <table>
+    <tr><th>Technology</th><th>Ring</th><th>Dimension</th><th>Rationale</th></tr>
+    <tr><td>PostgreSQL 16 (RDS)</td><td><span class="badge badge-green">Adopt</span></td><td>Data</td><td>Primary OLTP. ACID, JSON, partitioning.</td></tr>
+    <tr><td>Kafka (MSK)</td><td><span class="badge badge-green">Adopt</span></td><td>Integration</td><td>Event backbone. 4 domains publishing.</td></tr>
+    <tr><td>Kubernetes (EKS)</td><td><span class="badge badge-green">Adopt</span></td><td>Platform</td><td>Container orchestration. 14 microservices.</td></tr>
+    <tr><td>Spring Boot 3.2</td><td><span class="badge badge-green">Adopt</span></td><td>Framework</td><td>Backend standard. Team expertise.</td></tr>
+    <tr><td>React 18 + Next.js</td><td><span class="badge badge-blue">Trial</span></td><td>Framework</td><td>Customer portal migration. POC validated.</td></tr>
+    <tr><td>Temporal</td><td><span class="badge badge-blue">Trial</span></td><td>Platform</td><td>Saga orchestration for lending. Pilot Q2.</td></tr>
+    <tr><td>Feast</td><td><span class="badge badge-blue">Trial</span></td><td>Data</td><td>ML feature store. Fraud detection use case.</td></tr>
+    <tr><td>CockroachDB</td><td><span class="badge badge-yellow">Assess</span></td><td>Data</td><td>Multi-region consistency. Future expansion.</td></tr>
+    <tr><td>Apache Flink</td><td><span class="badge badge-yellow">Assess</span></td><td>Data</td><td>Real-time stream processing for fraud.</td></tr>
+    <tr><td>GraphQL Federation</td><td><span class="badge badge-yellow">Assess</span></td><td>Integration</td><td>API composition for mobile. Evaluating.</td></tr>
+    <tr><td>Temenos T24</td><td><span class="badge badge-red">Hold</span></td><td>Platform</td><td>Legacy core banking. Strangler fig planned.</td></tr>
+    <tr><td>Oracle 12c</td><td><span class="badge badge-red">Hold</span></td><td>Data</td><td>Legacy lending DB. Migration in progress.</td></tr>
+  </table>
+
+  <h2>S4: Architectural Governance (ARB)</h2>
+
+  <h3>Principles</h3>
+  <table>
+    <tr><th>#</th><th>Principle</th><th>Rationale</th></tr>
+    <tr><td>P1</td><td><strong>Cloud-first, Colombia-resident</strong></td><td>SFC data sovereignty; AWS sa-east-1</td></tr>
+    <tr><td>P2</td><td><strong>API-first</strong></td><td>Channel agnosticism (branch, web, mobile, API banking)</td></tr>
+    <tr><td>P3</td><td><strong>Event-driven by default</strong></td><td>Kafka events; synchronous only for real-time transactions</td></tr>
+    <tr><td>P4</td><td><strong>Security non-negotiable</strong></td><td>Every service passes security gates before production</td></tr>
+    <tr><td>P5</td><td><strong>Data ownership per domain</strong></td><td>Each bounded context owns and publishes its data products</td></tr>
+  </table>
+
+  <h2>S5: Initiative Portfolio</h2>
+
+  <table>
+    <tr><th>#</th><th>Initiative</th><th>Value</th><th>Effort</th><th>Risk</th><th>Timeline</th></tr>
+    <tr><td>1</td><td><strong>Digital Customer Onboarding</strong></td><td>High</td><td>L</td><td><span class="badge badge-yellow">Medium</span></td><td>Q2-Q3 2026</td></tr>
+    <tr><td>2</td><td><strong>Lending Platform Modernization</strong></td><td>High</td><td>XL</td><td><span class="badge badge-red">High</span></td><td>Q2 2026 - Q1 2027</td></tr>
+    <tr><td>3</td><td><strong>Real-Time Fraud Detection</strong></td><td>High</td><td>L</td><td><span class="badge badge-yellow">Medium</span></td><td>Q2-Q4 2026</td></tr>
+    <tr><td>4</td><td><strong>Payment Hub Consolidation</strong></td><td>High</td><td>XL</td><td><span class="badge badge-red">High</span></td><td>Q3 2026 - Q2 2027</td></tr>
+    <tr><td>5</td><td><strong>Customer 360 Data Platform</strong></td><td>Medium</td><td>M</td><td><span class="badge badge-green">Low</span></td><td>Q3-Q4 2026</td></tr>
+    <tr><td>6</td><td><strong>Core Banking Strangler Fig</strong></td><td>Very High</td><td>XXL</td><td><span class="badge badge-red">Very High</span></td><td>Q1 2027 - Q4 2028</td></tr>
+  </table>
+
+  <h3>Portfolio Risk vs Value</h3>
+  <div class="mermaid">
+    quadrantChart
+      title Initiative Risk vs Business Value
+      x-axis Low Risk --> High Risk
+      y-axis Low Value --> High Value
+      quadrant-1 Strategic Bets
+      quadrant-2 Quick Wins
+      quadrant-3 Low Priority
+      quadrant-4 Manage Carefully
+      Digital Onboarding: [0.4, 0.85]
+      Lending Modernization: [0.75, 0.9]
+      Fraud Detection: [0.45, 0.8]
+      Payment Hub: [0.7, 0.85]
+      Customer 360: [0.25, 0.6]
+      Core Banking Strangler: [0.9, 0.95]
+  </div>
+
+  <h2>S6: Target Operating Model</h2>
+
+  <h3>Team Topologies</h3>
+  <table>
+    <tr><th>Team</th><th>Type</th><th>Domain</th><th>Size</th></tr>
+    <tr><td>Core Banking Squad</td><td>Stream-Aligned</td><td>Core Banking</td><td>7</td></tr>
+    <tr><td>Customer Squad</td><td>Stream-Aligned</td><td>Customer</td><td>6</td></tr>
+    <tr><td>Lending Squad</td><td>Stream-Aligned</td><td>Lending</td><td>6</td></tr>
+    <tr><td>Payments Squad</td><td>Stream-Aligned</td><td>Payments</td><td>6</td></tr>
+    <tr><td>Risk Team</td><td>Complicated Subsystem</td><td>Risk</td><td>4</td></tr>
+    <tr><td>Treasury Squad</td><td>Stream-Aligned</td><td>Treasury</td><td>3</td></tr>
+    <tr><td>Platform Engineering</td><td>Platform</td><td>Cross-cutting</td><td>6</td></tr>
+    <tr><td>Data Platform</td><td>Enabling</td><td>Cross-cutting</td><td>4</td></tr>
+  </table>
+
+  <h3>DORA Metrics</h3>
+  <table>
+    <tr><th>Metric</th><th>Current</th><th>Target (12 mo)</th><th>Benchmark</th></tr>
+    <tr><td>Deployment Frequency</td><td>1x/week</td><td>3x/week</td><td>Elite: Daily</td></tr>
+    <tr><td>Lead Time</td><td>5 days</td><td>1 day</td><td>Elite: &lt; 1 hour</td></tr>
+    <tr><td>Change Failure Rate</td><td><span class="badge badge-yellow">18%</span></td><td>&lt; 10%</td><td>Elite: 0-5%</td></tr>
+    <tr><td>MTTR</td><td><span class="badge badge-yellow">6 hours</span></td><td>&lt; 1 hour</td><td>Elite: &lt; 15 min</td></tr>
+  </table>
+
+  <h3>Decision Rights</h3>
+  <table>
+    <tr><th>Level</th><th>Who</th><th>Scope</th></tr>
+    <tr><td>Strategic</td><td>CTO + ARB</td><td>Radar, cross-domain, &gt;$20K/month</td></tr>
+    <tr><td>Tactical</td><td>Domain Architects</td><td>Patterns, service boundaries, data models</td></tr>
+    <tr><td>Operational</td><td>Squad Leads</td><td>Implementation, sprint priorities, tooling</td></tr>
+  </table>
+
+  <footer><p><strong>Autor:</strong> Javier Montano — Sofka Discovery Framework v6.0</p></footer>
+</div></body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-01 Roadmap &amp; PoC — Acme Corp Banking Modernization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+    <style>
+        :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --surface: #ffffff; --muted: #718096; --success: #38a169; --warning: #d69e2e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+        h2 { color: var(--primary); font-size: 1.4rem; margin: 2.5rem 0 1rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; }
+        h3 { color: var(--text); font-size: 1.1rem; margin: 1.5rem 0 0.75rem; font-weight: 600; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+        .summary { background: var(--surface); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+        th { background: var(--primary); color: #fff; text-align: left; padding: 0.6rem 0.75rem; }
+        td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: rgba(26,54,93,0.04); }
+        .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
+        .badge-pass { background: #c6f6d5; color: #22543d; }
+        .badge-fail { background: #fed7d7; color: #9b2c2c; }
+        .badge-warn { background: #fefcbf; color: #744210; }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 0.4rem 0; padding-left: 1.75rem; position: relative; }
+        .checklist li::before { content: "\2713"; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+        .gate-checklist { list-style: none; padding: 0 0 0 1rem; }
+        .gate-checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+        .gate-checklist li::before { content: "\25A1"; position: absolute; left: 0; color: var(--primary); }
+        .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+        code { background: #edf2f7; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+        .mermaid { background: var(--surface); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border); }
+        .callout { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+        .callout-warn { background: #fffff0; border-left-color: var(--warning); }
+    </style>
+</head>
+<body>
+
+<h1>A-01 Roadmap &amp; PoC Execution Plan</h1>
+<p class="meta">Acme Corp Banking Modernization | 12 de marzo de 2026 | Modo: piloto-auto | Variante: t&eacute;cnica</p>
+
+<div class="summary">
+    <strong>Executive Summary:</strong> This roadmap details the 6-week PoC for modernizing Acme Corp's loan origination system from COBOL mainframe to Java/Spring Boot microservices on AWS. The PoC validates three critical hypotheses: (1) loan application processing under 5 seconds end-to-end, (2) credit bureau integration via async pattern reduces latency 60%, and (3) the new stack meets OCC regulatory requirements for audit trails. Team: 4 Provider + 3 Client engineers. Budget: $184K (+/-20%).
+</div>
+
+<h2>S1: Pre-Service Kickoff (Week 0)</h2>
+
+<h3>Day-by-Day Agenda</h3>
+<table>
+    <thead><tr><th>Day</th><th>Activity</th><th>Owner</th><th>Duration</th><th>Outcomes</th></tr></thead>
+    <tbody>
+        <tr><td>Mon</td><td>AS-IS Core Banking Session</td><td>Tech Lead + Mainframe SME</td><td>3h</td><td>Current COBOL loan flow documented, data model mapped</td></tr>
+        <tr><td>Mon</td><td>Definition of Done Workshop</td><td>Provider Lead + VP Lending</td><td>1.5h</td><td>DoD approved: 5s loan processing, audit trail, compliance</td></tr>
+        <tr><td>Tue</td><td>Architecture Review</td><td>Solutions Architect + DBA</td><td>2h</td><td>Target microservices architecture validated</td></tr>
+        <tr><td>Tue</td><td>Infrastructure Setup (parallel)</td><td>Provider DevOps</td><td>4h</td><td>AWS EKS, RDS PostgreSQL, MSK Kafka provisioned</td></tr>
+        <tr><td>Wed</td><td>Client Provisioning (parallel)</td><td>Acme IT</td><td>3h</td><td>VPN, mainframe read-only access, test environment credentials</td></tr>
+        <tr><td>Wed</td><td>Data Migration Workshop</td><td>Data Engineer + Mainframe DBA</td><td>2h</td><td>Loan schema mapping, test data extraction plan</td></tr>
+        <tr><td>Thu</td><td>Security &amp; Compliance Briefing</td><td>CISO + Compliance Officer</td><td>1.5h</td><td>PCI-DSS scope, OCC audit trail requirements documented</td></tr>
+        <tr><td>Fri</td><td>Sprint Planning (Sprint 1)</td><td>Full Team</td><td>2h</td><td>Sprint 1 backlog groomed, stories estimated</td></tr>
+    </tbody>
+</table>
+
+<h3>Parallel Setup Grid</h3>
+<table>
+    <thead><tr><th>Provider Responsibilities</th><th>Client Responsibilities</th></tr></thead>
+    <tbody>
+        <tr><td>AWS EKS cluster provisioning</td><td>VPN access for Provider team</td></tr>
+        <tr><td>CI/CD pipeline (GitHub Actions)</td><td>Mainframe read-only credentials</td></tr>
+        <tr><td>Grafana observability stack</td><td>Test environment with sample loan data</td></tr>
+        <tr><td>Development tools (IntelliJ, k6)</td><td>Stakeholder availability (VP Lending, Compliance)</td></tr>
+        <tr><td>Slack channel + Jira project</td><td>Conference room for daily standups</td></tr>
+        <tr><td>Confluence documentation space</td><td>Access to credit bureau sandbox API</td></tr>
+    </tbody>
+</table>
+
+<h2>S2: Prerequisites Validation</h2>
+<table>
+    <thead><tr><th>ID</th><th>Prerequisite</th><th>Status</th><th>Owner</th><th>Deadline</th><th>Blocker</th></tr></thead>
+    <tbody>
+        <tr><td>P1</td><td>VPN + dev environment access</td><td>Not Started</td><td>Acme IT</td><td>Week 0 Day 2</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P2</td><td>Source code repo + branch strategy</td><td>Not Started</td><td>Dev Lead</td><td>Week 0 Day 1</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P3</td><td>CI/CD pipeline (GitHub Actions)</td><td>Not Started</td><td>Provider DevOps</td><td>Week 0 Day 2</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P4</td><td>AWS EKS + RDS provisioned</td><td>Not Started</td><td>Provider DevOps</td><td>Week 0 Day 2</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P5</td><td>Mainframe read-only access</td><td>Not Started</td><td>Acme DBA</td><td>Week 0 Day 3</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P6</td><td>Credit bureau sandbox API keys</td><td>Not Started</td><td>Acme Vendor Mgmt</td><td>Week 0 Day 3</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P7</td><td>Test loan data (500 applications)</td><td>Not Started</td><td>Data Engineer</td><td>Week 0 Day 4</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P8</td><td>Stakeholder availability confirmed</td><td>Not Started</td><td>PM</td><td>Week 0 Day 1</td><td><span class="badge badge-fail">Yes</span></td></tr>
+        <tr><td>P9</td><td>Architecture design approved</td><td>Not Started</td><td>Solutions Architect</td><td>Week 0 Day 2</td><td><span class="badge badge-pass">No</span></td></tr>
+        <tr><td>P10</td><td>Security review scheduled</td><td>Not Started</td><td>CISO</td><td>Week 0 Day 5</td><td><span class="badge badge-pass">No</span></td></tr>
+        <tr><td>P11</td><td>Grafana/observability setup</td><td>Not Started</td><td>Provider DevOps</td><td>Sprint 1 Day 2</td><td><span class="badge badge-pass">No</span></td></tr>
+        <tr><td>P12</td><td>OCC audit trail spec documented</td><td>Not Started</td><td>Compliance Officer</td><td>Sprint 1 Day 3</td><td><span class="badge badge-pass">No</span></td></tr>
+    </tbody>
+</table>
+
+<h2>S3: Sprint Breakdown</h2>
+
+<h3>Sprint 1 &mdash; Loan Application Core (Weeks 1&ndash;2)</h3>
+<table>
+    <thead><tr><th>Days</th><th>Task</th><th>Owner</th><th>Deliverable</th></tr></thead>
+    <tbody>
+        <tr><td>1&ndash;2</td><td>Loan domain model + REST API scaffold</td><td>Senior Dev 1</td><td>POST /loans/apply endpoint, OpenAPI spec</td></tr>
+        <tr><td>1&ndash;2</td><td>PostgreSQL schema + Flyway migrations</td><td>DBA + Dev 2</td><td>Loan tables, indices, audit columns</td></tr>
+        <tr><td>3&ndash;4</td><td>Business rules: eligibility, DTI calculation</td><td>Senior Dev 1 + Dev 2</td><td>LoanValidator service, 15+ unit tests</td></tr>
+        <tr><td>3&ndash;4</td><td>Kafka event publishing (loan.submitted)</td><td>Dev 3</td><td>Kafka producer, Avro schema, topic created</td></tr>
+        <tr><td>5</td><td>Demo prep + internal UAT</td><td>QA + PM</td><td>Demo script, test scenarios ready</td></tr>
+        <tr><td>6&ndash;7</td><td>Credit bureau integration (async pattern)</td><td>Senior Dev 1</td><td>CreditBureauAdapter, circuit breaker, 24h cache</td></tr>
+        <tr><td>6&ndash;7</td><td>Mainframe data sync (read-only bridge)</td><td>Dev 2 + Mainframe SME</td><td>JDBC adapter reading existing loan portfolio</td></tr>
+        <tr><td>8&ndash;9</td><td>Integration tests + contract tests</td><td>QA + Dev 3</td><td>Testcontainers suite, Pact contracts</td></tr>
+        <tr><td>10</td><td>Sprint review + retrospective</td><td>Full Team</td><td>Demo to VP Lending, retrospective actions</td></tr>
+    </tbody>
+</table>
+
+<h3>Sprint 2 &mdash; Underwriting + Fraud Detection (Weeks 3&ndash;4)</h3>
+<table>
+    <thead><tr><th>Days</th><th>Task</th><th>Owner</th><th>Deliverable</th></tr></thead>
+    <tbody>
+        <tr><td>1&ndash;2</td><td>Underwriting engine (rules-based)</td><td>Senior Dev 1</td><td>UnderwritingService, decision matrix, 20+ unit tests</td></tr>
+        <tr><td>1&ndash;2</td><td>Fraud detection integration</td><td>Dev 3</td><td>FraudEvaluationClient, risk score mapping</td></tr>
+        <tr><td>3&ndash;4</td><td>KYC verification service</td><td>Dev 2</td><td>KYCAdapter, document type validation</td></tr>
+        <tr><td>5</td><td>End-to-end flow testing</td><td>QA + Full Team</td><td>Full loan submission &rarr; decision flow validated</td></tr>
+        <tr><td>6&ndash;7</td><td>Performance baseline measurement</td><td>Perf Engineer</td><td>k6 load test, p50/p95/p99 baseline established</td></tr>
+        <tr><td>6&ndash;7</td><td>Audit trail implementation</td><td>Dev 2</td><td>Immutable event log, OCC-compliant format</td></tr>
+        <tr><td>8&ndash;9</td><td>Regulatory test suite</td><td>QA + Compliance</td><td>TILA disclosure validation, BSA/AML checks</td></tr>
+        <tr><td>10</td><td>Sprint review + Go/No-Go Gate</td><td>Full Team + Steering</td><td>Demo to steering committee, gate evaluation</td></tr>
+    </tbody>
+</table>
+
+<h3>Sprint 3 &mdash; Stabilization + Production Readiness (Weeks 5&ndash;6)</h3>
+<table>
+    <thead><tr><th>Days</th><th>Task</th><th>Owner</th><th>Deliverable</th></tr></thead>
+    <tbody>
+        <tr><td>1&ndash;2</td><td>Security hardening (SAST/DAST)</td><td>Security Eng + Dev</td><td>Vulnerability remediation, secret rotation</td></tr>
+        <tr><td>1&ndash;2</td><td>Observability: dashboards + alerts</td><td>DevOps + Dev 3</td><td>Grafana dashboards, PagerDuty alerts, runbooks</td></tr>
+        <tr><td>3&ndash;4</td><td>Load testing (month-end scenario)</td><td>Perf Engineer</td><td>k6 stress test at 3x normal load</td></tr>
+        <tr><td>5&ndash;6</td><td>UAT with loan officers</td><td>QA + Business Users</td><td>10 loan officers process 50 test applications</td></tr>
+        <tr><td>7&ndash;8</td><td>Bug fixes + polish</td><td>Full Dev Team</td><td>Critical/high bugs from UAT resolved</td></tr>
+        <tr><td>9</td><td>Production readiness review</td><td>Steering Committee</td><td>Formal sign-off checklist</td></tr>
+        <tr><td>10</td><td>Retrospective + handover documentation</td><td>Full Team</td><td>Lessons learned, Phase 2 recommendations</td></tr>
+    </tbody>
+</table>
+
+<h2>S4: Team Composition &amp; Budget</h2>
+
+<h3>Team Structure</h3>
+<table>
+    <thead><tr><th>Role</th><th>Source</th><th>Allocation</th><th>Count</th></tr></thead>
+    <tbody>
+        <tr><td>Tech Lead / Architect</td><td>Provider</td><td>100%</td><td>1 Senior</td></tr>
+        <tr><td>Senior Developer</td><td>Provider</td><td>100%</td><td>2</td></tr>
+        <tr><td>Mid-Level Developer</td><td>Provider</td><td>100%</td><td>1</td></tr>
+        <tr><td>QA / Automation</td><td>Provider</td><td>50% (S1&ndash;S2), 100% (S3)</td><td>1</td></tr>
+        <tr><td>Mainframe SME</td><td>Client</td><td>25% (Week 0 + Sprint 1)</td><td>1</td></tr>
+        <tr><td>DBA</td><td>Client</td><td>50%</td><td>1</td></tr>
+        <tr><td>Product Owner (VP Lending)</td><td>Client</td><td>20% (reviews, decisions)</td><td>1</td></tr>
+    </tbody>
+</table>
+
+<h3>Budget Range (+/-20%)</h3>
+<table>
+    <thead><tr><th>Category</th><th>Estimate</th><th>Notes</th></tr></thead>
+    <tbody>
+        <tr><td>Provider services (4.5 FTE &times; 6 weeks)</td><td>$135,000</td><td>Blended rate</td></tr>
+        <tr><td>AWS infrastructure</td><td>$18,000</td><td>EKS, RDS, MSK, S3, CloudFront</td></tr>
+        <tr><td>Tooling (Grafana Cloud, PagerDuty)</td><td>$4,500</td><td>6-week licenses</td></tr>
+        <tr><td>Credit bureau sandbox fees</td><td>$2,500</td><td>Equifax sandbox API</td></tr>
+        <tr><td>Contingency (15%)</td><td>$24,000</td><td></td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>$184,000</strong></td><td><strong>Range: $147K&ndash;$221K</strong></td></tr>
+    </tbody>
+</table>
+
+<h2>S5: Timeline Visualization</h2>
+
+<div class="mermaid">
+gantt
+    title Acme Corp Loan Origination PoC — 6 Weeks
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %d
+
+    section Pre-Service
+    Kickoff Week 0           :a1, 2026-03-16, 5d
+
+    section Sprint 1
+    Loan Core API            :a2, 2026-03-23, 5d
+    Credit Bureau + Sync     :a3, 2026-03-30, 5d
+
+    section Sprint 2
+    Underwriting + Fraud     :a4, 2026-04-07, 5d
+    Performance + Compliance :a5, 2026-04-14, 5d
+
+    section Sprint 3
+    Security + Observability :a6, 2026-04-21, 5d
+    UAT + Production Ready   :a7, 2026-04-28, 5d
+
+    section Gates
+    Gate 0-1 Readiness       :milestone, m1, 2026-03-20, 0d
+    Gate 1-2 Sprint Review   :milestone, m2, 2026-04-03, 0d
+    Gate 2-3 Go/No-Go        :milestone, m3, 2026-04-17, 0d
+    Production Readiness     :milestone, m4, 2026-05-02, 0d
+</div>
+
+<h2>S6: Gate Criteria</h2>
+
+<h3>Gate 0&gt;1: Readiness to Sprint 1</h3>
+<ul class="gate-checklist">
+    <li>All Blocker prerequisites (P1&ndash;P8) complete or mitigated</li>
+    <li>Kickoff executed with VP Lending sign-off</li>
+    <li>DoD document approved (5s loan processing, audit trail, compliance)</li>
+    <li>Team access verified: AWS, GitHub, Jira, Slack, VPN</li>
+</ul>
+
+<h3>Gate 1&gt;2: Readiness to Sprint 2</h3>
+<ul class="gate-checklist">
+    <li>Sprint 1 deliverables verified (loan API, credit bureau async, Kafka events)</li>
+    <li>Demo successful with VP Lending &mdash; no critical blockers</li>
+    <li>Credit bureau async pattern achieving &lt;2s (vs 4.2s synchronous baseline)</li>
+    <li>Unit test coverage &gt;80% on business rules</li>
+</ul>
+
+<h3>Gate 2&gt;3: Go/No-Go for Stabilization</h3>
+<ul class="gate-checklist">
+    <li>Full loan decision flow working end-to-end in &lt;5s p99</li>
+    <li>Audit trail passing compliance review</li>
+    <li>Performance baseline established and documented</li>
+    <li>Regulatory test suite passing (TILA, BSA/AML)</li>
+    <li>No critical or high severity bugs open</li>
+</ul>
+
+<h3>Gate 3&gt;Production: Production Readiness</h3>
+<ul class="gate-checklist">
+    <li>E2E flow validated in staging with production-like data</li>
+    <li>Load test at 3x normal passed (month-end simulation)</li>
+    <li>Security assessment passed (SAST: 0 critical, DAST: 0 high)</li>
+    <li>Deployment runbook approved with rollback plan tested</li>
+    <li>10 loan officers completed UAT successfully</li>
+    <li>OCC audit trail format validated by compliance</li>
+</ul>
+
+<h2>S7: Risk Register</h2>
+<table>
+    <thead><tr><th>ID</th><th>Description</th><th>Prob.</th><th>Impact</th><th>Delay</th><th>Cost</th><th>Mitigation</th></tr></thead>
+    <tbody>
+        <tr><td>R1</td><td>Mainframe access delayed by IT security review</td><td><span class="badge badge-fail">High</span></td><td><span class="badge badge-fail">High</span></td><td>5&ndash;10d</td><td>$15K</td><td>Pre-submit security questionnaire Week -1; escalate to CTO if blocked Day 2</td></tr>
+        <tr><td>R2</td><td>Credit bureau sandbox rate-limited</td><td><span class="badge badge-warn">Med</span></td><td><span class="badge badge-warn">Med</span></td><td>3&ndash;5d</td><td>$5K</td><td>Cache responses in test; negotiate higher sandbox limits</td></tr>
+        <tr><td>R3</td><td>OCC audit trail requirements change mid-PoC</td><td><span class="badge badge-pass">Low</span></td><td><span class="badge badge-fail">High</span></td><td>5&ndash;7d</td><td>$12K</td><td>Document requirements in Week 0; get compliance sign-off before Sprint 2</td></tr>
+        <tr><td>R4</td><td>PostgreSQL connection pool saturation under load</td><td><span class="badge badge-fail">High</span></td><td><span class="badge badge-warn">Med</span></td><td>2&ndash;3d</td><td>$3K</td><td>Implement PgBouncer in Sprint 1; monitor connections from Day 1</td></tr>
+        <tr><td>R5</td><td>Key stakeholder (VP Lending) unavailable for reviews</td><td><span class="badge badge-warn">Med</span></td><td><span class="badge badge-fail">High</span></td><td>3&ndash;5d</td><td>$8K</td><td>Identify delegate; record all demos; async feedback channel</td></tr>
+        <tr><td>R6</td><td>COBOL business rule translation errors</td><td><span class="badge badge-warn">Med</span></td><td><span class="badge badge-fail">High</span></td><td>5&ndash;10d</td><td>$10K</td><td>Characterization tests on mainframe first; parallel run comparison</td></tr>
+    </tbody>
+</table>
+
+<h2>Validation</h2>
+<ul class="checklist">
+    <li>12 prerequisites with status, deadline, and blocker flag</li>
+    <li>Each sprint has daily task allocation with owner and deliverable</li>
+    <li>Each deliverable has specific, testable acceptance criteria</li>
+    <li>Timeline shows 4 milestones (Gate 0&gt;1, 1&gt;2, 2&gt;3, Production)</li>
+    <li>Gates define measurable go/no-go conditions</li>
+    <li>Team composition shows FTE allocation with role clarity</li>
+    <li>Budget range is +/-20% ($147K&ndash;$221K) with breakdown</li>
+    <li>Risk register has 6 risks with delay/cost estimates and mitigations</li>
+</ul>
+
+<div class="footer">
+    <strong>Autor:</strong> Javier Montano | <strong>Generado por:</strong> sofka-roadmap-poc | <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+</body>
+</html>

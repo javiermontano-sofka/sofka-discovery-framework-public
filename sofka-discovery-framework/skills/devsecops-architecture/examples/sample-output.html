@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSecOps Architecture — Acme Corp</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body><div class="container">
+
+  <h1>DevSecOps Architecture — Acme Corp Banking Modernization</h1>
+  <p><strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Pipeline:</strong> GitHub Actions + ArgoCD + Flagger | <strong>Target:</strong> &lt;45 min commit-to-prod</p>
+
+  <div class="callout">
+    <strong>Executive Summary:</strong> Hardened delivery pipeline for banking platform with 7 automated security gates, SBOM/artifact signing, canary deployment with automated rollback, DORA metrics, and compliance automation aligned with SFC regulatory requirements.
+  </div>
+
+  <h2>S1: CI/CD Pipeline Architecture</h2>
+
+  <h3>6-Stage Pipeline</h3>
+  <div class="mermaid">
+    flowchart LR
+      A[Commit] --> B[Build]
+      B --> C[Test]
+      C --> D[Security]
+      D --> E[Staging]
+      E --> F[Production]
+  </div>
+
+  <table>
+    <tr><th>Stage</th><th>Duration</th><th>Tools</th><th>Gate</th></tr>
+    <tr><td>1. Commit</td><td>~3 min</td><td>GitHub Actions</td><td>Lint, unit tests (&gt;85% coverage), secrets scan</td></tr>
+    <tr><td>2. Build</td><td>~4 min</td><td>Docker, ECR</td><td>Image scan, SBOM, artifact signing</td></tr>
+    <tr><td>3. Test</td><td>~12 min</td><td>JUnit, Playwright, k6</td><td>Integration, E2E, contract, performance</td></tr>
+    <tr><td>4. Security</td><td>~6 min</td><td>Semgrep, Snyk, Checkov</td><td>SAST, SCA, IaC -- block critical/high</td></tr>
+    <tr><td>5. Staging</td><td>~8 min</td><td>ArgoCD, OWASP ZAP</td><td>Deploy, DAST on banking endpoints</td></tr>
+    <tr><td>6. Production</td><td>~12 min</td><td>ArgoCD, Flagger</td><td>Canary 1% &rarr; 5% &rarr; 25% &rarr; 100%</td></tr>
+  </table>
+
+  <h2>S2: Shift-Left Security</h2>
+
+  <table>
+    <tr><th>Tool</th><th>Type</th><th>Stage</th><th>Gate Policy</th></tr>
+    <tr><td>Semgrep</td><td>SAST</td><td>Commit</td><td><span class="badge badge-red">Block</span> critical/high (SQLi, auth bypass)</td></tr>
+    <tr><td>Snyk</td><td>SCA</td><td>Build</td><td><span class="badge badge-red">Block</span> CVSS &ge; 9.0</td></tr>
+    <tr><td>Trivy</td><td>Image Scan</td><td>Build</td><td><span class="badge badge-red">Block</span> critical in base image</td></tr>
+    <tr><td>Checkov</td><td>IaC Scan</td><td>Build</td><td><span class="badge badge-red">Block</span> non-compliant Terraform</td></tr>
+    <tr><td>GitGuardian</td><td>Secrets</td><td>Pre-commit</td><td><span class="badge badge-red">Block</span> + auto-rotate</td></tr>
+    <tr><td>OWASP ZAP</td><td>DAST</td><td>Staging</td><td><span class="badge badge-yellow">Warn</span> medium, <span class="badge badge-red">Block</span> high</td></tr>
+    <tr><td>FOSSA</td><td>License</td><td>Build</td><td><span class="badge badge-red">Block</span> GPL/AGPL in proprietary</td></tr>
+  </table>
+
+  <h3>Banking-Specific Rules</h3>
+  <table>
+    <tr><th>Rule ID</th><th>Description</th><th>Severity</th></tr>
+    <tr><td>acme-banking-001</td><td>Hardcoded account numbers in source</td><td><span class="badge badge-red">Critical</span></td></tr>
+    <tr><td>acme-banking-002</td><td>Unencrypted PII in log statements</td><td><span class="badge badge-red">High</span></td></tr>
+    <tr><td>acme-banking-003</td><td>Missing rate limiting on transaction endpoints</td><td><span class="badge badge-yellow">Medium</span></td></tr>
+    <tr><td>acme-banking-004</td><td>Direct DB query without parameterization</td><td><span class="badge badge-red">Critical</span></td></tr>
+  </table>
+
+  <h2>S3: Supply Chain Security</h2>
+
+  <h3>Artifact Signing</h3>
+  <div class="mermaid">
+    flowchart TD
+      A[Developer Commit] --> B[Pre-Commit: Secrets Scan]
+      B --> C[Build: Image + SBOM]
+      C --> D[Sign: cosign + KMS]
+      D --> E[Registry: ECR Immutable]
+      E --> F[Deploy: ArgoCD]
+      F --> G{Verify Signature}
+      G -->|Valid| H[Deploy to Cluster]
+      G -->|Invalid| I[Reject + Alert Security]
+  </div>
+
+  <table>
+    <tr><th>Artifact</th><th>Tool</th><th>Key Storage</th><th>Verification Point</th></tr>
+    <tr><td>Container images</td><td>cosign (sigstore)</td><td>AWS KMS (HSM-backed)</td><td>ArgoCD admission controller</td></tr>
+    <tr><td>Helm charts</td><td>cosign</td><td>AWS KMS</td><td>ArgoCD pre-sync hook</td></tr>
+    <tr><td>SBOM attestation</td><td>cosign (in-toto)</td><td>AWS KMS</td><td>Compliance dashboard</td></tr>
+    <tr><td>Migration scripts</td><td>GPG signing</td><td>Vault</td><td>Pre-migration validator</td></tr>
+  </table>
+
+  <h2>S4: Release Management</h2>
+
+  <h3>Canary Deployment (Banking-Hardened)</h3>
+  <table>
+    <tr><th>Parameter</th><th>Value</th><th>Rationale</th></tr>
+    <tr><td>Initial weight</td><td>1%</td><td>Lower than standard (banking risk)</td></tr>
+    <tr><td>Step interval</td><td>5 minutes</td><td>Longer observation for financial txns</td></tr>
+    <tr><td>Success: error rate</td><td>&lt; 0.5%</td><td>Stricter than standard (&lt; 1%)</td></tr>
+    <tr><td>Success: P99 latency</td><td>&lt; 300ms</td><td>Transaction processing SLA</td></tr>
+    <tr><td>Guardrail: 5xx on /api/transactions</td><td>0 allowed</td><td>Zero tolerance on critical endpoint</td></tr>
+    <tr><td>Rollback time</td><td>&lt; 30 seconds</td><td>Automatic via Flagger</td></tr>
+  </table>
+
+  <h2>S5: Pipeline Observability (DORA Metrics)</h2>
+
+  <table>
+    <tr><th>Metric</th><th>Current</th><th>Target (6 months)</th><th>Elite</th></tr>
+    <tr><td>Deployment Frequency</td><td>1x/week</td><td>3x/week</td><td>Daily</td></tr>
+    <tr><td>Lead Time for Changes</td><td>5 days</td><td>1 day</td><td>&lt; 1 hour</td></tr>
+    <tr><td>Change Failure Rate</td><td><span class="badge badge-yellow">18%</span></td><td>&lt; 10%</td><td>&lt; 5%</td></tr>
+    <tr><td>MTTR</td><td><span class="badge badge-yellow">6 hours</span></td><td>&lt; 1 hour</td><td>&lt; 15 min</td></tr>
+  </table>
+
+  <h2>S6: Compliance Automation</h2>
+
+  <h3>SFC Regulatory Alignment</h3>
+  <table>
+    <tr><th>SFC Requirement</th><th>Control</th><th>Evidence</th></tr>
+    <tr><td>Circular 007: Change management</td><td>All changes via pipeline; no manual prod access</td><td>Deployment audit log (immutable)</td></tr>
+    <tr><td>Circular 042: Information security</td><td>SAST + SCA + DAST on every release</td><td>Scan reports per release (S3)</td></tr>
+    <tr><td>Circular 008: Operational risk</td><td>Canary deployment + automatic rollback</td><td>Rollback logs + incident timeline</td></tr>
+    <tr><td>Data sovereignty</td><td>All builds in Colombia region</td><td>Cloud resource inventory</td></tr>
+  </table>
+
+  <h3>Policy-as-Code</h3>
+  <table>
+    <tr><th>Policy</th><th>Enforcement</th><th>Action</th></tr>
+    <tr><td>Approved base image</td><td>Admission controller</td><td>Reject deployment</td></tr>
+    <tr><td>Resource limits on all pods</td><td>Admission controller</td><td>Reject pod</td></tr>
+    <tr><td>No "latest" tag in production</td><td>Admission controller</td><td>Reject deployment</td></tr>
+    <tr><td>Secrets from Vault only</td><td>Admission controller</td><td>Reject pod</td></tr>
+  </table>
+
+  <h2>S7: Risk Matrix</h2>
+
+  <table>
+    <tr><th>Risk</th><th>Examples</th><th>Deployment</th><th>Approval</th><th>Gates</th></tr>
+    <tr><td><span class="badge badge-green">Low</span></td><td>Docs, UI copy, flag toggle</td><td>Auto-deploy, any time</td><td>Automated</td><td>Commit only</td></tr>
+    <tr><td><span class="badge badge-yellow">Medium</span></td><td>Features, deps, config</td><td>Business hours, canary</td><td>Engineer + tech lead</td><td>Commit + build + test + security</td></tr>
+    <tr><td><span class="badge badge-red">High</span></td><td>Auth, transactions, DB, encryption</td><td>Canary (1% &rarr; 100%), extended monitoring</td><td>Security + architect + CAB</td><td>All stages + pen test + CAB</td></tr>
+  </table>
+
+  <h2>Implementation Roadmap</h2>
+  <table>
+    <tr><th>Phase</th><th>Timeline</th><th>Deliverables</th><th>Effort</th></tr>
+    <tr><td>Phase 1: Core Pipeline</td><td>Weeks 1-4</td><td>CI/CD stages, SAST, SCA, image scanning</td><td>2 engineers</td></tr>
+    <tr><td>Phase 2: Supply Chain</td><td>Weeks 5-8</td><td>SBOM, artifact signing, dependency governance</td><td>1 engineer</td></tr>
+    <tr><td>Phase 3: Canary + DORA</td><td>Weeks 9-12</td><td>Flagger canary, DORA dashboard</td><td>2 engineers</td></tr>
+    <tr><td>Phase 4: Compliance</td><td>Weeks 13-16</td><td>OPA policies, audit trail, SFC evidence</td><td>1 eng + compliance</td></tr>
+  </table>
+
+  <footer><p><strong>Autor:</strong> Javier Montano — Sofka Discovery Framework v6.0</p></footer>
+</div></body></html>

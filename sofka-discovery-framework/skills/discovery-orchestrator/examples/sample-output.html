@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>00 Discovery Plan — Acme Corp Banking Modernization</title>
+<style>
+:root{--primary:#1a365d;--accent:#e53e3e;--bg:#f7fafc;--text:#2d3748}
+body{font-family:'Inter',sans-serif;max-width:1100px;margin:0 auto;padding:2rem;background:var(--bg);color:var(--text);line-height:1.6}
+h1{color:var(--primary);border-bottom:3px solid var(--accent);padding-bottom:.5rem}
+h2{color:var(--primary);margin-top:2rem}
+h3{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:1rem 0}
+th{background:var(--primary);color:#fff;padding:.75rem;text-align:left}
+td{padding:.75rem;border:1px solid #e2e8f0}
+tr:nth-child(even){background:#edf2f7}
+pre{background:#1a365d;color:#e2e8f0;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem}
+.callout{background:#ebf8ff;border-left:4px solid var(--primary);padding:1rem;margin:1rem 0;border-radius:0 4px 4px 0}
+.status-pass{color:#38a169;font-weight:600}
+.status-pending{color:#d69e2e;font-weight:600}
+.status-fail{color:#e53e3e;font-weight:600}
+.badge{display:inline-block;padding:.25rem .75rem;border-radius:4px;font-size:.85rem;font-weight:600}
+.badge-active{background:#c6f6d5;color:#276749}
+.badge-pending{background:#fefcbf;color:#975a16}
+.meta{color:#718096;font-size:.9rem}
+</style>
+</head>
+<body>
+
+<h1>00 Discovery Plan: Acme Corp Banking Modernization</h1>
+<p class="meta"><strong>Generated:</strong> 12 de marzo de 2026 &nbsp;|&nbsp; <strong>Variant:</strong> Full Pipeline &nbsp;|&nbsp; <strong>Estimated:</strong> 4-6 weeks</p>
+
+<h2>Expert Committee Declaration</h2>
+
+<pre>
++==============================================================+
+|  DISCOVERY COMMITTEE -- Acme Corp Banking Modernization       |
++==============================================================+
+|                                                              |
+|  CONDUCTOR (Impartial Orchestrator)                          |
+|  +-- Sequences phases, enforces gates, manages contracts     |
+|  +-- Does NOT analyze -- only coordinates                    |
+|  +-- Breaks ties via evidence, escalates judgment to user    |
+|                                                              |
+|  EXPERT PANEL (7 members -- odd for consensus)               |
+|  +-- Technical Architect                                     |
+|  |   +-- System design, patterns, quality attributes, C4    |
+|  +-- Domain Analyst (SME: Banking/Financial Services)        |
+|  |   +-- PCI-DSS, SOX, Basel III, open banking, AML/KYC     |
+|  +-- Full-Stack Generalist                                   |
+|  |   +-- Java/Spring monolith feasibility, migration paths   |
+|  +-- Delivery Manager                                        |
+|  |   +-- 24-dev team coordination, phased rollout planning   |
+|  +-- Quality Guardian                                        |
+|  |   +-- Acceptance criteria, deliverable validation         |
+|  +-- Data Strategist                                         |
+|  |   +-- Core banking data model, transaction integrity      |
+|  +-- Change Catalyst                                         |
+|      +-- Branch operations readiness, teller retraining      |
+|                                                              |
+|  CROSS-CUTTING GOVERNANCE (active all phases)                |
+|  +-- Project &amp; Program Management (PMO backbone)             |
+|  |   +-- Gate mgmt, proposal QA, dependency control          |
+|  +-- Risk &amp; Controlling Dynamics (anxious controller)        |
+|      +-- Risk register, pre-mortem, assumption stress-test   |
+|                                                              |
++==============================================================+
+</pre>
+
+<div class="callout">
+<strong>Industry Lens Activated:</strong> Banking / Financial Services<br>
+Regulatory overlay: PCI-DSS, SOX compliance, Basel III capital requirements<br>
+Domain patterns: transaction integrity, audit trails, real-time fraud detection<br>
+Competitive context: neobank pressure, open banking (PSD2), API-first challengers
+</div>
+
+<h2>Engagement Context</h2>
+
+<table>
+<tr><th>Attribute</th><th>Value</th></tr>
+<tr><td><strong>Client</strong></td><td>Acme Corp</td></tr>
+<tr><td><strong>System</strong></td><td>Core Banking System (CBS) — loan origination, account management, transaction processing</td></tr>
+<tr><td><strong>Industry</strong></td><td>Banking / Financial Services</td></tr>
+<tr><td><strong>Tech Stack</strong></td><td>Java 11, Spring Boot 2.7, Oracle 19c, IBM MQ, monolithic architecture</td></tr>
+<tr><td><strong>Codebase</strong></td><td><code>./acme-cbs/</code> — 340K LOC, 187 modules, 24 developers</td></tr>
+<tr><td><strong>Stakeholders</strong></td><td>CTO (sponsor), VP Engineering, Head of Risk, Head of Operations</td></tr>
+<tr><td><strong>Engagement Trigger</strong></td><td>Regulatory pressure + neobank competition; board mandate to modernize within 18 months</td></tr>
+</table>
+
+<h2>Phase Schedule</h2>
+
+<table>
+<tr><th>Phase</th><th>Name</th><th>Lead Expert</th><th>Status</th><th>Est. Duration</th><th>Inputs Required</th></tr>
+<tr><td>0</td><td>Stakeholder Mapping</td><td>Change Catalyst</td><td><span class="badge badge-pending">PENDING</span></td><td>3-4 days</td><td>Org chart, project roster</td></tr>
+<tr><td>1</td><td>AS-IS Analysis</td><td>Technical Architect</td><td><span class="badge badge-pending">PENDING</span></td><td>5-7 days</td><td>Source code, build config</td></tr>
+<tr><td>2</td><td>Flow Mapping</td><td>Domain Analyst</td><td><span class="badge badge-pending">PENDING</span></td><td>4-6 days</td><td>AS-IS output</td></tr>
+<tr><td>3</td><td>Scenario Analysis</td><td>Full Panel (7 experts)</td><td><span class="badge badge-pending">PENDING</span></td><td>3-5 days</td><td>Flow output</td></tr>
+<tr><td>G1</td><td>Scenario Gate</td><td>Conductor</td><td><span class="badge badge-pending">PENDING</span></td><td>1-3 days</td><td>Steering sign-off</td></tr>
+<tr><td>3b</td><td>Technical Feasibility</td><td>Quality Guardian</td><td><span class="badge badge-pending">PENDING</span></td><td>2-3 days</td><td>Approved scenario</td></tr>
+<tr><td>3b</td><td>Software Viability</td><td>Technical Architect</td><td><span class="badge badge-pending">PENDING</span></td><td>1-2 days</td><td>Tech stack claims</td></tr>
+<tr><td>4</td><td>Solution Roadmap</td><td>Delivery Manager</td><td><span class="badge badge-pending">PENDING</span></td><td>4-6 days</td><td>Feasibility verdict</td></tr>
+<tr><td>4b</td><td>Commercial Model</td><td>Delivery Manager</td><td><span class="badge badge-pending">PENDING</span></td><td>1-2 days</td><td>Cost drivers</td></tr>
+<tr><td>G2</td><td>Budget Gate</td><td>Conductor</td><td><span class="badge badge-pending">PENDING</span></td><td>1-3 days</td><td>Sponsor sign-off</td></tr>
+<tr><td>5a</td><td>Functional Spec</td><td>Technical Architect</td><td><span class="badge badge-pending">PENDING</span></td><td>3-5 days</td><td>Approved roadmap</td></tr>
+<tr><td>5b</td><td>Executive Pitch</td><td>Delivery Manager</td><td><span class="badge badge-pending">PENDING</span></td><td>2-3 days</td><td>Approved roadmap</td></tr>
+<tr><td>QA</td><td>Proposal QA + Risk</td><td>Conductor</td><td><span class="badge badge-pending">PENDING</span></td><td>1-2 days</td><td>All deliverables</td></tr>
+<tr><td>G3</td><td>Final Gate</td><td>Conductor</td><td><span class="badge badge-pending">PENDING</span></td><td>1-2 days</td><td>Client sign-off</td></tr>
+<tr><td>6</td><td>Handover Operacional</td><td>Delivery Manager</td><td><span class="badge badge-pending">PENDING</span></td><td>2-3 days</td><td>G3 approved</td></tr>
+</table>
+
+<p><strong>Total estimated duration:</strong> 32-52 working days (including gate cycles)</p>
+
+<h2>Input Registry</h2>
+
+<table>
+<tr><th>Input</th><th>Source</th><th>Status</th><th>Owner</th><th>Required By</th></tr>
+<tr><td>Source code access</td><td>Client IT</td><td class="status-pass">&#x2705; Received</td><td>Maria Lopez (VP Eng)</td><td>Phase 1</td></tr>
+<tr><td>Build configuration</td><td>Client IT</td><td class="status-pass">&#x2705; Received</td><td>Maria Lopez (VP Eng)</td><td>Phase 1</td></tr>
+<tr><td>Deployment config</td><td>Client DevOps</td><td class="status-pending">&#x2B1C; Pending</td><td>Carlos Ruiz (DevOps Lead)</td><td>Phase 1</td></tr>
+<tr><td>API specifications</td><td>Client IT</td><td class="status-pending">&#x2B1C; Pending</td><td>Maria Lopez (VP Eng)</td><td>Phase 1</td></tr>
+<tr><td>Git history (24mo)</td><td>Client IT</td><td class="status-pending">&#x2B1C; Pending</td><td>Maria Lopez (VP Eng)</td><td>Phase 1</td></tr>
+<tr><td>Stakeholder list</td><td>Client HR/PMO</td><td class="status-pending">&#x2B1C; Pending</td><td>Ana Torres (CTO Office)</td><td>Phase 0</td></tr>
+<tr><td>Industry context</td><td>SME</td><td class="status-pass">&#x2705; Auto-activated</td><td>Domain Analyst</td><td>Phase 0</td></tr>
+<tr><td>Budget constraints</td><td>Client Finance</td><td class="status-pending">&#x2B1C; Pending</td><td>CFO Office</td><td>Phase 4</td></tr>
+<tr><td>Team rates</td><td>Client HR</td><td class="status-pending">&#x2B1C; Pending</td><td>HR Director</td><td>Phase 4</td></tr>
+<tr><td>Decision-maker type</td><td>Client</td><td class="status-pending">&#x2B1C; Pending</td><td>Ana Torres (CTO Office)</td><td>Phase 5b</td></tr>
+</table>
+
+<div class="callout">
+<strong>Input readiness:</strong> 3/10 confirmed — sufficient for Phase 1 initialization (source code + build config available).
+</div>
+
+<h2>Minimum Viable Input Validation</h2>
+
+<table>
+<tr><th>Input</th><th>Required For</th><th>Status</th><th>Action</th></tr>
+<tr><td>Source code</td><td>Phase 1</td><td class="status-pass">PASS</td><td>Repository access confirmed at <code>./acme-cbs/</code></td></tr>
+<tr><td>Build config</td><td>Phase 1</td><td class="status-pass">PASS</td><td>Maven <code>pom.xml</code> structure identified, 187 modules</td></tr>
+<tr><td>Deployment config</td><td>Phase 1</td><td class="status-pending">WORKAROUND</td><td>Will infer from Dockerfile + CI scripts. Logged as Assumption A-001</td></tr>
+<tr><td>Stakeholder list</td><td>Phase 0</td><td class="status-pending">WORKAROUND</td><td>Partial list from CTO; will supplement with git blame. Logged as Assumption A-002</td></tr>
+<tr><td>Industry sector</td><td>All phases</td><td class="status-pass">PASS</td><td>Banking / Financial Services — SME lens activated</td></tr>
+</table>
+
+<div class="callout">
+<strong>Verdict: PROCEED</strong> — minimum viable inputs satisfied. Source code available. Two workarounds logged as assumptions.
+</div>
+
+<h2>Assumptions Log</h2>
+
+<table>
+<tr><th>#</th><th>Assumption</th><th>Phase</th><th>Impact if Wrong</th><th>Validated?</th></tr>
+<tr><td>A-001</td><td>Deployment configuration can be inferred from Dockerfile and CI pipeline scripts in the repository</td><td>Phase 1</td><td>AS-IS analysis may miss deployment topology; infrastructure recommendations could be inaccurate</td><td class="status-pending">No</td></tr>
+<tr><td>A-002</td><td>Stakeholder list from CTO covers key decision-makers; git blame will surface additional technical stakeholders</td><td>Phase 0</td><td>Missing stakeholders could delay gate approvals; risk of rework if key voices emerge late</td><td class="status-pending">No</td></tr>
+<tr><td>A-003</td><td>The 340K LOC monolith can be analyzed as a single system (no subsystem decomposition needed before Phase 2)</td><td>Phase 1</td><td>If complexity exceeds threshold at Phase 1 exit, pipeline pauses for decomposition (+5-7 days)</td><td class="status-pending">No</td></tr>
+</table>
+
+<h2>Risk Register (Pipeline-Level)</h2>
+
+<table>
+<tr><th>#</th><th>Risk</th><th>Probability</th><th>Impact</th><th>Mitigation</th></tr>
+<tr><td>R-001</td><td>Core banking system has undocumented integrations with third-party payment processors — flow mapping incomplete</td><td>Medium</td><td>High</td><td>Phase 1 AS-IS to explicitly catalog all integration points; flag unknowns for stakeholder clarification</td></tr>
+<tr><td>R-002</td><td>Regulatory constraints (PCI-DSS, SOX) limit modernization options — scenarios in Phase 3 may be over-constrained</td><td>High</td><td>Medium</td><td>Domain Analyst to provide regulatory overlay early; feasibility check in Phase 3b to validate compliance paths</td></tr>
+<tr><td>R-003</td><td>24-developer team has tribal knowledge not captured in documentation — AS-IS analysis misses critical context</td><td>Medium</td><td>High</td><td>Workshop in Phase 0 to capture tacit knowledge; stakeholder interviews to supplement code analysis</td></tr>
+</table>
+
+<h2>Industry Lens: Banking / Financial Services</h2>
+
+<h3>Regulatory Context</h3>
+<table>
+<tr><th>Regulation</th><th>Scope</th></tr>
+<tr><td><strong>PCI-DSS v4.0</strong></td><td>Payment card data handling, encryption at rest and in transit</td></tr>
+<tr><td><strong>SOX compliance</strong></td><td>Audit trails, separation of duties, change management controls</td></tr>
+<tr><td><strong>Basel III</strong></td><td>Capital adequacy, liquidity ratios (impacts data architecture decisions)</td></tr>
+<tr><td><strong>AML/KYC</strong></td><td>Anti-money laundering, know-your-customer verification flows</td></tr>
+</table>
+
+<h3>Domain-Specific Evaluation Criteria</h3>
+<table>
+<tr><th>Criterion</th><th>Requirement</th></tr>
+<tr><td>Transaction integrity</td><td>ACID compliance, idempotency, reconciliation</td></tr>
+<tr><td>Audit trail completeness</td><td>Every state change must be traceable</td></tr>
+<tr><td>Availability SLAs</td><td>99.99% for core transaction processing</td></tr>
+<tr><td>Data residency</td><td>Geographic constraints on data storage and processing</td></tr>
+</table>
+
+<h3>Competitive Benchmarks</h3>
+<table>
+<tr><th>Benchmark</th><th>Target</th></tr>
+<tr><td>Neobank response times</td><td>&lt;200ms for account operations</td></tr>
+<tr><td>Open banking API compliance</td><td>PSD2 / Open Banking Standard</td></tr>
+<tr><td>Mobile-first</td><td>70%+ of retail banking interactions via mobile</td></tr>
+</table>
+
+<h2>Pipeline Status Report</h2>
+
+<pre>
++==============================================================+
+|  PIPELINE STATUS -- Acme Corp Banking Modernization           |
++==============================================================+
+|  Phase -1 of 6: INITIALIZATION COMPLETE                      |
+|  Acceptance Criteria: 4/4 passed                             |
+|    [PASS] Discovery plan generated with input registry        |
+|    [PASS] Expert committee declared and presented             |
+|    [PASS] Industry SME lens activated (Banking)               |
+|    [PASS] Minimum viable inputs validated                     |
+|  Active Experts: Conductor, Change Catalyst                  |
+|  Assumptions Made: 3 (see assumptions log)                   |
+|  Open Risks: 3                                               |
+|  Next Phase: Phase 0 -- Stakeholder Mapping                  |
+|    Lead: Change Catalyst                                     |
+|    Supporting: Domain Analyst, Delivery Manager              |
+|  Next Gate: G1 -- Scenario Approval (~week 3-4)              |
+|  Estimated Remaining: 32-52 working days                     |
+|  Blockers: None                                              |
++==============================================================+
+</pre>
+
+<h2>Next Steps</h2>
+
+<ol>
+<li><strong>Immediate:</strong> Request missing inputs (deployment config, API specs, git history, stakeholder list)</li>
+<li><strong>Phase 0 Start:</strong> Change Catalyst to begin stakeholder mapping with available org context</li>
+<li><strong>Parallel:</strong> Domain Analyst to prepare industry brief for team onboarding</li>
+</ol>
+
+<h2>Deliverable Manifest (Planned)</h2>
+
+<table>
+<tr><th>Phase</th><th>File</th><th>Status</th></tr>
+<tr><td>Plan</td><td><code>00_Discovery_Plan.md</code></td><td class="status-pass">Generated (this document)</td></tr>
+<tr><td>0</td><td><code>01_Stakeholder_Map.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>1</td><td><code>02_Brief_Tecnico_ASIS.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>1</td><td><code>03_Analisis_AS-IS.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>2</td><td><code>04_Mapeo_Flujos.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>3</td><td><code>05_Escenarios_ToT.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>4</td><td><code>06_Solution_Roadmap.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>5a</td><td><code>07_Especificacion_Funcional.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>5b</td><td><code>08_Pitch_Ejecutivo.html</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>QA</td><td><code>P-01_Program_Governance.md</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>QA</td><td><code>P-02_Risk_Controlling.md</code></td><td class="status-pending">Pending</td></tr>
+<tr><td>6</td><td><code>09_Handover_Operaciones.html</code></td><td class="status-pending">Pending</td></tr>
+</table>
+
+<hr>
+<p class="meta"><strong>Autor:</strong> Javier Montano &nbsp;|&nbsp; <strong>Generado por:</strong> sofka-discovery-orchestrator v6.0</p>
+
+</body>
+</html>

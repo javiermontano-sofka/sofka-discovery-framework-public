@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Quality Framework — Acme Corp</title>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --success: #38a169; --warning: #d69e2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:hover { background: #edf2f7; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-red { background: #fed7d7; color: #9b2c2c; }
+    .callout { padding: 1rem; border-left: 4px solid var(--accent); background: #fff5f5; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .mermaid { background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 1rem 0; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); color: #718096; font-size: 0.875rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body><div class="container">
+
+  <h1>Data Quality Framework — Acme Corp Banking Modernization</h1>
+  <p><strong>Fecha:</strong> 12 de marzo de 2026 | <strong>Dominio:</strong> Core Banking (accounts, transactions, loans, payments)</p>
+
+  <h2>S1: Data Profiling &amp; Baseline</h2>
+
+  <h3>Critical Dataset Profiles</h3>
+  <table>
+    <tr><th>Dataset</th><th>Rows (30d)</th><th>Columns</th><th>Null Rate</th><th>Duplicate Rate</th><th>Issues</th></tr>
+    <tr><td>core.transactions</td><td>47.2M</td><td>28</td><td>0.3%</td><td>0.001%</td><td>None</td></tr>
+    <tr><td>core.accounts</td><td>2.1M</td><td>42</td><td>1.8%</td><td>0.02%</td><td>phone_secondary: 89% null</td></tr>
+    <tr><td>lending.loans</td><td>340K</td><td>56</td><td>3.2%</td><td>0.00%</td><td>employer_name: low cardinality</td></tr>
+    <tr><td>payments.transfers</td><td>18.6M</td><td>22</td><td>0.1%</td><td>0.003%</td><td>None</td></tr>
+  </table>
+
+  <h3>Profiling Pipeline</h3>
+  <div class="mermaid">
+    flowchart TD
+      A[Raw Data Sources] --> B[Profiling Engine]
+      B --> C{Statistical Analysis}
+      C --> D[Distribution Histograms]
+      C --> E[Null Rate Tracking]
+      C --> F[Cardinality Assessment]
+      C --> G[Referential Integrity]
+      D --> H[Baseline Repository]
+      E --> H
+      F --> H
+      G --> H
+      H --> I[Anomaly Detection Thresholds]
+      H --> J[Trend Dashboard]
+  </div>
+
+  <h2>S2: Validation Rule Engine</h2>
+
+  <h3>Rule Catalog (Top 10)</h3>
+  <table>
+    <tr><th>Rule ID</th><th>Dataset</th><th>Rule</th><th>Severity</th><th>Owner</th></tr>
+    <tr><td>VR-001</td><td>core.transactions</td><td>Amount must be &gt; 0</td><td><span class="badge badge-red">Critical</span></td><td>Core Banking</td></tr>
+    <tr><td>VR-002</td><td>core.transactions</td><td>Currency in ISO 4217</td><td><span class="badge badge-red">Critical</span></td><td>Core Banking</td></tr>
+    <tr><td>VR-003</td><td>core.transactions</td><td>created_at not in future</td><td><span class="badge badge-yellow">Major</span></td><td>Core Banking</td></tr>
+    <tr><td>VR-004</td><td>core.accounts</td><td>Account number: 10 digits</td><td><span class="badge badge-red">Critical</span></td><td>Core Banking</td></tr>
+    <tr><td>VR-005</td><td>core.accounts</td><td>Balance = SUM(transactions)</td><td><span class="badge badge-red">Critical</span></td><td>Core Banking</td></tr>
+    <tr><td>VR-006</td><td>lending.loans</td><td>Interest rate 0.01%-35%</td><td><span class="badge badge-yellow">Major</span></td><td>Lending</td></tr>
+    <tr><td>VR-007</td><td>lending.loans</td><td>Disbursement &lt;= maturity</td><td><span class="badge badge-red">Critical</span></td><td>Lending</td></tr>
+    <tr><td>VR-008</td><td>payments.transfers</td><td>SWIFT code: 8 or 11 chars</td><td><span class="badge badge-red">Critical</span></td><td>Payments</td></tr>
+    <tr><td>VR-009</td><td>payments.transfers</td><td>COP amount &lt;= 50M</td><td><span class="badge badge-yellow">Major</span></td><td>Payments</td></tr>
+    <tr><td>VR-010</td><td>core.accounts</td><td>Email format validation</td><td><span class="badge badge-green">Minor</span></td><td>Customer</td></tr>
+  </table>
+
+  <h3>Layered Validation</h3>
+  <table>
+    <tr><th>Layer</th><th>Tool</th><th>Scope</th><th>Trigger</th></tr>
+    <tr><td>Ingestion</td><td>Great Expectations</td><td>Raw source validation</td><td>Every CDC batch</td></tr>
+    <tr><td>Transformation</td><td>dbt Tests</td><td>Business rule enforcement</td><td>Every dbt run</td></tr>
+    <tr><td>Production</td><td>Soda Core</td><td>Continuous SLA monitoring</td><td>Every 15 minutes</td></tr>
+  </table>
+
+  <h2>S3: Data Contracts</h2>
+
+  <h3>Active Contracts</h3>
+  <table>
+    <tr><th>Contract</th><th>Producer</th><th>Consumer</th><th>Freshness SLA</th><th>Compliance (30d)</th></tr>
+    <tr><td>transaction-ledger-to-risk</td><td>Core Banking</td><td>Risk Analytics</td><td>15 min</td><td><span class="badge badge-green">99.7%</span></td></tr>
+    <tr><td>customer-360-to-marketing</td><td>Customer</td><td>Marketing</td><td>1 hour</td><td><span class="badge badge-yellow">98.2%</span></td></tr>
+    <tr><td>loan-portfolio-to-regulatory</td><td>Lending</td><td>Compliance</td><td>Daily</td><td><span class="badge badge-green">100%</span></td></tr>
+    <tr><td>payment-events-to-fraud</td><td>Payments</td><td>Fraud Detection</td><td>Real-time</td><td><span class="badge badge-green">99.9%</span></td></tr>
+    <tr><td>account-balances-to-treasury</td><td>Core Banking</td><td>Treasury</td><td>5 min</td><td><span class="badge badge-green">99.4%</span></td></tr>
+  </table>
+
+  <h3>Contract Flow</h3>
+  <div class="mermaid">
+    graph LR
+      CB[Core Banking] -->|transactions, 15min| RI[Risk Analytics]
+      CB -->|balances, 5min| TR[Treasury]
+      CU[Customer] -->|customer_360, 1h| MK[Marketing]
+      LE[Lending] -->|loan_portfolio, daily| CO[Compliance]
+      PA[Payments] -->|payment_events, real-time| FD[Fraud Detection]
+  </div>
+
+  <h2>S4: Anomaly Detection</h2>
+
+  <table>
+    <tr><th>Metric</th><th>Method</th><th>Baseline</th><th>Alert Threshold</th></tr>
+    <tr><td>Transaction volume (daily)</td><td>Z-score</td><td>1.57M +/- 180K</td><td>&gt; 3 sigma</td></tr>
+    <tr><td>Average transaction amount</td><td>Rolling IQR</td><td>$342.50</td><td>&gt; 1.5x IQR</td></tr>
+    <tr><td>Null rate on currency_code</td><td>Fixed threshold</td><td>0.0%</td><td>&gt; 0.01%</td></tr>
+    <tr><td>CDC batch latency</td><td>Percentile</td><td>P95 = 45s</td><td>&gt; 120s</td></tr>
+    <tr><td>New account creation rate</td><td>Seasonal decomposition</td><td>STL model</td><td>Residual &gt; 3 sigma</td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>Current false positive rate:</strong> 3.2 alerts/week (within &lt; 5 target). Monthly threshold review based on confirmed true/false positive log.
+  </div>
+
+  <h2>S5: Remediation Workflows</h2>
+
+  <h3>SLA Breach Escalation</h3>
+  <table>
+    <tr><th>Tier</th><th>Datasets</th><th>Response Time</th><th>Escalation Path</th></tr>
+    <tr><td><span class="badge badge-red">Tier 1: Revenue-Critical</span></td><td>transactions, payments, balances</td><td>&lt; 15 min</td><td>Auto-page on-call &rarr; VP Engineering at 30 min</td></tr>
+    <tr><td><span class="badge badge-yellow">Tier 2: Operational</span></td><td>accounts, customers, loans</td><td>&lt; 1 hour</td><td>Alert data eng lead &rarr; CTO at 4h</td></tr>
+    <tr><td><span class="badge badge-green">Tier 3: Analytical</span></td><td>reports, dashboards, ML features</td><td>&lt; 4 hours</td><td>Notify steward &rarr; Governance council at 24h</td></tr>
+  </table>
+
+  <h3>Auto-Remediation Rules</h3>
+  <table>
+    <tr><th>Trigger</th><th>Auto-Fix</th><th>Confidence</th><th>Records/Month</th></tr>
+    <tr><td>Leading/trailing whitespace</td><td>Trim</td><td>100%</td><td>~2,400</td></tr>
+    <tr><td>Currency code lowercase</td><td>Uppercase</td><td>100%</td><td>~180</td></tr>
+    <tr><td>Phone missing country code</td><td>Prepend +57</td><td>95%</td><td>~450</td></tr>
+    <tr><td>Null channel field</td><td>Default "unknown"</td><td>90%</td><td>~1,200</td></tr>
+  </table>
+
+  <h2>S6: SLA Monitoring &amp; Reporting</h2>
+
+  <h3>Quality Scorecard (February 2026)</h3>
+  <table>
+    <tr><th>Domain</th><th>Freshness</th><th>Completeness</th><th>Accuracy</th><th>Consistency</th><th>Composite</th></tr>
+    <tr><td>Core Banking</td><td>99.8%</td><td>99.9%</td><td>99.6%</td><td>99.2%</td><td><strong>99.6%</strong></td></tr>
+    <tr><td>Lending</td><td>99.5%</td><td>98.8%</td><td>99.1%</td><td>98.5%</td><td><strong>98.9%</strong></td></tr>
+    <tr><td>Payments</td><td>99.9%</td><td>99.9%</td><td>99.7%</td><td>99.4%</td><td><strong>99.7%</strong></td></tr>
+    <tr><td>Customer</td><td>98.2%</td><td>97.5%</td><td>98.0%</td><td>96.8%</td><td><span class="badge badge-yellow">97.6%</span></td></tr>
+    <tr><td>Risk &amp; Compliance</td><td>100%</td><td>99.8%</td><td>99.9%</td><td>99.7%</td><td><strong>99.8%</strong></td></tr>
+  </table>
+
+  <h2>Quality Investment ROI</h2>
+  <div class="callout">
+    <p>Estimated annual cost of poor data quality: <strong>$3.8M</strong>. Target 40% reduction in Year 1, saving ~<strong>$1.5M</strong> against implementation cost of <strong>$420K</strong>.</p>
+  </div>
+
+  <table>
+    <tr><th>Phase</th><th>Timeline</th><th>Deliverables</th></tr>
+    <tr><td>Phase 1: Profile &amp; Baseline</td><td>Weeks 1-4</td><td>Profiling for top 20 datasets, baseline repository</td></tr>
+    <tr><td>Phase 2: Validation Engine</td><td>Weeks 5-10</td><td>50 validation rules, GX + dbt integration</td></tr>
+    <tr><td>Phase 3: Data Contracts</td><td>Weeks 11-16</td><td>5 producer-consumer contracts formalized</td></tr>
+    <tr><td>Phase 4: Anomaly Detection</td><td>Weeks 17-22</td><td>Statistical detection for volume, freshness, distribution</td></tr>
+    <tr><td>Phase 5: Remediation &amp; SLAs</td><td>Weeks 23-28</td><td>Quarantine pipeline, auto-fix rules, escalation matrix</td></tr>
+    <tr><td>Phase 6: Monitoring</td><td>Weeks 29-32</td><td>Executive + engineering + compliance dashboards</td></tr>
+  </table>
+
+  <footer><p><strong>Autor:</strong> Javier Montano — Sofka Discovery Framework v6.0</p></footer>
+</div></body></html>

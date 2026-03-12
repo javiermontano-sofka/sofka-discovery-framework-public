@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "The MetodologIA Discovery Framework plugin is active (v6.0). 48 skills, 8 phases (0-6 + 3b feasibility). Output: markdown-first + Mermaid diagrams, A/B variants, smart HITL (piloto-auto default). Use /metodologia-discovery-framework:discovery to start. Cost outputs = drivers and magnitudes only (5% innovation margin), never final prices. Present this as a brief status note."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A-01: Software Architecture Deep — Acme Corp Core Banking Service</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-gold: #f5a623;
+      --brand-light: #f8f9fa;
+      --brand-text: #2d2d2d;
+      --brand-muted: #6c757d;
+      --brand-border: #dee2e6;
+      --brand-success: #28a745;
+      --brand-warning: #ffc107;
+      --brand-danger: #dc3545;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--brand-text);
+      background: var(--brand-light);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      background: var(--brand-primary);
+      color: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+    }
+    header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    header .meta { font-size: 0.9rem; opacity: 0.85; }
+    header .meta span { margin-right: 1.5rem; }
+    h2 {
+      color: var(--brand-primary);
+      border-bottom: 3px solid var(--brand-accent);
+      padding-bottom: 0.5rem;
+      margin: 2rem 0 1rem;
+      font-size: 1.4rem;
+    }
+    h3 { color: var(--brand-primary); margin: 1.5rem 0 0.75rem; font-size: 1.15rem; }
+    h4 { color: var(--brand-accent); margin: 1rem 0 0.5rem; font-size: 1.05rem; }
+    p, li { margin-bottom: 0.5rem; }
+    ul { padding-left: 1.5rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--brand-primary);
+      color: white;
+      text-align: left;
+      padding: 0.75rem;
+    }
+    td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--brand-border);
+    }
+    tr:nth-child(even) { background: #f1f3f5; }
+    .card {
+      background: white;
+      border: 1px solid var(--brand-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .card-title {
+      font-weight: 700;
+      color: var(--brand-primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-accepted { background: #d4edda; color: #155724; }
+    .badge-high { background: #f8d7da; color: #721c24; }
+    .badge-medium { background: #fff3cd; color: #856404; }
+    .debt-item {
+      border-left: 4px solid var(--brand-warning);
+      padding-left: 1rem;
+      margin: 1rem 0;
+    }
+    .phase {
+      background: white;
+      border-left: 4px solid var(--brand-accent);
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .phase-title { font-weight: 700; color: var(--brand-accent); }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--brand-border);
+      font-size: 0.85rem;
+      color: var(--brand-muted);
+      text-align: center;
+    }
+    .consequence-pos::before { content: "(+) "; color: var(--brand-success); font-weight: 700; }
+    .consequence-neg::before { content: "(-) "; color: var(--brand-danger); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>A-01: Software Architecture Deep</h1>
+  <p style="font-size:1.1rem; margin-bottom:0.75rem;">Acme Corp — Core Banking Service</p>
+  <div class="meta">
+    <span>Fecha: 12 de marzo de 2026</span>
+    <span>Variante: Tecnica (full)</span>
+    <span>Autor: Javier Montano</span>
+  </div>
+</header>
+
+<!-- S1: Module View -->
+<h2>S1: Module View</h2>
+
+<h3>Decomposition Strategy</h3>
+<p>Domain-driven decomposition aligned with banking bounded contexts. Five top-level modules, dependency direction strictly inward toward domain core.</p>
+
+<table>
+  <thead>
+    <tr><th>Module</th><th>Responsibility</th><th>Layer</th><th>Owner</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Accounts</strong></td><td>Account lifecycle — creation, closure, status transitions, balance queries</td><td>Domain</td><td>Team Alpha</td></tr>
+    <tr><td><strong>Payments</strong></td><td>Payment processing — transfers, direct debits, standing orders</td><td>Domain</td><td>Team Beta</td></tr>
+    <tr><td><strong>Compliance</strong></td><td>KYC validation, AML screening, regulatory reporting</td><td>Domain</td><td>Team Gamma</td></tr>
+    <tr><td><strong>Gateway</strong></td><td>External integrations — SWIFT, card networks, core ledger</td><td>Infrastructure</td><td>Team Beta</td></tr>
+    <tr><td><strong>API</strong></td><td>REST/gRPC surface, authentication, rate limiting, request routing</td><td>Presentation</td><td>Platform</td></tr>
+  </tbody>
+</table>
+
+<h3>Dependency Violations Detected</h3>
+<ul>
+  <li><strong>Payments -&gt; Gateway circular dependency</strong> via async callback. Resolved by introducing a domain event (<code>PaymentSettled</code>) consumed by Gateway through an event bus.</li>
+  <li><strong>Compliance imports API DTOs</strong> instead of domain types. Scheduled for refactoring in Phase 1.</li>
+</ul>
+
+<!-- S2: Component View -->
+<h2>S2: Component View — Payments Module</h2>
+
+<table>
+  <thead>
+    <tr><th>Component</th><th>Type</th><th>Responsibility</th><th>Interfaces</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>PaymentController</code></td><td>Controller</td><td>Accepts payment requests, validates input shape</td><td><code>POST /payments</code>, <code>GET /payments/{id}</code></td></tr>
+    <tr><td><code>PaymentService</code></td><td>Service</td><td>Orchestrates payment flow</td><td><code>execute(PaymentCommand): PaymentResult</code></td></tr>
+    <tr><td><code>PaymentValidator</code></td><td>Service</td><td>Business rule validation</td><td><code>validate(Payment): ValidationResult</code></td></tr>
+    <tr><td><code>PaymentRepository</code></td><td>Repository</td><td>Persistence — command store</td><td><code>save(PaymentEvent)</code>, <code>findById(PaymentId)</code></td></tr>
+    <tr><td><code>LedgerGateway</code></td><td>Gateway</td><td>Core ledger balance reservations</td><td><code>reserve(Amount)</code>, <code>post(Transaction)</code></td></tr>
+  </tbody>
+</table>
+
+<!-- S3: Design Patterns -->
+<h2>S3: Design Patterns</h2>
+
+<div class="card">
+  <div class="card-title">Hexagonal Architecture (Ports &amp; Adapters)</div>
+  <p><strong>Why chosen:</strong> Core Banking integrates with 4 external systems. Business logic must remain stable regardless of external changes.</p>
+  <ul>
+    <li><strong>Ports (inbound):</strong> PaymentService, AccountService, ComplianceService</li>
+    <li><strong>Ports (outbound):</strong> LedgerPort, NotificationPort, AMLScreeningPort</li>
+    <li><strong>Adapters (inbound):</strong> REST controllers, gRPC handlers, event consumers</li>
+    <li><strong>Adapters (outbound):</strong> SwiftAdapter, CoreLedgerAdapter, EmailAdapter</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">CQRS — Transaction Processing</div>
+  <p><strong>Why chosen:</strong> 50K+ events/day. Reporting queries degrade write performance when sharing the same model.</p>
+  <ul>
+    <li><strong>Command side:</strong> PaymentRepository appends domain events to event store</li>
+    <li><strong>Query side:</strong> PaymentProjection builds read models from events (PostgreSQL materialized views)</li>
+    <li><strong>Sync:</strong> Async projection via Kafka consumer with at-least-once delivery</li>
+  </ul>
+</div>
+
+<h3>Anti-Patterns Detected</h3>
+<table>
+  <thead>
+    <tr><th>Anti-Pattern</th><th>Location</th><th>Consequence</th><th>Remediation</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>God Service</td><td><code>LegacyTransactionService</code> (2,400 LOC)</td><td>Untestable, merge conflicts</td><td>Extract PaymentValidator, FraudScorer, NotificationDispatcher</td></tr>
+    <tr><td>Leaky Abstraction</td><td>ComplianceService imports RestTemplate</td><td>Infrastructure coupling in domain</td><td>Introduce AMLScreeningPort interface</td></tr>
+    <tr><td>Shotgun Surgery</td><td>Adding payment type: 6 files</td><td>High change cost, regression risk</td><td>Strategy pattern for payment type handlers</td></tr>
+  </tbody>
+</table>
+
+<!-- S4: Quality Attributes -->
+<h2>S4: Quality Attribute Scenarios (ATAM)</h2>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Quality Attribute</th><th>Stimulus</th><th>Response</th><th>Measure</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>QA-1</td><td><strong>Performance</strong></td><td>500 concurrent payment requests during peak</td><td>System processes all payments through full flow</td><td>p95 &lt; 250ms; &gt; 800 TPS</td></tr>
+    <tr><td>QA-2</td><td><strong>Modifiability</strong></td><td>New payment type (instant SEPA) requested</td><td>Team adds strategy handler</td><td>&le; 3 modules; &le; 5 days</td></tr>
+    <tr><td>QA-3</td><td><strong>Availability</strong></td><td>Primary DB node fails</td><td>Failover to replica; in-flight txns retry</td><td>Available in 15s; zero loss</td></tr>
+  </tbody>
+</table>
+
+<!-- S5: ADRs -->
+<h2>S5: Architecture Decision Records</h2>
+
+<div class="card">
+  <div class="card-title">ADR-001: Hexagonal Architecture for Core Banking Domain <span class="badge badge-accepted">Accepted</span></div>
+  <p><strong>Context:</strong> 4 external systems with different protocols, SLAs, and change cycles. Business logic must remain stable.</p>
+  <p><strong>Decision:</strong> Adopt Hexagonal Architecture with explicit port interfaces for all external integrations.</p>
+  <ul>
+    <li class="consequence-pos">Domain logic independently testable — unit tests &lt; 2s</li>
+    <li class="consequence-pos">External provider changes require only adapter modifications</li>
+    <li class="consequence-neg">More interfaces and classes than layered approach</li>
+    <li class="consequence-neg">Team requires training on ports &amp; adapters</li>
+  </ul>
+  <p><strong>Alternatives:</strong> Layered Architecture (rejected: coupling to infra changes), Clean Architecture (rejected: heavier ceremony than needed).</p>
+</div>
+
+<div class="card">
+  <div class="card-title">ADR-002: CQRS for Transaction Processing <span class="badge badge-accepted">Accepted</span></div>
+  <p><strong>Context:</strong> 50K+ events/day. Reporting queries degrade write performance on shared model.</p>
+  <p><strong>Decision:</strong> Separate command (event store) and query (materialized views) models for Payments module.</p>
+  <ul>
+    <li class="consequence-pos">Write throughput increased 3x in load testing</li>
+    <li class="consequence-pos">Reporting queries p95 &lt; 100ms</li>
+    <li class="consequence-neg">Eventual consistency: read model lags 200-500ms</li>
+    <li class="consequence-neg">Projection failure requires replay mechanism</li>
+  </ul>
+  <p><strong>Alternatives:</strong> Single model with read replicas (rejected: complex joins), Full Event Sourcing (deferred to Phase 3).</p>
+</div>
+
+<div class="card">
+  <div class="card-title">ADR-003: Kafka for Domain Event Distribution <span class="badge badge-accepted">Accepted</span></div>
+  <p><strong>Context:</strong> Multiple modules react to payment events. Synchronous calls create cascading failure risk.</p>
+  <p><strong>Decision:</strong> Use Kafka as event bus for inter-module domain events with independent consumer groups.</p>
+  <ul>
+    <li class="consequence-pos">Loose coupling — Compliance failure does not block Payments</li>
+    <li class="consequence-pos">Event replay enables rebuilding read models</li>
+    <li class="consequence-neg">Operational overhead: cluster management, partition strategy</li>
+    <li class="consequence-neg">At-least-once delivery requires idempotent consumers</li>
+  </ul>
+  <p><strong>Alternatives:</strong> RabbitMQ (rejected: no event replay), Direct async calls (rejected: no durability).</p>
+</div>
+
+<!-- S6: Debt & Evolution -->
+<h2>S6: Debt &amp; Evolution Plan</h2>
+
+<h3>Debt Inventory</h3>
+
+<div class="debt-item">
+  <strong>D-1: God Service — LegacyTransactionService (2,400 LOC)</strong><br>
+  <strong>Root cause:</strong> Organic growth without refactoring cycles.<br>
+  <strong>Impact:</strong> 3-day changes take 8 days; weekly merge conflicts.<br>
+  <strong>Effort:</strong> 3 sprints &nbsp; <span class="badge badge-high">High risk if unfixed</span>
+</div>
+
+<div class="debt-item">
+  <strong>D-2: Compliance imports API DTOs</strong><br>
+  <strong>Root cause:</strong> Missing port interface; shortcut during initial build.<br>
+  <strong>Impact:</strong> Integration tests required for unit-level logic.<br>
+  <strong>Effort:</strong> 1 sprint &nbsp; <span class="badge badge-medium">Medium risk</span>
+</div>
+
+<div class="debt-item">
+  <strong>D-3: No event replay for CQRS projections</strong><br>
+  <strong>Root cause:</strong> Projection built as MVP without replay consideration.<br>
+  <strong>Impact:</strong> Projection failure requires manual DB rebuild (~4h).<br>
+  <strong>Effort:</strong> 2 sprints &nbsp; <span class="badge badge-high">Regulatory risk</span>
+</div>
+
+<div class="debt-item">
+  <strong>D-4: Hardcoded payment type handlers</strong><br>
+  <strong>Root cause:</strong> No strategy pattern; types added ad-hoc.<br>
+  <strong>Impact:</strong> Adding a payment type touches 6 files.<br>
+  <strong>Effort:</strong> 1 sprint &nbsp; <span class="badge badge-medium">Medium risk</span>
+</div>
+
+<h3>Evolution Strategy</h3>
+
+<div class="phase">
+  <p class="phase-title">Phase 1 — Sprints 1-3</p>
+  <p>Extract services from LegacyTransactionService. Introduce AMLScreeningPort for Compliance. Testing coverage target: 80% domain layer.</p>
+</div>
+
+<div class="phase">
+  <p class="phase-title">Phase 2 — Sprints 4-5</p>
+  <p>Implement Strategy pattern for payment types. Build event replay mechanism for projections. Consumer lag dashboards and projection health checks.</p>
+</div>
+
+<div class="phase">
+  <p class="phase-title">Phase 3 — Sprints 6-8</p>
+  <p>Evaluate Event Sourcing for full audit trail. Align module boundaries with team topology. Architecture fitness functions in CI pipeline.</p>
+</div>
+
+<footer>
+  Generado por sofka-software-architecture v6.0 — Sofka Technologies
+</footer>
+
+</body>
+</html>

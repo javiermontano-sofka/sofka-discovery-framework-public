@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sofka Discovery Framework v6.2.0 — Enterprise Technical Discovery</title>
+  <meta name="description" content="48 Skills, 8 Agentes, 16 Prompts NL-HP y 3 Quality Gates para discovery empresarial orquestado por IA.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#FF7E08',
+        primaryTextColor: '#111110',
+        primaryBorderColor: '#CC6506',
+        lineColor: '#6B6560',
+        secondaryColor: '#FAF8F6',
+        tertiaryColor: '#F4F0EC',
+        fontFamily: 'Inter, system-ui, sans-serif'
+      }
+    });
+  </script>
+  <style>
+    /* ========================================
+       Sofka Design System v4 — CSS Tokens
+       ======================================== */
+    :root {
+      --sofka-orange: #FF7E08;
+      --sofka-orange-light: #FF9E42;
+      --sofka-orange-dark: #CC6506;
+      --sofka-orange-dim: rgba(255,126,8,.10);
+      --sofka-black: #000000;
+      --sofka-white: #FFFFFF;
+      --sofka-light: #EFEAE4;
+      --sofka-dark: #B8A894;
+      --sofka-positive: #FFD700;
+      --sofka-positive-text: #B8860B;
+      --sofka-warning: #D97706;
+      --sofka-critical: #DC2626;
+      --sofka-info: #2563EB;
+      --sofka-gray-50: #FAF8F6;
+      --sofka-gray-100: #F4F0EC;
+      --sofka-gray-200: #E4DED7;
+      --sofka-gray-300: #D1C9BE;
+      --sofka-gray-500: #6B6560;
+      --sofka-gray-700: #333130;
+      --sofka-gray-900: #111110;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+      --font-display: 'Clash Grotesk', 'Inter', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    /* ========================================
+       Reset & Base
+       ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 72px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--sofka-gray-900);
+      background: var(--sofka-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--sofka-orange); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--sofka-orange-dark); }
+    a:focus-visible { outline: 2px solid var(--sofka-orange); outline-offset: 2px; border-radius: 2px; }
+
+    /* ========================================
+       Skip to Content
+       ======================================== */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--sofka-orange);
+      color: var(--sofka-black);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      z-index: 9999;
+      transition: top .2s;
+    }
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    /* ========================================
+       Layout
+       ======================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========================================
+       Hero
+       ======================================== */
+    .hero {
+      background: var(--sofka-black);
+      border-bottom: 8px solid var(--sofka-orange);
+      padding: 64px 0 48px;
+      color: var(--sofka-white);
+    }
+
+    .hero-logo {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--sofka-orange);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--sofka-gray-300);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-subtitle span {
+      color: var(--sofka-orange-light);
+      font-weight: 600;
+    }
+
+    /* ========================================
+       KPI Cards
+       ======================================== */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .kpi-card {
+      background: var(--sofka-gray-900);
+      border: 1px solid var(--sofka-gray-700);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--sofka-orange);
+    }
+
+    .kpi-number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--sofka-orange);
+      line-height: 1;
+    }
+
+    .kpi-label {
+      font-size: 14px;
+      color: var(--sofka-gray-300);
+      margin-top: 8px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ========================================
+       Sticky TOC
+       ======================================== */
+    .toc-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--sofka-white);
+      border-bottom: 1px solid var(--sofka-gray-200);
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .toc-nav::-webkit-scrollbar { height: 3px; }
+    .toc-nav::-webkit-scrollbar-thumb { background: var(--sofka-orange-dim); border-radius: 2px; }
+
+    .toc-list {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 24px;
+    }
+
+    .toc-list a {
+      display: block;
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--sofka-gray-500);
+      white-space: nowrap;
+      transition: color .2s, border-color .2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .toc-list a:hover,
+    .toc-list a:focus-visible {
+      color: var(--sofka-orange);
+      border-bottom-color: var(--sofka-orange);
+    }
+
+    /* ========================================
+       Sections
+       ======================================== */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--sofka-gray-100);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-alt {
+      background: var(--sofka-gray-50);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: var(--sofka-black);
+      color: var(--sofka-orange);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--sofka-gray-900);
+    }
+
+    .section-intro {
+      font-size: 18px;
+      color: var(--sofka-gray-500);
+      max-width: 720px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       Cards
+       ======================================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card-grid-2 {
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+
+    .card {
+      background: var(--sofka-white);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--sofka-gray-100);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--sofka-orange-dim);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--sofka-gray-900);
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--sofka-gray-500);
+      line-height: 1.6;
+    }
+
+    .card-badge {
+      display: inline-block;
+      background: var(--sofka-orange-dim);
+      color: var(--sofka-orange-dark);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+    }
+
+    .card-skills {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--sofka-gray-500);
+      line-height: 1.8;
+    }
+
+    .card-skills code {
+      background: var(--sofka-gray-100);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* Domain color strips */
+    .domain-pipeline   { border-left: 4px solid var(--sofka-orange); }
+    .domain-arch       { border-left: 4px solid var(--sofka-info); }
+    .domain-data       { border-left: 4px solid #7C3AED; }
+    .domain-cloud      { border-left: 4px solid #0891B2; }
+    .domain-eng        { border-left: 4px solid #059669; }
+    .domain-consulting { border-left: 4px solid var(--sofka-positive-text); }
+    .domain-gov        { border-left: 4px solid var(--sofka-critical); }
+    .domain-delivery   { border-left: 4px solid var(--sofka-gray-700); }
+
+    /* ========================================
+       Tables
+       ======================================== */
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 24px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead th {
+      background: var(--sofka-black);
+      color: var(--sofka-white);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    thead th:first-child {
+      border-radius: var(--radius-sm) 0 0 0;
+    }
+
+    thead th:last-child {
+      border-radius: 0 var(--radius-sm) 0 0;
+    }
+
+    tbody td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--sofka-gray-100);
+      vertical-align: top;
+    }
+
+    tbody tr:hover {
+      background: var(--sofka-orange-dim);
+    }
+
+    tbody code {
+      background: var(--sofka-gray-100);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .badge-default {
+      display: inline-block;
+      background: var(--sofka-orange);
+      color: var(--sofka-black);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ========================================
+       Mermaid
+       ======================================== */
+    .mermaid-wrapper {
+      background: var(--sofka-gray-50);
+      border: 1px solid var(--sofka-gray-200);
+      border-radius: var(--radius-md);
+      padding: 32px 16px;
+      margin: 24px 0;
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    .mermaid {
+      display: inline-block;
+    }
+
+    /* ========================================
+       Orchestration Flow
+       ======================================== */
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 20px 24px;
+      padding-left: 0;
+      margin-left: 20px;
+      border-left: 2px solid var(--sofka-gray-200);
+    }
+
+    .flow-step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: -32px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      background: var(--sofka-orange);
+      color: var(--sofka-black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .flow-step:last-child { border-left-color: transparent; }
+
+    .flow-step h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .flow-step p {
+      font-size: 14px;
+      color: var(--sofka-gray-500);
+    }
+
+    /* ========================================
+       Quick Start / Code Blocks
+       ======================================== */
+    .code-block {
+      background: var(--sofka-gray-900);
+      color: #E2E8F0;
+      padding: 20px 24px;
+      border-radius: var(--radius-md);
+      font-family: 'JetBrains Mono', 'SF Mono', monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      line-height: 1.8;
+      margin: 16px 0;
+    }
+
+    .code-block .prompt {
+      color: var(--sofka-orange-light);
+      user-select: none;
+    }
+
+    .code-block .comment {
+      color: var(--sofka-gray-500);
+    }
+
+    /* ========================================
+       Callout boxes
+       ======================================== */
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .callout-info {
+      background: rgba(37,99,235,.06);
+      border-left: 4px solid var(--sofka-info);
+      color: var(--sofka-gray-700);
+    }
+
+    .callout-tip {
+      background: var(--sofka-orange-dim);
+      border-left: 4px solid var(--sofka-orange);
+      color: var(--sofka-gray-700);
+    }
+
+    .callout strong { color: var(--sofka-gray-900); }
+
+    /* ========================================
+       Rubric grid (Section 09)
+       ======================================== */
+    .rubric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .rubric-item {
+      background: var(--sofka-white);
+      border: 1px solid var(--sofka-gray-200);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      font-size: 14px;
+    }
+
+    .rubric-item strong {
+      display: block;
+      font-size: 13px;
+      color: var(--sofka-orange-dark);
+      margin-bottom: 4px;
+    }
+
+    .rubric-item span {
+      color: var(--sofka-gray-500);
+      font-size: 13px;
+    }
+
+    /* ========================================
+       Footer
+       ======================================== */
+    .footer {
+      background: var(--sofka-black);
+      color: var(--sofka-gray-300);
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--sofka-orange);
+      margin-bottom: 16px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--sofka-gray-500);
+    }
+
+    .footer-version {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--sofka-gray-900);
+      border: 1px solid var(--sofka-gray-700);
+      color: var(--sofka-gray-300);
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ========================================
+       Responsive
+       ======================================== */
+    @media (max-width: 768px) {
+      .hero { padding: 40px 0 32px; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .kpi-number { font-size: 36px; }
+      .section { padding: 40px 0; }
+      .card-grid, .card-grid-2 { grid-template-columns: 1fr; }
+      .toc-list a { padding: 10px 12px; font-size: 12px; }
+      .section-number { width: 40px; height: 40px; font-size: 15px; }
+      .flow-steps { padding-left: 24px; }
+      .rubric-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .rubric-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       Print
+       ======================================== */
+    @media print {
+      .toc-nav { display: none; }
+      .skip-link { display: none; }
+      .hero { border-bottom-width: 4px; padding: 32px 0 24px; }
+      .kpi-card:hover, .card:hover { transform: none; }
+      .section { padding: 24px 0; break-inside: avoid; }
+      body { font-size: 12px; }
+      .mermaid-wrapper { break-inside: avoid; }
+      a { color: var(--sofka-gray-900); }
+      a::after { content: " (" attr(href) ")"; font-size: 10px; color: var(--sofka-gray-500); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip to Content -->
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ============================
+       HERO
+       ============================ -->
+  <header class="hero" role="banner">
+    <div class="container">
+      <div class="hero-logo" aria-label="Sofka logo">sofka_</div>
+      <h1>Discovery Framework v6.2.0</h1>
+      <p class="hero-subtitle">
+        <span>48 Skills</span> &middot;
+        <span>8 Agentes</span> &middot;
+        <span>16 Prompts</span> &middot;
+        <span>3 Quality Gates</span>
+      </p>
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid" role="list" aria-label="Cifras clave del framework">
+        <div class="kpi-card" role="listitem">
+          <div class="kpi-number">48</div>
+          <div class="kpi-label">Skills</div>
+        </div>
+        <div class="kpi-card" role="listitem">
+          <div class="kpi-number">8</div>
+          <div class="kpi-label">Agentes</div>
+        </div>
+        <div class="kpi-card" role="listitem">
+          <div class="kpi-number">16</div>
+          <div class="kpi-label">Prompts NL-HP</div>
+        </div>
+        <div class="kpi-card" role="listitem">
+          <div class="kpi-number">10</div>
+          <div class="kpi-label">Entregables</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================
+       STICKY TOC
+       ============================ -->
+  <nav class="toc-nav" aria-label="Tabla de contenidos">
+    <ul class="toc-list" role="list">
+      <li><a href="#que-es">01 Qu&eacute; es</a></li>
+      <li><a href="#arquitectura">02 Pipeline</a></li>
+      <li><a href="#agentes">03 Agentes</a></li>
+      <li><a href="#skills">04 Skills</a></li>
+      <li><a href="#orquestacion">05 Orquestaci&oacute;n</a></li>
+      <li><a href="#prompts">06 Prompts</a></li>
+      <li><a href="#output">07 Output</a></li>
+      <li><a href="#modos">08 Modos</a></li>
+      <li><a href="#excellence">09 Excellence</a></li>
+      <li><a href="#quickstart">10 Quick Start</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================
+       MAIN CONTENT
+       ============================ -->
+  <main id="main">
+
+    <!-- ========================
+         01 — QUE ES
+         ======================== -->
+    <section id="que-es" class="section" aria-labelledby="h-que-es">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">01</span>
+          <h2 class="section-title" id="h-que-es">Qu&eacute; es el Discovery Framework</h2>
+        </div>
+        <p class="section-intro">
+          Un framework de discovery t&eacute;cnico empresarial orquestado por agentes de IA dentro de Claude Code.
+          48 skills especializados trabajan en equipo para producir entregables de calidad consultor&iacute;a en formato
+          <strong>markdown-first</strong>, con diagramas Mermaid, variantes ejecutiva/t&eacute;cnica, y quality gates autom&aacute;ticos.
+        </p>
+        <div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">&#x1F50D;</div>
+            <h3>Discovery Completo</h3>
+            <p>Del stakeholder mapping al handover operacional en un pipeline orquestado de 7 fases + 3 gates.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">&#x1F916;</div>
+            <h3>Dream Team IA</h3>
+            <p>8 agentes especializados que debaten, validan y producen artefactos como un equipo real de consultor&iacute;a.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">&#x1F4C4;</div>
+            <h3>Markdown-First</h3>
+            <p>Output en markdown-excellence con tablas sem&aacute;foro, Mermaid, TL;DR, footnotes y evidence tags.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">&#x1F512;</div>
+            <h3>Quality Gates</h3>
+            <p>3 gates autom&aacute;ticos que validan coherencia, completitud y calidad antes de avanzar de fase.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         02 — ARQUITECTURA
+         ======================== -->
+    <section id="arquitectura" class="section section-alt" aria-labelledby="h-arquitectura">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">02</span>
+          <h2 class="section-title" id="h-arquitectura">Arquitectura del Pipeline</h2>
+        </div>
+        <p class="section-intro">
+          El pipeline avanza en fases secuenciales con gates de calidad. Cada fase produce entregables validados
+          que alimentan la siguiente a trav&eacute;s de contratos de datos.
+        </p>
+
+        <div class="mermaid-wrapper" role="img" aria-label="Diagrama del pipeline de discovery mostrando las fases 0 a 6 con tres quality gates">
+          <pre class="mermaid">
+flowchart LR
+    P0["Phase 0\nStakeholder\nMapping"] --> P1["Phase 1\nAS-IS\nAnalysis"]
+    P1 --> P2["Phase 2\nFlow\nMapping"]
+    P2 --> P3["Phase 3\nScenarios"]
+    P3 --> G1{{"GATE 1"}}
+    G1 --> P3b["Phase 3b\nTech Feasibility\n+ Viability"]
+    P3b --> P4["Phase 4\nRoadmap\n+ Cost Drivers"]
+    P4 --> P4b["Phase 4b\nCommercial\nModel"]
+    P4b --> G2{{"GATE 2"}}
+    G2 --> P5a["Phase 5a\nFunctional\nSpec"]
+    G2 --> P5b["Phase 5b\nExecutive\nPitch"]
+    P5a --> G3{{"GATE 3"}}
+    P5b --> G3
+    G3 --> P6["Phase 6\nHandover\nOperacional"]
+
+    style G1 fill:#FF7E08,stroke:#CC6506,color:#000
+    style G2 fill:#FF7E08,stroke:#CC6506,color:#000
+    style G3 fill:#FF7E08,stroke:#CC6506,color:#000
+          </pre>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Fase</th>
+                <th>Nombre</th>
+                <th>Skills Clave</th>
+                <th>Entregable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>0</strong></td><td>Stakeholder Mapping</td><td><code>stakeholder-mapping</code>, <code>workshop-facilitator</code></td><td>Mapa de stakeholders + matriz de influencia</td></tr>
+              <tr><td><strong>1</strong></td><td>AS-IS Analysis</td><td><code>asis-analysis</code>, <code>dynamic-sme</code></td><td>Diagn&oacute;stico del estado actual</td></tr>
+              <tr><td><strong>2</strong></td><td>Flow Mapping</td><td><code>flow-mapping</code>, <code>mermaid-diagramming</code></td><td>Mapeo de flujos + domain boundaries</td></tr>
+              <tr><td><strong>3</strong></td><td>Scenarios</td><td><code>scenario-analysis</code></td><td>Escenarios de soluci&oacute;n evaluados</td></tr>
+              <tr><td><strong>3b</strong></td><td>Feasibility + Viability</td><td><code>technical-feasibility</code>, <code>software-viability</code></td><td>Validaci&oacute;n t&eacute;cnica + forense de viabilidad</td></tr>
+              <tr><td><strong>4</strong></td><td>Roadmap + Cost</td><td><code>solution-roadmap</code>, <code>cost-estimation</code></td><td>Roadmap + drivers de costo</td></tr>
+              <tr><td><strong>4b</strong></td><td>Commercial Model</td><td><code>commercial-model</code></td><td>Modelo de captura de valor</td></tr>
+              <tr><td><strong>5a</strong></td><td>Functional Spec</td><td><code>functional-spec</code></td><td>Especificaci&oacute;n funcional completa</td></tr>
+              <tr><td><strong>5b</strong></td><td>Executive Pitch</td><td><code>executive-pitch</code></td><td>Pitch ejecutivo listo para presentar</td></tr>
+              <tr><td><strong>6</strong></td><td>Handover</td><td><code>discovery-handover</code></td><td>Paquete de handover operacional</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         03 — AGENTES
+         ======================== -->
+    <section id="agentes" class="section" aria-labelledby="h-agentes">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">03</span>
+          <h2 class="section-title" id="h-agentes">Dream Team de Agentes</h2>
+        </div>
+        <p class="section-intro">
+          8 agentes especializados que funcionan como un equipo real de consultor&iacute;a. Cada uno aporta una perspectiva
+          &uacute;nica y valida el trabajo de los dem&aacute;s.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-badge">Orchestrator</div>
+            <h3>Discovery Conductor</h3>
+            <p>Orquestador imparcial. Secuencia fases, enforce gates, gestiona contratos de datos. <strong>No analiza</strong> &mdash; solo coordina.</p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Architecture</div>
+            <h3>Technical Architect</h3>
+            <p>Dise&ntilde;o de sistemas, evaluaci&oacute;n de patrones, quality attributes y trade-offs de arquitectura. Fases 1&ndash;4.</p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Domain</div>
+            <h3>Domain Analyst</h3>
+            <p>SME por industria: contexto regulatorio, benchmarks competitivos, validaci&oacute;n de negocio. Activa lens seg&uacute;n sector.</p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Engineering</div>
+            <h3>Full-Stack Generalist</h3>
+            <p>Perspectiva de implementaci&oacute;n real. Code-level analysis, infraestructura, DevOps. Detecta planes que no sobreviven la realidad.</p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Delivery</div>
+            <h3>Delivery Manager</h3>
+            <p>Timelines, scope, riesgos, stakeholder comms, presupuesto. Mantiene el pipeline en tiempo y forma.</p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Quality</div>
+            <h3>Quality Guardian</h3>
+            <p>Valida cada entregable contra criterios de aceptaci&oacute;n. Coherencia cross-phase. Nada pasa un gate sin su review.</p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Data</div>
+            <h3>Data Strategist</h3>
+            <p>Arquitectura de datos, gobernanza, migraci&oacute;n, calidad, analytics pipelines. Datos como ciudadano de primera clase.</p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Change</div>
+            <h3>Change Catalyst</h3>
+            <p>Readiness organizacional, adopci&oacute;n, training, gesti&oacute;n de resistencia. El lado humano de la transformaci&oacute;n.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         04 — SKILLS
+         ======================== -->
+    <section id="skills" class="section section-alt" aria-labelledby="h-skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">04</span>
+          <h2 class="section-title" id="h-skills">Ecosistema de 48 Skills</h2>
+        </div>
+        <p class="section-intro">
+          Skills auto-contenidos organizados en 8 dominios. Cada skill produce artefactos espec&iacute;ficos,
+          tiene criterios de aceptaci&oacute;n, y se conecta con el pipeline v&iacute;a contratos de datos.
+        </p>
+
+        <div class="card-grid card-grid-2">
+          <div class="card domain-pipeline">
+            <div class="card-badge">16 skills</div>
+            <h3>Discovery Pipeline</h3>
+            <p>N&uacute;cleo del framework: desde la orquestaci&oacute;n hasta el handover.</p>
+            <div class="card-skills">
+              <code>discovery-orchestrator</code> <code>mermaid-diagramming</code> <code>stakeholder-mapping</code>
+              <code>workshop-facilitator</code> <code>asis-analysis</code> <code>dynamic-sme</code>
+              <code>flow-mapping</code> <code>scenario-analysis</code> <code>technical-feasibility</code>
+              <code>software-viability</code> <code>solution-roadmap</code> <code>cost-estimation</code>
+              <code>commercial-model</code> <code>functional-spec</code> <code>executive-pitch</code>
+              <code>discovery-handover</code>
+            </div>
+          </div>
+
+          <div class="card domain-arch">
+            <div class="card-badge">8 skills</div>
+            <h3>Architecture Design</h3>
+            <p>Dise&ntilde;o de arquitectura a todos los niveles: software, enterprise, infra, DevSecOps.</p>
+            <div class="card-skills">
+              <code>software-architecture</code> <code>architecture-tobe</code> <code>enterprise-architecture</code>
+              <code>solutions-architecture</code> <code>infrastructure-architecture</code>
+              <code>devsecops-architecture</code> <code>design-system</code> <code>functional-toolbelt</code>
+            </div>
+          </div>
+
+          <div class="card domain-data">
+            <div class="card-badge">7 skills</div>
+            <h3>Data Strategy</h3>
+            <p>Arquitectura de datos, BI, analytics, gobernanza y calidad.</p>
+            <div class="card-skills">
+              <code>data-science-architecture</code> <code>bi-architecture</code> <code>data-engineering</code>
+              <code>database-architecture</code> <code>data-governance</code> <code>data-quality</code>
+              <code>analytics-engineering</code>
+            </div>
+          </div>
+
+          <div class="card domain-cloud">
+            <div class="card-badge">4 skills</div>
+            <h3>Cloud &amp; Mobile</h3>
+            <p>Arquitectura cloud-native, migraci&oacute;n, mobile nativo y evaluaci&oacute;n.</p>
+            <div class="card-skills">
+              <code>cloud-native-architecture</code> <code>cloud-migration</code>
+              <code>mobile-architecture</code> <code>mobile-assessment</code>
+            </div>
+          </div>
+
+          <div class="card domain-eng">
+            <div class="card-badge">5 skills</div>
+            <h3>Engineering Excellence</h3>
+            <p>APIs, eventos, seguridad, performance y observabilidad.</p>
+            <div class="card-skills">
+              <code>api-architecture</code> <code>event-architecture</code> <code>security-architecture</code>
+              <code>performance-engineering</code> <code>observability</code>
+            </div>
+          </div>
+
+          <div class="card domain-consulting">
+            <div class="card-badge">3 skills</div>
+            <h3>Consulting &amp; Quality</h3>
+            <p>Quality engineering, testing strategy y representaci&oacute;n de usuario.</p>
+            <div class="card-skills">
+              <code>quality-engineering</code> <code>testing-strategy</code> <code>user-representative</code>
+            </div>
+          </div>
+
+          <div class="card domain-gov">
+            <div class="card-badge">2 skills</div>
+            <h3>Governance &amp; Risk</h3>
+            <p>Gesti&oacute;n de programas y din&aacute;micas de riesgo-control.</p>
+            <div class="card-skills">
+              <code>project-program-management</code> <code>risk-controlling-dynamics</code>
+            </div>
+          </div>
+
+          <div class="card domain-delivery">
+            <div class="card-badge">3 skills</div>
+            <h3>Delivery &amp; Brand</h3>
+            <p>Entregables HTML branded, UX writing y PoC roadmaps.</p>
+            <div class="card-skills">
+              <code>html-brand</code> <code>ux-writing</code> <code>roadmap-poc</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         05 — ORQUESTACION
+         ======================== -->
+    <section id="orquestacion" class="section" aria-labelledby="h-orquestacion">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">05</span>
+          <h2 class="section-title" id="h-orquestacion">Orquestaci&oacute;n Claude Code</h2>
+        </div>
+        <p class="section-intro">
+          Claude Code act&uacute;a como runtime: el usuario invoca un comando, el conductor orquesta, los skills ejecutan,
+          los agentes validan y el output se entrega en el formato elegido.
+        </p>
+
+        <div class="flow-steps">
+          <div class="flow-step" data-step="1">
+            <h4>Invocaci&oacute;n del Usuario</h4>
+            <p>El usuario ejecuta <code>/sofka-discovery-framework:discovery</code> y proporciona los inputs iniciales: repo URL, industria, stakeholders.</p>
+          </div>
+          <div class="flow-step" data-step="2">
+            <h4>Conductor Activa el Pipeline</h4>
+            <p>El <strong>discovery-conductor</strong> declara el comit&eacute; de expertos, construye el discovery plan, valida inputs m&iacute;nimos y presenta el plan al usuario.</p>
+          </div>
+          <div class="flow-step" data-step="3">
+            <h4>Sub-Agentes por Fase</h4>
+            <p>Claude Code spawns agentes especializados para cada fase. Cada agente activa los skills relevantes, produce artefactos y pasa contratos de datos a la siguiente fase.</p>
+          </div>
+          <div class="flow-step" data-step="4">
+            <h4>Quality Gate Validation</h4>
+            <p>El <strong>quality-guardian</strong> valida cada entregable contra criterios de aceptaci&oacute;n. Verifica coherencia cross-phase. Si no pasa, se itera.</p>
+          </div>
+          <div class="flow-step" data-step="5">
+            <h4>Output Delivery</h4>
+            <p>Entregables en el formato solicitado (markdown/html/docx/dual) con la variante elegida (ejecutiva ~40% o t&eacute;cnica completa).</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info" style="margin-top:32px;">
+          <strong>Sub-Agent Dynamic:</strong> El conductor no ejecuta an&aacute;lisis. Cada fase es delegada a un sub-agente
+          fork que tiene acceso a los skills de esa fase, los datos de fases previas, y las instrucciones del conductor.
+          El resultado vuelve al conductor para validaci&oacute;n y routing.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         06 — PROMPTS
+         ======================== -->
+    <section id="prompts" class="section section-alt" aria-labelledby="h-prompts">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">06</span>
+          <h2 class="section-title" id="h-prompts">Prompts NL-HP v3.0</h2>
+        </div>
+        <p class="section-intro">
+          16 prompts de Natural Language &mdash; High Performance que disparan el orquestador y activan los skills correctos.
+          Cada prompt es un entry point optimizado para un escenario de uso espec&iacute;fico.
+        </p>
+
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:16px;">Documentos (10)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Prompt</th>
+                <th>Descripci&oacute;n</th>
+                <th>Skills Activados</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>00</td><td><code>plan-discovery</code></td><td>Plan de discovery completo</td><td><code>discovery-orchestrator</code></td></tr>
+              <tr><td>01</td><td><code>stakeholder-map</code></td><td>Mapeo de stakeholders</td><td><code>stakeholder-mapping</code>, <code>workshop-facilitator</code></td></tr>
+              <tr><td>02</td><td><code>brief-tecnico</code></td><td>Brief t&eacute;cnico del proyecto</td><td><code>asis-analysis</code>, <code>dynamic-sme</code></td></tr>
+              <tr><td>03</td><td><code>asis-analysis</code></td><td>An&aacute;lisis del estado actual</td><td><code>asis-analysis</code>, <code>software-architecture</code></td></tr>
+              <tr><td>04</td><td><code>mapeo-flujos</code></td><td>Mapeo de flujos de negocio</td><td><code>flow-mapping</code>, <code>mermaid-diagramming</code></td></tr>
+              <tr><td>05</td><td><code>escenarios</code></td><td>An&aacute;lisis de escenarios</td><td><code>scenario-analysis</code>, <code>technical-feasibility</code></td></tr>
+              <tr><td>06</td><td><code>solution-roadmap</code></td><td>Roadmap de soluci&oacute;n</td><td><code>solution-roadmap</code>, <code>cost-estimation</code></td></tr>
+              <tr><td>07</td><td><code>spec-funcional</code></td><td>Especificaci&oacute;n funcional</td><td><code>functional-spec</code></td></tr>
+              <tr><td>08</td><td><code>pitch-ejecutivo</code></td><td>Pitch ejecutivo</td><td><code>executive-pitch</code>, <code>commercial-model</code></td></tr>
+              <tr><td>09</td><td><code>handover</code></td><td>Handover operacional</td><td><code>discovery-handover</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin:32px 0 16px;">Flujos (3)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Flujo</th>
+                <th>Descripci&oacute;n</th>
+                <th>Fases</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>completo</code></td><td>Pipeline completo: Fase 0 &rarr; 6</td><td>Todas (0&ndash;6 + 3 gates)</td></tr>
+              <tr><td><code>intermedio</code></td><td>Discovery enfocado en viabilidad</td><td>0&ndash;3b + Gate 1</td></tr>
+              <tr><td><code>express</code></td><td>Discovery r&aacute;pido para oportunidades urgentes</td><td>AS-IS + Escenarios + Pitch</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin:32px 0 16px;">Operaciones (3)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Operaci&oacute;n</th>
+                <th>Descripci&oacute;n</th>
+                <th>Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>revisar</code></td><td>Revisi&oacute;n de un entregable existente</td><td>Quality check post-entrega</td></tr>
+              <tr><td><code>evolucionar</code></td><td>Evoluci&oacute;n de un artefacto previo</td><td>Iteraci&oacute;n sobre entregable aprobado</td></tr>
+              <tr><td><code>rescatar</code></td><td>Rescate de un discovery incompleto</td><td>Retomar pipeline desde &uacute;ltimo gate</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         07 — OUTPUT EXCELLENCE
+         ======================== -->
+    <section id="output" class="section" aria-labelledby="h-output">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">07</span>
+          <h2 class="section-title" id="h-output">Output Excellence</h2>
+        </div>
+        <p class="section-intro">
+          Todos los entregables siguen el est&aacute;ndar <strong>markdown-excellence</strong>: estructura consistente,
+          diagramas Mermaid, tablas sem&aacute;foro, y evidence tags trazables.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3>Formatos</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>Formato</th><th>Output</th></tr></thead>
+                <tbody>
+                  <tr><td><code>markdown</code> <span class="badge-default">default</span></td><td>TL;DR, tablas, Mermaid, footnotes</td></tr>
+                  <tr><td><code>html</code></td><td>Sofka Design System, self-contained</td></tr>
+                  <tr><td><code>docx</code></td><td>Pandoc-compatible, cover + TOC</td></tr>
+                  <tr><td><code>dual</code></td><td>Markdown + HTML por entregable</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Variantes</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>Variante</th><th>Alcance</th></tr></thead>
+                <tbody>
+                  <tr><td><code>ejecutiva</code></td><td>~40% del contenido. C-level ready. KPIs, decisiones, impacto.</td></tr>
+                  <tr><td><code>t&eacute;cnica</code></td><td>100% detalle. Diagramas C4, data models, sequence diagrams.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;" class="card-grid" role="list">
+          <div class="card">
+            <h3>Callout Types</h3>
+            <p style="margin-top:8px;">
+              <span style="color:var(--sofka-info);font-weight:600;">INFO</span> &mdash; Contexto adicional<br>
+              <span style="color:var(--sofka-warning);font-weight:600;">WARNING</span> &mdash; Atenci&oacute;n requerida<br>
+              <span style="color:var(--sofka-critical);font-weight:600;">CRITICAL</span> &mdash; Bloqueo o riesgo alto<br>
+              <span style="color:var(--sofka-positive-text);font-weight:600;">TIP</span> &mdash; Recomendaci&oacute;n de mejora
+            </p>
+          </div>
+          <div class="card">
+            <h3>Mermaid Diagrams</h3>
+            <p style="margin-top:8px;">
+              C4 Context &amp; Container<br>
+              Gantt (roadmap)<br>
+              Quadrant (priorizaci&oacute;n)<br>
+              Sequence (integraciones)<br>
+              ER (data models)<br>
+              State (workflows)
+            </p>
+          </div>
+          <div class="card">
+            <h3>Evidence Tags</h3>
+            <p style="margin-top:8px;">
+              Cada hallazgo incluye <code>[EV-XXX]</code> trazable al c&oacute;digo fuente, entrevista o documento de origen.
+              Permite auditar cualquier afirmaci&oacute;n del entregable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         08 — MODOS
+         ======================== -->
+    <section id="modos" class="section section-alt" aria-labelledby="h-modos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">08</span>
+          <h2 class="section-title" id="h-modos">Modos de Ejecuci&oacute;n</h2>
+        </div>
+        <p class="section-intro">
+          Cuatro modos de interacci&oacute;n human-in-the-loop (HITL) que se adaptan al nivel de supervisi&oacute;n deseado.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Modo</th>
+                <th>Comportamiento</th>
+                <th>HITL</th>
+                <th>Uso ideal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>piloto-auto</code> <span class="badge-default">default</span></td>
+                <td>Aut&oacute;nomo en trabajo rutinario, pausa en gates y ambig&uuml;edades</td>
+                <td>En gates + ambig&uuml;edades</td>
+                <td>Discoveries est&aacute;ndar</td>
+              </tr>
+              <tr>
+                <td><code>desatendido</code></td>
+                <td>Cero interrupciones, todo auto-resuelto</td>
+                <td>Ninguno</td>
+                <td>Batches, re-ejecuciones</td>
+              </tr>
+              <tr>
+                <td><code>supervisado</code></td>
+                <td>Aut&oacute;nomo con reportes en milestones</td>
+                <td>Reportes peri&oacute;dicos</td>
+                <td>Leads que quieren visibilidad</td>
+              </tr>
+              <tr>
+                <td><code>paso-a-paso</code></td>
+                <td>Confirma antes de cada secci&oacute;n/fase</td>
+                <td>Cada secci&oacute;n</td>
+                <td>Training, onboarding, debugging</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip" style="margin-top:24px;">
+          <strong>Tip:</strong> Usa <code>MODO=paso-a-paso</code> para tu primer discovery. Una vez familiarizado,
+          cambia a <code>piloto-auto</code> para m&aacute;xima productividad.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         09 — EXCELLENCE LOOP
+         ======================== -->
+    <section id="excellence" class="section" aria-labelledby="h-excellence">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">09</span>
+          <h2 class="section-title" id="h-excellence">Excellence Loop</h2>
+        </div>
+        <p class="section-intro">
+          Cada skill se refina mediante un ciclo de excelencia de 10 criterios. El objetivo: que cada skill
+          alcance nivel <strong>moat</strong> &mdash; ventaja competitiva sostenible.
+        </p>
+
+        <div class="rubric-grid" role="list" aria-label="10 criterios de excelencia">
+          <div class="rubric-item" role="listitem">
+            <strong>1. Clarity</strong>
+            <span>Instrucciones inequ&iacute;vocas, sin ambig&uuml;edad</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>2. Completeness</strong>
+            <span>Todos los casos cubiertos, edge cases documentados</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>3. Consistency</strong>
+            <span>Terminolog&iacute;a y formato uniformes</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>4. Actionability</strong>
+            <span>Output directamente usable, no gen&eacute;rico</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>5. Evidence</strong>
+            <span>Cada afirmaci&oacute;n trazable a evidencia</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>6. Trade-offs</strong>
+            <span>Pros/cons expl&iacute;citos, nunca one-sided</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>7. Modularity</strong>
+            <span>Self-contained, sin dependencias cruzadas</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>8. Validation Gate</strong>
+            <span>Criterios de aceptaci&oacute;n verificables</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>9. Progressive Disclosure</strong>
+            <span>Resumen primero, detalle bajo demanda</span>
+          </div>
+          <div class="rubric-item" role="listitem">
+            <strong>10. Cross-Reference</strong>
+            <span>Links a skills relacionados para contexto expandido</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         10 — QUICK START
+         ======================== -->
+    <section id="quickstart" class="section section-alt" aria-labelledby="h-quickstart">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number" aria-hidden="true">10</span>
+          <h2 class="section-title" id="h-quickstart">Quick Start</h2>
+        </div>
+        <p class="section-intro">
+          Tres comandos para empezar. Instala el plugin, elige tu modo y lanza tu primer discovery.
+        </p>
+
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:16px;">1. Instalaci&oacute;n</h3>
+        <div class="code-block">
+          <span class="comment"># Registra el plugin en Claude Code</span><br>
+          <span class="prompt">$ </span>claude --plugin-dir ./sofka-discovery-framework
+        </div>
+
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin:32px 0 16px;">2. Discovery Guiado</h3>
+        <div class="code-block">
+          <span class="comment"># Pipeline guiado con confirmaciones en gates</span><br>
+          <span class="prompt">&gt; </span>/sofka-discovery-framework:discovery
+        </div>
+
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin:32px 0 16px;">3. Discovery Aut&oacute;nomo</h3>
+        <div class="code-block">
+          <span class="comment"># Pipeline aut&oacute;nomo end-to-end</span><br>
+          <span class="prompt">&gt; </span>/sofka-discovery-framework:discovery-auto
+        </div>
+
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin:32px 0 16px;">4. Par&aacute;metros Opcionales</h3>
+        <div class="code-block">
+          <span class="comment"># Ejemplos de par&aacute;metros</span><br>
+          <span class="prompt">&gt; </span>/sofka-discovery-framework:discovery \<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;INDUSTRIA=banking \<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;MODO=paso-a-paso \<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;FORMATO=dual \<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;VARIANTE=ejecutiva
+        </div>
+
+        <div class="callout callout-info" style="margin-top:32px;">
+          <strong>Filosof&iacute;a de costos:</strong> El framework produce <em>drivers de costo, inductores de esfuerzo
+          y magnitudes indicativas</em> &mdash; nunca precios finales. Costear &ne; Cobrar. Las magnitudes incluyen
+          un 5% de margen de innovaci&oacute;n para excelencia operacional.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================
+       FOOTER
+       ============================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-logo" aria-label="Sofka logo">sofka_</div>
+      <p>&copy; 2026 Sofka Technologies. All Rights Reserved.</p>
+      <p>Autor: Javier Monta&ntilde;o | Equipo PreSales Sofka</p>
+      <div class="footer-version">v6.2.0 | Marzo 2026</div>
+    </div>
+  </footer>
+
+</body>
+</html>

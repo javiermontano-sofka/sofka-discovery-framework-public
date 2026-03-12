@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handover de Operaciones — Acme Corp</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-gold: #f5a623;
+      --brand-surface: #f8f9fa;
+      --brand-text: #2d2d2d;
+      --brand-muted: #6c757d;
+      --brand-border: #dee2e6;
+      --brand-success: #28a745;
+      --brand-warning: #ffc107;
+      --brand-danger: #dc3545;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--brand-text);
+      line-height: 1.6;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #fff;
+    }
+    h1 {
+      color: var(--brand-primary);
+      font-size: 2rem;
+      border-bottom: 3px solid var(--brand-accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      color: var(--brand-primary);
+      font-size: 1.4rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid var(--brand-gold);
+    }
+    h3 {
+      color: var(--brand-accent);
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .meta {
+      color: var(--brand-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .meta strong { color: var(--brand-text); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--brand-primary);
+      color: #fff;
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 0.5rem 0.8rem;
+      border-bottom: 1px solid var(--brand-border);
+    }
+    tr:nth-child(even) { background: var(--brand-surface); }
+    tr.total { font-weight: 700; background: #e8e8e8; }
+    .status-ready { color: var(--brand-success); font-weight: 600; }
+    .status-pending { color: var(--brand-warning); font-weight: 600; }
+    .risk-high { color: var(--brand-danger); font-weight: 600; }
+    .risk-medium { color: var(--brand-warning); font-weight: 600; }
+    .risk-low { color: var(--brand-success); font-weight: 600; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+    .checklist li::before {
+      position: absolute;
+      left: 0;
+      font-size: 1rem;
+    }
+    .checklist li.done::before { content: "\2611"; color: var(--brand-success); }
+    .checklist li.pending::before { content: "\2610"; color: var(--brand-muted); }
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--brand-border);
+      margin: 2rem 0;
+    }
+    .escalation-path {
+      background: var(--brand-surface);
+      border-left: 4px solid var(--brand-accent);
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      font-family: monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .footer-meta {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--brand-primary);
+      color: var(--brand-muted);
+      font-size: 0.85rem;
+    }
+    @media print {
+      body { padding: 1rem; font-size: 11pt; }
+      h2 { page-break-after: avoid; }
+      table { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Handover de Operaciones — Acme Corp</h1>
+<div class="meta">
+  <strong>Proyecto:</strong> Modernización ERP Legacy → Plataforma Digital Integrada<br>
+  <strong>Fecha de cierre discovery:</strong> 2026-03-10<br>
+  <strong>Gates aprobados:</strong> Gate 1 (AS-IS), Gate 2 (Escenarios), Gate 3 (Roadmap + Pitch)<br>
+  <strong>Receptor:</strong> Ambos (Operaciones + Comercial)
+</div>
+
+<!-- S1 -->
+<h2>S1: Resumen Ejecutivo de Transición</h2>
+
+<table>
+  <tr><th>Dimensión</th><th>Detalle</th></tr>
+  <tr><td><strong>Estado del descubrimiento</strong></td><td>6 fases completas (Phase 0-5b). Gate 3 aprobado 2026-03-08 por Steering Committee.</td></tr>
+  <tr><td><strong>Escenario aprobado</strong></td><td>"Modernización Progresiva con Microservicios" — score 8.7/10 (Phase 3, Escenario B).</td></tr>
+  <tr><td><strong>Inversión aprobada</strong></td><td>$3,800,000 USD en 18 meses. NPV $2.1M, IRR 34%, payback 14 meses.</td></tr>
+  <tr><td><strong>Timeline</strong></td><td>Foundation (M1-M4) → Build (M5-M9) → Integrate (M10-M13) → Optimize (M14-M16) → Scale (M17-M18).</td></tr>
+</table>
+
+<h3>Próximos Pasos Inmediatos</h3>
+<table>
+  <tr><th>#</th><th>Acción</th><th>Owner</th><th>Deadline</th></tr>
+  <tr><td>1</td><td>Firmar SOW con Acme Corp</td><td>Dir. Comercial — Laura Méndez</td><td>2026-03-24</td></tr>
+  <tr><td>2</td><td>Onboarding Tech Lead + 2 Sr. Devs</td><td>HR — Carlos Duarte</td><td>2026-03-28</td></tr>
+  <tr><td>3</td><td>Provisionar ambientes dev/staging en AWS</td><td>DevOps — Andrés Reyes</td><td>2026-03-31</td></tr>
+  <tr><td>4</td><td>Sesión de knowledge transfer</td><td>Discovery Conductor — María Torres</td><td>2026-03-26</td></tr>
+  <tr><td>5</td><td>Configurar JIRA project + Slack channels</td><td>PMO — Felipe Ríos</td><td>2026-03-25</td></tr>
+</table>
+
+<h3>Riesgos Críticos Activos</h3>
+<table>
+  <tr><th>#</th><th>Riesgo</th><th>Prob.</th><th>Impacto</th><th>Status</th></tr>
+  <tr><td>1</td><td>API legacy SAP sin documentación oficial</td><td class="risk-high">Alta</td><td class="risk-high">Alto</td><td>Mitigación: reverse-engineering spike en Sprint 0</td></tr>
+  <tr><td>2</td><td>Dependencia de vendor externo para módulo fiscal</td><td class="risk-medium">Media</td><td class="risk-high">Alto</td><td>Mitigación: contrato marco en negociación</td></tr>
+  <tr><td>3</td><td>Resistencia del equipo contable al cambio de flujo</td><td class="risk-medium">Media</td><td class="risk-medium">Medio</td><td>Mitigación: change management desde Sprint 1</td></tr>
+</table>
+
+<hr class="section-divider">
+
+<!-- S2 -->
+<h2>S2: Paquete de Activación Comercial</h2>
+
+<h3>2.1 Narrativa de Propuesta</h3>
+<p><strong>Contexto:</strong> Acme Corp opera con un ERP monolítico de 12 años que genera $420K/año en costos de mantenimiento, 23 horas/semana de trabajo manual en conciliaciones, y 3 incidentes críticos/trimestre.</p>
+<p><strong>Propuesta de valor:</strong></p>
+<ul>
+  <li><strong>Cost Reduction:</strong> -$380K/año en mantenimiento + eliminación de 18h/semana de trabajo manual</li>
+  <li><strong>Revenue:</strong> +$1.2M/año por time-to-market 4x más rápido</li>
+  <li><strong>Risk:</strong> Reducción de 3 a 0 incidentes críticos/trimestre; DR automatizado</li>
+  <li><strong>Modernization:</strong> Arquitectura cloud-native lista para escalar 10x</li>
+</ul>
+<p><strong>Modelo financiero:</strong> NPV $2,100,000 | IRR 34% | Payback 14 meses | ROI 187% a 3 años.</p>
+
+<h3>2.2 Estructura de Pricing</h3>
+<table>
+  <tr><th>Fase</th><th>Duración</th><th>Equipo</th><th>Inversión</th></tr>
+  <tr><td>Foundation</td><td>4 meses</td><td>6 FTE</td><td>$760,000</td></tr>
+  <tr><td>Build</td><td>5 meses</td><td>8 FTE</td><td>$1,140,000</td></tr>
+  <tr><td>Integrate</td><td>4 meses</td><td>7 FTE</td><td>$950,000</td></tr>
+  <tr><td>Optimize</td><td>3 meses</td><td>5 FTE</td><td>$570,000</td></tr>
+  <tr><td>Scale</td><td>2 meses</td><td>4 FTE</td><td>$380,000</td></tr>
+  <tr class="total"><td>TOTAL</td><td>18 meses</td><td></td><td>$3,800,000</td></tr>
+</table>
+
+<h3>2.3 Condiciones Comerciales</h3>
+<ul>
+  <li><strong>Facturación:</strong> Mensual contra hitos de sprint completados</li>
+  <li><strong>Gates de inversión:</strong> Go/no-go al cierre de cada fase</li>
+  <li><strong>Kill criteria:</strong> Budget overrun >130%, timeline >150%, >3 defectos P1</li>
+  <li><strong>SLAs:</strong> P1 < 2h, deploy staging < 24h, test coverage > 80%</li>
+</ul>
+
+<h3>2.4 Cronograma de Cierre Comercial</h3>
+<table>
+  <tr><th>Semana</th><th>Actividad</th><th>Responsable</th><th>Entregable</th></tr>
+  <tr><td>11-14 Mar</td><td>Revisión propuesta con CFO Acme</td><td>Laura Méndez</td><td>Propuesta v1</td></tr>
+  <tr><td>17-21 Mar</td><td>Negociación términos</td><td>Laura Méndez + Legal</td><td>Term sheet</td></tr>
+  <tr><td>24-28 Mar</td><td>Aprobación board Acme</td><td>Steering Committee</td><td>SOW ejecutado</td></tr>
+  <tr><td>31 Mar - 4 Abr</td><td>Kick-off operativo</td><td>Felipe Ríos</td><td>Plan Phase 1</td></tr>
+</table>
+
+<hr class="section-divider">
+
+<!-- S3 -->
+<h2>S3: Checklist de Readiness Operacional</h2>
+
+<h3>3.1 Equipo</h3>
+<table>
+  <tr><th>Rol</th><th>Cant.</th><th>Status</th><th>Owner</th><th>Deadline</th></tr>
+  <tr><td>Tech Lead (Java/Spring)</td><td>1</td><td class="status-ready">Listo</td><td>Juan Herrera confirmado</td><td>2026-03-20</td></tr>
+  <tr><td>Sr. Backend Developer</td><td>2</td><td class="status-pending">1 listo, 1 pendiente</td><td>HR — Carlos Duarte</td><td>2026-03-28</td></tr>
+  <tr><td>Sr. Frontend Developer</td><td>1</td><td class="status-pending">Pendiente</td><td>HR — Carlos Duarte</td><td>2026-03-28</td></tr>
+  <tr><td>DevOps Engineer</td><td>1</td><td class="status-ready">Listo</td><td>Andrés Reyes</td><td>N/A</td></tr>
+  <tr><td>QA Engineer</td><td>1</td><td class="status-pending">Pendiente</td><td>HR — Carlos Duarte</td><td>2026-04-04</td></tr>
+  <tr><td>Scrum Master</td><td>1</td><td class="status-ready">Listo</td><td>Felipe Ríos</td><td>N/A</td></tr>
+  <tr><td>Solution Architect</td><td>1</td><td class="status-ready">Listo</td><td>Patricia Vega (transición)</td><td>N/A</td></tr>
+  <tr><td>Data Engineer</td><td>1</td><td class="status-pending">Pipeline</td><td>HR — Carlos Duarte</td><td>2026-04-11</td></tr>
+</table>
+
+<h3>3.2 Infraestructura</h3>
+<table>
+  <tr><th>Componente</th><th>Spec</th><th>Status</th><th>Owner</th><th>Deadline</th></tr>
+  <tr><td>AWS Account (dev)</td><td>EKS, RDS PostgreSQL, S3</td><td class="status-pending">Pendiente</td><td>Andrés Reyes</td><td>2026-03-31</td></tr>
+  <tr><td>AWS Account (staging)</td><td>Mirror dev + monitoring</td><td class="status-pending">Pendiente</td><td>Andrés Reyes</td><td>2026-04-07</td></tr>
+  <tr><td>CI/CD Pipeline</td><td>GitHub Actions + ArgoCD</td><td class="status-pending">Pendiente</td><td>Andrés Reyes</td><td>2026-04-04</td></tr>
+  <tr><td>Monitoring</td><td>Datadog APM + logs</td><td class="status-pending">Pendiente</td><td>Andrés Reyes</td><td>2026-04-11</td></tr>
+</table>
+
+<h3>3.3 Accesos y Permisos</h3>
+<ul class="checklist">
+  <li class="done">Repositorio GitHub (org Sofka) — creado</li>
+  <li class="pending">AWS Console — IAM roles por definir</li>
+  <li class="pending">SAP API Gateway — credenciales solicitadas</li>
+  <li class="pending">VPN acceso a red Acme — solicitud en proceso</li>
+  <li class="pending">JIRA project — pendiente creación</li>
+  <li class="pending">Slack channels — pendiente</li>
+</ul>
+
+<hr class="section-divider">
+
+<!-- S4 -->
+<h2>S4: Plan de Kickoff — Primeros 90 Días</h2>
+
+<h3>4.1 Sprint 0 (2026-04-01 a 2026-04-14): Setup</h3>
+<table>
+  <tr><th>Día</th><th>Actividad</th><th>Responsable</th><th>Output</th></tr>
+  <tr><td>1-2 Abr</td><td>Onboarding + knowledge transfer</td><td>Felipe Ríos + María Torres</td><td>Equipo alineado</td></tr>
+  <tr><td>3-4 Abr</td><td>Setup ambientes dev/staging AWS</td><td>Andrés Reyes</td><td>Ambientes listos</td></tr>
+  <tr><td>7 Abr</td><td>Workshop arquitectura microservicios</td><td>Patricia Vega</td><td>ADRs documentados</td></tr>
+  <tr><td>8-9 Abr</td><td>CI/CD + quality gates</td><td>Andrés Reyes + QA</td><td>Pipeline funcional</td></tr>
+  <tr><td>10-14 Abr</td><td>Spike: reverse-engineering API SAP</td><td>Juan Herrera + Sr. Dev</td><td>Contrato OpenAPI</td></tr>
+</table>
+
+<h3>4.2 Sprint 1-3 (2026-04-15 a 2026-05-26): Foundation Execution</h3>
+<ul>
+  <li><strong>Sprint 1:</strong> Módulo de Conciliaciones (Q1 matriz 3x3)</li>
+  <li><strong>Sprint 2:</strong> Use cases core — conciliación automática, alertas, reporte diario</li>
+  <li><strong>Sprint 3:</strong> Business rules + first deploy a staging (2026-05-12)</li>
+</ul>
+
+<h3>4.3 Sprint 4-6 (2026-05-27 a 2026-07-07): Foundation Completion</h3>
+<ul>
+  <li>Módulo Facturación Electrónica</li>
+  <li>Integration testing contra SAP + sistema bancario</li>
+  <li>Performance baseline: latencia < 200ms p95, throughput > 500 TPS</li>
+  <li><strong>Gate de Foundation: 2026-07-07</strong></li>
+</ul>
+
+<h3>4.4 Métricas de Seguimiento</h3>
+<table>
+  <tr><th>Métrica</th><th>Target</th><th>Fuente</th><th>Frecuencia</th></tr>
+  <tr><td>Velocidad del equipo</td><td>Estabilizar Sprint 3 (~34 pts)</td><td>JIRA</td><td>Semanal</td></tr>
+  <tr><td>Defectos críticos</td><td>0 en staging/prod</td><td>Bug Tracker</td><td>Diario</td></tr>
+  <tr><td>Cobertura tests</td><td>>80% unit, >70% integration</td><td>GitHub Actions</td><td>Por PR</td></tr>
+  <tr><td>Budget burn rate</td><td>$190K/mes +/- 10%</td><td>Finance</td><td>Quincenal</td></tr>
+  <tr><td>Riesgo materializado</td><td>0 de top-5</td><td>Risk register</td><td>Semanal</td></tr>
+</table>
+
+<hr class="section-divider">
+
+<!-- S5 -->
+<h2>S5: Protocolo de Transición de Gobernanza</h2>
+
+<h3>5.1 Transición de Roles</h3>
+<table>
+  <tr><th>Rol Discovery</th><th>Transiciona a</th><th>Nuevo Responsable</th></tr>
+  <tr><td>Discovery Conductor — María Torres</td><td>Scrum Master</td><td>Felipe Ríos</td></tr>
+  <tr><td>Technical Architect — Patricia Vega</td><td>Solution Architect</td><td>Patricia Vega (continuidad)</td></tr>
+  <tr><td>Domain Analyst — Ricardo Sánchez</td><td>Product Owner</td><td>Ricardo Sánchez (continuidad)</td></tr>
+  <tr><td>Quality Guardian — Ana Beltrán</td><td>QA Lead</td><td>Ana Beltrán (continuidad)</td></tr>
+  <tr><td>Delivery Manager — Felipe Ríos</td><td>Project Manager</td><td>Felipe Ríos (continuidad)</td></tr>
+  <tr><td>Data Strategist — Diego Morales</td><td>Data Engineer Lead</td><td>Diego Morales (continuidad)</td></tr>
+  <tr><td>Change Catalyst — Sofía Ramírez</td><td>Change Manager</td><td>Sofía Ramírez (continuidad)</td></tr>
+</table>
+
+<h3>5.2 Estructura de Reuniones</h3>
+<table>
+  <tr><th>Ceremonia</th><th>Frecuencia</th><th>Participantes</th><th>Propósito</th></tr>
+  <tr><td>Standup</td><td>Diario 9:00 AM</td><td>Dev team</td><td>Impedimentos + progreso</td></tr>
+  <tr><td>Sprint Planning</td><td>Quincenal (lunes)</td><td>PO + Dev team</td><td>Scope del sprint</td></tr>
+  <tr><td>Sprint Review</td><td>Quincenal (viernes)</td><td>Stakeholders + Dev</td><td>Demo + feedback</td></tr>
+  <tr><td>Retrospectiva</td><td>Quincenal (viernes PM)</td><td>Dev team</td><td>Mejora continua</td></tr>
+  <tr><td>Steering Committee</td><td>Mensual (1er martes)</td><td>Sponsors + PMO</td><td>Go/no-go, budget</td></tr>
+  <tr><td>Architecture Review</td><td>Quincenal (miércoles)</td><td>Architects</td><td>Decisiones técnicas</td></tr>
+</table>
+
+<h3>5.3 Escalation Path</h3>
+<div class="escalation-path">
+  Nivel 1: Dev Team → Tech Lead (resolución &lt; 4h)<br>
+  Nivel 2: Tech Lead → PM / PO (resolución &lt; 24h)<br>
+  Nivel 3: PM → Steering Committee (resolución &lt; 1 semana)<br>
+  Nivel 4: Steering → Executive Sponsor (decisiones de scope/budget/timeline)
+</div>
+
+<hr class="section-divider">
+
+<!-- S6 -->
+<h2>S6: Tracker de Supuestos y Riesgos</h2>
+
+<h3>6.1 Supuestos Críticos</h3>
+<table>
+  <tr><th>#</th><th>Supuesto</th><th>Validación</th><th>Deadline</th><th>Owner</th><th>Status</th></tr>
+  <tr><td>1</td><td>API SAP soporta 500 TPS</td><td>Spike Sprint 0</td><td>2026-04-14</td><td>Juan Herrera</td><td class="status-pending">Pendiente</td></tr>
+  <tr><td>2</td><td>Equipo contable disponible UAT</td><td>Confirmación HR Acme</td><td>2026-04-07</td><td>Ricardo Sánchez</td><td class="status-pending">Pendiente</td></tr>
+  <tr><td>3</td><td>Licencia Datadog aprobada</td><td>Solicitud compra</td><td>2026-03-28</td><td>Andrés Reyes</td><td class="status-pending">En proceso</td></tr>
+  <tr><td>4</td><td>Migración datos viable en 2 sprints</td><td>Análisis volumen</td><td>2026-04-21</td><td>Diego Morales</td><td class="status-pending">Pendiente</td></tr>
+</table>
+
+<h3>6.2 Riesgos Heredados</h3>
+<table>
+  <tr><th>#</th><th>Riesgo</th><th>Prob.</th><th>Impacto</th><th>Mitigación</th><th>Early Warning</th><th>Owner</th></tr>
+  <tr><td>1</td><td>API SAP sin documentación</td><td class="risk-high">Alta</td><td class="risk-high">Alto</td><td>Reverse-engineering spike</td><td>Spike sin contrato en 5 días</td><td>Juan Herrera</td></tr>
+  <tr><td>2</td><td>Vendor fiscal no cumple timeline</td><td class="risk-medium">Media</td><td class="risk-high">Alto</td><td>Contrato marco + vendor alt.</td><td>No firma en 2 semanas</td><td>Laura Méndez</td></tr>
+  <tr><td>3</td><td>Resistencia equipo contable</td><td class="risk-medium">Media</td><td class="risk-medium">Medio</td><td>Change mgmt + early adopters</td><td>&lt;30% asistencia workshops</td><td>Sofía Ramírez</td></tr>
+  <tr><td>4</td><td>Performance en integración SAP</td><td class="risk-medium">Media</td><td class="risk-high">Alto</td><td>Perf testing Sprint 2 + cache</td><td>Latencia &gt;500ms en spike</td><td>Patricia Vega</td></tr>
+  <tr><td>5</td><td>Rotación equipo técnico</td><td class="risk-low">Baja</td><td class="risk-high">Alto</td><td>Knowledge sharing + docs</td><td>1+ salida en 60 días</td><td>Felipe Ríos</td></tr>
+</table>
+
+<h3>6.3 Kill Criteria</h3>
+<table>
+  <tr><th>Condición</th><th>Threshold</th><th>Acción</th><th>Decision Maker</th></tr>
+  <tr><td>Budget overrun</td><td>&gt;130% ($4,940,000)</td><td>Pause + re-scope</td><td>CFO — Roberto Lara</td></tr>
+  <tr><td>Timeline overrun</td><td>&gt;150% Foundation (&gt;6 meses)</td><td>Re-evaluate approach</td><td>Steering Committee</td></tr>
+  <tr><td>Quality failure</td><td>&gt;3 defectos P1 staging</td><td>Stop + quality sprint</td><td>Ana Beltrán + Felipe Ríos</td></tr>
+  <tr><td>Team attrition</td><td>&gt;40% (&gt;3 de 8)</td><td>Pause + re-staff</td><td>HR + Felipe Ríos</td></tr>
+</table>
+
+<hr class="section-divider">
+
+<!-- S7 -->
+<h2>S7: Matriz de Transición de Stakeholders</h2>
+<table>
+  <tr><th>Stakeholder</th><th>Rol Discovery</th><th>Rol Ejecución</th><th>Engagement</th><th>Comunicación</th></tr>
+  <tr><td>Roberto Lara (CFO)</td><td>Executive Sponsor</td><td>Executive Sponsor</td><td>Mensual</td><td>Dashboard + report</td></tr>
+  <tr><td>Ana María Ruiz (COO)</td><td>Decision Maker</td><td>Escalation point</td><td>Trimestral</td><td>Executive summary</td></tr>
+  <tr><td>Pedro Castillo (CTO)</td><td>Technical Validator</td><td>Architecture Sponsor</td><td>Quincenal</td><td>ADR reviews</td></tr>
+  <tr><td>Marcela Díaz (Dir. Contab.)</td><td>Domain Expert</td><td>Product Owner</td><td>Semanal</td><td>Sprint demos + UAT</td></tr>
+  <tr><td>Jorge Mendoza (Dir. IT)</td><td>Infra Sponsor</td><td>Infra Sponsor</td><td>Mensual</td><td>Infra reports</td></tr>
+  <tr><td>Lucía Vargas (Ger. Ops)</td><td>Process Owner</td><td>Early Adopter Champion</td><td>Post-MVP</td><td>Training + pilot</td></tr>
+  <tr><td>Tomás Herrera (Auditor)</td><td>Compliance Reviewer</td><td>Compliance Gate</td><td>Por release</td><td>Checklists</td></tr>
+  <tr><td>Sandra López (Contable)</td><td>End User Rep</td><td>UAT Lead</td><td>Sprint review</td><td>Test scripts</td></tr>
+</table>
+
+<hr class="section-divider">
+
+<!-- S8 -->
+<h2>S8: Entregable Final</h2>
+<p>
+  <strong>Archivo:</strong> <code>09_Handover_Operaciones_AcmeCorp.html</code><br>
+  <strong>Generado:</strong> 2026-03-10<br>
+  <strong>Secciones:</strong> 8 (técnica completa)<br>
+  <strong>Receptor:</strong> Ambos (Operaciones + Comercial)
+</p>
+
+<div class="footer-meta">
+  <strong>Autor:</strong> Javier Montaño | <strong>Generado por:</strong> sofka-discovery-handover v6.0
+</div>
+
+</body>
+</html>

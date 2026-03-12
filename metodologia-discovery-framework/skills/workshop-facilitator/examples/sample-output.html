@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>A-01 Workshop Design — Acme Corp Banking Modernization</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; }
+    body { font-family: 'Inter', sans-serif; max-width: 1100px; margin: 0 auto; padding: 2rem; background: var(--bg); color: var(--text); line-height: 1.6; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; }
+    h3 { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border: 1px solid #e2e8f0; }
+    tr:nth-child(even) { background: #edf2f7; }
+    .callout { background: #ebf8ff; border-left: 4px solid var(--primary); padding: 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .meta { color: #718096; font-size: 0.9rem; margin-bottom: 2rem; }
+    .meta strong { color: var(--primary); }
+    .section-divider { border: none; border-top: 2px solid #e2e8f0; margin: 2rem 0; }
+    ul, ol { margin: 0.5rem 0; padding-left: 1.5rem; }
+    li { margin: 0.3rem 0; }
+    .tag { display: inline-block; background: var(--primary); color: white; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.8rem; margin-right: 0.3rem; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--primary); color: #718096; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+<h1>A-01 Workshop Design — Acme Corp Banking Modernization</h1>
+
+<div class="meta">
+  <strong>Proyecto:</strong> Acme Corp Banking Modernization |
+  <strong>Objetivo:</strong> Descubrir el dominio de core banking, mapear impactos de la transformacion digital y planificar los primeros releases |
+  <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+<!-- S1: Workshop Selection & Design -->
+<h2>S1: Workshop Selection &amp; Design</h2>
+
+<h3>Tecnica seleccionada: Event Storming (Big Picture)</h3>
+
+<div class="callout">
+  <strong>Justificacion:</strong> El equipo necesita construir un modelo mental compartido del dominio de core banking antes de tomar decisiones de arquitectura. El sistema legado tiene 15+ anos de logica acumulada y el conocimiento esta distribuido entre 4 equipos diferentes. Event Storming es la tecnica idonea para extraer conocimiento tacito de multiples expertos simultaneamente.
+</div>
+
+<p><strong>Tecnicas complementarias:</strong></p>
+<ul>
+  <li><strong>Impact Mapping</strong> (Dia 2, sesion PM) — conectar la vision de transformacion digital con entregables concretos.</li>
+  <li><strong>User Story Mapping</strong> (Dia 2, sesion PM) — planificar los primeros releases a partir de los journeys prioritarios.</li>
+</ul>
+
+<h3>Participantes</h3>
+
+<table>
+  <thead>
+    <tr><th>Rol</th><th>Nombre</th><th>Razon de inclusion</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Domain Expert — Cuentas</td><td>Maria Lopez</td><td>12 anos en operaciones de cuentas corrientes y ahorro</td></tr>
+    <tr><td>Domain Expert — Pagos</td><td>Carlos Ruiz</td><td>Lider del equipo de pagos interbancarios</td></tr>
+    <tr><td>Domain Expert — Creditos</td><td>Ana Torres</td><td>Arquitecta de negocio del modulo de creditos</td></tr>
+    <tr><td>Product Owner</td><td>Diego Fernandez</td><td>Decision-maker para priorizacion de scope</td></tr>
+    <tr><td>Tech Lead</td><td>Laura Martinez</td><td>Restricciones tecnicas y viabilidad</td></tr>
+    <tr><td>UX Lead</td><td>Pablo Sanchez</td><td>Perspectiva del usuario final</td></tr>
+    <tr><td>Sponsor</td><td>Roberto Acosta</td><td>Validacion de alineamiento estrategico (solo kickoff y cierre)</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Tamano:</strong> 7 participantes (rango ideal 5-8).</p>
+
+<h3>Formato y logistica</h3>
+<ul>
+  <li><strong>Duracion:</strong> 2 dias completos (9:00 - 17:00)</li>
+  <li><strong>Modalidad:</strong> Presencial (sala de innovacion, piso 3)</li>
+  <li><strong>Herramientas:</strong> Sticky notes fisicos, pared de 6 metros, marcadores, dot stickers</li>
+  <li><strong>Respaldo digital:</strong> Fotografias cada 30 min + transcripcion a Miro al cierre de cada dia</li>
+</ul>
+
+<h3>Agenda de alto nivel</h3>
+
+<div class="mermaid">
+flowchart TD
+    A["Dia 1 - Manana\n9:00-12:30"] --> B["Dia 1 - Tarde\n14:00-17:00"]
+    B --> C["Dia 2 - Manana\n9:00-12:30"]
+    C --> D["Dia 2 - Tarde\n14:00-17:00"]
+
+    A --- A1["Kickoff + Reglas (30 min)"]
+    A --- A2["Event Discovery: Chaotic Exploration (90 min)"]
+    A --- A3["Timeline Ordering (60 min)"]
+
+    B --- B1["Command & Aggregate Identification (90 min)"]
+    B --- B2["Bounded Context Mapping (60 min)"]
+    B --- B3["Hot Spot Review + Dia 1 Retro (30 min)"]
+
+    C --- C1["Hot Spot Deep-Dives (60 min)"]
+    C --- C2["Policy & Saga Identification (60 min)"]
+    C --- C3["Impact Mapping: Digital Banking Goal (60 min)"]
+
+    D --- D1["User Story Mapping: Top 3 Journeys (90 min)"]
+    D --- D2["Release Planning + MVP Slice (45 min)"]
+    D --- D3["Sintesis + Action Items (45 min)"]
+</div>
+
+<h3>Pre-work distribuido</h3>
+<ol>
+  <li><strong>Para todos:</strong> Leer el one-pager del proyecto (2 paginas). Traer 5 sticky notes con "cosas que pasan en el sistema actual que me frustran".</li>
+  <li><strong>Para domain experts:</strong> Preparar un diagrama informal de su area (flujo principal en 5-10 pasos).</li>
+  <li><strong>Para Tech Lead:</strong> Listar las 5 integraciones externas mas criticas del sistema legado.</li>
+</ol>
+
+<hr class="section-divider">
+
+<!-- S2: Event Storming -->
+<h2>S2: Event Storming — Core Banking Domain</h2>
+
+<h3>Dia 1, Manana: Chaotic Exploration (9:30 - 12:30)</h3>
+
+<p><strong>Objetivo:</strong> Generar el mayor volumen posible de domain events sin filtrar.</p>
+
+<p><strong>Protocolo de facilitacion:</strong></p>
+<ol>
+  <li><strong>Energizer (10 min):</strong> "Banking Horror Stories" — cada participante comparte en 1 minuto la peor experiencia bancaria que ha vivido como usuario.</li>
+  <li><strong>Silent brainstorming (15 min):</strong> Cada participante escribe eventos en sticky notes naranjas. Formato: verbo en pasado ("CuentaAbierta", "PagoRechazado", "CreditoAprobado").</li>
+  <li><strong>Sticky parade (20 min):</strong> Participantes pegan sticky notes en la pared, explicando brevemente cada uno.</li>
+  <li><strong>Clustering emergente (30 min):</strong> El grupo reorganiza los eventos en clusters tematicos naturales.</li>
+  <li><strong>Second wave (15 min):</strong> Nuevos eventos que surgieron durante la discusion.</li>
+  <li><strong>Timeline ordering (60 min):</strong> Reorganizar todos los eventos en orden cronologico, izquierda a derecha.</li>
+</ol>
+
+<h3>Eventos esperados por dominio</h3>
+
+<table>
+  <thead>
+    <tr><th>Cluster</th><th>Eventos ejemplo</th><th>Volumen estimado</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cuentas</td><td>CuentaAbierta, SaldoActualizado, CuentaCerrada, TitularModificado</td><td>15-20</td></tr>
+    <tr><td>Pagos</td><td>TransferenciaIniciada, PagoConfirmado, PagoRechazado, LoteProcessado</td><td>20-25</td></tr>
+    <tr><td>Creditos</td><td>SolicitudRecibida, CreditoAprobado, CuotaVencida, MoraRegistrada</td><td>15-20</td></tr>
+    <tr><td>Compliance</td><td>KYCCompletado, AlertaGenerada, ReporteRegulatorioEnviado</td><td>8-12</td></tr>
+    <tr><td>Canales</td><td>SesionIniciada, OperacionFirmada, NotificacionEnviada</td><td>10-15</td></tr>
+  </tbody>
+</table>
+
+<h3>Dia 1, Tarde: Commands, Aggregates &amp; Contexts (14:00 - 17:00)</h3>
+
+<p><strong>Protocolo:</strong></p>
+<ol>
+  <li><strong>Command identification (60 min):</strong> Para cada evento, identificar que comando lo dispara y quien/que lo ejecuta. Sticky notes azules.</li>
+  <li><strong>Aggregate clustering (30 min):</strong> Agrupar eventos + commands alrededor de entidades de dominio. Sticky notes amarillos.</li>
+  <li><strong>Bounded context boundaries (45 min):</strong> Dibujar fronteras con cinta de color alrededor de aggregates relacionados.</li>
+  <li><strong>Hot spot marking (15 min):</strong> Sticky notes rosados en areas de conflicto, ambiguedad o riesgo.</li>
+</ol>
+
+<h3>Bounded contexts identificados (estimacion)</h3>
+<ul>
+  <li><strong>Account Management</strong> — apertura, cierre, modificacion de cuentas</li>
+  <li><strong>Payment Processing</strong> — transferencias, pagos, conciliacion</li>
+  <li><strong>Credit Lifecycle</strong> — solicitud, evaluacion, desembolso, cobranza</li>
+  <li><strong>Regulatory Compliance</strong> — KYC, AML, reportes regulatorios</li>
+  <li><strong>Channel Gateway</strong> — autenticacion, autorizacion, notificaciones</li>
+</ul>
+
+<h3>Dia 2, Manana: Deep-Dives &amp; Policies (9:00 - 12:30)</h3>
+<ol>
+  <li><strong>Hot spot resolution (60 min):</strong> Abordar los 3-5 hot spots mas criticos con discusion estructurada.</li>
+  <li><strong>Policy identification (60 min):</strong> Identificar reacciones automaticas: "Cuando X ocurre, entonces Y". Sticky notes lilas.</li>
+  <li><strong>Saga mapping (30 min):</strong> Procesos que cruzan bounded contexts.</li>
+</ol>
+
+<div class="callout">
+  <strong>Policies ejemplo:</strong>
+  <ul>
+    <li>Cuando <code>TransferenciaIniciada</code> y monto &gt; $10,000 &rarr; <code>AlertaAMLGenerada</code></li>
+    <li>Cuando <code>CuotaVencida</code> y dias_mora &gt; 30 &rarr; <code>ProcesoCobranzaIniciado</code></li>
+    <li>Cuando <code>KYCCompletado</code> y riesgo = alto &rarr; <code>MonitoreoReforzadoActivado</code></li>
+  </ul>
+</div>
+
+<hr class="section-divider">
+
+<!-- S3: Impact Mapping -->
+<h2>S3: Impact Mapping — Digital Banking Transformation</h2>
+
+<p><strong>Goal:</strong> Incrementar adopcion de canales digitales del 35% al 70% en 18 meses.</p>
+
+<h3>Mapa de impacto</h3>
+
+<table>
+  <thead>
+    <tr><th>Actor</th><th>Impacto deseado</th><th>Entregables candidatos</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cliente retail</td><td>Realiza el 90% de operaciones sin ir a sucursal</td><td>App movil con transferencias, pagos de servicios, apertura de cuentas digital</td></tr>
+    <tr><td>Cliente retail</td><td>Confiar en la seguridad del canal digital</td><td>Autenticacion biometrica, notificaciones en tiempo real, dashboard de actividad</td></tr>
+    <tr><td>Cliente empresa</td><td>Gestiona nomina y pagos a proveedores digitalmente</td><td>Portal empresarial, pagos masivos, integracion contable</td></tr>
+    <tr><td>Ejecutivo de cuenta</td><td>Dedica mas tiempo a asesoria vs. operaciones manuales</td><td>CRM integrado, automatizacion de procesos rutinarios</td></tr>
+    <tr><td>Equipo de compliance</td><td>Reduce tiempo de generacion de reportes regulatorios</td><td>Reportes automatizados, monitoreo en tiempo real</td></tr>
+    <tr><td>Equipo de TI</td><td>Despliega cambios sin ventanas de mantenimiento de 8 horas</td><td>Arquitectura de microservicios, CI/CD, feature flags</td></tr>
+  </tbody>
+</table>
+
+<h3>Supuestos a validar</h3>
+<ol>
+  <li>Los clientes retail abandonan el canal digital por UX deficiente (no por desconfianza).</li>
+  <li>Los ejecutivos de cuenta estan dispuestos a cambiar su flujo de trabajo.</li>
+  <li>La regulacion local permite apertura de cuentas 100% digital.</li>
+</ol>
+
+<hr class="section-divider">
+
+<!-- S4: User Story Mapping -->
+<h2>S4: User Story Mapping — Top 3 User Journeys</h2>
+
+<h3>Journey 1: Apertura de cuenta digital</h3>
+<p><strong>Backbone:</strong> Registro &rarr; Verificacion de identidad &rarr; Seleccion de producto &rarr; Configuracion &rarr; Activacion</p>
+
+<table>
+  <thead>
+    <tr><th>Actividad</th><th>Walking Skeleton (R1)</th><th>Mejora (R2)</th><th>Optimizacion (R3)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Registro</td><td>Formulario basico con email + telefono</td><td>SSO con Google/Apple</td><td>Pre-llenado desde datos gubernamentales</td></tr>
+    <tr><td>Verificacion</td><td>Foto de documento + selfie</td><td>OCR automatico + liveness detection</td><td>Verificacion en tiempo real vs. base gubernamental</td></tr>
+    <tr><td>Seleccion</td><td>Cuenta de ahorro unica</td><td>3 tipos de cuenta con comparador</td><td>Recomendacion personalizada por perfil</td></tr>
+    <tr><td>Configuracion</td><td>Pin + email de notificaciones</td><td>Biometria + preferencias de notificacion</td><td>Configuracion inteligente por perfil de uso</td></tr>
+    <tr><td>Activacion</td><td>Deposito minimo por transferencia</td><td>Deposito por PSE/tarjeta</td><td>Activacion inmediata sin deposito</td></tr>
+  </tbody>
+</table>
+
+<h3>Journey 2: Transferencia interbancaria</h3>
+<p><strong>Backbone:</strong> Seleccion de beneficiario &rarr; Monto y concepto &rarr; Autorizacion &rarr; Confirmacion &rarr; Comprobante</p>
+
+<table>
+  <thead>
+    <tr><th>Actividad</th><th>Walking Skeleton (R1)</th><th>Mejora (R2)</th><th>Optimizacion (R3)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Beneficiario</td><td>Ingreso manual de cuenta</td><td>Directorio de contactos frecuentes</td><td>Busqueda por nombre/alias, QR</td></tr>
+    <tr><td>Monto</td><td>Ingreso manual</td><td>Templates de pagos recurrentes</td><td>Programacion y pagos automaticos</td></tr>
+    <tr><td>Autorizacion</td><td>OTP por SMS</td><td>Push notification + biometria</td><td>Transferencias de bajo monto sin OTP</td></tr>
+    <tr><td>Confirmacion</td><td>Pantalla de exito</td><td>Notificacion push + email</td><td>Estado en tiempo real con tracking</td></tr>
+    <tr><td>Comprobante</td><td>PDF descargable</td><td>Compartir por WhatsApp/email</td><td>Integracion automatica con contabilidad</td></tr>
+  </tbody>
+</table>
+
+<h3>Journey 3: Consulta de movimientos y saldo</h3>
+<p><strong>Backbone:</strong> Autenticacion &rarr; Dashboard &rarr; Filtrado &rarr; Detalle &rarr; Exportacion</p>
+
+<table>
+  <thead>
+    <tr><th>Actividad</th><th>Walking Skeleton (R1)</th><th>Mejora (R2)</th><th>Optimizacion (R3)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Autenticacion</td><td>Login con usuario + contrasena</td><td>Biometria (huella/face)</td><td>Auto-login en dispositivo confiable</td></tr>
+    <tr><td>Dashboard</td><td>Saldo actual + ultimos 5 movimientos</td><td>Grafico de gastos por categoria</td><td>Insights inteligentes + alertas</td></tr>
+    <tr><td>Filtrado</td><td>Por fecha (ultimo mes)</td><td>Por categoria, monto, tipo</td><td>Busqueda en lenguaje natural</td></tr>
+    <tr><td>Detalle</td><td>Fecha, monto, descripcion</td><td>Categoria, comercio, ubicacion</td><td>Adjuntar recibos, notas</td></tr>
+    <tr><td>Exportacion</td><td>PDF del periodo</td><td>CSV, Excel</td><td>Integracion directa con apps contables</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>MVP (Release 1) — Walking Skeleton:</strong> Los walking skeletons de los 3 journeys conforman el MVP. Estimacion: 8-10 semanas de desarrollo con un equipo de 6.
+</div>
+
+<hr class="section-divider">
+
+<!-- S6: Synthesis -->
+<h2>S6: Synthesis &amp; Action Items</h2>
+
+<h3>Artefactos generados</h3>
+
+<div class="mermaid">
+mindmap
+  root((Workshop\nOutputs))
+    Event Storm
+      Domain Events ~70
+      Bounded Contexts 5
+      Hot Spots 8
+      Policies 12
+      Sagas 3
+    Impact Map
+      Goal 1
+      Actors 6
+      Impacts 12
+      Deliverables 18
+      Assumptions 3
+    Story Map
+      Journeys 3
+      Stories ~45
+      Releases 3
+      MVP scope defined
+    Decisions
+      Architecture direction
+      Release priorities
+      Team allocation
+</div>
+
+<h3>Decisiones clave tomadas</h3>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Decision</th><th>Rationale</th><th>Owner</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>D1</td><td>Arquitectura de microservicios por bounded context</td><td>Cada contexto tiene ciclo de vida y equipo diferente</td><td>Laura Martinez</td></tr>
+    <tr><td>D2</td><td>MVP = 3 journeys en walking skeleton</td><td>Validar end-to-end antes de profundizar</td><td>Diego Fernandez</td></tr>
+    <tr><td>D3</td><td>Compliance como servicio transversal</td><td>Todas las operaciones requieren validacion regulatoria</td><td>Ana Torres</td></tr>
+    <tr><td>D4</td><td>Canal movil primero, web responsive segundo</td><td>78% del trafico actual es movil</td><td>Pablo Sanchez</td></tr>
+  </tbody>
+</table>
+
+<h3>Action items</h3>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Accion</th><th>Responsable</th><th>Fecha limite</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>A1</td><td>Transcribir event storm completo a Miro</td><td>Laura Martinez</td><td>14 mar 2026</td></tr>
+    <tr><td>A2</td><td>Validar supuestos de Impact Map con datos de uso actual</td><td>Diego Fernandez</td><td>18 mar 2026</td></tr>
+    <tr><td>A3</td><td>Crear backlog inicial en Jira desde story map</td><td>Diego Fernandez</td><td>19 mar 2026</td></tr>
+    <tr><td>A4</td><td>Documentar bounded contexts como ADR</td><td>Laura Martinez</td><td>21 mar 2026</td></tr>
+    <tr><td>A5</td><td>Presentar sintesis al sponsor (Roberto Acosta)</td><td>Diego Fernandez</td><td>15 mar 2026</td></tr>
+    <tr><td>A6</td><td>Sesion de refinamiento tecnico por bounded context</td><td>Laura Martinez</td><td>25 mar 2026</td></tr>
+    <tr><td>A7</td><td>Prototipo Figma del Journey 1 (apertura digital)</td><td>Pablo Sanchez</td><td>21 mar 2026</td></tr>
+    <tr><td>A8</td><td>Validar requisitos regulatorios para apertura digital</td><td>Ana Torres</td><td>18 mar 2026</td></tr>
+  </tbody>
+</table>
+
+<h3>Follow-up</h3>
+<ul>
+  <li><strong>Sesion de refinamiento tecnico:</strong> 25 mar 2026 (medio dia, por bounded context)</li>
+  <li><strong>Review de prototipo UX:</strong> 24 mar 2026 (2 horas, Journey 1)</li>
+  <li><strong>Check-in de avance:</strong> semanal, lunes 10:00 AM, 30 min standing</li>
+</ul>
+
+<div class="footer">
+  <strong>Generado por:</strong> workshop-facilitator |
+  <strong>Proyecto:</strong> Acme Corp Banking Modernization |
+  <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+<script>mermaid.initialize({ startOnLoad: true, theme: 'default' });</script>
+</body>
+</html>

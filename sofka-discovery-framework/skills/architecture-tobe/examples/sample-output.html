@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitectura TO-BE — Acme Corp Banking Platform</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-surface: #f8f9fa;
+      --brand-text: #2d2d2d;
+      --brand-muted: #6c757d;
+      --brand-border: #dee2e6;
+      --brand-success: #28a745;
+      --brand-warning: #ffc107;
+      --brand-danger: #dc3545;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--brand-text); line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 2rem; }
+    h1 { color: var(--brand-primary); font-size: 1.8rem; border-bottom: 3px solid var(--brand-accent); padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    h2 { color: var(--brand-primary); font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1rem; border-left: 4px solid var(--brand-accent); padding-left: 0.75rem; }
+    h3 { color: var(--brand-primary); font-size: 1.15rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    h4 { font-size: 1rem; margin-top: 1rem; margin-bottom: 0.5rem; }
+    p { margin-bottom: 0.75rem; }
+    .meta { color: var(--brand-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+    th { background: var(--brand-primary); color: #fff; padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--brand-border); }
+    tr:nth-child(even) { background: var(--brand-surface); }
+    code { background: #eef; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.88rem; }
+    pre { background: var(--brand-primary); color: #e0e0e0; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; font-size: 0.85rem; line-height: 1.5; }
+    .callout { border-left: 4px solid var(--brand-accent); background: #fff5f5; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; }
+    .callout-warning { border-left-color: var(--brand-warning); background: #fff8e1; }
+    .callout-success { border-left-color: var(--brand-success); background: #e8f5e9; }
+    .nightmare { border-left: 4px solid var(--brand-danger); background: #fef2f2; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; }
+    .adr { border: 1px solid var(--brand-border); border-radius: 6px; padding: 1.25rem; margin: 1rem 0; background: #fff; }
+    .adr-status { display: inline-block; background: var(--brand-success); color: #fff; padding: 0.15rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+    ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+    li { margin-bottom: 0.3rem; }
+    hr { border: none; border-top: 1px solid var(--brand-border); margin: 2rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--brand-primary); color: var(--brand-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+<h1>Arquitectura TO-BE &mdash; Acme Corp Banking Platform</h1>
+<p class="meta"><strong>Proyecto:</strong> Acme Corp Legacy Modernization &bull; <strong>Escenario:</strong> Moderado (6 microservices + Legacy ACL) &bull; <strong>Fecha:</strong> 12 de marzo de 2026</p>
+
+<h2>1. C4 Level 2 &mdash; Container Diagram</h2>
+
+<h3>Service Inventory</h3>
+<table>
+  <thead>
+    <tr><th>#</th><th>Service</th><th>Tech Stack</th><th>Database</th><th>Key Patterns</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Auth Service</td><td>Go</td><td>PostgreSQL + Redis</td><td>Circuit breaker, token caching, LDAP fallback</td></tr>
+    <tr><td>2</td><td>Account Service</td><td>Java (Spring)</td><td>PostgreSQL</td><td>CQRS read model, KYC workflow</td></tr>
+    <tr><td>3</td><td>Transaction Orchestrator</td><td>Go</td><td>Kafka (stateless)</td><td>Saga orchestration, idempotency keys</td></tr>
+    <tr><td>4</td><td>Payment Service</td><td>Java (Spring)</td><td>PostgreSQL</td><td>Outbox pattern, reconciliation</td></tr>
+    <tr><td>5</td><td>Audit Service</td><td>Go</td><td>Elasticsearch</td><td>Immutable append-only, compliance queries</td></tr>
+    <tr><td>6</td><td>Notification Service</td><td>Node.js</td><td>Redis</td><td>Template engine, delivery tracking, retry</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>Layers:</strong> Consumer (Web/Mobile/Partner) &rarr; API Gateway (Kong/Envoy: OAuth2, mTLS, rate limiting) &rarr; Microservices Mesh (6 services + Kafka event bus) &rarr; Anti-Corruption Layer (ACL adapters, sidecar wrapping) &rarr; Legacy Systems (Core Banking COBOL/AS400, LDAP) &rarr; Data Layer (PostgreSQL, Redis, Elasticsearch, S3).
+</div>
+
+<h2>2. Trade-off Matrix</h2>
+<table>
+  <thead>
+    <tr><th>Decision</th><th>TO-BE Choice</th><th>Alternative 1</th><th>Alternative 2</th><th>Trade-off</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Service Communication</td><td>Event-Driven + gRPC</td><td>Pure REST</td><td>Pure Event-Driven</td><td>+Resilience, +Complexity</td></tr>
+    <tr><td>Consistency Model</td><td>Saga (Orchestration)</td><td>2PC</td><td>Choreography</td><td>+Control, -Performance vs 2PC</td></tr>
+    <tr><td>Security</td><td>Zero Trust (mTLS + OAuth2)</td><td>Perimeter-only</td><td>API Keys</td><td>+Security, +Ops overhead</td></tr>
+    <tr><td>Legacy Integration</td><td>ACL + Sidecar + Strangler Fig</td><td>Big Bang rewrite</td><td>Freeze legacy</td><td>+Safety, +Duration</td></tr>
+    <tr><td>Data Storage</td><td>Event Sourcing (Audit) + CRUD (Core)</td><td>Full Event Sourcing</td><td>Pure CRUD</td><td>Balanced complexity vs audit trail</td></tr>
+    <tr><td>Deployment</td><td>Kubernetes + ArgoCD</td><td>VM + Ansible</td><td>ECS Fargate</td><td>+Control, +Ops learning curve</td></tr>
+  </tbody>
+</table>
+
+<h2>3. Architecture Decision Records</h2>
+
+<div class="adr">
+  <h3>ADR-001: Saga Pattern (Orchestration) for Distributed Transactions</h3>
+  <p><span class="adr-status">Accepted</span> &mdash; 2026-03-12</p>
+  <p><strong>Context:</strong> 50K+ daily transactions across Account, Payment, and legacy Core Banking require eventual consistency with compensation on failure.</p>
+  <p><strong>Decision:</strong> Saga pattern with orchestration &mdash; Transaction Orchestrator service coordinates steps.</p>
+  <table>
+    <thead><tr><th>Option</th><th>Pros</th><th>Cons</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>2PC</td><td>Strong consistency</td><td>Blocking, poor at scale</td><td>Rejected</td></tr>
+      <tr><td>Choreography</td><td>Loose coupling</td><td>Hard to debug, implicit flow</td><td>Rejected</td></tr>
+      <tr><td>Orchestration</td><td>Explicit flow, centralized monitoring</td><td>Orchestrator coupling</td><td><strong>Accepted</strong></td></tr>
+    </tbody>
+  </table>
+  <p><strong>Consequences:</strong> (+) Clear transaction flow; (+) Testable compensation; (-) Orchestrator is critical path (HA required); (-) ~15ms latency per step.</p>
+</div>
+
+<div class="adr">
+  <h3>ADR-002: Zero Trust Security Model (mTLS + OAuth2)</h3>
+  <p><span class="adr-status">Accepted</span> &mdash; 2026-03-12</p>
+  <p><strong>Context:</strong> Banking regulations require encryption in transit, audit of all access, zero implicit trust.</p>
+  <p><strong>Decision:</strong> Every service-to-service call uses mTLS; user-facing calls validated via OAuth2 at gateway AND service boundary.</p>
+  <table>
+    <thead><tr><th>Option</th><th>Pros</th><th>Cons</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Network perimeter only</td><td>Simple</td><td>Lateral movement risk</td><td>Rejected</td></tr>
+      <tr><td>API Keys per service</td><td>Easy</td><td>No rotation, no identity</td><td>Rejected</td></tr>
+      <tr><td>Zero Trust</td><td>Defense in depth</td><td>Certificate management</td><td><strong>Accepted</strong></td></tr>
+    </tbody>
+  </table>
+  <p><strong>Consequences:</strong> (+) Regulatory compliance; (+) No lateral movement; (-) Cert rotation ops (automate via cert-manager).</p>
+</div>
+
+<div class="adr">
+  <h3>ADR-003: Event Sourcing for Audit Trail</h3>
+  <p><span class="adr-status">Accepted</span> &mdash; 2026-03-12</p>
+  <p><strong>Context:</strong> Compliance requires immutable, queryable audit trail. Traditional logging insufficient &mdash; auditors need point-in-time reconstruction.</p>
+  <p><strong>Decision:</strong> Event Sourcing for Audit domain only. Core services use CRUD + outbox pattern. Audit Service consumes all events into append-only Elasticsearch.</p>
+  <table>
+    <thead><tr><th>Option</th><th>Pros</th><th>Cons</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Full Event Sourcing</td><td>Complete history</td><td>Massive complexity</td><td>Rejected</td></tr>
+      <tr><td>CRUD + app logs</td><td>Simple</td><td>Mutable, audit gaps</td><td>Rejected</td></tr>
+      <tr><td>Hybrid (chosen)</td><td>Audit-grade trail</td><td>Two consistency models</td><td><strong>Accepted</strong></td></tr>
+    </tbody>
+  </table>
+  <p><strong>Consequences:</strong> (+) Immutable trail satisfies regulators; (+) Point-in-time replay; (-) ~2s eventual consistency lag; (-) ES cluster sizing required.</p>
+</div>
+
+<h2>4. Nightmare Scenarios</h2>
+
+<div class="nightmare">
+  <h3>Nightmare 1: Ghost Transaction</h3>
+  <p><strong>Problem:</strong> Payment commits in Payment Service but Saga compensation fails in Account Service. Customer charged but balance unchanged.</p>
+  <h4>Mitigations (Defense in Depth)</h4>
+  <ol>
+    <li><strong>Idempotency keys</strong> on every saga step</li>
+    <li><strong>Outbox pattern</strong> &mdash; payment event in same DB transaction</li>
+    <li><strong>Dead Letter Queue</strong> &mdash; failed compensations + alert</li>
+    <li><strong>Reconciliation service</strong> &mdash; nightly Payment vs Account comparison</li>
+    <li><strong>Immutable audit log</strong> &mdash; forensic reconstruction</li>
+    <li><strong>Manual resolution runbook</strong> &mdash; admin API replay/compensate</li>
+  </ol>
+  <h4>Monitoring</h4>
+  <ul>
+    <li>Alert: Saga step pending &gt; 60s</li>
+    <li>Alert: DLQ depth &gt; 0</li>
+    <li>Alert: Reconciliation delta &gt; $0.01</li>
+  </ul>
+  <p><strong>Acceptance:</strong> Zero ghost transactions in production. DLQ resolved within 4 hours.</p>
+</div>
+
+<div class="nightmare">
+  <h3>Nightmare 2: Auth Service Outage</h3>
+  <p><strong>Problem:</strong> Auth Service unreachable &mdash; all API requests rejected at gateway, complete platform outage.</p>
+  <h4>Mitigations (Defense in Depth)</h4>
+  <ol>
+    <li><strong>Token caching (Redis)</strong> &mdash; 5-minute grace period</li>
+    <li><strong>Multi-replica</strong> &mdash; 3 replicas across AZs</li>
+    <li><strong>Circuit breaker</strong> &mdash; gateway falls back to cached validation</li>
+    <li><strong>LDAP fallback</strong> &mdash; emergency auth source</li>
+    <li><strong>K8s liveness probe</strong> &mdash; auto-restart within 30s</li>
+    <li><strong>Emergency bypass</strong> &mdash; pre-shared ops tokens (audit-logged)</li>
+  </ol>
+  <h4>Monitoring</h4>
+  <ul>
+    <li>Alert: Error rate &gt; 1% (5-min window)</li>
+    <li>Alert: P99 latency &gt; 200ms</li>
+    <li>Alert: Certificate expiry &lt; 7 days</li>
+  </ul>
+  <p><strong>Acceptance:</strong> Platform operational for 5 minutes during complete Auth failure via cached tokens.</p>
+</div>
+
+<div class="nightmare">
+  <h3>Nightmare 3: Cascade Failure</h3>
+  <p><strong>Problem:</strong> Payment Service crashes. Retry storm floods Kafka. Account Service consumer falls behind. Full platform degradation.</p>
+  <h4>Mitigations (Defense in Depth)</h4>
+  <ol>
+    <li><strong>Circuit breaker</strong> &mdash; open after 5 failures, half-open at 30s</li>
+    <li><strong>Bulkhead pattern</strong> &mdash; dedicated thread pools per dependency</li>
+    <li><strong>Rate limiting + backpressure</strong> &mdash; Kafka consumer pause</li>
+    <li><strong>Service mesh retry policy</strong> &mdash; max 3, exponential backoff</li>
+    <li><strong>K8s resource limits</strong> &mdash; prevent OOM cascade</li>
+    <li><strong>Load shedding</strong> &mdash; gateway rejects low-priority when error &gt; 5%</li>
+  </ol>
+  <h4>Monitoring</h4>
+  <ul>
+    <li>Alert: Circuit breaker open on any service</li>
+    <li>Alert: Kafka consumer lag &gt; 10K messages</li>
+    <li>Alert: Gateway 5xx rate &gt; 2%</li>
+  </ul>
+  <p><strong>Acceptance:</strong> Single service failure does not degrade others. Recovery within 5 minutes.</p>
+</div>
+
+<h2>5. MVP Component &mdash; Auth Service</h2>
+
+<h3>Architecture</h3>
+<div class="callout-success callout">
+  Client (Web/Mobile) &rarr; API Gateway (Kong) &rarr; Auth Service (Go) &rarr; PostgreSQL + Redis + Legacy LDAP + Kafka (events &rarr; Audit Service)
+</div>
+
+<h3>API Contracts</h3>
+<table>
+  <thead><tr><th>Endpoint</th><th>Method</th><th>Description</th><th>SLA</th></tr></thead>
+  <tbody>
+    <tr><td><code>/auth/login</code></td><td>POST</td><td>Authenticate, issue JWT + refresh token</td><td>&lt;100ms P99</td></tr>
+    <tr><td><code>/auth/refresh</code></td><td>POST</td><td>Refresh expired access token</td><td>&lt;50ms P99</td></tr>
+    <tr><td><code>/auth/logout</code></td><td>POST</td><td>Invalidate session, revoke tokens</td><td>&lt;50ms P99</td></tr>
+    <tr><td><code>/auth/verify</code></td><td>GET</td><td>Validate token, return claims</td><td>&lt;20ms P99</td></tr>
+  </tbody>
+</table>
+
+<h3>Data Model (PostgreSQL)</h3>
+<pre>CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    status VARCHAR(20) DEFAULT 'active',
+    created_at TIMESTAMPTZ DEFAULT now(),
+    updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE user_roles (
+    user_id UUID REFERENCES users(id),
+    role VARCHAR(50) NOT NULL,
+    granted_at TIMESTAMPTZ DEFAULT now(),
+    PRIMARY KEY (user_id, role)
+);
+
+CREATE TABLE session_events (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES users(id),
+    event_type VARCHAR(30) NOT NULL,
+    ip_address INET,
+    user_agent TEXT,
+    created_at TIMESTAMPTZ DEFAULT now()
+);</pre>
+
+<h3>Resilience Patterns</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>Implementation</th><th>Trigger</th></tr></thead>
+  <tbody>
+    <tr><td>Idempotency</td><td>Request ID header; deduplicate in Redis (TTL 5min)</td><td>Duplicate login requests</td></tr>
+    <tr><td>Circuit Breaker</td><td>LDAP fallback circuit; open after 3 failures</td><td>LDAP unreachable</td></tr>
+    <tr><td>Saga</td><td>Login + session_event in same DB transaction</td><td>Audit consistency</td></tr>
+    <tr><td>Caching</td><td>Redis TTL 5min for active sessions</td><td>Reduce DB load</td></tr>
+    <tr><td>Rate Limiting</td><td>10 login attempts per IP per minute</td><td>Brute force prevention</td></tr>
+  </tbody>
+</table>
+
+<h2>6. Phased Migration &mdash; Strangler Fig</h2>
+
+<h3>Phase 1: Assessment &amp; Wrapping (Months 1&ndash;2)</h3>
+<ul>
+  <li>Document legacy integrations, data flows, implicit business rules</li>
+  <li>Build ACL adapters for Core Banking (COBOL/AS400)</li>
+  <li>Deploy sidecar pattern for legacy LDAP</li>
+  <li>Establish observability baseline</li>
+</ul>
+
+<h3>Phase 2: MVP Deployment (Months 3&ndash;5)</h3>
+<ul>
+  <li>Deploy Auth Service with 10% canary</li>
+  <li>Shadow mode for 2 weeks: compare both paths</li>
+  <li>Promote to 100% after zero-delta validation</li>
+</ul>
+
+<h3>Phase 3: Core Service Migration (Months 6&ndash;10)</h3>
+<ul>
+  <li>Deploy Account, Payment, Transaction Orchestrator</li>
+  <li>Implement Saga + Kafka event streaming</li>
+  <li>Nightly reconciliation validates consistency</li>
+</ul>
+
+<h3>Phase 4: Legacy Sunset (Months 11&ndash;14)</h3>
+<ul>
+  <li>Core Banking set to read-only</li>
+  <li>Archive to S3 Data Lake</li>
+  <li>Maintain ACL for compliance queries only</li>
+  <li>Decommission after 90-day observation</li>
+</ul>
+
+<h3>Migration Risk Matrix</h3>
+<table>
+  <thead><tr><th>Phase</th><th>Risk</th><th>Probability</th><th>Impact</th><th>Mitigation</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Incorrect legacy understanding</td><td>Medium</td><td>High</td><td>Technical archaeology + stakeholder interviews</td></tr>
+    <tr><td>2</td><td>Canary impacts production</td><td>Low</td><td>High</td><td>Shadow mode: compare but don't apply</td></tr>
+    <tr><td>3</td><td>Data inconsistency</td><td>Medium</td><td>Critical</td><td>Reconciliation service + nightly batch</td></tr>
+    <tr><td>4</td><td>Legacy data inaccessibility</td><td>Low</td><td>Medium</td><td>Data lake backup + read-only ACL</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<div class="footer">
+  <strong>Autor:</strong> Javier Montano &bull; <strong>Proyecto:</strong> Acme Corp Banking Platform &bull; <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+</body>
+</html>

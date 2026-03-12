@@ -1,0 +1,21 @@
+{
+  "name": "metodologia-discovery-framework",
+  "version": "6.0.0",
+  "description": "Enterprise technical discovery & consulting framework — 8-agent dream team orchestrates 48 specialized skills across 8 pipeline phases. Output excellence: markdown-first with Mermaid diagrams, A/B variants (ejecutiva/técnica), smart HITL modes (piloto-auto default), 5% innovation margin. No final prices — drivers, magnitudes, and models only. Copyleft (GPL-3.0).",
+  "author": {
+    "name": "Javier Montaño",
+    "url": "https://metodologia.info"
+  },
+  "homepage": "https://metodologia.info",
+  "license": "GPL-3.0",
+  "keywords": [
+    "discovery", "consulting", "architecture", "assessment", "enterprise",
+    "modernization", "due-diligence", "dream-team", "orchestration",
+    "data-architecture", "cloud-native", "mobile", "security", "devops",
+    "cost-drivers", "testing-strategy", "performance", "observability",
+    "handover", "operations", "commercial-model", "governance-transition",
+    "technical-feasibility", "software-viability", "ai-validation",
+    "project-management", "risk-controlling", "proposal-qa", "pmo-governance",
+    "copyleft", "open-source"
+  ]
+}

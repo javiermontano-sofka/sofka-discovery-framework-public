@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-01 Solutions Architecture — Acme Corp Banking Modernization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+    <style>
+        :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --surface: #ffffff; --muted: #718096; --success: #38a169; --warning: #d69e2e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+        h2 { color: var(--primary); font-size: 1.4rem; margin: 2.5rem 0 1rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; }
+        h3 { color: var(--text); font-size: 1.1rem; margin: 1.5rem 0 0.75rem; font-weight: 600; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+        .summary { background: var(--surface); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+        th { background: var(--primary); color: #fff; text-align: left; padding: 0.6rem 0.75rem; }
+        td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: rgba(26,54,93,0.04); }
+        .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
+        .badge-sync { background: #bee3f8; color: #2a4365; }
+        .badge-async { background: #fefcbf; color: #744210; }
+        .badge-acl { background: #fed7d7; color: #9b2c2c; }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 0.4rem 0; padding-left: 1.75rem; position: relative; }
+        .checklist li::before { content: "\2713"; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+        .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+        code { background: #edf2f7; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+        .mermaid { background: var(--surface); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border); }
+        .callout { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<h1>A-01 Solutions Architecture Deep</h1>
+<p class="meta">Acme Corp Banking Modernization | 12 de marzo de 2026 | Modo: piloto-auto | Variante: t&eacute;cnica</p>
+
+<div class="summary">
+    <strong>Executive Summary:</strong> Acme Corp is modernizing its core banking platform from a COBOL mainframe to Java/Spring Boot microservices on AWS. This document designs the end-to-end solution: C4 container model with 14 microservices, channel architecture with BFF pattern for web, mobile, and partner API, OAuth2/OIDC identity via Auth0, Kong API gateway, 3 integration patterns (sync, async, ACL), and a full observability stack with SLI/SLO targets for all critical banking services.
+</div>
+
+<h2>S1: Solution View (C4 Containers)</h2>
+
+<h3>C4 Context Diagram</h3>
+<div class="mermaid">
+graph TB
+    Customer[Customer<br/>Loan Applicant]
+    LoanOfficer[Loan Officer<br/>Internal User]
+    Partner[Partner System<br/>Credit Bureau]
+    Regulator[OCC Regulator<br/>Audit Access]
+
+    System[Acme Banking Platform<br/>Loan Origination System]
+
+    Customer -->|Applies for loans| System
+    LoanOfficer -->|Reviews applications| System
+    Partner -->|Credit scores| System
+    Regulator -->|Audit trail access| System
+
+    style System fill:#1a365d,color:#fff
+</div>
+
+<h3>C4 Container Diagram</h3>
+<div class="mermaid">
+graph TB
+    subgraph Channels
+        WebBFF[Web BFF<br/>Next.js SSR]
+        MobileBFF[Mobile BFF<br/>Node.js]
+        PartnerAPI[Partner API<br/>REST OpenAPI 3.1]
+    end
+    subgraph Gateway
+        Kong[API Gateway<br/>Kong]
+    end
+    subgraph Core Services
+        Loan[Loan Service<br/>Java/Spring Boot]
+        Payment[Payment Service<br/>Java/Spring Boot]
+        Account[Account Service<br/>Java/Spring Boot]
+        Fraud[Fraud Detection<br/>Python/FastAPI]
+    end
+    subgraph Data
+        DB[(PostgreSQL<br/>Primary + Replica)]
+        Redis[(Redis Cache)]
+        Kafka[Kafka MSK<br/>Event Bus]
+        S3[S3<br/>Documents]
+    end
+
+    WebBFF --> Kong
+    MobileBFF --> Kong
+    PartnerAPI --> Kong
+    Kong --> Loan
+    Kong --> Payment
+    Kong --> Account
+    Loan --> Fraud
+    Loan --> DB
+    Payment --> Kafka
+    Account --> Redis
+    Kafka --> Fraud
+
+    style Kong fill:#e53e3e,color:#fff
+</div>
+
+<h3>Container Inventory</h3>
+<table>
+    <thead><tr><th>Container</th><th>Technology</th><th>Role</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Web BFF</strong></td><td>Next.js / Node.js</td><td>SSR for loan portal, response aggregation</td></tr>
+        <tr><td><strong>Mobile BFF</strong></td><td>Node.js</td><td>Lightweight JSON API for React Native app</td></tr>
+        <tr><td><strong>Partner API</strong></td><td>REST / OpenAPI 3.1</td><td>B2B programmatic access, versioned (v1, v2)</td></tr>
+        <tr><td><strong>API Gateway</strong></td><td>Kong</td><td>Auth, rate limiting, routing, circuit breaker</td></tr>
+        <tr><td><strong>Loan Service</strong></td><td>Java / Spring Boot</td><td>Loan lifecycle, underwriting, credit check</td></tr>
+        <tr><td><strong>Payment Service</strong></td><td>Java / Spring Boot</td><td>Payment processing, disbursement</td></tr>
+        <tr><td><strong>Account Service</strong></td><td>Java / Spring Boot</td><td>Customer accounts, balances, statements</td></tr>
+        <tr><td><strong>Fraud Detection</strong></td><td>Python / FastAPI</td><td>Real-time fraud scoring, rule engine</td></tr>
+        <tr><td><strong>Event Bus</strong></td><td>Kafka (MSK)</td><td>Async event backbone (loan, payment, fraud events)</td></tr>
+    </tbody>
+</table>
+
+<h2>S2: Integration Architecture</h2>
+
+<h3>Integration Patterns</h3>
+<table>
+    <thead><tr><th>#</th><th>Pattern</th><th>From &rarr; To</th><th>Protocol</th><th>Rationale</th></tr></thead>
+    <tbody>
+        <tr><td>1</td><td><span class="badge badge-sync">Sync</span></td><td>BFF &rarr; Loan Service</td><td>REST/HTTP</td><td>User expects immediate loan submission confirmation</td></tr>
+        <tr><td>2</td><td><span class="badge badge-async">Async</span></td><td>Loan Service &rarr; Fraud Detection</td><td>Kafka</td><td>Fraud scoring decoupled from loan submission</td></tr>
+        <tr><td>3</td><td><span class="badge badge-acl">ACL</span></td><td>Loan Service &rarr; Credit Bureau (Equifax)</td><td>REST + Adapter</td><td>External API uses XML; ACL isolates modern domain model</td></tr>
+    </tbody>
+</table>
+
+<h3>API Gateway Configuration</h3>
+<table>
+    <thead><tr><th>Concern</th><th>Implementation</th></tr></thead>
+    <tbody>
+        <tr><td>Authentication</td><td>JWT validation (Auth0 issued tokens)</td></tr>
+        <tr><td>Rate Limiting</td><td>1000 req/min (partner), 100 req/min (web/mobile)</td></tr>
+        <tr><td>Routing</td><td>Path-based: <code>/loans/*</code> &rarr; Loan Service, <code>/accounts/*</code> &rarr; Account Service</td></tr>
+        <tr><td>Circuit Breaker</td><td>Trip at 50% error rate over 60s, 30s recovery window</td></tr>
+    </tbody>
+</table>
+
+<h2>S3: Channel &amp; BFF Architecture</h2>
+
+<table>
+    <thead><tr><th>Channel</th><th>BFF</th><th>Auth Flow</th><th>Key Constraint</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Web (SPA)</strong></td><td>Web BFF (Next.js SSR)</td><td>OAuth2 Auth Code + PKCE</td><td>SEO requires SSR; p95 TTFB &lt;800ms</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Mobile BFF (Node.js)</td><td>OAuth2 Auth Code + PKCE</td><td>Offline: loan status cached locally</td></tr>
+        <tr><td><strong>Partner API</strong></td><td>None (direct)</td><td>OAuth2 Client Credentials</td><td>SLA: 99.9% availability, OpenAPI 3.1</td></tr>
+    </tbody>
+</table>
+
+<h2>S4: Identity &amp; Security</h2>
+
+<h3>OAuth2 Authentication Flow</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant User as Loan Applicant
+    participant App as Web Portal
+    participant Auth0 as Auth0 (IdP)
+    participant GW as API Gateway
+    participant Loan as Loan Service
+
+    User->>App: Click "Apply for Loan"
+    App->>Auth0: Redirect to /authorize (PKCE)
+    Auth0->>User: Login + MFA prompt
+    User->>Auth0: Credentials + MFA code
+    Auth0->>App: Authorization code
+    App->>Auth0: Exchange code for tokens
+    Auth0->>App: Access token (15min) + Refresh token
+    App->>GW: POST /loans/apply (Bearer token)
+    GW->>GW: Validate JWT, check scopes
+    GW->>Loan: Forward request
+    Loan->>GW: 201 Created (loan ID)
+    GW->>App: 201 Created
+</div>
+
+<h3>Authorization (RBAC)</h3>
+<table>
+    <thead><tr><th>Role</th><th>Scope</th><th>Access</th></tr></thead>
+    <tbody>
+        <tr><td><code>customer</code></td><td>Own data</td><td>Read/write own loans, profile, documents</td></tr>
+        <tr><td><code>loan-officer</code></td><td>Assigned portfolio</td><td>Review, approve/deny loan applications</td></tr>
+        <tr><td><code>partner</code></td><td>Partner scope</td><td>Submit credit checks, read loan status</td></tr>
+        <tr><td><code>admin</code></td><td>Full system</td><td>Configuration, user management, reports</td></tr>
+        <tr><td><code>auditor</code></td><td>Read-only</td><td>Full read access for OCC compliance audits</td></tr>
+    </tbody>
+</table>
+
+<h2>S5: Observability (SLI/SLO)</h2>
+
+<h3>Observability Stack</h3>
+<table>
+    <thead><tr><th>Layer</th><th>Tool</th><th>Purpose</th></tr></thead>
+    <tbody>
+        <tr><td>Logging</td><td>Grafana Loki</td><td>Structured JSON, correlation IDs, 90-day retention</td></tr>
+        <tr><td>Metrics</td><td>Grafana Mimir</td><td>RED metrics, business KPIs, percentile latencies</td></tr>
+        <tr><td>Tracing</td><td>Grafana Tempo + OTel</td><td>Distributed traces, 5% head + 100% error sampling</td></tr>
+        <tr><td>Alerting</td><td>Grafana + PagerDuty</td><td>SLO burn-rate alerts, on-call rotation</td></tr>
+    </tbody>
+</table>
+
+<h3>SLI/SLO Targets</h3>
+<table>
+    <thead><tr><th>Service</th><th>SLI</th><th>SLO</th><th>Error Budget (30d)</th></tr></thead>
+    <tbody>
+        <tr><td>Loan Origination</td><td>Successful loan submission (2xx)</td><td><strong>99.95%</strong></td><td>21.6 min</td></tr>
+        <tr><td>Payment Service</td><td>Successful payment processing</td><td><strong>99.95%</strong></td><td>21.6 min</td></tr>
+        <tr><td>Account Service</td><td>Latency p99 &lt;500ms</td><td><strong>99.9%</strong></td><td>43.2 min</td></tr>
+        <tr><td>Fraud Detection</td><td>Evaluation completed &lt;1.5s</td><td><strong>99.9%</strong></td><td>43.2 min</td></tr>
+        <tr><td>Partner API</td><td>Availability (non-5xx)</td><td><strong>99.9% (SLA)</strong></td><td>43.2 min</td></tr>
+    </tbody>
+</table>
+
+<h2>S6: Cross-Cutting Concerns</h2>
+
+<table>
+    <thead><tr><th>Concern</th><th>Pattern</th><th>Configuration</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Caching</strong></td><td>Redis + Cache-aside</td><td>Credit scores: 24h TTL, Account balance: no cache (regulatory)</td></tr>
+        <tr><td><strong>Circuit Breaker</strong></td><td>Resilience4j</td><td>Trip: 50% errors/60s, recovery: 30s</td></tr>
+        <tr><td><strong>Retry</strong></td><td>Exponential backoff + jitter</td><td>Max 3 retries, initial 100ms, max 5s</td></tr>
+        <tr><td><strong>Feature Flags</strong></td><td>LaunchDarkly</td><td>Canary rollouts, kill switches for new loan products</td></tr>
+        <tr><td><strong>Secrets</strong></td><td>AWS Secrets Manager</td><td>Auto-rotation every 90 days</td></tr>
+    </tbody>
+</table>
+
+<h2>S7: Transition Plan</h2>
+
+<table>
+    <thead><tr><th>Phase</th><th>Scope</th><th>Duration</th><th>Risk</th><th>Strategy</th></tr></thead>
+    <tbody>
+        <tr><td><strong>1</strong></td><td>API Gateway + Auth0</td><td>4 weeks</td><td>Low</td><td>New infrastructure, no legacy dependency</td></tr>
+        <tr><td><strong>2</strong></td><td>Account Service + Web BFF</td><td>6 weeks</td><td>Medium</td><td>Strangler fig pattern, dual-read from mainframe</td></tr>
+        <tr><td><strong>3</strong></td><td>Loan Service + Kafka</td><td>8 weeks</td><td>High</td><td>Dual-write with feature flag cutover</td></tr>
+        <tr><td><strong>4</strong></td><td>Mobile BFF + Partner API</td><td>4 weeks</td><td>Low</td><td>New channels, no migration needed</td></tr>
+        <tr><td><strong>5</strong></td><td>Payment Service + Credit Bureau ACL</td><td>6 weeks</td><td>High</td><td>Parallel running with reconciliation</td></tr>
+    </tbody>
+</table>
+
+<div class="callout"><strong>Rollback Criteria:</strong> Each phase has a 48-hour bake period. Rollback triggered if error rate &gt;1% or p99 latency &gt;2x baseline. Feature flags enable instant traffic routing to legacy.</div>
+
+<h2>Validation</h2>
+<ul class="checklist">
+    <li>C4 context and container diagrams with all 9 containers documented</li>
+    <li>3 integration patterns (sync, async, ACL) with rationale</li>
+    <li>Channel architecture: Web, Mobile, Partner API with BFF strategy</li>
+    <li>Identity: OAuth2/OIDC with Auth0, RBAC, sequence diagram for auth flow</li>
+    <li>API Gateway: routing, rate limiting, circuit breaker, JWT validation</li>
+    <li>Observability: Grafana stack, SLI/SLO for all 5 critical services</li>
+    <li>Cross-cutting: caching, retry, circuit breaker, feature flags, secrets</li>
+    <li>Transition: 5 phases, strangler fig, rollback criteria defined</li>
+</ul>
+
+<div class="footer">
+    <strong>Autor:</strong> Javier Montano | <strong>Generado por:</strong> sofka-solutions-architecture | <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+</body>
+</html>

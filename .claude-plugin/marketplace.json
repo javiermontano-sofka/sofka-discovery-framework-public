@@ -1,0 +1,47 @@
+{
+  "name": "jm-discovery-plugins",
+  "owner": {
+    "name": "Javier Montaño",
+    "email": "javier@sofka.com.co"
+  },
+  "metadata": {
+    "description": "Discovery framework plugins — enterprise consulting (Sofka) and open methodology (MetodologIA). 8-agent dream team, 48 skills, 8 pipeline phases each.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "sofka-discovery-framework",
+      "source": "./sofka-discovery-framework",
+      "description": "Enterprise technical discovery & consulting framework — 8-agent dream team orchestrates 48 specialized skills across 8 pipeline phases. Proprietary (Sofka Technologies).",
+      "version": "6.0.0",
+      "author": {
+        "name": "Javier Montaño"
+      },
+      "homepage": "https://sofka.com.co",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "consulting",
+      "tags": ["discovery", "enterprise", "architecture", "consulting", "sofka"],
+      "keywords": [
+        "discovery", "consulting", "architecture", "assessment", "enterprise",
+        "modernization", "dream-team", "orchestration", "pre-sales"
+      ]
+    },
+    {
+      "name": "metodologia-discovery-framework",
+      "source": "./metodologia-discovery-framework",
+      "description": "Enterprise technical discovery & consulting framework — 8-agent dream team orchestrates 48 specialized skills across 8 pipeline phases. Open methodology (GPL-3.0 Copyleft).",
+      "version": "6.0.0",
+      "author": {
+        "name": "Javier Montaño"
+      },
+      "homepage": "https://metodologia.info",
+      "license": "GPL-3.0",
+      "category": "consulting",
+      "tags": ["discovery", "open-source", "architecture", "consulting", "copyleft"],
+      "keywords": [
+        "discovery", "consulting", "architecture", "assessment",
+        "modernization", "dream-team", "orchestration", "copyleft"
+      ]
+    }
+  ]
+}

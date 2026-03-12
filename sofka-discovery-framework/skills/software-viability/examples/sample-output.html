@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>A-04 Software Viability — Acme Corp Banking Modernization</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; }
+    body { font-family: 'Inter', sans-serif; max-width: 1100px; margin: 0 auto; padding: 2rem; background: var(--bg); color: var(--text); line-height: 1.6; }
+    h1 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+    h2 { color: var(--primary); margin-top: 2rem; }
+    h3 { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: var(--primary); color: white; padding: 0.75rem; text-align: left; }
+    td { padding: 0.75rem; border: 1px solid #e2e8f0; }
+    tr:nth-child(even) { background: #edf2f7; }
+    .callout { background: #ebf8ff; border-left: 4px solid var(--primary); padding: 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .callout-warning { background: #fffaf0; border-left: 4px solid #d69e2e; padding: 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .callout-danger { background: #fff5f5; border-left: 4px solid var(--accent); padding: 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+    .badge-green { background: #c6f6d5; color: #22543d; }
+    .badge-yellow { background: #fefcbf; color: #744210; }
+    .badge-orange { background: #feebc8; color: #7b341e; }
+    .badge-red { background: #fed7d7; color: #742a2a; }
+    .meta { color: #718096; font-size: 0.9rem; margin-bottom: 2rem; }
+    .scorecard { background: var(--primary); color: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0; }
+    .scorecard h3 { color: #fbd38d; }
+    .scorecard table th { background: #2a4a7f; }
+    .scorecard table td { border-color: #2a4a7f; color: white; }
+    .scorecard tr:nth-child(even) { background: #1e3a5f; }
+    pre { background: #edf2f7; padding: 1rem; border-radius: 4px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+<h1>A-04 Software Viability &mdash; Acme Corp Banking Modernization</h1>
+<p class="meta">
+  <strong>Proyecto:</strong> Modernizaci&oacute;n de Core Bancario &mdash; Acme Corp &nbsp;|&nbsp;
+  <strong>Fecha:</strong> 12 de marzo de 2026 &nbsp;|&nbsp;
+  <strong>Variante:</strong> T&eacute;cnica (full) &nbsp;|&nbsp;
+  <strong>Modo:</strong> piloto-auto
+</p>
+
+<!-- S1 -->
+<h2>S1: Technology Inventory &amp; Claim Extraction</h2>
+
+<table>
+  <thead>
+    <tr><th>Tecnolog&iacute;a</th><th>Claim</th><th>Fuente del Claim</th><th>Evidencia Requerida</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Spring Boot 3.x</td><td>&ldquo;Industry standard for enterprise Java microservices&rdquo;</td><td>Architecture decision record</td><td>Production adoption data, community metrics</td></tr>
+    <tr><td>Apache Kafka</td><td>&ldquo;Handles millions of events/sec with exactly-once semantics&rdquo;</td><td>Scenario B architecture</td><td>Benchmark data, production case studies in banking</td></tr>
+    <tr><td>Kubernetes (EKS)</td><td>&ldquo;Auto-scaling, self-healing, cloud-native orchestration&rdquo;</td><td>Infrastructure proposal</td><td>Team competency evidence, operational maturity</td></tr>
+    <tr><td>Vendor X AI Fraud Detection</td><td>&ldquo;99.7% fraud detection accuracy, &lt;50ms latency&rdquo;</td><td>Vendor deck, Phase 3</td><td>Independent benchmarks, production accuracy on comparable data</td></tr>
+    <tr><td>React 18</td><td>&ldquo;Concurrent rendering for responsive banking UIs&rdquo;</td><td>Frontend architecture decision</td><td>Adoption data, ecosystem stability</td></tr>
+  </tbody>
+</table>
+
+<!-- S2 -->
+<h2>S2: Software Maturity Assessment</h2>
+
+<h3>Spring Boot 3.x &mdash; <span class="badge badge-green">SUBSTANCIA</span></h3>
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Hallazgo</th><th>Veredicto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Version</td><td>3.3.x GA (stable, production-ready)</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Release cadence</td><td>Monthly patch releases, 6-month minor releases</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Breaking changes</td><td>Migration guide from 2.x well-documented, API stable since 3.0</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Deprecation policy</td><td>12-month deprecation window, clear migration paths</td><td>&#x1f7e2;</td></tr>
+    <tr><td>LTS availability</td><td>Commercial LTS via VMware Tanzu; OSS support 12 months per minor</td><td>&#x1f7e2;</td></tr>
+  </tbody>
+</table>
+<p><strong>Community:</strong> 75K+ GitHub stars, 900+ contributors (12mo), 18% open issue ratio. <strong>Production:</strong> Netflix, JP Morgan, Capital One. 180K+ Maven Central dependents.</p>
+
+<h3>Apache Kafka &mdash; <span class="badge badge-green">SUBSTANCIA</span></h3>
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Hallazgo</th><th>Veredicto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Version</td><td>3.7.x GA, KRaft mode production-ready</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Release cadence</td><td>Quarterly releases, predictable</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Breaking changes</td><td>ZooKeeper deprecation managed with multi-year migration path</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Deprecation policy</td><td>Apache Foundation governance, formal deprecation process</td><td>&#x1f7e2;</td></tr>
+    <tr><td>LTS availability</td><td>Confluent LTS; community releases supported 12 months</td><td>&#x1f7e2;</td></tr>
+  </tbody>
+</table>
+<p><strong>Community:</strong> 28K+ GitHub stars, 1,200+ contributors. <strong>Production:</strong> Goldman Sachs, ING, PayPal. Proven at &gt;1M events/sec.</p>
+
+<h3>Kubernetes (EKS) &mdash; <span class="badge badge-yellow">PROMESA VIABLE</span></h3>
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Hallazgo</th><th>Veredicto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Version</td><td>1.29+ GA on EKS, CNCF graduated project</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Release cadence</td><td>3 releases/year, 14-month support window</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Breaking changes</td><td>API deprecation policy: 12 months minimum</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Community</td><td>110K+ GitHub stars, 3,700+ contributors</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Production</td><td>BBVA, Goldman Sachs, Capital One documented</td><td>&#x1f7e2;</td></tr>
+  </tbody>
+</table>
+<div class="callout-warning">
+  <strong>Contexto cr&iacute;tico del equipo:</strong> El equipo de Acme Corp tiene <strong>cero experiencia operativa con Kubernetes</strong>. Actualmente operan VMs con despliegues manuales. La curva de aprendizaje para networking, RBAC, observability, y troubleshooting en K8s es 6-12 meses para un equipo sin experiencia previa. La tecnolog&iacute;a es &#x1f7e2; SUBSTANCIA, pero la viabilidad se degrada a &#x1f7e1; por falta de competencia del equipo.
+</div>
+
+<h3>Vendor X AI Fraud Detection &mdash; <span class="badge badge-orange">RIESGO ALTO</span></h3>
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Hallazgo</th><th>Veredicto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Version</td><td>&ldquo;v2.3&rdquo; &mdash; no public changelog, no migration guides</td><td>&#x1f7e0;</td></tr>
+    <tr><td>Release cadence</td><td>Unknown &mdash; no public release history</td><td>&#x1f534;</td></tr>
+    <tr><td>Breaking changes</td><td>Unknown &mdash; no public API versioning policy</td><td>&#x1f534;</td></tr>
+    <tr><td>Deprecation policy</td><td>Not documented</td><td>&#x1f534;</td></tr>
+    <tr><td>Community</td><td>No open-source component. No public GitHub. No Stack Overflow</td><td>&#x1f534;</td></tr>
+    <tr><td>Production</td><td>&ldquo;Trusted by 50+ financial institutions&rdquo; &mdash; no named references</td><td>&#x1f534;</td></tr>
+  </tbody>
+</table>
+
+<h3>React 18 &mdash; <span class="badge badge-green">SUBSTANCIA</span></h3>
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Hallazgo</th><th>Veredicto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Version</td><td>18.3.x stable, React 19 in RC</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Release cadence</td><td>Major every 2-3 years, patches monthly</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Community</td><td>230K+ GitHub stars, 1,600+ contributors</td><td>&#x1f7e2;</td></tr>
+    <tr><td>Production</td><td>Facebook, Netflix, Airbnb. 22M+ weekly npm downloads</td><td>&#x1f7e2;</td></tr>
+  </tbody>
+</table>
+
+<!-- S3 -->
+<h2>S3: AI/ML Specific Validation &mdash; Vendor X AI Fraud Detection</h2>
+
+<div class="callout-danger">
+  <strong>SECCI&Oacute;N CR&Iacute;TICA</strong> &mdash; la IA es el campo con mayor ratio humo/substancia.
+</div>
+
+<h3>3a. Claims vs Reality Matrix</h3>
+<table>
+  <thead>
+    <tr><th>Claim</th><th>Benchmark Citado</th><th>Benchmark Real</th><th>Gap</th><th>Veredicto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>&ldquo;99.7% fraud detection accuracy&rdquo;</td><td>Vendor demo on curated dataset</td><td>Academic papers: 92-96% F1 on production data</td><td>3.7-7.7%</td><td><span class="badge badge-orange">RIESGO</span></td></tr>
+    <tr><td>&ldquo;&lt;50ms inference latency&rdquo;</td><td>Marketing materials</td><td>No p95/p99 breakdown documented</td><td>Unverifiable</td><td><span class="badge badge-orange">RIESGO</span></td></tr>
+    <tr><td>&ldquo;Reduces false positives by 80%&rdquo;</td><td>Unnamed customer testimonial</td><td>Industry baseline 5-15%; 80% reduction unsubstantiated</td><td>Unverifiable</td><td><span class="badge badge-red">HUMO</span></td></tr>
+    <tr><td>&ldquo;Real-time model updates&rdquo;</td><td>Sales deck</td><td>No retraining pipeline documentation</td><td>Unverifiable</td><td><span class="badge badge-orange">RIESGO</span></td></tr>
+  </tbody>
+</table>
+
+<h3>3b. AI Maturity Indicators</h3>
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Hallazgo</th><th>Veredicto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Training data</td><td>&ldquo;Proprietary dataset of 10B+ transactions&rdquo; &mdash; no composition/bias docs</td><td><span class="badge badge-red">HUMO</span></td></tr>
+    <tr><td>Evaluation metrics</td><td>Single accuracy number. No precision/recall/F1 breakdown</td><td><span class="badge badge-red">HUMO</span></td></tr>
+    <tr><td>Failure modes</td><td>Not documented. No graceful degradation. No fallback</td><td><span class="badge badge-red">HUMO</span></td></tr>
+    <tr><td>Drift monitoring</td><td>&ldquo;Continuous learning&rdquo; &mdash; no technical documentation</td><td><span class="badge badge-orange">RIESGO</span></td></tr>
+    <tr><td>Human-in-the-loop</td><td>Not mentioned. Claims fully autonomous</td><td><span class="badge badge-red">HUMO</span></td></tr>
+    <tr><td>Explainability</td><td>&ldquo;AI-powered insights&rdquo; &mdash; no interpretability docs</td><td><span class="badge badge-orange">RIESGO</span></td></tr>
+    <tr><td>Cost per inference</td><td>&ldquo;Contact sales&rdquo;</td><td><span class="badge badge-orange">RIESGO</span></td></tr>
+    <tr><td>Data privacy</td><td>&ldquo;SOC 2 compliant&rdquo; &mdash; no residency/retention details</td><td><span class="badge badge-orange">RIESGO</span></td></tr>
+  </tbody>
+</table>
+
+<div class="callout-danger">
+  <strong>Veredicto AI: &#x1f7e0; RIESGO ALTO</strong> &mdash; 5 de 8 indicadores de madurez AI son &#x1f534; HUMO. Claims no verificables sin acceso a benchmarks independientes.
+</div>
+
+<!-- S4 -->
+<h2>S4: Vendor &amp; Dependency Risk</h2>
+
+<h3>Vendor X &mdash; AI Fraud Detection</h3>
+<table>
+  <thead>
+    <tr><th>Factor</th><th>Hallazgo</th><th>Riesgo</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Funding / Revenue</td><td>Series B ($45M, 2024). No public revenue. Runway ~18-24 months</td><td><span class="badge badge-orange">Medio-Alto</span></td></tr>
+    <tr><td>Customer retention</td><td>No NRR data. 3 testimonials, no named references</td><td><span class="badge badge-orange">Desconocido</span></td></tr>
+    <tr><td>Competitive position</td><td>Challenger vs Featurespace, Feedzai, NICE Actimize</td><td><span class="badge badge-orange">D&eacute;bil</span></td></tr>
+    <tr><td>Acquisition risk</td><td>Likely target. Product continuity uncertain</td><td><span class="badge badge-orange">Alto</span></td></tr>
+    <tr><td>Pricing model</td><td>&ldquo;Custom enterprise pricing&rdquo; &mdash; lock-in via proprietary model</td><td><span class="badge badge-red">Alto</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Dependency Chain Summary</h3>
+<table>
+  <thead>
+    <tr><th>Tecnolog&iacute;a</th><th>Lock-in Risk</th><th>Switch Cost</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Spring Boot 3.x</td><td>Bajo</td><td>Bajo</td></tr>
+    <tr><td>Apache Kafka</td><td>Bajo-Medio</td><td>Medio</td></tr>
+    <tr><td>Kubernetes (EKS)</td><td>Medio</td><td>Medio</td></tr>
+    <tr><td>Vendor X AI</td><td><span class="badge badge-red">Cr&iacute;tico</span></td><td>Alto (rebuild)</td></tr>
+    <tr><td>React 18</td><td>Bajo</td><td>Bajo</td></tr>
+  </tbody>
+</table>
+
+<!-- S5 -->
+<h2>S5: Proof-of-Concept Design</h2>
+
+<table>
+  <thead>
+    <tr><th>Tecnolog&iacute;a</th><th>PoC Objective</th><th>Success Criteria</th><th>Effort</th><th>Kill Criteria</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Kubernetes (EKS)</td><td>Deploy sample service with CI/CD, HPA, observability</td><td>Team deploys and troubleshoots independently in 2 weeks</td><td>2 engineers, 3 weeks</td><td>Cannot deploy without external help after 3 weeks</td></tr>
+    <tr><td>Vendor X AI</td><td>Accuracy test on 1,000 labeled Acme Corp transactions</td><td>F1 &gt;92%, p99 latency &lt;200ms</td><td>1 sprint + vendor</td><td>F1 &lt;88% OR vendor refuses data OR no explainability</td></tr>
+  </tbody>
+</table>
+
+<!-- S6 -->
+<h2>S6: Technology Viability Scorecard</h2>
+
+<div class="scorecard">
+  <h3>SOFTWARE VIABILITY SCORECARD</h3>
+  <p>Proyecto: Acme Corp Banking Modernization &mdash; Scenario B Tech Stack</p>
+  <table>
+    <thead>
+      <tr><th>Tecnolog&iacute;a</th><th>Maturity</th><th>Community</th><th>Production</th><th>AI Score</th><th>Vendor</th><th>VEREDICTO</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Spring Boot 3.x</td><td>5/5</td><td>5/5</td><td>5/5</td><td>n/a</td><td>5/5</td><td><span class="badge badge-green">SUBSTANCIA</span></td></tr>
+      <tr><td>Apache Kafka</td><td>5/5</td><td>5/5</td><td>5/5</td><td>n/a</td><td>4/5</td><td><span class="badge badge-green">SUBSTANCIA</span></td></tr>
+      <tr><td>Kubernetes (EKS)</td><td>5/5</td><td>5/5</td><td>5/5</td><td>n/a</td><td>4/5</td><td><span class="badge badge-yellow">PROMESA VIABLE</span></td></tr>
+      <tr><td>Vendor X AI Fraud</td><td>2/5</td><td>1/5</td><td>1/5</td><td>1/5</td><td>2/5</td><td><span class="badge badge-orange">RIESGO ALTO</span></td></tr>
+      <tr><td>React 18</td><td>5/5</td><td>5/5</td><td>5/5</td><td>n/a</td><td>5/5</td><td><span class="badge badge-green">SUBSTANCIA</span></td></tr>
+    </tbody>
+  </table>
+  <p><strong>VEREDICTO GLOBAL: VIABLE CON PoCs</strong></p>
+  <p><strong>SPIKES OBLIGATORIOS:</strong> 2 &nbsp;|&nbsp; <strong>TECNOLOG&Iacute;AS DESCARTADAS:</strong> 0 (pendiente PoCs)</p>
+</div>
+
+<h3>Viability Verdict Process</h3>
+<div class="mermaid">
+stateDiagram-v2
+    [*] --> ClaimExtraction: Technology identified
+
+    ClaimExtraction --> MaturityCheck: Claims documented
+
+    MaturityCheck --> CommunityCheck: Lifecycle assessed
+    CommunityCheck --> ProductionCheck: Health metrics scored
+
+    ProductionCheck --> AIValidation: Has AI/ML component?
+    ProductionCheck --> VendorRisk: No AI component
+
+    AIValidation --> VendorRisk: AI maturity scored
+
+    VendorRisk --> Scoring: Vendor assessed
+
+    Scoring --> SUBSTANCIA: Score >= 4.0 & no flags
+    Scoring --> PROMESA_VIABLE: Score 3.0-3.9 OR contextual risk
+    Scoring --> RIESGO_ALTO: Score 2.0-2.9 OR unverifiable claims
+    Scoring --> HUMO: Score < 2.0 OR majority red indicators
+
+    SUBSTANCIA --> [*]: Approved
+    PROMESA_VIABLE --> PoC_Design: Requires validation
+    RIESGO_ALTO --> PoC_Design: Requires validation + alternatives
+    HUMO --> Alternative: Discard
+
+    PoC_Design --> PoC_Execution: Sprint 0
+    PoC_Execution --> SUBSTANCIA: PoC passes
+    PoC_Execution --> Alternative: PoC fails
+
+    Alternative --> ClaimExtraction: Evaluate alternative
+</div>
+
+<!-- S7 -->
+<h2>S7: Recommendation &amp; Guardrails</h2>
+
+<h3>Stack Recomendado</h3>
+<table>
+  <thead>
+    <tr><th>Componente</th><th>Recomendaci&oacute;n</th><th>Justificaci&oacute;n</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Backend</td><td>Spring Boot 3.x</td><td>&#x1f7e2; SUBSTANCIA. Est&aacute;ndar de facto para microservicios enterprise Java.</td></tr>
+    <tr><td>Messaging</td><td>Apache Kafka</td><td>&#x1f7e2; SUBSTANCIA. Probado en banca a escala. KRaft elimina ZooKeeper.</td></tr>
+    <tr><td>Orchestration</td><td>Kubernetes (EKS) <strong>con mitigaci&oacute;n</strong></td><td>&#x1f7e1; PROMESA VIABLE. Requiere inversi&oacute;n en competencia del equipo.</td></tr>
+    <tr><td>Fraud Detection</td><td><strong>Pendiente PoC</strong></td><td>&#x1f7e0; RIESGO ALTO. No aprobar sin validaci&oacute;n independiente.</td></tr>
+    <tr><td>Frontend</td><td>React 18</td><td>&#x1f7e2; SUBSTANCIA. Ecosistema maduro, equipo con experiencia.</td></tr>
+  </tbody>
+</table>
+
+<h3>Guardrails de Producci&oacute;n</h3>
+<div class="callout">
+  <ul>
+    <li><strong>Kafka:</strong> Monitorear consumer lag, replication factor, ISR shrink. Alertar si lag &gt;5 min.</li>
+    <li><strong>Kubernetes:</strong> Monitorear pod restart rate, node pressure, HPA scaling. Alertar si restart &gt;3/hora.</li>
+    <li><strong>AI Fraud:</strong> Monitorear accuracy drift semanal. Alertar si F1 cae &gt;2 puntos. Revisi&oacute;n humana &gt;$10K.</li>
+  </ul>
+</div>
+
+<h3>Vendor Exit Strategy</h3>
+<div class="callout-warning">
+  <ul>
+    <li><strong>Vendor X AI:</strong> Si PoC falla: pipeline open-source con Scikit-learn + feature engineering + MLflow. Estimado: 3-4 sprints. Mantener interfaz abstracta desde d&iacute;a 1.</li>
+    <li><strong>EKS:</strong> Si costos exceden presupuesto: ECS Fargate como fallback (menor complejidad, menor flexibilidad).</li>
+  </ul>
+</div>
+
+<h3>Re-evaluation Triggers</h3>
+<ul>
+  <li>Vendor X recibe nueva ronda de funding o es adquirido &rarr; re-evaluar vendor risk</li>
+  <li>Equipo K8s completa programa de capacitaci&oacute;n &rarr; re-evaluar de &#x1f7e1; a &#x1f7e2;</li>
+  <li>Nueva regulaci&oacute;n de AI en sector financiero &rarr; re-evaluar governance framework</li>
+  <li>Cualquier tecnolog&iacute;a cambia major version &rarr; re-evaluar maturity</li>
+</ul>
+
+<hr>
+<p><strong>Autor:</strong> Javier Monta&ntilde;o &nbsp;|&nbsp; <strong>&Uacute;ltima actualizaci&oacute;n:</strong> 12 de marzo de 2026</p>
+
+<script>mermaid.initialize({ startOnLoad: true, theme: 'default' });</script>
+</body>
+</html>

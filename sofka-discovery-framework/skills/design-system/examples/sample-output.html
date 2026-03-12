@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Acme Corp | Architecture Assessment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === BRAND TOKENS (from brand-config.json) === */
+    :root {
+      --brand-primary: #3B82F6;
+      --brand-primary-light: #60A5FA;
+      --brand-primary-dark: #2563EB;
+      --brand-primary-dim: rgba(59,130,246,0.10);
+      --brand-black: #000000;
+      --brand-white: #FFFFFF;
+      --brand-background: #F5F5F5;
+      --brand-muted: #9CA3AF;
+
+      /* Semantic (universal) */
+      --semantic-positive: #FFD700;
+      --semantic-positive-dim: rgba(255,215,0,0.12);
+      --semantic-positive-border: rgba(255,215,0,0.45);
+      --semantic-positive-text: #B8860B;
+      --semantic-warning: #D97706;
+      --semantic-warning-dim: rgba(217,119,6,0.08);
+      --semantic-critical: #DC2626;
+      --semantic-critical-dim: rgba(220,38,38,0.07);
+      --semantic-info: #2563EB;
+      --semantic-info-dim: rgba(37,99,235,0.07);
+
+      /* Chart */
+      --chart-green: #42D36F;
+      --chart-teal: #06C8C8;
+      --chart-violet: #9747FF;
+
+      /* Typography */
+      --font-display: 'Inter', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      /* Spacing */
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    /* === BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--brand-black);
+      background: var(--brand-background);
+    }
+    a { color: var(--brand-primary); text-decoration: none; }
+    a:hover { color: var(--brand-primary-dark); }
+
+    /* === SKIP LINK === */
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--brand-primary); color: var(--brand-white);
+      padding: 8px 16px; z-index: 1000; font-size: 0.875rem;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* === HERO === */
+    .hero {
+      background: var(--brand-black);
+      border-bottom: 8px solid var(--brand-primary);
+      padding: 3rem 2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--brand-primary-dim) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero .logo { color: var(--brand-white); font-size: 1.1rem; font-weight: 600; letter-spacing: 2px; margin-bottom: 1rem; }
+    .hero .logo span { color: var(--brand-primary); }
+    .hero h1 { color: var(--brand-white); font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.75rem; }
+    .hero h1 span { color: var(--brand-primary); }
+    .hero .subtitle { color: var(--brand-muted); font-size: 1.1rem; max-width: 600px; }
+    .meta-badges { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+
+    /* === NAV === */
+    .sticky-nav {
+      background: var(--brand-white);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 2rem;
+    }
+    .sticky-nav ul {
+      list-style: none; display: flex; gap: 2rem;
+      max-width: 1100px; margin: 0 auto;
+      overflow-x: auto;
+    }
+    .sticky-nav a {
+      display: block; padding: 0.75rem 0;
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--brand-muted); font-weight: 500;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .sticky-nav a:hover, .sticky-nav a.active {
+      color: var(--brand-primary);
+      border-bottom-color: var(--brand-primary);
+    }
+
+    /* === MAIN === */
+    .main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    /* === SECTIONS === */
+    .section { padding: 4rem 0; scroll-margin-top: 60px; }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-number {
+      width: 60px; height: 60px;
+      background: var(--brand-black);
+      color: var(--brand-primary);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .section-title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; }
+
+    /* === CARDS === */
+    .card {
+      background: var(--brand-white);
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1rem;
+    }
+    .card-accent { border-top: 4px solid var(--brand-primary); }
+    .card-critical { border-left: 4px solid var(--semantic-critical); background: var(--semantic-critical-dim); }
+    .card-warning { border-left: 4px solid var(--semantic-warning); background: var(--semantic-warning-dim); }
+    .card-success { border-left: 4px solid var(--semantic-positive); background: var(--semantic-positive-dim); }
+    .card-info { border-left: 4px solid var(--semantic-info); background: var(--semantic-info-dim); }
+    .card-dark { background: var(--brand-black); color: var(--brand-white); }
+
+    .card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+
+    /* === BADGES === */
+    .badge {
+      display: inline-block; padding: 0.25rem 0.75rem;
+      background: var(--brand-primary); color: var(--brand-white);
+      border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .badge-outline {
+      display: inline-block; padding: 0.25rem 0.75rem;
+      border: 1px solid var(--brand-primary); color: var(--brand-primary);
+      border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;
+      background: transparent;
+    }
+    .sev-critical { background: var(--semantic-critical); color: var(--brand-white); }
+    .sev-high { background: #EA580C; color: var(--brand-white); }
+    .sev-medium { background: var(--semantic-warning); color: var(--brand-black); }
+    .sev-low { background: var(--semantic-positive); color: var(--brand-black); }
+
+    /* === CALLOUTS === */
+    .callout {
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-md);
+      margin: 1.5rem 0;
+      border-left: 4px solid;
+    }
+    .callout-info { background: var(--semantic-info-dim); border-color: var(--semantic-info); }
+    .callout-warning { background: var(--semantic-warning-dim); border-color: var(--semantic-warning); }
+    .callout-success { background: var(--semantic-positive-dim); border-color: var(--semantic-positive); }
+    .callout-critical { background: var(--semantic-critical-dim); border-color: var(--semantic-critical); }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+
+    /* === TABLES === */
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th {
+      background: var(--brand-black); color: var(--brand-white);
+      padding: 0.75rem 1rem; text-align: left; font-weight: 600;
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; }
+    tr:hover td { background: var(--brand-primary-dim); }
+
+    /* === DIAGRAM === */
+    .diagram-box {
+      background: var(--brand-black); color: var(--brand-white);
+      padding: 2rem; border-radius: var(--radius-md);
+      font-family: Menlo, Monaco, monospace; font-size: 0.85rem;
+      line-height: 1.4; overflow-x: auto; margin: 1.5rem 0;
+    }
+    .mermaid-container {
+      background: var(--brand-white);
+      padding: 2rem; border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm); margin: 1.5rem 0; text-align: center;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background: var(--brand-black);
+      border-top: 8px solid var(--brand-primary);
+      color: var(--brand-white);
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer .logo { font-size: 1rem; font-weight: 600; letter-spacing: 2px; }
+    .footer .logo span { color: var(--brand-primary); }
+    .footer .meta { color: var(--brand-muted); font-size: 0.8rem; }
+
+    /* === PRINT === */
+    @media print {
+      .sticky-nav { display: none; }
+      .hero { border-bottom-width: 4px; }
+      .card { box-shadow: none; border: 1px solid #e5e7eb; }
+      body { font-size: 10pt; }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero, .main, .footer { padding-left: 1rem; padding-right: 1rem; }
+      .section { padding: 2.5rem 0; }
+      .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* === FOCUS === */
+    *:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo">acme<span>_</span></div>
+      <div class="meta-badges">
+        <span class="badge">Confidencial</span>
+        <span class="badge-outline">v1.0</span>
+        <span class="badge-outline">2026-03-12</span>
+      </div>
+      <h1>Architecture <span>Assessment</span></h1>
+      <p class="subtitle">Evaluacion del estado actual de arquitectura con hallazgos, riesgos y recomendaciones priorizadas.</p>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="sticky-nav" aria-label="Secciones del documento">
+    <ul>
+      <li><a href="#hallazgos" class="active">Hallazgos</a></li>
+      <li><a href="#componentes">Componentes</a></li>
+      <li><a href="#datos">Tabla de Datos</a></li>
+      <li><a href="#diagrama">Diagrama</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main" class="main">
+
+    <!-- Section 1: Hallazgos -->
+    <section id="hallazgos" class="section">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Hallazgos Criticos</h2>
+      </div>
+
+      <div class="card card-critical">
+        <h4><span class="badge sev-critical">Critico</span> Acoplamiento monolitico</h4>
+        <p>El sistema core opera como un monolito de 340K LOC con deployment frequency de 1x/mes. Decomposicion en 3 bounded contexts recomendada.</p>
+      </div>
+
+      <div class="card card-warning">
+        <h4><span class="badge sev-medium">Medio</span> Escalamiento manual</h4>
+        <p>Sin auto-scaling policies. Trafico pico genera 30% error rate. Implementar HPA en Kubernetes o equivalent.</p>
+      </div>
+
+      <div class="card card-success">
+        <h4><span class="badge sev-low">Bajo</span> CI/CD pipeline funcional</h4>
+        <p>Pipeline existente cubre build + unit tests. Falta: integration tests, security scan, canary deployment.</p>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Recomendacion del equipo</strong>
+        Priorizar la decomposicion del monolito (hallazgo critico) antes de abordar auto-scaling, ya que el acoplamiento actual impide escalar servicios independientemente.
+      </div>
+    </section>
+
+    <!-- Section 2: Components Demo -->
+    <section id="componentes" class="section">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Component Library</h2>
+      </div>
+
+      <h3>Cards en Grid</h3>
+      <div class="card-grid-3">
+        <div class="card card-accent">
+          <h4>Card Accent</h4>
+          <p>Brand-primary top border. Ideal para features o capabilities.</p>
+        </div>
+        <div class="card card-info">
+          <h4>Card Info</h4>
+          <p>Blue left border + blue tint. Para informacion contextual.</p>
+        </div>
+        <div class="card card-dark">
+          <h4>Card Dark</h4>
+          <p>Black background, white text. Para highlights o CTAs.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 2rem;">Callouts</h3>
+      <div class="callout callout-warning">
+        <strong>Advertencia</strong>
+        Este componente usa border-left de 4px con color semantico warning (amber).
+      </div>
+      <div class="callout callout-critical">
+        <strong>Critico</strong>
+        Requiere atencion inmediata. Background usa semantic-critical-dim para legibilidad.
+      </div>
+      <div class="callout callout-success">
+        <strong>Completado</strong>
+        Estado positivo usa yellow (no green) por convencion v4. Texto usa semantic-positive-text para contraste.
+      </div>
+    </section>
+
+    <!-- Section 3: Data Table -->
+    <section id="datos" class="section">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Tabla de Datos</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Disponibilidad</th>
+              <th>Latencia P99</th>
+              <th>Severidad</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>API Gateway</td>
+              <td>99.95%</td>
+              <td>45ms</td>
+              <td><span class="badge sev-low">Bajo</span></td>
+              <td>Monitorear</td>
+            </tr>
+            <tr>
+              <td>Auth Service</td>
+              <td>99.80%</td>
+              <td>120ms</td>
+              <td><span class="badge sev-medium">Medio</span></td>
+              <td>Optimizar queries</td>
+            </tr>
+            <tr>
+              <td>Order Service</td>
+              <td>98.50%</td>
+              <td>890ms</td>
+              <td><span class="badge sev-critical">Critico</span></td>
+              <td>Refactorizar + cache</td>
+            </tr>
+            <tr>
+              <td>Notification</td>
+              <td>99.90%</td>
+              <td>200ms</td>
+              <td><span class="badge sev-low">Bajo</span></td>
+              <td>Monitorear</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 4: Mermaid Diagram -->
+    <section id="diagrama" class="section">
+      <div class="section-header">
+        <div class="section-number">04</div>
+        <h2 class="section-title">Diagrama de Arquitectura</h2>
+      </div>
+
+      <div class="mermaid-container">
+        <pre class="mermaid">
+graph TD
+    A[Client App] -->|REST API| B[API Gateway]
+    B --> C[Auth Service]
+    B --> D[Order Service]
+    B --> E[Inventory Service]
+    D --> F[(Order DB)]
+    E --> G[(Inventory DB)]
+    D -.->|Events| H[Event Bus]
+    E -.->|Events| H
+    H --> I[Notification Service]
+
+    style A fill:#3B82F6,color:#FFFFFF
+    style B fill:#000000,color:#FFFFFF
+    style H fill:#2563EB,color:#FFFFFF
+        </pre>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Nota sobre Mermaid</strong>
+        Los colores de nodos usan brand tokens. En produccion, los valores hex se inyectan desde brand-config.json. El diagrama se renderiza client-side via Mermaid CDN.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="logo">acme<span>_</span></div>
+        <div class="meta-badges" style="margin-top: 0.5rem;">
+          <span class="badge">Confidencial</span>
+          <span class="badge-outline">REF: ACME-ARCH-2026-001</span>
+        </div>
+      </div>
+      <div class="meta">
+        Este documento es confidencial y propiedad de Acme Corp.<br>
+        Generado con Design System v4 | 2026-03-12
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mermaid CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>

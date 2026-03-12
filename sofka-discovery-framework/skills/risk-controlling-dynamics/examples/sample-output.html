@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>P-02 Risk Controlling — Acme Corp</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<style>
+:root{--primary:#1a365d;--accent:#e53e3e;--bg:#f7fafc;--text:#2d3748}
+body{font-family:'Inter',sans-serif;max-width:1100px;margin:0 auto;padding:2rem;background:var(--bg);color:var(--text);line-height:1.6}
+h1{color:var(--primary);border-bottom:3px solid var(--accent);padding-bottom:.5rem}
+h2{color:var(--primary);margin-top:2rem}
+h3{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:1rem 0}
+th{background:var(--primary);color:#fff;padding:.75rem;text-align:left}
+td{padding:.75rem;border:1px solid #e2e8f0}
+tr:nth-child(even){background:#edf2f7}
+.callout{background:#ebf8ff;border-left:4px solid var(--primary);padding:1rem;margin:1rem 0;border-radius:0 4px 4px 0}
+.critical{color:var(--accent);font-weight:700}
+.warning{color:#d69e2e;font-weight:700}
+.ok{color:#38a169;font-weight:700}
+.meta{color:#718096;font-size:0.9rem;margin-bottom:2rem}
+pre{background:#1a202c;color:#e2e8f0;padding:1rem;border-radius:6px;overflow-x:auto;font-size:0.9rem;line-height:1.5}
+.badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.85rem;font-weight:600}
+.badge-red{background:#fed7d7;color:#c53030}
+.badge-orange{background:#feebc8;color:#c05621}
+.badge-yellow{background:#fefcbf;color:#975a16}
+.badge-green{background:#c6f6d5;color:#276749}
+.assessment-box{background:#1a365d;color:#fff;padding:1.5rem;border-radius:8px;margin:1.5rem 0}
+.assessment-box h3{color:#fbd38d}
+</style>
+</head>
+<body>
+
+<h1>P-02 Risk Controlling — Acme Corp Banking Modernization</h1>
+
+<p class="meta">
+<strong>Proyecto:</strong> Acme Corp — Modernizacion Core Bancario |
+<strong>Fecha:</strong> 12 de marzo de 2026 |
+<strong>Fase Actual:</strong> Post-Phase 5 (Proposal QA) |
+<strong>Modo:</strong> piloto-auto |
+<strong>Variante:</strong> tecnica |
+<strong>Controller:</strong> risk-controlling-dynamics v6.0
+</p>
+
+<!-- ============================================================ -->
+<h2>S1: Risk Appetite &amp; Tolerance Framework</h2>
+
+<p>Framework calibrado para engagement enterprise bancario — tolerancia conservadora dado el contexto regulado.</p>
+
+<table>
+<thead>
+<tr><th>Dimension</th><th>Apetito</th><th>Tolerancia</th><th>Umbral Inaceptable</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Tecnico</strong></td><td>Aceptamos cloud-native si PoC valida con datos sinteticos bancarios</td><td>Max 1 tecnologia sin production evidence en banca</td><td>&gt;1 tech sin evidence en sector financiero = stop</td></tr>
+<tr><td><strong>Timeline</strong></td><td>+15% es aceptable dado complejidad regulatoria</td><td>Max +25% del timeline base</td><td>&gt;35% overrun = re-scope obligatorio</td></tr>
+<tr><td><strong>Costo (magnitud)</strong></td><td>+10% sobre magnitud estimada</td><td>Max +20% sobre magnitud</td><td>&gt;30% = re-evaluate scope con steering committee</td></tr>
+<tr><td><strong>Calidad</strong></td><td>Entregables >=4.5/5 en QA (estandar bancario)</td><td>Min 4/5 con plan de mejora documentado</td><td>&lt;3.5/5 = no enviar propuesta</td></tr>
+<tr><td><strong>Reputacional</strong></td><td>Propuesta con supuestos explicitos y rangos honestos</td><td>Propuesta con max 1 gap menor documentado</td><td>Propuesta con claims no validados sobre compliance = stop</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<strong>Nota del Controller:</strong> Este es un cliente enterprise bancario regulado por la Superintendencia Financiera. Los umbrales son mas conservadores que el estandar del framework. Cualquier claim sobre cumplimiento regulatorio DEBE estar respaldado por evidencia documental.
+</div>
+
+<!-- ============================================================ -->
+<h2>S2: Per-Phase Risk Scanning — Hallazgos Clave</h2>
+
+<h3>Phase 0: Stakeholder Mapping</h3>
+<ul>
+<li><strong>Hallazgo critico:</strong> El CISO no fue incluido en el mapeo inicial. Dado que la modernizacion toca datos PII y PCI-DSS, su ausencia es un riesgo de gobernanza. <span class="ok">Mitigado:</span> se incorporo en la semana 2.</li>
+<li>El sponsor (CTO) tiene autoridad de decision tecnica pero NO presupuestaria. CFO aprueba inversiones &gt;$200K. <strong>Impacto:</strong> el proceso de aprobacion puede agregar 3-4 semanas.</li>
+</ul>
+
+<h3>Phase 1: AS-IS</h3>
+<ul>
+<li><strong>Hallazgo critico:</strong> La deuda tecnica del core bancario legacy (COBOL, 22 anos) es significativamente mayor de lo reportado por el equipo. El analisis de codebase revelo 340K LOC sin cobertura de tests vs los "pocos modulos" mencionados en entrevistas.</li>
+<li>Integraciones con 7 sistemas de terceros (SWIFT, regulador, bureau de credito) — solo 3 tienen documentacion actualizada de APIs.</li>
+</ul>
+
+<h3>Phase 2: Flow Mapping</h3>
+<ul>
+<li>Se identificaron 14 flujos criticos de negocio. Solo 9 tienen happy path + error paths documentados.</li>
+<li><strong>Riesgo latente:</strong> El flujo de conciliacion nocturna tiene un SLA implicito de 4 horas que nunca fue formalizado con el proveedor SWIFT.</li>
+</ul>
+
+<h3>Phase 3: Scenarios</h3>
+<ul>
+<li>El escenario ganador (migracion progresiva con strangler fig pattern) fue seleccionado por evidencia tecnica + viabilidad financiera.</li>
+<li><span class="warning">Preocupacion:</span> El Tree of Thought no evaluo explicitamente el escenario de "modernizacion parcial + API layer".</li>
+</ul>
+
+<h3>Phase 3b: Feasibility/Viability</h3>
+<ul>
+<li>PoC de containerizacion con K8s valido la viabilidad tecnica, PERO el equipo interno necesito 6 semanas (no 4) para alcanzar competencia basica.</li>
+<li>La viabilidad del API gateway para el tercero de bureau de credito NO fue validada con carga real.</li>
+</ul>
+
+<h3>Phase 4: Roadmap + Cost</h3>
+<ul>
+<li>Magnitudes estimadas incluyen contingencia del 22% (adecuada para perfil de riesgo).</li>
+<li>Margen de innovacion del 5% presente y separado.</li>
+<li><span class="warning">Alerta:</span> Drift de magnitud del +18% entre estimacion de Phase 3 y Phase 4.</li>
+</ul>
+
+<h3>Phase 4b: Commercial Model</h3>
+<ul>
+<li>Modelo de earned value con milestones trimestrales validado. Incentivos alineados.</li>
+<li>Riesgo menor: Clausula de penalizacion por delay podria activarse si el timeline se extiende &gt;25%.</li>
+</ul>
+
+<h3>Phase 5a/5b: Spec + Pitch</h3>
+<ul>
+<li>La propuesta es coherente con la spec funcional. No hay promesas en el pitch que no esten respaldadas.</li>
+<li><strong>Disclosure necesario:</strong> La estimacion de ahorro operativo (30% en 24 meses) esta basada en benchmarks del sector, no en datos especificos de Acme Corp.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>S3: Assumption Stress-Testing</h2>
+
+<p>Inventario consolidado de supuestos — 8 identificados, 3 con confianza &lt;60% marcados como <span class="critical">MUST VALIDATE</span>.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Supuesto</th><th>Fase Origen</th><th>Evidencia</th><th>Confianza</th><th>Impacto si Falso</th><th>Validacion</th></tr>
+</thead>
+<tbody>
+<tr><td>A-01</td><td>El equipo de Acme puede alcanzar competencia en K8s en 4 semanas</td><td>Phase 3b</td><td>[POC] — real fue 6 semanas</td><td><span class="critical">40%</span></td><td>Timeline +3 meses, costo magnitud +15%</td><td>Sprint 0 con metricas de competencia</td></tr>
+<tr><td>A-02</td><td>El API del bureau de credito soporta 10K rps bajo el nuevo gateway</td><td>Phase 2</td><td>[DOC] vendor — sin test real</td><td><span class="critical">55%</span></td><td>Bottleneck critico en flujo de originacion</td><td>Load test en Sprint 0 con datos sinteticos</td></tr>
+<tr><td>A-03</td><td>El presupuesto aprobado cubre los 18 meses del roadmap</td><td>Phase 4b</td><td>[STAKEHOLDER] verbal del CTO</td><td><span class="critical">50%</span></td><td>Scope reduction forzada en Q3</td><td>Confirmacion escrita del CFO antes de firma</td></tr>
+<tr><td>A-04</td><td>La migracion de datos legacy puede ejecutarse con zero-downtime</td><td>Phase 3</td><td>[BENCHMARK] sector bancario</td><td>70%</td><td>Ventana de mantenimiento de 48h requerida</td><td>PoC de migracion con subset de datos reales</td></tr>
+<tr><td>A-05</td><td>Los 7 terceros mantendran APIs estables durante la migracion</td><td>Phase 2</td><td>[CONTRATO] — 4 de 7 con SLA</td><td>65%</td><td>Re-trabajo de integraciones, delay 4-6 semanas</td><td>Notificacion formal + acuerdos de freeze</td></tr>
+<tr><td>A-06</td><td>El framework regulatorio no cambiara significativamente en 18 meses</td><td>Phase 1</td><td>[CONTEXTO] — regulacion estable ultimos 3 anos</td><td>75%</td><td>Compliance re-work, costo adicional</td><td>Monitoreo regulatorio trimestral</td></tr>
+<tr><td>A-07</td><td>El equipo de QA actual puede cubrir testing de la nueva plataforma</td><td>Phase 4</td><td>[ENTREVISTA] QA Lead</td><td>70%</td><td>Necesidad de contratar QA especializado</td><td>Assessment de skills del equipo QA en Sprint 0</td></tr>
+<tr><td>A-08</td><td>La infraestructura cloud target (AWS) cumple con regulacion local</td><td>Phase 3b</td><td>[DOC] AWS compliance + opinion legal</td><td>85%</td><td>Cambio de provider o arquitectura hibrida</td><td>Validacion legal formal pre-firma</td></tr>
+</tbody>
+</table>
+
+<h3>Supuestos MUST VALIDATE (Confianza &lt;60%, Impacto Alto)</h3>
+
+<div class="callout" style="border-left-color: var(--accent);">
+<strong>A-01 — Curva de aprendizaje K8s (40%):</strong> Si el equipo necesita 12 semanas (no 4), el timeline se extiende un trimestre completo y la magnitud de costo sube ~15%. Sprint 0 DEBE incluir bootcamp intensivo con metricas de competencia medibles.
+</div>
+
+<div class="callout" style="border-left-color: var(--accent);">
+<strong>A-02 — Throughput del API bureau de credito (55%):</strong> Si el API solo soporta 2K rps, el flujo de originacion de creditos se convierte en bottleneck. Load test con datos sinteticos ANTES de la firma del contrato.
+</div>
+
+<div class="callout" style="border-left-color: var(--accent);">
+<strong>A-03 — Presupuesto para 18 meses (50%):</strong> Si el presupuesto solo cubre 12 meses, el roadmap debe comprimirse. Reunion formal con CFO para confirmar compromiso presupuestario por escrito.
+</div>
+
+<!-- ============================================================ -->
+<h2>S4: Risk Register</h2>
+
+<table>
+<thead>
+<tr><th>ID</th><th>Riesgo</th><th>Categoria</th><th>Prob</th><th>Impacto</th><th>Exposure</th><th>Fase</th><th>Mitigacion</th><th>Owner</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td>R-01</td><td>Equipo sin competencia K8s suficiente</td><td>Organizacional</td><td>Alta</td><td>Alto</td><td><span class="badge badge-red">Critico</span></td><td>Phase 3b</td><td>Bootcamp Sprint 0 + hire SRE</td><td>PM / CTO</td><td>Mitigating</td></tr>
+<tr><td>R-02</td><td>API bureau de credito no soporta throughput</td><td>Tecnico</td><td>Media</td><td>Critico</td><td><span class="badge badge-red">Critico</span></td><td>Phase 2</td><td>Load test pre-firma + caching layer</td><td>Tech Lead</td><td>Open</td></tr>
+<tr><td>R-03</td><td>Presupuesto insuficiente para 18 meses</td><td>Financial</td><td>Media</td><td>Alto</td><td><span class="badge badge-orange">Alto</span></td><td>Phase 4b</td><td>Confirmacion escrita CFO + gate mes 9</td><td>PM / CFO</td><td>Open</td></tr>
+<tr><td>R-04</td><td>Vendor SWIFT cambia API durante migracion</td><td>Vendor</td><td>Baja</td><td>Critico</td><td><span class="badge badge-orange">Alto</span></td><td>Phase 2</td><td>Acuerdo de freeze + adapter pattern</td><td>Tech Lead</td><td>Monitoring</td></tr>
+<tr><td>R-05</td><td>Scope creep por stakeholders tardios</td><td>Gobernanza</td><td>Media</td><td>Medio</td><td><span class="badge badge-orange">Alto</span></td><td>Phase 0</td><td>Change request formal obligatorio</td><td>PM</td><td>Mitigating</td></tr>
+<tr><td>R-06</td><td>Drift de magnitud supera tolerancia</td><td>Financial</td><td>Media</td><td>Medio</td><td><span class="badge badge-yellow">Medio</span></td><td>Phase 4</td><td>Monitoreo mensual de magnitudes</td><td>PM / Controller</td><td>Monitoring</td></tr>
+<tr><td>R-07</td><td>Testing insuficiente por QA capacity</td><td>Calidad</td><td>Media</td><td>Medio</td><td><span class="badge badge-yellow">Medio</span></td><td>Phase 4</td><td>Assessment QA Sprint 0 + capacitacion</td><td>QA Lead</td><td>Open</td></tr>
+<tr><td>R-08</td><td>Cambio regulatorio impacta arquitectura</td><td>Regulatorio</td><td>Baja</td><td>Alto</td><td><span class="badge badge-yellow">Medio</span></td><td>Phase 1</td><td>Monitoreo regulatorio + modularidad</td><td>Domain Lead</td><td>Monitoring</td></tr>
+<tr><td>R-09</td><td>Resistencia al cambio del equipo legacy</td><td>Organizacional</td><td>Media</td><td>Bajo</td><td><span class="badge badge-green">Bajo</span></td><td>Phase 6</td><td>Change management + champions</td><td>PM / HR</td><td>Open</td></tr>
+<tr><td>R-10</td><td>Downtime migracion excede ventana</td><td>Tecnico</td><td>Baja</td><td>Medio</td><td><span class="badge badge-green">Bajo</span></td><td>Phase 3</td><td>Migracion incremental + rollback plan</td><td>Tech Lead</td><td>Monitoring</td></tr>
+</tbody>
+</table>
+
+<p><strong>Resumen de Exposicion:</strong>
+<span class="badge badge-red">2 Critico</span>
+<span class="badge badge-orange">3 Alto</span>
+<span class="badge badge-yellow">3 Medio</span>
+<span class="badge badge-green">2 Bajo</span>
+— Perfil de riesgo MODERADO con dos items criticos que requieren validacion en Sprint 0.
+</p>
+
+<!-- ============================================================ -->
+<h2>S5: Pre-Mortem — Escenario Aprobado</h2>
+
+<p><em>"Es septiembre de 2027. El proyecto de modernizacion bancaria de Acme Corp fracaso. Reconstruyamos que paso."</em></p>
+
+<pre>
+PRE-MORTEM: Escenario Aprobado — Strangler Fig Migration
+════════════════════════════════════════════════════════════
+
+Premisa: El proyecto fracaso. Reconstruyamos que paso.
+
+CAUSA 1: El equipo nunca alcanzo autonomia en K8s y dependio de consultores externos
+  Senales tempranas: Sprint 0 bootcamp no alcanza metricas de competencia.
+    Equipo pide soporte constante en operaciones basicas de cluster.
+  Probabilidad: 35%
+  Como prevenirlo HOY: Definir metricas de competencia claras para Sprint 0.
+    Criterio kill: si &lt;60% del equipo pasa assessment -> contratar SRE dedicado.
+
+CAUSA 2: El presupuesto se corto en mes 12 y el core bancario quedo a medio migrar
+  Senales tempranas: CFO no confirma por escrito. Mensajes ambiguos sobre
+    "evaluaremos en el siguiente ciclo fiscal". CTO evita el tema.
+  Probabilidad: 30%
+  Como prevenirlo HOY: Obtener compromiso presupuestario escrito del CFO antes
+    de firma. Incluir clausula contractual de scope reduction ordenada.
+
+CAUSA 3: La integracion con el bureau de credito se convirtio en bottleneck
+  Senales tempranas: Load test muestra throughput &lt;5K rps. Vendor no responde
+    a solicitudes de upgrade. Tiempos de respuesta se degradan en staging.
+  Probabilidad: 25%
+  Como prevenirlo HOY: Load test ANTES de firma. Disenar caching layer como
+    plan B. Identificar bureau de credito alternativo como contingencia.
+
+TOP 3 CAUSAS MAS PROBABLES DE FRACASO:
+  1. Competencia K8s insuficiente (35%) — Mitigacion: Sprint 0 bootcamp con kill criteria
+  2. Corte presupuestario (30%) — Mitigacion: Compromiso escrito CFO + clausula de scope reduction
+  3. Bottleneck API bureau de credito (25%) — Mitigacion: Load test pre-firma + caching layer
+
+KILL CRITERIA:
+  - Si Sprint 0 bootcamp &lt;60% aprobacion -> pivot a modelo con SRE externo permanente
+  - Si CFO no confirma presupuesto antes de firma -> escalar a CEO o no firmar
+  - Si load test bureau &lt;3K rps sin solucion -> re-disenar flujo de originacion como async
+</pre>
+
+<!-- ============================================================ -->
+<h2>S6: Financial Controls &amp; Magnitude Vigilance</h2>
+
+<table>
+<thead>
+<tr><th>Control</th><th>Expected</th><th>Actual</th><th>Variance</th><th>Alert</th></tr>
+</thead>
+<tbody>
+<tr><td>Contingencia vs risk exposure</td><td>20-25%</td><td>22%</td><td>+2%</td><td><span class="ok">Contingencia adecuada</span></td></tr>
+<tr><td>Innovation margin</td><td>5%</td><td>5%</td><td>0%</td><td><span class="ok">Presente y separado</span></td></tr>
+<tr><td>Magnitude drift (Phase 3 -> Phase 4)</td><td>+-15%</td><td>+18%</td><td>+3%</td><td><span class="warning">Dentro de tolerancia, cerca del limite</span></td></tr>
+<tr><td>Hidden cost drivers identified</td><td>8+ categories</td><td>9</td><td>+1</td><td><span class="ok">Taxonomia completa</span></td></tr>
+<tr><td>Cone of Uncertainty comunicado</td><td>P50/P80/P95</td><td>P50/P80</td><td>P95 ausente</td><td><span class="warning">Agregar P95 a propuesta</span></td></tr>
+<tr><td>Licensing costs de terceros</td><td>100% vendors</td><td>6 de 7</td><td>-1 vendor</td><td><span class="warning">Falta licencia modulo de monitoreo</span></td></tr>
+</tbody>
+</table>
+
+<h3>Hidden Cost Drivers Identificados</h3>
+<ol>
+<li><strong>Training:</strong> Bootcamp K8s + certificaciones cloud para equipo de 8 personas</li>
+<li><strong>Migration downtime:</strong> Ventanas de mantenimiento nocturnas (costo operativo)</li>
+<li><strong>Parallel running:</strong> 4-6 meses de operacion dual legacy + nuevo sistema</li>
+<li><strong>Compliance audit:</strong> Auditoria de seguridad post-migracion requerida por regulador</li>
+<li><strong>Data cleansing:</strong> Limpieza de datos legacy antes de migracion (estimado 3 sprints)</li>
+<li><strong>Monitoring tooling:</strong> Licencias de observabilidad para nueva infraestructura cloud</li>
+<li><strong>Change management:</strong> Programa de adopcion para 120+ usuarios internos</li>
+<li><strong>Performance testing:</strong> Infraestructura dedicada para load testing pre-produccion</li>
+<li><strong>Disaster recovery:</strong> Setup de DR en region secundaria (requerimiento regulatorio)</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>S7: Final Assessment</h2>
+
+<div class="assessment-box">
+<h3>RISK CONTROLLER FINAL ASSESSMENT</h3>
+<p><strong>Proyecto:</strong> Acme Corp — Modernizacion Core Bancario</p>
+<p><strong>RISK PROFILE: MODERATE</strong></p>
+<p>
+Open Risks: 10 (<span class="badge badge-red">2 Critico</span> <span class="badge badge-orange">3 Alto</span> <span class="badge badge-yellow">3 Medio</span> <span class="badge badge-green">2 Bajo</span>)<br>
+Unvalidated Assumptions: 3 de 8 (A-01, A-02, A-03 — todos con plan de validacion en Sprint 0)<br>
+Pre-Mortem Top Cause: Competencia K8s insuficiente (35%)<br>
+Financial Controls: 4 de 6 passing (2 menores)
+</p>
+<p style="font-size:1.2rem;color:#fbd38d;"><strong>PROPOSAL READINESS: READY WITH DISCLOSURES</strong></p>
+</div>
+
+<h3>Disclosures for Client</h3>
+<ol>
+<li>La estimacion de ahorro operativo (30% en 24 meses) esta basada en benchmarks del sector, no en datos especificos de Acme Corp. El ahorro real dependera de la velocidad de adopcion y la eficiencia de la migracion de datos.</li>
+<li>El roadmap de 18 meses asume disponibilidad continua del equipo de Acme para validaciones y decisiones. Delays en aprobaciones internas impactan el timeline proporcionalmente.</li>
+</ol>
+
+<h3>Internal Mitigations Required</h3>
+<ol>
+<li>Sprint 0 DEBE incluir: bootcamp K8s con assessment, load test de API bureau de credito, y confirmacion presupuestaria del CFO. Estos tres items son condicion previa para iniciar Sprint 1.</li>
+<li>Agregar estimacion P95 al Cone of Uncertainty en la propuesta y confirmar licencia del modulo de monitoreo antes del envio.</li>
+</ol>
+
+<h3>Red Flags</h3>
+<p><span class="ok">0 red flags activos.</span> Los dos riesgos criticos tienen plan de mitigacion viable y se resuelven en Sprint 0 antes de comprometer el timeline completo.</p>
+
+<!-- ============================================================ -->
+<h2>Diagramas</h2>
+
+<h3>Mindmap: Riesgos por Fase del Pipeline</h3>
+<pre class="mermaid">
+mindmap
+  root((Acme Corp Risk Map))
+    Phase 0: Stakeholders
+      R-05 Scope creep
+      CISO incorporado tarde
+    Phase 1: AS-IS
+      R-08 Cambio regulatorio
+      Deuda tecnica subestimada
+    Phase 2: Flow Mapping
+      R-02 API throughput
+      R-04 Vendor SWIFT
+      SLAs no formalizados
+    Phase 3: Scenarios
+      R-10 Downtime migracion
+      Escenario parcial no evaluado
+    Phase 3b: Feasibility
+      R-01 Competencia K8s
+      PoC tomo 50% mas tiempo
+    Phase 4: Roadmap/Cost
+      R-03 Presupuesto
+      R-06 Magnitude drift
+      R-07 QA capacity
+    Phase 6: Handover
+      R-09 Resistencia al cambio
+</pre>
+
+<h3>Quadrant Chart: Probabilidad vs Impacto</h3>
+<pre class="mermaid">
+quadrantChart
+    title Probabilidad vs Impacto — Risk Register Acme Corp
+    x-axis Baja Probabilidad --> Alta Probabilidad
+    y-axis Bajo Impacto --> Alto Impacto
+    quadrant-1 Mitigar Urgente
+    quadrant-2 Monitorear de Cerca
+    quadrant-3 Aceptar y Documentar
+    quadrant-4 Gestionar Activamente
+    R-01 K8s Competencia: [0.75, 0.82]
+    R-02 API Throughput: [0.50, 0.90]
+    R-03 Presupuesto: [0.50, 0.78]
+    R-04 Vendor SWIFT: [0.25, 0.88]
+    R-05 Scope Creep: [0.55, 0.55]
+    R-06 Magnitude Drift: [0.50, 0.50]
+    R-07 QA Capacity: [0.50, 0.50]
+    R-08 Regulatorio: [0.25, 0.72]
+    R-09 Change Mgmt: [0.50, 0.30]
+    R-10 Downtime: [0.25, 0.45]
+</pre>
+
+<hr>
+<p class="meta"><strong>Autor:</strong> Javier Montano | <strong>Generado por:</strong> risk-controlling-dynamics v6.0 | <strong>Fecha:</strong> 12 de marzo de 2026</p>
+
+<script>mermaid.initialize({startOnLoad:true,theme:'neutral'});</script>
+</body>
+</html>

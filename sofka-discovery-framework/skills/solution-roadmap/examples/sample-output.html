@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution Roadmap — Acme Corp Banking Modernization</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-gold: #f5a623;
+      --brand-surface: #f8f9fa;
+      --brand-text: #2d2d2d;
+      --brand-muted: #6b7280;
+      --brand-border: #e5e7eb;
+      --brand-success: #10b981;
+      --brand-warning: #f59e0b;
+      --brand-danger: #ef4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--brand-text);
+      line-height: 1.6;
+      background: var(--brand-surface);
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+    header {
+      background: var(--brand-primary);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    header .subtitle { color: var(--brand-gold); font-size: 1.1rem; }
+    header .meta { color: #aaa; font-size: 0.9rem; margin-top: 1rem; }
+    h2 {
+      font-size: 1.5rem;
+      color: var(--brand-primary);
+      border-bottom: 3px solid var(--brand-accent);
+      padding-bottom: 0.5rem;
+      margin: 2.5rem 0 1rem;
+    }
+    h3 { font-size: 1.15rem; color: var(--brand-primary); margin: 1.5rem 0 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+    th {
+      background: var(--brand-primary);
+      color: white;
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--brand-border); }
+    tr:nth-child(even) { background: #f1f3f5; }
+    .card {
+      background: white;
+      border: 1px solid var(--brand-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .card-title { font-weight: 700; color: var(--brand-accent); margin-bottom: 0.5rem; }
+    .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .phase-card {
+      background: white;
+      border-left: 4px solid var(--brand-accent);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .phase-card h4 { color: var(--brand-accent); margin-bottom: 0.25rem; }
+    .phase-card .duration { color: var(--brand-muted); font-size: 0.85rem; }
+    .gate { display: inline-block; background: var(--brand-gold); color: var(--brand-primary); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+    .kill { display: inline-block; background: var(--brand-danger); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+    .risk-high { color: var(--brand-danger); font-weight: 700; }
+    .risk-med { color: var(--brand-warning); font-weight: 600; }
+    .risk-low { color: var(--brand-success); }
+    .pivot-box {
+      background: #fef3c7;
+      border: 1px solid var(--brand-gold);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+    }
+    .pivot-box strong { color: var(--brand-primary); }
+    ul { margin: 0.5rem 0 0.5rem 1.5rem; }
+    li { margin-bottom: 0.3rem; }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--brand-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--brand-border);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Solution Roadmap</h1>
+  <div class="subtitle">Acme Corp — Core Banking Platform Modernization</div>
+  <div class="meta">Duration: 24 months (P50) | 28 months (P80) | 32 months (P95) &bull; Budget: $5M&ndash;$10M &bull; March 2026</div>
+</header>
+
+<div class="container">
+
+  <!-- S1: Transformation Vision -->
+  <h2>Section 1: Transformation Vision</h2>
+  <p>Modernize Acme Corp's monolithic core banking system to a microservices architecture, enabling real-time transaction processing, API-first partner integrations, and regulatory compliance automation.</p>
+
+  <h3>Success Metrics</h3>
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Baseline</th><th>18-Month Target</th><th>36-Month Target</th><th>Owner</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Transaction latency</td><td>2.4s avg</td><td>&lt;200ms P99</td><td>&lt;100ms P99</td><td>CTO</td></tr>
+      <tr><td>Deployment frequency</td><td>Monthly</td><td>Weekly</td><td>Daily</td><td>VP Engineering</td></tr>
+      <tr><td>Partner onboarding</td><td>6-8 weeks</td><td>2 weeks</td><td>3 days (self-service)</td><td>CPO</td></tr>
+      <tr><td>Regulatory reports</td><td>5 days manual</td><td>4 hours automated</td><td>Real-time</td><td>CFO</td></tr>
+      <tr><td>System availability</td><td>99.5%</td><td>99.95%</td><td>99.99%</td><td>VP Infrastructure</td></tr>
+    </tbody>
+  </table>
+  <p><strong>North Star Metric:</strong> Time-to-partner-integration (from 6 weeks to 3 days).</p>
+
+  <!-- S2: Transformation Phases -->
+  <h2>Section 2: Transformation Phases</h2>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <h4>Phase 1: Foundation</h4>
+      <div class="duration">3 months &bull; 12 people &bull; 22% budget</div>
+      <p><span class="gate">GATE</span> PoC validates &lt;200ms latency on event mesh</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 2: Build</h4>
+      <div class="duration">7 months &bull; 28 people &bull; 48% budget</div>
+      <p><span class="gate">GATE</span> Core transaction service in production (shadow mode)</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 3: Integrate</h4>
+      <div class="duration">5 months &bull; 30 people &bull; 28% budget</div>
+      <p><span class="gate">GATE</span> Full cutover, legacy decommissioned</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 4: Optimize</h4>
+      <div class="duration">4 months &bull; 16 people &bull; 12% budget</div>
+      <p><span class="gate">GATE</span> 30% infra cost reduction achieved</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 5: Scale</h4>
+      <div class="duration">8 months &bull; 22 people &bull; Varies</div>
+      <p><span class="gate">GATE</span> Multi-region live, 2 partner integrations</p>
+    </div>
+  </div>
+
+  <p>Each phase has explicit GO/NO-GO criteria. NO-GO halts downstream phases.</p>
+
+  <!-- S3: Investment Horizon -->
+  <h2>Section 3: Investment Horizon</h2>
+
+  <h3>3-Year TCO Projection</h3>
+  <table>
+    <thead>
+      <tr><th>Category</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Total</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Labor (internal)</td><td>$2.1M</td><td>$1.8M</td><td>$0.9M</td><td>$4.8M</td></tr>
+      <tr><td>Labor (external)</td><td>$0.9M</td><td>$0.6M</td><td>$0.2M</td><td>$1.7M</td></tr>
+      <tr><td>Infrastructure</td><td>$0.4M</td><td>$0.6M</td><td>$0.5M</td><td>$1.5M</td></tr>
+      <tr><td>Licensing</td><td>$0.2M</td><td>$0.3M</td><td>$0.3M</td><td>$0.8M</td></tr>
+      <tr><td>Training</td><td>$0.15M</td><td>$0.1M</td><td>$0.05M</td><td>$0.3M</td></tr>
+      <tr><td>Contingency (15%)</td><td>$0.56M</td><td>$0.51M</td><td>$0.29M</td><td>$1.36M</td></tr>
+      <tr style="font-weight:700; background:#e5e7eb;"><td>Total</td><td>$4.31M</td><td>$3.91M</td><td>$2.24M</td><td>$10.46M</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ROI Modeling</h3>
+  <table>
+    <thead>
+      <tr><th>Scenario</th><th>Break-even</th><th>3-Year ROI</th><th>NPV (8%)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Optimistic</td><td>Month 18</td><td>285%</td><td>$12.4M</td></tr>
+      <tr><td>Likely</td><td>Month 24</td><td>180%</td><td>$8.2M</td></tr>
+      <tr><td>Pessimistic</td><td>Month 30</td><td>95%</td><td>$3.1M</td></tr>
+      <tr><td>Severe</td><td>Month 36+</td><td>40%</td><td>$0.8M</td></tr>
+    </tbody>
+  </table>
+
+  <!-- S4: Team Roadmap -->
+  <h2>Section 4: Team Roadmap</h2>
+
+  <h3>Skill Gap Analysis</h3>
+  <table>
+    <thead>
+      <tr><th>Skill</th><th>Current</th><th>Required (Peak)</th><th>Gap</th><th>Mitigation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Event-driven architecture</td><td>2</td><td>6</td><td>4</td><td>Hire 2, train 2 (Phase 1 bootcamp)</td></tr>
+      <tr><td>Kubernetes/cloud-native</td><td>4</td><td>8</td><td>4</td><td>Hire 2, upskill 2</td></tr>
+      <tr><td>Domain-driven design</td><td>1</td><td>4</td><td>3</td><td>External coach + pair programming</td></tr>
+      <tr><td>Performance engineering</td><td>0</td><td>2</td><td>2</td><td>Hire specialist, knowledge transfer</td></tr>
+    </tbody>
+  </table>
+
+  <!-- S5: Estimation Pivot Points -->
+  <h2>Section 5: Estimation Pivot Points</h2>
+
+  <div class="pivot-box">
+    <strong>Pivot Point 1: Event Mesh Latency</strong>
+    <ul>
+      <li><strong>Impact:</strong> 40% of Phase 2 architecture depends on &lt;200ms P99</li>
+      <li><strong>PoC validation:</strong> Load test at 10K TPS sustained for 72 hours</li>
+      <li><strong>Pivot A</strong> (&lt;$150K, &lt;4 weeks): Switch from Kafka to Pulsar or NATS</li>
+      <li><strong>Pivot B</strong> (&gt;$150K): Hybrid approach &mdash; event mesh for non-critical, direct DB for transactions</li>
+      <li><strong>Decision gate:</strong> End of Phase 1, Week 10</li>
+    </ul>
+  </div>
+
+  <div class="pivot-box">
+    <strong>Pivot Point 2: Data Migration Quality</strong>
+    <ul>
+      <li><strong>Impact:</strong> Phase 3 timeline assumes &lt;5% data quality variance</li>
+      <li><strong>PoC validation:</strong> Migrate 3 representative tables, measure variance</li>
+      <li><strong>Pivot A</strong> (&lt;$100K, &lt;3 weeks): Add data cleansing sprint in Phase 2</li>
+      <li><strong>Pivot B</strong> (&gt;$100K): Parallel-run approach (dual-write) instead of cutover</li>
+      <li><strong>Decision gate:</strong> End of Phase 1, Week 12</li>
+    </ul>
+  </div>
+
+  <div class="pivot-box">
+    <strong>Pivot Point 3: Legacy API Compatibility</strong>
+    <ul>
+      <li><strong>Impact:</strong> 25% of Phase 3 scope is partner migration</li>
+      <li><strong>PoC validation:</strong> Reverse-engineer top 5 partner integrations</li>
+      <li><strong>Pivot A</strong> (&lt;$80K, &lt;2 weeks): Anti-corruption layer with legacy API facade</li>
+      <li><strong>Pivot B</strong> (&gt;$200K): Maintain legacy API gateway indefinitely</li>
+      <li><strong>Decision gate:</strong> Phase 2, Month 6</li>
+    </ul>
+  </div>
+
+  <!-- S6: Risk Management -->
+  <h2>Section 6: Risk Management</h2>
+
+  <h3>Risk Timeline</h3>
+  <table>
+    <thead>
+      <tr><th>Risk</th><th>Phase 1</th><th>Phase 2</th><th>Phase 3</th><th>Phase 4</th><th>Phase 5</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Technology selection wrong</td><td class="risk-high">HIGH</td><td class="risk-med">Medium</td><td class="risk-low">Low</td><td class="risk-low">Low</td><td class="risk-low">Low</td></tr>
+      <tr><td>Data migration quality</td><td class="risk-med">Medium</td><td class="risk-med">Medium</td><td class="risk-high">HIGH</td><td class="risk-low">Low</td><td class="risk-low">Low</td></tr>
+      <tr><td>Team skill gaps</td><td class="risk-high">HIGH</td><td class="risk-med">Medium</td><td class="risk-low">Low</td><td class="risk-low">Low</td><td class="risk-low">Low</td></tr>
+      <tr><td>Legacy system instability</td><td class="risk-low">Low</td><td class="risk-med">Medium</td><td class="risk-high">HIGH</td><td class="risk-med">Medium</td><td class="risk-low">Low</td></tr>
+      <tr><td>Vendor lock-in</td><td class="risk-low">Low</td><td class="risk-med">Medium</td><td class="risk-med">Medium</td><td class="risk-high">HIGH</td><td class="risk-high">HIGH</td></tr>
+      <tr><td>Regulatory non-compliance</td><td class="risk-low">Low</td><td class="risk-low">Low</td><td class="risk-high">HIGH</td><td class="risk-med">Medium</td><td class="risk-med">Medium</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Kill Criteria</h3>
+  <table>
+    <thead>
+      <tr><th>Type</th><th>Condition</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="kill">HARD STOP</span></td><td>PoC fails all 3 pivot points</td><td>Terminate project. Sunk cost: ~$2.3M.</td></tr>
+      <tr><td><span class="kill">HARD STOP</span></td><td>Regulatory compliance unachievable</td><td>Terminate or pivot to compliance-only scope.</td></tr>
+      <tr><td><span class="gate">SOFT STOP</span></td><td>Budget overrun &gt;30% at any gate</td><td>Steering committee re-scope or terminate.</td></tr>
+      <tr><td><span class="gate">SOFT STOP</span></td><td>Timeline overrun &gt;40% at Phase 2 gate</td><td>Re-baseline or reduce Phase 3-5 scope.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- S7: Governance -->
+  <h2>Section 7: Governance Plan</h2>
+
+  <h3>Decision Authority (RACI)</h3>
+  <table>
+    <thead>
+      <tr><th>Decision</th><th>Responsible</th><th>Accountable</th><th>Consulted</th><th>Informed</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Phase gate GO/NO-GO</td><td>Tech Lead</td><td>CTO</td><td>Steering Committee</td><td>All teams</td></tr>
+      <tr><td>Budget reallocation &lt;10%</td><td>PM</td><td>CTO</td><td>CFO</td><td>Steering Committee</td></tr>
+      <tr><td>Budget reallocation &gt;10%</td><td>CTO</td><td>Board</td><td>CFO, CPO</td><td>All stakeholders</td></tr>
+      <tr><td>Technology pivot</td><td>Architect</td><td>CTO</td><td>Tech Lead, DevOps</td><td>PM, Steering Committee</td></tr>
+      <tr><td>Kill decision</td><td>CTO</td><td>Board</td><td>Steering Committee</td><td>All stakeholders</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Change Control</h3>
+  <table>
+    <thead>
+      <tr><th>Tier</th><th>Scope</th><th>Approver</th><th>Timeline</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Minor</td><td>&lt;$50K, &lt;2 weeks impact</td><td>Tech Lead + PM</td><td>24 hours</td></tr>
+      <tr><td>Significant</td><td>$50K-$200K, 2-6 weeks impact</td><td>Steering Committee</td><td>1 week</td></tr>
+      <tr><td>Major</td><td>&gt;$200K or &gt;6 weeks impact</td><td>Board</td><td>2 weeks</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+<footer>
+  <p><strong>Autor:</strong> Javier Montano &bull; <strong>Proyecto:</strong> Acme Corp Banking Modernization &bull; <strong>Fecha:</strong> March 2026</p>
+  <p>Generated by solution-roadmap skill &bull; Sofka Discovery Framework v6.0</p>
+</footer>
+
+</body>
+</html>
