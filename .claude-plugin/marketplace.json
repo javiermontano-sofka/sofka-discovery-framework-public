@@ -12,8 +12,8 @@
     {
       "name": "sofka-discovery-framework",
       "source": "./sofka-discovery-framework",
-      "description": "Enterprise technical discovery & consulting framework — 8-agent dream team orchestrates 48 specialized skills across 8 pipeline phases. Proprietary (Sofka Technologies).",
-      "version": "6.0.0",
+      "description": "Enterprise technical discovery & consulting framework v7 — NL-HP v3.0 prompts, 8-agent dream team, 17 commands, 48 skills, 8 pipeline phases. Proprietary (Sofka Technologies).",
+      "version": "7.0.0",
       "author": {
         "name": "Javier Montaño"
       },

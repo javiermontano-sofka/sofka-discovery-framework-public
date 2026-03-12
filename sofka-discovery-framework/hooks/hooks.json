@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "The Sofka Discovery Framework plugin is active (v6.0). 48 skills, 8 phases (0-6 + 3b feasibility). Output: markdown-first + Mermaid diagrams, A/B variants, smart HITL (piloto-auto default). Use /sofka-discovery-framework:discovery to start. Cost outputs = drivers and magnitudes only (5% innovation margin), never final prices. Present this as a brief status note."
+            "prompt": "The Sofka Discovery Framework plugin is active (v7.0.0 — NL-HP v3.0). 48 skills, 17 commands (10 document + 3 pipeline + 4 operations), checkpoint model (CP-0→CP-F), 3 quality gates. Output: markdown-excellence + Mermaid diagrams, A/B variants, smart HITL (piloto-auto default). Use /sofka-discovery-framework:discovery to start a full pipeline, or individual document commands (:plan, :brief, :asis, etc.). Cost outputs = drivers and magnitudes only (5% innovation margin), never final prices. Present this as a brief status note."
           }
         ]
       }
