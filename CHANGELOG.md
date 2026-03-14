@@ -6,23 +6,29 @@ All notable changes to the Sofka Discovery Framework plugin.
 
 ### Added — Full Roster Merge
 
-**46-Agent Specialist Committee (was 12 in v9.0.0)**
-- Restored 34 domain specialists: ai-agent-architect, ai-architect, analytics-architect, backend-developer, business-analyst, cloud-architect, content-strategist, data-architect, data-engineer, data-scientist, devops-engineer, devsecops-expert, economics-researcher, editorial-director, enterprise-architect, format-specialist, frontend-developer, hardware-systems-engineer, implementation-analyst, integration-researcher, middle-integrations-developer, mobile-architect, platform-engineer, quality-engineer, research-scientist, risk-controller, security-architect, solutions-architect, subject-matter-expert, systems-theorist, technical-lead, technology-scout, ux-researcher, ux-strategist
+**48-Agent Specialist Committee (was 12 in v9.0.0)**
+- Restored 34 domain specialists from previous roster
+- Added 2 new agents: product-strategist, compliance-analyst
 - All 4 service-type agents from v9.0.0 retained: ai-strategist, process-automation-specialist, qa-strategist, transformation-architect
+- Total: 12 core + 36 domain specialists = 48 agents
 
-**78 MOAT Skills (was 59 in v9.0.0)**
-- Restored 19 skills: adoption-strategy, change-readiness-assessment, copywriting, data-mesh-strategy, data-storytelling, data-viz-storytelling, execution-burndown, finops, hypothesis-driven-development, input-analysis, mobile-platform-assessment, multidimensional-feasibility, output-engineering, pipeline-governance, sector-intelligence, storytelling, technical-writing, technology-vigilance, workshop-design
+**100 MOAT Skills (was 59 in v9.0.0)**
+- Restored 19 skills from previous roster
+- Added 22 new skills across 13 domains: compliance-assessment, product-strategy, vendor-assessment, integration-architecture, capacity-planning, disaster-recovery, accessibility-audit, team-topology, migration-playbook, sla-design, incident-management, tech-debt-assessment, dependency-analysis, release-strategy, documentation-architecture, developer-experience, governance-framework, maturity-assessment, sustainability-assessment, competitive-intelligence, poc-lab, onboarding-playbook
 - All 11 service discovery skills from v9.0.0 retained
 - All 9 universalized skills with {TIPO_SERVICIO} retained
 
-**82 Commands (was 21 in v9.0.0)**
-- Restored 61 alias commands: verb-first aliases (assess-*, audit-*, chart-*, craft-*, deliver-*, diagnose-*, etc.), domain shortcuts (ai, arch, biz, cloud, data, func, tech), full-form aliases (run-guided, run-auto, run-express, run-deep, etc.)
+**84 Commands (was 21 in v9.0.0)**
+- Restored 61 alias commands from previous roster
+- Added 2 new commands: benchmark-maturity, simulate-scenarios
 - All 4 service-type commands from v9.0.0 retained
 
 ### Architecture
-- Full specialist roster + universal services = best of both worlds
-- 46 agents, 78 skills, 82 commands, 20 priming-RAG files, {TIPO_SERVICIO} (10 values)
+- Full specialist roster + universal services + expanded coverage = best of both worlds
+- 48 agents, 100 skills, 84 commands, 20 priming-RAG files, {TIPO_SERVICIO} (10 values)
 - All v9.0.0 universalization retained: service-type routing, dynamic committee, priming-RAG
+- New CLAUDE.md optimized for agentic pre-sales ecosystem onboarding
+- New landing.html with Authority design principles (dark mode, Minto Pyramid, Neo-Swiss)
 
 ---
 
