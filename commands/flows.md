@@ -10,6 +10,8 @@ Domain Analyst — activa `flow-mapping` como skill primario.
 Skills de soporte: `functional-toolbelt` (event storming, story mapping), `api-architecture` (integrations), `event-architecture` (event catalog).
 
 ## OBJETIVO
+Detect or accept `{TIPO_SERVICIO}` parameter (default: SDA). Non-SDA variants use service-appropriate domain models and flow sources.
+
 Generar 04_Mapeo_Flujos para el proyecto actual. Requiere output del AS-IS (03) como input. Si el usuario proporciona "$ARGUMENTS", usarlos como contexto.
 
 ## PROTOCOLO

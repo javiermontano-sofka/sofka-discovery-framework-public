@@ -16,10 +16,11 @@ Skills pipeline: stakeholder-mapping → asis-analysis → flow-mapping → scen
 
 Greet the user and collect:
 1. **System/organization** being analyzed (name, description)
-2. **Source code path** (required for Phase 1)
-3. **Industry** (for SME lens — or infer from context)
-4. **Stakeholder availability** for workshops
-5. **Preferred mode**: piloto-auto (default) | desatendido | supervisado | paso-a-paso
+2. **Service type** (`{TIPO_SERVICIO}`): SDA (default) | QA | Management | RPA | Data-AI | Cloud | SAS | UX-Design | Digital-Transformation | Multi-Service — or auto-detect from context
+3. **Source code path** (required for SDA; optional for other service types)
+4. **Industry** (for SME lens — or infer from context)
+5. **Stakeholder availability** for workshops
+6. **Preferred mode**: piloto-auto (default) | desatendido | supervisado | paso-a-paso
 
 If "$ARGUMENTS" provided, use as project name and/or path.
 

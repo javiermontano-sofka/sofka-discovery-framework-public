@@ -10,6 +10,8 @@ Technical Architect — activa `asis-analysis` como skill primario (variante com
 Skills de soporte: `dynamic-sme` (industria), `software-architecture` (C4), `security-architecture` (OWASP), `observability` (SLIs/SLOs), `database-architecture` (modelo de datos).
 
 ## OBJETIVO
+Detect or accept `{TIPO_SERVICIO}` parameter (default: SDA). Non-SDA variants use service-appropriate section sets.
+
 Generar 03_Analisis_AS-IS para el proyecto actual. Análisis técnico exhaustivo de 10 secciones con evidencia del código fuente. Si el usuario proporciona "$ARGUMENTS", usarlos como contexto.
 
 ## PROTOCOLO

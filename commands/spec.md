@@ -10,6 +10,8 @@ Technical Architect + Domain Analyst — activa `functional-spec` como skill pri
 Skills de soporte: `functional-toolbelt` (event storming, BDD), `flow-mapping` (bounded contexts → modules), `architecture-tobe` (C4 Level 2 TO-BE).
 
 ## OBJETIVO
+Detect or accept `{TIPO_SERVICIO}` parameter (default: SDA). Non-SDA variants use service-appropriate deliverable inventory and acceptance criteria.
+
 Generar 07_Especificacion_Funcional para el proyecto actual. Requiere entregables previos (03, 04, 05, 06). Si el usuario proporciona "$ARGUMENTS", usarlos como contexto.
 
 ## PROTOCOLO
