@@ -1,6 +1,6 @@
 # Sofka Discovery Framework v10.0.0
 
-Framework de discovery técnico empresarial para Claude Code — 78 skills especializados, 46 agentes dream team, 82 comandos, pipeline de 8 fases con 4 quality gates, 10 tipos de servicio.
+Framework de discovery técnico empresarial para Claude Code — 100 skills especializados, 48 agentes dream team, 84 comandos, pipeline de 10 fases con 4 quality gates, 10 tipos de servicio.
 
 ---
 
@@ -88,7 +88,7 @@ flowchart LR
 
 ---
 
-## Comandos (82)
+## Comandos (84)
 
 ### Pipeline Flows (4)
 
@@ -142,7 +142,7 @@ flowchart LR
 | `/sdf:review-business` | `biz` | Revision_Negocio |
 | `/sdf:discover-ai` | `ai` | Oportunidades_IA |
 
-### Operations (5)
+### Operations (7)
 
 | Comando | Alias | Descripción |
 |---------|-------|-------------|
@@ -151,10 +151,12 @@ flowchart LR
 | `/sdf:improve-deliverables` | `improve` | Mejora iterativa de artefactos |
 | `/sdf:rescue-stalled` | `rescue` | Rescate de discovery estancado |
 | `/sdf:validate-feasibility` | `validate`, `feasibility` | Think Tank de 7 Sabios |
+| `/sdf:benchmark-maturity` | `benchmark` | Benchmark de madurez vs estándares |
+| `/sdf:simulate-scenarios` | `simulate` | Simulación Monte Carlo what-if |
 
 ---
 
-## Catálogo de Skills (78)
+## Catálogo de Skills (100)
 
 ### 1. Discovery Pipeline (16)
 
@@ -177,7 +179,7 @@ flowchart LR
 | `executive-pitch` | 5b | Pitch ejecutivo con narrativa de valor |
 | `discovery-handover` | 6 | Handover operacional completo |
 
-### 2. Architecture Design (8)
+### 2. Architecture Design (10)
 
 | Skill | Propósito |
 |-------|-----------|
@@ -189,8 +191,10 @@ flowchart LR
 | `devsecops-architecture` | CI/CD, seguridad integrada, IaC |
 | `design-system` | Sistema de diseño (tokens, componentes, guías) |
 | `functional-toolbelt` | Herramientas funcionales para análisis |
+| `integration-architecture` | Patrones de integración (ESB, iPaaS, event mesh) |
+| `disaster-recovery` | DR/BCP planning, RPO/RTO, failover |
 
-### 3. Data Strategy (7)
+### 3. Data Strategy (8)
 
 | Skill | Propósito |
 |-------|-----------|
@@ -201,8 +205,9 @@ flowchart LR
 | `data-governance` | Políticas, linaje, catálogo de datos |
 | `data-quality` | Reglas de calidad, profiling, observabilidad |
 | `analytics-engineering` | dbt, métricas, modelos analíticos |
+| `dependency-analysis` | Mapeo de dependencias, riesgo de librerías, licencias |
 
-### 4. Cloud & Mobile (5)
+### 4. Cloud & Mobile (7)
 
 | Skill | Propósito |
 |-------|-----------|
@@ -211,8 +216,10 @@ flowchart LR
 | `mobile-architecture` | Nativo, cross-platform, offline-first |
 | `mobile-assessment` | Evaluación de madurez mobile |
 | `mobile-platform-assessment` | Assessment unificado de plataforma mobile |
+| `capacity-planning` | Forecasting de capacidad, triggers de escalamiento |
+| `sustainability-assessment` | Green IT, huella de carbono, eficiencia energética |
 
-### 5. Engineering Excellence (5)
+### 5. Engineering Excellence (9)
 
 | Skill | Propósito |
 |-------|-----------|
@@ -221,8 +228,12 @@ flowchart LR
 | `security-architecture` | Zero trust, IAM, threat modeling |
 | `performance-engineering` | Benchmarks, SLOs, capacity planning |
 | `observability` | Logs, métricas, trazas, alertas |
+| `sla-design` | Definición SLO/SLA/SLI, error budgets |
+| `incident-management` | Framework de respuesta a incidentes |
+| `tech-debt-assessment` | Cuantificación de deuda técnica |
+| `release-strategy` | Release management, deployment patterns |
 
-### 6. Consulting & Quality (5)
+### 6. Consulting & Quality (8)
 
 | Skill | Propósito |
 |-------|-----------|
@@ -231,16 +242,23 @@ flowchart LR
 | `user-representative` | Voz del usuario, journey maps, personas |
 | `workshop-design` | Diseño de workshops (event storming, impact mapping) |
 | `multidimensional-feasibility` | Think Tank de 7 Sabios — validación profunda |
+| `compliance-assessment` | Cumplimiento regulatorio (GDPR, SOX, PCI-DSS) |
+| `maturity-assessment` | Evaluación de madurez de capacidades (CMMI) |
+| `accessibility-audit` | Auditoría WCAG 2.1/2.2, a11y |
 
-### 7. Governance & Risk (3)
+### 7. Governance, Risk & Strategy (7)
 
 | Skill | Propósito |
 |-------|-----------|
 | `project-program-management` | Gobernanza PMO, phase gates, orquestación |
 | `risk-controlling-dynamics` | Stress-testing, pre-mortem, controles financieros |
 | `pipeline-governance` | Gobernanza del pipeline de discovery |
+| `product-strategy` | Roadmap de producto, backlog, product-market fit |
+| `vendor-assessment` | Evaluación de vendors (RFP/RFI, scoring, TCO) |
+| `governance-framework` | Governance IT (COBIT, ITIL), decision rights |
+| `competitive-intelligence` | Landscape competitivo, diferenciación |
 
-### 8. Delivery & Brand (5)
+### 8. Delivery, DX & Brand (10)
 
 | Skill | Propósito |
 |-------|-----------|
@@ -249,6 +267,11 @@ flowchart LR
 | `roadmap-poc` | POC planning, criterios go/no-go |
 | `output-engineering` | Ghost menu, producción multi-formato |
 | `input-analysis` | Pre-procesamiento de inputs del usuario |
+| `developer-experience` | Assessment de DX, toolchain, inner loop |
+| `documentation-architecture` | Doc-as-code, taxonomía, knowledge base |
+| `training-curriculum` | Programa de capacitación técnica |
+| `onboarding-playbook` | Onboarding de equipos, knowledge transfer |
+| `poc-lab` | Diseño y ejecución de PoCs |
 
 ### 9. Service Discovery (11)
 
@@ -278,7 +301,7 @@ flowchart LR
 | `sector-intelligence` | Inteligencia de industria/sector |
 | `technology-vigilance` | Vigilancia tecnológica (Gartner, Forrester) |
 
-### 11. Strategic Methods (5)
+### 11. Strategic Methods (8)
 
 | Skill | Propósito |
 |-------|-----------|
@@ -288,10 +311,12 @@ flowchart LR
 | `adoption-strategy` | Estrategia de adopción, comunicación, training |
 | `change-readiness-assessment` | Readiness organizacional, scorecard |
 | `data-mesh-strategy` | Data mesh (4 principios de Dehghani) |
+| `team-topology` | Conway's Law, modos de interacción, carga cognitiva |
+| `migration-playbook` | Guía de ejecución de migración (strangler fig, parallel run) |
 
 ---
 
-## Dream Team (46 Agentes)
+## Dream Team (48 Agentes)
 
 ### Core Team (12)
 
@@ -310,7 +335,7 @@ flowchart LR
 | `qa-strategist` | TMMi, PITT, test factory, ISTQB | QA |
 | `transformation-architect` | Multi-service program design | DT/Multi |
 
-### Domain Specialists (34)
+### Domain Specialists (36)
 
 | Categoría | Agentes |
 |-----------|---------|
@@ -319,9 +344,9 @@ flowchart LR
 | **Data & AI** | `data-architect`, `data-engineer`, `data-scientist`, `analytics-architect`, `ai-architect`, `ai-agent-architect` |
 | **Infrastructure** | `platform-engineer`, `hardware-systems-engineer`, `devsecops-expert` |
 | **Quality & Research** | `quality-engineer`, `research-scientist`, `economics-researcher`, `systems-theorist`, `technology-scout`, `integration-researcher` |
-| **Business & UX** | `business-analyst`, `subject-matter-expert`, `ux-researcher`, `ux-strategist`, `implementation-analyst` |
+| **Business & UX** | `business-analyst`, `subject-matter-expert`, `ux-researcher`, `ux-strategist`, `implementation-analyst`, `product-strategist` |
+| **Compliance** | `compliance-analyst`, `risk-controller` |
 | **Editorial** | `content-strategist`, `editorial-director`, `format-specialist` |
-| **Governance** | `risk-controller` |
 
 ---
 
@@ -394,14 +419,14 @@ sofka-discovery-framework/
 ├── CHANGELOG.md                 # Historial de versiones
 ├── CLAUDE.md                    # Guía de orquestación
 ├── README.md                    # Este archivo
-├── agents/                      # 46 agentes (12 core + 34 especialistas)
-├── commands/                    # 82 comandos (21 primary + 61 aliases)
+├── agents/                      # 48 agentes (12 core + 36 especialistas)
+├── commands/                    # 84 comandos (21 primary + 63 aliases)
 ├── hooks/hooks.json             # 6 hooks automatizados
 ├── references/
 │   ├── service-type-matrix.md   # Routing por {TIPO_SERVICIO}
 │   └── priming-rag/             # 20 archivos de contexto RAG
 ├── scripts/                     # Utilidades (index, scan, validate)
-└── skills/                      # 78 skills en 11 dominios
+└── skills/                      # 100 skills en 13 dominios
     ├── discovery-orchestrator/
     │   ├── SKILL.md
     │   ├── references/
@@ -419,7 +444,7 @@ sofka-discovery-framework/
 
 | Versión | Fecha | Cambios principales |
 |---------|-------|---------------------|
-| **10.0.0** | 2026-03-14 | Full roster merge: 46 agents, 78 skills, 82 commands + universal services |
+| **10.0.0** | 2026-03-14 | Full roster merge: 48 agents, 100 skills, 84 commands + universal services |
 | **9.0.0** | 2026-03-14 | Universal services: {TIPO_SERVICIO}, 11 service discovery skills, 20 priming-RAG |
 | **7.0.0** | 2026-03-14 | NL-HP v3.0, checkpoint model, ghost menu |
 | **6.2.0** | 2026-03-12 | 48 skills, 8 dominios, Governance & Risk |

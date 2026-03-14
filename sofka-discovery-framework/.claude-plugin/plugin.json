@@ -1,7 +1,7 @@
 {
   "name": "sdf",
   "version": "10.0.0",
-  "description": "Universal services discovery & consulting framework v10.0 — Full roster merge. NL-HP v3.0 prompts, 46-agent specialist committee (12 core + 34 domain specialists), 78 MOAT skills (67 domain + 11 service discovery), 82 commands (21 primary + 61 aliases), 6 automated hooks, ghost menu, 4 quality gates (G1+G1.5+G2+G3), {TIPO_SERVICIO} parameter (10 values: SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service), 20 priming-RAG knowledge files. Think Tank de 7 Sabios, HDD cycles, Sofka productivity model. No prices — only drivers, magnitudes, and models.",
+  "description": "Universal services discovery & consulting framework v10.0 — Full roster merge. NL-HP v3.0 prompts, 48-agent specialist committee (12 core + 36 domain specialists), 100 MOAT skills (89 domain + 11 service discovery), 84 commands (21 primary + 63 aliases), 6 automated hooks, ghost menu, 4 quality gates (G1+G1.5+G2+G3), {TIPO_SERVICIO} parameter (10 values: SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service), 20 priming-RAG knowledge files. Think Tank de 7 Sabios, HDD cycles, Sofka productivity model. No prices — only drivers, magnitudes, and models.",
   "author": {
     "name": "Javier Montaño",
     "url": "https://sofka.com.co"
