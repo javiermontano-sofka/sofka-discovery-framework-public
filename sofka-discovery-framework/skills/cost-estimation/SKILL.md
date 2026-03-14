@@ -2,7 +2,8 @@
 name: cost-estimation
 description: >
   Cost driver identification — effort inductors, scope drivers, magnitude estimation, team composition
-  modeling, and risk-adjusted timeline ranges. Use when the user asks to "estimate effort", "identify
+  modeling, risk-adjusted timeline ranges, service engagement sizing, consulting effort, automation ROI,
+  and staffing model. Use when the user asks to "estimate effort", "identify
   cost drivers", "size the project", "plan team composition", "identify effort inductors", or mentions
   WBS, sizing, contingency, burn rate, PERT, Monte Carlo, or "Phase 4" cost work. NEVER produces
   final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
@@ -93,6 +94,9 @@ Parse `$1` as **project/initiative name**. Detect project context from repo.
   - **paso-a-paso**: Confirma antes de cada sección.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 scope + S4 drivers + S6 magnitude) | `técnica` (full 7 sections, default)
+- `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
+  - Determines sizing methods, team composition templates, and cost driver categories
+  - When omitted, defaults to SDA (backward compatible)
 
 ## Delivery Structure: 7 Sections
 
@@ -108,6 +112,20 @@ Parse `$1` as **project/initiative name**. Detect project context from repo.
   - Curva de aprendizaje (stack nuevo, dominio complejo)
 - Dependency mapping and scope boundaries
 
+#### Service-Type Scope Templates
+
+When `{TIPO_SERVICIO}` ≠ SDA, use service-appropriate decomposition:
+
+| Service Type | Decomposition Units | Complexity Drivers |
+|---|---|---|
+| QA | Test suites, automation scripts, environments, test data | Test case count, tool complexity, integration points |
+| Management | Workshops, sprints, ceremonies, coaching sessions, deliverables | Team size, methodology complexity, stakeholder count |
+| RPA | Processes to automate, bots, integrations, exception handlers | Process steps, decision points, system integrations |
+| Data-AI | Pipelines, models, dashboards, data products, governance policies | Data volume, model complexity, source count |
+| Cloud | Workloads to migrate, environments, automation scripts, runbooks | Workload complexity (7R), dependency count, compliance needs |
+| SAS | Positions to fill, ramp-up plans, knowledge transfer sessions | Role specialization, market scarcity, domain complexity |
+| UX-Design | Research studies, wireframes, prototypes, design system components | User complexity, platform count, accessibility requirements |
+
 ### S2: Sizing Methods (Magnitud, no Valor)
 
 - T-shirt sizing: S/M/L/XL con rangos de FTE-meses (no dinero)
@@ -118,6 +136,23 @@ Parse `$1` as **project/initiative name**. Detect project context from repo.
 - **Triangulación de magnitud**: comparar métodos, flag divergencia >30%
 - Output: "Magnitud estimada: X-Y FTE-meses" (NUNCA "costo: $Z")
 
+#### Service-Type Sizing Methods
+
+COCOMO II applies to SDA only. For other service types, use:
+
+- **QA**: Test case complexity scoring (Simple: 0.5h, Medium: 2h, Complex: 8h) × automation factor (manual: 1x, automated: 3x initial + 0.2x ongoing)
+- **Management**: Engagement-days model (workshops: 2-5 days, sprint coaching: ongoing FTE, assessment: 5-15 days, transformation: 3-12 months)
+- **RPA**: Bot complexity scoring — Simple bot (<10 steps, 1 system): 2-4 weeks; Medium (10-30 steps, 2-3 systems): 4-8 weeks; Complex (>30 steps, 4+ systems): 8-16 weeks
+- **Data-AI**: Pipeline complexity (batch: 1-3 weeks, streaming: 3-8 weeks, ML model: 4-16 weeks per iteration, dashboard: 1-4 weeks)
+- **Cloud**: Workload migration complexity per 7R (Rehost: 1-2 weeks, Replatform: 2-6 weeks, Refactor: 4-16 weeks per workload)
+- **SAS**: Position fill time (standard: 2-4 weeks, specialized: 4-8 weeks, rare: 8-16 weeks) + ramp-up (junior: 8 weeks, mid: 4 weeks, senior: 2 weeks)
+- **UX-Design**: Research study (1-3 weeks), wireframe set (1-2 weeks), interactive prototype (2-4 weeks), design system component (0.5-2 weeks)
+
+Universal methods that apply to ALL service types:
+- T-shirt sizing (S/M/L/XL)
+- Reference-class forecasting
+- Three-point estimation (optimistic/probable/pessimistic)
+
 ### S3: Team Composition Modeling
 
 - Role mapping: roles requeridos × seniority × % dedicación
@@ -127,6 +162,18 @@ Parse `$1` as **project/initiative name**. Detect project context from repo.
 - Allocation patterns: full-time vs fractional, specialists time-boxed
 - Output: modelo de equipo por fase (roles y cantidades, NO tarifas)
 - **Diagrama requerido**: Gantt chart (Mermaid) con timeline de ramp-up del equipo por rol y fase
+
+#### Service-Type Role Templates
+
+| Service Type | Typical Team Composition |
+|---|---|
+| QA | QA Lead, Test Analysts, Automation Engineers, Performance Testers, Test Manager |
+| Management | PM/Scrum Master, Delivery Manager, Agile Coach, Product Owner, UX Specialist |
+| RPA | RPA Architect, RPA Developers, Process Analyst, BPMN Analyst, RPA Tester |
+| Data-AI | Data Architect, Data Engineers, Data Scientists, ML Engineers, Analytics Engineers, Data Analyst |
+| Cloud | Cloud Architect, DevOps Engineers, SREs, Cloud Engineers, DevSecOps Engineer |
+| SAS | Talent Acquisition Lead, Technical Interviewer, Onboarding Specialist, Account Manager |
+| UX-Design | UX Lead, UX Researcher, UI Designer, Interaction Designer, Accessibility Specialist |
 
 ### S4: Cost Driver Taxonomy
 
@@ -145,6 +192,18 @@ Identifica y clasifica TODOS los drivers de costo:
 | **Compliance** | Auditorías, penetration testing, certificaciones | De regulación de industria |
 | **Contingencia** | Known risks (10-15%), unknown-unknowns (15-25%) | Del risk register |
 | **Oportunidad** | Costo de NO hacer: deuda acumulada, riesgo operacional | Del AS-IS |
+
+#### Service-Type Specific Drivers
+
+| Service Type | Additional Drivers |
+|---|---|
+| QA | Test tool licenses (Tricentis, Tosca), test environment provisioning, test data management, ISTQB certification costs |
+| Management | Certification costs (PMP, CSM, SAFe), workshop facilitation tools, travel/onsite presence, methodology licensing |
+| RPA | Bot platform licenses (UiPath, AA, Power Automate), process mining tools, production bot orchestration infrastructure |
+| Data-AI | Data platform licenses (Databricks, Snowflake), GPU compute for training, data labeling, model monitoring tools |
+| Cloud | Cloud consumption (pay-as-you-go), migration tooling licenses, multi-cloud management, security tooling |
+| SAS | Recruitment platform costs, background check costs, onboarding infrastructure, bench time (between assignments) |
+| UX-Design | Design tool licenses (Figma, Sketch), usability testing platforms, research participant incentives, accessibility audit tools |
 
 Por cada driver:
 - Nombre y descripción
@@ -243,7 +302,7 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ## Output Artifact
 
-**Primary:** `06_Cost_Drivers_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Effort drivers, magnitude indicators, team model, timeline ranges, costing governance. Con disclaimer obligatorio.
+**Primary:** `06_Cost_Drivers_{TIPO_SERVICIO}_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Effort drivers, magnitude indicators, team model, timeline ranges, costing governance. Con disclaimer obligatorio.
 
 **Diagramas incluidos:**
 - Gantt chart: timeline de ramp-up del equipo

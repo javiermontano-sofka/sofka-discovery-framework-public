@@ -3,11 +3,12 @@ name: software-viability
 description: >
   Software and technology viability validator — deep forensic analysis of whether proposed
   software solutions, AI/ML components, and technology choices are viable substance or speculative
-  smoke. Use when the user asks to "validate technology viability", "detect vaporware", "verify
-  AI claims", "assess software maturity", "check if this tech actually works", or mentions
-  technology due diligence, software validation, AI feasibility, vendor evaluation, or tech-stack
-  viability. This is the devoted software-specific validator — separate and more critical than
-  the multidimensional feasibility analysis.
+  smoke. Covers service viability, platform viability, methodology viability, tool viability,
+  and vendor assessment for any service type. Use when the user asks to "validate technology viability",
+  "detect vaporware", "verify AI claims", "assess software maturity", "check if this tech actually works",
+  or mentions technology due diligence, software validation, AI feasibility, vendor evaluation, or
+  tech-stack viability. This is the devoted software-specific validator — separate and more critical
+  than the multidimensional feasibility analysis.
 allowed-tools:
   - Read
   - Write
@@ -18,13 +19,15 @@ allowed-tools:
   - WebFetch
 ---
 
-# Software Viability: Substance vs Smoke Technology Validator
+# Service & Technology Viability: Substance vs Smoke Validator
 
 Forensic validation of whether proposed software solutions, technology choices, and AI/ML
 components are viable, mature, and fit-for-purpose — or speculative, overhyped, and risky.
 This is NOT the multidimensional feasibility analysis (technical-feasibility covers that).
 This is a **devoted, deep-cut software validator** that operates at the level of code, APIs,
 vendor maturity, community health, and real-world production evidence.
+
+> **Alcance universal:** Este skill valida viabilidad de tecnologías de software (SDA), plataformas de automatización (RPA), herramientas de testing (QA), frameworks de gestión (Management), plataformas de datos (Data-AI), servicios cloud (Cloud), y cualquier componente tecnológico o metodológico propuesto en un engagement de servicios.
 
 ## Principio Rector
 
@@ -55,6 +58,23 @@ Accepts: technology names, vendor products, AI/ML proposals, architectural patte
   - **paso-a-paso**: Confirma cada tecnología evaluada, cada score, y el veredicto global.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 inventory + S6 scorecard only) | `técnica` (full forensic analysis, default)
+- `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
+  - Determines the validation lens and evidence sources
+
+### Service-Type Validation Lenses
+
+The SUBSTANCIA/PROMESA/RIESGO/HUMO scale applies universally. What changes is WHAT gets validated:
+
+| Service Type | What Gets Validated | Key Evidence Sources |
+|---|---|---|
+| SDA | Languages, frameworks, libraries, architectural patterns | GitHub stars, npm downloads, Stack Overflow activity, CVE database, production case studies |
+| QA | Testing tools, automation frameworks, test management platforms | Gartner MQ, analyst reports, community adoption, plugin ecosystem, CI/CD integrations |
+| Management | Methodologies (SAFe, DAD, LeSS), PM tools, governance frameworks | Industry adoption rates, certification body health, community activity, case studies |
+| RPA | RPA platforms (UiPath, AA, Power Automate, Blue Prism), process mining tools | Gartner MQ, Forrester Wave, vendor financials, community size, partner ecosystem |
+| Data-AI | Data platforms (Databricks, Snowflake), ML frameworks, AI models | Benchmarks, academic citations, production deployments, vendor trajectory, open-source health |
+| Cloud | Cloud services, migration tools, IaC tools, observability platforms | Cloud provider roadmaps, service maturity, regional availability, compliance certifications |
+| SAS | Talent platforms, assessment tools, onboarding systems | Market adoption, integration capabilities, candidate experience ratings |
+| UX-Design | Design tools (Figma, Sketch), research platforms, prototyping tools | Market share, plugin ecosystem, collaboration features, enterprise adoption |
 
 ## Delivery Structure: 7 Sections
 
@@ -239,7 +259,7 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ## Output Artifact
 
-**Primary:** `A-04_Software_Viability_{project}.html` — Technology inventory, maturity assessment, AI validation, vendor risk, PoC designs, viability scorecard, recommendations.
+**Primary:** `Viability_Assessment_{TIPO_SERVICIO}_{project}.md` — Technology inventory, maturity assessment, AI validation, vendor risk, PoC designs, viability scorecard, recommendations.
 
 ### Diagrams (Mermaid)
 - Flowchart: technology maturity assessment flow

@@ -15,6 +15,8 @@ allowed-tools:
   - Bash
 ---
 
+> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Data-AI`. El diseño de bases de datos es relevante para desarrollo de software y para estrategia de datos. Para otros contextos de datos, consulte `data-engineering`, `data-governance`, o `bi-architecture`.
+
 # Database Architecture: Schema Design, Storage Strategy & Data Evolution
 
 Database architecture defines how data is structured, stored, accessed, replicated, and evolved over time. This skill produces comprehensive database design documentation covering schema modeling, indexing, partitioning, high availability, migration strategy, and performance tuning.

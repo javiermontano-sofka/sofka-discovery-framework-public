@@ -1,7 +1,8 @@
 ---
 name: sofka-testing-strategy
 description: >
-  Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management.
+  Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management,
+  QA-as-a-service strategy, test factory design, PITT methodology, QA CoE design.
   Use when the user asks to "design test strategy", "build test automation", "implement contract testing",
   "manage test data", "define quality gates", or mentions test pyramid, Pact, Playwright, Cypress, coverage targets, flaky tests, chaos engineering.
 model: opus
@@ -41,6 +42,9 @@ The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **
   - **paso-a-paso**: Confirma cada test shape, framework selection, contract scope, y chaos plan.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 pyramid + S3 contracts + S6 metrics) | `técnica` (full 6 sections, default)
+- `{TIPO_SERVICIO}`: `SDA` (default) | `QA`
+  - SDA: Test strategy for a software project (default behavior)
+  - QA: Test strategy as a QA service offering (PITT, Testing Factory, QA CoE design)
 
 Before generating strategy, detect the codebase context:
 
@@ -325,6 +329,47 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Primary:** `A-01_Testing_Strategy.html` — Executive summary, test shape design, automation framework, contract testing setup, chaos engineering plan, test data strategy, quality metrics dashboard.
 
 **Secondary:** Test framework configuration files, Pact contract examples, quality gate definitions, flaky test management runbook.
+
+## QA-as-a-Service Variant (`{TIPO_SERVICIO}=QA`)
+
+When invoked with `{TIPO_SERVICIO}=QA`, this skill shifts from "test strategy for a software project" to "test strategy design as a QA service offering." Additional sections generated:
+
+### QS1: Service Model Design
+- PITT (Independent Testing Teams) configuration
+- Testing Factory (Managed Service Center) design
+- Strategic Quality Consulting scope definition
+- Staff Augmentation QA team composition
+- Hybrid model recommendations based on client maturity
+
+### QS2: QA CoE Design
+- Center of Excellence governance structure
+- Test automation framework standardization
+- Tool stack recommendations (with viability assessment)
+- Quality metrics dashboard design
+- Knowledge management and best practices repository
+
+### QS3: Client-Facing QA Maturity Assessment
+- TMMi-based maturity model for client assessment
+- Gap analysis between current and target maturity
+- Improvement roadmap with quick wins
+- ROI model for QA investment (effort drivers, NOT prices)
+- Benchmarking against industry standards
+
+### QS4: QA Team Composition & Certification Strategy
+- Role definitions (Test Analyst, Automation Engineer, Performance Tester, Security Tester, Test Manager)
+- Certification roadmap (ISTQB Foundation → Advanced → Expert specializations)
+- Training program design
+- Career path and growth framework
+- Team scaling model based on engagement size
+
+### QS5: Quality Governance for Service Delivery
+- Quality gates for service delivery milestones
+- SLA definitions for testing services
+- Defect management process and escalation
+- Continuous improvement framework
+- Client reporting and dashboards
+
+**Output Artifact (QA variant):** `Testing_Strategy_QA_Service_{project}.md`
 
 ---
 **Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

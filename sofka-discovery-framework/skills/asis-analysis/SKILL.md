@@ -1,9 +1,11 @@
 ---
 name: asis-analysis
 description: >
-  Current-state technical assessment producing 10-section analysis. Use when the user asks to
-  "analyze the codebase", "assess current architecture", "run AS-IS analysis", "technical audit",
-  "evaluate tech debt", "code quality assessment", or mentions "Phase 1", "current state",
+  Universal current-state assessment producing 10-section analysis for ANY Sofka service type.
+  Use when the user asks to "analyze the codebase", "assess current architecture", "run AS-IS analysis",
+  "technical audit", "evaluate tech debt", "code quality assessment", "assess current state",
+  "service assessment", "QA maturity", "PMO assessment", "RPA readiness", "data maturity",
+  "cloud readiness", "design maturity", "talent gap analysis", or mentions "Phase 1", "current state",
   "legacy system review", "technical health check".
 allowed-tools:
   - Read
@@ -14,9 +16,9 @@ allowed-tools:
   - Bash
 ---
 
-# AS-IS Technical Analysis
+# AS-IS Analysis — Universal Current-State Assessment
 
-Generates a 10-section current-state technical assessment: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations.
+Generates a 10-section current-state assessment for ANY Sofka service type (SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design). For software codebases (SDA), produces: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. For other service types, sections S1-S8 adapt to domain-specific dimensions while S0 (Executive Dashboard), S9 (Risk Register), and S10 (Recommendations) remain universal.
 
 ## Principio Rector
 
@@ -41,8 +43,29 @@ Parse from `$ARGUMENTS`.
   - **paso-a-paso**: Confirma antes de cada sección del análisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — sections S0, S5, S9, S10 only) | `técnica` (full, default)
+- `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
+  - When omitted or when a codebase path is provided, defaults to SDA (backward compatible)
+  - Determines which variant of sections S1-S8 to generate
+
+## Service Type Detection
+
+Before starting analysis, detect the service type from context:
+
+1. If `{TIPO_SERVICIO}` explicitly provided → use it
+2. If codebase path provided → default to SDA
+3. If conversation mentions QA/testing/ISTQB → QA
+4. If conversation mentions PMO/methodology/delivery → Management
+5. If conversation mentions automation/bots/RPA/UiPath → RPA
+6. If conversation mentions data/AI/ML/analytics/dashboards → Data-AI
+7. If conversation mentions cloud/migration/DevOps/SRE → Cloud
+8. If conversation mentions staffing/talent/augmentation → SAS
+9. If conversation mentions design/UX/UI/usability → UX-Design
+
+Confirm: "Tipo de servicio detectado: {X}. ¿Confirma o desea ajustar?"
 
 ## Dynamic Context Injection
+
+### SDA Context Injection (when {TIPO_SERVICIO}=SDA)
 
 Auto-detect codebase characteristics before starting analysis:
 
@@ -64,16 +87,24 @@ Use detected languages, build tools, and infrastructure to scope each section.
 
 ## Input Requirements
 
-**Mandatory:**
-- Complete codebase with commit history (or representative samples across all layers)
-- Build configuration (Maven/Gradle/npm/setup.py) for LOC and dependency tree
-- Deployment configuration (Docker/Kubernetes manifests, IaC)
+**Mandatory (varies by service type):**
 
-**Recommended:**
-- API specifications (Swagger/OpenAPI, gRPC proto files)
-- Git history (last 24 months) for complexity trend analysis
-- Operational logs (error rates, latency, failure incidents)
+| Service Type | Mandatory Inputs |
+|---|---|
+| SDA | Complete codebase with commit history, build configuration, deployment configuration |
+| QA | Test suite documentation, QA processes, tool landscape inventory, defect metrics |
+| Management | PMO artifacts, methodology documentation, team assessments, delivery metrics |
+| RPA | Process documentation (BPMN), bot inventory, automation logs, process metrics |
+| Data-AI | Data catalog, pipeline documentation, model registry, data quality reports |
+| Cloud | Infrastructure inventory, cloud accounts, monitoring dashboards, cost reports |
+| SAS | Team composition, skills matrix, project history, utilization reports |
+| UX-Design | Design system, research repository, usability reports, accessibility audits |
+
+**Recommended (all types):**
 - Previous assessments or modernization reports
+- Stakeholder interviews or survey results
+- Operational metrics (last 12-24 months)
+- Industry benchmarks for comparison
 
 ## Assumptions & Limits
 
@@ -162,6 +193,80 @@ Top-10 risks: probability x impact matrix. Per risk: category, score, current mi
 ### S10: Recommendations
 Top 5-10 findings with root cause + business impact. Quick wins (under 5 eng-days). Strategic roadmap (immediate/short/medium/long-term). Refactor vs rewrite vs replace decision tree per major component.
 
+## Service-Type Variant Sections (S1-S8)
+
+When `{TIPO_SERVICIO}` ≠ SDA, sections S0, S9, and S10 remain universal. Sections S1-S8 adapt to the service type:
+
+### QA Variant (`{TIPO_SERVICIO}=QA`)
+- **S1: QA Tool Landscape** — Testing tools inventory (automation frameworks, CI/CD integration, test management), license status, adoption maturity
+- **S2: Test Coverage Assessment** — Coverage by type (unit, integration, E2E, performance, security), by layer, by risk level. Gap analysis
+- **S3: Testing Maturity Model (TMMi)** — Assessment against TMMi levels 1-5. Current level with evidence. Improvement roadmap
+- **S4: Process Quality** — Defect detection rate, escape rate, test execution efficiency, automation ratio. Trend analysis
+- **S5: Quality Debt Inventory** — Untested critical paths, flaky tests, outdated test data, manual-only processes. Severity scoring
+- **S6: QA NFR Heatmap** — Performance testing capability, security testing, accessibility testing, reliability testing. Scored 1-10
+- **S7: Compliance & Standards** — ISTQB alignment, industry regulatory testing requirements, audit readiness
+- **S8: QA Operations Model** — Team structure, shift-left maturity, CI/CD quality gates, release qualification process
+
+### Management Variant (`{TIPO_SERVICIO}=Management`)
+- **S1: PMO Maturity Assessment** — PMO maturity level (ad-hoc, defined, managed, optimized). Evidence-based assessment
+- **S2: Methodology Fitness** — Current methodology (Agile, SAFe, Waterfall, Hybrid) fit to organizational context. Disciplined Agile assessment
+- **S3: Governance Model** — Decision rights, escalation paths, ceremony effectiveness, reporting cadence. Governance health score
+- **S4: Team Capability** — Certifications inventory (PMP, CSM, SAFe, etc.), experience distribution, skill gaps. Capability maturity
+- **S5: Process Debt** — Manual processes that should be automated, ceremonias inefectivas, documentation gaps, governance overhead
+- **S6: Management NFR Heatmap** — Predictability, transparency, stakeholder satisfaction, velocity stability, quality. Scored 1-10
+- **S7: Change Readiness** — Organizational change capacity, resistance patterns, adoption barriers, training needs
+- **S8: Delivery Operations** — Delivery cadence, deployment frequency, lead time, WIP management. DORA-lite for management
+
+### RPA Variant (`{TIPO_SERVICIO}=RPA`)
+- **S1: Process Landscape** — BPMN process inventory, volume, frequency, complexity classification, manual effort per process
+- **S2: Automation Readiness** — Rule-based score per process (structured data, stable rules, high volume, repetitive). Automation candidate ranking
+- **S3: Bot Inventory & Health** — Existing bots, platform (UiPath/AA/Power Automate/Blue Prism), success rate, exception rate, maintenance status
+- **S4: Process Quality** — Error rates, rework rates, processing time, compliance violations per process
+- **S5: Automation Debt** — Bots with high exception rates, unmaintained automations, undocumented processes, technical debt in bot code
+- **S6: RPA NFR Heatmap** — Scalability (concurrent bots), reliability (uptime), security (credential management), auditability. Scored 1-10
+- **S7: Security & Compliance** — Bot credential management, audit trails, data handling, regulatory compliance (SOX, GDPR)
+- **S8: Bot Operations** — Orchestration model (attended/unattended), monitoring, incident response, change management for bots
+
+### Data-AI Variant (`{TIPO_SERVICIO}=Data-AI`)
+- **S1: Data Maturity (DCAM/DMM)** — Data management maturity assessment. Current level with evidence across 6 dimensions
+- **S2: Data Architecture** — Data platform inventory, lakehouse/warehouse, ETL/ELT pipelines, streaming. Architecture patterns
+- **S3: AI Readiness (AI SCALE)** — Assessment using Sofka AI SCALE methodology. Current stage (Selection/Co-creation/Adoption/Launch/Expansion)
+- **S4: Data Quality Baseline** — Completeness, accuracy, consistency, timeliness, validity. Quality scores per critical dataset
+- **S5: Data/AI Debt** — Undocumented pipelines, untested models, stale datasets, missing lineage, shadow IT data sources
+- **S6: Data NFR Heatmap** — Latency, freshness, availability, security, governance, interoperability. Scored 1-10
+- **S7: Data Privacy & Governance** — GDPR/CCPA compliance, data classification, access controls, retention policies, consent management
+- **S8: DataOps/MLOps Model** — Pipeline orchestration, model deployment, A/B testing, monitoring, feature store maturity
+
+### Cloud Variant (`{TIPO_SERVICIO}=Cloud`)
+- **S1: Cloud Readiness** — Current infrastructure inventory, cloud adoption stage, migration assessment (7R per workload)
+- **S2: Migration Assessment** — Workload classification, dependency mapping, migration complexity scoring, risk analysis
+- **S3: DevOps Maturity (DORA)** — Deployment frequency, lead time, change failure rate, MTTR. DORA level assessment
+- **S4: Infrastructure Quality** — IaC coverage, configuration drift, resource tagging, cost optimization. Quality score
+- **S5: Cloud Debt** — Over-provisioned resources, untagged assets, legacy configurations, manual processes, security gaps
+- **S6: Cloud NFR Heatmap** — Scalability, availability, disaster recovery, security, compliance, cost efficiency. Scored 1-10
+- **S7: Cloud Security** — Shared responsibility model adherence, IAM hygiene, encryption, network segmentation, compliance
+- **S8: FinOps & Operations** — Cost visibility, optimization opportunities, reserved/spot usage, showback/chargeback, operational runbooks
+
+### SAS Variant (`{TIPO_SERVICIO}=SAS`)
+- **S1: Talent Gap Analysis** — Current team capabilities vs required capabilities. Gap identification per role/skill
+- **S2: Skills Inventory** — Technical and soft skills matrix. Certification status. Proficiency levels
+- **S3: Team Topology** — Team structure, communication patterns, collaboration effectiveness. Conway's Law alignment
+- **S4: Capability Maturity** — Team velocity, quality output, self-organization level, continuous improvement practices
+- **S5: Knowledge Debt** — Single points of failure (key-person dependency), undocumented tribal knowledge, skill concentration risks
+- **S6: SAS NFR Heatmap** — Retention, productivity, satisfaction, growth, adaptability, cultural fit. Scored 1-10
+- **S7: Compliance** — Labor regulations, contractor vs employee classification, IP protection, NDA coverage
+- **S8: Staffing Operations** — Recruiting pipeline, onboarding effectiveness, utilization rates, bench management
+
+### UX-Design Variant (`{TIPO_SERVICIO}=UX-Design`)
+- **S1: Design Maturity** — Design maturity level (ad-hoc, repeatable, managed, optimized, innovative). Evidence-based
+- **S2: Design System Inventory** — Components, tokens, documentation coverage, adoption rate, governance model
+- **S3: UX Research Capability** — Research methods used, frequency, integration with product decisions, research repository
+- **S4: Usability Baseline** — Heuristic evaluation results, usability test scores, task success rates, error rates
+- **S5: Design Debt** — Inconsistent patterns, accessibility violations, undocumented design decisions, outdated components
+- **S6: UX NFR Heatmap** — Accessibility (WCAG), performance perception, consistency, learnability, satisfaction. Scored 1-10
+- **S7: Accessibility Compliance** — WCAG 2.1/2.2 level assessment (A/AA/AAA), assistive technology compatibility, legal requirements
+- **S8: Design Operations** — Design review process, handoff quality, tools ecosystem, design-dev collaboration maturity
+
 ## Cross-Section Traceability
 
 Every recommendation in S10 must reference evidence from S0-S9:
@@ -193,7 +298,7 @@ Every recommendation in S10 must reference evidence from S0-S9:
 
 ## Output Artifact
 
-**Primary:** `03_Analisis_AS-IS_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Full 10-section current-state assessment with C4 diagrams, code quality metrics, tech debt inventory, risk register, and prioritized recommendations.
+**Primary:** `03_Analisis_AS-IS_{TIPO_SERVICIO}_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Full 10-section current-state assessment with domain-specific analysis, debt inventory, risk register, and prioritized recommendations. When `{TIPO_SERVICIO}=SDA`, for backward compatibility also accept `03_Analisis_AS-IS_{project}.md`.
 
 **Secondary:** `02_Brief_Tecnico_{project}.md` — Executive summary (S0 + key findings).
 
@@ -205,6 +310,8 @@ Every recommendation in S10 must reference evidence from S0-S9:
 
 ## Validation Gate
 
+- [ ] Service type correctly identified and confirmed with stakeholder
+- [ ] Variant sections (S1-S8) match the declared service type
 - [ ] All 10 sections populated with evidence-based content (no template placeholders)
 - [ ] C4 L1 and L2 diagrams reflect actual system topology
 - [ ] Every S10 recommendation linked to evidence source (S0-S9)
