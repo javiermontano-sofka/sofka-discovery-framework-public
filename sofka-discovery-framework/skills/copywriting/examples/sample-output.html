@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pitch Ejecutivo — RetailCo Discovery | Sofka Technologies</title>
+  <style>
+    /* ── Sofka Design System ── */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --sofka-primary: #FF7E08;
+      --sofka-dark: #1A1A2E;
+      --sofka-success: #FFD700;
+      --sofka-danger: #EF4444;
+      --sofka-warning: #F59E0B;
+      --sofka-info: #3B82F6;
+      --sofka-muted: #6B7280;
+      --sofka-bg: #FAFAFA;
+      --sofka-card-bg: #FFFFFF;
+      --sofka-border: #E5E7EB;
+      --sofka-text: #1A1A2E;
+      --sofka-text-secondary: #4B5563;
+      --radius: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--sofka-text);
+      background: var(--sofka-bg);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── Clash Grotesk fallback (loaded via @font-face if available) ── */
+    h1, h2, h3, h4 {
+      font-family: 'Clash Grotesk', 'Inter', sans-serif;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--sofka-dark);
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--sofka-dark);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .header .container {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .header h1 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .header .subtitle {
+      color: var(--sofka-primary);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .header .meta {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .brand-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--sofka-primary), var(--sofka-success));
+    }
+
+    /* ── TL;DR Card ── */
+    .tldr {
+      background: var(--sofka-dark);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .tldr h2 {
+      color: var(--sofka-primary);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .tldr ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tldr li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+    }
+
+    .tldr li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--sofka-primary);
+      font-weight: 700;
+    }
+
+    .tldr .cta-highlight {
+      display: inline-block;
+      background: var(--sofka-primary);
+      color: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* ── Sections ── */
+    section {
+      background: var(--sofka-card-bg);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--sofka-border);
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--sofka-primary);
+    }
+
+    section h3 {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--sofka-dark);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--sofka-text-secondary);
+    }
+
+    strong {
+      color: var(--sofka-text);
+      font-weight: 600;
+    }
+
+    /* ── Evidence Tags ── */
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+    }
+
+    .tag-codigo { background: #DBEAFE; color: #1E40AF; }
+    .tag-config { background: #E0E7FF; color: #3730A3; }
+    .tag-doc { background: #FEF3C7; color: #92400E; }
+    .tag-stakeholder { background: #F3E8FF; color: #6B21A8; }
+    .tag-inferencia { background: #FEE2E2; color: #991B1B; }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    thead th {
+      background: var(--sofka-dark);
+      color: white;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    thead th:first-child { border-radius: var(--radius) 0 0 0; }
+    thead th:last-child { border-radius: 0 var(--radius) 0 0; }
+
+    tbody td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--sofka-border);
+      color: var(--sofka-text-secondary);
+    }
+
+    tbody tr:hover { background: #F9FAFB; }
+
+    /* ── Semáforos ── */
+    .status-good { color: var(--sofka-success); font-weight: 700; }
+    .status-warn { color: var(--sofka-warning); font-weight: 700; }
+    .status-bad { color: var(--sofka-danger); font-weight: 700; }
+
+    /* ── Blockquote / Value Proposition ── */
+    .value-proposition {
+      background: linear-gradient(135deg, #FFF7ED, #FFFBEB);
+      border-left: 4px solid var(--sofka-primary);
+      padding: 1.5rem 2rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.5rem 0;
+    }
+
+    .value-proposition p {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--sofka-dark);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── CTA Box ── */
+    .cta-box {
+      background: var(--sofka-dark);
+      color: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .cta-box h3 {
+      color: var(--sofka-primary);
+      margin-top: 0;
+    }
+
+    .cta-box p, .cta-box li {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .cta-box ul {
+      padding-left: 1.25rem;
+    }
+
+    .cta-box li {
+      margin-bottom: 0.3rem;
+    }
+
+    .cta-warning {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(239, 68, 68, 0.15);
+      border-left: 3px solid var(--sofka-danger);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.9rem;
+    }
+
+    .cta-warning p {
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+    }
+
+    /* ── Quick Win List ── */
+    .quick-wins {
+      list-style: none;
+      padding: 0;
+    }
+
+    .quick-wins li {
+      padding: 0.75rem 0 0.75rem 2.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--sofka-border);
+    }
+
+    .quick-wins li:last-child { border-bottom: none; }
+
+    .quick-wins .week-badge {
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      background: var(--sofka-primary);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--sofka-muted);
+      font-size: 0.8rem;
+    }
+
+    .footer .brand {
+      color: var(--sofka-primary);
+      font-weight: 600;
+    }
+
+    /* ── Recommendation Highlight ── */
+    .recommended {
+      background: linear-gradient(135deg, rgba(255,126,8,0.05), rgba(255,215,0,0.05));
+      border: 2px solid var(--sofka-primary);
+    }
+
+    .rec-badge {
+      display: inline-block;
+      background: var(--sofka-primary);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brand-bar"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>Pitch Ejecutivo — RetailCo Discovery</h1>
+      <div class="subtitle">Resumen Ejecutivo · Escenarios · Recomendación</div>
+      <div class="meta">Sofka Technologies · Discovery Framework · Marzo 2026 · Confidencial</div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- TL;DR -->
+    <div class="tldr">
+      <h2>TL;DR</h2>
+      <ul>
+        <li>La plataforma actual consume <strong>15 FTE-meses/trimestre</strong> en mantenimiento reactivo, dejando solo el 20% de capacidad para innovación</li>
+        <li>El time-to-market de nuevas funcionalidades es <strong>12 semanas</strong> — 3x el benchmark del sector (4 semanas)</li>
+        <li>Cada trimestre sin actuar acumula <strong>8 FTE-meses adicionales</strong> de deuda técnica, alcanzando el punto de no retorno en <strong>Q1 2027</strong></li>
+        <li>Recomendamos el <strong>Escenario B (Modernización Incremental)</strong>: captura el primer quick win en 8 semanas con riesgo controlado</li>
+        <li><span class="cta-highlight">Siguiente paso</span> Aprobar Sprint 0 esta semana para iniciar en Q2 2026</li>
+      </ul>
+    </div>
+
+    <!-- Problema -->
+    <section>
+      <h2>El Problema: Una Plataforma que Frena al Negocio</h2>
+
+      <p>RetailCo opera una plataforma e-commerce monolítica desplegada hace 7 años. Lo que fue una ventaja competitiva es hoy un lastre operativo.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Métrica</th>
+            <th>Valor Actual</th>
+            <th>Benchmark Sector</th>
+            <th>Brecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Time-to-market (nueva feature)</td>
+            <td><strong>12 semanas</strong></td>
+            <td>4 semanas</td>
+            <td>3x más lento <span class="tag tag-doc">DOC</span></td>
+          </tr>
+          <tr>
+            <td>Cobertura de tests automatizados</td>
+            <td><strong>18%</strong></td>
+            <td>80% (mínimo viable)</td>
+            <td>-62 pp <span class="tag tag-codigo">CÓDIGO</span></td>
+          </tr>
+          <tr>
+            <td>Incidentes críticos / mes</td>
+            <td><strong>4.2</strong></td>
+            <td>&lt; 1</td>
+            <td>4x más frecuente <span class="tag tag-config">CONFIG</span></td>
+          </tr>
+          <tr>
+            <td>MTTR (tiempo medio de resolución)</td>
+            <td><strong>6.5 horas</strong></td>
+            <td>1 hora (Elite DORA)</td>
+            <td>6.5x más lento <span class="tag tag-doc">DOC</span></td>
+          </tr>
+          <tr>
+            <td>Deploys por semana</td>
+            <td><strong>0.5</strong></td>
+            <td>7+ (Elite DORA)</td>
+            <td>14x menos frecuente <span class="tag tag-config">CONFIG</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>El equipo técnico dedica el <strong>80% de su capacidad</strong> a mantener el sistema funcionando. Solo el <strong>20% restante</strong> — equivalente a 3 FTE — está disponible para innovación. En un mercado donde los competidores lanzan funcionalidades cada semana, RetailCo lanza cada tres meses. <span class="tag tag-codigo">CÓDIGO</span> <span class="tag tag-stakeholder">STAKEHOLDER</span></p>
+    </section>
+
+    <!-- Costo de Inacción -->
+    <section>
+      <h2>Lo Que Cuesta No Actuar</h2>
+
+      <p>El costo de inacción no es hipotético — es acumulativo y medible.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Trimestre</th>
+            <th>Deuda Acumulada</th>
+            <th>FTE-meses Mantenimiento</th>
+            <th>Capacidad Innovación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Q2 2026 (actual)</td>
+            <td>Baseline</td>
+            <td>15 FTE-meses/trim</td>
+            <td><span class="status-warn">20%</span></td>
+          </tr>
+          <tr>
+            <td>Q3 2026</td>
+            <td>+8 FTE-meses</td>
+            <td>18 FTE-meses/trim</td>
+            <td><span class="status-warn">12%</span></td>
+          </tr>
+          <tr>
+            <td>Q4 2026</td>
+            <td>+16 FTE-meses</td>
+            <td>21 FTE-meses/trim</td>
+            <td><span class="status-bad">5%</span></td>
+          </tr>
+          <tr>
+            <td><strong>Q1 2027</strong></td>
+            <td><strong>+24 FTE-meses</strong></td>
+            <td><strong>23 FTE-meses/trim</strong></td>
+            <td><span class="status-bad">~0%</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En <strong>Q1 2027</strong>, toda la capacidad del equipo se consumirá en mantenimiento. Cero innovación. A partir de ese punto, el costo de remediación supera al costo de reemplazo total. <span class="tag tag-inferencia">INFERENCIA</span></p>
+
+      <p><strong>Dicho de otra forma:</strong> cada semana de demora no es neutral — añade 2.7 FTE-meses de deuda técnica que alguien tendrá que pagar.</p>
+    </section>
+
+    <!-- Escenarios -->
+    <section>
+      <h2>Tres Caminos, Una Recomendación</h2>
+
+      <p>Tres escenarios evaluados por el comité de expertos en 6 dimensiones:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Dimensión</th>
+            <th>A: Optimización Puntual</th>
+            <th>B: Modernización Incremental <span class="rec-badge">Recomendado</span></th>
+            <th>C: Reemplazo Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Impacto en TTM</strong></td>
+            <td>-20% (12 → 9.6 sem)</td>
+            <td><strong>-67% (12 → 4 sem)</strong></td>
+            <td>-75% (12 → 3 sem)</td>
+          </tr>
+          <tr>
+            <td><strong>Riesgo de ejecución</strong></td>
+            <td><span class="status-good">● Bajo</span></td>
+            <td><span class="status-warn">● Medio-bajo</span></td>
+            <td><span class="status-bad">● Alto</span></td>
+          </tr>
+          <tr>
+            <td><strong>Primer quick win</strong></td>
+            <td>4 semanas</td>
+            <td><strong>8 semanas</strong></td>
+            <td>24 semanas</td>
+          </tr>
+          <tr>
+            <td><strong>Inversión (año 1)</strong></td>
+            <td>12 FTE-meses</td>
+            <td><strong>36 FTE-meses</strong></td>
+            <td>72 FTE-meses</td>
+          </tr>
+          <tr>
+            <td><strong>Reducción deuda</strong></td>
+            <td>-15%</td>
+            <td><strong>-70%</strong></td>
+            <td>-95%</td>
+          </tr>
+          <tr>
+            <td><strong>Sostenibilidad 3 años</strong></td>
+            <td><span class="status-bad">● Insuficiente</span></td>
+            <td><span class="status-good">● Alta</span></td>
+            <td><span class="status-good">● Alta</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Recomendamos el Escenario B: Modernización Incremental</h3>
+
+      <p><strong>¿Por qué B y no A?</strong> El Escenario A reduce síntomas pero no ataca la causa. En 12 meses, RetailCo estará en la misma posición con mayor deuda acumulada. <span class="tag tag-inferencia">INFERENCIA</span></p>
+
+      <p><strong>¿Por qué B y no C?</strong> El Escenario C ofrece el mejor resultado final pero requiere 6 meses antes del primer resultado visible y 72 FTE-meses de inversión. El Escenario B entrega el <strong>80% del impacto con el 50% del costo</strong> y permite validar la dirección antes de comprometer todo el presupuesto. <span class="tag tag-inferencia">INFERENCIA</span></p>
+    </section>
+
+    <!-- Propuesta de Valor -->
+    <section class="recommended">
+      <h2>Propuesta de Valor — Escenario B</h2>
+
+      <div class="value-proposition">
+        <p>Reducir el time-to-market de 12 a 4 semanas en 9 meses, liberando 10 FTE-meses/trimestre que hoy se consumen en mantenimiento reactivo, y posicionando a RetailCo para competir en velocidad de innovación por primera vez en 3 años.</p>
+      </div>
+
+      <h3>Quick wins en los primeros 90 días</h3>
+
+      <ul class="quick-wins">
+        <li>
+          <span class="week-badge">Sem 8</span>
+          <strong>API gateway desplegado</strong> — desacopla frontend del monolito <span class="tag tag-codigo">CÓDIGO</span>
+        </li>
+        <li>
+          <span class="week-badge">Sem 10</span>
+          <strong>Servicio de catálogo extraído</strong> — primer microservicio en producción
+        </li>
+        <li>
+          <span class="week-badge">Sem 12</span>
+          <strong>Pipeline CI/CD activo</strong> — deploys diarios habilitados para el nuevo servicio
+        </li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <h2>Siguiente Paso</h2>
+
+      <div class="cta-box">
+        <h3>Aprobar Sprint 0 esta semana</h3>
+        <p>Iniciar en la primera semana de Q2 2026. Sprint 0 (2 semanas) incluye:</p>
+        <ul>
+          <li>Taller de alineación técnica con el equipo core (8 personas)</li>
+          <li>Definición de bounded contexts con DDD</li>
+          <li>Setup del pipeline CI/CD base</li>
+          <li>Primer ADR (Architecture Decision Record) documentado</li>
+        </ul>
+
+        <div class="cta-warning">
+          <p><strong>Si no se actúa:</strong> En Q3, el costo de mantener el monolito sube a 18 FTE-meses/trimestre. La ventana para modernización incremental se estrecha. En Q1 2027, el único camino viable será el reemplazo total — con el doble de costo y riesgo.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p><span class="brand">Sofka Technologies</span> · Discovery Framework · Confidencial</p>
+    <p>&copy; Sofka Technologies. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

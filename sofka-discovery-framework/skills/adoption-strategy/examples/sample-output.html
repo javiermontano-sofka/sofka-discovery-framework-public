@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Adopcion — Acme Corp Banking Modernization</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #FF7E08;
+            --dark: #1A1A2E;
+            --dark-alt: #2D2D4E;
+            --success: #FFD700;
+            --text: #E0E0E0;
+            --text-muted: #A0A0B0;
+            --danger: #E74C3C;
+            --warning: #F39C12;
+            --bg: #0F0F1E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+            border-left: 5px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 { color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem; }
+        .header .meta { color: var(--text-muted); font-size: 0.9rem; }
+        .header .meta span { margin-right: 1.5rem; }
+
+        .tldr {
+            background: var(--dark);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tldr h2 { color: var(--primary); font-size: 1.3rem; margin-bottom: 1rem; }
+        .tldr ul { list-style: none; padding: 0; }
+        .tldr li { padding: 0.4rem 0; padding-left: 1.5rem; position: relative; }
+        .tldr li::before { content: '▸'; color: var(--primary); position: absolute; left: 0; }
+
+        .section {
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--dark-alt);
+        }
+
+        .section h3 {
+            color: var(--success);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+
+        th {
+            background: var(--dark-alt);
+            color: var(--primary);
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        td { padding: 0.7rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        tr:hover { background: rgba(255, 126, 8, 0.05); }
+
+        .table-responsive { overflow-x: auto; }
+
+        .score-low { color: var(--danger); font-weight: bold; }
+        .score-mid { color: var(--warning); font-weight: bold; }
+        .score-high { color: var(--success); font-weight: bold; }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-danger { background: rgba(231, 76, 60, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+        .badge-warning { background: rgba(243, 156, 18, 0.2); color: var(--warning); border: 1px solid var(--warning); }
+        .badge-success { background: rgba(255, 215, 0, 0.2); color: var(--success); border: 1px solid var(--success); }
+
+        .callout {
+            background: rgba(255, 126, 8, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout.insight { border-left-color: var(--success); background: rgba(255, 215, 0, 0.05); }
+
+        /* Phase cards */
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .phase-card {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        .phase-card .phase-label {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phase-card .phase-title {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0.3rem 0;
+        }
+
+        .phase-card .phase-detail {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Champion cards */
+        .champion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .champion-card {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 126, 8, 0.2);
+        }
+
+        .champion-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .champion-card .label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Funnel */
+        .funnel { margin: 1.5rem 0; }
+
+        .funnel-stage {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .funnel-bar {
+            height: 40px;
+            background: linear-gradient(90deg, var(--primary), var(--dark-alt));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .funnel-label {
+            width: 120px;
+            text-align: right;
+            padding-right: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .funnel-pct {
+            margin-left: 1rem;
+            font-size: 0.85rem;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Mermaid */
+        .mermaid-container {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--dark-alt);
+            margin-top: 2rem;
+        }
+
+        .footer .brand { color: var(--primary); font-weight: bold; }
+
+        @media print {
+            body { background: #fff; color: #1a1a1a; padding: 1rem; }
+            .section, .tldr, .header { background: #fff; border: 1px solid #ddd; }
+            th { background: #f5f5f5; color: #1a1a1a; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .phase-grid, .champion-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Estrategia de Adopcion</h1>
+            <p style="font-size:1.1rem; color: var(--text); margin-bottom: 0.5rem;">Acme Corp — Modernizacion Core Bancario</p>
+            <div class="meta">
+                <span>Fecha: 13 de marzo de 2026</span>
+                <span>Modo: Estrategia (Full)</span>
+                <span>Alcance: ~320 personas, 3 fases</span>
+            </div>
+        </div>
+
+        <!-- TL;DR -->
+        <div class="tldr">
+            <h2>TL;DR</h2>
+            <ul>
+                <li>Rollout en <strong>3 fases</strong>: Piloto (S1-4) → Early Majority (S5-12) → Full (S13-20)</li>
+                <li><strong>24 mensajes</strong> planificados en calendario de comunicacion (6 canales, 5 grupos)</li>
+                <li>Curriculum: <strong>47 horas</strong>, 80% micro-learning + hands-on, 20% classroom</li>
+                <li>Red de <strong>15 champions</strong> (1:20 ratio), train-the-trainer en Semana 1-2</li>
+                <li>Target: <strong>85% active use</strong> a Semana 20, <strong>70% proficiency</strong> a Semana 24</li>
+            </ul>
+        </div>
+
+        <!-- S1: Context & Goals -->
+        <div class="section">
+            <h2>S1: Adoption Context & Goals</h2>
+
+            <h3>Stakeholder Groups</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Grupo</th><th>Personas</th><th>Readiness</th><th>Barrier Point</th><th>Rol en Adopcion</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ejecutivos</td><td>12</td><td class="score-mid">3.4</td><td>Knowledge</td><td>Sponsors</td></tr>
+                        <tr><td>Gerentes de Area</td><td>28</td><td class="score-low">2.0</td><td>Reinforcement</td><td>Cascaders</td></tr>
+                        <tr><td>Desarrolladores & QA</td><td>85</td><td class="score-mid">2.6</td><td>Knowledge</td><td>Early Adopters</td></tr>
+                        <tr><td>Operaciones Back-Office</td><td>145</td><td class="score-low">1.6</td><td>Desire</td><td>Grupo Critico</td></tr>
+                        <tr><td>Atencion al Cliente</td><td>50</td><td class="score-mid">2.8</td><td>Reinforcement</td><td>Front-end Users</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Adoption Targets</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Metrica</th><th>Semana 8</th><th>Semana 16</th><th>Semana 24</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Adoption Rate</td><td class="score-mid">40%</td><td class="score-mid">70%</td><td class="score-high">85%</td></tr>
+                        <tr><td>Proficiency Rate</td><td class="score-low">20%</td><td class="score-mid">50%</td><td class="score-high">70%</td></tr>
+                        <tr><td>Satisfaction (CSAT)</td><td class="score-mid">&ge;3.5</td><td class="score-mid">&ge;3.8</td><td class="score-high">&ge;4.0</td></tr>
+                        <tr><td>Support Tickets/week</td><td class="score-low">&lt;50</td><td class="score-mid">&lt;25</td><td class="score-high">&lt;10</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- S2: Rollout Strategy -->
+        <div class="section">
+            <h2>S2: Rollout Strategy</h2>
+
+            <div class="phase-grid">
+                <div class="phase-card">
+                    <div class="phase-label">Phase 0 — Prep</div>
+                    <div class="phase-title">Foundation</div>
+                    <div class="phase-detail">
+                        Champion selection & training. Sandbox deployment. Communication launch.
+                        <br><strong>Duration:</strong> 2 weeks
+                    </div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-label">Phase 1 — Pilot</div>
+                    <div class="phase-title">25 Users (Volunteers)</div>
+                    <div class="phase-detail">
+                        10 developers + 10 back-office + 5 customer service.
+                        <br><strong>Duration:</strong> 4 weeks
+                        <br><strong>Go/No-Go:</strong> &ge;80% adoption, &lt;5 critical bugs
+                    </div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-label">Phase 2 — Early Majority</div>
+                    <div class="phase-title">135 Users (2 Waves)</div>
+                    <div class="phase-detail">
+                        Wave 1: Developers & QA (85). Wave 2: Customer Service (50).
+                        <br><strong>Duration:</strong> 8 weeks
+                    </div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-label">Phase 3 — Full Rollout</div>
+                    <div class="phase-title">173 Users (2 Waves)</div>
+                    <div class="phase-detail">
+                        Wave 3: Back-Office (145). Wave 4: Managers + remaining (28).
+                        <br><strong>Duration:</strong> 8 weeks
+                        <br><strong>End:</strong> Legacy decommission
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout insight">
+                <strong>Chasm Crossing Strategy:</strong> Back-Office (most resistant group) adopts last. By then: pilot testimonials, developer social proof, active champion network, and 12 weeks of success data will be available.
+            </div>
+        </div>
+
+        <!-- S3: Communication Plan -->
+        <div class="section">
+            <h2>S3: Communication Plan</h2>
+
+            <h3>Communication Calendar (First 8 Weeks)</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Week</th><th>Message</th><th>Target</th><th>Channel</th><th>Sender</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Vision: Why we modernize</td><td>All</td><td>Town Hall + email</td><td>CEO + CTO</td></tr>
+                        <tr><td>1</td><td>What it means for your area</td><td>Managers</td><td>Workshop</td><td>CTO + PM</td></tr>
+                        <tr><td>2</td><td>Your role in transformation</td><td>Developers</td><td>Tech Talk</td><td>Tech Lead</td></tr>
+                        <tr><td>2</td><td>FAQ + guarantees</td><td>Back-Office</td><td>Small group (20)</td><td>Manager + HR</td></tr>
+                        <tr><td>3</td><td>New system demo</td><td>All</td><td>Video + intranet</td><td>Champion + UX</td></tr>
+                        <tr><td>4</td><td>Pilot results</td><td>All</td><td>Email + Slack</td><td>PM</td></tr>
+                        <tr><td>5</td><td>Pilot testimonials</td><td>Devs + Back-Office</td><td>Slack + presentation</td><td>Pilot users</td></tr>
+                        <tr><td>6</td><td>Wave 1 kickoff</td><td>Developers</td><td>Kickoff event</td><td>Tech Lead + Champion</td></tr>
+                        <tr><td>7</td><td>Wave 1 progress metrics</td><td>All</td><td>Dashboard + email</td><td>PM</td></tr>
+                        <tr><td>8</td><td>Wave 2 preparation</td><td>Customer Service</td><td>Team workshop</td><td>Manager + Champion</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- S4: Training -->
+        <div class="section">
+            <h2>S4: Training Curriculum</h2>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Module</th><th>Audience</th><th>Format</th><th>Duration</th><th>Kirkpatrick</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>M01: Vision & Context</td><td>All</td><td>Video + quiz</td><td>30 min</td><td>L1</td></tr>
+                        <tr><td>M02: System Tour</td><td>All</td><td>Interactive demo</td><td>45 min</td><td>L1</td></tr>
+                        <tr><td>M03: Basic Navigation</td><td>Ops, CS</td><td>Micro-learning (5x5min)</td><td>25 min</td><td>L2</td></tr>
+                        <tr><td>M04: New Operational Flows</td><td>Back-Office</td><td>Guided sandbox practice</td><td>4h</td><td>L2+L3</td></tr>
+                        <tr><td>M05: Exception Handling</td><td>Back-Office</td><td>Case studies + practice</td><td>2h</td><td>L3</td></tr>
+                        <tr><td>M06: Modern Architecture</td><td>Developers</td><td>Intensive bootcamp</td><td>40h</td><td>L2+L3</td></tr>
+                        <tr><td>M07: CI/CD & DevOps</td><td>Devs, QA</td><td>Workshop + lab</td><td>8h</td><td>L3</td></tr>
+                        <tr><td>M08: API Testing</td><td>QA</td><td>Workshop + pair</td><td>8h</td><td>L3</td></tr>
+                        <tr><td>M09: New CRM Interface</td><td>Customer Service</td><td>E-learning + sandbox</td><td>3h</td><td>L2</td></tr>
+                        <tr><td>M10: Dashboards</td><td>Managers</td><td>Workshop</td><td>4h</td><td>L2</td></tr>
+                        <tr><td>M11: Coaching for Change</td><td>Managers</td><td>Workshop + role-play</td><td>4h</td><td>L3</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- S5: Resistance Management -->
+        <div class="section">
+            <h2>S5: Resistance Management</h2>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Resistance Type</th><th>Group</th><th>Tactic</th><th>Owner</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="badge badge-danger">Fear of job loss</span></td><td>Back-Office</td><td>Explicit guarantee + reskilling pathway</td><td>HR + Sponsor</td></tr>
+                        <tr><td><span class="badge badge-danger">Loss of expertise</span></td><td>Back-Office, Devs</td><td>Legacy Champion program</td><td>Change Manager</td></tr>
+                        <tr><td><span class="badge badge-warning">Work overload</span></td><td>Managers</td><td>Protected time (20% for change)</td><td>Sponsor + PMO</td></tr>
+                        <tr><td><span class="badge badge-warning">Technical skepticism</span></td><td>Developers</td><td>Hands-on proof + sandbox</td><td>Tech Lead</td></tr>
+                        <tr><td><span class="badge badge-success">Inertia / habit</span></td><td>Ops, CS</td><td>Nudges + new system as default</td><td>UX + Platform</td></tr>
+                        <tr><td><span class="badge badge-success">No time for training</span></td><td>All</td><td>Micro-learning in flow of work</td><td>L&D + DAP</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Escalation Path</h3>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TD
+    R1["Resistance detected"] --> A1{"Type?"}
+    A1 -->|Informational| T1["Reinforced communication"]
+    A1 -->|Emotional| T2["1:1 with manager + HR"]
+    A1 -->|Behavioral| T3["Coaching + nudges"]
+    A1 -->|Political| T4["Escalate to Sponsor"]
+
+    T1 --> E1{"Resolved in 2 weeks?"}
+    T2 --> E1
+    T3 --> E1
+    T4 --> E2{"Resolved in 1 week?"}
+
+    E1 -->|Yes| OK["Ongoing monitoring"]
+    E1 -->|No| ESC["Escalate to Change Manager"]
+    E2 -->|Yes| OK
+    E2 -->|No| CRISIS["Crisis protocol"]
+                </pre>
+            </div>
+        </div>
+
+        <!-- S6: Champion Network -->
+        <div class="section">
+            <h2>S6: Champion Network</h2>
+
+            <div class="champion-grid">
+                <div class="champion-card">
+                    <div class="number">15</div>
+                    <div class="label">Total Champions</div>
+                </div>
+                <div class="champion-card">
+                    <div class="number">1:20</div>
+                    <div class="label">Champion : User Ratio</div>
+                </div>
+                <div class="champion-card">
+                    <div class="number">20%</div>
+                    <div class="label">Time Dedication</div>
+                </div>
+                <div class="champion-card">
+                    <div class="number">4</div>
+                    <div class="label">Groups Represented</div>
+                </div>
+            </div>
+
+            <h3>Champion Distribution</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Group</th><th>Champions</th><th>Users Served</th><th>Selection Criteria</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Developers</td><td>4</td><td>85</td><td>Tech-savvy, respected by peers, early adopter mindset</td></tr>
+                        <tr><td>Back-Office</td><td>6</td><td>145</td><td>Tenured, trusted, willing to learn (NOT forced)</td></tr>
+                        <tr><td>Customer Service</td><td>3</td><td>50</td><td>High performers, patient communicators</td></tr>
+                        <tr><td>Managers</td><td>2</td><td>28</td><td>Supportive of change, good coaches</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Recognition & Incentives</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Incentive</th><th>Type</th><th>Timing</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Transformation Champion Badge</td><td>Recognition</td><td>Program start</td></tr>
+                        <tr><td>Executive communication mentions</td><td>Visibility</td><td>Monthly</td></tr>
+                        <tr><td>Priority access to advanced training</td><td>Development</td><td>Ongoing</td></tr>
+                        <tr><td>Internal Change Agent certification</td><td>Career</td><td>Program end</td></tr>
+                        <tr><td>Adoption KPI bonus</td><td>Financial</td><td>Quarterly</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- S7: Reinforcement -->
+        <div class="section">
+            <h2>S7: Reinforcement Mechanisms</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Mechanism</th><th>Description</th><th>Cadence</th><th>Owner</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Office Hours</td><td>Open Q&A sessions with experts</td><td>2x/week (first 4 weeks post-wave)</td><td>Champions + Tech Lead</td></tr>
+                        <tr><td>Help Desk L1</td><td>Basic support via Slack + ticket</td><td>Continuous</td><td>Champion Network</td></tr>
+                        <tr><td>Help Desk L2</td><td>Advanced technical support</td><td>Continuous</td><td>Product Team</td></tr>
+                        <tr><td>Knowledge Base</td><td>Wiki: guides, FAQ, videos, troubleshooting</td><td>Updated weekly</td><td>Champions + Docs</td></tr>
+                        <tr><td>Feedback Loop</td><td>Channel for issues, suggestions</td><td>Continuous</td><td>Change Manager</td></tr>
+                        <tr><td>Quick Win Showcases</td><td>Present improvements achieved</td><td>Biweekly</td><td>Champions + Users</td></tr>
+                        <tr><td>1:1 Coaching</td><td>For users with persistent difficulty</td><td>On-demand</td><td>Manager + Champion</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- S8: KPIs -->
+        <div class="section">
+            <h2>S8: Adoption KPIs & Measurement</h2>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Target S8</th><th>Target S16</th><th>Target S24</th><th>Cadence</th><th>Alert Threshold</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Adoption Rate</td><td>40%</td><td>70%</td><td class="score-high">85%</td><td>Weekly</td><td class="score-low">&lt;50% at S12</td></tr>
+                        <tr><td>Proficiency Rate</td><td>20%</td><td>50%</td><td class="score-high">70%</td><td>Biweekly</td><td class="score-low">&lt;35% at S16</td></tr>
+                        <tr><td>Utilization Rate</td><td>30%</td><td>55%</td><td class="score-high">75%</td><td>Biweekly</td><td class="score-low">&lt;40% at S16</td></tr>
+                        <tr><td>CSAT</td><td>&ge;3.5</td><td>&ge;3.8</td><td class="score-high">&ge;4.0</td><td>Monthly</td><td class="score-low">&lt;3.0</td></tr>
+                        <tr><td>Support Tickets/wk</td><td>&lt;50</td><td>&lt;25</td><td class="score-high">&lt;10</td><td>Weekly</td><td class="score-low">&gt;2x target</td></tr>
+                        <tr><td>Champion NPS</td><td>&ge;7</td><td>&ge;8</td><td class="score-high">&ge;8</td><td>Monthly</td><td class="score-low">&lt;6</td></tr>
+                        <tr><td>Training Completion</td><td>90%</td><td>95%</td><td class="score-high">98%</td><td>Weekly</td><td class="score-low">&lt;80% pre-wave</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Adoption Funnel</h3>
+            <div class="funnel">
+                <div class="funnel-stage">
+                    <div class="funnel-label">Awareness</div>
+                    <div class="funnel-bar" style="width: 95%;">Knows the change exists</div>
+                    <div class="funnel-pct">95%</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="funnel-label">Interest</div>
+                    <div class="funnel-bar" style="width: 80%;">Attended demo/info session</div>
+                    <div class="funnel-pct">80%</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="funnel-label">Trial</div>
+                    <div class="funnel-bar" style="width: 60%;">Accessed sandbox/pilot</div>
+                    <div class="funnel-pct">60%</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="funnel-label">Active Use</div>
+                    <div class="funnel-bar" style="width: 50%;">&ge;3 logins/week for &ge;2 weeks</div>
+                    <div class="funnel-pct">50%</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="funnel-label">Proficiency</div>
+                    <div class="funnel-bar" style="width: 40%;">Core tasks without support</div>
+                    <div class="funnel-pct">40%</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="funnel-label">Advocacy</div>
+                    <div class="funnel-bar" style="width: 15%;">Recommends + contributes</div>
+                    <div class="funnel-pct">15%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusions -->
+        <div class="section">
+            <h2>Conclusiones</h2>
+            <ol style="padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.7rem;"><strong>3-phase rollout minimizes risk:</strong> Back-Office adopts last when maximum evidence and support exist.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>Communication is 60% of the strategy:</strong> 24 planned messages, 6 channels, ADKAR-staged per group.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>Champion network is the multiplier:</strong> 15 champions reduce project team load and generate social proof.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>Training is micro-learning first:</strong> 80% modular, on-demand, just-in-time.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>Metrics with teeth:</strong> Every KPI has a threshold that triggers intervention.</li>
+            </ol>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Generado por <span class="brand">Sofka Discovery Framework</span> — adoption-strategy</p>
+            <p>Agente: change-catalyst | Autor: Javier Montano | 13 de marzo de 2026</p>
+            <p style="margin-top: 0.5rem;">&copy; Sofka Technologies. Todos los derechos reservados.</p>
+        </div>
+
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</body>
+</html>

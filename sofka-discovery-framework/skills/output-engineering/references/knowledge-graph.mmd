@@ -1,0 +1,94 @@
+%% Knowledge Graph — Output Engineering (Ghost Menu & Multi-Format Pipeline)
+%% Accessibility: Directed graph showing source of truth, ghost menu protocol, format pipelines, validation gates, brand compliance, and consumers.
+
+graph LR
+    %% Source of Truth
+    MD_SOURCE["Markdown Source<br/>(source of truth)"]
+    EDITORIAL["Editorial Committee<br/>(editorial-director,<br/>content-strategist,<br/>format-specialist)"]
+    BRAND_SYSTEM["Sofka Design System v4<br/>(#FF7E08, #1A1A2E, #FFD700)"]
+
+    %% Skill Core
+    SKILL["output-engineering<br/>Skill"]
+
+    %% Ghost Menu
+    GHOST_MENU["Ghost Menu Protocol<br/>(post-editorial trigger)"]
+    AUTO_SUGGEST["Auto-Suggestion Rules<br/>(deliverable → format map)"]
+
+    %% Format Pipelines
+    HTML_PIPE["HTML Pipeline<br/>(self-contained, Mermaid CDN,<br/>WCAG AA, print styles)"]
+    DOCX_PIPE["DOCX Pipeline<br/>(Pandoc, TOC, cover page,<br/>branded headers)"]
+    PPTX_PIPE["PPTX Pipeline<br/>(narrative arc, 1 msg/slide,<br/>speaker notes)"]
+    XLSX_PIPE["XLSX Pipeline<br/>(pivot-ready, dashboard first,<br/>formula-free)"]
+    PDF_PIPE["PDF Pipeline<br/>(from HTML, print-optimized,<br/>archival quality)"]
+
+    %% Validation
+    BRAND_CHECK["Brand Compliance<br/>(7 elements checklist)"]
+    CONTENT_CHECK["Content Integrity<br/>(sections, tables, diagrams,<br/>numbers, references)"]
+    ACCESSIBILITY["Accessibility Gate<br/>(WCAG 2.1 AA)"]
+
+    %% Standards
+    MARKDOWN_EXCELLENCE["markdown-excellence<br/>Standard"]
+    WCAG["WCAG 2.1 AA"]
+    SOFKA_BRAND["Sofka Brand Guidelines"]
+    PANDOC["Pandoc Conversion<br/>Standard"]
+
+    %% Outputs
+    DELIVERY_PKG["Multi-Format<br/>Delivery Package"]
+    SINGLE_FORMAT["Single Format<br/>Output"]
+
+    %% Consumers
+    DISCOVERY_PIPELINE["Discovery Pipeline<br/>(12+ deliverables)"]
+    PRESALES["PreSales Architects"]
+    CLIENT["Client<br/>(steering committee)"]
+
+    %% Agents
+    EDITORIAL_DIR["editorial-director<br/>Agent"]
+    CONTENT_STRAT["content-strategist<br/>Agent"]
+    FORMAT_SPEC["format-specialist<br/>Agent"]
+
+    %% Source to Skill
+    MD_SOURCE -->|"passes editorial review"| EDITORIAL
+    EDITORIAL -->|"approved .md"| SKILL
+    BRAND_SYSTEM -->|"tokens + components"| SKILL
+
+    %% Skill to Ghost Menu
+    SKILL -->|"triggers"| GHOST_MENU
+    GHOST_MENU -->|"consults"| AUTO_SUGGEST
+    GHOST_MENU -->|"user selects"| HTML_PIPE
+    GHOST_MENU -->|"user selects"| DOCX_PIPE
+    GHOST_MENU -->|"user selects"| PPTX_PIPE
+    GHOST_MENU -->|"user selects"| XLSX_PIPE
+    GHOST_MENU -->|"user selects"| PDF_PIPE
+
+    %% Pipelines to Validation
+    HTML_PIPE -->|"validates"| BRAND_CHECK
+    HTML_PIPE -->|"validates"| CONTENT_CHECK
+    HTML_PIPE -->|"validates"| ACCESSIBILITY
+    DOCX_PIPE -->|"validates"| BRAND_CHECK
+    DOCX_PIPE -->|"validates"| CONTENT_CHECK
+    PPTX_PIPE -->|"validates"| BRAND_CHECK
+    PPTX_PIPE -->|"validates"| CONTENT_CHECK
+    XLSX_PIPE -->|"validates"| CONTENT_CHECK
+    PDF_PIPE -->|"validates"| BRAND_CHECK
+
+    %% Standards
+    MARKDOWN_EXCELLENCE -->|"governs source"| MD_SOURCE
+    WCAG -->|"governs"| ACCESSIBILITY
+    SOFKA_BRAND -->|"governs"| BRAND_CHECK
+    PANDOC -->|"informs"| DOCX_PIPE
+
+    %% Validation to Outputs
+    BRAND_CHECK -->|"pass"| DELIVERY_PKG
+    CONTENT_CHECK -->|"pass"| DELIVERY_PKG
+    BRAND_CHECK -->|"pass"| SINGLE_FORMAT
+    CONTENT_CHECK -->|"pass"| SINGLE_FORMAT
+
+    %% Outputs to Consumers
+    DELIVERY_PKG -->|"full package"| DISCOVERY_PIPELINE
+    SINGLE_FORMAT -->|"on-demand"| PRESALES
+    DELIVERY_PKG -->|"presentations"| CLIENT
+
+    %% Agents
+    EDITORIAL_DIR -->|"narrative quality"| EDITORIAL
+    CONTENT_STRAT -->|"writing craft"| EDITORIAL
+    FORMAT_SPEC -->|"format production"| SKILL

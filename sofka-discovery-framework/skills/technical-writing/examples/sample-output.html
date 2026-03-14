@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>03 Análisis AS-IS — Sistema de Gestión de Pedidos (OMS) — TransLogix S.A.</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7E08;
+      --dark: #1A1A2E;
+      --success: #FFD700;
+      --bg: #F8F9FB;
+      --text: #1A1A2E;
+      --text-light: #6B7280;
+      --border: #E5E7EB;
+      --section-bg: #FFFFFF;
+      --callout-insight: #FFF7ED;
+      --callout-insight-border: #FF7E08;
+      --callout-risk: #FFF5F5;
+      --callout-risk-border: #DC2626;
+      --callout-tradeoff: #FFFBEB;
+      --callout-tradeoff-border: #D97706;
+      --callout-evidence: #EFF6FF;
+      --callout-evidence-border: #2563EB;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    /* Header */
+    .header {
+      background: var(--dark);
+      color: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      border-left: 6px solid var(--primary);
+    }
+    .header h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .header .subtitle {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #9CA3AF;
+    }
+    .meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .meta strong { color: #D1D5DB; }
+    /* Sections */
+    .section {
+      background: var(--section-bg);
+      border-radius: 10px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    h2 {
+      color: var(--dark);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+    }
+    h3 {
+      color: var(--dark);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem 0;
+    }
+    p { margin-bottom: 1rem; }
+    /* TL;DR */
+    .tldr {
+      background: linear-gradient(135deg, var(--dark) 0%, #2D2D4E 100%);
+      color: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--primary);
+    }
+    .tldr h2 { color: var(--primary); border-bottom-color: rgba(255,126,8,0.3); font-size: 1.2rem; }
+    .tldr ul { padding-left: 1.2rem; }
+    .tldr li { margin-bottom: 0.6rem; color: #E5E7EB; line-height: 1.6; }
+    .tldr .tag { color: var(--success); font-size: 0.8rem; font-weight: 600; }
+    /* Section TL;DR */
+    .section-tldr {
+      background: var(--callout-insight);
+      border-left: 3px solid var(--primary);
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.95rem;
+    }
+    .section-tldr strong { color: var(--primary); }
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.9rem; }
+    th {
+      background: var(--dark);
+      color: #fff;
+      padding: 0.7rem 0.9rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) { background: #F9FAFB; }
+    tr:hover { background: #FFF7ED; }
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-critical { background: #FEE2E2; color: #991B1B; }
+    .badge-high { background: #FFEDD5; color: #9A3412; }
+    .badge-medium { background: #FEF9C3; color: #854D0E; }
+    .badge-low { background: #D1FAE5; color: #065F46; }
+    /* Callouts */
+    .callout {
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.93rem;
+    }
+    .callout-insight {
+      background: var(--callout-insight);
+      border-left: 4px solid var(--callout-insight-border);
+    }
+    .callout-risk {
+      background: var(--callout-risk);
+      border-left: 4px solid var(--callout-risk-border);
+    }
+    .callout-tradeoff {
+      background: var(--callout-tradeoff);
+      border-left: 4px solid var(--callout-tradeoff-border);
+    }
+    .callout-evidence {
+      background: var(--callout-evidence);
+      border-left: 4px solid var(--callout-evidence-border);
+    }
+    .callout strong { display: block; margin-bottom: 0.3rem; }
+    /* Cross-references */
+    .crossref {
+      color: var(--text-light);
+      font-size: 0.88rem;
+      font-style: italic;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border);
+    }
+    .crossref::before { content: "\2192\00a0"; color: var(--primary); }
+    /* Evidence tags */
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: #FFF7ED;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      border: 1px solid #FFEDD5;
+    }
+    /* Diagram container */
+    .diagram-container {
+      background: #FAFBFC;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .diagram-container .accessibility {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.82rem;
+      padding: 2rem 0 1rem 0;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    .footer .brand { color: var(--primary); font-weight: 600; }
+    /* Disclaimer */
+    .disclaimer {
+      background: #F3F4F6;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 1.5rem;
+    }
+    .disclaimer li { margin-bottom: 0.3rem; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>03 An&aacute;lisis AS-IS &mdash; Sistema de Gesti&oacute;n de Pedidos (OMS)</h1>
+  <div class="subtitle">TransLogix S.A. &mdash; Modernizaci&oacute;n Plataforma Log&iacute;stica</div>
+  <div class="meta">
+    <span><strong>Fecha:</strong> 13 de marzo de 2026</span>
+    <span><strong>Variante:</strong> T&eacute;cnica (full)</span>
+    <span><strong>Modo:</strong> piloto-auto</span>
+  </div>
+</div>
+
+<!-- TL;DR -->
+<div class="tldr">
+  <h2>TL;DR</h2>
+  <ul>
+    <li>El OMS es un monolito Java 8 desplegado en un solo servidor f&iacute;sico que procesa ~12,000 pedidos/d&iacute;a con un tiempo promedio de respuesta de 4.2s en hora pico <span class="tag">[C&Oacute;DIGO][CONFIG]</span></li>
+    <li>La base de datos Oracle 12c contiene 847 tablas, de las cuales 312 no tienen relaciones FK definidas y 89 carecen de &iacute;ndices en columnas de consulta frecuente <span class="tag">[C&Oacute;DIGO]</span></li>
+    <li>El acoplamiento entre el m&oacute;dulo de inventario y el m&oacute;dulo de facturaci&oacute;n es bidireccional: 47 llamadas directas en ambas direcciones <span class="tag">[C&Oacute;DIGO]</span></li>
+    <li>No existe documentaci&oacute;n t&eacute;cnica actualizada. Los &uacute;ltimos diagramas datan de 2019 <span class="tag">[DOC][STAKEHOLDER]</span></li>
+    <li>El equipo concentra el conocimiento en 2 desarrolladores senior; los 4 restantes llevan menos de 18 meses <span class="tag">[STAKEHOLDER]</span></li>
+  </ul>
+</div>
+
+<!-- Section 1: Architecture -->
+<div class="section">
+  <h2>1. Arquitectura del Sistema Actual</h2>
+  <div class="section-tldr">
+    <strong>TL;DR:</strong> El OMS es un monolito construido sobre Java 8, Spring Framework 4.3, y Oracle 12c, desplegado en un servidor f&iacute;sico HP ProLiant sin redundancia.
+  </div>
+
+  <p>El monolito se despliega como un archivo WAR en un servidor Apache Tomcat 8.5.x alojado en el datacenter principal de TransLogix (Bogot&aacute;). No existe ambiente de staging; los cambios se prueban en desarrollo y pasan directamente a producci&oacute;n <span class="tag">[CONFIG]</span> <span class="tag">[STAKEHOLDER]</span>.</p>
+
+  <h3>M&oacute;dulos Funcionales</h3>
+  <table>
+    <thead>
+      <tr><th>M&oacute;dulo</th><th>Paquete</th><th>Clases</th><th>L&iacute;neas</th><th>Responsabilidad</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pedidos</td><td><code>com.translogix.orders</code></td><td>142</td><td>28,400</td><td>Ciclo de vida del pedido</td></tr>
+      <tr><td>Inventario</td><td><code>com.translogix.inventory</code></td><td>89</td><td>17,200</td><td>Stock, reservas, reabastecimiento</td></tr>
+      <tr><td>Facturaci&oacute;n</td><td><code>com.translogix.billing</code></td><td>76</td><td>15,800</td><td>Facturas, notas cr&eacute;dito, DIAN</td></tr>
+      <tr><td>Clientes</td><td><code>com.translogix.customers</code></td><td>54</td><td>11,600</td><td>Registro, perfil, historial</td></tr>
+      <tr><td>Rutas</td><td><code>com.translogix.routing</code></td><td>63</td><td>13,400</td><td>Asignaci&oacute;n veh&iacute;culos, tracking</td></tr>
+      <tr><td>Reportes</td><td><code>com.translogix.reports</code></td><td>38</td><td>8,200</td><td>Reportes operativos y gerenciales</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Total:</strong> 462 clases, 94,600 l&iacute;neas de c&oacute;digo Java <span class="tag">[C&Oacute;DIGO]</span></p>
+
+  <h3>Hallazgos de Arquitectura</h3>
+  <table>
+    <thead>
+      <tr><th>Hallazgo</th><th>Evidencia</th><th>Impacto</th><th>Fuente</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Java 8 alcanz&oacute; fin de soporte p&uacute;blico en marzo 2022</td><td><code>pom.xml</code>: <code>java.version=1.8</code></td><td><span class="badge badge-critical">&#x1f534; Cr&iacute;tico</span></td><td><span class="tag">[C&Oacute;DIGO]</span></td></tr>
+      <tr><td>Spring Framework 4.3 alcanz&oacute; EOL en diciembre 2020</td><td><code>spring-framework.version=4.3.30</code></td><td><span class="badge badge-critical">&#x1f534; Cr&iacute;tico</span></td><td><span class="tag">[C&Oacute;DIGO]</span></td></tr>
+      <tr><td>Tomcat 8.5 en modo de soporte extendido</td><td><code>server.xml</code>: Tomcat 8.5.93</td><td><span class="badge badge-medium">&#x1f7e1; Medio</span></td><td><span class="tag">[CONFIG]</span></td></tr>
+      <tr><td>Servidor f&iacute;sico sin redundancia</td><td>1 servidor, 0 failover</td><td><span class="badge badge-critical">&#x1f534; Cr&iacute;tico</span></td><td><span class="tag">[CONFIG]</span> <span class="tag">[STAKEHOLDER]</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-insight">
+    <strong>&#x1f4a1; Insight:</strong> El stack tecnol&oacute;gico acumula 4+ a&ntilde;os de deuda t&eacute;cnica en componentes core. La combinaci&oacute;n de Java 8 EOL + Spring 4.3 EOL + servidor sin redundancia representa un riesgo operativo que no es sostenible a mediano plazo. La migraci&oacute;n a Java 17+ y Spring Boot 3.x es prerequisito para cualquier escenario de modernizaci&oacute;n.
+  </div>
+
+  <div class="diagram-container">
+    <p class="accessibility">Diagrama de arquitectura del OMS: muestra un monolito Java con 6 m&oacute;dulos internos (Pedidos, Inventario, Facturaci&oacute;n, Clientes, Rutas, Reportes) desplegado en un servidor f&iacute;sico &uacute;nico con base de datos Oracle 12c. Las flechas bidireccionales muestran el acoplamiento cr&iacute;tico entre Pedidos-Facturaci&oacute;n (47 llamadas) y Pedidos-Inventario (33 llamadas).</p>
+    <pre class="mermaid">
+graph TD
+    subgraph SERVIDOR["Servidor F&iacute;sico HP ProLiant (sin redundancia)"]
+        direction TB
+        TOMCAT["Apache Tomcat 8.5"]
+        subgraph MONOLITO["OMS Monolith - WAR"]
+            direction LR
+            PEDIDOS["Pedidos 142 cls"]
+            INVENTARIO["Inventario 89 cls"]
+            FACTURACION["Facturacion 76 cls"]
+            CLIENTES["Clientes 54 cls"]
+            RUTAS["Rutas 63 cls"]
+            REPORTES["Reportes 38 cls"]
+        end
+        ORACLE["Oracle 12c - 847 tablas"]
+    end
+    USERS["Usuarios"] --> TOMCAT
+    TOMCAT --> MONOLITO
+    MONOLITO --> ORACLE
+    PEDIDOS <-->|47 llamadas| FACTURACION
+    INVENTARIO <-->|33 llamadas| PEDIDOS
+    RUTAS -->|18 llamadas| PEDIDOS
+    FACTURACION -->|SOAP| DIAN["DIAN"]
+
+    classDef server fill:#1A1A2E,stroke:#FF7E08,color:#fff,stroke-width:2px
+    classDef module fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef db fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef external fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+
+    class SERVIDOR,TOMCAT server
+    class PEDIDOS,INVENTARIO,FACTURACION,CLIENTES,RUTAS,REPORTES module
+    class ORACLE db
+    class USERS,DIAN external
+    </pre>
+  </div>
+
+  <p class="crossref">Ver 04_Mapeo_Flujos &sect; Flujo E2E Pedido para el detalle del flujo completo de un pedido desde creaci&oacute;n hasta entrega.</p>
+</div>
+
+<!-- Section 2: Database -->
+<div class="section">
+  <h2>2. An&aacute;lisis de Base de Datos</h2>
+  <div class="section-tldr">
+    <strong>TL;DR:</strong> La base de datos Oracle 12c contiene 847 tablas con un modelo de datos que ha crecido org&aacute;nicamente durante 9 a&ntilde;os. El 37% de las tablas carece de foreign keys, y existen 23 procedimientos almacenados con l&oacute;gica de negocio cr&iacute;tica.
+  </div>
+
+  <h3>2.1 Integridad Referencial</h3>
+  <table>
+    <thead>
+      <tr><th>Categor&iacute;a</th><th>Cantidad</th><th>Porcentaje</th><th>Riesgo</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tablas con FK definidas</td><td>535</td><td>63%</td><td><span class="badge badge-low">&#x1f7e2; Bajo</span></td></tr>
+      <tr><td>Tablas sin FK</td><td>312</td><td>37%</td><td><span class="badge badge-critical">&#x1f534; Alto</span></td></tr>
+      <tr><td>Tablas sin &iacute;ndices en columnas de JOIN</td><td>89</td><td>11%</td><td><span class="badge badge-medium">&#x1f7e1; Medio</span></td></tr>
+      <tr><td>Tablas hu&eacute;rfanas</td><td>47</td><td>6%</td><td><span class="badge badge-medium">&#x1f7e1; Medio</span></td></tr>
+    </tbody>
+  </table>
+  <p>Las 312 tablas sin FK se concentran en los m&oacute;dulos de Inventario (98 tablas) y Rutas (74 tablas), ambos a&ntilde;adidos entre 2021 y 2023 por un equipo externo que no sigui&oacute; las convenciones del esquema original <span class="tag">[C&Oacute;DIGO]</span> <span class="tag">[STAKEHOLDER]</span>.</p>
+
+  <h3>2.2 L&oacute;gica en Stored Procedures</h3>
+  <table>
+    <thead>
+      <tr><th>Procedure</th><th>Responsabilidad</th><th>L&iacute;neas PL/SQL</th><th>Riesgo migraci&oacute;n</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>SP_CALCULAR_COSTO_ENVIO</code></td><td>C&aacute;lculo costo env&iacute;o (14 reglas de negocio)</td><td>890</td><td><span class="badge badge-critical">&#x1f534; Alto</span></td></tr>
+      <tr><td><code>SP_ASIGNAR_RUTA_OPTIMA</code></td><td>Asignaci&oacute;n veh&iacute;culo y ruta con restricciones</td><td>1,240</td><td><span class="badge badge-critical">&#x1f534; Alto</span></td></tr>
+      <tr><td><code>SP_CONCILIAR_INVENTARIO</code></td><td>Conciliaci&oacute;n nocturna de stock</td><td>670</td><td><span class="badge badge-medium">&#x1f7e1; Medio</span></td></tr>
+      <tr><td><code>SP_GENERAR_FACTURA_ELECTRONICA</code></td><td>Formateo XML para DIAN</td><td>1,560</td><td><span class="badge badge-critical">&#x1f534; Alto</span></td></tr>
+      <tr><td><em>19 procedures adicionales</em></td><td>Reportes, auditor&iacute;a, limpieza</td><td>4,800</td><td><span class="badge badge-medium">&#x1f7e1; Medio</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-risk">
+    <strong>&#x26a0;&#xfe0f; Risk:</strong> Los 4 stored procedures cr&iacute;ticos concentran 4,360 l&iacute;neas de PL/SQL con l&oacute;gica de negocio no documentada. Cualquier escenario de migraci&oacute;n requiere extracci&oacute;n y documentaci&oacute;n de estas reglas como paso previo obligatorio. Estimado: 1.5-2 FTE-meses solo para documentaci&oacute;n de reglas.
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>&#x1f4a1; Insight:</strong> La deuda de documentaci&oacute;n en stored procedures es una deuda de conocimiento. Mientras estas reglas vivan solo en PL/SQL, el conocimiento del negocio est&aacute; encapsulado en un formato que solo 1 persona del equipo actual puede mantener (el DBA senior). Bus factor = 1 para l&oacute;gica de negocio cr&iacute;tica.
+  </div>
+
+  <p class="crossref">Ver 07_Especificacion_Funcional &sect; Reglas de Negocio para la documentaci&oacute;n extra&iacute;da de estos stored procedures.</p>
+</div>
+
+<!-- Section 3: Coupling -->
+<div class="section">
+  <h2>3. Acoplamiento entre M&oacute;dulos</h2>
+  <div class="section-tldr">
+    <strong>TL;DR:</strong> El acoplamiento bidireccional entre Pedidos-Inventario (33 llamadas) y Pedidos-Facturaci&oacute;n (47 llamadas) impide cualquier estrategia de despliegue independiente sin refactoring previo.
+  </div>
+
+  <h3>3.1 Matriz de Acoplamiento</h3>
+  <table>
+    <thead>
+      <tr><th>M&oacute;dulo origen &rarr;</th><th>Pedidos</th><th>Inventario</th><th>Facturaci&oacute;n</th><th>Clientes</th><th>Rutas</th><th>Reportes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Pedidos</strong></td><td>&mdash;</td><td>18</td><td>27</td><td>12</td><td>8</td><td>3</td></tr>
+      <tr><td><strong>Inventario</strong></td><td>15</td><td>&mdash;</td><td>6</td><td>0</td><td>0</td><td>2</td></tr>
+      <tr><td><strong>Facturaci&oacute;n</strong></td><td>20</td><td>4</td><td>&mdash;</td><td>8</td><td>0</td><td>1</td></tr>
+      <tr><td><strong>Clientes</strong></td><td>3</td><td>0</td><td>2</td><td>&mdash;</td><td>0</td><td>0</td></tr>
+      <tr><td><strong>Rutas</strong></td><td>18</td><td>5</td><td>0</td><td>3</td><td>&mdash;</td><td>1</td></tr>
+      <tr><td><strong>Reportes</strong></td><td>9</td><td>7</td><td>6</td><td>4</td><td>5</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+  <p>Cada n&uacute;mero representa llamadas directas entre clases de un m&oacute;dulo a clases de otro (imports + method invocations) <span class="tag">[C&Oacute;DIGO]</span></p>
+
+  <h3>3.2 Hallazgos de Acoplamiento</h3>
+  <table>
+    <thead>
+      <tr><th>Hallazgo</th><th>Evidencia</th><th>Impacto</th><th>Fuente</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pedidos &harr; Facturaci&oacute;n: 47 llamadas bidireccionales</td><td>JDepend + grep imports cruzados</td><td><span class="badge badge-critical">&#x1f534; Cr&iacute;tico</span></td><td><span class="tag">[C&Oacute;DIGO]</span></td></tr>
+      <tr><td>Pedidos &harr; Inventario: 33 llamadas bidireccionales</td><td>JDepend analysis</td><td><span class="badge badge-critical">&#x1f534; Cr&iacute;tico</span></td><td><span class="tag">[C&Oacute;DIGO]</span></td></tr>
+      <tr><td>Reportes accede a todos los m&oacute;dulos (31 llamadas)</td><td>Import analysis</td><td><span class="badge badge-medium">&#x1f7e1; Medio</span></td><td><span class="tag">[C&Oacute;DIGO]</span></td></tr>
+      <tr><td>Clientes es el m&oacute;dulo m&aacute;s desacoplado</td><td>5 salientes, 27 entrantes</td><td><span class="badge badge-low">&#x1f7e2; Bajo</span></td><td><span class="tag">[C&Oacute;DIGO]</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-tradeoff">
+    <strong>&#x2696;&#xfe0f; Trade-off:</strong> Resolver el acoplamiento Pedidos-Facturaci&oacute;n requiere introducir comunicaci&oacute;n indirecta (eventos o API interna). Esto a&ntilde;ade complejidad operativa (event bus, idempotencia, eventual consistency) pero habilita despliegue independiente. Sin desacoplar, cualquier cambio en Facturaci&oacute;n requiere re-desplegar todo el monolito &mdash; lo que ocurre ~3 veces por semana.
+  </div>
+
+  <p class="crossref">Ver 05_Escenarios_ToT &sect; Escenario B: Strangler Fig para el an&aacute;lisis del escenario de extracci&oacute;n gradual de m&oacute;dulos.</p>
+</div>
+
+<!-- Section 4: Performance -->
+<div class="section">
+  <h2>4. Rendimiento y Capacidad</h2>
+  <div class="section-tldr">
+    <strong>TL;DR:</strong> El sistema procesa 12,000 pedidos/d&iacute;a con tiempo promedio de 4.2s en hora pico. Con 15% m&aacute;s de carga el tiempo sube a 11.8s, y con 30% m&aacute;s el sistema es inutilizable.
+  </div>
+
+  <h3>4.1 M&eacute;tricas de Producci&oacute;n (90 D&iacute;as)</h3>
+  <table>
+    <thead>
+      <tr><th>M&eacute;trica</th><th>Valor</th><th>Fuente</th><th>Benchmark</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pedidos/d&iacute;a (promedio)</td><td>12,340</td><td>App logs, 90-day avg</td><td>n/a</td></tr>
+      <tr><td>Pedidos/d&iacute;a (pico)</td><td>18,700</td><td>Black Friday 2025</td><td>n/a</td></tr>
+      <tr><td>Tiempo respuesta p50</td><td>1.8s</td><td>New Relic, 90d avg</td><td>&lt; 500ms <span class="tag">[BENCHMARK]</span></td></tr>
+      <tr><td>Tiempo respuesta p95</td><td>4.2s</td><td>New Relic, hora pico</td><td>&lt; 2s <span class="tag">[BENCHMARK]</span></td></tr>
+      <tr><td>Tiempo respuesta p99</td><td>8.7s</td><td>New Relic, hora pico</td><td>&lt; 5s <span class="tag">[BENCHMARK]</span></td></tr>
+      <tr><td>Tasa de error</td><td>2.3%</td><td>App logs</td><td>&lt; 0.5% <span class="tag">[BENCHMARK]</span></td></tr>
+      <tr><td>Disponibilidad</td><td>97.2%</td><td>Downtime log, 12mo</td><td>99.9% <span class="tag">[BENCHMARK]</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.2 Prueba de Carga</h3>
+  <table>
+    <thead>
+      <tr><th>Escenario</th><th>Carga</th><th>Tiempo p95</th><th>Tasa error</th><th>Observaci&oacute;n</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Baseline</td><td>500 req/min</td><td>2.1s</td><td>1.2%</td><td>Operaci&oacute;n normal</td></tr>
+      <tr><td>+15%</td><td>575 req/min</td><td>4.8s</td><td>3.8%</td><td>Degradaci&oacute;n perceptible</td></tr>
+      <tr><td>+30%</td><td>650 req/min</td><td>11.8s</td><td>12.4%</td><td>Query inventario bloquea pool</td></tr>
+      <tr><td>+50%</td><td>750 req/min</td><td>&gt;30s</td><td>34.2%</td><td>OOM en Tomcat</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-evidence">
+    <strong>&#x1f50d; Evidence:</strong> El cuello de botella se identific&oacute; en el pool de conexiones JDBC (max 20 conexiones <span class="tag">[CONFIG]</span>) combinado con queries no optimizados en Inventario. La query <code>SELECT * FROM INV_STOCK_LEVELS WHERE warehouse_id = ?</code> ejecuta full table scan en 12M registros sin &iacute;ndice en <code>warehouse_id</code> <span class="tag">[C&Oacute;DIGO]</span>.
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>&#x1f4a1; Insight:</strong> El sistema no tiene headroom de capacidad. Con crecimiento proyectado de 20% anual, el umbral de degradaci&oacute;n se alcanzar&aacute; en 8-10 meses. Las optimizaciones de DB pueden ganar 6 meses adicionales, pero no resuelven el problema estructural de un monolito single-server.
+  </div>
+</div>
+
+<!-- Section 5: Team -->
+<div class="section">
+  <h2>5. Equipo y Conocimiento</h2>
+  <div class="section-tldr">
+    <strong>TL;DR:</strong> El equipo de 6 desarrolladores tiene un bus factor de 2: los senior (Carlos M. y Laura G.) concentran el 80% del conocimiento del sistema.
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Rol</th><th>Persona</th><th>Antig&uuml;edad</th><th>M&oacute;dulos que domina</th><th>Bus factor</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tech Lead / Senior Dev</td><td>Carlos M.</td><td>9 a&ntilde;os</td><td>Todos (creador original)</td><td><span class="badge badge-critical">Cr&iacute;tico</span></td></tr>
+      <tr><td>Senior Dev</td><td>Laura G.</td><td>8 a&ntilde;os</td><td>Pedidos, Facturaci&oacute;n, Clientes</td><td><span class="badge badge-critical">Cr&iacute;tico</span></td></tr>
+      <tr><td>Mid Dev</td><td>Andr&eacute;s R.</td><td>16 meses</td><td>Pedidos, Clientes</td><td><span class="badge badge-low">Bajo</span></td></tr>
+      <tr><td>Mid Dev</td><td>Valentina S.</td><td>14 meses</td><td>Inventario</td><td><span class="badge badge-low">Bajo</span></td></tr>
+      <tr><td>Junior Dev</td><td>Miguel T.</td><td>8 meses</td><td>Reportes (solo)</td><td><span class="badge badge-low">Bajo</span></td></tr>
+      <tr><td>DBA</td><td>Roberto P.</td><td>12 a&ntilde;os</td><td>BD completa, stored procedures</td><td><span class="badge badge-critical">Cr&iacute;tico</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-risk">
+    <strong>&#x26a0;&#xfe0f; Risk:</strong> Si Carlos M. o Laura G. dejan la organizaci&oacute;n, se pierde conocimiento no documentado sobre: (1) reglas de negocio embebidas en c&oacute;digo, (2) workarounds para bugs conocidos no registrados, (3) configuraciones de producci&oacute;n no documentadas. Recomendaci&oacute;n: iniciar documentaci&oacute;n de conocimiento t&aacute;cito como actividad paralela al discovery <span class="tag">[STAKEHOLDER]</span> <span class="tag">[INFERENCIA]</span>.
+  </div>
+
+  <p class="crossref">Ver 01_Stakeholder_Map &sect; RACI para la matriz de responsabilidades del equipo de desarrollo.</p>
+</div>
+
+<!-- Disclaimers -->
+<div class="disclaimer">
+  <strong>Disclaimers:</strong>
+  <ul>
+    <li>Todas las estimaciones de esfuerzo se expresan en FTE-meses. No representan precios ni cotizaciones.</li>
+    <li>Las recomendaciones requieren validaci&oacute;n con el equipo t&eacute;cnico del cliente antes de su implementaci&oacute;n.</li>
+    <li>Los datos de rendimiento corresponden al per&iacute;odo enero-marzo 2026 y pueden variar con cambios en el sistema.</li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p><strong>Autor:</strong> Javier Monta&ntilde;o &nbsp;|&nbsp; <strong>&Uacute;ltima actualizaci&oacute;n:</strong> 13 de marzo de 2026</p>
+  <p><span class="brand">&copy; Sofka Technologies</span> &mdash; Todos los derechos reservados</p>
+</div>
+
+<script>mermaid.initialize({ startOnLoad: true, theme: 'default' });</script>
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análisis de Métricas — Modernización Plataforma Core RetailCo</title>
+  <style>
+    :root {
+      --primary: #FF7E08;
+      --primary-light: #FF9E3D;
+      --dark: #1A1A2E;
+      --dark-light: #2D2D44;
+      --success: #FFD700;
+      --warning: #FF7E08;
+      --danger: #E63946;
+      --amber: #F59E0B;
+      --text: #E2E8F0;
+      --text-muted: #94A3B8;
+      --bg: #0F0F1A;
+      --card-bg: #1A1A2E;
+      --border: #2D2D44;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    header .context {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-left: 3px solid var(--primary);
+      padding-left: 1rem;
+      margin-top: 1rem;
+    }
+
+    .tldr {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .tldr h2 {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tldr ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tldr li {
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .tldr li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      color: var(--primary-light);
+      font-size: 1.1rem;
+      margin: 1.5rem 0 0.8rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    strong {
+      color: #FFFFFF;
+    }
+
+    .tag {
+      display: inline;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    .tag-codigo { background: #1E3A5F; color: #60A5FA; }
+    .tag-config { background: #3B2F1A; color: #FBBF24; }
+    .tag-doc { background: #1A3A2F; color: #34D399; }
+    .tag-inferencia { background: #3B1A3A; color: #C084FC; }
+    .tag-supuesto { background: #3B2020; color: #FCA5A5; }
+    .tag-stakeholder { background: #1A2A3B; color: #93C5FD; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.92rem;
+    }
+
+    thead {
+      background: var(--dark-light);
+    }
+
+    th {
+      color: var(--primary);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:hover {
+      background: rgba(255, 126, 8, 0.05);
+    }
+
+    .semaforo-verde {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .semaforo-amarillo {
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .semaforo-rojo {
+      color: var(--danger);
+      font-weight: 700;
+    }
+
+    .narrative {
+      background: var(--card-bg);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .narrative p {
+      margin-bottom: 0.8rem;
+    }
+
+    .narrative p:last-child {
+      margin-bottom: 0;
+    }
+
+    .metric-card {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .metric-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .metric-item .label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .metric-item .value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0.3rem 0;
+    }
+
+    .metric-item .comparison {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .metric-item .gap {
+      font-size: 0.85rem;
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .callout {
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .callout-criteria {
+      background: rgba(255, 126, 8, 0.1);
+      border: 1px solid rgba(255, 126, 8, 0.3);
+      color: var(--text-muted);
+    }
+
+    .callout-note {
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+    }
+
+    .callout-warning {
+      background: rgba(230, 57, 70, 0.08);
+      border: 1px solid rgba(230, 57, 70, 0.25);
+    }
+
+    .delta-positive {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .magnitude-table {
+      margin: 1.5rem 0;
+    }
+
+    .magnitude-table td:first-child {
+      color: var(--primary-light);
+      font-weight: 600;
+      width: 30%;
+    }
+
+    .distribution-bar {
+      display: flex;
+      height: 28px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .distribution-bar .segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .seg-critical { background: var(--danger); }
+    .seg-high { background: var(--primary); }
+    .seg-medium { background: var(--amber); }
+    .seg-low { background: var(--success); }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    footer .brand {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .cross-ref {
+      color: var(--primary-light);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    .summary-table td:nth-child(2) {
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+      header h1 { font-size: 1.3rem; }
+      .metric-card { grid-template-columns: 1fr 1fr; }
+      table { font-size: 0.82rem; }
+      th, td { padding: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Analisis de Metricas — Modernizacion Plataforma Core RetailCo</h1>
+      <div class="context">
+        <strong>Contexto:</strong> Evaluacion AS-IS de la plataforma core de RetailCo, empresa de retail con 120 tiendas y operacion e-commerce. Monolito Java de 8 anos, equipo de 35 desarrolladores. Datos recolectados durante discovery de 3 semanas.
+      </div>
+    </header>
+
+    <!-- TL;DR -->
+    <div class="tldr">
+      <h2>TL;DR</h2>
+      <ul>
+        <li>La plataforma tiene <strong>deuda tecnica equivalente a 54 FTE-meses</strong> (equipo de 9 personas dedicado exclusivamente durante 6 meses) concentrada en 3 de 8 modulos <span class="tag tag-codigo">CODIGO</span></li>
+        <li>Las metricas DORA ubican al equipo en el <strong>percentil 15</strong> del benchmark — la brecha mas critica es deployment frequency (1/mes vs. referencia elite de multiples/dia) <span class="tag tag-codigo">CODIGO</span><span class="tag tag-config">CONFIG</span></li>
+        <li>De las <strong>6 dimensiones evaluadas, 2 estan en rojo</strong> y comparten causa raiz: acoplamiento entre el modulo de autenticacion y el core de inventario <span class="tag tag-codigo">CODIGO</span></li>
+        <li>El escenario de modernizacion proyecta <strong>reduccion de 65% en time-to-market</strong> en 4 fases, con quick wins visibles en Fase 1 (Q2) <span class="tag tag-inferencia">INFERENCIA</span></li>
+      </ul>
+    </div>
+
+    <!-- SECTION 1: Scoring Matrix -->
+    <h2>1. Scoring Matrix — Evaluacion Arquitectonica 6D</h2>
+
+    <h3>Matriz de Resultados</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Score</th>
+          <th>Nivel</th>
+          <th>Evidencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mantenibilidad</td>
+          <td>42%</td>
+          <td><span class="semaforo-rojo">&#9679; Rojo</span></td>
+          <td>Complejidad ciclomatica promedio 38, 3 modulos >60 <span class="tag tag-codigo">CODIGO</span></td>
+        </tr>
+        <tr>
+          <td>Escalabilidad</td>
+          <td>55%</td>
+          <td><span class="semaforo-amarillo">&#9679; Amarillo</span></td>
+          <td>Escala vertical funciona hasta 2x carga actual <span class="tag tag-config">CONFIG</span></td>
+        </tr>
+        <tr>
+          <td>Seguridad</td>
+          <td>78%</td>
+          <td><span class="semaforo-amarillo">&#9679; Amarillo</span></td>
+          <td>OWASP Top 10 cubierto excepto A03 y A07 <span class="tag tag-codigo">CODIGO</span></td>
+        </tr>
+        <tr>
+          <td>Observabilidad</td>
+          <td>35%</td>
+          <td><span class="semaforo-rojo">&#9679; Rojo</span></td>
+          <td>Sin tracing distribuido, logs no estructurados <span class="tag tag-config">CONFIG</span></td>
+        </tr>
+        <tr>
+          <td>Testeabilidad</td>
+          <td>71%</td>
+          <td><span class="semaforo-amarillo">&#9679; Amarillo</span></td>
+          <td>71% cobertura global, pero modulo de pagos al 23% <span class="tag tag-codigo">CODIGO</span></td>
+        </tr>
+        <tr>
+          <td>Disponibilidad</td>
+          <td>82%</td>
+          <td><span class="semaforo-verde">&#9679; Verde</span></td>
+          <td>99.2% uptime ultimos 12 meses <span class="tag tag-doc">DOC</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-criteria">
+      <strong>Criterio semaforo:</strong> <span class="semaforo-verde">&#9679; Verde >80%</span> &nbsp;|&nbsp; <span class="semaforo-amarillo">&#9679; Amarillo 50-80%</span> &nbsp;|&nbsp; <span class="semaforo-rojo">&#9679; Rojo &lt;50%</span>
+    </div>
+
+    <h3>Narrativa Interpretativa</h3>
+    <div class="narrative">
+      <p><strong>El patron dominante no son los scores individuales, sino lo que revelan en conjunto.</strong> De las 6 dimensiones evaluadas, las 2 en rojo (mantenibilidad y observabilidad) comparten una causa raiz: el monolito no fue disenado para ser instrumentado ni modularizado. No es negligencia del equipo — es una decision arquitectonica de 2018 que era razonable en su momento pero que ahora genera friccion en todas las dimensiones <span class="tag tag-inferencia">INFERENCIA</span>.</p>
+      <p><strong>La anomalia positiva es disponibilidad (82%, verde).</strong> Sorprende dado el estado de mantenibilidad y observabilidad. La explicacion: el equipo ha desarrollado expertise operacional compensatoria — conocen el sistema tan bien que resuelven incidentes por intuicion, no por instrumentacion <span class="tag tag-stakeholder">STAKEHOLDER</span>. Esto es simultaneamente una fortaleza (el equipo es excelente) y un riesgo (conocimiento tacito no documentado, bus factor de 3 personas).</p>
+      <p><strong>Las 3 dimensiones en amarillo</strong> (escalabilidad, seguridad, testeabilidad) comparten una caracteristica: son funcionales hoy pero no soportan el crecimiento proyectado de 3x en transacciones para 2027 <span class="tag tag-doc">DOC</span>.</p>
+      <p><strong>Conexion a accion:</strong> Los 2 rojos se abordan con el Escenario B (Strangler Fig) en Fase 1 (Q2). Los 3 amarillos mejoran organicamente con la nueva arquitectura. <span class="cross-ref">&rarr; Ver 05_Escenarios &sect; Escenario B para detalle.</span></p>
+    </div>
+
+    <!-- SECTION 2: DORA Metrics -->
+    <h2>2. Metricas DORA — Before/After</h2>
+
+    <h3>Estado Actual vs. Benchmark</h3>
+
+    <div class="metric-card">
+      <div class="metric-item">
+        <div class="label">Deployment Frequency</div>
+        <div class="value">1/mes</div>
+        <div class="comparison">Elite: multiples/dia</div>
+        <div class="gap">Brecha 30x</div>
+      </div>
+      <div class="metric-item">
+        <div class="label">Lead Time for Changes</div>
+        <div class="value">45 dias</div>
+        <div class="comparison">Elite: &lt;1 dia</div>
+        <div class="gap">Brecha 45x</div>
+      </div>
+      <div class="metric-item">
+        <div class="label">Change Failure Rate</div>
+        <div class="value">18%</div>
+        <div class="comparison">Elite: &lt;5%</div>
+        <div class="gap">Brecha 3.6x</div>
+      </div>
+      <div class="metric-item">
+        <div class="label">MTTR</div>
+        <div class="value">4 hrs</div>
+        <div class="comparison">Elite: &lt;1 hora</div>
+        <div class="gap">Brecha 4x</div>
+      </div>
+    </div>
+
+    <h3>Narrativa de Metricas DORA</h3>
+    <div class="narrative">
+      <p><strong>RetailCo opera en el percentil 15 del benchmark DORA</strong>, equivalente al cluster "low performer" del State of DevOps Report 2024 <span class="tag tag-doc">DOC</span>. Pero el numero solo no cuenta la historia completa.</p>
+      <p><strong>La brecha mas reveladora es deployment frequency (30x).</strong> No es que el equipo no quiera desplegar mas frecuentemente — es que <strong>no puede</strong>. El monolito requiere deploy completo (45 minutos de build, 20 minutos de smoke tests manuales, ventana de mantenimiento nocturna). Cada deploy es un evento de riesgo que involucra a 4 personas durante 3 horas <span class="tag tag-stakeholder">STAKEHOLDER</span>.</p>
+      <p><strong>El lead time de 45 dias tiene un componente oculto</strong>: solo 5 dias son desarrollo real. Los otros 40 son cola de espera (15 dias), QA manual (10 dias), coordinacion de deploy (8 dias) y buffer "por si acaso" (7 dias) <span class="tag tag-stakeholder">STAKEHOLDER</span>. Esto significa que <strong>el 89% del lead time es desperdicio sistemico</strong>, no trabajo productivo.</p>
+      <p><strong>El MTTR de 4 horas parece tolerable hasta que se descompone</strong>: 2.5 horas son diagnostico (sin tracing, sin logs estructurados, dependencia de memoria humana) y 1.5 horas son resolucion <span class="tag tag-stakeholder">STAKEHOLDER</span>. Con observabilidad adecuada, el diagnostico se reduce a minutos.</p>
+    </div>
+
+    <h3>Proyeccion After (Post-Modernizacion Fase 1-2)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Metrica DORA</th>
+          <th>Actual</th>
+          <th>Proyectado Fase 2</th>
+          <th>Delta</th>
+          <th>Evidencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Deployment Frequency</td>
+          <td>1/mes</td>
+          <td>2-3/semana</td>
+          <td><span class="delta-positive">8-12x mejora</span></td>
+          <td>Pipeline CI/CD + feature flags <span class="tag tag-inferencia">INFERENCIA</span></td>
+        </tr>
+        <tr>
+          <td>Lead Time for Changes</td>
+          <td>45 dias</td>
+          <td>5-8 dias</td>
+          <td><span class="delta-positive">6-9x mejora</span></td>
+          <td>Eliminacion de cola + QA automatizado <span class="tag tag-inferencia">INFERENCIA</span></td>
+        </tr>
+        <tr>
+          <td>Change Failure Rate</td>
+          <td>18%</td>
+          <td>5-8%</td>
+          <td><span class="delta-positive">2-3x mejora</span></td>
+          <td>Test coverage >80% + canary deploys <span class="tag tag-inferencia">INFERENCIA</span></td>
+        </tr>
+        <tr>
+          <td>MTTR</td>
+          <td>4 horas</td>
+          <td>30-45 min</td>
+          <td><span class="delta-positive">5-8x mejora</span></td>
+          <td>Tracing distribuido + alertas inteligentes <span class="tag tag-inferencia">INFERENCIA</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-note">
+      <strong>Nota:</strong> Proyecciones basadas en resultados observados en modernizaciones similares del portafolio Sofka (N=12 proyectos, vertical retail/e-commerce). Tendencia indicativa, no garantia. <span class="tag tag-supuesto">SUPUESTO</span>
+    </div>
+
+    <h3>Impacto Tangibilizado</h3>
+    <div class="narrative">
+      <p>La mejora proyectada en lead time — <strong>de 45 dias a 5-8 dias</strong> — tiene consecuencia directa en negocio:</p>
+      <p><strong>Hoy:</strong> Una funcionalidad solicitada por negocio (ej: nueva promocion navidena) tarda 45 dias en llegar a produccion. Si la decision comercial se toma en octubre, la funcionalidad llega en diciembre — <strong>potencialmente despues de la ventana comercial</strong> <span class="tag tag-inferencia">INFERENCIA</span>.</p>
+      <p><strong>Proyectado:</strong> La misma funcionalidad tarda 5-8 dias. Decision en octubre, funcionalidad live la segunda semana de octubre. <strong>35-40 dias de ventaja competitiva recuperados por cada feature</strong> <span class="tag tag-inferencia">INFERENCIA</span>.</p>
+    </div>
+
+    <!-- SECTION 3: Technical Debt Magnitudes -->
+    <h2>3. Comunicacion de Magnitudes — Deuda Tecnica</h2>
+
+    <h3>Cuantificacion</h3>
+    <p>La deuda tecnica total estimada es de <strong style="font-size: 1.3rem; color: var(--primary);">54 FTE-meses</strong> <span class="tag tag-codigo">CODIGO</span><span class="tag tag-inferencia">INFERENCIA</span>.</p>
+
+    <table class="magnitude-table">
+      <thead>
+        <tr>
+          <th>Equivalencia</th>
+          <th>Traduccion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Equipo dedicado</td>
+          <td>9 personas &times; 6 meses exclusivamente, sin hacer nada mas</td>
+        </tr>
+        <tr>
+          <td>Fraccion del equipo actual</td>
+          <td>15 de los 35 desarrolladores &times; 6 meses (43% del equipo)</td>
+        </tr>
+        <tr>
+          <td>Impacto en velocity</td>
+          <td>Si se aborda en paralelo con features, el equipo opera al ~60% de capacidad durante 9 meses</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Distribucion de la Deuda</h3>
+
+    <div class="distribution-bar">
+      <div class="segment seg-critical" style="width: 52%;" title="Auth + Core Inventario: 28 FTE-meses">Auth+Inv 52%</div>
+      <div class="segment seg-high" style="width: 28%;" title="Pagos: 15 FTE-meses">Pagos 28%</div>
+      <div class="segment seg-medium" style="width: 13%;" title="API Gateway: 7 FTE-meses">API GW 13%</div>
+      <div class="segment seg-low" style="width: 7%;" title="Reporting: 4 FTE-meses">BI 7%</div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Modulo</th>
+          <th>FTE-meses</th>
+          <th>% del total</th>
+          <th>Prioridad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Autenticacion + Core Inventario</td>
+          <td>28</td>
+          <td>52%</td>
+          <td><span class="semaforo-rojo">Critica</span> — causa raiz de 2 rojos en scoring</td>
+        </tr>
+        <tr>
+          <td>Modulo de Pagos</td>
+          <td>15</td>
+          <td>28%</td>
+          <td><span class="semaforo-rojo">Alta</span> — cobertura 23%, regulacion Q4</td>
+        </tr>
+        <tr>
+          <td>API Gateway (legacy)</td>
+          <td>7</td>
+          <td>13%</td>
+          <td><span class="semaforo-amarillo">Media</span> — funcional pero limite de escalabilidad</td>
+        </tr>
+        <tr>
+          <td>Reporting + BI</td>
+          <td>4</td>
+          <td>7%</td>
+          <td><span class="semaforo-verde">Baja</span> — migrable independientemente</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="narrative">
+      <p><strong>El insight clave no es el total de 54 FTE-meses, sino la concentracion.</strong> El 80% de la deuda se concentra en 2 modulos (Autenticacion/Inventario y Pagos) que ademas son los de mayor riesgo operacional y regulatorio <span class="tag tag-codigo">CODIGO</span>. Esto es simultaneamente un problema (la deuda esta donde mas duele) y una oportunidad (abordar 2 modulos resuelve el 80% del problema).</p>
+    </div>
+
+    <h3>Costo de la Inaccion</h3>
+    <div class="callout callout-warning">
+      <p><strong>Si la deuda tecnica no se aborda</strong> <span class="tag tag-inferencia">INFERENCIA</span>:</p>
+      <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+        <li><strong>Q4 2026:</strong> Modulo de pagos no cumplira la nueva regulacion. Remediacion de emergencia: 8 FTE-meses adicionales (vs. 4 FTE-meses planificados en Q2-Q3).</li>
+        <li><strong>2027:</strong> Con crecimiento 3x, escalabilidad vertical alcanza su limite. Incidentes de disponibilidad pasaran de 4/ano a estimados 12-15/ano.</li>
+        <li><strong>Bus factor:</strong> Las 3 personas que mantienen el monolito operacional por conocimiento tacito son riesgo de rotacion. Si 1 se va, MTTR se duplica. Si 2 se van, el sistema se vuelve inoperable.</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 4: Executive Summary -->
+    <h2>4. Resumen Ejecutivo de Metricas</h2>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Estado</th>
+          <th>Insight Principal</th>
+          <th>Accion Recomendada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Arquitectura 6D</td>
+          <td><span class="semaforo-rojo">2 rojos</span>, <span class="semaforo-amarillo">3 amarillos</span>, <span class="semaforo-verde">1 verde</span></td>
+          <td>Causa raiz compartida: acoplamiento monolitico</td>
+          <td>Strangler Fig Pattern, Fase 1</td>
+        </tr>
+        <tr>
+          <td>DORA Metrics</td>
+          <td><span class="semaforo-rojo">Percentil 15</span></td>
+          <td>89% del lead time es desperdicio sistemico</td>
+          <td>CI/CD + feature flags + QA automatizado</td>
+        </tr>
+        <tr>
+          <td>Deuda Tecnica</td>
+          <td><span class="semaforo-rojo">54 FTE-meses</span></td>
+          <td>80% concentrada en 2 modulos criticos</td>
+          <td>Priorizar Auth/Inventario y Pagos</td>
+        </tr>
+        <tr>
+          <td>Riesgo Regulatorio</td>
+          <td><span class="semaforo-rojo">Alto</span></td>
+          <td>Modulo de pagos no cumple regulacion Q4</td>
+          <td>Intervencion planificada Q2-Q3</td>
+        </tr>
+        <tr>
+          <td>Riesgo Operacional</td>
+          <td><span class="semaforo-rojo">Alto</span></td>
+          <td>Bus factor de 3 personas</td>
+          <td>Documentacion + pair programming cross-team</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="cross-ref">&rarr; Ver 05_Escenarios para evaluacion Tree-of-Thought de escenarios de modernizacion.<br>
+    &rarr; Ver 06_Solution_Roadmap para plan de ejecucion en 4 fases con Monte Carlo.</p>
+
+    <footer>
+      <p>Documento generado por el <span class="brand">Sofka Discovery Framework</span>. Metricas con evidence tags. Magnitudes en FTE-meses. NUNCA valores monetarios.</p>
+      <p>&copy; Sofka Technologies — Todos los derechos reservados.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

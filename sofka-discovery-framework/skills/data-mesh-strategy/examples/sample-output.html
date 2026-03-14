@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Mesh Strategy — Acme Corp Digital Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --primary: #FF7E08;
+      --primary-light: #FF9A3C;
+      --primary-dim: rgba(255,126,8,0.08);
+      --accent: #1A1A2E;
+      --accent-dim: rgba(26,26,46,0.08);
+      --bg: #f7fafc;
+      --text: #2d3748;
+      --muted: #718096;
+      --white: #ffffff;
+      --black: #1A1A2E;
+      --border: #e2e8f0;
+      --positive: #FFD700;
+      --positive-dim: rgba(255,215,0,0.10);
+      --warning: #D97706;
+      --warning-dim: rgba(217,119,6,0.08);
+      --critical: #DC2626;
+      --critical-dim: rgba(220,38,38,0.07);
+      --info: #2563EB;
+      --info-dim: rgba(37,99,235,0.07);
+      --font: 'Inter', system-ui, sans-serif;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); }
+    a { color: var(--primary); text-decoration: none; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: var(--white); padding: 8px 16px; z-index: 1000; }
+    .skip-link:focus { top: 0; }
+
+    .hero { background: var(--accent); border-bottom: 6px solid var(--primary); padding: 3rem 2rem 2.5rem; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero h1 { color: var(--white); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; }
+    .hero h1 span { color: var(--primary); }
+    .hero .subtitle { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 700px; }
+    .meta-badges { display: flex; gap: 0.75rem; margin: 1.5rem 0 0; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; background: var(--primary); color: var(--white); border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-outline { display: inline-block; padding: 0.25rem 0.75rem; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.8); border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+
+    .sticky-nav { background: var(--white); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); padding: 0 2rem; }
+    .sticky-nav ul { list-style: none; display: flex; gap: 2rem; max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+    .sticky-nav a { display: block; padding: 0.75rem 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .sticky-nav a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 3.5rem 0; scroll-margin-top: 60px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-number { width: 56px; height: 56px; background: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; border-radius: 8px; }
+    .section-title { font-size: 2rem; font-weight: 700; }
+    h3 { font-size: 1.3rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--accent); }
+    p { margin: 0.75rem 0; }
+    ul { padding-left: 1.5rem; margin: 0.75rem 0; }
+    li { margin: 0.25rem 0; }
+
+    .card { background: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .callout { padding: 1.25rem 1.5rem; border-radius: var(--radius); margin: 1.5rem 0; border-left: 4px solid; }
+    .callout-info { background: var(--info-dim); border-color: var(--info); }
+    .callout-warning { background: var(--warning-dim); border-color: var(--warning); }
+    .callout-critical { background: var(--critical-dim); border-color: var(--critical); }
+    .callout-positive { background: var(--positive-dim); border-color: var(--positive); }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: var(--accent); color: var(--white); padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+    tr:hover td { background: var(--primary-dim); }
+
+    .mermaid { margin: 2rem 0; text-align: center; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .kpi-card { background: var(--white); padding: 1.25rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
+    .kpi-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .kpi-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem; }
+    .kpi-sublabel { font-size: 0.75rem; color: var(--muted); }
+
+    .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
+    .tag-high { background: var(--critical-dim); color: var(--critical); }
+    .tag-medium { background: var(--warning-dim); color: var(--warning); }
+    .tag-low { background: var(--positive-dim); color: #B8860B; }
+    .tag-ready { background: var(--positive-dim); color: #B8860B; }
+
+    .principle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .principle-card { background: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid var(--primary); }
+    .principle-score { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .principle-name { font-size: 1rem; font-weight: 600; margin: 0.25rem 0; }
+    .principle-desc { font-size: 0.85rem; color: var(--muted); }
+
+    footer { background: var(--accent); color: rgba(255,255,255,0.6); padding: 2rem; text-align: center; font-size: 0.85rem; margin-top: 3rem; }
+    footer strong { color: var(--primary); }
+
+    @media (max-width: 768px) {
+      .kpi-grid, .principle-grid { grid-template-columns: 1fr; }
+      .section { padding: 2rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1><span>Data Mesh</span> Strategy</h1>
+      <p class="subtitle">Estrategia de data mesh para Acme Corp — readiness assessment, domain decomposition, data product design, platform requirements, y adoption roadmap.</p>
+      <div class="meta-badges">
+        <span class="badge">4 Principios</span>
+        <span class="badge">7 Secciones</span>
+        <span class="badge-outline">7 Dominios</span>
+        <span class="badge-outline">Marzo 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sticky-nav" aria-label="Sections">
+    <ul>
+      <li><a href="#s1">S1 Readiness</a></li>
+      <li><a href="#s2">S2 Domains</a></li>
+      <li><a href="#s3">S3 Products</a></li>
+      <li><a href="#s4">S4 Platform</a></li>
+      <li><a href="#s5">S5 Governance</a></li>
+      <li><a href="#s6">S6 Roadmap</a></li>
+      <li><a href="#s7">S7 Org Change</a></li>
+    </ul>
+  </nav>
+
+  <main class="main" id="main">
+
+    <!-- KPI Dashboard -->
+    <div class="section">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">2.8<span style="font-size:1rem;color:var(--muted)">/5</span></div>
+          <div class="kpi-label">Readiness Score</div>
+          <div class="kpi-sublabel">Condicionalmente Viable</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">5</div>
+          <div class="kpi-label">Dominios Mesh</div>
+          <div class="kpi-sublabel">2 piloto + 3 expansion</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">14</div>
+          <div class="kpi-label">Data Products</div>
+          <div class="kpi-sublabel">Primera iteracion</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">24</div>
+          <div class="kpi-label">Meses Roadmap</div>
+          <div class="kpi-sublabel">3 fases</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S1: Readiness -->
+    <div class="section" id="s1">
+      <div class="section-header">
+        <div class="section-number">S1</div>
+        <h2 class="section-title">Data Mesh Readiness Assessment</h2>
+      </div>
+
+      <div class="principle-grid">
+        <div class="principle-card">
+          <div class="principle-score">3.5/5</div>
+          <div class="principle-name">Domain Ownership</div>
+          <div class="principle-desc">7 dominios claros. Equipos por dominio. Pero datos analiticos centralizados en DW.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-score">2.0/5</div>
+          <div class="principle-name">Data as a Product</div>
+          <div class="principle-desc">No existe concepto de data product. Sin SLAs, sin quality metrics, sin ownership por dataset.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-score">2.5/5</div>
+          <div class="principle-name">Self-Serve Platform</div>
+          <div class="principle-desc">Snowflake + dbt + Airflow existen. Pero todo pasa por equipo central. Queue: 3 semanas.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-score">3.0/5</div>
+          <div class="principle-name">Federated Governance</div>
+          <div class="principle-desc">Alation parcial (60%). Politicas PII definidas. Pero enforcement manual, no automatizado.</div>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <strong>Veredicto: GO condicional</strong>
+        La organizacion tiene prerequisitos organizacionales (dominios claros, equipos, liderazgo). Los gaps criticos son Data as a Product (concepto nuevo) y Self-Serve Platform (requiere inversion). Recomendacion: piloto en 2 dominios antes de adopcion full.
+      </div>
+    </div>
+
+    <!-- S2: Domain Decomposition -->
+    <div class="section" id="s2">
+      <div class="section-header">
+        <div class="section-number">S2</div>
+        <h2 class="section-title">Domain Decomposition</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Dominio</th><th>Entidades Clave</th><th>Consumers</th><th>Readiness</th><th>Fase</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Catalog</strong></td><td>Product, Category, Price, Inventory</td><td>Orders, Marketing, Analytics</td><td><span class="tag tag-ready">Alta</span></td><td>Piloto</td></tr>
+            <tr><td><strong>Orders</strong></td><td>Order, Payment, Shipment</td><td>Finance, Logistics, Analytics</td><td><span class="tag tag-ready">Alta</span></td><td>Piloto</td></tr>
+            <tr><td><strong>Customers</strong></td><td>Customer, Account, Segments</td><td>Marketing, Orders, Analytics</td><td><span class="tag tag-medium">Media</span></td><td>Fase 2</td></tr>
+            <tr><td><strong>Marketing</strong></td><td>Campaign, Attribution, Conversion</td><td>Finance, Analytics, Catalog</td><td><span class="tag tag-medium">Media</span></td><td>Fase 2</td></tr>
+            <tr><td><strong>Logistics</strong></td><td>Shipment, Route, Warehouse</td><td>Orders, CS, Finance</td><td><span class="tag tag-high">Media-Baja</span></td><td>Fase 3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Piloto: Catalog + Orders</strong>
+        Equipos maduros (7 y 9 ingenieros), alta demanda cross-domain, bajo riesgo regulatorio, interconectados (flujo critico Catalog → Orders).
+      </div>
+    </div>
+
+    <!-- S3: Data Products -->
+    <div class="section" id="s3">
+      <div class="section-header">
+        <div class="section-number">S3</div>
+        <h2 class="section-title">Data Product Design</h2>
+      </div>
+
+      <h3>Catalog Domain — 5 Data Products</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Data Product</th><th>Tipo</th><th>Freshness SLA</th><th>Availability</th><th>Consumers</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>catalog.products.current</code></td><td>Table</td><td>15 min</td><td>99.9%</td><td>Orders, Marketing, Analytics</td></tr>
+            <tr><td><code>catalog.products.historical</code></td><td>Table</td><td>24h</td><td>99.5%</td><td>Analytics, Finance</td></tr>
+            <tr><td><code>catalog.inventory.realtime</code></td><td>Stream</td><td>30 sec</td><td>99.9%</td><td>Orders, Logistics</td></tr>
+            <tr><td><code>catalog.pricing.current</code></td><td>Table</td><td>5 min</td><td>99.9%</td><td>Orders, Marketing</td></tr>
+            <tr><td><code>catalog.categories.hierarchy</code></td><td>Table</td><td>24h</td><td>99.5%</td><td>Marketing, Analytics</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Orders Domain — 4 Data Products</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Data Product</th><th>Tipo</th><th>Freshness SLA</th><th>Availability</th><th>Consumers</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>orders.transactions.daily</code></td><td>Table</td><td>1h</td><td>99.9%</td><td>Finance, Analytics</td></tr>
+            <tr><td><code>orders.events.stream</code></td><td>Stream</td><td>Real-time</td><td>99.9%</td><td>Logistics, Analytics</td></tr>
+            <tr><td><code>orders.metrics.aggregated</code></td><td>Table</td><td>1h</td><td>99.5%</td><td>Executive, Finance</td></tr>
+            <tr><td><code>orders.returns.daily</code></td><td>Table</td><td>24h</td><td>99.5%</td><td>Logistics, Finance, CS</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- S4: Platform -->
+    <div class="section" id="s4">
+      <div class="section-header">
+        <div class="section-number">S4</div>
+        <h2 class="section-title">Self-Serve Platform Requirements</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Capability</th><th>Priority</th><th>Current</th><th>Recommendation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Data Product Authoring</td><td><span class="tag tag-high">P0</span></td><td>dbt + scripts</td><td>Extend dbt with templates</td></tr>
+            <tr><td>Schema Registry</td><td><span class="tag tag-high">P0</span></td><td>None</td><td>Buy: Confluent SR</td></tr>
+            <tr><td>Data Catalog</td><td><span class="tag tag-medium">P1</span></td><td>Alation (60%)</td><td>Extend Alation coverage</td></tr>
+            <tr><td>Quality Monitoring</td><td><span class="tag tag-medium">P1</span></td><td>Ad-hoc SQL</td><td>Buy: Great Expectations + Soda</td></tr>
+            <tr><td>Access Management</td><td><span class="tag tag-medium">P1</span></td><td>Snowflake RBAC</td><td>Extend to product-level</td></tr>
+            <tr><td>Lineage Tracking</td><td><span class="tag tag-low">P2</span></td><td>Alation partial</td><td>Extend Alation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-positive">
+        <strong>Recomendacion: Hybrid approach</strong>
+        Extend Alation (catalog) y Snowflake (storage) existentes. Buy: Confluent Schema Registry + Great Expectations. Build: integration layer. Timeline: 3-6 meses.
+      </div>
+    </div>
+
+    <!-- S5: Governance -->
+    <div class="section" id="s5">
+      <div class="section-header">
+        <div class="section-number">S5</div>
+        <h2 class="section-title">Federated Governance Model</h2>
+      </div>
+
+      <h3>7 Politicas Globales</h3>
+      <div class="card">
+        <ol style="padding-left: 1.5rem;">
+          <li><strong>Naming:</strong> <code>{domain}.{entity}.{qualifier}</code> — enforced in CI/CD</li>
+          <li><strong>Schema:</strong> backward-compatible evolution — Schema Registry validation</li>
+          <li><strong>PII:</strong> classified and encrypted — auto-detection + Snowflake masking</li>
+          <li><strong>Quality:</strong> accuracy >95%, completeness >95% — Great Expectations in CI/CD</li>
+          <li><strong>Documentation:</strong> data dictionary + SLA + owner — template validation</li>
+          <li><strong>Retention:</strong> min 90 days, max per classification — lifecycle policies</li>
+          <li><strong>Access:</strong> role-based, request + approval — Alation + Snowflake RBAC</li>
+        </ol>
+      </div>
+
+      <p>Each domain implements these globally-defined policies locally. The platform team provides tooling to automate enforcement. Exceptions require governance lead approval.</p>
+    </div>
+
+    <!-- S6: Roadmap -->
+    <div class="section" id="s6">
+      <div class="section-header">
+        <div class="section-number">S6</div>
+        <h2 class="section-title">Adoption Roadmap</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Fase</th><th>Timeline</th><th>Dominios</th><th>Products</th><th>Key Milestone</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Pilot</strong></td><td>Meses 1-6</td><td>Catalog, Orders</td><td>9</td><td>Data products in production with SLAs</td></tr>
+            <tr><td><strong>2. Expansion</strong></td><td>Meses 7-12</td><td>+ Customers, Marketing</td><td>+6</td><td>Federated governance operational</td></tr>
+            <tr><td><strong>3. Maturity</strong></td><td>Meses 13-24</td><td>+ Logistics, Finance (consumer)</td><td>+2</td><td>Legacy DW decommissioned</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pre class="mermaid">
+gantt
+    title Data Mesh Roadmap — Acme Corp
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %Y
+    section Phase 1
+        Platform foundation         :a1, 2026-04-01, 90d
+        Catalog domain (5 products) :a2, 2026-05-01, 120d
+        Orders domain (4 products)  :a3, 2026-06-01, 120d
+    section Phase 2
+        Customers domain            :b1, 2026-10-01, 90d
+        Marketing domain            :b2, 2026-11-01, 90d
+    section Phase 3
+        Logistics domain            :c1, 2027-04-01, 180d
+        Legacy DW decommission      :c3, 2027-07-01, 180d
+      </pre>
+    </div>
+
+    <!-- S7: Org Change -->
+    <div class="section" id="s7">
+      <div class="section-header">
+        <div class="section-number">S7</div>
+        <h2 class="section-title">Organizational Change Requirements</h2>
+      </div>
+
+      <h3>New Roles</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Rol</th><th>Cantidad</th><th>Timing</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Data Product Owner</strong></td><td>1 per domain</td><td>Phase 1</td><td>Upskill analyst/PM</td></tr>
+            <tr><td><strong>Domain Data Engineer</strong></td><td>1-2 per domain</td><td>Phase 1-2</td><td>Transfer from central team</td></tr>
+            <tr><td><strong>Data Platform Engineer</strong></td><td>2-3</td><td>Phase 1</td><td>Evolve infra team</td></tr>
+            <tr><td><strong>Data Governance Lead</strong></td><td>1</td><td>Phase 1</td><td>Evolve current analyst</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Cultural Shift</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>De</th><th>A</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"Data is IT's problem"</td><td>"Data is a domain asset"</td></tr>
+            <tr><td>"Request data from data team"</td><td>"Discover and consume data products"</td></tr>
+            <tr><td>"Pipelines move data"</td><td>"Products serve data with SLAs"</td></tr>
+            <tr><td>"Central governance controls"</td><td>"Federated governance enables"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Recomendacion clave</strong>
+        El equipo central de Data Engineering (15 personas) transiciona gradualmente: 4-5 a Platform Team, resto distribuido a Domain Teams en Phase 1-2. No hay layoffs — hay reubicacion estrategica.
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>Sofka Technologies</strong> — Discovery Framework</p>
+    <p>Data mesh es un modelo organizacional. El exito depende del cambio cultural, no solo tecnologico.</p>
+    <p>&copy; Sofka Technologies | Autor: Javier Montaño | Marzo 2026</p>
+  </footer>
+
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>

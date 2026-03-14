@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Analysis — Ejemplo Completo | Sofka Technologies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Design System v4 — Sofka Technologies ── */
+        :root {
+            --sofka-primary: #FF7E08;
+            --sofka-primary-light: #FFF3E0;
+            --sofka-primary-hover: #E56D00;
+            --sofka-dark: #1A1A2E;
+            --sofka-dark-light: #2D2D44;
+            --sofka-success: #FFD700;
+            --sofka-success-light: #FFF8DC;
+            --sofka-text: #333333;
+            --sofka-text-light: #666666;
+            --sofka-border: #E0E0E0;
+            --sofka-bg: #FAFAFA;
+            --sofka-white: #FFFFFF;
+            --sofka-danger: #DC3545;
+            --sofka-info: #0D6EFD;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--sofka-text);
+            background-color: var(--sofka-bg);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(135deg, var(--sofka-dark) 0%, var(--sofka-dark-light) 100%);
+            color: var(--sofka-white);
+            padding: 2rem 0;
+            border-bottom: 4px solid var(--sofka-primary);
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 span {
+            color: var(--sofka-primary);
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.85rem;
+            color: #AAAACC;
+            flex-wrap: wrap;
+        }
+
+        .header-meta strong {
+            color: var(--sofka-primary);
+        }
+
+        /* ── Main ── */
+        .main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--sofka-white);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--sofka-border);
+        }
+
+        .card-header {
+            background: var(--sofka-dark);
+            color: var(--sofka-white);
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header .pass-num {
+            background: var(--sofka-primary);
+            color: var(--sofka-white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* ── Input Original ── */
+        .input-box {
+            background: var(--sofka-primary-light);
+            border-left: 4px solid var(--sofka-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ── Summary strip ── */
+        .summary-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-item {
+            background: var(--sofka-white);
+            border: 1px solid var(--sofka-border);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .summary-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--sofka-text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .summary-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--sofka-dark);
+        }
+
+        .summary-item .value.primary { color: var(--sofka-primary); }
+        .summary-item .value.success { color: #B8860B; }
+
+        /* ── Tables ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            background: var(--sofka-dark);
+            color: var(--sofka-white);
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        tbody td {
+            padding: 0.6rem 0.8rem;
+            border-bottom: 1px solid var(--sofka-border);
+            vertical-align: top;
+        }
+
+        tbody tr:hover {
+            background: var(--sofka-primary-light);
+        }
+
+        /* ── Confidence badges ── */
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-alta {
+            background: var(--sofka-success-light);
+            color: #8B6914;
+            border: 1px solid var(--sofka-success);
+        }
+
+        .badge-muy-alta {
+            background: var(--sofka-success);
+            color: var(--sofka-dark);
+            border: 1px solid #C5A300;
+        }
+
+        .badge-media {
+            background: #FFF3CD;
+            color: #856404;
+            border: 1px solid #FFCA2C;
+        }
+
+        .badge-premium {
+            background: var(--sofka-primary);
+            color: var(--sofka-white);
+            border: 1px solid var(--sofka-primary-hover);
+            font-size: 0.85rem;
+            padding: 0.2rem 0.7rem;
+        }
+
+        /* ── Corrected text box ── */
+        .corrected-box {
+            background: var(--sofka-success-light);
+            border-left: 4px solid var(--sofka-success);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ── Why chain ── */
+        .why-chain {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-chain li {
+            position: relative;
+            padding: 1rem 1rem 1rem 3.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--sofka-white);
+            border: 1px solid var(--sofka-border);
+            border-radius: 8px;
+        }
+
+        .why-chain li::before {
+            content: attr(data-level);
+            position: absolute;
+            left: 0.8rem;
+            top: 1rem;
+            background: var(--sofka-primary);
+            color: var(--sofka-white);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .why-chain li:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.7rem;
+            bottom: -0.5rem;
+            width: 2px;
+            height: 0.5rem;
+            background: var(--sofka-primary);
+        }
+
+        .why-chain .question {
+            font-weight: 600;
+            color: var(--sofka-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .why-chain .answer {
+            color: var(--sofka-text);
+        }
+
+        .why-chain .evidence {
+            font-size: 0.8rem;
+            color: var(--sofka-text-light);
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        /* ── Root cause box ── */
+        .root-cause-box {
+            background: var(--sofka-dark);
+            color: var(--sofka-white);
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--sofka-primary);
+        }
+
+        .root-cause-box strong {
+            color: var(--sofka-primary);
+        }
+
+        /* ── Reformulation block ── */
+        .reformulation {
+            background: var(--sofka-dark);
+            color: #E0E0E0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Inter', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .reformulation .key {
+            color: var(--sofka-primary);
+            font-weight: 700;
+        }
+
+        /* ── Open questions ── */
+        .questions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .questions-list li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--sofka-border);
+        }
+
+        .questions-list li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            color: var(--sofka-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ── Final summary ── */
+        .final-summary {
+            background: linear-gradient(135deg, var(--sofka-dark) 0%, var(--sofka-dark-light) 100%);
+            border-radius: 8px;
+            padding: 1.5rem;
+            color: var(--sofka-white);
+            margin-top: 2rem;
+        }
+
+        .final-summary h3 {
+            color: var(--sofka-primary);
+            margin-bottom: 1rem;
+        }
+
+        .final-summary table thead th {
+            background: rgba(255, 126, 8, 0.2);
+        }
+
+        .final-summary table tbody td {
+            border-color: rgba(255,255,255,0.1);
+            color: #E0E0E0;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--sofka-dark);
+            color: #AAAACC;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            border-top: 3px solid var(--sofka-primary);
+        }
+
+        .footer strong {
+            color: var(--sofka-primary);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .header-content, .main {
+                padding: 0 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .header-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .summary-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            thead th, tbody td {
+                padding: 0.4rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .summary-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="header">
+    <div class="header-content">
+        <h1><span>Input Analysis</span> — Ejemplo Completo</h1>
+        <div class="header-meta">
+            <span><strong>Skill:</strong> input-analysis</span>
+            <span><strong>Modo:</strong> integral (5 pases)</span>
+            <span><strong>Framework:</strong> Sofka Discovery Framework</span>
+            <span><strong>Fecha:</strong> 13 de marzo de 2026</span>
+        </div>
+    </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main class="main">
+
+    <!-- Input Original -->
+    <div class="input-box">
+        "ncsito q m ayuden cn el tema dl banco ese d la reunion xq el jefe sta presinando y no c q acer cn lo dl legasy ese q nadie entiende"
+    </div>
+
+    <!-- Summary Strip -->
+    <div class="summary-strip">
+        <div class="summary-item">
+            <div class="label">Confianza General</div>
+            <div class="value">MEDIA</div>
+        </div>
+        <div class="summary-item">
+            <div class="label">Pases Ejecutados</div>
+            <div class="value primary">5 / 5</div>
+        </div>
+        <div class="summary-item">
+            <div class="label">Errores de Superficie</div>
+            <div class="value">14</div>
+        </div>
+        <div class="summary-item">
+            <div class="label">Calibración</div>
+            <div class="value success">PREMIUM</div>
+        </div>
+        <div class="summary-item">
+            <div class="label">Idioma</div>
+            <div class="value">Español (informal)</div>
+        </div>
+        <div class="summary-item">
+            <div class="label">Modo Operacional</div>
+            <div class="value primary">Integral</div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!-- PASE 1: SUPERFICIE -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div class="card">
+        <div class="card-header">
+            <span class="pass-num">1</span>
+            Análisis de Superficie
+        </div>
+        <div class="card-body">
+            <p style="margin-bottom: 1rem; color: var(--sofka-text-light);">
+                <strong>Evaluación de calidad del input:</strong> MUY BAJA — 14 errores de superficie detectados en una sola oración.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Original</th>
+                        <th>Corregido</th>
+                        <th>Categoría</th>
+                        <th>Patrón</th>
+                        <th>Confianza</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><code>ncsito</code></td>
+                        <td>necesito</td>
+                        <td>Afán</td>
+                        <td>Vocales faltantes (e, e)</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><code>q</code></td>
+                        <td>que</td>
+                        <td>Afán</td>
+                        <td>Abreviación extrema</td>
+                        <td><span class="badge badge-muy-alta">MUY ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><code>m</code></td>
+                        <td>me</td>
+                        <td>Afán</td>
+                        <td>Abreviación de pronombre</td>
+                        <td><span class="badge badge-muy-alta">MUY ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><code>cn</code></td>
+                        <td>con</td>
+                        <td>Afán</td>
+                        <td>Vocales faltantes (o)</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><code>dl</code></td>
+                        <td>del</td>
+                        <td>Afán</td>
+                        <td>Vocales faltantes (e)</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><code>d</code></td>
+                        <td>de</td>
+                        <td>Afán</td>
+                        <td>Abreviación de preposición</td>
+                        <td><span class="badge badge-muy-alta">MUY ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><code>xq</code></td>
+                        <td>porque</td>
+                        <td>Afán</td>
+                        <td>Patrón "x"="por" + "q"="que"</td>
+                        <td><span class="badge badge-muy-alta">MUY ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><code>sta</code></td>
+                        <td>está</td>
+                        <td>Afán</td>
+                        <td>Vocales faltantes + tilde</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><code>presinando</code></td>
+                        <td>presionando</td>
+                        <td>Ortografía</td>
+                        <td>Error fonético — "i" por "io"</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><code>c</code></td>
+                        <td>sé</td>
+                        <td>Afán</td>
+                        <td>Abreviación de verbo</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><code>q</code> (2°)</td>
+                        <td>qué</td>
+                        <td>Afán</td>
+                        <td>Patrón repetido + tilde</td>
+                        <td><span class="badge badge-muy-alta">MUY ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><code>acer</code></td>
+                        <td>hacer</td>
+                        <td>Ortografía</td>
+                        <td>H omitida</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><code>lo dl</code></td>
+                        <td>lo del</td>
+                        <td>Afán</td>
+                        <td>Contracción con preposición</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><code>legasy</code></td>
+                        <td>legacy</td>
+                        <td>Spanglish</td>
+                        <td>Anglicismo con escritura fonética</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="margin: 1rem 0 0.5rem; font-weight: 600;">Texto corregido:</p>
+            <div class="corrected-box">
+                "Necesito que me ayuden con el tema del banco, ese de la reunión, porque el jefe está presionando y no sé qué hacer con lo del legacy ese que nadie entiende."
+            </div>
+            <p style="font-size: 0.85rem; color: var(--sofka-text-light);">
+                Se preserva la estructura informal del usuario. Se mantiene "legacy" como anglicismo técnico aceptado. Se agregaron comas para separar cláusulas y punto final.
+            </p>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!-- PASE 2: 5 PORQUÉS -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div class="card">
+        <div class="card-header">
+            <span class="pass-num">2</span>
+            Cinco Porqués — Causa Raíz
+        </div>
+        <div class="card-body">
+            <p style="margin-bottom: 1rem;"><strong>Solicitud superficial:</strong> "Necesito ayuda con el tema del banco, el del legacy."</p>
+
+            <ul class="why-chain">
+                <li data-level="1">
+                    <div class="question">¿Por qué necesita ayuda con el legacy del banco?</div>
+                    <div class="answer">Hay un sistema legado del cliente bancario que genera bloqueo en el equipo o en el discovery.</div>
+                    <div class="evidence">Señales: "nadie entiende" — sistema opaco; "ese de la reunión" — discutido previamente sin resolución.</div>
+                </li>
+                <li data-level="2">
+                    <div class="question">¿Por qué nadie entiende el sistema legacy?</div>
+                    <div class="answer">El sistema carece de documentación, el conocimiento está concentrado en pocas personas, o la tecnología es obsoleta.</div>
+                    <div class="evidence">Señal: "legacy ese que nadie entiende" — frustración con opacidad del sistema. [INFERENCIA]</div>
+                </li>
+                <li data-level="3">
+                    <div class="question">¿Por qué el jefe está presionando?</div>
+                    <div class="answer">Hay un compromiso externo (entregable, reunión, deadline) que depende de avanzar con el análisis del legacy.</div>
+                    <div class="evidence">Señales: "el jefe está presionando" — presión de liderazgo; "de la reunión" — presentación próxima.</div>
+                </li>
+                <li data-level="4">
+                    <div class="question">¿Por qué no sabe qué hacer?</div>
+                    <div class="answer">Le falta una metodología o framework para abordar el análisis de un sistema opaco en contexto de discovery.</div>
+                    <div class="evidence">Señal: "no sé qué hacer" — bloqueo de dirección, no de capacidad. [INFERENCIA]</div>
+                </li>
+            </ul>
+
+            <p style="font-size: 0.85rem; color: var(--sofka-text-light); margin: 0.5rem 0 1rem;">
+                Parada natural en nivel 4. El nivel 5 requeriría contexto organizacional no disponible.
+            </p>
+
+            <div class="root-cause-box">
+                <strong>Causa raíz:</strong> El usuario necesita una estrategia metodológica para analizar un sistema legacy opaco del cliente bancario, con urgencia por presión de liderazgo y una reunión próxima como deadline implícito.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!-- PASE 3: 7 ENTONCES-QUÉS -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div class="card">
+        <div class="card-header">
+            <span class="pass-num">3</span>
+            Siete Entonces-Qués — Trazado de Impacto
+        </div>
+        <div class="card-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nivel</th>
+                        <th>Entonces-Qué</th>
+                        <th>Tipo de Impacto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>El equipo tendrá un enfoque claro para abordar el análisis del sistema legacy del banco.</td>
+                        <td>Operativo — desbloqueo de equipo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>El discovery del cliente bancario podrá avanzar con el análisis AS-IS, probablemente bloqueado por la opacidad del legacy.</td>
+                        <td>Operativo — progreso de engagement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>La reunión con el jefe (y posiblemente con el cliente) tendrá contenido sustantivo: hallazgos, riesgos y camino a seguir.</td>
+                        <td>Táctico — gestión de stakeholders</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>La presión del jefe se reduce porque hay evidencia de avance y dirección clara.</td>
+                        <td>Relacional — dinámica de equipo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>El engagement con el cliente bancario mantiene credibilidad — Sofka demuestra capacidad de abordar complejidad legacy.</td>
+                        <td>Estratégico — relación comercial</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6</strong></td>
+                        <td>El análisis del legacy informa el roadmap de modernización, que probablemente es el entregable clave del discovery.</td>
+                        <td>Estratégico — valor del engagement</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="margin: 1rem 0 0.5rem; font-size: 0.85rem; color: var(--sofka-text-light);">
+                Parada en nivel 6. El nivel 7 sería especulativo sin conocer el contrato y alcance del engagement.
+            </p>
+
+            <p><strong>Calibración de profundidad:</strong> <span class="badge badge-premium">PREMIUM</span> — la cadena alcanza impacto estratégico (nivel 5-6). La respuesta afecta la credibilidad comercial de Sofka con un cliente bancario.</p>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!-- PASE 4: INTENCIÓN -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div class="card">
+        <div class="card-header">
+            <span class="pass-num">4</span>
+            Análisis de Intención
+        </div>
+        <div class="card-body">
+            <h4 style="margin-bottom: 0.8rem; color: var(--sofka-dark);">Declaraciones Explícitas</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Declaración</th>
+                        <th>Interpretación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>"Necesito que me ayuden"</td><td>Solicitud de soporte, no de entregable específico</td></tr>
+                    <tr><td>2</td><td>"Con el tema del banco"</td><td>Referencia a proyecto/cliente bancario conocido</td></tr>
+                    <tr><td>3</td><td>"Ese de la reunión"</td><td>Referencia a discusión previa sin resolución</td></tr>
+                    <tr><td>4</td><td>"El jefe está presionando"</td><td>Presión jerárquica con urgencia temporal</td></tr>
+                    <tr><td>5</td><td>"No sé qué hacer"</td><td>Admisión de bloqueo, busca dirección</td></tr>
+                    <tr><td>6</td><td>"El legacy que nadie entiende"</td><td>Frustración compartida, problema sistémico</td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin: 1.5rem 0 0.8rem; color: var(--sofka-dark);">Señales Implícitas</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Señal</th>
+                        <th>Interpretación</th>
+                        <th>Confianza</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Escritura extremadamente abreviada</td>
+                        <td>Urgencia real — escribiendo rápido bajo presión</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>"nadie entiende"</td>
+                        <td>Busca validación de que el problema no es solo suyo</td>
+                        <td><span class="badge badge-media">MEDIA</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ausencia de pregunta concreta</td>
+                        <td>No sabe qué preguntar — bloqueo de enfoque</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>"no sé qué hacer"</td>
+                        <td>Vulnerabilidad ante presión — componente emocional</td>
+                        <td><span class="badge badge-alta">ALTA</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin: 1.5rem 0 0.8rem; color: var(--sofka-dark);">Brechas de Intención</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Explícito</th>
+                        <th>Implícito</th>
+                        <th>Brecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Alcance</strong></td>
+                        <td>"Ayuda con el legacy"</td>
+                        <td>Estrategia completa de análisis</td>
+                        <td>Subestima la complejidad — pide "ayuda" pero necesita un framework</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contexto</strong></td>
+                        <td>"El de la reunión"</td>
+                        <td>Hilo previo con decisiones</td>
+                        <td>Referencias colgantes sin acceso a contexto de la reunión</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Emocional</strong></td>
+                        <td>"El jefe presionando"</td>
+                        <td>Estrés, frustración, falta de soporte</td>
+                        <td>Solicitud técnica con subtexto emocional: necesita dirección Y contención</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vocabulario</strong></td>
+                        <td>"Legacy ese"</td>
+                        <td>Core bancario o sistema transaccional</td>
+                        <td>Usa "legacy" genéricamente — podría ser monolito, mainframe, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Expertise</strong></td>
+                        <td>"No sé qué hacer"</td>
+                        <td>Marco metodológico para discovery</td>
+                        <td>No es falta de capacidad sino de marco de referencia</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="root-cause-box" style="margin-top: 1.5rem;">
+                <strong>Real Ask:</strong> "Necesito una guía metodológica para realizar un análisis AS-IS de un sistema legacy del cliente bancario que tiene poca documentación y cuyo funcionamiento no está claro para el equipo. Tengo urgencia porque hay presión de liderazgo y probablemente una reunión próxima donde debo presentar avances."
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!-- PASE 5: REFORMULACIÓN -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div class="card">
+        <div class="card-header">
+            <span class="pass-num">5</span>
+            Reformulación
+        </div>
+        <div class="card-body">
+            <div class="reformulation">
+                <span class="key">OBJETIVO:</span> Generar una estrategia de análisis AS-IS para un sistema legacy bancario opaco, con enfoque paso a paso que sea ejecutable por el equipo y presentable a liderazgo.<br><br>
+                <span class="key">CONTEXTO:</span> Engagement de discovery con cliente del sector bancario. El equipo enfrenta un sistema legacy que carece de documentación adecuada y cuyo funcionamiento interno no está claro ("nadie entiende"). Hay presión de liderazgo con una reunión próxima como deadline implícito. El usuario experimenta bloqueo metodológico, no técnico.<br><br>
+                <span class="key">INTENCIÓN:</span> El usuario busca dirección estratégica y metodológica — un framework para abordar la opacidad del legacy — no una solución técnica inmediata. Subtexto emocional: necesita también contención y validación de que el problema es abordable.<br><br>
+                <span class="key">RESTRICCIONES:</span><br>
+                &nbsp;&nbsp;- Urgencia temporal: presión de jefe y reunión próxima [EXPLÍCITO]<br>
+                &nbsp;&nbsp;- Opacidad del sistema: poca/nula documentación [EXPLÍCITO]<br>
+                &nbsp;&nbsp;- Contexto incompleto: tipo de sistema y stack desconocidos [BRECHA]<br>
+                &nbsp;&nbsp;- Información de reunión previa no disponible [BRECHA]<br><br>
+                <span class="key">OUTPUT ESPERADO:</span> Guía de análisis AS-IS para sistemas legacy opacos con: (1) pasos de exploración sin documentación, (2) técnicas de ingeniería inversa para discovery, (3) template de hallazgos presentable a liderazgo, (4) estimación de esfuerzo.<br><br>
+                <span class="key">CALIBRACIÓN:</span> <span class="badge badge-premium">PREMIUM</span> — impacto estratégico en la credibilidad de Sofka con cliente bancario. Cadena de impacto nivel 6.
+            </div>
+
+            <h4 style="margin: 1.5rem 0 0.8rem; color: var(--sofka-dark);">Preguntas de Clarificación Sugeridas</h4>
+            <ul class="questions-list">
+                <li>¿El sistema legacy es un core bancario, sistema auxiliar o integración?</li>
+                <li>¿Hay acceso al código fuente, bases de datos, o solo a la interfaz?</li>
+                <li>¿La reunión mencionada es interna (equipo Sofka) o con el cliente?</li>
+                <li>¿Qué entregable se espera para esa reunión — avance informal o documento formal?</li>
+                <li>¿Hay personas en el cliente que conozcan el sistema legacy (knowledge holders)?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!-- RESUMEN FINAL -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div class="final-summary">
+        <h3>Resumen de Análisis</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dimensión</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Errores de superficie</td><td>14 detectados (79% afán, 14% ortografía, 7% spanglish)</td></tr>
+                <tr><td>Causa raíz</td><td>Bloqueo metodológico para analizar legacy opaco bajo presión temporal</td></tr>
+                <tr><td>Profundidad de impacto</td><td>Nivel 6 — afecta credibilidad comercial de Sofka</td></tr>
+                <tr><td>Calibración</td><td><span class="badge badge-premium">PREMIUM</span></td></tr>
+                <tr><td>Brechas principales</td><td>Alcance (subestimado), Contexto (reunión), Emocional (estrés)</td></tr>
+                <tr><td>Confianza en reformulación</td><td><span class="badge badge-media">MEDIA</span> — requiere clarificación de 5 preguntas abiertas</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+    <p><strong>Sofka Technologies</strong> — Discovery Framework</p>
+    <p>Autor: Javier Montaño | 13 de marzo de 2026</p>
+    <p>&copy; Sofka Technologies 2026. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

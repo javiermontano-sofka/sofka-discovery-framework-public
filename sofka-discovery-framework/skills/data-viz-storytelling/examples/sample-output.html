@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narrativa Visual — Análisis Arquitectónico TechMart | Sofka Discovery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === BRAND TOKENS (Sofka) === */
+    :root {
+      --brand-primary: #FF7E08;
+      --brand-primary-light: #FF9A3C;
+      --brand-primary-dark: #E06A00;
+      --brand-primary-dim: rgba(255,126,8,0.10);
+      --brand-black: #1A1A2E;
+      --brand-white: #FFFFFF;
+      --brand-background: #F5F5F5;
+      --brand-muted: #9CA3AF;
+
+      /* Semantic (universal — NEVER green) */
+      --semantic-positive: #FFD700;
+      --semantic-positive-dim: rgba(255,215,0,0.12);
+      --semantic-positive-border: rgba(255,215,0,0.45);
+      --semantic-positive-text: #B8860B;
+      --semantic-warning: #D97706;
+      --semantic-warning-dim: rgba(217,119,6,0.08);
+      --semantic-critical: #DC3545;
+      --semantic-critical-dim: rgba(220,38,38,0.07);
+      --semantic-info: #2563EB;
+      --semantic-info-dim: rgba(37,99,235,0.07);
+
+      /* Typography */
+      --font-display: 'Inter', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      /* Spacing */
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    /* === BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--brand-black);
+      background: var(--brand-background);
+    }
+    a { color: var(--brand-primary); text-decoration: none; }
+    a:hover { color: var(--brand-primary-dark); }
+
+    /* === SKIP LINK === */
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--brand-primary); color: var(--brand-white);
+      padding: 8px 16px; z-index: 1000; font-size: 0.875rem;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* === HERO === */
+    .hero {
+      background: var(--brand-black);
+      border-bottom: 8px solid var(--brand-primary);
+      padding: 3rem 2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, var(--brand-primary-dim) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(30%, -30%);
+    }
+    .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 2.25rem; font-weight: 700;
+      color: var(--brand-white);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span { color: var(--brand-primary); }
+    .hero .subtitle {
+      font-size: 1.125rem; color: var(--brand-muted);
+      margin-bottom: 1.5rem;
+    }
+    .hero .meta {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      font-size: 0.8125rem; color: var(--brand-muted);
+    }
+    .hero .meta-item { display: flex; align-items: center; gap: 0.375rem; }
+
+    /* === MAIN === */
+    main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+    /* === TL;DR === */
+    .tldr {
+      background: var(--brand-primary-dim);
+      border-left: 4px solid var(--brand-primary);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .tldr h2 {
+      font-size: 0.875rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--brand-primary); margin-bottom: 0.75rem;
+    }
+    .tldr ul { padding-left: 1.25rem; }
+    .tldr li { margin-bottom: 0.375rem; font-size: 0.9375rem; }
+
+    /* === SECTIONS === */
+    .section {
+      background: var(--brand-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-number {
+      width: 48px; height: 48px;
+      background: var(--brand-black);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--brand-primary);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.375rem; font-weight: 600;
+      color: var(--brand-black);
+    }
+
+    /* === ANNOTATION === */
+    .annotation {
+      background: var(--semantic-info-dim);
+      border-left: 3px solid var(--semantic-info);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-top: 1.25rem;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    .annotation strong { color: var(--brand-black); }
+
+    .annotation-risk {
+      background: var(--semantic-critical-dim);
+      border-left-color: var(--semantic-critical);
+    }
+
+    .annotation-success {
+      background: var(--semantic-positive-dim);
+      border-left-color: var(--semantic-positive);
+    }
+
+    /* === MESSAGE === */
+    .message-principal {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--brand-black);
+      margin-bottom: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--brand-primary-dim);
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--brand-primary);
+    }
+
+    /* === ACCESSIBILITY TEXT === */
+    .accessibility-text {
+      font-size: 0.8125rem;
+      color: var(--brand-muted);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(0,0,0,0.02);
+      border-radius: var(--radius-sm);
+    }
+
+    /* === MERMAID CONTAINER === */
+    .mermaid-container {
+      margin: 1.25rem 0;
+      padding: 1.5rem;
+      background: var(--brand-white);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+    }
+
+    /* === TABLES === */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9375rem;
+    }
+    thead { background: var(--brand-black); }
+    th {
+      color: var(--brand-white);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.75rem 1rem;
+    }
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    tbody tr:hover { background: var(--brand-primary-dim); }
+    .score-high { color: var(--semantic-positive-text); font-weight: 700; }
+    .score-mid { color: var(--brand-primary-dark); font-weight: 600; }
+    .score-low { color: var(--semantic-critical); font-weight: 700; }
+
+    /* === VALIDATION TABLE === */
+    .validation-pass {
+      color: var(--semantic-positive-text);
+      font-weight: 600;
+    }
+
+    /* === BADGE === */
+    .badge {
+      display: inline-block;
+      padding: 0.1875rem 0.625rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-risk {
+      background: var(--semantic-critical-dim);
+      color: var(--semantic-critical);
+    }
+    .badge-success {
+      background: var(--semantic-positive-dim);
+      color: var(--semantic-positive-text);
+    }
+    .badge-primary {
+      background: var(--brand-primary-dim);
+      color: var(--brand-primary-dark);
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: var(--brand-black);
+      border-top: 8px solid var(--brand-primary);
+      padding: 2rem;
+      text-align: center;
+      color: var(--brand-muted);
+      font-size: 0.8125rem;
+    }
+    footer strong { color: var(--brand-primary); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero { padding: 2rem 1.25rem; }
+      .hero h1 { font-size: 1.75rem; }
+      main { padding: 1.25rem; }
+      .section { padding: 1.5rem; }
+      .hero .meta { flex-direction: column; gap: 0.5rem; }
+    }
+
+    /* === PRINT === */
+    @media print {
+      body { background: white; }
+      .skip-link { display: none; }
+      .hero { break-after: avoid; }
+      .section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+      .mermaid-container { border: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="hero-content">
+    <h1>Narrativa Visual — <span>TechMart</span></h1>
+    <p class="subtitle">Analisis Arquitectonico: Storytelling Visual del Estado Actual</p>
+    <div class="meta" aria-label="Metadata del documento">
+      <span class="meta-item">Skill: data-viz-storytelling</span>
+      <span class="meta-item">Contexto: analysis</span>
+      <span class="meta-item">Variante: tecnica</span>
+      <span class="meta-item">Fecha: 2026-03-13</span>
+    </div>
+  </div>
+</header>
+
+<main id="main" role="main">
+
+  <!-- TL;DR -->
+  <div class="tldr" role="region" aria-label="Resumen ejecutivo">
+    <h2>TL;DR</h2>
+    <ul>
+      <li>La arquitectura actual presenta un <strong>punto unico de fallo</strong>: 3 servicios comparten 1 base de datos monolitica.</li>
+      <li>El pipeline de deploy carece de observabilidad — <strong>MTTR promedio de 4.2 horas</strong>.</li>
+      <li>La secuencia de dashboard revela que el <strong>73% de incidentes</strong> se originan en el acoplamiento de datos.</li>
+      <li>Se propone descomposicion en <strong>3 bounded contexts</strong> con base de datos independiente por servicio.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1: C4 Narrativo -->
+  <section class="section" aria-labelledby="section-1-title">
+    <div class="section-header">
+      <div class="section-number" aria-hidden="true">01</div>
+      <h2 id="section-1-title" class="section-title">Diagrama C4 Narrativo — El Punto de Dolor</h2>
+    </div>
+
+    <div class="message-principal">
+      Mensaje principal: Tres servicios core dependen de una unica base de datos PostgreSQL. Cuando la BD se satura, los tres servicios caen simultaneamente.
+    </div>
+
+    <div class="accessibility-text">
+      Accesibilidad: Diagrama flowchart TD que muestra 3 servicios (orderService, catalogService, userService) conectados a 1 base de datos compartida (sharedDB) marcada como riesgo. Un API gateway dirige trafico a los 3 servicios.
+    </div>
+
+    <div class="mermaid-container">
+      <pre class="mermaid">
+flowchart TD
+    apiGateway["API Gateway&lt;br/&gt;2.3M usuarios/mes"]
+    orderService["Order Service&lt;br/&gt;Gestion de pedidos"]
+    catalogService["Catalog Service&lt;br/&gt;Productos y precios"]
+    userService["User Service&lt;br/&gt;Autenticacion y perfiles"]
+    sharedDB[("PostgreSQL Compartida&lt;br/&gt;Punto unico de fallo&lt;br/&gt;847 tablas, 1.2TB")]
+    paymentExt["Pasarela de Pagos&lt;br/&gt;(externo)"]
+    cacheLayer["Redis Cache&lt;br/&gt;Hit rate: 42%"]
+
+    apiGateway -->|"rutea requests"| orderService
+    apiGateway -->|"rutea requests"| catalogService
+    apiGateway -->|"rutea requests"| userService
+
+    orderService -->|"lee/escribe pedidos"| sharedDB
+    catalogService -->|"lee catalogo"| sharedDB
+    userService -->|"lee/escribe usuarios"| sharedDB
+
+    orderService -->|"procesa pagos"| paymentExt
+    catalogService -->|"cachea productos"| cacheLayer
+
+    classDef primary fill:#FF7E08,stroke:#1A1A2E,color:#fff
+    classDef risk fill:#DC3545,stroke:#1A1A2E,color:#fff
+    classDef success fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef neutral fill:#F8F9FA,stroke:#1A1A2E,color:#1A1A2E
+
+    class apiGateway primary
+    class sharedDB risk
+    class paymentExt neutral
+    class cacheLayer neutral
+    class orderService,catalogService,userService primary
+      </pre>
+    </div>
+
+    <div class="annotation annotation-risk">
+      <strong>Anotacion narrativa:</strong> La base de datos compartida (nodo rojo) es el cuello de botella. Con 847 tablas y 1.2TB, cualquier migracion de schema bloquea los 3 servicios. El cache Redis con solo 42% de hit rate indica que las queries no estan optimizadas para caching — el catalogo hace queries ad-hoc directas a la BD.
+    </div>
+  </section>
+
+  <!-- SECTION 2: Headline Visual -->
+  <section class="section" aria-labelledby="section-2-title">
+    <div class="section-header">
+      <div class="section-number" aria-hidden="true">02</div>
+      <h2 id="section-2-title" class="section-title">Headline — Distribucion de Incidentes por Origen</h2>
+    </div>
+
+    <div class="message-principal">
+      Mensaje principal: El 73% de los incidentes se originan en la capa de datos compartida.
+    </div>
+
+    <div class="accessibility-text">
+      Accesibilidad: Diagrama pie que muestra la distribucion de incidentes: base de datos compartida 73%, API gateway 12%, servicios externos 10%, otros 5%.
+    </div>
+
+    <div class="mermaid-container">
+      <pre class="mermaid">
+pie title Origen de Incidentes — Ultimos 12 Meses (N=187)
+    "BD Compartida" : 73
+    "API Gateway" : 12
+    "Servicios Externos" : 10
+    "Otros" : 5
+      </pre>
+    </div>
+
+    <div class="annotation annotation-risk">
+      <strong>Anotacion narrativa:</strong> De 187 incidentes en 12 meses, 137 se originaron en la base de datos compartida: locks por migrations, connection pool exhaustion, y queries lentas de catalogo que bloquearon transacciones de pedidos.
+    </div>
+  </section>
+
+  <!-- SECTION 3: Context Visual -->
+  <section class="section" aria-labelledby="section-3-title">
+    <div class="section-header">
+      <div class="section-number" aria-hidden="true">03</div>
+      <h2 id="section-3-title" class="section-title">Contexto — Flujo de un Incidente Tipico</h2>
+    </div>
+
+    <div class="message-principal">
+      Mensaje principal: Un lock de migracion en catalogService causa cascada de fallos en orderService y userService en menos de 3 minutos.
+    </div>
+
+    <div class="accessibility-text">
+      Accesibilidad: Diagrama de secuencia que muestra como un deploy de catalogService ejecuta una migracion que bloquea la BD compartida, causando timeouts en orderService y userService, con un MTTR de 4.2 horas.
+    </div>
+
+    <div class="mermaid-container">
+      <pre class="mermaid">
+sequenceDiagram
+    participant DEV as Deploy Pipeline
+    participant CAT as catalogService
+    participant DB as sharedDB
+    participant ORD as orderService
+    participant USR as userService
+    participant OPS as Ops Team
+
+    DEV->>CAT: Deploy v2.14 (schema migration)
+    CAT->>DB: ALTER TABLE products ADD COLUMN...
+    Note over DB: Table lock activo&lt;br/&gt;Duracion: 8-12 min
+    ORD->>DB: INSERT INTO orders...
+    DB-->>ORD: TIMEOUT (30s)
+    USR->>DB: SELECT FROM users...
+    DB-->>USR: TIMEOUT (30s)
+    Note over ORD,USR: Cascada de errores&lt;br/&gt;3 servicios afectados
+    ORD->>OPS: Alert: orders failing
+    USR->>OPS: Alert: auth failing
+    Note over OPS: MTTR promedio: 4.2h&lt;br/&gt;Diagnostico manual sin trazas
+      </pre>
+    </div>
+
+    <div class="annotation annotation-risk">
+      <strong>Anotacion narrativa:</strong> El patron se repite cada sprint. Un deploy rutinario de catalogo dispara una migracion que bloquea la tabla mas consultada. Sin observabilidad distribuida, el equipo de Ops tarda 4.2 horas promedio en diagnosticar la causa raiz — porque las alertas llegan desde 3 servicios distintos sin correlacion.
+    </div>
+  </section>
+
+  <!-- SECTION 4: Evidence Visual -->
+  <section class="section" aria-labelledby="section-4-title">
+    <div class="section-header">
+      <div class="section-number" aria-hidden="true">04</div>
+      <h2 id="section-4-title" class="section-title">Evidencia — Scoring de Componentes</h2>
+    </div>
+
+    <div class="message-principal">
+      Mensaje principal: La base de datos y el pipeline de deploy son los componentes con peor scoring; el API gateway es el mejor posicionado.
+    </div>
+
+    <table aria-label="Scoring de componentes arquitectonicos">
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Acoplamiento</th>
+          <th>Observabilidad</th>
+          <th>Escalabilidad</th>
+          <th>Resiliencia</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>API Gateway</td>
+          <td>4</td>
+          <td>3</td>
+          <td>4</td>
+          <td>4</td>
+          <td class="score-high">3.75</td>
+        </tr>
+        <tr>
+          <td>Order Service</td>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+          <td class="score-mid">2.00</td>
+        </tr>
+        <tr>
+          <td>Catalog Service</td>
+          <td>2</td>
+          <td>2</td>
+          <td>3</td>
+          <td>2</td>
+          <td class="score-mid">2.25</td>
+        </tr>
+        <tr>
+          <td>User Service</td>
+          <td>2</td>
+          <td>1</td>
+          <td>2</td>
+          <td>2</td>
+          <td class="score-low">1.75</td>
+        </tr>
+        <tr>
+          <td><strong>SharedDB</strong> <span class="badge badge-risk">Critico</span></td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td class="score-low">1.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="accessibility-text">
+      Accesibilidad: Diagrama quadrant chart que posiciona los componentes segun impacto y madurez. SharedDB esta en el cuadrante de alto impacto / baja madurez (zona de riesgo).
+    </div>
+
+    <div class="mermaid-container">
+      <pre class="mermaid">
+quadrantChart
+    title Impacto vs. Madurez de Componentes
+    x-axis Baja Madurez --> Alta Madurez
+    y-axis Bajo Impacto --> Alto Impacto
+    quadrant-1 Fortaleza
+    quadrant-2 Riesgo Critico
+    quadrant-3 Deuda Tecnica
+    quadrant-4 Estable
+    API Gateway: [0.75, 0.65]
+    Order Service: [0.35, 0.80]
+    Catalog Service: [0.40, 0.60]
+    User Service: [0.25, 0.50]
+    SharedDB: [0.15, 0.90]
+      </pre>
+    </div>
+
+    <div class="annotation">
+      <strong>Anotacion narrativa:</strong> SharedDB (esquina superior izquierda) concentra el mayor impacto con la menor madurez — el candidato prioritario para intervencion. El API Gateway es la unica fortaleza real: bien desacoplado, con metricas basicas, y escalable horizontalmente.
+    </div>
+  </section>
+
+  <!-- SECTION 5: Action Visual -->
+  <section class="section" aria-labelledby="section-5-title">
+    <div class="section-header">
+      <div class="section-number" aria-hidden="true">05</div>
+      <h2 id="section-5-title" class="section-title">Accion — Roadmap de Desacoplamiento</h2>
+    </div>
+
+    <div class="message-principal">
+      Mensaje principal: La descomposicion en 3 bounded contexts con base de datos independiente se ejecuta en 4 fases a lo largo de 6 meses.
+    </div>
+
+    <div class="accessibility-text">
+      Accesibilidad: Diagrama flowchart LR que muestra 4 fases de desacoplamiento: observabilidad (4 semanas), separar userDB (6 semanas), separar catalogDB (8 semanas), y desacoplar orderDB + eliminar sharedDB (6 semanas).
+    </div>
+
+    <div class="mermaid-container">
+      <pre class="mermaid">
+flowchart LR
+    fase1["Fase 1&lt;br/&gt;Observabilidad&lt;br/&gt;4 semanas"]
+    fase2["Fase 2&lt;br/&gt;Separar userDB&lt;br/&gt;6 semanas"]
+    fase3["Fase 3&lt;br/&gt;Separar catalogDB&lt;br/&gt;8 semanas"]
+    fase4["Fase 4&lt;br/&gt;Desacoplar orderDB&lt;br/&gt;+ Eliminar sharedDB&lt;br/&gt;6 semanas"]
+
+    fase1 -->|"trazas distribuidas&lt;br/&gt;habilitadas"| fase2
+    fase2 -->|"userService&lt;br/&gt;independiente"| fase3
+    fase3 -->|"catalogService&lt;br/&gt;independiente"| fase4
+
+    classDef primary fill:#FF7E08,stroke:#1A1A2E,color:#fff
+    classDef risk fill:#DC3545,stroke:#1A1A2E,color:#fff
+    classDef success fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef neutral fill:#F8F9FA,stroke:#1A1A2E,color:#1A1A2E
+
+    class fase1 primary
+    class fase2,fase3 neutral
+    class fase4 success
+      </pre>
+    </div>
+
+    <div class="annotation annotation-success">
+      <strong>Anotacion narrativa:</strong> La Fase 1 (naranja) es prerequisito: sin observabilidad, las fases de separacion serian ciegas. La Fase 4 (dorado) marca el exito: la eliminacion de sharedDB como punto unico de fallo. El orden de separacion (user &rarr; catalog &rarr; order) sigue la complejidad ascendente — userService tiene el schema mas simple (23 tablas) y orderService el mas complejo (312 tablas con FK cruzadas).
+    </div>
+  </section>
+
+  <!-- SECTION 6: Decisiones Visuales -->
+  <section class="section" aria-labelledby="section-6-title">
+    <div class="section-header">
+      <div class="section-number" aria-hidden="true">06</div>
+      <h2 id="section-6-title" class="section-title">Decisiones de Visualizacion</h2>
+    </div>
+
+    <table aria-label="Justificacion de decisiones visuales">
+      <thead>
+        <tr>
+          <th>Decision</th>
+          <th>Justificacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-primary">C4 flowchart TD</span> para arquitectura</td>
+          <td>Muestra jerarquia: gateway &rarr; servicios &rarr; BD. La direccion top-down refleja el flujo de requests</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-primary">Pie chart</span> para incidentes</td>
+          <td>Composicion de un todo (100% incidentes). Pocos segmentos (4). Mensaje claro: un segmento domina</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-primary">Sequence diagram</span> para cascada</td>
+          <td>Muestra temporalidad y causalidad entre actores. El pattern lock &rarr; timeout &rarr; cascada es inherentemente secuencial</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-primary">Quadrant chart</span> para scoring</td>
+          <td>Posiciona componentes en dos dimensiones simultaneamente. Revela clusters y outliers visualmente</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-primary">Flowchart LR</span> para roadmap</td>
+          <td>Flujo izquierda-derecha = progresion temporal natural. 4 fases = 4 nodos, legible sin zoom</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 7: Validation Gate -->
+  <section class="section" aria-labelledby="section-7-title">
+    <div class="section-header">
+      <div class="section-number" aria-hidden="true">07</div>
+      <h2 id="section-7-title" class="section-title">Validation Gate</h2>
+    </div>
+
+    <table aria-label="Resultados de validacion">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Chart type matches data pattern</td>
+          <td class="validation-pass">Composicion=pie, flujo=sequence, posicion=quadrant, jerarquia=flowchart TD, timeline=flowchart LR</td>
+        </tr>
+        <tr>
+          <td>One message per visualization</td>
+          <td class="validation-pass">Cada diagrama tiene un "mensaje principal" declarado antes del diagrama</td>
+        </tr>
+        <tr>
+          <td>Annotations are selective</td>
+          <td class="validation-pass">Solo se anotan: punto de fallo, MTTR, % dominante, fase critica</td>
+        </tr>
+        <tr>
+          <td>Mermaid follows standards</td>
+          <td class="validation-pass">Todos: &le;20 nodos, IDs descriptivos, edges con labels de accion, max 4 classDefs</td>
+        </tr>
+        <tr>
+          <td>Accessibility text present</td>
+          <td class="validation-pass">Texto de accesibilidad antes de cada diagrama</td>
+        </tr>
+        <tr>
+          <td>Brand colors correct</td>
+          <td class="validation-pass">Orange #FF7E08, gold #FFD700, red #DC3545. Cero uso de verde</td>
+        </tr>
+        <tr>
+          <td>Visual sequence builds argument</td>
+          <td class="validation-pass">Problema (C4) &rarr; Evidencia (pie) &rarr; Impacto (sequence) &rarr; Scoring (quadrant) &rarr; Accion (roadmap)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer role="contentinfo">
+  <p><strong>Sofka Discovery Framework</strong> — data-viz-storytelling skill</p>
+  <p>Caso: TechMart e-commerce — Analisis AS-IS arquitectonico</p>
+  <p>&copy; Sofka Technologies. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Mermaid CDN v10 -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#FF7E08',
+      primaryTextColor: '#fff',
+      primaryBorderColor: '#1A1A2E',
+      lineColor: '#1A1A2E',
+      secondaryColor: '#F8F9FA',
+      tertiaryColor: '#FFD700',
+      fontFamily: 'Inter, system-ui, sans-serif'
+    }
+  });
+</script>
+
+</body>
+</html>
