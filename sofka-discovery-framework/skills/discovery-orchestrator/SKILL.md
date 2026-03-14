@@ -18,11 +18,32 @@ allowed-tools:
 
 # Sofka Discovery Orchestrator
 
-The single entry point for every Sofka discovery engagement. Coordinates 48 specialized skills across 8 pipeline phases (0-6 + 3b) and 8 domains, assembles and manages a 7-expert dream team + impartial conductor, enforces 3 quality gates, manages inter-phase data contracts, and maintains a living discovery plan with input tracking. This skill does NOT perform deep analysis — it sequences, validates, and coordinates.
+The single entry point for every Sofka discovery engagement. Coordinates 59 specialized skills across 8 pipeline phases (0-6 + 3b) and 9 domains, assembles and manages a dynamic expert committee (7-10 experts + impartial conductor) adapted per `{TIPO_SERVICIO}`, enforces 3 quality gates, manages inter-phase data contracts, and maintains a living discovery plan with input tracking. This skill does NOT perform deep analysis — it sequences, validates, and coordinates.
+
+
+## Service Type Parameter
+
+`{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design` | `Digital-Transformation` | `Multi-Service`
+
+Determines: skill variants activated, expert committee composition, input requirements, deliverable naming, domain model used. See `references/service-type-matrix.md` for detection rules and routing logic.
+
+### Auto-Detection Rules (Priority Order)
+1. Explicit parameter in command invocation
+2. User states service type in prompt
+3. Codebase detected → SDA
+4. Process/BPMN artifacts detected → RPA
+5. Test artifacts dominant → QA
+6. Data pipelines/models detected → Data-AI
+7. Cloud infrastructure configs dominant → Cloud
+8. Design assets dominant → UX-Design
+9. Multiple service indicators → Multi-Service
+10. Default → SDA (backward compatible)
+
+Always confirm detected service type with user before proceeding.
 
 ## Principio Rector
 
-**El discovery sin orquestación es un conjunto de análisis inconexos disfrazados de consultoría.** Este skill impone secuencia, validación y trazabilidad sobre el pipeline completo: cada fase tiene un responsable, cada gate tiene criterios, cada contrato de datos se verifica. La orquestación es lo que convierte 48 skills individuales en un programa de consultoría confiable.
+**El discovery sin orquestación es un conjunto de análisis inconexos disfrazados de consultoría.** Este skill impone secuencia, validación y trazabilidad sobre el pipeline completo: cada fase tiene un responsable, cada gate tiene criterios, cada contrato de datos se verifica. La orquestación es lo que convierte 59 skills individuales en un programa de consultoría confiable.
 
 ### Filosofía de Orquestación
 
@@ -30,7 +51,7 @@ The single entry point for every Sofka discovery engagement. Coordinates 48 spec
 2. **Contratos, no confianza.** Los data contracts entre fases se verifican explícitamente. La confianza se construye con evidencia, no con supuestos.
 3. **El conductor no analiza.** Coordinación pura. Las opiniones técnicas son de los expertos. El conductor secuencia, valida y escala.
 
-## Skill Catalog (48 skills across 8 domains)
+## Skill Catalog (59 skills across 9 domains)
 
 ### Discovery Pipeline (16 skills — core engagement flow)
 | Skill | Phase | Purpose |
@@ -111,6 +132,22 @@ The single entry point for every Sofka discovery engagement. Coordinates 48 spec
 | html-brand | Branded HTML deliverables, Design System v4 |
 | ux-writing | Microcopy, readability, content standards |
 | roadmap-poc | PoC/MVP sprint planning, kickoff protocol |
+
+
+### Service Discovery (11 skills — universal service coverage)
+| Skill | Purpose |
+|-------|---------|
+| rpa-discovery | Process landscape, automation scoring, bot architecture |
+| qa-service-discovery | TMMi assessment, test factory, QA CoE design |
+| ai-center-discovery | AI readiness (AI SCALE), use case portfolio, model governance |
+| management-discovery | PMO maturity, methodology fitness, Factor WOW |
+| staff-augmentation-discovery | Talent gap, skills matrix, staffing model |
+| digital-transformation-discovery | Digital maturity, multi-service program design |
+| cloud-service-discovery | Cloud readiness, DORA metrics, FinOps |
+| bi-analytics-discovery | Data maturity (DCAM), BI landscape, self-service |
+| ux-design-discovery | Design maturity, design system, UX research capability |
+| mentoring-training-discovery | Capability assessment, learning paths, knowledge transfer |
+| mini-apps-discovery | Citizen developer readiness, low-code platform assessment |
 
 ## Output Format Protocol
 
@@ -292,17 +329,22 @@ Generated: [date] | Variant: [full/minimal/quick] | Estimated: [timeline]
 
 ### Step 3: Validate Minimum Viable Inputs
 
-Before starting Phase 1, verify:
+Before starting Phase 1, verify service-type-appropriate inputs:
 
-| Input | Required For | Workaround if Missing |
-|-------|-------------|----------------------|
-| Source code | Phase 1 | Cannot proceed; request access |
-| Build config | Phase 1 | Infer from package files; flag as assumption |
-| Deployment config | Phase 1 | Infer from Dockerfiles/CI; flag as assumption |
-| Stakeholder list | Phase 0 | Skip Phase 0; start at Phase 1 with assumptions |
-| Industry sector | All phases | Ask once: "What industry is the client in?" |
+| Service Type | Required Inputs | Workaround if Missing |
+|-------------|----------------|----------------------|
+| SDA | Source code, build config, deployment config | Cannot proceed without source code |
+| QA | Test artifacts, QA tools, CI/CD access | Interview-based; flag as assumption |
+| Management | Methodology docs, team structure, governance | Workshop-based discovery |
+| RPA | Process documentation, BPMN, system access | Process mining or interviews |
+| Data-AI | Data catalog, pipeline configs, model inventory | Data profiling; flag gaps |
+| Cloud | Infra inventory, cloud console, deployment configs | Cloud assessment tools |
+| SAS | Org charts, role descriptions, skills inventory | HR interviews; flag gaps |
+| UX-Design | Design assets, research artifacts, brand guidelines | Heuristic evaluation |
+| Digital-Transformation | Executive strategy, org structure | Stakeholder workshops |
+| Multi-Service | Varies by included services | Composite validation |
 
-If source code is unavailable: halt and request. All other inputs have workarounds.
+**SDA only:** If source code is unavailable, halt and request. All other service types can proceed without source code using appropriate workarounds.
 
 ### Step 4: Activate Industry Lens
 
