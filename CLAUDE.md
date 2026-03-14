@@ -20,6 +20,12 @@
 - `/sofka-discovery-framework:pitch` — 08_Pitch_Ejecutivo (C-level business case)
 - `/sofka-discovery-framework:handover` — 09_Handover_Operaciones (90-day transition)
 
+### Service-Type Discovery Commands
+- `/sdf:rpa-discovery` — RPA & process automation discovery ({TIPO_SERVICIO}=RPA)
+- `/sdf:qa-discovery` — QA-as-a-service discovery ({TIPO_SERVICIO}=QA)
+- `/sdf:ai-discovery` — AI Center & data platform discovery ({TIPO_SERVICIO}=Data-AI)
+- `/sdf:transformation` — Digital transformation program discovery ({TIPO_SERVICIO}=Digital-Transformation)
+
 ### Operations Commands
 - `/sofka-discovery-framework:discovery-review` — Audit deliverables (scorecard, cross-checks, verdict)
 - `/sofka-discovery-framework:discovery-improve` — Evolve deliverables (diagnose, improve, validate delta)
@@ -78,3 +84,4 @@ Markdown-excellence: TL;DR (3-5 bullets), dense prose, tables 🟢/🟡/🔴, Me
 | {VARIANTE} | ejecutiva (~40%), técnica (full) | técnica |
 | {ADJUNTOS} | procesar-todo, solo-código, ignorar | procesar-todo |
 | {PROFUNDIDAD} | ejecutivo, técnico, exhaustivo | técnico |
+| {TIPO_SERVICIO} | SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service | SDA |
