@@ -15,6 +15,8 @@ allowed-tools:
   - Bash
 ---
 
+> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Cloud`. Los pipelines CI/CD y la seguridad en el ciclo de desarrollo son inherentes a estas líneas de servicio. Para seguridad en otros contextos, consulte `security-architecture`.
+
 # DevSecOps Architecture: Delivery & Security Pipeline
 
 DevSecOps architecture designs how software is built, tested, secured, and released to production. It integrates security into every stage of the delivery pipeline, ensuring code quality, compliance, and supply chain integrity.

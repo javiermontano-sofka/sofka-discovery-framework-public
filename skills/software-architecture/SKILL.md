@@ -15,6 +15,8 @@ allowed-tools:
   - Bash
 ---
 
+> **Alcance:** Este skill es específico para `{TIPO_SERVICIO}=SDA` (Software Development & Architecture). Para arquitectura en otros tipos de servicio, consulte `enterprise-architecture` (visión empresarial), `solutions-architecture` (integración E2E), `infrastructure-architecture` (infraestructura), o el skill de discovery específico del tipo de servicio.
+
 # Software Architecture: Internal System Structure & Design Decisions
 
 Software architecture defines how code is organized internally — module boundaries, layer separation, dependency direction, design patterns, and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand structure, maintain it consistently, and evolve it strategically.
