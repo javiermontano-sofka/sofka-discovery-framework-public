@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narrativa de Transformaci&oacute;n &mdash; Meridian Insurance</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad: true, theme: 'base', themeVariables: {primaryColor: '#FF7E08', primaryTextColor: '#fff', lineColor: '#1A1A2E'}});</script>
+  <style>
+    :root {
+      --brand-primary: #FF7E08;
+      --brand-dark: #1A1A2E;
+      --brand-success: #FFD700;
+      --brand-blue: #3b82f6;
+      --brand-amber: #f59e0b;
+      --brand-surface: #f8f9fa;
+      --brand-text: #1A1A2E;
+      --brand-muted: #6b7280;
+      --radius: 8px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--brand-text); background: #fff; line-height: 1.7; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .header-bar { background: var(--brand-dark); color: #fff; padding: 2rem 1.5rem; margin: -2rem -1.5rem 2rem; border-bottom: 4px solid var(--brand-primary); }
+    .header-bar h1 { font-size: 2rem; color: #fff; margin-bottom: 0.25rem; }
+    .header-bar .subtitle { color: #a0a0b8; font-size: 0.95rem; }
+    h2 { font-size: 1.5rem; color: var(--brand-dark); margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--brand-primary); }
+    h3 { font-size: 1.15rem; color: var(--brand-dark); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    h4 { font-size: 1rem; color: var(--brand-primary); margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    p { margin-bottom: 1rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+    th { background: var(--brand-dark); color: #fff; padding: 0.65rem 0.75rem; text-align: left; font-weight: 600; }
+    td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    tr:nth-child(even) td { background: var(--brand-surface); }
+    .act-card { background: var(--brand-surface); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-left: 4px solid var(--brand-primary); }
+    .act-card.pain { border-left-color: #ef4444; }
+    .act-card.tension { border-left-color: var(--brand-amber); }
+    .act-card.resolution { border-left-color: var(--brand-success); }
+    .act-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .act-label.pain { color: #ef4444; }
+    .act-label.tension { color: var(--brand-amber); }
+    .act-label.resolution { color: #6D5700; }
+    blockquote { border-left: 4px solid var(--brand-primary); padding: 1rem 1.25rem; margin: 1rem 0 1.5rem; background: #FFF8E1; color: #6D5700; font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .scenario-card { background: var(--brand-surface); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1rem 0; }
+    .scenario-card.recommended { border: 2px solid var(--brand-success); background: linear-gradient(135deg, #FFF8E1, #FFFDE7); }
+    .scenario-card h3 { margin-top: 0; }
+    .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-right: 0.25rem; }
+    .tag-evidence { background: #dbeafe; color: #1e40af; }
+    .tag-inference { background: #fef3c7; color: #92400e; }
+    .tag-stakeholder { background: #F3E5F5; color: #7B1FA2; }
+    .risk-cascade { background: var(--brand-dark); color: #e5e7eb; padding: 1.5rem; border-radius: var(--radius); margin: 1rem 0 1.5rem; }
+    .risk-cascade .step { padding: 0.5rem 0; border-bottom: 1px solid #2a2a4e; }
+    .risk-cascade .step:last-child { border-bottom: none; }
+    .risk-cascade .step-label { color: var(--brand-primary); font-weight: 700; font-size: 0.85rem; }
+    .risk-cascade .critical { color: #ef4444; font-weight: 700; }
+    .technique-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.5rem; }
+    .technique-item { background: var(--brand-surface); border-radius: var(--radius); padding: 1rem; border-top: 3px solid var(--brand-primary); }
+    .technique-item strong { color: var(--brand-dark); display: block; margin-bottom: 0.25rem; }
+    .technique-item .example { font-size: 0.85rem; color: var(--brand-muted); font-style: italic; }
+    .mermaid-container { margin: 1.5rem 0; padding: 1rem; background: var(--brand-surface); border-radius: var(--radius); border: 1px solid #e5e7eb; }
+    .sofka-badge { display: inline-block; background: var(--brand-primary); color: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+    .success-story { background: linear-gradient(135deg, #FFF8E1, #FFFDE7); border: 2px solid var(--brand-success); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; }
+    .success-story h3 { color: #6D5700; margin-top: 0; }
+    ol, ul { margin: 0.5rem 0 1rem 1.5rem; }
+    li { margin-bottom: 0.35rem; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--brand-primary); color: var(--brand-muted); font-size: 0.85rem; }
+    @media print {
+      body { font-size: 11pt; background: white; }
+      .container { max-width: 100%; padding: 0; }
+      .header-bar { background: white; color: var(--brand-dark); border: 2px solid var(--brand-dark); }
+      .header-bar h1 { color: var(--brand-primary); }
+      .act-card, .scenario-card { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header-bar">
+    <span class="sofka-badge">SOFKA DISCOVERY FRAMEWORK</span>
+    <h1>Narrativa de Transformaci&oacute;n &mdash; Meridian Insurance</h1>
+    <p class="subtitle">Proyecto: Meridian Insurance | Fecha: 13 de marzo de 2026 | Tipo: Cross-deliverable + Scenario narratives | Audiencia: Mixed</p>
+  </div>
+
+  <!-- 1. Context -->
+  <h2>1. Contexto Narrativo</h2>
+  <p>Meridian Insurance opera una plataforma de gesti&oacute;n de siniestros (claims) construida sobre un monolito Java/Oracle desplegado on-premise desde 2011. El sistema procesa 45,000 claims/mes con un tiempo promedio de resoluci&oacute;n de 18 d&iacute;as y un NPS de 32 (industria: 45). La empresa enfrenta presi&oacute;n regulatoria (nueva normativa de tiempos de respuesta en 2027), competidores insurtech que resuelven claims en &lt;48 horas, y un equipo de 120 ajustadores que dedica el 40% de su tiempo a tareas manuales.</p>
+  <p><strong>Objetivo narrativo:</strong> Construir el arco que conecte el dolor actual (claims lentos, ajustadores frustrados, clientes insatisfechos) con la visi&oacute;n de transformaci&oacute;n (claims inteligentes, ajustadores empoderados, clientes leales), pasando por el punto de decisi&oacute;n cr&iacute;tico (tres futuros posibles).</p>
+
+  <!-- 2. Master Arc -->
+  <h2>2. Master Narrative Arc (Cross-Deliverable)</h2>
+  <blockquote>El arco maestro: De &ldquo;procesamos siniestros&rdquo; a &ldquo;transformamos momentos cr&iacute;ticos en experiencias de confianza.&rdquo;</blockquote>
+  <table>
+    <tr><th>Entregable</th><th>Momento</th><th>Frase Gu&iacute;a</th></tr>
+    <tr><td>00 Plan</td><td><strong>Compromiso</strong></td><td>&ldquo;Nos comprometemos a mirar sin adornos c&oacute;mo Meridian procesa el momento m&aacute;s cr&iacute;tico de la relaci&oacute;n con sus clientes.&rdquo;</td></tr>
+    <tr><td>01 Stakeholders</td><td><strong>Voces</strong></td><td>&ldquo;Detr&aacute;s de cada claim hay un ajustador que quiere resolver r&aacute;pido, un cliente que quiere sentirse protegido, y un gerente que necesita los n&uacute;meros.&rdquo;</td></tr>
+    <tr><td>02 Brief</td><td><strong>Panorama</strong></td><td>&ldquo;En 3 minutos: 45K claims/mes, 18 d&iacute;as promedio, 12% de p&eacute;rdida de clientes por insatisfacci&oacute;n.&rdquo;</td></tr>
+    <tr><td style="background:#FFF3E0;font-weight:700">03 AS-IS</td><td style="background:#FFF3E0"><strong>Revelaci&oacute;n</strong></td><td style="background:#FFF3E0">&ldquo;El 40% del tiempo de un ajustador no se dedica a ajustar &mdash; se dedica a buscar documentos, clasificar manualmente, y navegar 7 sistemas.&rdquo;</td></tr>
+    <tr><td>04 Flows</td><td><strong>Fractura</strong></td><td>&ldquo;El flujo cruza 7 sistemas, 4 equipos, 23 handoffs. En cada handoff se pierde contexto. En cada p&eacute;rdida, el cliente espera.&rdquo;</td></tr>
+    <tr><td style="background:#FFF8E1;font-weight:700">05 Scenarios</td><td style="background:#FFF8E1"><strong>Encrucijada</strong></td><td style="background:#FFF8E1">&ldquo;Tres futuros posibles. Uno conserva lo conocido. Otro transforma lo cr&iacute;tico. El tercero reimagina todo. Meridian debe elegir.&rdquo;</td></tr>
+    <tr><td>06 Roadmap</td><td><strong>Camino</strong></td><td>&ldquo;El camino elegido: 4 fases en 14 meses. Cada fase entrega valor.&rdquo;</td></tr>
+    <tr><td>07 Spec</td><td><strong>Precisi&oacute;n</strong></td><td>&ldquo;Exactamente qu&eacute; construimos: 12 casos de uso, 47 reglas de negocio, 3 integraciones cr&iacute;ticas.&rdquo;</td></tr>
+    <tr><td style="background:#FFF3E0;font-weight:700">08 Pitch</td><td style="background:#FFF3E0"><strong>Llamada</strong></td><td style="background:#FFF3E0">&ldquo;Cada d&iacute;a que pasa, Meridian pierde 3.2 clientes por frustraci&oacute;n en claims. La pregunta no es si transformar &mdash; es cu&aacute;ndo.&rdquo;</td></tr>
+    <tr><td>09 Handover</td><td><strong>Primer paso</strong></td><td>&ldquo;El lunes, Sprint 0 arranca con 3 personas, 1 objetivo: el primer claim procesado con IA en 6 semanas.&rdquo;</td></tr>
+    <tr><td>10-12</td><td><strong>S&iacute;ntesis</strong></td><td>&ldquo;5 hallazgos que cambian la conversaci&oacute;n. La IA no reemplaza al ajustador &mdash; le devuelve su tiempo.&rdquo;</td></tr>
+  </table>
+
+  <!-- 3. Transformation Narrative -->
+  <h2>3. Transformation Narrative &mdash; Claims Processing</h2>
+
+  <div class="act-card pain">
+    <div class="act-label pain">ACTO 1 &mdash; ESTADO ACTUAL (DOLOR)</div>
+    <h4>Contextualizaci&oacute;n</h4>
+    <p>El equipo de 120 ajustadores de Meridian Insurance dedica el 40% de su jornada laboral a tareas que no son ajuste de siniestros. <span class="tag tag-stakeholder">STAKEHOLDER</span> Entrevista con Mar&iacute;a Gonz&aacute;lez, Gerente de Claims.</p>
+    <p>Un ajustador t&iacute;pico inicia su d&iacute;a con 15-20 claims en cola. Para cada claim debe: abrir el sistema legacy (2 min de carga promedio <span class="tag tag-evidence">C&Oacute;DIGO</span>), buscar la p&oacute;liza en un segundo sistema sin integraci&oacute;n directa <span class="tag tag-evidence">CONFIG</span>, clasificar manualmente sin modelo de clasificaci&oacute;n <span class="tag tag-evidence">DOC</span>, y solicitar documentaci&oacute;n al cliente v&iacute;a email <span class="tag tag-stakeholder">STAKEHOLDER</span>.</p>
+
+    <h4>Cuantificaci&oacute;n</h4>
+    <table>
+      <tr><th>M&eacute;trica</th><th>Actual</th><th>Benchmark</th><th>Brecha</th></tr>
+      <tr><td>Tiempo resoluci&oacute;n</td><td>18 d&iacute;as</td><td>5 d&iacute;as (l&iacute;der)</td><td style="color:#ef4444;font-weight:600">3.6x</td></tr>
+      <tr><td>NPS claims</td><td>32</td><td>45 (mediana)</td><td style="color:#ef4444;font-weight:600">-13</td></tr>
+      <tr><td>Tasa re-apertura</td><td>8.5%</td><td>3%</td><td style="color:#ef4444;font-weight:600">2.8x</td></tr>
+      <tr><td>Costo por claim</td><td>$142</td><td>$85 (mediana)</td><td style="color:#ef4444;font-weight:600">+67%</td></tr>
+      <tr><td>Abandono post-claim</td><td>12%</td><td>6%</td><td style="color:#ef4444;font-weight:600">2x</td></tr>
+    </table>
+
+    <h4>Personalizaci&oacute;n</h4>
+    <blockquote><strong>Mar&iacute;a Gonz&aacute;lez, Gerente de Claims:</strong> &ldquo;Mis ajustadores son buenos en lo que hacen. Pero pasan la mitad del d&iacute;a peleando con sistemas en lugar de resolviendo claims. Cuando un cliente llama frustrado, el ajustador ya est&aacute; frustrado tambi&eacute;n.&rdquo;</blockquote>
+    <blockquote><strong>Carlos Ruiz, Ajustador Senior (12 a&ntilde;os):</strong> &ldquo;Yo s&eacute; clasificar un siniestro en 30 segundos mirando las fotos. Pero el sistema me obliga a llenar 14 campos. Son 8 minutos por claim. Multiplicado por 18 claims al d&iacute;a...&rdquo;</blockquote>
+  </div>
+
+  <div class="act-card tension">
+    <div class="act-label tension">ACTO 2 &mdash; PUNTO DE DECISI&Oacute;N (TENSI&Oacute;N)</div>
+    <h4>Si no se act&uacute;a</h4>
+    <p>Con crecimiento de claims +8% YoY y sin mejora en productividad, Meridian necesitar&aacute; 18 ajustadores adicionales en 2027 solo para mantener el tiempo actual de 18 d&iacute;as. <span class="tag tag-inference">INFERENCIA</span> La nueva normativa (Q1 2027) establece m&aacute;ximo 10 d&iacute;as. Meridian cumple en el 43% de los casos. <span class="tag tag-evidence">DOC</span></p>
+
+    <h4>Proyecci&oacute;n de Costo de Inacci&oacute;n (COI)</h4>
+    <table>
+      <tr><th>Componente</th><th>Yr1</th><th>Yr2</th><th>Yr3</th></tr>
+      <tr><td>18 FTE adicionales</td><td>&mdash;</td><td>$1.2M</td><td>$1.25M</td></tr>
+      <tr><td>Multas regulatorias (est.)</td><td>&mdash;</td><td>$400K</td><td>$400K</td></tr>
+      <tr><td>P&eacute;rdida de clientes</td><td>$8.1M</td><td>$8.7M</td><td>$9.4M</td></tr>
+      <tr style="font-weight:700;background:#FFF8E1"><td>Total COI acumulado</td><td>$8.1M</td><td>$10.3M</td><td>$11.05M</td></tr>
+    </table>
+    <p><em>Magnitudes de FTE-meses, no precios. <span class="tag tag-inference">INFERENCIA</span></em></p>
+
+    <h4>Evidencia que gu&iacute;a</h4>
+    <ol>
+      <li>Cuello de botella = clasificaci&oacute;n manual (40% del tiempo) <span class="tag tag-evidence">C&Oacute;DIGO</span></li>
+      <li>72% de claims clasificables con reglas + ML (&gt;95% accuracy) <span class="tag tag-inference">INFERENCIA</span></li>
+      <li>Cada handoff agrega 1.2 d&iacute;as al ciclo <span class="tag tag-evidence">C&Oacute;DIGO</span></li>
+      <li>Ajustadores piden el cambio (89% favorable en encuesta) <span class="tag tag-stakeholder">STAKEHOLDER</span></li>
+      <li>Plataforma legacy soporta APIs (23 endpoints disponibles) <span class="tag tag-evidence">C&Oacute;DIGO</span></li>
+    </ol>
+  </div>
+
+  <div class="act-card resolution">
+    <div class="act-label resolution">ACTO 3 &mdash; ESTADO FUTURO (RESOLUCI&Oacute;N)</div>
+    <blockquote>Es marzo de 2028. Mar&iacute;a Gonz&aacute;lez abre el dashboard de Claims Intelligence a las 8:00 AM. El sistema ya clasific&oacute; autom&aacute;ticamente el 72% de los claims de la noche. Carlos Ruiz revisa su primer claim &mdash; clasificaci&oacute;n sugerida, p&oacute;liza vinculada, fotos organizadas por tipo de da&ntilde;o. En 4 minutos, confirma, ajusta el monto, y cierra. Antes tardaba 45 minutos.</blockquote>
+    <table>
+      <tr><th>M&eacute;trica</th><th>Actual</th><th>Proyectado (14 meses)</th><th>Mejora</th></tr>
+      <tr><td>Tiempo resoluci&oacute;n</td><td>18 d&iacute;as</td><td>6 d&iacute;as</td><td style="color:#6D5700;font-weight:600">3x</td></tr>
+      <tr><td>NPS claims</td><td>32</td><td>48+</td><td style="color:#6D5700;font-weight:600">+16 pts</td></tr>
+      <tr><td>Claims auto-clasificados</td><td>0%</td><td>72%</td><td style="color:#6D5700;font-weight:600">Nuevo</td></tr>
+      <tr><td>Tiempo manual ajustador</td><td>40%</td><td>12%</td><td style="color:#6D5700;font-weight:600">-70%</td></tr>
+      <tr><td>Costo por claim</td><td>$142</td><td>$78</td><td style="color:#6D5700;font-weight:600">-45%</td></tr>
+    </table>
+    <p><strong>Primer paso:</strong> Sprint 0 arranca la semana del 24 de marzo de 2026 con 3 personas. Objetivo: clasificador con &gt;90% accuracy en 6 semanas.</p>
+  </div>
+
+  <!-- 4. Scenario Narratives -->
+  <h2>4. Scenario Narratives &mdash; Deliverable 05</h2>
+
+  <div class="scenario-card">
+    <h3>Escenario A: &ldquo;El Camino Seguro&rdquo; &mdash; Optimizaci&oacute;n Incremental</h3>
+    <blockquote>Imagine que estamos en septiembre de 2027. Meridian implement&oacute; automatizaciones puntuales: macros de clasificaci&oacute;n, plantillas de email, un peque&ntilde;o portal de carga de documentos.</blockquote>
+    <p><strong>D&iacute;a a d&iacute;a:</strong> Los ajustadores siguen usando ClaimsCore v3.2 con macros que reducen 14 campos a 6. Tiempo de resoluci&oacute;n baj&oacute; de 18 a 14 d&iacute;as. Cumplimiento parcial de normativa (58%).</p>
+    <p><strong>Que ganamos:</strong> Reducci&oacute;n de 22% en tiempo. Moral ligeramente mejorada. Sin disrupciones.</p>
+    <p><strong>Que arriesgamos:</strong> La brecha con insurtechs se mantuvo. Normativa cumplida parcialmente. Mar&iacute;a dice: &ldquo;Mejoramos, pero no transformamos.&rdquo;</p>
+  </div>
+
+  <div class="scenario-card recommended">
+    <h3>Escenario B: &ldquo;La Transformaci&oacute;n Inteligente&rdquo; &mdash; IA Asistida <span class="tag" style="background:var(--brand-success);color:#1A1A2E">RECOMENDADO</span></h3>
+    <blockquote>Imagine que estamos en mayo de 2027. Meridian implement&oacute; Claims Intelligence: clasificaci&oacute;n autom&aacute;tica al 72%, integraci&oacute;n de 3 sistemas v&iacute;a API, portal de autoservicio para clientes.</blockquote>
+    <p><strong>D&iacute;a a d&iacute;a:</strong> Carlos Ruiz llega a las 8:00 AM y encuentra su cola pre-clasificada. Claim clasificado como &ldquo;auto - colisi&oacute;n menor&rdquo;, p&oacute;liza vinculada, fotos organizadas. Su d&iacute;a cambi&oacute; de &ldquo;pelear con sistemas&rdquo; a &ldquo;aplicar expertise.&rdquo;</p>
+    <p><strong>Que ganamos:</strong> Resoluci&oacute;n de 18 a 6 d&iacute;as. NPS de 32 a 48+. Cumplimiento normativo al 92%. Costo por claim -45%.</p>
+    <p><strong>Que arriesgamos:</strong> Complejidad de integraci&oacute;n legacy. Coexistencia h&iacute;brida 10-12 meses. 2-3 perfiles nuevos necesarios. Mitigado por anti-corruption layer + parallel run.</p>
+  </div>
+
+  <div class="scenario-card">
+    <h3>Escenario C: &ldquo;La Refundaci&oacute;n&rdquo; &mdash; Plataforma Cloud-Native</h3>
+    <blockquote>Imagine que estamos en marzo de 2028. Meridian opera una plataforma completamente nueva con AI/ML integrado que clasifica, detecta fraude, predice costos, y automatiza el 40% de claims end-to-end.</blockquote>
+    <p><strong>D&iacute;a a d&iacute;a:</strong> El cliente reporta desde su celular. Visi&oacute;n computacional eval&uacute;a da&ntilde;os en tiempo real. Claims menores (&lt;$2K): transferencia en 24 horas sin intervenci&oacute;n humana.</p>
+    <p><strong>Que ganamos:</strong> Plataforma diferenciada. Claims simples en &lt;24h. Posibilidad de Claims-as-a-Service.</p>
+    <p><strong>Que arriesgamos:</strong> 250-350 FTE-meses. 18-24 meses sin valor completo. Re-certificaci&oacute;n regulatoria 6+ meses. No viable bajo restricciones actuales.</p>
+  </div>
+
+  <!-- 5. Risk Narrative -->
+  <h2>5. Risk Narrative &mdash; Deuda T&eacute;cnica Acumulada</h2>
+  <p><strong>Patr&oacute;n:</strong> Pensamiento Consecuencial</p>
+  <p>ClaimsCore v3.2 tiene 847 issues documentados, 23 cr&iacute;ticos (security + stability). <span class="tag tag-evidence">C&Oacute;DIGO</span> Con 4.2 issues cr&iacute;ticos nuevos por trimestre, el equipo de mantenimiento (3 personas) alcanzar&aacute; capacidad m&aacute;xima en Q3 2026.</p>
+
+  <div class="risk-cascade">
+    <div class="step">
+      <span class="step-label">Q3 2026:</span> Equipo saturado. Tiempo de resoluci&oacute;n de issues sube de 5 a 12 d&iacute;as. <span class="tag tag-inference">INFERENCIA</span>
+    </div>
+    <div class="step">
+      <span class="step-label">Q4 2026:</span> Primer incidente de disponibilidad extendido (&gt;4 horas). ~2,800 claims en cola. <span class="tag tag-inference">INFERENCIA</span>
+    </div>
+    <div class="step">
+      <span class="step-label">Q1 2027:</span> Nueva normativa entra en vigor. Tasa de cumplimiento no mejora (43%). Multas. <span class="tag tag-evidence">DOC</span>
+    </div>
+    <div class="step">
+      <span class="step-label">Q2 2027:</span> Desarrolladores senior expresan frustraci&oacute;n. Riesgo de rotaci&oacute;n elevado. <span class="tag tag-stakeholder">STAKEHOLDER</span>
+    </div>
+    <div class="step">
+      <span class="step-label critical">PUNTO DE NO RETORNO &mdash; Q3 2027:</span> Si 1 de 2 developers core renuncia, conocimiento institucional se reduce cr&iacute;ticamente. Sistema se vuelve &ldquo;intocable.&rdquo; <span class="tag tag-inference">INFERENCIA</span>
+    </div>
+  </div>
+  <p><em>Esto no es alarmismo &mdash; es matem&aacute;tica de capacidad. La tendencia es clara, los n&uacute;meros son verificables, y el punto de inflexi&oacute;n est&aacute; a 12-18 meses.</em></p>
+
+  <!-- 6. Success Reference -->
+  <h2>6. Success Reference Story</h2>
+  <div class="success-story">
+    <h3>Allianz Direct (Europa) &mdash; Claims Automation 2023-2024</h3>
+    <p>Allianz Direct enfrent&oacute; un desaf&iacute;o similar: procesamiento de claims lento (15 d&iacute;as), ajustadores saturados, competencia insurtech. Con IA asistida para clasificaci&oacute;n + modernizaci&oacute;n selectiva (similar a Escenario B):</p>
+    <table>
+      <tr><th>M&eacute;trica</th><th>Antes</th><th>Despu&eacute;s</th><th>Timeline</th></tr>
+      <tr><td>Resoluci&oacute;n (auto)</td><td>15 d&iacute;as</td><td>4 d&iacute;as</td><td>12 meses</td></tr>
+      <tr><td>Claims auto-procesados</td><td>0%</td><td>55%</td><td>12 meses</td></tr>
+      <tr><td>NPS claims</td><td>38</td><td>54</td><td>18 meses</td></tr>
+      <tr><td>Reducci&oacute;n costo/claim</td><td>&mdash;</td><td>-35%</td><td>12 meses</td></tr>
+    </table>
+    <p>Nuestro Escenario B sigue un patr&oacute;n similar, adaptado al contexto de Meridian. <span class="tag tag-evidence">DOC</span></p>
+  </div>
+
+  <!-- 7. Thread Map -->
+  <h2>7. Thread Continuity Map</h2>
+  <table>
+    <tr><th>Hilo Narrativo</th><th>Introducido</th><th>Desarrollado</th><th>Resuelto</th></tr>
+    <tr><td><strong>Costo deuda t&eacute;cnica</strong></td><td>03 AS-IS</td><td>05 Scenarios, 10 Hallazgos</td><td>06 Roadmap, 08 Pitch</td></tr>
+    <tr><td><strong>Dolor del ajustador</strong></td><td>01 Stakeholders, 04 Flows</td><td>05 Scenarios, 07 Spec</td><td>09 Handover, 12 IA Opport.</td></tr>
+    <tr><td><strong>Exposici&oacute;n regulatoria</strong></td><td>03 AS-IS, 05 Scenarios</td><td>08 Pitch</td><td>06 Roadmap, 09 Handover</td></tr>
+    <tr><td><strong>Propuesta de valor</strong></td><td>05 Scenarios, 02 Brief</td><td>06 Roadmap, 07 Spec</td><td>08 Pitch, 11 Recomendaciones</td></tr>
+    <tr><td><strong>Camino de transformaci&oacute;n</strong></td><td>05 Scenarios</td><td>06 Roadmap, 07 Spec</td><td>09 Handover, 12 IA Opport.</td></tr>
+  </table>
+
+  <!-- 8. Techniques -->
+  <h2>8. T&eacute;cnicas Narrativas Aplicadas</h2>
+  <div class="technique-grid">
+    <div class="technique-item">
+      <strong>Contraste</strong>
+      <p>Before/after, AS-IS vs TO-BE</p>
+      <p class="example">&ldquo;Hoy: 18 d&iacute;as. Ma&ntilde;ana: 6 d&iacute;as.&rdquo;</p>
+    </div>
+    <div class="technique-item">
+      <strong>Escalamiento</strong>
+      <p>Finding &rarr; cascade &rarr; crisis</p>
+      <p class="example">Issue &rarr; equipo saturado &rarr; incidente &rarr; multa &rarr; rotaci&oacute;n &rarr; no retorno</p>
+    </div>
+    <div class="technique-item">
+      <strong>Analog&iacute;a</strong>
+      <p>T&eacute;cnico &rarr; tangible</p>
+      <p class="example">&ldquo;Allianz Direct enfrent&oacute; un desaf&iacute;o similar...&rdquo;</p>
+    </div>
+    <div class="technique-item">
+      <strong>Perspectiva</strong>
+      <p>Multi-stakeholder</p>
+      <p class="example">Mar&iacute;a (gerente), Carlos (ajustador), Cliente</p>
+    </div>
+    <div class="technique-item">
+      <strong>Progresi&oacute;n</strong>
+      <p>Evidence 1 + 2 + 3 = Conclusi&oacute;n</p>
+      <p class="example">5 hallazgos &rarr; recomendaci&oacute;n Escenario B</p>
+    </div>
+    <div class="technique-item">
+      <strong>Callback</strong>
+      <p>Cross-deliverable coherence</p>
+      <p class="example">&ldquo;Carlos Ruiz revisa su primer claim...&rdquo; (Acto 3 retoma Acto 1)</p>
+    </div>
+  </div>
+
+  <!-- 9. Diagrams -->
+  <h2>9. Diagramas</h2>
+
+  <h3>Master Narrative Arc</h3>
+  <p>Accessibility: Flowchart showing the master narrative arc across three acts (Discovery, Decision, Transformation) with key deliverables and tension points.</p>
+  <div class="mermaid-container">
+    <pre class="mermaid">
+flowchart LR
+    subgraph ACT1["Acto 1: Descubrimiento"]
+        P00["00 Plan\nCompromiso"]
+        P01["01 Stakeholders\nVoces"]
+        P02["02 Brief\nPanorama"]
+        P03["03 AS-IS\nRevelacion"]
+        P04["04 Flows\nFractura"]
+    end
+
+    subgraph ACT2["Acto 2: Decision"]
+        P05["05 Scenarios\nEncrucijada"]
+        P06["06 Roadmap\nCamino"]
+        P07["07 Spec\nPrecision"]
+    end
+
+    subgraph ACT3["Acto 3: Transformacion"]
+        P08["08 Pitch\nLlamada"]
+        P09["09 Handover\nPrimer paso"]
+        P10["10-12 Hallazgos\nSintesis"]
+    end
+
+    ACT1 -->|"TENSION MAXIMA"| ACT2
+    ACT2 -->|"PUNTO DE DECISION"| ACT3
+
+    style P03 fill:#FF7E08,color:#fff,stroke:#1A1A2E,stroke-width:2px
+    style P05 fill:#FFD700,color:#1A1A2E,stroke:#1A1A2E,stroke-width:2px
+    style P08 fill:#FF7E08,color:#fff,stroke:#1A1A2E,stroke-width:2px
+    </pre>
+  </div>
+
+  <h3>Narrative Tension Curve</h3>
+  <p>Accessibility: Bar chart showing narrative tension level (0-10) across each deliverable, with peaks at AS-IS (9), Scenarios (10), and Pitch (8).</p>
+  <div class="mermaid-container">
+    <pre class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FF7E08'}}}%%
+xychart-beta
+    title "Tension Narrativa a lo Largo del Discovery"
+    x-axis ["00 Plan", "01 Stkh", "02 Brief", "03 ASIS", "04 Flows", "05 Scen", "06 Road", "07 Spec", "08 Pitch", "09 Hand"]
+    y-axis "Nivel de Tension" 0 --> 10
+    bar [2, 4, 5, 9, 8, 10, 6, 4, 8, 3]
+    </pre>
+  </div>
+
+  <footer>
+    <p><strong>Autor:</strong> Javier Monta&ntilde;o | <strong>Generado por:</strong> storytelling skill | <strong>Owner:</strong> editorial-director</p>
+    <p>&copy; Sofka Technologies &mdash; Todos los derechos reservados</p>
+  </footer>
+
+</div>
+</body>
+</html>

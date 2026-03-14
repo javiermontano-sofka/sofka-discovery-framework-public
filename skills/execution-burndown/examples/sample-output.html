@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execution Burndown — RetailCo Checkout Modernization</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF7E08;
+            --dark: #1A1A2E;
+            --dark-alt: #2D2D4E;
+            --success: #FFD700;
+            --text: #E0E0E0;
+            --text-muted: #A0A0B0;
+            --danger: #E74C3C;
+            --warning: #F39C12;
+            --bg: #0F0F1E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+            border-left: 5px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            color: var(--text);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        /* TL;DR */
+        .tldr {
+            background: var(--dark);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tldr h2 { color: var(--primary); font-size: 1.3rem; margin-bottom: 1rem; }
+        .tldr ul { list-style: none; padding: 0; }
+        .tldr li { padding: 0.4rem 0; padding-left: 1.5rem; position: relative; }
+        .tldr li::before { content: '▸'; color: var(--primary); position: absolute; left: 0; }
+
+        /* Velocity Cards */
+        .velocity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .velocity-card {
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 4px solid var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .velocity-card:hover { transform: translateY(-2px); }
+
+        .velocity-card .number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .velocity-card .label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .velocity-card .sublabel {
+            color: var(--text);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        .velocity-card.success { border-top-color: var(--success); }
+        .velocity-card.success .number { color: var(--success); }
+        .velocity-card.warning { border-top-color: var(--warning); }
+        .velocity-card.warning .number { color: var(--warning); }
+        .velocity-card.danger { border-top-color: var(--danger); }
+        .velocity-card.danger .number { color: var(--danger); }
+
+        /* Sections */
+        .section {
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--dark-alt);
+        }
+
+        .section h3 {
+            color: var(--success);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+
+        th {
+            background: var(--dark-alt);
+            color: var(--primary);
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        td { padding: 0.7rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        tr:hover { background: rgba(255, 126, 8, 0.05); }
+
+        .table-responsive { overflow-x: auto; }
+
+        /* Semaforo colors */
+        .green { color: var(--success); font-weight: bold; }
+        .yellow { color: var(--warning); font-weight: bold; }
+        .red { color: var(--danger); font-weight: bold; }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-success { background: rgba(255, 215, 0, 0.2); color: var(--success); border: 1px solid var(--success); }
+        .badge-warning { background: rgba(243, 156, 18, 0.2); color: var(--warning); border: 1px solid var(--warning); }
+        .badge-danger { background: rgba(231, 76, 60, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+
+        /* Risk signal indicators */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .risk-card {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-left: 4px solid var(--warning);
+        }
+
+        .risk-card.critical { border-left-color: var(--danger); }
+        .risk-card.ok { border-left-color: var(--success); }
+
+        .risk-card .risk-day {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .risk-card .risk-day.warning { color: var(--warning); }
+        .risk-card .risk-day.critical { color: var(--danger); }
+        .risk-card .risk-day.ok { color: var(--success); }
+
+        .risk-card .risk-detail {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .risk-card .risk-value {
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.3rem 0;
+        }
+
+        /* Callouts */
+        .callout {
+            background: rgba(255, 126, 8, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout.insight { border-left-color: var(--success); background: rgba(255, 215, 0, 0.05); }
+        .callout.warning { border-left-color: var(--warning); background: rgba(243, 156, 18, 0.05); }
+        .callout.danger { border-left-color: var(--danger); background: rgba(231, 76, 60, 0.05); }
+
+        /* Mermaid */
+        .mermaid-container {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        /* Monte Carlo bars */
+        .monte-carlo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .mc-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mc-label {
+            width: 50px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .mc-bar-bg {
+            flex: 1;
+            height: 36px;
+            background: var(--dark-alt);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mc-bar {
+            height: 100%;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .mc-bar.p50 { background: linear-gradient(90deg, var(--primary), #ff9a3e); width: 50%; }
+        .mc-bar.p85 { background: linear-gradient(90deg, var(--success), #ffe066); width: 85%; }
+        .mc-bar.p95 { background: linear-gradient(90deg, var(--warning), #f7c948); width: 95%; }
+
+        .mc-day {
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: 60px;
+        }
+
+        /* Lever cards */
+        .lever-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .lever-card {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-top: 3px solid var(--text-muted);
+        }
+
+        .lever-card.recommended { border-top-color: var(--success); }
+        .lever-card.neutral { border-top-color: var(--warning); }
+        .lever-card.not-recommended { border-top-color: var(--danger); }
+
+        .lever-card .lever-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lever-card .lever-detail {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .lever-card .lever-verdict {
+            margin-top: 0.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--dark-alt);
+            margin-top: 2rem;
+        }
+
+        .footer .brand { color: var(--primary); font-weight: bold; }
+
+        @media print {
+            body { background: #fff; color: #1a1a1a; padding: 1rem; }
+            .section, .tldr, .header { background: #fff; border: 1px solid #ddd; }
+            th { background: #f5f5f5; color: #1a1a1a; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .velocity-grid { grid-template-columns: repeat(2, 1fr); }
+            .risk-grid { grid-template-columns: 1fr; }
+            .lever-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Execution Burndown Report</h1>
+            <p class="subtitle">RetailCo — Checkout Modernization</p>
+            <div class="meta">
+                <span>Fecha: 13 de marzo de 2026</span>
+                <span>Equipo: 4 developers</span>
+                <span>Backlog: 80 features</span>
+                <span>Modelo: 1 FTE = 1 feature/dia</span>
+            </div>
+        </div>
+
+        <!-- TL;DR -->
+        <div class="tldr">
+            <h2>TL;DR</h2>
+            <ul>
+                <li>80 features para 4 developers → baseline <strong>20 dias habiles</strong></li>
+                <li>Sprint 1 ramp-up: velocidad 0.5x (esperado) → 10 features vs. 20 plan</li>
+                <li>Sprint 2+: velocidad estabilizada en <strong>3.78 features/dia</strong> (94.4% del modelo)</li>
+                <li>Monte Carlo P85: completitud en <strong>dia 22</strong> (+2 dias vs. plan ideal)</li>
+                <li>Recomendacion: aceptar +2 dias — no hay problema estructural de productividad</li>
+            </ul>
+        </div>
+
+        <!-- Velocity Cards -->
+        <div class="velocity-grid">
+            <div class="velocity-card">
+                <div class="number">80</div>
+                <div class="label">Features Totales</div>
+                <div class="sublabel">Post-descomposicion</div>
+            </div>
+            <div class="velocity-card success">
+                <div class="number">3.78</div>
+                <div class="label">Velocidad Equipo/Dia</div>
+                <div class="sublabel">94.4% del modelo Sofka</div>
+            </div>
+            <div class="velocity-card">
+                <div class="number">0.9d</div>
+                <div class="label">Cycle Time P50</div>
+                <div class="sublabel">Target: ≤1.0 dia</div>
+            </div>
+            <div class="velocity-card warning">
+                <div class="number">D22</div>
+                <div class="label">Proyeccion P85</div>
+                <div class="sublabel">+2 dias vs. plan</div>
+            </div>
+            <div class="velocity-card success">
+                <div class="number">78%</div>
+                <div class="label">Flow Efficiency</div>
+                <div class="sublabel">Target: ≥75%</div>
+            </div>
+            <div class="velocity-card">
+                <div class="number">4.2</div>
+                <div class="label">WIP Promedio</div>
+                <div class="sublabel">Target: 4.0 (1/dev)</div>
+            </div>
+        </div>
+
+        <!-- Burndown Chart -->
+        <div class="section">
+            <h2>Burndown Chart — Plan vs. Actual</h2>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+xychart-beta
+    title "Burndown — RetailCo Checkout Modernization"
+    x-axis "Dia" [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+    y-axis "Features Restantes" 0 --> 80
+    line "Plan Ideal" [76, 72, 68, 64, 60, 56, 52, 48, 44, 40, 36, 32, 28, 24, 20, 16, 12, 8, 4, 0]
+    line "Actual" [78, 76, 72, 69, 65, 61, 57, 53, 49, 46, 42, 38, 34, 30, 27, 23, 19, 15, 11, 8, 4, 0]
+                </pre>
+            </div>
+        </div>
+
+        <!-- Risk Signals -->
+        <div class="section">
+            <h2>Risk Signals</h2>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <div class="risk-day warning">Dia 3 — Early Warning</div>
+                    <div class="risk-value">75% del plan acumulado</div>
+                    <div class="risk-detail">Ramp-up Sprint 1 + 1 feature 3 SP lenta. Dentro de parametros de onboarding. <strong>Accion:</strong> monitoreo.</div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-day warning">Dia 5 — Mid-Sprint</div>
+                    <div class="risk-value">15/20 features (75%)</div>
+                    <div class="risk-detail">Gap de Sprint 1 + impedimento de entorno dia 4. <strong>Accion:</strong> re-descomposicion de 3 features.</div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-day warning">Dia 10 — Critical Check</div>
+                    <div class="risk-value">34/40 features (85%)</div>
+                    <div class="risk-detail">Gap de Sprint 1 no recuperado. Velocidad estable pero gap persiste. <strong>Accion:</strong> Monte Carlo → P85 = dia 22.</div>
+                </div>
+            </div>
+
+            <h3>Impedimentos Registrados</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Dia</th><th>Impedimento</th><th>Tipo</th><th>Impacto</th><th>Resolucion</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4</td>
+                            <td>Entorno de staging caido 4h</td>
+                            <td><span class="badge badge-danger">DX/Infra</span></td>
+                            <td class="red">-2 features</td>
+                            <td>DevOps restauro en 4h</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>API de pagos no documentada</td>
+                            <td><span class="badge badge-warning">Scope</span></td>
+                            <td class="yellow">-1 feature</td>
+                            <td>Re-asignacion + documentacion</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>FE-034 subestimada (requiere 2 dias)</td>
+                            <td><span class="badge badge-warning">Descomposicion</span></td>
+                            <td class="yellow">-1 feature</td>
+                            <td>Re-descomposicion → 2 features de 2 SP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Monte Carlo Projection -->
+        <div class="section">
+            <h2>Proyeccion de Completitud — Monte Carlo</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Basado en throughput historico de 10 dias. 10,000 simulaciones.</p>
+
+            <div class="monte-carlo">
+                <div class="mc-bar-container">
+                    <div class="mc-label" style="color: var(--primary);">P50</div>
+                    <div class="mc-bar-bg">
+                        <div class="mc-bar p50">50% probabilidad</div>
+                    </div>
+                    <div class="mc-day" style="color: var(--primary);">Dia 21</div>
+                </div>
+                <div class="mc-bar-container">
+                    <div class="mc-label" style="color: var(--success);">P85</div>
+                    <div class="mc-bar-bg">
+                        <div class="mc-bar p85">85% probabilidad — Recomendada</div>
+                    </div>
+                    <div class="mc-day" style="color: var(--success);">Dia 22</div>
+                </div>
+                <div class="mc-bar-container">
+                    <div class="mc-label" style="color: var(--warning);">P95</div>
+                    <div class="mc-bar-bg">
+                        <div class="mc-bar p95">95% probabilidad</div>
+                    </div>
+                    <div class="mc-day" style="color: var(--warning);">Dia 24</div>
+                </div>
+            </div>
+
+            <div class="callout insight">
+                <strong>Recomendacion:</strong> Comunicar al cliente la fecha P85 (dia 22) como fecha de compromiso. Rango completo: dia 21-24. El gap de +2 dias proviene del ramp-up de Sprint 1 (esperado) y 2 impedimentos aislados — no de un problema estructural.
+            </div>
+        </div>
+
+        <!-- Velocity Tracking Table -->
+        <div class="section">
+            <h2>Velocidad por Sprint</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Sprint</th><th>Dias</th><th>Plan (acum.)</th><th>Actual (acum.)</th><th>Vel. Equipo/Dia</th><th>% Modelo</th><th>Estado</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Sprint 1</td><td>1-2</td><td>8</td><td>4</td><td>2.0</td><td class="yellow">50%</td><td><span class="badge badge-warning">Ramp-up</span></td></tr>
+                        <tr><td>Sprint 2</td><td>3-4</td><td>16</td><td>11</td><td>3.5</td><td class="yellow">87.5%</td><td><span class="badge badge-warning">Ramping</span></td></tr>
+                        <tr><td>Sprint 3</td><td>5-6</td><td>24</td><td>19</td><td>4.0</td><td class="green">100%</td><td><span class="badge badge-success">On Model</span></td></tr>
+                        <tr><td>Sprint 4</td><td>7-8</td><td>32</td><td>27</td><td>4.0</td><td class="green">100%</td><td><span class="badge badge-success">On Model</span></td></tr>
+                        <tr><td>Sprint 5</td><td>9-10</td><td>40</td><td>34</td><td>3.5</td><td class="yellow">87.5%</td><td><span class="badge badge-warning">Impediment</span></td></tr>
+                        <tr><td>Sprint 6</td><td>11-12</td><td>48</td><td>42</td><td>4.0</td><td class="green">100%</td><td><span class="badge badge-success">On Model</span></td></tr>
+                        <tr><td>Sprint 7</td><td>13-14</td><td>56</td><td>50</td><td>4.0</td><td class="green">100%</td><td><span class="badge badge-success">On Model</span></td></tr>
+                        <tr><td>Sprint 8</td><td>15-16</td><td>64</td><td>57</td><td>3.5</td><td class="yellow">87.5%</td><td><span class="badge badge-warning">Re-decomp</span></td></tr>
+                        <tr><td>Sprint 9</td><td>17-18</td><td>72</td><td>65</td><td>4.0</td><td class="green">100%</td><td><span class="badge badge-success">On Model</span></td></tr>
+                        <tr><td>Sprint 10</td><td>19-20</td><td>80</td><td>72</td><td>3.5</td><td class="yellow">87.5%</td><td><span class="badge badge-warning">Tail</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Adjustment Levers -->
+        <div class="section">
+            <h2>Adjustment Levers — Decision Matrix</h2>
+            <div class="lever-grid">
+                <div class="lever-card recommended">
+                    <div class="lever-name" style="color: var(--success);">Timeline Extension</div>
+                    <div class="lever-detail">Aceptar +2 dias (dia 22). Comunicar transparentemente al cliente. Sin costo adicional, sin riesgo de ejecucion.</div>
+                    <div class="lever-verdict" style="color: var(--success);">RECOMENDADO</div>
+                </div>
+                <div class="lever-card recommended">
+                    <div class="lever-name" style="color: var(--success);">Scope Reduction</div>
+                    <div class="lever-detail">Mover 4 features de baja prioridad a siguiente release. Cumple dia 20. Requiere negociacion con PO.</div>
+                    <div class="lever-verdict" style="color: var(--success);">SI DEADLINE INAMOVIBLE</div>
+                </div>
+                <div class="lever-card neutral">
+                    <div class="lever-name" style="color: var(--warning);">Re-Decomposition</div>
+                    <div class="lever-detail">Dividir features 3 SP restantes. Mejora throughput. Overhead: 0.5 dias de planning. Recupera ~1 dia.</div>
+                    <div class="lever-verdict" style="color: var(--warning);">COMPLEMENTARIO</div>
+                </div>
+                <div class="lever-card not-recommended">
+                    <div class="lever-name" style="color: var(--danger);">Team Scaling</div>
+                    <div class="lever-detail">Agregar 1 developer. Ramp-up: Sprint 1 = 0.25x, Sprint 2 = 0.5x. Brooks' Law: costo neto > beneficio para gap de 2 dias.</div>
+                    <div class="lever-verdict" style="color: var(--danger);">NO RECOMENDADO</div>
+                </div>
+            </div>
+
+            <div class="callout warning">
+                <strong>Brooks' Law:</strong> Agregar personas a un proyecto que lleva 10 dias de ejecucion con un gap de solo 2 dias es contraproducente. El ramp-up del nuevo developer consumiria mas capacidad del equipo existente de la que aportaria en el horizonte restante.
+            </div>
+        </div>
+
+        <!-- Flow Metrics -->
+        <div class="section">
+            <h2>Flow Metrics — Complemento</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Metrica</th><th>Valor</th><th>Target</th><th>Estado</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Cycle Time (P50)</td><td>0.9 dias</td><td>≤1.0 dia</td><td><span class="badge badge-success">OK</span></td></tr>
+                        <tr><td>Cycle Time (P85)</td><td>1.2 dias</td><td>≤1.5 dias</td><td><span class="badge badge-success">OK</span></td></tr>
+                        <tr><td>Throughput diario</td><td>3.78 features/dia</td><td>4.0 features/dia</td><td><span class="badge badge-warning">94.4%</span></td></tr>
+                        <tr><td>WIP promedio</td><td>4.2 items</td><td>4.0 items</td><td><span class="badge badge-warning">Leve exceso</span></td></tr>
+                        <tr><td>Flow Efficiency</td><td>78%</td><td>≥75%</td><td><span class="badge badge-success">OK</span></td></tr>
+                        <tr><td>Impedimentos/semana</td><td>0.6</td><td>&lt;1.0</td><td><span class="badge badge-success">OK</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Conclusions -->
+        <div class="section">
+            <h2>Conclusiones</h2>
+            <ol style="padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.7rem;"><strong>Equipo opera al 94.4% del modelo Sofka (Sprint 2+).</strong> La velocidad de 3.78 features/dia para 4 developers esta dentro del rango esperado. No hay problema estructural.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>El gap de 2 dias es acumulacion de eventos discretos</strong> (ramp-up Sprint 1 + 2 impedimentos aislados), no una tendencia.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>Monte Carlo P85 = dia 22</strong> es la fecha de compromiso recomendada. Comunicar rango, no fecha unica.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>Re-descomposicion es el lever mas eficiente</strong> si se necesita recuperar tiempo. Las 4 features con cycle time >1.5 dias son candidatas.</li>
+                <li style="margin-bottom: 0.7rem;"><strong>No agregar personas</strong> para un gap de 2 dias. Brooks' Law aplica.</li>
+            </ol>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Generado por <span class="brand">Sofka Discovery Framework</span> — execution-burndown</p>
+            <p>Agente: delivery-manager | Autor: Javier Montaño | 13 de marzo de 2026</p>
+            <p style="margin-top: 0.5rem;">&copy; Sofka Technologies. Todos los derechos reservados.</p>
+        </div>
+
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</body>
+</html>
