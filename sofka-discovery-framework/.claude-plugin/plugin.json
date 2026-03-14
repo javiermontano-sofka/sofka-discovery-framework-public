@@ -1,7 +1,7 @@
 {
-  "name": "sofka-discovery-framework",
-  "version": "7.0.0",
-  "description": "Enterprise technical discovery & consulting framework v7 — NL-HP v3.0 prompts, 8-agent dream team, 48 skills, 17 commands (10 document + 3 pipeline + 4 operations), 3 quality gates, checkpoint model (CP-0→CP-4). Markdown-excellence standard. No prices — only drivers, magnitudes, and models.",
+  "name": "sdf",
+  "version": "9.0.0",
+  "description": "Universal services discovery & consulting framework v9.0 — NL-HP v3.0 prompts, 12-agent dynamic committee (8 core + 4 service-type specialists), 59 MOAT skills (48 domain + 11 service discovery), 21 commands (10 document + 3 pipeline + 4 operations + 4 service-type shortcuts), 6 automated hooks, ghost menu, 4 quality gates (G1+G1.5+G2+G3), {TIPO_SERVICIO} parameter (10 values: SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service), 20 priming-RAG knowledge files. Think Tank de 7 Sabios, HDD cycles, Sofka productivity model. No prices — only drivers, magnitudes, and models.",
   "author": {
     "name": "Javier Montaño",
     "url": "https://sofka.com.co"
@@ -11,12 +11,28 @@
   "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "discovery", "consulting", "architecture", "assessment", "enterprise",
-    "modernization", "due-diligence", "dream-team", "orchestration",
+    "modernization", "expert-committee", "orchestration", "hooks",
     "NL-HP", "checkpoint-model", "quality-gates", "markdown-excellence",
     "data-architecture", "cloud-native", "mobile", "security", "devops",
     "cost-drivers", "testing-strategy", "performance", "observability",
     "handover", "operations", "commercial-model", "governance-transition",
     "technical-feasibility", "software-viability", "ai-validation",
-    "project-management", "risk-controlling", "proposal-qa", "pmo-governance"
+    "pipeline-governance", "risk-controlling", "proposal-qa",
+    "universal-services", "service-type-routing",
+    "rpa", "process-automation", "bot-architecture",
+    "qa-as-a-service", "tmmi", "pitt", "test-factory", "istqb",
+    "ai-center", "ai-scale", "mlops", "responsible-ai",
+    "management", "pmo-maturity", "factor-wow", "agile-coaching",
+    "staff-augmentation", "talent-gap", "staffing-model",
+    "digital-transformation", "multi-service", "program-architecture",
+    "cloud-readiness", "dora-metrics", "finops",
+    "bi-analytics", "dcam", "data-maturity",
+    "ux-design", "design-maturity", "design-system",
+    "mentoring", "training", "capability-building",
+    "mini-apps", "low-code", "citizen-developer",
+    "priming-rag", "knowledge-base",
+    "think-tank", "feasibility", "seven-sages",
+    "hypothesis-driven-development", "lean-startup",
+    "technology-vigilance", "productivity-model"
   ]
 }

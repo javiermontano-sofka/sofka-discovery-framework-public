@@ -2,6 +2,67 @@
 
 All notable changes to the Sofka Discovery Framework plugin.
 
+## [9.0.0] — 2026-03-14
+
+### Added — Universal Services Discovery Platform
+
+**`{TIPO_SERVICIO}` Parameter (10 values)**
+- New routing parameter: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design` | `Digital-Transformation` | `Multi-Service`
+- Auto-detection rules (10-step priority) with user confirmation
+- Full backward compatibility — omitting parameter defaults to SDA behavior
+
+**11 New Service Discovery Skills (MOAT pattern)**
+- `rpa-discovery` — Process landscape, automation readiness scoring, bot architecture (7 sections)
+- `qa-service-discovery` — TMMi assessment, PITT methodology, test factory design (7 sections)
+- `ai-center-discovery` — AI readiness (AI SCALE), use case portfolio, model governance (8 sections)
+- `management-discovery` — PMO maturity, methodology fitness, Factor WOW (7 sections)
+- `staff-augmentation-discovery` — Talent gap, skills matrix, staffing model (6 sections)
+- `digital-transformation-discovery` — Digital maturity, multi-service program design (7 sections)
+- `cloud-service-discovery` — Cloud readiness, DORA metrics, FinOps (6 sections)
+- `bi-analytics-discovery` — Data maturity (DCAM), BI landscape, self-service (7 sections)
+- `ux-design-discovery` — Design maturity, design system, UX research capability (7 sections)
+- `mentoring-training-discovery` — Capability assessment, learning paths, knowledge transfer (6 sections)
+- `mini-apps-discovery` — Citizen developer readiness, low-code platform assessment (6 sections)
+
+**4 New Agents**
+- `process-automation-specialist` — RPA/BPM expert (activated for {TIPO_SERVICIO}=RPA)
+- `ai-strategist` — AI SCALE methodology, MLOps, responsible AI (activated for Data-AI)
+- `qa-strategist` — TMMi, PITT, test factory, ISTQB alignment (activated for QA)
+- `transformation-architect` — Multi-service program design, cross-workstream governance (activated for Digital-Transformation/Multi-Service)
+
+**4 New Shortcut Commands**
+- `rpa-discovery` — RPA & process automation discovery
+- `qa-discovery` — QA-as-a-service discovery
+- `ai-discovery` — AI Center & data platform discovery
+- `transformation` — Digital transformation program discovery
+
+**20 Priming-RAG Knowledge Files**
+- Corporate, SDA, QA, Management, RPA, Data-AI, AI Center, Cloud, SAS capabilities
+- Banking and Retail industry intelligence
+- CoE Management, APM Guidelines, AI SCALE methodology references
+- Service models, impact metrics, certifications, contractual models
+- Service-type routing matrix reference
+
+### Changed
+- **discovery-orchestrator**: 48 → 59 skills, 8 → 9 domains, service-type-aware routing
+- **discovery-conductor**: Step 0 service type detection, dynamic committee (7-10 experts), service-type input validation
+- **asis-analysis**: Universal assessment with 8 service-type variant section sets
+- **cost-estimation**: Universal sizing methods (COCOMO II for SDA only, service-specific methods for others)
+- **flow-mapping**: Context-dependent truth source (not code-only), service-type domain models
+- **functional-spec**: Service-type deliverable inventory and acceptance criteria
+- **software-viability**: Universal viability scale (tools, platforms, methodologies)
+- **testing-strategy**: QA-as-a-service variant (QS1-QS5)
+- **software-architecture, devsecops-architecture, database-architecture**: Scoping notes added
+- **discovery.md, asis.md, flows.md, spec.md**: Added {TIPO_SERVICIO} parameter support
+- **plugin.json**: v7.0.0 → v9.0.0, updated description and keywords
+- **CLAUDE.md**: Added {TIPO_SERVICIO} to Common Parameters, service-type commands to Quick Reference
+
+### Skill Count
+- Previous: 48 skills, 8 agents, 17 commands
+- Current: 59 skills, 12 agents, 21 commands, 20 priming-RAG files
+
+---
+
 ## [7.0.0] — 2026-03-12
 
 ### Added — NL-HP v3.0 Integration
