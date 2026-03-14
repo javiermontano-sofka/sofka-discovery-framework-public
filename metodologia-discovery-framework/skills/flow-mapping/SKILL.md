@@ -1,7 +1,8 @@
 ---
 name: flow-mapping
 description: >
-  DDD domain taxonomy + 8-12 end-to-end business flows with trama specifications.
+  DDD domain taxonomy + 8-12 end-to-end business flows with trama specifications,
+  process mapping, service flow documentation, and operational flow tracing.
   Use when the user asks to "map flows", "document business processes", "trace integrations",
   "identify failure points", "domain mapping", "DDD analysis", or mentions "Phase 2",
   "flow mapping", "integration matrix", "dependency graph", "swimlane diagrams",
@@ -21,13 +22,13 @@ Translates AS-IS architecture findings into business flow documentation. Deliver
 
 ## Principio Rector
 
-**Sin flujos documentados, la arquitectura es un mapa sin rutas.** Los flujos de negocio son la prueba viva de cómo el sistema realmente opera — no cómo alguien pensó que operaría. Este skill traduce código en recorridos de negocio trazables, desde el trigger hasta la completación, pasando por cada integración, cada transformación, cada punto de fallo.
+**Sin flujos documentados, la arquitectura es un mapa sin rutas.** Los flujos de negocio son la prueba viva de como el sistema realmente opera — no como alguien penso que operaria. Este skill traduce codigo en recorridos de negocio trazables, desde el trigger hasta la completacion, pasando por cada integracion, cada transformacion, cada punto de fallo.
 
-### Filosofía de Mapeo
+### Filosofia de Mapeo
 
-1. **Código como fuente de verdad.** La documentación miente. El código no. Los flujos se extraen del código y se validan contra el negocio, nunca al revés.
-2. **Dominios antes que flujos.** Sin taxonomía DDD, los flujos son secuencias sin contexto. Primero los bounded contexts, luego los recorridos que los cruzan.
-3. **Cada flecha es un contrato.** Cada integración documentada incluye protocolo, payload, SLA, y comportamiento ante fallo. Una flecha sin etiqueta es deuda de documentación.
+1. **La fuente de verdad depende del contexto.** Para SDA, el codigo no miente. Para RPA, los procesos BPMN son la verdad. Para Management, los ceremonies y workflows son la verdad. Para Data-AI, los pipelines y catalogos son la verdad. El skill adapta su fuente de extraccion al tipo de servicio.
+2. **Dominios antes que flujos.** Sin taxonomia DDD, los flujos son secuencias sin contexto. Primero los bounded contexts, luego los recorridos que los cruzan.
+3. **Cada flecha es un contrato.** Cada integracion documentada incluye protocolo, payload, SLA, y comportamiento ante fallo. Una flecha sin etiqueta es deuda de documentacion.
 
 ## Inputs
 
@@ -38,12 +39,15 @@ Parse from `$ARGUMENTS`.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para extracción de flujos y análisis de integraciones, HITL para validación de taxonomía de dominios y puntos de fallo críticos.
-  - **desatendido**: Cero interrupciones. Flujos extraídos automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con reportes al completar taxonomía y cada grupo de flujos.
-  - **paso-a-paso**: Confirma taxonomía, cada flujo individual, y análisis de fallos.
+  - **piloto-auto**: Auto para extraccion de flujos y analisis de integraciones, HITL para validacion de taxonomia de dominios y puntos de fallo criticos.
+  - **desatendido**: Cero interrupciones. Flujos extraidos automaticamente. Supuestos documentados.
+  - **supervisado**: Autonomo con reportes al completar taxonomia y cada grupo de flujos.
+  - **paso-a-paso**: Confirma taxonomia, cada flujo individual, y analisis de fallos.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 taxonomy + S7 integration matrix + S8 failure points) | `técnica` (full, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 taxonomy + S7 integration matrix + S8 failure points) | `tecnica` (full, default)
+- `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
+  - Determines flow extraction sources, domain models, and context injection patterns
+  - When omitted, defaults to SDA (backward compatible)
 
 ## Dynamic Context Injection
 
@@ -64,6 +68,31 @@ find . -name "*Controller*" -o -name "*Handler*" -o -name "*Route*" -o -name "*E
 ```
 
 Use discovered APIs, message brokers, databases, and endpoints to scope flow analysis.
+
+### QA Context Injection (when {TIPO_SERVICIO}=QA)
+- Test process flows: requirement -> test design -> execution -> defect management -> regression
+- CI/CD quality gates: commit -> build -> unit test -> integration -> E2E -> deploy
+- Defect lifecycle: detection -> triage -> assignment -> fix -> verification -> closure
+
+### Management Context Injection (when {TIPO_SERVICIO}=Management)
+- Delivery workflows: intake -> planning -> execution -> review -> retrospective
+- Decision flows: proposal -> analysis -> committee -> approval -> execution
+- Ceremony flows: daily -> sprint review -> retrospective -> planning -> backlog refinement
+
+### RPA Context Injection (when {TIPO_SERVICIO}=RPA)
+- Process flows: trigger -> data extraction -> transformation -> system interaction -> validation -> completion
+- Exception handling: error detection -> classification -> escalation -> resolution -> re-execution
+- Bot orchestration: scheduling -> resource allocation -> execution -> monitoring -> reporting
+
+### Data-AI Context Injection (when {TIPO_SERVICIO}=Data-AI)
+- Data pipeline flows: ingestion -> transformation -> validation -> loading -> serving
+- ML lifecycle: data collection -> feature engineering -> training -> evaluation -> deployment -> monitoring
+- Dashboard refresh: source extraction -> aggregation -> calculation -> visualization -> alerting
+
+### Cloud Context Injection (when {TIPO_SERVICIO}=Cloud)
+- Deployment flows: commit -> build -> test -> stage -> approve -> deploy -> verify
+- Scaling flows: metric trigger -> evaluation -> scale decision -> execution -> stabilization
+- Incident flows: alert -> triage -> investigation -> remediation -> postmortem
 
 ## Input Requirements
 
@@ -118,6 +147,16 @@ Use discovered APIs, message brokers, databases, and endpoints to scope flow ana
 
 ### S1: Domain Taxonomy (DDD)
 Domain card grid (color-coded by type). Per domain: name, type (Core/Supporting/Generic), purpose, responsibilities, aggregates, business value. Domain interaction map. Boundary specifications. Context mapping patterns (Shared Kernel, Customer-Supplier, Conformist, Anti-Corruption Layer). **Minimum:** 4 domains identified.
+
+#### Service-Type Domain Models
+
+When `{TIPO_SERVICIO}` != SDA, use the appropriate domain model:
+
+- **QA**: Quality Domain Model — Test domains (functional, non-functional, regression), coverage domains, defect domains
+- **Management**: Delivery Domain Model — Project/program/portfolio domains, ceremony domains, governance domains
+- **RPA**: Process Domain Model — Automation candidates, automated processes, monitored processes, exception domains
+- **Data-AI**: Data Domain Model — Source domains, transformation domains, consumption domains, governance domains
+- **Cloud**: Infrastructure Domain Model — Compute, network, storage, security, cost domains
 
 ### S2-S6: E2E Business Flows (8-12)
 
@@ -205,7 +244,7 @@ IF single system handles multiple bounded contexts:
 
 ## Output Artifact
 
-**Primary:** `04_Mapeo_Flujos_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Domain taxonomy, 8-12 E2E business flows with sequence diagrams and trama specs, integration matrix, critical failure points, system dependency graph.
+**Primary:** `04_Mapeo_Flujos_{TIPO_SERVICIO}_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Domain taxonomy, 8-12 E2E business flows with sequence diagrams and trama specs, integration matrix, critical failure points, system dependency graph.
 
 **Diagramas incluidos:**
 - Sequence diagrams: top 3-5 E2E business flows
@@ -228,7 +267,7 @@ IF single system handles multiple bounded contexts:
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
@@ -240,4 +279,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: dependency graph between bounded contexts
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026

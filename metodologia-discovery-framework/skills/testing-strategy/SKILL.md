@@ -1,7 +1,8 @@
 ---
 name: metodologia-testing-strategy
 description: >
-  Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management.
+  Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management,
+  QA-as-a-service strategy, test factory design, QA CoE design.
   Use when the user asks to "design test strategy", "build test automation", "implement contract testing",
   "manage test data", "define quality gates", or mentions test pyramid, Pact, Playwright, Cypress, coverage targets, flaky tests, chaos engineering.
 model: opus
@@ -23,7 +24,7 @@ Testing strategy defines how quality is verified, automated, and measured across
 
 **Un test que no puede fallar no protege nada.** La estrategia de testing no se mide por el porcentaje de coverage — se mide por la confianza que genera para hacer deploy un viernes a las 5pm.
 
-### Filosofía de Testing Strategy
+### Filosofia de Testing Strategy
 
 1. **Test pyramid is a guide, not a rule.** La forma correcta (pyramid, trophy, honeycomb, diamond) depende de la arquitectura del sistema, no de un dogma de la industria.
 2. **Contract testing for microservices.** Si tienes N servicios con M consumidores, E2E entre todos es O(N*M). Contract testing reduce eso a O(N+M).
@@ -37,10 +38,13 @@ The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para shape selection y tool matrix, HITL para contract testing decisions y chaos engineering scope.
   - **desatendido**: Cero interrupciones. Estrategia completa con supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en pyramid design y contract testing setup.
+  - **supervisado**: Autonomo con checkpoint en pyramid design y contract testing setup.
   - **paso-a-paso**: Confirma cada test shape, framework selection, contract scope, y chaos plan.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 pyramid + S3 contracts + S6 metrics) | `técnica` (full 6 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 pyramid + S3 contracts + S6 metrics) | `tecnica` (full 6 sections, default)
+- `{TIPO_SERVICIO}`: `SDA` (default) | `QA`
+  - SDA: Test strategy for a software project (default behavior)
+  - QA: Test strategy as a QA service offering (Testing Factory, QA CoE design)
 
 Before generating strategy, detect the codebase context:
 
@@ -239,6 +243,49 @@ Run on CI nightly, not per-commit (too slow). Focus on critical business logic m
 
 ---
 
+## QA-as-a-Service Variant (`{TIPO_SERVICIO}=QA`)
+
+When invoked with `{TIPO_SERVICIO}=QA`, this skill shifts from "test strategy for a software project" to "test strategy design as a QA service offering." Additional sections generated:
+
+### QS1: Service Model Design
+- Independent Testing Teams configuration
+- Testing Factory (Managed Service Center) design
+- Strategic Quality Consulting scope definition
+- Staff Augmentation QA team composition
+- Hybrid model recommendations based on client maturity
+
+### QS2: QA CoE Design
+- Center of Excellence governance structure
+- Test automation framework standardization
+- Tool stack recommendations (with viability assessment)
+- Quality metrics dashboard design
+- Knowledge management and best practices repository
+
+### QS3: Client-Facing QA Maturity Assessment
+- TMMi-based maturity model for client assessment (public standard, levels 1-5)
+- Gap analysis between current and target maturity
+- Improvement roadmap with quick wins
+- ROI model for QA investment (effort drivers, NOT prices)
+- Benchmarking against industry standards (DORA, TMMi public benchmarks)
+
+### QS4: QA Team Composition & Certification Strategy
+- Role definitions (Test Analyst, Automation Engineer, Performance Tester, Security Tester, Test Manager)
+- Certification roadmap (ISTQB Foundation -> Advanced -> Expert specializations)
+- Training program design
+- Career path and growth framework
+- Team scaling model based on engagement size
+
+### QS5: Quality Governance for Service Delivery
+- Quality gates for service delivery milestones
+- SLA definitions for testing services
+- Defect management process and escalation
+- Continuous improvement framework
+- Client reporting and dashboards
+
+**Output Artifact (QA variant):** `Testing_Strategy_QA_Service_{project}.md`
+
+---
+
 ## Trade-off Matrix
 
 | Decision | Enables | Constrains | When to Use |
@@ -327,4 +374,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Test framework configuration files, Pact contract examples, quality gate definitions, flaky test management runbook.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026

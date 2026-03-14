@@ -1,9 +1,9 @@
 {
   "name": "metodologia-discovery-framework",
-  "version": "6.0.0",
-  "description": "Enterprise technical discovery & consulting framework — 8-agent dream team orchestrates 48 specialized skills across 8 pipeline phases. Output excellence: markdown-first with Mermaid diagrams, A/B variants (ejecutiva/técnica), smart HITL modes (piloto-auto default), 5% innovation margin. No final prices — drivers, magnitudes, and models only. Copyleft (GPL-3.0).",
+  "version": "9.0.0",
+  "description": "Universal enterprise discovery & consulting framework — 12-agent dream team orchestrates 59 specialized skills across 9 domains and 8 pipeline phases with {TIPO_SERVICIO} service routing (SDA, QA, RPA, Data-AI, Cloud, Management, SAS, UX-Design, Digital-Transformation, Multi-Service). 21 commands, dynamic committee composition, markdown-first output with Mermaid diagrams, A/B variants, smart HITL modes, 5% innovation margin. No final prices — drivers, magnitudes, and models only. Copyleft (GPL-3.0).",
   "author": {
-    "name": "Javier Montaño",
+    "name": "Javier Montano",
     "url": "https://metodologia.info"
   },
   "homepage": "https://metodologia.info",
@@ -16,6 +16,11 @@
     "handover", "operations", "commercial-model", "governance-transition",
     "technical-feasibility", "software-viability", "ai-validation",
     "project-management", "risk-controlling", "proposal-qa", "pmo-governance",
+    "service-type", "tipo-servicio", "universal-services",
+    "rpa-discovery", "qa-discovery", "ai-center-discovery", "management-discovery",
+    "staff-augmentation", "digital-transformation", "cloud-service",
+    "bi-analytics", "ux-design-discovery", "mentoring-training", "mini-apps",
+    "dynamic-committee", "service-routing", "multi-service",
     "copyleft", "open-source"
   ]
 }

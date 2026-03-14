@@ -1,7 +1,8 @@
 ---
 name: functional-spec
 description: >
-  Comprehensive functional specification with use cases, business rules, and complexity/risk matrix.
+  Comprehensive functional specification with use cases, business rules, and complexity/risk matrix,
+  service specification, deliverable specification, and engagement spec.
   Use when the user asks to "write functional specs", "document use cases", "define business rules",
   "create requirements", "specification document", or mentions "Phase 5a", "functional specification",
   "MVP scope", "acceptance criteria", "casos de uso", "reglas de negocio".
@@ -14,19 +15,21 @@ allowed-tools:
   - Bash
 ---
 
-# Functional Specification
+# Functional Specification — Universal Deliverable Specification
 
 Generates detailed functional specifications: MVP modules, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrix, explicit scope boundaries, data model overview, integration specs, and per-module acceptance criteria.
 
+> **Nota de universalidad:** Este skill genera especificaciones funcionales para CUALQUIER tipo de servicio. Para SDA produce especificaciones de software (modulos, casos de uso, modelos de datos). Para otros tipos de servicio, adapta la estructura a los entregables propios de cada linea.
+
 ## Principio Rector
 
-**Una especificación ambigua es una promesa de retrabajo.** La spec funcional es el contrato entre negocio y tecnología: cada use case define QUÉ hace el sistema, cada business rule define CÓMO decide, y cada criterio de aceptación define CUÁNDO está listo. Si no está en la spec, no se construye. Si está ambiguo en la spec, se construye mal.
+**Una especificacion ambigua es una promesa de retrabajo.** La spec funcional es el contrato entre negocio y tecnologia: cada use case define QUE hace el sistema, cada business rule define COMO decide, y cada criterio de aceptacion define CUANDO esta listo. Si no esta en la spec, no se construye. Si esta ambiguo en la spec, se construye mal.
 
-### Filosofía de Especificación
+### Filosofia de Especificacion
 
-1. **QUÉ, no CÓMO.** La spec describe comportamiento observable, no implementación. "El sistema valida la edad del cliente" — no "usar un IF/ELSE en el controller."
-2. **Cada regla tiene dueño.** Las business rules no validadas son bombas de tiempo. UNVALIDATED es un status, no un permiso para avanzar.
-3. **Scope explícito > scope exhaustivo.** Una lista clara de qué está IN y qué está OUT previene el 80% del scope creep.
+1. **QUE, no COMO.** La spec describe comportamiento observable, no implementacion. "El sistema valida la edad del cliente" — no "usar un IF/ELSE en el controller."
+2. **Cada regla tiene dueno.** Las business rules no validadas son bombas de tiempo. UNVALIDATED es un status, no un permiso para avanzar.
+3. **Scope explicito > scope exhaustivo.** Una lista clara de que esta IN y que esta OUT previene el 80% del scope creep.
 
 ## Inputs
 
@@ -37,12 +40,15 @@ Parse from `$ARGUMENTS`. Use `actor-goal` for MVP speed; `cockburn` for critical
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario de módulos y use cases, HITL para validación de business rules y scope boundaries.
+  - **piloto-auto**: Auto para inventario de modulos y use cases, HITL para validacion de business rules y scope boundaries.
   - **desatendido**: Cero interrupciones. Spec completa auto-generada. Reglas marcadas UNVALIDATED.
-  - **supervisado**: Autónomo con checkpoint en scope definition y business rules.
-  - **paso-a-paso**: Confirma cada módulo, cada use case, y cada business rule.
+  - **supervisado**: Autonomo con checkpoint en scope definition y business rules.
+  - **paso-a-paso**: Confirma cada modulo, cada use case, y cada business rule.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 modules + S4 risk matrix + S5 scope) | `técnica` (full 8 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 modules + S4 risk matrix + S5 scope) | `tecnica` (full 8 sections, default)
+- `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
+  - Determines deliverable types, acceptance criteria, and module decomposition patterns
+  - When omitted, defaults to SDA (backward compatible)
 
 ## Assumptions & Limits
 
@@ -107,6 +113,19 @@ IF no business stakeholder available:
 ### Section 1: MVP Module Inventory (3-5 modules)
 Card grid. Per card: module name, description (1-2 sentences), key features (3+), related use case IDs, business rule IDs, complexity rating (1-5 with explanation), risk rating (1-5 with factors), upstream/downstream dependencies.
 
+#### Service-Type Deliverable Inventory
+
+| Service Type | "Modules" Become | Examples |
+|---|---|---|
+| SDA | Software modules | Authentication, Payments, Notifications |
+| QA | Test suites / QA workstreams | Functional Testing, Performance Testing, Security Testing |
+| Management | Delivery workstreams | Sprint Management, Governance, Stakeholder Communication |
+| RPA | Automation modules | Invoice Processing Bot, Data Entry Bot, Report Generation Bot |
+| Data-AI | Data products / pipelines | Customer 360 Pipeline, Revenue Dashboard, Churn Prediction Model |
+| Cloud | Migration workstreams / platform components | Landing Zone, CI/CD Pipeline, Monitoring Stack |
+| SAS | Staffing packages | Frontend Team Package, QA Team Package, DevOps Team Package |
+| UX-Design | Design deliverables | Design System, User Research Program, Prototype Suite |
+
 ### Section 2: Use Cases (8-12 minimum)
 Per use case structured table: ID, name (verb-noun), primary actor, preconditions, main flow (numbered steps), alternative flows (2+ per use case), exception flows (1+ per use case), postconditions, linked business rules, data entities, priority (High/Medium/Low), frequency (Daily/Session/Ad-hoc).
 
@@ -125,6 +144,19 @@ Severity: CRITICAL (blocks release), HIGH (major impact), MEDIUM (nice-to-have),
 ### Section 6: Acceptance Criteria per Module
 Per module: Functional completeness (use cases tested, rules validated, alternative/exception flows working, data consistency). Non-functional (response time, load tested, no SPOF, audit trail). Security & compliance (auth, authz, encryption, PII handling). Quality (code review zero critical, coverage >80% unit / >70% integration). Sign-offs (business owner, QA lead, tech lead).
 
+#### Service-Type Acceptance Criteria
+
+| Service Type | Key Acceptance Criteria |
+|---|---|
+| SDA | Code review passed, unit test coverage >80%, integration tests green, security scan clear |
+| QA | Test case pass rate >95%, defect detection rate >85%, automation coverage >60%, zero P1 escapes |
+| Management | Milestone on time, stakeholder satisfaction >7/10, team velocity stable +/-10%, zero unresolved blockers |
+| RPA | Bot success rate >98%, exception rate <2%, processing time within SLA, audit trail complete |
+| Data-AI | Data quality score >95%, model accuracy above threshold, pipeline SLA met, dashboard adoption >70% |
+| Cloud | Zero downtime migration, performance parity, security compliance verified, cost within budget |
+| SAS | Position filled within SLA, ramp-up completed, stakeholder satisfaction >8/10, retention >90% at 90 days |
+| UX-Design | Usability score >80 (SUS), accessibility WCAG AA compliant, design system adoption >70%, stakeholder approval |
+
 ### Section 7: Data Model Overview
 Per entity: fields (name, type, constraints), relationships (belongs-to, has-many), lifecycle (create/update/delete conditions). Entity-to-business-rule mapping.
 
@@ -133,7 +165,7 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 
 ## Output Artifact
 
-`05_Especificacion_Funcional_Deep.md` (default) | `.html` (when `{FORMATO}=html`) | both (when `{FORMATO}=dual`)
+`07_Especificacion_Funcional_{TIPO_SERVICIO}_{project}.md` (default) | `.html` (when `{FORMATO}=html`) | both (when `{FORMATO}=dual`)
 
 ### Diagrams Included
 - **ER diagram**: core data model / entity relationships
@@ -158,11 +190,11 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026

@@ -2,6 +2,31 @@
 
 All notable changes to the MetodologIA Discovery Framework plugin.
 
+## [9.0.0] — 2026-03-14
+
+### Added
+- **{TIPO_SERVICIO} parameter** — universal service routing: SDA (default), QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service
+- **Service Discovery domain** — 11 new skills: rpa-discovery, qa-service-discovery, ai-center-discovery, management-discovery, staff-augmentation-discovery, digital-transformation-discovery, cloud-service-discovery, bi-analytics-discovery, ux-design-discovery, mentoring-training-discovery, mini-apps-discovery
+- **4 new agents**: rpa-analyst, qa-strategist, ai-strategist, transformation-architect
+- **4 Service-Type Discovery commands**: rpa-discovery, qa-discovery, ai-discovery, transformation
+- **13 new Document & Pipeline commands** added to CLAUDE.md Quick Reference: plan, stakeholders, brief, asis, flows, scenarios, roadmap, spec, pitch, handover, express, intermediate, rescue
+- **Dynamic committee composition** — expert panel adapts per {TIPO_SERVICIO} (7-10 members)
+- Auto-detection rules for service type from context (10 priority-ordered rules)
+- `references/service-type-matrix.md` — routing reference for skill activation, committee composition, input requirements by service type
+- `references/priming-rag/` directory with 5 priming-RAG reference files (methodology overview, service models, impact metrics, certifications, contractual models)
+
+### Changed
+- Skill count: 48 → 59 (11 new Service Discovery skills)
+- Domain count: 8 → 9 (new Service Discovery domain)
+- Command count: 4 → 21 (17 new commands in Quick Reference)
+- Agent count: 8 → 12 (4 new service-type agents)
+- plugin.json version: 6.0.0 → 9.0.0 with updated description and keywords
+- Discovery orchestrator: dynamic committee, {TIPO_SERVICIO} integration, service-type-aware input validation
+- 9 universalized skills: asis-analysis, scenario-analysis, solution-roadmap, cost-estimation, stakeholder-mapping, flow-mapping, functional-spec, executive-pitch, discovery-handover (all now service-type-aware)
+- CLAUDE.md: full 21-command Quick Reference, {TIPO_SERVICIO} in Common Parameters, service-type routing orchestration rule
+- Step 3 input validation now service-type-aware with per-type required inputs and workarounds
+- Footer updated to community MetodologIA branding with GPL-3.0 notice
+
 ## [6.1.0] — 2026-03-12
 
 ### Added
