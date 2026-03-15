@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Accessibility Audit — Acme Corp</title>
+<style>
+:root{--sofka-orange:#FF7E08;--sofka-bg:#EFEAE4;--sofka-dark:#1A1A2E;--sofka-gold:#FFD700;--sofka-gold-dim:rgba(255,215,0,.12);--sofka-positive:#B8860B}
+body{font-family:'Inter',sans-serif;max-width:1100px;margin:0 auto;padding:2rem;background:var(--sofka-bg);color:var(--sofka-dark);line-height:1.6}
+h1{color:var(--sofka-dark);border-bottom:3px solid var(--sofka-orange);padding-bottom:.5rem}
+h2{color:var(--sofka-dark);margin-top:2rem}
+h3{color:var(--sofka-orange)}
+table{width:100%;border-collapse:collapse;margin:1rem 0}
+th{background:var(--sofka-dark);color:#fff;padding:.75rem;text-align:left}
+td{padding:.75rem;border:1px solid #d4c8be}
+tr:nth-child(even){background:rgba(239,234,228,.5)}
+.callout{background:var(--sofka-gold-dim);border-left:4px solid var(--sofka-gold);padding:1rem;margin:1rem 0;border-radius:0 4px 4px 0}
+.badge{display:inline-block;padding:.25rem .75rem;border-radius:12px;font-size:.85rem;font-weight:600}
+.badge-high{background:rgba(255,126,8,.15);color:#CC6500}
+.badge-medium{background:var(--sofka-gold-dim);color:var(--sofka-positive)}
+.badge-low{background:rgba(26,26,46,.1);color:var(--sofka-dark)}
+.badge-pass{background:var(--sofka-gold-dim);color:var(--sofka-positive)}
+.critical{color:#CC6500;font-weight:700}
+.ok{color:var(--sofka-positive);font-weight:700}
+footer{margin-top:3rem;padding-top:1rem;border-top:2px solid var(--sofka-orange);font-size:.85rem;color:#666}
+</style>
+</head>
+<body>
+<h1>Accessibility Audit — Acme Corp Banking Modernization</h1>
+<p><strong>Fecha:</strong> 15 de marzo de 2026 | <strong>Analista:</strong> Discovery Agent (accessibility-audit v12.0) | <strong>Variante:</strong> Tecnica</p>
+
+<h2>S1: Executive Dashboard</h2>
+<table>
+<tr><th>Metrica</th><th>Valor</th></tr>
+<tr><td>WCAG 2.1 Nivel</td><td><span class="critical">A parcial (target: AA)</span></td></tr>
+<tr><td>Paginas auditadas</td><td><strong>24 / 38</strong></td></tr>
+<tr><td>Violaciones criticas</td><td><span class="critical">47</span></td></tr>
+<tr><td>Violaciones moderadas</td><td><strong>128</strong></td></tr>
+<tr><td>Score ARIA</td><td><strong>3.2 / 10</strong></td></tr>
+<tr><td>Screen reader compatible</td><td><span class="critical">No</span></td></tr>
+</table>
+<div class="callout"><strong>Veredicto:</strong> El portal bancario no cumple WCAG 2.1 AA. Se requiere remediacion inmediata en formularios, navegacion por teclado y contraste de colores. [DOC]</div>
+
+<h2>S2: Hallazgos por Categoria</h2>
+<table>
+<tr><th>Categoria</th><th>Violaciones</th><th>Severidad</th><th>Ejemplo</th></tr>
+<tr><td>Contraste de color</td><td>23</td><td><span class="badge badge-high">Alta</span></td><td>Texto gris #999 sobre fondo blanco (ratio 2.8:1, minimo 4.5:1)</td></tr>
+<tr><td>Formularios sin label</td><td>18</td><td><span class="badge badge-high">Alta</span></td><td>Inputs de busqueda y filtros sin asociacion label-for</td></tr>
+<tr><td>Alt text faltante</td><td>31</td><td><span class="badge badge-medium">Media</span></td><td>Imagenes decorativas sin alt="" y funcionales sin descripcion</td></tr>
+<tr><td>Navegacion por teclado</td><td>12</td><td><span class="badge badge-high">Alta</span></td><td>Modals sin focus trap, dropdown menus inaccesibles</td></tr>
+<tr><td>ARIA landmarks</td><td>8</td><td><span class="badge badge-medium">Media</span></td><td>Falta role=main, role=navigation en layout principal</td></tr>
+</table>
+
+<h2>S3: Roadmap de Remediacion</h2>
+<table>
+<tr><th>Fase</th><th>Accion</th><th>Impacto</th><th>Esfuerzo</th></tr>
+<tr><td>Sprint 1-2</td><td>Fix contraste + labels de formularios</td><td><span class="badge badge-high">Alto</span></td><td>40h</td></tr>
+<tr><td>Sprint 3-4</td><td>Navegacion por teclado + focus management</td><td><span class="badge badge-high">Alto</span></td><td>60h</td></tr>
+<tr><td>Sprint 5-6</td><td>ARIA landmarks + screen reader testing</td><td><span class="badge badge-medium">Medio</span></td><td>40h</td></tr>
+<tr><td>Sprint 7-8</td><td>Alt text + automated testing pipeline</td><td><span class="badge badge-medium">Medio</span></td><td>30h</td></tr>
+</table>
+<footer>
+<p><strong>Sofka SAGE v12.0</strong> — Construido por profesionales, potenciado por inteligencia artificial</p>
+<p>Evidencia: [CODIGO] [CONFIG] [DOC] [INFERENCIA] [SUPUESTO]</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Compliance Assessment — Acme Corp</title>
+<style>
+:root{--sofka-orange:#FF7E08;--sofka-bg:#EFEAE4;--sofka-dark:#1A1A2E;--sofka-gold:#FFD700;--sofka-gold-dim:rgba(255,215,0,.12);--sofka-positive:#B8860B}
+body{font-family:'Inter',sans-serif;max-width:1100px;margin:0 auto;padding:2rem;background:var(--sofka-bg);color:var(--sofka-dark);line-height:1.6}
+h1{color:var(--sofka-dark);border-bottom:3px solid var(--sofka-orange);padding-bottom:.5rem}
+h2{color:var(--sofka-dark);margin-top:2rem}h3{color:var(--sofka-orange)}
+table{width:100%;border-collapse:collapse;margin:1rem 0}
+th{background:var(--sofka-dark);color:#fff;padding:.75rem;text-align:left}
+td{padding:.75rem;border:1px solid #d4c8be}tr:nth-child(even){background:rgba(239,234,228,.5)}
+.callout{background:var(--sofka-gold-dim);border-left:4px solid var(--sofka-gold);padding:1rem;margin:1rem 0;border-radius:0 4px 4px 0}
+.badge{display:inline-block;padding:.25rem .75rem;border-radius:12px;font-size:.85rem;font-weight:600}
+.badge-high{background:rgba(255,126,8,.15);color:#CC6500}
+.badge-medium{background:var(--sofka-gold-dim);color:var(--sofka-positive)}
+.badge-low{background:rgba(26,26,46,.1);color:var(--sofka-dark)}
+.badge-pass{background:var(--sofka-gold-dim);color:var(--sofka-positive)}
+.critical{color:#CC6500;font-weight:700}.ok{color:var(--sofka-positive);font-weight:700}
+footer{margin-top:3rem;padding-top:1rem;border-top:2px solid var(--sofka-orange);font-size:.85rem;color:#666}
+</style>
+</head>
+<body>
+<h1>Compliance Assessment — Acme Corp Banking Modernization</h1>
+<p><strong>Fecha:</strong> 15 de marzo de 2026 | <strong>Analista:</strong> Discovery Agent (compliance-assessment v12.0) | <strong>Variante:</strong> Tecnica</p>
+
+<h2>S1: Compliance Score</h2>
+<table><tr><th>Regulacion</th><th>Cobertura</th><th>Gaps Criticos</th><th>Estado</th></tr>
+<tr><td>PCI-DSS v4.0</td><td>72%</td><td>5</td><td><span class="badge badge-high">No Compliant</span></td></tr>
+<tr><td>GDPR / Habeas Data</td><td>85%</td><td>3</td><td><span class="badge badge-medium">Parcial</span></td></tr>
+<tr><td>ISO 27001:2022</td><td>68%</td><td>8</td><td><span class="badge badge-high">No Compliant</span></td></tr>
+<tr><td>SOX (Controles IT)</td><td>90%</td><td>2</td><td><span class="badge badge-pass">Adecuado</span></td></tr></table>
+<div class="callout"><strong>Veredicto:</strong> Compliance global 79%. PCI-DSS e ISO 27001 requieren remediacion antes de Q3 2026 para evitar sanciones regulatorias. [DOC]</div>
+<h2>S2: Gap Analysis Detallado</h2>
+<table><tr><th>Control</th><th>Regulacion</th><th>Estado</th><th>Remediacion</th></tr>
+<tr><td>Cifrado en transito TLS 1.3</td><td>PCI-DSS 4.2</td><td><span class="critical">Falta</span></td><td>Upgrade TLS en 3 endpoints legacy</td></tr>
+<tr><td>Derecho al olvido</td><td>GDPR Art.17</td><td><span class="critical">Parcial</span></td><td>Implementar data deletion pipeline</td></tr>
+<tr><td>Gestion de vulnerabilidades</td><td>ISO 27001 A.12</td><td><span class="critical">Falta</span></td><td>Integrar SAST/DAST en CI/CD</td></tr>
+<tr><td>Logs de auditoria</td><td>SOX IT</td><td><span class="ok">Cumple</span></td><td>Monitoreo continuo OK</td></tr></table>
+<footer>
+<p><strong>Sofka SAGE v12.0</strong> — Construido por profesionales, potenciado por inteligencia artificial</p>
+<p>Evidencia: [CODIGO] [CONFIG] [DOC] [INFERENCIA] [SUPUESTO]</p>
+</footer>
+</body>
+</html>
