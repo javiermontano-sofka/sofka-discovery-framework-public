@@ -1,0 +1,153 @@
+%% Knowledge Graph — Data Engineering: Pipeline Architecture & Data Platform Design
+%% Autor: Javier Montaño | Fecha: 13 de marzo de 2026
+%% (c) Sofka Technologies — All Rights Reserved
+
+graph LR
+
+  %% === INPUTS ===
+  subgraph INPUTS["INPUTS"]
+    direction TB
+    SRC["Fuentes de Datos"]
+    REQ["Requisitos de Negocio"]
+    SLA["SLAs de Freshness"]
+  end
+
+  %% === SECTIONS ===
+  subgraph INGESTION["S1: Ingestion"]
+    direction TB
+    CDC["CDC / Debezium"]
+    BATCH["Batch Extract"]
+    STREAM["Streaming / Kafka"]
+    CONNECTORS["Conectores Gestionados"]
+    SCHEMA_REG["Schema Registry"]
+  end
+
+  subgraph TRANSFORMATION["S2: Transformation"]
+    direction TB
+    DBT["dbt Models"]
+    SPARK["Apache Spark"]
+    FLINK["Apache Flink"]
+    SQL_T["SQL Transforms"]
+  end
+
+  subgraph ORCHESTRATION["S3: Orchestration"]
+    direction TB
+    AIRFLOW["Airflow DAGs"]
+    DAGSTER["Dagster Assets"]
+    PREFECT["Prefect Flows"]
+    SCHEDULER["Scheduling & Triggers"]
+  end
+
+  subgraph QUALITY["S4: Quality"]
+    direction TB
+    GX["Great Expectations"]
+    SODA["Soda Checks"]
+    ELEMENTARY["Elementary dbt"]
+    QUARANTINE["Quarantine Pattern"]
+  end
+
+  subgraph SERVING["S5: Serving & Storage"]
+    direction TB
+    LAKEHOUSE["Lakehouse / Iceberg"]
+    WAREHOUSE["Data Warehouse"]
+    ZONES["Zonas: Raw-Curated-Marts"]
+    CATALOG["Data Catalog"]
+  end
+
+  %% === OUTPUTS ===
+  subgraph OUTPUTS["OUTPUTS"]
+    direction TB
+    LINEAGE["Lineage & Observability"]
+    METRICS["Pipeline Metrics"]
+    DOCS["Documentacion Platform"]
+  end
+
+  %% === STANDARDS ===
+  subgraph STANDARDS["STANDARDS"]
+    direction TB
+    IDEMPOTENCY["Idempotency"]
+    CONTRACTS["Data Contracts"]
+    SCHEMA_EVO["Schema Evolution"]
+    FORMATS["Formatos: Parquet/Avro/Iceberg"]
+  end
+
+  %% === CONSUMERS ===
+  subgraph CONSUMERS["CONSUMERS"]
+    direction TB
+    ANALYTICS["Analytics / BI"]
+    ML["ML Pipelines"]
+    APPS["Aplicaciones Operacionales"]
+  end
+
+  %% === AGENTS ===
+  subgraph AGENTS["AGENTS"]
+    direction TB
+    DATA_ENG["data-engineer"]
+    DATA_ARCH["data-architect"]
+    ANALYTICS_ARCH["analytics-architect"]
+  end
+
+  %% === Conexiones ===
+  SRC --> CDC
+  SRC --> BATCH
+  SRC --> STREAM
+  REQ --> SLA
+  SLA --> SCHEDULER
+
+  CDC --> SCHEMA_REG
+  BATCH --> CONNECTORS
+  STREAM --> SCHEMA_REG
+  CONNECTORS --> ZONES
+
+  SCHEMA_REG --> DBT
+  SCHEMA_REG --> SPARK
+  STREAM --> FLINK
+  SQL_T --> DBT
+
+  AIRFLOW --> DBT
+  DAGSTER --> SPARK
+  PREFECT --> FLINK
+  SCHEDULER --> AIRFLOW
+
+  DBT --> GX
+  SPARK --> SODA
+  FLINK --> ELEMENTARY
+  GX --> QUARANTINE
+
+  SODA --> LAKEHOUSE
+  ELEMENTARY --> WAREHOUSE
+  QUARANTINE --> ZONES
+  ZONES --> CATALOG
+
+  LAKEHOUSE --> LINEAGE
+  WAREHOUSE --> METRICS
+  CATALOG --> DOCS
+
+  LINEAGE --> ANALYTICS
+  METRICS --> ML
+  DOCS --> APPS
+
+  IDEMPOTENCY --> AIRFLOW
+  CONTRACTS --> SCHEMA_REG
+  SCHEMA_EVO --> SCHEMA_REG
+  FORMATS --> ZONES
+
+  DATA_ENG --> ORCHESTRATION
+  DATA_ARCH --> SERVING
+  ANALYTICS_ARCH --> QUALITY
+
+  %% === Estilos Sofka ===
+  classDef sofkaPrimary fill:#FF7E08,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+  classDef sofkaDark fill:#1A1A2E,stroke:#FF7E08,color:#FFFFFF,stroke-width:2px
+  classDef sofkaSuccess fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+  classDef sofkaLight fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E,stroke-width:1px
+
+  class SRC,REQ,SLA sofkaPrimary
+  class CDC,BATCH,STREAM,CONNECTORS,SCHEMA_REG,DBT,SPARK,FLINK,SQL_T sofkaDark
+  class AIRFLOW,DAGSTER,PREFECT,SCHEDULER sofkaDark
+  class GX,SODA,ELEMENTARY,QUARANTINE sofkaSuccess
+  class LAKEHOUSE,WAREHOUSE,ZONES,CATALOG sofkaPrimary
+  class LINEAGE,METRICS,DOCS sofkaSuccess
+  class IDEMPOTENCY,CONTRACTS,SCHEMA_EVO,FORMATS sofkaLight
+  class ANALYTICS,ML,APPS sofkaPrimary
+  class DATA_ENG,DATA_ARCH,ANALYTICS_ARCH sofkaDark

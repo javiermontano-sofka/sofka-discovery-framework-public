@@ -1,0 +1,104 @@
+%% Knowledge Graph — Strategic Scenario Analysis (Tree of Thought)
+%% Dominio: Evaluación multi-escenario con scoring 6D para decisiones de arquitectura
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["scenario-analysis"]
+        direction TB
+        PR["Principio Rector:<br/>Divergencia antes de convergencia"]
+        TOT["Framework: Tree of Thought"]
+        SC6D["Scoring: 6 Dimensiones Ponderadas"]
+        VG["Validation Gate: 11 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        ASIS["03_Analisis_AS-IS<br/>(risk register, tech debt)"]
+        FLOWS["04_Mapeo_Flujos<br/>(domain taxonomy, E2E flows)"]
+        STKH["01_Stakeholder_Map<br/>(priorities, risk appetite)"]
+        WEIGHTS["Weight Override File<br/>(optional)"]
+        CONTEXT["Business Context<br/>(budget, timeline, team)"]
+    end
+
+    subgraph METHODOLOGY["Metodología ToT"]
+        DIV["Divergencia Obligatoria<br/>(min 3 escenarios)"]
+        ARCH["Arquetipos:<br/>Conservative / Moderate / Aggressive"]
+        SWOT["SWOT por Escenario<br/>(4 cuadrantes, min 3/cuadrante)"]
+        SCORING["Scoring 6D Ponderado<br/>(Cost, Time, Risk, Strategy, Regulatory, PoC)"]
+        COMPARE["Análisis Comparativo<br/>(matrix + decision rules)"]
+        SWITCH["Lógica Condicional<br/>(5+ triggers de cambio)"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        REPORT["05_Escenarios_ToT<br/>(entregable principal)"]
+        MATRIX["Scoring Matrix<br/>(cross-scenario)"]
+        DTREE["Decision Tree<br/>(Mermaid flowchart)"]
+        ROADMAP["Implementation Roadmap<br/>(4 fases, gates)"]
+        RISKR["Risk Register<br/>(por escenario recomendado)"]
+    end
+
+    subgraph STANDARDS["Standards & Frameworks"]
+        TOGAF["TOGAF ADM Phase E<br/>(Opportunities & Solutions)"]
+        ISO42["ISO 42010<br/>(Architecture Description)"]
+        ADR["Architecture Decision Records<br/>(Michael Nygard)"]
+        MCDA["Multi-Criteria Decision Analysis<br/>(Belton & Stewart)"]
+        ISO31["ISO 31000<br/>(Risk Management)"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        SOLROAD["solution-roadmap<br/>(usa recommendation + roadmap)"]
+        COSTEST["cost-estimation<br/>(usa scoring cost dimension)"]
+        RISKCTRL["risk-controlling-dynamics<br/>(usa risk register)"]
+        FUNCSPEC["functional-spec<br/>(usa escenario ganador)"]
+        PITCH["executive-pitch<br/>(usa recommendation + matrix)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        TA["technical-architect<br/>(owner — reasignado)"]
+        DA["domain-analyst<br/>(support — context)"]
+        EA["enterprise-architect<br/>(support — alignment)"]
+        SA["security-architect<br/>(support — risk)"]
+        PE["platform-engineer<br/>(support — infra scenarios)"]
+    end
+
+    %% Primary flows
+    INPUTS --> SKILL
+    SKILL --> METHODOLOGY
+    METHODOLOGY --> OUTPUTS
+    STANDARDS -.->|fundamentan| METHODOLOGY
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Agent relationships
+    TA -->|opera| SKILL
+    DA -.->|aporta contexto de dominio| DIV
+    EA -.->|valida alineación estratégica| SCORING
+    SA -.->|evalúa riesgos por escenario| SWOT
+    PE -.->|aporta viabilidad técnica| ARCH
+
+    %% Internal traceability
+    DIV --> ARCH
+    ARCH --> SWOT
+    SWOT --> SCORING
+    SCORING --> COMPARE
+    COMPARE --> SWITCH
+
+    %% Cross-skill traceability
+    ASIS -.->|risk register feeds| SWOT
+    FLOWS -.->|domain taxonomy feeds| DIV
+    STKH -.->|risk appetite feeds| WEIGHTS
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef method fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class ASIS,FLOWS,STKH,WEIGHTS,CONTEXT input
+    class DIV,ARCH,SWOT,SCORING,COMPARE,SWITCH method
+    class REPORT,MATRIX,DTREE,ROADMAP,RISKR output
+    class TOGAF,ISO42,ADR,MCDA,ISO31 standard
+    class SOLROAD,COSTEST,RISKCTRL,FUNCSPEC,PITCH consumer
+    class TA,DA,EA,SA,PE agent

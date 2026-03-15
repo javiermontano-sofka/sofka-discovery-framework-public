@@ -1,0 +1,156 @@
+# Automatización de Sesión
+
+> Sofka SAGE — Ontología viva
+> Referencia canónica del comportamiento automático de sesión, ghost menu y estructura `.discovery/`.
+
+---
+
+## Activación del plugin
+
+Al activar Sofka SAGE en un repositorio, los hooks ejecutan automáticamente la siguiente secuencia de inicialización:
+
+### Secuencia de activación
+
+| Orden | Hook | Acción | Archivo generado |
+|-------|------|--------|-----------------|
+| 1 | Session context | Escanear repo, detectar stack, entregables previos | `SESSION-README.md` |
+| 2 | Session instructions | Generar instrucciones específicas al repo | `SESSION-CLAUDE.md` |
+| 3 | Repo index | Inventariar estructura del repositorio | `repo-index.json` |
+| 4 | Ghost menu | Inicializar navegación contextual | `ghost-menu.md` |
+| 5 | Changelog | Crear registro de continuidad | `session-changelog.md` |
+| 6 | Session state | Inicializar estado de la sesión | `session-state.json` |
+| 7 | RAG priming | Cargar 20+ archivos de conocimiento base | (en memoria) |
+
+---
+
+## Ghost menu
+
+El ghost menu es un patrón de navegación secundaria operativa que aparece al final de cada artefacto importante.
+
+### Formato
+
+```
+SAGE | Fase: {fase} | {n}/16 entregables | Skill: {skill}
+--- Estado: {verde/amarillo/rojo}
+--- Siguiente: {próxima acción recomendada}
+--- Pendiente: {entregables faltantes en ruta crítica}
+--- Archivos: SESSION-README | changelog | repo-index
+```
+
+### Reglas de inclusión
+
+| Contexto | Incluir ghost menu |
+|----------|-------------------|
+| Entregable del pipeline (00-14) | SI — obligatorio |
+| Artefacto HTML generado | SI — obligatorio |
+| Respuesta que modifica estado del discovery | SI — obligatorio |
+| Respuesta conversacional breve | NO |
+| Respuesta a pregunta puntual | NO |
+
+### Estados del semáforo
+
+| Estado | Significado |
+|--------|-------------|
+| Verde | Pipeline en curso, sin bloqueos |
+| Amarillo | Advertencias activas (>20% supuestos, gate pendiente) |
+| Rojo | Bloqueo activo (gate fallido, evidencia insuficiente) |
+
+---
+
+## Session changelog
+
+El changelog registra cada acción significativa de la sesión para garantizar continuidad ante crisis (timeout, pérdida de contexto, nueva sesión).
+
+### Formato de entrada
+
+```markdown
+## [{timestamp}] {acción}
+- **Fase:** {fase actual}
+- **Entregable:** {entregable afectado}
+- **Resultado:** {descripción breve}
+- **Estado pipeline:** {n}/16
+```
+
+### Eventos que se registran
+
+- Inicio de sesión / reanudación
+- Generación de cada entregable
+- Paso de quality gate (aprobado/rechazado)
+- Procesamiento de adjunto
+- Cambio de `{TIPO_SERVICIO}`
+- Decisión significativa del usuario
+- Error o bloqueo
+
+---
+
+## Generación de contexto de sesión
+
+### SESSION-README.md
+Contiene el contexto del proyecto detectado automáticamente:
+- Nombre del proyecto / repositorio
+- Stack tecnológico identificado
+- Estructura del codebase
+- Entregables previos detectados
+- Estado actual del pipeline
+
+### SESSION-CLAUDE.md
+Contiene instrucciones específicas del orquestador para esta sesión:
+- Tipo de servicio detectado
+- Agentes activos
+- Skills cargados
+- Parámetros de configuración
+- Prioridades de la sesión
+
+---
+
+## Estructura `.discovery/`
+
+Cada repositorio de cliente mantiene un directorio `.discovery/` con el estado completo del discovery:
+
+```
+.discovery/
+├── repo-index.json          # Inventario estructurado del repositorio
+├── SESSION-README.md         # Contexto del proyecto (auto-generado)
+├── SESSION-CLAUDE.md         # Instrucciones del orquestador (auto-generado)
+├── ghost-menu.md             # Navegación contextual actual
+├── session-changelog.md      # Changelog para continuidad
+├── session-state.json        # Estado serializado de la sesión
+├── insights/                 # Hallazgos descubiertos durante el proceso
+├── transcripts/              # Transcripciones de entrevistas/reuniones
+├── rag-priming/              # Extractos de adjuntos procesados para RAG
+└── deliverables/             # Entregables generados (00-14)
+    ├── 00_Discovery_Plan.md
+    ├── 01_Stakeholder_Map.md
+    ├── ...
+    └── 14_AI_Opportunities.md
+```
+
+### Archivos auto-generados vs manuales
+
+| Archivo | Generación | Actualización |
+|---------|-----------|---------------|
+| `repo-index.json` | Automática (hook) | Automática al detectar cambios |
+| `SESSION-README.md` | Automática (hook) | Manual si el usuario aporta contexto |
+| `SESSION-CLAUDE.md` | Automática (hook) | Automática según progreso |
+| `ghost-menu.md` | Automática | Automática en cada entregable |
+| `session-changelog.md` | Automática | Automática en cada acción |
+| `session-state.json` | Automática | Automática (serialización de estado) |
+| `insights/*` | Manual (durante discovery) | Manual |
+| `deliverables/*` | Por comando | Manual (improve) |
+
+---
+
+## Reanudación de sesión
+
+Cuando una sesión se interrumpe y se reanuda (nuevo contexto):
+
+1. Leer `session-state.json` para recuperar estado
+2. Leer `session-changelog.md` para reconstruir historial
+3. Verificar integridad de entregables en `deliverables/`
+4. Detectar adjuntos sin procesar en `rag-priming/`
+5. Restaurar ghost menu con estado correcto
+6. Notificar al usuario del punto de reanudación
+
+---
+
+*Sofka SAGE — La excelencia no se improvisa, se diseña.*

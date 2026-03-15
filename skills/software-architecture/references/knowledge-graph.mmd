@@ -1,0 +1,70 @@
+```mermaid
+graph TD
+    SA[Software Architecture] --> MV[Module View]
+    SA --> CV[Component View]
+    SA --> DP[Design Patterns]
+    SA --> QA[Quality Attributes]
+    SA --> ADR[Architecture Decision Records]
+    SA --> DE[Debt & Evolution Plan]
+
+    MV --> ModDecomp[Descomposición de Módulos]
+    MV --> DepGraph[Grafo de Dependencias]
+    MV --> LayerMap[Mapa de Capas]
+    MV --> DepViol[Violaciones de Dependencia]
+    LayerMap --> Pres[Presentación]
+    LayerMap --> Biz[Negocio / Dominio]
+    LayerMap --> Persist[Persistencia]
+    LayerMap --> Infra[Infraestructura]
+
+    CV --> CompID[Identificación de Componentes]
+    CV --> SRP[Single Responsibility]
+    CV --> Interfaces[Contratos de Interfaz]
+    CV --> DI[Inyección de Dependencias]
+
+    DP --> ArchPatterns[Patrones Arquitectónicos]
+    DP --> DesignPatt[Patrones de Diseño]
+    DP --> AntiPatterns[Anti-Patrones]
+    ArchPatterns --> Hexagonal[Hexagonal / Ports & Adapters]
+    ArchPatterns --> CleanArch[Clean Architecture]
+    ArchPatterns --> CQRS[CQRS]
+    ArchPatterns --> EventSrc[Event Sourcing]
+    ArchPatterns --> Layered[Layered Architecture]
+    ArchPatterns --> Microkernel[Microkernel]
+    DesignPatt --> Repository[Repository Pattern]
+    DesignPatt --> Factory[Factory Pattern]
+    DesignPatt --> Observer[Observer Pattern]
+    DesignPatt --> Facade[Facade Pattern]
+    AntiPatterns --> GodObj[God Object]
+    AntiPatterns --> LeakyAbstr[Leaky Abstraction]
+    AntiPatterns --> TightCoupling[Tight Coupling]
+
+    QA --> ATAM[ATAM Scenarios]
+    ATAM --> Perf[Performance: latencia p95]
+    ATAM --> Modif[Modifiability: módulos afectados]
+    ATAM --> Avail[Availability: failover SLA]
+    ATAM --> Sec[Security: auth / authz]
+    ATAM --> Test[Testability: sin stubs externos]
+    ATAM --> Deploy[Deployability: rollback <15min]
+
+    ADR --> ADRStatus[Estado: Proposed/Accepted/Deprecated]
+    ADR --> ADRContext[Contexto y restricciones]
+    ADR --> ADRAlts[Alternativas evaluadas]
+    ADR --> ADRCons[Consecuencias: positivas / negativas]
+
+    DE --> DebtInv[Inventario de Deuda]
+    DE --> EvolStrat[Estrategia de Evolución]
+    DE --> PhaseAppr[Enfoque por fases]
+    DebtInv --> Symptom[Síntoma observable]
+    DebtInv --> RepCost[Costo de remediación]
+    DebtInv --> RiskUnfix[Riesgo si no se resuelve]
+
+    classDef core fill:#FF7E08,color:#fff,stroke:#FF7E08
+    classDef arch fill:#1A1A2E,color:#fff,stroke:#1A1A2E
+    classDef quality fill:#FFD700,color:#1A1A2E,stroke:#FFD700
+    classDef debt fill:#c0392b,color:#fff,stroke:#c0392b
+
+    class SA,MV,CV,DP,QA,ADR,DE core
+    class ArchPatterns,Hexagonal,CleanArch,CQRS,EventSrc,Layered,Microkernel arch
+    class ATAM,Perf,Modif,Avail,Sec,Test,Deploy quality
+    class DebtInv,EvolStrat,AntiPatterns,GodObj,LeakyAbstr,TightCoupling,Symptom,RepCost,RiskUnfix debt
+```
