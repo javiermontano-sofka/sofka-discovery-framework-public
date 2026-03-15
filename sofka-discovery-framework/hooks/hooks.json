@@ -4,10 +4,39 @@
       {
         "hooks": [
           {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/scan-deliverables.sh\" \"$PWD\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/session-context-gen.sh\" \"$PWD\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/ghost-menu-inject.sh\" \"$PWD\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
+          },
+          {
             "type": "prompt",
-            "prompt": "The Sofka Discovery Framework plugin is active (v7.0.0 — NL-HP v3.0). 48 skills, 17 commands (10 document + 3 pipeline + 4 operations), checkpoint model (CP-0→CP-F), 3 quality gates. Output: markdown-excellence + Mermaid diagrams, A/B variants, smart HITL (piloto-auto default). Use /sofka-discovery-framework:discovery to start a full pipeline, or individual document commands (:plan, :brief, :asis, etc.). Cost outputs = drivers and magnitudes only (5% innovation margin), never final prices. Present this as a brief status note."
+            "prompt": "Sofka SAGE v11.0 activo — Agentic PreSales as Service.\n\n48 agentes | 100 skills MOAT | 84 comandos | 4 quality gates (G1→G3)\nNL-HP v3.0 | Think Tank 7 Sabios | {TIPO_SERVICIO} routing\n\nSesión inicializada:\n- .discovery/SESSION-CLAUDE.md → instrucciones del orquestador para este repo\n- .discovery/SESSION-README.md → contexto del proyecto\n- .discovery/ghost-menu.md → navegación contextual\n- .discovery/session-changelog.md → changelog para continuidad\n\nGhost Menu ACTIVO: incluir bloque de navegación contextual al final de cada artefacto importante.\nChangelog ACTIVO: cada acción significativa queda registrada para retomar ante crisis.\n\nComandos rápidos: /sdf:run-auto (completo) | /sdf:run-express (Go/No-Go) | /sdf:run-guided (cocreado)\nCost outputs = FTE-meses + magnitudes, NUNCA precios. Branding: #FF7E08, #1A1A2E, #FFD700 (NUNCA verde).\n\nPresenta esto como nota breve de estado."
           }
         ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
+          }
+        ],
+        "matcher": {
+          "tool_name": "Write|Edit"
+        }
       }
     ]
   }

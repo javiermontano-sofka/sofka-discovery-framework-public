@@ -1,6 +1,87 @@
-# Changelog
+# Changelog — Sofka SAGE
 
-All notable changes to the Sofka Discovery Framework plugin.
+All notable changes to the Sofka SAGE plugin (formerly Sofka Discovery Framework).
+
+## [12.0.0] — 2026-03-15
+
+### Living Ontology Architecture
+- CLAUDE.md refactored to 119-line routing hub
+- 12 ontology sub-files in `references/ontology/` (living documents)
+- `lessons-learned.md` — auto-updated with session corrections
+- `brand-orchestration.md` — 3-brand detection and isolation rules
+
+### New UX Commands
+- `/sdf:menu` — Interactive command palette with pipeline state awareness
+- `/sdf:a` — Advance to next pipeline step with gate validation
+- `/sdf:demo` — Guided walkthrough of SAGE on current repo
+- Command count: 84 → 87
+
+### Canonical Token Unification
+- `references/ontology/canonical-tokens.md` — single source of truth for CSS tokens
+- Validated against Bancoomeva production deliverables
+- 27 `--sofka-*` custom properties standardized
+- Default light background `#EFEAE4` (NOT dark, NOT white)
+- Inter as sole font (Clash Grotesk removed)
+- Design System v5 Unified reconciled with v4 Bancoomeva tokens
+
+### 3-Brand Orchestration
+- Global CLAUDE.md expanded: Sofka + MetodologIA + JM Labs
+- Context auto-detection rules (working directory, keywords, prefix)
+- Brand isolation enforced (NEVER mix)
+- JM Labs personal brand: #14B8A6 teal, "Ideas into systems."
+
+### Plugin Metadata
+- Version bump: 11.0.0 → 12.0.0
+- 48 agents, 100 skills, 87 commands, 13 ontology sub-files
+
+---
+
+## [11.0.0] — 2026-03-14
+
+### Rebrand — Sofka SAGE (Agentic Gateway to Excellence)
+- **Naming**: "Sofka Discovery Framework" → "Sofka SAGE" across all assets
+- **Identity**: Agentic PreSales as Service — tu IDE se convierte en una agencia de discovery
+- **Technical prefix**: `/sdf:` se mantiene para backward-compatibility
+
+### Zero-Hallucination Protocol
+- Evidence tagging obligatorio: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
+- Banner de advertencia si >30% es [SUPUESTO]
+- Confidence levels por tag (Alta/Media/Baja)
+- Flag obligatorio en hallazgos severity=CRÍTICO + [SUPUESTO]
+
+### Hook System v2.0
+- **Ghost menu hook**: Navegación contextual persistente en cada artefacto
+- **Session changelog hook**: Registro automático para continuidad ante crisis
+- **Session context hook**: Genera SESSION-README.md + SESSION-CLAUDE.md por repo
+- **PostToolUse hook**: Changelog automático en cada Write/Edit
+- SessionStart mejorado: escaneo + contexto + ghost menu + changelog + priming
+
+### RAG-Priming Enhancement
+- 8 nuevos priming-RAG docs agrupados (agents-roster, commands-reference, skills-catalog, plugin-infrastructure, prompts-library, html-assets, global-ecosystem, adjuntos-policy)
+- Master index de 696+ líneas con inventario completo del ecosistema
+- Política automática de procesamiento de adjuntos
+- `.discovery/` como directorio estándar de sesión
+
+### Design System v5 — Dark Authority
+- Referencia canónica: `references/design-system-v5.md`
+- 10 componentes documentados (nav, hero, cards, badges, buttons, tables, code, modals, stats, ghost-menu)
+- Regla absoluta: gold (#FFD700) para éxito, NUNCA verde
+- Patrones de composición: landing, one-pager, entregable técnico
+
+### Prompt Library NL-HP v3.0
+- 44 prompts en estilo NL-HP playbook (ROL, OBJETIVO, PROTOCOLO, RESTRICCIONES, CRITERIOS, EDGE CASES, ===params, ===inputs)
+- Versionado: v0 (robustened), v1 (NL-HP)
+- Prompt-library.html actualizado con excerpts NL-HP
+
+### HTML Assets
+- landing.html: SAGE branding, v11.0
+- prompt-library.html: SAGE branding, NL-HP excerpts, v11.0
+
+### Marketplace
+- marketplace.json actualizado a v2.0.0
+- Plugin registrado como v11.0.0 con keywords SAGE
+
+---
 
 ## [10.0.0] — 2026-03-14
 

@@ -1,467 +1,205 @@
-# Sofka Discovery Framework v10.0.0
+# Sofka SAGE — Agentic PreSales as Service
 
-Framework de discovery técnico empresarial para Claude Code — 100 skills especializados, 48 agentes dream team, 84 comandos, pipeline de 10 fases con 4 quality gates, 10 tipos de servicio.
+> **SAGE** = Sofka Agentic Gateway to Excellence.
+> Tu IDE se convierte en una agencia de discovery empresarial.
 
 ---
 
-## Quick Start
+## Qué hace
+
+Sofka SAGE transforma Claude Code en el consultor técnico más riguroso del mercado.
+No es un prompt — es un ecosistema agéntico completo con:
+
+- **48 agentes** especializados (12 core + 36 domain)
+- **100 skills MOAT** (SKILL.md + references + examples + prompts)
+- **84 comandos** (21 primarios + 63 aliases)
+- **4 quality gates** (G1 → G1.5 → G2 → G3)
+- **Think Tank de 7 Sabios** para validación de factibilidad
+- **Protocolo zero-hallucination** con evidence tagging obligatorio
+- **Ghost menu** persistente para navegación contextual
+- **Changelog automático** para continuidad ante crisis de sesión
+- **RAG-priming** con 20+ archivos de conocimiento base
+- **10 tipos de servicio** con routing automático
+
+---
+
+## Instalación
 
 ```bash
-# Instalar plugin
-claude --plugin-dir ./sofka-discovery-framework
+git clone https://github.com/sofka-technologies/discovery-framework.git \
+  ~/skills/plugins/sofka-discovery-framework
+```
 
-# Pipeline guiado (recomendado primera vez)
-/sdf:run-guided
+Al reiniciar Claude Code, el plugin se activa automáticamente.
 
-# Ejecución autónoma (piloto-auto por defecto)
+---
+
+## Uso rápido
+
+```bash
+# Pipeline completo autónomo
 /sdf:run-auto
 
-# Express — Go/No-Go en 1 sesión
+# Go/No-Go en 1 sesión (3 entregables)
 /sdf:run-express
 
-# Intermediate — Dirección arquitectónica
+# Pipeline guiado con facilitación
+/sdf:run-guided
+
+# Dirección arquitectónica (7 entregables)
 /sdf:run-deep
 ```
 
-**Parámetros globales:**
+---
 
-| Parámetro | Valores | Default | Descripción |
-|-----------|---------|---------|-------------|
-| `{MODO}` | `piloto-auto`, `desatendido`, `supervisado`, `paso-a-paso` | `piloto-auto` | Nivel de intervención humana |
-| `{FORMATO}` | `markdown`, `html`, `docx`, `dual` | `markdown` | Formato de salida |
-| `{VARIANTE}` | `ejecutiva`, `técnica` | `técnica` | Ejecutiva ~40% longitud, técnica completa |
-| `{ADJUNTOS}` | `procesar-todo`, `solo-código`, `ignorar` | `procesar-todo` | Tratamiento de archivos adjuntos |
-| `{PROFUNDIDAD}` | `ejecutivo`, `técnico`, `exhaustivo` | `técnico` | Granularidad del análisis |
-| `{TIPO_SERVICIO}` | `SDA`, `QA`, `Management`, `RPA`, `Data-AI`, `Cloud`, `SAS`, `UX-Design`, `Digital-Transformation`, `Multi-Service` | `SDA` | Tipo de servicio Sofka |
+## Qué pasa cuando activas el plugin
+
+1. Los hooks escanean el directorio de trabajo
+2. Se genera contexto de sesión en `.discovery/`
+3. Se activa ghost menu para navegación contextual
+4. Se inicia changelog automático
+5. El orquestador (`discovery-conductor`) toma control del pipeline
+6. Cada afirmación se etiqueta: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFERENCIA]` `[SUPUESTO]`
 
 ---
 
-## Tipos de Servicio (`{TIPO_SERVICIO}`)
-
-v10.0.0 es una plataforma de discovery universal que cubre TODAS las líneas de servicio de Sofka:
-
-| Tipo | Línea de Servicio | Comando Directo |
-|------|-------------------|-----------------|
-| **SDA** (default) | Software Development & Architecture | `/sdf:run-guided` |
-| **QA** | Quality Assurance as a Service | `/sdf:qa-discovery` |
-| **Management** | PMO, Agile Coaching, Governance | `/sdf:run-guided {TIPO_SERVICIO}=Management` |
-| **RPA** | Robotic Process Automation | `/sdf:rpa-discovery` |
-| **Data-AI** | Data Platform & AI Center | `/sdf:ai-discovery` |
-| **Cloud** | Cloud Migration & Operations | `/sdf:run-guided {TIPO_SERVICIO}=Cloud` |
-| **SAS** | Staff Augmentation Services | `/sdf:run-guided {TIPO_SERVICIO}=SAS` |
-| **UX-Design** | UX/UI Design & Research | `/sdf:run-guided {TIPO_SERVICIO}=UX-Design` |
-| **Digital-Transformation** | Multi-service Program | `/sdf:transformation` |
-| **Multi-Service** | Combination of service types | `/sdf:transformation` |
-
----
-
-## Arquitectura del Pipeline
-
-### Fases y Quality Gates
-
-```mermaid
-flowchart LR
-    P0[Fase 0\nStakeholder\nMapping] --> P1[Fase 1\nAS-IS\nAnalysis]
-    P1 --> P2[Fase 2\nFlow\nMapping]
-    P2 --> P3[Fase 3\nScenarios]
-    P3 --> G1{Gate 1\nDiagnóstico}
-    G1 --> P3b[Fase 3b\nTech Feasibility\n+ SW Viability]
-    P3b --> P4[Fase 4\nRoadmap\n+ Cost Drivers]
-    P4 --> P4b[Fase 4b\nCommercial\nModel]
-    P4b --> G2{Gate 2\nSolución}
-    G2 --> P5a[Fase 5a\nFunctional\nSpec]
-    G2 --> P5b[Fase 5b\nExecutive\nPitch]
-    P5a --> QA[Proposal QA\n+ Risk Assessment]
-    P5b --> QA
-    QA --> G3{Gate 3\nEntrega}
-    G3 --> P6[Fase 6\nHandover\nOperacional]
-```
-
-### Criterios por Gate
-
-| Gate | Fase | Criterios clave |
-|------|------|----------------|
-| **G1 — Diagnóstico** | Post Fase 3 | Stakeholders mapeados, AS-IS validado, flujos documentados, escenarios priorizados |
-| **G1.5 — Validación** | Post Fase 3b | Feasibility ≥3.5/5.0, viabilidad SW confirmada, Think Tank 7 Sabios |
-| **G2 — Solución** | Post Fase 4b | Roadmap con cost drivers, modelo comercial definido, magnitudes validadas |
-| **G3 — Entrega** | Post QA + Risk | Proposal QA ≥3.5/5.0, risk assessment completo, spec funcional aprobada |
-
----
-
-## Comandos (84)
-
-### Pipeline Flows (4)
-
-| Comando | Alias | Descripción |
-|---------|-------|-------------|
-| `/sdf:run-guided` | `guide`, `discovery` | Pipeline guiado completo (8 fases, 4 gates) |
-| `/sdf:run-auto` | `auto`, `discovery-auto` | Pipeline autónomo (zero interrupciones) |
-| `/sdf:run-express` | `express` | Go/No-Go en 1 sesión (3 entregables) |
-| `/sdf:run-deep` | `deep`, `intermediate` | Dirección arquitectónica (7 entregables) |
-
-### Document Commands (10)
-
-| Comando | Alias | Entregable |
-|---------|-------|------------|
-| `/sdf:generate-plan` | `plan` | 00_Discovery_Plan |
-| `/sdf:map-stakeholders` | `stakeholders` | 01_Stakeholder_Map |
-| `/sdf:generate-brief` | `brief` | 02_Brief_Tecnico |
-| `/sdf:diagnose-asis` | `asis`, `diagnose` | 03_Analisis_AS-IS |
-| `/sdf:trace-flows` | `flows`, `trace` | 04_Mapeo_Flujos |
-| `/sdf:evaluate-scenarios` | `scenarios`, `evaluate` | 05_Escenarios_ToT |
-| `/sdf:chart-roadmap` | `roadmap`, `chart` | 06_Solution_Roadmap |
-| `/sdf:write-spec` | `spec` | 07_Especificacion_Funcional |
-| `/sdf:craft-pitch` | `pitch`, `craft` | 08_Pitch_Ejecutivo |
-| `/sdf:deliver-handover` | `handover`, `deliver` | 09_Handover_Operaciones |
-
-### Service-Type Discovery (4)
-
-| Comando | {TIPO_SERVICIO} |
-|---------|-----------------|
-| `/sdf:rpa-discovery` | RPA |
-| `/sdf:qa-discovery` | QA |
-| `/sdf:ai-discovery` | Data-AI |
-| `/sdf:transformation` | Digital-Transformation |
-
-### Assessment Commands (5)
-
-| Comando | Alias | Entregable |
-|---------|-------|------------|
-| `/sdf:assess-architecture` | `arch` | Architecture_Deep_Dive |
-| `/sdf:assess-data` | `data` | Data_Landscape |
-| `/sdf:assess-cloud` | `cloud` | Cloud_Readiness |
-| `/sdf:assess-security` | `security` | Security_Posture |
-| `/sdf:assess-change` | `change` | Change_Readiness |
-
-### Report & Review Commands (4)
-
-| Comando | Alias | Entregable |
-|---------|-------|------------|
-| `/sdf:report-tech` | `tech` | Hallazgos_Tecnicos |
-| `/sdf:report-func` | `func` | Hallazgos_Funcionales |
-| `/sdf:review-business` | `biz` | Revision_Negocio |
-| `/sdf:discover-ai` | `ai` | Oportunidades_IA |
-
-### Operations (7)
-
-| Comando | Alias | Descripción |
-|---------|-------|-------------|
-| `/sdf:present-findings` | `findings` | Presentación de hallazgos ejecutiva |
-| `/sdf:audit-quality` | `audit` | Auditoría de entregables |
-| `/sdf:improve-deliverables` | `improve` | Mejora iterativa de artefactos |
-| `/sdf:rescue-stalled` | `rescue` | Rescate de discovery estancado |
-| `/sdf:validate-feasibility` | `validate`, `feasibility` | Think Tank de 7 Sabios |
-| `/sdf:benchmark-maturity` | `benchmark` | Benchmark de madurez vs estándares |
-| `/sdf:simulate-scenarios` | `simulate` | Simulación Monte Carlo what-if |
-
----
-
-## Catálogo de Skills (100)
-
-### 1. Discovery Pipeline (16)
-
-| Skill | Fase | Entregable |
-|-------|------|------------|
-| `discovery-orchestrator` | — | Orquestación end-to-end del pipeline |
-| `mermaid-diagramming` | — | Diagramas Mermaid (C4, gantt, quadrant, sequence, ER, state) |
-| `stakeholder-mapping` | 0 | Mapa de stakeholders, matriz poder/interés |
-| `workshop-facilitator` | 0-5 | Facilitación de workshops transversales |
-| `asis-analysis` | 1 | Diagnóstico AS-IS universal (8 variantes por {TIPO_SERVICIO}) |
-| `dynamic-sme` | 1-3 | Simulación de experto de dominio por industria |
-| `flow-mapping` | 2 | Flujos de proceso actuales y TO-BE |
-| `scenario-analysis` | 3 | Escenarios priorizados con trade-offs |
-| `technical-feasibility` | 3b | Validación de factibilidad técnica ≥3.5/5.0 |
-| `software-viability` | 3b | Validación universal de viabilidad |
-| `solution-roadmap` | 4 | Roadmap con fases, hitos y dependencias |
-| `cost-estimation` | 4 | Inductores de costo + magnitudes (5% innovación) |
-| `commercial-model` | 4b | Earned value, JV, usage-based, hybrid |
-| `functional-spec` | 5a | Especificación funcional con criterios de aceptación |
-| `executive-pitch` | 5b | Pitch ejecutivo con narrativa de valor |
-| `discovery-handover` | 6 | Handover operacional completo |
-
-### 2. Architecture Design (10)
-
-| Skill | Propósito |
-|-------|-----------|
-| `software-architecture` | Arquitectura de software (patrones, ADRs, C4) |
-| `architecture-tobe` | Diseño de estado futuro TO-BE |
-| `enterprise-architecture` | Arquitectura empresarial (TOGAF, capacidades) |
-| `solutions-architecture` | Arquitectura de solución end-to-end |
-| `infrastructure-architecture` | Infraestructura, redes, compute |
-| `devsecops-architecture` | CI/CD, seguridad integrada, IaC |
-| `design-system` | Sistema de diseño (tokens, componentes, guías) |
-| `functional-toolbelt` | Herramientas funcionales para análisis |
-| `integration-architecture` | Patrones de integración (ESB, iPaaS, event mesh) |
-| `disaster-recovery` | DR/BCP planning, RPO/RTO, failover |
-
-### 3. Data Strategy (8)
-
-| Skill | Propósito |
-|-------|-----------|
-| `data-science-architecture` | ML/AI pipelines, feature stores, MLOps |
-| `bi-architecture` | BI, dashboards, semantic layer |
-| `data-engineering` | ETL/ELT, data pipelines, streaming |
-| `database-architecture` | Modelado relacional, NoSQL, particionamiento |
-| `data-governance` | Políticas, linaje, catálogo de datos |
-| `data-quality` | Reglas de calidad, profiling, observabilidad |
-| `analytics-engineering` | dbt, métricas, modelos analíticos |
-| `dependency-analysis` | Mapeo de dependencias, riesgo de librerías, licencias |
-
-### 4. Cloud & Mobile (7)
-
-| Skill | Propósito |
-|-------|-----------|
-| `cloud-native-architecture` | Microservicios, serverless, containers |
-| `cloud-migration` | Estrategia de migración (7Rs), landing zones |
-| `mobile-architecture` | Nativo, cross-platform, offline-first |
-| `mobile-assessment` | Evaluación de madurez mobile |
-| `mobile-platform-assessment` | Assessment unificado de plataforma mobile |
-| `capacity-planning` | Forecasting de capacidad, triggers de escalamiento |
-| `sustainability-assessment` | Green IT, huella de carbono, eficiencia energética |
-
-### 5. Engineering Excellence (9)
-
-| Skill | Propósito |
-|-------|-----------|
-| `api-architecture` | REST, GraphQL, gRPC, API gateway |
-| `event-architecture` | Event-driven, CQRS, event sourcing |
-| `security-architecture` | Zero trust, IAM, threat modeling |
-| `performance-engineering` | Benchmarks, SLOs, capacity planning |
-| `observability` | Logs, métricas, trazas, alertas |
-| `sla-design` | Definición SLO/SLA/SLI, error budgets |
-| `incident-management` | Framework de respuesta a incidentes |
-| `tech-debt-assessment` | Cuantificación de deuda técnica |
-| `release-strategy` | Release management, deployment patterns |
-
-### 6. Consulting & Quality (8)
-
-| Skill | Propósito |
-|-------|-----------|
-| `quality-engineering` | Estrategia de calidad, automation frameworks |
-| `testing-strategy` | Pirámide de testing, shift-left, contract tests |
-| `user-representative` | Voz del usuario, journey maps, personas |
-| `workshop-design` | Diseño de workshops (event storming, impact mapping) |
-| `multidimensional-feasibility` | Think Tank de 7 Sabios — validación profunda |
-| `compliance-assessment` | Cumplimiento regulatorio (GDPR, SOX, PCI-DSS) |
-| `maturity-assessment` | Evaluación de madurez de capacidades (CMMI) |
-| `accessibility-audit` | Auditoría WCAG 2.1/2.2, a11y |
-
-### 7. Governance, Risk & Strategy (7)
-
-| Skill | Propósito |
-|-------|-----------|
-| `project-program-management` | Gobernanza PMO, phase gates, orquestación |
-| `risk-controlling-dynamics` | Stress-testing, pre-mortem, controles financieros |
-| `pipeline-governance` | Gobernanza del pipeline de discovery |
-| `product-strategy` | Roadmap de producto, backlog, product-market fit |
-| `vendor-assessment` | Evaluación de vendors (RFP/RFI, scoring, TCO) |
-| `governance-framework` | Governance IT (COBIT, ITIL), decision rights |
-| `competitive-intelligence` | Landscape competitivo, diferenciación |
-
-### 8. Delivery, DX & Brand (10)
-
-| Skill | Propósito |
-|-------|-----------|
-| `html-brand` | Entregables HTML con Sofka Design System |
-| `ux-writing` | Microcopy, naming, voz del producto |
-| `roadmap-poc` | POC planning, criterios go/no-go |
-| `output-engineering` | Ghost menu, producción multi-formato |
-| `input-analysis` | Pre-procesamiento de inputs del usuario |
-| `developer-experience` | Assessment de DX, toolchain, inner loop |
-| `documentation-architecture` | Doc-as-code, taxonomía, knowledge base |
-| `training-curriculum` | Programa de capacitación técnica |
-| `onboarding-playbook` | Onboarding de equipos, knowledge transfer |
-| `poc-lab` | Diseño y ejecución de PoCs |
-
-### 9. Service Discovery (11)
-
-| Skill | {TIPO_SERVICIO} | Secciones |
-|-------|-----------------|-----------|
-| `rpa-discovery` | RPA | Process landscape, automation scoring, bot architecture (7) |
-| `qa-service-discovery` | QA | TMMi assessment, PITT, test factory design (7) |
-| `ai-center-discovery` | Data-AI | AI readiness (AI SCALE), use case portfolio, AI governance (8) |
-| `management-discovery` | Management | PMO maturity, methodology fitness, Factor WOW (7) |
-| `staff-augmentation-discovery` | SAS | Talent gap, skills matrix, staffing model (6) |
-| `digital-transformation-discovery` | Digital-Transformation | Digital maturity, multi-service program (7) |
-| `cloud-service-discovery` | Cloud | Cloud readiness, DORA metrics, FinOps (6) |
-| `bi-analytics-discovery` | Data-AI | Data maturity (DCAM), BI landscape, self-service (7) |
-| `ux-design-discovery` | UX-Design | Design maturity, design system, UX research (7) |
-| `mentoring-training-discovery` | SAS | Capability assessment, learning paths (6) |
-| `mini-apps-discovery` | SDA | Citizen developer readiness, low-code assessment (6) |
-
-### 10. Narrative & Editorial (7)
-
-| Skill | Propósito |
-|-------|-----------|
-| `copywriting` | Escritura persuasiva para ejecutivos |
-| `storytelling` | Narrativa de transformación |
-| `data-storytelling` | Métricas a narrativas significativas |
-| `data-viz-storytelling` | Visualización de datos narrativa |
-| `technical-writing` | Documentación técnica de precisión |
-| `sector-intelligence` | Inteligencia de industria/sector |
-| `technology-vigilance` | Vigilancia tecnológica (Gartner, Forrester) |
-
-### 11. Strategic Methods (8)
-
-| Skill | Propósito |
-|-------|-----------|
-| `execution-burndown` | Tracking de ejecución, sprints de 1 día |
-| `finops` | Cloud financial operations (FinOps Foundation) |
-| `hypothesis-driven-development` | HDD, Lean Startup cycles |
-| `adoption-strategy` | Estrategia de adopción, comunicación, training |
-| `change-readiness-assessment` | Readiness organizacional, scorecard |
-| `data-mesh-strategy` | Data mesh (4 principios de Dehghani) |
-| `team-topology` | Conway's Law, modos de interacción, carga cognitiva |
-| `migration-playbook` | Guía de ejecución de migración (strangler fig, parallel run) |
-
----
-
-## Dream Team (48 Agentes)
-
-### Core Team (12)
-
-| Agente | Rol | Fases |
-|--------|-----|-------|
-| `discovery-conductor` | Orquestador principal, plan maestro | Todas |
-| `technical-architect` | Decisiones de arquitectura, ADRs, C4 | 3b, 4, 5a |
-| `domain-analyst` | Dominio de negocio, procesos, reglas | 1, 2, 3 |
-| `full-stack-generalist` | Implementación transversal, prototipos | 3b, 4 |
-| `delivery-manager` | Roadmap, dependencias, riesgos | 4, 4b, 6 |
-| `quality-guardian` | Quality gates, Proposal QA | G1-G3 |
-| `data-strategist` | Datos, analytics, ML, gobernanza | 1-4 |
-| `change-catalyst` | Gestión del cambio, adopción | 0, 5b, 6 |
-| `ai-strategist` | AI SCALE, MLOps, responsible AI | Data-AI |
-| `process-automation-specialist` | RPA/BPM, Six Sigma DMAIC | RPA |
-| `qa-strategist` | TMMi, PITT, test factory, ISTQB | QA |
-| `transformation-architect` | Multi-service program design | DT/Multi |
-
-### Domain Specialists (36)
-
-| Categoría | Agentes |
-|-----------|---------|
-| **Architecture** | `enterprise-architect`, `solutions-architect`, `cloud-architect`, `security-architect`, `mobile-architect` |
-| **Development** | `backend-developer`, `frontend-developer`, `technical-lead`, `devops-engineer`, `middle-integrations-developer` |
-| **Data & AI** | `data-architect`, `data-engineer`, `data-scientist`, `analytics-architect`, `ai-architect`, `ai-agent-architect` |
-| **Infrastructure** | `platform-engineer`, `hardware-systems-engineer`, `devsecops-expert` |
-| **Quality & Research** | `quality-engineer`, `research-scientist`, `economics-researcher`, `systems-theorist`, `technology-scout`, `integration-researcher` |
-| **Business & UX** | `business-analyst`, `subject-matter-expert`, `ux-researcher`, `ux-strategist`, `implementation-analyst`, `product-strategist` |
-| **Compliance** | `compliance-analyst`, `risk-controller` |
-| **Editorial** | `content-strategist`, `editorial-director`, `format-specialist` |
-
----
-
-## Priming-RAG Knowledge Base (20 archivos)
-
-Documentos de contexto para inyección RAG por tipo de servicio:
-
-| Archivo | Cobertura |
-|---------|-----------|
-| `priming-rag-sofka-corporate` | Datos corporativos Sofka |
-| `priming-rag-sda-capabilities` | Capacidades SDA |
-| `priming-rag-qa-capabilities` | Capacidades QA |
-| `priming-rag-management-capabilities` | Capacidades Management |
-| `priming-rag-rpa-capabilities` | Capacidades RPA |
-| `priming-rag-data-ai-capabilities` | Capacidades Data/AI |
-| `priming-rag-cloud-capabilities` | Capacidades Cloud |
-| `priming-rag-sas-capabilities` | Capacidades SAS |
-| `priming-rag-banking-industry` | Industria Bancaria |
-| `priming-rag-retail-industry` | Industria Retail |
-| `priming-rag-ai-center` | AI Center (ES) |
-| `priming-rag-ai-center-v2-en` | AI Center V2.0 (EN) |
-| `priming-rag-ai-scale-methodology` | AI SCALE Methodology |
-| `priming-rag-coe-management` | CoE Management |
-| `priming-rag-apm-guidelines` | Lineamientos APM |
-| `priming-rag-management-offering-2026` | Oferta Management 2026 |
-| `priming-rag-service-models` | Modelos de Servicio |
-| `priming-rag-impact-metrics` | Métricas de Impacto |
-| `priming-rag-certifications` | Certificaciones |
-| `priming-rag-contractual-models` | Modelos Contractuales |
-
----
-
-## Output Excellence
-
-### Formatos de salida
-
-| Formato | Características |
-|---------|----------------|
-| `markdown` (default) | Estándar markdown-excellence: TL;DR, tablas con semáforo, Mermaid, footnotes, callouts |
-| `html` | Sofka Design System, Mermaid vía CDN, archivo autocontenido |
-| `docx` | Markdown compatible con Pandoc, portada, TOC automático |
-| `dual` | Markdown + HTML por cada entregable |
-
-### Modos de ejecución (HITL)
-
-| Modo | Comportamiento |
-|------|---------------|
-| `piloto-auto` (default) | Autónomo en rutina; pausa en gates, ambigüedades, riesgos críticos |
-| `desatendido` | Zero interrupciones, auto-resolución total |
-| `supervisado` | Autónomo con reportes en cada milestone |
-| `paso-a-paso` | Confirmación antes de cada sección/fase |
-
----
-
-## Filosofía de Costos
-
-> **Costear ≠ Cobrar**
-
-El framework produce **inductores de costo, drivers de esfuerzo e indicadores de magnitud** — nunca precios finales. Las magnitudes incluyen un 5% de margen de innovación para excelencia operacional. El modelo comercial identifica estructuras de captura de valor (earned value, JV, usage-based, hybrid), no pricing.
-
----
-
-## Estructura de Directorios
+## Arquitectura
 
 ```
 sofka-discovery-framework/
-├── .claude-plugin/plugin.json   # Metadata v10.0.0
-├── settings.json                # Agente default: discovery-conductor
-├── LICENSE                      # Propietario — Sofka Technologies
-├── CHANGELOG.md                 # Historial de versiones
-├── CLAUDE.md                    # Guía de orquestación
-├── README.md                    # Este archivo
-├── agents/                      # 48 agentes (12 core + 36 especialistas)
-├── commands/                    # 84 comandos (21 primary + 63 aliases)
-├── hooks/hooks.json             # 6 hooks automatizados
-├── references/
-│   ├── service-type-matrix.md   # Routing por {TIPO_SERVICIO}
-│   └── priming-rag/             # 20 archivos de contexto RAG
-├── scripts/                     # Utilidades (index, scan, validate)
-└── skills/                      # 100 skills en 13 dominios
-    ├── discovery-orchestrator/
-    │   ├── SKILL.md
-    │   ├── references/
-    │   └── examples/
-    ├── asis-analysis/
-    │   ├── SKILL.md
-    │   └── references/
-    │       └── service-variants.md
-    └── ... (76 más)
+├── agents/           # 48 agentes especializados
+├── commands/         # 84 comandos
+├── skills/           # 100 skills MOAT
+├── references/       # 20+ priming-RAG + design system + service matrix
+├── prompts/          # Biblioteca NL-HP (40+ prompts)
+├── hooks/            # Ghost menu + changelog + session context
+├── scripts/          # Indexación, escaneo, validación
+├── landing.html      # Landing page interactiva
+├── prompt-library.html
+├── CLAUDE.md         # Guía completa del orquestador
+└── .claude-plugin/
+    └── plugin.json   # v11.0.0
 ```
 
 ---
 
-## Historial de Versiones
+## Pipeline de Discovery
 
-| Versión | Fecha | Cambios principales |
-|---------|-------|---------------------|
-| **10.0.0** | 2026-03-14 | Full roster merge: 48 agents, 100 skills, 84 commands + universal services |
-| **9.0.0** | 2026-03-14 | Universal services: {TIPO_SERVICIO}, 11 service discovery skills, 20 priming-RAG |
-| **7.0.0** | 2026-03-14 | NL-HP v3.0, checkpoint model, ghost menu |
-| **6.2.0** | 2026-03-12 | 48 skills, 8 dominios, Governance & Risk |
-| **6.0.0** | 2026-03-12 | Markdown-first, Mermaid, A/B variantes, piloto-auto |
-| **3.0.0** | 2026-03-11 | 30 skills nuevos, catálogo de skills, Expert Panel |
-| **1.0.0** | 2026-03-10 | Release inicial — 11 skills, 3 quality gates |
-
-Ver [CHANGELOG.md](CHANGELOG.md) para detalle completo.
-
----
-
-## Equipo
-
-**Autor:** Javier Montaño
-**Equipo:** PreSales Sofka
+```
+00 Plan → 01 Stakeholders → 02 Brief → 03 AS-IS → 04 Flujos
+                                                       ↓
+                                             ┌─── G1 ───┐
+                                             ↓           ↓
+                                       05 Escenarios → 05b Feasibility (7 Sabios)
+                                             ↓
+                                       ┌─ G1.5 ─┐
+                                       ↓         ↓
+                                  06 Roadmap → G2
+                                       ↓
+                             07 Spec → 08 Pitch → 09 Handover → G3
+```
 
 ---
 
-<sub>Copyright &copy; 2026 Sofka Technologies. All Rights Reserved. Proprietary.<br>
-See <a href="LICENSE">LICENSE</a> for details.</sub>
+## Tipos de Servicio
+
+El parámetro `{TIPO_SERVICIO}` activa routing automático:
+
+| Tipo | Alias | Comando directo |
+|------|-------|----------------|
+| Software Development & Architecture | `SDA` | — |
+| Quality Assurance | `QA` | `/sdf:qa-discovery` |
+| Robotic Process Automation | `RPA` | `/sdf:rpa-discovery` |
+| Data & Artificial Intelligence | `Data-AI` | `/sdf:ai-discovery` |
+| Cloud Infrastructure | `Cloud` | — |
+| Staff Augmentation | `SAS` | — |
+| Management & PMO | `Management` | — |
+| UX Design | `UX-Design` | — |
+| Digital Transformation | `Digital-Transformation` | `/sdf:transformation` |
+| Multi-Service Program | `Multi-Service` | — |
+
+---
+
+## Protocolo Zero-Hallucination
+
+| Tag | Significado | Confianza |
+|-----|-------------|-----------|
+| `[CÓDIGO]` | Verificado en código fuente | Alta |
+| `[CONFIG]` | Verificado en configuración | Alta |
+| `[DOC]` | Documentado en fuentes del proyecto | Alta |
+| `[INFERENCIA]` | Razonado desde patrones observados | Media |
+| `[SUPUESTO]` | Asunción no verificable | Baja |
+
+Si >30% es `[SUPUESTO]` → banner de advertencia obligatorio.
+
+---
+
+## Branding (Design System v5)
+
+| Token | Valor | Regla |
+|-------|-------|-------|
+| Primary | `#FF7E08` | Naranja Sofka — acción, CTA |
+| Dark | `#1A1A2E` | Fondo authority |
+| Success | `#FFD700` | **Gold — NUNCA verde** |
+| Font | Inter | 300/400/700/900 |
+
+---
+
+## Sesión Automática
+
+Al activar el plugin, los hooks crean en `.discovery/`:
+
+| Archivo | Propósito |
+|---------|-----------|
+| `SESSION-README.md` | Contexto del proyecto |
+| `SESSION-CLAUDE.md` | Instrucciones del orquestador para este repo |
+| `ghost-menu.md` | Navegación contextual |
+| `session-changelog.md` | Registro para continuidad |
+| `repo-index.json` | Inventario del repositorio |
+
+---
+
+## Comité de 48 Agentes
+
+### Tríada Permanente
+- `discovery-conductor` — Orquestador imparcial
+- `delivery-manager` — Timelines, alcance, riesgos
+- `risk-controller` — Gobernanza continua
+
+### Think Tank de 7 Sabios
+Research Scientist · Economics Researcher · Systems Theorist · Technology Scout ·
+Integration Researcher · Hardware Systems Engineer · Data Scientist
+
+### 36 Especialistas
+Se activan según `{TIPO_SERVICIO}` y fase del pipeline.
+
+---
+
+## 100 Skills por Dominio
+
+| Dominio | # |
+|---------|---|
+| Arquitectura | 14 |
+| Data & Analytics | 10 |
+| Análisis & Discovery | 12 |
+| Cloud & Platform | 5 |
+| Calidad & Operaciones | 10 |
+| Gestión & Estrategia | 10 |
+| Editorial & Comunicación | 9 |
+| Cambio & Adopción | 5 |
+| Innovación & Validación | 5 |
+| Herramientas & DX | 6 |
+| Service Discovery | 11 |
+
+---
+
+## Licencia
+
+All Rights Reserved — © 2026 Sofka Technologies.
+
+## Autor
+
+**Javier Montaño** · Equipo PreSales Sofka
+
+*Sofka, your technology partner.*
+*La excelencia no se improvisa, se diseña.*
