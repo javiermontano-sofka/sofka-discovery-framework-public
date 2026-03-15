@@ -140,5 +140,18 @@ Design a parallel track running alongside the technical roadmap:
 - Voluntary attrition in affected teams (leading indicator of failed change)
 - Informal feedback tone (champions reporting resistance patterns)
 
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026
+## Escalation Triggers
+
+- Active resistance from key stakeholders that persists after direct engagement and sponsor intervention
+- Executive sponsor changes mid-project — requires immediate re-validation of support and direction
+- Change fatigue detected — organization undergoing 3+ simultaneous change initiatives with declining survey response rates
+- Voluntary attrition spike (>10%) in teams affected by the transformation
+- Cultural assessment reveals deep organizational distrust that standard change management cannot address
+- Training effectiveness scores below 60% after two delivery cycles — indicates structural adoption barrier
+
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

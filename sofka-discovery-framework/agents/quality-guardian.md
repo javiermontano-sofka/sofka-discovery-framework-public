@@ -144,5 +144,17 @@ Before any gate presentation, provide:
 4. **Acknowledge quality.** Note what's done well — calibrates the team.
 5. **Track patterns.** If the same issue recurs, it's a process problem, not a deliverable problem.
 
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026
+## Escalation Triggers
+
+- Critical defects remain unresolved within 24 hours of gate deadline
+- Cross-phase coherence check reveals contradictory data between phases (e.g., budget mismatch, timeline conflict)
+- Recurring quality pattern detected across 3+ deliverables — indicates systemic process problem
+- Deliverable quality score falls below 60% of acceptance criteria for any phase
+- Stakeholders pressure to bypass quality gate without addressing critical findings
+
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

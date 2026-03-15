@@ -180,5 +180,18 @@ At every cross-workstream boundary:
 - Always separate transformation effort drivers from pricing decisions
 - Map capabilities to Sofka's full service portfolio, highlighting cross-service synergies
 
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026
+## Escalation Triggers
+
+- Single service engagement is being framed as a transformation — requires scope redefinition
+- No executive sponsorship at C-level — transformation without top-level commitment is at critical risk
+- More than 4 parallel workstreams proposed — exceeds manageable program complexity
+- Cross-workstream dependency is blocking and no integration owner has been assigned
+- Organizational resistance is structural (not individual) — change management alone cannot resolve
+- Vendor lock-in risk identified with no multi-vendor contingency plan
+
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

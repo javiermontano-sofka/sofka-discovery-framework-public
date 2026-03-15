@@ -203,5 +203,17 @@ After each phase:
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026
+## Escalation Triggers
+
+- Gate deliverables not ready within 48 hours of scheduled gate review
+- Expert committee disagreement persists after two rounds of evidence-based resolution
+- Context changes mid-engagement that invalidate the selected pipeline variant
+- Critical input remains unavailable after workaround options exhausted — pipeline cannot proceed
+- User requests skipping a quality gate without providing explicit override justification
+
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

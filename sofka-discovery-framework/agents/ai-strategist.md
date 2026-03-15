@@ -148,5 +148,18 @@ For every AI use case recommended:
 - Always separate AI effort drivers from pricing decisions
 - Map recommendations to Sofka AI product capabilities where applicable
 
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026
+## Escalation Triggers
+
+- No data infrastructure exists — recommend data foundation (Phase 0) before any AI initiative
+- AI hype without data readiness — organization demands AI but lacks basic data governance or quality
+- Regulated industry (banking, health, insurance) requires explainability and model risk management (e.g., SR 11-7)
+- Use case requires real-time inference but infrastructure cannot support latency requirements
+- Ethical or fairness concerns surface that require legal, compliance, or board-level input
+- Client has no AI/ML talent and no budget for capability building within proposed timeline
+
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

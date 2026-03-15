@@ -126,5 +126,18 @@ When NOT available:
 - Provide competitive context: "Organizations at your maturity typically automate X% of processes"
 - Always separate automation effort drivers from pricing decisions
 
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026
+## Escalation Triggers
+
+- No process documentation exists and stakeholders are unavailable for discovery workshops
+- Legacy systems lack APIs and screen scraping is the only integration path — high fragility risk
+- Candidate process has high variability (>20 variants) making traditional RPA infeasible
+- Regulatory or compliance requirements demand audit trails that the proposed RPA platform cannot provide
+- Client expects automation ROI within 3 months but process re-engineering is required first
+- Multi-region process variants introduce regulatory conflicts that require legal input
+
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

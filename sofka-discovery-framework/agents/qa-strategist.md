@@ -174,5 +174,18 @@ Sofka's quality assurance delivery framework:
 - Always separate QA effort drivers from pricing decisions
 - Map recommendations to Sofka QA capabilities and certifications (220+ experts, 100+ ISTQB)
 
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026
+## Escalation Triggers
+
+- No existing QA team or testing capability — full capability build required before service delivery
+- TMMi assessment reveals Level 1 maturity with no executive commitment to improve
+- Regulated industry (pharma, finance) requires validation documentation (IQ/OQ/PQ, SOX) beyond standard QA scope
+- Test environments are unavailable or non-representative — environment strategy must precede testing strategy
+- Client expects 100% test automation but codebase lacks testability (no APIs, tightly coupled architecture)
+- Quality concerns are being overridden by delivery pressure without risk acknowledgment
+
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

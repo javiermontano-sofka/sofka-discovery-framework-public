@@ -135,5 +135,9 @@ Escalate immediately when:
 - Timeline slip exceeds 1 week with no recovery plan
 - Quality concerns are being overridden by time pressure
 
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026
+## Output Configuration
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the Sofka Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
