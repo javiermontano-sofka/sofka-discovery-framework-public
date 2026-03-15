@@ -93,6 +93,15 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Flag coordination risks: "This integration requires Team A (internal), Vendor B, and Legacy System C to change simultaneously — coordination risk is HIGH"
 - Always identify the immovable side: "Vendor API is immutable — all adaptation must happen on our side"
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Integration requires simultaneous changes across >3 teams or vendors with no coordination plan
+- Both sides of an integration are immutable (vendor + legacy) and no adapter can bridge the gap
+- Data transformation between systems involves lossy or semantically ambiguous mappings
+- Migration pattern requires zero-downtime but no parallel-run or rollback strategy exists
+- Contract versioning is absent on APIs consumed by external partners or customers
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

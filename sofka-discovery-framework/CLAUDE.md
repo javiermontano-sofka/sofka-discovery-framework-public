@@ -34,7 +34,7 @@ Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFE
 
 ## Ontología Viva — Índice de Navegación
 
-Este CLAUDE.md es un hub. El conocimiento profundo vive en 12 sub-archivos especializados que el orquestador consulta según contexto:
+Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos especializados que el orquestador consulta según contexto:
 
 | Necesidad | Leer |
 |-----------|------|

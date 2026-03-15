@@ -1,6 +1,6 @@
 # Priming-RAG: Agents Roster
 > Sofka Discovery Framework — Roster completo de 48 agentes
-> Procesado: 2026-03-14 | Version: v11.0.0
+> Procesado: 2026-03-14 | Version: v12.0.0
 > Fuente: `$SDF/agents/` (48 archivos .md)
 
 ---

@@ -1,6 +1,6 @@
 # Priming-RAG: Plugin Infrastructure
 > Sofka Discovery Framework — Infraestructura del plugin
-> Procesado: 2026-03-14 | Version: v11.0.0
+> Procesado: 2026-03-14 | Version: v12.0.0
 > Fuentes: plugin root files, hooks, scripts, settings
 
 ---

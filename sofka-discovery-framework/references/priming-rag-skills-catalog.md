@@ -1,6 +1,6 @@
 # Priming-RAG: Skills Catalog
 > Sofka Discovery Framework — Catalogo completo de 100 skills
-> Procesado: 2026-03-14 | Version: v11.0.0
+> Procesado: 2026-03-14 | Version: v12.0.0
 > Fuente: `$SDF/skills/` (100 directorios)
 
 ---

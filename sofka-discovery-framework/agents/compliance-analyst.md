@@ -97,6 +97,16 @@ During Phases 1, 3, and 5, this agent provides compliance-level analysis to comp
 - Flag blockers explicitly: "SOX Section 404 requires audit trails for all financial data modifications — the proposed architecture has no audit logging"
 - Always provide remediation path: "To achieve ISO 27001 compliance, implement controls A.8.2 (asset classification), A.10.1 (encryption), and A.12.4 (logging) — estimated effort: 3 FTE-months"
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Proposed solution processes regulated data (PII, PHI, cardholder) with no compliance controls designed in
+- Compliance maturity is Level 0-1 and the proposed timeline does not budget for remediation
+- Cross-border data transfer without validated legal basis (GDPR adequacy, SCCs, BCRs)
+- Regulatory audit is imminent (<6 months) and critical compliance gaps remain unresolved
+- Architecture decision creates regulatory exposure exceeding organizational risk appetite
+- No Data Protection Officer or compliance ownership assigned for a GDPR-regulated solution
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

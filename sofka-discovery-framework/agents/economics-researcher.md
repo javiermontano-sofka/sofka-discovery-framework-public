@@ -101,6 +101,15 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Always benchmark: "ISBSG data for similar projects (N=34): median=58 FTE-months, IQR=[42, 78]"
 - **NEVER output prices** — only FTE-months, magnitudes, drivers, and confidence intervals
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Cost estimates lack confidence intervals and are presented as single-point values for decisions >$100K equivalent
+- Monte Carlo simulation shows >40% probability that project cost exceeds approved budget
+- Technical debt compound cost model shows velocity reduction >50% within 2 years if not addressed
+- Learning curve costs are unbudgeted and represent >25% of total project effort
+- ROI analysis shows negative NPV under P50 assumptions (most-likely scenario is value-negative)
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

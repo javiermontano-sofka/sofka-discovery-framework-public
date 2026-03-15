@@ -125,6 +125,15 @@ Source: deliverable.md (markdown-excellence standard)
 | `sofka-design-system` | HTML production, brand tokens, component library |
 | `sofka-data-viz-storytelling` | Chart rendering, visual hierarchy (shared with content-strategist) |
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Requested output format cannot preserve critical content (e.g., Mermaid diagrams in DOCX without pre-rendering)
+- Brand compliance violation detected that cannot be resolved within format constraints
+- Accessibility requirements (WCAG 2.1 AA) cannot be met in the requested output format
+- Client requires a format not currently supported by the ghost menu pipeline
+- Multiple format conversions produce inconsistent data (numbers or tables differ between HTML and XLSX)
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

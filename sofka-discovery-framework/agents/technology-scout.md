@@ -101,6 +101,15 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Flag lock-in concretely: "Switching from X to Y requires rewriting 60% of the data layer — exit cost is HIGH"
 - Always provide alternatives: "If X fails, alternatives are Y (90% compatible) and Z (60% rewrite required)"
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Proposed core technology is in sunset/decline phase with shrinking community and no migration path
+- Single-vendor dependency with recent license change (open-source to proprietary/BSL)
+- Technology choice requires talent that is unavailable in the client's market at feasible cost
+- Ecosystem health metrics show critical decline (no releases in >12 months, single corporate backer pivoting)
+- Vendor lock-in exit cost exceeds 60% rewrite and no portability strategy exists
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

@@ -91,6 +91,15 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Show the ceiling: "Horizontal scaling works to ~50 nodes. Beyond that, coordination overhead exceeds throughput gain"
 - Flag data gravity: "The 2TB dataset lives in us-east-1. Moving compute to eu-west-1 means 2TB egress cost + 4-hour initial transfer"
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Proposed latency SLA is physically impossible given network distance between regions
+- Scaling ceiling analysis shows the architecture hits infrastructure limits within 12 months of projected growth
+- GPU/TPU availability in the target region is insufficient for the proposed AI workload
+- Data gravity constraints make the proposed multi-region architecture cost-prohibitive (egress costs)
+- Cloud provider default quotas are insufficient and increase requests have uncertain approval timelines
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

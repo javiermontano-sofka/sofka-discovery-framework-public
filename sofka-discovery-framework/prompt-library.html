@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca de Prompts NL-HP — Sofka SAGE v12.0</title>
-  <meta name="description" content="Biblioteca de Prompts NL-HP v3.0: 42 especificaciones ejecutables con ROL, OBJETIVO, PROTOCOLO y parámetros. Zero-hallucination, dependency-aware, 100% preservada.">
+  <meta name="description" content="Biblioteca de Prompts NL-HP v3.1: 48 especificaciones ejecutables con ROL, OBJETIVO, PROTOCOLO y parámetros. Zero-hallucination, dependency-aware, 100% preservada.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -165,9 +165,9 @@
   <h1>Biblioteca de Prompts NL-HP</h1>
   <p>Natural Language High-Performance prompts — 42 especificaciones ejecutables con <strong>ROL</strong>, <strong>OBJETIVO</strong>, <strong>PROTOCOLO</strong> y parámetros ajustables para Sofka SAGE v12.0</p>
   <div class="hero-badges">
-    <span class="badge">v1.0</span>
-    <span class="badge">42 Prompts</span>
-    <span class="badge">5 Categorías</span>
+    <span class="badge">v1.1</span>
+    <span class="badge">48 Prompts</span>
+    <span class="badge">7 Categorías</span>
     <span class="badge">Zero-Hallucination</span>
     <span class="badge">Dependency-Aware</span>
   </div>
@@ -181,11 +181,11 @@
       <div class="kpi-label">Entregables</div>
     </div>
     <div class="kpi">
-      <div class="kpi-number">5</div>
+      <div class="kpi-number">7</div>
       <div class="kpi-label">Assessments</div>
     </div>
     <div class="kpi">
-      <div class="kpi-number">9</div>
+      <div class="kpi-number">13</div>
       <div class="kpi-label">Operaciones</div>
     </div>
   </div>
@@ -199,6 +199,7 @@
   <a href="#entregables">ENTREGABLES</a>
   <a href="#assessments">ASSESSMENTS</a>
   <a href="#operaciones">OPERACIONES</a>
+  <a href="#ux">UX</a>
 </div>
 
 <!-- SEARCH -->
@@ -211,6 +212,7 @@
       <button class="filter-chip" onclick="filterCategory('entregables')">Entregables</button>
       <button class="filter-chip" onclick="filterCategory('assessments')">Assessments</button>
       <button class="filter-chip" onclick="filterCategory('operaciones')">Operaciones</button>
+      <button class="filter-chip" onclick="filterCategory('ux')">UX</button>
       <button class="filter-chip" onclick="filterCategory('meta')">Meta-Prompts</button>
     </div>
   </div>
@@ -316,7 +318,7 @@
       <div class="section-num">3</div>
       <div class="section-title">
         <h2>Assessments Especializados</h2>
-        <p>5 evaluaciones profundas: arquitectura, datos, cloud, seguridad, cambio</p>
+        <p>7 evaluaciones profundas: arquitectura, datos, cloud, seguridad, cambio, compliance, DevOps</p>
       </div>
     </div>
     <div id="assessments-grid" class="prompt-grid"></div>
@@ -328,19 +330,31 @@
       <div class="section-num">4</div>
       <div class="section-title">
         <h2>Operaciones & Continuidad</h2>
-        <p>15 prompts para rescatar sesiones, auditar calidad, service discovery y mejora continua</p>
+        <p>13 prompts para rescatar sesiones, auditar calidad, service discovery, RAG priming y mejora continua</p>
       </div>
     </div>
     <div id="operaciones-grid" class="prompt-grid"></div>
   </div>
 
-  <!-- META-PROMPTS -->
-  <div class="section" id="meta">
+  <!-- UX -->
+  <div class="section" id="ux">
     <div class="section-header">
       <div class="section-num">5</div>
       <div class="section-title">
-        <h2>Meta-Prompts: Diseño de Flujos a Medida</h2>
-        <p>3 prompts generativos para crear pipelines personalizados adaptables a cualquier contexto de pre-venta</p>
+        <h2>UX & Navegación</h2>
+        <p>3 comandos de experiencia de usuario: menú, avance de pipeline y demo interactiva</p>
+      </div>
+    </div>
+    <div id="ux-grid" class="prompt-grid"></div>
+  </div>
+
+  <!-- META-PROMPTS -->
+  <div class="section" id="meta">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">
+        <h2>Meta-Prompts (Herramientas Internas)</h2>
+        <p>6 prompts internos para diseñar, adaptar y evaluar prompts y pipelines — no son comandos ejecutables directamente, sino herramientas de diseño del framework</p>
       </div>
     </div>
     <div id="meta-grid" class="prompt-grid"></div>
@@ -1368,7 +1382,7 @@ COMPLEJIDAD_POLITICA=baja|media|alta|critica
 FORMATO_PREFERIDO=deck|documento|workshop|mixto
 IDIOMA=es|en|pt`,
 
-  'discover-management': `# © Sofka SAGE — Management & PMO Discovery | sdf:discover-management
+  'management-discovery': `# © Sofka SAGE — Management & PMO Discovery | sdf:management-discovery
 
 ## ROL
 Consultor senior en gestión de proyectos, programas y portafolios. Especialista en
@@ -1397,7 +1411,7 @@ VARIANTE=técnica
 PROFUNDIDAD=técnico
 TIPO_SERVICIO=Management`,
 
-  'discover-cloud-service': `# © Sofka SAGE — Cloud Service Discovery | sdf:discover-cloud-service
+  'cloud-discovery': `# © Sofka SAGE — Cloud Service Discovery | sdf:cloud-discovery
 
 ## ROL
 Arquitecto cloud senior y consultor de migración. Experto en estrategia multi-cloud,
@@ -1427,7 +1441,7 @@ PROFUNDIDAD=técnico
 CLOUD_PROVIDER=aws|azure|gcp|multi-cloud|agnostic
 TIPO_SERVICIO=Cloud`,
 
-  'discover-ux': `# © Sofka SAGE — UX Design Service Discovery | sdf:discover-ux
+  'ux-discovery': `# © Sofka SAGE — UX Design Service Discovery | sdf:ux-discovery
 
 ## ROL
 Lead de UX Research y Design Strategy. Especialista en auditoría de experiencia,
@@ -1454,7 +1468,152 @@ MODO=supervisado
 FORMATO=markdown
 VARIANTE=técnica
 PROFUNDIDAD=técnico
-TIPO_SERVICIO=UX-Design`
+TIPO_SERVICIO=UX-Design`,
+
+  'assess-compliance': `# © Sofka SAGE — Compliance Assessment | sdf:assess-compliance
+
+## ROL
+Auditor de cumplimiento regulatorio. Especialista en frameworks normativos y riesgo legal.
+
+## OBJETIVO
+Evaluar postura de compliance del cliente contra GDPR, PCI-DSS, ISO 27001 y regulaciones sectoriales.
+Identificar gaps, riesgos legales y plan de remediación priorizado.
+
+## PROTOCOLO
+1. Identificar regulaciones aplicables: GDPR, PCI-DSS, ISO 27001, SOX, HIPAA, local
+2. Evaluar madurez de compliance: nivel 1 (ad-hoc) a 5 (optimizado)
+3. Auditar controles existentes: políticas, procesos, herramientas, evidencia
+4. Mapear gaps vs requisitos normativos (matriz de cumplimiento)
+5. Clasificar riesgos: alto (multa/sanción), medio (observación), bajo (mejora)
+6. Evaluar data privacy: consentimiento, retención, portabilidad, borrado
+7. Revisar controles de acceso: IAM, segregación, logging, auditoría
+8. Proponer plan de remediación priorizado por riesgo legal
+9. Output: Compliance Assessment con matriz de gaps, riesgos y roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'assess-devops': `# © Sofka SAGE — DevOps Maturity Assessment | sdf:assess-devops
+
+## ROL
+Ingeniero DevOps senior y consultor de plataformas. Especialista en DORA metrics,
+CI/CD, IaC, observabilidad y cultura de entrega continua.
+
+## OBJETIVO
+Evaluar madurez DevOps del cliente usando DORA metrics y diseñar roadmap de mejora
+en delivery speed, reliability, change management y recuperación.
+
+## PROTOCOLO
+1. Medir DORA metrics: deployment frequency, lead time, change failure rate, MTTR
+2. Evaluar CI/CD: pipelines, automatización, cobertura, quality gates
+3. Auditar IaC: Terraform, Pulumi, CloudFormation — coverage y drift
+4. Revisar containerización: Docker, Kubernetes, service mesh, scaling
+5. Evaluar observabilidad: logs, metrics, traces, alerting, SLOs/SLIs
+6. Mapear cultura: blameless postmortems, feature flags, trunk-based development
+7. Comparar vs DORA elite performers (benchmarks)
+8. Identificar bottlenecks en el value stream
+9. Proponer roadmap: quick wins (M1-M3), platform (M4-M8), culture (M9-M12)
+10. Output: DevOps Maturity Assessment con DORA scorecard, gaps y roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'prime-repo': `# © Sofka SAGE — RAG Priming | sdf:prime-repo
+
+## ROL
+Explorador de repositorios y generador de conocimiento. Especialista en indexación
+de codebases para alimentar contexto de agentes.
+
+## OBJETIVO
+Explorar un repositorio, generar resúmenes estructurados de arquitectura, patrones,
+dependencias y convenciones para priming de agentes RAG.
+
+## PROTOCOLO
+1. Escanear estructura de directorios y archivos clave
+2. Identificar lenguajes, frameworks, build tools, configuración
+3. Extraer patrones arquitectónicos: layers, modules, services
+4. Mapear dependencias: package.json, pom.xml, go.mod, requirements.txt
+5. Documentar convenciones: naming, estructura, testing, CI/CD
+6. Generar resumen ejecutivo del repositorio
+7. Producir knowledge base estructurada para RAG
+8. Output: Repo primer con arquitectura, stack, patrones y knowledge base
+
+===params
+MODO=desatendido
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'menu': `# © Sofka SAGE — Command Palette | sdf:menu
+
+## ROL
+Navegador de comandos SAGE. Interfaz de descubrimiento del catálogo completo.
+
+## OBJETIVO
+Presentar menú categorizado tipo ghost menu con todos los comandos disponibles,
+filtrable por categoría, fase del pipeline y tipo de servicio.
+
+## PROTOCOLO
+1. Listar todas las categorías: RUN, GENERATE, REPORT, ASSESS, OPS, UX
+2. Para cada categoría mostrar: comando, alias, descripción corta, prereqs
+3. Resaltar comandos disponibles según estado actual del pipeline
+4. Indicar gates pendientes y próximos pasos recomendados
+5. Permitir navegación por teclado o selección directa
+6. Output: Menú interactivo categorizado
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown`,
+
+  'a': `# © Sofka SAGE — Advance Pipeline | sdf:a
+
+## ROL
+Controlador de avance del pipeline. Validador de gates y progresión.
+
+## OBJETIVO
+Avanzar al siguiente paso del pipeline, validando que los prerequisitos y quality gates
+se cumplan antes de permitir la progresión.
+
+## PROTOCOLO
+1. Identificar paso actual del pipeline
+2. Verificar prerequisitos del siguiente paso
+3. Evaluar quality gate correspondiente (G1, G1.5, G2, G3)
+4. Si gate pasa: avanzar y ejecutar siguiente entregable
+5. Si gate falla: reportar gaps específicos y acciones requeridas
+6. Actualizar estado del pipeline
+7. Output: Gate validation report + siguiente paso iniciado o bloqueado
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown`,
+
+  'demo': `# © Sofka SAGE — Interactive Demo | sdf:demo
+
+## ROL
+Guía de demostración interactiva. Narrador de las capacidades SAGE en 5 actos.
+
+## OBJETIVO
+Tour guiado de 5 actos que muestra las capacidades del framework SAGE con datos
+de ejemplo, entregables reales y flujo completo de discovery.
+
+## PROTOCOLO
+1. Acto 1: Contexto — presentar SAGE, pipeline, agentes disponibles
+2. Acto 2: Discovery Express — ejecutar mini-discovery con datos de ejemplo
+3. Acto 3: Entregables — mostrar samples de AS-IS, Escenarios, Roadmap
+4. Acto 4: Assessments — demostrar evaluación arquitectónica con scoring
+5. Acto 5: Handover — presentar paquete final y métricas de calidad
+6. Cada acto incluye narración, visualización y interacción
+7. Output: Tour completo con artefactos de ejemplo
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=ejecutiva`
 };
 
 const ALL_PROMPTS = [
@@ -1491,15 +1650,15 @@ const ALL_PROMPTS = [
   { id: "discover-qa", alias: "qa", category: "operaciones", title: "QA Service Discovery", time: "4h", complexity: "media", prereqs: ["04-Flujos"], description: "Testing strategy: cobertura, tipos (unit, integration, e2e, performance), herramientas, staffing, defect metrics." },
   { id: "discover-ai", alias: "ai", category: "operaciones", title: "AI Opportunities", time: "6h", complexity: "alta", prereqs: ["04-Flujos"], description: "Detección de use cases de IA: ML, NLP, computer vision, predictive. Data readiness, MVP scope, time-to-value." },
   { id: "discover-dt", alias: "dt", category: "operaciones", title: "Digital Transformation", time: "8h", complexity: "alta", prereqs: ["02-Brief"], description: "Transformación digital integral: estrategia, capabilities, org change, technology stack, roadmap 2-3 años." },
-  { id: "generate-prompt", alias: "gen-prompt", category: "operaciones", title: "Generador de Prompts", time: "2h", complexity: "media", prereqs: [], description: "Crea un nuevo prompt NL-HP personalizado. Entrada: dominio, objetivo, parámetros. Output: prompt listo para usar." },
-  { id: "adapt-prompt", alias: "adapt-prompt", category: "operaciones", title: "Adaptador de Prompts", time: "1h", complexity: "baja", prereqs: [], description: "Modifica un prompt existente para otro contexto: tipo servicio, idioma, formato, variante ejecutiva/técnica." },
-  { id: "evaluate-prompt", alias: "eval-prompt", category: "operaciones", title: "Evaluador de Prompts", time: "2h", complexity: "media", prereqs: [], description: "Valida un prompt: estructura (ROL/OBJETIVO/PROTOCOLO), completitud, alineación con estándares, hallucination risk." },
-  { id: "compose-discovery", alias: "compose", category: "meta", title: "Compositor de Discovery", time: "3h", complexity: "alta", prereqs: [], description: "Genera pipelines de discovery a medida seleccionando fases, entregables, agentes y gates del catálogo SAGE según contexto: industria, madurez, urgencia, presupuesto." },
-  { id: "calibrate-sector", alias: "calibrate", category: "meta", title: "Calibrador Sectorial", time: "2h", complexity: "media", prereqs: [], description: "Adapta vocabulario, regulaciones, benchmarks, patrones y KPIs al sector específico del cliente. Se aplica como overlay sobre cualquier pipeline SAGE." },
-  { id: "orchestrate-multistakeholder", alias: "orchestrate", category: "meta", title: "Orquestador Multi-Stakeholder", time: "4h", complexity: "alta", prereqs: ["01-Stakeholders"], description: "Diseña flujos multi-track donde cada audiencia (C-suite, tech, ops, compliance) recibe entregables adaptados que convergen en narrativa coherente." },
-  { id: "discover-management", alias: "management", category: "operaciones", title: "Management Discovery", time: "6h", complexity: "media", prereqs: ["03-AS-IS"], description: "Evaluación de madurez PMO (OPM3/P3M3), governance, delivery health, metodologías. Propuesta de Management as Service." },
-  { id: "discover-cloud-service", alias: "cloud-svc", category: "operaciones", title: "Cloud Service Discovery", time: "6h", complexity: "alta", prereqs: ["03-AS-IS"], description: "Assessment cloud: inventario workloads, 7R classification, FinOps, landing zone, TCO comparativo, wave plan de migración." },
-  { id: "discover-ux", alias: "ux", category: "operaciones", title: "UX Design Discovery", time: "4h", complexity: "media", prereqs: ["04-Flujos"], description: "Madurez UX (NN/g), heurísticas de Nielsen, WCAG audit, design system coverage, pain points. Propuesta UX/Design service." }
+  { id: "generate-prompt", alias: "gen-prompt", category: "meta", title: "Generador de Prompts", time: "2h", complexity: "media", prereqs: [], description: "[INTERNO] Crea un nuevo prompt NL-HP personalizado. Entrada: dominio, objetivo, parámetros. Output: prompt listo para usar." },
+  { id: "adapt-prompt", alias: "adapt-prompt", category: "meta", title: "Adaptador de Prompts", time: "1h", complexity: "baja", prereqs: [], description: "[INTERNO] Modifica un prompt existente para otro contexto: tipo servicio, idioma, formato, variante ejecutiva/técnica." },
+  { id: "evaluate-prompt", alias: "eval-prompt", category: "meta", title: "Evaluador de Prompts", time: "2h", complexity: "media", prereqs: [], description: "[INTERNO] Valida un prompt: estructura (ROL/OBJETIVO/PROTOCOLO), completitud, alineación con estándares, hallucination risk." },
+  { id: "compose-discovery", alias: "compose", category: "meta", title: "Compositor de Discovery", time: "3h", complexity: "alta", prereqs: [], description: "[INTERNO] Genera pipelines de discovery a medida seleccionando fases, entregables, agentes y gates del catálogo SAGE según contexto: industria, madurez, urgencia, presupuesto." },
+  { id: "calibrate-sector", alias: "calibrate", category: "meta", title: "Calibrador Sectorial", time: "2h", complexity: "media", prereqs: [], description: "[INTERNO] Adapta vocabulario, regulaciones, benchmarks, patrones y KPIs al sector específico del cliente. Se aplica como overlay sobre cualquier pipeline SAGE." },
+  { id: "orchestrate-multistakeholder", alias: "orchestrate", category: "meta", title: "Orquestador Multi-Stakeholder", time: "4h", complexity: "alta", prereqs: ["01-Stakeholders"], description: "[INTERNO] Diseña flujos multi-track donde cada audiencia (C-suite, tech, ops, compliance) recibe entregables adaptados que convergen en narrativa coherente." },
+  { id: "management-discovery", alias: "management", category: "operaciones", title: "Management Discovery", time: "6h", complexity: "media", prereqs: ["03-AS-IS"], description: "Evaluación de madurez PMO (OPM3/P3M3), governance, delivery health, metodologías. Propuesta de Management as Service." },
+  { id: "cloud-discovery", alias: "cloud-svc", category: "operaciones", title: "Cloud Service Discovery", time: "6h", complexity: "alta", prereqs: ["03-AS-IS"], description: "Assessment cloud: inventario workloads, 7R classification, FinOps, landing zone, TCO comparativo, wave plan de migración." },
+  { id: "ux-discovery", alias: "ux", category: "operaciones", title: "UX Design Discovery", time: "4h", complexity: "media", prereqs: ["04-Flujos"], description: "Madurez UX (NN/g), heurísticas de Nielsen, WCAG audit, design system coverage, pain points. Propuesta UX/Design service." }
 ];
 
 function renderPrompts() {
@@ -1508,6 +1667,7 @@ function renderPrompts() {
     entregables: 'entregables-grid',
     assessments: 'assessments-grid',
     operaciones: 'operaciones-grid',
+    ux: 'ux-grid',
     meta: 'meta-grid'
   };
 

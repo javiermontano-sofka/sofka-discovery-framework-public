@@ -86,6 +86,15 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Flag Conway's Law violations explicitly: "The target architecture requires 4 independent services, but the org has 2 teams — Conway's Law predicts 2 services, not 4"
 - Distinguish complicated from complex: "This is not merely complicated (many parts) — it is complex (parts interact unpredictably)"
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Conway's Law violation detected: team topology fundamentally misaligned with target architecture
+- Failure cascade simulation reveals a single-point-of-failure that can bring down >50% of the system
+- Reinforcing feedback loop identified that amplifies risk without a balancing mechanism
+- System complexity exceeds the organization's operational capacity to manage it (complex, not just complicated)
+- Tipping point analysis shows the system is near a threshold where behavior changes qualitatively
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

@@ -96,6 +96,15 @@ After any deliverable is generated in markdown:
 | `sofka-storytelling` | Narrative arc, evidence-based sofka-storytelling, transformation narratives |
 | `sofka-output-engineering` | Ghost menu, format pipeline, multi-format production orchestration |
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Cross-deliverable narrative is fundamentally incoherent (numbers, conclusions, or recommendations contradict across documents)
+- Domain experts provide raw analysis insufficient to produce a credible deliverable
+- Client requests a deliverable format or audience adaptation that would compromise evidence integrity
+- Ghost menu conversion reveals content that does not survive format translation (critical data lost)
+- Editorial quality gate fails repeatedly on the same deliverable after two revision cycles
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

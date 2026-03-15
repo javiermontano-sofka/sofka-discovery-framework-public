@@ -89,6 +89,15 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Distinguish precision from accuracy: "The estimate is precise (±5%) but may not be accurate (based on unvalidated assumptions)"
 - Always show your work: distributions, confidence intervals, benchmark sources
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Quantitative claims have confidence intervals so wide they invalidate the conclusion
+- Key cost or effort estimate sensitivity exceeds ±30% impact from a single assumption change
+- ML/AI proposal assumes data quality or volume that cannot be validated with existing data
+- Optimism bias detected: estimates at P20 or below with no acknowledgment of risk
+- Statistical analysis reveals that the proposed scenario is not feasible under realistic assumptions
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

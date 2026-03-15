@@ -1,6 +1,6 @@
 # Priming-RAG: Prompts Library
 > Sofka Discovery Framework — Catalogo completo de 44 prompts en 6 categorias
-> Procesado: 2026-03-14 | Version: v11.0.0
+> Procesado: 2026-03-14 | Version: v12.0.0
 > Fuentes: `$SDF/prompts/flujos.md`, `$SDF/prompts/entregables.md`, `$SDF/prompts/assessments.md`, `$SDF/prompts/operaciones.md`, `$SDF/prompts/metaprompts.md`
 
 ---

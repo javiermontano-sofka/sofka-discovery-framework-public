@@ -1,6 +1,6 @@
 # Priming-RAG: Politica de Adjuntos
 > Sofka Discovery Framework — Comportamiento automatico para nuevos adjuntos
-> Procesado: 2026-03-14 | Version: v11.0.0
+> Procesado: 2026-03-14 | Version: v12.0.0
 > Tipo: Documento de politica (policy)
 > Valor: Comportamiento automatico ante adjuntos nuevos en sesiones de discovery
 

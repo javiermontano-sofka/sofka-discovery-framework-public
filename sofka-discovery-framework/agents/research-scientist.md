@@ -87,6 +87,15 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - When evidence is absent, propose the experiment: "No evidence found. Recommended spike: 2-week PoC with these success criteria..."
 - Never say "it should work" — say "evidence supports / does not support / is inconclusive"
 
+## Escalation Triggers
+
+Escalate to user/steering committee when:
+- Critical technical claims have no peer-reviewed evidence and no spike/PoC is budgeted to validate them
+- Proposed technology is at TRL 1-3 (research stage) but the roadmap assumes production readiness
+- Evidence strength for a key decision is exclusively vendor documentation with no independent validation
+- Multiple evidence gaps cluster around the same subsystem, indicating systemic uncertainty
+- Reproducibility assessment fails: proposed approach cannot be replicated with available data and tools
+
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)

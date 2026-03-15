@@ -1,5 +1,6 @@
 ---
-name: mermaid-diagramming
+name: sofka-mermaid-diagramming
+author: Equipo PreSales Sofka
 description: >
   This skill should be used when the user asks to "create diagrams", "generate Mermaid",
   "visualize architecture", "diagram flows", "draw a sequence diagram", "create a C4 diagram",

@@ -1,6 +1,6 @@
 # Priming-RAG: Global Ecosystem
 > Sofka Discovery Framework — Ecosistema global de assets y MOAT pattern
-> Procesado: 2026-03-14 | Version: v11.0.0
+> Procesado: 2026-03-14 | Version: v12.0.0
 > Fuentes: `~/.claude/skills/` (69 skills), `~/.claude/agents/` (1 agente), `~/skills/sofka-skills/` (58 .skill)
 
 ---
@@ -22,6 +22,11 @@ El ecosistema global extiende las capacidades del SDF plugin fuera de su context
 ---
 
 ## MOAT Pattern (Modernization-Oriented Acceleration Technology)
+
+> **Nota: significado dual de MOAT.** El acronimo tiene dos expansiones validas y complementarias:
+> 1. **Nombre de marca (public-facing):** Modernization-Oriented Acceleration Technology — describe la mision del patron: acelerar la modernizacion tecnologica de los clientes.
+> 2. **Mnemonico estructural (internal):** Metadata, Output, Agents, Tools — describe lo que cada skill contiene: Metadata completa (SKILL.md), Output definido, Agents asignados, Tools declarados.
+> Ambas son correctas. La primera es la identidad publica; la segunda es la guia practica para construir y validar skills.
 
 El MOAT es el patron defensivo que protege la calidad y consistencia de los skills del ecosistema. Inspirado en el ADN de Sofka (Software + Kaizen), cada skill sigue una estructura estandarizada que acelera la modernizacion tecnologica de los clientes.
 

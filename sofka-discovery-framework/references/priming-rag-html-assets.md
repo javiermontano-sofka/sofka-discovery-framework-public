@@ -1,6 +1,6 @@
 # Priming-RAG: HTML Assets
 > Sofka Discovery Framework — Inventario de assets HTML y Design System
-> Procesado: 2026-03-14 | Version: v11.0.0
+> Procesado: 2026-03-14 | Version: v12.0.0
 > Fuentes: `$SDF/landing.html`, `$SDF/prompt-library.html`
 
 ---
