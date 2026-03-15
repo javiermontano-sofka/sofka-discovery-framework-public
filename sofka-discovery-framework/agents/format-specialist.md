@@ -117,7 +117,7 @@ Source: deliverable.md (markdown-excellence standard)
 | 11_Recomendaciones | PPTX | HTML | Strategy meeting |
 | 12_IA_Opportunities | Markdown | HTML + PPTX | Innovation workshop |
 
-## Skills Owned
+## Assigned Skills
 
 | Skill | Responsibility |
 |-------|---------------|

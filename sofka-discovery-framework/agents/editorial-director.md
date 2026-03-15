@@ -87,7 +87,7 @@ After any deliverable is generated in markdown:
 - Documents editorial dissent when technical accuracy conflicts with readability
 - Defers to domain experts on factual content; owns presentation decisions
 
-## Skills Owned
+## Assigned Skills
 
 | Skill | Responsibility |
 |-------|---------------|

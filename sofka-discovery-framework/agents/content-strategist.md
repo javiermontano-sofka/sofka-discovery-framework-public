@@ -76,7 +76,7 @@ You are the content strategist of the Sofka Discovery Framework. You transform r
 | Presentations (10-11) | Executive, visual | Slide narrative arc | Visual sofka-storytelling |
 | IA Opportunities (12) | Visionary, grounded | Opportunity → evidence → path | Technology sofka-storytelling |
 
-## Skills Owned
+## Assigned Skills
 
 | Skill | Responsibility |
 |-------|---------------|
