@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca de Prompts NL-HP — Sofka SAGE v12.0</title>
-  <meta name="description" content="Biblioteca de Prompts NL-HP v3.1: 48 especificaciones ejecutables con ROL, OBJETIVO, PROTOCOLO y parámetros. Zero-hallucination, dependency-aware, 100% preservada.">
+  <meta name="description" content="Biblioteca de Prompts NL-HP v3.1: 49 especificaciones ejecutables con ROL, OBJETIVO, PROTOCOLO y parámetros. Zero-hallucination, dependency-aware, 100% preservada.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -163,7 +163,7 @@
 <div class="hero">
   <div class="logo">sofka<span>_</span></div>
   <h1>Biblioteca de Prompts NL-HP</h1>
-  <p>Natural Language High-Performance prompts — 42 especificaciones ejecutables con <strong>ROL</strong>, <strong>OBJETIVO</strong>, <strong>PROTOCOLO</strong> y parámetros ajustables para Sofka SAGE v12.0</p>
+  <p>Natural Language High-Performance prompts — 49 especificaciones ejecutables con <strong>ROL</strong>, <strong>OBJETIVO</strong>, <strong>PROTOCOLO</strong> y parámetros ajustables para Sofka SAGE v12.0</p>
   <div class="hero-badges">
     <span class="badge">v1.1</span>
     <span class="badge">48 Prompts</span>
@@ -1658,7 +1658,14 @@ const ALL_PROMPTS = [
   { id: "orchestrate-multistakeholder", alias: "orchestrate", category: "meta", title: "Orquestador Multi-Stakeholder", time: "4h", complexity: "alta", prereqs: ["01-Stakeholders"], description: "[INTERNO] Diseña flujos multi-track donde cada audiencia (C-suite, tech, ops, compliance) recibe entregables adaptados que convergen en narrativa coherente." },
   { id: "management-discovery", alias: "management", category: "operaciones", title: "Management Discovery", time: "6h", complexity: "media", prereqs: ["03-AS-IS"], description: "Evaluación de madurez PMO (OPM3/P3M3), governance, delivery health, metodologías. Propuesta de Management as Service." },
   { id: "cloud-discovery", alias: "cloud-svc", category: "operaciones", title: "Cloud Service Discovery", time: "6h", complexity: "alta", prereqs: ["03-AS-IS"], description: "Assessment cloud: inventario workloads, 7R classification, FinOps, landing zone, TCO comparativo, wave plan de migración." },
-  { id: "ux-discovery", alias: "ux", category: "operaciones", title: "UX Design Discovery", time: "4h", complexity: "media", prereqs: ["04-Flujos"], description: "Madurez UX (NN/g), heurísticas de Nielsen, WCAG audit, design system coverage, pain points. Propuesta UX/Design service." }
+  { id: "ux-discovery", alias: "ux", category: "operaciones", title: "UX Design Discovery", time: "4h", complexity: "media", prereqs: ["04-Flujos"], description: "Madurez UX (NN/g), heurísticas de Nielsen, WCAG audit, design system coverage, pain points. Propuesta UX/Design service." },
+  { id: "sas-discovery", alias: "sas", category: "operaciones", title: "Staff Augmentation Discovery", time: "4h", complexity: "media", prereqs: ["03-AS-IS"], description: "Gap analysis de equipo, perfiles requeridos, modelo de staffing, ramp-up timeline, governance de augmentation." },
+  { id: "assess-compliance", alias: "compliance", category: "assessments", title: "Compliance Assessment", time: "6h", complexity: "alta", prereqs: ["03-AS-IS"], description: "Evaluación GDPR, PCI-DSS, ISO 27001, SOX. Gap analysis, remediación priorizada, roadmap de cumplimiento." },
+  { id: "assess-devops", alias: "devops", category: "assessments", title: "DevOps Maturity (DORA)", time: "6h", complexity: "alta", prereqs: ["04-Flujos"], description: "DORA metrics: deploy frequency, lead time, change failure rate, MTTR. CI/CD maturity, automation coverage, culture assessment." },
+  { id: "prime-repo", alias: "prime", category: "operaciones", title: "RAG Priming", time: "2h", complexity: "baja", prereqs: [], description: "Exploración de repositorio y generación de archivos priming-rag-*.md para alimentar el contexto RAG del framework." },
+  { id: "menu", alias: "menu", category: "ux", title: "Command Palette", time: "instant", complexity: "baja", prereqs: [], description: "Menú fantasma categorizado con todos los comandos disponibles. Detecta estado del pipeline y sugiere siguiente acción." },
+  { id: "a", alias: "advance", category: "ux", title: "Avanzar Pipeline", time: "instant", complexity: "baja", prereqs: [], description: "Avanza al siguiente paso del pipeline con validación de gate. Detecta fase actual, evalúa criterios, sugiere remediación si bloquea." },
+  { id: "demo", alias: "demo", category: "ux", title: "Demo Interactiva", time: "30min", complexity: "baja", prereqs: [], description: "Tour guiado de 5 actos: identidad SAGE, pipeline, mini-discovery real, ghost menu, y siguientes pasos." }
 ];
 
 function renderPrompts() {
