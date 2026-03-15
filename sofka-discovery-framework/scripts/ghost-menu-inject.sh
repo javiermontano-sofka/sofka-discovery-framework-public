@@ -80,7 +80,7 @@ $(${HAS_CHANGELOG} && echo "- [📋 Changelog](${DISCOVERY_DIR}/session-changelo
 $(${HAS_INDEX} && echo "- [📁 Repo Index](${DISCOVERY_DIR}/repo-index.json)" || echo "- Repo no indexado")
 
 ---
-*SAGE Ghost Menu v11.0 — navegación secundaria, revisión y control.*
+*SAGE Ghost Menu v12.0 — navegación secundaria, revisión y control.*
 GHOSTEOF
 
 # Output for hook injection

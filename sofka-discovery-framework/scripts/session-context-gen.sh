@@ -57,7 +57,7 @@ fi
 # Generate SESSION-README.md
 cat > "$SESSION_README" << READMEEOF
 # ${PROJECT_NAME} — Sesión de Discovery SAGE
-> Auto-generado por Sofka SAGE v11.0 | $(date -u +%Y-%m-%dT%H:%M:%SZ)
+> Auto-generado por Sofka SAGE v12.0 | $(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 ## Contexto del Proyecto
 | Atributo | Valor |
@@ -105,7 +105,7 @@ fi)
 | Ghost Menu | \`.discovery/ghost-menu.md\` | $([[ -f "${DISCOVERY_DIR}/ghost-menu.md" ]] && echo "✅" || echo "⚠️ pendiente") |
 
 ---
-*Sofka SAGE v11.0 — session context auto-generated.*
+*Sofka SAGE v12.0 — session context auto-generated.*
 READMEEOF
 
 # Generate SESSION-CLAUDE.md
@@ -172,7 +172,7 @@ else
 fi)
 
 ---
-*Generado por session-context-gen.sh | Sofka SAGE v11.0 | $(date -u +%Y-%m-%dT%H:%M:%SZ)*
+*Generado por session-context-gen.sh | Sofka SAGE v12.0 | $(date -u +%Y-%m-%dT%H:%M:%SZ)*
 CLAUDEEOF
 
 echo "📋 Session context generated:"

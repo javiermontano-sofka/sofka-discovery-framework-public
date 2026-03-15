@@ -29,7 +29,7 @@ Presenta SAGE con impacto:
 ║   discovery empresarial.                                     ║
 ║                                                              ║
 ╠══════════════════════════════════════════════════════════════╣
-║  48 agentes  │  100 skills  │  87 comandos                   ║
+║  48 agentes  │  100 skills  │  96 comandos                   ║
 ║  Protocolo zero-hallucination  │  RAG-priming                ║
 ║  Think Tank de 7 Sabios  │  4 quality gates                  ║
 ╚══════════════════════════════════════════════════════════════╝

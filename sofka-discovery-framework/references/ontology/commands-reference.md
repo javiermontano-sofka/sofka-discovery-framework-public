@@ -1,7 +1,7 @@
 # Referencia de Comandos
 
 > Sofka SAGE — Ontología viva
-> Referencia canónica de los 87 comandos: 84 existentes + 3 nuevos (menu, a, demo).
+> Referencia canónica de los 96 comandos organizados por categoría funcional.
 
 ---
 
@@ -12,11 +12,12 @@
 | PIPELINE | 4 | Flujos end-to-end de discovery |
 | GENERATE | 11 | Generación de entregables (00-09) |
 | REPORT | 5 | Reportes especializados (10-14) |
-| ASSESS | 5 | Evaluaciones dimensionales |
-| OPS | 5 | Operaciones sobre el discovery |
+| ASSESS | 7 | Evaluaciones dimensionales |
+| SERVICE DISCOVERY | 9 | Discovery por línea de servicio |
+| OPS | 6 | Operaciones sobre el discovery |
 | UX | 3 | Navegación y experiencia del usuario |
-| **Aliases** | **54** | Atajos para comandos primarios |
-| **Total** | **87** | |
+| **Aliases** | **~51** | Atajos para comandos primarios |
+| **Total** | **96** | |
 
 ---
 
@@ -61,7 +62,7 @@
 
 ---
 
-## ASSESS — Evaluaciones dimensionales (5 comandos)
+## ASSESS — Evaluaciones dimensionales (7 comandos)
 
 | Comando | Alias | Método | Foco |
 |---------|-------|--------|------|
@@ -70,10 +71,28 @@
 | `/sdf:assess-cloud` | `cloud` | Cloud readiness 7R | Infraestructura cloud |
 | `/sdf:assess-security` | `security` | STRIDE + OWASP | Postura de seguridad |
 | `/sdf:assess-change` | `change` | ADKAR + readiness | Gestión del cambio |
+| `/sdf:assess-compliance` | `compliance` | GDPR + PCI-DSS + ISO 27001 | Postura regulatoria |
+| `/sdf:assess-devops` | `devops` | DORA metrics + CI/CD maturity | Madurez DevOps |
 
 ---
 
-## OPS — Operaciones sobre el discovery (5 comandos)
+## SERVICE DISCOVERY — Discovery por línea de servicio (9 comandos)
+
+| Comando | Alias | {TIPO_SERVICIO} | Skill primario |
+|---------|-------|-----------------|----------------|
+| `/sdf:rpa-discovery` | `rpa` | RPA | rpa-discovery |
+| `/sdf:qa-discovery` | `qa` | QA | qa-service-discovery |
+| `/sdf:ai-discovery` | `ai-disc` | Data-AI | ai-center-discovery |
+| `/sdf:transformation` | `dt` | Digital-Transformation | digital-transformation-discovery |
+| `/sdf:cloud-discovery` | `cloud-disc` | Cloud | cloud-service-discovery |
+| `/sdf:management-discovery` | `mgmt` | Management | management-discovery |
+| `/sdf:sas-discovery` | `sas` | SAS | staff-augmentation-discovery |
+| `/sdf:ux-discovery` | `ux-disc` | UX-Design | ux-design-discovery |
+| `/sdf:benchmark-maturity` | `benchmark` | Todos | maturity-assessment |
+
+---
+
+## OPS — Operaciones sobre el discovery (6 comandos)
 
 | Comando | Alias | Propósito |
 |---------|-------|----------|
@@ -82,6 +101,7 @@
 | `/sdf:rescue-stalled` | `rescue` | Rescatar un discovery estancado o con problemas |
 | `/sdf:simulate-scenarios` | — | Simulación Monte Carlo what-if sobre el roadmap |
 | `/sdf:benchmark-maturity` | — | Benchmark de madurez vs industria |
+| `/sdf:prime-repo` | `prime` | Explorar repo/adjuntos/URLs y generar priming-rag-*.md |
 
 ---
 
@@ -127,6 +147,9 @@
 | `audit` | `/sdf:audit-quality` |
 | `improve` | `/sdf:improve-deliverables` |
 | `rescue` | `/sdf:rescue-stalled` |
+| `compliance` | `/sdf:assess-compliance` |
+| `devops` | `/sdf:assess-devops` |
+| `prime` | `/sdf:prime-repo` |
 | `menu` | `/sdf:menu` |
 | `a` | `/sdf:a` |
 | `demo` | `/sdf:demo` |

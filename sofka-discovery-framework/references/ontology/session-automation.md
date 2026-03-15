@@ -13,13 +13,13 @@ Al activar Sofka SAGE en un repositorio, los hooks ejecutan automáticamente la 
 
 | Orden | Hook | Acción | Archivo generado |
 |-------|------|--------|-----------------|
-| 1 | Session context | Escanear repo, detectar stack, entregables previos | `SESSION-README.md` |
-| 2 | Session instructions | Generar instrucciones específicas al repo | `SESSION-CLAUDE.md` |
-| 3 | Repo index | Inventariar estructura del repositorio | `repo-index.json` |
+| 1 | Deliverable scan | Escanear entregables existentes en el repo | (stdout) |
+| 2 | Session context | Escanear repo, detectar stack, generar contexto | `SESSION-README.md`, `SESSION-CLAUDE.md` |
+| 3 | Auto-prime check | Detectar estado de priming, generar calibración | `calibration-digest.md` |
 | 4 | Ghost menu | Inicializar navegación contextual | `ghost-menu.md` |
 | 5 | Changelog | Crear registro de continuidad | `session-changelog.md` |
 | 6 | Session state | Inicializar estado de la sesión | `session-state.json` |
-| 7 | RAG priming | Cargar 20+ archivos de conocimiento base | (en memoria) |
+| 7 | Prompt injection | Inyectar estado SAGE + instrucciones de priming | (en contexto) |
 
 ---
 
@@ -132,11 +132,65 @@ Cada repositorio de cliente mantiene un directorio `.discovery/` con el estado c
 | `repo-index.json` | Automática (hook) | Automática al detectar cambios |
 | `SESSION-README.md` | Automática (hook) | Manual si el usuario aporta contexto |
 | `SESSION-CLAUDE.md` | Automática (hook) | Automática según progreso |
+| `calibration-digest.md` | Automática (hook) | Automática al crear/editar priming-rag |
 | `ghost-menu.md` | Automática | Automática en cada entregable |
 | `session-changelog.md` | Automática | Automática en cada acción |
 | `session-state.json` | Automática | Automática (serialización de estado) |
+| `rag-priming/*.md` | Por comando o automática | Automática al procesar adjuntos |
+| `.needs-priming` | Automática (marker) | Eliminado al completar priming |
 | `insights/*` | Manual (durante discovery) | Manual |
 | `deliverables/*` | Por comando | Manual (improve) |
+
+---
+
+## Auto-Priming y Calibración
+
+El sistema de auto-priming detecta y gestiona el estado de conocimiento previo (RAG priming) del repositorio.
+
+### Ciclo de priming
+
+```
+SessionStart
+  → auto-prime-check.sh
+    → ¿Existen priming-rag-*.md?
+      → NO: crear .needs-priming marker + calibration-digest (NO PRIMED)
+      → SI: generar calibration-digest con cobertura y dominios
+  → prompt injection incluye instrucción de priming
+
+PostToolUse (Write|Edit)
+  → post-prime-calibrate.sh
+    → ¿Se modificó un priming-rag-*.md?
+      → SI: regenerar calibration-digest
+      → NO: no-op (rápido)
+```
+
+### Calibración
+
+El archivo `calibration-digest.md` contiene:
+- Estado de priming (PRIMED / NO PRIMED)
+- Número de archivos RAG y líneas de contexto
+- Dominios cubiertos y keywords extraídos
+- Cobertura (baja / media / alta)
+- Adjuntos sin priming pendientes
+- Instrucciones para el orquestador
+
+### Protocolo de adjuntos
+
+Cada adjunto o referencia web investigada durante el discovery genera automáticamente un archivo de priming:
+
+1. **Archivo recibido** → leer/interpretar → `priming-rag-{nombre}.md` en `.discovery/rag-priming/`
+2. **URL investigada** → fetch + extract → `priming-rag-{dominio-tema}.md`
+3. **Después de crear** → `post-prime-calibrate.sh` actualiza `calibration-digest.md`
+4. **El orquestador** → lee calibración actualizada → ajusta profundidad de análisis
+
+### Niveles de confianza según priming
+
+| Priming | Confianza base | Recomendación |
+|---------|---------------|---------------|
+| 0 archivos | Baja | Ejecutar `/sdf:prime-repo` obligatorio antes de discovery |
+| 1-2 archivos | Media-baja | Discovery express aceptable, profundo no recomendado |
+| 3-5 archivos | Media | Discovery completo viable |
+| 6+ archivos | Alta | Profundidad óptima para todos los modos |
 
 ---
 

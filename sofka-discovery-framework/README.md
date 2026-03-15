@@ -11,8 +11,8 @@ Sofka SAGE transforma Claude Code en el consultor técnico más riguroso del mer
 No es un prompt — es un ecosistema agéntico completo con:
 
 - **48 agentes** especializados (12 core + 36 domain)
-- **100 skills MOAT** (SKILL.md + references + examples + prompts)
-- **84 comandos** (21 primarios + 63 aliases)
+- **100 skills MOAT** — Modernization-Oriented Acceleration Technology (SKILL.md + references + examples + prompts)
+- **96 comandos** (primarios + aliases + service discovery + UX)
 - **4 quality gates** (G1 → G1.5 → G2 → G3)
 - **Think Tank de 7 Sabios** para validación de factibilidad
 - **Protocolo zero-hallucination** con evidence tagging obligatorio
@@ -48,6 +48,15 @@ Al reiniciar Claude Code, el plugin se activa automáticamente.
 
 # Dirección arquitectónica (7 entregables)
 /sdf:run-deep
+
+# Paleta de comandos interactiva
+/sdf:menu
+
+# Avanzar al siguiente paso del pipeline
+/sdf:a
+
+# Demo guiado de SAGE
+/sdf:demo
 ```
 
 ---
@@ -68,17 +77,17 @@ Al reiniciar Claude Code, el plugin se activa automáticamente.
 ```
 sofka-discovery-framework/
 ├── agents/           # 48 agentes especializados
-├── commands/         # 84 comandos
+├── commands/         # 96 comandos
 ├── skills/           # 100 skills MOAT
 ├── references/       # 20+ priming-RAG + design system + service matrix
-├── prompts/          # Biblioteca NL-HP (40+ prompts)
+├── prompts/          # Biblioteca NL-HP (42 prompts)
 ├── hooks/            # Ghost menu + changelog + session context
 ├── scripts/          # Indexación, escaneo, validación
 ├── landing.html      # Landing page interactiva
 ├── prompt-library.html
 ├── CLAUDE.md         # Guía completa del orquestador
 └── .claude-plugin/
-    └── plugin.json   # v11.0.0
+    └── plugin.json   # v12.0.0
 ```
 
 ---
@@ -107,16 +116,16 @@ El parámetro `{TIPO_SERVICIO}` activa routing automático:
 
 | Tipo | Alias | Comando directo |
 |------|-------|----------------|
-| Software Development & Architecture | `SDA` | — |
+| Software Development & Architecture | `SDA` | Default (auto-detect) |
 | Quality Assurance | `QA` | `/sdf:qa-discovery` |
 | Robotic Process Automation | `RPA` | `/sdf:rpa-discovery` |
 | Data & Artificial Intelligence | `Data-AI` | `/sdf:ai-discovery` |
-| Cloud Infrastructure | `Cloud` | — |
-| Staff Augmentation | `SAS` | — |
-| Management & PMO | `Management` | — |
-| UX Design | `UX-Design` | — |
+| Cloud Infrastructure | `Cloud` | `/sdf:cloud-discovery` |
+| Staff Augmentation | `SAS` | `/sdf:sas-discovery` |
+| Management & PMO | `Management` | `/sdf:management-discovery` |
+| UX Design | `UX-Design` | `/sdf:ux-discovery` |
 | Digital Transformation | `Digital-Transformation` | `/sdf:transformation` |
-| Multi-Service Program | `Multi-Service` | — |
+| Multi-Service Program | `Multi-Service` | Auto (2+ types detected) |
 
 ---
 
@@ -134,14 +143,32 @@ Si >30% es `[SUPUESTO]` → banner de advertencia obligatorio.
 
 ---
 
+## Ontología Viva (v12.0)
+
+CLAUDE.md es un hub de ~120 líneas que enruta a 13 sub-archivos en `references/ontology/`:
+
+| Sub-archivo | Contenido |
+|-------------|-----------|
+| `protocol-zero-hallucination.md` | Reglas de evidencia |
+| `pipeline-orchestration.md` | Fases, gates, diagrama |
+| `agent-committee.md` | 48 agentes por nivel |
+| `skills-catalog.md` | 100 skills por dominio |
+| `commands-reference.md` | 96 comandos categorizados |
+| `quality-gates.md` | G1-G3 + Think Tank |
+| `canonical-tokens.md` | CSS design system |
+| `brand-orchestration.md` | 3 marcas (Sofka, MetodologIA, JM Labs) |
+| `lessons-learned.md` | Documento viviente |
+
+---
+
 ## Branding (Design System v5)
 
 | Token | Valor | Regla |
 |-------|-------|-------|
 | Primary | `#FF7E08` | Naranja Sofka — acción, CTA |
-| Dark | `#1A1A2E` | Fondo authority |
+| Background | `#EFEAE4` | Beige cálido — NUNCA blanco puro |
 | Success | `#FFD700` | **Gold — NUNCA verde** |
-| Font | Inter | 300/400/700/900 |
+| Font | Inter | 300/400/500/600/700 |
 
 ---
 
