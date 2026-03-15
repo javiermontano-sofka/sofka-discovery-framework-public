@@ -2,7 +2,7 @@
 
 > **SAGE** = Sofka Agentic Gateway to Excellence.
 > Tu IDE se convierte en una agencia de discovery empresarial.
-> 48 agentes · 100 skills · 87 comandos · Protocolo zero-hallucination.
+> 48 agentes · 100 skills MOAT · 96 comandos · 42 prompts NL-HP · Protocolo zero-hallucination.
 > © 2026 Sofka Technologies. All Rights Reserved.
 
 ---
@@ -42,7 +42,7 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 12 sub-archivos espec
 | Fases del pipeline y quality gates | `references/ontology/pipeline-orchestration.md` |
 | Roster de 48 agentes y roles | `references/ontology/agent-committee.md` |
 | Catálogo de 100 skills por dominio | `references/ontology/skills-catalog.md` |
-| Referencia de 87 comandos | `references/ontology/commands-reference.md` |
+| Referencia de 96 comandos | `references/ontology/commands-reference.md` |
 | Política de RAG-priming y adjuntos | `references/ontology/rag-priming-policy.md` |
 | Estándares de output y branding | `references/ontology/output-standards.md` |
 | Routing por tipo de servicio | `references/ontology/service-routing.md` |
@@ -88,7 +88,7 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 12 sub-archivos espec
 ```
 sofka-discovery-framework/
 ├── agents/              # 48 agentes especializados
-├── commands/            # 87 comandos (24 primarios + 63 aliases)
+├── commands/            # 96 comandos (primarios + aliases + service discovery)
 ├── skills/              # 100 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
 ├── references/
 │   ├── ontology/        # 13 sub-archivos de ontología viva
@@ -107,9 +107,13 @@ sofka-discovery-framework/
 Al activar el plugin, los hooks generan en `.discovery/`:
 - `SESSION-README.md` — Contexto del proyecto
 - `SESSION-CLAUDE.md` — Instrucciones de sesión
+- `calibration-digest.md` — Estado de priming y calibración
 - `ghost-menu.md` — Navegación contextual
 - `session-changelog.md` — Registro para continuidad
 - `session-state.json` — Estado del pipeline
+
+Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `.needs-priming` y se sugiere `/sdf:prime-repo`.
+Cada adjunto o URL investigada genera `priming-rag-{nombre}.md` y recalibra automáticamente.
 
 > Detalle completo → `references/ontology/session-automation.md`
 

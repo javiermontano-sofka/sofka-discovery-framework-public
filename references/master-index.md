@@ -1,6 +1,6 @@
 # Master Index — Sofka SAGE Ecosystem
 > Indice maestro de archivos accesibles para discovery, RAG y consulta rapida.
-> Generado: 2026-03-14 | Version: v11.0.0
+> Generado: 2026-03-15 | Version: v12.0.0
 > SAGE = Sofka Agentic Gateway to Excellence
 
 ## Convencion de procesamiento

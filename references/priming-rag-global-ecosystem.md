@@ -21,9 +21,9 @@ El ecosistema global extiende las capacidades del SDF plugin fuera de su context
 
 ---
 
-## MOAT Pattern (Model-Oriented Artifact Template)
+## MOAT Pattern (Modernization-Oriented Acceleration Technology)
 
-El MOAT es el patron defensivo que protege la calidad y consistencia de los skills del ecosistema.
+El MOAT es el patron defensivo que protege la calidad y consistencia de los skills del ecosistema. Inspirado en el ADN de Sofka (Software + Kaizen), cada skill sigue una estructura estandarizada que acelera la modernizacion tecnologica de los clientes.
 
 ### Definicion
 MOAT = estructura de directorio estandarizada para cada skill que garantiza:
@@ -243,7 +243,7 @@ SDF Plugin (propietario, 100 skills, 48 agents, 84 commands)
 
 1. 69 skills globales disponibles sin activar el plugin SDF
 2. 14 builders/creators exclusivos para expandir el ecosistema
-3. MOAT pattern (Metadata, Output, Agents, Tools) garantiza calidad estructural
+3. MOAT pattern (Modernization-Oriented Acceleration Technology: Metadata + Output + Agents + Tools) garantiza calidad estructural
 4. 58 paquetes .skill para distribucion individual con estructura MOAT
 5. plugin-architect es el unico agente global
 6. Las 3 capas (plugin, global, packaged) se complementan sin duplicar responsabilidades
@@ -259,7 +259,7 @@ SDF Plugin (propietario, 100 skills, 48 agents, 84 commands)
 ## Query hooks
 
 - "Que skills estan disponibles globalmente?" -> 69 en ~/.claude/skills/
-- "Que es el MOAT pattern?" -> Model-Oriented Artifact Template: Metadata + Output + Agents + Tools
+- "Que es el MOAT pattern?" -> Modernization-Oriented Acceleration Technology: Metadata + Output + Agents + Tools
 - "Como distribuyo un skill?" -> Paquetes .skill en ~/skills/sofka-skills/
 - "Hay builders para crear nuevos assets?" -> Si, 14 en builders/creators
 - "Cual es la relacion entre plugin y global?" -> Global es subset + builders exclusivos

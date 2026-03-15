@@ -42,7 +42,7 @@ sofka-discovery-framework/
   landing.html           — Landing page (Sofka Design System v5)
   prompt-library.html    — Biblioteca interactiva de prompts
   agents/                — 48 agentes especializados (.md)
-  commands/              — 84 comandos (30 primary + 54 aliases) (.md)
+  commands/              — 96 comandos (30 primary + 62 aliases) (.md)
   skills/                — 100 skills por dominio (directorios/)
   prompts/               — 5 archivos de prompts + versions/
   references/            — Documentos de referencia y priming-RAG

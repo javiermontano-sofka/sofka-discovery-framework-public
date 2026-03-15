@@ -28,14 +28,14 @@ La tríada permanente está activa desde CP-0 hasta CP-F. Ningún entregable se 
 | Agente | Rol | Fases de activación |
 |--------|-----|---------------------|
 | `quality-guardian` | Validación contra criterios de aceptación | Gates G1-G3, auditorías |
-| `domain-analyst` | Contexto sectorial, lente de industria | Fases 0-3 (Plan a Flujos) |
+| `subject-matter-expert` | Contexto sectorial, lente de industria dinámica | Fases 0-3 (Plan a Flujos) |
 | `technical-architect` | Diseño, trade-offs, decisiones arquitectónicas | Fases 2-6 (Brief a Reportes) |
-| `data-strategist` | Ecosistema de datos, gobernanza, pipelines | Fases 2-5 (Brief a Spec) |
+| `data-engineer` | Pipelines de datos, infraestructura, gobernanza | Fases 2-5 (Brief a Spec) |
 | `change-catalyst` | Gestión del cambio, adopción, readiness | Fases 4-6 (Escenarios a Handover) |
 | `editorial-director` | Coherencia narrativa, calidad editorial | Todas las fases (revisión de entregables) |
 | `format-specialist` | Producción multi-formato (HTML, DOCX, XLSX, PDF) | Fase 6 (Reportes) |
 | `content-strategist` | Storytelling, narrativa de datos | Fases 5-6 (Pitch, Reportes) |
-| `full-stack-generalist` | Implementación transversal | Fases 2-4 (ASIS, Flujos, Escenarios) |
+| `implementation-analyst` | Viabilidad de implementación, trade-offs prácticos | Fases 2-4 (ASIS, Flujos, Escenarios) |
 
 ---
 

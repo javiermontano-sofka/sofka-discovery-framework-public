@@ -1,7 +1,7 @@
 # Catálogo de 100 Skills
 
 > Sofka SAGE — Ontología viva
-> Referencia canónica de los 100 skills MOAT organizados por 11 dominios.
+> Referencia canónica de los 100 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
 
 ---
 

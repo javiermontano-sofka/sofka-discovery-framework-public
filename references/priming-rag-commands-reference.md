@@ -1,7 +1,7 @@
 # Priming-RAG: Commands Reference
-> Sofka Discovery Framework — Referencia completa de 84 comandos
-> Procesado: 2026-03-14 | Version: v11.0.0
-> Fuente: `$SDF/commands/` (84 archivos .md)
+> Sofka Discovery Framework — Referencia completa de 96 comandos
+> Procesado: 2026-03-14 | Version: v12.0.0
+> Fuente: `$SDF/commands/` (92 archivos .md)
 
 ---
 

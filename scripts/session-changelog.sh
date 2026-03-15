@@ -25,7 +25,7 @@ if [[ ! -f "$CHANGELOG" ]]; then
 
 ## Resumen de sesión
 - **Inicio**: $(date -u +%Y-%m-%dT%H:%M:%SZ)
-- **Plugin**: Sofka SAGE v11.0
+- **Plugin**: Sofka SAGE v12.0
 - **Directorio**: ${TARGET_DIR}
 - **Estado**: En progreso
 
@@ -41,7 +41,7 @@ if [[ ! -f "$STATE_FILE" ]]; then
   cat > "$STATE_FILE" << STATEEOF
 {
   "session_start": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-  "plugin_version": "11.0.0",
+  "plugin_version": "12.0.0",
   "working_directory": "${TARGET_DIR}",
   "active_skill": "discovery-orchestrator",
   "phase": "pre-discovery",
