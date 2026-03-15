@@ -80,7 +80,7 @@ sofka-discovery-framework/
 ├── commands/         # 96 comandos
 ├── skills/           # 100 skills MOAT
 ├── references/       # 20+ priming-RAG + design system + service matrix
-├── prompts/          # Biblioteca NL-HP (42 prompts)
+├── prompts/          # Biblioteca NL-HP (49 prompts)
 ├── hooks/            # Ghost menu + changelog + session context
 ├── scripts/          # Indexación, escaneo, validación
 ├── landing.html      # Landing page interactiva
@@ -157,6 +157,10 @@ CLAUDE.md es un hub de ~120 líneas que enruta a 13 sub-archivos en `references/
 | `quality-gates.md` | G1-G3 + Think Tank |
 | `canonical-tokens.md` | CSS design system |
 | `brand-orchestration.md` | 3 marcas (Sofka, MetodologIA, JM Labs) |
+| `output-standards.md` | Formatos y markdown-excellence |
+| `rag-priming-policy.md` | Política RAG y adjuntos |
+| `service-routing.md` | Routing por tipo de servicio |
+| `session-automation.md` | Hooks, ghost menu, changelog |
 | `lessons-learned.md` | Documento viviente |
 
 ---
@@ -214,9 +218,23 @@ Se activan según `{TIPO_SERVICIO}` y fase del pipeline.
 | Gestión & Estrategia | 10 |
 | Editorial & Comunicación | 9 |
 | Cambio & Adopción | 5 |
-| Innovación & Validación | 5 |
+| Innovación & Validación | 8 |
 | Herramientas & DX | 6 |
 | Service Discovery | 11 |
+
+---
+
+## v12.0 Harmonization Status
+
+| Dimensión | Score | Detalle |
+|-----------|-------|---------|
+| Skills MOAT | **100/100** | Cada skill tiene SKILL.md + examples/ + prompts/ |
+| Agentes estándar | **48/48** | Core Responsibilities + Assigned Skills + Output Config + Escalation Triggers |
+| Comandos | **96/96** | 55 primarios + 41 aliases, 100% frontmatter |
+| Prompt Library | **49 prompts** | 4 flujos + 17 entregables + 7 assessments + 15 operaciones + 3 UX + 6 meta |
+| Ontología | **13/13** sub-archivos | Pipeline, agents, skills, gates, tokens, brand, RAG, sessions |
+| Branding | **0 violaciones** | Gold (#FFD700) para success, NUNCA verde |
+| Entregables invocables | **23/23** | 00_Plan → 09_Handover + 7 assessments |
 
 ---
 
