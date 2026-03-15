@@ -1,5 +1,5 @@
 ---
-name: cost-estimation
+name: sofka-cost-estimation
 description: >
   Cost driver identification — effort inductors, scope drivers, magnitude estimation, team composition
   modeling, risk-adjusted timeline ranges, service engagement sizing, consulting effort, automation ROI,

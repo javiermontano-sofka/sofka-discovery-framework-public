@@ -1,5 +1,5 @@
 ---
-name: ai-center-discovery
+name: sofka-ai-center-discovery
 description: >
   AI Center services discovery — AI readiness assessment using Sofka AI SCALE methodology, use case portfolio
   prioritization, data readiness evaluation, model inventory, AI governance assessment, infrastructure evaluation,

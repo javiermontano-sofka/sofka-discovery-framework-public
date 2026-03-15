@@ -1,5 +1,5 @@
 ---
-name: mini-apps-discovery
+name: sofka-mini-apps-discovery
 description: >
   Mini Apps and Low-Code discovery — citizen developer readiness, platform assessment (Power Platform, OutSystems,
   Mendix, Retool), use case identification and prioritization, governance model, integration architecture, and

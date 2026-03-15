@@ -1,5 +1,5 @@
 ---
-name: qa-service-discovery
+name: sofka-qa-service-discovery
 description: >
   QA-as-a-Service discovery — quality maturity assessment (TMMi), test coverage analysis, tool landscape
   evaluation, PITT methodology alignment, team composition modeling, test factory design, and QA transformation roadmap.

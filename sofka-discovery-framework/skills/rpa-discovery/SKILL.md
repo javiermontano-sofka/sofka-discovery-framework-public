@@ -1,5 +1,5 @@
 ---
-name: rpa-discovery
+name: sofka-rpa-discovery
 description: >
   RPA and process automation discovery — process landscape assessment, automation opportunity scoring,
   bot design architecture, platform evaluation, process mining, ROI projection, and automation roadmap.

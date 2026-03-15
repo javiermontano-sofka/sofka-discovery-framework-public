@@ -1,5 +1,5 @@
 ---
-name: asis-analysis
+name: sofka-asis-analysis
 description: >
   Universal current-state assessment producing 10-section analysis for ANY Sofka service type.
   Use when the user asks to "analyze the codebase", "assess current architecture", "run AS-IS analysis",

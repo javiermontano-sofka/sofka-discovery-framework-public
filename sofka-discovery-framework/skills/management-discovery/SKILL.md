@@ -1,5 +1,5 @@
 ---
-name: management-discovery
+name: sofka-management-discovery
 description: >
   Management and consulting discovery — PMO maturity assessment, methodology fitness evaluation, team capability
   analysis, governance model assessment, delivery performance baseline, Factor WOW assessment, and management

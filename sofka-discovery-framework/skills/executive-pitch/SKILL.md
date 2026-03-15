@@ -1,5 +1,5 @@
 ---
-name: executive-pitch
+name: sofka-executive-pitch
 description: >
   C-level executive pitch with financial modeling and persuasion architecture.
   Use when the user asks to "create a pitch", "build a business case", "justify the investment",

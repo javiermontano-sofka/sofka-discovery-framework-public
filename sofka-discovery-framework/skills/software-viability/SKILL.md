@@ -1,5 +1,5 @@
 ---
-name: software-viability
+name: sofka-software-viability
 description: >
   Software and technology viability validator — deep forensic analysis of whether proposed
   software solutions, AI/ML components, and technology choices are viable substance or speculative

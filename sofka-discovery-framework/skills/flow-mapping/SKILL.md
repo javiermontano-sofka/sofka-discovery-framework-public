@@ -1,5 +1,5 @@
 ---
-name: flow-mapping
+name: sofka-flow-mapping
 description: >
   DDD domain taxonomy + 8-12 end-to-end business flows with trama specifications,
   process mapping, service flow documentation, and operational flow tracing.

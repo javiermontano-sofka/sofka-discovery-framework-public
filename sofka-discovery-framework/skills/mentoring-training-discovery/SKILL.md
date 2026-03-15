@@ -1,5 +1,5 @@
 ---
-name: mentoring-training-discovery
+name: sofka-mentoring-training-discovery
 description: >
   Mentoring and training discovery — capability assessment, learning path design, knowledge transfer planning,
   training delivery model, measurement framework, and training roadmap. Use when the user asks to "assess training needs",

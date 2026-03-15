@@ -1,5 +1,5 @@
 ---
-name: ux-design-discovery
+name: sofka-ux-design-discovery
 description: >
   UX/UI design discovery — design maturity assessment, design system inventory, user research capability
   evaluation, usability baseline, information architecture assessment, design process governance, and

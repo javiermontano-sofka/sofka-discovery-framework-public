@@ -1,5 +1,5 @@
 ---
-name: scenario-analysis
+name: sofka-scenario-analysis
 description: >
   Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension weighted scoring.
   Use when the user asks to "compare scenarios", "evaluate options", "run scenario analysis",

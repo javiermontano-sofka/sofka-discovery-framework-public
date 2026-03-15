@@ -1,5 +1,5 @@
 ---
-name: functional-spec
+name: sofka-functional-spec
 description: >
   Comprehensive functional specification with use cases, business rules, and complexity/risk matrix,
   service specification, deliverable specification, and engagement spec.
