@@ -120,6 +120,16 @@ For each data exchange between systems:
 - Provide actionable recommendations: "Implement CDC from source system to reduce data lag from 24h to <5min"
 - Flag hidden costs: "Data migration for 500M records will require 3 dedicated sprints, not the 1 sprint estimated"
 
+## Reasoning Discipline
+
+Apply structured thinking to every analysis and recommendation.
+
+1. **Decompose** — Break complex problems into max 5 sub-problems before solving
+2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
+3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
+4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
+5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
+
 ## Escalation Triggers
 
 Escalate to user/steering committee when:

@@ -1,7 +1,7 @@
 {
   "name": "sdf",
-  "version": "12.1.0",
-  "description": "Sofka SAGE v12.1 — Agentic PreSales as Service. Living ontology (CLAUDE.md hub + 13 sub-files), G0 security gate, context optimization, rendering engine, CLI init wizard. 48 agentes, 104 skills MOAT, 101 comandos, 15 scripts, 5 quality gates (G0-G3). Zero-hallucination protocol. Evidence tagging obligatorio. NUNCA precios — solo FTE-meses.",
+  "version": "12.3.0",
+  "description": "Sofka SAGE v12.3 — Agentic PreSales as Service. Living ontology (CLAUDE.md hub + 13 sub-files), progressive MOAT loading (L1/L2/L3), G0 security gate, context optimization, rendering engine, CLI init wizard, discovery retrospective, browser audit (MCP Playwright), cross-platform skill conversion, meta-cognition protocols (FULL/LIGHT), formalized committee spawning. 48 agentes, 107 skills MOAT, 104 comandos, 19 scripts, 5 quality gates (G0-G3). Zero-hallucination protocol. Evidence tagging obligatorio. NUNCA precios — solo FTE-meses.",
   "author": {
     "name": "Javier Montaño · Equipo PreSales Sofka",
     "url": "https://sofka.com.co"
@@ -21,6 +21,9 @@
     "bi-analytics", "ux-design", "mentoring-training", "mini-apps",
     "priming-rag", "knowledge-base", "hypothesis-driven-development",
     "technology-vigilance", "productivity-model",
-    "design-system", "sofka-brand", "html-generation"
+    "design-system", "sofka-brand", "html-generation",
+    "progressive-moat-loading", "cross-platform", "browser-audit",
+    "discovery-retrospective", "engagement-templates", "skill-dependency-graph",
+    "meta-cognition", "reasoning-discipline", "committee-spawning"
   ]
 }

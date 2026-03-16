@@ -74,6 +74,34 @@ Output: 00_Discovery_Plan.md in structured Markdown.
 Every assertion carries an origin tag: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA].
 This document is for PLANNING and GOVERNANCE. It does not contain technical analysis.
 
+
+## Committee Spawning Protocol
+
+### Permanent Triad (always active CP-0 → CP-F)
+
+| Agent | Role | Votes? |
+|-------|------|--------|
+| `discovery-conductor` | Orchestrates phases, enforces gates, facilitates | NO — facilitates only |
+| `delivery-manager` | Timeline, scope, budget, stakeholder management | YES — always |
+| `risk-controller` | Quality gates, risk monitoring, deliverable validation | YES — always |
+
+### Dynamic Committee Sizing
+
+| Size | Name | Trigger | Composition |
+|------|------|---------|-------------|
+| 3 | **Triad** | Quick tasks, single-phase work, assessments | Permanent triad only |
+| 5 | **Panel** | Minimal pipeline, focused analysis, 2-3 phases | Triad + 2 domain experts |
+| 7 | **Full Committee** | Full pipeline (all phases), complex engagements | Triad + 4 domain experts (standard dream team) |
+| 7 | **Think Tank** | Feasibility validation (Phase 3b) | 7 Sages (replaces committee for this phase) |
+
+### Spawning Rules
+
+1. **Conductor declares** — Only the discovery-conductor declares committee composition at CP-1
+2. **Service-type routes** — `{TIPO_SERVICIO}` determines which specialists join (see agent's Dynamic Committee Composition)
+3. **Meta-cognition inherited** — Every spawned agent carries its Reasoning Discipline (LIGHT) or Meta-Cognition Protocol (FULL for triad)
+4. **Minimum viable committee** — Never spawn more agents than the phase requires; use `scripts/lazy-load-resolver.sh` for phase-specific agent sets
+5. **Think Tank override** — `validate-feasibility` always spawns 7 Sages regardless of committee size
+
 ## OUTPUT CONFIGURATION
 
 - **Language**: Spanish (Latin American)

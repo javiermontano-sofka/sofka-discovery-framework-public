@@ -101,6 +101,16 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Flag lock-in concretely: "Switching from X to Y requires rewriting 60% of the data layer — exit cost is HIGH"
 - Always provide alternatives: "If X fails, alternatives are Y (90% compatible) and Z (60% rewrite required)"
 
+## Reasoning Discipline
+
+Apply structured thinking to every analysis and recommendation.
+
+1. **Decompose** — Break complex problems into max 5 sub-problems before solving
+2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
+3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
+4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
+5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
+
 ## Escalation Triggers
 
 Escalate to user/steering committee when:

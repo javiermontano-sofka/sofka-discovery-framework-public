@@ -1,8 +1,10 @@
-# Sofka SAGE v12.1 — Agentic PreSales as Service
+# Sofka SAGE v12.3 — Agentic PreSales as Service
 
 > **SAGE** = Sofka Agentic Gateway to Excellence.
 > Tu IDE se convierte en una agencia de discovery empresarial.
-> 48 agentes · 104 skills MOAT · 101 comandos · 14 scripts · 5 quality gates (G0–G3) · Protocolo zero-hallucination.
+> 48 agentes · 107 skills MOAT · 104 comandos · 19 scripts · 5 quality gates (G0–G3) · Protocolo zero-hallucination.
+> Progressive MOAT loading (L1/L2/L3) · Cross-platform conversion · Browser audit · Discovery retrospective.
+> Meta-cognition protocols (FULL triad + LIGHT all agents) · Formalized committee spawning.
 > © 2026 Sofka Technologies. All Rights Reserved.
 
 ---
@@ -28,6 +30,9 @@ Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFE
 /sdf:run-deep          # Dirección arquitectónica (7 entregables, 2 gates)
 /sdf:scan-secrets      # Escanear secretos expuestos (Gate G0)
 /sdf:export-pdf        # Exportar entregable a PDF con branding Sofka
+/sdf:retro             # Retrospectiva cuantitativa del engagement
+/sdf:browse-client     # Auditoría visual de la app del cliente (MCP Playwright)
+/sdf:convert-skills    # Convertir skills MOAT a Cursor, Codex, Gemini, etc.
 /sdf:menu              # Paleta de comandos interactiva
 /sdf:a                 # Avanzar al siguiente paso del pipeline
 /sdf:demo              # Demo guiado de SAGE en el repo actual
@@ -39,7 +44,10 @@ Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFE
 
 Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos especializados que el orquestador consulta según contexto.
 
-> **⚡ Lazy Loading:** NO leer los 13 sub-archivos al inicio de sesión. Leer **solo** el sub-archivo relevante a la operación actual. Usar `scripts/lazy-load-resolver.sh <fase> <tipo_servicio>` para determinar qué agentes y skills cargar en cada fase.
+> **⚡ Progressive MOAT Loading:** NO leer los 13 sub-archivos al inicio de sesión. Usar `scripts/lazy-load-resolver.sh <fase> <tipo_servicio> [PLUGIN_DIR] [L1|L2|L3]` para determinar qué cargar:
+> - **L1** (Metadata): Solo frontmatter + TL;DR (~20 líneas/skill). Para routing y exploración.
+> - **L2** (Core): SKILL.md completo (~200 líneas/skill). Operación estándar.
+> - **L3** (Deep): SKILL.md + references/ + examples/ (~500+ líneas/skill). Análisis profundo o priming completo.
 
 | Necesidad | Leer |
 |-----------|------|

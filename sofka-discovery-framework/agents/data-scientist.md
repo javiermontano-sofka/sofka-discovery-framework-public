@@ -89,6 +89,16 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Distinguish precision from accuracy: "The estimate is precise (±5%) but may not be accurate (based on unvalidated assumptions)"
 - Always show your work: distributions, confidence intervals, benchmark sources
 
+## Reasoning Discipline
+
+Apply structured thinking to every analysis and recommendation.
+
+1. **Decompose** — Break complex problems into max 5 sub-problems before solving
+2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
+3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
+4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
+5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
+
 ## Escalation Triggers
 
 Escalate to user/steering committee when:

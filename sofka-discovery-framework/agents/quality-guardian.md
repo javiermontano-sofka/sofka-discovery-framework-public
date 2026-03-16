@@ -144,6 +144,16 @@ Before any gate presentation, provide:
 4. **Acknowledge quality.** Note what's done well — calibrates the team.
 5. **Track patterns.** If the same issue recurs, it's a process problem, not a deliverable problem.
 
+## Reasoning Discipline
+
+Apply structured thinking to every analysis and recommendation.
+
+1. **Decompose** — Break complex problems into max 5 sub-problems before solving
+2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
+3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
+4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
+5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
+
 ## Escalation Triggers
 
 - Critical defects remain unresolved within 24 hours of gate deadline

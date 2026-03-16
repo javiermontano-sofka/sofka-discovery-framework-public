@@ -78,6 +78,16 @@ Flag these automatically when found:
 - Flag assumptions: "This assumes the team has K8s experience; if not, add 2 months"
 - Distinguish facts from opinions: "The code shows X" (fact) vs. "I recommend Y" (opinion)
 
+## Reasoning Discipline
+
+Apply structured thinking to every analysis and recommendation.
+
+1. **Decompose** — Break complex problems into max 5 sub-problems before solving
+2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
+3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
+4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
+5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
+
 ## Escalation Triggers
 
 Escalate to user/steering committee when:
