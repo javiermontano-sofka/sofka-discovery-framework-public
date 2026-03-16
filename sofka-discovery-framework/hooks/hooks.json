@@ -5,6 +5,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/secrets-scan.sh\" \"$PWD\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
             "command": "bash \"$PLUGIN_DIR/scripts/scan-deliverables.sh\" \"$PWD\" 2>/dev/null || true"
           },
           {
@@ -25,7 +29,7 @@
           },
           {
             "type": "prompt",
-            "prompt": "Sofka SAGE v12.0 activo — Agentic PreSales as Service.\n\n48 agentes | 100 skills MOAT | 96 comandos | 4 quality gates (G1→G3)\nNL-HP v3.0 | Think Tank 7 Sabios | {TIPO_SERVICIO} routing\n\nSesión inicializada:\n- .discovery/SESSION-CLAUDE.md → instrucciones del orquestador para este repo\n- .discovery/SESSION-README.md → contexto del proyecto\n- .discovery/ghost-menu.md → navegación contextual\n- .discovery/session-changelog.md → changelog para continuidad\n- .discovery/calibration-digest.md → estado de priming y calibración\n\nGhost Menu ACTIVO: incluir bloque de navegación contextual al final de cada artefacto importante.\nChangelog ACTIVO: cada acción significativa queda registrada para retomar ante crisis.\nAuto-Priming ACTIVO: si .discovery/.needs-priming existe, sugerir /sdf:prime-repo antes de iniciar discovery.\nCalibración ACTIVA: leer .discovery/calibration-digest.md para conocer profundidad de contexto disponible.\n\nProtocolo de adjuntos: cada archivo adjunto o URL investigada debe generar un priming-rag-{nombre}.md en .discovery/rag-priming/. Actualizar calibración después.\n\nComandos rápidos: /sdf:run-auto (completo) | /sdf:run-express (Go/No-Go) | /sdf:run-guided (cocreado) | /sdf:menu (paleta) | /sdf:a (avanzar) | /sdf:demo (tour) | /sdf:prime-repo (priming)\nCost outputs = FTE-meses + magnitudes, NUNCA precios. Branding: #FF7E08, #EFEAE4, #FFD700 (NUNCA verde).\n\nPresenta esto como nota breve de estado. Si el repo no está primed, indicarlo prominentemente."
+            "prompt": "Sofka SAGE v12.1 activo — Agentic PreSales as Service.\n\n48 agentes | 104 skills MOAT | 101 comandos | 5 quality gates (G0→G3) | 14 scripts\nNL-HP v3.0 | Think Tank 7 Sabios | {TIPO_SERVICIO} routing | G0 Security Gate\n\nSesión inicializada:\n- .discovery/SESSION-CLAUDE.md → instrucciones del orquestador para este repo\n- .discovery/SESSION-README.md → contexto del proyecto\n- .discovery/ghost-menu.md → navegación contextual\n- .discovery/session-changelog.md → changelog para continuidad\n- .discovery/calibration-digest.md → estado de priming y calibración\n- .discovery/.sage-secrets-audit.log → auditoría G0 de seguridad\n\nG0 Security Gate ACTIVO: secrets-scan.sh ejecutado al inicio. Si hay hallazgos, revisar con /sdf:scan-secrets.\nGhost Menu ACTIVO: incluir bloque de navegación contextual al final de cada artefacto importante.\nChangelog ACTIVO: cada acción significativa queda registrada. Context-prune.sh comprime automáticamente al superar 150 líneas.\nLazy Loading ACTIVO: solo cargar agentes/skills relevantes a la fase actual. Consultar CLAUDE.md hub para determinar qué ontología leer.\nAuto-Priming ACTIVO: si .discovery/.needs-priming existe, sugerir /sdf:prime-repo antes de iniciar discovery.\n\nProtocolo de adjuntos: cada archivo adjunto o URL investigada debe generar un priming-rag-{nombre}.md en .discovery/rag-priming/.\n\nComandos rápidos: /sdf:init (wizard) | /sdf:run-auto (completo) | /sdf:run-express (Go/No-Go) | /sdf:run-guided (cocreado) | /sdf:scan-secrets (G0) | /sdf:export-pdf (PDF) | /sdf:menu (paleta) | /sdf:a (avanzar)\nCost outputs = FTE-meses + magnitudes, NUNCA precios. Branding: #FF7E08, #EFEAE4, #FFD700 (NUNCA verde).\n\nPresenta esto como nota breve de estado. Si el repo no está primed, indicarlo prominentemente."
           }
         ]
       }
@@ -36,6 +40,10 @@
           {
             "type": "command",
             "command": "bash \"$PLUGIN_DIR/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/context-prune.sh\" \"$PWD\" 2>/dev/null || true"
           },
           {
             "type": "command",

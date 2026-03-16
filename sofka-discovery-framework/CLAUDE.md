@@ -1,8 +1,8 @@
-# Sofka SAGE v12.0 — Agentic PreSales as Service
+# Sofka SAGE v12.1 — Agentic PreSales as Service
 
 > **SAGE** = Sofka Agentic Gateway to Excellence.
 > Tu IDE se convierte en una agencia de discovery empresarial.
-> 48 agentes · 100 skills MOAT · 96 comandos · 42 prompts NL-HP · Protocolo zero-hallucination.
+> 48 agentes · 104 skills MOAT · 101 comandos · 14 scripts · 5 quality gates (G0–G3) · Protocolo zero-hallucination.
 > © 2026 Sofka Technologies. All Rights Reserved.
 
 ---
@@ -21,10 +21,13 @@ Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFE
 ## Inicio Rápido
 
 ```bash
+/sdf:init              # Wizard de inicialización para nuevo engagement
 /sdf:run-auto          # Pipeline autónomo completo
 /sdf:run-express       # Go/No-Go en 1 sesión (3 entregables)
 /sdf:run-guided        # Pipeline guiado con facilitación humana
 /sdf:run-deep          # Dirección arquitectónica (7 entregables, 2 gates)
+/sdf:scan-secrets      # Escanear secretos expuestos (Gate G0)
+/sdf:export-pdf        # Exportar entregable a PDF con branding Sofka
 /sdf:menu              # Paleta de comandos interactiva
 /sdf:a                 # Avanzar al siguiente paso del pipeline
 /sdf:demo              # Demo guiado de SAGE en el repo actual
@@ -34,7 +37,9 @@ Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFE
 
 ## Ontología Viva — Índice de Navegación
 
-Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos especializados que el orquestador consulta según contexto:
+Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos especializados que el orquestador consulta según contexto.
+
+> **⚡ Lazy Loading:** NO leer los 13 sub-archivos al inicio de sesión. Leer **solo** el sub-archivo relevante a la operación actual. Usar `scripts/lazy-load-resolver.sh <fase> <tipo_servicio>` para determinar qué agentes y skills cargar en cada fase.
 
 | Necesidad | Leer |
 |-----------|------|
@@ -66,6 +71,7 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 8. **{TIPO_SERVICIO}** — Routing automático de agentes y skills
 9. **Consistencia cruzada** — Verificar alineación entre entregables
 10. **Excellence loop** — 10 criterios en cada entregable
+11. **Security gate G0** — No unmasked credentials. `secrets-scan.sh` ejecuta antes que cualquier otro hook. Si detecta secretos, abortar `run-auto`/`run-deep`
 
 ---
 

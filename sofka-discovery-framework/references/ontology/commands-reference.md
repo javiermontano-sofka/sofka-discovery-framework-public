@@ -14,10 +14,11 @@
 | REPORT | 5 | Reportes especializados (10-14) |
 | ASSESS | 7 | Evaluaciones dimensionales |
 | SERVICE DISCOVERY | 9 | Discovery por línea de servicio |
+| SECURITY & DX | 5 | Seguridad, rendering, context, inicialización |
 | OPS | 6 | Operaciones sobre el discovery |
 | UX | 3 | Navegación y experiencia del usuario |
 | **Aliases** | **~51** | Atajos para comandos primarios |
-| **Total** | **96** | |
+| **Total** | **101** | |
 
 ---
 
@@ -89,6 +90,15 @@
 | `/sdf:sas-discovery` | `sas` | SAS | staff-augmentation-discovery |
 | `/sdf:ux-discovery` | `ux-disc` | UX-Design | ux-design-discovery |
 | `/sdf:benchmark-maturity` | `benchmark` | Todos | maturity-assessment |
+
+---
+
+## SECURITY — Seguridad y sanitización (1 comando)
+
+| Comando | Alias | Propósito |
+|---------|-------|----------|
+| `/sdf:scan-secrets` | — | Escanear repo para detectar credenciales expuestas (Gate G0) |
+| `/sdf:optimize-context` | — | Optimizar context window: pruning del changelog + lazy loading |
 
 ---
 

@@ -13,14 +13,14 @@
 | Data & Analytics | 10 | 2-6 (Brief a Reportes) |
 | Análisis & Discovery | 12 | 0-4 (Plan a Flujos) |
 | Cloud & Platform | 5 | 2-5 (ASIS a Roadmap) |
-| Calidad & Ops | 10 | 2-6 (ASIS a Reportes) |
+| Calidad & Ops | 11 | 0-6 (G0 a Reportes) |
 | Gestión & Estrategia | 10 | 0-6 (Plan a Handover) |
 | Editorial & Comunicación | 9 | 5-6 (Pitch a Reportes) |
 | Cambio & Adopción | 5 | 4-6 (Escenarios a Handover) |
 | Innovación | 5 | 3-5 (ASIS a Roadmap) |
-| Herramientas & DX | 6 | Transversal |
+| Herramientas & DX | 7 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
-| **Total** | **100** | |
+| **Total** | **104** | |
 
 ---
 
@@ -99,6 +99,7 @@
 | `pipeline-governance` | Gobernanza del pipeline CI/CD | 3-5 |
 | `vendor-assessment` | Evaluación de proveedores y herramientas | 3-5 |
 | `compliance-assessment` | Evaluación de compliance, regulaciones | 3-5 |
+| `secrets-sanitization` | Detección y enmascaramiento de datos sensibles pre-LLM (G0) | 0 |
 
 ## 6. Gestión & Estrategia (10 skills)
 
@@ -149,7 +150,7 @@
 | `roadmap-poc` | PoC como parte del roadmap | 6 |
 | `migration-playbook` | Playbook de migración, guía paso a paso | 6 |
 
-## 10. Herramientas & DX (6 skills)
+## 10. Herramientas & DX (7 skills)
 
 | Skill | Propósito | Fase |
 |-------|----------|------|
@@ -159,6 +160,9 @@
 | `developer-experience` | Evaluación de experiencia de desarrollador | 3-4 |
 | `team-topology` | Topologías de equipo, Team Topologies framework | 3-5 |
 | `mini-apps-discovery` | Discovery de mini-aplicaciones complementarias | 0-2 |
+| `context-optimization` | Optimización de context window, lazy loading, pruning semántico | Transversal |
+| `rendering-engine` | Renderizado Mermaid→PNG y markdown→PDF con branding Sofka v5 | Transversal |
+| `cli-init` | CLI interactivo de inicialización para nuevos engagements | 0 |
 
 ## 11. Service Discovery (11 skills)
 

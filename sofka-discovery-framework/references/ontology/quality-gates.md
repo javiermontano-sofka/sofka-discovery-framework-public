@@ -11,6 +11,41 @@ Los quality gates son hard stops en el pipeline. Ningún entregable posterior pu
 
 ---
 
+## G0 — Security Gate (Pre-Pipeline)
+
+### Momento de activación
+Al inicio de sesión, **antes** de cualquier otro gate. Se ejecuta automáticamente vía hook `secrets-scan.sh` como primer paso de la secuencia SessionStart.
+
+### Criterios de paso
+
+- [ ] Escaneo de secretos completado (`secrets-scan.sh` exit 0)
+- [ ] Cero hallazgos de credenciales, tokens, o llaves privadas en archivos del repo
+- [ ] `.discovery/.sage-secrets-audit.log` generado con status CLEAN
+- [ ] Archivos `.env`, `credentials.*`, `*.pem` revisados o enmascarados
+
+### Quién aprueba
+- **Automático:** `secrets-scan.sh` (exit code 0 = pasa)
+- **Manual:** Usuario revisa audit log si hay hallazgos
+
+### Qué bloquea
+- Private keys sin enmascarar → BLOQUEO ABSOLUTO
+- API keys o tokens en archivos de configuración → Warning + recomendación de enmascarar
+- `.env` con valores de producción → BLOQUEO para `/sdf:run-auto` y `/sdf:run-deep`
+
+### Acción si no pasa
+1. Presentar hallazgos al usuario (NUNCA mostrar los valores, solo tipo + ubicación)
+2. Sugerir `/sdf:scan-secrets` para revisión detallada
+3. Ofrecer enmascaramiento vía `scripts/secrets-mask.sh`
+4. En modo `run-guided`: continuar con warning. En `run-auto`/`run-deep`: ABORT.
+
+### Archivos relacionados
+- `scripts/secrets-scan.sh` — Motor de detección
+- `scripts/secrets-mask.sh` — Enmascaramiento reversible
+- `.discovery/.sage-secrets-audit.log` — Registro de auditoría (gitignored)
+- `.discovery/.sage-secrets-map.json` — Mapa de placeholders (gitignored, NUNCA commitear)
+
+---
+
 ## G1 — Post-Escenarios
 
 ### Momento de activación

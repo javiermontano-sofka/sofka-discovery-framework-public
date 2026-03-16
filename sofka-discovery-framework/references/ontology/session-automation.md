@@ -13,6 +13,7 @@ Al activar Sofka SAGE en un repositorio, los hooks ejecutan automáticamente la 
 
 | Orden | Hook | Acción | Archivo generado |
 |-------|------|--------|-----------------|
+| 0 | Secrets scan (G0) | Detectar credenciales y secretos en el repo | `.sage-secrets-audit.log` |
 | 1 | Deliverable scan | Escanear entregables existentes en el repo | (stdout) |
 | 2 | Session context | Escanear repo, detectar stack, generar contexto | `SESSION-README.md`, `SESSION-CLAUDE.md` |
 | 3 | Auto-prime check | Detectar estado de priming, generar calibración | `calibration-digest.md` |

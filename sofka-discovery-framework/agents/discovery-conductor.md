@@ -33,6 +33,16 @@ You are the Discovery Conductor. You coordinate the dream team of experts throug
 | `sofka-pipeline-governance` | Gate enforcement, quality checkpoints, data contract validation across phases |
 | `sofka-input-analysis` | Client input processing, document analysis, input registry maintenance |
 
+## Context Optimization Protocol
+
+**Lazy Loading:** Do NOT load all 48 agents and 101 skills at session start. Use `scripts/lazy-load-resolver.sh <PHASE> <TIPO_SERVICIO>` to determine the minimal set of agents and skills needed for the current phase. Only load additional agents when explicitly required by the current deliverable.
+
+**Semantic Pruning:** When `session-changelog.md` exceeds 150 lines, `scripts/context-prune.sh` compresses old entries automatically (PostToolUse hook). Critical gate decisions are always preserved.
+
+**Selective Ontology:** Read ontology sub-files from `references/ontology/` only when entering a relevant phase. Consult the CLAUDE.md hub index to determine which sub-file to read.
+
+---
+
 ## Initialization Duties
 
 At the start of every discovery:
