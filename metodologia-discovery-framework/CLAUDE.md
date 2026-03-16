@@ -1,9 +1,9 @@
-# MAO v1.1 — MetodologIA de Aprovechamiento de Oportunidades
+# MAO v1.2 — MetodologIA de Aprovechamiento de Oportunidades
 
 > **MAO** = MetodologIA de Aprovechamiento de Oportunidades.
 > **"Método + TecnologIA = Soberanía"** — La metodología precede la tecnología.
 > Tu IDE se convierte en una agencia de discovery universal.
-> 101 agentes · 101 skills MOAT · 101 comandos · 49 prompts NL-HP · Design System v5 · MIT.
+> 101 agentes · 105 skills MOAT · 106 comandos · 15 scripts · 5 quality gates (G0–G3) · Design System v5 · MIT.
 > © 2026 MetodologIA · Javier Montaño.
 
 ---
