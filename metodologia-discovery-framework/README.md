@@ -1,10 +1,10 @@
-# MetodologIA Discovery Framework v6.2.0
+# MetodologIA Discovery Framework v10.0
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 **Framework de discovery técnico y consultoría para Claude Code — copyleft, para el profesional en la era de la IA.**
 
-48 skills especializados · 8 agentes dream team · 4 comandos · 8 fases de pipeline · 3 quality gates · markdown-first con Mermaid
+57 skills (MOAT standard) · 12 agentes · 21 comandos · 59 prompts NL-HP · 8 fases de pipeline · 3 quality gates · markdown-first con Mermaid
 
 ---
 
@@ -65,20 +65,21 @@ flowchart LR
 
 ---
 
-## Skills Catalog — 48 skills en 8 dominios
+## Skills Catalog — 57 skills en 9 dominios (MOAT standard)
 
-| Dominio | Skills | Detalle |
-|---------|--------|---------|
-| **Discovery Pipeline** (16) | discovery-orchestrator, mermaid-diagramming, stakeholder-mapping, workshop-facilitator, asis-analysis, dynamic-sme, flow-mapping, scenario-analysis, technical-feasibility, software-viability, solution-roadmap, cost-estimation, commercial-model, functional-spec, executive-pitch, discovery-handover | Core del pipeline fases 0-6 |
-| **Architecture Design** (8) | software-architecture, architecture-tobe, enterprise-architecture, solutions-architecture, infrastructure-architecture, devsecops-architecture, design-system, functional-toolbelt | De software a infraestructura |
-| **Data Strategy** (7) | data-science-architecture, bi-architecture, data-engineering, database-architecture, data-governance, data-quality, analytics-engineering | Stack de datos completo |
-| **Cloud & Mobile** (4) | cloud-native-architecture, cloud-migration, mobile-architecture, mobile-assessment | Nube y movilidad |
-| **Engineering Excellence** (5) | api-architecture, event-architecture, security-architecture, performance-engineering, observability | Cross-cutting concerns |
-| **Consulting & Quality** (3) | quality-engineering, testing-strategy, user-representative | QA y voz del usuario |
-| **Governance & Risk** (2) | project-program-management, risk-controlling-dynamics | PMO y control de riesgos |
-| **Delivery & Brand** (3) | html-brand, ux-writing, roadmap-poc | Entregables y marca |
+| Dominio | # | Skills |
+|---------|---|--------|
+| **Discovery Pipeline** | 16 | discovery-orchestrator, mermaid-diagramming, stakeholder-mapping, workshop-facilitator, asis-analysis, dynamic-sme, flow-mapping, scenario-analysis, technical-feasibility, software-viability, solution-roadmap, cost-estimation, commercial-model, functional-spec, executive-pitch, discovery-handover |
+| **Architecture Design** | 8 | software-architecture, architecture-tobe, enterprise-architecture, solutions-architecture, infrastructure-architecture, devsecops-architecture, design-system, functional-toolbelt |
+| **Data Strategy** | 7 | data-science-architecture, bi-architecture, data-engineering, database-architecture, data-governance, data-quality, analytics-engineering |
+| **Cloud & Mobile** | 5 | cloud-native-architecture, cloud-migration, cloud-service-discovery, mobile-architecture, mobile-assessment |
+| **Engineering Excellence** | 5 | api-architecture, event-architecture, security-architecture, performance-engineering, observability |
+| **Consulting & Quality** | 4 | quality-engineering, testing-strategy, user-representative, qa-service-discovery |
+| **Governance & Risk** | 2 | project-program-management, risk-controlling-dynamics |
+| **Service Discovery** | 7 | ai-center-discovery, bi-analytics-discovery, digital-transformation-discovery, management-discovery, mentoring-training-discovery, mini-apps-discovery, rpa-discovery, staff-augmentation-discovery, ux-design-discovery |
+| **Delivery & Brand** | 3 | html-brand, ux-writing, roadmap-poc |
 
-**Total: 48 skills** — cada uno 100% self-contained, sin dependencias cruzadas.
+**Total: 57 skills** — cada uno MOAT compliant (SKILL.md + examples/ + prompts/).
 
 ### Anatomía de un skill
 
@@ -92,7 +93,7 @@ Cada skill sigue una estructura estandarizada:
 
 ---
 
-## Dream Team — 8 Agentes + Conductor
+## Dream Team — 12 Agentes
 
 | Agente | Rol | Fases principales |
 |--------|-----|-------------------|
@@ -104,6 +105,12 @@ Cada skill sigue una estructura estandarizada:
 | **delivery-manager** | Roadmap, estimación, gestión de programa | 4, 4b, 6 |
 | **change-catalyst** | Gestión del cambio, adopción, stakeholder alignment | 0, 3, 5b |
 | **full-stack-generalist** | Cobertura cross-cutting: APIs, seguridad, observabilidad | Todas según necesidad |
+| **ai-strategist** | AI/ML strategy, MLOps maturity, model governance | {TIPO_SERVICIO}=Data-AI |
+| **process-automation-specialist** | RPA, process mining, bot architecture | {TIPO_SERVICIO}=RPA |
+| **qa-strategist** | TMMi maturity, test factory, QA CoE | {TIPO_SERVICIO}=QA |
+| **transformation-architect** | Multi-service program design, digital maturity | {TIPO_SERVICIO}=Digital-Transformation |
+
+Todos los agentes siguen el estándar de 4 secciones: **Core Responsibilities**, **Assigned Skills**, **Output Configuration**, **Escalation Triggers**.
 
 El **discovery-conductor** opera en modo `piloto-auto` por defecto: ejecuta autónomamente el trabajo rutinario y solicita input humano solo en gates y ambigüedades.
 
@@ -144,17 +151,15 @@ Cada deliverable genera diagramas Mermaid específicos: C4 (architecture), gantt
 
 ## NL-HP v3.0 Prompts
 
-16 prompts de alta precisión en lenguaje natural, organizados en 3 categorías:
+59 prompts NL-HP v3.0 (uno por skill) + prompts de orquestación:
 
 | Categoría | Cantidad | Contenido |
 |-----------|----------|-----------|
-| **Documentos** | 10 | Prompts para cada entregable del pipeline |
+| **Skills** | 57 | Un prompt NL-HP por skill (en `skills/*/prompts/prompt.md`) |
 | **Flujos** | 3 | Orquestación, transiciones, escalamiento |
 | **Operaciones** | 3 | Calidad, formatos, variantes |
 
-Ubicación: `prompts-for-discovery/metodologia/` — 17 archivos (16 prompts + README).
-
-Densidad de calidad: 10x vs prompts convencionales. Cada prompt codifica criterios de aceptación, anti-patrones y formato de salida.
+Cada prompt codifica criterios de aceptación, anti-patrones y formato de salida. NL-HP = Natural Language High-Performance.
 
 ---
 
@@ -220,38 +225,27 @@ metodologia-discovery-framework/
 ├── CHANGELOG.md
 ├── EXCELLENCE_LOOP_LOG.md           # Auditoría por skill
 ├── settings.json                    # Configuración del plugin
-├── skills/                          # 48 skills
-│   ├── discovery-orchestrator/
+├── skills/                          # 57 skills (MOAT standard)
+│   ├── discovery-orchestrator/      #   Each: SKILL.md + examples/ + prompts/
 │   ├── stakeholder-mapping/
 │   ├── asis-analysis/
-│   ├── flow-mapping/
-│   ├── scenario-analysis/
-│   ├── technical-feasibility/
-│   ├── software-viability/
-│   ├── solution-roadmap/
-│   ├── cost-estimation/
-│   ├── commercial-model/
-│   ├── functional-spec/
-│   ├── executive-pitch/
-│   ├── discovery-handover/
-│   ├── software-architecture/
-│   ├── ... (48 total)
+│   ├── ... (57 total)
 │   └── roadmap-poc/
-├── agents/                          # 8 agentes + conductor
-│   ├── discovery-conductor.md
-│   ├── domain-analyst.md
+├── agents/                          # 12 agentes estandarizados
+│   ├── discovery-conductor.md       #   Each: Core Responsibilities, Assigned Skills,
+│   ├── domain-analyst.md            #         Output Configuration, Escalation Triggers
 │   ├── technical-architect.md
-│   ├── data-strategist.md
-│   ├── quality-guardian.md
-│   ├── delivery-manager.md
-│   ├── change-catalyst.md
-│   └── full-stack-generalist.md
-├── commands/                        # 4 comandos
-│   ├── discovery.md
+│   ├── ... (12 total)
+│   └── transformation-architect.md
+├── commands/                        # 21 comandos
+│   ├── discovery.md                 #   4 flows + 10 documents + 4 service-type + 3 ops
 │   ├── discovery-auto.md
-│   ├── discovery-improve.md
-│   └── discovery-review.md
-└── hooks/                           # Hooks del plugin
+│   ├── ... (21 total)
+│   └── rescue.md
+├── references/                      # Priming RAG + service matrix
+│   ├── priming-rag/
+│   └── service-type-matrix.md
+└── hooks/                           # SessionStart hook
 ```
 
 ---
@@ -294,7 +288,7 @@ Ver [LICENSE](LICENSE) para el texto completo.
 ---
 
 <p align="center">
-<strong>MetodologIA Discovery Framework v6.2.0</strong><br>
+<strong>MetodologIA Discovery Framework v10.0</strong><br>
 © Javier Montaño, MetodologIA · GPL-3.0 (Copyleft)<br>
 <a href="https://metodologia.info">metodologia.info</a><br>
 <em>Para el profesional en la era de la IA.</em>

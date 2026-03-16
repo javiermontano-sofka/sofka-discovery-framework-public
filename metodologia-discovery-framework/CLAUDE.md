@@ -1,6 +1,6 @@
-# Discovery Framework — Orchestration Guide
+# MetodologIA Discovery Framework v10.0 — Orchestration Guide
 
-> Licensed under GPL-3.0. Derivative works must maintain copyleft.
+> 57 skills (MOAT) · 12 agents · 21 commands · 59 prompts NL-HP · GPL-3.0 Copyleft
 
 ## Quick Reference
 
