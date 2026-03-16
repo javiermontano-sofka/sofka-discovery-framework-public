@@ -1,56 +1,40 @@
 ---
-id: "management-discovery"
+id: management-discovery
 title: "Management Discovery"
-description: ">"
+description: "PMO maturity assessment and management service design"
 nlhp-version: "3.0"
-license: "GPL-3.0"
 ---
 
 # Management Discovery
 
+> NL-HP v3.0 — Prompt ejecutable del skill `metodologia-management-discovery`
+
 ## Invocación
 
-> Ejecuta el skill **management-discovery** sobre el contexto actual del proyecto.
-
 ```
-/metodologia-discovery-framework:discovery — activar como parte del pipeline
+Analiza {} usando el skill management-discovery.
+Variante: {ejecutiva|técnica} | Formato: {markdown|html|dual}
 ```
 
 ## Parámetros
 
-| Parámetro | Tipo | Default | Descripción |
-|-----------|------|---------|-------------|
-| {MODO} | enum | piloto-auto | Nivel de intervención humana |
-| {FORMATO} | enum | markdown | Formato de salida |
-| {VARIANTE} | enum | tecnica | Nivel de detalle |
-| {PROFUNDIDAD} | enum | tecnico | Profundidad del análisis |
+| Parámetro | Default | Opciones |
+|-----------|---------|----------|
+| `{MODO}` | piloto-auto | piloto-auto, desatendido, supervisado, paso-a-paso |
+| `{FORMATO}` | markdown | markdown, html, dual |
+| `{VARIANTE}` | técnica | ejecutiva (~40%), técnica (full) |
 
 ## Descripción
 
-Este prompt activa el skill **management-discovery** dentro del pipeline de discovery de MetodologIA.
-
->
-
-### Entregable esperado
-
-Documento estructurado con:
-- TL;DR (3-5 bullets)
-- Análisis detallado por sección
-- Tablas con indicadores de estado
-- Diagramas Mermaid cuando aplique
-- Recomendaciones priorizadas
-- Riesgos y mitigaciones
+PMO maturity assessment and management service design. Sigue el protocolo NL-HP v3.0 con evidence tagging obligatorio.
 
 ## Restricciones
 
-1. Markdown-excellence obligatorio
-2. Evidence tagging: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
-3. NUNCA precios — solo drivers, inductores y magnitudes
-4. Margen de innovación 5%
-5. Copyleft GPL-3.0
+- NUNCA inventar datos — todo claim tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA] o [SUPUESTO]
+- NUNCA precios — solo drivers y magnitudes
+- Si >30% claims son [SUPUESTO], mostrar banner de advertencia
+- Output en español (registro empresarial latinoamericano)
 
 ## Skill Reference
 
-Skill: `management-discovery/SKILL.md`
-Framework: MetodologIA Discovery Framework
-License: GPL-3.0 (Copyleft)
+Ver `SKILL.md` para protocolo completo, secciones de entrega, y trade-off matrix.

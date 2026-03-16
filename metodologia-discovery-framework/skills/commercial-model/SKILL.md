@@ -1,5 +1,5 @@
 ---
-name: commercial-model
+name: metodologia-commercial-model
 description: >
   Business model and value capture strategy — identifies optimal commercial structures for
   technology engagements beyond T&M. Use when the user asks to "define business model",

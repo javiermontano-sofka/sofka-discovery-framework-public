@@ -12,10 +12,10 @@ Reusable HTML templates and patterns for CI/CD and security pipeline documentati
 ## Design Tokens
 
 ```css
---color-primary: #FF7E08;        /* Orange — pipeline stages, progress */
+--color-primary: #6366F1;        /* Orange — pipeline stages, progress */
 --color-critical: #DC2626;       /* Red — failures, security issues */
 --color-warning: #D97706;        /* Amber — warnings, manual approval needed */
---color-positive: #FFD700;       /* Gold — passed gates, success */
+--color-positive: #22D3EE;       /* Gold — passed gates, success */
 --color-decorative: #42D36F;     /* Green — decorative only */
 --color-neutral-light: #F3F4F6;  /* Light gray — backgrounds */
 --color-neutral-dark: #1F2937;   /* Dark gray — text */

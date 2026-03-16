@@ -1,5 +1,6 @@
 ---
-name: mermaid-diagramming
+name: metodologia-mermaid-diagramming
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   This skill should be used when the user asks to "create diagrams", "generate Mermaid",
   "visualize architecture", "diagram flows", "draw a sequence diagram", "create a C4 diagram",

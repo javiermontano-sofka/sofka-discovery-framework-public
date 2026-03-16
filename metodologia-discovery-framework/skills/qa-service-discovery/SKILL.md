@@ -1,12 +1,11 @@
 ---
-name: qa-service-discovery
+name: metodologia-qa-service-discovery
 description: >
   QA-as-a-Service discovery — quality maturity assessment (TMMi), test coverage analysis, tool landscape
-  evaluation, independent testing alignment (PDCA + ISTQB), team composition modeling, test factory design,
-  and QA transformation roadmap.
+  evaluation, PITT methodology alignment, team composition modeling, test factory design, and QA transformation roadmap.
   Use when the user asks to "assess QA maturity", "evaluate testing practices", "QA service discovery",
   "test factory design", "TMMi assessment", "QA transformation", "testing maturity evaluation",
-  "independent testing model", "QA team composition", "test automation assessment", "quality engineering assessment",
+  "PITT methodology", "QA team composition", "test automation assessment", "quality engineering assessment",
   or mentions "independent testing", "QA-as-a-Service", "test industrialization", "ISTQB".
 allowed-tools:
   - Read
@@ -19,15 +18,15 @@ allowed-tools:
 
 # QA Service Discovery — Quality Maturity Assessment & Transformation Roadmap
 
-Genera un assessment de 7 secciones para servicios de QA: evaluacion de madurez de calidad (TMMi), analisis de cobertura de testing, evaluacion del landscape de herramientas, alineacion con modelo de testing independiente (basado en PDCA + ISTQB Test Process), modelado de composicion de equipo, diseno de test factory, y roadmap de transformacion de QA. Orientado a construir servicios de calidad que prevengan defectos, no solo los detecten.
+Genera un assessment de 7 secciones para servicios de QA: evaluacion de madurez de calidad (TMMi), analisis de cobertura de testing, evaluacion del landscape de herramientas, alineacion con metodologia PITT, modelado de composicion de equipo, diseno de test factory, y roadmap de transformacion de QA. Orientado a construir servicios de calidad que prevengan defectos, no solo los detecten.
 
 ## Principio Rector
 
 > *La calidad no se inspecciona al final — se construye desde el principio. Un servicio de QA que solo encuentra bugs es un servicio incompleto; el verdadero valor esta en prevenirlos.*
 
-1. **Shift-left no es un eslogan — es una estrategia medible.** Cada defecto encontrado en produccion costo 100x mas que uno encontrado en requerimientos (Boehm, 1981; NIST 2002). El assessment mide donde se encuentran los defectos en el ciclo de vida y cuanto se puede mover hacia la izquierda.
+1. **Shift-left no es un eslogan — es una estrategia medible.** Cada defecto encontrado en produccion costo 100x mas que uno encontrado en requerimientos. El assessment mide donde se encuentran los defectos en el ciclo de vida y cuanto se puede mover hacia la izquierda.
 2. **La automatizacion de tests sin estrategia es un costo, no una inversion.** Tests automatizados fragiles, lentos o irrelevantes consumen mas de lo que aportan. El assessment evalua no solo el ratio de automatizacion sino la calidad y mantenibilidad del suite automatizado.
-3. **El testing independiente es un habilitador, no un obstaculo.** La separacion de responsabilidades entre desarrollo y QA no crea friction — crea accountability. Un modelo de testing independiente correctamente implementado acelera releases, no los frena.
+3. **El testing independiente (PITT) es un habilitador, no un obstaculo.** La separacion de responsabilidades entre desarrollo y QA no crea friction — crea accountability. El modelo PITT correctamente implementado acelera releases, no los frena.
 
 ## Inputs
 
@@ -45,12 +44,6 @@ Parse from `$ARGUMENTS`.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S2, S7 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `QA` (fixed for this skill)
-
-If reference materials exist, load them:
-
-```
-Read ${CLAUDE_SKILL_DIR}/references/
-```
 
 ## Input Requirements
 
@@ -78,7 +71,7 @@ Read ${CLAUDE_SKILL_DIR}/references/
 **Cannot do:**
 - Ejecutar tests en el ambiente del cliente (requiere acceso a infraestructura)
 - Evaluar performance de herramientas en uso (requiere benchmarking en vivo)
-- Realizar auditorias formales de certificacion TMMi (requiere assessor certificado por TMMi Foundation)
+- Realizar auditorias formales de certificacion TMMi (requiere assessor certificado)
 - Entrevistar individualmente a cada miembro del equipo
 
 ## Workarounds When Inputs Missing
@@ -96,7 +89,7 @@ Read ${CLAUDE_SKILL_DIR}/references/
 - **No hay equipo de QA dedicado:** Evaluar testing como responsabilidad distribuida en desarrollo. Flag como riesgo y oportunidad.
 - **Solo testing manual:** Calcular costo de oportunidad. Priorizar automatizacion por riesgo de regresion.
 - **Multiples equipos de QA (por producto):** Evaluar consistencia entre equipos. Identificar oportunidades de estandarizacion.
-- **Outsourcing de QA existente:** Evaluar vendor actual con criterios objetivos. Analizar gaps y opciones de transicion.
+- **Outsourcing de QA existente:** Evaluar vendor actual vs MetodologIA. Analizar gaps y transicion.
 - **Regulacion especifica (pharma, fintech):** Elevar requisitos de documentacion, trazabilidad y validacion. Mapear compliance requirements.
 - **>500 test cases sin mantenimiento:** Flag deuda de tests. Evaluar relevancia vs costo de mantenimiento. Recomendar rationalizacion.
 
@@ -113,7 +106,7 @@ Read ${CLAUDE_SKILL_DIR}/references/
 
 ### S1: Quality Maturity Model Assessment (TMMi)
 
-Evaluacion contra los 5 niveles de TMMi (Test Maturity Model integration), framework publico de la TMMi Foundation.
+Evaluacion contra los 5 niveles de TMMi (Test Maturity Model integration).
 
 **Niveles TMMi:**
 
@@ -125,7 +118,7 @@ Evaluacion contra los 5 niveles de TMMi (Test Maturity Model integration), frame
 | L4 | Measured | Metricas de calidad cuantitativas, statistical process control, product quality evaluation |
 | L5 | Optimization | Mejora continua basada en datos, defect prevention, quality control |
 
-**Assessment por area de proceso (TMMi Foundation):**
+**Assessment por area de proceso:**
 - Test Policy & Strategy
 - Test Planning
 - Test Monitoring & Control
@@ -150,7 +143,7 @@ Analisis de cobertura de testing por multiples dimensiones.
 | Performance | ...% | ...% | ... |
 | Security | ...% | ...% | ... |
 
-**Cobertura por capa (piramide de testing):**
+**Cobertura por capa:**
 
 | Capa | Tests | Automatizados | Manual | Ratio |
 |---|---|---|---|---|
@@ -169,41 +162,31 @@ Analisis de cobertura de testing por multiples dimensiones.
 
 ### S3: Tool Landscape Assessment
 
-Evaluacion de herramientas actuales vs recomendadas (todas open-source o de amplia adopcion).
+Evaluacion de herramientas actuales vs recomendadas.
 
 **Categorias de herramientas:**
 
 | Categoria | Herramienta Actual | Madurez (1-5) | Adopcion (%) | Recomendacion |
 |---|---|---|---|---|
-| Test Management | ... | ... | ... | TestRail, Zephyr, Xray, qTest |
-| Automation Framework | ... | ... | ... | Selenium, Cypress, Playwright, Appium |
-| CI/CD Integration | ... | ... | ... | Jenkins, GitHub Actions, GitLab CI |
-| Performance Testing | ... | ... | ... | JMeter, Gatling, k6, Locust |
-| Security Testing | ... | ... | ... | OWASP ZAP, SonarQube, Trivy |
-| API Testing | ... | ... | ... | Postman, RestAssured, Karate |
-| Mobile Testing | ... | ... | ... | Appium, Detox, XCUITest, Espresso |
-| Accessibility Testing | ... | ... | ... | axe-core, pa11y, Lighthouse |
+| Test Management | ... | ... | ... | ... |
+| Automation Framework | ... | ... | ... | ... |
+| CI/CD Integration | ... | ... | ... | ... |
+| Performance Testing | ... | ... | ... | ... |
+| Security Testing | ... | ... | ... | ... |
+| API Testing | ... | ... | ... | ... |
+| Mobile Testing | ... | ... | ... | ... |
+| Accessibility Testing | ... | ... | ... | ... |
 
 **Criterios de evaluacion:**
-- Madurez del producto (estabilidad, roadmap, comunidad open-source)
+- Madurez del producto (estabilidad, roadmap, comunidad)
 - Integracion con stack existente
 - Curva de aprendizaje
-- Costo de propiedad (licencias vs open-source, infraestructura, mantenimiento)
+- Costo de propiedad (licencias, infraestructura, mantenimiento)
 - Soporte y ecosistema
 
-### S4: Independent Testing Model Alignment (PDCA + ISTQB Test Process)
+### S4: PITT Methodology Alignment
 
-Evaluacion de readiness para testing independiente, basado en estandares publicos ISTQB (ISO/IEC/IEEE 29119) y ciclo PDCA.
-
-**Niveles de independencia (ISTQB Foundation Syllabus):**
-
-| Nivel | Descripcion | Aplica cuando |
-|---|---|---|
-| L0 | Mismo desarrollador testea su codigo | Solo unit testing, nunca aceptable para otros niveles |
-| L1 | Otro miembro del equipo de desarrollo | Peer review, pair testing. Aceptable para integration |
-| L2 | Equipo de QA dentro de la misma organizacion | Modelo interno. Riesgo de presion de timelines |
-| L3 | Equipo de QA externo independiente | Independencia total. Reporte directo a governance |
-| L4 | Auditor externo | Solo para compliance. No para testing operativo |
+Evaluacion de readiness para Equipos de Testing Independientes (PITT).
 
 **Dimensiones de evaluacion:**
 
@@ -216,34 +199,38 @@ Evaluacion de readiness para testing independiente, basado en estandares publico
 | Test artifact independence | ... | ... |
 | Reporting & metrics | ... | ... |
 
-**Modelo de interaccion de testing independiente (basado en ISTQB + PDCA):**
-- **Plan:** Estrategia de test definida por QA, aprobada por stakeholders
-- **Do:** Ejecucion independiente con comunicacion fluida con desarrollo
-- **Check:** Metricas de calidad, defect triage conjunto, release decision basada en exit criteria
-- **Act:** Retrospectivas, ajuste de estrategia, mejora de procesos
+**Modelo de interaccion PITT:**
+- Punto de contacto entre equipos de desarrollo y testing
+- Flujo de comunicacion para requerimientos, defectos y releases
+- Escalation path para bloqueos
+- Cadencia de reporting y review
 
-**Readiness score:** Promedio ponderado de dimensiones. >3.5 = ready for independent testing. <3.5 = requiere preparacion previa.
+**Readiness score:** Promedio ponderado de dimensiones. >3.5 = ready for PITT. <3.5 = requiere preparacion previa.
 
 ### S5: QA Team Composition Model
 
 Modelado de perfiles necesarios y analisis de gaps.
 
-**Perfiles requeridos (basado en ISTQB career paths):**
+**Perfiles requeridos:**
 
 | Perfil | Cantidad | Seniority | Certificaciones | Rol |
 |---|---|---|---|---|
-| Test Analyst | ... | Jr/Mid/Sr | ISTQB FL/AL-TA | Diseno y ejecucion de tests funcionales |
+| Test Analyst | ... | Jr/Mid/Sr | ISTQB FL/AL | Diseno y ejecucion de tests funcionales |
 | Automation Engineer | ... | Mid/Sr | ISTQB TAE | Desarrollo y mantenimiento de framework de automatizacion |
-| Performance Tester | ... | Sr | ISTQB CT-PT | Diseno y ejecucion de tests de performance |
-| Security Tester | ... | Sr | ISTQB CT-SEC / CEH | Testing de seguridad y vulnerability assessment |
-| Test Manager | ... | Sr/Lead | ISTQB AL-TM | Gestion del equipo, planning, reporting |
-| Quality Coach | ... | Lead | Multiple | Transformacion de calidad, coaching, mejora continua |
+| Performance Tester | ... | Sr | ISTQB Performance | Diseno y ejecucion de tests de performance |
+| Security Tester | ... | Sr | ISTQB Security/CEH | Testing de seguridad y vulnerability assessment |
+| Test Manager | ... | Sr/Lead | ISTQB TM-AL | Gestion del equipo, planning, reporting |
+| Quality Mobilizer | ... | Lead | Multiple | Transformacion de calidad, coaching, mejora continua |
 
-**Mapeo de certificaciones ISTQB (publico, administrado por ISTQB Foundation):**
-- **Foundation Level:** CTFL (baseline para todos), CTFL-AT (Agile Tester)
-- **Advanced Level:** CTAL-TA (Test Analyst), CTAL-TM (Test Manager), CTAL-TTA (Technical Test Analyst)
-- **Specialist:** CT-TAE (Test Automation Engineer), CT-PT (Performance Testing), CT-SEC (Security Testing), CT-AI (AI Testing)
-- **Expert Level:** CTEL-TM, CTEL-ITP, CTEL-TA
+**Mapeo de certificaciones:**
+- ISTQB Foundation Level (FL) — baseline para todos
+- ISTQB Advanced Level Test Analyst (AL-TA)
+- ISTQB Advanced Level Test Manager (AL-TM)
+- ISTQB Technical Test Analyst (AL-TTA)
+- ISTQB Agile Tester Extension
+- ISTQB Test Automation Engineer (TAE)
+- ISTQB Performance Testing
+- ISTQB Security Testing
 
 **Modelo de allocation:** FTE distribution por tipo de testing y fase del proyecto.
 
@@ -253,16 +240,16 @@ Diseno del modelo de test factory para industrializacion del testing.
 
 **Componentes del Test Factory:**
 
-1. **Procesos estandarizados (basados en ISO/IEC/IEEE 29119)**
+1. **Procesos estandarizados**
    - Test strategy template
    - Test plan template
-   - Test case design standards (equivalence partitioning, boundary value, decision table)
+   - Test case design standards
    - Defect lifecycle management
    - Release qualification checklist
 
 2. **Governance**
    - Quality gates por fase
-   - Entry/exit criteria (ISTQB standard)
+   - Entry/exit criteria
    - Escalation matrix
    - Review board (periodicidad, participantes, scope)
 
@@ -272,10 +259,10 @@ Diseno del modelo de test factory para industrializacion del testing.
    - Automation ratio evolution
    - Test coverage by risk
    - Escape rate (defectos en produccion post-release)
-   - Cost of quality (prevention vs detection vs failure — modelo PAF)
+   - Cost of quality (prevention vs detection vs failure)
 
-4. **Frameworks estandarizados (open-source)**
-   - Automation framework architecture (Page Object, Screenplay pattern)
+4. **Frameworks estandarizados**
+   - Automation framework architecture (Page Object, Screenplay, etc.)
    - Data management strategy (test data, environments)
    - Reporting templates
 
@@ -285,7 +272,7 @@ Diseno del modelo de test factory para industrializacion del testing.
    - Best practices documentation
    - Onboarding guide para nuevos testers
 
-6. **Mejora continua (PDCA)**
+6. **Mejora continua**
    - Retrospectivas de calidad (periodicidad)
    - Innovation time (exploratory testing, new tools evaluation)
    - Benchmarking interno y externo
@@ -295,16 +282,16 @@ Diseno del modelo de test factory para industrializacion del testing.
 Hoja de ruta de transformacion de QA en 3 horizontes.
 
 **Horizonte 1 — Quick Wins (0-3 meses):**
-- Establecer metricas baseline (defect density, escape rate, coverage)
+- Establecer metricas baseline
 - Implementar defect management process
 - Quick automation wins (smoke tests, regression critica)
 - Estandarizar test plans y templates
 
 **Horizonte 2 — Medium-term (3-9 meses):**
-- Implementar automation framework (Selenium/Cypress/Playwright)
-- Shift-left initiatives (unit test coaching, static analysis con SonarQube)
-- Performance testing baseline (JMeter/k6)
-- Modelo de testing independiente operativo
+- Implementar automation framework
+- Shift-left initiatives (unit test coaching, static analysis)
+- Performance testing baseline
+- Modelo PITT operativo
 - Training y certificacion ISTQB
 
 **Horizonte 3 — Strategic (9-18 meses):**
@@ -316,11 +303,11 @@ Hoja de ruta de transformacion de QA en 3 horizontes.
 
 **Indicadores de magnitud de inversion (NOT prices):**
 - FTE-meses por horizonte
-- Licencias requeridas (cantidad, tipo — priorizar open-source)
+- Licencias requeridas (cantidad, tipo)
 - Infraestructura de testing (ambientes, datos)
-- Capacitacion (horas-persona, certificaciones ISTQB)
+- Capacitacion (horas-persona, certificaciones)
 
-> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico de la organizacion.
+> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico del cliente.
 
 ## Escalation to Human Architect
 
@@ -335,10 +322,10 @@ Hoja de ruta de transformacion de QA en 3 horizontes.
 
 - [ ] Nivel TMMi actual identificado con evidencia por area de proceso
 - [ ] Cobertura de testing analizada por tipo, capa y nivel de riesgo
-- [ ] Landscape de herramientas evaluado con scores de madurez y adopcion (incluye open-source)
-- [ ] Alineacion de testing independiente evaluada con readiness score (PDCA + ISTQB)
-- [ ] Modelo de composicion de equipo con perfiles, certificaciones ISTQB y allocation
-- [ ] Test factory disenado con procesos (ISO 29119), governance, metricas y frameworks
+- [ ] Landscape de herramientas evaluado con scores de madurez y adopcion
+- [ ] Alineacion PITT evaluada con readiness score
+- [ ] Modelo de composicion de equipo con perfiles, certificaciones y allocation
+- [ ] Test factory disenado con procesos, governance, metricas y frameworks
 - [ ] Roadmap en 3 horizontes con milestones de madurez por fase
 - [ ] Magnitudes de inversion documentadas (NUNCA precios) con disclaimer
 - [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
@@ -346,13 +333,13 @@ Hoja de ruta de transformacion de QA en 3 horizontes.
 
 ## Output Artifact
 
-**Primary:** `QA_Service_Discovery_{project}.md` — Assessment completo de 7 secciones con evaluacion de madurez TMMi, analisis de cobertura, landscape de herramientas, alineacion de testing independiente, composicion de equipo, diseno de test factory, y roadmap de transformacion de QA.
+**Primary:** `QA_Service_Discovery_{project}.md` — Assessment completo de 7 secciones con evaluacion de madurez TMMi, analisis de cobertura, landscape de herramientas, alineacion PITT, composicion de equipo, diseno de test factory, y roadmap de transformacion de QA.
 
 **Diagramas incluidos:**
 - Radar chart de madurez TMMi por area de proceso
 - Heatmap de cobertura por tipo y capa
-- Modelo de interaccion de testing independiente (flowchart)
+- Modelo de interaccion PITT (flowchart)
 - Roadmap de transformacion (gantt)
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño · Comunidad MetodologIA | **Ultima actualizacion:** 14 de marzo de 2026

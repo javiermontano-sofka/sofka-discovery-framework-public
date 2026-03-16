@@ -1,5 +1,5 @@
 ---
-name: rpa-discovery
+name: metodologia-rpa-discovery
 description: >
   RPA and process automation discovery — process landscape assessment, automation opportunity scoring,
   bot design architecture, platform evaluation, process mining, ROI projection, and automation roadmap.
@@ -18,13 +18,13 @@ allowed-tools:
 
 # RPA Discovery — Process Automation Assessment & Roadmap
 
-Genera un assessment de 7 secciones para iniciativas de RPA y automatizacion de procesos: inventario de procesos (BPMN 2.0), scoring de oportunidades de automatizacion, arquitectura de bots, evaluacion de plataformas, resultados de process mining, proyeccion de ROI, y hoja de ruta de automatizacion. Fundamentado en estandares abiertos: Six Sigma DMAIC, BPMN 2.0, y principios de process mining (IEEE Task Force on Process Mining).
+Genera un assessment de 7 secciones para iniciativas de RPA y automatizacion de procesos: inventario de procesos (BPMN), scoring de oportunidades de automatizacion, arquitectura de bots, evaluacion de plataformas, resultados de process mining, proyeccion de ROI, y hoja de ruta de automatizacion. Cada hallazgo respaldado por evidencia del landscape de procesos del cliente.
 
 ## Principio Rector
 
 > *La automatizacion sin comprension del proceso es la forma mas rapida de escalar un problema. Primero se entiende, luego se optimiza, y solo entonces se automatiza.*
 
-1. **Automatizar un proceso roto es amplificar el error.** Antes de considerar un bot, el proceso debe estar documentado, estabilizado y medido. La automatizacion es el ultimo paso, no el primero. El ciclo DMAIC (Define, Measure, Analyze, Improve, Control) de Six Sigma precede cualquier decision de automatizacion.
+1. **Automatizar un proceso roto es amplificar el error.** Antes de considerar un bot, el proceso debe estar documentado, estabilizado y medido. La automatizacion es el ultimo paso, no el primero.
 2. **El scoring objetivo reemplaza la intuicion.** Cada proceso candidato se evalua con criterios cuantificables (datos estructurados, reglas estables, volumen, repetitividad, propension a error). La priorizacion emerge de los datos, no de la presion politica.
 3. **El ROI de RPA es un espejismo sin gobernanza.** Bots sin monitoreo, sin manejo de excepciones, sin actualizacion ante cambios del proceso subyacente generan deuda de automatizacion que erosiona el retorno inicial.
 
@@ -45,12 +45,6 @@ Parse from `$ARGUMENTS`.
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S2, S6, S7 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `RPA` (fixed for this skill)
 
-If reference materials exist, load them:
-
-```
-Read ${CLAUDE_SKILL_DIR}/references/
-```
-
 ## Input Requirements
 
 **Mandatory:**
@@ -59,7 +53,7 @@ Read ${CLAUDE_SKILL_DIR}/references/
 - Inventario de aplicaciones involucradas en los procesos
 
 **Recommended:**
-- Datos de process mining (event logs en formato XES o CSV)
+- Datos de process mining (event logs)
 - Inventario de bots existentes (si aplica)
 - Metricas de error/rework por proceso
 - Evaluaciones previas de automatizacion
@@ -83,7 +77,7 @@ Read ${CLAUDE_SKILL_DIR}/references/
 
 | Missing Input | Impact | Workaround |
 |---|---|---|
-| No BPMN documentation | Cannot map process landscape | Entrevistas con process owners; documentacion narrativa; flag como [SUPUESTO] |
+| No BPMN documentation | Cannot map process landscape | Entrevistas con process owners; documentacion narrativa; flag como supuesto |
 | No volume metrics | Cannot score automation priority | Estimaciones de process owners con rangos (bajo/medio/alto); flag como [SUPUESTO] |
 | No process mining data | Cannot validate bottlenecks | Analisis basado en documentacion + entrevistas; recomendar process mining como fase previa |
 | No existing bot inventory | Cannot assess current state | Asumir greenfield; flag como supuesto si hay indicios de automatizacion previa |
@@ -111,9 +105,7 @@ Read ${CLAUDE_SKILL_DIR}/references/
 
 ### S1: Process Landscape Assessment
 
-Inventario completo de procesos candidatos a automatizacion, fundamentado en BPMN 2.0.
-
-**Metodologia:** Aplicar Value Stream Mapping (Lean) para identificar waste antes de evaluar automatizacion. Principio clave: no automatizar procesos con desperdicio — primero eliminar, luego automatizar.
+Inventario completo de procesos candidatos a automatizacion.
 
 **Entregables:**
 - Inventario BPMN de procesos con clasificacion por area funcional
@@ -121,22 +113,16 @@ Inventario completo de procesos candidatos a automatizacion, fundamentado en BPM
 - Clasificacion de complejidad: simple (1-5 pasos, 1 aplicacion), medio (5-15 pasos, 2-3 aplicaciones), complejo (>15 pasos, >3 aplicaciones, decisiones condicionales)
 - Cuantificacion de esfuerzo manual por proceso (FTE-horas/mes)
 - Mapeo de process owners y stakeholders por proceso
-- Identificacion de waste (Lean): esperas, retrabajo, transporte de informacion, sobreproduccion
 
 **Formato de inventario:**
 
-| ID | Proceso | Area | Volumen/dia | Frecuencia | Complejidad | FTE-hrs/mes | Waste Identificado | Process Owner |
-|---|---|---|---|---|---|---|---|---|
-| P-001 | ... | ... | ... | ... | Simple/Medio/Complejo | ... | ... | ... |
-
-**Niveles de documentacion BPMN requeridos:**
-- L1 — Descriptivo: Flujo basico de actividades (minimo aceptable)
-- L2 — Analitico: Decisiones, roles, excepciones, tiempos (recomendado para automatizacion)
-- L3 — Ejecutable: Especificacion completa para implementacion directa
+| ID | Proceso | Area | Volumen/dia | Frecuencia | Complejidad | FTE-hrs/mes | Process Owner |
+|---|---|---|---|---|---|---|---|
+| P-001 | ... | ... | ... | ... | Simple/Medio/Complejo | ... | ... |
 
 ### S2: Automation Opportunity Scoring
 
-Scoring cuantitativo por proceso para determinar prioridad de automatizacion (Automation Opportunity Score — AOS).
+Scoring cuantitativo por proceso para determinar prioridad de automatizacion.
 
 **Criterios de scoring (0-3 cada uno, total maximo 15):**
 
@@ -150,17 +136,9 @@ Scoring cuantitativo por proceso para determinar prioridad de automatizacion (Au
 
 **Clasificacion por score:**
 - 12-15: **Automatizacion inmediata** (quick win)
-- 8-11: **Automatizacion con optimizacion previa** — aplicar DMAIC antes de automatizar
-- 4-7: **Evaluar simplificacion antes de automatizar** — proceso requiere rediseno
-- 0-3: **No automatizar** (proceso no apto para RPA)
-
-**Clasificacion de complejidad de implementacion:**
-
-| Nivel | Pasos | Aplicaciones | Decisiones | Esfuerzo estimado |
-|---|---|---|---|---|
-| Simple | 1-5 | 1 | 0-1 | 2-4 semanas |
-| Medio | 5-15 | 2-3 | 2-5 | 4-8 semanas |
-| Complejo | >15 | >3 | >5 | 8-16 semanas |
+- 8-11: **Automatizacion con optimizacion previa**
+- 4-7: **Evaluar simplificacion antes de automatizar**
+- 0-3: **No automatizar** (proceso no apto)
 
 Ranking Pareto: top 20% de procesos que generan 80% del beneficio.
 
@@ -179,56 +157,43 @@ Arquitectura de automatizacion para los procesos priorizados.
 **Diagrama de arquitectura (Mermaid):**
 - Orquestador central, bots, aplicaciones target, exception handler, credential vault, monitoring
 
-**Patrones de automatizacion:**
-- **Task automation:** Un bot ejecuta una tarea discreta (data entry, report generation)
-- **Process automation:** Multiples bots coordinados ejecutan un proceso end-to-end
-- **Process orchestration:** Un orquestador coordina bots, APIs, y humanos en flujos complejos
-
 ### S4: Platform Assessment
 
-Evaluacion comparativa de plataformas RPA usando criterios estandar de la industria.
+Evaluacion comparativa de plataformas RPA.
 
 **Matriz de comparacion:**
 
-| Criterio | UiPath | Automation Anywhere | Power Automate | Blue Prism | Open-source (Robot Framework, TagUI) |
-|---|---|---|---|---|---|
-| Escalabilidad | ... | ... | ... | ... | ... |
-| Gobernanza | ... | ... | ... | ... | ... |
-| Cost Drivers | ... | ... | ... | ... | ... |
-| Ecosistema | ... | ... | ... | ... | ... |
-| Curva de aprendizaje | ... | ... | ... | ... | ... |
-| Enterprise Features | ... | ... | ... | ... | ... |
-| Community & Open-source | ... | ... | ... | ... | ... |
+| Criterio | UiPath | Automation Anywhere | Power Automate | Blue Prism |
+|---|---|---|---|---|
+| Escalabilidad | ... | ... | ... | ... |
+| Gobernanza | ... | ... | ... | ... |
+| Cost Drivers | ... | ... | ... | ... |
+| Ecosistema | ... | ... | ... | ... |
+| Curva de aprendizaje | ... | ... | ... | ... |
+| Enterprise Features | ... | ... | ... | ... |
 
-**Escala de evaluacion:**
-- **SUBSTANCIA**: Capacidad demostrada con evidencia en produccion y referencias verificables
-- **PROMESA**: Capacidad anunciada con roadmap creible pero sin validacion enterprise amplia
-- **RIESGO**: Capacidad parcial con limitaciones conocidas y workarounds requeridos
+**Escala de evaluacion (de software-viability):**
+- **SUBSTANCIA**: Capacidad demostrada con evidencia en produccion
+- **PROMESA**: Capacidad anunciada con roadmap creible
+- **RIESGO**: Capacidad parcial con limitaciones conocidas
 - **HUMO**: Marketing sin evidencia tecnica sustancial
 
-Recomendacion fundamentada con trade-offs explicitos. Incluir opciones open-source (Robot Framework, TagUI, Apache Airflow para orquestacion) cuando aplique.
+Recomendacion fundamentada con trade-offs explicitos.
 
 ### S5: Process Mining Results
 
-Resultados de process mining cuando datos disponibles. Basado en principios del IEEE Task Force on Process Mining.
+Resultados de process mining cuando datos disponibles.
 
-**Si hay datos de process mining disponibles (event logs):**
+**Si hay datos de process mining disponibles:**
 - Identificacion de bottlenecks (cuellos de botella con metricas de tiempo)
 - Analisis de variantes (happy path vs variantes, frecuencia por variante)
 - Conformance checking (adherencia al proceso documentado vs proceso real)
 - Validacion de oportunidades de automatizacion (confirmar/ajustar scoring de S2)
 
-**Herramientas de referencia (open-source y comerciales):**
-- **ProM Framework** — Open-source, academico, extensible via plugins
-- **PM4Py** — Libreria Python open-source para process mining
-- **Celonis** — Comercial, enterprise-grade, process intelligence
-- **Disco (Fluxicon)** — Comercial, visualizacion intuitiva
-- **Apromore** — Open-source, cloud-native
-
 **Si no hay datos de process mining:**
 - Flag como recomendacion: "Se recomienda implementar process mining como fase previa para validar oportunidades de automatizacion con datos reales."
 - Documentar el gap y su impacto en la confianza del scoring
-- Proponer herramientas y esfuerzo estimado para obtener event logs
+- Proponer herramientas (Celonis, Disco, ProcessGold) y esfuerzo estimado
 
 ### S6: ROI Projection Model
 
@@ -249,7 +214,7 @@ Beneficio = Tiempo ahorrado x Volumen de proceso x Reduccion de errores
 - Licenciamiento de plataforma (numero de bots, tipo de licencia)
 - Infraestructura (VMs, cloud resources por bot)
 - Desarrollo e implementacion (FTE-meses por complejidad de proceso)
-- Mantenimiento continuo (% del costo de desarrollo anual, tipicamente 15-25%)
+- Mantenimiento continuo (% del costo de desarrollo anual)
 - Capacitacion y change management
 
 **Proyeccion de automation debt:**
@@ -257,33 +222,31 @@ Beneficio = Tiempo ahorrado x Volumen de proceso x Reduccion de errores
 - Impacto de cambios en aplicaciones target sobre bots existentes
 - Degradacion de ROI sin monitoreo activo
 
-> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico de la organizacion. Se recomienda validar con multiples proveedores antes de decisiones de inversion.
+> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico del cliente. Consultar con el area comercial para pricing.
 
 ### S7: Automation Roadmap
 
-Hoja de ruta de automatizacion en 3 horizontes, gestionada con ciclo PDCA (Plan-Do-Check-Act).
+Hoja de ruta de automatizacion en 3 horizontes.
 
 **Horizonte 1 — Quick Wins (0-3 meses):**
 - Procesos con score 12-15, complejidad simple
 - Bots unattended de alto volumen
 - Resultados visibles para generar momentum
-- PDCA: Plan (seleccionar top-5), Do (implementar), Check (medir vs proyeccion), Act (ajustar)
 
 **Horizonte 2 — Medium-term (3-9 meses):**
 - Procesos con score 8-11, complejidad media
 - Bots attended para procesos que requieren juicio parcial
 - Integracion con sistemas core
-- Optimizacion de procesos (DMAIC) previo a automatizacion
 
 **Horizonte 3 — Strategic (9-18 meses):**
 - Automatizaciones transformacionales (cross-funcionales, AI-augmented)
 - Orquestacion avanzada (process orchestration, intelligent automation)
 - Hyperautomation: RPA + AI/ML + process mining + low-code
 
-**Evolucion del CoE (Center of Excellence) — Modelo generico:**
-- Fase 1 (Centralizado, 0-6 meses): Equipo central de 3-5 personas, gobernanza basica, primeros 5-10 bots. Metricas: bots activos, transacciones procesadas, tasa de exito.
-- Fase 2 (Federado, 6-18 meses): Citizen developers en unidades de negocio, governance framework maduro. Metricas: ROI por proceso, automation coverage, citizen developer adoption.
-- Fase 3 (Autonomo, 18+ meses): Automation-first culture, AI-augmented automation. Metricas: automation index, innovation pipeline.
+**Evolucion del CoE (Center of Excellence):**
+- Fase 1: Equipo centralizado, gobernanza basica, primeros bots
+- Fase 2: Modelo federado, citizen developers, governance framework
+- Fase 3: CoE maduro, automation-first culture, continuous improvement
 
 **Dependencias entre fases:**
 - Diagrama de dependencias (Mermaid gantt o flowchart)
@@ -301,14 +264,14 @@ Hoja de ruta de automatizacion en 3 horizontes, gestionada con ciclo PDCA (Plan-
 
 ## Validation Gate
 
-- [ ] Inventario de procesos completo con metricas de volumen, complejidad, y waste identificado
-- [ ] Scoring de automatizacion (AOS) aplicado a todos los procesos con criterios cuantificables
+- [ ] Inventario de procesos completo con metricas de volumen y complejidad
+- [ ] Scoring de automatizacion aplicado a todos los procesos con criterios cuantificables
 - [ ] Arquitectura de bots definida (attended/unattended, orquestacion, excepciones)
-- [ ] Evaluacion de plataforma con escala SUBSTANCIA/PROMESA/RIESGO/HUMO (incluye open-source)
-- [ ] Process mining resultados integrados o gap documentado con recomendacion de herramientas
+- [ ] Evaluacion de plataforma con escala SUBSTANCIA/PROMESA/RIESGO/HUMO
+- [ ] Process mining resultados integrados o gap documentado con recomendacion
 - [ ] ROI proyectado en magnitudes (NUNCA precios) con disclaimer obligatorio
-- [ ] Roadmap en 3 horizontes con dependencias y criterios de avance (ciclo PDCA)
-- [ ] Evolucion del CoE documentada con fases y governance (modelo generico)
+- [ ] Roadmap en 3 horizontes con dependencias y criterios de avance
+- [ ] Evolucion del CoE documentada con fases y governance
 - [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
 - [ ] Cross-references entre secciones (scoring S2 alimenta roadmap S7)
 
@@ -323,4 +286,4 @@ Hoja de ruta de automatizacion en 3 horizontes, gestionada con ciclo PDCA (Plan-
 - Roadmap de automatizacion (gantt)
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño · Comunidad MetodologIA | **Ultima actualizacion:** 14 de marzo de 2026

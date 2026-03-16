@@ -1,12 +1,15 @@
 ---
-name: cloud-service-discovery
+name: metodologia-cloud-service-discovery
 description: >
-  Cloud service discovery -- cloud readiness assessment, DevOps maturity (DORA), cloud operations model,
-  FinOps assessment, cloud security posture, and cloud services roadmap.
-  Use when the user asks to "assess cloud readiness", "evaluate DevOps maturity", "plan cloud operations",
-  "assess FinOps maturity", "evaluate cloud security posture", "create cloud services roadmap",
-  or mentions DORA metrics, SRE practices, FinOps, cloud operating model, cloud security baseline,
-  cloud readiness, or cloud services strategy.
+  Cloud-as-a-Service discovery — cloud readiness assessment, DevOps maturity (DORA), cloud operations model,
+  FinOps assessment, cloud security posture, and cloud services roadmap. Distinct from cloud-migration
+  (which covers migration strategy); this covers Cloud as an ongoing service offering.
+  Use when the user asks to "assess cloud operations", "evaluate DevOps maturity", "DORA assessment",
+  "FinOps evaluation", "cloud security posture", "SRE maturity", "cloud operations model",
+  "cloud service roadmap", or mentions cloud-as-a-service, platform engineering, toil reduction,
+  FinOps, cloud cost optimization, or cloud operations.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -16,32 +19,36 @@ allowed-tools:
   - Bash
 ---
 
-# Cloud Service Discovery -- Readiness, Operations & Services Roadmap
+# Cloud Service Discovery — Cloud Operations Assessment & Roadmap
 
-Genera un analisis integral de servicios cloud que cubre cloud readiness assessment, DevOps maturity (DORA), cloud operations model, FinOps assessment, cloud security posture, y cloud services roadmap. Disenado para organizaciones que buscan evaluar, adoptar o madurar su estrategia de servicios cloud con un partner de consultoria.
+Genera un discovery integral de Cloud-as-a-Service que cubre cloud readiness assessment, DevOps maturity (DORA), cloud operations model, FinOps assessment, cloud security posture, y cloud services roadmap. Distinto de cloud-migration (que cubre estrategia de migración); este skill cubre Cloud como oferta de servicio continuo — operaciones, optimización, y madurez de la plataforma cloud.
 
 ## Principio Rector
 
-> *La nube no es un destino — es un modelo operativo. Adoptar cloud sin transformar la operacion es pagar mas por lo mismo.*
+> *La nube no es un destino — es un modelo operativo. Migrar sin transformar las operaciones es trasladar los mismos problemas a una factura mensual más cara.*
 
-1. **Madurez operativa antes que migracion masiva.** La capacidad de operar en cloud (observabilidad, respuesta a incidentes, despliegue continuo) determina el exito mas que la cantidad de workloads migrados. Sin madurez operativa, la nube amplifica los problemas existentes.
-2. **DORA como brujula, no como meta.** Las metricas DORA (deployment frequency, lead time, change failure rate, MTTR) son indicadores de capacidad organizacional. Mejorarlas requiere cambios en cultura, procesos y herramientas — no solo automatizacion.
-3. **FinOps es disciplina, no recorte de costos.** FinOps no busca gastar menos — busca gastar mejor. La visibilidad del costo por servicio, equipo y feature permite decisiones informadas, no austeridad ciega.
+1. **Operaciones cloud-native, no lift-and-shift de procesos.** Mover workloads a la nube sin adoptar prácticas cloud-native (IaC, CI/CD, observability, SRE) es pagar más por lo mismo. La transformación operativa es tan importante como la migración técnica.
+2. **DORA metrics como brújula.** Deployment frequency, lead time, change failure rate, y MTTR son los indicadores más confiables de madurez DevOps. Sin medirlos, la mejora es anecdótica.
+3. **FinOps es una disciplina, no un dashboard.** La optimización de costos cloud requiere cultura (accountability), proceso (showback/chargeback), y herramientas (tagging, right-sizing). Sin los tres, los costos crecen sin control.
 
 ## Inputs
 
-- `$1` — Project or client name used throughout all output artifacts
-
-Parse from `$ARGUMENTS`.
+The user provides a project or client name as `$ARGUMENTS`. Parse `$1` as the **project/client name** used throughout all output artifacts.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para assessments de madurez y metricas, HITL para decisiones de modelo operativo y roadmap.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **piloto-auto**: Auto para cloud readiness y DORA assessment, HITL para FinOps findings y security posture decisions.
+  - **desatendido**: Cero interrupciones. Discovery completo automatizado. Supuestos documentados.
+  - **supervisado**: Autónomo con checkpoint al completar cada sección.
+  - **paso-a-paso**: Confirma antes de cada sección del discovery.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 + S2 + S6 only) | `tecnica` (full 6 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 + S2 + S6 only) | `técnica` (full 6 sections, default)
+
+Before generating discovery, detect existing cloud context:
+
+```
+!find . -name "*.tf" -o -name "*.yaml" -path "*/k8s/*" -o -name "Dockerfile" -o -name "*.helmfile*" | head -20
+```
 
 If reference materials exist, load them:
 
@@ -49,303 +56,331 @@ If reference materials exist, load them:
 Read ${CLAUDE_SKILL_DIR}/references/
 ```
 
+---
+
 ## When to Use
 
-- La organizacion busca evaluar su readiness para adoptar o expandir servicios cloud
-- Se requiere medir la madurez DevOps del equipo usando metricas DORA
-- Es necesario disenar o redisenar el modelo operativo cloud (Cloud Operating Model)
-- Se necesita un assessment de madurez FinOps para optimizar costos cloud
-- Se busca evaluar y mejorar la postura de seguridad en cloud
-- Se requiere un roadmap integral de servicios cloud con fases y prioridades
+- El cliente ya está en la nube (parcial o totalmente) y necesita evaluar su madurez operativa
+- Se requiere un assessment de DevOps/DORA para establecer baseline y definir mejoras
+- El cliente necesita optimizar costos cloud (FinOps)
+- Se busca establecer o mejorar el modelo de operaciones cloud (SRE, incident management, platform engineering)
+- Se requiere evaluar la postura de seguridad cloud
+- El cliente busca un servicio continuo de cloud operations (no un proyecto de migración puntual)
 
 ## When NOT to Use
 
-- Migracion de workloads especificos (7R, wave planning, cutover) → use cloud-migration
-- Diseno de arquitectura cloud-native para aplicaciones nuevas → use cloud-native-architecture
-- Diseno de infraestructura (VPC, compute, storage) → use infrastructure-architecture
-- Assessment de estado actual sin intencion de adopcion cloud → use asis-analysis
+- Planificación de migración a cloud (workloads on-prem → cloud) --> use cloud-migration
+- Diseño de arquitectura cloud-native para aplicaciones nuevas --> use cloud-native-architecture
+- Diseño de infraestructura (VPC, compute, storage) --> use infrastructure-architecture
+- Assessment general de estado actual --> use asis-analysis con {TIPO_SERVICIO}=Cloud
 
-## Assumptions
+---
 
-- La organizacion tiene alguna presencia en cloud o ha iniciado evaluacion de proveedores cloud
-- Existen equipos de desarrollo y operaciones (o un equipo combinado) que operaran los servicios cloud
-- Los stakeholders tienen claridad sobre los drivers de negocio para la adopcion cloud (agilidad, costo, escalabilidad, innovacion)
-- Se puede acceder a metricas actuales de deployment, incidentes y costos (o se pueden estimar a partir de entrevistas)
-- El proveedor cloud principal esta seleccionado o en evaluacion final (AWS, Azure, GCP, multi-cloud)
-
-## Limits
-
-- No reemplaza el diseno detallado de landing zones o arquitectura de infraestructura
-- No incluye migracion operativa de workloads (wave planning, cutover runbooks)
-- No define precios — solo magnitudes de esfuerzo y drivers de costo
-- No cubre seleccion de proveedor cloud (RFP, scoring de vendors)
-- El assessment de seguridad es postura general, no penetration testing ni auditoria de compliance formal
-
-## 6-Section Framework
+## Delivery Structure: 6 Sections
 
 ### S1: Cloud Readiness Assessment
 
-Evaluacion multidimensional de la preparacion organizacional para operar en cloud.
+Evaluación del estado actual de adopción cloud y readiness para servicios cloud avanzados.
 
-**Dimensiones del assessment:**
+**Infrastructure current state:**
+- Cloud provider(s): AWS, Azure, GCP, multi-cloud, hybrid
+- Workloads en cloud vs on-premises (% distribution)
+- IaC coverage: Terraform, CloudFormation, Pulumi, ARM templates, manual
+- Container adoption: Docker, Kubernetes, ECS/EKS/AKS/GKE, serverless
 
-| Dimension | Que evalua | Indicadores clave |
+**Cloud adoption stage:**
+
+| Stage | Descripción | Indicadores |
 |---|---|---|
-| **Estrategia y liderazgo** | Claridad de vision cloud, sponsorship ejecutivo, alineacion con objetivos de negocio | Cloud strategy documentada, executive sponsor activo, business cases aprobados |
-| **Personas y skills** | Capacidades cloud del equipo, gaps de skills, cultura DevOps | Certificaciones cloud, experiencia IaC, disposicion a on-call/SRE |
-| **Procesos** | Madurez de procesos de desarrollo, deployment, y operaciones | CI/CD pipelines, IaC adoption, change management, incident response |
-| **Tecnologia** | Estado del stack tecnologico, portabilidad, deuda tecnica | Containerizacion, API-first design, observabilidad, test automation |
-| **Gobernanza** | Politicas de seguridad, compliance, gestion de costos, risk management | Politicas de seguridad cloud, frameworks de compliance, controles de costo |
-| **Datos** | Clasificacion de datos, residencia, estrategia de backup y DR | Data classification, data residency requirements, RPO/RTO definidos |
+| No cloud | 100% on-premises | Sin cuentas cloud, sin skills cloud |
+| Lift-and-shift | VMs en cloud sin modernización | EC2/VM instances, misma arquitectura |
+| Cloud-optimized | Uso de managed services, algunos patterns cloud-native | RDS, S3, managed K8s, some IaC |
+| Cloud-native | Arquitectura diseñada para cloud, microservices, serverless | Containers, serverless, event-driven, full IaC |
+| Multi-cloud | Estrategia multi-cloud deliberada | Workloads distribuidos, abstraction layers |
 
-**Scoring de madurez (1-5):**
+**Team cloud skills assessment:**
+- Certificaciones cloud del equipo (AWS SA, Azure Admin, GCP Pro, CKA/CKAD)
+- Experiencia práctica vs teórica
+- Gaps de skills por dominio (networking, security, data, DevOps)
 
-| Nivel | Nombre | Descripcion |
-|---|---|---|
-| 1 | Inicial | Sin estrategia cloud. Experimentacion aislada. Sin gobernanza. |
-| 2 | Exploratorio | Pilotos en curso. Skills basicos. Procesos manuales. |
-| 3 | Definido | Estrategia documentada. Equipo con skills cloud. CI/CD parcial. Landing zone basica. |
-| 4 | Gestionado | Cloud Operating Model establecido. Metricas activas. FinOps practicado. Seguridad automatizada. |
-| 5 | Optimizado | Cloud-first culture. Innovacion continua. FinOps maduro. Seguridad shift-left. |
+**Process readiness:**
+- Change management para infraestructura (¿se usa IaC o se hacen cambios manuales?)
+- Incident response: ¿Existe un proceso formal? ¿On-call rotation?
+- Release management: ¿CI/CD? ¿Manual deployments?
 
-**Output:** Scorecard de readiness con score por dimension, nivel general, gaps criticos, y recomendaciones priorizadas.
+**Output:** Cloud readiness scorecard con stage assessment y gap analysis.
 
 ### S2: DevOps Maturity Model (DORA)
 
-Assessment de madurez DevOps basado en las metricas DORA (Accelerate — Forsgren, Humble & Kim).
+Assessment de madurez DevOps usando las 4 métricas DORA.
 
-**Metricas DORA:**
+**4 DORA Metrics:**
 
-| Metrica | Elite | High | Medium | Low |
+| Métrica | Elite | High | Medium | Low |
 |---|---|---|---|---|
-| **Deployment Frequency** | On-demand (multiple/dia) | 1/dia a 1/semana | 1/semana a 1/mes | 1/mes a 1/6 meses |
-| **Lead Time for Changes** | <1 hora | 1 dia a 1 semana | 1 semana a 1 mes | 1 mes a 6 meses |
-| **Change Failure Rate** | 0-15% | 16-30% | 16-30% | 46-60% |
-| **Time to Restore (MTTR)** | <1 hora | <1 dia | 1 dia a 1 semana | >6 meses |
+| **Deployment Frequency** | On-demand (multiple/day) | Daily to weekly | Weekly to monthly | Monthly to semi-annually |
+| **Lead Time for Changes** | < 1 hour | 1 day to 1 week | 1 week to 1 month | 1 to 6 months |
+| **Change Failure Rate** | 0-15% | 16-30% | 31-45% | 46-60% |
+| **MTTR** | < 1 hour | < 1 day | < 1 week | > 1 week |
 
-**Dimensiones adicionales del assessment DevOps:**
+**DORA Level Classification:**
+- **Elite:** Las 4 métricas en rango elite
+- **High:** Mayoría en high, ninguna en low
+- **Medium:** Mix de medium y high
+- **Low:** Alguna métrica en low
 
-- **Culture:** Colaboracion Dev-Ops, blameless postmortems, experimentacion, aprendizaje continuo
-- **Automation:** CI/CD maturity, IaC coverage, test automation, deployment automation
-- **Lean practices:** WIP limits, value stream mapping, batch size reduction, feedback loops
-- **Measurement:** Metricas recolectadas, dashboards operativos, data-driven decisions
+**Practices assessment:**
 
-**SRE Practices Assessment:**
+| Práctica | Nivel 1 (Ad-hoc) | Nivel 2 (Defined) | Nivel 3 (Managed) | Nivel 4 (Optimized) |
+|---|---|---|---|---|
+| **IaC** | Manual infra changes | Some scripts | Terraform/Pulumi managed | GitOps, drift detection |
+| **CI/CD** | Manual builds/deploys | CI pipeline exists | CD to staging | CD to production, canary/blue-green |
+| **Monitoring** | No monitoring | Basic metrics | APM + logs + traces | Full observability, SLOs, error budgets |
+| **Incident Management** | Ad-hoc response | Runbooks exist | On-call rotation, PagerDuty | Blameless postmortems, chaos engineering |
 
-| Practica SRE | Nivel actual | Target | Gap |
-|---|---|---|---|
-| SLO/SLI definition | | | |
-| Error budgets | | | |
-| Toil measurement & reduction | | | |
-| Incident management | | | |
-| Blameless postmortems | | | |
-| Capacity planning | | | |
-| Release engineering | | | |
-
-**Output:** DORA scorecard con clasificacion (Elite/High/Medium/Low), SRE maturity assessment, gap analysis, y plan de mejora priorizado.
+**Output:** DORA scorecard con nivel actual, benchmark contra industria, y improvement targets.
 
 ### S3: Cloud Operations Model
 
-Diseno del modelo operativo para servicios cloud.
+Evaluación del modelo de operaciones cloud actual y diseño del target.
 
-**Componentes del Cloud Operating Model:**
+**SRE practices:**
+- SLIs/SLOs/SLAs definidos por servicio
+- Error budgets implementados y respetados
+- Blameless postmortems con action items tracked
+- Chaos engineering (GameDays, Chaos Monkey, Litmus)
 
-- **Organizational design:** Estructura de equipos cloud (Cloud Center of Excellence, Platform Engineering, SRE, Application Teams)
-- **Shared responsibility model:** Que gestiona el proveedor cloud, que gestiona el equipo de plataforma, que gestiona el equipo de aplicacion
-- **Service management:** ITSM adaptado a cloud (incident, problem, change, request management)
-- **Automation strategy:** IaC (Terraform, Pulumi, CloudFormation), GitOps, policy-as-code, compliance-as-code
-- **Observability stack:** Monitoring, logging, tracing, alerting — pilares de observabilidad (metricas, logs, traces)
+**Incident management:**
+- Proceso de incident response (detect → triage → mitigate → resolve → learn)
+- Severities definidas (SEV1-SEV4) con SLAs de respuesta
+- On-call rotation: cobertura, compensación, burnout prevention
+- Escalation paths claros y documentados
 
-**Team Topologies para Cloud (Skelton & Pais):**
+**Capacity planning:**
+- Auto-scaling configurado y validado
+- Capacity forecasting basado en trends
+- Performance testing regular (load, stress, soak)
 
-| Topology | Rol en cloud | Ejemplo |
-|---|---|---|
-| **Platform team** | Provee la plataforma cloud interna (landing zones, pipelines, servicios compartidos) | Cloud Platform Engineering |
-| **Stream-aligned team** | Consume la plataforma para entregar valor de negocio | Product/Feature teams |
-| **Enabling team** | Acelera la adopcion cloud en stream-aligned teams | Cloud Enablement, DevOps coaching |
-| **Complicated-subsystem** | Gestiona componentes especializados (networking, seguridad, datos) | Network Engineering, Data Platform |
+**Cost management:**
+- Budget alerts por cuenta/proyecto
+- Resource tagging discipline
+- Regular right-sizing reviews
 
-**Interaction Modes:**
+**Security operations (SecOps):**
+- Vulnerability scanning automatizado
+- Patch management cadence
+- Security incident response integrado con incident management general
 
-- **Collaboration:** Platform + Stream-aligned durante adopcion inicial
-- **X-as-a-Service:** Platform provee servicios self-service a Stream-aligned teams maduros
-- **Facilitating:** Enabling team asiste temporalmente a teams en transicion
+**Toil measurement and reduction strategy:**
+- Definición de toil (manual, repetitive, automatable, no value-adding)
+- Toil budget: máximo 50% del tiempo de un SRE debe ser toil (Google SRE book)
+- Top-5 toil tasks con plan de automatización
 
-**Runbook & playbook library:** Catalogo de runbooks operativos (incident response, scaling, DR failover, security incident, cost anomaly).
-
-**Output:** Cloud Operating Model document con organizational design, shared responsibility matrix, automation strategy, y observability architecture.
+**Output:** Cloud operations model assessment con current state vs target state por práctica.
 
 ### S4: FinOps Assessment
 
-Evaluacion de madurez FinOps basada en el FinOps Framework (FinOps Foundation).
-
-**Fases FinOps:**
-
-| Fase | Objetivo | Actividades clave |
-|---|---|---|
-| **Inform** | Visibilidad de costos | Tagging, cost allocation, dashboards, showback/chargeback |
-| **Optimize** | Reduccion de desperdicio | Right-sizing, reserved instances, savings plans, spot, storage tiering |
-| **Operate** | Gobernanza continua | Budgets, alertas, anomaly detection, unit economics, cost per transaction |
+Evaluación de la madurez FinOps y oportunidades de optimización de costos cloud.
 
 **FinOps Maturity Levels:**
 
-| Nivel | Nombre | Indicadores |
+| Nivel | Nombre | Descripción |
 |---|---|---|
-| **Crawl** | Basico | Visibilidad parcial. Sin tagging. Alertas manuales. Sin accountability. |
-| **Walk** | Intermedio | Tagging >80%. Showback activo. Right-sizing trimestral. Presupuestos por equipo. |
-| **Run** | Avanzado | Chargeback automatizado. Unit economics tracked. Anomaly detection ML. Forecasting preciso. FinOps como cultura. |
+| Crawl | Reactivo | Facturas llegan, sorprenden, nadie es accountable |
+| Walk | Proactivo | Visibilidad de costos, tagging parcial, alertas básicas |
+| Run | Optimizado | Showback/chargeback, forecasting, continuous optimization |
 
 **Assessment dimensions:**
 
-- **Cost visibility:** Nivel de granularidad (cuenta, servicio, equipo, feature, transaccion)
-- **Tagging compliance:** Porcentaje de recursos con tags obligatorios (owner, environment, cost-center, project)
-- **Optimization practices:** Right-sizing cadence, RI/SP coverage, waste identification
-- **Accountability:** Quien es responsable del costo, como se reporta, como se decide
-- **Forecasting:** Precision del forecast vs actual (target: +-10%)
-- **Anomaly detection:** Alertas configuradas, tiempo de respuesta a anomalias
+**Cost visibility:**
+- ¿Se puede ver el costo por servicio, equipo, proyecto, ambiente?
+- ¿Los dashboards de costos existen y son consultados?
+- ¿Quién recibe las facturas y quién es accountable?
 
-**Unit Economics:**
+**Tagging compliance:**
+- ¿Existe una tagging policy definida?
+- ¿Qué % de recursos están correctamente taggeados?
+- Tags mínimos: owner, environment, project, cost-center
 
-- Cost per transaction, cost per user, cost per API call, cost per GB processed
-- Correlacion entre costo cloud y metricas de negocio (revenue, users, transactions)
-- Trending: costo unitario debe decrecer o estabilizarse a medida que el negocio escala
+**Showback/chargeback model:**
+- ¿Los equipos conocen cuánto cuesta lo que consumen?
+- ¿Existe chargeback formal (costos asignados a P&L del equipo)?
+- ¿O al menos showback (visibilidad sin impacto en P&L)?
 
-**Output:** FinOps maturity scorecard, optimization opportunities con magnitudes estimadas, y FinOps operating model recomendado.
+**Optimization opportunities:**
+- **Reserved Instances / Savings Plans:** Workloads estables sin RI/SP comprometidos
+- **Spot instances:** Workloads tolerantes a interrupciones sin uso de spot
+- **Right-sizing:** Instancias sobre-provisionadas (CPU/memory utilization <30%)
+- **Storage optimization:** Datos en tiers incorrectos, snapshots obsoletos, EBS sin attach
+- **Idle resources:** Load balancers sin targets, IPs elásticas sin uso, databases de staging 24/7
+
+**Waste identification:**
+- Recursos sin tag de owner (huérfanos)
+- Ambientes non-prod encendidos 24/7 (deberían tener schedule)
+- Recursos de tests/PoC abandonados
+
+**Output:** FinOps assessment con maturity level, optimization opportunities cuantificadas (% savings potencial), y waste inventory.
 
 ### S5: Cloud Security Posture
 
-Evaluacion de la postura de seguridad cloud.
+Evaluación de la postura de seguridad cloud.
 
-**Dominios de seguridad cloud:**
+**Shared responsibility model adherence:**
+- ¿El equipo entiende qué es responsabilidad del provider vs del cliente?
+- ¿Hay gaps en la cobertura del cliente? (e.g., encryption at rest, IAM, patching de OS)
 
-| Dominio | Que evalua | Controles clave |
-|---|---|---|
-| **Identity & Access** | IAM, MFA, least privilege, federated identity | SSO/SAML, role-based access, service accounts, privileged access management |
-| **Network security** | Segmentacion, perimetro, conectividad | Security groups, NACLs, WAF, DDoS protection, private endpoints |
-| **Data protection** | Cifrado, clasificacion, residencia | Encryption at rest/transit, key management, data classification, DLP |
-| **Workload protection** | Seguridad de compute, containers, serverless | Vulnerability scanning, runtime protection, image scanning, secrets management |
-| **Logging & monitoring** | Auditoria, deteccion de amenazas | CloudTrail/Activity Log, SIEM integration, threat detection, anomaly alerting |
-| **Compliance** | Regulaciones, frameworks, certificaciones | CIS Benchmarks, SOC2, ISO 27001, GDPR, PCI-DSS, HIPAA |
-| **Incident response** | Capacidad de respuesta a incidentes de seguridad | IR playbooks, forensics capability, communication plan, post-incident review |
+**IAM hygiene:**
+- Principio de least privilege: ¿Se otorgan permisos mínimos?
+- Root/admin accounts: ¿Están protegidas con MFA? ¿Se usan para operaciones diarias? (red flag)
+- Service accounts: ¿Rotación de keys? ¿Permisos acotados?
+- Federation: ¿SSO via SAML/OIDC? ¿O credenciales locales?
 
-**Cloud Security Maturity (1-5):**
+**Network segmentation:**
+- VPC/VNET design: ¿Separación por ambiente (dev/staging/prod)?
+- Security groups / NSGs: ¿Reglas acotadas o overly permissive (0.0.0.0/0)?
+- Private endpoints para servicios managed
+- WAF y DDoS protection en workloads públicos
 
-| Nivel | Nombre | Descripcion |
-|---|---|---|
-| 1 | Reactivo | Sin controles formales. Seguridad ad-hoc. Sin visibilidad. |
-| 2 | Basico | Controles minimos. MFA parcial. Logging basico. Sin automatizacion. |
-| 3 | Definido | Politicas documentadas. IAM estructurado. Encryption por defecto. Scanning regular. |
-| 4 | Proactivo | Security-as-code. Automated compliance checks. Threat detection activo. IR playbooks testeados. |
-| 5 | Anticipatorio | Zero-trust implementado. Shift-left security. Automated remediation. Red team exercises regulares. |
+**Encryption coverage:**
+- At rest: ¿KMS managed keys? ¿Customer managed keys?
+- In transit: TLS 1.2+ enforced
+- Key rotation: ¿Automática? ¿Cadencia?
 
-**Shared Responsibility Clarity:**
+**Compliance alignment:**
+- SOC2: Controles relevantes cubiertos
+- ISO 27001: Controles de Annex A aplicables
+- PCI-DSS: Si aplica (procesamiento de pagos)
+- GDPR/regulaciones locales de datos personales
 
-- Documentar explicitamente que protege el proveedor cloud (infraestructura fisica, hypervisor, red global)
-- Documentar que protege la organizacion (datos, configuracion IAM, network rules, aplicaciones, OS patching)
-- Identificar zonas grises (managed services donde la responsabilidad es compartida)
+**Security tools assessment:**
+- CSPM (Cloud Security Posture Management): AWS Security Hub, Azure Defender, GCP SCC
+- CWPP (Cloud Workload Protection): Runtime protection, vulnerability scanning
+- SIEM: Integración de logs cloud con SIEM corporativo
+- SOAR: Automatización de respuesta a incidentes de seguridad
 
-**Output:** Cloud security posture scorecard, gap analysis por dominio, y plan de remediacion priorizado por riesgo.
+**Output:** Security posture assessment con findings por categoría, severity scoring, y remediation priorities.
 
 ### S6: Cloud Services Roadmap
 
-Plan de adopcion y maduracion de servicios cloud faseado.
+Roadmap de servicios cloud faseado con capability milestones.
 
-**Phased roadmap:**
+**Quick Wins (Meses 1-3):**
+- Cost optimization: Right-sizing, RI/SP procurement, idle resource cleanup
+- Tagging enforcement: Policy + automation para compliance
+- Security quick fixes: MFA enforcement, overly permissive rules, encryption gaps
+- Monitoring basics: Dashboards, alertas, log centralization
 
-- **Fase 1 — Foundation (meses 1-3):** Cloud readiness gaps criticos, landing zone basica, observabilidad minima, equipo core entrenado, FinOps Crawl, seguridad basica. Quick wins identificados en S1.
-- **Fase 2 — Operate (meses 4-6):** Cloud Operating Model implementado, DORA metrics tracked, IaC >80%, CI/CD pipelines maduros, FinOps Walk, seguridad definida. Primeros workloads en produccion.
-- **Fase 3 — Optimize (meses 7-12):** SRE practices implementadas, FinOps Run, security-as-code, automated compliance, unit economics tracked. Capacidad operativa demostrada.
-- **Fase 4 — Innovate (meses 12+):** Cloud-native services adoption, serverless, ML/AI cloud services, multi-region, DR automatizado. Innovacion habilitada por la plataforma.
+**Medium-Term (Meses 4-9):**
+- Platform engineering: Internal developer platform, golden paths, self-service
+- SRE maturity: SLIs/SLOs, error budgets, incident management formalization
+- IaC coverage: Migrate manual infra to Terraform/Pulumi, drift detection
+- CI/CD maturity: CD to production, canary/blue-green deployments
+- FinOps operationalization: Showback dashboards, regular optimization reviews
 
-**Dependencies entre secciones:**
+**Strategic (Meses 10-18):**
+- Multi-cloud strategy: Si aplica, abstraction layers, policy-as-code cross-cloud
+- FinOps excellence: Chargeback model, forecasting, unit economics
+- Advanced SRE: Chaos engineering, performance engineering, capacity planning
+- Security automation: Shift-left security, policy-as-code, automated remediation
+- Platform maturity: Full self-service, compliance-as-code, developer experience optimization
 
-```
-S1 (Readiness) → informa gaps → S3 (Operating Model) + S5 (Security)
-S2 (DORA) → informa madurez → S3 (Operating Model)
-S4 (FinOps) → informa gobernanza de costos → S3 (Operating Model)
-S3 + S4 + S5 → alimentan → S6 (Roadmap)
-```
+**Per phase:**
+- Capability milestones con acceptance criteria
+- Team requirements (roles, skills, headcount)
+- DORA targets por fase
+- Budget magnitude indicators (FTE-meses, NOT prices)
 
-**Success metrics por fase:**
+**Output:** Roadmap visual faseado con capability milestones, DORA targets, y team evolution.
 
-| Fase | Metric | Target |
-|---|---|---|
-| Foundation | Cloud readiness score | >3.0 en todas las dimensiones |
-| Operate | DORA classification | Medium o superior en las 4 metricas |
-| Optimize | FinOps maturity | Walk en todas las dimensiones |
-| Innovate | Cloud-native adoption | >50% de nuevos workloads son cloud-native |
-
-**Contingency planning:**
-
-- Skills gap mas profundo de lo esperado: extender Fase 1 con training intensivo o augmentation temporal
-- Resistencia al cambio: introducir enabling team para coaching y acompanamiento
-- Costos cloud superiores al forecast: acelerar FinOps Walk con foco en right-sizing y waste elimination
-- Incidentes de seguridad: priorizar S5 independientemente de la fase del roadmap
-
-**Output:** Roadmap visual con fases, milestones, dependencies, success metrics, y contingency plan.
+---
 
 ## Trade-off Matrix
 
-| Decision | Enables | Constrains | When to Use |
+| Decisión | Habilita | Restringe | Cuándo Usar |
 |---|---|---|---|
-| **Cloud Center of Excellence** | Gobernanza centralizada, estandares, economia de escala | Bottleneck potencial, velocidad reducida para equipos maduros | Organizaciones en Fase 1-2, multiples equipos adoptando cloud |
-| **Platform Engineering** | Self-service, velocidad de equipos, estandarizacion | Inversion significativa en equipo de plataforma | Organizaciones en Fase 3+, >5 equipos de desarrollo |
-| **FinOps centralizado** | Visibilidad total, negociacion consolidada (RI/SP) | Menos ownership de costos por equipo | Organizaciones con gasto cloud >$100K/mes |
-| **FinOps federado** | Ownership de costos por equipo, accountability directa | Requiere madurez FinOps en cada equipo | Equipos maduros (Walk/Run), cultura DevOps establecida |
-| **Multi-cloud** | Evita vendor lock-in, best-of-breed | Complejidad operativa, skills diversificados, costo de abstraccion | Requisitos regulatorios, M&A, workloads con ventaja clara en un provider |
-| **Single cloud** | Simplicidad operativa, deep integration, skills focalizados | Vendor dependency, riesgo de pricing | Mayoria de organizaciones, especialmente en fases tempranas |
+| **SRE model** | Reliability, operability | Investment in practices, cultural shift | Workloads críticos, SLAs contractuales |
+| **Platform engineering** | Developer productivity, consistency | Team and tooling investment | >10 dev teams, repetitive infra requests |
+| **Multi-cloud** | Vendor independence, best-of-breed | Complexity, skill dilution | Regulatory requirement, strategic diversification |
+| **FinOps dedicated team** | Cost discipline, savings | Headcount, organizational buy-in | Cloud spend >$100K/month |
+| **Managed services over self-managed** | Lower ops burden | Less control, potential lock-in | Team < 3 SREs, operational simplicity priority |
+| **GitOps** | Auditability, consistency, rollback | Learning curve, tooling (ArgoCD/Flux) | Kubernetes environments, compliance requirements |
+
+---
+
+## Assumptions
+
+- El cliente tiene workloads en cloud (parcial o totalmente) — no es un assessment pre-migración
+- Hay acceso a consolas cloud, billing dashboards, y monitoring tools para el assessment
+- El equipo del cliente puede proporcionar información sobre procesos operativos actuales
+- Existen stakeholders técnicos disponibles para validar findings (SRE, DevOps, Security)
+- El cloud provider principal está definido (AWS, Azure, o GCP) — multi-cloud se evalúa si aplica
+
+## Limits
+
+- No cubre migración de workloads on-prem a cloud (use cloud-migration)
+- No diseña arquitectura cloud-native para aplicaciones nuevas (use cloud-native-architecture)
+- No ejecuta optimizaciones — produce el assessment y roadmap para aprobación
+- Penetration testing y vulnerability assessment profundo están fuera del scope (requieren herramientas especializadas y autorización)
+- El assessment de FinOps es basado en información disponible — no reemplaza un análisis de billing detallado con acceso a Cost Explorer/Cost Management
+
+---
 
 ## Edge Cases
 
-**Organizacion sin experiencia cloud (greenfield cloud):**
-Comenzar con un programa de enablement intensivo (4-6 semanas). Certificaciones cloud como baseline. Piloto con workload no critico. El Cloud Operating Model se construye incrementalmente, no se disena completo de antemano.
+**Multi-cloud con diferentes niveles de madurez por provider:**
+Evaluar cada cloud por separado en S1-S5. El roadmap (S6) debe considerar dónde invertir en madurez y dónde consolidar workloads.
 
-**Multi-cloud por adquisicion (M&A):**
-Cada entidad adquirida trae su propio cloud footprint. Priorizar visibilidad (FinOps Inform) antes de consolidacion. Estandarizar gobernanza y seguridad primero, luego evaluar consolidacion de workloads.
+**Startup con infraestructura 100% serverless:**
+DORA metrics siguen siendo relevantes pero las métricas de infra cambian. El foco se desplaza a observability, cost per invocation, y cold start optimization. SRE practices se simplifican.
 
-**Equipo de operaciones resistente al cambio:**
-La transicion de operaciones tradicionales (ITIL-heavy) a SRE/DevOps requiere change management explicito. Introducir gradualmente: blameless postmortems primero, luego SLOs, luego error budgets. No imponer — demostrar valor.
+**Organización regulada (banca, salud):**
+S5 (Security Posture) se convierte en la sección más crítica. Compliance frameworks (SOC2, PCI-DSS, HIPAA) dictan el roadmap. Security gates son pre-requisito para avanzar en otras áreas.
 
-**Costos cloud fuera de control:**
-Sintoma de madurez FinOps Crawl o inferior. Accion inmediata: identificar top 10 cost drivers, eliminar recursos huerfanos, right-size instancias sobredimensionadas. Quick wins antes de estrategia completa.
+**Cloud spend fuera de control (>50% growth YoY sin growth de negocio):**
+S4 (FinOps) es la prioridad inmediata. Quick wins de cost optimization primero. Establecer governance de costos antes de invertir en otras capabilities.
 
-**Regulaciones de data residency:**
-Limita regiones cloud disponibles. Puede eliminar opciones de multi-region o DR. Documentar constraints legales antes del assessment de readiness. Validar con legal y compliance.
+**Equipo sin experiencia cloud (todo outsourced):**
+El roadmap debe incluir knowledge transfer y upskilling como workstream explícito. Dependency en vendor externo es un riesgo que se documenta en el assessment.
+
+---
 
 ## Validation Gate
 
-- [ ] Cloud readiness assessment cubre las 6 dimensiones con scoring documentado
-- [ ] DORA metrics medidas o estimadas con clasificacion (Elite/High/Medium/Low)
-- [ ] SRE practices assessment completo con gaps identificados
-- [ ] Cloud Operating Model alineado con Team Topologies (Skelton & Pais)
-- [ ] FinOps maturity evaluada con nivel (Crawl/Walk/Run) por dimension
-- [ ] Unit economics definidos (cost per transaction, cost per user, o equivalente)
-- [ ] Cloud security posture evaluada en los 7 dominios con scoring
-- [ ] Shared responsibility model documentado explicitamente
-- [ ] Roadmap faseado con success metrics por fase
-- [ ] Dependencies entre secciones explicitadas
-- [ ] Contingency plan para los 4 riesgos principales documentado
+Before finalizing delivery, verify:
+
+- [ ] Cloud readiness assessment identifica stage de adopción con evidencia
+- [ ] DORA metrics medidas o estimadas con nivel de confianza documentado
+- [ ] Las 4 prácticas DevOps (IaC, CI/CD, Monitoring, Incident Management) evaluadas con nivel 1-4
+- [ ] Cloud operations model cubre SRE, incident management, capacity planning, y toil measurement
+- [ ] FinOps assessment incluye maturity level, optimization opportunities, y waste identification
+- [ ] Cloud security posture cubre IAM, networking, encryption, y compliance alignment
+- [ ] Roadmap faseado con quick wins (meses 1-3), medium-term (4-9), y strategic (10-18)
+- [ ] DORA targets definidos por fase del roadmap
+- [ ] Budget expresado en magnitudes (FTE-meses), NUNCA en precios
+- [ ] Findings de security tienen severity scoring y remediation priorities
+- [ ] Toil top-5 identificado con plan de automatización
+
+---
 
 ## Output Format Protocol
 
 | Format | Default | Description |
 |--------|---------|-------------|
 | `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
-| `html` | On demand | Branded HTML. Visual impact. |
+| `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
 ## Output Artifact
 
-**Primary:** `Cloud_Service_Discovery_{project}.md` — Cloud readiness scorecard, DORA assessment, Cloud Operating Model, FinOps maturity, cloud security posture, and phased cloud services roadmap.
+**Primary:** `Cloud_Service_Discovery_{project}.md` -- Cloud readiness assessment, DORA metrics baseline, cloud operations model, FinOps assessment with optimization opportunities, cloud security posture, and phased cloud services roadmap with capability milestones.
 
 **Diagramas incluidos:**
-- Cloud readiness radar chart: score por dimension
-- DORA metrics dashboard: current vs target por metrica
-- Cloud Operating Model: team topologies y interaction modes
-- FinOps maturity progression: Crawl → Walk → Run por dimension
-- Cloud services roadmap: Gantt-style phased plan con milestones
+- DORA metrics dashboard: 4 metrics with current level vs target
+- Cloud operations maturity radar: SRE, IaC, CI/CD, Monitoring, Incident Management, FinOps
+- FinOps optimization waterfall: current spend → savings opportunities → optimized spend
+- Cloud services roadmap: phased Gantt with capability milestones
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026

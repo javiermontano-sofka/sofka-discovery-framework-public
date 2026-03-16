@@ -13,10 +13,10 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 
 **Color Palette:**
 ```css
---color-primary: #FF7E08;        /* Orange — primary actions, highlighted elements */
+--color-primary: #6366F1;        /* Orange — primary actions, highlighted elements */
 --color-critical: #DC2626;       /* Red — errors, violations, SLA breaches */
 --color-warning: #D97706;        /* Amber — warnings, approaching thresholds */
---color-positive: #FFD700;       /* Gold — targets met, positive outcomes */
+--color-positive: #22D3EE;       /* Gold — targets met, positive outcomes */
 --color-decorative: #42D36F;     /* Green — decorative only, not semantic status */
 --color-neutral-light: #F3F4F6;  /* Light gray — backgrounds, borders */
 --color-neutral-dark: #1F2937;   /* Dark gray — text, strong contrast */
@@ -31,7 +31,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 
 **HTML Structure:**
 ```html
-<div class="perf-baseline-card" style="border: 2px solid #FF7E08; border-radius: 8px; padding: 20px; margin-bottom: 16px; background: white;">
+<div class="perf-baseline-card" style="border: 2px solid #6366F1; border-radius: 8px; padding: 20px; margin-bottom: 16px; background: white;">
   <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid #D1D5DB;">
     <h4 style="margin: 0; color: #1F2937; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
       [Endpoint / Service Name]
@@ -78,7 +78,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 
 **HTML Structure:**
 ```html
-<div class="load-test-result" style="border: 1px solid #D1D5DB; border-left: 4px solid #FF7E08; padding: 20px; margin-bottom: 24px; background: white; border-radius: 6px;">
+<div class="load-test-result" style="border: 1px solid #D1D5DB; border-left: 4px solid #6366F1; padding: 20px; margin-bottom: 24px; background: white; border-radius: 6px;">
   <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid #D1D5DB;">
     <h3 style="margin: 0; font-size: 18px; color: #1F2937;">[Test Scenario Name]</h3>
     <span style="padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; background: #D1FAE5; color: #065F46;">
@@ -175,7 +175,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
   <h3 style="margin: 0 0 16px 0; color: #1F2937;">Cache Architecture</h3>
 
   <div style="display: flex; flex-direction: column; gap: 12px;">
-    <div style="padding: 16px; background: #F3F4F6; border-left: 4px solid #FF7E08; border-radius: 4px;">
+    <div style="padding: 16px; background: #F3F4F6; border-left: 4px solid #6366F1; border-radius: 4px;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div>
           <strong style="color: #1F2937;">L1: Browser Cache</strong>
@@ -187,7 +187,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
         </div>
       </div>
     </div>
-    <div style="padding: 16px; background: #F3F4F6; border-left: 4px solid #FF7E08; border-radius: 4px;">
+    <div style="padding: 16px; background: #F3F4F6; border-left: 4px solid #6366F1; border-radius: 4px;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div>
           <strong style="color: #1F2937;">L2: CDN Edge</strong>
@@ -199,7 +199,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
         </div>
       </div>
     </div>
-    <div style="padding: 16px; background: #F3F4F6; border-left: 4px solid #FF7E08; border-radius: 4px;">
+    <div style="padding: 16px; background: #F3F4F6; border-left: 4px solid #6366F1; border-radius: 4px;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div>
           <strong style="color: #1F2937;">L3: Application Cache (Redis)</strong>

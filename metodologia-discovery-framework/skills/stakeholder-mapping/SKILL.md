@@ -1,5 +1,5 @@
 ---
-name: stakeholder-mapping
+name: metodologia-stakeholder-mapping
 description: >
   Stakeholder analysis — influence/interest matrix, communication plan, RACI, change readiness.
   Use when the user asks to "map stakeholders", "build influence matrix", "create communication plan",

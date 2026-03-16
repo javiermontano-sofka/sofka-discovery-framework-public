@@ -375,11 +375,11 @@ Semana  1  2  3  4  5  6  7  8  9  10  11  12  13  14
   <style>
     /* Use brand design system tokens */
     :root {
-      --primary: #FF7E08;
-      --primary-light: #FF9E42;
+      --primary: #6366F1;
+      --primary-light: #818CF8;
       --dark: #1a1a2e;
       --surface: #252542;
-      --text: #EFEAE4;
+      --text: #0F172A;
       --border: #3d3d5c;
     }
     /* ... full brand CSS ... */

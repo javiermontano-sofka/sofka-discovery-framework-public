@@ -54,7 +54,7 @@ flowchart TD
 | Accent | `--accent` | #e53e3e | Hero highlight spans, critical callouts |
 | Background | `--bg` | #f7fafc | Body background |
 | Text | `--text` | #2d3748 | Body text, table cells |
-| Positive | `--positive` | #FFD700 | Health indicators, pass badges |
+| Positive | `--positive` | #22D3EE | Health indicators, pass badges |
 | Warning | `--warning` | #D97706 | Caution states, medium severity |
 | Critical | `--critical` | #DC2626 | Failures, blockers |
 | Info | `--info` | #2563EB | Recommendations, neutral info |
@@ -145,7 +145,7 @@ graph TD
 | #2d3748 (text) | #f7fafc (bg) | 12.6:1 | 4.5:1 | PASS |
 | #FFFFFF (hero text) | #1a365d (primary) | 15.3:1 | 4.5:1 | PASS |
 | #e53e3e (accent) | #f7fafc (bg) | 5.2:1 | 3:1 (large) | PASS |
-| #FFD700 (positive) | #1a365d (primary) | 8.1:1 | 3:1 (large) | PASS |
+| #22D3EE (positive) | #1a365d (primary) | 8.1:1 | 3:1 (large) | PASS |
 | #DC2626 (critical) | #FFFFFF (card bg) | 5.9:1 | 4.5:1 | PASS |
 
 ---
@@ -176,7 +176,7 @@ graph TD
 
 | Anti-Pattern | Status | Verification |
 |-------------|--------|-------------|
-| Green for success states | Avoided | Yellow #FFD700 used for all positive indicators |
+| Green for success states | Avoided | Yellow #22D3EE used for all positive indicators |
 | External stylesheets | Avoided | All CSS inline in style block |
 | Base64 images | Avoided | No images embedded |
 | >4 hero KPIs | Avoided | Exactly 4 KPIs in hero |

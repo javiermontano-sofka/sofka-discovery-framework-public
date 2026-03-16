@@ -127,10 +127,10 @@ These are universal and do NOT change per brand:
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--semantic-positive` | #FFD700 | Success state (yellow, not green — v4 rule) |
+| `--semantic-positive` | #22D3EE | Success state (yellow, not green — v4 rule) |
 | `--semantic-positive-dim` | rgba(255,215,0,0.12) | Positive background tint |
 | `--semantic-positive-border` | rgba(255,215,0,0.45) | Positive border |
-| `--semantic-positive-text` | #B8860B | Text on positive backgrounds |
+| `--semantic-positive-text` | #06B6D4 | Text on positive backgrounds |
 | `--semantic-warning` | #D97706 | Warning state |
 | `--semantic-warning-dim` | rgba(217,119,6,0.08) | Warning background |
 | `--semantic-critical` | #DC2626 | Error/critical state |
@@ -146,7 +146,7 @@ These are universal and do NOT change per brand:
 | `--chart-teal` | #06C8C8 |
 | `--chart-violet` | #9747FF |
 | `--chart-pink` | #FE9CAB |
-| `--chart-yellow` | #FFD700 |
+| `--chart-yellow` | #22D3EE |
 
 ## Typography
 

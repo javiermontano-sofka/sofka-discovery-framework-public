@@ -1,5 +1,5 @@
 ---
-name: technical-feasibility
+name: metodologia-technical-feasibility
 description: >
   Technical fact-checking and multidimensional feasibility analysis — validates claims, assumptions,
   and technical decisions from scenario analysis against evidence. Use when the user asks to "validate

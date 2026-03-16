@@ -1,13 +1,13 @@
 ---
-name: ai-center-discovery
+name: metodologia-ai-center-discovery
 description: >
-  AI Center services discovery — AI readiness assessment using AI Adoption Lifecycle (Assess, Pilot, Scale,
-  Optimize, Govern), use case portfolio prioritization, data readiness evaluation, model inventory,
-  AI governance assessment, infrastructure evaluation, open-source ML tool landscape, and AI adoption roadmap.
+  AI Center services discovery — AI readiness assessment using MetodologIA AI SCALE methodology, use case portfolio
+  prioritization, data readiness evaluation, model inventory, AI governance assessment, infrastructure evaluation,
+  MetodologIA AI product integration, and AI adoption roadmap.
   Use when the user asks to "assess AI readiness", "evaluate AI maturity", "AI discovery", "AI use case prioritization",
   "MLOps assessment", "AI governance evaluation", "AI adoption roadmap", "AI strategy assessment",
-  "evaluate AI infrastructure", or mentions "responsible AI", "AI pilots", "ML pipeline",
-  "AI Center of Excellence", "LLM adoption", "generative AI strategy".
+  "evaluate AI infrastructure", "AI product fit", or mentions "AI SCALE", "responsible AI",
+  "AI pilots", "ML pipeline", "AI Center of Excellence", "LLM adoption", "generative AI strategy".
 allowed-tools:
   - Read
   - Write
@@ -19,13 +19,13 @@ allowed-tools:
 
 # AI Center Discovery — AI Readiness Assessment & Adoption Roadmap
 
-Genera un assessment de 8 secciones para servicios de AI: evaluacion de readiness con AI Adoption Lifecycle (modelo abierto: Assess, Pilot, Scale, Optimize, Govern), portafolio de use cases, evaluacion de data readiness, inventario de modelos, governance de AI, infraestructura, landscape de herramientas ML open-source, y roadmap de adopcion. Disenado para maximizar la probabilidad de que los pilotos de AI lleguen a produccion y generen valor sostenible.
+Genera un assessment de 8 secciones para servicios del AI Center: evaluacion de readiness con metodologia AI SCALE de MetodologIA, portafolio de use cases, evaluacion de data readiness, inventario de modelos, governance de AI, infraestructura, integracion con productos AI de MetodologIA, y roadmap de adopcion. Diseñado para maximizar la probabilidad de que los pilotos de AI lleguen a produccion y generen valor sostenible.
 
 ## Principio Rector
 
 > *La IA sin estrategia es un juguete caro. La IA con estrategia pero sin gobernanza es un riesgo empresarial. Solo la IA con estrategia, gobernanza y adopcion medida transforma organizaciones.*
 
-1. **El 80% de los pilotos de AI nunca llegan a produccion** (Gartner 2022, MIT Sloan 2023). Este assessment existe para que los pilotos esten en el 20% que si lo logran. Cada recomendacion incluye los factores que tipicamente causan fracaso y como mitigarlos.
+1. **El 80% de los pilotos de AI nunca llegan a produccion.** Este assessment existe para que los pilotos del cliente esten en el 20% que si lo logran. Cada recomendacion incluye los factores que tipicamente causan fracaso y como mitigarlos.
 2. **Los datos son el activo, no el modelo.** Un modelo excelente con datos mediocres produce resultados mediocres. El assessment evalua data readiness con la misma rigurosidad que la capacidad de modelado.
 3. **AI responsable no es opcional — es prerequisito.** Bias, explicabilidad, privacidad y compliance no son consideraciones secundarias. Son criterios de go/no-go para cualquier use case de AI en produccion.
 
@@ -45,12 +45,6 @@ Parse from `$ARGUMENTS`.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S2, S5, S8 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `Data-AI` (fixed for this skill)
-
-If reference materials exist, load them:
-
-```
-Read ${CLAUDE_SKILL_DIR}/references/
-```
 
 ## Input Requirements
 
@@ -112,19 +106,19 @@ Read ${CLAUDE_SKILL_DIR}/references/
 
 ## 8-Section Framework
 
-### S1: AI Readiness Assessment (AI Adoption Lifecycle)
+### S1: AI Readiness Assessment (AI SCALE)
 
-Evaluacion usando el AI Adoption Lifecycle — modelo generico abierto de 5 etapas.
+Evaluacion usando la metodologia AI SCALE de MetodologIA.
 
-**Etapas del AI Adoption Lifecycle:**
+**Etapas AI SCALE:**
 
 | Etapa | Nombre | Descripcion | Indicadores |
 |---|---|---|---|
-| A | Assess | Evaluacion de readiness y priorizacion de use cases | Use cases documentados, sponsors identificados, data assessment realizado |
-| P | Pilot | Diseno colaborativo y POCs con metricas de exito | Equipos cross-funcionales, prototipos, POCs con success criteria |
-| S | Scale | Productionize pilotos y expandir portfolio | Modelos en produccion, MLOps basico, metricas de adopcion |
-| O | Optimize | Optimizacion continua de modelos y operaciones | MLOps maduro, monitoring, CI/CD para modelos, retraining automatico |
-| G | Govern | Gobernanza transversal y AI-first culture | Portfolio de AI creciendo, ROI medido, responsible AI embedded |
+| S | Selection | Identificacion y priorizacion de use cases | Use cases documentados, sponsors identificados, criterios de priorizacion |
+| C | Co-creation | Diseno colaborativo de soluciones AI | Equipos cross-funcionales, prototipos, POCs en progreso |
+| A | Adoption | Implementacion y adopcion por usuarios | Modelos en produccion, metricas de adopcion, change management |
+| L | Launch | Operacionalizacion y escalamiento | MLOps maduro, monitoring, CI/CD para modelos |
+| E | Expansion | Expansion y optimizacion continua | Portfolio de AI creciendo, ROI medido, AI-first culture |
 
 **Assessment por dimension de madurez:**
 
@@ -136,7 +130,7 @@ Evaluacion usando el AI Adoption Lifecycle — modelo generico abierto de 5 etap
 | Infraestructura | ... | ... | ... |
 | Governance | ... | ... | ... |
 
-**Etapa actual en AI Adoption Lifecycle:** Identificar con evidencia.
+**Etapa actual en AI SCALE:** Identificar con evidencia.
 
 ### S2: AI Use Case Portfolio
 
@@ -176,6 +170,8 @@ Evaluacion de preparacion de datos para los use cases priorizados.
 - Feature engineering complexity assessment
 - Volumen de datos vs requisitos minimos del modelo
 
+**Data gap analysis:** Matriz de use case vs data readiness. Flag use cases en riesgo por datos insuficientes.
+
 ### S4: Model Inventory & Maturity
 
 Inventario de modelos AI/ML existentes.
@@ -192,7 +188,7 @@ Inventario de modelos AI/ML existentes.
 - **Production:** Operativo, sirviendo predicciones
 - **Deprecated:** En fase de retiro
 
-**Si no hay modelos existentes:** Documentar como organizacion pre-AI. Enfocar recomendaciones en foundations.
+**Si no hay modelos existentes:** Documentar como organizacion pre-AI. Enfocar recomendaciones en foundations (data, infrastructure, talent).
 
 ### S5: AI Governance Assessment
 
@@ -205,7 +201,7 @@ Evaluacion del framework de gobernanza de AI.
 | Ethics framework | ... | Principios eticos definidos, comite de etica | ... |
 | Bias detection | ... | Procesos de fairness, metricas de bias | ... |
 | Explainability (XAI) | ... | SHAP/LIME, model cards, interpretabilidad | ... |
-| Compliance | ... | GDPR, AI Act (EU), regulacion sectorial | ... |
+| Compliance | ... | GDPR, AI Act, regulacion sectorial | ... |
 | Model risk management | ... | Validation, testing, approval process | ... |
 | Responsible AI practices | ... | Human-in-the-loop, override mechanisms | ... |
 
@@ -222,47 +218,44 @@ Evaluacion de infraestructura para AI/ML.
 
 **Dimensiones:**
 
-| Componente | Estado Actual | Madurez (1-5) | Gap | Herramientas Open-Source Recomendadas |
-|---|---|---|---|---|
-| Compute (GPU/TPU) | ... | ... | ... | Cloud GPU, Lambda Labs, vast.ai |
-| MLOps maturity | ... | ... | ... | MLflow, Kubeflow, ZenML |
-| Experiment tracking | ... | ... | ... | MLflow Tracking, Weights & Biases, Neptune |
-| Model registry | ... | ... | ... | MLflow Model Registry, DVC |
-| Feature store | ... | ... | ... | Feast (open-source), Hopsworks |
-| Serving infrastructure | ... | ... | ... | TF Serving, Seldon Core, BentoML |
-| Monitoring & alerting | ... | ... | ... | Evidently AI, Whylogs, NannyML |
+| Componente | Estado Actual | Madurez (1-5) | Gap |
+|---|---|---|---|
+| Compute (GPU/TPU) | ... | ... | ... |
+| MLOps maturity | ... | ... | ... |
+| Experiment tracking | ... | ... | ... |
+| Model registry | ... | ... | ... |
+| Feature store | ... | ... | ... |
+| Serving infrastructure | ... | ... | ... |
+| Monitoring & alerting | ... | ... | ... |
 
-**MLOps maturity levels (Google MLOps Maturity Model — public):**
+**MLOps maturity levels:**
 - L0: No MLOps (manual everything)
 - L1: Manual training, automated serving
 - L2: Automated training pipeline, manual deployment
 - L3: Full CI/CD for ML, automated retraining
 - L4: Full automation with monitoring, drift detection, auto-retraining
 
-### S7: Open-Source ML Tool Landscape Assessment
+### S7: MetodologIA AI Product Integration
 
-Assessment de donde herramientas open-source y estandares abiertos pueden acelerar la adopcion de AI.
+Assessment de donde los productos AI de MetodologIA pueden acelerar.
 
-**Stack ML open-source de referencia:**
+**Productos AI de MetodologIA:**
 
-| Categoria | Herramienta | Licencia | Descripcion | Fit (Alto/Medio/Bajo/N/A) |
+| Producto | Descripcion | Fit (Alto/Medio/Bajo/N/A) | Gap que Cubre | Evidencia |
 |---|---|---|---|---|
-| Experiment Tracking | MLflow | Apache 2.0 | Tracking de experimentos, model registry, deployment | ... |
-| Feature Store | Feast | Apache 2.0 | Feature store open-source para ML | ... |
-| Data Quality | Great Expectations | Apache 2.0 | Validacion y documentacion de datos | ... |
-| Orchestration | Apache Airflow | Apache 2.0 | Orquestacion de pipelines de datos y ML | ... |
-| LLM Framework | LangChain | MIT | Framework para aplicaciones con LLMs | ... |
-| ML Pipeline | Kubeflow | Apache 2.0 | ML workflows en Kubernetes | ... |
-| Model Serving | BentoML | Apache 2.0 | Serving de modelos ML en produccion | ... |
-| Data Versioning | DVC | Apache 2.0 | Version control para datos y modelos | ... |
-| Model Monitoring | Evidently AI | Apache 2.0 | Monitoring de data/model drift | ... |
-| Vector Store | ChromaDB / Qdrant | Apache 2.0 | Vector databases para RAG y embeddings | ... |
+| SKAI | Workflow automation con AI | ... | ... | ... |
+| IRIS | Requirements to prototypes | ... | ... | ... |
+| ATLAS | Architecture analysis | ... | ... | ... |
+| CRONOS | Estimation con AI | ... | ... | ... |
+| SDK | IDE integration | ... | ... | ... |
+| neXus | Knowledge management | ... | ... | ... |
+| ModernAIzer | Legacy modernization | ... | ... | ... |
 
-**Fit-gap analysis por herramienta:**
-- Donde la herramienta resuelve un pain point identificado
-- Donde se requiere customizacion o integracion
+**Fit-gap analysis por producto:**
+- Donde el producto resuelve un pain point identificado
+- Donde se requiere customizacion
 - Donde no aplica (y por que)
-- Integracion con stack existente de la organizacion
+- Integracion con stack existente del cliente
 
 ### S8: AI Adoption Roadmap
 
@@ -270,28 +263,28 @@ Hoja de ruta de adopcion de AI en 3 fases.
 
 **Fase 1 — Pilots (0-3 meses):**
 - 2-3 use cases de alto impacto y baja complejidad
-- POCs con metricas de exito definidas ANTES de iniciar
+- POCs con metricas de exito definidas
 - Data preparation para use cases seleccionados
 - Equipo: data scientist(s) + domain expert(s) + ML engineer
 - Governance basica (model cards, bias check, approval process)
 
 **Fase 2 — Scale (3-9 meses):**
 - Productionize pilotos exitosos
-- MLOps pipeline basico (MLflow + Airflow o equivalentes)
+- MLOps pipeline basico (experiment tracking, model registry)
 - Expand use case portfolio (3-5 adicionales)
 - AI governance framework operativo
 - Team scaling (hire/upskill)
 
-**Fase 3 — Optimize & Govern (9-18 meses):**
-- MLOps maduro (CI/CD for ML, monitoring con Evidently, auto-retraining)
+**Fase 3 — Production (9-18 meses):**
+- MLOps maduro (CI/CD for ML, monitoring, auto-retraining)
 - AI embedded en procesos core del negocio
 - Portfolio de 10+ modelos en produccion
-- AI CoE establecido (modelo generico: estrategia, talento, plataforma, governance)
+- AI CoE establecido
 - Continuous improvement cycle
 
 **Mitigacion del "80% de pilotos que nunca llegan a produccion":**
 - Success criteria definidos ANTES del piloto
-- Sponsor ejecutivo comprometido con presupuesto y autoridad
+- Sponsor ejecutivo comprometido
 - Data readiness validada ANTES de modelar
 - MLOps basico ANTES de produccion
 - Change management desde dia 1
@@ -303,12 +296,12 @@ Hoja de ruta de adopcion de AI en 3 fases.
 - Data engineering effort (FTE-meses para data preparation)
 - Training y upskilling (horas-persona)
 
-> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico de la organizacion. El "80% failure rate" es una estadistica de industria que varia por sector y madurez organizacional.
+> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico del cliente. El "80% failure rate" es una estadistica de industria que varia por sector y madurez organizacional.
 
 ## Escalation to Human Architect
 
 - Use cases con implicaciones eticas significativas (scoring de personas, vigilancia, decisiones autonomas)
-- Requisitos regulatorios complejos (EU AI Act, regulacion sectorial especifica)
+- Requisitos regulatorios complejos (AI Act, regulacion sectorial especifica)
 - Integracion con sistemas criticos de negocio (pagos, salud, seguridad)
 - Conflictos entre capacidad tecnica y expectativas ejecutivas
 - Shadow AI con riesgo de data leakage confirmado
@@ -316,13 +309,13 @@ Hoja de ruta de adopcion de AI en 3 fases.
 
 ## Validation Gate
 
-- [ ] AI Adoption Lifecycle stage actual identificado con evidencia por dimension
+- [ ] AI SCALE stage actual identificado con evidencia por dimension
 - [ ] Portfolio de use cases categorizado y priorizado (top-10 con scoring)
 - [ ] Data readiness evaluada por use case priorizado con gap analysis
 - [ ] Inventario de modelos existentes con lifecycle stage y performance
 - [ ] AI governance evaluada con maturity level y gaps criticos
 - [ ] Infraestructura AI evaluada con MLOps maturity level
-- [ ] Landscape de herramientas ML open-source evaluado con fit-gap
+- [ ] Fit-gap de productos MetodologIA AI completado por producto relevante
 - [ ] Roadmap en 3 fases con mitigacion del "80% failure rate"
 - [ ] Magnitudes de inversion documentadas (NUNCA precios) con disclaimer
 - [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
@@ -330,14 +323,14 @@ Hoja de ruta de adopcion de AI en 3 fases.
 
 ## Output Artifact
 
-**Primary:** `AI_Center_Discovery_{project}.md` — Assessment completo de 8 secciones con evaluacion AI Adoption Lifecycle, portafolio de use cases, data readiness, inventario de modelos, governance, infraestructura, landscape ML open-source, y roadmap de adopcion.
+**Primary:** `AI_Center_Discovery_{project}.md` — Assessment completo de 8 secciones con evaluacion AI SCALE, portafolio de use cases, data readiness, inventario de modelos, governance, infraestructura, integracion de productos MetodologIA AI, y roadmap de adopcion.
 
 **Diagramas incluidos:**
-- Radar chart de madurez AI Adoption Lifecycle por dimension
+- Radar chart de madurez AI SCALE por dimension
 - Scatter plot de use cases (impacto vs feasibilidad)
 - Heatmap de data readiness por use case
 - Roadmap de adopcion (gantt)
-- Stack ML open-source recomendado (architecture diagram)
+- Fit-gap de productos MetodologIA AI (matrix)
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño · Comunidad MetodologIA | **Ultima actualizacion:** 14 de marzo de 2026

@@ -1,12 +1,14 @@
 ---
-name: digital-transformation-discovery
+name: metodologia-digital-transformation-discovery
 description: >
-  Digital transformation discovery -- digital maturity assessment, service portfolio mapping, program architecture,
-  change readiness assessment, multi-service integration, program governance, and transformation roadmap.
+  Program-level digital transformation discovery — digital maturity assessment, service portfolio mapping,
+  program architecture, change readiness, multi-service integration, program governance, and transformation roadmap.
   Use when the user asks to "assess digital maturity", "plan digital transformation", "design transformation program",
-  "evaluate change readiness", "map service portfolio", "create transformation roadmap",
-  or mentions digital transformation, program governance, multi-service integration, change management,
-  digital maturity, or transformation strategy.
+  "evaluate change readiness", "map service portfolio", "program governance", "transformation roadmap",
+  or mentions digital transformation, maturity assessment, multi-workstream, program architecture,
+  change management, or transformation program.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -16,32 +18,30 @@ allowed-tools:
   - Bash
 ---
 
-# Digital Transformation Discovery -- Maturity, Program Architecture & Transformation Roadmap
+# Digital Transformation Discovery — Program-Level Assessment & Roadmap
 
-Genera un analisis integral de transformacion digital que cubre digital maturity assessment, service portfolio mapping, program architecture, change readiness assessment, multi-service integration points, program governance model, y transformation roadmap. Disenado para engagements donde la organizacion busca una transformacion integral con multiples servicios y frentes de trabajo coordinados.
+Genera un discovery integral a nivel de programa de transformación digital que cubre digital maturity assessment, service portfolio mapping, program architecture, change readiness, multi-service integration, program governance, y transformation roadmap. Diseñado para engagements complejos donde múltiples servicios MetodologIA convergen en un programa unificado de transformación.
 
 ## Principio Rector
 
-> *La transformacion digital no es un proyecto de tecnologia — es un cambio de modelo operativo habilitado por tecnologia. La tecnologia sin cambio organizacional es automatizar el caos.*
+> *La transformación digital no es un proyecto — es un programa de programas. Sin visión holística, cada workstream optimiza su propio rincón mientras el todo se fragmenta.*
 
-1. **Transformacion es programa, no proyecto.** Un proyecto entrega un resultado. Un programa transforma capacidades. La diferencia es gobernanza, interdependencia, y gestion de cambio a escala. Tratar la transformacion como un proyecto garantiza que muera al entregar el primer release.
-2. **Madurez digital se mide, no se declara.** Las organizaciones tienden a sobreestimar su madurez digital. Un assessment riguroso con evidencia (no percepciones) revela la brecha real entre la aspiracion y la capacidad actual.
-3. **El cambio organizacional es el riesgo principal.** La tecnologia rara vez falla — la adopcion si. El 70% de las transformaciones digitales que fallan lo hacen por resistencia al cambio, falta de sponsorship, o fatiga organizacional. La gestion de cambio no es un add-on — es el sistema nervioso del programa.
+1. **Visión holística sobre optimización local.** Cada workstream (SDA, QA, Cloud, Data, RPA, Management) debe contribuir a objetivos de programa, no solo a métricas propias. La integración entre workstreams es donde se genera (o se destruye) el valor real.
+2. **Madurez antes que ambición.** El nivel de madurez digital de la organización determina qué transformaciones son viables. Saltar niveles de madurez genera iniciativas que la organización no puede absorber. Quick wins primero para construir momentum y credibilidad.
+3. **El cambio organizacional es el verdadero habilitador.** La tecnología es el medio, no el fin. Sin change readiness — sponsorship, comunicación, training, gestión de resistencias — la mejor tecnología se convierte en shelfware.
 
 ## Inputs
 
-- `$1` — Project or client name used throughout all output artifacts
-
-Parse from `$ARGUMENTS`.
+The user provides a program or client name as `$ARGUMENTS`. Parse `$1` as the **program/client name** used throughout all output artifacts.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para assessments y mapping, HITL para decisiones de program architecture y governance.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **piloto-auto**: Auto para maturity assessment y service mapping, HITL para program architecture decisions y governance model.
+  - **desatendido**: Cero interrupciones. Discovery completo automatizado. Supuestos documentados.
+  - **supervisado**: Autónomo con checkpoint al completar cada sección.
+  - **paso-a-paso**: Confirma antes de cada sección del discovery.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 + S3 + S7 only) | `tecnica` (full 7 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 + S3 + S7 only) | `técnica` (full 7 sections, default)
 
 If reference materials exist, load them:
 
@@ -49,376 +49,351 @@ If reference materials exist, load them:
 Read ${CLAUDE_SKILL_DIR}/references/
 ```
 
+---
+
 ## When to Use
 
-- La organizacion busca una transformacion digital integral (no un proyecto aislado)
-- Se necesita evaluar la madurez digital actual contra un modelo de referencia
-- El programa requiere coordinacion de multiples servicios (desarrollo, QA, cloud, datos, UX)
-- Se requiere un governance model para un programa multi-frente
-- Se busca evaluar la readiness organizacional para absorber el cambio
-- Se necesita un roadmap de transformacion con fases, interdependencias y metricas
+- El cliente busca una transformación digital integral que involucra múltiples dominios (desarrollo, QA, cloud, data, RPA, management)
+- Se necesita evaluar la madurez digital de la organización antes de definir el programa
+- El programa requiere coordinación entre múltiples workstreams con interdependencias
+- Se necesita un governance model para un programa multi-servicio
+- El cliente requiere un roadmap de transformación multi-año con sequencing de servicios
 
 ## When NOT to Use
 
-- Proyecto individual de desarrollo de software → use discovery-orchestrator
-- Staff augmentation puro sin componente de transformacion → use staff-augmentation-discovery
-- Migracion cloud como proyecto tecnico → use cloud-migration o cloud-service-discovery
-- Assessment de estado actual sin intencion de transformacion → use asis-analysis
-- Iniciativa de un solo servicio (solo QA, solo data, solo cloud) → use el skill especifico
+- Proyectos de un solo dominio (solo cloud migration, solo QA) --> use el skill específico del dominio
+- Assessment de estado actual sin intención de transformación --> use asis-analysis
+- Staffing para un proyecto específico --> use staff-augmentation-discovery
+- Diseño técnico de arquitectura --> use architecture-tobe o el skill de arquitectura correspondiente
 
-## Assumptions
+---
 
-- Existe sponsorship ejecutivo para el programa de transformacion (C-level o VP)
-- La organizacion tiene claridad sobre los drivers de negocio (competitividad, eficiencia, innovation, regulacion)
-- Multiples areas de la organizacion seran impactadas por la transformacion
-- Se puede acceder a stakeholders de negocio y tecnologia para assessments
-- El programa tiene un horizonte de al menos 12-18 meses (no es un sprint)
-- Hay disposicion a invertir en gestion de cambio, no solo en tecnologia
-
-## Limits
-
-- No reemplaza la consultoria de estrategia corporativa (definicion de vision, modelo de negocio)
-- No incluye ejecucion de los servicios individuales (desarrollo, QA, cloud ops)
-- No define precios — solo magnitudes de esfuerzo (FTE-meses, drivers de costo)
-- No cubre M&A digital due diligence
-- El change readiness assessment es diagnostico — no ejecuta el programa de change management
-
-## 7-Section Framework
+## Delivery Structure: 7 Sections
 
 ### S1: Digital Maturity Assessment
 
-Evaluacion multidimensional de la madurez digital de la organizacion.
+Assessment de madurez digital de la organización en 5 dimensiones.
 
-**Modelo de Madurez Digital (5 niveles):**
+**5 Dimensiones de Madurez Digital:**
 
-| Nivel | Nombre | Descripcion |
+| Dimensión | Evalúa | Indicadores clave |
 |---|---|---|
-| 1 | Inicial | Procesos manuales. Tecnologia legacy. Sin estrategia digital. Datos en silos. |
-| 2 | Emergente | Digitalizacion parcial. Islas de automatizacion. Iniciativas aisladas. Datos parcialmente integrados. |
-| 3 | Definido | Estrategia digital articulada. Plataformas modernas en adopcion. Datos como activo. Gobernanza incipiente. |
-| 4 | Gestionado | Plataformas integradas. Datos fluyen entre sistemas. Decisiones data-driven. Cultura digital en expansion. |
-| 5 | Optimizado | Organizacion digital-first. Innovacion continua. Ecosistema de plataformas maduro. Datos como ventaja competitiva. |
+| **Strategy & Leadership** | Visión digital, liderazgo, inversión, alineación estratégica | Presupuesto digital como % del total, sponsor ejecutivo, digital strategy document |
+| **Culture & People** | Mindset de innovación, skills digitales, change readiness | Training digital, experimentación permitida, resistencia al cambio |
+| **Technology & Infrastructure** | Modernidad del stack, cloud adoption, integración, automation | Cloud adoption %, legacy systems count, API coverage |
+| **Operations & Processes** | Digitalización de procesos, automatización, data-driven decisions | Procesos digitalizados %, automation ratio, data usage en decisiones |
+| **Customer & Market** | Experiencia digital del cliente, canales digitales, analytics | Digital channels %, NPS digital, customer data integration |
 
-**Dimensiones del assessment (score 1-5 cada una):**
+**Niveles de madurez (1-5):**
 
-1. **Estrategia y liderazgo digital:** Vision digital articulada, roadmap digital aprobado, digital literacy en liderazgo, inversiones alineadas con estrategia digital
-2. **Experiencia del cliente:** Customer journey digitalizado, omnicanalidad, personalizacion, self-service, feedback loops digitales
-3. **Operaciones y procesos:** Automatizacion de procesos core, integracion de sistemas, workflow digitales, eficiencia operativa medida
-4. **Tecnologia y plataformas:** Modernizacion del stack, API-first, cloud adoption, microservicios, DevOps maturity
-5. **Datos y analitica:** Data governance, data quality, analytics maturity, data-driven decision making, AI/ML adoption
-6. **Cultura y talento:** Digital skills del equipo, cultura de experimentacion, agilidad organizacional, learning culture
-7. **Innovacion:** Capacidad de innovacion sistematizada, labs/sandboxes, partnerships tecnologicos, velocidad de adopcion de nuevas tecnologias
+| Nivel | Nombre | Descripción |
+|---|---|---|
+| 1 | Ad-hoc | Sin estrategia digital. Iniciativas aisladas y reactivas |
+| 2 | Exploratorio | Proyectos piloto en algunos dominios. Sin governance unificado |
+| 3 | Definido | Estrategia digital articulada. Governance establecido. Algunos workstreams activos |
+| 4 | Gestionado | Métricas de progreso. Integración entre workstreams. Cultura data-driven emergente |
+| 5 | Optimizado | Innovación continua. Transformación embebida en la cultura. Agilidad organizacional |
 
-**Digital Maturity Index:** Promedio ponderado de las 7 dimensiones. Peso sugerido: Strategy (20%), Customer (15%), Operations (15%), Technology (15%), Data (15%), Culture (10%), Innovation (10%).
+**Digital Maturity Index:** Promedio ponderado de las 5 dimensiones. Peso sugerido: Strategy (25%), Culture (20%), Technology (25%), Operations (20%), Customer (10%).
 
-**Output:** Radar chart de madurez digital con score por dimension, nivel general, benchmark contra industria (cuando disponible), y gaps criticos.
+**Output:** Radar chart de madurez con score por dimensión y overall digital maturity index.
 
 ### S2: Service Portfolio Mapping
 
-Mapeo del portafolio de servicios requeridos para la transformacion.
+Mapeo de qué servicios MetodologIA aplican a qué necesidades del cliente.
 
-**Categorias de servicio:**
+**Servicios MetodologIA disponibles:**
+- **SDA (Software Development & Architecture):** Desarrollo de software, modernización, arquitectura
+- **QA (Quality Assurance):** Testing, quality engineering, automation testing
+- **Cloud:** Migración cloud, cloud-native, DevOps, SRE, FinOps
+- **Data & AI:** Data engineering, analytics, BI, machine learning, AI
+- **RPA:** Automatización de procesos robóticos, intelligent automation
+- **Management:** PMO, delivery management, agile transformation
+- **SAS (Staff Augmentation Services):** Augmentation de equipos
+- **UX-Design:** Diseño de experiencia, design systems, research
 
-| Categoria | Servicios tipicos | Indicadores de necesidad |
-|---|---|---|
-| **Software Development** | Custom development, modernization, integration | Aplicaciones legacy, gaps funcionales, time-to-market lento |
-| **Quality Assurance** | Test strategy, automation, performance testing | Defectos en produccion, test manual predominante, ciclos largos |
-| **Cloud & Infrastructure** | Migration, cloud-native, DevOps, SRE | On-premises legacy, escalabilidad limitada, ops manual |
-| **Data & Analytics** | Data engineering, BI, data science, data governance | Datos en silos, reportes manuales, decisiones por intuicion |
-| **UX/UI Design** | Research, design system, usability testing | NPS bajo, abandono digital, inconsistencia visual |
-| **Cybersecurity** | Assessment, architecture, SOC, compliance | Incidentes frecuentes, regulaciones pendientes, auditorias fallidas |
-| **Change Management** | Readiness, communication, training, adoption | Resistencia al cambio, baja adopcion de herramientas, fatiga organizacional |
-| **Program Management** | PMO, governance, risk management, portfolio | Multiples frentes, interdependencias, stakeholders multiples |
+**Mapping exercise:**
+- **Service-to-capability mapping:** Qué capacidades del cliente fortalece cada servicio
+- **Gap identification:** Necesidades del cliente que no están cubiertas por el portfolio actual
+- **Priority matrix:** Scoring `impacto x urgencia x readiness` por servicio
 
-**Service dependency matrix:**
+| Prioridad | Impacto | Urgencia | Readiness | Acción |
+|---|---|---|---|---|
+| P1 | Alto | Alta | Alta | Activar inmediatamente |
+| P2 | Alto | Alta | Baja | Preparar readiness, luego activar |
+| P3 | Alto | Baja | Alta | Planificar para siguiente fase |
+| P4 | Bajo | — | — | Evaluar si aporta al programa |
 
-Para cada par de servicios, documentar:
-- **Dependencia directa:** Servicio A requiere output de Servicio B para avanzar
-- **Interfaz compartida:** Servicios comparten datos, APIs, o plataformas
-- **Secuencia:** Orden recomendado de inicio (que debe existir antes)
-- **Sinergia:** Valor multiplicado cuando se ejecutan juntos vs por separado
-
-**Priorization criteria:**
-- Business impact (alto/medio/bajo)
-- Technical dependency (blocker para otros servicios / independiente)
-- Quick wins vs long-term (resultados visibles en <3 meses vs >6 meses)
-- Risk of delay (costo de no iniciar ahora)
-
-**Output:** Service portfolio map con categorias, prioridades, dependencies, y secuencia recomendada de activacion.
+**Output:** Matriz de servicios con priority scoring y sequencing recomendado.
 
 ### S3: Program Architecture
 
-Diseno de la arquitectura del programa de transformacion.
+Diseño de la estructura del programa de transformación.
 
-**Estructura del programa:**
+**Workstreams definition:**
+- Cada workstream corresponde a un dominio de servicio activo (del S2)
+- Definición de scope, objetivos, entregables clave, y timeline por workstream
+- Dependencies entre workstreams (e.g., Cloud landing zone antes de migración de apps)
 
+**Dependency mapping:**
+```mermaid
+graph LR
+    subgraph Foundation
+        MGMT[Management/PMO]
+        CLOUD_FND[Cloud Foundation]
+    end
+    subgraph Wave 1
+        SDA[SDA Modernization]
+        QA[QA Engineering]
+    end
+    subgraph Wave 2
+        DATA[Data & AI]
+        RPA[RPA Automation]
+    end
+    CLOUD_FND --> SDA
+    CLOUD_FND --> DATA
+    SDA --> QA
+    DATA --> RPA
+    MGMT --> SDA
+    MGMT --> DATA
 ```
-Programa de Transformacion Digital
-├── PMO / Gobernanza
-├── Frente 1: Modernizacion de Plataformas (Dev + Cloud)
-├── Frente 2: Data & Analytics
-├── Frente 3: Customer Experience (UX + Canales Digitales)
-├── Frente 4: Operaciones Digitales (Automatizacion + QA)
-├── Transversal: Change Management
-└── Transversal: Ciberseguridad
-```
 
-**Workstream design:**
+**Governance structure:**
+- Program Director, Workstream Leads, PMO, Steering Committee
+- Milestone framework con phase gates entre waves
 
-Para cada frente/workstream:
-- **Scope:** Que incluye y que no incluye
-- **Outcomes esperados:** Resultados medibles (no actividades)
-- **Dependencies:** De que otros frentes depende o a cuales alimenta
-- **Team composition:** Roles requeridos (consulting partner + equipo del cliente)
-- **Duration estimate:** Duracion estimada en meses
-- **Phasing:** Como se descompone internamente en fases
+**Program-level Gantt:**
+- Multi-year view con workstreams, milestones, dependencies, y phase gates
+- Visualización de paralelismo y secuenciación
 
-**Integration architecture:**
-
-- **Data contracts entre frentes:** Que datos produce un frente que otro consume
-- **Shared platforms:** Plataformas compartidas entre frentes (cloud platform, CI/CD, data platform, design system)
-- **API integration points:** Interfaces tecnicas entre workstreams
-- **Coordination ceremonies:** Rituals de sincronizacion (Scrum of Scrums, Program Increment Planning, Integration demos)
-
-**Staffing model por frente:**
-
-| Frente | Consulting Partner | Equipo del cliente | Ratio recomendado |
-|---|---|---|---|
-| Modernizacion | Architects + devs | Product owners + domain experts | 70/30 inicialmente → 30/70 a 12 meses |
-| Data | Data engineers + analysts | Business analysts + data owners | 60/40 → 20/80 |
-| Customer Experience | UX designers + researchers | Brand + marketing + CX team | 50/50 estable |
-| Operaciones | QA engineers + DevOps | Ops team + process owners | 60/40 → 20/80 |
-
-**Output:** Program architecture document con workstreams, dependencies, integration points, staffing model, y coordination ceremonies.
+**Output:** Program architecture diagram con workstreams, dependencies, governance, y milestone framework.
 
 ### S4: Change Readiness Assessment
 
-Evaluacion de la preparacion organizacional para absorber la transformacion.
+Evaluación de la capacidad de la organización para absorber el cambio.
 
-**Dimensiones del change readiness:**
+**Tres dimensiones de readiness:**
 
-| Dimension | Que evalua | Indicadores |
-|---|---|---|
-| **Sponsorship** | Nivel y visibilidad del sponsorship ejecutivo | Sponsor activo, comunicacion frecuente, recursos asignados, accountability |
-| **Stakeholder alignment** | Grado de alineacion entre stakeholders clave | Consenso en vision, prioridades alineadas, conflictos identificados y gestionados |
-| **Change capacity** | Capacidad de la organizacion de absorber cambio adicional | Numero de iniciativas en curso, fatiga reportada, historial de cambios recientes |
-| **Culture** | Cultura organizacional favorable o resistente al cambio | Apertura a experimentacion, tolerancia al error, colaboracion cross-functional |
-| **Communication** | Canales y efectividad de comunicacion interna | Canales establecidos, frecuencia, bidireccionalidad, feedback loops |
-| **Skills readiness** | Preparacion del equipo para las nuevas competencias requeridas | Skills gap actual, programas de training existentes, learning culture |
+**Organizational Readiness:**
+- Sponsorship ejecutivo: ¿Hay un champion con autoridad y presupuesto?
+- Comunicación: ¿Existen canales para comunicar la transformación?
+- Training: ¿Hay presupuesto y tiempo asignado para capacitación?
+- Historial de cambio: ¿Cómo han salido las transformaciones anteriores?
 
-**Change readiness scoring (1-5):**
+**Technical Readiness:**
+- Infraestructura: ¿La infraestructura actual soporta la transformación?
+- Data: ¿Los datos están accesibles, limpios, y gobernados?
+- Integration: ¿Existen APIs, middleware, o integration patterns?
+- Tooling: ¿Las herramientas actuales se alinean con la visión?
 
-| Nivel | Descripcion | Implicaciones |
-|---|---|---|
-| 1 | Resistencia activa | Programa en riesgo critico. Requiere intervencion de liderazgo antes de iniciar. |
-| 2 | Resistencia pasiva | Riesgo alto. Change management intensivo requerido. Quick wins criticos para momentum. |
-| 3 | Neutral | Riesgo moderado. Change management estandar. Comunicacion proactiva requerida. |
-| 4 | Receptivo | Riesgo bajo. Organizacion abierta. Enfocarse en enablement y remocion de barreras. |
-| 5 | Entusiasta | Riesgo minimo. Capitalizar el entusiasmo. Cuidar no sobrevender expectativas. |
+**Cultural Readiness:**
+- Innovation mindset: ¿Se permite experimentar y fallar?
+- Risk tolerance: ¿La organización tolera la incertidumbre?
+- Collaboration: ¿Los equipos colaboran entre silos?
+- Learning culture: ¿Se invierte en desarrollo profesional?
 
-**Change saturation analysis:**
+**Resistance mapping:**
+- Identificación de stakeholders resistentes y sus motivaciones
+- Estrategias de mitigación por tipo de resistencia (miedo, inercia, pérdida de poder, escepticismo)
 
-- Inventario de iniciativas de cambio en curso (proyectos, reorganizaciones, cambios de herramientas)
-- Capacidad estimada de cambio por area/equipo (no todos pueden absorber al mismo ritmo)
-- Recomendacion de secuenciamiento para no saturar areas criticas
-- Identificacion de "change champions" por area
-
-**Output:** Change readiness scorecard, change saturation map, risks por dimension, y recomendaciones de mitigacion.
+**Output:** Assessment de readiness con scores por dimensión y resistance map con estrategias de mitigación.
 
 ### S5: Multi-Service Integration Points
 
-Definicion de los puntos de integracion entre los multiples servicios del programa.
+Cómo interactúan los diferentes servicios MetodologIA dentro del programa.
 
-**Tipos de integracion:**
+**Integration matrix:**
 
-| Tipo | Descripcion | Ejemplo |
-|---|---|---|
-| **Data integration** | Datos que fluyen entre servicios | Data platform alimenta dashboards de BI; BI insights informan UX decisions |
-| **Platform integration** | Plataformas compartidas entre servicios | Cloud platform soporta Dev + QA + Data; Design system soporta todos los canales |
-| **Process integration** | Procesos que cruzan servicios | CI/CD pipeline integra Dev + QA + Security; Incident management cruza Ops + Dev |
-| **People integration** | Roles que participan en multiples servicios | Architects en Dev + Cloud; Data stewards en Data + negocio |
-| **Delivery integration** | Coordinacion de entregas entre servicios | Release train, integration testing, performance testing cross-service |
+| Servicio A | Servicio B | Punto de Integración | Dependencia | Riesgo |
+|---|---|---|---|---|
+| SDA | QA | Pipelines CI/CD, test automation, quality gates | SDA provee código, QA valida | Alto si no se alinean estándares |
+| SDA | Cloud | Deployment targets, IaC, monitoring | Cloud provee plataforma, SDA consume | Alto si landing zone no está lista |
+| Data | Cloud | Data platform, storage, compute | Cloud provee infra, Data construye pipelines | Medio — secuencia clara |
+| RPA | Data | Data feeds, process outputs como input de analytics | Data consume outputs de RPA | Bajo — interfaz definida |
+| Management | All | Governance, reporting, risk management | Transversal | Alto si PMO no tiene visibilidad |
 
-**Integration risk matrix:**
+**Integration contracts:**
+- Definición de interfaces entre workstreams (APIs, datos, procesos, artefactos)
+- SLAs entre workstreams (tiempos de respuesta, calidad de entregables)
+- Escalation paths cuando un workstream bloquea a otro
 
-| Punto de integracion | Riesgo de desalineacion | Impacto | Mitigacion |
-|---|---|---|---|
-| Dev ↔ QA | Medio | Defectos tardes, ciclos largos | Shift-left testing, test automation compartida |
-| Dev ↔ Cloud | Alto | Infraestructura no ready, deployment friction | Platform team, IaC, GitOps desde el dia 1 |
-| Data ↔ Dev | Alto | Datos inconsistentes, ETL fragiles | Data contracts, API data layer, data governance |
-| UX ↔ Dev | Medio | Diseno no implementado correctamente | Design system, handoff tools, design reviews en PR |
-| Change ↔ Todos | Alto | Baja adopcion, resistencia | Change network embedded en cada frente |
+**Shared resources:**
+- Recursos que participan en múltiples workstreams (architects, DevOps, data engineers)
+- Allocation model para evitar contención
 
-**Shared ceremonies:**
-
-| Ceremonia | Frecuencia | Participantes | Proposito |
-|---|---|---|---|
-| **Program Standup** | Semanal | Leads de cada frente | Dependencies, blockers, upcoming integrations |
-| **Integration Demo** | Bisemanal | Full program team | Demo end-to-end de funcionalidad integrada |
-| **Architecture Review** | Mensual | Architects cross-frente | Consistencia arquitectonica, decisiones cross-cutting |
-| **Program Retrospective** | Mensual | Full program team | Mejora continua del programa |
-| **Steering Committee** | Mensual | Sponsors + leads | Decisiones estrategicas, budget, scope, risks |
-
-**Output:** Integration map con puntos de integracion, riesgos, mitigaciones, y calendario de ceremonias compartidas.
+**Output:** Integration matrix con contratos entre workstreams y modelo de recursos compartidos.
 
 ### S6: Program Governance Model
 
-Modelo de gobernanza del programa de transformacion.
+Modelo de governance para el programa de transformación.
 
 **Governance structure:**
 
-| Nivel | Organo | Composicion | Frecuencia | Decisiones |
-|---|---|---|---|---|
-| **Estrategico** | Steering Committee | C-level sponsor, VP areas impactadas, Program Director | Mensual | Scope, budget, prioridades estrategicas, escalaciones criticas |
-| **Tactico** | Program Board | Program Manager, leads de frente, Change Lead, Architecture Lead | Bisemanal | Interdependencias, riesgos, re-priorizacion, resource allocation |
-| **Operativo** | Workstream Leads | Leads de frente + delivery leads | Semanal | Entrega, blockers, quality gates, integration points |
+| Rol | Responsabilidad | Cadencia |
+|---|---|---|
+| **Steering Committee** | Decisiones estratégicas, aprobación de fase, budget | Mensual |
+| **Program Director** | Coordinación de workstreams, gestión de riesgos, reporting | Semanal |
+| **Workstream Leads** | Ejecución del workstream, entregables, escalación | Diario |
+| **PMO** | Tracking, reporting, quality assurance, risk register | Continuo |
+| **Change Manager** | Comunicación, training, resistance management | Semanal |
 
-**Decision framework:**
+**Escalation paths:**
+- Level 1: Workstream Lead resuelve (< 24 horas)
+- Level 2: Program Director media entre workstreams (< 48 horas)
+- Level 3: Steering Committee decide (siguiente sesión o extraordinary)
 
-| Tipo de decision | Nivel | Tiempo de respuesta | Escalacion |
-|---|---|---|---|
-| Scope change (>10% budget) | Estrategico | 1 semana | N/A (maximo nivel) |
-| Re-priorizacion entre frentes | Tactico | 3 dias | Steering Committee si no hay consenso |
-| Dependency resolution | Tactico | 2 dias | Program Board |
-| Technical architecture decisions | Operativo | 1 dia | Program Board si cross-frente |
-| Day-to-day delivery decisions | Operativo | Inmediato | Workstream Lead |
+**Reporting cadence:**
+- **Diario:** Stand-up de workstream leads (15 min, blockers only)
+- **Semanal:** Program status report (progress, risks, decisions needed)
+- **Mensual:** Steering committee con dashboard ejecutivo
+- **Trimestral:** Business review con ROI tracking
 
-**Risk management framework:**
+**Decision rights (RACI):**
+- Presupuesto: Steering Committee (A), Program Director (R), PMO (C)
+- Technical decisions: Workstream Lead (A/R), Program Director (I)
+- Scope changes: Steering Committee (A), Program Director (R), Workstream Lead (C)
 
-- **Risk register:** Registro centralizado de riesgos con owner, probabilidad, impacto, mitigacion, y status
-- **Risk categories:** Tecnico, organizacional, de cambio, de integracion, de staffing, de presupuesto, de timeline
-- **Risk scoring:** Probabilidad (1-5) x Impacto (1-5). Riesgos >15 requieren plan de mitigacion activo
-- **Risk review cadence:** Semanal en Program Board, mensual en Steering Committee
+**Phase-gate funding model:**
+- Presupuesto aprobado por fase, no por programa completo
+- Gate review al final de cada fase para aprobar funding de la siguiente
+- Kill criteria: condiciones bajo las cuales se detiene o pivotea un workstream
 
-**Quality gates del programa:**
-
-| Gate | Cuando | Criterio | Decision |
-|---|---|---|---|
-| G0: Inception | Fin de discovery | Madurez evaluada, program architecture aprobada, staffing confirmado | Go / Adjust / No-Go |
-| G1: Foundation | Fin de Fase 1 (mes 3) | Quick wins entregados, equipos ramp-up completo, plataformas base operativas | Continue / Adjust |
-| G2: Traction | Fin de Fase 2 (mes 6) | Metricas de delivery en target, adopcion medida, integraciones funcionando | Continue / Pivot / Pause |
-| G3: Scale | Fin de Fase 3 (mes 12) | Resultados de negocio medibles, transferencia de conocimiento en curso | Scale / Sustain / Conclude |
-
-**Reporting framework:**
-
-- **Weekly:** Status report por frente (RAG status, blockers, metrics)
-- **Monthly:** Program dashboard (delivery metrics, budget burn, risk register, change metrics)
-- **Quarterly:** Executive review (business outcomes, ROI indicators, strategic alignment)
-
-**Output:** Program governance model con estructura de gobernanza, decision framework, risk management, quality gates, y reporting cadence.
+**Output:** Governance model con RACI, escalation paths, reporting cadence, y phase-gate funding model.
 
 ### S7: Transformation Roadmap
 
-Plan de transformacion faseado con interdependencias y metricas de exito.
+Plan de transformación multi-año con sequencing de activación de servicios.
 
 **Phased plan:**
 
-- **Fase 0 — Discovery & Design (meses 0-2):** Discovery completo, program architecture, governance establecida, quick wins identificados, equipos core en posicion. Gate: G0 Inception.
-- **Fase 1 — Foundation (meses 3-5):** Plataformas base (cloud, data, design system), primeros equipos en ramp-up, quick wins en ejecucion, change management en marcha. Gate: G1 Foundation.
-- **Fase 2 — Build (meses 6-9):** Desarrollo de capacidades core, primeras integraciones end-to-end, metricas de delivery activas, adopcion medida. Gate: G2 Traction.
-- **Fase 3 — Scale (meses 10-15):** Escalamiento de equipos y funcionalidades, optimization de procesos, transferencia de conocimiento intensiva. Gate: G3 Scale.
-- **Fase 4 — Sustain (meses 15+):** Transicion a operacion continua, equipo del cliente opera con autonomia, consulting partner en modo advisory, mejora continua establecida.
+**Fase 0 — Foundation (Meses 1-3):**
+- Governance: PMO establecido, steering committee activo
+- Quick wins: 3-5 iniciativas de alto impacto y bajo esfuerzo (identificadas en S1-S2)
+- Cloud foundation: Landing zone, connectivity, security baseline
+- Change: Comunicación del programa, training plan
 
-**Interdependency map:**
+**Fase 1 — Activation (Meses 4-9):**
+- Workstreams P1 activos (del S2)
+- Primeros entregables tangibles
+- Métricas de programa establecidas
+- Feedback loop con steering committee
 
-```
-Fase 0: Discovery → informa todo
-Fase 1: Cloud Platform → habilita Dev + Data
-         Design System → habilita UX + Dev
-         Change Management → habilita adopcion en todas las fases
-Fase 2: Dev + Cloud → habilita QA automation
-         Data Platform → habilita BI + Analytics
-Fase 3: Integraciones E2E → habilita Scale
-         Knowledge Transfer → habilita Sustain
-```
+**Fase 2 — Acceleration (Meses 10-18):**
+- Workstreams P2 activos
+- Integración entre workstreams operativa
+- Optimización basada en métricas
+- Scale del equipo según staffing plan
 
-**Success metrics por fase:**
+**Fase 3 — Optimization (Meses 19-36):**
+- Workstreams P3 activos
+- Advanced capabilities (AI, advanced analytics, intelligent automation)
+- Transferencia de conocimiento al equipo del cliente
+- Sustentabilidad y ownership transfer
 
-| Fase | Metrica de delivery | Metrica de negocio | Metrica de cambio |
-|---|---|---|---|
-| Foundation | Plataformas operativas, equipos ramp-up >80% | Quick wins entregados (>2) | Change readiness score > 3.0 |
-| Build | Velocity estable, defect rate <5% | Funcionalidad core en produccion | Adoption rate >60% por herramienta |
-| Scale | Throughput en crecimiento, MTTR <4h | KPIs de negocio mejorando vs baseline | eNPS equipo > +20 |
-| Sustain | Equipo cliente opera al 80% de capacidad | ROI indicators positivos | Cultura digital medida y mejorada |
+**Per phase:**
+- Active workstreams y sus milestones
+- Team composition (roles, headcount, seniority)
+- Budget magnitude indicators (FTE-meses por workstream, NOT prices)
+- Success metrics y exit criteria
 
-**Budget magnitude indicators:**
-- Expresado en FTE-meses por frente y por fase
-- NUNCA precios. Solo magnitudes de esfuerzo
-- Incluir costos de change management como 10-15% del programa total
-- Incluir costos de gobernanza (PMO) como 8-12% del programa total
+**Quick wins en primeros 90 días:**
+- Identificar 3-5 iniciativas que demuestren valor rápidamente
+- Criterios: alto visibilidad, bajo riesgo, resultados medibles en <90 días
+- Construyen credibilidad y momentum para el programa
 
-**Contingency planning:**
-- Sponsor pierde interes o cambia: Plan de re-engagement o escalacion al board
-- Un frente se atrasa significativamente: Evaluar reduccion de scope vs extension de timeline
-- Presupuesto reducido mid-program: Priorizar frentes con mayor business impact, pausar nice-to-have
-- Rotacion alta de equipo: Knowledge management intensivo, documentacion como ciudadano de primera clase
+**Output:** Roadmap visual multi-año con phases, workstream activation, milestones, y quick wins.
 
-**Output:** Transformation roadmap visual con fases, workstreams, interdependencies, quality gates, success metrics, y contingency plan.
+---
 
 ## Trade-off Matrix
 
-| Decision | Enables | Constrains | When to Use |
+| Decisión | Habilita | Restringe | Cuándo Usar |
 |---|---|---|---|
-| **Big-bang transformation** | Coherencia total, integracion desde el dia 1 | Riesgo alto, complejidad de coordinacion, inversion masiva | Organizaciones con sponsorship fuerte, budget confirmado, urgencia competitiva |
-| **Incremental transformation** | Riesgo reducido, aprendizaje continuo, quick wins tempranos | Integracion mas compleja, periodo hibrido largo, fatiga potencial | Mayoria de organizaciones, especialmente las de baja madurez digital |
-| **Consulting partner unico** | Un solo punto de contacto, coherencia de metodologia | Vendor dependency, puede no tener best-of-breed en todas las areas | Programas con gobernanza centralizada, prefieren simplicidad operativa |
-| **Multi-partner** | Best-of-breed por area, evita vendor lock-in | Complejidad de coordinacion, multiples interfaces, riesgo de silos | Organizaciones maduras con PMO fuerte, areas especializadas bien definidas |
-| **Technology-led transformation** | Resultados tangibles rapidos, modernizacion visible | Riesgo de baja adopcion, cambio organizacional insuficiente | Cuando la deuda tecnica es el blocker principal del negocio |
-| **People-led transformation** | Alta adopcion, cambio cultural profundo | Resultados tangibles mas lentos, requiere paciencia del sponsor | Cuando la cultura y las capacidades son el blocker principal |
+| **Big-bang activation** | Velocidad, momentum | Riesgo alto, change fatigue | Solo con organización madura (nivel 4+) |
+| **Phased activation** | Aprendizaje, riesgo reducido | Más lento, dual-run costs | Default para la mayoría de organizaciones |
+| **Technology-first** | Resultados técnicos rápidos | Change debt acumulado | Cuando el bottleneck es técnico, no cultural |
+| **People-first** | Adopción sostenible | Resultados técnicos más lentos | Cuando la resistencia al cambio es el riesgo principal |
+| **Centralized PMO** | Control, visibilidad | Bottleneck en decisiones | Programas >5 workstreams, organización jerárquica |
+| **Federated governance** | Agilidad, ownership | Menos consistencia | Organización madura, equipos autónomos |
+
+---
+
+## Assumptions
+
+- Existe sponsorship ejecutivo con autoridad para aprobar presupuesto y cambios organizacionales
+- El cliente está dispuesto a invertir en un programa multi-año (no busca resultados de proyecto en 3 meses)
+- Los stakeholders clave están disponibles para entrevistas y workshops de discovery
+- Hay acceso a información de la organización (procesos, tecnología, métricas, estructura)
+- El mercado permite cubrir los perfiles necesarios para los diferentes workstreams
+
+## Limits
+
+- No reemplaza la definición técnica detallada de cada workstream (use los skills específicos: cloud-migration, software-architecture, etc.)
+- No incluye diseño organizacional completo (restructuración, re-org)
+- No define precios — solo magnitudes de esfuerzo (FTE-meses por workstream)
+- No ejecuta la transformación — produce el discovery y roadmap para su aprobación
+- El change readiness assessment es basado en entrevistas y documentación — no es un organizational development engagement completo
+
+---
 
 ## Edge Cases
 
-**Organizacion en crisis (transformation urgente por supervivencia):**
-Acortar Fase 0 a 2-4 semanas. Priorizar frentes con impacto inmediato en revenue o eficiencia. Quick wins en paralelo con el discovery. Change management intensivo — la crisis es un habilitador del cambio.
+**Organización con madurez digital nivel 1:**
+No intentar transformación completa. Enfocarse en foundation (governance, cloud basics, un workstream piloto). Construir músculo de cambio antes de escalar.
 
-**Transformacion post-M&A:**
-Dos culturas, dos stacks, dos sets de procesos. Priorizar integracion de datos y gobernanza. Evitar imponer la cultura de una entidad sobre otra — construir una nueva cultura compartida. Timeline tipicamente 50% mas largo.
+**Transformación post-M&A (fusión/adquisición):**
+Dos organizaciones con stacks, culturas, y procesos diferentes. Priorizar integración de datos y unified governance antes de transformación. Assessment de madurez por organización separada.
 
-**Organizacion con multiples transformaciones fallidas:**
-Resistencia al cambio elevada ("otra transformacion mas"). Comenzar con quick wins tangibles que demuestren que esta vez es diferente. Transparencia radical sobre lecciones aprendidas. Change management como primera prioridad, no como add-on.
+**Programa ya en marcha con workstreams descoordinados:**
+Enfocarse en S5 (Integration Points) y S6 (Governance) primero. Establecer contracts entre workstreams existentes. No reiniciar — alinear y orquestar lo que ya existe.
 
-**Sponsor unico vs sponsorship distribuido:**
-Un solo sponsor simplifica decisiones pero crea single point of failure. Sponsorship distribuido es mas resiliente pero requiere alineacion constante. Recomendacion: sponsor ejecutivo unico + coalition de sponsors por area.
+**Budget limitado para programa completo:**
+Diseñar programa modular donde cada fase es auto-contenida y entrega valor independiente. Phase-gate funding permite avanzar solo si hay presupuesto.
 
-**Presupuesto aprobado por fases (no para el programa completo):**
-Cada gate se convierte en un pitch para la siguiente fase. Asegurar que las metricas de exito esten definidas upfront y sean medibles al cierre de cada fase. Documentar explicitamente el costo de detener el programa mid-stream.
+**Resistencia ejecutiva a governance formal:**
+Presentar governance como enabler, no como burocracia. Mostrar costo de no tener governance (duplicación, conflictos, re-work). Quick wins primero para construir confianza.
+
+---
 
 ## Validation Gate
 
-- [ ] Digital maturity assessment cubre las 7 dimensiones con scoring documentado
-- [ ] Service portfolio mapping con prioridades y dependencies entre servicios
-- [ ] Program architecture con workstreams definidos, scope, outcomes, y staffing model
-- [ ] Change readiness assessment con scoring y change saturation analysis
-- [ ] Integration points entre servicios mapeados con riesgos y mitigaciones
-- [ ] Governance model con estructura de 3 niveles (estrategico/tactico/operativo)
-- [ ] Decision framework con tiempos de respuesta y escalacion
-- [ ] Risk management framework con categorias y scoring
-- [ ] Quality gates del programa definidos (G0-G3) con criterios medibles
-- [ ] Transformation roadmap faseado con interdependencies y success metrics
-- [ ] Budget expresado en magnitudes (FTE-meses por frente), NUNCA en precios
-- [ ] Contingency plan para los riesgos principales del programa
+Before finalizing delivery, verify:
+
+- [ ] Digital maturity assessment cubre las 5 dimensiones con scoring 1-5
+- [ ] Service portfolio mapping incluye priority matrix (impacto x urgencia x readiness)
+- [ ] Program architecture tiene workstreams con dependencies claramente mapeadas
+- [ ] Change readiness assessment cubre las 3 dimensiones (organizational, technical, cultural)
+- [ ] Resistance mapping identifica stakeholders resistentes con estrategias de mitigación
+- [ ] Multi-service integration points documentados con contracts entre workstreams
+- [ ] Governance model incluye RACI, escalation paths, y reporting cadence
+- [ ] Phase-gate funding model definido con kill criteria
+- [ ] Transformation roadmap es multi-año con phased activation y sequencing
+- [ ] Quick wins identificados para primeros 90 días (3-5 iniciativas)
+- [ ] Budget expresado en magnitudes (FTE-meses), NUNCA en precios
+- [ ] Cross-references entre secciones son consistentes (S2 priorities reflejadas en S7 sequencing)
+
+---
 
 ## Output Format Protocol
 
 | Format | Default | Description |
 |--------|---------|-------------|
 | `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
-| `html` | On demand | Branded HTML. Visual impact. |
+| `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
 ## Output Artifact
 
-**Primary:** `Digital_Transformation_Discovery_{project}.md` — Digital maturity assessment, service portfolio mapping, program architecture, change readiness assessment, multi-service integration map, program governance model, and phased transformation roadmap.
+**Primary:** `Digital_Transformation_Discovery_{project}.md` -- Digital maturity assessment, service portfolio mapping, program architecture, change readiness, multi-service integration, governance model, and multi-year transformation roadmap with phased activation and quick wins.
 
 **Diagramas incluidos:**
-- Digital maturity radar chart: score por dimension (7 ejes)
-- Service portfolio map: categorias, prioridades, dependencies
-- Program architecture: workstreams, integration points, shared platforms
-- Change readiness heatmap: score por dimension y por area organizacional
-- Governance structure: 3 niveles con organos y decision flows
-- Transformation roadmap: Gantt-style con fases, gates, interdependencies
+- Digital maturity radar chart: 5 dimensions scored 1-5
+- Program architecture: workstreams with dependencies
+- Service portfolio priority matrix: impact x urgency x readiness
+- Transformation roadmap: multi-year Gantt with workstream activation
+- Governance structure: org chart with reporting lines
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026

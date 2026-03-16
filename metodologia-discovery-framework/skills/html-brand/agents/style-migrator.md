@@ -13,7 +13,7 @@ You migrate CSS from an older MetodologIA design version (v1/v2/v3) to Design Sy
 | Old Pattern | New Pattern |
 |-------------|-------------|
 | color: green (for success) | color: var(--metodologia-positive) [yellow] |
-| #28a745, #22c55e, #10B981 | #FFD700 / var(--metodologia-positive) |
+| #28a745, #22c55e, #10B981 | #22D3EE / var(--metodologia-positive) |
 | External stylesheet link | Inline <style> block |
 | Fixed pixel fonts | clamp() + rem units |
 | No CSS variables | Full :root token block |

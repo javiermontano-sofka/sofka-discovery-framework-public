@@ -18,7 +18,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```html
 <header class="hero">
   <div class="hero-inner">
-    <div class="hero-logo">metodología<span>_</span></div>
+    <div class="hero-logo">metodologia<span>_</span></div>
     <div class="hero-meta">
       <span class="badge">§N · DOCUMENT</span>
       <span class="badge badge-outline">ACTIVE HITL</span>
@@ -44,23 +44,23 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `.hero`: Main header container (background: #000000, border-bottom: 8px solid #FF7E08)
+- `.hero`: Main header container (background: #000000, border-bottom: 8px solid #6366F1)
 - `.hero-inner`: Inner container (max-width: 1100px, padding: 4rem 2rem)
-- `.hero-logo`: Logo display ("metodología_" with orange underscore)
+- `.hero-logo`: Logo display ("metodologia_" with orange underscore)
 - `.hero-meta`: Meta badges row (flex, gap 1rem, margin-bottom 2rem)
-- `.badge`: Orange status badge (background: #FF7E08, white text)
-- `.badge-outline`: Outline variant (border: 1px solid #FF7E08, transparent bg)
+- `.badge`: Orange status badge (background: #6366F1, white text)
+- `.badge-outline`: Outline variant (border: 1px solid #6366F1, transparent bg)
 - `.hero-kpis`: KPI grid (3-4 items, centered)
 - `.hero-kpi`: Individual KPI card
 - `.hero-kpi-val`: Large metric value (2rem, white, bold)
 - `.hero-kpi-lbl`: Metric label (0.875rem, muted white)
 
 **Accessibility:**
-- Logo span has color: #FF7E08 (orange)
+- Logo span has color: #6366F1 (orange)
 - All text white on black background (21:1 contrast)
 - h1 uses semantic heading tag
 - KPI values are actual numbers (not decorative)
-- Focus: outline 2px solid #FF7E08 on badges
+- Focus: outline 2px solid #6366F1 on badges
 
 **Variants:**
 - With KPIs (shown above)
@@ -114,14 +114,14 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - `nav.toc`: Main nav container (position: sticky, top: 0, z-index: 100, background: #FFFFFF)
 - `.toc-inner`: Inner flex container (overflow-x: auto, scrollbar hidden on mobile)
 - `.toc-link`: Individual link (uppercase, 0.72rem, letter-spacing: 1.5px, color: #333)
-- `.toc-link.active`: Active state (border-bottom: 3px solid #FF7E08)
-- `.toc-link:hover`: Hover state (border-bottom: 2px solid #FF7E08, opacity 0.8)
+- `.toc-link.active`: Active state (border-bottom: 3px solid #6366F1)
+- `.toc-link:hover`: Hover state (border-bottom: 2px solid #6366F1, opacity 0.8)
 
 **Accessibility:**
 - Semantic `<nav>` tag
 - Links have href attributes pointing to section IDs
 - Keyboard navigable: Tab, Enter to follow links
-- Focus visible: outline 2px solid #FF7E08
+- Focus visible: outline 2px solid #6366F1
 - ARIA: `aria-label="Table of contents"` (optional)
 - Current section marked with `.active` class
 
@@ -179,7 +179,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **CSS Classes:**
 - `.section`: Section container (padding: 6rem 0, scroll-margin-top: 60px)
 - `.section-header`: Flex header row (gap: 2rem, align-items: flex-start)
-- `.section-number`: Number box (60×60px, background: #000000, color: #FF7E08, font-weight: 700, border-radius: 8px)
+- `.section-number`: Number box (60×60px, background: #000000, color: #6366F1, font-weight: 700, border-radius: 8px)
 - `.section-title`: h2 heading (2.2rem, Clash Grotesk, color: #000000, font-weight: 700)
 - `.section-subtitle`: Optional subtitle (1rem, color: #6B6560, font-weight: 400)
 
@@ -188,7 +188,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - Section ID unique and meaningful (data-section attribute)
 - Number is decorative but aids scannability
 - Subtitle provides context
-- Focus on heading: outline 2px solid #FF7E08
+- Focus on heading: outline 2px solid #6366F1
 
 **Variants:**
 - With subtitle (standard)
@@ -243,18 +243,18 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **Accessibility:**
 - Proper semantic headings (h3, h4)
 - Good color contrast: black text on white (21:1)
-- Focus on interactive elements: outline 2px solid #FF7E08
+- Focus on interactive elements: outline 2px solid #6366F1
 - Nested lists use `<ul>`, `<ol>`, `<li>`
 
 **Variants:**
-- `.card-accent`: Orange top border (border-top: 5px solid #FF7E08)
+- `.card-accent`: Orange top border (border-top: 5px solid #6366F1)
 - `.card-critical`: Red left border + red tint (border-left: 7px solid #DC2626, bg: rgba(220,38,38,0.06))
 - `.card-warning`: Amber left border + amber tint (border-left: 7px solid #D97706, bg: rgba(217,119,6,0.06))
 - `.card-success`: Green left border (decorative only)
 - `.card-info`: Blue left border + blue tint (border-left: 7px solid #2563EB, bg: rgba(37,99,235,0.06))
 - `.card-violet`: Violet left border + violet tint
 - `.card-teal`: Teal left border + teal tint
-- `.card-highlight`: Orange border + subtle gradient (border: 2px solid #FF7E08, gradient bg)
+- `.card-highlight`: Orange border + subtle gradient (border: 2px solid #6366F1, gradient bg)
 - `.card-dark`: Black background with white text (background: #000000, color: #FFFFFF)
 
 **Edge Cases:**
@@ -328,7 +328,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `.card` + `.card-accent`: border-top: 5px solid #FF7E08
+- `.card` + `.card-accent`: border-top: 5px solid #6366F1
 
 **Accessibility:** Same as base card
 
@@ -400,7 +400,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **CSS Classes:**
 - `.card` + `.card-success`: border-left: 7px solid #42D36F, background: rgba(66,211,111,0.08)
 
-**Note:** Use `.sev-low` with yellow (#FFD700) for actual success/positive semantic states.
+**Note:** Use `.sev-low` with yellow (#22D3EE) for actual success/positive semantic states.
 
 ---
 
@@ -472,7 +472,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `.card` + `.card-highlight`: border: 2px solid #FF7E08, background: subtle orange gradient (optional)
+- `.card` + `.card-highlight`: border: 2px solid #6366F1, background: subtle orange gradient (optional)
 
 ---
 
@@ -494,8 +494,8 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 
 **Accessibility:**
 - Contrast: white on black = 21:1 (excellent)
-- Links inside: must have color (#FF7E08 for consistency)
-- Focus: outline 2px solid #FF7E08
+- Links inside: must have color (#6366F1 for consistency)
+- Focus: outline 2px solid #6366F1
 
 ---
 
@@ -510,15 +510,15 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `.badge`: background: #FF7E08, color: #FFFFFF, padding: 0.5rem 1rem, border-radius: 6px, font-weight: 600
+- `.badge`: background: #6366F1, color: #FFFFFF, padding: 0.5rem 1rem, border-radius: 6px, font-weight: 600
 
 **Variants:**
-- `.badge-outline`: transparent bg, orange border: 1px solid #FF7E08, orange text
+- `.badge-outline`: transparent bg, orange border: 1px solid #6366F1, orange text
 - `.badge-teal`: background: #06C8C8, white text
 - `.badge-green`: background: #42D36F, white text (decorative)
 - `.badge-violet`: background: #9747FF, white text
 - `.badge-pink`: background: #FE9CAB, white text
-- `.badge-yellow`: background: #FFD700, black text (v4 success state)
+- `.badge-yellow`: background: #22D3EE, black text (v4 success state)
 
 **Accessibility:**
 - Color not only means: include text or icon
@@ -538,7 +538,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `.badge` + `.badge-outline`: border: 1px solid #FF7E08, background: transparent, color: #FF7E08
+- `.badge` + `.badge-outline`: border: 1px solid #6366F1, background: transparent, color: #6366F1
 
 ---
 
@@ -606,7 +606,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `.sev-low`: background: #FFD700 (YELLOW per v4), color: #000000 (black), padding: 0.5rem 1rem, border-radius: 6px, font-weight: 600
+- `.sev-low`: background: #22D3EE (YELLOW per v4), color: #000000 (black), padding: 0.5rem 1rem, border-radius: 6px, font-weight: 600
 
 **Note:** NOT green (#42D36F). Green is decorative only in MetodologIA v4.
 
@@ -666,7 +666,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - Header cells marked with `<th>` not `<td>`
 - Scope attribute on headers: `<th scope="col">` (optional but recommended)
 - High contrast: black headers on white body
-- Focus on table: outline 2px solid #FF7E08
+- Focus on table: outline 2px solid #6366F1
 
 **Edge Cases:**
 - **Long cell content**: Text wraps naturally within cell
@@ -724,9 +724,9 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 
 **CSS Classes:**
 - `.diagram-box`: background: #0D0D15 (very dark), color: #E2E8F0 (light gray), padding: 2rem, border: 1px solid rgba(255,126,8,0.25) (subtle orange border), border-radius: 12px, overflow-x: auto
-- `.diagram-label`: display: block, color: #FF7E08 (orange), font-weight: 600, font-size: 0.85rem, margin-bottom: 1rem, text-transform: uppercase, letter-spacing: 0.5px
+- `.diagram-label`: display: block, color: #6366F1 (orange), font-weight: 600, font-size: 0.85rem, margin-bottom: 1rem, text-transform: uppercase, letter-spacing: 0.5px
 - `pre`: font-family: 'JetBrains Mono', 'Courier New', monospace, font-size: 0.85rem, line-height: 1.4, white-space: pre-wrap
-- `.hl-orange`: color: #FF7E08
+- `.hl-orange`: color: #6366F1
 - `.hl-green`: color: #42D36F
 - `.hl-blue`: color: #2563EB
 - `.hl-teal`: color: #06C8C8
@@ -737,7 +737,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - Semantic `<pre>` tag preserves formatting
 - Color highlights aid visual scanning but don't convey meaning alone
 - Keyboard: overflow handled by browser scrolling
-- Focus: outline 2px solid #FF7E08
+- Focus: outline 2px solid #6366F1
 - Text alternatives: consider alt text for complex diagrams
 
 **Edge Cases:**
@@ -808,7 +808,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **CSS Classes:**
 - `.callout` + `.callout-success`: background: rgba(66,211,111,0.08), border: 1px solid rgba(66,211,111,0.3), border-left: 4px solid #42D36F
 
-**Note:** For semantic success states, use `.sev-low` with yellow (#FFD700).
+**Note:** For semantic success states, use `.sev-low` with yellow (#22D3EE).
 
 ---
 
@@ -855,13 +855,13 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **CSS Classes:**
 - `.checklist`: display: flex, flex-direction: column, gap: 1rem
 - `.checklist-item`: display: flex, align-items: center, gap: 0.8rem, font-weight: 500
-- `.check`: color: #FF7E08 (orange - v4 standard for checkmarks), font-weight: 700
+- `.check`: color: #6366F1 (orange - v4 standard for checkmarks), font-weight: 700
 - `.cross`: color: #DC2626 (red), font-weight: 700
 
 **Accessibility:**
 - Icons plus text convey status
 - Contrast: orange on white = 4.5:1 (meets AA)
-- Focus: outline 2px solid #FF7E08
+- Focus: outline 2px solid #6366F1
 - Screen readers: text reads naturally
 
 ---
@@ -916,7 +916,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 
 **CSS Classes:**
 - `.progress-bar`: background: #E4DED7 (light gray), height: 8px, border-radius: 4px, overflow: hidden
-- `.progress-fill`: background: #FF7E08 (orange), height: 100%, transition: width 0.3s ease
+- `.progress-fill`: background: #6366F1 (orange), height: 100%, transition: width 0.3s ease
 
 **Accessibility:**
 - Use with accompanying text: "65% complete"
@@ -960,14 +960,14 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **CSS Classes:**
 - `.timeline`: display: flex, flex-direction: column, position: relative
 - `.timeline-item`: display: flex, gap: 1.5rem, padding-left: 2rem, position: relative, margin-bottom: 2rem
-- `.timeline-dot`: width: 16px, height: 16px, background: #FF7E08, border-radius: 50%, position: absolute, left: 0, top: 0, border: 2px solid #FFFFFF
+- `.timeline-dot`: width: 16px, height: 16px, background: #6366F1, border-radius: 50%, position: absolute, left: 0, top: 0, border: 2px solid #FFFFFF
 - `.timeline-content`: flex: 1
 - `.timeline-item::before` (connecting line): content: '', position: absolute, left: 7px, top: 24px, bottom: -24px, width: 2px, background: #E4DED7
 
 **Accessibility:**
 - Proper heading hierarchy (h4)
 - Semantic structure with content
-- Focus: outline 2px solid #FF7E08 on dots
+- Focus: outline 2px solid #6366F1 on dots
 
 ---
 
@@ -1002,10 +1002,10 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - `.phase-track`: display: flex, align-items: center, gap: 0.5rem, position: relative
 - `.phase`: display: flex, flex-direction: column, align-items: center, gap: 0.5rem, flex: 1, position: relative
 - `.phase-dot`: width: 12px, height: 12px, border-radius: 50%
-- `.phase.phase-active .phase-dot`: background: #FF7E08
+- `.phase.phase-active .phase-dot`: background: #6366F1
 - `.phase:not(.phase-active) .phase-dot`: background: #E4DED7
 - `.phase::after` (connecting line): content: '', position: absolute, top: 6px, left: calc(50% + 12px), right: -50%, height: 2px, background: #E4DED7
-- `.phase.phase-active::after`: background: #FF7E08
+- `.phase.phase-active::after`: background: #6366F1
 - `.phase-label`: font-size: 0.875rem, text-align: center, color: #000000
 
 ---
@@ -1023,12 +1023,12 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `.grounding-ref`: background: #F4F0EC (gray-100), border-left: 4px solid #FF7E08, padding: 1.5rem, border-radius: 6px, font-size: 0.875rem, color: #333130
+- `.grounding-ref`: background: #F4F0EC (gray-100), border-left: 4px solid #6366F1, padding: 1.5rem, border-radius: 6px, font-size: 0.875rem, color: #333130
 
 **Accessibility:**
 - Links have underline or color change
 - Contrast: dark text on light gray = 9.5:1 (exceeds AA)
-- Focus on links: outline 2px solid #FF7E08
+- Focus on links: outline 2px solid #6366F1
 
 ---
 
@@ -1052,7 +1052,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **CSS Classes:**
 - `.score-ring`: display: flex, flex-direction: column, align-items: center, gap: 1rem
 - `.score-ring-bg`: fill: none, stroke: #E4DED7, stroke-width: 3
-- `.score-ring-fill`: fill: none, stroke: #FF7E08, stroke-width: 3, stroke-linecap: round, transform: rotate(-90deg), transform-origin: 50% 50%
+- `.score-ring-fill`: fill: none, stroke: #6366F1, stroke-width: 3, stroke-linecap: round, transform: rotate(-90deg), transform-origin: 50% 50%
 - `.score-value`: font-size: 1.5rem, font-weight: 700, color: #000000
 - `.score-label`: font-size: 0.875rem, color: #6B6560
 
@@ -1086,7 +1086,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - `.intensity-2`: background: #FFD4B3
 - `.intensity-3`: background: #FFC090
 - `.intensity-4`: background: #FFAD6D
-- `.intensity-5`: background: #FF7E08 (dark orange)
+- `.intensity-5`: background: #6366F1 (dark orange)
 
 **Accessibility:**
 - Color-only visualization: supplement with legend
@@ -1106,7 +1106,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
   <div style="max-width:1100px;margin:0 auto;padding:3.5rem 2rem 2.5rem;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:2rem;">
       <div>
-        <div style="font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;color:#FFFFFF;">metodología<span style="color:#FF7E08;">_</span></div>
+        <div style="font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;color:#FFFFFF;">metodologia<span style="color:#6366F1;">_</span></div>
         <p style="color:rgba(255,255,255,0.7);font-size:0.875rem;margin:0;">Your technology companion</p>
       </div>
       <div style="text-align:right;color:#FFFFFF;">
@@ -1120,7 +1120,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
       </div>
       <div style="text-align:right;color:#FFFFFF;">
         <p style="font-size:0.875rem;font-weight:600;margin:0.25rem 0;">§N Document Title</p>
-        <p style="font-size:0.75rem;color:rgba(255,255,255,0.6);margin:0;">© 2026 MetodologIA</p>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.6);margin:0;">© 2026 MetodologIA · Javier Montaño</p>
       </div>
     </div>
   </div>
@@ -1128,14 +1128,14 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 ```
 
 **CSS Classes:**
-- `footer`: background: #000000 (black), color: #FFFFFF (white), padding: 3.5rem 2rem 2.5rem, border-top: 8px solid #FF7E08 (orange)
+- `footer`: background: #000000 (black), color: #FFFFFF (white), padding: 3.5rem 2rem 2.5rem, border-top: 8px solid #6366F1 (orange)
 - Inner container: max-width: 1100px, margin: 0 auto, display: flex, flex-direction: column
 
 **Accessibility:**
 - Semantic `<footer>` tag
 - High contrast: white text on black = 21:1
 - Links have underline and color
-- Focus: outline 2px solid #FF7E08
+- Focus: outline 2px solid #6366F1
 
 **Edge Cases:**
 - **Mobile**: Padding reduced to 1.5rem, 2-row layout stacks
@@ -1176,7 +1176,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - Text alternatives for icons/images
 - Semantic HTML tags (header, nav, main, section, footer, article)
 - Keyboard navigation support (Tab, Enter, arrow keys)
-- Focus visible outline: 2px solid #FF7E08
+- Focus visible outline: 2px solid #6366F1
 - Proper heading hierarchy (h1 > h2 > h3, no skipping)
 - Form labels associated with inputs
 - ARIA attributes where needed (aria-label, aria-describedby, role)

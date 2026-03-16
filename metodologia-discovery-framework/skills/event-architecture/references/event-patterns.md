@@ -13,10 +13,10 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 
 **Color Palette:**
 ```css
---color-primary: #FF7E08;        /* Orange — primary actions, highlighted elements */
+--color-primary: #6366F1;        /* Orange — primary actions, highlighted elements */
 --color-critical: #DC2626;       /* Red — errors, violations, high-severity issues */
 --color-warning: #D97706;        /* Amber — warnings, caution items, medium severity */
---color-positive: #FFD700;       /* Gold — positive outcomes, recommendations */
+--color-positive: #22D3EE;       /* Gold — positive outcomes, recommendations */
 --color-decorative: #42D36F;     /* Green — decorative only, not semantic status */
 --color-neutral-light: #F3F4F6;  /* Light gray — backgrounds, borders */
 --color-neutral-dark: #1F2937;   /* Dark gray — text, strong contrast */

@@ -1,31 +1,204 @@
-# Changelog
+# Changelog — MAO Framework
 
-All notable changes to the MetodologIA Discovery Framework plugin.
+All notable changes to the MAO Framework plugin (formerly MetodologIA Discovery Framework).
+
+## [12.0.0] — 2026-03-15
+
+### Living Ontology Architecture
+- CLAUDE.md refactored to 119-line routing hub
+- 12 ontology sub-files in `references/ontology/` (living documents)
+- `lessons-learned.md` — auto-updated with session corrections
+- `brand-orchestration.md` — 3-brand detection and isolation rules
+
+### New UX Commands
+- `/mao:menu` — Interactive command palette with pipeline state awareness
+- `/mao:a` — Advance to next pipeline step with gate validation
+- `/mao:demo` — Guided walkthrough of MAO on current repo
+- Command count: 84 → 87
+
+### Canonical Token Unification
+- `references/ontology/canonical-tokens.md` — single source of truth for CSS tokens
+- Validated against Acme Corp production deliverables
+- 27 `--mao-*` custom properties standardized
+- Default light background `#0F172A` (NOT dark, NOT white)
+- Inter as sole font (Clash Grotesk removed)
+- Design System v5 Unified reconciled with v4 Acme Corp tokens
+
+### 3-Brand Orchestration
+- Global CLAUDE.md expanded: MetodologIA + MetodologIA + JM Labs
+- Context auto-detection rules (working directory, keywords, prefix)
+- Brand isolation enforced (NEVER mix)
+- JM Labs personal brand: #14B8A6 teal, "Ideas into systems."
+
+### Plugin Metadata
+- Version bump: 11.0.0 → 12.0.0
+- 48 agents, 100 skills, 87 commands, 13 ontology sub-files
+
+---
+
+## [11.0.0] — 2026-03-14
+
+### Rebrand — MAO Framework (Agentic Gateway to Excellence)
+- **Naming**: "MetodologIA Discovery Framework" → "MAO Framework" across all assets
+- **Identity**: Universal Discovery Framework — tu IDE se convierte en una agencia de discovery
+- **Technical prefix**: `/mao:` se mantiene para backward-compatibility
+
+### Zero-Hallucination Protocol
+- Evidence tagging obligatorio: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
+- Banner de advertencia si >30% es [SUPUESTO]
+- Confidence levels por tag (Alta/Media/Baja)
+- Flag obligatorio en hallazgos severity=CRÍTICO + [SUPUESTO]
+
+### Hook System v2.0
+- **Ghost menu hook**: Navegación contextual persistente en cada artefacto
+- **Session changelog hook**: Registro automático para continuidad ante crisis
+- **Session context hook**: Genera SESSION-README.md + SESSION-CLAUDE.md por repo
+- **PostToolUse hook**: Changelog automático en cada Write/Edit
+- SessionStart mejorado: escaneo + contexto + ghost menu + changelog + priming
+
+### RAG-Priming Enhancement
+- 8 nuevos priming-RAG docs agrupados (agents-roster, commands-reference, skills-catalog, plugin-infrastructure, prompts-library, html-assets, global-ecosystem, adjuntos-policy)
+- Master index de 696+ líneas con inventario completo del ecosistema
+- Política automática de procesamiento de adjuntos
+- `.discovery/` como directorio estándar de sesión
+
+### Design System v5 — Dark Authority
+- Referencia canónica: `references/design-system-v5.md`
+- 10 componentes documentados (nav, hero, cards, badges, buttons, tables, code, modals, stats, ghost-menu)
+- Regla absoluta: gold (#22D3EE) para éxito, NUNCA verde
+- Patrones de composición: landing, one-pager, entregable técnico
+
+### Prompt Library NL-HP v3.0
+- 44 prompts en estilo NL-HP playbook (ROL, OBJETIVO, PROTOCOLO, RESTRICCIONES, CRITERIOS, EDGE CASES, ===params, ===inputs)
+- Versionado: v0 (robustened), v1 (NL-HP)
+- Prompt-library.html actualizado con excerpts NL-HP
+
+### HTML Assets
+- landing.html: MAO branding, v11.0
+- prompt-library.html: MAO branding, NL-HP excerpts, v11.0
+
+### Marketplace
+- marketplace.json actualizado a v2.0.0
+- Plugin registrado como v11.0.0 con keywords MAO
+
+---
+
+## [10.0.0] — 2026-03-14
+
+### Added — Full Roster Merge
+
+**48-Agent Specialist Committee (was 12 in v9.0.0)**
+- Restored 34 domain specialists from previous roster
+- Added 2 new agents: product-strategist, compliance-analyst
+- All 4 service-type agents from v9.0.0 retained: ai-strategist, process-automation-specialist, qa-strategist, transformation-architect
+- Total: 12 core + 36 domain specialists = 48 agents
+
+**100 MOAT Skills (was 59 in v9.0.0)**
+- Restored 19 skills from previous roster
+- Added 22 new skills across 13 domains: compliance-assessment, product-strategy, vendor-assessment, integration-architecture, capacity-planning, disaster-recovery, accessibility-audit, team-topology, migration-playbook, sla-design, incident-management, tech-debt-assessment, dependency-analysis, release-strategy, documentation-architecture, developer-experience, governance-framework, maturity-assessment, sustainability-assessment, competitive-intelligence, poc-lab, onboarding-playbook
+- All 11 service discovery skills from v9.0.0 retained
+- All 9 universalized skills with {TIPO_SERVICIO} retained
+
+**84 Commands (was 21 in v9.0.0)**
+- Restored 61 alias commands from previous roster
+- Added 2 new commands: benchmark-maturity, simulate-scenarios
+- All 4 service-type commands from v9.0.0 retained
+
+### Architecture
+- Full specialist roster + universal services + expanded coverage = best of both worlds
+- 48 agents, 100 skills, 84 commands, 20 priming-RAG files, {TIPO_SERVICIO} (10 values)
+- All v9.0.0 universalization retained: service-type routing, dynamic committee, priming-RAG
+- New CLAUDE.md optimized for agentic pre-sales ecosystem onboarding
+- New landing.html with Authority design principles (dark mode, Minto Pyramid, Neo-Swiss)
+
+---
 
 ## [9.0.0] — 2026-03-14
 
-### Added
-- **{TIPO_SERVICIO} parameter** — universal service routing: SDA (default), QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service
-- **Service Discovery domain** — 11 new skills: rpa-discovery, qa-service-discovery, ai-center-discovery, management-discovery, staff-augmentation-discovery, digital-transformation-discovery, cloud-service-discovery, bi-analytics-discovery, ux-design-discovery, mentoring-training-discovery, mini-apps-discovery
-- **4 new agents**: rpa-analyst, qa-strategist, ai-strategist, transformation-architect
-- **4 Service-Type Discovery commands**: rpa-discovery, qa-discovery, ai-discovery, transformation
-- **13 new Document & Pipeline commands** added to CLAUDE.md Quick Reference: plan, stakeholders, brief, asis, flows, scenarios, roadmap, spec, pitch, handover, express, intermediate, rescue
-- **Dynamic committee composition** — expert panel adapts per {TIPO_SERVICIO} (7-10 members)
-- Auto-detection rules for service type from context (10 priority-ordered rules)
-- `references/service-type-matrix.md` — routing reference for skill activation, committee composition, input requirements by service type
-- `references/priming-rag/` directory with 5 priming-RAG reference files (methodology overview, service models, impact metrics, certifications, contractual models)
+### Added — Universal Services Discovery Platform
+
+**`{TIPO_SERVICIO}` Parameter (10 values)**
+- New routing parameter: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design` | `Digital-Transformation` | `Multi-Service`
+- Auto-detection rules (10-step priority) with user confirmation
+- Full backward compatibility — omitting parameter defaults to SDA behavior
+
+**11 New Service Discovery Skills (MOAT pattern)**
+- `rpa-discovery` — Process landscape, automation readiness scoring, bot architecture (7 sections)
+- `qa-service-discovery` — TMMi assessment, PITT methodology, test factory design (7 sections)
+- `ai-center-discovery` — AI readiness (AI SCALE), use case portfolio, model governance (8 sections)
+- `management-discovery` — PMO maturity, methodology fitness, Factor WOW (7 sections)
+- `staff-augmentation-discovery` — Talent gap, skills matrix, staffing model (6 sections)
+- `digital-transformation-discovery` — Digital maturity, multi-service program design (7 sections)
+- `cloud-service-discovery` — Cloud readiness, DORA metrics, FinOps (6 sections)
+- `bi-analytics-discovery` — Data maturity (DCAM), BI landscape, self-service (7 sections)
+- `ux-design-discovery` — Design maturity, design system, UX research capability (7 sections)
+- `mentoring-training-discovery` — Capability assessment, learning paths, knowledge transfer (6 sections)
+- `mini-apps-discovery` — Citizen developer readiness, low-code platform assessment (6 sections)
+
+**4 New Agents**
+- `process-automation-specialist` — RPA/BPM expert (activated for {TIPO_SERVICIO}=RPA)
+- `ai-strategist` — AI SCALE methodology, MLOps, responsible AI (activated for Data-AI)
+- `qa-strategist` — TMMi, PITT, test factory, ISTQB alignment (activated for QA)
+- `transformation-architect` — Multi-service program design, cross-workstream governance (activated for Digital-Transformation/Multi-Service)
+
+**4 New Shortcut Commands**
+- `rpa-discovery` — RPA & process automation discovery
+- `qa-discovery` — QA-as-a-service discovery
+- `ai-discovery` — AI Center & data platform discovery
+- `transformation` — Digital transformation program discovery
+
+**20 Priming-RAG Knowledge Files**
+- Corporate, SDA, QA, Management, RPA, Data-AI, AI Center, Cloud, SAS capabilities
+- Banking and Retail industry intelligence
+- CoE Management, APM Guidelines, AI SCALE methodology references
+- Service models, impact metrics, certifications, contractual models
+- Service-type routing matrix reference
 
 ### Changed
-- Skill count: 48 → 59 (11 new Service Discovery skills)
-- Domain count: 8 → 9 (new Service Discovery domain)
-- Command count: 4 → 21 (17 new commands in Quick Reference)
-- Agent count: 8 → 12 (4 new service-type agents)
-- plugin.json version: 6.0.0 → 9.0.0 with updated description and keywords
-- Discovery orchestrator: dynamic committee, {TIPO_SERVICIO} integration, service-type-aware input validation
-- 9 universalized skills: asis-analysis, scenario-analysis, solution-roadmap, cost-estimation, stakeholder-mapping, flow-mapping, functional-spec, executive-pitch, discovery-handover (all now service-type-aware)
-- CLAUDE.md: full 21-command Quick Reference, {TIPO_SERVICIO} in Common Parameters, service-type routing orchestration rule
-- Step 3 input validation now service-type-aware with per-type required inputs and workarounds
-- Footer updated to community MetodologIA branding with GPL-3.0 notice
+- **discovery-orchestrator**: 48 → 59 skills, 8 → 9 domains, service-type-aware routing
+- **discovery-conductor**: Step 0 service type detection, dynamic committee (7-10 experts), service-type input validation
+- **asis-analysis**: Universal assessment with 8 service-type variant section sets
+- **cost-estimation**: Universal sizing methods (COCOMO II for SDA only, service-specific methods for others)
+- **flow-mapping**: Context-dependent truth source (not code-only), service-type domain models
+- **functional-spec**: Service-type deliverable inventory and acceptance criteria
+- **software-viability**: Universal viability scale (tools, platforms, methodologies)
+- **testing-strategy**: QA-as-a-service variant (QS1-QS5)
+- **software-architecture, devsecops-architecture, database-architecture**: Scoping notes added
+- **discovery.md, asis.md, flows.md, spec.md**: Added {TIPO_SERVICIO} parameter support
+- **plugin.json**: v7.0.0 → v9.0.0, updated description and keywords
+- **CLAUDE.md**: Added {TIPO_SERVICIO} to Common Parameters, service-type commands to Quick Reference
+
+### Skill Count
+- Previous: 48 skills, 8 agents, 17 commands
+- Current: 59 skills, 12 agents, 21 commands, 20 priming-RAG files
+
+---
+
+## [7.0.0] — 2026-03-12
+
+### Added — NL-HP v3.0 Integration
+- **10 document commands**: `plan`, `stakeholders`, `brief`, `asis`, `flows`, `scenarios`, `roadmap`, `spec`, `pitch`, `handover` — individual deliverable generation following NL-HP v3.0 checkpoint protocol (CP-0→CP-4)
+- **3 pipeline flow commands**: `express` (Go/No-Go, 3 deliverables), `intermediate` (architectural direction, 7 deliverables), full pipeline updated to NL-HP v3.0
+- **1 rescue command**: `rescue` — diagnose, repair, and complete stalled discoveries
+- **Checkpoint model**: CP-0 (Ingesta), CP-1 (Plan), CP-N (Phase), CP-F (Final validation) embedded in all commands
+- **Cross-reference system**: all deliverables linked via `→ See 03_AS-IS § Section` convention
+- **Mermaid diagram catalog**: prescribed diagrams per deliverable (C4Context, sequenceDiagram, gantt, quadrantChart, etc.)
+
+### Changed
+- `discovery` command: rewritten with NL-HP v3.0 full pipeline protocol (completo.md)
+- `discovery-auto` command: rewritten with NL-HP v3.0 autonomous mode (desatendido)
+- `discovery-review` command: rewritten with NL-HP v3.0 audit protocol (revisar.md) — per-deliverable criteria, cross-consistency matrix, verdict system
+- `discovery-improve` command: rewritten with NL-HP v3.0 evolution protocol (evolucionar.md) — delta reporting, preservation rules
+- CLAUDE.md: comprehensive command reference with all 17 commands organized by category
+- Plugin version bumped to 7.0.0
+
+### Architecture
+- Total commands: 17 (was 4) — 10 document + 3 pipeline + 4 operations
+- Total agents: 8 (unchanged)
+- Total skills: 48 (unchanged)
+- NL-HP v3.0 prompts fully integrated into plugin command structure
+- Evidence tagging standard: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA]
+- Quality standard: markdown-excellence with TL;DR, 🟢/🟡/🔴 tables, Mermaid, callouts
 
 ## [6.1.0] — 2026-03-12
 
@@ -56,7 +229,6 @@ All notable changes to the MetodologIA Discovery Framework plugin.
 - 5% innovation margin in cost magnitude outputs
 - Deliverable-specific Mermaid diagram prescriptions (C4, gantt, quadrant, sequence, ER, state)
 - NL-HP v3.0 prompts: 16 rewritten with 10x quality density, cross-references, acceptance criteria
-- Excellence loop applied: MetodologIA prompts reviewed for zero Sofka refs, tighter prose, consistency
 
 ### Changed
 - Skill count: 45 → 46 (added mermaid-diagramming)
@@ -101,24 +273,32 @@ All notable changes to the MetodologIA Discovery Framework plugin.
 - plugin.json version bump to 4.1.0
 - Updated all references from "41 skills" to "42 skills"
 
-## [4.0.0] — 2026-03-12
+## [4.0.0] — 2026-03-11
+
+### Changed
+- License: MIT → GPL-3.0 Copyleft (Comunidad MetodologIA proprietary)
+- plugin.json license field updated to reference LICENSE file
+- README license section updated
+- Version bump to 4.0.0 (breaking: license change)
+
+## [3.0.0] — 2026-03-11
 
 ### Added
 - 30 new specialized skills across 6 domains (architecture, data, cloud/mobile, engineering, consulting, delivery)
 - Skill Catalog in orchestrator: 41 skills organized by domain with expert ownership mapping
 - On-demand skill activation based on discovery findings
 - Expert-to-domain skill ownership matrix
-- Skill-level specialist agents (2+ per skill, 82+ total)
+- 22 new skill-level specialist agents (2 per pipeline skill)
 - `settings.json` with discovery-conductor as default agent
-- `hooks/hooks.json` with SessionStart announcement
-- `LICENSE` (GPL-3.0 — Copyleft)
+- `LICENSE`
+- `CHANGELOG.md`
+- Author attribution on all files: Javier Montaño
 
 ### Changed
-- License: Copyleft (GPL-3.0) — derivatives must remain open source
-- plugin.json updated to v4.0.0 with complete metadata and copyleft keywords
-- All skills rebranded from Sofka namespace to MetodologIA namespace
-- README updated with 41-skill catalog and copyleft license section
-- Excellence loop applied: validated against official Claude Code plugin specification
+- Orchestrator evolved: committee declaration, discovery plan, input management, industry SME activation
+- Conductor agent expanded: initialization duties, committee management, plan maintenance
+- `/discovery` and `/discovery-auto` commands updated with full initialization protocol
+- `plugin.json` updated to v3.0.0 with complete metadata
 
 ## [2.0.0] — 2026-03-11
 
@@ -140,4 +320,4 @@ All notable changes to the MetodologIA Discovery Framework plugin.
 - 3 quality gates
 - Inter-phase data contracts
 
-**Autor:** Javier Montaño | MetodologIA
+**Autor:** Javier Montaño | Comunidad MetodologIA

@@ -13,10 +13,10 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 
 **Color Palette:**
 ```css
---color-primary: #FF7E08;        /* Orange — primary actions, highlighted elements */
+--color-primary: #6366F1;        /* Orange — primary actions, highlighted elements */
 --color-critical: #DC2626;       /* Red — high risk, critical vulnerabilities, non-compliant */
 --color-warning: #D97706;        /* Amber — medium risk, partial compliance */
---color-positive: #FFD700;       /* Gold — compliant, mitigated, secure */
+--color-positive: #22D3EE;       /* Gold — compliant, mitigated, secure */
 --color-decorative: #42D36F;     /* Green — decorative only, not semantic status */
 --color-neutral-light: #F3F4F6;  /* Light gray — backgrounds, borders */
 --color-neutral-dark: #1F2937;   /* Dark gray — text, strong contrast */
@@ -85,35 +85,35 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
     <div style="background: white; padding: 12px 16px; border-radius: 4px; display: flex; align-items: center; gap: 12px;">
       <span style="font-weight: 600; min-width: 160px; font-size: 13px; color: #1F2937;">Identity</span>
       <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-        <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+        <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
       </div>
       <span style="font-size: 12px; font-weight: 600; color: #1F2937; min-width: 80px; text-align: right;">[Level]: [X]%</span>
     </div>
     <div style="background: white; padding: 12px 16px; border-radius: 4px; display: flex; align-items: center; gap: 12px;">
       <span style="font-weight: 600; min-width: 160px; font-size: 13px; color: #1F2937;">Devices</span>
       <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-        <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+        <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
       </div>
       <span style="font-size: 12px; font-weight: 600; color: #1F2937; min-width: 80px; text-align: right;">[Level]: [X]%</span>
     </div>
     <div style="background: white; padding: 12px 16px; border-radius: 4px; display: flex; align-items: center; gap: 12px;">
       <span style="font-weight: 600; min-width: 160px; font-size: 13px; color: #1F2937;">Network</span>
       <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-        <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+        <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
       </div>
       <span style="font-size: 12px; font-weight: 600; color: #1F2937; min-width: 80px; text-align: right;">[Level]: [X]%</span>
     </div>
     <div style="background: white; padding: 12px 16px; border-radius: 4px; display: flex; align-items: center; gap: 12px;">
       <span style="font-weight: 600; min-width: 160px; font-size: 13px; color: #1F2937;">Applications</span>
       <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-        <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+        <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
       </div>
       <span style="font-size: 12px; font-weight: 600; color: #1F2937; min-width: 80px; text-align: right;">[Level]: [X]%</span>
     </div>
     <div style="background: white; padding: 12px 16px; border-radius: 4px; display: flex; align-items: center; gap: 12px;">
       <span style="font-weight: 600; min-width: 160px; font-size: 13px; color: #1F2937;">Data</span>
       <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-        <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+        <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
       </div>
       <span style="font-size: 12px; font-weight: 600; color: #1F2937; min-width: 80px; text-align: right;">[Level]: [X]%</span>
     </div>
@@ -175,7 +175,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
         <strong style="font-size: 13px; color: #1F2937;">User / Client</strong>
       </div>
       <span style="color: #6B7280; font-size: 20px;">--></span>
-      <div style="padding: 12px 16px; background: #FFF8F0; border: 2px solid #FF7E08; border-radius: 4px; min-width: 120px; text-align: center;">
+      <div style="padding: 12px 16px; background: #FFF8F0; border: 2px solid #6366F1; border-radius: 4px; min-width: 120px; text-align: center;">
         <strong style="font-size: 13px; color: #1F2937;">Identity Provider</strong>
         <p style="margin: 4px 0 0; font-size: 11px; color: #6B7280;">[OAuth 2.0 / OIDC]</p>
       </div>

@@ -80,7 +80,7 @@ ELSE IF component == "data visualization":
 #### Color Tokens
 ```
 IF status/semantic (critical/warning/positive/info):
-  Positive/Success → #FFD700 (yellow) NOT #42D36F (green)
+  Positive/Success → #22D3EE (yellow) NOT #42D36F (green)
   Warning → #D97706 (amber)
   Critical/Error → #DC2626 (red)
   Info → #2563EB (blue)
@@ -92,16 +92,16 @@ ELSE IF decorative (charts, data viz):
   Pink → #FE9CAB (charts only)
 
 ELSE IF neutral/brand:
-  Primary → #FF7E08 (orange - accents, borders)
+  Primary → #6366F1 (orange - accents, borders)
   Text → #000000 (black)
-  Background → #FFFFFF (white) or #EFEAE4 (light)
+  Background → #FFFFFF (white) or #0F172A (light)
   Dark mode → #000000 (black bg, white text)
 
 ELSE IF severity indicator:
   Critical → #DC2626 (red bg, white text)
   High → #EA580C (orange bg, white text)
   Medium → #D97706 (amber bg, BLACK text for WCAG AA)
-  Low → #FFD700 (yellow bg, black text per v4)
+  Low → #22D3EE (yellow bg, black text per v4)
 ```
 
 #### Typography Tokens
@@ -295,7 +295,7 @@ Label: small, muted (0.875rem)
 </section>
 ```
 
-Number: 60×60px, black bg, orange text (#FF7E08), zero-padded
+Number: 60×60px, black bg, orange text (#6366F1), zero-padded
 
 #### Pattern 10: Checklist
 ```html
@@ -309,7 +309,7 @@ Number: 60×60px, black bg, orange text (#FF7E08), zero-padded
 </div>
 ```
 
-Check: orange (#FF7E08)
+Check: orange (#6366F1)
 Cross: red (#DC2626)
 
 ---
@@ -411,8 +411,8 @@ Before outputting, verify:
 ```
 FOR the HTML snippet:
   ☐ All color values match canonical tokens (or rgba variants)
-  ☐ Severity low uses #FFD700 (yellow), not #42D36F (green)
-  ☐ All checkmarks use #FF7E08 (orange)
+  ☐ Severity low uses #22D3EE (yellow), not #42D36F (green)
+  ☐ All checkmarks use #6366F1 (orange)
   ☐ Font families correct: Clash Grotesk (headings), Inter (body)
   ☐ Typography scale matches reference (h1, h2, h3, p, small)
   ☐ Spacing follows tokens (2rem, 1.5rem, 1rem gaps)
@@ -483,7 +483,7 @@ Generate markdown with this structure:
 - [key]: [action]
 
 **Focus Management:**
-- Focus outline: 2px solid #FF7E08
+- Focus outline: 2px solid #6366F1
 - Tab order: [logical sequence]
 
 **Semantic HTML:**
@@ -548,12 +548,12 @@ Use with `section-header` for section numbering:
 ## Key Rules for All Components
 
 1. **Always Check v4 Semantic Rule**:
-   - Success/positive = #FFD700 (yellow), NOT #42D36F (green)
-   - Checkmarks = #FF7E08 (orange), NOT green
+   - Success/positive = #22D3EE (yellow), NOT #42D36F (green)
+   - Checkmarks = #6366F1 (orange), NOT green
    - Severity-medium = #D97706 background with #000000 (BLACK) text for WCAG AA
 
 2. **Color Hierarchy**:
-   - Primary/Brand: #FF7E08 (orange)
+   - Primary/Brand: #6366F1 (orange)
    - Semantic states: yellow (success), amber (warning), red (critical), blue (info)
    - Decorative: green, teal, violet, pink for charts only
 
@@ -570,13 +570,13 @@ Use with `section-header` for section numbering:
 
 5. **Accessibility Always**:
    - Minimum contrast 4.5:1 for normal text, 3:1 for large text
-   - Focus visible: 2px solid #FF7E08
+   - Focus visible: 2px solid #6366F1
    - Semantic HTML: proper tags, heading hierarchy
    - Skip links, ARIA attributes, alt text
 
 6. **Patterns from Real Deliverables**:
    - Use exact patterns from existing MetodologIA Deep HTML documents
-   - Hero with "metodología<span>_</span>" logo
+   - Hero with "metodologia<span>_</span>" logo
    - Diagram boxes with #0D0D15 background and monospace
    - Tables wrapped in .table-wrap with overflow
    - Cards with shadow-card and border-radius-lg
@@ -605,7 +605,7 @@ Request: "Data flow diagram"
 → Generate: diagram-box with ASCII art, colored highlights
 
 Request: "Success state indicator"
-→ Generate: badge-yellow or sev-low with #FFD700 background
+→ Generate: badge-yellow or sev-low with #22D3EE background
 ```
 
 ---

@@ -1,5 +1,5 @@
 ---
-name: solution-roadmap
+name: metodologia-solution-roadmap
 description: >
   Complete transformation roadmap with phased execution, investment horizon, team ramp-up,
   risk-adjusted timeline, and estimation pivot points. Use when the user asks to "create a roadmap",

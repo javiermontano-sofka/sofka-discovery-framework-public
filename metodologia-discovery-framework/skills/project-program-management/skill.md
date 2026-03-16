@@ -1,5 +1,6 @@
 ---
-name: project-program-management
+name: metodologia-project-program-management
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
   dependency control, and proposal QA validation across the entire discovery pipeline. Use when

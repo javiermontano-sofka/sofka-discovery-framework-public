@@ -15,7 +15,7 @@ allowed-tools:
   - Bash
 ---
 
-> **Alcance:** Este skill es especifico para `{TIPO_SERVICIO}=SDA` (Software Development & Architecture). Para arquitectura en otros tipos de servicio, consulte `enterprise-architecture` (vision empresarial), `solutions-architecture` (integracion E2E), `infrastructure-architecture` (infraestructura), o el skill de discovery especifico del tipo de servicio.
+> **Alcance:** Este skill es específico para `{TIPO_SERVICIO}=SDA` (Software Development & Architecture). Para arquitectura en otros tipos de servicio, consulte `enterprise-architecture` (visión empresarial), `solutions-architecture` (integración E2E), `infrastructure-architecture` (infraestructura), o el skill de discovery específico del tipo de servicio.
 
 # Software Architecture: Internal System Structure & Design Decisions
 
@@ -23,13 +23,13 @@ Software architecture defines how code is organized internally — module bounda
 
 ## Principio Rector
 
-**La arquitectura es la decision que mas cuesta cambiar despues.** Por eso se documenta ANTES de implementar, se valida contra quality attributes medibles, y cada decision vive en un ADR con alternatives y trade-offs. Arquitectura implicita es deuda garantizada.
+**La arquitectura es la decisión que más cuesta cambiar después.** Por eso se documenta ANTES de implementar, se valida contra quality attributes medibles, y cada decisión vive en un ADR con alternatives y trade-offs. Arquitectura implícita es deuda garantizada.
 
-### Filosofia de Arquitectura de Software
+### Filosofía de Arquitectura de Software
 
-1. **Decisiones explicitas > convenciones implicitas.** Si no hay un ADR, no hay una decision — hay una casualidad que se confundira con intencion.
-2. **Quality attributes mandan.** Los patterns sirven a los atributos de calidad (performance, modifiability, availability), no al reves. CQRS sin necesidad de performance es complejidad gratuita.
-3. **Deuda tecnica es una decision, no un accidente.** Se documenta, se prioriza, se paga. Ignorarla no la elimina — la capitaliza.
+1. **Decisiones explícitas > convenciones implícitas.** Si no hay un ADR, no hay una decisión — hay una casualidad que se confundirá con intención.
+2. **Quality attributes mandan.** Los patterns sirven a los atributos de calidad (performance, modifiability, availability), no al revés. CQRS sin necesidad de performance es complejidad gratuita.
+3. **Deuda técnica es una decisión, no un accidente.** Se documenta, se prioriza, se paga. Ignorarla no la elimina — la capitaliza.
 
 ## Inputs
 
@@ -37,12 +37,12 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para analisis de estructura y patterns, HITL para ADRs y decisiones de refactoring.
-  - **desatendido**: Cero interrupciones. Arquitectura documentada automaticamente. Supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint en pattern selection y ADRs.
-  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolucion.
+  - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de refactoring.
+  - **desatendido**: Cero interrupciones. Arquitectura documentada automáticamente. Supuestos documentados.
+  - **supervisado**: Autónomo con checkpoint en pattern selection y ADRs.
+  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 module view + S3 patterns + S5 ADRs) | `tecnica` (full 6 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 module view + S3 patterns + S5 ADRs) | `técnica` (full 6 sections, default)
 
 Before generating architecture, detect the codebase context:
 
@@ -73,10 +73,10 @@ Read ${CLAUDE_SKILL_DIR}/references/quality-attributes.md
 
 ## When NOT to Use
 
-- End-to-end solution design across multiple systems -> **metodologia-solutions-architecture**
-- Enterprise portfolio alignment and capability mapping -> **metodologia-enterprise-architecture**
-- Infrastructure, compute, storage, and platform design -> **metodologia-infrastructure-architecture**
-- CI/CD pipelines and supply chain security -> **metodologia-devsecops-architecture**
+- End-to-end solution design across multiple systems → **metodologia-solutions-architecture**
+- Enterprise portfolio alignment and capability mapping → **metodologia-enterprise-architecture**
+- Infrastructure, compute, storage, and platform design → **metodologia-infrastructure-architecture**
+- CI/CD pipelines and supply chain security → **metodologia-devsecops-architecture**
 
 ---
 
@@ -261,7 +261,7 @@ Before finalizing delivery, verify:
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
@@ -274,4 +274,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** ADR repository (.md files, version-controlled), module structure diagram (PNG/SVG), quality attribute scenario checklist.
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

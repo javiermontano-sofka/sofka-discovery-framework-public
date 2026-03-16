@@ -9,7 +9,7 @@
 Used by clarity-reviewer to display 5-dimension evaluation.
 
 ```html
-<div style="border: 2px solid #FF7E08; border-radius: 8px; padding: 24px; background: white; margin: 20px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+<div style="border: 2px solid #6366F1; border-radius: 8px; padding: 24px; background: white; margin: 20px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
   <h3 style="margin: 0 0 16px 0; color: #1F2937; font-size: 18px;">📋 Readability Scorecard</h3>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
@@ -198,7 +198,7 @@ Used by adoption-evaluator to identify resistance-creating assumptions.
         <strong>Resistance Trigger:</strong> CTO reads this, thinks "Naive estimate; implementation is always messier." Becomes skeptical of entire proposal.<br/>
         <strong>Affected Stakeholder:</strong> CTO (technical risk aversion)
       </p>
-      <div style="background: white; padding: 10px; border-radius: 4px; margin-top: 8px; border-left: 3px solid #FFD700;">
+      <div style="background: white; padding: 10px; border-radius: 4px; margin-top: 8px; border-left: 3px solid #22D3EE;">
         <p style="margin: 0; font-size: 12px; color: #4B5563;">
           <strong>Fix:</strong> "Implementation will proceed smoothly IF prerequisites are met (vendor capability verified, team trained). We plan 2-week buffer for unforeseen issues (vendor API incompatibility, data reconciliation delays). Contingency: rollback to legacy gateway in <4 hours if critical issues emerge."
         </p>
@@ -264,15 +264,15 @@ Used in mixed-audience deliverables to help readers choose their path.
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
     <!-- Executive Path -->
-    <div style="padding: 16px; background: white; border-radius: 4px; border: 2px solid #FF7E08; cursor: pointer;">
-      <p style="margin: 0 0 8px 0; font-size: 12px; font-weight: bold; color: #FF7E08;">
+    <div style="padding: 16px; background: white; border-radius: 4px; border: 2px solid #6366F1; cursor: pointer;">
+      <p style="margin: 0 0 8px 0; font-size: 12px; font-weight: bold; color: #6366F1;">
         👔 FOR EXECUTIVES (5 min)
       </p>
       <ul style="margin: 0; padding-left: 16px; font-size: 11px; color: #4B5563;">
-        <li><a href="#exec-summary" style="color: #FF7E08; text-decoration: none;">Executive Summary</a></li>
-        <li><a href="#metrics" style="color: #FF7E08; text-decoration: none;">Key Metrics & ROI</a></li>
-        <li><a href="#recommendation" style="color: #FF7E08; text-decoration: none;">Recommendation</a></li>
-        <li><a href="#approval" style="color: #FF7E08; text-decoration: none;">Approval Needed</a></li>
+        <li><a href="#exec-summary" style="color: #6366F1; text-decoration: none;">Executive Summary</a></li>
+        <li><a href="#metrics" style="color: #6366F1; text-decoration: none;">Key Metrics & ROI</a></li>
+        <li><a href="#recommendation" style="color: #6366F1; text-decoration: none;">Recommendation</a></li>
+        <li><a href="#approval" style="color: #6366F1; text-decoration: none;">Approval Needed</a></li>
       </ul>
     </div>
 
@@ -353,10 +353,10 @@ Used by clarity-reviewer to show final assessment.
 
 | Color | Hex | Usage |
 |-------|-----|-------|
-| Primary Accent | #FF7E08 | Executive/user-centric content, buttons |
+| Primary Accent | #6366F1 | Executive/user-centric content, buttons |
 | Warning | #D97706 | Medium-priority issues, micro-adjustments |
 | Alert | #DC2626 | High-priority issues, adoption barriers |
-| Positive | #FFD700 | Fixes, recommended actions, green checkmarks |
+| Positive | #22D3EE | Fixes, recommended actions, green checkmarks |
 | Decorative (Tech) | #3B82F6 | Developer/technical content |
 | Decorative (BA) | #8B5CF6 | Business Analyst content |
 

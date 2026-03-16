@@ -46,14 +46,14 @@ This reference contains HTML templates and visualizations for quality engineerin
 
   <!-- Target Maturity (orange outline) -->
   <polygon points="200,56 345,130 310,290 90,290 55,130"
-           fill="none" stroke="#FF7E08" stroke-width="2" stroke-dasharray="5,5"/>
+           fill="none" stroke="#6366F1" stroke-width="2" stroke-dasharray="5,5"/>
 
   <!-- Legend -->
   <g transform="translate(20, 360)">
     <line x1="0" y1="0" x2="20" y2="0" stroke="#42d36f" stroke-width="2"/>
     <text x="25" y="5" font-size="11">Current (Level 2)</text>
 
-    <line x1="0" y1="15" x2="20" y2="15" stroke="#FF7E08" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="0" y1="15" x2="20" y2="15" stroke="#6366F1" stroke-width="2" stroke-dasharray="5,5"/>
     <text x="25" y="20" font-size="11">Target (Level 4)</text>
   </g>
 </svg>
@@ -93,7 +93,7 @@ This reference contains HTML templates and visualizations for quality engineerin
 
   <!-- API Tests (upper middle) -->
   <polygon points="100,150 200,150 175,100 125,100"
-           fill="#FFD700" opacity="0.8" stroke="#b8860b" stroke-width="2"/>
+           fill="#22D3EE" opacity="0.8" stroke="#b8860b" stroke-width="2"/>
   <text x="150" y="130" font-size="12" font-weight="bold" text-anchor="middle">
     API Tests (15%)
   </text>
@@ -156,9 +156,9 @@ This reference contains HTML templates and visualizations for quality engineerin
 
   <!-- Contract Tests (upper sides) -->
   <polygon points="50,120 70,120 100,60 80,50"
-           fill="#FFD700" opacity="0.8" stroke="#b8860b" stroke-width="2"/>
+           fill="#22D3EE" opacity="0.8" stroke="#b8860b" stroke-width="2"/>
   <polygon points="250,120 230,120 200,60 220,50"
-           fill="#FFD700" opacity="0.8" stroke="#b8860b" stroke-width="2"/>
+           fill="#22D3EE" opacity="0.8" stroke="#b8860b" stroke-width="2"/>
   <text x="70" y="85" font-size="10" font-weight="bold" text-anchor="middle">Contract</text>
   <text x="230" y="85" font-size="10" font-weight="bold" text-anchor="middle">(30%)</text>
 
@@ -217,7 +217,7 @@ This reference contains HTML templates and visualizations for quality engineerin
 
   <!-- Stage 3: Nightly Gate -->
   <g transform="translate(390, 40)">
-    <rect width="120" height="80" fill="#FFD700" opacity="0.8" stroke="#b8860b" stroke-width="2" rx="4"/>
+    <rect width="120" height="80" fill="#22D3EE" opacity="0.8" stroke="#b8860b" stroke-width="2" rx="4"/>
     <text x="60" y="25" font-size="12" font-weight="bold" text-anchor="middle">Nightly Gate</text>
     <text x="60" y="45" font-size="10" text-anchor="middle">E2E + API</text>
     <text x="60" y="60" font-size="10" text-anchor="middle">+ Performance</text>
@@ -294,9 +294,9 @@ This reference contains HTML templates and visualizations for quality engineerin
     </div>
 
     <!-- KPI Card 3 -->
-    <div class="kpi-card" style="border: 2px solid #FFD700; padding: 20px; border-radius: 8px;">
+    <div class="kpi-card" style="border: 2px solid #22D3EE; padding: 20px; border-radius: 8px;">
       <h3>Flaky Tests</h3>
-      <div class="metric" style="font-size: 48px; font-weight: bold; color: #FFD700;">
+      <div class="metric" style="font-size: 48px; font-weight: bold; color: #22D3EE;">
         1.2%
       </div>
       <div class="trend" style="color: #22c55e; font-size: 14px;">
@@ -508,10 +508,10 @@ This reference contains HTML templates and visualizations for quality engineerin
             <div style="width: 25px; height: 20px; background-color: #e5e7eb;"></div>
             <div style="width: 25px; height: 20px; background-color: #e5e7eb;"></div>
             <div style="width: 25px; height: 20px; background-color: #e5e7eb;"></div>
-            <div style="width: 25px; height: 20px; background-color: #FFD700;"></div>
-            <div style="width: 25px; height: 20px; background-color: #FFD700;"></div>
-            <div style="width: 25px; height: 20px; background-color: #FFD700;"></div>
-            <div style="width: 25px; height: 20px; background-color: #FFD700;"></div>
+            <div style="width: 25px; height: 20px; background-color: #22D3EE;"></div>
+            <div style="width: 25px; height: 20px; background-color: #22D3EE;"></div>
+            <div style="width: 25px; height: 20px; background-color: #22D3EE;"></div>
+            <div style="width: 25px; height: 20px; background-color: #22D3EE;"></div>
           </div>
           <span style="font-size: 12px; color: #666;">Weeks 9-12</span>
         </td>
@@ -568,9 +568,9 @@ Quality Engineering uses a consistent color scheme:
 ```
 Primary Green (Success):    #42d36f (RGB: 66, 211, 111)
 Primary Red (Alert):        #DC2626 (RGB: 220, 38, 38)
-Primary Orange (Warning):   #FF7E08 (RGB: 255, 126, 8)
+Primary Orange (Warning):   #6366F1 (RGB: 255, 126, 8)
 Primary Amber (Caution):    #D97706 (RGB: 217, 119, 6)
-Primary Yellow (Info):      #FFD700 (RGB: 255, 215, 0)
+Primary Yellow (Info):      #22D3EE (RGB: 255, 215, 0)
 Neutral Gray:               #d1d5db (RGB: 209, 213, 219)
 Light Gray (Background):    #f3f4f6 (RGB: 243, 244, 246)
 ```

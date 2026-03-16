@@ -11,60 +11,60 @@ Discovery Conductor — activa `discovery-orchestrator` en modo rescate: diagnos
 
 ### CP-0 · Triage
 1. Escanea los entregables existentes proporcionados por el usuario o en el directorio de trabajo.
-2. Si hay codigo disponible: registrar como fuente de evidencia.
+2. Si hay código disponible: registrar como fuente de evidencia.
 3. Genera inventario de triage:
 
 ```
 TRIAGE DE DISCOVERY
-===================
-| Entregable               | Status | Calidad |
-|--------------------------|--------|---------|
-| 00_Discovery_Plan        | [S/N]  | [X]%    |
-| 01_Stakeholder_Map       | [S/N]  | [X]%    |
-| 02_Brief_Tecnico         | [S/N]  | [X]%    |
-| 03_Analisis_AS-IS        | [S/N]  | [X]%    |
-| 04_Mapeo_Flujos          | [S/N]  | [X]%    |
-| 05_Escenarios_ToT        | [S/N]  | [X]%    |
-| 06_Solution_Roadmap      | [S/N]  | [X]%    |
-| 07_Spec_Funcional        | [S/N]  | [X]%    |
-| 08_Pitch_Ejecutivo       | [S/N]  | [X]%    |
-| 09_Handover              | [S/N]  | [X]%    |
+═══════════════════
+| Entregable               | Status    | Calidad |
+|--------------------------|-----------|---------|
+| 00_Discovery_Plan        | ✅/❌/⚠️ | [X]%    |
+| 01_Stakeholder_Map       | ✅/❌/⚠️ | [X]%    |
+| 02_Brief_Tecnico         | ✅/❌/⚠️ | [X]%    |
+| 03_Analisis_AS-IS        | ✅/❌/⚠️ | [X]%    |
+| 04_Mapeo_Flujos          | ✅/❌/⚠️ | [X]%    |
+| 05_Escenarios_ToT        | ✅/❌/⚠️ | [X]%    |
+| 06_Solution_Roadmap      | ✅/❌/⚠️ | [X]%    |
+| 07_Spec_Funcional        | ✅/❌/⚠️ | [X]%    |
+| 08_Pitch_Ejecutivo       | ✅/❌/⚠️ | [X]%    |
+| 09_Handover              | ✅/❌/⚠️ | [X]%    |
 ```
 
-4. Clasifica: mantener, reparar, generar.
+4. Clasifica: ✅ mantener, ⚠️ reparar, ❌ generar.
 
-### CP-1 · Diagnostico y Plan de Rescate
+### CP-1 · Diagnóstico y Plan de Rescate
 1. Inferir causa del estancamiento: input faltante, gate no aprobado, scope creep, cambio de prioridades, calidad insuficiente.
-2. Generar plan de rescate con causa raiz, entregables a reparar/generar, fases a re-ejecutar, gates pendientes.
+2. Generar plan de rescate con causa raíz, entregables a reparar/generar, fases a re-ejecutar, gates pendientes.
 
-### CP-2 · Reparacion
-Por cada entregable a reparar: leer, evaluar, generar version reparada COMPLETA (no patches). Validar contra entregables existentes. Verificar CERO precios.
+### CP-2 · Reparación
+Por cada ⚠️: leer, evaluar, generar versión reparada COMPLETA (no patches). Validar contra entregables ✅ existentes. Verificar CERO precios.
 
 ### CP-3 · Completar Fases Faltantes
-Por cada entregable faltante: activar orchestrator para la fase correspondiente. Usar outputs existentes como inputs. Gates: HITL si piloto-auto.
+Por cada ❌: activar orchestrator para la fase correspondiente. Usar outputs existentes como inputs. Gates: HITL si piloto-auto.
 Pipeline: 0 → 1 → 2 → 3 → [G1] → 3b → 4 → [G2] → 5a + 5b → [G3] → 6.
 
 ### CP-4 · Entrega
 ```
 DISCOVERY RESCATADO — [proyecto]
-=================================
-| Categoria   | Cantidad | Detalle |
+═════════════════════════════════
+| Categoría   | Cantidad | Detalle |
 |-------------|----------|---------|
 | Mantenidos  | [N]      | [lista] |
 | Reparados   | [N]      | [lista] |
 | Generados   | [N]      | [lista] |
 
 Score global: [X]%
-Causa raiz: [resumen]
-Gates: G1 [status] G2 [status] G3 [status]
+Causa raíz: [resumen]
+Gates: G1 [✅/⏸] G2 [✅/⏸] G3 [✅/⏸]
 Estado: DISCOVERY RESCATADO
 ```
 
 ## RESTRICCIONES
 - NUNCA descartar trabajo existente. Reparar > reemplazar.
-- Si codigo contradice entregable: priorizar codigo, marcar discrepancia.
+- Si código contradice entregable: priorizar código, marcar discrepancia.
 - CERO precios — solo magnitudes en FTE-meses.
-- Sin codigo fuente: marcar "[REQUIERE CODEBASE]" y continuar.
-- Estandar markdown-excellence.
+- Sin código fuente: marcar "[REQUIERE CODEBASE]" y continuar.
+- Estándar markdown-excellence.
 
 Si el usuario proporciona "$ARGUMENTS", usarlos como ruta a entregables y/o contexto.

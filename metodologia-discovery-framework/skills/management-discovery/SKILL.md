@@ -1,11 +1,11 @@
 ---
-name: management-discovery
+name: metodologia-management-discovery
 description: >
-  Management and consulting discovery — PMO maturity assessment (OPM3/P3M3), methodology fitness evaluation,
-  team capability analysis, governance model assessment, delivery performance baseline, service excellence
-  assessment (Factores de Excelencia), and management transformation roadmap.
+  Management and consulting discovery — PMO maturity assessment, methodology fitness evaluation, team capability
+  analysis, governance model assessment, delivery performance baseline, Factor WOW assessment, and management
+  transformation roadmap.
   Use when the user asks to "assess PMO maturity", "evaluate project management practices", "management discovery",
-  "methodology assessment", "governance evaluation", "delivery performance analysis", "service excellence assessment",
+  "methodology assessment", "governance evaluation", "delivery performance analysis", "Factor WOW assessment",
   "management transformation", "agile maturity", "SAFe assessment", "PMO setup", or mentions "Disciplined Agile",
   "delivery excellence", "management consulting", "project governance", "ceremony health".
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Management Discovery — PMO Maturity Assessment & Transformation Roadmap
 
-Genera un assessment de 7 secciones para servicios de management y consultoria: evaluacion de madurez del PMO (basada en OPM3/P3M3 publicos), fitness metodologico, capacidades del equipo, modelo de governance, baseline de performance de delivery, assessment de Factores de Excelencia en Servicio, y roadmap de transformacion. Disenado para encontrar el punto exacto donde la disciplina metodologica se adapta al contexto organizacional sin perder rigor.
+Genera un assessment de 7 secciones para servicios de management y consultoria: evaluacion de madurez del PMO, fitness metodologico, capacidades del equipo, modelo de governance, baseline de performance de delivery, assessment de Factor WOW, y roadmap de transformacion. Diseñado para encontrar el punto exacto donde la disciplina metodologica se adapta al contexto organizacional sin perder rigor.
 
 ## Principio Rector
 
@@ -27,7 +27,7 @@ Genera un assessment de 7 secciones para servicios de management y consultoria: 
 
 1. **No existe una metodologia universalmente correcta.** Agile no es siempre la respuesta. Waterfall no es siempre el problema. El assessment evalua el fit entre metodologia y contexto (equipo, complejidad, stakeholders, regulacion) antes de recomendar cambios.
 2. **Las metricas sin contexto son peligrosas.** La velocidad de un equipo no se compara con la de otro. El cycle time de un proyecto regulado no se compara con el de un MVP. Cada metrica se interpreta dentro de su contexto operativo.
-3. **Los Factores de Excelencia en Servicio son el diferenciador.** Responsabilidad, Iniciativa, Coordinacion, Anticipacion y Proactividad no son soft skills — son competencias medibles que separan delivery excelente de delivery aceptable.
+3. **Factor WOW es el diferenciador.** Responsabilidad, Alta Iniciativa, Coordinacion Impecable, Anticipacion y Proactividad no son soft skills — son competencias medibles que separan delivery excelente de delivery aceptable.
 
 ## Inputs
 
@@ -38,19 +38,13 @@ Parse from `$ARGUMENTS`.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para analisis de metricas y herramientas, HITL para evaluacion de governance y factores de excelencia.
+  - **piloto-auto**: Auto para analisis de metricas y herramientas, HITL para evaluacion de governance y Factor WOW.
   - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
   - **paso-a-paso**: Confirma antes de cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S5, S7 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `Management` (fixed for this skill)
-
-If reference materials exist, load them:
-
-```
-Read ${CLAUDE_SKILL_DIR}/references/
-```
 
 ## Input Requirements
 
@@ -111,11 +105,11 @@ Read ${CLAUDE_SKILL_DIR}/references/
 
 ## 7-Section Framework
 
-### S1: PMO Maturity Assessment (OPM3/P3M3)
+### S1: PMO Maturity Assessment
 
-Evaluacion de madurez del PMO basada en modelos publicos OPM3 (PMI) y P3M3 (AXELOS).
+Evaluacion de madurez del PMO en 4 niveles.
 
-**Niveles de madurez (CMMI-compatible):**
+**Niveles de madurez:**
 
 | Nivel | Nombre | Caracteristicas |
 |---|---|---|
@@ -124,7 +118,7 @@ Evaluacion de madurez del PMO basada en modelos publicos OPM3 (PMI) y P3M3 (AXEL
 | L3 | Managed | Metricas cuantitativas, mejora continua, portfolio management, resource optimization |
 | L4 | Optimized | Predictive analytics, innovation culture, strategic alignment, continuous learning |
 
-**Assessment por 5 dimensiones (P3M3):**
+**Assessment por 5 dimensiones:**
 
 | Dimension | Score (1-5) | Evidencia | Gap vs Target |
 |---|---|---|---|
@@ -168,13 +162,15 @@ Inventario de capacidades y gaps del equipo.
 
 | Certificacion | Categoria | Cantidad | % del Equipo |
 |---|---|---|---|
-| PMP | Traditional PM (PMI) | ... | ... |
-| CSM / CSPO | Scrum (Scrum Alliance) | ... | ... |
-| PSM / PSPO | Scrum (Scrum.org) | ... | ... |
-| PMI-ACP | Agile PM (PMI) | ... | ... |
+| PMP | Traditional PM | ... | ... |
+| CSM | Scrum | ... | ... |
+| SMPC | Scrum Master | ... | ... |
+| ACPC | Agile Coach | ... | ... |
+| PMI-ACP | Agile PM | ... | ... |
+| DTPC | Design Thinking | ... | ... |
+| KMP | Kanban | ... | ... |
 | SAFe (SPC/SA/RTE) | Scaled Agile | ... | ... |
-| KMP | Kanban (Kanban University) | ... | ... |
-| PRINCE2 | Project Management (AXELOS) | ... | ... |
+| OKRCPC | OKR | ... | ... |
 
 **Distribucion de experiencia:**
 
@@ -235,15 +231,15 @@ Baseline de performance de delivery con metricas cuantitativas.
 
 **Interpretacion contextual:** Cada metrica interpretada dentro del contexto del equipo (tamano, complejidad, regulacion). No se comparan equipos entre si.
 
-**Trend analysis:** Si hay datos historicos (6+ meses), identificar tendencias.
+**Trend analysis:** Si hay datos historicos (6+ meses), identificar tendencias. Mejorar, estable o deteriorar.
 
-### S6: Service Excellence Assessment (Factores de Excelencia en Servicio)
+### S6: Factor WOW Assessment
 
-Evaluacion de las 5 dimensiones de excelencia en servicio — modelo generico abierto basado en principios de service management (ITIL), operational excellence (Lean), y competencias de delivery.
+Evaluacion de las 5 dimensiones del Factor WOW de MetodologIA.
 
-**Dimensiones de Excelencia en Servicio:**
+**Dimensiones Factor WOW:**
 
-| Dimension | Score (1-5) | Evidencia | Gap |
+| Dimension | Score (1-5) | Evidencia | Gap vs Estandar MetodologIA |
 |---|---|---|---|
 | **Responsabilidad** | ... | Ownership de entregables, accountability, cumplimiento de compromisos | ... |
 | **Alta Iniciativa** | ... | Proactividad en identificar problemas y soluciones, ir mas alla de lo pedido | ... |
@@ -256,24 +252,10 @@ Evaluacion de las 5 dimensiones de excelencia en servicio — modelo generico ab
 - Score sin evidencia = maximo 2
 - Evidencia contradictoria = score promedio con flag
 
-**Indicadores medibles por dimension:**
-- **Responsabilidad:** % compromisos cumplidos en fecha, frecuencia de escalacion proactiva, transparencia en reporting
-- **Alta Iniciativa:** Propuestas de mejora por ciclo, problemas identificados antes de escalacion, soluciones implementadas sin supervision
-- **Coordinacion:** Tasa de re-trabajo por handoffs defectuosos, tiempo de respuesta cross-equipo, calidad de documentacion compartida
-- **Anticipacion:** Ratio riesgos identificados / riesgos materializados, lead time de alertas, planes de contingencia preparados vs improvisados
-- **Proactividad:** Mejoras implementadas por ciclo, participacion en retrospectivas, adopcion de nuevas practicas
-
-**Scoring:**
-
-| Score | Nivel | Descripcion |
-|---|---|---|
-| 5 | Excepcional | Referente. Comportamiento consistente. Inspira a otros |
-| 4 | Avanzado | Comportamiento habitual. Pocas excepciones. Auto-correccion |
-| 3 | Competente | Comportamiento presente pero inconsistente. Requiere refuerzo |
-| 2 | Emergente | Comportamiento ocasional. Requiere coaching activo |
-| 1 | Inicial | Comportamiento ausente o contrario. Requiere intervencion |
-
-**Objetivo:** Score minimo de 4.0 en promedio, ninguna dimension por debajo de 3.0. Dimensiones por debajo de 3.0 = plan de desarrollo requerido.
+**Gap analysis vs estandar MetodologIA:**
+- Score objetivo MetodologIA: 4.0+ en todas las dimensiones
+- Dimensiones por debajo de 3.0 = accion correctiva requerida
+- Plan de desarrollo por dimension con gap significativo
 
 ### S7: Management Transformation Roadmap
 
@@ -292,8 +274,8 @@ Hoja de ruta de transformacion de management en 3 horizontes.
 - Delivery performance improvement (cycle time reduction, predictability increase)
 
 **Horizonte 3 — Strategic (9-18 meses):**
-- PMO maturity advancement (avanzar al siguiente nivel OPM3/P3M3)
-- Factores de Excelencia adoption (cultura de excelencia operativa)
+- PMO maturity advancement (avanzar al siguiente nivel)
+- Factor WOW adoption (cultura de excelencia operativa)
 - Predictive management (forecasting, portfolio optimization)
 - Continuous improvement culture (data-driven decisions, innovation time)
 
@@ -301,7 +283,7 @@ Hoja de ruta de transformacion de management en 3 horizontes.
 - Metricas target por fase
 - Certificaciones a obtener
 - Governance maturity target
-- Factores de Excelencia score target
+- Factor WOW score target
 
 **Indicadores de magnitud (NOT prices):**
 - FTE-meses de consultoria por horizonte
@@ -309,7 +291,7 @@ Hoja de ruta de transformacion de management en 3 horizontes.
 - Licencias de herramientas (cantidad, tipo)
 - Certificaciones (numero, tipo)
 
-> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico de la organizacion.
+> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico del cliente.
 
 ## Escalation to Human Architect
 
@@ -322,12 +304,12 @@ Hoja de ruta de transformacion de management en 3 horizontes.
 
 ## Validation Gate
 
-- [ ] PMO maturity level identificado con evidencia por dimension (OPM3/P3M3)
+- [ ] PMO maturity level identificado con evidencia por dimension
 - [ ] Methodology fitness evaluado con fit-to-context por factor
 - [ ] Inventario de certificaciones y capability gaps documentado
 - [ ] Governance model evaluado con health score y ceremony assessment
 - [ ] Delivery performance baseline con metricas cuantitativas y benchmarks
-- [ ] Factores de Excelencia evaluados con evidencia por dimension y gap analysis
+- [ ] Factor WOW evaluado con evidencia por dimension y gap analysis
 - [ ] Roadmap en 3 horizontes con milestones y metricas target
 - [ ] Magnitudes de inversion documentadas (NUNCA precios) con disclaimer
 - [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
@@ -335,14 +317,14 @@ Hoja de ruta de transformacion de management en 3 horizontes.
 
 ## Output Artifact
 
-**Primary:** `Management_Discovery_{project}.md` — Assessment completo de 7 secciones con evaluacion de madurez PMO, fitness metodologico, capacidades de equipo, governance, delivery performance, Factores de Excelencia, y roadmap de transformacion.
+**Primary:** `Management_Discovery_{project}.md` — Assessment completo de 7 secciones con evaluacion de madurez PMO, fitness metodologico, capacidades de equipo, governance, delivery performance, Factor WOW, y roadmap de transformacion.
 
 **Diagramas incluidos:**
 - Radar chart de madurez PMO por dimension
 - Heatmap de methodology fitness por factor de contexto
 - Dashboard de delivery performance (metricas key)
-- Radar chart de Factores de Excelencia por dimension
+- Radar chart de Factor WOW por dimension
 - Roadmap de transformacion (gantt)
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño · Comunidad MetodologIA | **Ultima actualizacion:** 14 de marzo de 2026

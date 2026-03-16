@@ -1,0 +1,122 @@
+%% Knowledge Graph — input-analysis skill
+%% Sofka Discovery Framework
+%% Autor: Javier Montaño | Fecha: 13 de marzo de 2026
+%% © Sofka Technologies
+
+graph LR
+
+    %% ── INPUTS ──────────────────────────────────────────
+    subgraph INPUTS["📥 INPUTS"]
+        rawText["Texto crudo<br/>del usuario"]
+        convContext["Contexto de<br/>conversación"]
+        attachments["Adjuntos<br/>mencionados"]
+        emotionalSignals["Señales<br/>emocionales"]
+    end
+
+    %% ── PASSES ──────────────────────────────────────────
+    subgraph PASSES["🔬 CINCO PASES"]
+        pass1["Pase 1<br/>Superficie"]
+        pass2["Pase 2<br/>5 Porqués"]
+        pass3["Pase 3<br/>7 Entonces-qués"]
+        pass4["Pase 4<br/>Intención"]
+        pass5["Pase 5<br/>Reformulación"]
+    end
+
+    %% ── PATTERNS ────────────────────────────────────────
+    subgraph PATTERNS["🔍 PATRONES DE DETECCIÓN"]
+        dyslexia["Dislexia<br/>inversiones b/d, p/q"]
+        haste["Afán<br/>abreviaciones extremas"]
+        orthography["Ortografía<br/>fonética, tildes"]
+        punctuation["Puntuación<br/>ausencia, exceso"]
+        syntax["Sintaxis<br/>fragmentos, run-on"]
+        autocorrect["Autocorrect<br/>sustituciones"]
+        spanglish["Spanglish<br/>mezcla es-en"]
+    end
+
+    %% ── OUTPUTS ─────────────────────────────────────────
+    subgraph OUTPUTS["📤 OUTPUTS"]
+        correctedText["Texto<br/>corregido"]
+        rootCause["Causa raíz<br/>identificada"]
+        valueChain["Cadena de<br/>impacto"]
+        gapAnalysis["Análisis de<br/>brechas"]
+        reformulated["Prompt<br/>reformulado"]
+    end
+
+    %% ── STANDARDS ───────────────────────────────────────
+    subgraph STANDARDS["📐 ESTÁNDARES"]
+        nlp["NLP<br/>Procesamiento<br/>de lenguaje"]
+        uxWriting["UX Writing<br/>Microcopy"]
+        plainLang["Plain Language<br/>Lenguaje claro"]
+    end
+
+    %% ── CONSUMERS ───────────────────────────────────────
+    subgraph CONSUMERS["🎯 CONSUMIDORES"]
+        orchestrator["discovery-<br/>orchestrator"]
+        pipelineSkills["Skills del<br/>pipeline"]
+        excellenceLoop["excellence-<br/>loop"]
+    end
+
+    %% ── AGENTS ──────────────────────────────────────────
+    subgraph AGENTS["👤 AGENTES"]
+        conductor["discovery-<br/>conductor<br/>(owner)"]
+        riskController["risk-<br/>controller"]
+    end
+
+    %% ── RELACIONES: Inputs → Passes ────────────────────
+    rawText -->|alimenta| pass1
+    convContext -->|contexto para| pass2
+    convContext -->|referencia| pass4
+    attachments -->|enriquece| pass4
+    emotionalSignals -->|informa| pass4
+
+    %% ── RELACIONES: Passes secuenciales ────────────────
+    pass1 -->|texto limpio| pass2
+    pass2 -->|causa raíz| pass3
+    pass3 -->|calibración| pass4
+    pass4 -->|brechas| pass5
+
+    %% ── RELACIONES: Patterns → Pase 1 ─────────────────
+    dyslexia -->|detectado en| pass1
+    haste -->|detectado en| pass1
+    orthography -->|detectado en| pass1
+    punctuation -->|detectado en| pass1
+    syntax -->|detectado en| pass1
+    autocorrect -->|detectado en| pass1
+    spanglish -->|detectado en| pass1
+
+    %% ── RELACIONES: Passes → Outputs ───────────────────
+    pass1 -->|produce| correctedText
+    pass2 -->|produce| rootCause
+    pass3 -->|produce| valueChain
+    pass4 -->|produce| gapAnalysis
+    pass5 -->|produce| reformulated
+
+    %% ── RELACIONES: Outputs → Consumers ────────────────
+    reformulated -->|input para| orchestrator
+    reformulated -->|alimenta| pipelineSkills
+    reformulated -->|validado por| excellenceLoop
+
+    %% ── RELACIONES: Standards → Passes ─────────────────
+    nlp -.->|fundamenta| pass1
+    nlp -.->|fundamenta| pass4
+    uxWriting -.->|guía| pass5
+    plainLang -.->|guía| pass5
+
+    %% ── RELACIONES: Agents ─────────────────────────────
+    conductor -->|activa y gobierna| pass1
+    conductor -->|escala decisiones| riskController
+    riskController -.->|valida gate| reformulated
+
+    %% ── ESTILOS ─────────────────────────────────────────
+    classDef sofkaPrimary fill:#FF7E08,stroke:#1A1A2E,stroke-width:2px,color:#FFFFFF
+    classDef sofkaDark fill:#1A1A2E,stroke:#FF7E08,stroke-width:2px,color:#FFFFFF
+    classDef sofkaSuccess fill:#FFD700,stroke:#1A1A2E,stroke-width:2px,color:#1A1A2E
+    classDef sofkaLight fill:#FFF3E0,stroke:#FF7E08,stroke-width:1px,color:#1A1A2E
+
+    class rawText,convContext,attachments,emotionalSignals sofkaPrimary
+    class pass1,pass2,pass3,pass4,pass5 sofkaDark
+    class dyslexia,haste,orthography,punctuation,syntax,autocorrect,spanglish sofkaLight
+    class correctedText,rootCause,valueChain,gapAnalysis,reformulated sofkaSuccess
+    class nlp,uxWriting,plainLang sofkaLight
+    class orchestrator,pipelineSkills,excellenceLoop sofkaPrimary
+    class conductor,riskController sofkaDark

@@ -20,6 +20,7 @@ allowed-tools:
 
 The single entry point for every MetodologIA discovery engagement. Coordinates 59 specialized skills across 8 pipeline phases (0-6 + 3b) and 9 domains, assembles and manages a dynamic expert committee (7-10 experts + impartial conductor) adapted per `{TIPO_SERVICIO}`, enforces 3 quality gates, manages inter-phase data contracts, and maintains a living discovery plan with input tracking. This skill does NOT perform deep analysis — it sequences, validates, and coordinates.
 
+
 ## Service Type Parameter
 
 `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design` | `Digital-Transformation` | `Multi-Service`
@@ -42,13 +43,13 @@ Always confirm detected service type with user before proceeding.
 
 ## Principio Rector
 
-**El discovery sin orquestacion es un conjunto de analisis inconexos disfrazados de consultoria.** Este skill impone secuencia, validacion y trazabilidad sobre el pipeline completo: cada fase tiene un responsable, cada gate tiene criterios, cada contrato de datos se verifica. La orquestacion es lo que convierte 59 skills individuales en un programa de consultoria confiable.
+**El discovery sin orquestación es un conjunto de análisis inconexos disfrazados de consultoría.** Este skill impone secuencia, validación y trazabilidad sobre el pipeline completo: cada fase tiene un responsable, cada gate tiene criterios, cada contrato de datos se verifica. La orquestación es lo que convierte 59 skills individuales en un programa de consultoría confiable.
 
-### Filosofia de Orquestacion
+### Filosofía de Orquestación
 
-1. **Secuencia con proposito.** Cada fase existe porque la anterior la alimenta. Saltar fases no es eficiencia — es riesgo no gestionado.
-2. **Contratos, no confianza.** Los data contracts entre fases se verifican explicitamente. La confianza se construye con evidencia, no con supuestos.
-3. **El conductor no analiza.** Coordinacion pura. Las opiniones tecnicas son de los expertos. El conductor secuencia, valida y escala.
+1. **Secuencia con propósito.** Cada fase existe porque la anterior la alimenta. Saltar fases no es eficiencia — es riesgo no gestionado.
+2. **Contratos, no confianza.** Los data contracts entre fases se verifican explícitamente. La confianza se construye con evidencia, no con supuestos.
+3. **El conductor no analiza.** Coordinación pura. Las opiniones técnicas son de los expertos. El conductor secuencia, valida y escala.
 
 ## Skill Catalog (59 skills across 9 domains)
 
@@ -132,13 +133,14 @@ Always confirm detected service type with user before proceeding.
 | ux-writing | Microcopy, readability, content standards |
 | roadmap-poc | PoC/MVP sprint planning, kickoff protocol |
 
+
 ### Service Discovery (11 skills — universal service coverage)
 | Skill | Purpose |
 |-------|---------|
 | rpa-discovery | Process landscape, automation scoring, bot architecture |
 | qa-service-discovery | TMMi assessment, test factory, QA CoE design |
-| ai-center-discovery | AI readiness (AI Adoption Lifecycle), use case portfolio, model governance |
-| management-discovery | PMO maturity, methodology fitness, Factores de Excelencia en Servicio |
+| ai-center-discovery | AI readiness (AI SCALE), use case portfolio, model governance |
+| management-discovery | PMO maturity, methodology fitness, Factor WOW |
 | staff-augmentation-discovery | Talent gap, skills matrix, staffing model |
 | digital-transformation-discovery | Digital maturity, multi-service program design |
 | cloud-service-discovery | Cloud readiness, DORA metrics, FinOps |
@@ -232,12 +234,11 @@ Before any analysis begins, execute this protocol. Every discovery starts here �
 
 ### Step 1: Declare the Expert Committee
 
-Assemble the dynamic committee for this specific discovery. The committee composition adapts based on `{TIPO_SERVICIO}`. Present to the user:
+Assemble the dream team for this specific discovery. Present to the user:
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║  DISCOVERY COMMITTEE — [Project Name]                       ║
-║  Service Type: {TIPO_SERVICIO}                              ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
 ║  CONDUCTOR (Impartial Orchestrator)                          ║
@@ -245,7 +246,7 @@ Assemble the dynamic committee for this specific discovery. The committee compos
 ║  ├── Does NOT analyze — only coordinates                     ║
 ║  └── Breaks ties via evidence, escalates judgment to user    ║
 ║                                                              ║
-║  EXPERT PANEL (7-10 members — adapted per service type)      ║
+║  EXPERT PANEL (7 members — odd for consensus)                ║
 ║  ├── Technical Architect                                     ║
 ║  │   └── System design, patterns, quality attributes, C4    ║
 ║  ├── Domain Analyst (SME)                                    ║
@@ -260,13 +261,6 @@ Assemble the dynamic committee for this specific discovery. The committee compos
 ║  │   └── Data architecture, governance, migration paths      ║
 ║  └── Change Catalyst                                         ║
 ║      └── Org readiness, adoption strategy, training plans    ║
-║                                                              ║
-║  + SERVICE-SPECIFIC EXPERTS (activated by TIPO_SERVICIO)     ║
-║  ├── [QA] QA Strategist → test strategy, automation, TMMi   ║
-║  ├── [RPA] Process Automation Specialist → bots, mining      ║
-║  ├── [Data-AI] AI Strategist → ML models, AI readiness       ║
-║  ├── [UX-Design] UX Researcher → usability, user research    ║
-║  └── [Digital-Transformation] Transformation Architect       ║
 ║                                                              ║
 ║  CROSS-CUTTING GOVERNANCE (active all phases)                ║
 ║  ├── Project & Program Management (PMO backbone)             ║
@@ -284,13 +278,11 @@ Generate a living discovery plan document:
 ```markdown
 # Discovery Plan: [Project Name]
 Generated: [date] | Variant: [full/minimal/quick] | Estimated: [timeline]
-Service Type: {TIPO_SERVICIO}
 
 ## Engagement Context
 - Client: [name]
 - System: [name + brief description]
 - Industry: [sector — activates SME lens]
-- Service Type: {TIPO_SERVICIO}
 - Codebase: [path or "not provided"]
 - Stakeholders: [available/limited/unknown]
 
@@ -399,7 +391,6 @@ Domain skills beyond the core pipeline activate when:
 3. **Phase 3 scenario requires** — Modernization scenario needs mobile → activate mobile-architecture
 4. **Phase 4 roadmap detail** — Roadmap includes security hardening → activate security-architecture
 5. **User requests depth** — "Deep-dive into API design" → activate api-architecture
-6. **Service type requires** — {TIPO_SERVICIO}=RPA → activate rpa-discovery; =QA → activate qa-service-discovery
 
 ### On-Demand Role Clarification
 
@@ -523,7 +514,7 @@ After scenario approval, validate the chosen scenario before committing resource
 4. Vendor risk: funding, retention, lock-in, exit cost
 5. Produce viability scorecard: SUBSTANCIA / PROMESA VIABLE / RIESGO ALTO / HUMO
 
-**CHECKPOINT 3b:** Present combined verdict. If any technology = HUMO or feasibility = NOT FEASIBLE → HOLD. Options: (a) pivot to alternative scenario, (b) replace technology, (c) run spikes in Sprint 0. Do NOT proceed to Phase 4 with unresolved blockers.
+**CHECKPOINT 3b:** Present combined verdict. If any technology = 🔴 HUMO or feasibility = NOT FEASIBLE → HOLD. Options: (a) pivot to alternative scenario, (b) replace technology, (c) run spikes in Sprint 0. Do NOT proceed to Phase 4 with unresolved 🔴.
 
 ### Gate 2: Budget & Roadmap Approval (after Phase 4 — HARD STOP)
 
@@ -554,7 +545,7 @@ Before presenting Gate 3 to the client, run the governance and risk validation:
 3. Financial controls status: contingency, innovation margin, magnitude drift
 4. Proposal hardening: disclosures, red lines, confidence bands
 
-**PROPOSAL QA CHECKPOINT:** Proposal QA composite >=3.5/5.0 AND Risk profile != CRITICAL → proceed to Gate 3. Otherwise: remediate before presenting to client. NEVER send a proposal that fails QA.
+**PROPOSAL QA CHECKPOINT:** Proposal QA composite ≥3.5/5.0 AND Risk profile ≠ CRITICAL → proceed to Gate 3. Otherwise: remediate before presenting to client. NEVER send a proposal that fails QA.
 
 ### Gate 3: Final Approval (after Proposal QA)
 
@@ -562,7 +553,7 @@ Before presenting Gate 3 to the client, run the governance and risk validation:
 |-----------|------------------|
 | All deliverables populated | File manifest check |
 | Cross-references consistent | Phase 4 tech ↔ Phase 3 scenario ↔ Phase 1 metrics |
-| Proposal QA passed | QA scorecard >=3.5/5.0, no dimension <3 |
+| Proposal QA passed | QA scorecard ≥3.5/5.0, no dimension <3 |
 | Risk assessment complete | Risk controller final assessment delivered |
 | Client approved | User confirmation |
 
@@ -575,13 +566,13 @@ Once Gate 3 is approved, invoke `discovery-handover` to generate the operational
 1. Ask user: recipient is **Operaciones**, **Comercial**, or **Ambos** (default: Ambos)
 2. Validate all 7 discovery deliverables exist (01-08 files)
 3. Generate `09_Handover_Operaciones.html` with 8 sections:
-   - S1: Resumen Ejecutivo de Transicion
-   - S2: Paquete de Activacion Comercial (pricing, proposal narrative, closing timeline)
+   - S1: Resumen Ejecutivo de Transición
+   - S2: Paquete de Activación Comercial (pricing, proposal narrative, closing timeline)
    - S3: Checklist de Readiness Operacional (team, infra, accesos)
-   - S4: Plan de Kickoff — Primeros 90 Dias (Sprint 0 + Sprints 1-6)
-   - S5: Protocolo de Transicion de Gobernanza (roles, ceremonias, escalation)
-   - S6: Tracker de Validacion de Supuestos y Riesgos (assumptions, early warnings, kill criteria)
-   - S7: Matriz de Transicion de Stakeholders (discovery roles → execution roles)
+   - S4: Plan de Kickoff — Primeros 90 Días (Sprint 0 + Sprints 1-6)
+   - S5: Protocolo de Transición de Gobernanza (roles, ceremonias, escalation)
+   - S6: Tracker de Validación de Supuestos y Riesgos (assumptions, early warnings, kill criteria)
+   - S7: Matriz de Transición de Stakeholders (discovery roles → execution roles)
    - S8: Anexos y Referencias Cruzadas
 
 **Data Contract Phase 5 → Phase 6:**
@@ -674,7 +665,6 @@ After each phase, present:
 ║  PIPELINE STATUS — [Project Name]                           ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Phase [N] of [total]: [COMPLETE / IN PROGRESS / PENDING]   ║
-║  Service Type: {TIPO_SERVICIO}                              ║
 ║  Acceptance Criteria: [X/Y passed]                          ║
 ║  Active Experts: [list]                                     ║
 ║  Assumptions Made: [count] (see assumptions log)            ║
@@ -728,35 +718,35 @@ El orquestador es el receptor primario de los 16 prompts NL-HP v3.0. Cada prompt
 | `intermedio` | discovery-orchestrator | asis→scenario→feasibility→roadmap→pitch→handover | G1+G2 |
 | `express` | discovery-orchestrator | asis→scenario→pitch | — |
 | `revisar` | project-program-management (S5) | risk-controlling-dynamics, discovery-orchestrator | — |
-| `evolucionar` | discovery-orchestrator | skill del entregable especifico | — |
-| `rescatar` | discovery-orchestrator | skills segun fases faltantes | segun estado |
+| `evolucionar` | discovery-orchestrator | skill del entregable específico | — |
+| `rescatar` | discovery-orchestrator | skills según fases faltantes | según estado |
 
-### Protocolo de Recepcion de Prompt
+### Protocolo de Recepción de Prompt
 
-1. **Identificar prompt**: Detectar cual de los 16 prompts se esta ejecutando.
+1. **Identificar prompt**: Detectar cuál de los 16 prompts se está ejecutando.
 2. **Activar skill primario**: Invocar el skill correspondiente con sus agentes.
 3. **Activar governance**: `project-program-management` (tracking) + `risk-controlling-dynamics` (scanning).
-4. **Verificar pre-requisitos**: Inputs de fases anteriores segun Inter-Phase Data Contracts.
-5. **Ejecutar segun MODO**: Respetar el modo de interaccion declarado en el prompt.
-6. **Producir output**: Segun Output Artifact del skill primario, en el FORMATO solicitado.
+4. **Verificar pre-requisitos**: Inputs de fases anteriores según Inter-Phase Data Contracts.
+5. **Ejecutar según MODO**: Respetar el modo de interacción declarado en el prompt.
+6. **Producir output**: Según Output Artifact del skill primario, en el FORMATO solicitado.
 7. **Registrar en governance**: Actualizar phase status en P-01 y risk register en P-02.
 
 ## Asset Inventory
 
 Cada skill produce outputs de referencia en su directorio `examples/`:
 
-| Skill | Example Asset | Descripcion |
+| Skill | Example Asset | Descripción |
 |-------|--------------|-------------|
-| asis-analysis | `examples/sample-output.md` | Analisis AS-IS 10 secciones — Acme Corp Banking |
+| asis-analysis | `examples/sample-output.md` | Análisis AS-IS 10 secciones — Acme Corp Banking |
 | stakeholder-mapping | `examples/sample-output.md` | Stakeholder map con RACI — Acme Corp Banking |
-| flow-mapping | `examples/sample-output.md` | Taxonomia DDD + 8 flujos E2E — Acme Corp Banking |
+| flow-mapping | `examples/sample-output.md` | Taxonomía DDD + 8 flujos E2E — Acme Corp Banking |
 | scenario-analysis | `examples/sample-output.md` | 3 escenarios ToT con scoring 6D — Acme Corp Banking |
 | technical-feasibility | `examples/sample-output.md` | Feasibility 6D con spikes — Acme Corp Banking |
 | software-viability | `examples/sample-output.md` | Viability forensics con scorecard — Acme Corp Banking |
 | solution-roadmap | `examples/sample-output.md` | Roadmap 5 fases con Monte Carlo — Acme Corp Banking |
 | cost-estimation | `examples/sample-output.md` | Cost drivers + magnitudes — Acme Corp Banking |
 | commercial-model | `examples/sample-output.md` | Modelo comercial con deal canvas — Acme Corp Banking |
-| functional-spec | `examples/sample-output.md` | Modulos + 8 UC + 6 BR — Acme Corp Banking |
+| functional-spec | `examples/sample-output.md` | Módulos + 8 UC + 6 BR — Acme Corp Banking |
 | executive-pitch | `examples/sample-output.md` | Business case C-level — Acme Corp Banking |
 | discovery-handover | `examples/sample-output.md` | Handover package con plan 90d — Acme Corp Banking |
 | project-program-management | `examples/sample-output.md` | P-01 Governance dashboard — Acme Corp Banking |
@@ -787,13 +777,11 @@ Cada skill produce outputs de referencia en su directorio `examples/`:
 | Budget not approved at G2 | Generate Phase 5b only for budget justification pitch |
 | Multiple competing architectures | Activate all experts for consensus; document as additional scenarios in Phase 3 |
 | Vendor lock-in detected in Phase 1 | Flag in risk register; add migration cost estimates; include unlock scenario in Phase 3 |
-| Service type mismatch mid-discovery | Re-evaluate {TIPO_SERVICIO}; adjust committee composition; re-validate prior deliverables |
 
 ## Validation Gate
 
 - [ ] Discovery plan generated with complete input registry before Phase 1
 - [ ] Expert committee declared and presented to user
-- [ ] Service type ({TIPO_SERVICIO}) confirmed with user
 - [ ] Industry SME lens activated for engagement
 - [ ] All phases in selected variant completed with validated outputs
 - [ ] Inter-phase data contracts satisfied at every transition
@@ -815,4 +803,4 @@ Cada skill produce outputs de referencia en su directorio `examples/`:
 - Expert allocation matrix
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

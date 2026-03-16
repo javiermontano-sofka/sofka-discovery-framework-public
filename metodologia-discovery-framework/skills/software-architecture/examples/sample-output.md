@@ -4,7 +4,7 @@
 **Cliente:** Acme Corp
 **Fecha:** 12 de marzo de 2026
 **Variante:** Tecnica (full)
-**Autor:** Javier Montano — MetodologIA
+**Autor:** Javier Montano — Comunidad MetodologIA
 
 ---
 
@@ -199,4 +199,4 @@ sequenceDiagram
 
 ---
 
-*Generado por metodologia-software-architecture v6.0 — MetodologIA*
+*Generado por metodologia-software-architecture v6.0 — Comunidad MetodologIA*

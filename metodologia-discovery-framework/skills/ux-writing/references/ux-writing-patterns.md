@@ -5,7 +5,7 @@ description: HTML templates for callout box types, section summary card, table w
 
 # UX Writing Patterns — HTML Templates
 
-Reference patterns for applying UX writing standards. All templates use design tokens: #FF7E08 (orange key insight), #DC2626 (red warning), #D97706 (amber decision), #FFD700 (gold success), #42D36F (green positive).
+Reference patterns for applying UX writing standards. All templates use design tokens: #6366F1 (orange key insight), #DC2626 (red warning), #D97706 (amber decision), #22D3EE (gold success), #42D36F (green positive).
 
 ---
 
@@ -19,7 +19,7 @@ Reference patterns for applying UX writing standards. All templates use design t
 
 ```html
 <div style="
-  border-left: 4px solid #FF7E08;
+  border-left: 4px solid #6366F1;
   background: #fff7ed;
   padding: 12px;
   border-radius: 4px;
@@ -27,7 +27,7 @@ Reference patterns for applying UX writing standards. All templates use design t
 ">
   <div style="
     font-weight: 600;
-    color: #FF7E08;
+    color: #6366F1;
     font-size: 12px;
     margin-bottom: 6px;
     text-transform: uppercase;
@@ -119,7 +119,7 @@ Reference patterns for applying UX writing standards. All templates use design t
 
 ```html
 <div style="
-  border-left: 4px solid #FFD700;
+  border-left: 4px solid #22D3EE;
   background: #fef9e7;
   padding: 12px;
   border-radius: 4px;
@@ -127,7 +127,7 @@ Reference patterns for applying UX writing standards. All templates use design t
 ">
   <div style="
     font-weight: 600;
-    color: #FFD700;
+    color: #22D3EE;
     font-size: 12px;
     margin-bottom: 6px;
     text-transform: uppercase;

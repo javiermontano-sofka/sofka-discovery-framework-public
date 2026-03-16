@@ -5,7 +5,7 @@ description: HTML templates and visual patterns for event storming board, story 
 
 # Functional Tools Patterns — HTML Templates
 
-Reference patterns for visualizing and structuring functional analysis artifacts. All templates use design tokens: #FF7E08 (orange), #DC2626 (red), #D97706 (amber), #FFD700 (gold), #42D36F (green).
+Reference patterns for visualizing and structuring functional analysis artifacts. All templates use design tokens: #6366F1 (orange), #DC2626 (red), #D97706 (amber), #22D3EE (gold), #42D36F (green).
 
 ---
 
@@ -28,7 +28,7 @@ Reference patterns for visualizing and structuring functional analysis artifacts
   <!-- Legend -->
   <div style="display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap;">
     <div style="display: flex; align-items: center; gap: 8px;">
-      <div style="width: 24px; height: 24px; background: #FF7E08; border-radius: 4px;"></div>
+      <div style="width: 24px; height: 24px; background: #6366F1; border-radius: 4px;"></div>
       <span style="font-size: 13px; color: #4b5563;">Domain Event</span>
     </div>
     <div style="display: flex; align-items: center; gap: 8px;">
@@ -58,7 +58,7 @@ Reference patterns for visualizing and structuring functional analysis artifacts
     <!-- Card 1: Event -->
     <div style="
       background: white;
-      border-left: 4px solid #FF7E08;
+      border-left: 4px solid #6366F1;
       padding: 12px;
       border-radius: 4px;
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
@@ -66,7 +66,7 @@ Reference patterns for visualizing and structuring functional analysis artifacts
       <div style="
         font-size: 11px;
         font-weight: 600;
-        color: #FF7E08;
+        color: #6366F1;
         margin-bottom: 4px;
         text-transform: uppercase;
       ">Event</div>
@@ -794,9 +794,9 @@ Reference patterns for visualizing and structuring functional analysis artifacts
       <div style="font-size: 11px; color: #6b7280;">High</div>
       <div style="font-size: 20px; font-weight: 700; color: #D97706;">4</div>
     </div>
-    <div style="background: white; padding: 12px; border-radius: 4px; border-left: 4px solid #FFD700;">
+    <div style="background: white; padding: 12px; border-radius: 4px; border-left: 4px solid #22D3EE;">
       <div style="font-size: 11px; color: #6b7280;">Medium</div>
-      <div style="font-size: 20px; font-weight: 700; color: #FFD700;">3</div>
+      <div style="font-size: 20px; font-weight: 700; color: #22D3EE;">3</div>
     </div>
   </div>
 
@@ -928,7 +928,7 @@ Reference patterns for visualizing and structuring functional analysis artifacts
 
 ## Usage Notes
 
-- All templates use semantic color coding: Green (#42D36F) for positive outcomes, Red (#DC2626) for rejection/critical, Orange (#FF7E08, #D97706) for attention, Gold (#FFD700) for decorative/boundaries
+- All templates use semantic color coding: Green (#42D36F) for positive outcomes, Red (#DC2626) for rejection/critical, Orange (#6366F1, #D97706) for attention, Gold (#22D3EE) for decorative/boundaries
 - Templates are responsive (use `grid` with `minmax` for mobile compatibility)
 - Copy HTML directly into MetodologIA deliverable documents or render via markdown-to-HTML conversion
 - All values in templates are examples; replace with actual data from your project

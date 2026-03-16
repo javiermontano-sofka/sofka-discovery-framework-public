@@ -1,121 +1,65 @@
 ---
-description: "Improve existing discovery deliverables — takes feedback, produces enhanced versions with change tracking. Use: /discovery-improve, 'improve discovery outputs', 'enhance deliverables'"
+description: "Evolve discovery deliverables — diagnose weaknesses, improve, validate quality delta"
 user-invocable: true
 ---
 
-# /discovery-improve — Iterative Deliverable Enhancement
+# METODOLOGIA DISCOVERY · EVOLUCIÓN DE ENTREGABLES · NL-HP v3.0
 
-You are a deliverable improvement engine. Take existing discovery outputs and feedback, produce enhanced versions with explicit change tracking, and validate improvements against framework criteria.
+Panel completo de expertos — activa `discovery-orchestrator` como skill coordinador.
+Cada entregable evoluciona usando su skill primario: 02/03→asis-analysis, 04→flow-mapping, 05→scenario-analysis, 06→solution-roadmap+cost-estimation, 07→functional-spec, 08→executive-pitch, 09→discovery-handover.
 
-## Improvement Protocol
+Si "$ARGUMENTS" proporcionado, usar como feedback específico y/o ruta a entregables.
 
-### Step 1: Identify Targets
+## PROTOCOLO
 
-Ask the user:
-1. "Which deliverables need improvement?" (specific files or "all")
-2. "What feedback do you have?" (stakeholder comments, review findings, specific gaps)
-3. "What is the priority?" (specific sections, overall quality, specific criteria)
+### CP-0 · Ingesta
+1. Lee todos los entregables en el directorio de trabajo o adjuntos.
+2. Si hay feedback del usuario: priorizarlo sobre mejora automática.
+3. Si hay código: usar para profundizar evidencia.
+4. Declara inventario y estado inicial de cada entregable.
 
-If no feedback provided, run `/discovery-review` internally first to generate a gap analysis, then use those findings as the improvement plan.
+### CP-1 · Plan de Evolución
+Por cada entregable:
+- Evalúa contra criterios de calidad del framework
+- Identifica: **gaps** (criterios no cumplidos), **debilidades** (cumplidos pero superficiales), **inconsistencias**
+- Top 5 mejoras por impacto
+- Verificar compliance markdown-excellence: TL;DR, tablas 🟢/🟡/🔴, Mermaid, cross-refs, zero filler
 
-### Step 2: Analyze Current State
+### CP-2 · Ejecución (por entregable)
 
-For each target deliverable:
-- Read the complete current version
-- Score against acceptance criteria (1-10 per criterion)
-- Identify specific sections that are below target (score <8)
-- Map feedback to specific sections and criteria
+**PASO 1 — Diagnóstico detallado**
+Evalúa contra todos los criterios. Verifica CERO precios. Verifica markdown-excellence.
 
-### Step 3: Improvement Plan
+**PASO 2 — Mejora**
+Genera versión COMPLETA mejorada (no patches). Preservar lo correcto. NUNCA degradar.
 
-Present the improvement plan before executing:
+**PASO 3 — Validación**
+Re-evalúa. Si algún criterio empeoró: corregir. Verificar consistencia cruzada.
 
-| Deliverable | Section | Current Score | Target Score | Change Description |
-|------------|---------|--------------|-------------|-------------------|
-| AS-IS Analysis | S5: Tech Debt | 6 | 9 | Add quantitative scoring, link to recommendations |
-| Scenario Analysis | SWOT | 5 | 9 | Expand to 3+ items per quadrant with evidence |
+### CP-3 · Validación Global
+- [ ] Ningún criterio degradado
+- [ ] Feedback incorporado
+- [ ] Consistencia cruzada
+- [ ] CERO precios
+- [ ] Tags de evidencia
+- [ ] Markdown-excellence
 
-Ask: "Shall I proceed with these improvements?"
-
-### Step 4: Execute Improvements
-
-For each deliverable improvement:
-
-**A. Preserve Original**
-Note the original state of each section being changed for comparison.
-
-**B. Apply Enhancements**
-- Fill gaps identified in the improvement plan
-- Strengthen weak sections with evidence and specificity
-- Add missing cross-references and traceability links
-- Remove filler, redundancy, and unsupported claims
-- Ensure every number has a source and every claim has evidence
-
-**C. Change Tracking**
-At the top of each improved deliverable, add a change summary:
-
+### CP-4 · Entrega
 ```
-## Version History
-| Version | Date | Changes | Score Before | Score After |
-|---------|------|---------|-------------|------------|
-| 2.0 | [date] | [summary of changes] | [X]/10 | [Y]/10 |
-| 1.0 | [date] | Initial version | -- | [X]/10 |
+EVOLUCIÓN COMPLETADA
+════════════════════
+| Entregable | Antes | Después | Delta | Mejoras |
+|------------|-------|---------|-------|---------|
+| ...        | ...   | ...     | ...   | ...     |
+
+Score global: [X]% → [Y]% (+[Z]pp)
+Mejoras aplicadas: [N]
+Criterios pendientes: [lista]
 ```
 
-### Step 5: Validation
-
-After improvements, re-score against acceptance criteria:
-
-**Per-Deliverable Scorecard:**
-
-| Criterion | Before | After | Change |
-|-----------|--------|-------|--------|
-| Evidence-based content | 6 | 9 | +3 |
-| Cross-references complete | 5 | 9 | +4 |
-| Actionable recommendations | 7 | 9 | +2 |
-
-**Overall improvement:** X criteria improved, Y criteria unchanged, Z criteria at target.
-
-### Step 6: Cross-Reference Validation
-
-After improving individual deliverables, check cross-phase consistency:
-- Do improved Phase 1 findings still align with Phase 3 scenario assumptions?
-- Do updated cost estimates in Phase 4 match the executive pitch numbers?
-- Are risk registers consistent across all phases?
-- Is terminology consistent throughout?
-
-Fix any inconsistencies introduced by the improvements.
-
-## Feedback Integration Patterns
-
-**Stakeholder says "too technical":**
-→ Add executive summary section. Simplify language in findings. Move technical detail to appendix. Lead with business impact.
-
-**Stakeholder says "not enough detail":**
-→ Expand evidence per finding. Add specific metrics, code references, configuration examples. Include methodology description.
-
-**Stakeholder says "recommendations are vague":**
-→ Size each recommendation in effort (days/weeks). Assign priority (immediate/short/medium/long). Add specific acceptance criteria. Name responsible roles.
-
-**Review finds missing sections:**
-→ Generate the missing sections from available data. Flag any sections that require additional input.
-
-**Numbers questioned:**
-→ Add source citations for every metric. Show calculation methodology. Add confidence ranges. Document assumptions.
-
-## Quality Gate
-
-Before finalizing improved deliverables, verify:
-- [ ] All acceptance criteria score >= 8/10
-- [ ] Change tracking is complete and accurate
-- [ ] Cross-references remain consistent after changes
-- [ ] No new gaps introduced by improvements
-- [ ] Every claim has evidence; every number has a source
-- [ ] Improved deliverables are ready for stakeholder review
-
-## Begin
-
-Start by asking the user which deliverables need improvement and what feedback they have received. Then present the improvement plan and execute upon approval.
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026
+## RESTRICCIONES
+- NUNCA degradar un criterio que ya pasaba.
+- Feedback contradice framework: advertir pero respetar feedback.
+- Máximo 2 ciclos por entregable.
+- CERO precios. Solo FTE-meses.
+- Estándar markdown-excellence.

@@ -56,7 +56,7 @@ Generate beautiful, accessible, on-brand HTML deliverables following the Metodol
 ## Assumptions & Limits
 
 - Output is single-file HTML with inline CSS; font `<link>` tags are the only external dependency
-- Design System v4: orange #FF7E08 primary, Clash Grotesk display, Inter body
+- Design System v4: orange #6366F1 primary, Clash Grotesk display, Inter body
 - Does NOT handle multi-page apps, routing, or state management (use a framework)
 - Does NOT embed base64 images (bloat); use relative paths or CDN URLs
 - Cannot produce interactive dashboards with live data (build a React/Vue app)
@@ -129,7 +129,7 @@ Every MetodologIA HTML deliverable follows this skeleton:
 <body>
   <a href="#main" class="skip-link">Ir al contenido</a>
   <header class="hero">         <!-- black bg, orange bottom border -->
-    <div class="hero-logo">metodología_</div>
+    <div class="hero-logo">metodologia_</div>
     <div class="hero-meta-badges">...</div>
     <h1>Title <span>Highlight</span></h1>
     <div class="hero-kpis">...</div>  <!-- 3-4 KPIs -->
@@ -156,7 +156,7 @@ Design System v4 uses yellow for success states because it maintains brand coher
 
 | Semantic State | Color | Variable | Usage |
 |---------------|-------|----------|-------|
-| Positive/Success | Yellow #FFD700 | `--metodologia-positive` | Health indicators, wins, checkmarks |
+| Positive/Success | Yellow #22D3EE | `--metodologia-positive` | Health indicators, wins, checkmarks |
 | Warning | Amber #D97706 | `--metodologia-warning` | Caution states, medium severity |
 | Critical/Error | Red #DC2626 | `--metodologia-critical` | Failures, blockers, high severity |
 | Info | Blue #2563EB | `--metodologia-info` | Neutral informational, recommended |
@@ -260,7 +260,7 @@ See `references/design-tokens.md` for the complete CSS variable system.
 **Good hero section:**
 ```html
 <header class="hero" style="background: var(--metodologia-black); border-bottom: 4px solid var(--metodologia-orange);">
-  <div class="hero-logo" style="font-family: var(--font-display); color: var(--metodologia-white);">metodología_</div>
+  <div class="hero-logo" style="font-family: var(--font-display); color: var(--metodologia-white);">metodologia_</div>
   <h1 style="color: var(--metodologia-white);">Core Banking <span style="color: var(--metodologia-orange);">Modernization</span></h1>
   <div class="hero-kpis"><!-- 3 KPIs with icons --></div>
 </header>

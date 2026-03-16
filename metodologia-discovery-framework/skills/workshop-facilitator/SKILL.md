@@ -1,5 +1,5 @@
 ---
-name: workshop-facilitator
+name: metodologia-workshop-facilitator
 description: >
   Workshop design — event storming, impact mapping, user story mapping, design sprints.
   Use when the user asks to "plan a workshop", "run event storming", "facilitate impact mapping",

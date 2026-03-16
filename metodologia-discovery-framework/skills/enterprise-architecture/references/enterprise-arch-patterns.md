@@ -12,10 +12,10 @@ Reusable HTML templates and visual patterns for enterprise architecture document
 ## Design Tokens
 
 ```css
---color-primary: #FF7E08;        /* Orange — enterprise strategy, governance */
+--color-primary: #6366F1;        /* Orange — enterprise strategy, governance */
 --color-critical: #DC2626;       /* Red — high-risk, critical gaps */
 --color-warning: #D97706;        /* Amber — medium priority, caution areas */
---color-positive: #FFD700;       /* Gold — mature capabilities, strategic wins */
+--color-positive: #22D3EE;       /* Gold — mature capabilities, strategic wins */
 --color-decorative: #42D36F;     /* Green — decorative only */
 --color-neutral-light: #F3F4F6;  /* Light gray — backgrounds */
 --color-neutral-dark: #1F2937;   /* Dark gray — text */

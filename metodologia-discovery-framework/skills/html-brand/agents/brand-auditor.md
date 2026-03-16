@@ -21,7 +21,7 @@ Audit a MetodologIA HTML deliverable for Design System v4 compliance. Produce a 
 
 MetodologIA v4 uses yellow for positive states because it maintains warmth within the orange-black palette. Green introduces a cold tone.
 
-- Verify semantic colors: `--metodologia-positive` = #FFD700 (yellow), `--metodologia-critical` = #DC2626, `--metodologia-warning` = #D97706, `--metodologia-info` = #2563EB
+- Verify semantic colors: `--metodologia-positive` = #22D3EE (yellow), `--metodologia-critical` = #DC2626, `--metodologia-warning` = #D97706, `--metodologia-info` = #2563EB
 - Flag any green (#28a745, #22c55e, #10B981, #42D36F) used for success states
 - Check for hardcoded hex codes that should be CSS variables
 - Verify WCAG AA contrast (4.5:1 body text, 3:1 large text)
@@ -42,7 +42,7 @@ MetodologIA v4 uses yellow for positive states because it maintains warmth withi
 - Numbered sections with `class="section"`: 01, 02, 03...
 - `<footer class="site-footer">`: black background, `border-top: 8px solid` orange
 - Skip link: `<a href="#main" class="skip-link">`
-- `<div class="hero-logo">metodología_</div>` in hero
+- `<div class="hero-logo">metodologia_</div>` in hero
 
 ### 4. Component Usage
 

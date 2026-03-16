@@ -13,10 +13,10 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 
 **Color Palette:**
 ```css
---color-primary: #FF7E08;        /* Orange — primary actions, highlighted elements */
+--color-primary: #6366F1;        /* Orange — primary actions, highlighted elements */
 --color-critical: #DC2626;       /* Red — errors, P1 incidents, SLA breaches */
 --color-warning: #D97706;        /* Amber — warnings, P2 incidents, degraded */
---color-positive: #FFD700;       /* Gold — healthy, targets met */
+--color-positive: #22D3EE;       /* Gold — healthy, targets met */
 --color-decorative: #42D36F;     /* Green — decorative only, not semantic status */
 --color-neutral-light: #F3F4F6;  /* Light gray — backgrounds, borders */
 --color-neutral-dark: #1F2937;   /* Dark gray — text, strong contrast */
@@ -35,11 +35,11 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
   <h3 style="margin: 0 0 16px 0; color: #1F2937;">Observability Maturity: [System Name]</h3>
 
   <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-    <div style="background: white; padding: 16px; border-radius: 4px; border-top: 4px solid #FF7E08;">
+    <div style="background: white; padding: 16px; border-radius: 4px; border-top: 4px solid #6366F1;">
       <h4 style="margin: 0 0 8px; font-size: 14px; color: #1F2937;">Logging</h4>
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
         <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-          <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+          <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
         </div>
         <span style="font-size: 14px; font-weight: 700; color: #1F2937;">[X]%</span>
       </div>
@@ -50,11 +50,11 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
         <li>Retention Policy: [Yes/No]</li>
       </ul>
     </div>
-    <div style="background: white; padding: 16px; border-radius: 4px; border-top: 4px solid #FF7E08;">
+    <div style="background: white; padding: 16px; border-radius: 4px; border-top: 4px solid #6366F1;">
       <h4 style="margin: 0 0 8px; font-size: 14px; color: #1F2937;">Tracing</h4>
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
         <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-          <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+          <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
         </div>
         <span style="font-size: 14px; font-weight: 700; color: #1F2937;">[X]%</span>
       </div>
@@ -65,11 +65,11 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
         <li>Service Map: [Yes/No]</li>
       </ul>
     </div>
-    <div style="background: white; padding: 16px; border-radius: 4px; border-top: 4px solid #FF7E08;">
+    <div style="background: white; padding: 16px; border-radius: 4px; border-top: 4px solid #6366F1;">
       <h4 style="margin: 0 0 8px; font-size: 14px; color: #1F2937;">Metrics</h4>
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
         <div style="flex: 1; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">
-          <div style="width: [X]%; height: 100%; background: #FF7E08; border-radius: 4px;"></div>
+          <div style="width: [X]%; height: 100%; background: #6366F1; border-radius: 4px;"></div>
         </div>
         <span style="font-size: 14px; font-weight: 700; color: #1F2937;">[X]%</span>
       </div>
@@ -92,7 +92,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 
 **HTML Structure:**
 ```html
-<div class="log-standard" style="border: 1px solid #D1D5DB; border-left: 4px solid #FF7E08; padding: 20px; margin-bottom: 24px; background: white; border-radius: 6px;">
+<div class="log-standard" style="border: 1px solid #D1D5DB; border-left: 4px solid #6366F1; padding: 20px; margin-bottom: 24px; background: white; border-radius: 6px;">
   <h3 style="margin: 0 0 12px; font-size: 18px; color: #1F2937;">Structured Log Standard</h3>
 
   <pre style="background: #1F2937; color: #E5E7EB; padding: 16px; border-radius: 4px; font-size: 12px; overflow-x: auto; line-height: 1.6;">
@@ -165,7 +165,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
     </div>
     <div>
       <span style="font-weight: 600; font-size: 12px; color: #6B7280; text-transform: uppercase;">Runbook:</span>
-      <a href="#" style="font-size: 13px; color: #FF7E08;">[link to runbook]</a>
+      <a href="#" style="font-size: 13px; color: #6366F1;">[link to runbook]</a>
     </div>
   </div>
 </div>
@@ -197,7 +197,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
       <p style="margin: 4px 0 0; font-size: 12px; color: #6B7280;">[On-call engineer acknowledged. Began trace analysis.]</p>
     </div>
     <div style="position: relative; margin-bottom: 20px;">
-      <div style="position: absolute; left: -28px; top: 2px; width: 12px; height: 12px; background: #FF7E08; border-radius: 50%;"></div>
+      <div style="position: absolute; left: -28px; top: 2px; width: 12px; height: 12px; background: #6366F1; border-radius: 50%;"></div>
       <p style="margin: 0; font-size: 13px;"><strong style="color: #1F2937;">[HH:MM] Root Cause Identified</strong></p>
       <p style="margin: 4px 0 0; font-size: 12px; color: #6B7280;">[Description of root cause]</p>
     </div>

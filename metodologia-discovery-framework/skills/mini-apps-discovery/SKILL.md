@@ -1,12 +1,11 @@
 ---
-name: mini-apps-discovery
+name: metodologia-mini-apps-discovery
 description: >
-  Comprehensive low-code/no-code and mini-apps discovery producing a 6-section assessment covering
-  citizen developer readiness, platform evaluation, use case identification, governance models,
-  integration architecture, and adoption roadmaps. Use when the user asks to "assess low-code readiness",
-  "evaluate citizen development", "Power Platform assessment", "no-code strategy", "mini-apps evaluation",
-  "low-code governance", "citizen developer program", or mentions "mini-apps discovery", "low-code adoption",
-  "OutSystems evaluation", "Mendix assessment", "Retool readiness".
+  Mini Apps and Low-Code discovery — citizen developer readiness, platform assessment (Power Platform, OutSystems,
+  Mendix, Retool), use case identification and prioritization, governance model, integration architecture, and
+  low-code adoption roadmap. Use when the user asks to "evaluate low-code platforms", "assess citizen developer readiness",
+  "mini apps strategy", "Power Platform assessment", "low-code governance", "no-code evaluation",
+  "automation apps discovery", or mentions "citizen development", "low-code adoption", "mini apps".
 allowed-tools:
   - Read
   - Write
@@ -16,358 +15,264 @@ allowed-tools:
   - Bash
 ---
 
-# Mini-Apps & Low-Code Discovery — Citizen Development Capability Assessment
+# Mini Apps & Low-Code Discovery — Citizen Development Readiness Assessment
 
-Generates a 6-section assessment: Citizen Developer Readiness, Platform Assessment, Use Case Identification & Prioritization, Governance Model, Integration Architecture, and Low-Code Adoption Roadmap. Evaluates organizational capacity to safely and effectively adopt low-code/no-code platforms while maintaining enterprise governance, security, and integration standards.
+Generates a 6-section Mini Apps and Low-Code discovery covering citizen developer readiness, platform assessment, use case identification and prioritization, governance model, integration architecture, and a phased low-code adoption roadmap. Produces actionable findings with readiness scoring, platform comparison, and governed adoption strategy.
 
 ## Principio Rector
 
-> *La promesa del low-code es democratizar la creacion de software; el riesgo es democratizar la creacion de deuda tecnica. El descubrimiento separa las oportunidades genuinas del teatro de innovacion.*
+> *El low-code democratiza la creacion, pero sin gobernanza convierte a la organizacion en un museo de aplicaciones abandonadas. La velocidad del desarrollo ciudadano solo tiene valor cuando se acompana de gobierno, seguridad y mantenibilidad.*
 
-1. **Citizen development no es desarrollo sin gobierno — es desarrollo con gobierno diferente.** La ausencia de codigo no significa ausencia de riesgo. Cada aplicacion ciudadana que toca datos de produccion es un sistema en produccion, con todas sus obligaciones.
-2. **La plataforma correcta no existe; existe la plataforma correcta para cada caso de uso.** Power Platform resuelve problemas diferentes a OutSystems, que resuelve problemas diferentes a Retool. La evaluacion debe ser caso-por-caso, no plataforma-por-plataforma.
-3. **Medir con honestidad: SUSTANCIA, PROMESA, RIESGO, HUMO.** Cada iniciativa de low-code debe clasificarse sin ambiguedad en esta escala. Lo que es HUMO hoy puede ser SUSTANCIA manana con las condiciones correctas — pero hay que nombrarlo.
+1. **La democratizacion sin gobernanza es caos con interfaz grafica.** Habilitar a usuarios de negocio para crear aplicaciones sin un marco de gobierno produce shadow IT a escala. El Center of Excellence no es burocracia — es la infraestructura que hace sostenible la velocidad.
+2. **La plataforma correcta es la que se gobierna, no la que mas features tiene.** La evaluacion de plataformas low-code debe priorizar gobernanza empresarial, seguridad y mantenibilidad sobre capacidades tecnicas. Una plataforma ingobernable es una deuda organizacional.
+3. **Los quick wins son la puerta de entrada, no el destino.** Las primeras mini apps deben demostrar valor rapido Y buen gobierno. Si los pilotos ignoran seguridad y gobernanza, establecen precedentes toxicos que escalan con la adopcion.
 
 ## Inputs
 
-- `$1` — Path to organizational artifacts (IT landscape docs, process inventories, platform evaluations, governance policies)
-- `$2` — Analysis depth: `full` (default), `executive` (sections 1, 3, 6 only)
+- `$1` — Path to existing low-code artifacts, documentation, or project root (default: current working directory)
+- `$2` — Analysis depth: `full` (default), `executive` (sections S1, S3, S6 only)
 
 Parse from `$ARGUMENTS`.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Autonomo para inventario y evaluacion de plataformas, HITL para priorizacion de casos de uso y decisiones de gobierno.
-  - **desatendido**: Cero interrupciones. Supuestos documentados.
+  - **piloto-auto**: Auto para inventario y evaluacion de plataformas, HITL para modelo de gobernanza y decisiones de arquitectura de integracion.
+  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion.
+  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
-
-## When to Use
-
-- When business units demand faster app delivery than IT can provide (shadow IT risk)
-- Before selecting or expanding a low-code/no-code platform
-- When evaluating citizen developer programs at enterprise scale
-- During digital transformation requiring rapid application prototyping
-- When consolidating multiple low-code initiatives across the organization
-- Post-implementation assessment of existing low-code investments
-
-## When NOT to Use
-
-- For evaluating traditional software development practices (use software-architecture or technical-feasibility)
-- When the requirement is a single complex application (use solution-roadmap)
-- When the organization has no business users with technology affinity (prerequisite not met)
-- For pure API development or backend system design (low-code is not the right paradigm)
+- `{VARIANTE}`: `ejecutiva` (~40% — sections S1, S3, S6 only) | `tecnica` (full, default)
 
 ## Input Requirements
 
 **Mandatory:**
-- Current IT application landscape inventory (even partial)
-- List of business processes or pain points under consideration for automation
-- Organizational structure (IT and business unit relationship model)
+- Current application landscape inventory (internal tools, spreadsheet-based processes)
+- IT governance policies and security requirements
+- Target departments/teams for citizen development
+- Enterprise systems inventory (ERP, CRM, databases) for integration assessment
 
 **Recommended:**
-- Existing platform licenses and subscriptions (Microsoft 365, Google Workspace, Salesforce, etc.)
-- IT governance policies (security, data, change management)
-- Previous low-code evaluations or POCs
-- Shadow IT inventory (known unsanctioned tools and apps)
-- Business user technology proficiency data
-- Integration architecture documentation (APIs, middleware, data flows)
-- Budget constraints and approval thresholds
+- Existing low-code/no-code usage (sanctioned or shadow IT)
+- IT-business relationship assessment or survey results
+- Data classification policy
+- Cloud strategy and preferred vendors (Microsoft, Google, AWS)
+- Previous automation or digital transformation initiatives
 
-## S1: Citizen Developer Readiness
+## Assumptions & Limits
 
-Assess organizational capacity for citizen development across 4 dimensions:
+**Assumptions:**
+- Organization has identifiable manual processes or spreadsheet-based workflows
+- IT department is willing to support (not block) citizen development with governance
+- Enterprise systems have API capabilities for integration
+- Documentation in English or Spanish
 
-**People readiness:**
-
-| Factor | Assessment Method | Score (1-5) | Weight |
-|---|---|---|---|
-| Business user tech proficiency | Survey + tool adoption data | — | 25% |
-| IT collaboration willingness | Stakeholder interviews | — | 20% |
-| Management sponsorship | Executive commitment evidence | — | 25% |
-| Learning culture | Training participation rates, self-directed learning | — | 15% |
-| Change tolerance | Recent change initiative success rates | — | 15% |
-
-**Process readiness:**
-- Are business processes documented enough for citizen developers to automate?
-- Do approval workflows exist for non-IT-built applications?
-- Is there a support model for citizen-built apps (who fixes it when it breaks)?
-
-**Technology readiness:**
-- Existing platform ecosystem (Microsoft 365 = Power Platform advantage; Google Workspace = AppSheet advantage)
-- Identity and access management maturity (SSO, MFA — prerequisites for platform security)
-- API availability for core systems (citizen apps need data from somewhere)
-- Network and infrastructure capacity
-
-**Culture readiness:**
-- History with self-service tools (BI self-service adoption as predictor)
-- IT-business relationship quality (partnership vs gatekeeper dynamic)
-- Risk appetite for business-led technology initiatives
-
-**Conditional logic:**
-- IF people readiness < 2.5: citizen development will fail without significant change management investment
-- IF IT-business relationship is adversarial: governance model must address trust deficit before platform deployment
-- IF no SSO/MFA in place: security prerequisites must be resolved before enabling citizen development
-- IF self-service BI adoption is < 20%: low-code adoption will likely follow same trajectory — address root causes first
-- IF management sponsorship is absent: program will starve — executive alignment is Phase 0
-
-## S2: Platform Assessment
-
-Evaluate low-code/no-code platforms against organizational needs:
-
-**Platform comparison framework:**
-
-| Dimension | Power Platform | OutSystems | Mendix | Retool | Appian | Custom Criteria |
-|---|---|---|---|---|---|---|
-| **Target user** | Business + Pro dev | Pro dev + Business | Pro dev + Business | Pro dev (internal tools) | Business + Pro dev | — |
-| **Complexity ceiling** | Medium | High | High | Medium-High | High | — |
-| **Integration depth** | Deep (Microsoft ecosystem) | Enterprise-grade | Enterprise-grade | API-first | Process-centric | — |
-| **Governance built-in** | CoE Starter Kit, DLP | LifeTime, AI Mentor | Mendix Control Center | RBAC, audit logs | Auto process mining | — |
-| **Offline capability** | Limited | Yes (native mobile) | Yes (native mobile) | No (web only) | Limited | — |
-| **AI/ML integration** | AI Builder, Copilot | ML Builder | MxAssist | AI query generation | AI skills | — |
-| **Pricing model** | Per user/app/flow | Per user (AO pricing) | Per app/user | Per user | Per user | — |
-| **Lock-in risk** | High (Microsoft) | Medium (code export) | Medium (code export) | Low (API-centric) | Medium | — |
-| **Learning curve** | Low-Medium | Medium-High | Medium | Medium | Medium | — |
-
-**Platform-to-use-case fit matrix:**
-
-| Use Case Type | Best Fit Platform(s) | Rationale |
-|---|---|---|
-| Simple data collection/approval | Power Apps, AppSheet | Lowest barrier, existing ecosystem |
-| Internal tools / admin dashboards | Retool, Power Apps | API-first, developer-friendly |
-| Customer-facing applications | OutSystems, Mendix | Enterprise scale, native mobile |
-| Process automation (workflow) | Power Automate, Appian | Process-centric design |
-| Complex business logic | OutSystems, Mendix | Pro-dev features, code extensibility |
-| Rapid prototyping | Power Apps, Mendix | Speed to first version |
-
-**Evaluation using SUSTANCIA/PROMESA/RIESGO/HUMO scale:**
-
-| Rating | Definition | Action |
-|---|---|---|
-| **SUSTANCIA** | Proven fit, evidence from POC or production use, clear ROI | Proceed with scaling plan |
-| **PROMESA** | Strong theoretical fit, limited evidence, reasonable assumptions | Proceed with time-boxed POC (4-6 weeks) |
-| **RIESGO** | Fit is conditional on factors not yet validated, significant unknowns | Investigate blockers before committing resources |
-| **HUMO** | Vendor marketing exceeds demonstrated capability for this context, or organizational prerequisites missing | Do not invest. Document why. Revisit conditions annually |
-
-**Conditional logic:**
-- IF organization is deeply embedded in Microsoft 365: Power Platform has ecosystem advantage — evaluate first
-- IF requirement includes customer-facing apps with >10K users: filter to OutSystems, Mendix, Appian (enterprise scale)
-- IF primary need is internal tooling: Retool offers fastest time-to-value for technical teams
-- IF multiple platforms already in use: assess consolidation vs intentional multi-platform strategy
-- IF vendor lock-in is a primary concern: weight code export capability and API portability heavily
-- IF budget is constrained: evaluate per-user vs per-app pricing against expected usage patterns
-
-## S3: Use Case Identification & Prioritization
-
-Identify and rank candidate use cases for low-code implementation:
-
-**Use case discovery methods:**
-- Business process pain point interviews (top 3 pain points per department)
-- Shadow IT audit (what are people building in spreadsheets, Access, SharePoint?)
-- IT backlog analysis (what has been waiting >6 months for IT delivery?)
-- Service desk ticket analysis (what repetitive requests could be self-service?)
-
-**Use case scoring matrix (per candidate):**
-
-| Criterion | Weight | Score (1-5) | Description |
-|---|---|---|---|
-| Business impact | 25% | — | Revenue, cost, compliance, or experience impact |
-| Process maturity | 20% | — | Well-defined, stable rules, documented |
-| Data complexity | 15% | — | Number of systems, data sensitivity, integration needs |
-| User base | 10% | — | Number of users, frequency of use |
-| Technical feasibility | 15% | — | Platform capability match, integration availability |
-| Citizen developer fit | 15% | — | Can a trained business user build and maintain this? |
-
-**SUSTANCIA/PROMESA/RIESGO/HUMO classification per use case:**
-
-For each candidate, classify independently:
-
-- **SUSTANCIA**: Process is well-defined, data is accessible via API, complexity fits platform ceiling, citizen developer can own it
-- **PROMESA**: Most conditions met, 1-2 unknowns to validate (data access, edge case handling)
-- **RIESGO**: Significant unknowns — complex integrations, unclear data ownership, regulatory implications
-- **HUMO**: Process is poorly defined, requires custom code beyond platform capability, or citizen developer cannot realistically maintain it
-
-**Conditional logic:**
-- IF >50% of candidates are HUMO: organization may be pursuing low-code for the wrong problems — reassess strategy
-- IF top candidates all require complex integrations: integration architecture (S5) becomes critical path
-- IF shadow IT audit reveals >10 unsanctioned apps: governance (S4) urgency increases — these are ungoverned production systems
-- IF IT backlog has items suitable for citizen development: quick wins for demonstrating program value
-- IF data sensitivity is HIGH for top candidates: governance model must include data classification and DLP policies
-
-## S4: Governance Model
-
-Design the governance framework for citizen development at scale:
-
-**Governance tiers:**
-
-| Tier | App Characteristics | Governance Level | Approval |
-|---|---|---|---|
-| **Tier 1: Personal productivity** | Single user, no shared data, no integrations | Self-service, registration only | None |
-| **Tier 2: Team apps** | <20 users, shared data, internal only | Light review (checklist-based) | Team lead + IT lite review |
-| **Tier 3: Department apps** | 20-200 users, business data, integrations | Standard review (security + architecture) | Department head + IT review |
-| **Tier 4: Enterprise apps** | >200 users, sensitive data, external facing | Full review (equivalent to pro-dev) | Architecture review board |
-
-**Governance policies:**
-- **Application lifecycle**: creation, review, deployment, maintenance, retirement
-- **Data governance**: classification, DLP policies, data residency, retention
-- **Security baseline**: authentication (SSO mandatory for Tier 2+), authorization model, API key management
-- **Environment management**: dev/test/prod separation, promotion process
-- **Monitoring**: usage analytics, performance thresholds, error rate alerts
-- **Retirement criteria**: unused apps (>90 days no activity), unsupported apps (builder left organization)
-
-**Center of Excellence (CoE) model:**
-- CoE mission and scope (enablement, not gatekeeping)
-- Team composition: IT leads + business champions + platform specialists
-- Support model: self-service resources, office hours, escalation path
-- Community building: champions network, showcase events, internal marketplace
-
-**Conditional logic:**
-- IF organization has no existing IT governance: start with Tier 1-2 only, prove model before scaling
-- IF data regulation applies (GDPR, HIPAA, SOX): Tier 2+ requires mandatory data classification
-- IF >100 citizen-built apps expected within 12 months: automated governance tooling required (not manual review)
-- IF IT culture is gatekeeping-oriented: CoE must be business-led with IT support, not IT-led with business input
-- IF organization has existing ITSM processes: integrate citizen app lifecycle into existing ITSM (avoid parallel governance)
-
-## S5: Integration Architecture
-
-Design the integration layer that connects citizen-built apps to enterprise systems:
-
-**Integration landscape assessment:**
-- Current API catalog (available, documented, secured)
-- Middleware and integration platforms (MuleSoft, Azure Integration Services, Dell Boomi, Workato)
-- Data sources accessible to low-code platforms (databases, SaaS APIs, file shares, legacy systems)
-- Authentication and authorization standards (OAuth 2.0, API keys, service accounts)
-
-**Integration patterns for citizen development:**
-
-| Pattern | Use Case | Complexity | Risk Level |
-|---|---|---|---|
-| **Direct API call** | Read from REST API, display in app | Low | Low (if API is governed) |
-| **Connector/adapter** | Platform-native connectors (Power Platform connectors, Mendix marketplace) | Low-Medium | Low-Medium |
-| **Middleware-mediated** | Complex transformation, multi-system orchestration | Medium-High | Medium |
-| **Event-driven** | React to system events (new order, status change) | Medium | Medium |
-| **Batch/scheduled** | Data sync, report generation | Medium | Low-Medium |
-| **Custom API wrapper** | Expose legacy system via modern API for citizen consumption | High (IT-built) | Medium |
-
-**API governance for citizen consumption:**
-- API product catalog: curated APIs safe for citizen developer consumption
-- Rate limiting and throttling per app tier
-- Data masking/filtering for sensitive fields
-- Versioning strategy (citizen apps must not break on API updates)
-- Sandbox environments for development and testing
-
-**Conditional logic:**
-- IF no API catalog exists: API exposure is first prerequisite — citizen apps without data are useless
-- IF legacy systems lack APIs: custom API wrapper development is IT prerequisite (effort estimate per system)
-- IF integration platform exists: leverage it as mediation layer, don't let citizen apps bypass it
-- IF data sensitivity varies across systems: implement API gateway with field-level security per consumer tier
-- IF real-time integration is required: assess event-driven architecture readiness (message broker, webhooks)
-- IF >5 integration points per app: use case may exceed citizen development complexity ceiling — classify as RIESGO
-
-## S6: Low-Code Adoption Roadmap
-
-Synthesize S1-S5 into a phased adoption plan with SUSTANCIA/PROMESA/RIESGO/HUMO tracking:
-
-**Phase 0 — Prerequisites (Month 1-2):**
-- Address CRITICAL readiness gaps from S1 (SSO/MFA, executive sponsorship, IT-business alignment)
-- Establish governance foundation from S4 (Tier 1-2 policies, CoE nucleus)
-- API readiness for top use cases from S5 (ensure data accessibility)
-- Platform selection decision from S2 (or confirm existing platform strategy)
-- Classification: must reach SUSTANCIA on prerequisites before proceeding
-
-**Phase 1 — Pilot (Month 2-4):**
-- Select 3-5 SUSTANCIA use cases from S3 (highest score, lowest risk)
-- Recruit 5-10 citizen developer pioneers (highest readiness from S1)
-- Deploy platform with Tier 1-2 governance
-- Deliver foundational training (platform basics, governance awareness)
-- Establish measurement baseline (time-to-deploy, user adoption, defect rate)
-- Success criteria: 3+ apps in production, >70% user satisfaction, zero security incidents
-
-**Phase 2 — Expansion (Month 4-8):**
-- Scale to PROMESA use cases (with validated conditions from pilot)
-- Expand citizen developer cohort (25-50 developers)
-- Activate Tier 3 governance for department-level apps
-- Launch CoE with full support model (office hours, champions network)
-- Implement integration patterns from S5 for medium-complexity use cases
-- Reclassify PROMESA cases: which became SUSTANCIA, which became RIESGO?
-
-**Phase 3 — Enterprise Scale (Month 8-14):**
-- Evaluate RIESGO use cases (conditions may now be met post Phase 1-2 learnings)
-- Tier 4 governance for enterprise-grade citizen apps
-- Advanced training: complex integrations, advanced platform features
-- Platform optimization: performance tuning, cost management, license optimization
-- Cross-platform strategy (if multi-platform): standardize integration layer, unify governance
-
-**Phase 4 — Continuous Optimization (Month 14-18):**
-- ROI analysis: total platform cost vs IT backlog reduction vs business value delivered
-- HUMO reassessment: have conditions changed? Are former HUMO items now PROMESA?
-- Citizen developer career path: formalize role, recognition, progression
-- Innovation program: hackathons, idea marketplace, cross-functional teams
-- Platform evolution: evaluate new capabilities, AI-assisted development features
-
-**Per phase:**
-- Initiatives with owners, timelines, and effort estimates (person-months)
-- SUSTANCIA/PROMESA/RIESGO/HUMO classification with reclassification triggers
-- Dependencies and prerequisites from prior phases
-- Success metrics with quantitative targets
-- Risk if deferred and mitigation strategies
-- Go/No-Go criteria for advancing to next phase
-
-**Roadmap governance:**
-- Monthly steering committee review (CoE + IT + business sponsors)
-- Quarterly SUSTANCIA/PROMESA/RIESGO/HUMO reclassification exercise
-- Annual platform strategy review (market changes, new entrants, pricing shifts)
+**Cannot do:**
+- Platform licensing negotiation (requires vendor engagement and procurement)
+- Production deployment of mini apps (requires development and testing)
+- Organizational change management execution (requires sustained leadership effort)
+- Data migration from legacy systems (requires dedicated migration project)
 
 ## Workarounds When Inputs Missing
 
 | Missing Input | Impact | Workaround |
 |---|---|---|
-| No application landscape | Cannot assess integration needs | Interview IT and business leads for top 10 critical systems, flag as partial view |
-| No process documentation | Cannot identify use cases | Workshop-based discovery (2-hour session per department), shadow IT audit |
-| No governance policies | Cannot design citizen development governance | Start from industry templates (Microsoft CoE Starter Kit, Gartner citizen dev framework) |
-| No shadow IT inventory | Cannot assess ungoverned risk | Survey business users, check unsanctioned SaaS subscriptions in finance data |
-| No platform experience | Cannot assess platform fit | Vendor-led POC (2-4 weeks per platform), structured evaluation using comparison framework |
-| No budget information | Cannot size roadmap investment | Provide tiered recommendations (minimal, moderate, full investment) with trade-offs |
+| No application inventory | Cannot identify automation candidates | Workshop-based process discovery with business stakeholders; flag as assumption |
+| No IT governance policies | Cannot define guardrails | Recommend baseline governance framework; flag as foundational gap |
+| No data classification | Cannot define data access policies | Assume all data as sensitive until classified; recommend classification exercise |
+| No cloud strategy | Cannot align platform recommendation | Evaluate platforms vendor-agnostic; note alignment risk if strategy later conflicts |
+| No existing low-code usage | Cannot benchmark current state | Start from zero baseline; assess readiness rather than current adoption |
 
-## Edge Cases
+## 6-Section Framework
 
-- **Organization already has 100+ citizen-built apps (ungoverned):** Governance is retroactive. Prioritize audit and classification of existing apps before enabling new ones. Retirement candidates may outnumber keepers.
-- **IT resistance to citizen development:** Frame as IT force-multiplier, not IT replacement. IT builds the APIs, governance, and platform — citizens build the last mile. Joint success metrics.
-- **Heavily regulated industry:** Citizen development scope is narrower but still valuable. Tier 1-2 apps only for regulated data; citizen apps for operational/productivity use cases.
-- **Multi-cloud / multi-platform already in place:** Assess whether fragmentation is intentional (best-of-breed per use case) or accidental. If accidental, consolidation roadmap; if intentional, unified governance layer.
-- **Very small organization (<100 people):** Formal CoE is overhead. Designate 1-2 "platform champions" with light governance. Focus on quick wins, not infrastructure.
-- **Vendor consolidation pressure:** Platform vendor may bundle low-code with existing licenses (Microsoft E5, Salesforce Platform). Evaluate "free" tiers critically — hidden costs in premium features, API limits, storage.
-- **AI-assisted development features (Copilot, AI assistants):** Evaluate as accelerator, not replacement for governance. AI-generated apps still need review, testing, and lifecycle management.
-- **Citizen developer leaves the organization:** App ownership transfer protocol is critical. Ungoverned apps become orphans. Governance model must include succession planning for citizen-built apps.
+### S1: Citizen Developer Readiness
+
+Per department/team, assess readiness across five dimensions:
+
+- **Current low-code/no-code skills**: Existing experience with Power Apps, Google AppSheet, Airtable, Excel macros, or similar. Self-service BI experience (Power BI, Tableau)
+- **Governance awareness**: Understanding of data policies, security requirements, change management. Shadow IT history
+- **Data sensitivity understanding**: Awareness of data classification, PII handling, regulatory requirements per data domain
+- **IT-business relationship maturity**: Collaboration model (adversarial, transactional, partnership, co-creation). Support ticket patterns
+- **Readiness score per department**: Composite score (1-10) based on skills, governance awareness, data maturity, IT relationship
+
+**Readiness classification:**
+
+| Score | Classification | Recommendation |
+|---|---|---|
+| 1-3 | Not Ready | Foundational training + governance education before any tools |
+| 4-6 | Conditionally Ready | Supervised pilot with IT co-development |
+| 7-8 | Ready | Self-service with governance guardrails |
+| 9-10 | Advanced | CoE contributor, can mentor others |
+
+**Conditional logic:**
+- IF readiness score < 4 across all departments: flag CRITICAL — foundational capability gap, recommend training-first approach
+- IF governance awareness < 3: flag HIGH — shadow IT risk, establish governance framework before enabling tools
+- IF IT-business relationship is adversarial: flag BLOCKER — organizational alignment required before technology
+
+### S2: Platform Assessment
+
+Structured comparison using SUBSTANCIA/PROMESA/RIESGO/HUMO evaluation scale:
+
+| Criterion | Power Platform | OutSystems | Mendix | Retool | Other |
+|---|---|---|---|---|---|
+| Enterprise governance | — | — | — | — | — |
+| Scalability | — | — | — | — | — |
+| Integration capabilities | — | — | — | — | — |
+| Learning curve | — | — | — | — | — |
+| TCO drivers | — | — | — | — | — |
+| Security model | — | — | — | — | — |
+
+**SUBSTANCIA/PROMESA/RIESGO/HUMO scale:**
+- **SUBSTANCIA**: Proven capability with enterprise references, mature feature, well-documented
+- **PROMESA**: Capability exists but immature, limited enterprise validation, roadmap item
+- **RIESGO**: Capability exists with known limitations, workarounds required, vendor dependency
+- **HUMO**: Marketing claim without substance, vaporware, or fundamentally limited
+
+Per platform: strengths, limitations, ideal use cases, licensing model drivers (NOT prices), vendor lock-in assessment.
+
+**Additional evaluation criteria:**
+- Offline capability and mobile support
+- Multi-tenancy and environment management
+- Compliance certifications (SOC 2, ISO 27001, HIPAA)
+- Marketplace/component ecosystem maturity
+- AI/ML integration capabilities
+
+**Conditional logic:**
+- IF organization is Microsoft-heavy (O365, Azure AD, Teams): Power Platform has natural advantage — weight integration criterion higher
+- IF use cases require complex business logic: evaluate OutSystems/Mendix over pure no-code options
+- IF data sovereignty requirements: evaluate on-premise deployment options, flag cloud-only platforms as RISK
+
+### S3: Use Case Identification & Prioritization
+
+- **Automation candidates**: Repetitive manual processes, data entry, report generation, notification workflows
+- **Simple internal tools**: CRUD applications, inventory tracking, request management, employee directories
+- **Data entry apps**: Form-based data capture replacing spreadsheets, paper forms, or email-based processes
+- **Approval workflows**: Multi-step approval chains, expense reports, leave requests, procurement approvals
+- **Dashboards**: Operational dashboards, KPI tracking, real-time status boards
+
+**Prioritization framework — Impact x Complexity scoring:**
+
+| | Low Complexity | Medium Complexity | High Complexity |
+|---|---|---|---|
+| **High Impact** | QUICK WIN | STRATEGIC | EVALUATE CAREFULLY |
+| **Medium Impact** | QUICK WIN | PLAN | DEFER |
+| **Low Impact** | OPTIONAL | DEFER | REJECT |
+
+- **Quick wins**: High impact, low complexity. First 2-3 pilots. Must demonstrate value AND governance
+- **Strategic apps**: High impact, medium-high complexity. Plan with proper architecture
+- **Separation criteria**: Apps that belong in low-code vs apps that require pro-code development
+
+**Conditional logic:**
+- IF > 20 use cases identified: prioritize top 10, batch remainder into phases
+- IF all high-impact cases are high-complexity: flag RISK — low-code may not be the right approach for initial value demonstration
+- IF quick wins involve sensitive data: ensure governance model (S4) is in place before pilot
+
+### S4: Governance Model
+
+- **Center of Excellence (CoE)**: Structure, roles (CoE lead, platform admin, business champion, security reviewer), reporting line, charter
+- **Environment management**: Development, testing, production environments. Promotion process. Sandbox policies
+- **Data access policies**: Per data classification level — what data citizen developers can access, what requires IT involvement. Principle of least privilege
+- **Security guardrails**: Authentication requirements (SSO/MFA), data loss prevention (DLP) policies, connector restrictions, custom connector approval process
+- **App lifecycle management**: Version control, backup strategy, app retirement criteria, ownership transfer when creator leaves organization
+- **Review/approval process**: Before-production checklist — security review, data access review, performance review, accessibility check. Approval authority matrix
+
+**Governance maturity levels:**
+
+| Level | Description | Indicators |
+|---|---|---|
+| L0 | No governance | Anyone can build anything, no oversight |
+| L1 | Reactive | IT discovers apps after deployment, firefighting |
+| L2 | Basic | Policies exist but enforcement is manual |
+| L3 | Managed | CoE operational, automated policy enforcement, regular audits |
+| L4 | Optimized | Self-service within guardrails, continuous improvement, metrics-driven |
+
+**Conditional logic:**
+- IF current governance = L0: flag CRITICAL — do not enable citizen development without minimum L2 governance
+- IF data classification policy missing: flag BLOCKER — cannot define data access policies without classification
+- IF no app retirement policy: flag HIGH — orphaned apps accumulate technical debt and security exposure
+
+### S5: Integration Architecture
+
+- **Low-code to enterprise systems connectivity**: Inventory of required integrations (ERP, CRM, HRIS, databases, file systems)
+- **API gateway requirements**: Centralized API management, rate limiting, monitoring, versioning. Existing API infrastructure assessment
+- **Data sync patterns**: Real-time vs batch, uni-directional vs bi-directional, conflict resolution strategy. Per integration: pattern recommendation with rationale
+- **Authentication/authorization**: Identity provider integration (Azure AD, Okta, etc.), service account management, OAuth flows, API key governance
+- **Event-driven integration**: Webhooks, message queues, event buses for real-time triggers. Suitability assessment per use case
+- **Security boundary definition**: Network segmentation between low-code platform and enterprise systems. Data in transit encryption, at rest encryption, audit logging
+
+**Integration complexity classification:**
+
+| Complexity | Description | Example | Governance |
+|---|---|---|---|
+| Simple | Pre-built connector, read-only | SharePoint list read | Citizen developer |
+| Moderate | Pre-built connector, read-write | CRM record update | IT-supervised |
+| Complex | Custom connector, API integration | ERP integration | IT-developed |
+| Critical | System-of-record, transactional | Financial system write | Pro-code only |
+
+**Conditional logic:**
+- IF enterprise systems lack APIs: flag BLOCKER for integration — recommend API enablement project first
+- IF no API gateway exists: recommend gateway implementation as prerequisite for scale
+- IF critical system integrations required: recommend pro-code microservice layer, NOT direct low-code connection
+
+### S6: Low-Code Adoption Roadmap
+
+Phased plan with adoption metrics per phase:
+
+**Phase 1: Pilot (Month 1-3)**
+- Select 2-3 quick win use cases from S3 prioritization
+- Establish minimum viable governance (L2 from S4)
+- Deploy chosen platform in controlled environment
+- Train initial citizen developer cohort (5-10 people)
+- Success metrics: Apps deployed, user adoption rate, governance compliance rate
+- Effort magnitude: IT setup days, training days (NOT prices)
+
+**Phase 2: Expansion (Month 4-9)**
+- Establish CoE with dedicated roles
+- Expand to 3-5 departments
+- Launch formal training program (aligned with mentoring-training-discovery if applicable)
+- Implement automated governance tooling (DLP, environment management)
+- Success metrics: Active citizen developers, apps in production, integration count, incident rate
+- Effort magnitude: CoE staffing, training program days (NOT prices)
+
+**Phase 3: Maturity (Month 10-18)**
+- Enterprise-wide availability with self-service governance
+- Advanced use cases (complex integrations, AI-powered apps)
+- Community of Practice for citizen developers
+- Continuous improvement cycle (quarterly governance review, platform capability assessment)
+- Success metrics: Organization-wide adoption rate, app portfolio health, business value delivered, shadow IT reduction
+- Effort magnitude: Ongoing CoE operation, advanced training days (NOT prices)
+
+Per phase: prerequisites from previous phase, risk factors, rollback criteria if adoption stalls, dependency on governance maturity.
+
+## Escalation to Human Architect
+
+- Enterprise architecture constraints conflict with low-code platform requirements
+- Data sovereignty or regulatory requirements require legal review
+- Organizational politics between IT and business create adoption blockers
+- Existing shadow IT landscape is extensive and uncharted
+- Platform vendor evaluation requires commercial negotiation context
+- Integration with legacy systems without API capability requires custom development scoping
 
 ## Validation Gate
 
-- [ ] Citizen developer readiness assessed across all 4 dimensions with quantitative scores
-- [ ] Platform comparison completed with SUSTANCIA/PROMESA/RIESGO/HUMO classification per platform
-- [ ] Use cases identified, scored, and classified with SUSTANCIA/PROMESA/RIESGO/HUMO ratings
-- [ ] Governance model covers all 4 tiers with policies for data, security, and lifecycle
-- [ ] Integration architecture assessed with API readiness per target system
-- [ ] CoE model designed with mission, composition, and support structure
-- [ ] Adoption roadmap phased with Go/No-Go criteria per phase transition
-- [ ] Every roadmap initiative traces to evidence in S1-S5
-- [ ] SUSTANCIA/PROMESA/RIESGO/HUMO classifications are evidence-based with reclassification triggers
-- [ ] Edge cases and assumptions explicitly documented with confidence levels
-- [ ] Platform lock-in risk assessed with mitigation strategies
+- [ ] Citizen developer readiness assessed per department with composite scores
+- [ ] Platform assessment complete with SUBSTANCIA/PROMESA/RIESGO/HUMO evaluation
+- [ ] Use cases identified and prioritized with Impact x Complexity scoring
+- [ ] Governance model defined with CoE structure, policies, and maturity target
+- [ ] Integration architecture mapped with complexity classification per integration
+- [ ] Adoption roadmap phased with metrics and effort magnitudes (NOT prices)
+- [ ] All findings tagged with evidence source [DOC], [INFERENCIA], [SUPUESTO]
+- [ ] Security guardrails defined for citizen development
+- [ ] Quick wins identified that demonstrate value AND governance simultaneously
+- [ ] Recommendations sequenced by dependency and organizational readiness
 
 ## Output Artifact
 
-**Primary:** `Mini_Apps_Discovery_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — 6-section citizen development assessment with platform evaluation, use case prioritization, governance model, and phased adoption roadmap.
-
-**Secondary:** `Mini_Apps_Executive_Summary_{project}.md` — S1 readiness + S3 top use cases + S6 roadmap highlights for leadership audience.
+**Primary:** `Mini_Apps_Discovery_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — 6-section low-code and citizen development assessment with readiness scoring, platform comparison, governed use case prioritization, integration architecture, and phased adoption roadmap.
 
 **Diagramas incluidos:**
-- Radar chart: citizen developer readiness (4 dimensions)
-- Quadrant chart: use case prioritization (impact vs feasibility)
-- Architecture diagram: integration patterns for citizen apps
-- Roadmap timeline: phased adoption with SUSTANCIA/PROMESA/RIESGO/HUMO tracking
-- Comparison matrix: platform evaluation heatmap
+- Quadrant chart: Use case prioritization (Impact x Complexity)
+- Architecture diagram: Integration topology (low-code platform to enterprise systems)
+- Timeline: Phased adoption roadmap with governance maturity milestones
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño · Comunidad MetodologIA | **Ultima actualizacion:** 14 de marzo de 2026

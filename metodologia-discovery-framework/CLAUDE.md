@@ -1,111 +1,159 @@
-# MetodologIA Discovery Framework v10.0 — Orchestration Guide
+# MAO v1.0 — MetodologIA de Aprovechamiento de Oportunidades
 
-> 57 skills (MOAT) · 12 agents · 21 commands · 59 prompts NL-HP · GPL-3.0 Copyleft
+> **MAO** = MetodologIA de Aprovechamiento de Oportunidades.
+> **"Método + TecnologIA = Soberanía"** — La metodología precede la tecnología.
+> Tu IDE se convierte en una agencia de discovery universal.
+> 48 agentes · 100 skills MOAT · 96 comandos · 49 prompts NL-HP · GPL-3.0 Copyleft.
+> © 2026 MetodologIA · Javier Montaño.
 
-## Quick Reference
+---
 
-### Pipeline Commands (Flows)
-- `/metodologia-discovery-framework:discovery` — Guided full pipeline (8 phases, 3 gates, 10+ deliverables)
-- `/metodologia-discovery-framework:discovery-auto` — Autonomous full pipeline (zero interruptions)
-- `/metodologia-discovery-framework:express` — Go/No-Go in 1 session (3 deliverables)
-- `/metodologia-discovery-framework:intermediate` — Architectural direction (7 deliverables, 2 gates)
+## Filosofía MAO
 
-### Document Commands (Individual Deliverables)
-- `/metodologia-discovery-framework:plan` — 00_Discovery_Plan (governance document)
-- `/metodologia-discovery-framework:stakeholders` — 01_Stakeholder_Map (influence, RACI, communication)
-- `/metodologia-discovery-framework:brief` — 02_Brief_Tecnico (executive summary, max 3 pages)
-- `/metodologia-discovery-framework:asis` — 03_Analisis_AS-IS (10-section exhaustive analysis)
-- `/metodologia-discovery-framework:flows` — 04_Mapeo_Flujos (DDD, E2E flows, integration matrix)
-- `/metodologia-discovery-framework:scenarios` — 05_Escenarios_ToT (Tree-of-Thought, 6D scoring, GATE 1)
-- `/metodologia-discovery-framework:roadmap` — 06_Solution_Roadmap (5 phases, Monte Carlo, GATE 2)
-- `/metodologia-discovery-framework:spec` — 07_Especificacion_Funcional (use cases, business rules)
-- `/metodologia-discovery-framework:pitch` — 08_Pitch_Ejecutivo (C-level business case)
-- `/metodologia-discovery-framework:handover` — 09_Handover_Operaciones (90-day transition)
+| Principio | Significado |
+|-----------|-------------|
+| **Human First, AI Next** | Limpiar procesos humanos antes de amplificar con IA |
+| **Simple First, Robust Next** | Empezar mínimo, escalar con intención |
+| **Operadores → Diseñadores** | Transformar ejecutores en arquitectos de soluciones |
+| **Costear ≠ Cobrar** | Identificar costos ≠ fijar precios |
+| **Caos + IA = Caos²** | La tecnología sin método amplifica el caos |
 
-### Service-Type Discovery Commands
-- `/metodologia-discovery-framework:rpa-discovery` — RPA & process automation discovery ({TIPO_SERVICIO}=RPA)
-- `/metodologia-discovery-framework:qa-discovery` — QA-as-a-service discovery ({TIPO_SERVICIO}=QA)
-- `/metodologia-discovery-framework:ai-discovery` — AI Center & data platform discovery ({TIPO_SERVICIO}=Data-AI)
-- `/metodologia-discovery-framework:transformation` — Digital transformation program discovery ({TIPO_SERVICIO}=Digital-Transformation)
+### P.I.V.O.T.E.
+**P**ersonas · **I**nteracciones · **V**alor → **O**rganización · **T**ecnología · **E**volución
 
-### Operations Commands
-- `/metodologia-discovery-framework:discovery-review` — Audit deliverables (scorecard, cross-checks, verdict)
-- `/metodologia-discovery-framework:discovery-improve` — Evolve deliverables (diagnose, improve, validate delta)
-- `/metodologia-discovery-framework:rescue` — Rescue stalled discovery (triage, repair, complete)
+### Sistema de 4 Fases
+1. **FUNDAMENTAR** — Diagnosticar, establecer fundamento estratégico
+2. **ACELERAR** — Sistematizar operaciones y flujos
+3. **CATALIZAR** — Amplificar con IA (trabajo aumentado)
+4. **AMPLIFICAR** — Escalar a liderazgo organizacional
 
-## NL-HP v3.0 Checkpoint Model
+### Niveles de Madurez
+`Orgánica (1x)` → `Convencional (1.2x)` → `Aumentada (2-5x)` → `Apalancada (10-100x)`
 
-All commands follow the checkpoint protocol:
+### Metodologías Referenciadas
+Lean Startup · Agile/Scrum/Kanban · GTD · OKRs · Design Thinking · 5S Toyota · Zettelkasten
 
-| CP | Name | Purpose |
-|---|---|---|
-| CP-0 | Ingesta | Repo scanned, attachments classified, gaps declared |
-| CP-1 | Plan | Skill/agent composition proposed and approved |
-| CP-N | Phase N | Deliverable validated against criteria |
-| CP-F | Final | Cross-consistency, compliance, formal closure |
+---
 
-## Default Output Behavior
+## Zero-Hallucination Protocol
 
-- **Default format**: Markdown (markdown-excellence standard)
-- **Default variant**: Tecnica (full depth)
-- **Default mode**: piloto-auto (autonomous for routine, HITL for decisions)
-- HTML, DOCX, or dual output: only when user requests via {FORMATO} parameter
+Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFERENCIA]` `[SUPUESTO]` `[STAKEHOLDER]`
+- Si >30% es `[SUPUESTO]` → banner de advertencia obligatorio
+- Si `severity=CRÍTICO` + `[SUPUESTO]` → flag para validación
+- NUNCA presentar inferencias como hechos
 
-## Orchestration Rules
+> Detalle completo → `references/ontology/protocol-zero-hallucination.md`
 
-1. **Pipeline flows orchestrate, document commands generate individual deliverables.** Use flows for end-to-end engagements, document commands for targeted generation.
-2. **Respect phase dependencies**: Plan (00) → Stakeholders (01) → Brief+AS-IS (02,03) → Flows (04) → Scenarios (05) → Roadmap (06) → Spec (07) → Pitch (08) → Handover (09)
-3. **Quality gates are hard stops**: G1 (scenario), G2 (magnitudes), G3 (final). In piloto-auto: pause for approval.
-4. **Cost outputs**: NEVER prices. Only FTE-months + mandatory disclaimers. 5% innovation margin.
-5. **Evidence tagging**: All claims tagged [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER].
-6. **Governance is transversal**: project-program-management + risk-controlling-dynamics on ALL phases.
-7. **Service type routing**: {TIPO_SERVICIO} parameter determines skill variants, committee composition, and input requirements. Auto-detected from context if not explicit.
+---
 
-## Skill Activation
+## Inicio Rápido
 
-When a prompt or command activates the orchestrator:
-1. Parse parameters ({MODO}, {FORMATO}, {VARIANTE}, {ADJUNTOS}, {PROFUNDIDAD}, {TIPO_SERVICIO})
-2. Detect or confirm service type
-3. Scan repository/inputs (CP-0: Ingesta)
-4. Propose skill composition (CP-1: Plan)
-5. Execute phases sequentially with data contract validation
-6. Apply quality gates at G1, G2, G3
-7. Produce deliverables per format protocol
+```bash
+/mao:run-auto          # Pipeline autónomo completo
+/mao:run-express       # Go/No-Go en 1 sesión (3 entregables)
+/mao:run-guided        # Pipeline guiado con facilitación humana
+/mao:run-deep          # Dirección arquitectónica (7 entregables, 2 gates)
+/mao:menu              # Paleta de comandos interactiva
+/mao:a                 # Avanzar al siguiente paso del pipeline
+/mao:demo              # Demo guiado de MAO en el repo actual
+```
 
-## Agent Delegation
+---
 
-| Phase | Lead Agent | Support |
-|-------|-----------|---------|
-| 0 | domain-analyst | change-catalyst |
-| 1 | technical-architect | data-strategist |
-| 2 | domain-analyst | full-stack-generalist |
-| 3 | technical-architect | domain-analyst |
-| 3b | technical-architect | quality-guardian |
-| 4 | delivery-manager | data-strategist |
-| 5 | quality-guardian | change-catalyst |
-| 6 | delivery-manager | change-catalyst |
+## Ontología Viva — Índice de Navegación
+
+Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos especializados que el orquestador consulta según contexto:
+
+| Necesidad | Leer |
+|-----------|------|
+| Reglas de etiquetado de evidencia | `references/ontology/protocol-zero-hallucination.md` |
+| Fases del pipeline y quality gates | `references/ontology/pipeline-orchestration.md` |
+| Roster de 48 agentes y roles | `references/ontology/agent-committee.md` |
+| Catálogo de 100 skills por dominio | `references/ontology/skills-catalog.md` |
+| Referencia de 96 comandos | `references/ontology/commands-reference.md` |
+| Política de RAG-priming y adjuntos | `references/ontology/rag-priming-policy.md` |
+| Estándares de output y branding | `references/ontology/output-standards.md` |
+| Routing por tipo de servicio | `references/ontology/service-routing.md` |
+| Automatización de sesión | `references/ontology/session-automation.md` |
+| Lecciones aprendidas (viviente) | `references/ontology/lessons-learned.md` |
+| Criterios de quality gates | `references/ontology/quality-gates.md` |
+| Orquestación multi-marca | `references/ontology/brand-orchestration.md` |
+| Tokens CSS canónicos | `references/ontology/canonical-tokens.md` |
+
+---
+
+## Reglas de Orquestación (Hard Rules)
+
+1. **Evidence first** — Sin evidencia → `[SUPUESTO]`
+2. **Pipeline secuencial** — Respetar dependencias de fases
+3. **Gates son hard stops** — G1, G1.5, G2, G3. Pausa para aprobación
+4. **NUNCA precios** — Solo FTE-meses + disclaimers
+5. **Ghost menu** — En cada artefacto importante
+6. **Changelog** — Cada acción significativa registrada
+7. **RAG priming** — Cargar contexto al inicio de sesión
+8. **{TIPO_SERVICIO}** — Routing automático de agentes y skills
+9. **Consistencia cruzada** — Verificar alineación entre entregables
+10. **Excellence loop** — 10 criterios en cada entregable
+
+---
 
 ## Output Standards
 
-Markdown-excellence: TL;DR (3-5 bullets), dense prose, tables with status indicators, Mermaid diagrams, callouts, footnotes, cross-references.
+- **Formato**: Markdown-Excellence (TL;DR + bullets, prosa densa, Mermaid, ghost menu)
+- **Idioma**: Español (registro empresarial latinoamericano)
+- **Branding**: #6366F1 indigo · #22D3EE cyan (éxito) · #0F172A dark · #A78BFA accent · Inter
+- **HTML**: Usar tokens canónicos de `references/ontology/canonical-tokens.md`
+- **Artefactos**: Guardar como archivos, no inline
+- **Naming**: Usar `{WIP}` en archivos en progreso, `{Aprobado}` cuando estén aprobados
+- **Slugging**: `{fase}_{entregable}_{cliente}_{WIP|Aprobado}.{ext}` — ej: `03_ASIS_Acme Corp_{WIP}.md`
 
-## Common Parameters
-
-| Parameter | Values | Default |
-|-----------|--------|---------|
-| {MODO} | piloto-auto, desatendido, supervisado, paso-a-paso | piloto-auto |
-| {FORMATO} | markdown, html, docx, dual | markdown |
-| {VARIANTE} | ejecutiva (~40%), tecnica (full) | tecnica |
-| {ADJUNTOS} | procesar-todo, solo-codigo, ignorar | procesar-todo |
-| {PROFUNDIDAD} | ejecutivo, tecnico, exhaustivo | tecnico |
-| {TIPO_SERVICIO} | SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service | SDA |
-
-## Tool Use Defaults
-
-- **Primary output**: Artifact file (not inline text). Save to project directory.
-- **Format**: Markdown by default. HTML/DOCX only on explicit request.
-- **Diagrams**: Mermaid syntax embedded in markdown. Rendered via CDN in HTML.
-- **References**: Load from `${CLAUDE_SKILL_DIR}/references/` when available.
+> Detalle completo → `references/ontology/output-standards.md`
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0
+
+## Arquitectura
+
+```
+metodologia-discovery-framework/
+├── agents/              # 48 agentes especializados
+├── commands/            # 96 comandos (primarios + aliases + service discovery)
+├── skills/              # 100 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
+├── references/
+│   ├── ontology/        # 13 sub-archivos de ontología viva
+│   ├── priming-rag-*/   # 8 docs de conocimiento RAG
+│   └── *.md             # Service matrix, design system, etc.
+├── hooks/               # Ghost menu + changelog + session context
+├── scripts/             # Indexación, escaneo, validación
+├── landing.html         # Landing interactivo del ecosistema
+└── prompt-library.html  # Catálogo searchable de prompts
+```
+
+---
+
+## Sesión Automática
+
+Al activar el plugin, los hooks generan en `.discovery/`:
+- `SESSION-README.md` — Contexto del proyecto
+- `SESSION-CLAUDE.md` — Instrucciones de sesión
+- `calibration-digest.md` — Estado de priming y calibración
+- `ghost-menu.md` — Navegación contextual
+- `session-changelog.md` — Registro para continuidad
+- `session-state.json` — Estado del pipeline
+
+Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `.needs-priming` y se sugiere `/mao:prime-repo`.
+Cada adjunto o URL investigada genera `priming-rag-{nombre}.md` y recalibra automáticamente.
+
+> Detalle completo → `references/ontology/session-automation.md`
+
+---
+
+## Lecciones Aprendidas
+
+Ante correcciones del usuario, actualizar `references/ontology/lessons-learned.md`.
+Revisarlo al inicio de cada sesión para no repetir errores.
+
+---
+
+*MAO v1.0 — MetodologIA de Aprovechamiento de Oportunidades.*
+*Método + TecnologIA = Soberanía. Para el profesional en la era de la IA.*
+*GPL-3.0 Copyleft — El conocimiento se comparte, no se oculta.*

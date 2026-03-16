@@ -13,7 +13,7 @@ El parametro `{TIPO_SERVICIO}` determina la configuracion de skills, agentes, en
 Reglas de deteccion automatica del tipo de servicio a partir del contexto de la conversacion. Se evaluan en orden de prioridad; la primera coincidencia determina el tipo detectado. Si multiples reglas coinciden, se aplica la regla 10 (Multi-Service).
 
 1. **SDA (default)**: Si se proporciona un codebase path y no se indica tipo de servicio explicito → SDA.
-2. **QA**: Si se mencionan "testing", "QA", "ISTQB", "test factory", "automatizacion de pruebas", "calidad de software", "regression", "test plan" → QA.
+2. **QA**: Si se mencionan "testing", "QA", "ISTQB", "PITT", "test factory", "automatizacion de pruebas", "calidad de software", "regression", "test plan" → QA.
 3. **Management**: Si se mencionan "PMO", "agile coach", "delivery manager", "methodology", "project management", "SAFe", "Scrum Master", "gestion de proyectos", "gobernanza" → Management.
 4. **RPA**: Si se mencionan "automation", "bots", "UiPath", "RPA", "process mining", "BPMN", "automatizacion de procesos", "robotica", "Blue Prism", "Automation Anywhere" → RPA.
 5. **Data-AI**: Si se mencionan "data governance", "BI", "dashboards", "AI", "ML", "analytics", "data science", "inteligencia artificial", "machine learning", "data lake", "data mesh", "LLM", "GenAI" → Data-AI.
@@ -136,6 +136,3 @@ Convencion de nomenclatura para todos los entregables generados por el framework
 - Si `{TIPO_SERVICIO}` es **SDA** y el proyecto no requiere diferenciacion, el sufijo `_SDA` puede omitirse por ser el default.
 - Para **Multi-Service**, incluir los tipos principales entre parentesis en el nombre del proyecto si es necesario para claridad: `03_Analisis_AS-IS_MultiService_BancoNacional(SDA+QA+Cloud).md`.
 - Los entregables de operaciones (review, improve, rescue) siguen el mismo formato con prefijo `OPS_`: `OPS_Review_SDA_AcmeCorp.md`.
-
----
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026

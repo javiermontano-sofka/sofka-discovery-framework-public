@@ -175,7 +175,7 @@ LAYER 3 (Appendix, reference):
 
    - **Key Insight Box** (orange border): Critical finding, decision enabler
      ```html
-     <div style="border-left: 4px solid #FF7E08; padding: 12px; background: #fff7ed;">
+     <div style="border-left: 4px solid #6366F1; padding: 12px; background: #fff7ed;">
        <strong>Key Insight:</strong> Option B meets all constraints (timeline, cost, risk) and is feasible.
      </div>
      ```
@@ -196,7 +196,7 @@ LAYER 3 (Appendix, reference):
 
    - **Success Box** (gold border): Positive outcome, milestone
      ```html
-     <div style="border-left: 4px solid #FFD700; padding: 12px; background: #fef9e7;">
+     <div style="border-left: 4px solid #22D3EE; padding: 12px; background: #fef9e7;">
        <strong>Success:</strong> All three scenarios meet core constraints (Q3 launch, ≤$3M budget).
      </div>
      ```

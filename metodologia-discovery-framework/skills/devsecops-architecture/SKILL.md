@@ -15,7 +15,7 @@ allowed-tools:
   - Bash
 ---
 
-> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Cloud`. Los pipelines CI/CD y la seguridad en el ciclo de desarrollo son inherentes a estas lineas de servicio. Para seguridad en otros contextos, consulte `security-architecture`.
+> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Cloud`. Los pipelines CI/CD y la seguridad en el ciclo de desarrollo son inherentes a estas líneas de servicio. Para seguridad en otros contextos, consulte `security-architecture`.
 
 # DevSecOps Architecture: Delivery & Security Pipeline
 
@@ -23,11 +23,11 @@ DevSecOps architecture designs how software is built, tested, secured, and relea
 
 ## Principio Rector
 
-**La seguridad que se agrega al final es la seguridad que se olvida.** DevSecOps integra seguridad en cada etapa del pipeline: desde el commit hasta produccion. SAST antes de merge, SCA en cada build, DAST en staging, y runtime protection en produccion. El pipeline es la ultima linea de defensa antes del cliente.
+**La seguridad que se agrega al final es la seguridad que se olvida.** DevSecOps integra seguridad en cada etapa del pipeline: desde el commit hasta producción. SAST antes de merge, SCA en cada build, DAST en staging, y runtime protection en producción. El pipeline es la última línea de defensa antes del cliente.
 
-### Filosofia DevSecOps
+### Filosofía DevSecOps
 
-1. **Shift-left, pero no solo-left.** La seguridad empieza en el IDE, pero no termina ahi. Cada stage del pipeline tiene su gate de seguridad.
+1. **Shift-left, pero no solo-left.** La seguridad empieza en el IDE, pero no termina ahí. Cada stage del pipeline tiene su gate de seguridad.
 2. **Supply chain integrity.** SBOM, artifact signing, dependency scanning — la cadena de suministro de software es un vector de ataque. Se verifica, no se asume.
 3. **DORA metrics como North Star.** Deployment frequency, lead time, failure rate, MTTR — medir para mejorar, no para reportar.
 
@@ -37,12 +37,12 @@ The user provides a system or pipeline name as `$ARGUMENTS`. Parse `$1` as the *
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para analisis de pipeline y security gates, HITL para decisiones de deployment strategy y compliance policies.
-  - **desatendido**: Cero interrupciones. Pipeline documentado automaticamente. Supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint en security gates, deployment strategy, y compliance automation.
+  - **piloto-auto**: Auto para análisis de pipeline y security gates, HITL para decisiones de deployment strategy y compliance policies.
+  - **desatendido**: Cero interrupciones. Pipeline documentado automáticamente. Supuestos documentados.
+  - **supervisado**: Autónomo con checkpoint en security gates, deployment strategy, y compliance automation.
   - **paso-a-paso**: Confirma cada stage, security gate, deployment strategy, y compliance policy.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 CI/CD pipeline + S2 shift-left security + S5 DORA metrics) | `tecnica` (full 7 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 CI/CD pipeline + S2 shift-left security + S5 DORA metrics) | `técnica` (full 7 sections, default)
 
 Before generating architecture, detect pipeline context:
 
@@ -71,10 +71,10 @@ Read ${CLAUDE_SKILL_DIR}/references/compliance-policies.md
 
 ## When NOT to Use
 
-- Internal software structure -> **metodologia-software-architecture**
-- End-to-end solution design -> **metodologia-solutions-architecture**
-- Enterprise portfolio alignment -> **metodologia-enterprise-architecture**
-- Infrastructure and platform -> **metodologia-infrastructure-architecture**
+- Internal software structure → **metodologia-software-architecture**
+- End-to-end solution design → **metodologia-solutions-architecture**
+- Enterprise portfolio alignment → **metodologia-enterprise-architecture**
+- Infrastructure and platform → **metodologia-infrastructure-architecture**
 
 ---
 
@@ -302,4 +302,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Pipeline stage diagram, security gate checklist, deployment playbook, DORA metrics dashboard, compliance evidence template.
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

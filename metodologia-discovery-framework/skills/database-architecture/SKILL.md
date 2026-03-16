@@ -15,7 +15,7 @@ allowed-tools:
   - Bash
 ---
 
-> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Data-AI`. El diseno de bases de datos es relevante para desarrollo de software y para estrategia de datos. Para otros contextos de datos, consulte `data-engineering`, `data-governance`, o `bi-architecture`.
+> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Data-AI`. El diseño de bases de datos es relevante para desarrollo de software y para estrategia de datos. Para otros contextos de datos, consulte `data-engineering`, `data-governance`, o `bi-architecture`.
 
 # Database Architecture: Schema Design, Storage Strategy & Data Evolution
 
@@ -23,7 +23,7 @@ Database architecture defines how data is structured, stored, accessed, replicat
 
 ## Principio Rector
 
-**Un schema sin estrategia de evolucion es un schema condenado a romperse.** La evolucion del esquema se planifica ANTES de la primera migracion. Los indices se disenan a partir de access patterns medidos, no de intuicion. Las migraciones se ejecutan con zero-downtime o no se ejecutan. Cada decision de particionamiento, replicacion e indexacion lleva justificacion cuantitativa y plan de rollback.
+**Un schema sin estrategia de evolución es un schema condenado a romperse.** La evolución del esquema se planifica ANTES de la primera migración. Los índices se diseñan a partir de access patterns medidos, no de intuición. Las migraciones se ejecutan con zero-downtime o no se ejecutan. Cada decisión de particionamiento, replicación e indexación lleva justificación cuantitativa y plan de rollback.
 
 ## Inputs
 
@@ -31,12 +31,12 @@ The user provides a system or database name as `$ARGUMENTS`. Parse `$1` as the *
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para profiling y schema design, HITL para decisiones de particionamiento y replicacion.
-  - **desatendido**: Cero interrupciones. Schema, indices y migraciones documentados automaticamente. Supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint en indexing strategy y migration plan.
-  - **paso-a-paso**: Confirma cada tabla, indice, particion y plan de migracion.
+  - **piloto-auto**: Auto para profiling y schema design, HITL para decisiones de particionamiento y replicación.
+  - **desatendido**: Cero interrupciones. Schema, índices y migraciones documentados automáticamente. Supuestos documentados.
+  - **supervisado**: Autónomo con checkpoint en indexing strategy y migration plan.
+  - **paso-a-paso**: Confirma cada tabla, índice, partición y plan de migración.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 schema design + S2 indexing + S5 migration plan) | `tecnica` (full 6 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 schema design + S2 indexing + S5 migration plan) | `técnica` (full 6 sections, default)
 
 Before generating architecture, detect the data context:
 
@@ -325,4 +325,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Migration scripts (.sql), index recommendation report, slow query analysis, replication monitoring dashboard config.
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

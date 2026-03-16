@@ -12,10 +12,10 @@ Reusable HTML templates for infrastructure documentation and visualization.
 ## Design Tokens
 
 ```css
---color-primary: #FF7E08;        /* Orange — infrastructure components */
+--color-primary: #6366F1;        /* Orange — infrastructure components */
 --color-critical: #DC2626;       /* Red — failures, critical resources */
 --color-warning: #D97706;        /* Amber — warnings, degraded state */
---color-positive: #FFD700;       /* Gold — healthy, optimized */
+--color-positive: #22D3EE;       /* Gold — healthy, optimized */
 --color-decorative: #42D36F;     /* Green — decorative, healthy state */
 --color-neutral-light: #F3F4F6;  /* Light gray */
 --color-neutral-dark: #1F2937;   /* Dark gray */

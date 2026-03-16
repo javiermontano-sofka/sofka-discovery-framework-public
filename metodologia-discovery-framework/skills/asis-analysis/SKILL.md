@@ -1,7 +1,7 @@
 ---
-name: asis-analysis
+name: metodologia-asis-analysis
 description: >
-  Universal current-state assessment producing 10-section analysis for ANY service type.
+  Universal current-state assessment producing 10-section analysis for ANY MetodologIA service type.
   Use when the user asks to "analyze the codebase", "assess current architecture", "run AS-IS analysis",
   "technical audit", "evaluate tech debt", "code quality assessment", "assess current state",
   "service assessment", "QA maturity", "PMO assessment", "RPA readiness", "data maturity",
@@ -18,15 +18,15 @@ allowed-tools:
 
 # AS-IS Analysis — Universal Current-State Assessment
 
-Generates a 10-section current-state assessment for ANY service type (SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design). For software codebases (SDA), produces: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. For other service types, sections S1-S8 adapt to domain-specific dimensions while S0 (Executive Dashboard), S9 (Risk Register), and S10 (Recommendations) remain universal.
+Generates a 10-section current-state assessment for ANY MetodologIA service type (SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design). For software codebases (SDA), produces: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. For other service types, sections S1-S8 adapt to domain-specific dimensions while S0 (Executive Dashboard), S9 (Risk Register), and S10 (Recommendations) remain universal.
 
 ## Principio Rector
 
-> *No se puede trazar un camino hacia el futuro sin comprender con honestidad brutal donde se esta parado hoy.*
+> *No se puede trazar un camino hacia el futuro sin comprender con honestidad brutal dónde se está parado hoy.*
 
-1. **Diagnostico basado en evidencia, no en opinion.** Cada hallazgo debe estar respaldado por metricas extraidas del codigo, configuracion o historial operativo. La intuicion guia la exploracion; la evidencia sustenta la conclusion.
-2. **El presente contiene las semillas del futuro.** Las decisiones arquitectonicas heredadas no son errores — son contexto. Comprender *por que* se tomaron revela restricciones que cualquier transformacion debe respetar o explicitamente romper.
-3. **La deuda tecnica es deuda de conocimiento.** Cada atajo no documentado, cada patron inconsistente, cada test ausente representa conocimiento que el equipo decidio no capturar. El analisis AS-IS restaura ese conocimiento antes de que se pierda.
+1. **Diagnóstico basado en evidencia, no en opinión.** Cada hallazgo debe estar respaldado por métricas extraídas del código, configuración o historial operativo. La intuición guía la exploración; la evidencia sustenta la conclusión.
+2. **El presente contiene las semillas del futuro.** Las decisiones arquitectónicas heredadas no son errores — son contexto. Comprender *por qué* se tomaron revela restricciones que cualquier transformación debe respetar o explícitamente romper.
+3. **La deuda técnica es deuda de conocimiento.** Cada atajo no documentado, cada patrón inconsistente, cada test ausente representa conocimiento que el equipo decidió no capturar. El análisis AS-IS restaura ese conocimiento antes de que se pierda.
 
 ## Inputs
 
@@ -37,12 +37,12 @@ Parse from `$ARGUMENTS`.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para extraccion de metricas y analisis de codigo, HITL para hallazgos de seguridad y decisiones de escalamiento.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
-  - **supervisado**: Autonomo con reportes al completar cada seccion del framework.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **piloto-auto**: Auto para extracción de métricas y análisis de código, HITL para hallazgos de seguridad y decisiones de escalamiento.
+  - **desatendido**: Cero interrupciones. Análisis completo automatizado. Supuestos documentados.
+  - **supervisado**: Autónomo con reportes al completar cada sección del framework.
+  - **paso-a-paso**: Confirma antes de cada sección del análisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — sections S0, S5, S9, S10 only) | `tecnica` (full, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — sections S0, S5, S9, S10 only) | `técnica` (full, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
   - When omitted or when a codebase path is provided, defaults to SDA (backward compatible)
   - Determines which variant of sections S1-S8 to generate
@@ -51,17 +51,17 @@ Parse from `$ARGUMENTS`.
 
 Before starting analysis, detect the service type from context:
 
-1. If `{TIPO_SERVICIO}` explicitly provided -> use it
-2. If codebase path provided -> default to SDA
-3. If conversation mentions QA/testing/ISTQB -> QA
-4. If conversation mentions PMO/methodology/delivery -> Management
-5. If conversation mentions automation/bots/RPA/UiPath -> RPA
-6. If conversation mentions data/AI/ML/analytics/dashboards -> Data-AI
-7. If conversation mentions cloud/migration/DevOps/SRE -> Cloud
-8. If conversation mentions staffing/talent/augmentation -> SAS
-9. If conversation mentions design/UX/UI/usability -> UX-Design
+1. If `{TIPO_SERVICIO}` explicitly provided → use it
+2. If codebase path provided → default to SDA
+3. If conversation mentions QA/testing/ISTQB → QA
+4. If conversation mentions PMO/methodology/delivery → Management
+5. If conversation mentions automation/bots/RPA/UiPath → RPA
+6. If conversation mentions data/AI/ML/analytics/dashboards → Data-AI
+7. If conversation mentions cloud/migration/DevOps/SRE → Cloud
+8. If conversation mentions staffing/talent/augmentation → SAS
+9. If conversation mentions design/UX/UI/usability → UX-Design
 
-Confirm: "Tipo de servicio detectado: {X}. Confirma o desea ajustar?"
+Confirm: "Tipo de servicio detectado: {X}. ¿Confirma o desea ajustar?"
 
 ## Dynamic Context Injection
 
@@ -195,7 +195,7 @@ Top 5-10 findings with root cause + business impact. Quick wins (under 5 eng-day
 
 ## Service-Type Variant Sections (S1-S8)
 
-When `{TIPO_SERVICIO}` != SDA, sections S0, S9, and S10 remain universal. Sections S1-S8 adapt to the service type:
+When `{TIPO_SERVICIO}` ≠ SDA, sections S0, S9, and S10 remain universal. Sections S1-S8 adapt to the service type:
 
 ### QA Variant (`{TIPO_SERVICIO}=QA`)
 - **S1: QA Tool Landscape** — Testing tools inventory (automation frameworks, CI/CD integration, test management), license status, adoption maturity
@@ -212,7 +212,7 @@ When `{TIPO_SERVICIO}` != SDA, sections S0, S9, and S10 remain universal. Sectio
 - **S2: Methodology Fitness** — Current methodology (Agile, SAFe, Waterfall, Hybrid) fit to organizational context. Disciplined Agile assessment
 - **S3: Governance Model** — Decision rights, escalation paths, ceremony effectiveness, reporting cadence. Governance health score
 - **S4: Team Capability** — Certifications inventory (PMP, CSM, SAFe, etc.), experience distribution, skill gaps. Capability maturity
-- **S5: Process Debt** — Manual processes that should be automated, ineffective ceremonies, documentation gaps, governance overhead
+- **S5: Process Debt** — Manual processes that should be automated, ceremonias inefectivas, documentation gaps, governance overhead
 - **S6: Management NFR Heatmap** — Predictability, transparency, stakeholder satisfaction, velocity stability, quality. Scored 1-10
 - **S7: Change Readiness** — Organizational change capacity, resistance patterns, adoption barriers, training needs
 - **S8: Delivery Operations** — Delivery cadence, deployment frequency, lead time, WIP management. DORA-lite for management
@@ -228,9 +228,9 @@ When `{TIPO_SERVICIO}` != SDA, sections S0, S9, and S10 remain universal. Sectio
 - **S8: Bot Operations** — Orchestration model (attended/unattended), monitoring, incident response, change management for bots
 
 ### Data-AI Variant (`{TIPO_SERVICIO}=Data-AI`)
-- **S1: Data Maturity (DCAM/DMM)** — Data management maturity assessment using DCAM (public EDMC standard) or DMM framework. Current level with evidence across 6 dimensions
+- **S1: Data Maturity (DCAM/DMM)** — Data management maturity assessment. Current level with evidence across 6 dimensions
 - **S2: Data Architecture** — Data platform inventory, lakehouse/warehouse, ETL/ELT pipelines, streaming. Architecture patterns
-- **S3: AI Readiness** — Assessment using public AI readiness frameworks (Google AI Readiness, MIT AI Maturity). Current stage with evidence
+- **S3: AI Readiness (AI SCALE)** — Assessment using MetodologIA AI SCALE methodology. Current stage (Selection/Co-creation/Adoption/Launch/Expansion)
 - **S4: Data Quality Baseline** — Completeness, accuracy, consistency, timeliness, validity. Quality scores per critical dataset
 - **S5: Data/AI Debt** — Undocumented pipelines, untested models, stale datasets, missing lineage, shadow IT data sources
 - **S6: Data NFR Heatmap** — Latency, freshness, availability, security, governance, interoperability. Scored 1-10
@@ -326,7 +326,7 @@ Every recommendation in S10 must reference evidence from S0-S9:
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
@@ -338,4 +338,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: technology stack overview
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

@@ -1,5 +1,5 @@
 ---
-name: functional-spec
+name: metodologia-functional-spec
 description: >
   Comprehensive functional specification with use cases, business rules, and complexity/risk matrix,
   service specification, deliverable specification, and engagement spec.
@@ -19,17 +19,17 @@ allowed-tools:
 
 Generates detailed functional specifications: MVP modules, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrix, explicit scope boundaries, data model overview, integration specs, and per-module acceptance criteria.
 
-> **Nota de universalidad:** Este skill genera especificaciones funcionales para CUALQUIER tipo de servicio. Para SDA produce especificaciones de software (modulos, casos de uso, modelos de datos). Para otros tipos de servicio, adapta la estructura a los entregables propios de cada linea.
+> **Nota de universalidad:** Este skill genera especificaciones funcionales para CUALQUIER tipo de servicio MetodologIA. Para SDA produce especificaciones de software (módulos, casos de uso, modelos de datos). Para otros tipos de servicio, adapta la estructura a los entregables propios de cada línea.
 
 ## Principio Rector
 
-**Una especificacion ambigua es una promesa de retrabajo.** La spec funcional es el contrato entre negocio y tecnologia: cada use case define QUE hace el sistema, cada business rule define COMO decide, y cada criterio de aceptacion define CUANDO esta listo. Si no esta en la spec, no se construye. Si esta ambiguo en la spec, se construye mal.
+**Una especificación ambigua es una promesa de retrabajo.** La spec funcional es el contrato entre negocio y tecnología: cada use case define QUÉ hace el sistema, cada business rule define CÓMO decide, y cada criterio de aceptación define CUÁNDO está listo. Si no está en la spec, no se construye. Si está ambiguo en la spec, se construye mal.
 
-### Filosofia de Especificacion
+### Filosofía de Especificación
 
-1. **QUE, no COMO.** La spec describe comportamiento observable, no implementacion. "El sistema valida la edad del cliente" — no "usar un IF/ELSE en el controller."
-2. **Cada regla tiene dueno.** Las business rules no validadas son bombas de tiempo. UNVALIDATED es un status, no un permiso para avanzar.
-3. **Scope explicito > scope exhaustivo.** Una lista clara de que esta IN y que esta OUT previene el 80% del scope creep.
+1. **QUÉ, no CÓMO.** La spec describe comportamiento observable, no implementación. "El sistema valida la edad del cliente" — no "usar un IF/ELSE en el controller."
+2. **Cada regla tiene dueño.** Las business rules no validadas son bombas de tiempo. UNVALIDATED es un status, no un permiso para avanzar.
+3. **Scope explícito > scope exhaustivo.** Una lista clara de qué está IN y qué está OUT previene el 80% del scope creep.
 
 ## Inputs
 
@@ -40,12 +40,12 @@ Parse from `$ARGUMENTS`. Use `actor-goal` for MVP speed; `cockburn` for critical
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario de modulos y use cases, HITL para validacion de business rules y scope boundaries.
+  - **piloto-auto**: Auto para inventario de módulos y use cases, HITL para validación de business rules y scope boundaries.
   - **desatendido**: Cero interrupciones. Spec completa auto-generada. Reglas marcadas UNVALIDATED.
-  - **supervisado**: Autonomo con checkpoint en scope definition y business rules.
-  - **paso-a-paso**: Confirma cada modulo, cada use case, y cada business rule.
+  - **supervisado**: Autónomo con checkpoint en scope definition y business rules.
+  - **paso-a-paso**: Confirma cada módulo, cada use case, y cada business rule.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 modules + S4 risk matrix + S5 scope) | `tecnica` (full 8 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 modules + S4 risk matrix + S5 scope) | `técnica` (full 8 sections, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
   - Determines deliverable types, acceptance criteria, and module decomposition patterns
   - When omitted, defaults to SDA (backward compatible)
@@ -150,7 +150,7 @@ Per module: Functional completeness (use cases tested, rules validated, alternat
 |---|---|
 | SDA | Code review passed, unit test coverage >80%, integration tests green, security scan clear |
 | QA | Test case pass rate >95%, defect detection rate >85%, automation coverage >60%, zero P1 escapes |
-| Management | Milestone on time, stakeholder satisfaction >7/10, team velocity stable +/-10%, zero unresolved blockers |
+| Management | Milestone on time, stakeholder NPS >7, team velocity stable ±10%, zero unresolved blockers |
 | RPA | Bot success rate >98%, exception rate <2%, processing time within SLA, audit trail complete |
 | Data-AI | Data quality score >95%, model accuracy above threshold, pipeline SLA met, dashboard adoption >70% |
 | Cloud | Zero downtime migration, performance parity, security compliance verified, cost within budget |
@@ -190,11 +190,11 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

@@ -1,5 +1,6 @@
 ---
-name: dynamic-sme
+name: metodologia-dynamic-sme
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   Context-adaptive industry expert that dynamically adopts the right SME lens based on client sector.
   Use when the user asks to "add industry context", "act as domain expert", "give me the banking/retail/health perspective",
