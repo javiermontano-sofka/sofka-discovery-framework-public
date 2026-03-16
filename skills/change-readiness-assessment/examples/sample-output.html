@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Readiness — Acme Corp Banking Modernization</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #FF7E08;
+            --dark: #1A1A2E;
+            --dark-alt: #2D2D4E;
+            --success: #FFD700;
+            --text: #E0E0E0;
+            --text-muted: #A0A0B0;
+            --danger: #E74C3C;
+            --warning: #F39C12;
+            --bg: #0F0F1E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+            border-left: 5px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .header .meta span {
+            margin-right: 1.5rem;
+        }
+
+        /* TL;DR */
+        .tldr {
+            background: var(--dark);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tldr h2 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tldr ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tldr li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tldr li::before {
+            content: '▸';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .tldr .score-big {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--danger);
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .tldr .score-label {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--dark-alt);
+        }
+
+        .section h3 {
+            color: var(--success);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--dark-alt);
+            color: var(--primary);
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        td {
+            padding: 0.7rem 0.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        tr:hover {
+            background: rgba(255, 126, 8, 0.05);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        /* Score indicators */
+        .score-low { color: var(--danger); font-weight: bold; }
+        .score-mid { color: var(--warning); font-weight: bold; }
+        .score-high { color: var(--success); font-weight: bold; }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-danger { background: rgba(231, 76, 60, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+        .badge-warning { background: rgba(243, 156, 18, 0.2); color: var(--warning); border: 1px solid var(--warning); }
+        .badge-success { background: rgba(255, 215, 0, 0.2); color: var(--success); border: 1px solid var(--success); }
+
+        /* Heat map cells */
+        .heat-1 { background: rgba(255, 215, 0, 0.15); color: var(--success); }
+        .heat-2 { background: rgba(255, 215, 0, 0.25); color: var(--success); }
+        .heat-3 { background: rgba(243, 156, 18, 0.3); color: var(--warning); }
+        .heat-4 { background: rgba(231, 76, 60, 0.3); color: var(--danger); }
+        .heat-5 { background: rgba(231, 76, 60, 0.5); color: #fff; }
+
+        /* Callout */
+        .callout {
+            background: rgba(255, 126, 8, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout.insight {
+            border-left-color: var(--success);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .callout.warning {
+            border-left-color: var(--danger);
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        /* Intervention cards */
+        .intervention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .intervention-card {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-top: 3px solid var(--primary);
+        }
+
+        .intervention-card .id {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .intervention-card .title {
+            color: var(--text);
+            font-weight: 600;
+            margin: 0.3rem 0;
+        }
+
+        .intervention-card .detail {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Mermaid */
+        .mermaid-container {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--dark-alt);
+            margin-top: 2rem;
+        }
+
+        .footer .brand {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Print */
+        @media print {
+            body { background: #fff; color: #1a1a1a; padding: 1rem; }
+            .section, .tldr, .header { background: #fff; border: 1px solid #ddd; }
+            th { background: #f5f5f5; color: #1a1a1a; }
+            .header h1 { color: #FF7E08; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .intervention-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Evaluacion de Readiness Organizacional</h1>
+            <p style="font-size:1.1rem; color: var(--text); margin-bottom: 0.5rem;">Acme Corp — Modernizacion Core Bancario</p>
+            <div class="meta">
+                <span>Fecha: 13 de marzo de 2026</span>
+                <span>Modo: Diagnostico (Full)</span>
+                <span>Alcance: ~320 personas</span>
+            </div>
+        </div>
+
+        <!-- TL;DR -->
+        <div class="tldr">
+            <h2>TL;DR</h2>
+            <div class="score-big">2.8 / 5</div>
+            <div class="score-label">Readiness Organizacional Compuesto — La organizacion NO esta lista sin intervencion</div>
+            <ul style="margin-top: 1rem;">
+                <li>Barrier point dominante: <strong>Knowledge</strong> (2.1 promedio) — los equipos no saben COMO cambiar</li>
+                <li>Grupo de mayor riesgo: <strong>Operaciones Back-Office</strong> (readiness 1.6) — resistencia activa</li>
+                <li>Se requieren <strong>12 intervenciones prioritarias</strong> antes de Phase 2</li>
+                <li>Capacidad de cambio organizacional: <strong>Moderada</strong> (2.6/5)</li>
+                <li>Recomendacion: <strong>retrasar go-live 4-6 semanas</strong> para ejecutar intervenciones</li>
+            </ul>
+        </div>
+
+        <!-- S1: Change Impact Profile -->
+        <div class="section">
+            <h2>S1: Change Impact Profile</h2>
+            <p>Acme Corp reemplaza su core bancario legacy (COBOL/mainframe, 25 anos) con plataforma moderna (microservicios, cloud-native). Afecta procesos operativos, interfaces de usuario, modelo de datos, y 14 sistemas satelite.</p>
+
+            <h3>Matriz de Impacto por Grupo</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Personas</th>
+                            <th>Impacto Tech</th>
+                            <th>Impacto Proceso</th>
+                            <th>Impacto Rol</th>
+                            <th>Magnitud</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ejecutivos (C-Suite + VP)</td>
+                            <td>12</td>
+                            <td><span class="badge badge-warning">Bajo</span></td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td><span class="badge badge-warning">Bajo</span></td>
+                            <td class="score-mid">2/5</td>
+                        </tr>
+                        <tr>
+                            <td>Gerentes de Area</td>
+                            <td>28</td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td><span class="badge badge-danger">Alto</span></td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td class="score-mid">3/5</td>
+                        </tr>
+                        <tr>
+                            <td>Desarrolladores & QA</td>
+                            <td>85</td>
+                            <td><span class="badge badge-danger">Alto</span></td>
+                            <td><span class="badge badge-danger">Alto</span></td>
+                            <td><span class="badge badge-danger">Alto</span></td>
+                            <td class="score-low">5/5</td>
+                        </tr>
+                        <tr>
+                            <td>Operaciones Back-Office</td>
+                            <td>145</td>
+                            <td><span class="badge badge-danger">Alto</span></td>
+                            <td><span class="badge badge-danger">Alto</span></td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td class="score-low">4/5</td>
+                        </tr>
+                        <tr>
+                            <td>Atencion al Cliente</td>
+                            <td>50</td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td><span class="badge badge-warning">Bajo</span></td>
+                            <td class="score-mid">2/5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>Magnitud general del cambio:</strong> <span class="score-low">4/5 — Transformacional</span></p>
+        </div>
+
+        <!-- S2: ADKAR Scorecard -->
+        <div class="section">
+            <h2>S2: Stakeholder Readiness Scorecard (ADKAR)</h2>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>A</th>
+                            <th>D</th>
+                            <th>K</th>
+                            <th>Ab</th>
+                            <th>R</th>
+                            <th>Compuesto</th>
+                            <th>Barrier Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ejecutivos</td>
+                            <td class="heat-4">4</td>
+                            <td class="heat-4">4</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-3">3</td>
+                            <td class="score-mid">3.4</td>
+                            <td><span class="badge badge-warning">Knowledge</span></td>
+                        </tr>
+                        <tr>
+                            <td>Gerentes de Area</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-1">1</td>
+                            <td class="score-low">2.0</td>
+                            <td><span class="badge badge-danger">Reinforcement</span></td>
+                        </tr>
+                        <tr>
+                            <td>Desarrolladores & QA</td>
+                            <td class="heat-4">4</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-2">2</td>
+                            <td class="score-mid">2.6</td>
+                            <td><span class="badge badge-danger">Knowledge</span></td>
+                        </tr>
+                        <tr>
+                            <td>Operaciones Back-Office</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-1">1</td>
+                            <td class="heat-1">1</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-2">2</td>
+                            <td class="score-low">1.6</td>
+                            <td><span class="badge badge-danger">Desire</span></td>
+                        </tr>
+                        <tr>
+                            <td>Atencion al Cliente</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-2">2</td>
+                            <td class="score-mid">2.8</td>
+                            <td><span class="badge badge-warning">Reinforcement</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout warning">
+                <strong>Alerta:</strong> Operaciones Back-Office con Desire=1 y Knowledge=1 indica resistencia activa combinada con desinformacion. Este grupo requiere intervencion inmediata antes de cualquier actividad de rollout.
+            </div>
+        </div>
+
+        <!-- S3: Resistance Heat Map -->
+        <div class="section">
+            <h2>S3: Resistance Heat Map</h2>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Cognitiva</th>
+                            <th>Emocional</th>
+                            <th>Conductual</th>
+                            <th>Politica</th>
+                            <th>Nivel Global</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ejecutivos</td>
+                            <td class="heat-1">1</td>
+                            <td class="heat-1">1</td>
+                            <td class="heat-1">1</td>
+                            <td class="heat-2">2</td>
+                            <td><span class="badge badge-success">1.3</span></td>
+                        </tr>
+                        <tr>
+                            <td>Gerentes de Area</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-3">3</td>
+                            <td><span class="badge badge-warning">2.5</span></td>
+                        </tr>
+                        <tr>
+                            <td>Desarrolladores & QA</td>
+                            <td class="heat-1">1</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-1">1</td>
+                            <td><span class="badge badge-warning">1.8</span></td>
+                        </tr>
+                        <tr>
+                            <td>Operaciones Back-Office</td>
+                            <td class="heat-3">3</td>
+                            <td class="heat-4">4</td>
+                            <td class="heat-4">4</td>
+                            <td class="heat-2">2</td>
+                            <td><span class="badge badge-danger">3.3</span></td>
+                        </tr>
+                        <tr>
+                            <td>Atencion al Cliente</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-2">2</td>
+                            <td class="heat-1">1</td>
+                            <td class="heat-1">1</td>
+                            <td><span class="badge badge-success">1.5</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout insight">
+                <strong>Insight:</strong> La resistencia de Back-Office no es irracional. Su expertise de 25 anos en COBOL/mainframe se devalua. Necesitan un puente de reconocimiento + reskilling, no "venta" del nuevo sistema.
+            </div>
+        </div>
+
+        <!-- S4: Change Capacity -->
+        <div class="section">
+            <h2>S4: Change Capacity Assessment</h2>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dimension (McKinsey 7S)</th>
+                            <th>Score</th>
+                            <th>Evidencia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Strategy</td><td class="score-high">4</td><td>Modernizacion en plan estrategico 2025-2027 [DOC]</td></tr>
+                        <tr><td>Structure</td><td class="score-mid">3</td><td>PMO existe pero sin CM formal [INFERENCIA]</td></tr>
+                        <tr><td>Systems</td><td class="score-low">2</td><td>No hay LMS, comunicacion por email masivo [DOC]</td></tr>
+                        <tr><td>Shared Values</td><td class="score-low">2</td><td>Cultura conservadora, ultimo cambio mayor hace 8 anos [STAKEHOLDER]</td></tr>
+                        <tr><td>Skills</td><td class="score-low">2</td><td>Sin equipo de change management [DOC]</td></tr>
+                        <tr><td>Style</td><td class="score-mid">3</td><td>CTO sponsor fuerte, middle management ambivalente [STAKEHOLDER]</td></tr>
+                        <tr><td>Staff</td><td class="score-low">2</td><td>Sin presupuesto dedicado a CM [DOC]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><strong>Capacidad compuesta:</strong> <span class="score-low">2.6/5 — Baja-Moderada</span></p>
+        </div>
+
+        <!-- S5: Risk Register -->
+        <div class="section">
+            <h2>S5: Risk Register (Change-specific)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Riesgo</th><th>Cat.</th><th>P</th><th>I</th><th>Score</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>R1</td><td>Sabotaje pasivo de Back-Office retrasa migracion >3 meses</td><td>People</td><td>4</td><td>5</td><td><span class="badge badge-danger">20</span></td></tr>
+                        <tr><td>R2</td><td>Middle management no cascada mensajes</td><td>People</td><td>4</td><td>4</td><td><span class="badge badge-danger">16</span></td></tr>
+                        <tr><td>R3</td><td>Sin CM formal, intervenciones ad-hoc</td><td>Process</td><td>3</td><td>4</td><td><span class="badge badge-warning">12</span></td></tr>
+                        <tr><td>R4</td><td>Training insuficiente, errores en produccion</td><td>Technology</td><td>3</td><td>5</td><td><span class="badge badge-danger">15</span></td></tr>
+                        <tr><td>R5</td><td>Change fatigue por cambios concurrentes</td><td>People</td><td>3</td><td>3</td><td><span class="badge badge-warning">9</span></td></tr>
+                        <tr><td>R6</td><td>Perdida de conocimiento tribal (COBOL)</td><td>Technology</td><td>4</td><td>4</td><td><span class="badge badge-danger">16</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- S6: Intervention Plan -->
+        <div class="section">
+            <h2>S6: Intervention Plan</h2>
+            <p>12 intervenciones priorizadas por urgencia e impacto:</p>
+
+            <h3>Semana 1-2 — Urgente</h3>
+            <div class="intervention-grid">
+                <div class="intervention-card">
+                    <div class="id">I-05</div>
+                    <div class="title">Designar Change Manager Dedicado</div>
+                    <div class="detail">Rol formal con presupuesto, reporte al sponsor, acceso a todos los grupos.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-07</div>
+                    <div class="title">Change Load Balancing</div>
+                    <div class="detail">Secuenciar cambios: completar migracion cloud antes de reorganizacion.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-01</div>
+                    <div class="title">Programa Legacy Champions</div>
+                    <div class="detail">Reconocer expertise legacy. Nombrar champions que documentan y transfieren conocimiento.</div>
+                </div>
+            </div>
+
+            <h3>Semana 2-4 — Alta Prioridad</h3>
+            <div class="intervention-grid">
+                <div class="intervention-card">
+                    <div class="id">I-02</div>
+                    <div class="title">Reskilling Pathway</div>
+                    <div class="detail">Plan de carrera: experto COBOL a experto nuevo sistema. Garantia de empleo.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-03</div>
+                    <div class="title">Manager Enablement Workshop</div>
+                    <div class="detail">Capacitar gerentes para cascadear mensajes y responder preguntas.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-04</div>
+                    <div class="title">Roadshow Presencial</div>
+                    <div class="detail">Sesiones cara a cara por area (max 20 personas). No email. No town hall masivo.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-08</div>
+                    <div class="title">Knowledge Harvest</div>
+                    <div class="detail">Captura estructurada de conocimiento tribal antes de migracion.</div>
+                </div>
+            </div>
+
+            <h3>Semana 3-8 — Ejecucion</h3>
+            <div class="intervention-grid">
+                <div class="intervention-card">
+                    <div class="id">I-06</div>
+                    <div class="title">Bootcamp Tecnico</div>
+                    <div class="detail">2 semanas inmersivo, hands-on, pair programming con equipo de producto.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-10</div>
+                    <div class="title">Quick Wins Visibles</div>
+                    <div class="detail">Demostrar que el nuevo sistema resuelve irritantes del legacy.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-11</div>
+                    <div class="title">Sandbox de Practica</div>
+                    <div class="detail">Entorno de prueba individual para experimentar sin riesgo.</div>
+                </div>
+            </div>
+
+            <h3>Mes 2+ — Sostenimiento</h3>
+            <div class="intervention-grid">
+                <div class="intervention-card">
+                    <div class="id">I-09</div>
+                    <div class="title">Coaching Mensual a Gerentes</div>
+                    <div class="detail">Sesiones 1:1 sobre como sostener el cambio en sus equipos.</div>
+                </div>
+                <div class="intervention-card">
+                    <div class="id">I-12</div>
+                    <div class="title">Dashboard de Adopcion</div>
+                    <div class="detail">Metricas visibles para toda la organizacion. Celebrar hitos.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- S7: Measurement Framework -->
+        <div class="section">
+            <h2>S7: Measurement Framework</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Target</th><th>Cadencia</th><th>Threshold Alerta</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Readiness Score (ADKAR)</td><td class="score-high">&ge;3.5 pre-go-live</td><td>Quincenal</td><td class="score-low">&lt;3.0 &rarr; escalar</td></tr>
+                        <tr><td>Resistance Index</td><td class="score-high">&le;2.0 pre-go-live</td><td>Quincenal</td><td class="score-low">&gt;3.0 &rarr; intervencion</td></tr>
+                        <tr><td>Training Completion</td><td class="score-high">95%</td><td>Semanal</td><td class="score-low">&lt;80% a 2 sem &rarr; retraso</td></tr>
+                        <tr><td>Communication Reach</td><td class="score-high">90%</td><td>Semanal</td><td class="score-low">&lt;70% &rarr; cambiar canal</td></tr>
+                        <tr><td>Intervention Effectiveness</td><td class="score-high">80%</td><td>Mensual</td><td class="score-low">&lt;60% &rarr; redisenar</td></tr>
+                        <tr><td>Change Fatigue Score</td><td class="score-high">&le;3.0</td><td>Mensual</td><td class="score-low">&gt;4.0 &rarr; moratorium</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Conclusions -->
+        <div class="section">
+            <h2>Conclusiones y Recomendaciones</h2>
+            <div class="callout warning">
+                <strong>Recomendacion principal:</strong> Retrasar go-live 4-6 semanas para ejecutar intervenciones I-01 a I-08 y re-evaluar readiness. Sin intervencion, el riesgo de fracaso de adopcion es alto.
+            </div>
+            <ol style="padding-left: 1.5rem; margin-top: 1rem;">
+                <li style="margin-bottom: 0.5rem;">La organizacion <strong>no esta lista</strong> para el go-live en el timeline actual (readiness 2.8/5)</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Back-Office es el grupo critico</strong> — sin abordar su resistencia, el riesgo de sabotaje pasivo es alto</li>
+                <li style="margin-bottom: 0.5rem;">Se necesita un <strong>Change Manager dedicado</strong> como primera intervencion</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Secuenciar cambios concurrentes</strong> para evitar saturacion</li>
+            </ol>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Generado por <span class="brand">Sofka Discovery Framework</span> — change-readiness-assessment</p>
+            <p>Agente: change-catalyst | Autor: Javier Montano | 13 de marzo de 2026</p>
+            <p style="margin-top: 0.5rem;">&copy; Sofka Technologies. Todos los derechos reservados.</p>
+        </div>
+
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</body>
+</html>

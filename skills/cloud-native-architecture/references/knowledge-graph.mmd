@@ -1,0 +1,122 @@
+graph TD
+    %% === CLOUD-NATIVE ARCHITECTURE — Knowledge Graph ===
+    %% Sofka Technologies © | Autor: Javier Montaño
+
+    cloudNative["☁️ Cloud-Native Architecture"]
+
+    %% --- Pilares fundamentales ---
+    contenedores["Contenedores"]
+    orquestacion["Orquestación Kubernetes"]
+    serviceMesh["Service Mesh"]
+    serverless["Serverless / FaaS"]
+    finops["FinOps & Optimización de Costos"]
+    multiCloud["Multi-Cloud & Portabilidad"]
+    iac["Infrastructure as Code"]
+
+    cloudNative --> contenedores
+    cloudNative --> orquestacion
+    cloudNative --> serviceMesh
+    cloudNative --> serverless
+    cloudNative --> finops
+    cloudNative --> multiCloud
+    cloudNative --> iac
+
+    %% --- Contenedores ---
+    dockerImages["Imágenes Docker (distroless/Alpine)"]
+    multistageBuild["Multi-stage Build"]
+    imageScanning["Escaneo de Imágenes (Trivy, Grype)"]
+    sigstore["Firma de Imágenes (cosign/Sigstore)"]
+
+    contenedores --> dockerImages
+    contenedores --> multistageBuild
+    contenedores --> imageScanning
+    contenedores --> sigstore
+
+    %% --- Kubernetes ---
+    autoscalingHPA["HPA — Autoscaling por Métricas HTTP"]
+    autoscalingKEDA["KEDA — Autoscaling por Eventos"]
+    autoscalingVPA["VPA — Rightsizing (recommend-only)"]
+    karpenter["Karpenter — Autoscaling de Nodos (EKS)"]
+    gitops["GitOps (ArgoCD / Flux)"]
+    gatewayAPI["Gateway API (estándar CNCF)"]
+    namespaceStrategy["Estrategia de Namespaces + RBAC"]
+
+    orquestacion --> autoscalingHPA
+    orquestacion --> autoscalingKEDA
+    orquestacion --> autoscalingVPA
+    orquestacion --> karpenter
+    orquestacion --> gitops
+    orquestacion --> gatewayAPI
+    orquestacion --> namespaceStrategy
+
+    %% --- Service Mesh ---
+    ciliumMesh["Cilium (eBPF — CNI + Mesh)"]
+    istioAmbient["Istio Ambient Mode (ztunnel + waypoint)"]
+    linkerd["Linkerd (proxy Rust, bajo overhead)"]
+    mtlsZeroTrust["mTLS + Zero Trust (SPIFFE)"]
+    observabilityStack["Observabilidad (OTel, Jaeger, Grafana)"]
+    trafficManagement["Traffic Management (canary, blue-green)"]
+
+    serviceMesh --> ciliumMesh
+    serviceMesh --> istioAmbient
+    serviceMesh --> linkerd
+    serviceMesh --> mtlsZeroTrust
+    serviceMesh --> observabilityStack
+    serviceMesh --> trafficManagement
+
+    %% --- Serverless ---
+    coldStartMitigation["Mitigación de Cold Start"]
+    stateManagement["Gestión de Estado (DynamoDB, Redis)"]
+    eventDriven["Arquitectura Event-Driven (CloudEvents)"]
+
+    serverless --> coldStartMitigation
+    serverless --> stateManagement
+    serverless --> eventDriven
+
+    %% --- FinOps ---
+    opencost["OpenCost (CNCF Incubating)"]
+    spotInstances["Spot Instances (60-90% ahorro)"]
+    unitEconomics["Unit Economics (costo/usuario, costo/tx)"]
+    costAllocation["Asignación de Costos por Namespace/Label"]
+
+    finops --> opencost
+    finops --> spotInstances
+    finops --> unitEconomics
+    finops --> costAllocation
+
+    %% --- Multi-Cloud ---
+    terraform["Terraform (IaC multi-nube)"]
+    crossplane["Crossplane (infra Kubernetes-native)"]
+    openStandards["Estándares Abiertos (S3-compat, OIDC, OTel)"]
+
+    multiCloud --> terraform
+    multiCloud --> crossplane
+    multiCloud --> openStandards
+
+    %% --- IaC ---
+    helm["Helm Charts + OCI Registry"]
+    policyAsCode["Policy-as-Code (OPA/Gatekeeper)"]
+
+    iac --> helm
+    iac --> policyAsCode
+
+    %% --- Principio transversal ---
+    twelveFactors["12-Factor App (Heroku Manifesto)"]
+    cloudNative --> twelveFactors
+
+    %% --- Clases visuales ---
+    classDef pilar fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef componente fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef herramienta fill:#2C2C4E,stroke:#FFD700,color:#FFD700
+    classDef principio fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+
+    class cloudNative principio
+    class contenedores,orquestacion,serviceMesh,serverless,finops,multiCloud,iac pilar
+    class dockerImages,multistageBuild,imageScanning,sigstore componente
+    class autoscalingHPA,autoscalingKEDA,autoscalingVPA,karpenter,gitops,gatewayAPI,namespaceStrategy componente
+    class ciliumMesh,istioAmbient,linkerd,mtlsZeroTrust,observabilityStack,trafficManagement componente
+    class coldStartMitigation,stateManagement,eventDriven componente
+    class opencost,spotInstances,unitEconomics,costAllocation componente
+    class terraform,crossplane,openStandards componente
+    class helm,policyAsCode componente
+    class twelveFactors herramienta

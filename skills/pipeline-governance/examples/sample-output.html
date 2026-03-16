@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P-01 Program Governance — Acme Corp Banking Modernization</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-gold: #f5a623;
+      --brand-surface: #f8f9fa;
+      --brand-text: #2d2d2d;
+      --brand-muted: #6b7280;
+      --brand-border: #e5e7eb;
+      --brand-success: #10b981;
+      --brand-warning: #f59e0b;
+      --brand-danger: #ef4444;
+      --brand-info: #3b82f6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--brand-text);
+      background: var(--brand-surface);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+    header {
+      background: var(--brand-primary);
+      color: #fff;
+      padding: 2.5rem 2rem;
+      border-bottom: 4px solid var(--brand-accent);
+    }
+    header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+    header .subtitle { color: #ccc; font-size: 0.95rem; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+    .meta-grid span strong { color: var(--brand-gold); }
+    section { background: #fff; border-radius: 8px; padding: 2rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    section h2 {
+      font-size: 1.35rem;
+      color: var(--brand-primary);
+      border-bottom: 2px solid var(--brand-accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    section h3 { font-size: 1.1rem; color: var(--brand-primary); margin: 1.25rem 0 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+    th {
+      background: var(--brand-primary);
+      color: #fff;
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--brand-border); }
+    tr:hover td { background: #f0f4ff; }
+    .rag-green { color: var(--brand-success); font-weight: 700; }
+    .rag-yellow { color: var(--brand-warning); font-weight: 700; }
+    .rag-red { color: var(--brand-danger); font-weight: 700; }
+    .rag-white { color: var(--brand-muted); font-weight: 700; }
+    .gate-block {
+      background: var(--brand-surface);
+      border-left: 4px solid var(--brand-accent);
+      padding: 1.25rem;
+      margin: 1rem 0;
+      font-family: 'Cascadia Code', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      border-radius: 0 6px 6px 0;
+    }
+    .verdict-pass { border-left-color: var(--brand-success); }
+    .verdict-conditional { border-left-color: var(--brand-warning); }
+    .alert-box {
+      background: #fef3c7;
+      border-left: 4px solid var(--brand-warning);
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+    }
+    .alert-box strong { color: var(--brand-danger); }
+    .scorecard {
+      background: var(--brand-surface);
+      border: 2px solid var(--brand-primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+    .scorecard-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      border-bottom: 1px solid var(--brand-border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .composite {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brand-accent);
+      text-align: center;
+      margin: 1rem 0;
+    }
+    .verdict-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .badge-conditional { background: #fef3c7; color: #92400e; border: 1px solid var(--brand-warning); }
+    .insight-card {
+      background: #f0f9ff;
+      border-left: 4px solid var(--brand-info);
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .insight-card h4 { color: var(--brand-primary); margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .insight-card p { font-size: 0.88rem; margin-bottom: 0.4rem; }
+    .insight-card .recommendation { font-weight: 600; color: var(--brand-info); }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--brand-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--brand-border);
+      margin-top: 2rem;
+    }
+    @media print {
+      body { background: #fff; }
+      section { box-shadow: none; border: 1px solid var(--brand-border); break-inside: avoid; }
+      header { background: #fff; color: var(--brand-primary); border-bottom-color: var(--brand-primary); }
+      header .subtitle, .meta-grid span { color: var(--brand-muted); }
+      .meta-grid span strong { color: var(--brand-primary); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>P-01 Program Governance: Acme Corp Banking Modernization</h1>
+    <p class="subtitle">Modernizacion Plataforma Bancaria Core &mdash; Discovery Pipeline Governance</p>
+    <div class="meta-grid">
+      <span><strong>Proyecto:</strong> Acme Corp</span>
+      <span><strong>Variante:</strong> Tecnica (full)</span>
+      <span><strong>Modo:</strong> piloto-auto</span>
+      <span><strong>Fecha:</strong> 12 de marzo de 2026</span>
+      <span><strong>Owner:</strong> Laura Mendez (Delivery Manager)</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- S1: Program Charter -->
+  <section>
+    <h2>S1: Program Charter &amp; Governance Framework</h2>
+
+    <h3>Alcance del Programa</h3>
+    <p>Modernizacion integral de la plataforma bancaria core de Acme Corp: migracion de monolito COBOL/AS400 a arquitectura de microservicios cloud-native (AWS), con rediseno de flujos de originacion de credito, gestion de cuentas, y motor de riesgos.</p>
+
+    <h3>Modelo de Gobierno</h3>
+    <table>
+      <thead><tr><th>Nivel</th><th>Decisor</th><th>Ambito</th><th>Escalacion</th></tr></thead>
+      <tbody>
+        <tr><td>Estrategico</td><td>Sponsor (CTO Acme)</td><td>Cambios de alcance &gt;10%, presupuesto</td><td>Board semanal</td></tr>
+        <tr><td>Tactico</td><td>Delivery Manager (Laura M.)</td><td>Gates, asignacion de recursos, timeline</td><td>Sponsor</td></tr>
+        <tr><td>Operativo</td><td>Tech Lead por fase</td><td>Decisiones tecnicas intra-fase</td><td>Delivery Manager</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Phase Dependency Map</h3>
+    <table>
+      <thead><tr><th>Phase</th><th>Prerequisites</th><th>Gate</th><th>Gate Criteria</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 0: Stakeholder Mapping</td><td>Project kickoff</td><td>&mdash;</td><td>Mapa completo, power grid poblado</td><td>Catalina Ruiz</td></tr>
+        <tr><td>Phase 1: AS-IS Analysis</td><td>Phase 0 completa</td><td>&mdash;</td><td>Analisis 10 secciones entregado</td><td>Andres Gomez</td></tr>
+        <tr><td>Phase 2: Flow Mapping</td><td>Phase 1 completa</td><td>&mdash;</td><td>Taxonomia de dominio + 11 flujos</td><td>Catalina Ruiz</td></tr>
+        <tr><td>Phase 3: Scenario Design</td><td>Phase 2 completa</td><td>G1</td><td>Escenario aprobado por comite</td><td>Felipe Torres</td></tr>
+        <tr><td>Phase 3b: Feasibility</td><td>G1 passed</td><td>3b checkpoint</td><td>Feasibility verdict + viability</td><td>Mariana Diaz</td></tr>
+        <tr><td>Phase 4: Roadmap + Cost</td><td>Phase 3b passed</td><td>&mdash;</td><td>Roadmap + cost drivers entregados</td><td>Laura Mendez</td></tr>
+        <tr><td>Phase 4b: Commercial Model</td><td>Phase 4 completa</td><td>G2</td><td>Estructura comercial aprobada</td><td>Ricardo Vargas</td></tr>
+        <tr><td>Phase 5a: Functional Spec</td><td>G2 passed</td><td>&mdash;</td><td>Spec completa + use cases validados</td><td>Andres Gomez</td></tr>
+        <tr><td>Phase 5b: Executive Pitch</td><td>G2 passed</td><td>G3</td><td>Pitch aprobado, investment case claro</td><td>Sandra Lopez</td></tr>
+        <tr><td>Phase 6: Handover</td><td>G3 passed</td><td>&mdash;</td><td>Handover package completo</td><td>Laura Mendez</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- S2: Gate Management -->
+  <section>
+    <h2>S2: Phase Gate Management</h2>
+
+    <h3>Gate Evaluation: G1 (Post-Scenarios)</h3>
+    <div class="gate-block verdict-pass">GATE EVALUATION: G1 — Scenario Approval
+Phase Completing: Phase 3 — Scenario Design
+Date: 2026-03-12 (projected)
+
+ENTRY CRITERIA:
+  [x] Phase 2 flow mapping complete — ✅ 11 flujos entregados
+  [x] Domain taxonomy validated — ✅ 4 bounded contexts confirmados
+  [x] Expert committee quorum (≥5/7) — ✅ 7/7 disponibles
+
+DELIVERABLES CHECK:
+  [x] Scenario document (3 scenarios evaluated) — complete
+  [x] Scenario comparison matrix — complete
+  [x] Risk assessment per scenario — complete
+  [x] Committee vote record — complete
+
+EVIDENCE CHAIN:
+  - AS-IS legacy analysis → 47 pain points → Scenario B addresses 39/47
+  - Flow mapping → 11 critical flows → Scenario B covers all 11
+  - Stakeholder interviews → "zero downtime" non-negotiable → Strangler fig pattern
+
+VERDICT: PASSED ✅
+  All entry criteria met. Scenario B (Strangler Fig + Event-Driven) approved unanimously.</div>
+
+    <h3>Gate Evaluation: G2 (Post-Commercial)</h3>
+    <div class="gate-block verdict-conditional">GATE EVALUATION: G2 — Commercial Approval
+Phase Completing: Phase 4b — Commercial Model
+Date: 2026-03-20 (projected)
+
+ENTRY CRITERIA:
+  [x] Roadmap delivered with 4 implementation phases — ✅
+  [x] Cost drivers identified (7 drivers) — ✅
+  [x] Commercial model structure proposed — ✅
+  [ ] Budget confirmation from sponsor — ⚠️ Pending verbal confirmation
+
+DELIVERABLES CHECK:
+  [x] Implementation roadmap (4 phases, 18 months) — complete
+  [x] Cost driver analysis (7 drivers, magnitudes only) — complete
+  [x] Commercial model options (3 structures evaluated) — complete
+  [ ] Sponsor budget sign-off document — partial (verbal OK, written pending)
+
+VERDICT: CONDITIONAL PASS ⚠️
+  Conditions:
+    1. Sponsor written budget confirmation required before Phase 5b pitch finalization
+    2. FinOps review of cloud cost projections must complete within 5 business days</div>
+  </section>
+
+  <!-- S3: Resource Orchestration -->
+  <section>
+    <h2>S3: Resource &amp; Capacity Orchestration</h2>
+
+    <table>
+      <thead><tr><th>Expert</th><th>Role</th><th>Current Phase</th><th>% Allocated</th><th>Bottleneck</th><th>Next Phase</th></tr></thead>
+      <tbody>
+        <tr><td>Andres Gomez</td><td>Technical Architect</td><td>Phase 1 (complete)</td><td>30%</td><td class="rag-red">🔴 Phase 3b + 5a overlap</td><td>Phase 3b (60%), 5a (100%)</td></tr>
+        <tr><td>Catalina Ruiz</td><td>Domain Analyst</td><td>Phase 2 (active)</td><td>100%</td><td class="rag-green">🟢 Available after P2</td><td>Phase 3 (40%)</td></tr>
+        <tr><td>Felipe Torres</td><td>Full-Stack Generalist</td><td>Phase 3 (pending)</td><td>0%</td><td class="rag-green">🟢 Ready</td><td>Phase 3 (80%)</td></tr>
+        <tr><td>Mariana Diaz</td><td>Quality Guardian</td><td>&mdash;</td><td>20%</td><td class="rag-yellow">🟡 Phase 3b + QA overlap</td><td>Phase 3b (100%), QA (100%)</td></tr>
+        <tr><td>Laura Mendez</td><td>Delivery Manager</td><td>All phases</td><td>30%</td><td class="rag-green">🟢 Distributed</td><td>Phase 4 (80%), P6 (100%)</td></tr>
+        <tr><td>Ricardo Vargas</td><td>Data Strategist</td><td>&mdash;</td><td>0%</td><td class="rag-green">🟢 Ready</td><td>Phase 4b (100%)</td></tr>
+        <tr><td>Sandra Lopez</td><td>Change Catalyst</td><td>&mdash;</td><td>0%</td><td class="rag-green">🟢 Ready</td><td>Phase 5b (100%)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert-box">
+      <strong>ALERT-01:</strong> Andres Gomez (Technical Architect) is required for Phase 3b feasibility review (60%) AND Phase 5a functional spec (100%). If phases overlap, total demand = 160%. <strong>Mitigation:</strong> No parallel execution allowed.
+    </div>
+    <div class="alert-box">
+      <strong>ALERT-02:</strong> Mariana Diaz (Quality Guardian) owns Phase 3b feasibility (100%) AND Proposal QA (100%). Sequential execution mandatory. <strong>Mitigation:</strong> Build 2-day buffer between Phase 3b and QA.
+    </div>
+  </section>
+
+  <!-- S4: Dependency Control -->
+  <section>
+    <h2>S4: Cross-Phase Dependency Control</h2>
+
+    <table>
+      <thead><tr><th>#</th><th>Source Phase</th><th>Output Artifact</th><th>Consumer Phase</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>D-01</td><td>Phase 0: Stakeholder Mapping</td><td>Stakeholder power grid</td><td>Phase 3: Scenarios</td><td class="rag-green">✅ Delivered</td></tr>
+        <tr><td>D-02</td><td>Phase 1: AS-IS</td><td>Technology stack inventory</td><td>Phase 3b: Feasibility</td><td class="rag-green">✅ Delivered</td></tr>
+        <tr><td>D-03</td><td>Phase 1: AS-IS</td><td>Pain point catalog (47 items)</td><td>Phase 3: Scenarios</td><td class="rag-green">✅ Delivered</td></tr>
+        <tr><td>D-04</td><td>Phase 2: Flow Mapping</td><td>Domain taxonomy + 11 flows</td><td>Phase 4: Cost</td><td class="rag-yellow">⚠️ Pending</td></tr>
+        <tr><td>D-05</td><td>Phase 3: Scenarios</td><td>Approved scenario (Scenario B)</td><td>Phase 3b: Feasibility</td><td class="rag-white">⏳ Not started</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- S5: Proposal QA -->
+  <section>
+    <h2>S5: Proposal QA Validation</h2>
+
+    <div class="scorecard">
+      <div class="scorecard-header">PROPOSAL QA SCORECARD &mdash; Acme Corp Banking Modernization</div>
+      <p style="font-size:0.85rem;color:var(--brand-muted);margin-bottom:1rem;">Propuesta v1 — Validacion Pre-Envio | Validador: Mariana Diaz</p>
+
+      <table>
+        <thead><tr><th>Dimension</th><th>Score</th><th>Hallazgos</th><th>Accion</th></tr></thead>
+        <tbody>
+          <tr><td>Coherencia Tecnica</td><td><strong>4/5</strong></td><td>Roadmap aligns with scenario B. Minor gap in payment gateway migration sequence.</td><td>Verify strangler fig sequence for payment gateway</td></tr>
+          <tr><td>Completitud</td><td><strong>4/5</strong></td><td>22/23 use cases covered. UC-17 (batch reconciliation) referenced but not specified.</td><td>Add UC-17 to functional spec before delivery</td></tr>
+          <tr><td>Viabilidad</td><td><strong>3.5/5</strong></td><td>Cloud cost projections ±15% variance. FinOps review pending.</td><td>Block pitch until FinOps confirms magnitudes</td></tr>
+          <tr><td>Alineacion</td><td><strong>4/5</strong></td><td>39/47 pain points addressed. 8 deferred without documented rationale.</td><td>Document rationale in proposal appendix</td></tr>
+        </tbody>
+      </table>
+
+      <div class="composite">COMPOSITE: 3.9 / 5.0</div>
+
+      <p style="text-align:center;margin:1rem 0;">
+        <span class="verdict-badge badge-conditional">APROBADA CON CONDICIONES</span>
+      </p>
+
+      <h3>Condiciones antes de envio a cliente:</h3>
+      <ol style="margin:0.5rem 0 0 1.25rem;font-size:0.9rem;">
+        <li>Completar UC-17 (batch reconciliation) en functional spec</li>
+        <li>Obtener resultado de FinOps review para confirmar magnitudes de costo cloud</li>
+        <li>Documentar rationale de 8 pain points diferidos en appendix de propuesta</li>
+      </ol>
+
+      <p style="margin-top:1rem;font-weight:700;color:var(--brand-danger);font-size:0.9rem;">LISTA PARA ENVIO A CLIENTE: NO &mdash; pendiente resolucion de 3 condiciones</p>
+    </div>
+  </section>
+
+  <!-- S6: Status Dashboard -->
+  <section>
+    <h2>S6: Status Reporting &amp; Dashboard</h2>
+
+    <table>
+      <thead><tr><th>Phase</th><th>Status</th><th>Planned End</th><th>Actual/Forecast</th><th>Variance</th><th>RAG</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 0: Stakeholder Mapping</td><td>✅ Complete</td><td>Mar 02</td><td>Mar 02</td><td>0 days</td><td class="rag-green">🟢</td></tr>
+        <tr><td>Phase 1: AS-IS Analysis</td><td>✅ Complete</td><td>Mar 07</td><td>Mar 07</td><td>0 days</td><td class="rag-green">🟢</td></tr>
+        <tr><td>Phase 2: Flow Mapping</td><td>🔄 In Progress</td><td>Mar 10</td><td>Mar 11</td><td>+1 day</td><td class="rag-yellow">🟡</td></tr>
+        <tr><td>Phase 3: Scenario Design</td><td>⏳ Not Started</td><td>Mar 13</td><td>Mar 14</td><td>+1 day</td><td class="rag-yellow">🟡</td></tr>
+        <tr><td>G1 Gate</td><td>⏳ Pending</td><td>Mar 13</td><td>Mar 14</td><td>+1 day</td><td class="rag-yellow">🟡</td></tr>
+        <tr><td>Phase 3b: Feasibility</td><td>⏳ Not Started</td><td>Mar 17</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+        <tr><td>Phase 4: Roadmap + Cost</td><td>⏳ Not Started</td><td>Mar 20</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+        <tr><td>Phase 4b: Commercial Model</td><td>⏳ Not Started</td><td>Mar 22</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+        <tr><td>G2 Gate</td><td>⏳ Pending</td><td>Mar 22</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+        <tr><td>Phase 5a: Functional Spec</td><td>⏳ Not Started</td><td>Mar 26</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+        <tr><td>Phase 5b: Executive Pitch</td><td>⏳ Not Started</td><td>Mar 25</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+        <tr><td>G3 Gate</td><td>⏳ Pending</td><td>Mar 26</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+        <tr><td>Phase 6: Handover</td><td>⏳ Not Started</td><td>Mar 28</td><td>&mdash;</td><td>&mdash;</td><td class="rag-white">⚪</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Decision Log</h3>
+    <table>
+      <thead><tr><th>#</th><th>Date</th><th>Context</th><th>Decision</th><th>Decided By</th></tr></thead>
+      <tbody>
+        <tr><td>DEC-01</td><td>Mar 02</td><td>Phase 0</td><td>Include regulatory stakeholders (SFC liaison)</td><td>Sponsor</td></tr>
+        <tr><td>DEC-02</td><td>Mar 07</td><td>Phase 1</td><td>Classify payment gateway as high-risk migration</td><td>Tech Architect</td></tr>
+        <tr><td>DEC-03</td><td>Mar 12</td><td>G1</td><td>Approve Scenario B (Strangler Fig + Event-Driven)</td><td>Committee (7/7)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- S7: Lessons Learned -->
+  <section>
+    <h2>S7: Continuous Governance &amp; Lessons Learned</h2>
+
+    <div class="insight-card">
+      <h4>Insight 1: Early Stakeholder Depth Pays Compound Returns</h4>
+      <p><strong>Phase:</strong> Phase 0 — Stakeholder Mapping</p>
+      <p>Investing an extra half-day in Phase 0 to map second-tier stakeholders (ops team leads, compliance officers) surfaced 3 critical requirements that would have been discovered late in Phase 3b feasibility.</p>
+      <p class="recommendation">Recommendation: For regulated industries, always extend stakeholder mapping to include regulatory and compliance personas.</p>
+    </div>
+
+    <div class="insight-card">
+      <h4>Insight 2: AS-IS Stack Inventory Granularity Determines Feasibility Confidence</h4>
+      <p><strong>Phase:</strong> Phase 1 — AS-IS Analysis</p>
+      <p>Decomposing "COBOL backend" into 12 distinct modules with dependency relationships increased feasibility analysis accuracy and directly informed the strangler fig migration sequence.</p>
+      <p class="recommendation">Recommendation: For legacy modernization, mandate component-level decomposition. "Monolith" is never a single item.</p>
+    </div>
+
+    <div class="insight-card">
+      <h4>Insight 3: Gate Conditions Must Have Explicit Deadlines</h4>
+      <p><strong>Phase:</strong> G2 — Commercial Gate</p>
+      <p>G2 passed with conditions but neither had an explicit deadline, creating ambiguity about when to block Phase 5b progress. Adding "within 5 business days" created clear escalation triggers.</p>
+      <p class="recommendation">Recommendation: Every CONDITIONAL PASS must include explicit deadlines per condition with escalation path.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Autor: Javier Montano | Skill: project-program-management | Sofka Discovery Framework v6.0</p>
+</footer>
+
+</body>
+</html>

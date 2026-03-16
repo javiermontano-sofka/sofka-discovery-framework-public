@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functional Toolbelt — Acme Corp Banking Modernization</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2a4a7f;
+      --primary-dim: rgba(26,54,93,0.08);
+      --accent: #e53e3e;
+      --accent-dim: rgba(229,62,62,0.08);
+      --bg: #f7fafc;
+      --text: #2d3748;
+      --muted: #718096;
+      --white: #ffffff;
+      --black: #1a202c;
+      --border: #e2e8f0;
+      --positive: #FFD700;
+      --positive-dim: rgba(255,215,0,0.10);
+      --warning: #D97706;
+      --warning-dim: rgba(217,119,6,0.08);
+      --critical: #DC2626;
+      --critical-dim: rgba(220,38,38,0.07);
+      --info: #2563EB;
+      --info-dim: rgba(37,99,235,0.07);
+      --font: 'Inter', system-ui, sans-serif;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); }
+    a { color: var(--primary); text-decoration: none; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: var(--white); padding: 8px 16px; z-index: 1000; }
+    .skip-link:focus { top: 0; }
+
+    .hero { background: var(--primary); border-bottom: 6px solid var(--accent); padding: 3rem 2rem 2.5rem; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero h1 { color: var(--white); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero .subtitle { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 700px; }
+    .meta-badges { display: flex; gap: 0.75rem; margin: 1.5rem 0 0; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; background: var(--accent); color: var(--white); border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-outline { display: inline-block; padding: 0.25rem 0.75rem; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.8); border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+    .badge-pass { background: var(--positive); color: var(--black); }
+    .badge-gap { background: var(--critical); color: var(--white); }
+    .badge-hotspot { background: var(--warning); color: var(--black); }
+
+    .sticky-nav { background: var(--white); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); padding: 0 2rem; }
+    .sticky-nav ul { list-style: none; display: flex; gap: 2rem; max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+    .sticky-nav a { display: block; padding: 0.75rem 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .sticky-nav a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 3.5rem 0; scroll-margin-top: 60px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-number { width: 56px; height: 56px; background: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; border-radius: 8px; }
+    .section-title { font-size: 2rem; font-weight: 700; }
+    h3 { font-size: 1.3rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--primary); }
+
+    .card { background: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .card-accent { border-top: 4px solid var(--accent); }
+    .card-warning { border-left: 4px solid var(--warning); background: var(--warning-dim); }
+    .callout { padding: 1.25rem 1.5rem; border-radius: var(--radius); margin: 1.5rem 0; border-left: 4px solid; }
+    .callout-info { background: var(--info-dim); border-color: var(--info); }
+    .callout-warning { background: var(--warning-dim); border-color: var(--warning); }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: var(--primary); color: var(--white); padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+    tr:hover td { background: var(--primary-dim); }
+
+    .gherkin-block { background: var(--black); color: #e2e8f0; padding: 1.5rem; border-radius: var(--radius); font-family: 'SF Mono', Menlo, monospace; font-size: 0.85rem; line-height: 1.5; overflow-x: auto; margin: 1rem 0; white-space: pre; }
+    .gherkin-block .kw { color: #90cdf4; font-weight: 600; }
+    .gherkin-block .val { color: var(--positive); }
+
+    .mermaid { margin: 2rem 0; text-align: center; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .kpi-card { background: var(--white); padding: 1.25rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
+    .kpi-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .kpi-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    .footer { background: var(--primary); border-top: 6px solid var(--accent); color: var(--white); padding: 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer .meta { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
+
+    @media print { .sticky-nav { display: none; } .card { box-shadow: none; border: 1px solid var(--border); } }
+    @media (max-width: 768px) { .hero, .main, .footer { padding-left: 1rem; padding-right: 1rem; } }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="meta-badges">
+        <span class="badge">Confidencial</span>
+        <span class="badge-outline">Functional Toolbelt</span>
+        <span class="badge-outline">2026-03-12</span>
+      </div>
+      <h1>Functional Toolbelt — <span>Banking Modernization</span></h1>
+      <p class="subtitle">Event Storming, Business Rules, Acceptance Criteria, Traceability Matrix, and Anti-Pattern Detection applied to real-time fund transfers for 2.4M customers.</p>
+    </div>
+  </header>
+
+  <nav class="sticky-nav" aria-label="Secciones del documento">
+    <ul>
+      <li><a href="#s1">Event Storming</a></li>
+      <li><a href="#s2">Business Rules</a></li>
+      <li><a href="#s3">Acceptance Criteria</a></li>
+      <li><a href="#s4">Traceability</a></li>
+      <li><a href="#s5">Anti-Patterns</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" class="main">
+
+    <section id="s1" class="section">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Event Storming — Real-Time Transfers</h2>
+      </div>
+
+      <h3>Domain Events</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Event</th><th>Actor</th><th>Aggregate</th><th>Bounded Context</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Transfer Requested</td><td>Customer</td><td>Transaction</td><td>Payment Initiation</td></tr>
+            <tr><td>2</td><td>Sender Authenticated</td><td>System</td><td>AuthSession</td><td>Identity</td></tr>
+            <tr><td>3</td><td>Fraud Screening Passed</td><td>System</td><td>FraudCase</td><td>Fraud Detection</td></tr>
+            <tr><td>4</td><td>Balance Verified</td><td>System</td><td>Account</td><td>Account Management</td></tr>
+            <tr><td>5</td><td>Funds Debited</td><td>System</td><td>Account</td><td>Account Management</td></tr>
+            <tr><td>6</td><td>Funds Credited</td><td>System</td><td>Account</td><td>Account Management</td></tr>
+            <tr><td>7</td><td>Transfer Completed</td><td>System</td><td>Transaction</td><td>Payment Initiation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Bounded Context Map</h3>
+      <div class="mermaid">
+flowchart LR
+    PI[Payment Initiation] -->|Transfer.Requested| FD[Fraud Detection]
+    FD -->|Fraud.Passed| AM[Account Management]
+    AM -->|Funds.Credited| PI
+    PI -->|Transfer.Completed| NT[Notifications]
+    ID[Identity] -->|Auth.Verified| PI
+      </div>
+
+      <h3>Hot Spots</h3>
+      <div class="card card-warning">
+        <h4><span class="badge badge-hotspot">Hot Spot</span> Fraud Screening Timeout</h4>
+        <p>Fraud API has a 3-second SLA. Fallback: approve low-risk transfers (&lt;$5,000) with post-transaction monitoring.</p>
+      </div>
+      <div class="card card-warning">
+        <h4><span class="badge badge-hotspot">Hot Spot</span> Cross-Currency Conversion Timing</h4>
+        <p>Exchange rate lock: at initiation or execution? Product decision required -- 15-minute lock window proposed.</p>
+      </div>
+    </section>
+
+    <section id="s2" class="section">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Business Rule Extraction</h2>
+      </div>
+
+      <h3>Transfer Authorization Decision Table</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Customer Tier</th><th>Amount</th><th>Recipient</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>Standard</td><td>&le; $5,000</td><td>Internal</td><td>Auto-approve</td></tr>
+            <tr><td>Standard</td><td>&le; $5,000</td><td>External (ACH)</td><td>Auto-approve + fraud screen</td></tr>
+            <tr><td>Standard</td><td>$5,001 - $25,000</td><td>Any</td><td>Require 2FA + fraud screen</td></tr>
+            <tr><td>Standard</td><td>&gt; $25,000</td><td>Any</td><td>Manual review required</td></tr>
+            <tr><td>Premium</td><td>&le; $50,000</td><td>Any</td><td>Auto-approve + fraud screen</td></tr>
+            <tr><td>Premium</td><td>&gt; $250,000</td><td>Any</td><td>Relationship manager approval</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Rule Catalog</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rule ID</th><th>Name</th><th>Classification</th><th>Severity</th></tr></thead>
+          <tbody>
+            <tr><td>BR-001</td><td>Daily transfer limit by tier</td><td>Constraint</td><td><span class="badge" style="background:var(--critical);">Critical</span></td></tr>
+            <tr><td>BR-002</td><td>New account cooling period (30 days)</td><td>Constraint</td><td><span class="badge" style="background:var(--warning);color:var(--black);">High</span></td></tr>
+            <tr><td>BR-005</td><td>Overdraft protection threshold</td><td>Action-Enabling</td><td><span class="badge" style="background:var(--critical);">Critical</span></td></tr>
+            <tr><td>BR-006</td><td>AML threshold reporting ($10,000+)</td><td>Constraint</td><td><span class="badge" style="background:var(--critical);">Critical</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s3" class="section">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Acceptance Criteria</h2>
+      </div>
+
+      <p style="margin-bottom:1.5rem;color:var(--muted);">Story: <strong style="color:var(--text);">As a banking customer, I want to transfer funds between accounts so that I can manage my finances in real-time.</strong></p>
+
+      <div class="card card-accent">
+        <h4>Scenario 1: Successful Internal Transfer (Happy Path)</h4>
+        <div class="gherkin-block"><span class="kw">Given</span> source account ACCT-001 has balance <span class="val">$12,500.00</span>
+  <span class="kw">And</span> destination ACCT-002 is an internal Acme account
+<span class="kw">When</span> customer initiates transfer of <span class="val">$3,000.00</span>
+<span class="kw">Then</span> system debits $3,000 from ACCT-001 within <span class="val">2 seconds</span>
+  <span class="kw">And</span> credits $3,000 to ACCT-002
+  <span class="kw">And</span> receipt <span class="val">TXN-2026-XXXXX</span> is generated</div>
+      </div>
+
+      <div class="card" style="border-left:4px solid var(--info);background:var(--info-dim);">
+        <h4>Scenario 2: Insufficient Funds (Negative)</h4>
+        <div class="gherkin-block"><span class="kw">Given</span> account ACCT-001 has balance <span class="val">$500.00</span>
+<span class="kw">When</span> customer initiates transfer of <span class="val">$750.00</span>
+<span class="kw">Then</span> system displays <span class="val">"Insufficient funds. Available: $500.00"</span>
+  <span class="kw">And</span> no debit is performed</div>
+      </div>
+
+      <div class="card" style="border-left:4px solid var(--info);background:var(--info-dim);">
+        <h4>Scenario 3: Daily Limit Boundary</h4>
+        <div class="gherkin-block"><span class="kw">Given</span> Standard tier, daily limit <span class="val">$5,000</span>, already transferred <span class="val">$4,800</span>
+<span class="kw">When</span> customer transfers <span class="val">$200.00</span>
+<span class="kw">Then</span> transfer approved (cumulative = $5,000)
+<span class="kw">When</span> customer attempts another <span class="val">$1.00</span>
+<span class="kw">Then</span> blocked: <span class="val">"Daily limit exceeded. Resets 00:00 ET."</span></div>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Anti-Pattern Self-Check</strong>
+        All scenarios verified: no vague Then clauses, specific dollar values in Given, no implementation details, negative + boundary + resilience cases included.
+      </div>
+    </section>
+
+    <section id="s4" class="section">
+      <div class="section-header">
+        <div class="section-number">04</div>
+        <h2 class="section-title">Traceability Matrix</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Req ID</th><th>Requirement</th><th>Use Cases</th><th>Test Cases</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>REQ-101</td><td>Transfer funds between internal accounts</td><td>UC-010</td><td>TC-101, TC-102, TC-103</td><td><span class="badge badge-pass">Traced</span></td></tr>
+            <tr><td>REQ-102</td><td>Validate sufficient balance before debit</td><td>UC-010</td><td>TC-104, TC-105</td><td><span class="badge badge-pass">Traced</span></td></tr>
+            <tr><td>REQ-103</td><td>Enforce daily transfer limits by tier</td><td>UC-010</td><td>TC-106, TC-107</td><td><span class="badge badge-pass">Traced</span></td></tr>
+            <tr><td>REQ-104</td><td>Fraud screening on every transfer</td><td>UC-011</td><td>TC-108, TC-109</td><td><span class="badge badge-pass">Traced</span></td></tr>
+            <tr><td>REQ-106</td><td>AML reporting for transfers &ge; $10,000</td><td>UC-012</td><td>TC-111, TC-112</td><td><span class="badge badge-gap">GAP: No AC</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-value">100%</div><div class="kpi-label">Reqs with Use Cases</div></div>
+        <div class="kpi-card"><div class="kpi-value">100%</div><div class="kpi-label">Flows with Tests</div></div>
+        <div class="kpi-card"><div class="kpi-value">85%</div><div class="kpi-label">Tests with AC</div></div>
+        <div class="kpi-card"><div class="kpi-value" style="color:var(--warning);">86%</div><div class="kpi-label">Fully Traced</div></div>
+      </div>
+
+      <div class="callout callout-warning">
+        <strong>Gap: AML Reporting (REQ-106)</strong>
+        Missing acceptance criteria for $10,000+ threshold behavior and structuring detection. Assigned to Compliance Analyst.
+      </div>
+    </section>
+
+    <section id="s5" class="section">
+      <div class="section-header">
+        <div class="section-number">05</div>
+        <h2 class="section-title">Anti-Pattern Detection</h2>
+      </div>
+
+      <h3>Scan Results</h3>
+      <div class="mermaid">
+pie title Anti-Pattern Distribution
+    "Clean" : 42
+    "Ambiguity" : 3
+    "Missing Exception" : 5
+    "Over-Specification" : 1
+    "Untestable" : 2
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Requirement Text</th><th>Anti-Pattern</th><th>Severity</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>AP-01</td><td>"Handle transfers appropriately"</td><td>Ambiguity</td><td><span class="badge" style="background:var(--warning);color:var(--black);">High</span></td><td>Specify: approve, reject, or queue with conditions</td></tr>
+            <tr><td>AP-02</td><td>"Fraud checks should be fast"</td><td>Untestable</td><td><span class="badge" style="background:var(--warning);color:var(--black);">High</span></td><td>Define: completes within 3s at p99</td></tr>
+            <tr><td>AP-03</td><td>"Use PostgreSQL 16.2"</td><td>Over-Spec</td><td><span class="badge" style="background:var(--info);color:var(--white);">Med</span></td><td>State: ACID-compliant RDBMS</td></tr>
+            <tr><td>AP-04</td><td>"Customer logs in" (no failure)</td><td>Missing Exception</td><td><span class="badge" style="background:var(--warning);color:var(--black);">High</span></td><td>Add: invalid credentials, locked account, MFA failure</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Acme Corp Banking Modernization</strong>
+        <div class="meta-badges" style="margin-top:0.5rem;">
+          <span class="badge">Confidencial</span>
+          <span class="badge-outline">Functional Toolbelt</span>
+        </div>
+      </div>
+      <div class="meta">
+        Documento confidencial. Generado con Design System v4.<br>
+        Autor: Javier Montano | Sofka | 2026-03-12
+      </div>
+    </div>
+  </footer>
+
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>

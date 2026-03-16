@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factibilidad Multidimensional — Meridian Insurance: Modernización Claims</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: local('Clash Grotesk'), local('ClashGrotesk-Variable');
+    font-weight: 200 700;
+    font-display: swap;
+}
+
+:root {
+    --primary: #FF7E08;
+    --dark: #1A1A2E;
+    --accent: #16213E;
+    --success: #FFD700;
+    --bg: #F8F9FA;
+    --text: #2D3748;
+    --border: #E2E8F0;
+    --sidebar-width: 260px;
+    --danger: #E53E3E;
+    --warning: #FF7E08;
+    --info: #3182CE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Navigation */
+nav.sidebar {
+    width: var(--sidebar-width);
+    background: var(--dark);
+    color: #CBD5E0;
+    padding: 2rem 1.25rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+nav.sidebar .logo {
+    font-family: 'Clash Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+nav.sidebar .subtitle {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #2D3748;
+    padding-bottom: 1rem;
+}
+
+nav.sidebar ul { list-style: none; }
+
+nav.sidebar li {
+    margin-bottom: 0.15rem;
+}
+
+nav.sidebar a {
+    display: block;
+    color: #A0AEC0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+nav.sidebar a:hover,
+nav.sidebar a.active {
+    background: rgba(255, 126, 8, 0.15);
+    color: var(--primary);
+}
+
+nav.sidebar .nav-section {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #4A5568;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.75rem;
+}
+
+/* Main Content */
+main {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 3rem 4rem;
+    max-width: 1000px;
+}
+
+h1 {
+    font-family: 'Clash Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--dark);
+    border-bottom: 4px solid var(--primary);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: 'Clash Grotesk', 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-family: 'Clash Grotesk', 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+h4 {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+p { margin-bottom: 1rem; }
+
+.meta {
+    color: #718096;
+    font-size: 0.88rem;
+    margin-bottom: 2rem;
+}
+
+/* TL;DR Box */
+.tldr {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--accent) 100%);
+    color: #E2E8F0;
+    padding: 1.75rem 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0 2.5rem;
+    border-left: 5px solid var(--primary);
+}
+
+.tldr h3 {
+    color: var(--primary);
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.tldr ul {
+    padding-left: 1.25rem;
+    font-size: 0.92rem;
+    line-height: 1.8;
+}
+
+.tldr li { margin-bottom: 0.35rem; }
+
+.tldr strong { color: #fff; }
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.88rem;
+}
+
+thead th {
+    background: var(--dark);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+td {
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+
+tr:nth-child(even) { background: #EDF2F7; }
+tr:hover { background: #E2E8F0; }
+
+/* Status Badges */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.badge-validated {
+    background: #FFF9DB;
+    color: #975A16;
+    border: 1px solid #FFD700;
+}
+
+.badge-unvalidated {
+    background: #FFF3E0;
+    color: #C05621;
+    border: 1px solid var(--primary);
+}
+
+.badge-refuted {
+    background: #FED7D7;
+    color: #9B2C2C;
+    border: 1px solid var(--danger);
+}
+
+.badge-atrisk {
+    background: #FED7D7;
+    color: #9B2C2C;
+    border: 1px solid var(--danger);
+}
+
+/* Callouts */
+.callout {
+    padding: 1rem 1.5rem;
+    margin: 1.25rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+}
+
+.callout-info {
+    background: #EBF8FF;
+    border-left: 4px solid var(--info);
+}
+
+.callout-warning {
+    background: #FFF3E0;
+    border-left: 4px solid var(--primary);
+}
+
+.callout-danger {
+    background: #FFF5F5;
+    border-left: 4px solid var(--danger);
+}
+
+.callout-insight {
+    background: #FFF9DB;
+    border-left: 4px solid var(--success);
+}
+
+.callout strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* Verdict Box */
+.verdict-box {
+    background: var(--dark);
+    color: #E2E8F0;
+    border: 3px solid var(--primary);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.verdict-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+}
+
+.verdict-box h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.verdict-main {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.verdict-label {
+    font-family: 'Clash Grotesk', 'Inter', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--success);
+}
+
+.verdict-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.verdict-stat {
+    text-align: center;
+}
+
+.verdict-stat .number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+}
+
+.verdict-stat .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #A0AEC0;
+}
+
+.verdict-table {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.verdict-table th {
+    background: var(--accent);
+    color: #CBD5E0;
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+}
+
+.verdict-table td {
+    background: transparent;
+    border-color: #2D3748;
+    color: #E2E8F0;
+    padding: 0.6rem 1rem;
+}
+
+.verdict-table tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+.verdict-table tr:hover { background: rgba(255,126,8,0.08); }
+
+.conditions {
+    background: rgba(255,126,8,0.1);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.conditions h4 {
+    color: var(--primary);
+    margin-top: 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.conditions ol {
+    padding-left: 1.25rem;
+    font-size: 0.88rem;
+    color: #CBD5E0;
+}
+
+.conditions li { margin-bottom: 0.5rem; }
+
+.dissent {
+    background: rgba(229,62,62,0.1);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.25rem;
+    border-left: 3px solid var(--danger);
+}
+
+.dissent h4 {
+    color: var(--danger);
+    margin-top: 0;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.dissent p {
+    font-size: 0.88rem;
+    color: #CBD5E0;
+}
+
+/* Spike Cards */
+.spike-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.spike-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-top: 4px solid var(--primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.spike-card h4 {
+    margin-top: 0;
+    color: var(--dark);
+    font-size: 0.95rem;
+}
+
+.spike-card .spike-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.spike-card .spike-tag {
+    font-size: 0.72rem;
+    background: var(--bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    color: #718096;
+    font-weight: 600;
+}
+
+.spike-card dl {
+    font-size: 0.85rem;
+}
+
+.spike-card dt {
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 0.6rem;
+}
+
+.spike-card dd {
+    margin-left: 0;
+    color: #4A5568;
+}
+
+/* Dimensional Analysis */
+.dimension-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dimension-number {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.dimension-verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.dv-validated { background: #FFF9DB; color: #975A16; border: 1px solid var(--success); }
+.dv-conditional { background: #FFF3E0; color: #C05621; border: 1px solid var(--primary); }
+.dv-refuted { background: #FED7D7; color: #9B2C2C; border: 1px solid var(--danger); }
+
+/* Mermaid */
+.mermaid {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border);
+    font-size: 0.82rem;
+    color: #A0AEC0;
+    text-align: center;
+}
+
+footer strong { color: var(--primary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    nav.sidebar { display: none; }
+    main { margin-left: 0; padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+    <div class="logo">Sofka Technologies</div>
+    <div class="subtitle">Factibilidad Multidimensional</div>
+
+    <div class="nav-section">Resumen</div>
+    <ul>
+        <li><a href="#tldr" class="active">TL;DR</a></li>
+        <li><a href="#claims">Claim Evidence Matrix</a></li>
+    </ul>
+
+    <div class="nav-section">An&aacute;lisis Dimensional</div>
+    <ul>
+        <li><a href="#dim1">D1: Investigaci&oacute;n / TRL</a></li>
+        <li><a href="#dim3">D3: Sist&eacute;mica</a></li>
+        <li><a href="#dim7">D7: Econ&oacute;mica</a></li>
+    </ul>
+
+    <div class="nav-section">Decisiones</div>
+    <ul>
+        <li><a href="#verdict">Veredicto Think Tank</a></li>
+        <li><a href="#spikes">Spike Catalog</a></li>
+        <li><a href="#dependencies">Dependency Graph</a></li>
+    </ul>
+</nav>
+
+<main>
+
+<h1>Factibilidad Multidimensional</h1>
+<p class="meta">
+    <strong>Meridian Insurance</strong> &mdash; Modernizaci&oacute;n del Procesamiento de Reclamaciones<br>
+    Generado: 13 de marzo de 2026 &nbsp;|&nbsp; Variante: T&eacute;cnica (full) &nbsp;|&nbsp; Fase: Post-Gate 1<br>
+    Escenario evaluado: Moderado &mdash; Microservicios progresivos con event sourcing
+</p>
+
+<div class="tldr" id="tldr">
+    <h3>TL;DR</h3>
+    <ul>
+        <li><strong>Veredicto: VIABLE CON CONDICIONES</strong> &mdash; 5/7 votos favorables, Confidence Score: 72/100.</li>
+        <li>Factibilidad confirmada en 5 de 7 dimensiones. Dos dimensiones con riesgos de primer orden requieren mitigaci&oacute;n obligatoria.</li>
+        <li><strong>Condici&oacute;n suspensiva 1:</strong> Spike de Drools BRMS &mdash; TRL 6 no confirmado para 2,400+ reglas de negocio. <code>[INFERENCIA]</code></li>
+        <li><strong>Condici&oacute;n suspensiva 2:</strong> Inverse Conway Maneuver &mdash; 3 equipos actuales no sostienen 8 microservicios. <code>[STAKEHOLDER][DOC]</code></li>
+        <li>3 spikes recomendados, timebox total: 12 d&iacute;as-persona. Sin resoluci&oacute;n, veredicto se degrada a NO VIABLE.</li>
+    </ul>
+</div>
+
+<h2 id="claims">Claim Evidence Matrix</h2>
+<p>Cada claim de factibilidad se documenta con evidencia trazable, nivel de confianza (1-5) y tags de origen. Claims con confianza &lt; 3 disparan spikes obligatorios.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Claim</th><th>Dimensi&oacute;n</th><th>Tag</th><th>Conf.</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td>C-01</td><td>Drools procesa 2,400 reglas con latencia &lt; 500ms</td><td>Investigaci&oacute;n/TRL</td><td><code>[DOC][INFERENCIA]</code></td><td>2/5</td><td><span class="badge badge-unvalidated">&#9888;&#65039; NO VALIDADO</span></td></tr>
+<tr><td>C-02</td><td>Volumen 45K/mes procesable con 4 instancias</td><td>Cuantitativa</td><td><code>[CONFIG][DOC]</code></td><td>4/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-03</td><td>Throughput 150 TPS dentro de benchmark ISBSG</td><td>Cuantitativa</td><td><code>[DOC]</code></td><td>4/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-04</td><td>Migraci&oacute;n Oracle Forms viable en 14 meses / 12 FTE</td><td>Cuantitativa</td><td><code>[DOC][INFERENCIA]</code></td><td>3/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-05</td><td>3 equipos funcionales sostienen 8 microservicios</td><td>Sist&eacute;mica</td><td><code>[STAKEHOLDER][DOC]</code></td><td>1/5</td><td><span class="badge badge-refuted">&#128308; REFUTADO</span></td></tr>
+<tr><td>C-06</td><td>Kafka soporta event sourcing para dominio claims</td><td>Madurez Tecnol&oacute;gica</td><td><code>[C&Oacute;DIGO][CONFIG]</code></td><td>5/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-07</td><td>Spring Boot 3.x + Kafka en &ldquo;Adopt&rdquo; TW Radar, TRL 9</td><td>Madurez Tecnol&oacute;gica</td><td><code>[DOC]</code></td><td>5/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-08</td><td>Drools 8.x TRL 8 (&lt;500 reglas), TRL 6 (&gt;2,000)</td><td>Investigaci&oacute;n/TRL</td><td><code>[DOC][INFERENCIA]</code></td><td>2/5</td><td><span class="badge badge-unvalidated">&#9888;&#65039; NO VALIDADO</span></td></tr>
+<tr><td>C-09</td><td>AWS (3 cuentas) soporta 8 microservicios en EKS</td><td>Infraestructura</td><td><code>[CONFIG][STAKEHOLDER]</code></td><td>3/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-10</td><td>4 sistemas legacy integrables via API Gateway</td><td>Integraci&oacute;n</td><td><code>[C&Oacute;DIGO][CONFIG]</code></td><td>3/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-11</td><td>TCO cloud $18-24K/mes sostenible en presupuesto</td><td>Econ&oacute;mica</td><td><code>[DOC][STAKEHOLDER]</code></td><td>4/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+<tr><td>C-12</td><td>Costo de NO hacer ($2.1M/a&ntilde;o) justifica inversi&oacute;n</td><td>Econ&oacute;mica</td><td><code>[DOC][INFERENCIA]</code></td><td>3/5</td><td><span class="badge badge-validated">&#9989; VALIDADO</span></td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-insight">
+    <strong>&#128161; Lectura de la matriz</strong>
+    8 claims validadas, 2 no validadas, 1 refutada. Claims C-01, C-05 y C-08 condicionan el veredicto. Sin resoluci&oacute;n de C-05 (Conway) el proyecto fracasa independientemente de la factibilidad t&eacute;cnica.
+</div>
+
+<!-- Dimension 1 -->
+<h2 id="dim1">An&aacute;lisis Dimensional</h2>
+
+<div class="dimension-header">
+    <div class="dimension-number">1</div>
+    <div>
+        <h3 style="margin:0">Investigaci&oacute;n / TRL</h3>
+        <div class="dimension-verdict dv-conditional">&#9888;&#65039; VIABLE CON CONDICIONES</div>
+    </div>
+</div>
+
+<p><strong>Sabio:</strong> Agente de Investigaci&oacute;n Postdoctoral &mdash; Madurez Cient&iacute;fica y Tecnol&oacute;gica</p>
+
+<p>El stack presenta perfil de madurez bimodal: n&uacute;cleo maduro (Spring Boot, Kafka, PostgreSQL &mdash; TRL 8-9) y componente de riesgo (Drools BRMS a escala &mdash; TRL 6).</p>
+
+<table>
+<thead><tr><th>Componente</th><th>TRL</th><th>Justificaci&oacute;n</th><th>Evidencia</th></tr></thead>
+<tbody>
+<tr><td>Spring Boot 3.2</td><td><strong>TRL 9</strong></td><td>Framework probado en miles de deployments. 12+ a&ntilde;os.</td><td><code>[DOC]</code></td></tr>
+<tr><td>Apache Kafka 3.7</td><td><strong>TRL 9</strong></td><td>LinkedIn: 7T mensajes/d&iacute;a.</td><td><code>[DOC]</code></td></tr>
+<tr><td>PostgreSQL 16</td><td><strong>TRL 9</strong></td><td>RDBMS enterprise. 28 a&ntilde;os.</td><td><code>[DOC]</code></td></tr>
+<tr><td>Drools 8.x (&lt;500 reglas)</td><td><strong>TRL 8</strong></td><td>Amplia adopci&oacute;n en seguros, vol&uacute;menes moderados.</td><td><code>[DOC]</code></td></tr>
+<tr><td style="color:var(--danger);font-weight:600">Drools 8.x (&gt;2,000 reglas)</td><td style="color:var(--danger);font-weight:600"><strong>TRL 6</strong></td><td>Evidencia limitada. Benchmarks p&uacute;blicos solo hasta 800 reglas. <strong>Valley of Death.</strong></td><td><code>[INFERENCIA]</code></td></tr>
+<tr><td>Kubernetes (EKS)</td><td><strong>TRL 9</strong></td><td>Orquestador dominante. 10+ a&ntilde;os producci&oacute;n.</td><td><code>[CONFIG]</code></td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-danger">
+    <strong>&#9888;&#65039; Risk Alert</strong>
+    La Valley of Death entre TRL 6 y TRL 8 para Drools a escala es el riesgo t&eacute;cnico de mayor impacto. Si el spike falla, la alternativa (motor custom) agrega 3-4 meses y requiere expertise ausente en el equipo. <code>[INFERENCIA]</code>
+</div>
+
+<!-- Dimension 3 -->
+<div class="dimension-header" id="dim3">
+    <div class="dimension-number">3</div>
+    <div>
+        <h3 style="margin:0">Sist&eacute;mica</h3>
+        <div class="dimension-verdict dv-refuted">&#128308; NO VIABLE (configuraci&oacute;n actual)</div>
+    </div>
+</div>
+
+<p><strong>Sabio:</strong> Agente de Investigaci&oacute;n Postdoctoral &mdash; Sistemas Complejos y Din&aacute;mica Organizacional</p>
+
+<p>Desalineamiento severo entre arquitectura propuesta (8 microservicios) y estructura organizacional (3 equipos funcionales de 4-5 personas). Seg&uacute;n Conway&rsquo;s Law, esta organizaci&oacute;n producir&aacute; naturalmente una arquitectura de 3 componentes &mdash; no 8.</p>
+
+<h4>Evaluaci&oacute;n Team Topologies</h4>
+<table>
+<thead><tr><th>Equipo Actual</th><th>Tipo actual</th><th>Tipo requerido</th><th>Gap</th></tr></thead>
+<tbody>
+<tr><td>Equipo Core (5 pers.)</td><td>Stream-aligned (monolito)</td><td>Stream-aligned (3 &mu;svc)</td><td><span class="badge badge-refuted">Alto</span></td></tr>
+<tr><td>Equipo Integraci&oacute;n (4 pers.)</td><td>Complicated Subsystem</td><td>Platform + 1 stream</td><td><span class="badge badge-refuted">Cr&iacute;tico</span></td></tr>
+<tr><td>Equipo Soporte (4 pers.)</td><td>Sin clasificaci&oacute;n</td><td>Enabling team</td><td><span class="badge badge-unvalidated">Medio</span></td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-warning">
+    <strong>&#9878;&#65039; Trade-off expl&iacute;cito</strong>
+    Ejecutar el Inverse Conway Maneuver agrega 6-8 semanas y genera resistencia organizacional. Sin embargo, NO ejecutarlo garantiza fracaso sist&eacute;mico en meses 6-9. El costo de la reorganizaci&oacute;n es menor que el costo del fracaso. <code>[INFERENCIA][STAKEHOLDER]</code>
+</div>
+
+<!-- Dimension 7 -->
+<div class="dimension-header" id="dim7">
+    <div class="dimension-number">7</div>
+    <div>
+        <h3 style="margin:0">Econ&oacute;mica</h3>
+        <div class="dimension-verdict dv-validated">&#9989; VIABLE</div>
+    </div>
+</div>
+
+<p><strong>Sabio:</strong> Agente de Investigaci&oacute;n Postdoctoral &mdash; Econom&iacute;a de Software y FinOps</p>
+
+<h4>TCO Cloud &mdash; Proyecci&oacute;n Monte Carlo (10,000 simulaciones)</h4>
+<table>
+<thead><tr><th>Percentil</th><th>Costo mensual</th><th>Costo anual</th></tr></thead>
+<tbody>
+<tr><td>P50</td><td>$19,200</td><td>$230,400</td></tr>
+<tr><td>P80</td><td>$22,800</td><td>$273,600</td></tr>
+<tr><td>P95</td><td>$28,500</td><td>$342,000</td></tr>
+</tbody>
+</table>
+
+<h4>Costo de NO hacer (status quo)</h4>
+<table>
+<thead><tr><th>Concepto</th><th>Costo anual</th><th>Tag</th></tr></thead>
+<tbody>
+<tr><td>Ineficiencia operativa</td><td>$1,200,000</td><td><code>[DOC]</code></td></tr>
+<tr><td>Multas regulatorias</td><td>$450,000</td><td><code>[DOC]</code></td></tr>
+<tr><td>P&eacute;rdida de clientes</td><td>$480,000</td><td><code>[INFERENCIA]</code></td></tr>
+<tr style="font-weight:700;background:rgba(255,126,8,0.1)"><td>Total costo de NO hacer</td><td>$2,130,000/a&ntilde;o</td><td></td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-info">
+    <strong>&#128161; ROI</strong>
+    TCO cloud ($230K-$342K/a&ntilde;o) significativamente menor que costo de NO hacer ($2.13M/a&ntilde;o). ROI positivo desde mes 8 (P50). Madurez FinOps &ldquo;Crawl&rdquo; requiere alertas y dashboards desde d&iacute;a 1.
+</div>
+
+<!-- Verdict -->
+<div class="verdict-box" id="verdict">
+    <h3>Veredicto del Consejo de Siete Sabios</h3>
+
+    <div class="verdict-main">
+        <div class="verdict-label">VIABLE CON CONDICIONES</div>
+        <div class="verdict-stats">
+            <div class="verdict-stat">
+                <span class="number">5/7</span>
+                <span class="label">Votaci&oacute;n</span>
+            </div>
+            <div class="verdict-stat">
+                <span class="number">72</span>
+                <span class="label">Confidence</span>
+            </div>
+        </div>
+    </div>
+
+    <table class="verdict-table">
+    <thead><tr><th>Dimensi&oacute;n</th><th>Voto</th><th>Confianza</th></tr></thead>
+    <tbody>
+    <tr><td>1. Investigaci&oacute;n / TRL</td><td>&#9888;&#65039; CONDICI&Oacute;N</td><td>60/100</td></tr>
+    <tr><td>2. Cuantitativa</td><td>&#9989; A FAVOR</td><td>80/100</td></tr>
+    <tr><td>3. Sist&eacute;mica</td><td>&#128308; EN CONTRA</td><td>45/100</td></tr>
+    <tr><td>4. Madurez Tecnol&oacute;gica</td><td>&#9989; A FAVOR</td><td>90/100</td></tr>
+    <tr><td>5. Infraestructura</td><td>&#9989; A FAVOR</td><td>75/100</td></tr>
+    <tr><td>6. Integraci&oacute;n</td><td>&#9989; A FAVOR</td><td>70/100</td></tr>
+    <tr><td>7. Econ&oacute;mica</td><td>&#9989; A FAVOR</td><td>82/100</td></tr>
+    </tbody>
+    </table>
+
+    <div class="conditions">
+        <h4>Condiciones Suspensivas</h4>
+        <ol>
+            <li><strong>CS-1:</strong> Spike de Drools con 2,400+ reglas. Criterio: latencia &lt; 500ms P95. Timebox: 5 d&iacute;as-persona. Si falla &rarr; Camunda DMN o motor custom.</li>
+            <li><strong>CS-2:</strong> Aprobaci&oacute;n de Inverse Conway Maneuver por CTO. 3 equipos &rarr; 4 stream + 1 platform. 6-8 semanas pre-implementaci&oacute;n. Si no se aprueba &rarr; veredicto NO VIABLE.</li>
+            <li><strong>CS-3:</strong> Gobernanza FinOps desde d&iacute;a 1. Alertas, dashboards, budget caps. Responsable: Platform team.</li>
+        </ol>
+    </div>
+
+    <div class="dissent">
+        <h4>Disidencia documentada</h4>
+        <p>Sabio Sist&eacute;mico vota EN CONTRA. El Inverse Conway Maneuver tiene probabilidad &lt; 40% de aprobaci&oacute;n dada la cultura organizacional. Sin Conway, el proyecto es sist&eacute;micamente inviable. Recomienda escenario alternativo: 4 m&oacute;dulos (modular monolith) alineados a estructura actual. <code>[STAKEHOLDER][INFERENCIA]</code></p>
+    </div>
+</div>
+
+<!-- Spikes -->
+<h2 id="spikes">Spike Catalog</h2>
+
+<div class="spike-grid">
+    <div class="spike-card">
+        <h4>Spike 1: Drools BRMS Performance at Scale</h4>
+        <div class="spike-meta">
+            <span class="spike-tag">5 d&iacute;as-persona</span>
+            <span class="spike-tag">[DOC][INFERENCIA]</span>
+        </div>
+        <dl>
+            <dt>Objetivo</dt>
+            <dd>Validar Drools 8.x con 2,400 reglas, latencia &lt; 500ms P95, 50 evaluaciones concurrentes.</dd>
+            <dt>&Eacute;xito</dt>
+            <dd>P95 &lt; 500ms, heap &lt; 4GB</dd>
+            <dt>Fracaso</dt>
+            <dd>P95 &gt; 800ms O heap &gt; 8GB</dd>
+            <dt>Plan B</dt>
+            <dd>Camunda DMN 8.x o motor custom</dd>
+        </dl>
+    </div>
+
+    <div class="spike-card">
+        <h4>Spike 2: API Integration AS/400</h4>
+        <div class="spike-meta">
+            <span class="spike-tag">4 d&iacute;as-persona</span>
+            <span class="spike-tag">[CONFIG][INFERENCIA]</span>
+        </div>
+        <dl>
+            <dt>Objetivo</dt>
+            <dd>Validar exposici&oacute;n REST del AS/400 sin modificar sistema fuente.</dd>
+            <dt>&Eacute;xito</dt>
+            <dd>REST funcional, &lt; 2s latencia, 100 queries concurrentes</dd>
+            <dt>Fracaso</dt>
+            <dd>Sin conexi&oacute;n REST O &gt; 5s O degradaci&oacute;n AS/400</dd>
+            <dt>Plan B</dt>
+            <dd>Replicaci&oacute;n batch nocturna a PostgreSQL (T+1)</dd>
+        </dl>
+    </div>
+
+    <div class="spike-card">
+        <h4>Spike 3: Conway Alignment Workshop</h4>
+        <div class="spike-meta">
+            <span class="spike-tag">3 d&iacute;as-persona</span>
+            <span class="spike-tag">[STAKEHOLDER]</span>
+        </div>
+        <dl>
+            <dt>Objetivo</dt>
+            <dd>Validar viabilidad organizacional del Inverse Conway Maneuver con CTO y team leads.</dd>
+            <dt>&Eacute;xito</dt>
+            <dd>Acuerdo documentado, timeline aceptado</dd>
+            <dt>Fracaso</dt>
+            <dd>CTO rechaza O no hay consenso en 2 sesiones</dd>
+            <dt>Plan B</dt>
+            <dd>Modular monolith (4 m&oacute;dulos) alineado a estructura actual</dd>
+        </dl>
+    </div>
+</div>
+
+<!-- Dependency Graph -->
+<h2 id="dependencies">Dependency Graph</h2>
+<p>Relaciones entre claims, spikes y condiciones suspensivas. Nodos rojos: refutados. Amarillos: no validados. Dorados: validados.</p>
+
+<pre class="mermaid">
+graph TD
+    subgraph Claims["Claim Evidence Matrix"]
+        C01["C-01: Drools a escala\n⚠️ NO VALIDADO"]
+        C05["C-05: Conway alignment\n🔴 REFUTADO"]
+        C08["C-08: Drools TRL 6\n⚠️ NO VALIDADO"]
+        C02["C-02: Throughput 45K/mes\n✅ VALIDADO"]
+        C06["C-06: Kafka event sourcing\n✅ VALIDADO"]
+        C11["C-11: TCO sostenible\n✅ VALIDADO"]
+    end
+
+    subgraph Spikes["Spike Catalog"]
+        SP1["Spike 1: Drools perf\n5 días-persona"]
+        SP2["Spike 2: AS/400 API\n4 días-persona"]
+        SP3["Spike 3: Conway workshop\n3 días-persona"]
+    end
+
+    subgraph Condiciones["Condiciones Suspensivas"]
+        CS1["CS-1: Drools validado"]
+        CS2["CS-2: Conway aprobado"]
+        CS3["CS-3: FinOps día 1"]
+    end
+
+    VEREDICTO["VEREDICTO:\nVIABLE CON CONDICIONES\n72/100"]
+
+    C01 --> SP1
+    C08 --> SP1
+    C05 --> SP3
+    SP1 -->|éxito| CS1
+    SP3 -->|éxito| CS2
+    C11 --> CS3
+    CS1 --> VEREDICTO
+    CS2 --> VEREDICTO
+    CS3 --> VEREDICTO
+    C02 --> VEREDICTO
+    C06 --> VEREDICTO
+
+    classDef validated fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef unvalidated fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef refuted fill:#FFCDD2,stroke:#D32F2F,color:#1A1A2E
+    classDef spike fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef condition fill:#FF7E08,stroke:#1A1A2E,color:#fff
+    classDef verdict fill:#1A1A2E,stroke:#FF7E08,color:#FFD700,stroke-width:3px
+
+    class C02,C06,C11 validated
+    class C01,C08 unvalidated
+    class C05 refuted
+    class SP1,SP2,SP3 spike
+    class CS1,CS2,CS3 condition
+    class VEREDICTO verdict
+</pre>
+
+<footer>
+    <p><strong>Autor:</strong> Javier Monta&ntilde;o &nbsp;|&nbsp; <strong>Fecha:</strong> 13 de marzo de 2026</p>
+    <p><strong>&copy; Sofka Technologies</strong> &mdash; Todos los derechos reservados</p>
+</footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+        primaryColor: '#FF7E08',
+        primaryTextColor: '#1A1A2E',
+        primaryBorderColor: '#1A1A2E',
+        lineColor: '#718096',
+        secondaryColor: '#F8F9FA',
+        tertiaryColor: '#EDF2F7',
+        fontFamily: 'Inter, sans-serif'
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 — Mapeo de Flujos: Acme Corp Banking Modernization</title>
+  <style>
+    :root {
+      --brand-primary: #1a1a2e;
+      --brand-accent: #e94560;
+      --brand-secondary: #16213e;
+      --brand-surface: #f8f9fa;
+      --brand-text: #2d3436;
+      --brand-muted: #636e72;
+      --core-color: #e94560;
+      --supporting-color: #0984e3;
+      --generic-color: #636e72;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--brand-text);
+      background: var(--brand-surface);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+    header {
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      color: white;
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
+    }
+    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { opacity: 0.85; font-size: 0.95rem; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .meta-item { background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; }
+    .meta-label { opacity: 0.7; }
+    h2 {
+      font-size: 1.5rem;
+      color: var(--brand-primary);
+      border-bottom: 3px solid var(--brand-accent);
+      padding-bottom: 0.5rem;
+      margin: 2.5rem 0 1.5rem;
+    }
+    h3 { font-size: 1.15rem; color: var(--brand-secondary); margin: 1.5rem 0 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; font-size: 0.9rem; }
+    th {
+      background: var(--brand-primary);
+      color: white;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    td { padding: 0.6rem 1rem; border-bottom: 1px solid #dfe6e9; }
+    tr:hover td { background: #f1f3f5; }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+    }
+    .badge-core { background: var(--core-color); }
+    .badge-supporting { background: var(--supporting-color); }
+    .badge-generic { background: var(--generic-color); }
+    .flow-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--brand-accent);
+    }
+    .flow-card h3 { margin-top: 0; }
+    .flow-meta { display: flex; gap: 2rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--brand-muted); margin-bottom: 1rem; }
+    .flow-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .failure-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-left: 4px solid #d63031;
+    }
+    .failure-card h4 { color: #d63031; margin-bottom: 0.5rem; }
+    .failure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; margin: 0.5rem 0; }
+    .failure-grid dt { font-weight: 600; color: var(--brand-muted); }
+    .failure-grid dd { margin: 0; }
+    .mermaid-placeholder {
+      background: #f1f3f5;
+      border: 2px dashed #b2bec3;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      color: var(--brand-muted);
+      font-style: italic;
+      margin: 1rem 0;
+    }
+    footer {
+      margin-top: 3rem;
+      padding: 1.5rem 2rem;
+      background: var(--brand-primary);
+      color: white;
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>04 — Mapeo de Flujos</h1>
+  <p>Acme Corp Banking Modernization</p>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="meta-label">Fecha:</span> 12 de marzo de 2026</div>
+    <div class="meta-item"><span class="meta-label">Variante:</span> T&eacute;cnica (completa)</div>
+    <div class="meta-item"><span class="meta-label">Flujos:</span> 3 de 8 (muestra)</div>
+    <div class="meta-item"><span class="meta-label">Formato:</span> HTML branded</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- S1: Domain Taxonomy -->
+  <h2>S1: Taxonom&iacute;a de Dominios (DDD)</h2>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Dominio</th><th>Tipo</th><th>Prop&oacute;sito</th><th>Agregados Clave</th><th>Valor de Negocio</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Core Banking</strong></td>
+        <td><span class="badge badge-core">Core</span></td>
+        <td>Gesti&oacute;n de cuentas, transacciones y productos financieros</td>
+        <td>Account, Transaction, Product, Ledger</td>
+        <td>Motor principal de ingresos. 2.4M tx/d&iacute;a.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Digital Channels</strong></td>
+        <td><span class="badge badge-core">Core</span></td>
+        <td>Interfaz cliente (web, m&oacute;vil, API partners)</td>
+        <td>Session, UserProfile, Notification</td>
+        <td>Canal principal de adquisici&oacute;n. 78% de tx originan aqu&iacute;.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Risk &amp; Compliance</strong></td>
+        <td><span class="badge badge-supporting">Supporting</span></td>
+        <td>Evaluaci&oacute;n de riesgo, KYC/AML, reportes regulatorios</td>
+        <td>RiskAssessment, ComplianceRule, AuditTrail</td>
+        <td>Habilitador regulatorio. Sin esto, no hay operaci&oacute;n.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Customer Management</strong></td>
+        <td><span class="badge badge-supporting">Supporting</span></td>
+        <td>CRM, onboarding, lifecycle management</td>
+        <td>Customer, KYCDocument, Relationship</td>
+        <td>Soporte al ciclo de vida del cliente.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Infrastructure</strong></td>
+        <td><span class="badge badge-generic">Generic</span></td>
+        <td>Mensajer&iacute;a, logging, monitoreo, autenticaci&oacute;n</td>
+        <td>Event, LogEntry, HealthCheck</td>
+        <td>Commodity. Candidato a off-the-shelf.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Patrones de Context Mapping</h3>
+  <ul>
+    <li><strong>Core Banking &harr; Digital Channels:</strong> Customer-Supplier (Core Banking upstream)</li>
+    <li><strong>Core Banking &harr; Risk &amp; Compliance:</strong> Shared Kernel (modelo Transaction compartido)</li>
+    <li><strong>Customer Management &harr; Core Banking:</strong> Anti-Corruption Layer (CRM legacy con adapter)</li>
+    <li><strong>Infrastructure &harr; todos:</strong> Open Host Service (APIs gen&eacute;ricas)</li>
+  </ul>
+
+  <!-- Flow 1 -->
+  <h2>S2: Flujo 1 — Customer Onboarding</h2>
+
+  <div class="flow-card">
+    <h3>KYC &rarr; Account Creation &rarr; Card Issuance</h3>
+    <div class="flow-meta">
+      <span><strong>Dominio:</strong> Customer Management</span>
+      <span><strong>Volumen:</strong> ~1,200/d&iacute;a</span>
+      <span><strong>SLA:</strong> &lt; 15 min (happy path)</span>
+    </div>
+
+    <div class="mermaid-placeholder">
+      [Sequence Diagram: Cliente &rarr; Digital Channels &rarr; Customer Mgmt &rarr; Risk &amp; Compliance &rarr; Proveedor KYC &rarr; Core Banking]<br>
+      <small>Renderizado con Mermaid.js en navegadores compatibles</small>
+    </div>
+
+    <h4>Trama Specification</h4>
+    <table>
+      <thead>
+        <tr><th>Seq</th><th>Msg ID</th><th>Source</th><th>Destination</th><th>Protocol</th><th>Sync/Async</th><th>SLA</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>ONB-001</td><td>Digital Channels</td><td>Customer Mgmt</td><td>REST/HTTPS</td><td>Sync</td><td>200ms</td></tr>
+        <tr><td>2</td><td>ONB-002</td><td>Customer Mgmt</td><td>Risk &amp; Compliance</td><td>REST/HTTPS</td><td>Sync</td><td>2s</td></tr>
+        <tr><td>3</td><td>ONB-003</td><td>Risk &amp; Compliance</td><td>Proveedor KYC</td><td>REST/mTLS</td><td>Sync</td><td>8s</td></tr>
+        <tr><td>4</td><td>ONB-004</td><td>Risk &amp; Compliance</td><td>Customer Mgmt</td><td>Kafka</td><td>Async</td><td>500ms</td></tr>
+        <tr><td>5</td><td>ONB-005</td><td>Customer Mgmt</td><td>Core Banking</td><td>REST/HTTPS</td><td>Sync</td><td>1s</td></tr>
+        <tr><td>6</td><td>ONB-006</td><td>Customer Mgmt</td><td>Core Banking</td><td>REST/HTTPS</td><td>Sync</td><td>3s</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Error Scenarios</h4>
+    <table>
+      <thead>
+        <tr><th>Error</th><th>Handling</th><th>User Feedback</th><th>Recovery</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Proveedor KYC timeout</td><td>Retry 2x + cola manual</td><td>"Verificaci&oacute;n en proceso"</td><td>Auto-retry cada 30 min</td></tr>
+        <tr><td>Documento duplicado</td><td>Validar uniqueness pre-KYC</td><td>"Ya tienes una cuenta"</td><td>Flujo alterno</td></tr>
+        <tr><td>Core Banking no disponible</td><td>Encolar creaci&oacute;n</td><td>"Cuenta en proceso (m&aacute;x 2h)"</td><td>Retry con idempotency key</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Flow 2 -->
+  <h2>S3: Flujo 2 — Real-Time Payment</h2>
+
+  <div class="flow-card">
+    <h3>Channel &rarr; Payment Engine &rarr; Core &rarr; SWIFT/ACH</h3>
+    <div class="flow-meta">
+      <span><strong>Dominio:</strong> Core Banking</span>
+      <span><strong>Volumen:</strong> ~85,000/d&iacute;a</span>
+      <span><strong>SLA:</strong> &lt; 3s (dom&eacute;stico)</span>
+    </div>
+
+    <div class="mermaid-placeholder">
+      [Sequence Diagram: Cliente &rarr; Digital Channels &rarr; Core Banking &rarr; Risk &amp; Compliance &rarr; Payment Engine &rarr; SWIFT/ACH Gateway]<br>
+      <small>Renderizado con Mermaid.js en navegadores compatibles</small>
+    </div>
+
+    <h4>Trama Specification</h4>
+    <table>
+      <thead>
+        <tr><th>Seq</th><th>Msg ID</th><th>Source</th><th>Destination</th><th>Protocol</th><th>Sync/Async</th><th>SLA</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>PAY-001</td><td>Digital Channels</td><td>Core Banking</td><td>REST/HTTPS</td><td>Sync</td><td>200ms</td></tr>
+        <tr><td>2</td><td>PAY-002</td><td>Core Banking</td><td>Risk &amp; Compliance</td><td>gRPC</td><td>Sync</td><td>800ms</td></tr>
+        <tr><td>3</td><td>PAY-003</td><td>Core Banking</td><td>Payment Engine</td><td>Kafka</td><td>Async</td><td>1s</td></tr>
+        <tr><td>4</td><td>PAY-004</td><td>Payment Engine</td><td>SWIFT/ACH</td><td>ISO 20022/MQ</td><td>Async</td><td>5s</td></tr>
+        <tr><td>5</td><td>PAY-005</td><td>Payment Engine</td><td>Core Banking</td><td>Kafka</td><td>Async</td><td>500ms</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Error Scenarios</h4>
+    <table>
+      <thead>
+        <tr><th>Error</th><th>Handling</th><th>User Feedback</th><th>Recovery</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fondos insuficientes</td><td>Validar pre-d&eacute;bito</td><td>"Saldo insuficiente: $X"</td><td>N/A</td></tr>
+        <tr><td>SWIFT timeout</td><td>Cola TTL 4h + retry</td><td>"Pago en proceso (m&aacute;x 4h)"</td><td>Retry cada 15 min</td></tr>
+        <tr><td>Fraud false positive</td><td>Retener + revisi&oacute;n manual</td><td>"Pago en revisi&oacute;n (m&aacute;x 2h)"</td><td>Equipo fraude decide</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Flow 3 -->
+  <h2>S4: Flujo 3 — Loan Origination</h2>
+
+  <div class="flow-card">
+    <h3>Application &rarr; Scoring &rarr; Approval &rarr; Disbursement</h3>
+    <div class="flow-meta">
+      <span><strong>Dominio:</strong> Core Banking</span>
+      <span><strong>Volumen:</strong> ~800/d&iacute;a</span>
+      <span><strong>SLA:</strong> &lt; 5 min (pre-aprobaci&oacute;n)</span>
+    </div>
+
+    <div class="mermaid-placeholder">
+      [Sequence Diagram: Cliente &rarr; Digital Channels &rarr; Core Banking &rarr; Customer Mgmt &rarr; Risk &amp; Compliance &rarr; Bur&oacute; de Cr&eacute;dito]<br>
+      <small>Renderizado con Mermaid.js en navegadores compatibles</small>
+    </div>
+
+    <h4>Trama Specification</h4>
+    <table>
+      <thead>
+        <tr><th>Seq</th><th>Msg ID</th><th>Source</th><th>Destination</th><th>Protocol</th><th>Sync/Async</th><th>SLA</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>LOA-001</td><td>Digital Channels</td><td>Core Banking</td><td>REST/HTTPS</td><td>Sync</td><td>300ms</td></tr>
+        <tr><td>2</td><td>LOA-002</td><td>Core Banking</td><td>Customer Mgmt</td><td>REST/HTTPS</td><td>Sync</td><td>500ms</td></tr>
+        <tr><td>3</td><td>LOA-003</td><td>Core Banking</td><td>Risk &amp; Compliance</td><td>REST/HTTPS</td><td>Sync</td><td>2s</td></tr>
+        <tr><td>4</td><td>LOA-004</td><td>Risk &amp; Compliance</td><td>Bur&oacute; de Cr&eacute;dito</td><td>SOAP/HTTPS</td><td>Sync</td><td>5s</td></tr>
+        <tr><td>5</td><td>LOA-005</td><td>Risk &amp; Compliance</td><td>Core Banking</td><td>Kafka</td><td>Async</td><td>500ms</td></tr>
+        <tr><td>6</td><td>LOA-006</td><td>Core Banking</td><td>Core Banking</td><td>Internal</td><td>Sync</td><td>1s</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Error Scenarios</h4>
+    <table>
+      <thead>
+        <tr><th>Error</th><th>Handling</th><th>User Feedback</th><th>Recovery</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bur&oacute; no disponible</td><td>Scoring solo interno</td><td>"Pre-aprobaci&oacute;n con tu historial"</td><td>Reconsultar cuando vuelva</td></tr>
+        <tr><td>Desembolso fallido</td><td>Revertir a "aprobado pendiente"</td><td>"Desembolso en proceso (m&aacute;x 2h)"</td><td>Retry 3x + escalar</td></tr>
+        <tr><td>Race condition scoring</td><td>Distributed lock por customerId</td><td>"Solicitud ya en proceso"</td><td>Lock timeout 30s</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- S7: Integration Matrix -->
+  <h2>S7: Integration Matrix (Parcial)</h2>
+
+  <table>
+    <thead>
+      <tr><th>Sistema</th><th>Onboarding</th><th>Pagos</th><th>Pr&eacute;stamos</th><th>Protocolo</th><th>Volumen/d&iacute;a</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Digital Channels</strong></td><td>Sync (inicia)</td><td>Sync (inicia)</td><td>Sync (inicia)</td><td>REST/HTTPS</td><td>87,000</td></tr>
+      <tr><td><strong>Core Banking</strong></td><td>Sync (crea cuenta)</td><td>Async (procesa)</td><td>Sync+Async</td><td>REST + Kafka</td><td>170,000</td></tr>
+      <tr><td><strong>Risk &amp; Compliance</strong></td><td>Sync (KYC)</td><td>Sync (fraud)</td><td>Sync (scoring)</td><td>REST + gRPC</td><td>87,000</td></tr>
+      <tr><td><strong>Customer Management</strong></td><td>Sync (gestiona)</td><td>&mdash;</td><td>Sync (consulta)</td><td>REST/HTTPS</td><td>2,000</td></tr>
+      <tr><td><strong>Payment Engine</strong></td><td>&mdash;</td><td>Async (ejecuta)</td><td>Async (desembolso)</td><td>Kafka + ISO 20022</td><td>85,000</td></tr>
+      <tr><td><strong>SWIFT/ACH Gateway</strong></td><td>&mdash;</td><td>Async (env&iacute;a)</td><td>&mdash;</td><td>ISO 20022/MQ</td><td>12,000</td></tr>
+      <tr><td><strong>Proveedor KYC</strong></td><td>Sync (verifica)</td><td>&mdash;</td><td>&mdash;</td><td>REST/mTLS</td><td>1,200</td></tr>
+      <tr><td><strong>Bur&oacute; de Cr&eacute;dito</strong></td><td>&mdash;</td><td>&mdash;</td><td>Sync (consulta)</td><td>SOAP/HTTPS</td><td>800</td></tr>
+    </tbody>
+  </table>
+
+  <!-- S8: Critical Failure Points -->
+  <h2>S8: Puntos Cr&iacute;ticos de Fallo (Top 3)</h2>
+
+  <div class="failure-card">
+    <h4>FP-001: Proveedor KYC Externo No Disponible</h4>
+    <div class="failure-grid">
+      <dt>Consecuencia:</dt><dd>Onboarding detenido. P&eacute;rdida de clientes potenciales.</dd>
+      <dt>Probabilidad:</dt><dd>Media (2-3 incidentes/mes)</dd>
+      <dt>Impacto:</dt><dd>Alto (bloquea adquisici&oacute;n)</dd>
+      <dt>MTTR actual:</dt><dd>2-4 horas</dd>
+    </div>
+    <p><strong>Mejora:</strong> Segundo proveedor KYC como fallback + cache de verificaciones (TTL 24h). MTTR &rarr; &lt;5 min.</p>
+  </div>
+
+  <div class="failure-card">
+    <h4>FP-002: Race Condition en Payment Engine (Doble D&eacute;bito)</h4>
+    <div class="failure-grid">
+      <dt>Consecuencia:</dt><dd>P&eacute;rdida financiera directa. Riesgo regulatorio.</dd>
+      <dt>Probabilidad:</dt><dd>Baja (idempotency keys actuales)</dd>
+      <dt>Impacto:</dt><dd>Cr&iacute;tico (monetario + confianza)</dd>
+      <dt>MTTR actual:</dt><dd>12h (detecci&oacute;n batch)</dd>
+    </div>
+    <p><strong>Mejora:</strong> Distributed lock con Redis + detecci&oacute;n real-time v&iacute;a event sourcing. MTTR &rarr; &lt;1 min.</p>
+  </div>
+
+  <div class="failure-card">
+    <h4>FP-003: SWIFT Gateway Timeout en Pagos Internacionales</h4>
+    <div class="failure-grid">
+      <dt>Consecuencia:</dt><dd>Pagos internacionales retenidos. Incumplimiento SLA corporativo.</dd>
+      <dt>Probabilidad:</dt><dd>Media (ventanas de mantenimiento SWIFT)</dd>
+      <dt>Impacto:</dt><dd>Alto (reputacional + contractual)</dd>
+      <dt>MTTR actual:</dt><dd>Variable (depende de SWIFT)</dd>
+    </div>
+    <p><strong>Mejora:</strong> Ruta alternativa v&iacute;a corresponsal para montos &lt;$50K. Notificaci&oacute;n proactiva con ETA.</p>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Autor:</strong> Javier Montaño | <strong>Generado por:</strong> flow-mapping skill v6.0 | 12 de marzo de 2026
+</footer>
+
+</body>
+</html>

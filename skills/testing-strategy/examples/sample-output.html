@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-01 Testing Strategy — Acme Corp Banking Modernization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+    <style>
+        :root { --primary: #1a365d; --accent: #e53e3e; --bg: #f7fafc; --text: #2d3748; --border: #e2e8f0; --surface: #ffffff; --muted: #718096; --success: #38a169; --warning: #d69e2e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; }
+        h2 { color: var(--primary); font-size: 1.4rem; margin: 2.5rem 0 1rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; }
+        h3 { color: var(--text); font-size: 1.1rem; margin: 1.5rem 0 0.75rem; font-weight: 600; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+        .summary { background: var(--surface); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+        th { background: var(--primary); color: #fff; text-align: left; padding: 0.6rem 0.75rem; }
+        td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: rgba(26,54,93,0.04); }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 0.4rem 0; padding-left: 1.75rem; position: relative; }
+        .checklist li::before { content: "\2713"; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+        .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+        code { background: #edf2f7; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+        .mermaid { background: var(--surface); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border); }
+        .callout { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<h1>A-01 Testing Strategy</h1>
+<p class="meta">Acme Corp Banking Modernization | 12 de marzo de 2026 | Modo: piloto-auto | Variante: t&eacute;cnica</p>
+
+<div class="summary">
+    <strong>Executive Summary:</strong> Acme Corp's banking platform migration from COBOL mainframe to Java/Spring Boot microservices requires a comprehensive testing strategy. With 14 services, 6 Kafka topics, and 3 external integrations (credit bureau, fraud, KYC), the test diamond shape maximizes confidence at service boundaries. This document defines the test architecture, automation framework (JUnit 5 + Testcontainers + Pact), contract testing for all cross-service APIs, chaos engineering readiness plan, test data management for PII-regulated environments, and quality metrics with CI/CD gate integration.
+</div>
+
+<h2>S1: Test Shape Selection &amp; Pyramid Design</h2>
+
+<h3>Architecture Analysis</h3>
+<table>
+    <thead><tr><th>Characteristic</th><th>Value</th><th>Implication</th></tr></thead>
+    <tbody>
+        <tr><td>Architecture style</td><td>Microservices (14 services)</td><td>Integration boundaries are the highest risk area</td></tr>
+        <tr><td>Communication</td><td>REST + Kafka async</td><td>Contract testing essential for both sync and async</td></tr>
+        <tr><td>External dependencies</td><td>3 (Equifax, fraud provider, KYC)</td><td>Service virtualization needed</td></tr>
+        <tr><td>Data stores</td><td>PostgreSQL, Redis, Kafka, S3</td><td>Testcontainers for integration fidelity</td></tr>
+        <tr><td>Regulatory</td><td>PCI-DSS, OCC, BSA/AML</td><td>Mandatory compliance test suite</td></tr>
+    </tbody>
+</table>
+
+<h3>Selected Shape: Test Diamond</h3>
+<div class="mermaid">
+pie title Test Distribution — Banking Microservices
+    "Unit (20%)" : 20
+    "Integration (40%)" : 40
+    "Contract (30%)" : 30
+    "E2E (10%)" : 10
+</div>
+
+<table>
+    <thead><tr><th>Test Level</th><th>Ratio</th><th>Count</th><th>Rationale</th></tr></thead>
+    <tbody>
+        <tr><td>Unit</td><td>20%</td><td>~600</td><td>Interest calculations, validation rules, DTI formulas</td></tr>
+        <tr><td>Integration</td><td>40%</td><td>~1,200</td><td>Service-to-database, service-to-Kafka, service-to-Redis</td></tr>
+        <tr><td>Contract</td><td>30%</td><td>~900</td><td>14 services with 23 consumer-provider relationships</td></tr>
+        <tr><td>E2E</td><td>10%</td><td>~300</td><td>5 critical banking journeys</td></tr>
+    </tbody>
+</table>
+
+<h2>S2: Test Automation Framework</h2>
+
+<h3>Framework Selection</h3>
+<table>
+    <thead><tr><th>Level</th><th>Framework</th><th>Pattern</th><th>Rationale</th></tr></thead>
+    <tbody>
+        <tr><td>Unit</td><td>JUnit 5 + Mockito</td><td>AAA (Arrange-Act-Assert)</td><td>Spring Boot native, team expertise</td></tr>
+        <tr><td>Integration</td><td>Spring Boot Test + Testcontainers</td><td>@SpringBootTest + real containers</td><td>PostgreSQL, Kafka, Redis in Docker</td></tr>
+        <tr><td>Contract</td><td>Pact (JVM)</td><td>Consumer-driven contracts</td><td>Decoupled deployment verification</td></tr>
+        <tr><td>API</td><td>REST Assured</td><td>BDD-style fluent API</td><td>Schema validation, response assertion</td></tr>
+        <tr><td>E2E</td><td>Playwright (Java)</td><td>Page Object Model</td><td>Cross-browser, banking portal flows</td></tr>
+        <tr><td>Performance</td><td>Grafana k6</td><td>Threshold-based scenarios</td><td>CI-native, existing Grafana stack</td></tr>
+        <tr><td>Security</td><td>OWASP ZAP + Semgrep</td><td>DAST + SAST</td><td>PCI-DSS compliance requirement</td></tr>
+    </tbody>
+</table>
+
+<h3>Test Categorization &amp; CI Triggers</h3>
+<div class="mermaid">
+flowchart LR
+    Push[Code Push] --> Fast[Fast Tests<br/>Unit + Lint<br/>3 min]
+    Fast --> PR{PR Created?}
+    PR -->|Yes| Medium[Medium Tests<br/>Integration + Contract<br/>12 min]
+    Medium --> Merge[Merge to Main]
+    Merge --> Slow[Slow Tests<br/>E2E + API + DAST<br/>45 min]
+    Slow --> Release{Release?}
+    Release -->|Yes| Full[Full Suite<br/>Load + Regulatory<br/>120 min]
+</div>
+
+<table>
+    <thead><tr><th>Category</th><th>Tests</th><th>Max Duration</th><th>Trigger</th><th>Failure Action</th></tr></thead>
+    <tbody>
+        <tr><td>Fast</td><td>Unit + lint + SAST</td><td>3 min</td><td>Every push</td><td>Block push</td></tr>
+        <tr><td>Medium</td><td>Integration + contract + coverage</td><td>12 min</td><td>PR create/update</td><td>Block merge</td></tr>
+        <tr><td>Slow</td><td>E2E + API regression + DAST</td><td>45 min</td><td>Merge to main (nightly)</td><td>Alert team</td></tr>
+        <tr><td>Full</td><td>Load + regulatory + pen test report</td><td>120 min</td><td>Pre-release</td><td>Block release</td></tr>
+    </tbody>
+</table>
+
+<h2>S3: Contract &amp; API Testing</h2>
+
+<h3>Consumer-Provider Map</h3>
+<table>
+    <thead><tr><th>Provider Service</th><th>Consumers</th><th>Contracts</th><th>Protocol</th></tr></thead>
+    <tbody>
+        <tr><td>Account Service</td><td>Web BFF, Mobile BFF, Payment Service, Loan Service</td><td>8</td><td>REST</td></tr>
+        <tr><td>Loan Origination</td><td>Web BFF, Mobile BFF, Partner API</td><td>6</td><td>REST</td></tr>
+        <tr><td>Payment Service</td><td>Web BFF, Mobile BFF, Account Service</td><td>5</td><td>REST</td></tr>
+        <tr><td>Fraud Detection</td><td>Loan Service, Payment Service</td><td>2</td><td>REST</td></tr>
+        <tr><td>Event Bus (Kafka)</td><td>All consumers of loan.events, payment.events</td><td>4</td><td>Async (Avro)</td></tr>
+    </tbody>
+</table>
+
+<h3>Pact Workflow</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant Consumer as Consumer Team
+    participant Pact as Pact Broker
+    participant Provider as Provider Team
+    participant CI as CI Pipeline
+
+    Consumer->>Consumer: Write consumer Pact test
+    Consumer->>Pact: Publish contract
+    Provider->>Pact: Fetch consumer contracts
+    Provider->>Provider: Verify against implementation
+    Provider->>Pact: Publish verification result
+    CI->>Pact: can-i-deploy check
+    Pact->>CI: All contracts verified? Yes/No
+    CI->>CI: Deploy or block
+</div>
+
+<h2>S4: Performance &amp; Chaos Testing</h2>
+
+<h3>Performance Testing in CI</h3>
+<table>
+    <thead><tr><th>Scenario</th><th>Endpoint</th><th>Target</th><th>Regression Threshold</th></tr></thead>
+    <tbody>
+        <tr><td>Loan application</td><td><code>POST /loans/apply</code></td><td>p95 &lt;4s</td><td>&gt;10% regression = block</td></tr>
+        <tr><td>Payment processing</td><td><code>POST /payments/process</code></td><td>p95 &lt;300ms</td><td>&gt;10% regression = block</td></tr>
+        <tr><td>Account lookup</td><td><code>GET /accounts/{id}</code></td><td>p95 &lt;200ms</td><td>&gt;10% regression = block</td></tr>
+        <tr><td>Fraud evaluation</td><td><code>POST /fraud/evaluate</code></td><td>p95 &lt;400ms</td><td>&gt;10% regression = block</td></tr>
+    </tbody>
+</table>
+
+<h3>Chaos Engineering Readiness</h3>
+<table>
+    <thead><tr><th>Level</th><th>Practice</th><th>Environment</th><th>Timeline</th></tr></thead>
+    <tbody>
+        <tr><td>1 &mdash; Learning</td><td>Kill individual pods, verify recovery</td><td>Staging</td><td>Month 1&ndash;3</td></tr>
+        <tr><td>2 &mdash; Automated</td><td>Inject network latency to credit bureau</td><td>Staging</td><td>Month 3&ndash;6</td></tr>
+        <tr><td>3 &mdash; Production canary</td><td>Terminate 1 of N pods during low-traffic</td><td>Production</td><td>Month 6&ndash;12</td></tr>
+        <tr><td>4 &mdash; Advanced</td><td>Game day: simulate AZ failure</td><td>Production</td><td>Month 12+</td></tr>
+    </tbody>
+</table>
+
+<h3>Banking-Specific Failure Scenarios</h3>
+<table>
+    <thead><tr><th>Scenario</th><th>Injection</th><th>Expected Behavior</th><th>Verification</th></tr></thead>
+    <tbody>
+        <tr><td>Credit bureau timeout</td><td>30s network delay</td><td>Circuit breaker opens, cached score used</td><td>Loan processed with cached data</td></tr>
+        <tr><td>Payment gateway down</td><td>Drop all traffic</td><td>Retry 3x, queue for later, notify customer</td><td>Payment queued, no double-charge</td></tr>
+        <tr><td>Database failover</td><td>Kill primary</td><td>Automatic failover to replica &lt;30s</td><td>No transaction loss</td></tr>
+        <tr><td>Kafka broker failure</td><td>Kill 1 of 3 brokers</td><td>Rebalance, no message loss</td><td>All events delivered</td></tr>
+        <tr><td>Redis cache failure</td><td>Evict all keys</td><td>Graceful degradation to database</td><td>Higher latency but functional</td></tr>
+    </tbody>
+</table>
+
+<h2>S5: Test Data Management</h2>
+
+<h3>Strategy by Test Level</h3>
+<table>
+    <thead><tr><th>Level</th><th>Database</th><th>Data Source</th><th>Isolation</th><th>Cleanup</th></tr></thead>
+    <tbody>
+        <tr><td>Unit</td><td>None (mocked)</td><td>In-memory builders</td><td>Complete</td><td>GC</td></tr>
+        <tr><td>Integration</td><td>Testcontainers PostgreSQL</td><td>Factories + Flyway</td><td>Per-test container</td><td>Container destroyed</td></tr>
+        <tr><td>Contract</td><td>Mock server (Pact)</td><td>Contract-defined fixtures</td><td>Per-test</td><td>Pact cleanup</td></tr>
+        <tr><td>E2E</td><td>Shared staging DB</td><td>Seed scripts + factories</td><td>Transaction rollback</td><td>Post-suite cleanup</td></tr>
+        <tr><td>Performance</td><td>Production-scale staging</td><td>Anonymized production clone</td><td>Isolated environment</td><td>Snapshot restore</td></tr>
+    </tbody>
+</table>
+
+<h3>PII Handling &mdash; Regulatory Compliance</h3>
+<table>
+    <thead><tr><th>Environment</th><th>PII Policy</th><th>Implementation</th></tr></thead>
+    <tbody>
+        <tr><td>Development</td><td>Fully synthetic</td><td>Faker-generated SSN, names, addresses</td></tr>
+        <tr><td>Integration (CI)</td><td>Fully synthetic</td><td>Test data factories, no real data</td></tr>
+        <tr><td>Staging</td><td>Anonymized</td><td>Production data masked via ETL pipeline</td></tr>
+        <tr><td>Performance</td><td>Anonymized at scale</td><td>1M anonymized records from production</td></tr>
+        <tr><td>Production</td><td>Real (protected)</td><td>Field-level encryption, access logging</td></tr>
+    </tbody>
+</table>
+
+<h2>S6: Advanced Techniques &amp; Quality Metrics</h2>
+
+<h3>Mutation Testing</h3>
+<table>
+    <thead><tr><th>Module</th><th>Target Score</th><th>Tool</th><th>CI Cadence</th></tr></thead>
+    <tbody>
+        <tr><td>LoanCalculator</td><td>&gt;90%</td><td>PIT/pitest</td><td>Nightly</td></tr>
+        <tr><td>PaymentProcessor</td><td>&gt;85%</td><td>PIT/pitest</td><td>Nightly</td></tr>
+        <tr><td>FraudRuleEngine</td><td>&gt;85%</td><td>PIT/pitest</td><td>Nightly</td></tr>
+        <tr><td>DTICalculator</td><td>&gt;90%</td><td>PIT/pitest</td><td>Nightly</td></tr>
+    </tbody>
+</table>
+
+<h3>Quality Metrics Dashboard</h3>
+<table>
+    <thead><tr><th>Metric</th><th>Current</th><th>Target</th><th>Category</th></tr></thead>
+    <tbody>
+        <tr><td>Line coverage</td><td>55%</td><td>&gt;75%</td><td>Leading</td></tr>
+        <tr><td>Mutation score (critical)</td><td>N/A</td><td>&gt;85%</td><td>Leading</td></tr>
+        <tr><td>Flaky test rate</td><td>8%</td><td>&lt;2%</td><td>Leading</td></tr>
+        <tr><td>Contract coverage</td><td>0%</td><td>&gt;90% of boundaries</td><td>Leading</td></tr>
+        <tr><td>Escaped defect rate</td><td>12%</td><td>&lt;5%</td><td>Lagging</td></tr>
+        <tr><td>Production incidents</td><td>3/week</td><td>&lt;1/week</td><td>Lagging</td></tr>
+        <tr><td>MTTR</td><td>4 hours</td><td>&lt;1 hour</td><td>Lagging</td></tr>
+        <tr><td>Change failure rate</td><td>18%</td><td>&lt;5%</td><td>Lagging</td></tr>
+    </tbody>
+</table>
+
+<h2>Validation</h2>
+<ul class="checklist">
+    <li>Test diamond shape selected with banking microservices justification</li>
+    <li>Automation framework: JUnit 5, Testcontainers, Pact, Playwright, k6</li>
+    <li>Test categorization: fast/medium/slow with CI trigger mapping</li>
+    <li>Contract testing covers 23 consumer-provider relationships + 4 Kafka topics</li>
+    <li>Performance testing integrated into release process with regression thresholds</li>
+    <li>Chaos engineering: 4-level maturity with banking-specific failure scenarios</li>
+    <li>Test data strategy addresses PII compliance (synthetic in dev/CI, anonymized in staging)</li>
+    <li>Mutation testing planned for 4 critical financial modules (&gt;85% target)</li>
+    <li>Quality gates are specific and measurable (coverage, mutation, contract verification)</li>
+</ul>
+
+<div class="footer">
+    <strong>Autor:</strong> Javier Montano | <strong>Generado por:</strong> sofka-testing-strategy | <strong>Fecha:</strong> 12 de marzo de 2026
+</div>
+
+</body>
+</html>

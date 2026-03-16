@@ -1,0 +1,98 @@
+```mermaid
+graph TD
+    TOBE["Arquitectura TO-BE"]
+
+    %% Pilares centrales
+    C4L2["C4 Level 2\nContainer Diagram"]
+    ADR["Architecture Decision\nRecords (ADRs)"]
+    NIGHTMARE["Nightmare Scenario\nAnalysis"]
+    MVP["MVP Component\nDesign"]
+    MIGRATION["Phased Migration\nPlan"]
+
+    %% C4 Layer nodes
+    CONSUMER["Consumer Layer\n(SPA, Mobile, Partners)"]
+    GATEWAY["API Gateway\n(OAuth2, mTLS, Rate Limiting)"]
+    MESH["Microservices Mesh\n(Domain Services)"]
+    ACL["Anti-Corruption Layer\n(ACL + Sidecar)"]
+    LEGACY["Legacy System Layer\n(Strangler Fig target)"]
+    DATA["Data Layer\n(Polyglot Persistence)"]
+    INFRA["Infra & Observability\n(K8s, GitOps, Tracing)"]
+
+    %% Architectural patterns
+    STRANGLER["Strangler Fig\nPattern"]
+    SAGA["Saga Pattern\n(Orchestration / Choreography)"]
+    CQRS["CQRS + Event\nSourcing"]
+    ZEROTRUST["Zero Trust\n(mTLS + OAuth2)"]
+    DDD["Domain-Driven\nDesign (DDD)"]
+    OUTBOX["Transactional\nOutbox Pattern"]
+
+    %% Decision dimensions
+    SCENARIO["Scenario Context\n(Conservative / Moderate / Aggressive)"]
+    TRADEOFF["Trade-off\nMatrix"]
+    TEAMSKILL["Team Skill\nAvailability"]
+    BUDGET["Budget\nConstraints"]
+    RACI["RACI Matrix\n(Roles & Accountability)"]
+    VALIDATE["Validation Gate\n(Functional + Resilience + Security)"]
+
+    %% Data stores
+    POSTGRES["PostgreSQL\n(OLTP)"]
+    REDIS["Redis\n(Cache / Locks)"]
+    ELASTIC["Elasticsearch\n(Audit / Search)"]
+    KAFKA["Apache Kafka\n(Event Streaming)"]
+
+    %% Edges — architecture structure
+    TOBE --> C4L2
+    TOBE --> ADR
+    TOBE --> NIGHTMARE
+    TOBE --> MVP
+    TOBE --> MIGRATION
+
+    C4L2 --> CONSUMER
+    C4L2 --> GATEWAY
+    C4L2 --> MESH
+    C4L2 --> ACL
+    C4L2 --> LEGACY
+    C4L2 --> DATA
+    C4L2 --> INFRA
+
+    MESH --> DDD
+    MESH --> SAGA
+    MESH --> CQRS
+    MESH --> KAFKA
+
+    ACL --> STRANGLER
+    ACL --> LEGACY
+
+    DATA --> POSTGRES
+    DATA --> REDIS
+    DATA --> ELASTIC
+
+    %% Edges — decisions and patterns
+    ADR --> TRADEOFF
+    ADR --> SCENARIO
+    SCENARIO --> STRANGLER
+    SCENARIO --> TEAMSKILL
+    SCENARIO --> BUDGET
+
+    CQRS --> OUTBOX
+    SAGA --> OUTBOX
+    ZEROTRUST --> GATEWAY
+    ZEROTRUST --> MESH
+
+    %% Edges — validation
+    MVP --> VALIDATE
+    MIGRATION --> VALIDATE
+    NIGHTMARE --> VALIDATE
+    RACI --> VALIDATE
+
+    %% Classes
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+    classDef pattern fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef layer fill:#1A1A2E,stroke:#FF7E08,color:#FFFFFF
+    classDef store fill:#2E4057,stroke:#FF7E08,color:#FFFFFF
+
+    class TOBE,C4L2,ADR,NIGHTMARE,MVP,MIGRATION core
+    class STRANGLER,SAGA,CQRS,ZEROTRUST,DDD,OUTBOX pattern
+    class CONSUMER,GATEWAY,MESH,ACL,LEGACY,DATA,INFRA layer
+    class POSTGRES,REDIS,ELASTIC,KAFKA store
+```

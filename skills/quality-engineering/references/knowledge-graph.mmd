@@ -1,0 +1,98 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FF7E08', 'primaryTextColor': '#1A1A2E', 'lineColor': '#FF7E08', 'secondaryColor': '#FFD700'}}}%%
+
+graph TD
+    subgraph TestStrategy["Test Strategy"]
+        testPyramid["Test Pyramid<br/>monolitos: unit 55%, integration 25%"]
+        testDiamond["Test Diamond<br/>microservicios: integration 40%, contract 30%"]
+        testTypes["Test Types<br/>unit, integration, contract, API, E2E"]
+        testOwnership["Test Ownership<br/>developer, QA, both"]
+    end
+
+    subgraph AutomationFramework["Automation Framework"]
+        frameworkSelection["Selección de Framework<br/>lenguaje, equipo, comunidad, costo"]
+        designPatterns["Design Patterns<br/>Page Object, Screenplay, Factory"]
+        testContainers["Testcontainers<br/>integración con infra real"]
+        contractTesting["Contract Testing<br/>Pact, consumer-driven"]
+    end
+
+    subgraph QualityMetrics["Quality Metrics"]
+        leadingIndicators["Leading Indicators<br/>coverage, review time, build stability"]
+        laggingIndicators["Lagging Indicators<br/>incidents, escaped defects, MTTR"]
+        doraMetrics["DORA Metrics<br/>deploy freq, lead time, MTTR, change fail"]
+        dashboards["Dashboards<br/>test health, SLA compliance"]
+    end
+
+    subgraph SLOsSLIs["SLOs / SLIs"]
+        sliDefinition["Definición de SLIs<br/>latencia, error rate, throughput"]
+        sloTargets["SLO Targets<br/>p99 latencia, disponibilidad"]
+        errorBudget["Error Budget<br/>presupuesto de fallos permitido"]
+        slaCompliance["SLA Compliance<br/>validación contractual"]
+    end
+
+    subgraph ShiftLeft["Shift-Left"]
+        preCommitHooks["Pre-Commit Hooks<br/>lint, format, SAST"]
+        developerTests["Developer-Owned Tests<br/>unit tests en cada commit"]
+        codeReview["Code Review<br/>quality como criterio de revisión"]
+        staticAnalysis["Static Analysis<br/>SonarQube, CodeClimate"]
+    end
+
+    subgraph ContinuousTesting["Continuous Testing"]
+        commitGate["Commit Gate<br/>unit + lint + SAST, 5 min"]
+        prGate["PR Gate<br/>integration + contract + coverage, 15 min"]
+        nightlyGate["Nightly Gate<br/>E2E + API + perf + DAST, 60 min"]
+        releaseGate["Release Gate<br/>load test + smoke + sign-off, 120 min"]
+        productionGate["Production Gate<br/>smoke + canary, 15 min"]
+    end
+
+    subgraph QualityGates["Quality Gates"]
+        passCriteria["Pass Criteria<br/>métricas medibles por gate"]
+        timeoutPolicy["Timeout Policy<br/>exceder timeout = fail"]
+        bypassAudit["Bypass Audit<br/>razón + aprobador registrado"]
+        flakyManagement["Flaky Management<br/>>2x/week → remover, refactorizar"]
+    end
+
+    %% Conexiones principales
+    testPyramid --> testTypes
+    testDiamond --> testTypes
+    testTypes --> testOwnership
+    testOwnership --> developerTests
+
+    frameworkSelection --> designPatterns
+    designPatterns --> testContainers
+    contractTesting --> prGate
+
+    preCommitHooks --> commitGate
+    developerTests --> commitGate
+    commitGate --> prGate
+    prGate --> nightlyGate
+    nightlyGate --> releaseGate
+    releaseGate --> productionGate
+
+    passCriteria --> commitGate
+    passCriteria --> prGate
+    passCriteria --> nightlyGate
+    passCriteria --> releaseGate
+    timeoutPolicy --> flakyManagement
+
+    leadingIndicators --> dashboards
+    laggingIndicators --> dashboards
+    doraMetrics --> dashboards
+
+    sliDefinition --> sloTargets
+    sloTargets --> errorBudget
+    errorBudget --> slaCompliance
+    slaCompliance --> releaseGate
+
+    codeReview --> prGate
+    staticAnalysis --> commitGate
+
+    %% Estilos
+    classDef strategy fill:#FF7E08,stroke:#1A1A2E,color:#fff
+    classDef automation fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef metrics fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef gates fill:#D97706,stroke:#1A1A2E,color:#fff
+
+    class testPyramid,testDiamond,testTypes,testOwnership,sliDefinition,sloTargets,errorBudget,slaCompliance strategy
+    class frameworkSelection,designPatterns,testContainers,contractTesting,preCommitHooks,developerTests,codeReview,staticAnalysis automation
+    class leadingIndicators,laggingIndicators,doraMetrics,dashboards metrics
+    class commitGate,prGate,nightlyGate,releaseGate,productionGate,passCriteria,timeoutPolicy,bypassAudit,flakyManagement gates
