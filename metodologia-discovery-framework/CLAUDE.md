@@ -1,9 +1,10 @@
-# MAO v1.2 — MetodologIA de Aprovechamiento de Oportunidades
+# MAO v1.4 — MetodologIA de Aprovechamiento de Oportunidades
 
 > **MAO** = MetodologIA de Aprovechamiento de Oportunidades.
 > **"Método + TecnologIA = Soberanía"** — La metodología precede la tecnología.
 > Tu IDE se convierte en una agencia de discovery universal.
-> 101 agentes · 105 skills MOAT · 106 comandos · 15 scripts · 5 quality gates (G0–G3) · Design System v5 · MIT.
+> 101 agentes · 108 skills MOAT · 109 comandos · 19 scripts · 5 quality gates (G0–G3) · Design System v5 · MIT.
+> Meta-cognition protocols (FULL triad + LIGHT all agents) · Formalized committee spawning.
 > © 2026 MetodologIA · Javier Montaño.
 
 ---
@@ -56,6 +57,9 @@ Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFE
 /mao:menu              # Paleta de comandos interactiva
 /mao:a                 # Avanzar al siguiente paso del pipeline
 /mao:demo              # Demo guiado de MAO en el repo actual
+/mao:retro             # Retrospectiva cuantitativa del engagement
+/mao:browse-client     # Auditoría visual de app del cliente (Playwright)
+/mao:convert-skills    # Convertir skills MOAT a formatos cross-platform
 ```
 
 ---
@@ -69,8 +73,8 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 | Reglas de etiquetado de evidencia | `references/ontology/protocol-zero-hallucination.md` |
 | Fases del pipeline y quality gates | `references/ontology/pipeline-orchestration.md` |
 | Roster de 48 agentes y roles | `references/ontology/agent-committee.md` |
-| Catálogo de 100 skills por dominio | `references/ontology/skills-catalog.md` |
-| Referencia de 96 comandos | `references/ontology/commands-reference.md` |
+| Catálogo de 108 skills por dominio | `references/ontology/skills-catalog.md` |
+| Referencia de 109 comandos | `references/ontology/commands-reference.md` |
 | Política de RAG-priming y adjuntos | `references/ontology/rag-priming-policy.md` |
 | Estándares de output y branding | `references/ontology/output-standards.md` |
 | Routing por tipo de servicio | `references/ontology/service-routing.md` |
@@ -115,9 +119,9 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 
 ```
 metodologia-discovery-framework/
-├── agents/              # 100 agentes especializados
-├── commands/            # 101 comandos (primarios + aliases + service discovery + coaching)
-├── skills/              # 100 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
+├── agents/              # 101 agentes especializados
+├── commands/            # 109 comandos (primarios + aliases + service discovery + coaching)
+├── skills/              # 108 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
 ├── references/
 │   ├── ontology/        # 13 sub-archivos de ontología viva
 │   ├── priming-rag-*/   # 8 docs de conocimiento RAG
@@ -143,6 +147,12 @@ Al activar el plugin, los hooks generan en `.discovery/`:
 Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `.needs-priming` y se sugiere `/mao:prime-repo`.
 Cada adjunto o URL investigada genera `priming-rag-{nombre}.md` y recalibra automáticamente.
 
+### Progressive MOAT Loading
+El resolver `scripts/lazy-load-resolver.sh` soporta 3 niveles de carga:
+- **L1** = Metadata (frontmatter + TL;DR) — ~20 líneas/skill, mínimo costo de contexto
+- **L2** = Core (SKILL.md completo) — ~200 líneas/skill, operación estándar
+- **L3** = Deep (SKILL.md + references/ + examples/) — ~500+ líneas/skill, base de conocimiento completa
+
 > Detalle completo → `references/ontology/session-automation.md`
 
 ---
@@ -154,6 +164,6 @@ Revisarlo al inicio de cada sesión para no repetir errores.
 
 ---
 
-*MAO v1.0 — MetodologIA de Aprovechamiento de Oportunidades.*
+*MAO v1.3 — MetodologIA de Aprovechamiento de Oportunidades.*
 *Método + TecnologIA = Soberanía. Para el profesional en la era de la IA.*
 *MIT License — El conocimiento se comparte, crédito al origen.*

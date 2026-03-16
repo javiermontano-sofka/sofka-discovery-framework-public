@@ -21,6 +21,8 @@ El ecosistema opera con 101 agentes especializados organizados en 5 niveles de a
 
 La tríada permanente está activa desde CP-0 hasta CP-F. Ningún entregable se genera sin su supervisión.
 
+**Meta-Cognición**: La tríada opera con el protocolo FULL (Structured Reasoning + Skeleton-of-Thought + Chain-of-Code + confidence scoring 0.0–1.0 + bias scan). Los demás agentes operan con el protocolo LIGHT (decompose + evidence-check + bias scan + structure-first + escalate).
+
 ---
 
 ## Nivel 2 — Core Team (9 agentes)

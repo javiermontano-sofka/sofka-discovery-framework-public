@@ -1,7 +1,7 @@
 {
   "name": "mao",
-  "version": "1.2.0",
-  "description": "MAO v1.2 — MetodologIA de Aprovechamiento de Oportunidades. Universal Discovery Framework. G0 security gate, context optimization, rendering engine, CLI init wizard. 101 agentes, 105 skills MOAT, 106 comandos, 15 scripts, 5 quality gates (G0-G3). Design System v5. Zero-hallucination protocol. MIT.",
+  "version": "1.4.0",
+  "description": "MAO v1.4 — MetodologIA de Aprovechamiento de Oportunidades. Universal Discovery Framework. G0 security gate, context optimization, rendering engine, CLI init wizard. Progressive MOAT Loading. Meta-cognition protocols (FULL/LIGHT). Formalized committee spawning. 101 agentes, 108 skills MOAT, 109 comandos, 19 scripts, 5 quality gates (G0-G3). Design System v5. Zero-hallucination protocol. MIT.",
   "author": {
     "name": "Javier Montaño · Comunidad MetodologIA",
     "url": "https://metodologia.info"
@@ -19,6 +19,8 @@
     "open-source", "mit-license", "soberania",
     "fundamentar", "acelerar", "catalizar", "amplificar",
     "pivote", "playbooks", "human-first", "simple-first",
-    "lean-startup", "agile", "lean-mindset"
+    "lean-startup", "agile", "lean-mindset",
+    "retrospective", "browser-audit", "cross-platform", "progressive-moat-loading",
+    "meta-cognition", "reasoning-discipline", "committee-spawning"
   ]
 }

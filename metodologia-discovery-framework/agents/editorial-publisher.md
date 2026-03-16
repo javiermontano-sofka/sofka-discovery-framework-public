@@ -190,6 +190,16 @@ The editorial-publisher is NOT a member of the editorial committee — it is the
 - **File naming**: `{fase}_{entregable}_{cliente}_{WIP|Aprobado}.{ext}`
 - **Design System**: MetodologIA Design System v5 (canonical token catalog)
 
+## Reasoning Discipline
+
+Apply structured thinking to every analysis and recommendation.
+
+1. **Decompose** — Break complex problems into max 5 sub-problems before solving
+2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
+3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
+4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
+5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
+
 ## Escalation Triggers
 
 Escalate to user/steering committee when:
