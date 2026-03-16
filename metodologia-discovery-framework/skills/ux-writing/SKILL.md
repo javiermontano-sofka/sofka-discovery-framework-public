@@ -1,5 +1,7 @@
 ---
 name: metodologia-ux-writing
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[standard-number-or-name] [target-content-or-path]"
 description: >
   UX writing and document accessibility standards for technical deliverables.
   Use when the user asks to "improve readability", "fix information hierarchy", "reduce cognitive load",
@@ -235,6 +237,121 @@ Before delivering UX writing audit:
 - [ ] Readability metrics calculated or estimated with targets
 - [ ] Audience identified and standards adapted accordingly
 - [ ] Bilingual considerations addressed if applicable
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| No existe contenido previo para auditar | Comenzar con benchmark de competidores/industria; crear content style guide desde cero con workshop de stakeholders; entregar standards baseline + 10 rewrites de ejemplo |
+| Audiencia altamente tecnica (developers, ingenieros) | Ajustar targets de readability hacia arriba (Grade 10-12 aceptable); priorizar precision sobre simplicidad; preservar jargon de dominio pero definir en primer uso |
+| Producto multi-idioma (3+ idiomas, no solo bilingue) | Definir idioma primario para creacion de contenido; crear translation brief por idioma con adaptaciones de tono; presupuestar 40% mas para 3+ idiomas |
+| Contenido regulado (disclaimers financieros, medicos) | Legal review obligatorio; UX writing optimiza dentro de restricciones legales, no las reemplaza; mantener registro de copy aprobado con versionamiento |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Progressive disclosure (summary > detail > appendix) como patron default | Todo el contenido al mismo nivel de detalle | Forzar lectura completa es un antipatron; el lector elige profundidad segun su presupuesto de tiempo |
+| Regla 80/20 de scannability (80% del valor en 20% del contenido) | Disenar para lectura lineal completa | Los lectores de negocio escanean, no leen linealmente; el contenido debe funcionar para scanners y deep-readers por igual |
+| Targets de Flesch-Kincaid diferenciados por audiencia | Un unico target de readability para todos los documentos | Un executive summary necesita Grade 12; un documento tecnico puede tolerar Grade 16; un unico target sub-optimiza para ambos |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["UX Writing Core"]
+        A[metodologia-ux-writing]
+        A1[S1: Information Hierarchy]
+        A2[S2: Cognitive Load Reduction]
+        A3[S3: Scannability]
+        A4[S4: Microcopy]
+        A5[S5: Readability Heuristics]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Target Content / Document]
+        I2[Audience Definition]
+        I3[Brand/Tone Guidelines]
+    end
+    subgraph Outputs["Outputs"]
+        O1[UX Writing Audit Report]
+        O2[Anti-Pattern Fixes]
+        O3[Readability Metrics]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-ux-design-discovery]
+        R2[metodologia-html-brand]
+        R3[metodologia-design-system]
+        R4[metodologia-executive-pitch]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5
+    A --> O1
+    A --> O2
+    A --> O3
+    R1 --> A
+    A --> R2
+    A --- R3
+    A --> R4
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# UX Writing Audit — {proyecto/documento}
+## Resumen Ejecutivo
+> Standards evaluados: N/5. Anti-patterns encontrados: X. Readability score: Grade Y.
+## Standard 1: Information Hierarchy
+| Hallazgo | Severidad | Ubicacion | Fix Recomendado |
+## Standard 2-5: [evaluacion por standard]
+## Anti-Pattern Summary
+| Anti-Pattern | Frecuencia | Ejemplo | Fix |
+## Readability Metrics
+| Metrica | Actual | Target | Status |
+## Recomendaciones Priorizadas
+1. [Quick win] ...
+2. [Medium effort] ...
+```
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_ux-writing_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por severidad de anti-pattern y score de readability vs target, auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Standards Assessment (5 standards), Anti-Patterns con Fixes, Readability Metrics, Microcopy Inventory.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, resumen ejecutivo (standards evaluados, anti-patterns encontrados, readability score), assessment por standard (5 slides), anti-patterns top con before/after, métricas de readability vs target (Flesch-Kincaid), recomendaciones priorizadas por impacto.
+
+**Formato HTML (para revision de deliverables):**
+
+```
+Header: Logo + documento auditado + readability score badge
+Section 1: Dashboard de Scores (visual con semaforo por standard)
+Section 2: Annotated Document (original con highlights de anti-patterns)
+Section 3: Before/After Examples (side-by-side comparisons)
+Section 4: Readability Radar (chart 5 dimensiones)
+Section 5: Action Items (priorizados por impacto)
+Footer: Attribution MetodologIA + fecha de auditoria
+```
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de readability, UX writing, cognitive load, scannability, microcopy | 7/10 |
+| Completeness | 25% | Los 5 standards evaluados con ejemplos especificos; anti-patterns con fixes concretos (no "mejorar readability"); metricas calculadas | 7/10 |
+| Clarity | 20% | Fixes son accionables (before/after); audiencia identificada y standards adaptados; scores contextualizados | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (sin contenido, audiencia tecnica, multi-idioma, regulado); bilingual considerations addressed | 7/10 |
+| Efficiency | 10% | Variante ejecutiva vs tecnica correctamente aplicada; no se auditan los 5 standards cuando solo 1 fue solicitado | 7/10 |
+| Value Density | 15% | Anti-patterns tienen fix concreto, no solo diagnostico; readability targets diferenciados por audiencia; microcopy patterns documentados | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Cross-References
 

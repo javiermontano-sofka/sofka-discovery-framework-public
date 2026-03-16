@@ -160,4 +160,4 @@ These principles apply across all engagement models during discovery:
 | Managed Services | SLA dashboards (real-time), monthly service reviews | Incident reviews, capacity planning | Service Manager → Account |
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Comunidad MetodologIA** | **Licencia:** MIT | **Ultima actualizacion:** 14 de marzo de 2026

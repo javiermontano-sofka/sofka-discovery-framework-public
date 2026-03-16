@@ -1,5 +1,7 @@
 ---
 name: metodologia-security-architecture
+argument-hint: "<system-or-organization-name>"
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   Security architecture design — threat modeling, zero trust, identity, encryption, compliance.
   Use when the user asks to "design security architecture", "model threats", "implement zero trust", "design IAM",
@@ -295,11 +297,99 @@ Before finalizing delivery, verify:
 
 ---
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        SA[Security Architecture]
+    end
+
+    subgraph Inputs
+        I1[System Architecture / DFDs] --> SA
+        I2[Regulatory Requirements] --> SA
+        I3[Existing Security Controls] --> SA
+        I4[Identity Infrastructure] --> SA
+    end
+
+    subgraph Outputs
+        SA --> O1[Threat Model - STRIDE/PASTA]
+        SA --> O2[Zero Trust Design]
+        SA --> O3[IAM Architecture]
+        SA --> O4[Data Protection Strategy]
+        SA --> O5[AppSec Pipeline]
+        SA --> O6[Compliance Control Matrix]
+    end
+
+    subgraph Related Skills
+        RS1[devsecops-architecture] -.-> SA
+        RS2[infrastructure-architecture] -.-> SA
+        RS3[software-architecture] -.-> SA
+        RS4[cloud-native-architecture] -.-> SA
+        RS5[data-governance] -.-> SA
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Security Architecture: {system_name}
+## S1: Threat Modeling
+### DFDs | Attack Surface | STRIDE Enumeration | Risk Scoring | Mitigations
+
+## S2: Zero Trust Architecture
+### NIST 800-207 | Micro-Segmentation | mTLS | Maturity Model
+
+## S3: Identity & Access Management
+### AuthN (OAuth/OIDC/FIDO2) | AuthZ (RBAC/ABAC/ReBAC) | Secret Management
+
+## S4: Data Protection
+### Encryption at Rest/Transit | Key Management | Classification | Masking
+
+## S5: Application Security
+### SAST/DAST/SCA | SLSA/SBOM | RASP | Security Champions
+
+## S6: Compliance & Audit
+### Framework Mapping (SOC2/ISO27001/PCI-DSS/HIPAA/GDPR) | Evidence | Continuous Compliance
+```
+
+**Formato XLSX:**
+Matriz de controles de seguridad: filas por framework regulatorio (SOC2, ISO27001, PCI-DSS, HIPAA, GDPR), columnas por area de control, con estado de implementacion, evidencia requerida, owner, y frecuencia de testing. Incluye hoja de threat model con scoring de riesgo.
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_security_architecture_{cliente}_{WIP}.docx`
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del sistema y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Threat Model (STRIDE/PASTA), Zero Trust Design, IAM Architecture, Data Protection, AppSec Pipeline, Compliance Control Matrix.
+
+### HTML (bajo demanda)
+- Filename: `{fase}_security_architecture_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Threat model con DFD visual, zero trust maturity gauge (Crawl/Walk/Run), compliance control matrix con estado por framework. WCAG AA, responsive, print-ready.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_security_architecture_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Threat Model (STRIDE/PASTA), Zero Trust Maturity Model, IAM Architecture, Data Protection Strategy, AppSec Pipeline, Compliance Control Matrix (SOC2/ISO27001/PCI-DSS/HIPAA/GDPR).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de security architecture, threat modeling, zero trust, IAM, compliance; no ante pen testing |
+| Completeness | 25% | Las 6 secciones cubren threat model, zero trust, IAM, data protection, appsec, y compliance con mappings |
+| Clarity | 20% | Maturity model tiene niveles claros (crawl/walk/run); compliance mapping es framework-a-control especifico |
+| Robustness | 20% | Edge cases (greenfield, legacy, multi-tenant, regulado, M&A) tienen estrategia de adopcion definida |
+| Efficiency | 10% | Variante ejecutiva entrega threat model + zero trust + compliance en ~40% sin perder rigor |
+| Value Density | 15% | Cada seccion produce controles implementables: policies, configurations, pipeline stages, control matrices |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Format Protocol
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 

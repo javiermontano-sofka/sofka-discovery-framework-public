@@ -1,6 +1,7 @@
 ---
 name: metodologia-data-storytelling
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<data-context: metrics|scoring|financial|performance|coverage> <audience: executive|technical|mixed>"
 description: >
   Transforms metrics and findings into meaningful narratives — insight extraction,
   metrics-to-meaning conversion, comparison framing, and magnitude communication.
@@ -158,9 +159,170 @@ Each chart builds on the previous. No standalone charts.
 | Scoring patterns highlighted | Not just individual scores — the story across dimensions |
 | No naked numbers | Zero metrics without interpretation |
 
+## Supuestos y Limites
+
+- Las metricas de input ya estan calculadas; esta skill interpreta y contextualiza, no calcula.
+- NUNCA presentar metricas sin contexto y comparacion.
+- NUNCA usar valores monetarios para costos. Solo FTE-meses.
+- Esta skill posee **interpretacion de metricas y framing narrativo**. NO posee diseno de visualizacion (eso es data-viz-storytelling) ni arco narrativo general (eso es storytelling).
+
+## Casos Borde
+
+| Caso Borde | Estrategia de Manejo |
+|---|---|
+| No hay benchmarks sectoriales disponibles | Usar linea base interna (trimestre anterior, otro equipo, otro proyecto). Declarar explicitamente: "Sin benchmark sectorial disponible; se usa linea base interna Q1 como referencia [SUPUESTO]". Si tampoco hay baseline interno, usar frameworks estandar (DORA, SRE). |
+| Metricas contradictorias entre si | Presentar la contradiccion como hallazgo en si mismo. "La cobertura alta (92%) contradice la tasa de incidentes (8/mes), sugiriendo tests que no cubren escenarios reales [INFERENCIA]". La contradiccion ES la historia. |
+| Datos escasos (<10 data points) | Reconocer limitacion explicitamente: "Con [N] datos, la tendencia es indicativa, no concluyente". Usar intervalos de confianza. Recomendar periodo de recoleccion antes de conclusiones definitivas. |
+| Metricas que favorecen inaccion (todo en verde) | Buscar la historia debajo de la superficie: tendencias, velocidad de degradacion, costo de oportunidad. "Todo esta en verde hoy, pero la tendencia de los ultimos 3 trimestres muestra..." |
+
+## Decisiones y Trade-offs
+
+| Decision | Justificacion | Alternativa Descartada |
+|---|---|---|
+| Contexto antes que numero como regla | Un numero sin referencia es ruido. El lector no puede evaluar "92% cobertura" sin saber el target, el baseline, o el benchmark. | Numero primero: el lector forma juicio prematuro antes de tener marco de referencia. |
+| Comparacion obligatoria en toda metrica | Toda metrica necesita al menos una referencia: vs baseline, vs industria, vs target, vs trimestre anterior. Sin comparacion no hay insight. | Metrica aislada: informativa pero no accionable; el lector no sabe si es bueno o malo. |
+| Magnitudes tangibles sobre abstractas | "40 FTE-meses" no significa nada para un CEO. "Todo el equipo backend dedicado de enero a mayo sin hacer nada mas" genera comprension visceral. | Magnitudes abstractas: precisas pero no comunicativas para audiencia ejecutiva. |
+| Secuencia narrativa en dashboards (4 charts) | Cada chart construye sobre el anterior: estado -> tendencia -> benchmark -> camino. Sin secuencia, los charts son datos aislados. | Charts independientes: flexibles pero no construyen argumento acumulativo. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Data Storytelling"]
+        M2M[Metrics-to-Meaning]
+        INSIGHT[Insight Extraction]
+        COMPARE[Comparison Framing]
+        MAGNITUDE[Magnitude Communication]
+    end
+
+    subgraph Inputs["Inputs"]
+        METRICS[Metricas Crudas]
+        SCORES[Scoring Matrices]
+        BENCHMARKS[Benchmarks]
+        CONTEXT[Contexto de Negocio]
+    end
+
+    subgraph Outputs["Outputs"]
+        NARRATIVE[Metric Narratives]
+        DASHBOARD[Dashboard Sequences]
+        SCORING_N[Scoring Narratives]
+        PROJECTION[Projections]
+    end
+
+    subgraph Related["Related Skills"]
+        STORY[storytelling]
+        COPY[copywriting]
+        DATAVIZ[data-viz-storytelling]
+        TECHWRITE[technical-writing]
+    end
+
+    METRICS --> M2M
+    SCORES --> INSIGHT
+    BENCHMARKS --> COMPARE
+    CONTEXT --> MAGNITUDE
+    M2M --> NARRATIVE
+    INSIGHT --> SCORING_N
+    COMPARE --> DASHBOARD
+    MAGNITUDE --> PROJECTION
+    STORY --> Core
+    COPY --> NARRATIVE
+    Core --> DATAVIZ
+    TECHWRITE --> METRICS
+```
+
+## Output Templates
+
+### Template 1: Metrics Narrative Report (Markdown)
+
+**Filename:** `Data_Narrative_{project}_{dimension}_{WIP|Aprobado}.md`
+
+```markdown
+# Narrativa de Datos: {project} - {dimension}
+
+## Headline
+{Una metrica clave con contexto y comparacion en una linea}
+
+## Estado Actual
+| Metrica | Valor | Baseline | Benchmark | Gap | Tendencia |
+|---|---|---|---|---|---|
+
+## Interpretacion
+{Parrafo denso: patron detectado + anomalia + significancia}
+
+## Implicacion
+{So what? Que significa para el negocio en terminos tangibles}
+
+## Recomendacion
+{Accion concreta que cierra el gap, con timeline estimado}
+
+## Fuentes
+| Dato | Tag de Evidencia | Confianza |
+|---|---|---|
+```
+
+### Template 3: HTML (bajo demanda)
+- Filename: `Data_Narrative_{project}_{dimension}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye tarjetas de métricas con semáforo, tabla comparativa interactiva y callouts de insight. WCAG AA, responsive, print-ready.
+
+### Template 4: DOCX (circulación formal)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+
+### Template 5: XLSX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por semáforo y tendencia de métrica, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+### Template 6: PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+
+### Template 2: Scoring Matrix Narrative (Markdown)
+
+**Filename:** `Scoring_Narrative_{project}_{WIP|Aprobado}.md`
+
+```markdown
+# Scoring Narrative: {project}
+
+## Patron General
+{De las N dimensiones evaluadas, X estan en rojo y comparten causa raiz: ...}
+
+## Scoring Matrix
+| Dimension | Score | Semaforo | Evidencia Clave | Causa Raiz |
+|---|---|---|---|---|
+
+## Anomalias
+{Dimensiones que sorprenden -- positiva o negativamente -- con explicacion}
+
+## Conexion a Accion
+{Los rojos se resuelven con [escenario] en [fase]; los amarillos mejoran con...}
+
+## Proyeccion
+{Si no se actua: tendencia de scores en N trimestres}
+```
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante metricas, scores, datos cuantitativos que requieren interpretacion y contexto |
+| Completeness | 25% | Toda metrica tiene contexto, comparacion, interpretacion, implicacion, y recomendacion |
+| Clarity | 20% | Magnitudes tangibles; secuencia logica dato -> insight -> accion; cero numeros desnudos |
+| Robustness | 20% | Produce narrativas utiles sin benchmarks, con datos escasos, con metricas contradictorias |
+| Efficiency | 10% | Genera narrativa completa por metrica sin requerir multiples iteraciones |
+| Value Density | 15% | Cada metrica interpretada genera insight accionable; ratio signal-to-noise alto |
+
+**Umbral minimo: 7/10**
+
+## Cross-References
+
+- `metodologia-storytelling` — Arco narrativo general que consume las narrativas de datos
+- `metodologia-copywriting` — Prosa persuasiva que envuelve los insights de datos
+- `metodologia-data-viz-storytelling` — Visualizaciones que representan las narrativas de datos
+- `metodologia-technical-writing` — Precision documental de las metricas fuente
+
 ## Edge Cases
 
-- **No benchmarks available**: Use internal baseline or state explicitly: "Sin benchmark sectorial disponible; se usa línea base interna Q1 como referencia [SUPUESTO]".
+- **No benchmarks available**: Use internal baseline or state explicitly: "Sin benchmark sectorial disponible; se usa linea base interna Q1 como referencia [SUPUESTO]".
 - **Conflicting metrics**: Present the contradiction as a finding: "La cobertura alta (92%) contradice la tasa de incidentes (8/mes), sugiriendo tests que no cubren escenarios reales [INFERENCIA]".
 - **Sparse data**: Acknowledge gaps: "Con [N] datos, la tendencia es indicativa, no concluyente".
 

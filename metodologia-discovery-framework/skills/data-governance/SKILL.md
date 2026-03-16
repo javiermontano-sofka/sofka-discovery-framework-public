@@ -1,5 +1,7 @@
 ---
 name: metodologia-data-governance
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<organization-or-domain-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Data governance framework — catalog, ownership, classification, retention, privacy compliance, data mesh.
   Use when the user asks to "build a data catalog", "define data ownership", "classify sensitive data",
@@ -258,17 +260,96 @@ Applies governance as executable code in federated architectures.
 - Maturity model assessment is point-in-time; re-assess quarterly for accuracy
 - Cross-cloud governance assumes catalog tooling supports multi-cloud metadata federation
 
-## Edge Cases
+## Casos Borde
 
-**Greenfield Organization:** No existing assets. Start with data inventory, assign initial owners, define minimum viable classification (3 tiers). Avoid over-engineering governance for data that doesn't exist yet.
+| Caso | Estrategia de Manejo |
+|---|---|
+| Organizacion greenfield sin activos de datos | Iniciar con inventario de datos; asignar owners iniciales; definir clasificacion minima viable (3 tiers); evitar sobre-ingenieria de gobernanza para datos que aun no existen |
+| Industria altamente regulada (financiero, salud) | Multiples regulaciones superpuestas; mapear cada regulacion a elementos de datos especificos; documentar resolucion de conflictos retencion-vs-privacidad con legal counsel |
+| Transicion a data mesh | Modelos paralelos durante transicion; platform team codifica politicas como checks automatizados; dominios adoptan incrementalmente (Level 3 minimo antes de auto-gobernarse) |
+| Multi-cloud / hybrid data estate | Catalogo abstrae sobre ubicaciones cloud; lineage cross-cloud requiere integration adapters; clasificacion y retencion location-aware para data residency |
+| Fusiones y adquisiciones (M&A) | Priorizar descubrimiento de activos (inventariar ambos estates en 30 dias); harmonizar clasificacion y ownership; asignar owners interinos inmediatamente; 6-12 meses para integracion completa |
 
-**Highly Regulated Industry (Financial, Healthcare):** Multiple overlapping regulations. Map each regulation to specific data elements. Retention and privacy may conflict (keep for audit vs delete for privacy) -- document resolution with legal counsel and maintain decision log.
+## Decisiones y Trade-offs
 
-**Data Mesh Transition:** Moving from centralized to federated. Run parallel models during transition. Platform team codifies policies as automated checks. Domains adopt incrementally with clear criteria for autonomy (must meet Level 3 maturity before self-governing).
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Ownership model establecido ANTES de catalogar | Catalogar primero, asignar owners despues | Datos sin dueno son datos sin calidad; el modelo de ownership determina quien es responsable de la clasificacion, retencion y calidad |
+| Clasificacion a nivel de columna (no solo tabla) | Clasificacion solo a nivel de tabla | GDPR Article 30 requiere granularidad a nivel de campo para PII; tabla-level no cumple y no permite masking selectivo |
+| Privacy by design integrado en pipelines | Privacy como retrofit post-implementacion | Retrofit es 5-10x mas costoso y deja ventanas de exposicion; privacy by design es el punto de partida de cada pipeline |
+| Gobernanza federada para organizaciones Level 4+ | Gobernanza centralizada para todos los niveles | La gobernanza centralizada no escala en organizaciones grandes; la federada habilita autonomia de dominio con estandares globales |
 
-**Multi-Cloud / Hybrid Data Estate:** Catalog must abstract over cloud locations. Cross-cloud lineage requires integration adapters. Classification and retention policies must be location-aware for data residency compliance.
+## Knowledge Graph
 
-**Mergers & Acquisitions:** Combining data estates with different governance models. Prioritize asset discovery (inventory both estates within 30 days), then harmonize classification and ownership. Expect 6-12 months for full integration. Assign interim owners immediately.
+```mermaid
+graph TD
+    subgraph Core["Core: Data Governance"]
+        CAT[Data Catalog & Discovery]
+        OWN[Ownership & Stewardship]
+        CLS[Classification & Sensitivity]
+        RET[Retention & Lifecycle]
+        PRIV[Privacy & Compliance]
+        COMP[Computational Governance]
+    end
+
+    subgraph Inputs["Inputs"]
+        SCHEMA[Schemas & Sources]
+        REG[Regulatory Requirements]
+        ORG[Organizational Structure]
+        EXIST[Existing Policies]
+    end
+
+    subgraph Outputs["Outputs"]
+        CATOUT[Data Catalog Design]
+        RACI[RACI Matrix]
+        TAX[Classification Taxonomy]
+        POLICY[Retention & Privacy Policies]
+    end
+
+    subgraph Related["Related Skills"]
+        DQ[data-quality]
+        DENG[data-engineering]
+        SEC[security-architecture]
+        ENT[enterprise-architecture]
+    end
+
+    SCHEMA --> CAT
+    REG --> PRIV
+    ORG --> OWN
+    EXIST --> RET
+    CAT --> OWN --> CLS --> RET --> PRIV --> COMP
+    COMP --> CATOUT
+    COMP --> RACI
+    COMP --> TAX
+    COMP --> POLICY
+    DQ --> CLS
+    CATOUT --> DENG
+    CLS --> SEC
+    COMP --> ENT
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-01_Data_Governance_Framework.md` | Framework completo con catalog design, ownership model, classification taxonomy, retention matrix, privacy compliance workflows y data mesh governance strategy. Diagramas Mermaid de ownership model y classification flow. |
+| **XLSX** | `A-01_Data_Governance_Matrix.xlsx` | Matriz interactiva con inventario de activos, clasificacion por columna, owners asignados, politicas de retencion por regulacion, y compliance status por dataset. |
+| **HTML** | `A-01_Data_Governance_Framework_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Light-First Technical, self-contained, WCAG AA, responsive. Incluye classification taxonomy visual, ownership RACI interactivo, y retention policy matrix filtrable por regulacion. |
+| **DOCX** | `{fase}_Data_Governance_Framework_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents. |
+| **PPTX** | `{fase}_Data_Governance_Framework_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (data catalog, ownership, classification, GDPR, data mesh, PII) sin falsos positivos con data-quality o enterprise-architecture |
+| Completeness | 25% | Las 6 secciones cubren catalogo, ownership, clasificacion, retencion, privacy y computational governance sin huecos; todos los dominios de datos representados |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; clasificacion con tiers y handling rules claros; regulaciones mapeadas a provisiones especificas; RACI con roles concretos |
+| Robustness | 20% | Maneja greenfield, regulacion estricta, transicion data mesh, multi-cloud y M&A con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S3+S5 sin perder catalogo, clasificacion y compliance |
+| Value Density | 15% | Cada seccion aporta valor practico directo; maturity model y regulation mapping son herramientas de posicionamiento y compliance inmediata |
+
+**Umbral minimo: 7/10.**
 
 ---
 

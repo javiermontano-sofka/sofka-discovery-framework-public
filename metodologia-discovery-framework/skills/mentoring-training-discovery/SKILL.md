@@ -1,5 +1,7 @@
 ---
 name: metodologia-mentoring-training-discovery
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[path-to-team-docs] [depth: full|executive]"
 description: >
   Mentoring and training discovery — capability assessment, learning path design, knowledge transfer planning,
   training delivery model, measurement framework, and training roadmap. Use when the user asks to "assess training needs",
@@ -196,6 +198,127 @@ Phased plan with certification milestones and success metrics:
 - Effort magnitude: X trainer-days (NOT prices)
 
 Per phase: dependencies on previous phase, risk factors, contingency if timeline compressed.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Equipo sin ninguna experiencia en el stack objetivo (gap foundational >80%) | Recomendar bootcamp intensivo como Phase 0 obligatoria; no iniciar delivery hasta alcanzar nivel Foundational; escalar si timeline no permite ramp-up |
+| Key person dependency (una persona concentra conocimiento critico en >3 areas) | Flag CRITICAL por bus factor; priorizar knowledge transfer inmediato via pairing/shadowing; documentar tribal knowledge antes de cualquier otra actividad |
+| Organizacion espera 100% billable time sin dedicacion a training | Documentar el riesgo de no invertir en capacitacion; proponer modelo 90/10 como minimo; escalar a sponsor si la expectativa no cambia |
+| Training needs abarcan dominios fuera de la expertise de MetodologIA | Identificar gaps que requieren proveedores externos; recomendar partnerships o certificaciones especificas; no pretender cubrir lo que no se domina |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Usar modelo de 5 niveles de proficiencia (Foundational a Expert) | Binario (sabe / no sabe) | Los 5 niveles permiten disenar learning paths progresivos y medir mejora incremental; el modelo binario no captura crecimiento |
+| Incluir measurement framework como seccion mandatoria (S5) | Training sin metricas de efectividad | Sin metricas de adquisicion, retencion y productividad, un programa de training es un gasto sin evidencia de retorno |
+| Combinar bootcamp + mentoring + on-the-job como modelo hibrido | Un unico modelo de delivery para todos los roles | Cada audiencia tiene necesidades diferentes; un modelo unico sub-optimiza para todos |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Mentoring & Training Core"]
+        A[metodologia-mentoring-training-discovery]
+        A1[S1: Capability Assessment]
+        A2[S2: Learning Path Design]
+        A3[S3: Knowledge Transfer Planning]
+        A4[S4: Training Delivery Model]
+        A5[S5: Measurement Framework]
+        A6[S6: Training Roadmap]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Team Composition]
+        I2[Target Skills / Tech Stack]
+        I3[Timeline Constraints]
+        I4[Existing Skills Matrix]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Training Discovery Report]
+        O2[Gap Analysis Heatmap]
+        O3[Phased Training Roadmap]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-stakeholder-mapping]
+        R2[metodologia-workshop-design]
+        R3[metodologia-roadmap-poc]
+        R4[metodologia-sector-intelligence]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    I4 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6
+    A --> O1
+    A --> O2
+    A --> O3
+    R1 --> A
+    R2 --- A
+    A --> R3
+    R4 --> A
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Mentoring & Training Discovery — {proyecto}
+## Resumen Ejecutivo
+> Roles evaluados: N. Gaps criticos: X. Tiempo estimado a productividad: Y meses.
+## S1: Capability Assessment
+| Rol | Skill | Nivel Actual | Nivel Objetivo | Gap | Criticidad |
+## S2: Learning Paths
+```mermaid
+flowchart LR
+    Foundational --> Intermediate --> Advanced --> Expert
+```
+## S3-S6: [secciones completas]
+## Roadmap de Training
+```mermaid
+gantt
+    title Training Roadmap
+    ...
+```
+```
+
+**Formato XLSX (para RRHH y gestores de talento):**
+
+```
+Hoja 1: Resumen Ejecutivo (gaps criticos + recomendaciones top 5)
+Hoja 2: Skills Matrix (rol x skill x nivel actual x nivel objetivo x gap)
+Hoja 3: Learning Paths (por rol, con milestones de certificacion)
+Hoja 4: Calendario de Training (actividad x fecha x audiencia x facilitador)
+Hoja 5: Metricas de Medicion (baseline x target x frecuencia de tracking)
+Hoja 6: Budget de Training (esfuerzo en trainer-days, NO precios)
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `Mentoring_Training_Discovery_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye heatmap de skills gap por rol, flowchart de learning paths con milestones de certificacion, y roadmap faseado con timeline visual. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Mentoring_Training_Discovery_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Mentoring_Training_Discovery_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de training, mentoring, capability assessment, upskilling | 7/10 |
+| Completeness | 25% | Las 6 secciones pobladas; gap analysis por rol/equipo; learning paths con niveles de progresion y certificaciones | 7/10 |
+| Clarity | 20% | Heatmap de gaps es visualmente claro; modelo de delivery tiene justificacion por audiencia | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (zero experience, bus factor, no training time, outside expertise); workarounds documentados | 7/10 |
+| Efficiency | 10% | Profundidad adaptada (full vs executive); MetodologIA University content reutilizado donde aplica | 7/10 |
+| Value Density | 15% | Metricas de medicion definidas con baseline y target; ROI expresado en esfuerzo-dias ahorrados; single points of failure abordados | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Escalation to Human Architect
 

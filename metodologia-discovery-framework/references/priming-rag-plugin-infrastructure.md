@@ -36,7 +36,7 @@ metodologia-discovery-framework/
   README.md              — Overview publico
   CLAUDE.md              — Reglas operativas para Claude Code
   CHANGELOG.md           — Historial v0.x -> v11.0.0
-  LICENSE                — GPL-3.0 Copyleft, Comunidad MetodologIA
+  LICENSE                — MIT, Comunidad MetodologIA
   settings.json          — {"agent": "discovery-conductor"}
   plan.md                — Roadmap del plugin
   landing.html           — Landing page (MetodologIA Design System v5)
@@ -117,7 +117,7 @@ Auto-deteccion basada en keywords de la conversacion. Confirmacion: "Tipo de ser
 
 ## Licencia y branding
 
-- **Licencia:** GPL-3.0 Copyleft, Comunidad MetodologIA
+- **Licencia:** MIT, Comunidad MetodologIA
 - **Colores:** Primary #6366F1, Dark #1A1A2E, Success #22D3EE (NUNCA verde)
 - **Formato de salida:** Markdown-first, Mermaid para diagramas
 - **Idioma default:** Espanol (Latin American, business register)

@@ -190,4 +190,4 @@ Metaprompts are applied in this order:
 ---
 
 **Author:** Javier Montaño | **Date:** March 13, 2026 | **Version:** 1.0
-**License:** GPL-3.0 Copyleft, Comunidad MetodologIA
+**License:** MIT, Comunidad MetodologIA

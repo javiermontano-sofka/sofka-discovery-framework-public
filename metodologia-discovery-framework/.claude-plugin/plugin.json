@@ -1,14 +1,14 @@
 {
   "name": "mao",
-  "version": "1.0.0",
-  "description": "MAO v1.0 — MetodologIA de Aprovechamiento de Oportunidades. Universal Discovery Framework. Ontología viva (CLAUDE.md hub + 13 sub-archivos), UX commands (menu, advance, demo). 48 agentes, 100 skills MOAT, 96 comandos, 49 prompts NL-HP, 4 quality gates, Think Tank de 7 Sabios. Zero-hallucination protocol. Evidence tagging obligatorio. Método + TecnologIA = Soberanía. GPL-3.0 Copyleft. NUNCA precios — solo FTE-meses.",
+  "version": "1.1.0",
+  "description": "MAO v1.1 — MetodologIA de Aprovechamiento de Oportunidades. Universal Discovery Framework. Ontología viva (CLAUDE.md hub + 13 sub-archivos), UX commands (menu, advance, demo). 101 agentes, 101 skills MOAT, 101 comandos, 49 prompts NL-HP, 4 quality gates, Think Tank de 7 Sabios. Design System v5 (27 tokens, 126 componentes, 4 page types, 5 formatos). Zero-hallucination protocol. Evidence tagging obligatorio. Método + TecnologIA = Soberanía. MIT. NUNCA precios — solo FTE-meses.",
   "author": {
     "name": "Javier Montaño · Comunidad MetodologIA",
     "url": "https://metodologia.info"
   },
   "homepage": "https://metodologia.info",
   "repository": "https://github.com/javiermontano-sofka/MetodologIA",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "keywords": [
     "mao", "metodologia", "discovery", "consulting", "architecture",
     "zero-hallucination", "rag-priming", "ghost-menu", "session-changelog",
@@ -16,7 +16,7 @@
     "NL-HP", "checkpoint-model", "quality-gates", "markdown-excellence",
     "think-tank", "seven-sages", "feasibility",
     "universal-services", "service-type-routing",
-    "copyleft", "open-source", "soberania",
+    "open-source", "mit-license", "soberania",
     "fundamentar", "acelerar", "catalizar", "amplificar",
     "pivote", "playbooks", "human-first", "simple-first",
     "lean-startup", "agile", "lean-mindset"

@@ -1,5 +1,7 @@
 ---
 name: metodologia-risk-controlling-dynamics
+argument-hint: "<project-or-program-name>"
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   Proactive risk controller and financial vigilance — operates as an anxious CPA/PM hybrid
   that anticipates worst-case scenarios at every discovery step, stress-tests assumptions,
@@ -384,11 +386,99 @@ Cada skill tiene `examples/sample-output.md` como benchmark. El controller valid
 - [ ] Evidence tags on all risk assertions
 - [ ] Diagramas Mermaid: mindmap (riesgos), quadrant (prob/impact), flowchart (controles)
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        RCD[Risk & Controlling Dynamics]
+    end
+
+    subgraph Inputs
+        I1[Discovery Pipeline State] --> RCD
+        I2[Phase Deliverables & Findings] --> RCD
+        I3[Assumptions from All Skills] --> RCD
+        I4[Financial Magnitudes] --> RCD
+    end
+
+    subgraph Outputs
+        RCD --> O1[Risk Appetite Framework]
+        RCD --> O2[Per-Phase Risk Scanning]
+        RCD --> O3[Assumption Stress-Tests]
+        RCD --> O4[Risk Register]
+        RCD --> O5[Pre-Mortem Models]
+        RCD --> O6[Financial Controls]
+        RCD --> O7[Proposal Hardening]
+    end
+
+    subgraph Related Skills
+        RS1[pipeline-governance] -.-> RCD
+        RS2[project-program-management] -.-> RCD
+        RS3[cost-estimation] -.-> RCD
+        RS4[technical-feasibility] -.-> RCD
+        RS5[software-viability] -.-> RCD
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Risk & Controlling: {project_name}
+## S1: Risk Appetite & Tolerance Framework
+### Dimensiones | Apetito | Tolerancia | Umbral Inaceptable
+
+## S2: Per-Phase Risk Scanning
+### Phase 0-6 | Preguntas Incomodas | Hallazgos (Mindmap)
+
+## S3: Assumption Stress-Testing
+### Inventario de Supuestos | Confianza | Impacto si Falso | Validacion
+
+## S4: Risk Register
+### ID | Riesgo | Categoria | Prob x Impacto | Mitigacion | Owner (Quadrant Chart)
+
+## S5: Worst-Case Scenario Modeling
+### Pre-Mortem | Top 3 Causas | Kill Criteria
+
+## S6: Financial Controls & Magnitude Vigilance
+### Contingency | Innovation Margin | Magnitude Drift | Hidden Costs (Flowchart)
+
+## S7: Risk-Informed Recommendations
+### Disclosures | Hardening | Red Lines | Final Assessment
+```
+
+**Formato DOCX:**
+Reporte formal de riesgos y controlling: risk register con historial de evolucion, pre-mortems documentados, controles financieros con varianzas, y assessment final con veredicto de readiness para propuesta. Formato auditable con trazabilidad de evidencia.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_risk_controlling_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Risk Register (ID, categoría, prob, impacto, exposure, mitigación, owner, status), Assumption Tracker (supuesto, confianza, impacto si falso, validación requerida), Financial Controls (control, esperado, actual, varianza), Pre-Mortem Log (fase, causa, señales tempranas, prevención). Conditional formatting por nivel de exposure (🔴/🟠/🟡/🟢). Auto-filters en todas las hojas. Valores directos sin fórmulas.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_risk_controlling_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Risk Appetite Framework, Per-Phase Risk Scanning, Assumption Stress-Test Inventory, Risk Register Quadrant (prob/impacto), Pre-Mortem Top 3 Causas, Financial Controls Dashboard, Proposal Readiness Assessment.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de risk, stress-test, worst-case, assumption validation; no ante riesgo tecnico puro |
+| Completeness | 25% | Las 7 secciones cubren apetito, scanning por fase, supuestos, register, pre-mortem, financiero, y hardening |
+| Clarity | 20% | Risk register usa formato estandar con categorias; pre-mortem tiene causas y kill criteria explicitos |
+| Robustness | 20% | Edge cases (skip risk, all-low, >30 risks, late showstopper, drift >40%) tienen respuesta definida |
+| Efficiency | 10% | Modos (full, risk-focused, QA-assist, continuous) permiten activacion proporcional al contexto |
+| Value Density | 15% | Cada seccion produce acciones concretas: mitigaciones con owner, validaciones requeridas, red lines |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Format Protocol
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
@@ -397,6 +487,8 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 ## Output Artifact
 
 **Primary:** `P-02_Risk_Controlling_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Risk appetite, per-phase scanning, assumption stress-tests, risk register, pre-mortems, financial controls, proposal hardening.
+
+| **HTML** | `{fase}_Risk_Controlling_{proyecto}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Dark-First Executive. Incluye risk register interactivo con quadrant chart probabilidad/impacto, assumption tracker con niveles de confianza, y final assessment con proposal readiness. |
 
 **Diagramas incluidos:**
 - Mindmap: riesgos por fase del pipeline

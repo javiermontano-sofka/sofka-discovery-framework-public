@@ -1,5 +1,6 @@
 ---
 name: metodologia-rpa-discovery
+argument-hint: "<path-to-process-docs> [full|executive] [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual]"
 description: >
   RPA and process automation discovery — process landscape assessment, automation opportunity scoring,
   bot design architecture, platform evaluation, process mining, ROI projection, and automation roadmap.
@@ -261,6 +262,99 @@ Hoja de ruta de automatizacion en 3 horizontes.
 - Infraestructura de seguridad que limita interaccion de bots
 - Integraciones con sistemas de terceros sin API documentada
 - Decisiones de licenciamiento que requieren negociacion con vendors
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Proceso con >20 variantes | Agrupar variantes por decision points principales; analizar las 3 variantes de mayor volumen; recomendar simplificacion antes de automatizacion |
+| Aplicaciones legacy sin API | Evaluar viabilidad de automatizacion via UI; flag riesgo de fragilidad ante cambios de interfaz; considerar modernizacion previa como prerequisito |
+| Regulacion estricta (SOX, GDPR) | Elevar requisitos de audit trail y credential management; evaluar compliance por proceso individual; documentar controles regulatorios por bot |
+| >100 procesos candidatos | Screening rapido con criterios binarios (digital/no-digital, reglas claras/ambiguas); scoring detallado solo para top-30; el resto en backlog priorizado |
+| Procesos cross-funcionales entre departamentos | Mapear handoffs entre departamentos; evaluar impacto organizacional; considerar process orchestration sobre task automation simple |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Entender y optimizar el proceso ANTES de automatizar | Automatizar el proceso tal como esta | Automatizar un proceso roto amplifica el error a velocidad de maquina; la optimizacion previa reduce variantes y excepciones |
+| Scoring cuantitativo con 5 criterios objetivos | Priorizacion por intuicion o presion politica | La priorizacion basada en datos (estructurados, reglas estables, volumen, repetitividad, error-proneness) elimina sesgos y produce ROI predecible |
+| Gobernanza del CoE desde el primer bot | Escalar bots primero, gobernar despues | Bots sin monitoreo ni manejo de excepciones generan deuda de automatizacion que erosiona el ROI; la gobernanza es prerequisito, no afterthought |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: RPA Discovery"]
+        PLA[Process Landscape]
+        AOS[Automation Opportunity Scoring]
+        BOT[Bot Design Architecture]
+        PLAT[Platform Assessment]
+        PM[Process Mining Results]
+        ROI[ROI Projection]
+        ROAD[Automation Roadmap]
+    end
+
+    subgraph Inputs["Inputs"]
+        BPMN[Process Documentation]
+        VOL[Volume Metrics]
+        APPS[Application Inventory]
+        LOGS[Event Logs]
+    end
+
+    subgraph Outputs["Outputs"]
+        INV[Process Inventory]
+        SCORE[Scoring Matrix]
+        ARCH[Bot Architecture]
+        PLAN[Phased Roadmap]
+    end
+
+    subgraph Related["Related Skills"]
+        MINI[mini-apps-discovery]
+        SOL[solutions-architecture]
+        FLOW[flow-mapping]
+        CHANGE[change-management]
+    end
+
+    BPMN --> PLA
+    VOL --> AOS
+    APPS --> BOT
+    LOGS --> PM
+    PLA --> AOS --> BOT --> PLAT --> PM --> ROI --> ROAD
+    ROAD --> INV
+    ROAD --> SCORE
+    ROAD --> ARCH
+    ROAD --> PLAN
+    PLAN --> MINI
+    BOT --> SOL
+    PLA --> FLOW
+    ROAD --> CHANGE
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `RPA_Discovery_{project}.md` | Assessment completo de 7 secciones: inventario BPMN, scoring de automatizacion, arquitectura de bots, evaluacion de plataforma, process mining, ROI y roadmap. Diagramas Mermaid embebidos. |
+| **PPTX** | `RPA_Discovery_{project}_Executive.pptx` | Presentacion ejecutiva con quadrant chart de scoring, arquitectura de bots simplificada, proyeccion de ROI por horizonte, y roadmap visual para alineacion con sponsors. |
+| **HTML** | `{fase}_rpa_discovery_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Incluye scoring matrix interactivo con semáforo por proceso, automation roadmap timeline visual y ROI projection chart. |
+| **DOCX** | `{fase}_rpa_discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de scoring de automatización, inventario de procesos y roadmap por horizonte con zebra striping. Encabezados y pies de página con branding MetodologIA. |
+| **XLSX** | `{fase}_rpa_discovery_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Process Inventory (ID, proceso, área, volumen/día, frecuencia, complejidad, FTE-hrs/mes, process owner), Automation Scoring (proceso, criterio 1-5, score total, clasificación, prioridad), Bot Architecture (proceso, tipo attended/unattended, orquestación, manejo excepciones), Platform Assessment (criterio, UiPath, AA, Power Automate, Blue Prism, recomendación), ROI Projection (proceso, tiempo ahorrado, volumen mensual, FTE liberados, driver de costo). Conditional formatting por score de automatización y veredicto de plataforma. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (RPA, automation, bot design, process mining, automation candidates) sin falsos positivos con mini-apps-discovery o workflow automation generica |
+| Completeness | 25% | Las 7 secciones cubren inventario, scoring, arquitectura, plataforma, mining, ROI y roadmap sin huecos; todos los procesos candidatos evaluados |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; scoring con criterios cuantificables (0-3 por dimension); ROI con formula explicita y disclaimer |
+| Robustness | 20% | Maneja >100 procesos, legacy sin API, regulacion estricta, procesos cross-funcionales y ausencia de process mining con workarounds especificos |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S2+S6+S7 sin perder capacidad de decision sobre priorizacion y ROI |
+| Value Density | 15% | Cada seccion aporta valor practico directo; scoring matrix y ROI projection son herramientas de decision inmediata para el business case |
+
+**Umbral minimo: 7/10.**
+
+---
 
 ## Validation Gate
 

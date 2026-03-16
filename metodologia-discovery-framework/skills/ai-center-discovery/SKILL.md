@@ -8,6 +8,8 @@ description: >
   "MLOps assessment", "AI governance evaluation", "AI adoption roadmap", "AI strategy assessment",
   "evaluate AI infrastructure", "AI product fit", or mentions "AI SCALE", "responsible AI",
   "AI pilots", "ML pipeline", "AI Center of Excellence", "LLM adoption", "generative AI strategy".
+argument-hint: "<project-or-client-name>"
+author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -320,6 +322,134 @@ Hoja de ruta de adopcion de AI en 3 fases.
 - [ ] Magnitudes de inversion documentadas (NUNCA precios) con disclaimer
 - [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
 - [ ] Cross-references entre secciones (data readiness S3 informa feasibility en S2)
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Organizacion sin experiencia en AI | Enfocar en educacion, use cases de bajo riesgo, y construccion de data foundations. No recomendar deep learning en dia 1. |
+| Multiples pilotos fallidos | Diagnosticar causas raiz (datos, expectativas, governance, talento). Recomendar enfoque diferente, no repetir patron de fracaso. |
+| Datos sensibles (salud, finanzas) | Elevar requisitos de governance, privacy by design, y compliance. Evaluar federated learning o differential privacy. |
+| Vendor lock-in con plataforma AI | Evaluar portabilidad de modelos, costo de migracion, y estrategia multi-cloud. Documentar exit cost. |
+| Shadow AI (uso no gobernado de GenAI) | Inventariar uso informal de AI generativa. Evaluar riesgos (data leakage, compliance). Proponer framework de AI governance que incluya GenAI. |
+| >50 use cases identificados | Screening rapido con impacto x feasibilidad. Scoring detallado solo para top-10. Evitar paralisis por analisis. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| AI SCALE como framework de madurez | CMMI for AI, Gartner AI Maturity | AI SCALE es nativo de MetodologIA, alineado con fases de adopcion (Selection-to-Expansion), y cubre governance como dimension explicita. |
+| 8 secciones como estructura de assessment | Assessment monolitico unico, framework de 3 secciones rapidas | 8 secciones permiten modularidad (variante ejecutiva usa 4 de 8) y cubren el ciclo completo desde strategy hasta roadmap. |
+| Priorizacion top-10 sobre portafolio completo | Evaluar todos los use cases con igual profundidad | Profundidad sobre amplitud. Scoring detallado de 50+ use cases diluye calidad. Top-10 permite analisis de data readiness y feasibility por caso. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        AISCALE["AI SCALE Methodology"]
+        MATURITY["AI Maturity Assessment"]
+        USECASE["Use Case Portfolio"]
+        GOVERNANCE["AI Governance"]
+        DATARDY["Data Readiness"]
+    end
+
+    subgraph Inputs["Entradas"]
+        STRATEGY["AI Strategy Document"]
+        DATASRC["Data Sources Inventory"]
+        STAKEMAP["Stakeholder Map"]
+        MODELS["Existing Model Inventory"]
+    end
+
+    subgraph Outputs["Salidas"]
+        ASSESS["AI Center Discovery Report"]
+        ROADMAP["AI Adoption Roadmap"]
+        RADAR["Maturity Radar Chart"]
+        FITGAP["Product Fit-Gap Matrix"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        ASIS["asis-analysis (Data-AI)"]
+        DATENG["data-engineering"]
+        DATASCI["data-science-architecture"]
+        CLOUDNAT["cloud-native-architecture"]
+    end
+
+    STRATEGY --> AISCALE
+    DATASRC --> DATARDY
+    STAKEMAP --> USECASE
+    MODELS --> MATURITY
+    AISCALE --> MATURITY
+    MATURITY --> ASSESS
+    USECASE --> ASSESS
+    DATARDY --> ASSESS
+    GOVERNANCE --> ASSESS
+    ASSESS --> ROADMAP
+    ASSESS --> RADAR
+    ASSESS --> FITGAP
+    ASIS -.-> MATURITY
+    DATENG -.-> DATARDY
+    DATASCI -.-> USECASE
+    CLOUDNAT -.-> GOVERNANCE
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# AI Center Discovery: {project}
+## S1: AI Readiness Assessment (AI SCALE)
+### Etapa Actual: {etapa}
+| Dimension | Score (1-5) | Evidencia | Gap vs Target |
+...
+## S2: AI Use Case Portfolio
+### Top-10 Use Cases
+| Use Case | Impacto | Feasibilidad | Alineacion | Score | Ranking |
+...
+## S3-S8: [secciones completas]
+## Roadmap de Adopcion (3 fases)
+> DISCLAIMER: Magnitudes, no precios.
+```
+
+**Formato PPTX (bajo demanda):**
+
+```
+Slide 1: Portada — AI Center Discovery: {project}
+Slide 2: Executive Summary — AI SCALE stage + top-3 findings
+Slide 3: Maturity Radar — 5 dimensiones scored 1-5
+Slide 4: Use Case Portfolio — scatter plot impacto vs feasibilidad
+Slide 5: Data Readiness Heatmap — use case vs data readiness
+Slide 6-7: Governance Assessment — maturity level + gaps
+Slide 8: Product Fit-Gap — MetodologIA AI products matrix
+Slide 9: Roadmap — 3 fases (Pilots / Scale / Production)
+Slide 10: Next Steps + Disclaimer
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `AI_Center_Discovery_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive page con radar chart interactivo de madurez AI SCALE, scatter plot de use cases, y roadmap faseado colapsable. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para matrices de madurez AI SCALE, portafolio de use cases y scorecard de governance.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante keywords de AI readiness, AI SCALE, MLOps, governance, adoption roadmap. |
+| Completeness | 25% | Las 8 secciones cubren el ciclo completo: strategy, use cases, data, models, governance, infrastructure, products, roadmap. |
+| Clarity | 20% | Scoring de madurez es interpretable por audiencia ejecutiva y tecnica. AI SCALE levels documentados con evidencia. |
+| Robustness | 20% | Edge cases (shadow AI, pilotos fallidos, >50 use cases, datos sensibles) manejados con estrategias explicitas. |
+| Efficiency | 10% | Variante ejecutiva reduce a 4 secciones sin perder decision-readiness. Screening rapido para portafolios grandes. |
+| Value Density | 15% | Cada seccion produce artefactos accionables: scoring matrices, gap analysis, fit-gap, roadmap faseado con mitigacion del 80% failure rate. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar completeness de secciones y evidencia de scoring.
 
 ## Output Artifact
 

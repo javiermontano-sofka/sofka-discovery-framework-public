@@ -5,6 +5,8 @@ description: >
   Use when the user asks to "apply design system", "generate styled HTML", "set up brand tokens",
   "configure brand colors", or mentions "design system", "design tokens", "component library",
   "brand config", "page template".
+argument-hint: "[action] [brand-config-path]"
+author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -272,6 +274,93 @@ For full component HTML snippets, read: `${CLAUDE_SKILL_DIR}/references/componen
 - WCAG AA compliance assumed; AAA requires additional contrast verification
 - Mermaid diagrams render client-side via CDN; offline environments need pre-rendered SVGs
 - Design system assumes single-brand per engagement; multi-brand requires separate config files
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Brand primary extremadamente claro (#FFE0B2) que no pasa WCAG AA como texto | Auto-darken para texto usando HSL shift (-30% lightness). Usar brand-dark para borders y accents visibles. Validar contraste con herramienta automatizada antes de entregar. |
+| Documento bilingue (es + en) con diferentes longitudes de texto | Usar `lang` attribute por seccion. Layout flexible con min-width en cards. Testear que texto largo no rompe grid en ambos idiomas. |
+| Brand config con un solo color (sin secondary, sin light/dark variants) | Derivar primary-light (HSL +15% lightness) y primary-dark (HSL -15% lightness) programaticamente. Documentar colores derivados en el output para validacion del cliente. |
+| Entorno offline sin acceso a Google Fonts CDN | Fallback a system-ui, -apple-system, sans-serif. Documentar degradacion visual. Ofrecer alternativa con fonts embebidas en base64 si tamano < 500KB. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| CSS custom properties (tokens) sobre inline styles | Inline styles para cada elemento | Tokens permiten cambio de marca con un solo archivo. Inline requiere reescribir todo el documento. Mantenibilidad > velocidad de generacion. |
+| Single-file HTML con CSS inline sobre CSS externo | CSS en archivo separado | Self-contained HTML garantiza portabilidad. El deliverable se abre en cualquier browser sin dependencias. Peso adicional (~20KB CSS) es aceptable vs. riesgo de archivo faltante. |
+| Yellow para success states sobre green convencional | Green (#22C55E) para estados positivos | Green introduce tono frio que choca con paleta calida MetodologIA (indigo/dark). Yellow mantiene coherencia de marca. Diferenciador visual vs. competidores. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        DS[design-system]
+    end
+    subgraph Inputs
+        BC[brand-config.json] --> DS
+        CT[Content & Section Plan] --> DS
+        DT[Document Type Decision] --> DS
+    end
+    subgraph Outputs
+        DS --> HTML[Styled HTML Deliverable]
+        DS --> TOK[Token Documentation]
+        DS --> COMP[Component Library Reference]
+    end
+    subgraph Related Skills
+        DS -.-> HB[html-brand]
+        DS -.-> BV[brand-voice]
+        DS -.-> ME[markdown-excellence]
+        DS -.-> UW[ux-writing]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Design System: {brand_name}
+## Token Reference
+  - Brand colors (primary, light, dark, dim)
+  - Semantic colors (positive, warning, critical, info)
+  - Typography scale
+  - Spacing & radius
+## Component Quick Reference
+  - Cards, badges, callouts, tables
+  - Usage guidelines per component
+## Validation Checklist
+```
+
+**Formato HTML (primary):**
+- Filename: `D-01_Design_System_{project}_{WIP}.html`
+- Documento HTML self-contained con tokens inyectados en `:root`, branded (Design System MetodologIA v5). Incluye componentes renderizados con ejemplos interactivos, paleta de tokens visual y checklist de validación WCAG. Print stylesheet incluido, skip-to-content y WCAG AA compliance.
+
+**Formato DOCX (circulación formal):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por token type y estado de validación WCAG, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de design system, tokens, brand config, styled HTML | 7/10 |
+| Completeness | 25% | Todos los tokens documentados, componentes con snippets, responsive y accessibility cubiertos | 7/10 |
+| Clarity | 20% | Mapping rules sin ambiguedad, cada token con uso definido, anti-patterns documentados | 7/10 |
+| Robustness | 20% | Edge cases de color, RTL, print, dark mode cubiertos con fallbacks funcionales | 7/10 |
+| Efficiency | 10% | Output generado sin tokens duplicados, CSS optimizado, single-file bajo 500KB | 7/10 |
+| Value Density | 15% | Cada componente entrega snippet listo para copiar, no solo descripcion teorica | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ## Edge Cases
 

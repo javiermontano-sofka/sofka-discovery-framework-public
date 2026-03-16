@@ -1,5 +1,7 @@
 ---
 name: metodologia-workshop-facilitator
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[project/workshop-name] [technique: event-storming|impact-mapping|story-mapping|design-sprint] — e.g. 'payments-redesign event-storming'"
 description: >
   Workshop design — event storming, impact mapping, user story mapping, design sprints.
   Use when the user asks to "plan a workshop", "run event storming", "facilitate impact mapping",
@@ -214,5 +216,83 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: workshop agenda flow with decision points
 - Mindmap: workshop outputs and their connections to deliverables
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Key domain expert is unavailable for the scheduled workshop | Postpone the session if the expert's knowledge is critical (event storming without domain experts produces developer assumptions); alternatively, run a preliminary session and mark all outputs as [SUPUESTO] pending expert validation |
+| Workshop participants speak different languages (e.g., Spanish + English + Portuguese) | Designate bilingual facilitators per breakout group; use visual artifacts (stickies, diagrams) as the primary communication medium; provide translated templates for key activities |
+| Hybrid workshop (some in-person, some remote) | Assign a dedicated "bridge facilitator" to ensure remote participants have equal voice; use a shared digital board as the canonical artifact even for in-person participants; run explicit check-ins with remote attendees every 20 minutes |
+| Workshop output contradicts prior discovery phase findings | Document the contradiction explicitly; do not suppress either version; flag for steering committee arbitration; the workshop may have surfaced tacit knowledge that prior analysis missed |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Silent-before-spoken rule for all ideation activities | Open discussion from the start | Open discussion allows dominant voices to anchor the group; 5-10 minutes of silent individual writing produces broader, more diverse input that discussion then refines |
+| Maximum 8 participants per workshop session (breakouts for larger groups) | Allow 15+ participants in a single session | Groups larger than 8 suffer from diffusion of responsibility and reduced psychological safety; breakouts with sub-facilitators maintain quality and participation |
+| Diverge-Converge rhythm as mandatory structure for every activity | Emergent facilitation that follows energy | Emergent facilitation works only with expert facilitators; the diverge-converge structure provides guardrails that produce consistent quality regardless of facilitator experience |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Workshop Facilitator"]
+        A["Technique Selection"] --> B["Session Design"]
+        B --> C["Facilitation Guide"]
+        C --> D["Live Facilitation"]
+        D --> E["Synthesis & Handoff"]
+    end
+    subgraph Inputs["Inputs"]
+        F["Workshop Goal"] --> A
+        G["Participant List"] --> B
+        H["Prior Discovery Artifacts"] --> A
+    end
+    subgraph Outputs["Outputs"]
+        E --> I["Workshop Design Document"]
+        E --> J["Action Items + Decision Log"]
+        E --> K["Artifact Package"]
+    end
+    subgraph Related["Related Skills"]
+        L["functional-spec"] -.-> E
+        M["scenario-analysis"] -.-> A
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `A-01_Workshop_Design_{cliente}_{WIP}.md`
+- Structure: TL;DR > Technique Selection Rationale > Participant Briefing > Detailed Agenda with time-boxes > Facilitation Guide per activity > Pre-work Instructions > Synthesis Template > Action Item Tracker > Mermaid flowchart (agenda) + mindmap (outputs) > ghost menu
+
+### HTML
+- Filename: `A-01_Workshop_Design_{cliente}_{WIP}.html`
+- Structure: MetodologIA Design System v4; interactive agenda timeline; collapsible facilitation instructions per activity; participant card grid; embedded Mermaid diagrams; print-ready for facilitator handout
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_workshop-facilitator_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por técnica y estado de acción post-taller, auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Agenda Time-boxed, Participantes y Roles, Pre-work Checklist, Action Items con Owners, Decision Log.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, objetivo y criterios de éxito, técnica seleccionada con justificación, agenda visual time-boxed, participantes y roles, pre-work requerido, guía de facilitación por bloque, template de síntesis, action items con owners y deadlines.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026

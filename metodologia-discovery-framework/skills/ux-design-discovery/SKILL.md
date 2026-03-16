@@ -1,5 +1,7 @@
 ---
 name: metodologia-ux-design-discovery
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[path-to-design-assets] [depth: full|executive]"
 description: >
   UX/UI design discovery — design maturity assessment, design system inventory, user research capability
   evaluation, usability baseline, information architecture assessment, design process governance, and
@@ -212,6 +214,127 @@ Phased plan with maturity targets per phase:
 - Advanced research capabilities (analytics integration, continuous discovery)
 
 Per phase: target maturity level, key activities, success metrics, dependencies, effort magnitude (designer-weeks, NOT prices).
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| No existe design system ni patrones implicitos documentables | Auditar UI patterns en produccion; catalogar patrones implicitos ad-hoc; recomendar design system strategy como primer entregable |
+| Madurez de diseno L1 (ad-hoc) en todas las dimensiones | Flag CRITICAL; recomendar proceso de diseno foundacional antes de invertir en sistema o herramientas; tools sin capacidad humana no generan valor |
+| Organizacion sin representacion de diseno en decisiones de producto | Escalar como issue organizacional; documentar impacto de decisiones sin input de diseno; esto no es un gap de skill sino de estructura |
+| Multi-brand con design systems conflictivos | Evaluar cada brand por separado; identificar tokens compartidos vs divergentes; recomendar capa de abstraccion si governance unificada es posible |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Usar modelo de 5 niveles de madurez (Ad-hoc a Innovative) por dimension | Evaluacion binaria (maduro / inmaduro) | Los 5 niveles permiten roadmap de transformacion progresivo; el modelo binario no captura donde invertir primero |
+| Incluir accessibility audit (WCAG) como seccion obligatoria | Tratar accesibilidad como nice-to-have | WCAG no es aspiracional, es linea base legal y etica; cada violacion Level A es deuda con impacto legal y de negocio |
+| Evaluar 5 dimensiones de madurez (Process, People, Tools, Culture, Impact) | Solo evaluar herramientas y componentes | Un design system excelente sin proceso de review, personas capacitadas, o cultura de diseno no produce resultados; las 5 dimensiones son indivisibles |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["UX Design Discovery Core"]
+        A[metodologia-ux-design-discovery]
+        A1[S1: Design Maturity]
+        A2[S2: Design System Inventory]
+        A3[S3: UX Research Capability]
+        A4[S4: Usability Baseline]
+        A5[S5: Information Architecture]
+        A6[S6: Design Process & Governance]
+        A7[S7: Transformation Roadmap]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Design System / Component Library]
+        I2[Usability Reports]
+        I3[Design Tools Inventory]
+        I4[Analytics Data]
+    end
+    subgraph Outputs["Outputs"]
+        O1[UX Design Discovery Report]
+        O2[Maturity Radar Chart]
+        O3[Transformation Roadmap]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-ux-writing]
+        R2[metodologia-workshop-design]
+        R3[metodologia-stakeholder-mapping]
+        R4[metodologia-sector-intelligence]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    I4 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6 --> A7
+    A --> O1
+    A --> O2
+    A --> O3
+    A --> R1
+    R2 --- A
+    R3 --> A
+    R4 --> A
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# UX Design Discovery — {proyecto}
+## Resumen Ejecutivo
+> Madurez promedio: L2.4/5. Gaps criticos: accessibility (L1), research (L1). Quick wins identificados: N.
+## S1: Design Maturity Assessment
+| Dimension | Nivel Actual | Nivel Objetivo | Gap | Evidencia |
+## S2: Design System Inventory
+| Componente | Documentado | Adoptado | Accesible | Status |
+## S3-S7: [secciones completas]
+## Transformation Roadmap
+```mermaid
+gantt
+    title UX Transformation
+    ...
+```
+```
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+**Formato HTML (para presentacion a liderazgo de producto):**
+
+```
+Header: Logo + proyecto + maturity score visual
+Section 1: Design Maturity Radar (chart interactivo 5 dimensiones)
+Section 2: Design System Health (cards con % adopcion, % documentado, % accesible)
+Section 3: Research Capability (timeline de actividades de research)
+Section 4: Usability Baseline (Nielsen heuristics scores + SUS)
+Section 5: Information Architecture Assessment (findability metrics)
+Section 6: Transformation Roadmap (timeline visual con fases)
+Footer: Attribution MetodologIA + fecha
+```
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_ux-design-discovery_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por nivel de madurez (L1-L5) y severidad de hallazgos, auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Design Maturity Assessment, Design System Inventory, UX Research Capability, Usability Baseline, IA Assessment, Transformation Roadmap.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, madurez de diseño promedio (radar chart 5 dimensiones), design system health (adopción y cobertura), UX research capability, usability baseline (heurísticas Nielsen), hallazgos de accessibility (WCAG), transformation roadmap (3 fases con maturity targets y métricas de éxito).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de UX discovery, design maturity, design system audit, usability assessment | 7/10 |
+| Completeness | 25% | Las 7 secciones pobladas; madurez evaluada en 5 dimensiones con evidencia; accessibility audit incluido | 7/10 |
+| Clarity | 20% | Radar chart de madurez es visualmente claro; roadmap tiene fases con maturity targets y metricas de exito | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (sin design system, L1 everywhere, sin representacion UX, multi-brand); workarounds documentados | 7/10 |
+| Efficiency | 10% | Profundidad adaptada (full vs executive); heuristic evaluation como minimo cuando no hay usability data | 7/10 |
+| Value Density | 15% | Quick wins priorizados por impacto; recomendaciones sized en designer-weeks; WCAG violations clasificadas por severidad | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Escalation to Human Architect
 

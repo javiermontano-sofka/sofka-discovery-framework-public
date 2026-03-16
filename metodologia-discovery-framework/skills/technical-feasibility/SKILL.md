@@ -1,5 +1,7 @@
 ---
 name: metodologia-technical-feasibility
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[project-name] [scenario-name]"
 description: >
   Technical fact-checking and multidimensional feasibility analysis — validates claims, assumptions,
   and technical decisions from scenario analysis against evidence. Use when the user asks to "validate
@@ -211,6 +213,125 @@ Merge new risks discovered during feasibility analysis into the cumulative risk 
 | No codebase access | Paper analysis only — mark all technical claims as [INFERENCIA], increase uncertainty |
 | Scenario involves vendor product | Request vendor SLA/benchmarks — mark as [VENDOR-DOC] or [UNVALIDATED] |
 | Time pressure to skip | Deliver abbreviated S1+S5 (claims + verdict). Flag risk of skipping full analysis |
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Todos los claims son validados (ningun riesgo identificado) | Caso raro; documentar evidencia exhaustivamente; proceder con alta confianza; reducir contingencia en presupuesto |
+| Multiples claims refutados (>50% AT RISK o REFUTED) | Recomendar pivote a escenario alternativo de Phase 3; no proceder a Phase 4 sin escenario viable |
+| Sin acceso al codebase (solo documentacion) | Paper analysis unicamente; marcar todos los claims tecnicos como [INFERENCIA]; incrementar incertidumbre; recomendar spike con acceso a codigo como prerequisito |
+| Presion de tiempo para saltar feasibility | Entregar version abreviada S1+S5 (claims + veredicto); documentar explicitamente el riesgo de saltar analisis completo |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Evaluar 6 dimensiones de feasibility (tecnica, organizacional, timeline, financiera, regulatoria, operacional) | Solo feasibility tecnica | Un proyecto tecnicamente brillante que ignora capacidad organizacional o compliance regulatorio fracasa igual; la feasibility parcial es feasibility falsa |
+| Clasificar claims con 4 estados (VALIDATED, UNVALIDATED, AT RISK, REFUTED) | Binario (factible / no factible) | Los 4 estados permiten accion graduada: validados proceden, unvalidados necesitan spike, at risk necesitan mitigacion, refutados requieren alternativa |
+| Disenar PoC para cada claim UNVALIDATED y AT RISK | Asumir que los claims son correctos y proceder | Los claims no validados son la fuente principal de sorpresas costosas en ejecucion; el PoC es inversion preventiva |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Technical Feasibility Core"]
+        A[metodologia-technical-feasibility]
+        A1[S1: Claim Inventory]
+        A2[S2: 6D Feasibility Analysis]
+        A3[S3: Spike & PoC Recommendations]
+        A4[S4: Blocker Analysis]
+        A5[S5: Feasibility Verdict]
+        A6[S6: Updated Risk Register]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Approved Scenario - Phase 3]
+        I2[AS-IS Analysis]
+        I3[Codebase Access]
+        I4[Vendor Documentation]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Feasibility Report]
+        O2[Spike/PoC Designs]
+        O3[Feasibility Verdict]
+        O4[Updated Risk Register]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-software-viability]
+        R2[metodologia-hypothesis-driven-development]
+        R3[metodologia-roadmap-poc]
+        R4[metodologia-sector-intelligence]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    I4 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6
+    A --> O1
+    A --> O2
+    A --> O3
+    A --> O4
+    R1 --- A
+    A --> R2
+    A --> R3
+    R4 --> A
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Technical Feasibility — {proyecto} — {escenario}
+## Resumen Ejecutivo
+> Veredicto: [FEASIBLE / FEASIBLE WITH CONDITIONS / NOT FEASIBLE]. Claims: N validados, M en riesgo, K refutados.
+## S1: Claim Inventory
+| Claim | Source | Evidence | Status |
+## S2: 6D Feasibility Analysis
+| Dimension | Score (1-5) | Evidencia | Riesgos | Mitigaciones |
+## S3: Spike & PoC Recommendations
+| Claim | Validation Method | Effort | Timeline | Success Criteria | Priority |
+## S4-S6: [secciones completas]
+## Feasibility Verdict
+```
+FEASIBILITY VERDICT
+...
+```
+```
+
+**Formato DOCX (para comite de inversion):**
+
+```
+Seccion 1: Resumen Ejecutivo (1 pagina, veredicto + condiciones)
+Seccion 2: Inventario de Claims (tabla con semaforo de status)
+Seccion 3: Analisis 6D (una pagina por dimension con score, evidencia, riesgos)
+Seccion 4: Blockers y Showstoppers (tabla con probabilidad, impacto, mitigacion)
+Seccion 5: Spikes Recomendados (esfuerzo, timeline, success criteria)
+Seccion 6: Veredicto y Recomendacion (proceed / hold / pivot)
+Seccion 7: Risk Register Actualizado
+Anexo: Cadena de Evidencia por Claim
+```
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_technical-feasibility_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por status de claim (VALIDATED/UNVALIDATED/AT RISK/REFUTED) y score dimensional (1-5), auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Inventario de Claims, Análisis 6D, Spikes y PoC, Blockers, Risk Register.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, resumen ejecutivo (veredicto), inventario de claims (semáforo), análisis 6D (radar chart), spikes y PoC prioritizados, bloqueadores y showstoppers, veredicto y recomendación, risk register actualizado.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de feasibility, validacion tecnica, due diligence, Phase 3b | 7/10 |
+| Completeness | 25% | Todos los claims del escenario inventariados; 6 dimensiones scored con evidencia; PoC disenado para cada UNVALIDATED/AT RISK | 7/10 |
+| Clarity | 20% | Veredicto es binario y justificado; condiciones son accionables; evidencia trazable a fuente | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (all validated, multiple refuted, no codebase, time pressure); blocker analysis con fallback scenarios | 7/10 |
+| Efficiency | 10% | Variante ejecutiva vs tecnica correctamente aplicada; no se ejecuta analisis 6D completo cuando solo se necesita quick check | 7/10 |
+| Value Density | 15% | Cada claim tiene evidence tag; spikes son MUST/SHOULD/COULD priorizados; risk register actualizado con nuevos riesgos de feasibility | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Validation Gate
 

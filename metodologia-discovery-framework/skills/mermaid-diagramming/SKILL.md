@@ -1,6 +1,7 @@
 ---
 name: metodologia-mermaid-diagramming
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[context: deliverable content or data to visualize] [diagram-type: flowchart|sequence|C4|ER|gantt|mindmap|quadrant] [audience: executive|technical|operational]"
 description: >
   This skill should be used when the user asks to "create diagrams", "generate Mermaid",
   "visualize architecture", "diagram flows", "draw a sequence diagram", "create a C4 diagram",
@@ -175,6 +176,82 @@ Before delivering any diagram:
 2. Does it add information the text doesn't? If no, remove it.
 3. Can the target audience understand it without explanation? If no, simplify.
 4. Are all labels/names consistent with the document? If no, align.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Requested diagram type is not supported by the target renderer (e.g., C4 extension in a basic Mermaid viewer) | Fall back to flowchart with subgraphs that emulate C4 structure; document the fallback with a note to the reader |
+| Source data would require >40 nodes for a complete representation | Decompose into 2-3 sub-diagrams with explicit cross-reference labels (e.g., "see Diagram 2B for detail"); add an index diagram showing how sub-diagrams relate |
+| Diagram contains node labels with special characters that break Mermaid syntax (quotes, brackets, pipes) | Escape characters per Mermaid spec; use descriptive IDs without special characters; place full labels in quoted strings |
+| Two equally valid diagram types for the same content (e.g., flowchart vs sequence for an API call chain) | Prefer the type with fewer nodes; if equal, prefer the type that shows temporal ordering (sequence) over structural relationship (flowchart) |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Enforce max 20 nodes per diagram as a hard rule | Allow unlimited nodes with a "best effort" readability guideline | Soft guidelines are ignored under time pressure; the hard cap forces conscious decomposition decisions that improve every diagram |
+| Require accessibility text summary before every diagram | Rely on diagram self-explanation | Screen readers cannot parse Mermaid; non-rendering contexts (email, print) lose all information without text summaries; accessibility is non-negotiable |
+| Use descriptive node IDs (authService, paymentDB) over short codes (A1, B2) | Short IDs for compact Mermaid source | Descriptive IDs make the raw Mermaid source self-documenting; when diagrams are reviewed in code, short IDs require cross-referencing a legend |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Mermaid Diagramming Engine"]
+        A["Type Selection"] --> B["Composition Rules"]
+        B --> C["Syntax Validation"]
+        C --> D["Quality Validation"]
+    end
+    subgraph Inputs["Inputs"]
+        E["Source Content"] --> A
+        F["Diagram Type Hint"] --> A
+        G["Audience Level"] --> B
+    end
+    subgraph Outputs["Outputs"]
+        D --> H["Mermaid Code Blocks"]
+        D --> I["Accessibility Text"]
+    end
+    subgraph Related["Related Skills"]
+        J["data-viz-storytelling"] -.-> A
+        K["output-engineering"] -.-> H
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: embedded within parent deliverable (e.g., `03_Analisis_ASIS_{cliente}_{WIP}.md`)
+- Structure: Figure number > accessibility text summary > fenced mermaid code block > source evidence tag
+
+### HTML
+- Filename: embedded within parent HTML deliverable
+- Structure: `<pre class="mermaid">` with CDN v10; alt attribute with accessibility text; responsive container; print fallback CSS
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold. Diagramas Mermaid exportados como imagen PNG e incrustados en el documento.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Diagram Catalog (tipo, entregable, nodos, descripción), Validation Gate por diagrama, Deliverable-Diagram Matrix.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ## Cross-References
 

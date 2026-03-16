@@ -4,6 +4,8 @@ description: >
   Cloud-native design -- containers, service mesh, serverless, multi-cloud, FinOps.
   Use when the user asks to "design cloud-native architecture", "containerize the application", "evaluate service mesh",
   "plan serverless migration", "implement multi-cloud strategy", "optimize cloud costs", or mentions Kubernetes, Istio, Docker, Helm, Terraform, FinOps, or 12-factor.
+argument-hint: "<system-or-platform-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -343,5 +345,141 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Kubernetes manifest templates, Helm chart structure, service mesh configuration, cost allocation report, 12-factor compliance checklist.
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Monolith containerization | Containerizar monolito primero (lift-and-shift a container), luego descomponer con strangler fig. No intentar containerizacion y descomposicion simultanea. |
+| Stateful workloads en Kubernetes | Usar operators (CloudNativePG para PostgreSQL, Strimzi para Kafka). Alternativa: managed services fuera de K8s. Evaluar operational burden vs portability. |
+| Serverless a escala (>10M invocations/month) | Modelar break-even point. Container alternative mas cost-effective a alto volumen. Reserved concurrency o Fargate pueden ser mejor opcion. |
+| Industrias reguladas | Service mesh mTLS puede ser mandatorio. Image provenance requerida (SLSA, Sigstore/cosign). Multi-cloud para data residency. |
+| Small team (<5 developers) | Full K8s + mesh probablemente over-engineered. Managed K8s, skip mesh, cloud-managed services. Revisitar al crecer el equipo. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Containers by default como baseline | VMs como default, serverless-first | Containers balancean portabilidad, reproducibilidad, y ecosystem de tooling (K8s, Helm, ArgoCD). Serverless solo para stateless event-driven; VMs solo para legacy sin refactor. |
+| Gateway API sobre Ingress | Ingress-NGINX, custom load balancers | Gateway API es GA (v1.2+, CNCF standard), soporta multi-tenancy nativo, y reemplaza Ingress (NGINX retiring March 2026). |
+| Karpenter sobre Cluster Autoscaler (EKS) | Cluster Autoscaler, manual scaling | Karpenter provee 30-60s provisioning (vs 2-5min CA), mejor bin-packing, y native spot/OD mix. CA solo cuando Karpenter no disponible (AKS, on-prem). |
+| OpenCost como baseline FinOps | Solo cloud billing dashboards | OpenCost es CNCF Incubating, gratuito, Prometheus-native, y provee cost allocation a nivel namespace/pod. Cloud billing no tiene granularidad K8s. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        ASSESS["12-Factor Assessment"]
+        CONTAINER["Container & Orchestration"]
+        MESH["Service Mesh & Networking"]
+        SERVERLESS["Serverless Decision"]
+        MULTICLOUD["Multi-Cloud & Portability"]
+        FINOPS["FinOps Integration"]
+    end
+
+    subgraph Inputs["Entradas"]
+        APP["Application Codebase"]
+        INFRA["Current Infrastructure"]
+        CLOUD["Cloud Provider(s)"]
+        REQS["NFRs & SLAs"]
+    end
+
+    subgraph Outputs["Salidas"]
+        ARCH["Cloud-Native Architecture Doc"]
+        MANIFESTS["K8s Manifest Templates"]
+        HELM["Helm Chart Structure"]
+        COSTDASH["Cost Allocation Report"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        INFRAARCH["infrastructure-architecture"]
+        DEVSEC["devsecops-architecture"]
+        SWARCH["software-architecture"]
+        MIGRATION["cloud-migration"]
+    end
+
+    APP --> ASSESS
+    INFRA --> CONTAINER
+    CLOUD --> MULTICLOUD
+    REQS --> MESH
+    ASSESS --> CONTAINER
+    CONTAINER --> MESH
+    MESH --> SERVERLESS
+    SERVERLESS --> MULTICLOUD
+    MULTICLOUD --> FINOPS
+    ARCH --> MANIFESTS
+    ARCH --> HELM
+    FINOPS --> COSTDASH
+    INFRAARCH -.-> CONTAINER
+    DEVSEC -.-> MESH
+    SWARCH -.-> ASSESS
+    MIGRATION -.-> CONTAINER
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Cloud-Native Architecture: {platform}
+## S1: Cloud-Native Assessment
+### 12-Factor Compliance Audit
+| Factor | Status | Remediation | Effort |
+...
+### Containerization Readiness Checklist
+## S2: Container & Orchestration Strategy
+### Kubernetes Architecture
+### Resource Requests/Limits
+### Autoscaling Strategy
+## S3: Service Mesh & Networking
+### CNI & Mesh Selection
+### mTLS & Zero Trust
+## S4: Serverless Decision Framework
+### Decision Matrix per Workload
+## S5: Multi-Cloud & Portability
+## S6: FinOps Integration
+### Cost Allocation Labels
+### Optimization Levers
+```
+
+**Formato DOCX (bajo demanda):**
+
+```
+1. Executive Summary — cloud-native readiness + key decisions
+2. 12-Factor Compliance Matrix — status per factor con remediation plan
+3. Container Strategy — image standards, registry, K8s topology
+4. Networking & Security — mesh selection, Gateway API, mTLS
+5. Serverless vs Container Decisions — per-workload matrix
+6. Multi-Cloud Architecture — portability tier, abstraction approach
+7. FinOps Dashboard Spec — cost allocation, optimization targets
+Appendix A: K8s Manifest Templates
+Appendix B: Helm Values per Environment
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `A-01_Cloud_Native_Architecture_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con 12-factor compliance audit interactivo, service mesh comparison matrix, y FinOps cost allocation dashboard. WCAG AA, responsive, print-ready.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para auditoria 12-factor, matriz de decision serverless vs container y tracking de optimizacion FinOps.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de cloud-native, Kubernetes, containers, service mesh, serverless, FinOps, 12-factor. |
+| Completeness | 25% | 6 secciones cubren assessment, containers, mesh, serverless, multi-cloud, y FinOps. 12-factor audit completo. |
+| Clarity | 20% | Comparison matrices (mesh, autoscaler, serverless vs container) con criterios claros. Decision rules documentadas. |
+| Robustness | 20% | Edge cases (monolith, stateful, serverless at scale, regulated, small team) manejados. Gateway API migration path incluido. |
+| Efficiency | 10% | Variante ejecutiva reduce a S1+S2+S6 (~40%). Context detection automatiza tailoring a stack existente. |
+| Value Density | 15% | Resource request/limit guidance con formulas. FinOps tooling comparison accionable. Autoscaling decision matrix reusable. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar 12-factor audit completeness y FinOps tooling integration.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

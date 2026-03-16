@@ -7,6 +7,8 @@ description: >
   "evaluate change readiness", "map service portfolio", "program governance", "transformation roadmap",
   or mentions digital transformation, maturity assessment, multi-workstream, program architecture,
   change management, or transformation program.
+argument-hint: "<program_or_client_name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -332,7 +334,97 @@ Plan de transformación multi-año con sequencing de activación de servicios.
 - No incluye diseño organizacional completo (restructuración, re-org)
 - No define precios — solo magnitudes de esfuerzo (FTE-meses por workstream)
 - No ejecuta la transformación — produce el discovery y roadmap para su aprobación
-- El change readiness assessment es basado en entrevistas y documentación — no es un organizational development engagement completo
+- El change readiness assessment es basado en entrevistas y documentacion — no es un organizational development engagement completo
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Organizacion con madurez digital nivel 1 (ad-hoc) y ambicion de transformacion completa | No intentar programa completo. Disenar Foundation-only (governance, cloud basics, un workstream piloto). Construir musculo de cambio en 6-12 meses antes de escalar. Quick wins obligatorios para generar credibilidad. |
+| Programa ya en marcha con workstreams descoordinados y sin governance unificado | Enfocarse en S5 (Integration Points) y S6 (Governance) primero. Establecer contracts entre workstreams existentes. No reiniciar — alinear y orquestar lo que ya existe. Assessment retroactivo de S1-S2. |
+| Budget limitado que no permite activar todos los workstreams recomendados | Disenar programa modular donde cada fase es auto-contenida y entrega valor independiente. Phase-gate funding permite avanzar solo si hay presupuesto. Priorizar P1 workstreams unicamente. |
+| Transformacion post-M&A con dos organizaciones de stacks y culturas diferentes | Assessment de madurez por organizacion separada. Priorizar integracion de datos y unified governance antes de transformacion. Domain model unificado gradual, no big-bang. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Phased activation (waves) como default sobre big-bang | Activacion simultanea de todos los workstreams | Big-bang requiere organizacion nivel 4+ de madurez. Phased permite aprendizaje iterativo, reduce riesgo de change fatigue, y habilita phase-gate funding. |
+| People-first sobre technology-first cuando resistencia al cambio es alta | Technology-first con adoption posterior | Sin change readiness, la mejor tecnologia se convierte en shelfware. La adopcion sostenible genera resultados duraderos vs. resultados tecnicos rapidos que se revierten. |
+| Centralized PMO para programas >5 workstreams sobre federated governance | Governance federada descentralizada | En programas complejos con muchas interdependencias, un PMO centralizado provee visibilidad y control que governance federada no puede garantizar. Federated solo para organizaciones muy maduras. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        DTD[digital-transformation-discovery]
+    end
+    subgraph Inputs
+        STR[Business Strategy & Objectives] --> DTD
+        ORG[Org Structure & Culture] --> DTD
+        TECH[Current Technology Landscape] --> DTD
+    end
+    subgraph Outputs
+        DTD --> MAT[Digital Maturity Index]
+        DTD --> PORT[Service Portfolio Priority Matrix]
+        DTD --> RDM[Multi-Year Transformation Roadmap]
+        DTD --> GOV[Program Governance Model]
+    end
+    subgraph Related Skills
+        DTD -.-> EA[enterprise-architecture]
+        DTD -.-> CM[cloud-migration]
+        DTD -.-> MGT[management-discovery]
+        DTD -.-> SA[staff-augmentation-discovery]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Digital Transformation Discovery: {client_name}
+## S1: Digital Maturity Assessment
+  - Radar chart (5 dimensiones, scores 1-5)
+  - Digital Maturity Index (promedio ponderado)
+## S2: Service Portfolio Mapping
+  - Priority matrix (impacto x urgencia x readiness)
+## S3-S7: [remaining sections]
+## Anexos: Maturity evidence, resistance map, integration contracts
+```
+
+**Formato PPTX (secondary):**
+- Slide 1: Executive summary con Digital Maturity Index
+- Slide 2: Radar chart de madurez (5 dimensiones)
+- Slide 3: Service portfolio priority matrix
+- Slide 4: Program architecture con workstream dependencies
+- Slide 5: Transformation roadmap multi-year (Gantt visual)
+- Slide 6: Quick wins primeros 90 dias
+
+**Formato HTML (bajo demanda):**
+- Filename: `Digital_Transformation_Discovery_{client}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye radar chart de madurez interactivo, Gantt de roadmap multi-año (Mermaid CDN) y matriz de prioridad de servicios. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (circulación formal):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+
+**Formato XLSX (tracking y análisis):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por nivel de madurez/prioridad, auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Digital Maturity Assessment (5 dimensiones con scoring), Service Portfolio Priority Matrix (impacto x urgencia x readiness), Transformation Roadmap Tracker, Change Readiness Register.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de transformacion digital, madurez digital, programa multi-servicio | 7/10 |
+| Completeness | 25% | Las 7 secciones cubren assessment, portfolio, arquitectura, change readiness, integracion, governance, y roadmap | 7/10 |
+| Clarity | 20% | Cada workstream con scope, objetivos, y timeline claros. Dependencies explicitas. RACI sin ambiguedad. | 7/10 |
+| Robustness | 20% | Edge cases de madurez baja, post-M&A, budget limitado cubiertos. Phase-gate funding con kill criteria. | 7/10 |
+| Efficiency | 10% | Output proporcional al contexto (ejecutiva vs tecnica). Sin repeticion entre secciones. | 7/10 |
+| Value Density | 15% | Quick wins accionables, priority scoring cuantitativo, resistance map con estrategias concretas. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ---
 

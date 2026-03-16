@@ -1,5 +1,7 @@
 ---
 name: metodologia-staff-augmentation-discovery
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<project-or-client-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Staff augmentation discovery — talent gap analysis, skills matrix profiling, team composition modeling,
   onboarding and ramp-up design, retention framework, and staffing roadmap.
@@ -244,6 +246,97 @@ Definir core hours de overlap mínimo (4 horas). Ceremonias asíncronas para lo 
 
 **Ramp-down planning:**
 Cuando el engagement tiene fecha de finalización, planear la transferencia de conocimiento inversa (del equipo augmentado al equipo del cliente) con al menos 4 semanas de anticipación.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Cliente sin equipo base (greenfield team) | Tech Lead o Architect senior de MetodologIA establece cultura y estandares; onboarding se convierte en team building; incrementar ratio senior a 50% |
+| Rotacion alta en el equipo del cliente | Priorizar documentacion exhaustiva sobre conocimiento tribal; incluir knowledge management como responsabilidad explicita; buddy system reforzado |
+| Skills de nicho (mainframe, SAP, legacy) | Lead times de recruiting mas largos (8-12 semanas); considerar training de perfiles cercanos como alternativa; documentar riesgo de mercado escaso |
+| Multi-timezone distributed team | Definir core hours de overlap minimo (4 horas); ceremonias asincronas para lo que no requiere interaccion real-time; documentacion como ciudadano de primera clase |
+| Ramp-down planning con fecha de finalizacion | Planear transferencia de conocimiento inversa con al menos 4 semanas de anticipacion; documentar runbooks y decision logs antes del offboarding |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Capacidad de entrega sobre headcount | Medir exito por numero de personas incorporadas | El numero de personas es una metrica vanidosa; lo que importa es velocidad, calidad y sostenibilidad de entrega |
+| Integracion antes que incorporacion | Incorporar primero, integrar despues | Anadir talento sin plan de integracion crea friccion; onboarding, mentoring y acceso a herramientas determinan el time-to-productivity |
+| Retencion como estrategia primaria de staffing | Cubrir rotacion reactivamente | El costo de reemplazar (recruiting + onboarding + ramp-up + knowledge loss) supera 3-6 meses de salario; prevenir es mas rentable que cubrir |
+| Seniors primero para establecer estandares | Juniors primero por menor costo | Los seniors establecen cultura, estandares y mentorias; sin ese foundation, los juniors no tienen framework de crecimiento |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Staff Augmentation"]
+        TGA[Talent Gap Analysis]
+        SKM[Skills Matrix & Profiling]
+        TCM[Team Composition Modeling]
+        ONB[Onboarding & Ramp-Up]
+        RET[Retention & Performance]
+        ROAD[Staffing Roadmap]
+    end
+
+    subgraph Inputs["Inputs"]
+        SCOPE[Project Scope]
+        TEAM[Current Team]
+        ROLES[Role Requirements]
+        MARKET[Market Availability]
+    end
+
+    subgraph Outputs["Outputs"]
+        GAP[Gap Analysis Report]
+        COMP[Team Composition Model]
+        PLAN[Onboarding Plan]
+        SROAD[Phased Staffing Plan]
+    end
+
+    subgraph Related["Related Skills"]
+        ASIS[asis-analysis]
+        CHANGE[change-management]
+        TRAIN[mentoring-training]
+        DISC[discovery-orchestrator]
+    end
+
+    SCOPE --> TGA
+    TEAM --> SKM
+    ROLES --> TCM
+    MARKET --> TGA
+    TGA --> SKM --> TCM --> ONB --> RET --> ROAD
+    ROAD --> GAP
+    ROAD --> COMP
+    ROAD --> PLAN
+    ROAD --> SROAD
+    ASIS --> TGA
+    ONB --> TRAIN
+    RET --> CHANGE
+    ROAD --> DISC
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `Staff_Augmentation_Discovery_{project}.md` | Analisis completo de 6 secciones: talent gap, skills matrix, team composition, onboarding plan, retention framework y staffing roadmap con ramp-up curves. Diagramas Mermaid embebidos. |
+| **XLSX** | `Staff_Augmentation_Skills_Matrix_{project}.xlsx` | Skills matrix interactiva con proficiency levels por rol, heatmap de gaps current vs required, certificaciones requeridas vs deseables, y scoring de criticidad por perfil. |
+| **HTML** | `{fase}_staff_augmentation_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Incluye talent gap heatmap con criticidad por rol, team composition org chart visual y staffing roadmap con curvas de ramp-up. |
+| **DOCX** | `{fase}_staff_augmentation_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Talent Gap Analysis, Skills Matrix, Team Composition Model, Onboarding Plan, Retention Framework, Staffing Roadmap. |
+| **PPTX** | `{fase}_staff_augmentation_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo, Talent Gap Analysis (tabla de gaps con criticidad), Skills Matrix (heatmap), Team Composition (org chart visual), Onboarding & Ramp-Up timeline, Retention Framework (KPIs), Staffing Roadmap faseado, próximos pasos. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (staffing, talent gap, team composition, onboarding, augmentation) sin falsos positivos con organizational design o recruiting operativo |
+| Completeness | 25% | Las 6 secciones cubren gap analysis, skills matrix, composition, onboarding, retention y roadmap sin huecos; todos los roles requeridos evaluados |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada gap tiene scoring de criticidad; ramp-up timelines especificos por seniority; KPIs medibles |
+| Robustness | 20% | Maneja greenfield team, rotacion alta, skills de nicho, multi-timezone y ramp-down con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S3+S6 sin perder decisiones criticas de composicion y roadmap |
+| Value Density | 15% | Cada seccion aporta valor practico directo; talent gap scoring y ramp-up curves son herramientas de decision inmediata para delivery managers |
+
+**Umbral minimo: 7/10.**
 
 ---
 

@@ -1,5 +1,7 @@
 ---
 name: metodologia-performance-engineering
+argument-hint: "<system-or-service-name>"
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   Performance assessment — load testing, capacity planning, bottleneck analysis, caching, CDN, SLAs.
   Use when the user asks to "analyze performance", "design load tests", "plan capacity", "optimize caching",
@@ -305,11 +307,87 @@ Before finalizing delivery, verify:
 
 ---
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        PE[Performance Engineering]
+    end
+
+    subgraph Inputs
+        I1[System Metrics & APM Data] --> PE
+        I2[Traffic Patterns & Projections] --> PE
+        I3[Infrastructure Configuration] --> PE
+        I4[SLA Requirements] --> PE
+    end
+
+    subgraph Outputs
+        PE --> O1[Performance Baseline]
+        PE --> O2[Load Test Strategy & Scripts]
+        PE --> O3[Capacity Model - USL]
+        PE --> O4[Caching Architecture]
+        PE --> O5[CDN Configuration]
+        PE --> O6[SLO Definitions & Error Budgets]
+    end
+
+    subgraph Related Skills
+        RS1[observability] -.-> PE
+        RS2[infrastructure-architecture] -.-> PE
+        RS3[cloud-native-architecture] -.-> PE
+        RS4[software-architecture] -.-> PE
+        RS5[cost-estimation] -.-> PE
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Performance Engineering: {system_name}
+## S1: Performance Baseline
+### Latency Distribution (p50/p90/p95/p99) | Throughput | Profiling | Bottlenecks
+
+## S2: Load Testing Strategy
+### Tool Selection | Test Scenarios | CI/CD Gating | Synthetic Monitoring
+
+## S3: Capacity Planning
+### Demand Forecast | USL Model | Scaling Triggers | Runway
+
+## S4: Caching Architecture
+### Cache Layers | Strategy Selection | Invalidation | Hit Ratio Targets
+
+## S5: CDN & Edge Strategy
+### Content Classification | Origin Shielding | Edge Compute | Purge
+
+## S6: SLA/SLO Design
+### Percentile Targets | Error Budgets | Burn Rate Alerts
+```
+
+**Formato XLSX:**
+Modelo de capacidad USL en hoja de calculo: datos de throughput por nivel de concurrencia, ajuste de parametros alpha/beta, grafico de prediccion de saturacion, y calculadora de headroom por componente. Incluye hoja de SLO tracker con error budget consumption.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de performance, load testing, capacity, caching, SLO; no se confunde con observability pura |
+| Completeness | 25% | Las 6 secciones cubren baseline, load testing, capacity, caching, CDN, y SLOs con datos cuantitativos |
+| Clarity | 20% | Tablas de percentiles, scaling triggers, y cache strategies son operacionalizables sin interpretacion adicional |
+| Robustness | 20% | Edge cases (greenfield, legacy, microservices, multi-region, event-driven) tienen estrategia documentada |
+| Efficiency | 10% | Variante ejecutiva entrega baseline + capacity + SLOs en ~40%; k6 scripts listos para CI |
+| Value Density | 15% | Cada seccion produce artefactos ejecutables: scripts de carga, modelo USL, reglas de cache, alert rules |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Format Protocol
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
@@ -318,6 +396,13 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 ## Output Artifact
 
 **Primary:** `A-01_Performance_Engineering.html` — Executive summary, performance baseline, load testing strategy, capacity model, caching architecture, CDN configuration, SLA/SLO definitions with error budgets.
+
+| **HTML** | `{fase}_Performance_Engineering_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Light-First Technical. Incluye tabla de percentiles p50/p95/p99 por servicio, modelo USL interactivo, y SLO error budget tracker. |
+| **DOCX** | `{fase}_performance_engineering_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de percentiles, scaling triggers y SLO targets con zebra striping. Encabezados y pies de página con branding MetodologIA. |
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Performance_Engineering_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 **Secondary:** Load test scripts (k6/Gatling), USL capacity model spreadsheet, CDN cache rule configuration, SLO dashboard definitions, burn rate alert rules.
 

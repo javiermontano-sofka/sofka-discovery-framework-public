@@ -1,5 +1,7 @@
 ---
 name: metodologia-executive-pitch
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[decision-maker: cfo|cto|ceo|board] [budget: under1m|1m-5m|over5m] — e.g. 'cfo over5m'"
 description: >
   C-level executive pitch with financial modeling and persuasion architecture.
   Use when the user asks to "create a pitch", "build a business case", "justify the investment",
@@ -177,5 +179,85 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: 4 value pillars with key metrics
 - Gantt chart: investment timeline by phase
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| No financial data from prior phases available; all metrics must be estimated | Use industry benchmarks for all projections; tag every figure as [SUPUESTO]; add sensitivity analysis with wider variance bands (+/-30%) |
+| Decision-maker changes between pitch preparation and presentation (e.g., CFO replaced by CTO) | Re-run audience conditional logic; restructure lead section and emphasis; preserve financial model but shift narrative framing |
+| Client explicitly forbids ROI/NPV claims ("we don't trust projections") | Pivot to qualitative value narrative: risk reduction, capability uplift, competitive positioning; present cost as magnitude ranges only |
+| Budget is pre-approved but scope is contested among multiple sponsors | Skip financial justification sections; focus on scope alignment via 3-option comparison; add stakeholder concern mapping per option |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Use Problem-Agitate-Solve (PAS) as default persuasion architecture | AIDA (Attention-Interest-Desire-Action) or Minto Pyramid | PAS anchors on cost of inaction, which resonates strongest with C-level budget decisions; AIDA is better for marketing, Minto for analytical reports |
+| Always present 3 options (Do Nothing vs Alternative vs Recommended) | Present single recommended option | Multiple options give the decision-maker agency; single-option pitches feel prescriptive and trigger resistance in consensus-driven cultures |
+| Lead with audience-specific framing (CFO: financial, CTO: technical) | One-size-fits-all executive summary | Audience-specific framing increases hit rate by matching the decision-maker's primary evaluation lens; generic summaries dilute impact |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Executive Pitch Engine"]
+        A["PAS Persuasion Architecture"] --> B["Problem Statement"]
+        A --> C["Value Proposition 4 Pillars"]
+        A --> D["Financial Model"]
+        B --> E["Call to Action"]
+        C --> E
+        D --> E
+    end
+    subgraph Inputs["Inputs"]
+        F["Decision-maker Type"] --> A
+        G["Budget Range"] --> D
+        H["Prior Phase Findings"] --> B
+    end
+    subgraph Outputs["Outputs"]
+        E --> I["Pitch Ejecutivo"]
+        E --> J["Business Case"]
+    end
+    subgraph Related["Related Skills"]
+        K["scenario-analysis"] -.-> C
+        L["solution-roadmap"] -.-> D
+        M["dynamic-sme"] -.-> B
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `06_Pitch_Ejecutivo_{cliente}_{WIP}.md`
+- Structure: TL;DR > 7-section narrative > Mermaid mindmap (value pillars) > Mermaid Gantt (investment timeline) > ghost menu
+
+### PPTX
+- Filename: `06_Pitch_Ejecutivo_{cliente}_{WIP}.pptx`
+- Structure: Title slide > Hero KPIs > Problem Statement > Value Pillars > Option Comparison > Investment Summary > Call to Action > Risk Appendix; 1 message per slide; speaker notes with evidence references
+
+### HTML (bajo demanda)
+- Filename: `06_Pitch_Ejecutivo_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive page con hero KPIs animados, financial model interactivo, y 3-option comparison visual. WCAG AA, responsive, print-ready.
+
+### DOCX (bajo demanda)
+- Filename: `06_Pitch_Ejecutivo_{cliente}_{WIP}.docx`
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por impacto financiero y nivel de riesgo, auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Financial Model (NPV/IRR/Payback pre-calculados), 3-Option Comparison Matrix, Investment Timeline by Phase, Risk Assessment Register.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026

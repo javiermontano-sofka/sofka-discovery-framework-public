@@ -1,6 +1,7 @@
 ---
 name: metodologia-change-readiness-assessment
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[context-path] [scope: full|pulse|continuous] — e.g. './discovery-artifacts/ full'"
 description: >
   Organizational change readiness assessment producing readiness scorecard, resistance map, and intervention plan.
   Use when the user asks to "assess change readiness", "evaluate organizational readiness", "change impact analysis",
@@ -204,5 +205,83 @@ KPIs for tracking readiness over time: adoption rate, proficiency rate, utilizat
 ### Prompts
 - `Read ${CLAUDE_SKILL_DIR}/prompts/use-case-prompts.md` — Ready-to-use prompts
 - `Read ${CLAUDE_SKILL_DIR}/prompts/metaprompts.md` — Meta-strategies
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Organization undergoing simultaneous M&A and technology transformation | Produce dual-org ADKAR scorecards (acquiring + acquired entity); create a combined view with weighted averages; flag culture clash as a dedicated risk dimension |
+| ADKAR scores are uniformly low (<2) across all stakeholder groups | Escalate to executive sponsor immediately; recommend a "readiness sprint" (4-6 weeks) before proceeding with transformation; the organization is not ready to absorb the change |
+| Change readiness assessment requested but no stakeholder map exists | Infer stakeholder groups from org chart, project RACI, or solution roadmap team section; tag all groupings as [INFERENCIA]; recommend stakeholder mapping as a prerequisite |
+| Assessment reveals executive sponsor is the primary source of resistance | Document the finding with observable indicators only (not personal judgments); escalate to the next governance level; recommend executive coaching or sponsor replacement as intervention options |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Use ADKAR as the primary readiness framework | Kotter 8-Step or Lewin 3-Phase models | ADKAR provides per-dimension scoring at the individual/group level, enabling targeted interventions; Kotter and Lewin are organizational-level and harder to operationalize for specific barrier points |
+| Measure readiness at stakeholder-group level, not individual level | Individual-level assessment for every affected person | Individual assessment does not scale beyond 50 people; group-level patterns are sufficient for intervention design and respect assessment effort constraints |
+| Require observable indicators for every ADKAR score | Allow self-reported readiness surveys as primary evidence | Self-reported readiness suffers from social desirability bias; observable indicators (attendance, participation, skill demonstrations) provide more reliable data |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Change Readiness Assessment"]
+        A["Change Impact Profile"] --> B["ADKAR Scorecard"]
+        B --> C["Resistance Heat Map"]
+        C --> D["Intervention Plan"]
+        D --> E["Measurement Framework"]
+    end
+    subgraph Inputs["Inputs"]
+        F["Stakeholder Map"] --> A
+        G["Change Description"] --> A
+        H["Historical Change Data"] --> B
+    end
+    subgraph Outputs["Outputs"]
+        E --> I["Readiness Report"]
+        D --> J["Executive Scorecard"]
+    end
+    subgraph Related["Related Skills"]
+        K["adoption-strategy"] -.-> D
+        L["solution-roadmap"] -.-> A
+        M["user-representative"] -.-> B
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `Evaluacion_Readiness_{cliente}_{WIP}.md`
+- Structure: TL;DR > Change Impact Profile > ADKAR Scorecards per group > Resistance Heat Map > Change Capacity > Risk Register > Intervention Plan > Measurement KPIs > Mermaid quadrant + heatmap + flowchart > ghost menu
+
+### PPTX
+- Filename: `Evaluacion_Readiness_{cliente}_{WIP}.pptx`
+- Structure: Executive summary slide > Impact profile visual > ADKAR radar chart per group > Heat map slide > Top 5 interventions > KPI dashboard spec; speaker notes with evidence and escalation triggers
+
+### HTML (bajo demanda)
+- Filename: `Evaluacion_Readiness_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive page con ADKAR scorecards por grupo, resistance heatmap interactivo, y plan de intervenciones priorizado. WCAG AA, responsive, print-ready.
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para scorecard ADKAR por grupo de stakeholders, registro de riesgos de cambio y tracking del plan de intervenciones.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ---

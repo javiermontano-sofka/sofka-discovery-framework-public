@@ -4,6 +4,8 @@ description: >
   WCAG 2.1/2.2 compliance assessment — a11y testing strategy, remediation priorities, inclusive design.
   Use when the user asks to "audit accessibility", "assess WCAG compliance", "evaluate a11y",
   "review inclusive design", or mentions screen readers, ARIA, color contrast, keyboard navigation.
+argument-hint: "<product-or-application-name>"
+author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -73,6 +75,82 @@ The user provides a product or application name as `$ARGUMENTS`. Parse `$1` as t
 - Full WCAG AAA conformance is aspirational; AA is the standard legal/regulatory target
 - Does not replace formal accessibility audit by certified professionals (IAAP)
 - Assistive technology behavior varies across versions and platforms
+
+## Casos Borde
+
+1. **Aplicacion legacy sin semantica HTML** — Cuando el producto usa tablas para layout o divs sin roles ARIA, el skill genera un inventario de deuda semantica y prioriza remediacion por flujo critico en lugar de cobertura completa.
+2. **SPA con contenido dinamico pesado** — Single Page Applications que actualizan el DOM sin notificar al screen reader requieren auditoria especifica de live regions, focus management y route announcements.
+3. **Contenido multimedia sin captions** — Si el producto tiene video/audio extenso sin subtitulos ni transcripciones, el skill calcula esfuerzo de captioning y propone priorizacion por trafico y criticidad del contenido.
+4. **Objetivo AAA solicitado** — Cuando se pide conformidad AAA, el skill advierte que es aspiracional, identifica criterios AAA alcanzables y separa los que requieren inversion desproporcionada.
+
+## Decisiones y Trade-offs
+
+1. **Auditoria automatizada + manual vs. solo automatizada** — Se requiere ambas porque las herramientas automaticas detectan solo 30-40% de issues; el costo adicional de testing manual se justifica por la cobertura critica que aporta.
+2. **Nivel AA como default vs. A** — AA es el estandar legal en la mayoria de jurisdicciones (ADA, EN 301 549) y cubre issues de mayor impacto; A es insuficiente para usuarios reales.
+3. **Priorizacion por impacto en usuario vs. por esfuerzo** — Se prioriza impacto en usuario primero (bloqueos de acceso antes que inconvenientes), aceptando que algunas correcciones de alto impacto son costosas.
+4. **Testing con un AT vs. multiples** — Se requiere minimo un screen reader (VoiceOver o NVDA) como baseline; testing con multiples ATs es ideal pero se deja como recomendacion, no requisito.
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Accessibility Audit"]
+        A[WCAG Assessment] --> B[Violation Inventory]
+        A --> C[Remediation Roadmap]
+        A --> D[Testing Strategy]
+    end
+    subgraph Inputs["Inputs"]
+        E[Product/App Name] --> A
+        F[Target Level A/AA/AAA] --> A
+        G[Page/Flow Scope] --> A
+    end
+    subgraph Outputs["Outputs"]
+        A --> H[Scorecard a11y]
+        B --> I[Inventario Violaciones]
+        C --> J[Hoja de Ruta]
+        D --> K[Guia Diseno Inclusivo]
+    end
+    subgraph Related["Related Skills"]
+        L[testing-strategy] -.-> D
+        M[ux-research] -.-> A
+        N[design-system] -.-> C
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `quality_a11y-audit_{producto}_{WIP}.md`
+- Structure: TL;DR -> Scorecard por principio POUR -> Inventario de violaciones (tabla) -> Roadmap priorizado -> Estrategia de testing
+
+### HTML
+- Filename: `quality_a11y-audit_{producto}_{WIP}.html`
+- Estructura: dashboard interactivo con filtros por severidad, principio WCAG y componente; incluye enlaces directos a criterios WCAG
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para scorecards de accesibilidad, inventario de violaciones y matrices de remediacion.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Activa ante "audit accessibility", "WCAG", "a11y" sin confundir con testing general o UX review |
+| Completeness | 25% | Cubre los 4 principios POUR, testing automatizado y manual, y roadmap de remediacion |
+| Clarity | 20% | Cada violacion referencia criterio WCAG especifico con remediacion concreta |
+| Robustness | 20% | Maneja SPAs, legacy sin semantica, contenido multimedia y objetivo AAA |
+| Efficiency | 10% | 8 pasos sin redundancia; automatizado primero para filtrar antes de manual |
+| Value Density | 15% | Scorecard y roadmap son directamente presentables a stakeholders |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ## Cross-References
 

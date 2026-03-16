@@ -8,6 +8,8 @@ description: >
   "methodology assessment", "governance evaluation", "delivery performance analysis", "Factor WOW assessment",
   "management transformation", "agile maturity", "SAFe assessment", "PMO setup", or mentions "Disciplined Agile",
   "delivery excellence", "management consulting", "project governance", "ceremony health".
+argument-hint: "<pmo_docs_path> [full|executive]"
+author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -301,6 +303,95 @@ Hoja de ruta de transformacion de management en 3 horizontes.
 - Decisiones de reestructuracion de equipos
 - Integracion post-merger de culturas de gestion
 - Decisiones contractuales (Fixed Price vs T&M vs Staff Aug)
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Equipo sin metodologia formal — solo practicas emergentes no documentadas | Evaluar practicas emergentes via observacion de artefactos (Jira boards, meeting invites, release history). Documentar lo que funciona informalmente antes de formalizar. Score maximo de 2 sin evidencia documental. |
+| Multiples metodologias coexistiendo (Scrum + Waterfall + Kanban en diferentes equipos) | Mapear metodologia por equipo/proyecto. Evaluar coherencia y friccion entre modelos. Considerar Disciplined Agile como unificador. No forzar uniformidad si el contexto lo justifica. |
+| PMO percibido como burocracia que frena delivery | Evaluar valor agregado vs control puro. Medir lead time de procesos PMO. Recomendar PMO agil (servant-leadership model). Quick wins: eliminar reportes que nadie lee, simplificar approvals. |
+| Post-merger con dos culturas metodologicas incompatibles | Assessment separado por organizacion. Identificar practicas comunes como base. Modelo unificado gradual (12-18 meses). No imponer cultura de una empresa sobre otra. Governance compartido como primer paso. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Factor WOW como framework de evaluacion de competencias sobre frameworks genericos (SFIA, competency matrix) | SFIA 8 o competency matrix corporativa | Factor WOW (Responsabilidad, Alta Iniciativa, Coordinacion, Anticipacion, Proactividad) mide competencias especificas de delivery excellence que frameworks genericos no capturan. Alineado con cultura MetodologIA. |
+| Assessment basado en evidencia (min 2 evidencias por score) sobre self-assessment | Encuestas de auto-evaluacion del equipo | Self-assessment tiene bias de deseabilidad social (+1.5 puntos promedio). Evidencia verificable (artefactos, metricas, observacion) produce scores mas honestos y accionables. |
+| Roadmap en 3 horizontes (0-3, 3-9, 9-18 meses) sobre plan unico de transformacion | Plan de transformacion monolitico a 18 meses | Horizontes permiten ajuste iterativo. Quick wins en H1 construyen credibilidad. H2 y H3 se refinan con aprendizajes de fases anteriores. Plan monolitico asume predictibilidad que no existe. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        MGT[management-discovery]
+    end
+    subgraph Inputs
+        METH[Methodology Documentation] --> MGT
+        TEAM[Team Structure & Certifications] --> MGT
+        PERF[Delivery Metrics History] --> MGT
+    end
+    subgraph Outputs
+        MGT --> MAT[PMO Maturity Assessment]
+        MGT --> FIT[Methodology Fitness Report]
+        MGT --> WOW[Factor WOW Scorecard]
+        MGT --> RDM[Management Transformation Roadmap]
+    end
+    subgraph Related Skills
+        MGT -.-> PPM[project-program-management]
+        MGT -.-> DTD[digital-transformation-discovery]
+        MGT -.-> DO[discovery-orchestrator]
+        MGT -.-> WF[workshop-facilitator]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Management Discovery: {project_name}
+## S1: PMO Maturity Assessment
+  - Maturity level (L1-L4) con evidencia
+  - Radar chart 5 dimensiones
+## S2: Methodology Fitness
+  - Fit-to-context por factor
+## S3-S7: [remaining sections]
+## Anexos: Certification inventory, ceremony health audit, Factor WOW evidence log
+```
+
+**Formato XLSX (secondary):**
+- Hoja 1: PMO Maturity scoring (dimension, score, evidencia, gap, target)
+- Hoja 2: Methodology fitness matrix (factor, estado actual, optima, fit)
+- Hoja 3: Team capability inventory (nombre, rol, certificaciones, experiencia)
+- Hoja 4: Delivery metrics baseline (metrica, valor actual, benchmark, status, trend)
+- Hoja 5: Factor WOW scorecard (dimension, score, evidencias, gap)
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Management_Discovery_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+
+**Formato HTML (bajo demanda):**
+- Filename: `Management_Discovery_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye radar charts de madurez PMO y Factor WOW, heatmap de methodology fitness, y roadmap de transformacion con timeline visual. WCAG AA, responsive, print-ready.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de PMO, methodology, governance, delivery performance, Factor WOW | 7/10 |
+| Completeness | 25% | Las 7 secciones cubren maturity, fitness, capabilities, governance, performance, WOW, y roadmap | 7/10 |
+| Clarity | 20% | Cada score con evidencia verificable. Metricas interpretadas en contexto. Recomendaciones con trade-offs explicitos. | 7/10 |
+| Robustness | 20% | Edge cases de multi-metodologia, PMO burocracia, post-merger cubiertos. Workarounds para inputs faltantes documentados. | 7/10 |
+| Efficiency | 10% | Output proporcional a variante (ejecutiva vs tecnica). Sin seccion redundante. Evidence tags consistentes. | 7/10 |
+| Value Density | 15% | Roadmap con quick wins accionables. Factor WOW con plan de desarrollo por dimension. Metricas con targets concretos. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ## Validation Gate
 

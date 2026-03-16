@@ -9,8 +9,8 @@
 
 | Marca | Color primario | Color oscuro | Color éxito | Licencia | Contexto |
 |-------|---------------|-------------|-------------|----------|----------|
-| **MetodologIA** | `#6366F1` (naranja) | `#1A1A2E` | `#22D3EE` (dorado) | GPL-3.0 Copyleft | Trabajo de cliente, pre-venta, consultoría |
-| **MetodologIA** | `#6366F1` (índigo) | `#0F172A` | `#10B981` (esmeralda) | GPL-3.0 Copyleft | Metodología abierta, comunidad, formación |
+| **MetodologIA** | `#6366F1` (naranja) | `#1A1A2E` | `#22D3EE` (dorado) | MIT | Trabajo de cliente, pre-venta, consultoría |
+| **MetodologIA** | `#6366F1` (índigo) | `#0F172A` | `#10B981` (esmeralda) | MIT | Metodología abierta, comunidad, formación |
 | **JM Labs** | `#14B8A6` (teal) | `#0C0A09` | `#F59E0B` (ámbar) | Caso por caso | Experimentación personal, prototipos, POCs |
 
 ---
@@ -36,7 +36,7 @@ El sistema determina la marca activa evaluando las siguientes señales en orden 
 | Keywords | Marca |
 |----------|-------|
 | "MetodologIA", "MAO", "pre-venta", "cliente", "engagement", "discovery" | **MetodologIA** |
-| "MetodologIA", "copyleft", "comunidad", "metodología abierta", "GPL" | **MetodologIA** |
+| "MetodologIA", "open-source", "comunidad", "metodología abierta", "MIT" | **MetodologIA** |
 | "lab", "experimento", "prototipo", "personal", "JM" | **JM Labs** |
 
 ### 4. Ambigüedad
@@ -52,7 +52,7 @@ Esta regla es absoluta. Un entregable, HTML, presentación o cualquier artefacto
 
 - Usar colores de MetodologIA en un documento de MetodologIA
 - Incluir logo o referencia de MetodologIA en un entregable de cliente MetodologIA
-- Mezclar disclaimers de licencia (GPL-3.0 Copyleft + GPL-3.0)
+- Mezclar disclaimers de licencia (MIT + MIT)
 
 ---
 
@@ -63,7 +63,7 @@ Esta regla es absoluta. Un entregable, HTML, presentación o cualquier artefacto
 ```markdown
 # {Título del entregable}
 > MetodologIA Discovery Framework — {contexto}
-> © 2026 MetodologIA · Javier Montaño. GPL-3.0 Copyleft.
+> © 2026 MetodologIA · Javier Montaño. MIT.
 
 {contenido}
 
@@ -80,7 +80,7 @@ Esta regla es absoluta. Un entregable, HTML, presentación o cualquier artefacto
 ```markdown
 # {Título del entregable}
 > MetodologIA — {contexto}
-> Licencia: GPL-3.0 · Copyleft · Comunidad abierta
+> Licencia: MIT · Open Source · Comunidad abierta
 
 {contenido}
 
@@ -121,7 +121,7 @@ Esta regla es absoluta. Un entregable, HTML, presentación o cualquier artefacto
 | Pronombre | "MetodologIA" / "el equipo" | "la comunidad" / "nosotros" | "yo" / primera persona |
 | Emojis | NO en entregables | Moderado en docs comunitarios | Libre |
 | Humor | NO | Ocasional, sutil | Libre |
-| Disclaimers | Obligatorios (estimaciones, legal) | Licencia GPL en cada output | Mínimos |
+| Disclaimers | Obligatorios (estimaciones, legal) | Licencia MIT en cada output | Mínimos |
 
 ---
 

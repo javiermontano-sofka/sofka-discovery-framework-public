@@ -1,5 +1,7 @@
 ---
 name: metodologia-mini-apps-discovery
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<path-to-artifacts> [full|executive] [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual]"
 description: >
   Mini Apps and Low-Code discovery — citizen developer readiness, platform assessment (Power Platform, OutSystems,
   Mendix, Retool), use case identification and prioritization, governance model, integration architecture, and
@@ -264,6 +266,97 @@ Per phase: prerequisites from previous phase, risk factors, rollback criteria if
 - [ ] Security guardrails defined for citizen development
 - [ ] Quick wins identified that demonstrate value AND governance simultaneously
 - [ ] Recommendations sequenced by dependency and organizational readiness
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Organizacion sin procesos manuales identificables | Realizar workshop de process discovery con stakeholders de negocio; mapear procesos basados en spreadsheets como punto de partida; flag como [SUPUESTO] |
+| Shadow IT extensivo con apps low-code no sancionadas | Inventariar apps existentes antes de recomendar plataforma; evaluar migracion vs consolidacion; establecer amnistia temporal para registrar apps no gobernadas |
+| Resistencia de IT a citizen development | Disenar modelo de co-creacion IT-negocio; comenzar con pilotos supervisados que demuestren gobernanza; escalar solo con evidencia de compliance |
+| Multiples plataformas low-code ya en uso | Evaluar consolidacion vs coexistencia; mapear bots y apps por plataforma; priorizar interoperabilidad sobre uniformidad si el costo de migracion es alto |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Gobernanza minima L2 antes de habilitar citizen development | Habilitar herramientas sin gobernanza previa | Sin guardrails, citizen development produce shadow IT a escala; los precedentes toxicos de pilotos sin gobernanza escalan con la adopcion |
+| Quick wins que demuestren valor Y gobernanza simultaneamente | Quick wins solo de valor sin gobernanza | Si los pilotos ignoran seguridad y gobernanza, establecen precedentes que son costosos de revertir cuando se escala |
+| CoE como infraestructura habilitadora, no como burocracia | Gobernanza distribuida sin CoE | Sin un centro de excelencia, la consistencia de estandares y la calidad de las apps depende de la disciplina individual, que no escala |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Mini Apps & Low-Code"]
+        CDR[Citizen Developer Readiness]
+        PA[Platform Assessment]
+        UCI[Use Case Identification]
+        GOV[Governance Model]
+        IA[Integration Architecture]
+        ROAD[Adoption Roadmap]
+    end
+
+    subgraph Inputs["Inputs"]
+        INV[Application Landscape]
+        POL[IT Governance Policies]
+        DEPT[Target Departments]
+        SYS[Enterprise Systems]
+    end
+
+    subgraph Outputs["Outputs"]
+        ASSESS[Readiness Assessment]
+        PLAT[Platform Recommendation]
+        CASES[Prioritized Use Cases]
+        PLAN[Phased Roadmap]
+    end
+
+    subgraph Related["Related Skills"]
+        RPA[rpa-discovery]
+        SOL[solutions-architecture]
+        SEC[security-architecture]
+        CHANGE[change-management]
+    end
+
+    INV --> CDR
+    POL --> GOV
+    DEPT --> CDR
+    SYS --> IA
+    CDR --> PA --> UCI --> GOV --> IA --> ROAD
+    ROAD --> ASSESS
+    ROAD --> PLAT
+    ROAD --> CASES
+    ROAD --> PLAN
+    PLAN --> RPA
+    PLAN --> SOL
+    GOV --> SEC
+    ROAD --> CHANGE
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `Mini_Apps_Discovery_{project}.md` | Assessment de 6 secciones: readiness scoring, platform comparison SUBSTANCIA/PROMESA/RIESGO/HUMO, use case prioritization con Impact x Complexity, governance model con CoE, integration architecture, y adoption roadmap faseado. Diagramas Mermaid embebidos. |
+| **PPTX** | `Mini_Apps_Discovery_{project}.pptx` | Presentacion ejecutiva con quadrant chart de priorizacion, timeline de adopcion, y readiness heatmap por departamento. Para alineacion con sponsors ejecutivos. |
+| **HTML** | `Mini_Apps_Discovery_{project}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Dark-First Executive. Incluye quadrant chart interactivo de priorizacion Impact x Complexity, readiness heatmap por departamento, y roadmap de adopcion faseado con hitos de gobernanza. |
+| **DOCX** | `{fase}_Mini_Apps_Discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold. |
+| **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Readiness Assessment, Platform Comparison, Use Case Prioritization, Governance Model, Integration Architecture, Adoption Roadmap. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (low-code, citizen developer, Power Platform, mini apps) sin falsos positivos con RPA o digital transformation generica |
+| Completeness | 25% | Las 6 secciones cubren readiness, plataforma, casos de uso, gobernanza, integracion y roadmap sin huecos; todos los departamentos target evaluados |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; scoring de readiness con criterios cuantificables; recomendaciones de plataforma con justificacion explicita |
+| Robustness | 20% | Maneja shadow IT extensivo, resistencia de IT, multiples plataformas, y ausencia de procesos documentados con workarounds especificos |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S3+S6 sin perder capacidad de decision |
+| Value Density | 15% | Cada seccion aporta valor practico directo; readiness scoring y platform comparison son herramientas de decision inmediata para sponsors |
+
+**Umbral minimo: 7/10.**
+
+---
 
 ## Output Artifact
 

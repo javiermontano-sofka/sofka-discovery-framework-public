@@ -4,6 +4,8 @@ description: >
   ML/AI system design — model lifecycle, feature stores, experiment tracking, model serving, MLOps pipelines.
   Use when the user asks to "design an ML system", "architect model serving", "set up experiment tracking",
   "design feature store", "plan MLOps pipeline", or mentions model registry, A/B testing, drift detection, or retraining triggers.
+argument-hint: "<system-or-project-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -314,5 +316,152 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Model cards (.md), feature registry catalog, MLOps pipeline DAG diagram, bias audit report template.
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Notebook-to-production migration | Refactor en codigo modular, agregar tests, containerizar, integrar con CI/CD. Path de adopcion incremental. Esperar resistencia del equipo. |
+| Multi-model systems (ensemble, pipeline, routing) | Dependency management entre modelos, versionado cross-model, cascade failure scenarios. Pinear model versions para reproducibilidad. |
+| Edge/on-device deployment | Constraints: model size <50MB, quantization (INT8/TFLite), OTA updates, offline capability. Fallback cuando no hay conectividad. |
+| Industrias reguladas (salud, finanzas) | Audit trail, explainability y bias detection mandatorios desde dia 1. Model cards, decision logging, human override no son opcionales. |
+| Cold start / no historical data | Feature stores y training pipelines asumen datos historicos. Bootstrapping con reglas, fallbacks rule-based, progressive learning con feedback loops. |
+| LLM/Foundation model integration | Prompt versioning, evaluation frameworks (human + automated), cost per inference tracking, guardrails para hallucination y toxicity, RAG pipeline si aplica. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Feature store como single source of truth | Features calculados por modelo, duplicados entre equipos | Features compartidas, versionadas, con lineage previenen training-serving skew y eliminan re-trabajo. 3+ modelos compartiendo features justifica la inversion. |
+| Monitoring > accuracy como principio | Optimizar accuracy primero, monitoring despues | Un modelo con 95% accuracy que driftea sin deteccion es peor que 85% monitoreado. Drift detection es dia 1, no dia N. |
+| Responsible AI checklist mandatoria (7 items) | Governance opcional o post-launch | Model card, bias metrics, explainability, data audit, human override, audit trail, y compliance mapping son pre-requisitos de produccion, no nice-to-haves. |
+| MLflow para multi-cloud, W&B para research-heavy | Single experiment tracking tool para todos | MLflow (OSS, multi-cloud, broad integrations) para produccion. W&B (rich collaboration, sweep search) para equipos research-heavy. Diferentes equipos pueden usar diferentes tools. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        TOPO["ML System Topology"]
+        FEATURE["Feature Engineering & Store"]
+        EXPERIMENT["Experiment Tracking"]
+        SERVING["Model Serving"]
+        MLOPS["MLOps Pipeline"]
+        GOVERNANCE["Governance & Responsible AI"]
+    end
+
+    subgraph Inputs["Entradas"]
+        DATA["Training Data"]
+        USECASES["ML Use Cases"]
+        INFRA["GPU/CPU Infrastructure"]
+        REQS["Latency & SLA Requirements"]
+    end
+
+    subgraph Outputs["Salidas"]
+        ARCH["ML System Architecture"]
+        MODELCARD["Model Cards"]
+        REGISTRY["Feature Registry Catalog"]
+        DAGDIAG["MLOps Pipeline DAG"]
+        BIAS["Bias Audit Report Template"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        DE["data-engineering"]
+        BIARCH["bi-architecture"]
+        SWARCH["software-architecture"]
+        INFRAARCH["infrastructure-architecture"]
+    end
+
+    DATA --> FEATURE
+    USECASES --> TOPO
+    INFRA --> SERVING
+    REQS --> SERVING
+    TOPO --> FEATURE
+    FEATURE --> EXPERIMENT
+    EXPERIMENT --> SERVING
+    SERVING --> MLOPS
+    MLOPS --> GOVERNANCE
+    ARCH --> MODELCARD
+    ARCH --> REGISTRY
+    ARCH --> DAGDIAG
+    GOVERNANCE --> BIAS
+    DE -.-> FEATURE
+    BIARCH -.-> SERVING
+    SWARCH -.-> TOPO
+    INFRAARCH -.-> SERVING
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Data Science Architecture: {project}
+## S1: ML System Topology
+### MLOps Maturity Level: {0|1|2|3}
+### Training Pipeline Topology (Mermaid)
+### Serving Topology
+## S2: Feature Engineering & Store Design
+### Feature Store Selection: {Feast|Tecton|Hopsworks}
+### Feature Pipeline Architecture
+### Training-Serving Consistency Strategy
+## S3: Experiment Tracking & Model Registry
+### Tool Selection: {MLflow|W&B|Vertex}
+### Promotion Workflow (Staging > Production)
+## S4: Model Serving Architecture
+### Serving Pattern: {real-time|batch|streaming}
+### A/B Testing Infrastructure
+### Monitoring Stack Selection
+## S5: MLOps Pipeline Design
+### CI/CD Stages for ML
+### Retraining Triggers
+### GPU Cost Optimization
+## S6: Governance & Responsible AI
+### Responsible AI Checklist (7 items)
+### Model Risk Classification
+```
+
+**Formato HTML (bajo demanda):**
+
+```
+A-01_Data_Science_Architecture_{project}_{WIP}.html
+```
+HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye MLOps maturity level visual, feature store comparison matrix interactiva, y responsible AI checklist con estado por item. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+
+```
+1. Executive Summary — ML system maturity + key architectural decisions
+2. ML System Topology — training & serving paths, data flow diagram
+3. Feature Store Design — offline/online stores, registry, consistency strategy
+4. Experiment Tracking — tool selection, versioning, reproducibility framework
+5. Model Serving — deployment patterns, A/B testing, monitoring stack
+6. MLOps Pipeline — CI/CD stages, retraining triggers, cost optimization
+7. Responsible AI Governance — checklist, bias metrics, explainability, compliance
+Appendix A: Model Card Template
+Appendix B: Bias Audit Report Template
+Appendix C: GPU Cost Optimization Formulas
+```
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Data_Science_Architecture_{cliente}_{WIP}.xlsx`
+- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por MLOps maturity level y riesgo, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Data_Science_Architecture_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de ML system, model serving, experiment tracking, feature store, MLOps, drift detection, retraining triggers. |
+| Completeness | 25% | 6 secciones cubren topology, features, experiments, serving, MLOps, y governance. Responsible AI checklist con 7 items mandatorios. |
+| Clarity | 20% | Comparison matrices (feature stores, experiment trackers, monitoring tools) con criterios de seleccion claros. MLOps maturity levels 0-3 definidos. |
+| Robustness | 20% | Edge cases (notebook-to-prod, multi-model, edge deployment, regulated, cold start, LLM) manejados con estrategias especificas. |
+| Efficiency | 10% | Variante ejecutiva reduce a S1+S4+S6 (~40%). GPU cost optimization con formulas concretas (spot, quantization, cascade routing). |
+| Value Density | 15% | Responsible AI checklist accionable. Feature store comparison per ecosystem. GPU cost formulas con savings estimates. Model card template incluido. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar feature store design y responsible AI checklist completeness.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

@@ -1,6 +1,7 @@
 ---
 name: metodologia-multidimensional-feasibility
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[scenario-path] [depth: full-7d|fast-4d|single-dimension] — e.g. './05_Escenarios.md full-7d'"
 description: >
   Deep feasibility validation across 7 dimensions by a Council of Seven Sages (Think Tank).
   Postdoctoral-level research rigor applied to scenario validation. Validates technical claims,
@@ -219,5 +220,93 @@ PHASE 5: VERDICT
 - Economic analysis produces magnitudes and intervals, NEVER prices
 - Academic evidence limited to what is searchable — may miss proprietary research
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| No codebase access available for D1 (Research & Technology Readiness) validation | Mark all D1 technical claims as [INFERENCIA]; increase uncertainty margins by 30%; add "codebase access" as a mandatory condition in the verdict; recommend code-level spike as MUST-DO |
+| Vendor refuses to share benchmarks or internal documentation for D4 assessment | Flag as [VENDOR-DOC: UNAVAILABLE]; increase D4 risk score by 1 point; recommend independent benchmarking PoC; add vendor transparency as a contractual condition |
+| Think Tank vote results in a 4-3 split (minimum 5 required for verdict) | Document both majority and minority positions with full evidence; recommend targeted spike on the contested dimension(s); schedule re-vote after spike results are available |
+| All 7 sages agree FEASIBLE with high confidence — unanimous positive verdict | Rare case. Verify evidence strength across all dimensions; reduce contingency budget by 10-15%; document as "high confidence" but maintain standard governance gates |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Require 5-of-7 sage agreement for a binding verdict | Simple majority (4-of-7) or unanimous (7-of-7) | Simple majority allows too-narrow margins on critical decisions; unanimity is unrealistic for complex multi-dimensional analysis; 5-of-7 ensures strong consensus while allowing productive dissent |
+| Cross-validate every finding with at least 2 sages from other dimensions | Allow each sage to work independently without peer review | Independent analysis creates dimensional silos; cross-validation catches blind spots where one dimension's assumption is another dimension's risk |
+| Document dissenting positions with equal rigor as majority positions | Suppress minority opinions in favor of clean recommendations | Dissenting sages are often the first to detect risks that the majority overlooks; suppressing dissent reduces the value of the multi-dimensional approach |
+| Economic analysis produces FTE-months and magnitude ranges, NEVER prices | Include specific pricing for vendor comparisons | Pricing is volatile, context-dependent, and becomes stale; FTE-months and magnitude ranges provide stable decision inputs that remain valid across geographies and market conditions |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Think Tank of 7 Sages"]
+        A["Scenario Intake"] --> B["7-Dimension Analysis"]
+        B --> C["Cross-Validation"]
+        C --> D["Plenary Deliberation"]
+        D --> E["Vote & Verdict"]
+    end
+    subgraph Dimensions["7 Dimensions"]
+        B --> D1["D1: Research & Tech Readiness"]
+        B --> D2["D2: Quantitative Validation"]
+        B --> D3["D3: Systemic Feasibility"]
+        B --> D4["D4: Technology Maturity"]
+        B --> D5["D5: Infrastructure & Hardware"]
+        B --> D6["D6: Integration Feasibility"]
+        B --> D7["D7: Economic Feasibility"]
+    end
+    subgraph Inputs["Inputs"]
+        F["Approved Scenario"] --> A
+        G["Prior Phase Artifacts"] --> B
+    end
+    subgraph Outputs["Outputs"]
+        E --> H["Feasibility Verdict"]
+        E --> I["Spike/PoC Catalog"]
+        E --> J["Updated Risk Register"]
+    end
+    subgraph Related["Related Skills"]
+        K["scenario-analysis"] -.-> F
+        L["technology-vigilance"] -.-> D4
+        M["solution-roadmap"] -.-> H
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `05b_Feasibility_ThinkTank_{cliente}_{WIP}.md`
+- Structure: TL;DR > Executive Summary (verdict + confidence) > Claim Evidence Matrix > 7 Dimensional Analysis sections > Systemic Risk Map > Spike/PoC Catalog > Think Tank Verdict with voting record > Updated Risk Register > Mermaid dependency graph + quadrant chart > ghost menu
+
+### HTML
+- Filename: `05b_Feasibility_ThinkTank_{cliente}_{WIP}.html`
+- Structure: MetodologIA Design System v4; verdict banner at top with confidence indicator; collapsible dimensional sections; interactive risk heatmap; evidence strength color coding; Mermaid embedded diagrams; print-ready
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_Feasibility_ThinkTank_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_Feasibility_ThinkTank_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por nivel de evidencia (L1–L5) y veredicto dimensional, auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Claim Evidence Matrix, 7-Dimension Scores, Risk Register, Spike Catalog.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_Feasibility_ThinkTank_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
 ---
-**© Comunidad MetodologIA — All rights reserved**
+**Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026

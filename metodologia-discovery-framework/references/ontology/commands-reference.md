@@ -1,7 +1,7 @@
 # Referencia de Comandos
 
 > MAO Framework — Ontología viva
-> Referencia canónica de los 96 comandos organizados por categoría funcional.
+> Referencia canónica de los 100 comandos organizados por categoría funcional.
 
 ---
 
@@ -16,8 +16,9 @@
 | SERVICE DISCOVERY | 9 | Discovery por línea de servicio |
 | OPS | 6 | Operaciones sobre el discovery |
 | UX | 3 | Navegación y experiencia del usuario |
+| COACHING & AI | 4 | Coaching, AI design, prompt engineering, automatización |
 | **Aliases** | **~51** | Atajos para comandos primarios |
-| **Total** | **96** | |
+| **Total** | **100** | |
 
 ---
 
@@ -169,6 +170,17 @@ Los siguientes aliases adicionales mapean verbos alternativos a los mismos coman
 | `deliver` | `/mao:deliver-handover` |
 | `discovery` | `/mao:run-guided` |
 | `intermediate` | `/mao:run-express` (variante) |
+
+---
+
+## COACHING & AI — Nuevos comandos 10× (4 comandos)
+
+| Comando | Alias | Descripción |
+|---------|-------|-------------|
+| `/mao:coach` | `coach` | Meta-comando: enruta a la especialidad de coaching adecuada según contexto |
+| `/mao:design-assistant` | `design-assistant` | Diseño de asistentes AI/GPT personalizados |
+| `/mao:prompt-workshop` | `prompt-workshop` | Taller de prompt engineering con metodología NL-HP |
+| `/mao:automate` | `automate` | Diseño de workflows de automatización (n8n/Make/RPA) |
 
 ---
 

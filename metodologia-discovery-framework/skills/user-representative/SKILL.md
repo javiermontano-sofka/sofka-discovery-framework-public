@@ -1,5 +1,7 @@
 ---
 name: metodologia-user-representative
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[deliverable-path-or-content] [audience: executive|technical|developer|analyst] — e.g. './pitch.md executive'"
 description: >
   End-user advocate that evaluates deliverable clarity, cognitive load, accessibility, adoption risks, and biases.
   Use when the user asks to "review for clarity", "check readability", "evaluate from user perspective",
@@ -182,6 +184,85 @@ Before delivering user representative output:
 - [ ] Bias flags include both the bias and the fix
 - [ ] Verdict is clear with explicit next steps
 - [ ] Reader persona(s) identified and review tailored accordingly
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Deliverable is intentionally dense (legal/regulatory document) | Assess summary layer and navigation aids only; accept body density if the executive summary and section summaries are clear; do not penalize necessary precision |
+| Deliverable targets a single-persona audience but will be read by multiple personas | Recommend "reader track" structure (executive summary > technical detail > appendix); score against the primary persona but flag gaps for secondary readers |
+| Deliverable is in a language the reviewer cannot assess for nuance (e.g., localized to a language outside Spanish/English) | Review structure, navigation, and visual hierarchy only; flag that linguistic clarity review requires a native speaker; score comprehension as N/A with explanation |
+| Reviewer disagrees with the technical content but the content is accurate | Separate readability verdict from accuracy verdict; the user representative reviews form, not substance; document the concern and route to domain expert |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Score 5 dimensions on a 0-10 scale with evidence per score | Binary pass/fail per dimension | Granular scoring enables targeted improvement; binary verdicts do not tell the author WHERE to invest effort |
+| Propose specific micro-adjustments (copy, structure, visual) | Provide general feedback ("improve clarity") | General feedback is non-actionable; specific adjustments ("change X to Y") can be implemented immediately without interpretation |
+| Apply all 4 reader personas when audience is unspecified | Default to the most demanding persona (Executive) | Different personas catch different problems; Executive-only review misses developer-facing issues; comprehensive review ensures no persona is underserved |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["User Representative Review"]
+        A["Persona Selection"] --> B["5-Dimension Scorecard"]
+        B --> C["Micro-Adjustments"]
+        B --> D["Adoption Risk Assessment"]
+        B --> E["Bias Detection"]
+        C --> F["Verdict"]
+        D --> F
+        E --> F
+    end
+    subgraph Inputs["Inputs"]
+        G["Deliverable Content"] --> A
+        H["Target Audience"] --> A
+    end
+    subgraph Outputs["Outputs"]
+        F --> I["Review Report"]
+        C --> J["Before/After Examples"]
+    end
+    subgraph Related["Related Skills"]
+        K["output-engineering"] -.-> G
+        L["executive-pitch"] -.-> A
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `A-01_User_Representative_Review_{cliente}_{WIP}.md`
+- Structure: TL;DR > 5-Dimension Scorecard table > Top 5 Micro-Adjustments with before/after > Adoption Risk list > Bias Flags with fixes > Verdict (PASS/CONDITIONAL/FAIL) > ghost menu
+
+### HTML
+- Filename: `A-01_User_Representative_Review_{cliente}_{WIP}.html`
+- Structure: MetodologIA Design System v4; scorecard with color-coded dimensions (green >=7, yellow 5-6, red <5); collapsible micro-adjustment cards; verdict banner at top; print-ready
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_user-representative_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por score de dimensión (verde >=7, amarillo 5-6, rojo <5) y veredicto (PASS/CONDITIONAL/FAIL), auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Scorecard 5 Dimensiones, Micro-Adjustments, Adoption Risks, Bias Flags.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, scorecard visual 5 dimensiones (semáforo), top 5 micro-ajustes con before/after, adoption risks identificados, bias flags con fixes propuestos, veredicto final (PASS/CONDITIONAL/FAIL) con próximos pasos.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ## Cross-References
 

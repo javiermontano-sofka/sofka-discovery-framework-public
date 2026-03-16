@@ -1,5 +1,7 @@
 ---
 name: metodologia-functional-spec
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[module-count: 3-5] [depth: actor-goal|cockburn] [service-type: SDA|QA|Management|RPA|Data-AI|Cloud|SAS|UX-Design]"
 description: >
   Comprehensive functional specification with use cases, business rules, and complexity/risk matrix,
   service specification, deliverable specification, and engagement spec.
@@ -196,5 +198,85 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Business rules discovered during spec writing contradict rules from a prior discovery phase | Flag the contradiction with [CONFLICT] tag; document both versions; escalate to business owner with 48-hour resolution SLA; block dependent use cases until resolved |
+| Service type is hybrid (e.g., SDA + Data-AI in the same engagement) | Produce separate module inventories per service type; use a shared data model section; flag cross-type dependencies explicitly in integration specs |
+| Stakeholder requests >12 MVP modules ("everything is critical") | Apply the 3x3 complexity/risk matrix to force prioritization; present the top-right quadrant (high complexity + high risk) as "Phase 2" candidates; escalate if stakeholder refuses to prioritize |
+| No business stakeholder available for the entire spec cycle | Mark ALL business rules as UNVALIDATED; produce the spec with [SUPUESTO] tags on every rule; add a mandatory validation sprint before development can start |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Default to Cockburn use case format for critical flows | Use actor-goal format universally for speed | Actor-goal format misses alternative/exception flows, which is where 70% of implementation bugs originate; Cockburn's rigor prevents downstream rework |
+| Require explicit scope boundaries (IN/OUT lists) | Allow implicit scope through use case coverage | Implicit scope invites scope creep; explicit IN/OUT lists create a contractual reference point between business and technology teams |
+| Unvalidated rules carry UNVALIDATED status and risk flag | Allow unvalidated rules to proceed to development with assumptions | Building on unvalidated rules creates technical debt that compounds; the risk flag forces organizational attention on validation before investment |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Functional Specification"]
+        A["MVP Module Inventory"] --> B["Use Cases"]
+        A --> C["Business Rules"]
+        B --> D["Acceptance Criteria"]
+        C --> D
+        A --> E["Complexity-Risk Matrix"]
+    end
+    subgraph Inputs["Inputs"]
+        F["Approved Scenario"] --> A
+        G["Service Type"] --> A
+        H["Stakeholder Input"] --> C
+    end
+    subgraph Outputs["Outputs"]
+        D --> I["Spec Document"]
+        E --> J["Scope Definition"]
+        A --> K["Data Model + Integration Specs"]
+    end
+    subgraph Related["Related Skills"]
+        L["scenario-analysis"] -.-> F
+        M["solution-roadmap"] -.-> J
+        N["mermaid-diagramming"] -.-> K
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `07_Especificacion_Funcional_{tipo_servicio}_{cliente}_{WIP}.md`
+- Structure: TL;DR > Module Inventory cards > Use Cases (Cockburn) > Business Rules table > Complexity-Risk heatmap > Scope IN/OUT > Acceptance Criteria > Data Model (Mermaid ER) > Integration Specs > ghost menu
+
+### DOCX
+- Filename: `07_Especificacion_Funcional_{tipo_servicio}_{cliente}_{WIP}.docx`
+- Structure: Cover page > TOC > Module cards > Use case structured tables > Business rules with validation status > Scope boundaries > Acceptance criteria per module > Data model diagram (described) > Integration SLA tables; signature block for business owner approval
+
+### HTML (bajo demanda)
+- Filename: `07_Especificacion_Funcional_{tipo_servicio}_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con module cards navegables, use case flows expandibles, y business rules con severity semáforo. WCAG AA, responsive, print-ready.
+
+### XLSX (bajo demanda)
+- Filename: `07_Especificacion_Funcional_{tipo_servicio}_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Módulos, Casos de Uso, Reglas de Negocio, Matriz Complejidad-Riesgo, Criterios de Aceptación.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026

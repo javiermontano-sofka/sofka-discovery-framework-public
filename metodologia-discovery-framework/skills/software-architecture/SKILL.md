@@ -1,5 +1,7 @@
 ---
 name: metodologia-software-architecture
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy.
   Use when the user asks to "design the internal structure", "define module boundaries", "select architecture patterns",
@@ -214,22 +216,94 @@ Identifies current architectural debt and a strategy for evolution without disru
 
 ---
 
-## Edge Cases
+## Casos Borde
 
-**Greenfield System:**
-No existing structure; risk of over-engineering for hypothetical scales. Start simple, defer complexity, use ADRs for reversible decisions.
+| Caso | Estrategia de Manejo |
+|---|---|
+| Sistema greenfield sin estructura previa | Iniciar con arquitectura simple; diferir complejidad; usar ADRs para decisiones reversibles; evitar sobre-ingenieria para escala hipotetica |
+| Sistema legacy con dependencias enredadas | Documentar estado actual (as-is) y estado objetivo (to-be); planificar migracion por fases; aceptar coexistencia temporal de multiples versiones de arquitectura |
+| Sistema multi-lenguaje (polyglot) | Separar analisis por lenguaje si los patrones divergen; explicitar dependencias cross-lenguaje (APIs, colas); unificar convenciones donde sea posible |
+| Transicion de monolito a microservicios | Usar strangler fig con criterios claros de cutover; vigilar anti-patrones (monolito distribuido, servicios chatty); documentar estrategia de datos |
+| Sistema de alta escala o tiempo real | Abordar escala y latencia desde el diseno inicial; CQRS, event sourcing, sharding y caching como decisiones obligatorias; escenarios de quality attributes con evidencia de load testing |
 
-**Legacy System with Tangled Dependencies:**
-Reverse-engineering structure is harder. Document current state (as-is), design target state (to-be), phase migration. Multiple "versions" of architecture may exist (intended vs. actual).
+## Decisiones y Trade-offs
 
-**Multi-Language System:**
-Each language may have different conventions. Dependencies across language boundaries (APIs, queues) must be explicit. Separate analysis per language if patterns diverge.
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Documentar ADRs ANTES de implementar | Documentar post-implementacion | El costo de cambiar una decision arquitectonica crece exponencialmente despues del codigo; documentar antes fuerza la deliberacion explicita |
+| Quality attributes como drivers de seleccion de patterns | Seleccionar patterns por popularidad o conveniencia | Un pattern sin quality attribute que lo justifique es complejidad gratuita; los atributos medibles evitan decisiones por moda |
+| Deuda tecnica como decision explicita y registrada | Ignorar deuda o tratarla como accidente | Registrar la deuda con impacto y costo de repago permite priorizarla racionalmente; la deuda ignorada se capitaliza |
+| Dependency direction inward (Clean/Hexagonal) | Dependency direction layered bidireccional | La direccion inward protege el dominio de negocio de cambios en infraestructura; la bidireccional acopla capas innecesariamente |
 
-**Monolith to Microservices Transition:**
-Parallel running increases complexity. Watch for: distributed monolith, chatty services, data duplication. Use strangler fig for gradual migration with clear cutover criteria.
+## Knowledge Graph
 
-**High-Scale or Real-Time System:**
-Architecture must address scale and latency early. CQRS, event sourcing, sharding, caching become non-optional. Quality attribute scenarios must include load testing evidence.
+```mermaid
+graph TD
+    subgraph Core["Core: Software Architecture"]
+        MA[Module View]
+        CV[Component View]
+        DP[Design Patterns]
+        QA[Quality Attributes - ATAM]
+        ADR[Architecture Decision Records]
+        DE[Debt & Evolution Plan]
+    end
+
+    subgraph Inputs["Inputs"]
+        CB[Codebase]
+        REQ[Quality Requirements]
+        BIZ[Business Constraints]
+    end
+
+    subgraph Outputs["Outputs"]
+        DOC[Architecture Document]
+        DIAG[Module & Component Diagrams]
+        ADRS[ADR Repository]
+        ROAD[Evolution Roadmap]
+    end
+
+    subgraph Related["Related Skills"]
+        SOL[solutions-architecture]
+        INF[infrastructure-architecture]
+        DSO[devsecops-architecture]
+        ENT[enterprise-architecture]
+    end
+
+    CB --> MA
+    REQ --> QA
+    BIZ --> ADR
+    MA --> CV --> DP --> QA --> ADR --> DE
+    DE --> DOC
+    DE --> DIAG
+    DE --> ADRS
+    DE --> ROAD
+    DOC --> SOL
+    DOC --> INF
+    DOC --> DSO
+    DOC --> ENT
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-01_Software_Architecture_Deep.md` | Documento completo con Module View, Component View, Design Patterns, Quality Attribute Scenarios (ATAM), ADRs, Debt & Evolution Plan. Diagramas Mermaid embebidos. |
+| **HTML** | `A-01_Software_Architecture_Deep.html` | Mismo contenido en HTML branded (Design System MetodologIA). Incluye navegacion interna, tooltips en diagramas, y tabla de contenidos interactiva. |
+| **DOCX** | `{fase}_software_architecture_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre del sistema y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Module View, Component View, Design Patterns, Quality Attribute Scenarios, ADRs, Debt & Evolution Plan. |
+| **XLSX** | `{fase}_software_architecture_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Module View (módulo, responsabilidad, dependencias, layer, owner, violaciones detectadas), Design Patterns (pattern, justificación, quality attribute habilitado, anti-patterns detectados), ADR Log (ID, título, status, decisión, consecuencias positivas, consecuencias negativas, alternativas descartadas), Debt Inventory (ítem, síntoma, causa raíz, quality attribute impactado, esfuerzo de repago, riesgo si no se aborda), Quality Attributes (atributo, escenario estímulo, respuesta esperada, métrica, estado actual). Conditional formatting por estado de ADR y nivel de riesgo de deuda. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
+| **PPTX** | `{fase}_software_architecture_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 30 slides (técnica). Speaker notes con referencias de evidencia. Slides: Portada, Principio Rector, Module View (diagrama), Component View, Design Patterns seleccionados, Quality Attribute Scenarios (ATAM), ADR highlights, Debt & Evolution Plan, próximos pasos. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (design structure, module boundaries, ADRs, patterns) sin falsos positivos con infrastructure o solutions architecture |
+| Completeness | 25% | Las 6 secciones cubren modulos, componentes, patterns, quality attributes, ADRs y deuda sin huecos; todos los Core domains del sistema representados |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada ADR explica por que, no solo que; cada pattern tiene justificacion contra quality attributes |
+| Robustness | 20% | Maneja sistemas greenfield, legacy, polyglot, monolito-a-microservicios y alta escala con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a 40% sin perder decisiones criticas |
+| Value Density | 15% | Cada seccion aporta valor practico directo; trade-off matrix y quality attribute scenarios son herramientas de decision inmediata |
+
+**Umbral minimo: 7/10.**
 
 ---
 

@@ -242,7 +242,7 @@ background: linear-gradient(135deg, #6366F1, #22D3EE);
 
 ## Keywords y hashtags
 
-`#html` `#css` `#design-system` `#branding` `#sofka` `#landing` `#prompt-library` `#tokens` `#colores` `#dark-theme` `#responsive` `#ghost-menu` `#componentes` `#accesibilidad` `#dark-authority`
+`#html` `#css` `#design-system` `#branding` `#metodologia` `#landing` `#prompt-library` `#tokens` `#colores` `#dark-theme` `#responsive` `#ghost-menu` `#componentes` `#accesibilidad` `#dark-authority`
 
 ---
 

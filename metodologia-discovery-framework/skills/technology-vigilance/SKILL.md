@@ -1,6 +1,7 @@
 ---
 name: metodologia-technology-vigilance
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[sector] [tech-stack] [horizon: 6m|12m|24m] — e.g. 'banking microservices 12m'"
 description: >
   Structured technology monitoring across analyst firms (Gartner, Forrester, IDC), academic sources
   (Stanford HAI, IEEE, ACM), editorial platforms (O'Reilly Radar, ThoughtWorks Tech Radar), and
@@ -192,5 +193,83 @@ Opinions and frameworks from thought leaders relevant to the project:
 ### Diagrams (Mermaid)
 - quadrantChart: technology positioning (maturity x adoption)
 - timeline: signal detection timeline
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| All analyst sources are behind paywalls and no public summaries exist for the requested technology | Use Tier 2 (ThoughtWorks Radar, CNCF, GitHub Octoverse) and Tier 4 (thought leaders) as primary sources; flag all findings as [OPENSOURCE] or [REFERENT]; recommend client purchase analyst access for validation |
+| Technology is so new that no analyst firm has positioned it (pre-hype cycle) | Use academic sources (arXiv, IEEE, ACM) and GitHub trending; classify as "Emerging Signal — insufficient data for positioning"; recommend PoC-based validation |
+| Client's sector has no specialized analyst coverage (niche industry) | Map to the closest covered sector; document the mapping rationale; flag all sector-specific conclusions as [INFERENCIA] with the parent sector cited |
+| Conflicting signals across sources (e.g., Gartner says "Adopt", ThoughtWorks says "Hold") | Report both positions with full citation; analyze the disagreement (different evaluation criteria, different time horizons); recommend the client define their own evaluation weight set |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Require minimum 2 independent sources to classify a signal as "trend" | Accept single-source signals as trends | Single-source signals carry high bias risk; the 2-source minimum forces corroboration and filters noise from genuine shifts |
+| Include thought leader opinions as Tier 4 (lowest evidence weight) | Exclude individual opinions entirely | Thought leaders often signal shifts 12-18 months before analyst firms; their value is early detection, not confirmation |
+| Always connect vigilance signals to the client's specific sector | Produce sector-agnostic technology reports | Sector-agnostic reports produce "interesting but irrelevant" outputs; sector connection is what transforms information into actionable intelligence |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Technology Vigilance"]
+        A["Signal Detection"] --> B["Source Triangulation"]
+        B --> C["Urgency Classification"]
+        C --> D["Sector Contextualization"]
+        D --> E["Vigilance Recommendations"]
+    end
+    subgraph Inputs["Inputs"]
+        F["Client Sector"] --> D
+        G["Current Stack"] --> A
+        H["Proposed Stack"] --> A
+    end
+    subgraph Outputs["Outputs"]
+        E --> I["Technology Positioning Table"]
+        E --> J["Sector Benchmark Report"]
+    end
+    subgraph Related["Related Skills"]
+        K["dynamic-sme"] -.-> D
+        L["scenario-analysis"] -.-> E
+        M["multidimensional-feasibility"] -.-> B
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `A-05_Technology_Vigilance_{cliente}_{WIP}.md`
+- Structure: TL;DR > Vigilance Context > Detected Signals table > Technology Positioning > Sector Benchmark > Thought Leader References > Recommendations > Mermaid quadrantChart
+
+### HTML
+- Filename: `A-05_Technology_Vigilance_{cliente}_{WIP}.html`
+- Structure: MetodologIA Design System v4; interactive signal table with urgency color coding; embedded Mermaid quadrant and timeline; collapsible source citations
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_technology-vigilance_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por urgencia de señal (🔴/🟡/🟢) y veredicto de tecnología, auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Señales Detectadas, Posicionamiento de Tecnologías, Benchmark Sectorial, Thought Leaders, Recomendaciones.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, contexto de vigilancia, señales detectadas (tabla con semáforo de urgencia), posicionamiento de tecnologías propuestas (quadrant chart), benchmark sectorial, thought leaders relevantes, recomendaciones priorizadas (MUST/SHOULD/COULD).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ---

@@ -5,6 +5,8 @@ description: >
   Use when the user asks to "map stakeholders", "build influence matrix", "create communication plan",
   "assign RACI", "assess change readiness", "identify champions",
   or mentions stakeholder analysis, power/interest grid, engagement strategy, or adoption curve.
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[project-or-initiative-name]"
 allowed-tools:
   - Read
   - Write
@@ -186,6 +188,120 @@ Tracks stakeholder sentiment and participation throughout the project lifecycle.
 **External Regulatory Stakeholders:** High power but engagement constraints. Communication is formal, documented, compliance-driven. Assign dedicated liaison.
 
 **Stakeholder Fatigue:** Organization undergoing multiple simultaneous changes. Consolidate communications. Respect capacity limits. Show this initiative's unique value.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Organizacion altamente politizada donde el organigrama no refleja el poder real | Complementar con analisis de red informal (snowball method, decision trail analysis); tratar la matriz de influencia como documento confidencial |
+| Equipos remotos/distribuidos en multiples zonas horarias | Plan de comunicacion debe contemplar canales asincronos y sensibilidad cultural; adaptar enfoque de engagement (directo vs indirecto segun cultura) |
+| Fusion o reorganizacion en curso con landscape de stakeholders cambiante | Aumentar frecuencia de re-evaluacion; mapear stakeholders de ambas organizaciones; vigilar vacios de poder |
+| Fatiga de stakeholders por multiples cambios simultaneos | Consolidar comunicaciones; respetar limites de capacidad; demostrar valor unico de esta iniciativa vs las demas |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Mapeo individual para stakeholders de alto poder/interes | Mapeo por grupo/rol para todos los niveles | Los stakeholders clave requieren engagement personalizado; el mapeo por grupo pierde dinamicas individuales criticas |
+| RACI formal con un solo Accountable por decision | Decision rights informales basados en consenso | La ambiguedad en accountability es la causa principal de retrasos en decisiones; un solo A elimina la difusion de responsabilidad |
+| Comunicacion proactiva con stakeholders clave | Dashboards self-serve para todos | Los dashboards son pasivos y pueden no ser consumidos; la comunicacion proactiva construye confianza y evita sorpresas |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Stakeholder Mapping Core"]
+        A[metodologia-stakeholder-mapping]
+        A1[S1: Identificacion y Deteccion Oculta]
+        A2[S2: Matriz Influencia-Interes]
+        A3[S3: RACI y Derechos de Decision]
+        A4[S4: Plan de Comunicacion]
+        A5[S5: Evaluacion de Cambio]
+        A6[S6: Monitoreo de Engagement]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Organigramas]
+        I2[Documentos de Proyecto]
+        I3[Listas de Stakeholders Existentes]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Stakeholder Map HTML/MD]
+        O2[Matriz RACI]
+        O3[Plan de Comunicacion]
+        O4[Change Readiness Assessment]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-workshop-design]
+        R2[metodologia-mentoring-training-discovery]
+        R3[metodologia-commercial-model]
+        R4[metodologia-sector-intelligence]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6
+    A --> O1
+    A --> O2
+    A --> O3
+    A --> O4
+    R1 --- A
+    A --> R2
+    A --- R3
+    R4 --> A
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Stakeholder Map — {proyecto}
+## Resumen Ejecutivo
+> Stakeholders identificados: N. Coalicion minima ganadora: X personas. Riesgos de cambio: Y.
+## S1: Registro de Stakeholders
+| Nombre/Rol | Categoria | Poder | Interes | Actitud (+/-/?) |
+## S2: Matriz Influencia-Interes
+```mermaid
+quadrantChart
+    ...
+```
+## S3-S6: [secciones completas]
+## Plan de Accion Inmediato
+```
+
+**Formato DOCX (para circulacion interna confidencial):**
+
+```
+Seccion 1: Resumen Ejecutivo (1 pagina)
+Seccion 2: Registro de Stakeholders (tabla detallada, clasificacion por categoria)
+Seccion 3: Matriz de Influencia-Interes (grafico + estrategia por cuadrante)
+Seccion 4: Matriz RACI (por entregable/decision)
+Seccion 5: Plan de Comunicacion (canal x frecuencia x formato x owner)
+Seccion 6: Evaluacion de Change Readiness (adoption curve + arquetipos de resistencia)
+Seccion 7: Dashboard de Monitoreo (plantilla para seguimiento quincenal)
+Anexo: Guia de Entrevistas de Descubrimiento
+```
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_stakeholder_mapping_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo, Stakeholder Register, Influence-Interest Matrix (cuadrante visual), RACI por entregable clave, Plan de Comunicación, Change Readiness (adoption curve + arquetipos de resistencia), Champions y plan de activación, próximos pasos.
+
+### HTML (bajo demanda)
+- Filename: `{fase}_stakeholder_mapping_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Influence-interest quadrant chart interactivo con attitude overlay, RACI matrix por entregable y communication plan con canal y frecuencia visual. WCAG AA, responsive, print-ready.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de stakeholder mapping, RACI, comunicacion, change readiness | 7/10 |
+| Completeness | 25% | Todas las categorias de stakeholders cubiertas; RACI con un solo A por decision; plan de comunicacion con canal, frecuencia, formato y owner | 7/10 |
+| Clarity | 20% | Matriz de influencia-interes es visualmente clara; estrategia de engagement por cuadrante es accionable | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (politica, remoto, fusion, fatiga); stakeholders ocultos detectados; coaliciones mapeadas | 7/10 |
+| Efficiency | 10% | Nivel de granularidad (individual vs grupo) adaptado al contexto; no se sobre-analiza cuando no es necesario | 7/10 |
+| Value Density | 15% | Cada stakeholder tiene estrategia de engagement concreta; early warning indicators definidos; plan de activacion de champions | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Validation Gate
 

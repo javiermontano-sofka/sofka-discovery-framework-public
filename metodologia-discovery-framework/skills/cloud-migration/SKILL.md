@@ -4,6 +4,8 @@ description: >
   Cloud migration planning -- 7R assessment, workload classification, wave planning, cutover.
   Use when the user asks to "plan cloud migration", "assess workloads for migration", "design landing zone",
   "create migration waves", "plan cutover strategy", or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory.
+argument-hint: "<migration-program-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -376,5 +378,142 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Application inventory spreadsheet, wave calendar, cutover runbook, rollback procedures, TCO comparison, decommission checklist.
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Datacenter exit con hard deadline | Favor rehost para velocidad. Aceptar tech debt. Plan post-migration optimization waves. Priorizar por lease expiry. |
+| Shared database serving multiple apps | No migrar DB independientemente. Opciones: migrar todos los consumers juntos, API layer para desacoplar, o replicar y gradual cutover. |
+| Mainframe workloads | Tools especializados (Micro Focus, AWS Mainframe Modernization). Replatform a cloud-hosted emulation primero, refactor gradual. |
+| Compliance-restricted data | Data residency puede limitar regiones. Encryption requirements afectan tooling de replicacion. Audit trail durante migracion. |
+| No source code available | Rehost es la unica estrategia viable. Containerizacion posible para binary apps. Evaluar repurchase con SaaS alternative. |
+| >200 workloads sin inventario | Deploy agentless discovery minimo 30 dias antes de clasificar. Migration factory model es mandatorio para throughput. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| 7R framework para clasificacion | Binary migrate/no-migrate, 3R simplificado | 7R (Rehost/Replatform/Refactor/Repurchase/Retire/Retain/Relocate) cubre el espectro completo de opciones. Retire y Retain son decisiones legitimas que evitan costo innecesario. |
+| Wave-based migration sobre big-bang | Big-bang de todo el portfolio | Waves reducen blast radius, permiten aprendizaje incremental, y escalan throughput progresivamente. Big-bang maximiza riesgo. |
+| Cutover rehearsal mandatorio | Cutover directo en produccion | Rehearsal valida runbook end-to-end, mide duracion real, y prueba rollback. Sin rehearsal, sorpresas en go-live night. |
+| Migration factory model para >20 apps | Migracion artesanal por aplicacion | Factory estandariza procesos repetibles, habilita metricas (apps/week), y escala throughput a 15-25 apps/month. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        SEVR["7R Classification"]
+        WORKLOAD["Workload Analysis"]
+        WAVE["Wave Planning"]
+        LANDING["Landing Zone"]
+        CUTOVER["Migration Execution"]
+        VALID["Validation & Optimization"]
+    end
+
+    subgraph Inputs["Entradas"]
+        INFRA["Infrastructure Inventory"]
+        APPS["Application Portfolio"]
+        DEPS["Dependency Map"]
+        CLOUD["Target Cloud Platform"]
+    end
+
+    subgraph Outputs["Salidas"]
+        PLAN["Cloud Migration Plan"]
+        CLASS["7R Classification Table"]
+        CALENDAR["Wave Calendar"]
+        TCO["TCO Comparison"]
+        RUNBOOK["Cutover Runbook"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        CLOUDNAT["cloud-native-architecture"]
+        INFRAARCH["infrastructure-architecture"]
+        ASIS["asis-analysis (Cloud)"]
+        ENTARCH["enterprise-architecture"]
+    end
+
+    INFRA --> WORKLOAD
+    APPS --> SEVR
+    DEPS --> WAVE
+    CLOUD --> LANDING
+    SEVR --> WAVE
+    WORKLOAD --> SEVR
+    WAVE --> CUTOVER
+    LANDING --> CUTOVER
+    CUTOVER --> VALID
+    PLAN --> CLASS
+    PLAN --> CALENDAR
+    PLAN --> TCO
+    PLAN --> RUNBOOK
+    SEVR --> PLAN
+    CLOUDNAT -.-> SEVR
+    INFRAARCH -.-> LANDING
+    ASIS -.-> WORKLOAD
+    ENTARCH -.-> SEVR
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Cloud Migration Plan: {program}
+## S1: Migration Assessment & 7R Classification
+| Application | Strategy | Rationale | Effort | Risk | Wave |
+...
+## S2: Workload Analysis & Dependency Mapping
+### Dependency Graph (Mermaid)
+### Data Gravity Analysis
+## S3: Wave Planning & Sequencing
+### Wave 0: Foundation (4-6 weeks)
+### Wave 1: Pilot (2-4 weeks)
+### Wave 2-N: Production
+## S4: Landing Zone Design
+## S5: Migration Execution Patterns
+### Cutover Rehearsal Checklist
+### Rollback Decision Criteria
+## S6: Validation & Optimization
+### TCO Comparison
+| Category | On-Prem | Cloud |
+...
+```
+
+**Formato XLSX (bajo demanda):**
+
+```
+Sheet 1: Application Inventory — name, owner, criticality, stack, 7R, wave, effort, risk
+Sheet 2: Dependency Matrix — source app, target app, dependency type, coupling level
+Sheet 3: Wave Calendar — wave #, apps, dates, duration, go/no-go status
+Sheet 4: TCO Comparison — cost categories, on-prem vs cloud, break-even
+Sheet 5: Cutover Runbook — step, responsible, duration, rollback, status
+Sheet 6: Post-Migration Optimization — right-sizing, RI/SP, storage tiering
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `A-01_Cloud_Migration_Plan_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con tabla 7R clasificacion filtrable por wave, wave calendar como Gantt interactivo, y cutover runbook con checklist colapsable. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Cloud_Migration_Plan_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de cloud migration, 7R, wave planning, landing zone, cutover, lift-and-shift. |
+| Completeness | 25% | 6 secciones cubren assessment, workloads, waves, landing zone, execution, y validation. Cada app tiene 7R classification. |
+| Clarity | 20% | 7R classification con rationale por aplicacion. Wave sequencing justificado por dependencias. Rollback criteria con thresholds especificos. |
+| Robustness | 20% | Edge cases (deadline, shared DB, mainframe, compliance, no source code, >200 workloads) manejados. Anti-patterns documentados. |
+| Efficiency | 10% | Variante ejecutiva reduce a S1+S3+S5 (~40%). Migration factory model escala throughput. |
+| Value Density | 15% | TCO comparison con break-even. Cutover rehearsal checklist accionable. Rollback decision criteria con thresholds automatizables. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar 7R classification completeness y cutover rehearsal coverage.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

@@ -1,5 +1,7 @@
 ---
 name: metodologia-testing-strategy
+argument-hint: "<project-or-system-name>"
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management,
   QA-as-a-service strategy, test factory design, PITT methodology, QA CoE design.
@@ -306,6 +308,94 @@ Before finalizing delivery, verify:
 - [ ] Quality gates are specific and measurable
 - [ ] Mutation testing planned for critical business logic (>80% score target)
 - [ ] Test maintenance budget explicitly allocated (15-20%)
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        TS[Testing Strategy]
+    end
+
+    subgraph Inputs
+        I1[Codebase & Frameworks] --> TS
+        I2[System Architecture] --> TS
+        I3[Quality Requirements] --> TS
+        I4[CI/CD Pipeline] --> TS
+    end
+
+    subgraph Outputs
+        TS --> O1[Test Shape & Pyramid Design]
+        TS --> O2[Automation Framework]
+        TS --> O3[Contract Testing Setup]
+        TS --> O4[Performance & Chaos Plan]
+        TS --> O5[Test Data Strategy]
+        TS --> O6[Quality Metrics & Gates]
+    end
+
+    subgraph Related Skills
+        RS1[quality-engineering] -.-> TS
+        RS2[devsecops-architecture] -.-> TS
+        RS3[observability] -.-> TS
+        RS4[software-architecture] -.-> TS
+        RS5[qa-service-discovery] -.-> TS
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Testing Strategy: {project_name}
+## S1: Test Shape Selection & Pyramid Design
+### Shape Decision Matrix | Layer Definitions | Coverage Targets | Shift-Left
+
+## S2: Test Automation Framework
+### Tool Selection | Page Object/Screen Object | Parallel Execution | CI Triggers
+
+## S3: Contract & API Testing
+### Consumer-Driven | Pact/Specmatic | Schema Validation | can-i-deploy
+
+## S4: Performance & Chaos Testing
+### Load in CI | Performance Budgets | Chaos Maturity | Game Days
+
+## S5: Test Data Management
+### Synthetic Generation | Anonymization | Environment Strategy | Isolation
+
+## S6: Advanced Techniques & Quality Metrics
+### Property-Based | Mutation Testing | Visual Regression | Test Impact Analysis
+```
+
+**Formato HTML:**
+`A-01_Testing_Strategy.html` -- Branded HTML con Design System CSS de MetodologIA. Incluye diagrama interactivo de test pyramid, matriz de herramientas por plataforma, y dashboard de quality metrics con targets y tendencias.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_testing-strategy_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por prioridad de test (MUST/SHOULD/COULD) y estado de calidad, auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Test Shape & Pyramid, Framework de Automatización, Contract Testing, Performance & Chaos, Test Data Strategy, Quality Metrics.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, test shape seleccionado con justificación, tool matrix por plataforma, contrato testing setup, performance & chaos plan, test data strategy, quality gates y métricas, roadmap de implementación.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de test strategy, pyramid, automation, contract testing; no ante code architecture |
+| Completeness | 25% | Las 6 secciones cubren shape, automation, contracts, chaos, data, y metrics con herramientas concretas |
+| Clarity | 20% | Shape selection justificada por tipo de sistema; tool matrix es especifica por lenguaje/plataforma |
+| Robustness | 20% | Edge cases (greenfield, legacy, microservices, monorepo, regulado) tienen estrategia diferenciada |
+| Efficiency | 10% | Variante ejecutiva (S1+S3+S6) entrega shape + contracts + metrics en ~40% del contenido |
+| Value Density | 15% | Cada seccion produce configuracion aplicable: framework setup, Pact config, chaos experiments, quality gates |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
 
 ## Cross-References
 

@@ -2,7 +2,7 @@
 
 > **Skill:** metodologia-database-architecture
 > **Author:** Javier Montaño | **Date:** March 13, 2026
-> **License:** (c) Comunidad MetodologIA — GPL-3.0 Copyleft
+> **License:** (c) Comunidad MetodologIA — MIT
 
 ---
 
@@ -205,4 +205,4 @@ Formato: Arquitectura de caching (Mermaid), tabla de decisiones por query, y pro
 ---
 
 **Author:** Javier Montaño | **Date:** March 13, 2026
-**(c) Comunidad MetodologIA — GPL-3.0 Copyleft**
+**(c) Comunidad MetodologIA — MIT**

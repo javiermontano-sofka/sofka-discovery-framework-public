@@ -288,6 +288,94 @@ Escalate to the conductor when:
 - **Attribution**: Expert committee of the MetodologIA Discovery Framework
 - **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Input intencionalmente informal | No corregir tono; corregir solo errores objetivos y preservar la voz del usuario; flag diferencia entre informalidad y error |
+| "Just do X" — senial de skip deep analysis | Ejecutar solo Pass 4 (intent verification); pass-through con reformulacion minima; no sobre-analizar |
+| Input con emojis como contenido semantico | Interpretar emojis como seniales emocionales (fuego = urgencia, cara enojada = frustracion, checkmark = confirmacion); incluir en contexto |
+| Voice-to-text con artefactos | Capitalizacion aleatoria, ausencia de puntuacion, homofonia extrema; tratar como Pass 1 con confianza ALTA en correcciones |
+| Contexto solo en attachments, no en texto | Si el usuario dice "review this" adjuntando un PDF, el analisis de intencion se basa en contenido del attachment, no en el texto |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Presume imperfeccion en cada input humano | Asumir que el input es correcto hasta demostrar lo contrario | La evidencia muestra que la mayoria de inputs contienen noise, gaps o contexto implicito; presuponer imperfeccion activa la deteccion sin sobrecargar inputs limpios |
+| Profundidad de analisis adaptada a calidad del input | Misma profundidad para todos los inputs | Sobre-analizar inputs claros desperdicia tokens y tiempo; sub-analizar inputs confusos produce reformulaciones incorrectas; la tabla de escalacion calibra el esfuerzo |
+| Inferir cuando confianza > 80%, preguntar cuando < 80% | Siempre inferir o siempre preguntar | Inferir siempre arriesga errores de interpretacion; preguntar siempre frustra al usuario y ralentiza el pipeline; el umbral de 80% balancea flujo y precision |
+| Corregir solo superficie, NUNCA cambiar significado | Corregir agresivamente incluyendo reestructuracion | Alterar el significado cuando se corrigen errores destruye la intencion del usuario; preservar intent es mas importante que correccion gramatical |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Input Analysis"]
+        P1[Pass 1: Surface Analysis]
+        P2[Pass 2: Five Whys]
+        P3[Pass 3: Seven So-Whats]
+        P4[Pass 4: Intent Analysis]
+        P5[Pass 5: Reformulation]
+    end
+
+    subgraph Inputs["Inputs"]
+        RAW[Raw User Text]
+        CTX[Thread Context]
+        ATT[Attachments]
+    end
+
+    subgraph Outputs["Outputs"]
+        CORR[Corrected Text]
+        ROOT[Root Cause]
+        INTENT[Real Ask]
+        PROMPT[Reformulated Prompt]
+    end
+
+    subgraph Related["Related Skills"]
+        ORCH[discovery-orchestrator]
+        EXCEL[excellence-loop]
+        ANY[Any Pipeline Skill]
+    end
+
+    RAW --> P1
+    CTX --> P2
+    ATT --> P4
+    P1 --> P2 --> P3 --> P4 --> P5
+    P5 --> CORR
+    P5 --> ROOT
+    P5 --> INTENT
+    P5 --> PROMPT
+    PROMPT --> ORCH
+    PROMPT --> ANY
+    ORCH --> EXCEL
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `Input_Analysis_{timestamp}.md` | Analisis completo: input original, confianza, pases ejecutados, correcciones de superficie, causa raiz, impacto, brechas de intencion y prompt reformulado con objetivo, contexto, intencion, restricciones y calibracion. |
+| **DOCX** | `Input_Analysis_Report_{timestamp}.docx` | Reporte formal de analisis para documentar decisiones de interpretacion en contexto de discovery; util cuando el input ambiguo requiere trazabilidad de la reformulacion. |
+| **HTML** | `Input_Analysis_{timestamp}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Light-First Technical. Incluye tabla de correcciones de superficie con indicador de confianza, cadena de 5 Porqués colapsable, y prompt reformulado resaltado. |
+| **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Correcciones de Superficie, Análisis de Causa Raíz, Impacto, Brechas de Intención, Prompt Reformulado. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]). |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa como pre-processing layer cuando el input tiene noise, vaguedad o gaps; no sobre-analiza inputs claros y bien formados |
+| Completeness | 25% | Los 5 pases cubren superficie, causa raiz, impacto, intencion y reformulacion sin huecos; ambiguedades no resueltas flaggeadas explicitamente |
+| Clarity | 20% | Correcciones de superficie no alteran significado; reformulacion tiene objetivo, contexto, intencion, restricciones y output esperado; calibracion explicita |
+| Robustness | 20% | Maneja dislexia, prisa, spanglish, voice-to-text, emojis, sarcasmo e inputs con solo attachments con estrategias diferenciadas |
+| Efficiency | 10% | Modos operacionales (integral, superficie, intencion, reformulacion) calibran profundidad al input; no ejecuta pases innecesarios |
+| Value Density | 15% | Cada pase aporta valor practico directo; la reformulacion produce prompts de mayor calidad que reducen iteraciones downstream |
+
+**Umbral minimo: 7/10.**
+
+---
+
 ## Additional Resources
 
 - `references/knowledge-graph.mmd` — Skill relationship graph

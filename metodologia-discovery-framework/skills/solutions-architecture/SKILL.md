@@ -1,5 +1,7 @@
 ---
 name: metodologia-solutions-architecture
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<solution-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   End-to-end solution design — system integration, channel orchestration, identity management, observability, and cross-cutting concerns.
   Use when the user asks to "design the full solution", "integrate multiple systems", "plan API gateway strategy",
@@ -230,22 +232,97 @@ How to move from current state to target state without disrupting operations.
 
 ---
 
-## Edge Cases
+## Casos Borde
 
-**Greenfield Multi-System Solution:**
-No existing integration patterns. Risk: over-designing for scale that doesn't exist. Start simple (sync APIs), add async/caching when metrics show need.
+| Caso | Estrategia de Manejo |
+|---|---|
+| Solucion greenfield multi-sistema | Iniciar con APIs sincronas simples; agregar async/caching cuando las metricas lo justifiquen; evitar sobre-diseno para escala hipotetica |
+| Integracion con mainframe legacy | Capa de integracion (adapter, translator) para impedance mismatch (batch vs real-time, EBCDIC vs UTF-8); strangler fig con timeline de retiro |
+| Redes de alta latencia o poco confiables | Arquitectura offline-first con cache local y sync al reconectar; conflict resolution para eventual consistency |
+| Requisitos de tiempo real y baja latencia | Sincronico preferido; trade-offs de async documentados; infraestructura global con distribution y failover |
+| Sistema altamente regulado (GDPR, HIPAA, PCI-DSS) | Compliance como constraint no-negociable; cada decision mapeada a requisito regulatorio; audit trails, encryption y consent management desde el inicio |
 
-**Legacy Mainframe Integration:**
-Impedance mismatch (batch vs. real-time, EBCDIC vs. UTF-8, CICS vs. REST). Solution: integration layer (adapter, translator), strangler fig, eventual retirement timeline.
+## Decisiones y Trade-offs
 
-**High-Latency or Unreliable Networks:**
-Offline-first architecture required: local cache, sync when connected. Conflict resolution for eventual consistency.
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Integration-first thinking (foco en costuras) | Foco en sistemas individuales | Los sistemas individuales funcionan solos; la solucion falla en los puntos de conexion; las costuras son donde se pierde valor |
+| Zero Trust by default en cada servicio | Seguridad perimetral clasica | La seguridad perimetral asume que el interior es confiable; Zero Trust verifica cada request, cada canal, cada dato |
+| Observabilidad disenada junto con la funcionalidad | Observabilidad agregada post-implementacion | Lo que no se puede observar no se puede operar; logging, tracing y metrics son parte del diseno, no afterthoughts |
+| Circuit breaker y retry con idempotency por defecto | Llamadas directas sin proteccion | En sistemas distribuidos, las dependencias fallan; circuit breaker previene cascadas y retry con idempotency permite recovery seguro |
 
-**Real-Time, Low-Latency Requirements:**
-Financial trading, gaming, autonomous systems. Synchronous preferred; async trade-offs documented. Infrastructure must support global distribution and failover.
+## Knowledge Graph
 
-**Highly Regulated System:**
-GDPR, HIPAA, PCI-DSS, SOX: compliance non-negotiable. Every decision maps to compliance requirement. Audit trails, encryption, data residency, consent management built-in from start.
+```mermaid
+graph TD
+    subgraph Core["Core: Solutions Architecture"]
+        SV[Solution View - C4]
+        IA[Integration Architecture]
+        CH[Channel & BFF]
+        SEC[Identity & Security]
+        OBS[Observability - SLI/SLO]
+        CC[Cross-Cutting Concerns]
+        TP[Transition Plan]
+    end
+
+    subgraph Inputs["Inputs"]
+        BIZ[Business Requirements]
+        UJ[User Journeys]
+        QA[Quality Attributes]
+        TECH[Technology Choices]
+    end
+
+    subgraph Outputs["Outputs"]
+        C4[C4 Container Diagram]
+        SPEC[Integration Contract Specs]
+        OBSCONF[Observability Config]
+        PLAN[Transition Runbooks]
+    end
+
+    subgraph Related["Related Skills"]
+        SWA[software-architecture]
+        INF[infrastructure-architecture]
+        DSO[devsecops-architecture]
+        API[api-architecture]
+    end
+
+    BIZ --> SV
+    UJ --> CH
+    QA --> OBS
+    TECH --> IA
+    SV --> IA --> CH --> SEC --> OBS --> CC --> TP
+    TP --> C4
+    TP --> SPEC
+    TP --> OBSCONF
+    TP --> PLAN
+    SWA --> SV
+    C4 --> INF
+    SPEC --> DSO
+    IA --> API
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-02_Solutions_Architecture_Deep.md` | Documento completo con Solution View (C4), Integration Architecture, Channel & BFF, Identity/Security, Observability, Cross-Cutting Concerns y Transition Plan. Diagramas Mermaid embebidos. |
+| **HTML** | `A-02_Solutions_Architecture_Deep.html` | Mismo contenido en HTML branded (Design System MetodologIA). Diagramas C4 interactivos, navigation entre secciones, y integration contract specs detallados. |
+| **DOCX** | `{fase}_solutions_architecture_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre de la solución y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Solution View (C4), Integration Architecture, Channel & BFF, Identity/Security, Observability, Cross-Cutting Concerns, Transition Plan. |
+| **XLSX** | `{fase}_solutions_architecture_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Integration Contracts (sistema origen, sistema destino, protocolo, patrón sync/async, SLA, fallback, responsable), Security Model (capa, mecanismo AuthN/AuthZ, cifrado, compliance mapping, gaps), SLI/SLO Targets (servicio, SLI, SLO objetivo, SLA contractual, estado actual), Cross-Cutting Concerns (concern, patrón aplicado, sistemas afectados, configuración, riesgo), Transition Plan (fase, actividad, owner, criterio de rollback, riesgo). Conditional formatting por estado de SLO y severidad de gaps de seguridad. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
+| **PPTX** | `{fase}_solutions_architecture_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 30 slides (técnica). Speaker notes con referencias de evidencia. Slides: Portada, Principio Rector, Solution View (C4 containers), Integration Architecture, Channel & BFF Strategy, Identity & Security (Zero Trust), Observability (SLI/SLO), Cross-Cutting Concerns, Transition Plan, próximos pasos. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (full solution, integrate systems, API gateway, Zero Trust, observability) sin falsos positivos con software-architecture o infrastructure-architecture |
+| Completeness | 25% | Las 7 secciones cubren solution view, integracion, canales, seguridad, observabilidad, cross-cutting y transicion sin huecos; todos los sistemas en scope mapeados |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada integracion con protocolo, SLA y fallback; SLI/SLO con targets numericos |
+| Robustness | 20% | Maneja greenfield, legacy mainframe, redes poco confiables, tiempo real y regulacion estricta con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S2+S4 sin perder decisiones criticas de integracion y seguridad |
+| Value Density | 15% | Cada seccion aporta valor practico directo; trade-off matrix y transition plan son herramientas de decision y ejecucion inmediata |
+
+**Umbral minimo: 7/10.**
 
 ---
 

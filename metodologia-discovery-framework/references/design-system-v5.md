@@ -328,4 +328,4 @@ footer {
 ---
 
 *Design System v5 — Dark Authority. Neo-Swiss + Minto Pyramid + Rule 3-3-3.*
-*© 2026 MetodologIA · Javier Montaño. GPL-3.0 Copyleft.*
+*© 2026 MetodologIA · Javier Montaño. MIT.*

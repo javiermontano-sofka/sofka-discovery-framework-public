@@ -1,5 +1,7 @@
 ---
 name: metodologia-software-viability
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[project-name] [technology-to-validate]"
 description: >
   Software and technology viability validator — deep forensic analysis of whether proposed
   software solutions, AI/ML components, and technology choices are viable substance or speculative
@@ -235,6 +237,133 @@ TECNOLOGÍAS DESCARTADAS: [lista]
 | AI claims "state of the art" | Verify against published benchmarks (papers, leaderboards). Discount by domain gap |
 | Open source with no corporate backing | Assess bus factor and funding sustainability. Flag if bus factor = 1 |
 | Client already committed to vendor | Still validate — document risks for risk register, design guardrails |
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Vendor provee exclusivamente materiales de marketing sin documentacion tecnica | Flag como RIESGO ALTO minimo; solicitar API reference, benchmark methodology, production case studies; si no proporcionan, el veredicto no puede ser mejor que PROMESA VIABLE |
+| Tecnologia tiene menos de 6 meses de existencia | Techo automatico de PROMESA VIABLE; no puede ser SUBSTANCIA sin evidencia de produccion; disenar PoC obligatorio con kill criteria |
+| Cliente ya comprometido contractualmente con un vendor | Validar igual; documentar riesgos para risk register; disenar guardrails y vendor exit strategy; no omitir problemas porque ya se firmo |
+| Open source sin corporate backing y bus factor = 1 | Evaluar sostenibilidad de funding y contribuciones; flag como RIESGO ALTO por single point of failure; identificar alternativas con mejor community health |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Escala de 4 niveles (SUBSTANCIA / PROMESA VIABLE / RIESGO ALTO / HUMO) | Binario (viable / no viable) | Los 4 niveles permiten accion graduada: SUBSTANCIA procede, PROMESA necesita PoC, RIESGO necesita alternativa, HUMO se descarta |
+| Seccion dedicada a AI/ML validation (S3) con red flags especificos | Tratar AI igual que cualquier otra tecnologia | AI tiene el mayor ratio humo/substancia del mercado; requiere validacion especifica de training data, eval metrics, failure modes, drift monitoring |
+| Veredicto siempre contextual (proyecto + equipo + restricciones) | Veredicto absoluto de la tecnologia | Una tecnologia puede ser SUBSTANCIA para un equipo experto y RIESGO ALTO para otro sin experiencia; el contexto determina el veredicto |
+| PoC disenado para cada tecnologia con veredicto PROMESA o RIESGO | Confiar en benchmarks genericos del vendor | Los benchmarks genericos no aplican al contexto especifico; solo un PoC con datos reales y criteria del proyecto valida la tecnologia |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Software Viability Core"]
+        A[metodologia-software-viability]
+        A1[S1: Technology Inventory]
+        A2[S2: Software Maturity]
+        A3[S3: AI/ML Validation]
+        A4[S4: Vendor & Dependency Risk]
+        A5[S5: PoC Design]
+        A6[S6: Viability Scorecard]
+        A7[S7: Recommendations & Guardrails]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Technology Names / Proposals]
+        I2[Vendor Products]
+        I3[AI/ML Components]
+        I4[Architecture Decisions]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Viability Assessment Report]
+        O2[Technology Scorecard]
+        O3[PoC Designs]
+        O4[Vendor Exit Strategy]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-technical-feasibility]
+        R2[metodologia-sector-intelligence]
+        R3[metodologia-roadmap-poc]
+        R4[metodologia-finops]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    I4 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6 --> A7
+    A --> O1
+    A --> O2
+    A --> O3
+    A --> O4
+    R1 --- A
+    R2 --> A
+    A --> R3
+    A --- R4
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Software Viability Assessment — {tipo_servicio} — {proyecto}
+## Resumen Ejecutivo
+> Tecnologias evaluadas: N. Veredicto global: [VIABLE / VIABLE CON PoCs / REQUIERE ALTERNATIVAS / NO VIABLE].
+## S1: Technology Inventory
+| Tecnologia | Claim | Fuente | Evidencia Requerida |
+## S2: Software Maturity
+| Tecnologia | Version | Release Cadence | Community | Production Evidence | Score |
+## S3: AI/ML Validation (si aplica)
+| Claim | Benchmark Citado | Benchmark Real | Gap | Veredicto |
+## S4-S7: [secciones completas]
+## Viability Scorecard
+| Tecnologia | Maturity | Community | Production | AI Score | Vendor | VEREDICTO |
+```
+
+**Formato HTML (para comite tecnico):**
+
+```
+Header: Logo + proyecto + veredicto global badge
+Section 1: Technology Inventory (cards con semaforo por tecnologia)
+Section 2: Maturity Dashboard (tabla comparativa con community health indicators)
+Section 3: AI/ML Red Flags (si aplica, cards con hallazgos criticos)
+Section 4: Vendor Risk Assessment (visual con scoring)
+Section 5: PoC Designs (tabla con effort, timeline, success criteria)
+Section 6: Viability Scorecard (tabla resumen con veredictos)
+Section 7: Recommendations & Guardrails (action items priorizados)
+Footer: Attribution MetodologIA + re-evaluation triggers
+```
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_software_viability_{cliente}_{WIP}.docx`
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Technology Inventory, Maturity Assessment, AI/ML Validation, Vendor Risk, PoC Designs, Viability Scorecard, Recommendations.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_software_viability_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Technology Inventory (tecnología, claim, fuente del claim, evidencia requerida, tipo de servicio), Maturity Assessment (tecnología, versión, release cadence, community health, production evidence, bus factor, score), AI/ML Validation (claim, benchmark citado, benchmark real, gap, veredicto), Vendor Risk (vendor, funding/revenue, competitive position, acquisition risk, pricing stability, lock-in assessment), PoC Designs (tecnología, objetivo PoC, success criteria, kill criteria, esfuerzo, timeline), Viability Scorecard (tecnología, maturity, community, production, AI score, vendor, veredicto). Conditional formatting por veredicto SUBSTANCIA/PROMESA/RIESGO/HUMO. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_software_viability_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo (veredicto global), Technology Inventory, Viability Scorecard (tabla con semáforo SUBSTANCIA/PROMESA/RIESGO/HUMO), AI/ML Red Flags (si aplica), PoC Designs priorizados, Recomendaciones y guardrails, próximos pasos.
+
+### HTML (bajo demanda)
+- Filename: `{fase}_software_viability_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Viability scorecard con badges SUBSTANCIA/PROMESA/RIESGO/HUMO por tecnología, community health indicators visuales y PoC design cards con kill criteria. WCAG AA, responsive, print-ready.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de viabilidad tecnologica, vaporware detection, AI validation, vendor evaluation, tech due diligence | 7/10 |
+| Completeness | 25% | Todas las tecnologias propuestas inventariadas; maturity assessment por tecnologia; AI validation para componentes AI; PoC disenado para PROMESA/RIESGO | 7/10 |
+| Clarity | 20% | Scorecard con veredicto claro por tecnologia y global; escala SUBSTANCIA/PROMESA/RIESGO/HUMO aplicada consistentemente | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (solo marketing, tech nueva, ya comprometido, OSS sin backing); alternativas identificadas para RIESGO/HUMO | 7/10 |
+| Efficiency | 10% | Variante ejecutiva vs tecnica correctamente aplicada; tipo de servicio determina lens de validacion; no se ejecuta forensic completo cuando solo se necesita screening | 7/10 |
+| Value Density | 15% | Evidence tags en todas las assertions; PoC con kill criteria especificos; vendor exit strategy para dependencias comerciales; guardrails de produccion definidos | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Validation Gate
 

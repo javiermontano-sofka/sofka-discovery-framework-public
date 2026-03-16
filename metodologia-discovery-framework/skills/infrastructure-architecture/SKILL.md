@@ -1,5 +1,7 @@
 ---
 name: metodologia-infrastructure-architecture
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<platform-or-system-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Infrastructure and platform architecture — compute, network, storage, HA/DR, IAM, cloud landing zones, and cost optimization.
   Use when the user asks to "design cloud infrastructure", "plan network topology", "define HA/DR strategy",
@@ -216,22 +218,97 @@ Strategies for reducing cloud spend without sacrificing performance or reliabili
 
 ---
 
-## Edge Cases
+## Casos Borde
 
-**On-Premises to Cloud Migration:**
-Existing workloads must move with minimal disruption. Hybrid period: on-prem and cloud coexist. Approach: strangler fig, VPN connectivity, staged migration.
+| Caso | Estrategia de Manejo |
+|---|---|
+| Migracion on-premises a cloud | Periodo hibrido con coexistencia on-prem y cloud; strangler fig con VPN connectivity; migracion por fases con rollback por workload |
+| Multi-cloud (AWS + Azure + GCP) | Capa de abstraccion (Kubernetes) para portabilidad; tagging consistente cross-cloud; gobernanza multi-cloud centralizada |
+| Regulacion estricta (financiero, salud) | Data residency por pais/region; cuentas dedicadas con encryption, audit trails; assessments periodicos de compliance |
+| Escala extrema (millones de usuarios) | Infraestructura global con caching en cada nivel; spot instances para batch; cost optimization desde Day 1; capacidad de 10x-100x sin degradacion |
+| Startup con presupuesto limitado | Serverless donde sea posible; auto-scaling agresivo; spot instances; evitar reserved instances hasta que los patrones de uso sean predecibles |
 
-**Multi-Cloud (AWS + Azure + GCP):**
-No unified API; complexity increases significantly. Solution: abstraction layer (Kubernetes), consistent tagging, multi-cloud governance.
+## Decisiones y Trade-offs
 
-**Highly Regulated (Financial, Healthcare):**
-Data residency: data cannot leave country/region. Dedicated accounts, encryption, audit trails, periodic assessment.
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Infrastructure as Code como unico metodo de provision | Consolas manuales o clickops | Lo que no esta en codigo no existe de forma reproducible; Terraform/Pulumi/CDK garantizan auditabilidad, reproducibilidad y rollback |
+| Multi-AZ como minimo para workloads criticos | Single-AZ con backup manual | El costo de downtime supera el costo de redundancia; multi-AZ es el baseline de disponibilidad enterprise |
+| FinOps integrado desde el diseno, no al final | Optimizacion de costos post-despliegue | El costo de la nube no se controla al final; right-sizing, reserved instances y cost alerts son decisiones de diseno, no de operacion |
+| Managed services por defecto sobre self-managed | Self-managed para todo | El costo operacional de self-managed supera el ahorro unitario en la mayoria de los casos; self-managed solo cuando hay necesidades especificas que managed no cubre |
 
-**Extreme Scale (Millions of Users):**
-Handle 10x-100x load without degradation. Cost critical from start. Global infrastructure, caching at every level, spot for batch.
+## Knowledge Graph
 
-**Cost-Constrained Startup:**
-Limited budget, unpredictable growth. Serverless where possible, auto-scaling, spot instances, avoid reserved instances initially.
+```mermaid
+graph TD
+    subgraph Core["Core: Infrastructure Architecture"]
+        NET[Network Topology]
+        COMP[Compute & Containers]
+        STOR[Storage & Data]
+        HADR[HA & Disaster Recovery]
+        IAM[IAM & Platform Security]
+        LZ[Cloud Landing Zone]
+        COST[Cost Optimization]
+    end
+
+    subgraph Inputs["Inputs"]
+        WKLD[Workload Requirements]
+        CLOUD[Cloud Platform Choice]
+        SEC[Security & Compliance Reqs]
+        BUD[Budget Constraints]
+    end
+
+    subgraph Outputs["Outputs"]
+        ARCH[Infrastructure Document]
+        DIAG[Network & Topology Diagrams]
+        RUN[Runbooks & Recovery Procedures]
+        COPT[Cost Optimization Plan]
+    end
+
+    subgraph Related["Related Skills"]
+        SWA[software-architecture]
+        SOL[solutions-architecture]
+        DSO[devsecops-architecture]
+        ENT[enterprise-architecture]
+    end
+
+    WKLD --> COMP
+    CLOUD --> LZ
+    SEC --> IAM
+    BUD --> COST
+    NET --> COMP --> STOR --> HADR --> IAM --> LZ --> COST
+    COST --> ARCH
+    COST --> DIAG
+    COST --> RUN
+    COST --> COPT
+    SWA --> NET
+    ARCH --> SOL
+    ARCH --> DSO
+    LZ --> ENT
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-04_Infrastructure_Architecture_Deep.md` | Documento completo con Network Topology, Compute Strategy, Storage, HA/DR, IAM, Cloud Landing Zone y Cost Optimization. Diagramas Mermaid de VPC topology y dependency graph. |
+| **XLSX** | `A-04_Infrastructure_Cost_Model.xlsx` | Modelo de costos con drivers por servicio, comparativa managed vs self-managed, proyeccion de crecimiento a 12 meses, y recomendaciones de right-sizing. |
+| **HTML** | `A-04_Infrastructure_Architecture_Deep_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Light-First Technical. Incluye diagrama interactivo de topología VPC, tabla comparativa managed vs self-managed, y checklist de HA/DR con estado visual. |
+| **DOCX** | `A-04_Infrastructure_Architecture_{cliente}_{WIP}.docx` | Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]). |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (cloud infrastructure, VPC, HA/DR, Kubernetes, cost optimization) sin falsos positivos con software architecture o solutions architecture |
+| Completeness | 25% | Las 7 secciones cubren network, compute, storage, HA/DR, IAM, landing zone y costos sin huecos; todas las capas de infraestructura representadas |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada decision de infraestructura tiene justificacion contra workload requirements; trade-offs explicitos |
+| Robustness | 20% | Maneja migracion on-prem, multi-cloud, regulacion estricta, escala extrema y presupuesto limitado con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S4+S7 sin perder decisiones criticas de disponibilidad y costo |
+| Value Density | 15% | Cada seccion aporta valor practico directo; trade-off matrix y cost optimization son herramientas de decision inmediata |
+
+**Umbral minimo: 7/10.**
 
 ---
 

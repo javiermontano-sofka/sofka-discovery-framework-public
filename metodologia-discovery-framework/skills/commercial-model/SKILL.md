@@ -1,5 +1,7 @@
 ---
 name: metodologia-commercial-model
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[project-name]"
 description: >
   Business model and value capture strategy — identifies optimal commercial structures for
   technology engagements beyond T&M. Use when the user asks to "define business model",
@@ -205,6 +207,128 @@ IP:
 | Startup client (limited budget) | Explore M5 usage-based or M4 JV with equity component. Lower barrier to entry |
 | Regulatory constraints on pricing | Flag legal review required. Document compliant model options |
 | Client has bad vendor experience | Increase transparency mechanisms. Shorter gate intervals. More exit options |
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Cliente insiste en T&M puro sin componente variable | Documentar riesgos de incentivos desalineados; proponer hibrido con componente variable minimo como alternativa; respetar decision si persiste |
+| No existen KPIs medibles para modelo outcome-based | Retroceder a milestone-based (M2); agregar definicion de KPIs como entregable de Sprint 0 para migrar a outcome-based en fases posteriores |
+| Engagement multi-vendor donde cada vendor tiene modelo diferente | Recomendar modelo independiente por vendor; agregar overhead de coordinacion al componente base; definir governance inter-vendor |
+| Cliente startup con presupuesto limitado y alto potencial | Explorar M5 usage-based o M4 JV con componente de equity; reducir barrera de entrada priorizando modelos que escalen con exito del cliente |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Producir estructura y modelo, nunca precios ni tarifas | Incluir pricing recomendado en el analisis | El pricing es decision comercial que requiere contexto de mercado, margen, y negociacion; incluirlo en un skill de analisis crea compromisos prematuros |
+| Evaluar los 7 modelos contra el contexto antes de recomendar | Recomendar siempre hibrido (M7) como default | Cada contexto tiene un modelo optimo diferente; asumir hibrido siempre sub-optimiza para casos donde T&M o outcome-based puro es superior |
+| Incluir negotiation preparation (S6) como seccion del entregable | Limitarse a recomendacion de modelo sin preparacion de negociacion | El modelo sin preparacion de negociacion deja al equipo comercial sin herramientas para defender la estructura propuesta frente a objeciones |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Commercial Model Core"]
+        A[metodologia-commercial-model]
+        A1[S1: Client Value Map]
+        A2[S2: Model Catalog]
+        A3[S3: Model Fit Analysis]
+        A4[S4: Recommended Model]
+        A5[S5: Deal Structure Canvas]
+        A6[S6: Negotiation Preparation]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Cost Driver Analysis - Phase 4]
+        I2[Scenario Context]
+        I3[Client Relationship Maturity]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Commercial Model Report]
+        O2[Deal Structure Canvas]
+        O3[Negotiation Playbook]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-cost-estimation]
+        R2[metodologia-roadmap-poc]
+        R3[metodologia-stakeholder-mapping]
+        R4[metodologia-sector-intelligence]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6
+    A --> O1
+    A --> O2
+    A --> O3
+    R1 --> A
+    A --> R2
+    R3 --> A
+    R4 --> A
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Commercial Model — {proyecto}
+## Resumen Ejecutivo
+> Modelo recomendado: M7 Hibrido (T&M base + variable por resultado). Valor identificado: N fuentes.
+## S1: Client Value Map
+| Tipo de Valor | Descripcion | Medible | Horizonte |
+## S2: Commercial Model Catalog
+[7 modelos evaluados con ventajas/desventajas]
+## S3: Model Fit Analysis
+| Criterio | M1 | M2 | M3 | M4 | M5 | M6 | M7 |
+## S4-S6: [secciones completas]
+## Deal Structure Canvas
+```
+DEAL STRUCTURE CANVAS
+...
+```
+```
+
+**Formato HTML (bajo demanda):**
+
+```
+{fase}_Commercial_Model_{project}_{WIP}.html
+```
+HTML self-contained branded (Design System MetodologIA v5). Commercial page type. Incluye Deal Structure Canvas visual, model fit heatmap interactivo, y value map con comparativa de escenarios. WCAG AA, responsive.
+
+**Formato PPTX (para presentacion comercial):**
+
+```
+Slide 1: Titulo + contexto del engagement
+Slide 2: Client Value Map (tabla visual de fuentes de valor)
+Slide 3: Modelos Evaluados (resumen comparativo 7 modelos)
+Slide 4: Model Fit Analysis (radar chart o heatmap)
+Slide 5: Modelo Recomendado (estructura con componentes fijo + variable)
+Slide 6: Deal Structure Canvas (one-page visual)
+Slide 7: Protecciones Mutuas (gates, exit clauses, SLAs)
+Slide 8: Proximos Pasos (secuencia de negociacion)
+```
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Commercial_Model_{project}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Commercial_Model_{cliente}_{WIP}.xlsx`
+- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por fit score y modelo, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de modelo comercial, deal structure, value capture, pricing strategy | 7/10 |
+| Completeness | 25% | Las 6 secciones pobladas; value map con 3+ fuentes cuantificables; los 7 modelos evaluados; deal canvas completo | 7/10 |
+| Clarity | 20% | Modelo recomendado es claro con estructura, KPIs, gates y exit clauses; zero ambiguedad en componentes fijo vs variable | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (T&M forzado, sin KPIs, multi-vendor, startup); objeciones anticipadas con respuestas | 7/10 |
+| Efficiency | 10% | Variante ejecutiva vs tecnica correctamente aplicada; no se genera catalog completo cuando solo se necesita recomendacion | 7/10 |
+| Value Density | 15% | Zero precios/tarifas/margenes en output; cada modelo tiene fit score contextualizado; negotiation prep incluye secuencia y approval path | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Validation Gate
 

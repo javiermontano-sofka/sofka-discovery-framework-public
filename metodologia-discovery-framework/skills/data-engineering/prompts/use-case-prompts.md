@@ -2,7 +2,7 @@
 
 > **Skill:** metodologia-data-engineering
 > **Autor:** Javier Montaño | **Fecha:** 13 de marzo de 2026
-> **Licencia:** (c) Comunidad MetodologIA — GPL-3.0 Copyleft
+> **Licencia:** (c) Comunidad MetodologIA — MIT
 
 ---
 
@@ -187,4 +187,4 @@ Modo: {MODO_OPERACIONAL}=orquestacion
 ---
 
 **Autor:** Javier Montaño | **Fecha:** 13 de marzo de 2026
-**(c) Comunidad MetodologIA — GPL-3.0 Copyleft**
+**(c) Comunidad MetodologIA — MIT**

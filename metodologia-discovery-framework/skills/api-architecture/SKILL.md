@@ -1,5 +1,7 @@
 ---
 name: metodologia-api-architecture
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<system-or-platform-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   API design & governance — REST/GraphQL/gRPC, versioning, rate limiting, DX, contract-first.
   Use when the user asks to "design an API", "define API strategy", "implement contract-first",
@@ -247,17 +249,95 @@ Manage API portfolio — discovery, review, consistency, and retirement.
 
 ---
 
-## Edge Cases
+## Casos Borde
 
-**Legacy API Modernization:** Existing APIs with no spec. Start by generating spec from code (code-first), design target API, migrate consumers with a facade pattern.
+| Caso | Estrategia de Manejo |
+|---|---|
+| APIs legacy sin spec existente | Generar spec desde codigo (code-first); disenar API target; migrar consumers con facade pattern; timeline de deprecacion del legacy |
+| APIs internas entre 1-2 equipos | Menor ceremonia pero contratos obligatorios; governance mas ligera (guidelines, no gates); gRPC con code generation reduce friccion |
+| API como producto publico | DX es ventaja competitiva; invertir en docs, SDKs, sandboxes; versioning conservador porque breaking changes pierden clientes |
+| Alto throughput / baja latencia | gRPC con streaming, connection pooling, serialization binaria; limitar complejidad de queries GraphQL; rate limiting < 5ms overhead |
+| API multi-tenant | Tenant isolation en API layer (scoping, data filtering); rate limiting por tenant; API universal con configuracion por tenant sobre APIs tenant-specific |
 
-**Internal-Only APIs:** Lower ceremony but still need contracts. Use lighter governance (guidelines, not gates). gRPC with code generation reduces friction.
+## Decisiones y Trade-offs
 
-**Public API Platform:** APIs are the product. DX is competitive advantage. Invest in docs, SDKs, sandboxes. Versioning must be conservative — breaking changes lose customers.
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Contract-first siempre (spec antes que codigo) | Code-first con spec generado | El spec es el producto; el codigo es la implementacion; sin contrato previo hay riesgo de spec drift, leaked internals y breaking changes no detectados |
+| Estrategia de versioning definida en el diseno | Definir versioning cuando ocurra el primer breaking change | Cambiar la estrategia de versioning despues de publicar cuesta 10x; los consumers build contra el contrato de estabilidad inicial |
+| DX como driver de adopcion, no como nice-to-have | Documentacion minima y funcional | APIs con mejor DX generan 2x mas adopcion; docs pobres producen APIs abandonados independientemente de la calidad tecnica |
 
-**High-Throughput / Low-Latency:** gRPC with streaming, connection pooling, binary serialization. Bound GraphQL query complexity. Rate limiting must add <5ms latency.
+## Knowledge Graph
 
-**Multi-Tenant API:** Tenant isolation in API layer (scoping, data filtering). Rate limiting per tenant. Universal API with tenant configuration over tenant-specific APIs.
+```mermaid
+graph TD
+    subgraph Core["Core: API Architecture"]
+        STR[API Strategy & Style]
+        CON[Contract-First Design]
+        VER[Versioning & Evolution]
+        SEC[Security & Access Control]
+        DX[Developer Experience]
+        GOV[API Governance & Lifecycle]
+    end
+
+    subgraph Inputs["Inputs"]
+        USE[Use Cases & Consumers]
+        EXIST[Existing API Specs]
+        SECREQ[Security Requirements]
+        PLAT[Platform Context]
+    end
+
+    subgraph Outputs["Outputs"]
+        SPEC[OpenAPI/Protobuf/SDL Specs]
+        GUIDE[API Style Guide]
+        CATALOG[API Catalog]
+        DOCS[Interactive Documentation]
+    end
+
+    subgraph Related["Related Skills"]
+        SOL[solutions-architecture]
+        SWA[software-architecture]
+        DSO[devsecops-architecture]
+        QUAL[quality-engineering]
+    end
+
+    USE --> STR
+    EXIST --> CON
+    SECREQ --> SEC
+    PLAT --> STR
+    STR --> CON --> VER --> SEC --> DX --> GOV
+    GOV --> SPEC
+    GOV --> GUIDE
+    GOV --> CATALOG
+    GOV --> DOCS
+    SOL --> STR
+    SPEC --> SWA
+    GOV --> DSO
+    CON --> QUAL
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-01_API_Architecture.md` | Documento completo con API strategy, style selection matrix, contract-first workflow, versioning policy, security design, DX plan y governance lifecycle. Diagramas Mermaid embebidos. |
+| **HTML** | `A-01_API_Architecture.html` | Mismo contenido en HTML branded (Design System MetodologIA). Incluye interactive API style decision matrix, rate limiting algorithm comparison, y API health score calculator. |
+| **DOCX** | `{fase}_{entregable}_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria. |
+| **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para inventario de APIs, matrices de versionamiento y tracking de health score. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (API design, REST, GraphQL, gRPC, contract-first, versioning) sin falsos positivos con solutions-architecture o event-architecture |
+| Completeness | 25% | Las 6 secciones cubren strategy, contracts, versioning, security, DX y governance sin huecos; todos los estilos relevantes evaluados |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; style decision matrix con criterios cuantificables; rate limits con algoritmos y tiers concretos |
+| Robustness | 20% | Maneja legacy sin spec, APIs internas, APIs publicas, alto throughput y multi-tenant con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S2+S4 sin perder decisiones criticas de estilo y seguridad |
+| Value Density | 15% | Cada seccion aporta valor practico directo; style decision matrix y API health score son herramientas de decision inmediata |
+
+**Umbral minimo: 7/10.**
 
 ---
 

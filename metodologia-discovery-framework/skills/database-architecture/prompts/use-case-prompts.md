@@ -2,7 +2,7 @@
 
 > **Skill:** metodologia-database-architecture
 > **Author:** Javier Montaño | **Date:** March 13, 2026
-> **License:** (c) Comunidad MetodologIA — GPL-3.0 Copyleft
+> **License:** (c) Comunidad MetodologIA — MIT
 
 ---
 
@@ -202,4 +202,4 @@ Modo: {MODO_OPERACIONAL}=modelado, {VARIANTE}=técnica
 ---
 
 **Author:** Javier Montaño | **Date:** March 13, 2026
-**(c) Comunidad MetodologIA — GPL-3.0 Copyleft**
+**(c) Comunidad MetodologIA — MIT**

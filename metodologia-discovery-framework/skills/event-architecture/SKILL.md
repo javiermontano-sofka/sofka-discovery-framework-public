@@ -5,6 +5,8 @@ description: >
   Use when the user asks to "design event-driven system", "build event catalog", "implement CQRS",
   "design saga patterns", "set up schema registry", "implement event sourcing",
   or mentions Kafka, RabbitMQ, Pulsar, event bus, dead-letter queue, consumer groups, or event replay.
+argument-hint: "<system_or_platform_name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -279,6 +281,98 @@ Ensure event systems are reliable, observable, and recoverable in production.
 - Does not implement data pipelines
 - Event sourcing adds significant complexity — not recommended unless audit/temporal queries required
 - Distributed tracing across event chains requires dedicated tooling investment
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Migracion de comunicacion sincrona a event-driven en sistema en produccion | Strangler fig pattern. Identificar boundaries de mayor valor asincrono primero (long-running processes, fan-out). Dual-write sync+async durante transicion. Validar con shadow traffic antes de cutover. |
+| Schema evolution con consumidores en versiones diferentes (N, N-1, N-2) | Schema registry con backward compatibility obligatorio. Deploy consumidores antes que productores cuando se agregan campos required. Upcasting para transformar eventos legacy durante replay. Max 2 versiones en paralelo. |
+| Event storm de alto volumen (>100K msgs/sec burst) que desborda consumidores | Backpressure via consumer throttling. Auto-scaling de instancias por consumer lag >1000 msgs. Circuit breaker para poison pills. DLT previene que un evento malo bloquee el stream. Pre-provision para picos conocidos. |
+| Multi-region con latencia de replicacion cross-region >200ms | Definir eventos globales vs regionales. Eventos globales: replicacion async con CRDTs o last-writer-wins. Eventos regionales: procesamiento local sin dependencia cross-region. Conflict resolution explicito. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Outbox pattern con CDC (Debezium) sobre publicacion directa al broker | Publish al broker dentro de la transaccion de negocio | Publicacion directa no es atomica: si el broker falla post-commit, se pierde el evento. Outbox + CDC garantiza exactly-once semantics a nivel de negocio. Complejidad adicional justificada por confiabilidad. |
+| Backward compatibility como default en schema registry sobre full compatibility | Full compatibility (mas restrictivo) | Full compatibility bloquea cambios validos como eliminar campos opcionales. Backward permite evolucion controlada mientras consumidores mantienen compatibilidad. Full solo para dominios criticos (pagos, compliance). |
+| Orquestacion de sagas para workflows >4 servicios sobre coreografia | Coreografia descentralizada | Coreografia en workflows complejos genera flows emergentes imposibles de rastrear. Orquestacion centraliza visibilidad del estado, simplifica error handling y compensacion. Coreografia solo para 2-3 servicios simples. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        EVT[event-architecture]
+    end
+    subgraph Inputs
+        DOM[Domain Events from Business] --> EVT
+        INT[Integration Requirements] --> EVT
+        VOL[Volume & Latency SLAs] --> EVT
+    end
+    subgraph Outputs
+        EVT --> CAT[Event Catalog & Taxonomy]
+        EVT --> BRK[Broker Architecture & Config]
+        EVT --> SCH[Schema Registry Design]
+        EVT --> SAG[Saga & Consistency Patterns]
+        EVT --> OPS[Operational Runbook]
+    end
+    subgraph Related Skills
+        EVT -.-> SA[software-architecture]
+        EVT -.-> API[api-architecture]
+        EVT -.-> DE[data-engineering]
+        EVT -.-> OBS[observability]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Event Architecture: {system_name}
+## S1: Event Catalog & Taxonomy
+  - Event listing (Domain.Entity.Action)
+  - CloudEvents envelope spec
+  - Granularity decisions per event
+## S2: Broker Architecture
+  - Selection matrix, configs, partitioning
+## S3-S6: [remaining sections]
+## Anexos: AsyncAPI specs, DLT handling procedures, consumer lag dashboards
+```
+
+**Formato HTML (secondary):**
+- Event catalog interactivo con filtros por dominio/tipo
+- Broker topology diagram (Mermaid rendered)
+- Saga flow visualizations con compensating transactions
+- DLT monitoring dashboard layout
+- Filename: `A-01_Event_Architecture_{cliente}_{WIP}.html`
+- Branded (Design System MetodologIA v5). Light-First Technical page con event catalog navegable, saga flow diagrams, y DLT status panel. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `A-01_Event_Architecture_{cliente}_{WIP}.docx`
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por tipo de evento (Domain/Integration/System) y compatibilidad de schema (Backward/Forward/Full), auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Event Catalog, Schema Registry, DLT Monitoring Dashboard, Consumer Lag Tracker.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Event Catalog & Taxonomy, Broker Architecture, Schema Registry, Consistency Patterns (Sagas/CQRS), Operational Excellence (DLT/Lag), Trade-off Matrix.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de event-driven, Kafka, CQRS, saga, schema registry, event sourcing | 7/10 |
+| Completeness | 25% | Las 6 secciones cubren catalogo, broker, schema, consistency, CQRS/ES, y operaciones | 7/10 |
+| Clarity | 20% | Cada evento catalogado con schema, naming, granularity. Broker configs con valores concretos. Sagas con flujo explicito. | 7/10 |
+| Robustness | 20% | Edge cases de migracion, schema evolution, event storms cubiertos. DLT con categorization y replay. Poison pill detection. | 7/10 |
+| Efficiency | 10% | Output proporcional al contexto. Sin documentar patterns no relevantes al sistema. Catalogo scoped al dominio. | 7/10 |
+| Value Density | 15% | Configs de broker listos para produccion. AsyncAPI specs generables. Operational runbook con thresholds concretos. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ---
 

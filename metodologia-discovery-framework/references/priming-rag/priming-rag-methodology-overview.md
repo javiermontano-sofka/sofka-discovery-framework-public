@@ -19,7 +19,7 @@ service_lines:
 
 ## Insights
 
-MetodologIA is an open-source (GPL-3.0 copyleft) enterprise discovery and consulting methodology designed for AI-era professionals. It provides a structured, repeatable pipeline for technical and business discovery engagements across any service type. The framework replaces ad-hoc consulting approaches with a rigorous, evidence-based orchestration model.
+MetodologIA is an open-source (MIT open-source) enterprise discovery and consulting methodology designed for AI-era professionals. It provides a structured, repeatable pipeline for technical and business discovery engagements across any service type. The framework replaces ad-hoc consulting approaches with a rigorous, evidence-based orchestration model.
 
 ## Key Points
 
@@ -87,7 +87,7 @@ Two cross-cutting governance roles are active throughout all phases:
 
 ### Open Source Principles
 
-- Licensed under GPL-3.0 (copyleft) — derivative works must remain open source
+- Licensed under MIT (open-source) — derivative works must remain open source
 - No proprietary dependencies — all references use publicly available frameworks and standards
 - Community-driven methodology evolution
 - Transparent quality criteria and acceptance standards

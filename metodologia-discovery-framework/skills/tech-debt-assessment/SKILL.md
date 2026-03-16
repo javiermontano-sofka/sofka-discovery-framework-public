@@ -6,6 +6,7 @@ description: >
   "quantify debt", "classify tech debt", "prioritize remediation", or mentions debt inventory, impact scoring,
   or paydown planning.
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<proyecto> [repositorio-o-sistema]"
 version: 1.0.0
 tags:
   - tech-debt
@@ -83,23 +84,101 @@ Parse `$1` como **nombre del proyecto**, `$2` como **repositorio o sistema a eva
 - [ ] Metricas de exito definidas para medir progreso de paydown
 - [ ] Guardrails de prevencion documentados
 
-## Trade-off Matrix
+## Supuestos y Limites
 
-| Decision | Enables | Constrains | When to Use |
+- Inventario depende de acceso al codebase, configuraciones y documentacion del sistema
+- Cuantificacion de impacto en velocidad es estimada salvo que existan metricas de developer productivity
+- Clasificacion por cuadrante Fowler es interpretativa — requiere contexto historico del equipo
+- No reemplaza code review o static analysis — los complementa con perspectiva estrategica
+
+## Casos Borde
+
+| Escenario | Estrategia de Manejo |
+|---|---|
+| Sistema legacy sin documentacion ni conocimiento tribal disponible | Usar analisis estatico como fuente primaria; marcar inferencias como [INFERENCIA]; priorizar deuda que bloquea evolucion |
+| Deuda tecnica deliberada reciente (decision consciente hace <3 meses) | Documentar pero no priorizar remediacion inmediata; verificar que existe ticket de paydown asociado |
+| Equipo que normalizo la deuda ("siempre ha sido asi") | Cuantificar impacto en metricas concretas (deploy frequency, lead time, incident rate) para hacer visible el costo |
+| Codebase con +100 items de deuda identificados | Aplicar Pareto agresivo: scoring de impacto para identificar el 20% que genera 80% del drag |
+
+## Decisiones y Trade-offs
+
+| Decision | Habilita | Restringe | Cuando Usar |
 |---|---|---|---|
-| Inventario exhaustivo | Visibilidad completa | 3-5 dias | Sistemas legacy criticos |
-| Scan automatizado | Velocidad | Pierde deuda arquitectonica | Evaluacion rapida |
-| Focus en quick wins | Impacto inmediato | Ignora deuda estructural | Equipos con poca capacidad |
-| Paydown incremental | No detiene delivery | Mas lento | Equipos en produccion activa |
+| Inventario exhaustivo | Visibilidad completa | 3-5 dias de esfuerzo | Sistemas legacy criticos |
+| Scan automatizado | Velocidad de assessment | Pierde deuda arquitectonica y de proceso | Evaluacion rapida o triaje inicial |
+| Focus en quick wins | Impacto inmediato, genera momentum | Ignora deuda estructural profunda | Equipos con poca capacidad o buy-in inicial |
+| Paydown incremental | No detiene delivery existente | Remediacion mas lenta | Equipos en produccion activa con SLAs estrictos |
 
-## Output Artifact
+## Knowledge Graph
 
-**Primary:** `Tech_Debt_Assessment_{project}.md` — Inventario, scoring, roadmap de paydown.
+```mermaid
+graph TD
+    subgraph Core["Tech Debt Assessment"]
+        A[Inventario y Extraccion] --> B[Clasificacion Fowler]
+        B --> C[Cuantificacion de Impacto]
+        C --> D[Priorizacion]
+        D --> E[Roadmap de Paydown]
+    end
+    subgraph Inputs["Inputs"]
+        F[Codebase y Config] --> A
+        G[Pipeline Metrics] --> C
+        H[Capacidad del Equipo] --> E
+    end
+    subgraph Outputs["Outputs"]
+        A --> I[Inventario de Deuda]
+        C --> J[Scoring de Impacto]
+        E --> K[Paydown Roadmap]
+        D --> L[Quick Wins Catalog]
+    end
+    subgraph Related["Related Skills"]
+        M[dependency-analysis] -.-> A
+        N[maturity-assessment] -.-> C
+        O[software-architecture] -.-> B
+    end
+```
 
-### Diagramas (Mermaid)
-- Quadrant chart: distribucion de deuda por cuadrante Fowler
-- Gantt: roadmap de paydown por trimestre
-- Pie chart: distribucion de deuda por categoria
+## Output Templates
+
+**Formato 1 — Markdown (default)**
+- Filename: `Tech_Debt_Assessment_{project}_{WIP|Aprobado}.md`
+- Estructura: Inventario > Clasificacion por Cuadrante > Scoring de Impacto > Quick Wins > Roadmap de Paydown > Guardrails de Prevencion
+- Incluye diagramas Mermaid de cuadrante Fowler y roadmap
+
+**Formato 2 — XLSX (inventario y tracking)**
+- Filename: `Tech_Debt_Inventory_{project}_{WIP|Aprobado}.xlsx`
+- Estructura: Sheet 1 (Inventario con cuadrante, impacto, esfuerzo, evidencia) > Sheet 2 (Roadmap de paydown por sprint) > Sheet 3 (Metricas de progreso)
+- Optimizado para tracking operativo de remediacion y reporting a stakeholders
+
+**Formato 3 — HTML (bajo demanda)**
+- Filename: `Tech_Debt_Assessment_{project}_{WIP|Aprobado}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye cuadrante Fowler interactivo, heatmap de impacto vs esfuerzo, y roadmap de paydown por sprint con indicadores de quick wins. WCAG AA, responsive.
+
+**Formato 4 — DOCX (bajo demanda)**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+**Formato 5 — PPTX (bajo demanda)**
+- Filename: `{fase}_tech_debt_assessment_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo, Cuadrante Fowler (clasificación visual), Scoring de Impacto (heatmap impacto vs esfuerzo), Quick Wins catalog, Roadmap de Paydown por trimestre, Guardrails de prevención, próximos pasos.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Activa triggers correctos ante keywords de deuda tecnica, remediacion, code quality |
+| Completeness | 25% | Cubre inventario, clasificacion, scoring, roadmap y guardrails de prevencion |
+| Clarity | 20% | Cada item de deuda tiene evidencia trazable y clasificacion justificada |
+| Robustness | 20% | Maneja legacy sin docs, deuda normalizada, inventarios masivos |
+| Efficiency | 10% | Proceso combina scan automatizado con revision manual sin redundancia |
+| Value Density | 15% | Quick wins tienen ROI estimado; roadmap alineado con capacidad real del equipo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
+## Cross-References
+
+- **metodologia-dependency-analysis:** Dependencias desactualizadas como categoria de deuda tecnica
+- **metodologia-maturity-assessment:** Deuda tecnica como indicador de madurez en desarrollo
+- **metodologia-software-architecture:** Deuda arquitectonica como subcategoria critica del inventario
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0

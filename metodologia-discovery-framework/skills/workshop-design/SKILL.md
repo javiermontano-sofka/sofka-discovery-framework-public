@@ -1,6 +1,7 @@
 ---
 name: metodologia-workshop-design
-author: Javier Montaño · Comunidad MetodologIA
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[project-or-workshop-name]"
 description: >
   Workshop design methodology — event storming, impact mapping, user story mapping, design sprints.
   Replaces former workshop-facilitator (facilitation is the agent's job, design is the skill).
@@ -183,6 +184,130 @@ Consolidates workshop outputs into actionable artifacts and establishes follow-u
 **Domain Experts Unavailable:** Event storming without domain experts produces developer assumptions. Either postpone or run preliminary session marking assumptions explicitly.
 
 **Workshop Fatigue:** Demonstrate follow-through. Keep session shorter, action-oriented. Show how prior outputs were used.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Equipo 100% remoto sin experiencia en talleres colaborativos | Usar Miro/FigJam; sesiones mas cortas (2-3h max); facilitacion mas estructurada con templates pre-llenados; breaks cada 40 min; instrucciones escritas en cada actividad |
+| Grupo grande (15+ participantes) sin posibilidad de reducir | Dividir en breakout groups de 4-6; asignar sub-facilitadores; usar gallery walks y dot voting para convergencia; evitar plenarias extensas |
+| Domain experts no disponibles para event storming | Posponer event storming o ejecutar sesion preliminar marcando supuestos explicitamente; el output sin domain experts es developer assumptions, no domain knowledge |
+| Fatiga de talleres en la organizacion (demasiados workshops sin follow-through) | Demostrar follow-through de sesiones anteriores; mantener sesiones cortas y orientadas a accion; mostrar como outputs anteriores fueron utilizados |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Seleccionar tecnica segun objetivo del taller (event storming para dominio, impact mapping para scope, etc.) | Usar siempre la misma tecnica independiente del objetivo | Cada tecnica tiene un sweet spot; usar event storming para priorizar o design sprint para descubrir dominio produce resultados sub-optimos |
+| Aplicar regla "silent-before-spoken" en toda ideacion | Comenzar directamente con discusion abierta | La ideacion silenciosa produce mas ideas diversas; la discusion abierta tiende a sesgo del mas vocal y groupthink |
+| Disenar agenda con ritmo diverge-converge explicito | Agenda lineal sin ciclos de divergencia/convergencia | Sin convergencia, el taller produce ideas sin decisiones; sin divergencia, las ideas son limitadas por el pensamiento grupal |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Workshop Design Core"]
+        A[metodologia-workshop-design]
+        A1[S1: Selection & Design]
+        A2[S2: Event Storming]
+        A3[S3: Impact Mapping]
+        A4[S4: User Story Mapping]
+        A5[S5: Design Sprint]
+        A6[S6: Synthesis & Handoff]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Workshop Goal]
+        I2[Participant List]
+        I3[Project Context Docs]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Workshop Design Document]
+        O2[Facilitation Guide]
+        O3[Synthesis Report]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-stakeholder-mapping]
+        R2[metodologia-functional-toolbelt]
+        R3[metodologia-ux-design-discovery]
+        R4[metodologia-mentoring-training-discovery]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    A --> A1 --> A2
+    A1 --> A3
+    A1 --> A4
+    A1 --> A5
+    A2 --> A6
+    A3 --> A6
+    A4 --> A6
+    A5 --> A6
+    A --> O1
+    A --> O2
+    A --> O3
+    R1 --> A
+    A --> R2
+    A --- R3
+    A --- R4
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Workshop Design — {nombre del taller}
+## Objetivo
+> Que se busca lograr y como se medira el exito.
+## Tecnica Seleccionada
+| Tecnica | Justificacion | Duracion | Participantes |
+## Agenda Detallada
+| Bloque | Actividad | Duracion | Facilitador | Output |
+## Pre-work
+[Materiales a enviar antes del taller]
+## Guia de Facilitacion
+[Script interno para el facilitador con time-boxes y transiciones]
+## Template de Sintesis
+[Estructura para consolidar outputs post-taller]
+```
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_workshop-design_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por técnica seleccionada y estado de acción, auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Agenda Time-boxed, Participantes y Roles, Pre-work Checklist, Action Items con Owners, Decision Log.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, objetivo y criterios de éxito, técnica seleccionada con justificación, agenda visual time-boxed, participantes y roles, pre-work requerido, guía de facilitación por bloque, template de síntesis, action items con owners y deadlines.
+
+**Formato HTML (para distribucion a participantes):**
+
+```
+Header: Logo + nombre del taller + fecha
+Section 1: Objetivo y Expectativas (callout box)
+Section 2: Agenda Visual (timeline con bloques de color)
+Section 3: Pre-work Required (checklist con links)
+Section 4: Que Traer / Como Prepararse
+Section 5: Logistics (lugar/link, horario, breaks)
+Footer: Contacto del facilitador + MetodologIA attribution
+--- Documento separado (interno): Facilitation Guide (no distribuir a participantes)
+```
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de workshop design, event storming, impact mapping, design sprint, story mapping | 7/10 |
+| Completeness | 25% | Tecnica seleccionada con justificacion; agenda time-boxed; pre-work definido; sintesis planificada; action items con owners | 7/10 |
+| Clarity | 20% | Agenda es ejecutable por un facilitador sin contexto adicional; participantes entienden que se espera de ellos | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (remoto, grupo grande, sin experts, fatiga); anti-patterns de facilitacion remota documentados | 7/10 |
+| Efficiency | 10% | Duracion y formato adaptados al contexto (no usar full-day cuando 2h es suficiente); modo operacional correcto | 7/10 |
+| Value Density | 15% | Outputs del taller alimentan directamente actividades downstream; follow-up cadence definida; knowledge transfer para no-asistentes | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Validation Gate
 

@@ -4,6 +4,8 @@ description: >
   Analytics pipeline design — dbt-style transformations, data modeling, testing, documentation.
   Use when the user asks to "design analytics models", "set up dbt project", "plan data transformations",
   "define data contracts", "model star schema", or mentions staging models, marts, incremental strategies, or materializations.
+argument-hint: "<system-or-project-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -318,6 +320,137 @@ Before finalizing delivery, verify:
 - [ ] Documentation covers column descriptions for all mart-layer models
 
 ---
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Legacy Stored Procedures Migration | Mapear logica existente a dbt models, preservar business rules, validacion en paralelo. Esperar 20-30% de logica obsoleta o duplicada. |
+| Multi-Warehouse Environment | Modelos consumidos entre Snowflake, BigQuery y Redshift. Usar cross-database macros, abstraer SQL warehouse-specific, testear en cada plataforma. |
+| Real-Time Transformation Needs | dbt es batch-oriented. Para streaming, considerar Materialize, RisingWave, o SQLMesh con streaming. Arquitectura hibrida: batch marts enriquecidos por streaming aggregates. |
+| Massive Scale (10B+ Rows) | Incremental models mandatorio. Microbatch strategy, partition pruning y clustering criticos. Profile query plans antes y despues. |
+| Single Analytics Engineer | Skip intermediate layers inicialmente. Staging + marts. Agregar capas conforme crece la complejidad. Documentacion critica para bus-factor. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| dbt como framework de referencia | SQLMesh, Dataform, stored procedures | dbt tiene el ecosistema mas grande (10K+ contributors), rich testing framework, y es standard de facto para analytics engineering. El skill adapta a alternativas cuando se detectan. |
+| Star schema como patron default | One Big Table, Data Vault | Star schema balancea query performance, intuitividad para BI tools, y flexibilidad para multiples patrones de consumo. OBT se recomienda para single-use analytics. |
+| Testing pyramid con contracts en CI | Tests solo en produccion, validacion manual | Contracts en CI previenen breaking changes antes de merge. Testing solo en produccion detecta problemas tarde y con mayor blast radius. |
+| Naming conventions estrictas (stg_, fct_, dim_) | Naming libre por equipo | Prefijos estandar habilitan CI rules automaticas, lineage auto-detectada, y onboarding rapido. El costo es rigidez inicial. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        S2T["Source-to-Target Mapping"]
+        MODEL["Data Modeling Patterns"]
+        XFORM["Transformation Framework"]
+        TEST["Testing & Data Contracts"]
+        DOCS["Documentation & Discovery"]
+        PERF["Performance & Cost"]
+    end
+
+    subgraph Inputs["Entradas"]
+        SRC["Source Systems"]
+        SQL["SQL Codebase"]
+        DBT["dbt Project Config"]
+        REQS["Consumption Requirements"]
+    end
+
+    subgraph Outputs["Salidas"]
+        REPORT["Analytics Engineering Report"]
+        DAG["Model Dependency DAG"]
+        NAMING["Naming Convention Guide"]
+        COVERAGE["Test Coverage Report"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        DE["data-engineering"]
+        BI["bi-architecture"]
+        DS["data-science-architecture"]
+        DQ["data-quality"]
+    end
+
+    SRC --> S2T
+    SQL --> XFORM
+    DBT --> XFORM
+    REQS --> MODEL
+    S2T --> MODEL
+    MODEL --> XFORM
+    XFORM --> TEST
+    TEST --> DOCS
+    DOCS --> PERF
+    S2T --> REPORT
+    MODEL --> REPORT
+    REPORT --> DAG
+    REPORT --> NAMING
+    REPORT --> COVERAGE
+    DE -.-> S2T
+    BI -.-> MODEL
+    DS -.-> DOCS
+    DQ -.-> TEST
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Analytics Engineering: {project}
+## S1: Source-to-Target Mapping
+### Layer Architecture
+### Source Inventory
+| Source | System | Tables | Extraction | Freshness SLA |
+...
+## S2: Data Modeling Patterns
+### Selected Pattern: {star_schema|OBT|activity}
+## S3: Transformation Framework
+### Materialization Strategy
+| Layer | Materialization | Rationale |
+...
+## S4: Testing & Data Contracts
+### Test Coverage Summary
+## S5: Documentation & Discovery
+## S6: Performance & Cost Optimization
+```
+
+**Formato XLSX (bajo demanda):**
+
+```
+Sheet 1: Source Inventory — systems, tables, extraction method, freshness SLA
+Sheet 2: Model Catalog — model name, layer, materialization, grain, owner, tests
+Sheet 3: Test Coverage — model, not_null, unique, relationships, custom, contract
+Sheet 4: Naming Conventions — prefix, pattern, examples, CI rule
+Sheet 5: Cost Attribution — model, warehouse, avg duration, estimated cost/run
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `{fase}_Analytics_Engineering_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con DAG interactivo de dependencias de modelos, test coverage heatmap, y tabla de naming conventions filtrable. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de dbt, data modeling, star schema, staging models, materializations, data contracts. |
+| Completeness | 25% | 6 secciones cubren source-to-target, modeling, framework, testing, docs, y performance. Naming conventions enforced. |
+| Clarity | 20% | Decisiones de modeling pattern y materialization strategy justificadas con contexto. Tablas comparativas claras. |
+| Robustness | 20% | Edge cases (legacy migration, multi-warehouse, streaming, massive scale, single engineer) manejados con estrategias practicas. |
+| Efficiency | 10% | Variante ejecutiva reduce a 3 secciones clave. CI slim build evita rebuilds completos. |
+| Value Density | 15% | Cada seccion produce artefactos operativos: DAG diagram, naming guide, test coverage report, cost attribution dashboard spec. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar completeness de modeling decisions y test coverage strategy.
 
 ## Output Format Protocol
 

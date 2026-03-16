@@ -1,5 +1,7 @@
 ---
 name: metodologia-data-quality
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Data quality framework — profiling, validation, anomaly detection, data contracts, SLA monitoring.
   Use when the user asks to "design data quality framework", "set up data contracts", "plan data validation",
@@ -256,17 +258,96 @@ Dashboards and metrics for ongoing data quality visibility.
 - Automated remediation rules require human validation before production deployment
 - Real-time quality monitoring assumes streaming infrastructure exists; batch-only environments use scheduled profiling
 
-## Edge Cases
+## Casos Borde
 
-**No Historical Baseline:** Use first 30 days as baseline with wider thresholds (4-sigma instead of 3). Tighten gradually. Accept higher false positive rate initially.
+| Caso | Estrategia de Manejo |
+|---|---|
+| Sin baseline historico | Usar primeros 30 dias como baseline con thresholds amplios (4-sigma); ajustar gradualmente; aceptar mayor tasa de falsos positivos inicialmente |
+| Entorno schema-on-read | Quality checks como capa de enforcement; profiling y validacion on-read; quarantine en primer acceso en lugar de ingestion |
+| Fuentes de datos de terceros | Sin control sobre calidad del productor; contratos son aspiracionales; monitoring y quarantine esenciales; presupuestar 2-3x mas remediacion manual |
+| Streaming de alto volumen | Profiling basado en sampling (1-5%); ventanas de calidad micro-batch (1-5 min); aceptar confianza estadistica en lugar de validacion deterministica |
+| Datos regulados (GDPR, HIPAA) | Monitoring no debe exponer PII en logs o dashboards; solo metricas agregadas; quarantine respeta clasificacion; audit trail de decisiones de calidad obligatorio |
 
-**Schema-on-Read Environments:** Quality checks become the enforcement layer. Profile and validate on read; quarantine on first access rather than ingestion.
+## Decisiones y Trade-offs
 
-**Third-Party Data Sources:** No control over producer quality. Contracts are aspirational; monitoring and quarantine are essential. Budget 2-3x more manual remediation time than internal sources.
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Prevencion (data contracts) sobre deteccion (monitoring) | Solo deteccion post-ingestion | Los data contracts entre productores y consumidores son la primera linea de defensa; detectar problemas post-ingestion es 10x mas costoso que prevenirlos |
+| Quarantine pattern para aislar sin detener pipeline | Pipeline completo se detiene ante error | En pipelines de alto volumen, detener todo por registros malos afecta SLA de datos buenos; quarantine aisla malos y continua con buenos |
+| Auto-fix solo para correcciones deterministicas | Auto-fix para cualquier tipo de error | Correcciones no deterministicas (logica de negocio ambigua, conflictos cross-system) requieren juicio humano; auto-fix incorrecto es peor que no corregir |
+| Alertas calibradas para < 5 falsos positivos/semana | Thresholds muy ajustados que maximizan deteccion | Alert fatigue es la causa #1 de que los equipos ignoren alertas reales; < 5 FP/semana es el umbral de atencion sostenible |
 
-**High-Volume Streaming:** Sampling-based profiling (1-5% sample rate). Micro-batch quality windows (1-5 min). Accept statistical confidence instead of deterministic validation.
+## Knowledge Graph
 
-**Regulated Data (GDPR, HIPAA):** Quality monitoring must not expose PII in logs or dashboards. Aggregate metrics only. Quarantine areas must respect data classification. Audit trail of quality decisions required.
+```mermaid
+graph TD
+    subgraph Core["Core: Data Quality"]
+        PROF[Data Profiling & Baseline]
+        VAL[Validation Rule Engine]
+        DC[Data Contracts]
+        ANOM[Anomaly Detection]
+        REM[Remediation Workflows]
+        SLA[SLA Monitoring]
+    end
+
+    subgraph Inputs["Inputs"]
+        DATA[Raw Data Sources]
+        SCHEMA[Schema Definitions]
+        BIZ[Business Rules]
+        HIST[Historical Baselines]
+    end
+
+    subgraph Outputs["Outputs"]
+        RULES[Validation Rule Catalog]
+        CONTR[Contract YAML Templates]
+        DASH[Quality Dashboard]
+        REPORT[Incident Post-mortems]
+    end
+
+    subgraph Related["Related Skills"]
+        DGOV[data-governance]
+        DENG[data-engineering]
+        BI[bi-architecture]
+        OBS[observability]
+    end
+
+    DATA --> PROF
+    SCHEMA --> VAL
+    BIZ --> DC
+    HIST --> ANOM
+    PROF --> VAL --> DC --> ANOM --> REM --> SLA
+    SLA --> RULES
+    SLA --> CONTR
+    SLA --> DASH
+    SLA --> REPORT
+    DGOV --> DC
+    RULES --> DENG
+    DASH --> BI
+    SLA --> OBS
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-01_Data_Quality_Framework.md` | Framework completo con profiling baseline, validation rule engine, data contracts, anomaly detection, remediation workflows y SLA monitoring. Diagramas Mermaid de validation flow y remediation workflow. |
+| **XLSX** | `A-01_Data_Quality_Scorecard.xlsx` | Scorecard interactivo con composite quality score por dimension (accuracy, completeness, timeliness, consistency, validity, uniqueness), tendencias a 90 dias, y SLA compliance por dataset. |
+| **HTML** | `A-01_Data_Quality_Framework_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Light-First Technical, self-contained, WCAG AA, responsive. Incluye quality scorecard por dimension, SLA escalation matrix visual, y remediation workflow interactivo con DLQ status. |
+| **DOCX** | `{fase}_Data_Quality_Framework_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents. |
+| **PPTX** | `{fase}_Data_Quality_Framework_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (data quality, data contracts, validation, anomaly detection, SLA) sin falsos positivos con data-governance o analytics-engineering |
+| Completeness | 25% | Las 6 secciones cubren profiling, validacion, contracts, anomaly detection, remediation y SLA monitoring sin huecos; todas las dimensiones de calidad representadas |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; formulas de calidad con targets numericos; severity classification con acciones por nivel; SLA tiers con tiempos de respuesta |
+| Robustness | 20% | Maneja sin baseline, schema-on-read, third-party sources, streaming de alto volumen y datos regulados con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S3+S5 sin perder contratos y remediacion |
+| Value Density | 15% | Cada seccion aporta valor practico directo; quality dimension formulas y SLA escalation matrix son herramientas de operacion inmediata |
+
+**Umbral minimo: 7/10.**
 
 ---
 

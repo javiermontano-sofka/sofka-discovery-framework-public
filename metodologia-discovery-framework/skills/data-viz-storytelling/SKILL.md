@@ -1,6 +1,7 @@
 ---
 name: metodologia-data-viz-storytelling
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[context: analysis|presentation|dashboard|comparison|flow] [format: markdown|html|pptx] — e.g. 'presentation html'"
 description: >
   Visual data narrative design — chart selection, Mermaid diagram metodologia-storytelling,
   visual hierarchy, dashboard narratives, and annotation strategy. Use when
@@ -186,3 +187,80 @@ Each visual builds the argument. No decorative slides.
 - This skill owns **visual design and diagram narratives**. It does NOT own metric interpretation (that's metodologia-data-storytelling) or format production (that's metodologia-output-engineering).
 - Mermaid is the primary diagramming tool. No external tools or image generation.
 - Follow Mermaid Diagramming Standard in CLAUDE.md as baseline.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Data has only 2 data points — insufficient for meaningful chart | Use a callout/highlight card instead of a chart; present the delta as a single comparison metric with context sentence |
+| Audience will consume deliverable in print (no Mermaid rendering) | Fall back to structured ASCII tables; add pre-rendered description paragraphs for every diagram; flag print limitation in document header |
+| Multiple conflicting metrics that cannot coexist in a single visualization | Split into separate visualizations with a narrative bridge explaining the conflict; never overlay contradictory data on the same axes |
+| Sensitive data that cannot appear in shared diagrams (PII, internal IPs, revenue) | Abstract to categories and percentages; use anonymized labels; add "[REDACTED]" tag where specifics are removed |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Mermaid as sole diagramming tool | External tools (draw.io, Lucidchart, D3.js) | Mermaid is text-based, version-controllable, and renders natively in GitHub/GitLab/Obsidian; external tools break the markdown-as-source-of-truth principle |
+| One message per visualization, no exceptions | Dense multi-message charts for space efficiency | Cognitive science shows single-message visuals are processed 40% faster; multi-message charts cause split attention and reduce retention |
+| Maximum 20 nodes per diagram | Allow unlimited nodes for completeness | Diagrams beyond 20 nodes become illegible; splitting into sub-diagrams with cross-references preserves both completeness and clarity |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Data Viz Storytelling"]
+        A["Chart Selection Matrix"] --> B["Mermaid Narrative Design"]
+        A --> C["Annotation Strategy"]
+        B --> D["Visual Sequence"]
+        C --> D
+    end
+    subgraph Inputs["Inputs"]
+        E["Data Pattern"] --> A
+        F["Visualization Context"] --> A
+        G["Format Target"] --> B
+    end
+    subgraph Outputs["Outputs"]
+        D --> H["Annotated Diagrams"]
+        D --> I["Dashboard Narratives"]
+    end
+    subgraph Related["Related Skills"]
+        J["mermaid-diagramming"] -.-> B
+        K["output-engineering"] -.-> D
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `{fase}_DataViz_{cliente}_{WIP}.md`
+- Structure: TL;DR > Chart Selection Rationale > Mermaid diagrams with accessibility text > Annotation notes > Visual sequence narrative > ghost menu
+
+### PPTX
+- Filename: `{fase}_DataViz_{cliente}_{WIP}.pptx`
+- Structure: 1 visual per slide; speaker notes with data source and annotation rationale; narrative arc (headline visual > context > evidence > action)
+
+### HTML (bajo demanda)
+- Filename: `{fase}_DataViz_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye diagramas Mermaid renderizados vía CDN, anotaciones interactivas por chart y texto de accesibilidad. WCAG AA, responsive, print-ready.
+
+### DOCX (circulación formal)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con Metodología Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por tipo de chart y prioridad visual, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.

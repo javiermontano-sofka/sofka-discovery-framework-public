@@ -1,9 +1,9 @@
-# MAO v1.0 — MetodologIA de Aprovechamiento de Oportunidades
+# MAO v1.1 — MetodologIA de Aprovechamiento de Oportunidades
 
 > **MAO** = MetodologIA de Aprovechamiento de Oportunidades.
 > **"Método + TecnologIA = Soberanía"** — La metodología precede la tecnología.
 > Tu IDE se convierte en una agencia de discovery universal.
-> 48 agentes · 100 skills MOAT · 96 comandos · 49 prompts NL-HP · GPL-3.0 Copyleft.
+> 101 agentes · 101 skills MOAT · 101 comandos · 49 prompts NL-HP · Design System v5 · MIT.
 > © 2026 MetodologIA · Javier Montaño.
 
 ---
@@ -115,8 +115,8 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 
 ```
 metodologia-discovery-framework/
-├── agents/              # 48 agentes especializados
-├── commands/            # 96 comandos (primarios + aliases + service discovery)
+├── agents/              # 100 agentes especializados
+├── commands/            # 101 comandos (primarios + aliases + service discovery + coaching)
 ├── skills/              # 100 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
 ├── references/
 │   ├── ontology/        # 13 sub-archivos de ontología viva
@@ -156,4 +156,4 @@ Revisarlo al inicio de cada sesión para no repetir errores.
 
 *MAO v1.0 — MetodologIA de Aprovechamiento de Oportunidades.*
 *Método + TecnologIA = Soberanía. Para el profesional en la era de la IA.*
-*GPL-3.0 Copyleft — El conocimiento se comparte, no se oculta.*
+*MIT License — El conocimiento se comparte, crédito al origen.*

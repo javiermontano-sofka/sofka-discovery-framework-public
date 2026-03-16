@@ -4,6 +4,8 @@ description: >
   Regulatory and standards compliance assessment — GDPR, SOX, PCI-DSS, HIPAA, ISO 27001, NIST CSF.
   Use when the user asks to "evaluate compliance", "audit regulatory gaps", "assess GDPR readiness",
   "review PCI-DSS compliance", or mentions regulatory frameworks, data protection, compliance matrix.
+argument-hint: "<project-or-system-name>"
+author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -73,6 +75,82 @@ The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **
 - Assumes access to documentation of existing controls and policies
 - Does not replace formal certification audits (ISO, SOC2, PCI QSA)
 - Regulatory interpretations should be validated by legal counsel
+
+## Casos Borde
+
+1. **Multiples marcos regulatorios superpuestos** — Cuando aplican GDPR + PCI-DSS + SOX simultaneamente, el skill genera una matriz de controles unificada que mapea requisitos compartidos para evitar duplicacion de esfuerzo.
+2. **Organizacion sin documentacion de controles** — Si no existen politicas ni procedimientos documentados, el skill genera un inventario basado en entrevistas/inferencia marcado con [SUPUESTO] y prioriza la documentacion como primer paso de remediacion.
+3. **Regulacion local no cubierta por marcos estandar** — Para normativas locales (ej: Ley 1581 Colombia, LGPD Brasil), el skill estructura la evaluacion con los mismos principios pero requiere input del usuario sobre requisitos especificos.
+4. **Startup en etapa temprana sin controles formales** — El skill adapta la evaluacion para identificar controles minimos viables y genera un roadmap pragmatico en lugar de una gap analysis exhaustiva.
+
+## Decisiones y Trade-offs
+
+1. **Multi-framework default vs. framework unico** — Default multi porque la mayoria de organizaciones estan sujetas a multiples regulaciones; un solo framework crea falsa sensacion de completitud.
+2. **Gap analysis 100% vs. muestreo** — Se requiere cobertura 100% de requisitos del framework porque los auditores externos evaluan contra la totalidad; el muestreo es insuficiente para certificacion.
+3. **Heat map visual vs. tabla detallada** — Se producen ambos: heat map para comunicacion ejecutiva y tabla detallada para equipos de remediacion; el costo adicional se justifica por las audiencias diferentes.
+4. **Disclaimer legal obligatorio vs. opcional** — Siempre obligatorio; el skill produce evaluacion tecnica, nunca asesoria legal, y esto debe ser explicito para proteger al usuario.
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Compliance Assessment"]
+        A[Gap Analysis] --> B[Control Mapping]
+        A --> C[Risk Heat Map]
+        A --> D[Remediation Roadmap]
+    end
+    subgraph Inputs["Inputs"]
+        E[Project/System Name] --> A
+        F[Applicable Frameworks] --> B
+        G[Existing Controls] --> B
+    end
+    subgraph Outputs["Outputs"]
+        A --> H[Matriz de Brechas]
+        C --> I[Heat Map Regulatorio]
+        D --> J[Hoja de Ruta]
+        B --> K[Inventario Controles]
+    end
+    subgraph Related["Related Skills"]
+        L[security-architecture] -.-> B
+        M[data-architecture] -.-> A
+        N[risk-assessment] -.-> C
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `compliance_gap-analysis_{sistema}_{WIP}.md`
+- Structure: TL;DR -> Marcos aplicables -> Matriz de brechas (tabla) -> Heat map (Mermaid) -> Roadmap de remediacion -> Informe ejecutivo
+
+### HTML (bajo demanda)
+- Filename: `compliance_gap-analysis_{sistema}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye risk heat map interactivo por dominio, compliance matrix filtrable, y remediation roadmap faseado. WCAG AA, responsive, print-ready.
+
+### XLSX
+- Filename: `compliance_control-matrix_{sistema}_{WIP}.xlsx`
+- Hojas: Framework Requirements | Control Inventory | Gap Matrix | Risk Scoring | Remediation Plan
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_compliance_gap-analysis_{sistema}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Activa ante "compliance", "GDPR", "PCI-DSS", "regulatory" sin confundir con security assessment general |
+| Completeness | 25% | Cubre identificacion de marcos, gap analysis, heat map y roadmap sin huecos |
+| Clarity | 20% | Cada brecha referencia requisito especifico con severidad y remediacion concreta |
+| Robustness | 20% | Maneja multi-framework, ausencia de documentacion y regulaciones locales |
+| Efficiency | 10% | 8 pasos secuenciales donde cada uno usa output del anterior |
+| Value Density | 15% | Heat map y roadmap son directamente presentables a C-level y equipos tecnicos |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ## Cross-References
 

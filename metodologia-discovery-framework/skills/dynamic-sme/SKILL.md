@@ -1,6 +1,7 @@
 ---
 name: metodologia-dynamic-sme
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[industry] [phase/task] [depth] — e.g. 'banking architecture review' or 'retail quick risks'"
 description: >
   Context-adaptive industry expert that dynamically adopts the right SME lens based on client sector.
   Use when the user asks to "add industry context", "act as domain expert", "give me the banking/retail/health perspective",
@@ -177,5 +178,86 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Diagramas incluidos:**
 - Mindmap: industry regulatory and compliance landscape
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Client operates in an industry not covered by the Lens Matrix (e.g., space, agriculture) | Build a composite lens from the two closest industries; declare all insights as [INFERENCIA]; propose 3 discovery questions to the stakeholder to close knowledge gaps |
+| Engagement spans two heavily regulated industries (e.g., banking + healthcare) | Produce separate regulatory overlays per industry; flag conflicting requirements; recommend steering committee arbitration before merging |
+| Industry context changes mid-engagement (pivot, M&A) | Re-apply SME lens immediately; re-evaluate all prior deliverables for consistency; document delta between old and new lens in a reconciliation appendix |
+| Stakeholder provides proprietary industry data that contradicts public benchmarks | Cite both sources; flag the discrepancy with [STAKEHOLDER] vs [DOC] tags; recommend independent validation before basing decisions on either |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Use publicly available benchmarks and best practices only | Embed proprietary consulting frameworks (McKinsey 7S, BCG Matrix) as structural tools | Copyleft license prohibits proprietary framework reproduction; public concepts referenced by name only, never replicated in structure |
+| Default to single-industry lens with composite as exception | Always apply multi-industry composite lens | Composite lenses dilute specificity; single lens produces sharper, more actionable insights for the 90% of engagements with a clear primary industry |
+| Require explicit industry declaration before producing output | Auto-detect industry from project artifacts | Auto-detection introduces silent misclassification risk; one explicit question eliminates an entire class of errors |
+| Emulate consulting style (structured, hypothesis-driven) without copying methodology names | Freely reference proprietary methodology internals | Maintains thought rigor while respecting intellectual property boundaries |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Dynamic SME Engine"]
+        A["Industry Lens Selection"] --> B["Risk Overlay"]
+        A --> C["Benchmark Data"]
+        A --> D["Regulatory Flags"]
+        B --> E["So-What Summary"]
+        C --> E
+        D --> E
+    end
+    subgraph Inputs["Inputs"]
+        F["Client Sector"] --> A
+        G["Phase / Task"] --> A
+        H["Depth Parameter"] --> A
+    end
+    subgraph Outputs["Outputs"]
+        E --> I["Industry Context Brief"]
+        E --> J["Competitive Landscape"]
+    end
+    subgraph Related["Related Skills"]
+        K["scenario-analysis"] -.-> A
+        L["technology-vigilance"] -.-> C
+        M["executive-pitch"] -.-> E
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `SME_Industry_Context_{cliente}_{WIP}.md`
+- Structure: TL;DR > Industry Context Brief > Risk Overlay > Benchmark Data > Regulatory Flags > Competitive Landscape > So-What Summary > Mermaid mindmap
+
+### HTML
+- Filename: `SME_Industry_Context_{cliente}_{WIP}.html`
+- Structure: MetodologIA Design System v4 single-file HTML with branded header, collapsible sections per delivery block, embedded Mermaid mindmap, print-ready @media print styles
+
+### DOCX
+- Filename: `SME_Industry_Context_{cliente}_{WIP}.docx`
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+
+### XLSX
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por severidad de riesgo (Critical/High/Medium/Low), auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Industry Risk Overlay, Benchmark Data Registry, Regulatory Flags Tracker, Competitive Landscape Summary.
+
+### PPTX
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Industry Context Brief, Risk Overlay por Sector, Benchmark Data, Regulatory Flags, Competitive Landscape, So-What Summary.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026

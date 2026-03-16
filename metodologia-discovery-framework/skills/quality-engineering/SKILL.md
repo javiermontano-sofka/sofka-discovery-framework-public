@@ -1,5 +1,7 @@
 ---
 name: metodologia-quality-engineering
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Strategic quality engineering framework covering test strategy, automation architecture, quality gates, metrics, and shift-left practices.
   Use when the user asks to "design test strategy", "plan quality gates", "set up test automation",
@@ -245,6 +247,99 @@ IF performance SLA exists → add perf regression to CI; baseline in staging; al
 IF multiple teams → consumer-driven contract testing; shared test data contracts; monthly contract reviews
 IF legacy with no tests → characterization tests first; NEVER refactor without tests
 ```
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Greenfield sin tests existentes | Smoke tests en critical paths primero (20-30 casos); crecer coverage organicamente a 70-80%; NO refactorizar sin tests previos |
+| Legacy migration sin coverage | Golden Master pattern para characterization tests antes de refactoring; reemplazo gradual; priorizar paths de mayor riesgo |
+| Contract breaks en microservicios | Consumer-driven contract testing (Pact); reemplaza E2E entre servicios; revisiones mensuales de contratos entre equipos |
+| Equipo sin experiencia en automatizacion | Ramp-up de 4-6 semanas; comenzar con API-level; evitar UI frameworks inicialmente; pairing con automation engineer |
+| Regulacion estricta (banca, salud, PCI) | Agregar capa de compliance testing, data masking, verificacion de audit trail, pen testing mandatorio; documentar evidencia por gate |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Test shape driven by architecture (pyramid vs diamond) | Shape unica para todos los proyectos | La forma correcta depende de la arquitectura (monolito vs microservicios), no de la convencion; un diamond en monolito desperdicia recursos |
+| Shift-left con gates pre-commit | Testing solo en staging/pre-release | Cada defecto encontrado despues del merge cuesta 10-100x mas; pre-commit hooks y PR gates son inversion, no overhead |
+| Quality gates con criterios medibles y timeout | Gates decorativos sin criterios de pass/fail | Un gate sin criterio medible es un semaforo decorativo; cada gate define pass/fail, timeout y escalation path |
+| 25-30% del budget para testing exploratorio | 100% automatizacion | La automatizacion no encuentra bugs que no se saben buscar; el testing exploratorio descubre edge cases que la automatizacion misses |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Quality Engineering"]
+        MAT[Quality Maturity Assessment]
+        TS[Test Strategy]
+        AA[Automation Architecture]
+        QG[Quality Gates]
+        QM[Quality Metrics]
+        IP[Implementation Plan]
+    end
+
+    subgraph Inputs["Inputs"]
+        ARCH[Architecture Type]
+        CODE[Codebase & Test Infra]
+        REQ[Quality Requirements]
+        TEAM[Team Skills]
+    end
+
+    subgraph Outputs["Outputs"]
+        FRAME[Quality Framework Doc]
+        SCORE[Maturity Scorecard]
+        GATES[Gate Criteria Checklist]
+        DASH[Metrics Dashboard]
+    end
+
+    subgraph Related["Related Skills"]
+        DSO[devsecops-architecture]
+        SWA[software-architecture]
+        OBS[observability]
+        TEST[testing-strategy]
+    end
+
+    ARCH --> TS
+    CODE --> MAT
+    REQ --> QG
+    TEAM --> AA
+    MAT --> TS --> AA --> QG --> QM --> IP
+    IP --> FRAME
+    IP --> SCORE
+    IP --> GATES
+    IP --> DASH
+    FRAME --> DSO
+    FRAME --> SWA
+    DASH --> OBS
+    TS --> TEST
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-01_Quality_Engineering.md` | Framework completo con maturity assessment, test strategy, automation architecture, quality gates, metrics dashboard design y implementation plan. Diagramas Mermaid de pipeline stages y test shape. |
+| **XLSX** | `A-01_Quality_Maturity_Scorecard.xlsx` | Scorecard interactivo con assessment por dimension (0-100%), gap analysis, DORA benchmark comparison, y plan de mejora con quick wins y long-term improvements. |
+| **HTML** | `{fase}_Quality_Engineering_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Light-First Technical. Incluye maturity scorecard visual por dimension, gate criteria checklist interactivo, y dashboard de métricas leading/lagging. |
+| **DOCX** | `{fase}_quality_engineering_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de maturity scorecard, gate criteria y métricas leading/lagging con zebra striping. Encabezados y pies de página con branding MetodologIA. |
+| **PPTX** | `{fase}_quality_engineering_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Quality Maturity Assessment (6 dimensiones), Test Strategy Shape, Automation Architecture, Quality Gate Criteria, Metrics Dashboard, Implementation Plan. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (test strategy, quality gates, automation, maturity, shift-left) sin falsos positivos con devsecops-architecture o testing-strategy |
+| Completeness | 25% | Las 6 secciones cubren maturity, strategy, automation, gates, metrics e implementation sin huecos; todos los pipeline stages con criterios de pass/fail |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada gate tiene criterio medible, timeout y escalation; metricas con targets numericos |
+| Robustness | 20% | Maneja greenfield, legacy, microservicios, event-driven, multi-plataforma y regulacion estricta con adaptaciones especificas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S4+S5 sin perder capacidad de decision sobre gates y metricas |
+| Value Density | 15% | Cada seccion aporta valor practico directo; maturity scorecard y gate criteria son herramientas de decision inmediata |
+
+**Umbral minimo: 7/10.**
+
+---
 
 ## Validation Gate
 

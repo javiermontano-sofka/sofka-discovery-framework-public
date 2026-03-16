@@ -8,6 +8,8 @@ description: >
   "FinOps evaluation", "cloud security posture", "SRE maturity", "cloud operations model",
   "cloud service roadmap", or mentions cloud-as-a-service, platform engineering, toil reduction,
   FinOps, cloud cost optimization, or cloud operations.
+argument-hint: "<project-or-client-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -382,5 +384,151 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - FinOps optimization waterfall: current spend → savings opportunities → optimized spend
 - Cloud services roadmap: phased Gantt with capability milestones
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Multi-cloud con diferentes niveles de madurez | Evaluar cada cloud por separado en S1-S5. Roadmap (S6) considera donde invertir en madurez y donde consolidar workloads. |
+| Startup con infraestructura 100% serverless | DORA metrics relevantes pero metricas de infra cambian. Foco en observability, cost per invocation, cold start optimization. SRE practices simplificadas. |
+| Organizacion regulada (banca, salud) | S5 (Security Posture) es la seccion mas critica. Compliance frameworks dictan el roadmap. Security gates son pre-requisito. |
+| Cloud spend fuera de control (>50% growth YoY) | S4 (FinOps) es prioridad inmediata. Quick wins de cost optimization primero. Governance de costos antes de invertir en otras capabilities. |
+| Equipo sin experiencia cloud (todo outsourced) | Roadmap incluye knowledge transfer y upskilling como workstream explicito. Dependency en vendor externo es riesgo documentado. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| DORA metrics como brujula de madurez DevOps | Metricas internas adhoc, maturity frameworks genericos | DORA (Deployment Frequency, Lead Time, CFR, MTTR) tiene respaldo de investigacion (Accelerate/DORA State of DevOps). Medible, comparable, y predictivo de performance organizacional. |
+| 6 secciones de discovery cloud | Assessment tecnico unico, assessment de 10 secciones | 6 secciones cubren readiness, DevOps, operations, FinOps, security, y roadmap. Balancean profundidad y accionabilidad. |
+| FinOps como seccion dedicada (S4) | Costos como sub-seccion de operations | Cloud spend es el pain point #1 para la mayoria de organizaciones. Seccion dedicada con maturity levels, optimization opportunities, y waste identification. |
+| Toil measurement en operations model (S3) | Solo practicas SRE sin cuantificar toil | El toil budget (max 50% tiempo SRE) es framework concreto de Google SRE book. Medir toil identifica donde automatizar. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        READY["Cloud Readiness"]
+        DORA["DORA Metrics"]
+        OPS["Cloud Operations Model"]
+        FINOPS["FinOps Assessment"]
+        SECURITY["Security Posture"]
+        ROADMAP["Cloud Services Roadmap"]
+    end
+
+    subgraph Inputs["Entradas"]
+        CLOUDACCT["Cloud Accounts & Console"]
+        BILLING["Billing Dashboards"]
+        MONITORING["Monitoring Tools"]
+        TEAMS["DevOps/SRE Teams"]
+    end
+
+    subgraph Outputs["Salidas"]
+        REPORT["Cloud Service Discovery Report"]
+        DORADASH["DORA Scorecard"]
+        OPSRADAR["Operations Maturity Radar"]
+        FINWFALL["FinOps Optimization Waterfall"]
+        GANTT["Roadmap Gantt"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        MIGRATION["cloud-migration"]
+        CLOUDNAT["cloud-native-architecture"]
+        INFRAARCH["infrastructure-architecture"]
+        ASIS["asis-analysis (Cloud)"]
+    end
+
+    CLOUDACCT --> READY
+    BILLING --> FINOPS
+    MONITORING --> DORA
+    TEAMS --> OPS
+    READY --> DORA
+    DORA --> OPS
+    OPS --> FINOPS
+    FINOPS --> SECURITY
+    SECURITY --> ROADMAP
+    ROADMAP --> REPORT
+    REPORT --> DORADASH
+    REPORT --> OPSRADAR
+    REPORT --> FINWFALL
+    REPORT --> GANTT
+    MIGRATION -.-> READY
+    CLOUDNAT -.-> OPS
+    INFRAARCH -.-> SECURITY
+    ASIS -.-> READY
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Cloud Service Discovery: {project}
+## S1: Cloud Readiness Assessment
+### Cloud Adoption Stage: {stage}
+### Team Skills Assessment
+### Process Readiness
+## S2: DevOps Maturity Model (DORA)
+| Metrica | Valor Actual | Nivel | Target |
+...
+### Practices Assessment
+| Practica | Nivel (1-4) | Evidencia | Gap |
+...
+## S3: Cloud Operations Model
+### SRE Practices
+### Toil Top-5
+## S4: FinOps Assessment
+### Maturity Level: {crawl|walk|run}
+### Optimization Opportunities
+### Waste Inventory
+## S5: Cloud Security Posture
+## S6: Cloud Services Roadmap
+### Quick Wins (Meses 1-3)
+### Medium-Term (Meses 4-9)
+### Strategic (Meses 10-18)
+```
+
+**Formato HTML (bajo demanda):**
+
+```
+{fase}_Cloud_Service_Discovery_{project}_{WIP}.html
+```
+HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye DORA metrics dashboard interactivo, FinOps optimization waterfall, y cloud services roadmap faseado. WCAG AA, responsive, print-ready.
+
+**Formato PPTX (bajo demanda):**
+
+```
+Slide 1: Portada — Cloud Service Discovery: {project}
+Slide 2: Executive Summary — adoption stage + DORA level + FinOps maturity
+Slide 3: DORA Metrics Dashboard — 4 metrics current vs target
+Slide 4: Operations Maturity Radar — 6 dimensions
+Slide 5: FinOps Waterfall — current spend to optimized spend
+Slide 6: Security Posture Summary — findings by severity
+Slide 7-8: Cloud Services Roadmap — phased Gantt
+Slide 9: Team Evolution & DORA Targets per Phase
+Slide 10: Next Steps + Budget Magnitudes (FTE-meses)
+```
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Cloud_Service_Discovery_{project}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Cloud_Service_Discovery_{cliente}_{WIP}.xlsx`
+- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por severidad, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de cloud operations, DORA, DevOps maturity, FinOps, SRE, cloud security posture, platform engineering. |
+| Completeness | 25% | 6 secciones cubren readiness, DORA, operations, FinOps, security, y roadmap. DORA con 4 metricas + practices con 4 niveles. |
+| Clarity | 20% | DORA levels con rangos numericos (Elite/High/Medium/Low). FinOps maturity con 3 niveles claros (Crawl/Walk/Run). |
+| Robustness | 20% | Edge cases (multi-cloud, serverless, regulated, cost explosion, outsourced) manejados con adaptaciones especificas. |
+| Efficiency | 10% | Variante ejecutiva reduce a S1+S2+S6 (~40%). Cloud context detection automatica desde archivos de infra. |
+| Value Density | 15% | FinOps optimization cuantifica % savings potencial. Toil top-5 con plan de automatizacion. DORA targets por fase del roadmap. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar DORA measurement rigor y FinOps optimization quantification.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

@@ -1,5 +1,7 @@
 ---
 name: metodologia-solution-roadmap
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[duration: months] [budget: under2m|2m-5m|5m-10m|over10m] — e.g. '18 5m-10m'"
 description: >
   Complete transformation roadmap with phased execution, investment horizon, team ramp-up,
   risk-adjusted timeline, and estimation pivot points. Use when the user asks to "create a roadmap",
@@ -200,5 +202,86 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: pivot point decision tree
 - Flowchart: team ramp-up/ramp-down visualization
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Executive sponsor changes mid-transformation (Phase 2+) | Trigger a 2-week re-alignment sprint; present roadmap to new sponsor with original rationale; adjust governance cadence; document any scope/priority shifts as formal change requests |
+| PoC invalidates a foundational assumption in Phase 1 | Activate pivot decision framework; if minor (<4 weeks fix), execute Pivot A; if major, pause Phase 2 and present re-scoped roadmap to steering committee within 5 business days |
+| Client demands big-bang delivery despite phased recommendation | Document the risk differential (phased vs big-bang) with quantified failure probability; require steering committee sign-off on big-bang risk acceptance; add 30% contingency to timeline |
+| Key technology vendor announces end-of-life during Phase 2 | Activate vendor risk mitigation plan from Section 6; assess alternative vendors against Phase 3-5 requirements; present impact assessment to steering committee within 1 week |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| 5-phase incremental structure (Foundation > Build > Integrate > Optimize > Scale) | Big-bang delivery with single release | Each phase is independently valuable; if the project stops at Phase 2, delivered value is preserved; big-bang creates all-or-nothing risk |
+| Estimation ranges with P50/P80/P95 confidence intervals | Single-point estimates | Single-point estimates create false precision; the Cone of Uncertainty is a reality that ranges communicate honestly to stakeholders |
+| Kill criteria explicit at every gate | Gates with approval-only (no kill option) | Without kill criteria, sunk-cost fallacy drives continued investment in failing initiatives; explicit kill conditions give the steering committee permission to stop |
+| 70/30 internal/outsourced default team ratio | Full outsourcing for speed | Knowledge retention post-transformation requires internal capability; 70/30 ensures the client can sustain the solution after the engagement ends |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Solution Roadmap"]
+        A["Transformation Vision"] --> B["5-Phase Execution Plan"]
+        B --> C["Investment Horizon"]
+        B --> D["Team Ramp-Up"]
+        B --> E["Estimation Pivot Points"]
+        E --> F["Risk Management"]
+        F --> G["Governance Framework"]
+    end
+    subgraph Inputs["Inputs"]
+        H["Approved Scenario"] --> A
+        I["Budget Range"] --> C
+        J["Duration Target"] --> B
+    end
+    subgraph Outputs["Outputs"]
+        G --> K["Roadmap Document"]
+        C --> L["TCO/ROI Model"]
+    end
+    subgraph Related["Related Skills"]
+        M["scenario-analysis"] -.-> H
+        N["executive-pitch"] -.-> L
+        O["change-readiness-assessment"] -.-> D
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `06_Solution_Roadmap_{cliente}_{WIP}.md`
+- Structure: TL;DR > Transformation Vision > Phase cards with gates > Investment Horizon tables > Team Ramp-Up curve > Pivot Points with PoC criteria > Risk Timeline > Governance RACI > Mermaid Gantt + flowcharts > ghost menu
+
+### XLSX
+- Filename: `06_Solution_Roadmap_{cliente}_{WIP}.xlsx`
+- Structure: Sheet 1: Phase summary with gates and dates; Sheet 2: Investment horizon year-by-year; Sheet 3: Team headcount month-by-month; Sheet 4: Risk register with scores; Sheet 5: Pivot point tracker; pivot-table-ready formatting
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_solution_roadmap_{cliente}_{WIP}.docx`
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Transformation Vision, 5-Phase Execution Plan (con gates go/no-go), Investment Horizon, Team Ramp-Up, Estimation Pivot Points, Risk Management, Governance Framework.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_solution_roadmap_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Transformation Vision y north star metric, Resumen de 5 fases (tabla con gates), Investment Horizon (TCO/ROI), Team Ramp-Up curve, Estimation Pivot Points, Risk Timeline, Governance Plan, próximos pasos.
+
+### HTML (bajo demanda)
+- Filename: `06_Solution_Roadmap_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Timeline visual con las 5 fases y gates go/no-go, investment horizon chart y pivot point decision tree interactivo. WCAG AA, responsive, print-ready.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026

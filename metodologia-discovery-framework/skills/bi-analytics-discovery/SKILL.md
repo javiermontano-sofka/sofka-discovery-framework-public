@@ -9,6 +9,8 @@ description: >
   "data literacy assessment", "semantic layer review", "self-service analytics readiness",
   "analytics use case prioritization", "BI transformation roadmap", or mentions BI-as-a-service,
   analytics maturity, dashboard consolidation, data democratization, DCAM, DMM, or data literacy.
+argument-hint: "<project-or-client-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -407,5 +409,146 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - BI transformation roadmap: phased Gantt with maturity targets per phase
 - Data literacy distribution: department-level bar chart
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Organizacion sin data warehouse (todo en spreadsheets) | S1 maturity nivel 1. Roadmap incluye data infrastructure foundation como prerequisito. Referir a data-engineering y bi-architecture. |
+| Multiples herramientas de BI con ownership politico | Consolidation es tecnicamente simple pero politicamente complejo. Mapear stakeholders. Proponer coexistencia temporal con semantic layer unificado. |
+| Organizacion altamente regulada (banca, salud) | Self-service analytics con restricciones de compliance. Row-level security y data classification son pre-requisitos. Regulatory reporting tiene prioridad. |
+| Data literacy muy baja (nivel 1 organization-wide) | No intentar self-service. Dashboards curados por equipo centralizado. Self-service como meta a mediano plazo. |
+| Analytics use cases que requieren datos inexistentes | Documentar gap de datos como pre-requisito. Incluir data collection como fase explicita en roadmap. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| DCAM/DMM como frameworks de madurez | Frameworks propietarios, assessment ad-hoc | DCAM (EDM Council) y DMM (CMMI Institute) son estandares reconocidos de industria con benchmarks disponibles. Permiten comparabilidad entre organizaciones. |
+| 7 secciones de discovery | Assessment de 3 secciones rapido, assessment de 12 secciones exhaustivo | 7 secciones cubren el ciclo completo: maturity, landscape, semantic, self-service, literacy, use cases, roadmap. Variante ejecutiva reduce a 3 sin perder decision-readiness. |
+| Data literacy como seccion dedicada (S5) | Literacy como sub-seccion de self-service readiness | La literacy organizacional es el predictor mas fuerte de ROI de BI. Merece evaluacion independiente con niveles 1-5 por departamento y plan de training dedicado. |
+| Impact x Feasibility scoring compuesto (5 criterios) | Scoring simple de 2 criterios (impacto y esfuerzo) | 5 criterios (impact, data availability, technical feasibility, org readiness, time-to-value) con pesos diferenciados producen priorizacion mas robusta. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        MATURITY["Data Maturity (DCAM/DMM)"]
+        DASHBOARD["Dashboard Landscape"]
+        SEMANTIC["Semantic Layer"]
+        SELFSERV["Self-Service Readiness"]
+        LITERACY["Data Literacy"]
+        PORTFOLIO["Use Case Portfolio"]
+        ROADMAP["BI Transformation Roadmap"]
+    end
+
+    subgraph Inputs["Entradas"]
+        TOOLS["BI Tools Inventory"]
+        METRICS["Existing Metrics & KPIs"]
+        TEAMS["Business Teams"]
+        DATASRC["Data Sources"]
+    end
+
+    subgraph Outputs["Salidas"]
+        REPORT["BI Analytics Discovery Report"]
+        RADAR["Maturity Radar Chart"]
+        SCATTER["Use Case Impact x Feasibility"]
+        GANTT["Transformation Roadmap"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        BIARCH["bi-architecture"]
+        DE["data-engineering"]
+        DQ["data-quality"]
+        DG["data-governance"]
+        ASIS["asis-analysis (Data-AI)"]
+    end
+
+    TOOLS --> DASHBOARD
+    METRICS --> SEMANTIC
+    TEAMS --> LITERACY
+    DATASRC --> MATURITY
+    MATURITY --> ROADMAP
+    DASHBOARD --> SEMANTIC
+    SEMANTIC --> SELFSERV
+    SELFSERV --> PORTFOLIO
+    LITERACY --> PORTFOLIO
+    PORTFOLIO --> ROADMAP
+    ROADMAP --> REPORT
+    REPORT --> RADAR
+    REPORT --> SCATTER
+    REPORT --> GANTT
+    BIARCH -.-> SEMANTIC
+    DE -.-> MATURITY
+    DQ -.-> SELFSERV
+    DG -.-> SEMANTIC
+    ASIS -.-> MATURITY
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# BI & Analytics Discovery: {project}
+## S1: Data Maturity Assessment (DCAM/DMM)
+### Overall Maturity Level: {level}/5
+| Dimension | Score (1-5) | Evidencia | Gap to Target |
+...
+## S2: Dashboard Landscape Inventory
+| Tool | Dashboard | Owner | Area | Refresh | Adoption |
+...
+### Redundancy Map
+### Tool Sprawl Assessment
+## S3-S5: [Semantic, Self-Service, Literacy]
+## S6: Analytics Use Case Portfolio
+### Top-10 Use Cases
+| Use Case | Tipo | Impact | Feasibility | Score | Ranking |
+...
+## S7: BI Transformation Roadmap
+### Quick Wins (Meses 1-3)
+### Medium-Term (Meses 4-9)
+### Strategic (Meses 10-18)
+```
+
+**Formato PPTX (bajo demanda):**
+
+```
+Slide 1: Portada — BI & Analytics Discovery: {project}
+Slide 2: Executive Summary — maturity level + top-3 findings
+Slide 3: Data Maturity Radar — 5 dimensiones scored 1-5
+Slide 4: Dashboard Landscape — tool sprawl + adoption heatmap
+Slide 5: Semantic Layer Assessment — metric conflicts count + single source of truth score
+Slide 6: Data Literacy Distribution — department-level bar chart
+Slide 7: Use Case Portfolio — Impact x Feasibility scatter plot
+Slide 8-9: BI Transformation Roadmap — phased Gantt
+Slide 10: Next Steps + Budget Magnitudes (FTE-meses)
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `BI_Analytics_Discovery_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con radar chart de madurez interactivo, dashboard landscape como heatmap, scatter plot de use cases, y roadmap Gantt. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para inventario de dashboards, scorecard de madurez de datos y matriz de priorizacion de use cases.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de BI maturity, dashboard inventory, data literacy, semantic layer, self-service analytics, analytics use cases. |
+| Completeness | 25% | 7 secciones cubren maturity, landscape, semantic, self-service, literacy, portfolio, y roadmap. Maturity assessment con 5 dimensiones. |
+| Clarity | 20% | Scoring 1-5 por dimension interpretable. Use cases clasificados por tipo (descriptive/diagnostic/predictive/prescriptive). Cultural barriers documentadas. |
+| Robustness | 20% | Edge cases (no warehouse, BI politics, regulacion, low literacy, datos inexistentes) manejados con estrategias practicas. |
+| Efficiency | 10% | Variante ejecutiva reduce a S1+S6+S7 (~40%). Composite scoring con formula explicita para priorizacion reproducible. |
+| Value Density | 15% | Dashboard consolidation como quick win. Metric conflicts inventariados con impacto. Roadmap faseado con adoption metrics targets. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar maturity dimensions coverage y use case scoring rigor.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

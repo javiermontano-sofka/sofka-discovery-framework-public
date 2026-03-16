@@ -8,6 +8,7 @@ description: >
   scenarios as hypotheses, designing validation experiments, applying Lean Startup to discovery,
   or when "HDD", "hypothesis", "hipótesis", "lean startup", "build-measure-learn", "experiment",
   "kill/pivot/persevere", or "validación de hipótesis" is mentioned.
+argument-hint: "[project-name]"
 allowed-tools:
   - Read
   - Write
@@ -206,6 +207,119 @@ At the end of the process, the portfolio shows:
 - [ ] BML cycles mapped with decision points
 - [ ] Kill/Pivot/Persevere criteria are quantitative, not qualitative
 - [ ] Integration with roadmap phases documented
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Cliente no tiene baseline de metricas para definir umbrales | El primer experimento se dedica a establecer baseline; agregar 1-2 sprints de instrumentacion antes de formular hipotesis con umbrales cuantitativos |
+| Todas las hipotesis MUST son validadas exitosamente | Caso raro pero ideal; reducir margen de contingencia en el roadmap; documentar evidencia para fortalecer la propuesta de inversion |
+| Cadena de pivots en cascada (pivot genera nueva hipotesis que tambien falla) | Permitir maximo 2 niveles de pivot encadenados; si el tercer intento falla, ejecutar kill y retornar a Phase 3 para reevaluar el escenario completo |
+| Stakeholders se rehusan a ejecutar kill a pesar de evidencia negativa | Documentar explicitamente el riesgo de sunk cost fallacy; escalar a sponsor ejecutivo con datos cuantitativos; proceder con disclaimer formal si insisten |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Formular cada feature MUST como hipotesis testeable | Tratar features como requisitos fijos sin validacion | Las features asumidas sin evidencia son la causa principal de desperdicio en transformaciones; HDD reduce riesgo antes de comprometer presupuesto |
+| Ciclos BML cortos de 1-5 dias por experimento | Sprints largos de 2-4 semanas para validacion | Ciclos cortos permiten decision rapida; ciclos largos acumulan costo antes de generar evidencia y retrasan el kill/pivot |
+| Kill criteria cuantitativos y binarios | Criterios cualitativos como "el equipo siente que funciona" | Los criterios cualitativos son susceptibles a sesgo de confirmacion; solo metricas medibles producen decisiones objetivas |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["HDD Core"]
+        A[metodologia-hypothesis-driven-development]
+        A1[S1: Business Hypothesis Canvas]
+        A2[S2: Experiment Design Matrix]
+        A3[S3: Build-Measure-Learn Cycles]
+        A4[S4: HDD-Enhanced Roadmap]
+        A5[S5: Decision Log]
+        A6[S6: Validated Hypothesis Portfolio]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Escenario Aprobado - Phase 3]
+        I2[Feature Backlog]
+        I3[Business Objectives]
+        I4[Metrics Baseline]
+    end
+    subgraph Outputs["Outputs"]
+        O1[HDD Hypotheses Document]
+        O2[Experiment Roadmap]
+        O3[Decision Log]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-technical-feasibility]
+        R2[metodologia-roadmap-poc]
+        R3[metodologia-cost-estimation]
+        R4[metodologia-software-viability]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    I4 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6
+    A --> O1
+    A --> O2
+    A --> O3
+    R1 --> A
+    A --> R2
+    A --> R3
+    A --- R4
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# HDD Hypotheses — {proyecto}
+## Resumen Ejecutivo
+> N hipotesis formuladas, M experimentos disenados, timeline estimado: X sprints.
+## S1: Business Hypothesis Canvas
+| # | Hipotesis | Metrica | Umbral Exito | Umbral Kill | Prioridad |
+## S2: Experiment Design Matrix
+| Hipotesis | Tipo Experimento | Duracion | FTEs | Entregable Minimo |
+## S3-S6: [secciones completas con diagramas BML]
+## Apendice: Referencias y Supuestos
+```
+
+**Formato PPTX (para presentacion a steering committee):**
+
+```
+Slide 1: Titulo + contexto del escenario
+Slide 2: Hypothesis Canvas (tabla resumen de H1-Hn)
+Slide 3-N: Una slide por hipotesis (hipotesis + experimento + criterios kill/pivot/persevere)
+Slide N+1: Roadmap HDD (timeline visual con gates de decision)
+Slide N+2: Investment ask (esfuerzo para validar vs esfuerzo para ejecutar)
+Slide N+3: Decision framework (que pasa si H1 falla, si H2 pivota, etc.)
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `A-03_HDD_Hypotheses_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con hypothesis canvas interactivo, BML cycle diagrams, y decision log con semáforo Kill/Pivot/Persevere. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `A-03_HDD_Hypotheses_{project}_{WIP}.docx`
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+
+**Formato XLSX (bajo demanda):**
+- Filename: `A-03_HDD_Hypotheses_{project}_{WIP}.xlsx`
+- Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Hypothesis Canvas, Experiment Design Matrix, Decision Log, Validated Portfolio.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de hipotesis, lean startup, BML, validacion de escenarios | 7/10 |
+| Completeness | 25% | Cada feature MUST tiene hipotesis con metrica, umbral de exito, umbral de kill, y experimento disenado | 7/10 |
+| Clarity | 20% | Stakeholders no tecnicos entienden la estructura hipotesis-experimento-decision; diagramas BML son legibles | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (sin baseline, all-pass, cascade pivots, kill resistance); decision log estructurado | 7/10 |
+| Efficiency | 10% | Experimentos disenados con scope minimo viable; no se sobre-disenian validaciones innecesarias | 7/10 |
+| Value Density | 15% | Cada hipotesis conecta directamente a valor de negocio; el portfolio muestra impacto validado cuantificado | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Output Configuration
 

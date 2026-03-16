@@ -1,5 +1,7 @@
 ---
 name: metodologia-bi-architecture
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   BI solution design — semantic layers, dashboard patterns, self-service analytics, KPI frameworks.
   Use when the user asks to "design BI architecture", "build a KPI framework", "set up self-service analytics",
@@ -253,22 +255,96 @@ Defines chart selection, accessibility, color palettes, and interactivity guidel
 
 ---
 
-## Edge Cases
+## Casos Borde
 
-**Startup with No Existing BI:**
-Start simple: one dashboard tool, shared spreadsheet for metric definitions, basic access control. Semantic layer becomes valuable at 10+ reports. Avoid over-engineering.
+| Caso | Estrategia de Manejo |
+|---|---|
+| Startup sin BI existente | Iniciar simple: una herramienta de dashboard, spreadsheet compartida para definiciones de metricas, access control basico; semantic layer se justifica con 10+ reportes |
+| Ambiente multi-herramienta (Tableau + Power BI + Looker) | Enforcing single semantic layer independiente de herramienta de consumo; o aceptar duplicacion con ownership boundaries claros por equipo |
+| Resistencia ejecutiva a self-service | Enfoque por tiers: L1 curado para ejecutivos, L3-L4 self-service para analistas; ganar confianza incrementalmente con labels de contenido certificado |
+| Datos de alta frecuencia (sub-segundo) | Dashboards real-time requieren streaming architecture y materialized views; la mayoria de BI tools limitan a 1-min refresh; Grafana o custom dashboards para true real-time |
+| Reportes regulados (SOX, HIPAA) | Audit trails, version control de reportes, access logging y certified reports con change management workflows; cero modificaciones ad-hoc a dashboards de compliance |
 
-**Multi-Tool Environment:**
-Organizations running Tableau, Power BI, and Looker simultaneously. Enforce single semantic layer regardless of consumption tool, or accept duplication with clear ownership boundaries.
+## Decisiones y Trade-offs
 
-**Executive Resistance to Self-Service:**
-Design tiered approach: L1 curated for executives, L3-L4 self-service for analysts. Earn trust incrementally with certified content labels.
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Semantic layer como unica fuente de verdad para metricas | Definiciones de metricas en cada dashboard individual | Metricas duplicadas en dashboards son la causa #1 de "mis numeros no cuadran"; semantic layer enforza una definicion unica por metrica |
+| Self-service con guardrails (zonas governed vs sandbox) | Self-service sin restricciones o acceso solo via tickets | Sin guardrails hay riesgo de malinterpretacion; con solo tickets el data team se convierte en bottleneck; las zonas balancean autonomia y gobierno |
+| Performance budget no-negociable (render < 2s, query < 5s) | Performance como nice-to-have | Por encima de 3 segundos de render, los usuarios abandonan el dashboard; el performance budget es un constraint de diseno, no una meta aspiracional |
+| Dashboard audit trimestral con archivado automatico | Dejar dashboards acumularse indefinidamente | Dashboard sprawl es entropia organizacional; archivar dashboards con zero views en 90 dias previene la proliferacion sin valor |
 
-**High-Frequency Data (Sub-Second):**
-Real-time dashboards require streaming architecture, materialized views, and careful cost management. Most BI tools cap at 1-minute refresh. Use Grafana or custom dashboards for true real-time.
+## Knowledge Graph
 
-**Regulated Reporting (SOX, HIPAA):**
-Requires audit trails, version control for reports, access logging, and certified reports with change management workflows. No ad-hoc modifications to compliance dashboards.
+```mermaid
+graph TD
+    subgraph Core["Core: BI Architecture"]
+        KPI[KPI & Metric Framework]
+        SEM[Semantic Layer Design]
+        REP[Reporting Architecture]
+        SS[Self-Service Analytics]
+        VIZ[Visualization Standards]
+        GOV[BI Platform & Governance]
+    end
+
+    subgraph Inputs["Inputs"]
+        OBJ[Strategic Objectives]
+        DW[Data Warehouse/Lakehouse]
+        USERS[Analytics Users]
+        TOOLS[Existing BI Tools]
+    end
+
+    subgraph Outputs["Outputs"]
+        TREE[KPI Metric Tree]
+        LAYER[Semantic Layer Config]
+        DASH[Dashboard Hierarchy]
+        GUIDE[Visualization Guide]
+    end
+
+    subgraph Related["Related Skills"]
+        DQ[data-quality]
+        DGOV[data-governance]
+        DENG[data-engineering]
+        AE[analytics-engineering]
+    end
+
+    OBJ --> KPI
+    DW --> SEM
+    USERS --> SS
+    TOOLS --> GOV
+    KPI --> SEM --> REP --> SS --> VIZ --> GOV
+    GOV --> TREE
+    GOV --> LAYER
+    GOV --> DASH
+    GOV --> GUIDE
+    DQ --> SEM
+    DGOV --> GOV
+    DENG --> SEM
+    AE --> SEM
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-01_BI_Architecture.md` | Documento completo con KPI framework, semantic layer design, dashboard hierarchy, self-service strategy, visualization standards y platform governance. Diagramas Mermaid de metric tree y dashboard hierarchy. |
+| **PPTX** | `A-01_BI_Architecture_Executive.pptx` | Presentacion ejecutiva con KPI tree visual, dashboard hierarchy, platform comparison matrix y adoption roadmap. Para alineacion con C-level y data leadership. |
+| **HTML** | `A-01_BI_Architecture_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Light-First Technical page con metric tree interactivo, dashboard hierarchy navegable, y platform comparison matrix. WCAG AA, responsive, print-ready. |
+| **DOCX** | `{fase}_{entregable}_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria. |
+| **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para catalogo de metricas, matrices de seleccion de plataforma y matriz de control de acceso. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (BI architecture, KPI framework, semantic layer, self-service, dashboard hierarchy) sin falsos positivos con data-engineering o analytics-engineering |
+| Completeness | 25% | Las 6 secciones cubren KPIs, semantic layer, reporting, self-service, visualizacion y governance sin huecos; metric tree traza de north star a metricas operativas |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada metrica con definicion unica, formula, data source y owner; performance budgets con targets numericos |
+| Robustness | 20% | Maneja startup sin BI, multi-herramienta, resistencia ejecutiva, datos sub-segundo y reportes regulados con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S3+S6 sin perder KPI framework, reporting y governance |
+| Value Density | 15% | Cada seccion aporta valor practico directo; semantic layer tool comparison y BI platform decision matrix son herramientas de seleccion inmediata |
+
+**Umbral minimo: 7/10.**
 
 ---
 

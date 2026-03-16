@@ -4,6 +4,8 @@ description: >
   Mobile app architecture -- native vs cross-platform, offline-first, state management, release management.
   Use when the user asks to "design mobile architecture", "choose between native and cross-platform", "implement offline-first",
   "plan mobile CI/CD", "optimize app performance", or mentions Flutter, React Native, KMP, MVVM, SwiftUI, Jetpack Compose, or app store deployment.
+argument-hint: "<app_or_project_name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -283,6 +285,93 @@ Read ${CLAUDE_SKILL_DIR}/references/mobile-patterns.md
 - Does not assess existing app health (use mobile-assessment skill)
 - Does not cover API design in isolation (use solutions-architecture skill)
 - Platform SDKs evolve rapidly; verify against latest documentation
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Desarrollador unico construyendo para ambas plataformas (iOS + Android) | Cross-platform obligatorio (Flutter o React Native). Maximizar code sharing. Usar managed services para backend. Evitar native modules custom. Priorizar velocity sobre optimizacion. |
+| App enterprise con requisitos MDM (Mobile Device Management) | Integrar MDM desde Sprint 0. Managed app config, VPN tunneling, data loss prevention como constraints de arquitectura. Testear con perfiles MDM reales tempranamente. Certificate pinning obligatorio. |
+| Industria regulada (healthcare/finance) con requisitos de compliance estrictos | Biometric auth obligatorio. Certificate pinning. No sensitive data en logs ni screenshots. Jailbreak/root detection. HIPAA/PCI-DSS compliance checklist. Encriptar storage local. Audit trail de acciones criticas. |
+| Super app con >10 feature modules y multiples equipos de desarrollo | Micro-frontend architecture. Cada feature team owner de un module. Dynamic feature delivery para reducir APK/IPA inicial. Navigation contract entre modules. CI/CD por modulo con integration testing cruzado. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Flutter como default para cross-platform sobre React Native | React Native con New Architecture | Flutter ofrece Impeller renderer (60/120 FPS sin shader jank), 90-95% code sharing, y hot reload sub-segundo. React Native requiere migracion a New Arch para beneficios similares. Flutter mejor para equipos sin experiencia React previa. |
+| Offline-first con optimistic UI como patron default | Online-only con loading spinners | Mobile opera en redes inestables. Optimistic UI elimina latencia percibida. Queue persistente sobrevive restart. El costo de sync complexity se justifica por UX superior y retenciones 2-3x mayores. |
+| BFF (Backend-for-Frontend) sobre API generica compartida con web | API unica REST para web y mobile | Mobile necesita response shaping especifico (menos datos, diferentes aggregations). BFF elimina over-fetching y reduce round trips. API generica fuerza compromises que degradan performance en ambos canales. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        MOB[mobile-architecture]
+    end
+    subgraph Inputs
+        REQ[Platform Requirements - iOS/Android/Both] --> MOB
+        TEAM[Team Skills Assessment] --> MOB
+        UX[UX Design & Wireframes] --> MOB
+    end
+    subgraph Outputs
+        MOB --> PLAT[Platform Decision Matrix]
+        MOB --> ARCH[App Architecture Diagram]
+        MOB --> OFF[Offline-First Design]
+        MOB --> REL[Release Pipeline & Strategy]
+    end
+    subgraph Related Skills
+        MOB -.-> SA[software-architecture]
+        MOB -.-> API[api-architecture]
+        MOB -.-> MA[mobile-assessment]
+        MOB -.-> PE[performance-engineering]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Mobile Architecture: {app_name}
+## S1: Platform Strategy
+  - Comparison matrix (Native vs Flutter vs RN vs KMP)
+  - Decision rationale with team skill assessment
+## S2: App Architecture Patterns
+  - Architecture diagram (Mermaid)
+  - Modularization plan
+## S3-S6: [remaining sections]
+## Anexos: CI/CD pipeline config, app store compliance checklist, accessibility audit
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `Mobile_Architecture_{app_name}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye platform decision matrix interactiva con scoring visual, diagrama C4 Level 2 de arquitectura mobile, performance benchmark dashboard (cold start, memory, FPS), y release pipeline flowchart con stage gates. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Mobile_Architecture_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Mobile_Architecture_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por severidad/estado, auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Platform Comparison Matrix, Architecture Decisions, Performance Budgets, Release Pipeline.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Mobile_Architecture_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de mobile architecture, Flutter, React Native, KMP, offline-first, app store | 7/10 |
+| Completeness | 25% | Las 6 secciones cubren platform, architecture, offline, performance, backend integration, y release | 7/10 |
+| Clarity | 20% | Platform decision con justificacion cuantitativa. Architecture patterns con layer separation explicita. Performance targets concretos. | 7/10 |
+| Robustness | 20% | Edge cases de single dev, MDM, regulated industry, super app cubiertos. Offline strategy con conflict resolution. Store compliance checklist. | 7/10 |
+| Efficiency | 10% | Output proporcional al contexto. Sin documentar plataformas no relevantes. Modularization scoped al tamano del equipo. | 7/10 |
+| Value Density | 15% | Cold start optimization checklist accionable. CI/CD pipeline configs concretos. Feature flag strategy con kill switch. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ---
 

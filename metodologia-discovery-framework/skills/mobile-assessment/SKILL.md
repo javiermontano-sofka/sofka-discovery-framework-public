@@ -1,5 +1,7 @@
 ---
 name: metodologia-mobile-assessment
+argument-hint: "<app-name>"
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   AS-IS assessment for mobile apps -- performance, compliance, dependency health, UX metrics.
   Use when the user asks to "assess the mobile app", "audit app health", "review app dependencies",
@@ -367,6 +369,99 @@ Before finalizing delivery, verify:
 - [ ] Flashlight or equivalent CI performance tool evaluated/recommended
 - [ ] Every finding classified by severity with effort estimate
 - [ ] Remediation roadmap prioritized with quick wins and strategic items separated
+
+---
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        MA[Mobile Assessment]
+    end
+
+    subgraph Inputs
+        I1[App Binary / Source Code] --> MA
+        I2[Crash Reports & Analytics] --> MA
+        I3[Store Console Data] --> MA
+        I4[Dependency Manifest] --> MA
+    end
+
+    subgraph Outputs
+        MA --> O1[App Health Profile]
+        MA --> O2[Dependency & Security Audit]
+        MA --> O3[Platform Compliance Report]
+        MA --> O4[Code Quality Metrics]
+        MA --> O5[UX Performance Data]
+        MA --> O6[Remediation Roadmap]
+    end
+
+    subgraph Related Skills
+        RS1[mobile-platform-assessment] -.-> MA
+        RS2[quality-engineering] -.-> MA
+        RS3[testing-strategy] -.-> MA
+        RS4[security-architecture] -.-> MA
+        RS5[observability] -.-> MA
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Mobile Assessment: {app_name}
+## S1: App Health Profile
+### Crash Rate | ANR Rate | Cold Start | App Size | Memory
+(tablas con benchmarks y estado actual)
+
+## S2: Dependency & Security Audit
+### Inventario | CVEs | Licencias | SDK Bloat
+(tabla de dependencias con severidad CVSS)
+
+## S3: Platform Compliance
+### Apple App Store | Google Play | Accessibility
+(checklists con estado por item)
+
+## S4: Code Quality & Architecture Fit
+### Tech Debt | Test Coverage | Modularity | Build Health
+
+## S5: User Experience Metrics
+### Load Time | Interaction Latency | Offline | Deep Links
+
+## S6: Remediation Roadmap
+### Quick Wins | Strategic Fixes | Migration Paths
+(tabla priorizada: severity * impact / effort)
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `A-01_Mobile_Assessment_{app_name}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye dashboard visual de health metrics con semaforos de vitales, heatmap de cobertura de tests, y roadmap interactivo de remediacion con filtros por severidad. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Mobile_Assessment_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Mobile_Assessment_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por severidad (Critical/High/Medium/Low), auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: App Health Metrics, Dependency Audit, Compliance Checklist, Remediation Roadmap.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Mobile_Assessment_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante keywords de mobile assessment y no ante arquitectura nueva |
+| Completeness | 25% | Las 6 secciones cubren health, dependencies, compliance, code quality, UX, y remediation con datos cuantitativos |
+| Clarity | 20% | Tablas de benchmarks son autoexplicativas; severidades y SLAs no requieren interpretacion adicional |
+| Robustness | 20% | Edge cases (sin analytics, legacy, mercados emergentes, multi-tenant) tienen estrategia documentada |
+| Efficiency | 10% | Variante ejecutiva entrega valor en ~40% del contenido; parametros permiten ajuste de profundidad |
+| Value Density | 15% | Cada seccion produce hallazgos accionables con prioridad, effort estimate, y owner asignado |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
 
 ---
 

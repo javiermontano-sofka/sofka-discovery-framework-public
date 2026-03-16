@@ -7,6 +7,7 @@ description: >
   "domain data ownership", "data as a product", "self-serve data platform",
   "federated data governance", "data mesh migration", or mentions "data decentralization",
   "data domain ownership", "data product thinking".
+argument-hint: "[path-to-data-architecture] [scope: full|readiness|pilot]"
 allowed-tools:
   - Read
   - Write
@@ -151,6 +152,141 @@ Team structure changes needed. New roles (data product owner, domain data engine
 - S5 Governance → S3 Data Products (governance defines product quality standards)
 - S6 Roadmap → S7 Org Change (roadmap phases trigger org changes)
 - S7 Org Change → S1 Readiness (org changes improve readiness scores over time)
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Modelo hibrido necesario (no todos los dominios estan listos) | Recomendar mesh para dominios maduros, centralizado para los demas; documentar condiciones de frontera y criterios de transicion |
+| Datos regulados (PII, PCI, HIPAA) cruzan dominios | Gobernanza federada debe incluir automatizacion de compliance; equipo central de compliance retiene poder de veto sobre data products sensibles |
+| No existe catalogo de datos como prerequisito | Establecer catalogo como paso previo obligatorio; no es posible implementar mesh sin visibilidad de lo que existe |
+| Monolito legacy como fuente principal de datos | Aplicar strangler pattern para extraccion de datos; CDC (Change Data Capture) como solucion interim mientras se desacopla |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Evaluar readiness con los 4 principios de Dehghani antes de proponer estrategia | Asumir que data mesh es la solucion correcta y disenar directamente | Data mesh no es adecuado para todas las organizaciones; la evaluacion de readiness previene inversiones en transformaciones que la organizacion no puede sostener |
+| Recomendar piloto de 1-2 dominios antes de adopcion completa | Big-bang migration de todos los dominios simultaneamente | El piloto reduce riesgo, genera aprendizaje, y construye evidencia interna; la migracion completa tiene tasa de fracaso alta |
+| Incluir cambio organizacional como seccion mandatoria (S7) | Tratar data mesh como decision puramente tecnica | Data mesh es un modelo organizacional, no una arquitectura tecnica; sin cambio organizacional, la implementacion falla independientemente de la tecnologia |
+| Recomendar against data mesh cuando readiness score <2 en >2 principios | Siempre recomendar data mesh cuando el cliente lo solicita | Recomendar una transformacion que la organizacion no puede absorber dania la credibilidad y desperdicia inversion del cliente |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Data Mesh Core"]
+        A[metodologia-data-mesh-strategy]
+        A1[S1: Readiness Assessment]
+        A2[S2: Domain Decomposition]
+        A3[S3: Data Product Design]
+        A4[S4: Self-Serve Platform]
+        A5[S5: Federated Governance]
+        A6[S6: Adoption Roadmap]
+        A7[S7: Org Change]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Data Architecture AS-IS]
+        I2[Organizational Structure]
+        I3[Data Governance Current State]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Data Mesh Strategy Report]
+        O2[Readiness Scorecard]
+        O3[Domain Map + Data Products]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-technical-feasibility]
+        R2[metodologia-sector-intelligence]
+        R3[metodologia-software-viability]
+        R4[metodologia-stakeholder-mapping]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6 --> A7
+    A --> O1
+    A --> O2
+    A --> O3
+    R1 --- A
+    R2 --> A
+    A --- R3
+    R4 --- A
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Data Mesh Strategy — {proyecto}
+## Resumen Ejecutivo
+> Readiness score: X/5. Recomendacion: [Go/No-Go/Conditional]. Dominios piloto: N.
+## S1: Readiness Assessment
+| Principio | Score (1-5) | Evidencia | Gap |
+## S2: Domain Decomposition
+```mermaid
+mindmap
+    root((Dominios))
+    ...
+```
+## S3-S7: [secciones completas]
+## Roadmap de Adopcion
+```mermaid
+gantt
+    title Data Mesh Adoption
+    ...
+```
+```
+
+**Formato HTML (bajo demanda — Design System MetodologIA v5):**
+
+```
+DataMesh_Strategy_{project}_{WIP}.html
+```
+HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye readiness radar chart interactivo (4 principios), domain decomposition mindmap, y adoption Gantt faseado. WCAG AA, responsive.
+
+**Formato HTML (para presentacion ejecutiva — legacy):**
+
+```
+Header: Logo + proyecto + readiness score visual
+Section 1: Readiness Scorecard (radar chart 4 principios)
+Section 2: Domain Map (mindmap interactivo)
+Section 3: Data Product Catalog Preview (cards por dominio)
+Section 4: Platform Requirements (tabla comparativa build vs buy)
+Section 5: Governance Model (diagrama de flujo)
+Section 6: Adoption Roadmap (Gantt visual con fases)
+Section 7: Org Change Requirements (tabla de roles nuevos)
+Footer: Attribution MetodologIA + fecha
+```
+
+**Formato DOCX (bajo demanda):**
+
+```
+{fase}_DataMesh_Strategy_{project}_{WIP}.docx
+```
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_DataMesh_Strategy_{cliente}_{WIP}.xlsx`
+- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por readiness score y principio, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_DataMesh_Strategy_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de data mesh, domain ownership, data as a product, federated governance | 7/10 |
+| Completeness | 25% | Las 7 secciones pobladas; readiness con score por principio; data products con SLAs y dimensiones de calidad | 7/10 |
+| Clarity | 20% | Recomendacion go/no-go es binaria y justificada; dominios mapeados a estructura real del negocio | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (hibrido, regulado, sin catalogo, legacy); cross-section traceability completa | 7/10 |
+| Efficiency | 10% | Modo operacional correcto (readiness/estrategia/dominio) seleccionado; no se genera estrategia completa cuando solo se necesita assessment | 7/10 |
+| Value Density | 15% | Cada fase del roadmap tiene criterios de entrada/salida; platform requirements incluyen build-vs-buy; org change es accionable | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Escalation to Human
 

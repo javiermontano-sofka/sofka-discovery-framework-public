@@ -276,7 +276,7 @@ All notable changes to the MAO Framework plugin (formerly MetodologIA Discovery 
 ## [4.0.0] — 2026-03-11
 
 ### Changed
-- License: MIT → GPL-3.0 Copyleft (Comunidad MetodologIA proprietary)
+- License: MIT → MIT (Comunidad MetodologIA proprietary)
 - plugin.json license field updated to reference LICENSE file
 - README license section updated
 - Version bump to 4.0.0 (breaking: license change)

@@ -4,6 +4,8 @@ description: >
   Data pipeline architecture — ingestion, orchestration, quality, lineage, SLAs.
   Use when the user asks to "design data pipelines", "architect ingestion", "set up orchestration",
   "plan data lake", "design lakehouse", or mentions Airflow, Dagster, CDC, data lineage, or pipeline SLAs.
+argument-hint: "<system-or-project-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -314,5 +316,153 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Source inventory catalog, DAG dependency diagram, storage zone map, pipeline runbook templates, cost attribution dashboard spec.
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Greenfield data platform | Managed connectors para quick wins, event-driven para nuevos sistemas, batch para legacy. Iceberg como table format para portabilidad futura. |
+| Legacy ETL migration (Informatica, SSIS, Talend) | Mapear jobs existentes a orchestration moderno. Documentar business logic no documentada. Validacion en paralelo antes de cutover. 20-30% logica obsoleta esperada. |
+| Multi-cloud data platform | Cross-cloud networking costs ($0.01-0.02/GB transfer). Iceberg para portabilidad de formato. Catalogo unificado (Polaris o similar). |
+| Real-time streaming a escala (millions events/sec) | Kafka/Kinesis con exactly-once semantics. Consumer group management. Dead-letter queues. Backpressure con bounded buffers y consumer lag como metrica principal. |
+| Compliance-heavy (GDPR, CCPA, HIPAA) | PII tagging en catalogo, right-to-delete pipelines (Iceberg row-level deletes), access logging a nivel record. Data classification mandatoria. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Idempotency como propiedad foundacional | At-least-once sin deduplicacion | Pipeline replayable sin duplicar datos es el requisito base de confiabilidad. Sin idempotencia, re-ejecuciones corrompen datos. |
+| Lakehouse como baseline 2025-2026 | Pure data warehouse, pure data lake | Lakehouse (open table formats + catalog en object storage) unifica batch + streaming, provee ACID, y soporta multi-engine. Warehouse para equipos que priorizan simplicidad. |
+| Data contracts entre equipos (producer defines) | Schema-on-read sin contratos | Sin contratos, la calidad es responsabilidad de nadie. Producer publica schema + SLA + ownership; consumer registra dependencia; breaking changes requieren sign-off. |
+| Dagster para greenfield, Airflow para legacy | Unico orchestrador para todo | Dagster es asset-centric con typed data contracts (ideal para analytics/ML). Airflow tiene el ecosystem mas grande (ideal para operator-heavy workflows). Coexistencia via APIs. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        INGEST["Ingestion Patterns"]
+        ORCH["Orchestration Design"]
+        STORAGE["Storage Architecture"]
+        QUALITY["Data Quality"]
+        LINEAGE["Lineage & Observability"]
+        SCALE["Scalability & Cost"]
+    end
+
+    subgraph Inputs["Entradas"]
+        SOURCES["Source Systems"]
+        REQS["Consumer Requirements"]
+        INFRA["Cloud/On-prem Infrastructure"]
+        SLA["Freshness SLAs"]
+    end
+
+    subgraph Outputs["Salidas"]
+        ARCH["Data Engineering Architecture"]
+        CATALOG["Source Inventory Catalog"]
+        DAG["DAG Dependency Diagram"]
+        ZONES["Storage Zone Map"]
+        RUNBOOK["Pipeline Runbook Templates"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        AE["analytics-engineering"]
+        BIARCH["bi-architecture"]
+        DS["data-science-architecture"]
+        DQ["data-quality"]
+    end
+
+    SOURCES --> INGEST
+    REQS --> STORAGE
+    INFRA --> ORCH
+    SLA --> QUALITY
+    INGEST --> ORCH
+    ORCH --> STORAGE
+    STORAGE --> QUALITY
+    QUALITY --> LINEAGE
+    LINEAGE --> SCALE
+    ARCH --> CATALOG
+    ARCH --> DAG
+    ARCH --> ZONES
+    ARCH --> RUNBOOK
+    AE -.-> STORAGE
+    BIARCH -.-> STORAGE
+    DS -.-> INGEST
+    DQ -.-> QUALITY
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Data Engineering Architecture: {project}
+## S1: Ingestion Patterns
+### Source Inventory
+| Source | Type | Method | Freshness SLA | Connector |
+...
+### Schema Registry & Data Contracts
+### Exactly-Once Delivery Patterns
+## S2: Orchestration Design
+### Orchestrator Selection: {Airflow|Dagster|Prefect}
+### DAG Architecture (Mermaid)
+### SLA Monitoring & Alerting
+## S3: Storage Architecture
+### Zone Architecture (Landing > Curated > Consumption > Archive)
+### Table Format: {Iceberg|Delta|Hudi}
+### Lifecycle Policies
+## S4: Data Quality Framework
+### Quality Checks per Zone Boundary
+### Observability Stack Selection
+## S5: Lineage & Observability
+### Lineage Tracking (OpenLineage)
+### Pipeline Monitoring Dashboard
+## S6: Scalability & Cost Management
+### Cost Attribution per Pipeline
+```
+
+**Formato HTML (bajo demanda):**
+
+```
+A-01_Data_Engineering_{project}_{WIP}.html
+```
+HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye DAG dependency diagram interactivo, storage zone map visual, y pipeline observability dashboard layout. WCAG AA, responsive, print-ready.
+
+**Formato XLSX (bajo demanda):**
+
+```
+Sheet 1: Source Inventory — source, type, method, freshness SLA, connector, owner
+Sheet 2: Pipeline Catalog — pipeline name, DAG, sources, targets, schedule, SLA, owner
+Sheet 3: Storage Zones — zone, format, partitioning, retention, lifecycle
+Sheet 4: Quality Rules — dataset, check type, threshold, severity, remediation
+Sheet 5: Lineage Map — source table, transformation, target table, pipeline
+Sheet 6: Cost Attribution — pipeline, compute type, avg duration, estimated cost/run
+```
+
+**Formato DOCX (bajo demanda):**
+
+```
+A-01_Data_Engineering_{project}_{WIP}.docx
+```
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+**Formato PPTX (bajo demanda):**
+
+```
+{fase}_Data_Engineering_{cliente}_{WIP}.pptx
+```
+Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de data pipelines, ingestion, orchestration, data lake, lakehouse, Airflow, Dagster, CDC, lineage, pipeline SLAs. |
+| Completeness | 25% | 6 secciones cubren ingestion, orchestration, storage, quality, lineage, y scalability. Schema registry y data contracts incluidos. |
+| Clarity | 20% | Comparison matrices (orchestrators, table formats, quality tools) con criterios de seleccion claros. Decision rules por context. |
+| Robustness | 20% | Edge cases (greenfield, legacy ETL, multi-cloud, streaming at scale, compliance) manejados. Exactly-once delivery patterns documentados. |
+| Efficiency | 10% | Variante ejecutiva reduce a S1+S3+S5 (~40%). Context detection automatica adapta a stack detectado. |
+| Value Density | 15% | Data contracts con enforcement en CI. Orchestrator comparison accionable. Cost attribution per-pipeline. Pipeline runbook templates. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar idempotency design y data contract enforcement.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

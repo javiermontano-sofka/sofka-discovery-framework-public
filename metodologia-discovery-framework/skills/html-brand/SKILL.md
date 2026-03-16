@@ -7,6 +7,8 @@ description: >
   brand deliverable, Design System v4, or any combination of MetodologIA + document/report/
   summary/analysis/roadmap. Also use when batch-upgrading existing HTML files to
   MetodologIA brand compliance, even if the user does not explicitly say "brand".
+argument-hint: "[executive|technical|transformation|--batch] [output_path]"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -61,6 +63,94 @@ Generate beautiful, accessible, on-brand HTML deliverables following the Metodol
 - Does NOT embed base64 images (bloat); use relative paths or CDN URLs
 - Cannot produce interactive dashboards with live data (build a React/Vue app)
 - Maximum 15 sections per document; beyond that, split into separate deliverables
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| HTML existente corrupto con CSS mezclado de DS v1/v2/v3 | Parsear contenido salvable (texto, tablas, datos). Reconstruir desde base-template.html preservando content. Invocar style-migrator agent. Flag como generacion degradada si se pierde estructura. |
+| Documento con >15 secciones solicitado por el cliente | Dividir en 2 deliverables enlazados con navigation footer cruzado. Cada documento self-contained. Maximo 12 secciones por archivo para UX optima de TOC. |
+| Output requerido en idioma RTL (arabe, hebreo) | Agregar `dir="rtl"` en `<html>`. Mirror layout: border-left a border-right en accent cards. Testear texto bidireccional. Validar contrast con fonts RTL. |
+| Entorno sin acceso a Google Fonts CDN (red corporativa restringida) | Fallback a system-ui, -apple-system, sans-serif. Documentar degradacion visual. Alternativa: embeber font subset en base64 si peso total < 500KB. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Single-file HTML self-contained sobre modular CSS+JS | Archivos CSS y JS separados | Portabilidad garantizada: un archivo se abre en cualquier browser sin dependencias. Deliverables modulares rompen al moverse entre carpetas o enviarse por email. |
+| Yellow (#22D3EE) para success sobre green convencional | Green (#22C55E) para estados positivos | Green introduce tono frio que choca con paleta calida MetodologIA. Yellow mantiene coherencia de marca y es diferenciador visual. Consistencia con Design System v4. |
+| Clash Grotesk display + Inter body sobre una sola familia tipografica | Inter para todo (display + body) | Jerarquia visual requiere contraste entre headings y body. Clash Grotesk 600-700 en display establece autoridad. Inter 400-500 en body garantiza legibilidad. Una sola font colapsa la jerarquia. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        HB[html-brand]
+    end
+    subgraph Inputs
+        CNT[Content & Section Data] --> HB
+        DT[Document Type Decision] --> HB
+        DS[Design System v4 Tokens] --> HB
+    end
+    subgraph Outputs
+        HB --> HTML[Brand-Compliant HTML File]
+        HB --> AUDIT[Color Token Validation Report]
+        HB --> A11Y[Accessibility Checklist]
+    end
+    subgraph Related Skills
+        HB -.-> DSK[design-system]
+        HB -.-> UW[ux-writing]
+        HB -.-> UR[user-representative]
+        HB -.-> EP[executive-pitch]
+    end
+```
+
+## Output Templates
+
+**Formato HTML (primary):**
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head><!-- charset, viewport, OG, fonts, inline <style> --></head>
+<body>
+  <a href="#main" class="skip-link">Ir al contenido</a>
+  <header class="hero"><!-- brand-black bg, orange border, KPIs --></header>
+  <nav class="toc"><!-- sticky, horizontal --></nav>
+  <main class="container" id="main">
+    <section id="section-1"><!-- numbered headers, cards, tables --></section>
+  </main>
+  <footer class="site-footer"><!-- brand-black, badges --></footer>
+</body>
+</html>
+```
+
+**Formato DOCX (secondary):**
+- Documento formal con estilos mapeados desde Design System v4
+- Headers numerados (01, 02...) con brand-primary como accent color
+- Tablas con estilos semanticos (positive=yellow, critical=red)
+- Footer con confidencialidad y referencia documental
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hoja de auditoría de tokens de color, checklist de accesibilidad y validación de componentes por sección.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de HTML brand, deliverable, Design System v4, MetodologIA report | 7/10 |
+| Completeness | 25% | HTML valido con hero, nav, sections numeradas, footer. Todos los tokens de DS v4 aplicados. WCAG AA cumplido. | 7/10 |
+| Clarity | 20% | Estructura visual clara con jerarquia tipografica. Content density apropiada al document type. Sin placeholder text. | 7/10 |
+| Robustness | 20% | Edge cases de RTL, bilingue, >15 secciones, offline fonts cubiertos. Validation gate completo (13 checks). | 7/10 |
+| Efficiency | 10% | Archivo < 500KB. Sin CSS duplicado. JS solo cuando necesario (>5 secciones). Single-file sin dependencias externas. | 7/10 |
+| Value Density | 15% | Cada seccion con KPIs o insights visuales. Hero con 3-4 metricas impactantes. Componentes semanticos correctos. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ## Usage
 

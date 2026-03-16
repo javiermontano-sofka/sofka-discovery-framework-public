@@ -169,7 +169,7 @@ Continuous improvement methodology integrated with ISTQB test fundamentals:
 - Always separate QA effort drivers from pricing decisions
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Comunidad MetodologIA** | **Licencia:** MIT | **Ultima actualizacion:** 14 de marzo de 2026
 
 ## Assigned Skills
 

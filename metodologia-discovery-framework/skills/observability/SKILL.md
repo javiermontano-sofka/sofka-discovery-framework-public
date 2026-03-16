@@ -1,5 +1,7 @@
 ---
 name: metodologia-observability
+argument-hint: "<system-or-platform-name>"
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   Observability architecture — logging, tracing, metrics, alerting, SLO/SLI, incident response.
   Use when the user asks to "design observability", "set up monitoring", "implement tracing", "configure alerting",
@@ -331,11 +333,94 @@ Before finalizing delivery, verify:
 
 ---
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        OBS[Observability Architecture]
+    end
+
+    subgraph Inputs
+        I1[System Topology] --> OBS
+        I2[Existing Monitoring Tools] --> OBS
+        I3[SLO Requirements] --> OBS
+        I4[Incident History] --> OBS
+    end
+
+    subgraph Outputs
+        OBS --> O1[Three-Pillar Strategy]
+        OBS --> O2[OTel Collector Topology]
+        OBS --> O3[Logging Standards]
+        OBS --> O4[Tracing Design]
+        OBS --> O5[Alerting Framework]
+        OBS --> O6[Incident Response Integration]
+    end
+
+    subgraph Related Skills
+        RS1[performance-engineering] -.-> OBS
+        RS2[infrastructure-architecture] -.-> OBS
+        RS3[devsecops-architecture] -.-> OBS
+        RS4[software-architecture] -.-> OBS
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Observability Architecture: {system_name}
+## S1: Observability Strategy
+### Maturity Assessment | OTel Adoption Plan | Sampling | Retention
+
+## S2: Logging Architecture
+### Structured Fields | Level Standards | Aggregation | Storage
+
+## S3: Distributed Tracing
+### Propagation | Span Design | Exemplars | Service Map
+
+## S4: Metrics & Dashboards
+### RED/USE | Naming Conventions | Dashboard Hierarchy | Cardinality
+
+## S5: Alerting Framework
+### Burn Rate Model | Severity Levels | Runbook Linkage
+
+## S6: Incident Response Integration
+### On-Call | Classification | Post-Mortem | Feedback Loops
+```
+
+**Formato XLSX:**
+Matriz de controles de observabilidad: filas por servicio/componente, columnas por pilar (logs, traces, metrics), con estado de implementacion, herramienta asignada, y gaps identificados. Incluye hoja de SLOs con burn rate calculations.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Observability_Architecture_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Observability_Architecture_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de observability, monitoring, tracing, alerting; no se confunde con performance testing |
+| Completeness | 25% | Los 3 pilares cubiertos con tooling concreto, OTel topology definida, alerting con burn rate multi-window |
+| Clarity | 20% | Collector topology, log level standards, y severity levels son inequivocos y operacionalizables |
+| Robustness | 20% | Edge cases (greenfield, legacy, serverless, multi-cloud, high-cardinality) tienen estrategia especifica |
+| Efficiency | 10% | Variante ejecutiva entrega estrategia + dashboards + alerting en ~40% del contenido |
+| Value Density | 15% | Cada seccion produce configuracion aplicable: OTel config, alert rules, dashboard JSON, runbook templates |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Format Protocol
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
@@ -344,6 +429,8 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 ## Output Artifact
 
 **Primary:** `A-01_Observability_Architecture.html` — Executive summary, three-pillar strategy, OTel Collector topology, logging standards, tracing design, metric taxonomy, alerting framework, incident response integration.
+
+| **HTML** | `{fase}_Observability_Architecture_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Light-First Technical. Incluye dashboard de madurez por pilar, topología de collector interactiva, y tabla de burn rate alerts. |
 
 **Secondary:** OTel Collector configuration (agent + gateway), Grafana dashboard JSON, burn rate alert rules, runbook templates, post-mortem template.
 

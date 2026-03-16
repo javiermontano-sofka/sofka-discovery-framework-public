@@ -4,6 +4,8 @@ description: >
   System integration patterns — point-to-point, ESB, iPaaS, event mesh, API contract management, data mapping.
   Use when the user asks to "design integrations", "map system connections", "define API contracts",
   "plan event-driven integration", or mentions ESB, iPaaS, MuleSoft, API gateway, event mesh, data mapping.
+argument-hint: "<system-or-integration-name>"
+author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -73,6 +75,82 @@ The user provides a system or integration context as `$ARGUMENTS`. Parse `$1` as
 - Does not implement integrations — produces architecture and design artifacts
 - API contract details depend on access to system documentation or SME input
 - Performance characteristics are estimates until validated by load testing
+
+## Casos Borde
+
+1. **Sistemas legacy con protocolos obsoletos (SOAP, FTP, ficheros planos)** — El skill disena adaptadores/wrappers que encapsulan protocolos legacy detras de interfaces modernas (REST/async), documentando la deuda tecnica y plan de modernizacion.
+2. **Integracion con terceros sin documentacion de API** — Cuando el proveedor no provee especificaciones, el skill genera contratos basados en ingenieria inversa del comportamiento observable, marcados con [INFERENCIA], y recomienda contract testing.
+3. **Volumen de datos que excede capacidad sincrona** — Para integraciones con millones de registros diarios, el skill automaticamente propone patrones async (event streaming, batch con CDC) en lugar de request-reply.
+4. **Ciclo de vida de APIs sin versionado existente** — Si los sistemas no tienen estrategia de versionado, el skill define politica de versionado (URL path, header, o semantic) y plan de adopcion retroactiva.
+
+## Decisiones y Trade-offs
+
+1. **Patron por conexion vs. patron unico** — Se selecciona patron por conexion porque un enfoque unico (ej: todo async) genera sobre-ingenieria en integraciones simples y sub-ingenieria en las complejas.
+2. **OpenAPI + AsyncAPI vs. solo OpenAPI** — Se usan ambos estendares porque las arquitecturas modernas combinan sync y async; documentar solo sync deja flujos event-driven sin contrato formal.
+3. **Circuit breaker obligatorio vs. opcional** — Obligatorio para integraciones entre dominios diferentes; el costo de implementacion es bajo comparado con el riesgo de falla en cascada.
+4. **Data mapping a nivel de campo vs. a nivel de entidad** — A nivel de campo porque las discrepancias semanticas se esconden en los detalles; mapping a nivel de entidad genera bugs de integracion en produccion.
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Integration Architecture"]
+        A[Integration Design] --> B[Pattern Selection]
+        A --> C[API Contracts]
+        A --> D[Data Mapping]
+    end
+    subgraph Inputs["Inputs"]
+        E[System/Integration Context] --> A
+        F[System Inventory] --> B
+        G[NFR Requirements] --> B
+    end
+    subgraph Outputs["Outputs"]
+        A --> H[Mapa de Paisaje]
+        C --> I[Registro Contratos API]
+        D --> J[Matriz Mapeo Datos]
+        B --> K[Diagramas de Secuencia]
+    end
+    subgraph Related["Related Skills"]
+        L[software-architecture] -.-> A
+        M[data-architecture] -.-> D
+        N[security-architecture] -.-> C
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `arch_integration-landscape_{sistema}_{WIP}.md`
+- Structure: TL;DR -> Inventario de sistemas -> Mapa de paisaje (Mermaid) -> Contratos API -> Matriz de mapeo de datos -> Diagramas de secuencia
+
+### HTML
+- Filename: `arch_integration-landscape_{sistema}_{WIP}.html`
+- Estructura: dashboard navegable con mapa de paisaje interactivo, filtros por patron/protocolo, y drill-down a diagramas de secuencia por flujo
+
+### DOCX
+- Filename: `arch_integration-landscape_{sistema}_{WIP}.docx`
+- Generado con python-docx bajo Metodología Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: System Inventory, Integration Landscape, API Contract Registry, Data Mapping Matrix, Error Handling Policies.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Activa ante "integration", "API contract", "event mesh", "ESB" sin confundir con software architecture general |
+| Completeness | 25% | Cubre inventario, patrones, contratos, data mapping, error handling y diagramas |
+| Clarity | 20% | Cada integracion tiene patron justificado, contrato definido y error handling explicito |
+| Robustness | 20% | Maneja legacy SOAP/FTP, terceros sin docs, alto volumen y ausencia de versionado |
+| Efficiency | 10% | 8 pasos donde inventario alimenta clasificacion que alimenta diseno |
+| Value Density | 15% | Mapa de paisaje y contratos son directamente implementables por equipos de desarrollo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ## Cross-References
 

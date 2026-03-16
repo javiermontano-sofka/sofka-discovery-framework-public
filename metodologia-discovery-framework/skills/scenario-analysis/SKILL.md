@@ -1,5 +1,7 @@
 ---
 name: metodologia-scenario-analysis
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[scenario-count: 3+] [weight-override-path] — e.g. '4' or '3 weights.yaml'"
 description: >
   Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension weighted scoring.
   Use when the user asks to "compare scenarios", "evaluate options", "run scenario analysis",
@@ -197,5 +199,84 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: decision tree (Tree-of-Thought) with criteria at each node
 - Quadrant chart: scenario positioning (feasibility × impact)
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Stakeholders insist on only 1 scenario ("we already know what we want") | Generate the requested scenario plus "Do Nothing" and one genuine alternative; present the comparison to demonstrate either the conviction is justified or alternatives have merit |
+| Scoring produces identical totals for 2+ scenarios (difference <0.2 points) | Declare a trade-off zone; run a sensitivity analysis with 3 different weight sets (risk-averse, balanced, aggressive); present which scenario wins under each weight profile |
+| A scenario scores highest overall but has a critical dimension score below 3 | Flag the critical weakness as a BLOCKER; add a mandatory spike/PoC to validate whether the weakness is resolvable; recommend the second-highest scenario as contingency |
+| Weight override requested but no justification provided | Reject the override until stakeholder documents the rationale; default weights are designed for balance and deviations require explicit reasoning |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Minimum 3 scenarios mandatory, no exceptions | Allow 2-scenario comparisons for speed | Two scenarios create a false binary; the third scenario (even "Do Nothing") forces divergent thinking and prevents confirmation bias |
+| Use rubric-based quantitative scoring (1-10) with qualitative narrative | Qualitative-only comparison (pros/cons lists) | Qualitative comparisons are susceptible to anchoring and recency bias; quantitative scoring creates comparable, auditable decisions |
+| Document conditional switching logic (5+ triggers) | Static recommendation without conditions | Business conditions change; a recommendation that says "this changes if X happens" builds client confidence and reduces plan fragility |
+| Score rationale required for every dimension (no empty cells) | Allow blank rationale for obvious scores | "Obvious" is subjective; forcing rationale surfaces hidden assumptions and creates an audit trail for the steering committee |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Scenario Analysis Engine"]
+        A["Scenario Generation"] --> B["6-Dimension Scoring"]
+        B --> C["SWOT per Scenario"]
+        C --> D["Cross-Scenario Comparison"]
+        D --> E["Recommendation + Switching Logic"]
+    end
+    subgraph Inputs["Inputs"]
+        F["Approved Findings"] --> A
+        G["Weight Overrides"] --> B
+        H["Scenario Count"] --> A
+    end
+    subgraph Outputs["Outputs"]
+        E --> I["Scenario Evaluation Document"]
+        E --> J["Implementation Roadmap"]
+    end
+    subgraph Related["Related Skills"]
+        K["multidimensional-feasibility"] -.-> B
+        L["solution-roadmap"] -.-> J
+        M["executive-pitch"] -.-> E
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `05_Escenarios_ToT_{cliente}_{WIP}.md`
+- Structure: TL;DR > Scenario descriptions > Per-scenario SWOT + scoring grid > Cross-scenario matrix > Trade-off decision map > Conditional switching logic > Implementation roadmap > Mermaid flowchart + quadrant > ghost menu
+
+### PPTX
+- Filename: `05_Escenarios_ToT_{cliente}_{WIP}.pptx`
+- Structure: Executive summary slide > 1 slide per scenario (vision + score) > Comparison matrix slide > Trade-off map visual > Recommendation slide with switching triggers; speaker notes with full evidence
+
+### HTML (bajo demanda)
+- Filename: `05_Escenarios_ToT_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Scoring matrix comparativa por escenario, quadrant chart de posicionamiento (feasibility × impacto), y conditional switching logic resaltada. WCAG AA, responsive, print-ready.
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_escenarios_tot_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de scoring 6 dimensiones por escenario y risk register con zebra striping. Encabezados y pies de página con branding MetodologIA.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_escenarios_tot_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Scoring Matrix (escenario, costo, time-to-value, riesgo operacional, alineación estratégica, regulatory fit, PoC speed, score ponderado, recomendación tier), SWOT por Escenario (escenario, fortalezas, debilidades, oportunidades, amenazas), Risk Register (ID, escenario, riesgo, impacto, probabilidad, score, mitigación, owner), Conditional Switching Logic (trigger, escenario beneficiado, cambio de recomendación). Conditional formatting por score y recommendation tier. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026

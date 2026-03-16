@@ -6,6 +6,8 @@ description: >
   "transition to operations", "prepare delivery handoff", "activate commercial proposal",
   "hand off discovery", "prepare operations package", "close discovery engagement",
   or mentions handover, transition, delivery kickoff, proposal preparation, or discovery close-out.
+argument-hint: "<project_name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -298,7 +300,98 @@ Producir un documento con las 8 secciones anteriores, usando el sistema de dise�
 - Los precios y márgenes deben ser validados por el área comercial antes de enviar al cliente
 - El plan de 90 días es una guía — el equipo de ejecución debe ajustar en Sprint 0
 - Los roles de transición son sugerencias — el receptor final asigna los nombres reales
-- Este skill asume que el discovery se ejecutó con el framework MetodologIA completo
+- Este skill asume que el discovery se ejecuto con el framework MetodologIA completo
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Gate 3 no aprobado pero el cliente necesita propuesta comercial urgente | NO generar handover completo. Generar solo S1 + S2 con disclaimer explicito de que el discovery no esta cerrado. Listar gaps pendientes como condiciones para activacion. |
+| Equipo de ejecucion completamente diferente al equipo de discovery | Incluir sesion obligatoria de knowledge transfer (2-4 horas) en Sprint 0. Documentar decisiones de arquitectura con ADRs. Grabar walkthrough de entregables clave. |
+| Multi-vendor execution con 3+ proveedores en el programa | Agregar seccion de vendor coordination en S5 Governance. Definir integration contracts entre vendors. Establecer single point of contact por vendor. Escalation path cross-vendor. |
+| Solo se ejecuto Quick Reference (Phases 1-3-5b) sin phases intermedias | Handover simplificado: solo S1 + S2 + S6. Sin plan de 90 dias (no hay roadmap detallado). Marcar S3-S5, S7 como pendientes post-cierre comercial. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Sprint 0 de 2 semanas como buffer obligatorio antes de ejecucion | Arrancar Sprint 1 directamente post-handover | Sprint 0 valida si el plan sobrevive el contacto con la realidad. Sin setup de ambientes, onboarding y spike tecnico, Sprint 1 fracasa por impedimentos evitables. |
+| Governance completa (todas las ceremonias) para equipos >5 personas | Governance ligera (solo standup + steering) | Equipos >5 necesitan estructura para coordinacion. Sin retrospectivas ni sprint reviews, el feedback loop se rompe y los problemas se acumulan silenciosamente. |
+| Phase-gate funding sobre presupuesto completo aprobado upfront | Aprobacion de presupuesto total del programa desde el inicio | Phase-gate reduce riesgo financiero del cliente. Kill criteria en cada gate permiten salida controlada. Presupuesto upfront genera compromiso sin validacion de resultados. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        DH[discovery-handover]
+    end
+    subgraph Inputs
+        G3[Gate 3 Approval] --> DH
+        RDM[Solution Roadmap - Phase 4] --> DH
+        PITCH[Executive Pitch - Phase 5b] --> DH
+        STK[Stakeholder Map - Phase 0] --> DH
+    end
+    subgraph Outputs
+        DH --> HO[Handover Package 09]
+        DH --> COM[Commercial Activation]
+        DH --> P90[90-Day Kickoff Plan]
+        DH --> GOV[Execution Governance Model]
+    end
+    subgraph Related Skills
+        DH -.-> DO[discovery-orchestrator]
+        DH -.-> EP[executive-pitch]
+        DH -.-> PPM[project-program-management]
+        DH -.-> RCD[risk-controlling-dynamics]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Handover Operaciones: {project_name}
+## S1: Resumen Ejecutivo de Transicion
+  - Estado del descubrimiento, escenario aprobado, inversion
+## S2: Paquete de Activacion Comercial
+  - Narrativa, pricing structure, condiciones, cronograma cierre
+## S3: Checklist de Readiness Operacional
+  - Equipo, infraestructura, accesos, documentacion
+## S4: Plan de Kickoff — Primeros 90 Dias
+  - Sprint 0, Sprints 1-3, Sprints 4-6, metricas
+## S5-S8: [remaining sections]
+```
+
+**Formato DOCX (secondary):**
+- Documento formal con branding para firma del cliente
+- Tabla de contenidos auto-generada
+- Secciones con headers numerados y firmas de aprobacion
+- Anexo: cronograma de cierre comercial como tabla editable
+
+**Formato HTML (bajo demanda):**
+- Filename: `09_Handover_Operaciones_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye Gantt de plan de 90 días (Mermaid CDN), checklist de readiness operacional interactivo y tracker de supuestos con semáforo. WCAG AA, responsive, print-ready.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por estado (Pendiente/En Progreso/Listo), auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Operational Readiness Checklist, 90-Day Kickoff Plan (sprint por sprint), Assumption & Risk Tracker, Stakeholder Transition Matrix.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Resumen Ejecutivo de Transición, Paquete de Activación Comercial, Checklist de Readiness Operacional, Plan de Kickoff 90 Días, Governance y Escalation, Tracker de Riesgos y Supuestos.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de handover, transicion, kickoff, cierre de discovery | 7/10 |
+| Completeness | 25% | Las 8 secciones cubren transicion ejecutiva, comercial, operacional, governance, y tracking | 7/10 |
+| Clarity | 20% | Owners asignados a todas las tareas. Fechas absolutas. RACI de ejecucion diferenciado del de discovery. | 7/10 |
+| Robustness | 20% | Kill criteria con thresholds numericos. Early warning indicators para riesgos heredados. Rollback path documentado. | 7/10 |
+| Efficiency | 10% | Output proporcional al receptor (Ops, Comercial, Ambos). Sin seccion redundante con deliverables previos. | 7/10 |
+| Value Density | 15% | Plan de 90 dias con actividades dia-a-dia en Sprint 0. Metricas de seguimiento con targets concretos. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ## Output Format Protocol
 

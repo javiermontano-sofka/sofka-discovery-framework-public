@@ -1,5 +1,7 @@
 ---
 name: metodologia-qa-service-discovery
+argument-hint: "<project-workspace-path>"
+author: Javier Montaño · Comunidad MetodologIA
 description: >
   QA-as-a-Service discovery — quality maturity assessment (TMMi), test coverage analysis, tool landscape
   evaluation, PITT methodology alignment, team composition modeling, test factory design, and QA transformation roadmap.
@@ -331,9 +333,96 @@ Hoja de ruta de transformacion de QA en 3 horizontes.
 - [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
 - [ ] Cross-references entre secciones (TMMi S1 informa roadmap S7)
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        QSD[QA Service Discovery]
+    end
+
+    subgraph Inputs
+        I1[QA Documentation & Test Plans] --> QSD
+        I2[Tool Inventory] --> QSD
+        I3[Defect Metrics] --> QSD
+        I4[Team Structure & Certifications] --> QSD
+        I5[CI/CD Pipeline Config] --> QSD
+    end
+
+    subgraph Outputs
+        QSD --> O1[TMMi Maturity Assessment]
+        QSD --> O2[Test Coverage Analysis]
+        QSD --> O3[Tool Landscape Evaluation]
+        QSD --> O4[PITT Alignment Score]
+        QSD --> O5[Team Composition Model]
+        QSD --> O6[Test Factory Design]
+        QSD --> O7[QA Transformation Roadmap]
+    end
+
+    subgraph Related Skills
+        RS1[testing-strategy] -.-> QSD
+        RS2[quality-engineering] -.-> QSD
+        RS3[pipeline-governance] -.-> QSD
+        RS4[devsecops-architecture] -.-> QSD
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# QA Service Discovery: {project_name}
+## S1: Quality Maturity Model Assessment (TMMi)
+### Nivel Actual | Assessment por Area de Proceso | Gap Analysis
+
+## S2: Test Coverage Analysis
+### Cobertura por Tipo | por Capa | por Nivel de Riesgo | Automation Ratio
+
+## S3: Tool Landscape Assessment
+### Herramientas por Categoria | Madurez | Adopcion | Recomendaciones
+
+## S4: PITT Methodology Alignment
+### Dimensiones | Modelo de Interaccion | Readiness Score
+
+## S5: QA Team Composition Model
+### Perfiles | Certificaciones ISTQB | Allocation
+
+## S6: Test Factory Design
+### Procesos | Governance | Metrics Dashboard | Frameworks | Knowledge Base
+
+## S7: QA Transformation Roadmap
+### H1 Quick Wins (0-3m) | H2 Medium-term (3-9m) | H3 Strategic (9-18m)
+```
+
+**Formato XLSX:**
+Dashboard de madurez QA en hoja de calculo: radar chart de TMMi por area de proceso, heatmap de cobertura por tipo y capa, matriz de herramientas con scoring, y roadmap de transformacion con milestones y dependencias.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_qa_service_discovery_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: TMMi Maturity Assessment, Test Coverage Heatmap, Tool Landscape, PITT Readiness Score, Team Composition Model, Test Factory Design, QA Transformation Roadmap (3 horizontes).
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de QA maturity, TMMi, PITT, test factory, QA transformation; no ante testing tecnico |
+| Completeness | 25% | Las 7 secciones cubren madurez, cobertura, herramientas, PITT, equipo, factory, y roadmap con evidencia |
+| Clarity | 20% | Niveles TMMi, readiness scores, y horizontes de roadmap son autoexplicativos con criterios medibles |
+| Robustness | 20% | Edge cases (sin equipo QA, solo manual, multi-equipo, outsourcing, regulacion) tienen workarounds |
+| Efficiency | 10% | Variante ejecutiva (S1+S2+S7) entrega snapshot de madurez y roadmap sin overhead de 7 secciones |
+| Value Density | 15% | Cada seccion produce scores accionables, gaps cuantificados, y recomendaciones con magnitudes de inversion |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Artifact
 
 **Primary:** `QA_Service_Discovery_{project}.md` — Assessment completo de 7 secciones con evaluacion de madurez TMMi, analisis de cobertura, landscape de herramientas, alineacion PITT, composicion de equipo, diseno de test factory, y roadmap de transformacion de QA.
+
+| **HTML** | `{fase}_QA_Service_Discovery_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Light-First Technical. Incluye radar chart de madurez TMMi, heatmap de cobertura por capa, y roadmap de transformacion en 3 horizontes. |
+| **DOCX** | `{fase}_qa_service_discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de assessment TMMi, cobertura por capa y landscape de herramientas con zebra striping. Encabezados y pies de página con branding MetodologIA. |
 
 **Diagramas incluidos:**
 - Radar chart de madurez TMMi por area de proceso

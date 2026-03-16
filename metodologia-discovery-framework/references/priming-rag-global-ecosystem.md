@@ -50,7 +50,7 @@ skill-name/
 ### Frontmatter estandar (SKILL.md)
 ```yaml
 ---
-name: sofka-{domain}
+name: metodologia-{domain}
 version: "1.0.0"
 author: Javier Montaño · Comunidad MetodologIA
 description: Descripcion del skill
@@ -209,8 +209,8 @@ Los archivos `.skill` son paquetes ZIP que contienen la estructura MOAT completa
 - `examples/` — Ejemplos de uso
 
 ### Convencion de naming
-- Patron: `sofka-{domain-skill}.skill`
-- Prefijo `sofka-` obligatorio para skills propietarios
+- Patron: `metodologia-{domain-skill}.skill`
+- Prefijo `metodologia-` obligatorio para skills propietarios
 - El nombre interno (sin prefijo) coincide con el directorio en `$SDF/skills/`
 
 ### Listado completo (58)
@@ -231,7 +231,7 @@ SDF Plugin (propietario, 100 skills, 48 agents, 84 commands)
   +-> Packaged .skill (58 en ~/skills/metodologia-skills/)
   |     Distribuibles, estructura MOAT preservada
   |
-  +-> MetodologIA (GPL-3.0, ~60% subset)
+  +-> MetodologIA (MIT, ~60% subset)
         Fork open-source, branding diferente (#6366F1)
 ```
 

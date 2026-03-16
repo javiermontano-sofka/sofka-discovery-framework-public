@@ -1,6 +1,7 @@
 ---
 name: metodologia-output-engineering
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "[source-file.md] [format: html|docx|pptx|xlsx|pdf|all] — e.g. './06_Roadmap.md html'"
 description: >
   Ghost menu system and multi-format production pipeline — converts markdown source
   of truth into HTML, DOCX, PPTX, XLSX, and PDF outputs while preserving content
@@ -210,3 +211,70 @@ When user requests `all`:
 - This skill owns **format production and the ghost menu pipeline**. It does NOT own content quality (that is editorial-director + content-strategist) or individual format expertise (that is format-specialist agent).
 - NEVER modify content during format conversion. Form changes, substance does not.
 - NEVER produce formats not requested. Ghost menu suggests — user decides.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Source markdown contains raw Mermaid but target format is DOCX or PPTX (no native Mermaid support) | Convert Mermaid to descriptive text paragraphs; add a note "[Diagram available in HTML/Markdown version]"; never leave raw Mermaid syntax in non-rendering formats |
+| Client does not have MetodologIA brand permission (white-label engagement) | Degrade gracefully to neutral styling: remove MetodologIA logo, switch to system fonts (sans-serif), replace brand colors with neutral gray palette; preserve content structure |
+| Source markdown is >30 pages and target is PPTX | Do NOT transcribe; extract key findings, decisions, and visuals into max 20 slides; add "Full report available in .md/.html" reference on title slide |
+| User requests "all" formats but source has no tabular data | Skip XLSX from the package; add a note in README.md explaining XLSX omission; generate remaining formats normally |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Markdown as single source of truth; all other formats are projections | Allow direct editing in derived formats (DOCX, HTML) | Direct editing in derived formats creates version divergence; single-source ensures content integrity and enables regeneration on demand |
+| Ghost menu is offered but never auto-executes format conversion | Auto-generate all formats after every deliverable | Auto-generation wastes tokens and storage for formats the user may not need; the ghost menu gives the user control over what gets produced |
+| PPTX follows "1 message per slide" rule with 20-slide max | Allow dense slides to preserve all source content | Dense slides defeat the purpose of a presentation format; the 1-message rule forces the author to distill, which improves communication quality |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Output Engineering Pipeline"]
+        A["Source Markdown"] --> B["Ghost Menu Trigger"]
+        B --> C["Format Selection"]
+        C --> D["Brand Compliance Check"]
+        D --> E["Content Integrity Validation"]
+    end
+    subgraph Inputs["Inputs"]
+        F["Deliverable .md"] --> A
+        G["Target Format"] --> C
+    end
+    subgraph Outputs["Outputs"]
+        E --> H["HTML"]
+        E --> I["DOCX"]
+        E --> J["PPTX"]
+        E --> K["XLSX"]
+        E --> L["PDF"]
+    end
+    subgraph Related["Related Skills"]
+        M["mermaid-diagramming"] -.-> A
+        N["data-viz-storytelling"] -.-> A
+    end
+```
+
+## Output Templates
+
+### Markdown (default)
+- Filename: `{deliverable}_{cliente}_{WIP}.md`
+- Structure: Source of truth; all content sections; embedded Mermaid; ghost menu at bottom offering format conversion
+
+### HTML
+- Filename: `{deliverable}_{cliente}_{WIP}.html`
+- Structure: Self-contained single file; MetodologIA Design System v4; inline CSS; Mermaid CDN v10; responsive; print-ready @media print; WCAG 2.1 AA; branded footer
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
+| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
+| Robustness | 20% | Maneja edge cases y variantes de input |
+| Efficiency | 10% | Proceso no tiene pasos redundantes |
+| Value Density | 15% | Cada seccion aporta valor practico directo |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.

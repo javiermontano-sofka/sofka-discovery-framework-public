@@ -1,13 +1,13 @@
-# Comité de 48 Agentes
+# Comité de 101 Agentes
 
-> MAO Framework — Ontología viva
-> Referencia canónica del comité de agentes: tríada permanente, core team, 36 especialistas, 7 Sabios.
+> MAO Framework v1.1 — Ontología viva
+> Referencia canónica del comité de agentes: tríada permanente, core team, especialistas de dominio, coaches, Think Tank, editorial publisher.
 
 ---
 
 ## Estructura del comité
 
-El ecosistema opera con 48 agentes especializados organizados en 4 niveles de activación. No todos están activos simultáneamente; se invocan según la fase del pipeline y el `{TIPO_SERVICIO}`.
+El ecosistema opera con 101 agentes especializados organizados en 5 niveles de activación. No todos están activos simultáneamente; se invocan según la fase del pipeline y el `{TIPO_SERVICIO}`.
 
 ---
 
@@ -35,6 +35,7 @@ La tríada permanente está activa desde CP-0 hasta CP-F. Ningún entregable se 
 | `editorial-director` | Coherencia narrativa, calidad editorial | Todas las fases (revisión de entregables) |
 | `format-specialist` | Producción multi-formato (HTML, DOCX, XLSX, PDF) | Fase 6 (Reportes) |
 | `content-strategist` | Storytelling, narrativa de datos | Fases 5-6 (Pitch, Reportes) |
+| `editorial-publisher` | Publicación multi-formato branded, Design System v5, ghost menu execution | Todas las fases (producción de entregables) |
 | `implementation-analyst` | Viabilidad de implementación, trade-offs prácticos | Fases 2-4 (ASIS, Flujos, Escenarios) |
 
 ---
@@ -143,7 +144,109 @@ Se activan exclusivamente en la fase 05b (Feasibility Think Tank). Cada sabio em
 | Especialistas | 36 | Por {TIPO_SERVICIO} + fase | Bajo demanda |
 | Think Tank | 7 (subset de especialistas) | Solo Feasibility | Fase 05b |
 
-**Total:** 48 agentes únicos (los 7 Sabios son un subset de los 36 especialistas).
+**Subtotal niveles 1-4:** 48 agentes originales (los 7 Sabios son un subset de los 36 especialistas).
+
+---
+
+## Nivel 5 — 52 Agentes Extendidos (MAO 10×)
+
+Agentes adicionales que completan el ecosistema de 100 agentes para cobertura universal.
+
+### Coaching y Desarrollo Humano (9)
+
+| Agente | Rol | Inspiración |
+|--------|-----|-------------|
+| `prompt-engineer` | Diseño, evaluación y optimización de prompts | NL-HP methodology |
+| `assistant-designer` | Diseño de asistentes AI/GPT, UX conversacional | MetodologIA asistentes |
+| `methodological-coach` | Coaching P.I.V.O.T.E., 4 fases, filosofía MetodologIA | MetodologIA philosophy |
+| `agile-coach` | Scrum, Kanban, SAFe, retrospectivas, sprint health | Lean-Agile mindset |
+| `enterprise-coach` | Agilidad organizacional, transformación empresarial | Enterprise agility |
+| `conscious-business-coach` | Liderazgo consciente, negocios con propósito | Fred Kofman |
+| `productivity-coach` | Hábitos atómicos, sistemas de productividad | James Clear |
+| `team-coach` | Dinámicas de equipo, seguridad psicológica | Team performance |
+| `leadership-coach` | Liderazgo servicial, situacional, coaching | Servant leadership |
+
+### Especialistas Técnicos Avanzados (15)
+
+| Agente | Especialidad |
+|--------|-------------|
+| `automation-architect` | Workflows n8n, Make, Zapier, RPA |
+| `ai-native-architect` | Arquitectura AI-first, patrones LLM-native |
+| `performance-architect` | Performance engineering, optimización |
+| `api-designer` | API-first, OpenAPI, GraphQL, gRPC |
+| `database-specialist` | Modelado, tuning, migración de BD |
+| `accessibility-specialist` | WCAG, auditoría a11y, diseño inclusivo |
+| `sre-engineer` | Site reliability, SLO/SLI/SLA, error budgets |
+| `observability-architect` | Monitoring, tracing distribuido, logging |
+| `migration-specialist` | Legacy modernization, strangler fig |
+| `testing-strategist` | Test pyramid, TDD, BDD, contract testing |
+| `release-manager` | Release trains, feature flags, rollback |
+| `chaos-engineer` | Chaos engineering, game days, resiliencia |
+| `iot-architect` | IoT, edge protocols, digital twins |
+| `low-code-architect` | Plataformas low-code/no-code, citizen dev |
+| `technical-debt-specialist` | Cuantificación de deuda, roadmaps de reducción |
+
+### Estrategia y Negocio (10)
+
+| Agente | Especialidad |
+|--------|-------------|
+| `finops-specialist` | Optimización financiera cloud |
+| `pricing-analyst` | Modelos de pricing, cost drivers, márgenes |
+| `market-researcher` | Market sizing, TAM/SAM/SOM, tendencias |
+| `competitive-analyst` | Inteligencia competitiva, SWOT, Porter |
+| `innovation-catalyst` | Frameworks de innovación, ideación |
+| `customer-success-architect` | CX journeys, NPS, retención |
+| `negotiation-strategist` | Negociación win-win, BATNA |
+| `vendor-manager` | Evaluación de vendors, RFP, SLA |
+| `sustainability-analyst` | ESG, green IT, huella de carbono |
+| `digital-twin-architect` | Modelado de digital twins, simulación |
+
+### Conocimiento y Comunicación (8)
+
+| Agente | Especialidad |
+|--------|-------------|
+| `knowledge-manager` | Knowledge bases, Zettelkasten, wikis |
+| `technical-writer` | Documentación técnica, API docs |
+| `diagram-specialist` | Mermaid, C4, UML, visualización de arquitectura |
+| `executive-communicator` | Presentaciones C-level, storytelling ejecutivo |
+| `training-designer` | Learning paths, curriculum, workshops |
+| `documentation-specialist` | Doc-as-code, documentación viviente, ADRs |
+| `developer-advocate` | DX advocacy, community building |
+| `open-source-strategist` | Gobernanza OSS, licensing, InnerSource |
+
+### Gobernanza y Compliance (5)
+
+| Agente | Especialidad |
+|--------|-------------|
+| `incident-commander` | Liderazgo de respuesta a incidentes, war room |
+| `capacity-planner` | Modelado de capacidad, forecasting de demanda |
+| `regulatory-specialist` | GDPR, HIPAA, SOX, PCI-DSS |
+| `data-privacy-officer` | Privacy by design, DPIA, consentimiento |
+| `ethical-ai-specialist` | Ética AI, detección de sesgo, AI responsable |
+
+### Facilitación y Cambio (5)
+
+| Agente | Especialidad |
+|--------|-------------|
+| `lean-practitioner` | Lean thinking, eliminación de waste, 5S |
+| `design-thinking-facilitator` | Workshops DT, empathy maps, prototyping |
+| `organizational-psychologist` | Cultura organizacional, resistencia al cambio |
+| `blockchain-architect` | DLT, smart contracts, Web3 |
+| `edge-computing-specialist` | Edge/fog computing, optimización de latencia |
+
+---
+
+## Resumen de activación
+
+| Nivel | Agentes | Activación | Duración |
+|-------|---------|------------|----------|
+| Tríada Permanente | 3 | Siempre | CP-0 a CP-F |
+| Core Team | 9 | Por fase | Según pipeline |
+| Especialistas Dominio | 36 | Por {TIPO_SERVICIO} + fase | Bajo demanda |
+| Think Tank | 7 (subset de especialistas) | Solo Feasibility | Fase 05b |
+| Extendidos 10× | 52 | Por contexto y demanda | Bajo demanda |
+
+**Total:** 100 agentes (48 originales + 52 extendidos).
 
 ---
 

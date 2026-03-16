@@ -1,6 +1,7 @@
 ---
 name: metodologia-mobile-platform-assessment
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<app-or-project-name>"
 description: >
   Unified mobile platform assessment — merges former mobile-architecture and mobile-assessment into one skill.
   Covers cross-platform vs native strategy, store compliance, app vitals, architecture patterns, offline-first design,
@@ -522,6 +523,98 @@ Before finalizing delivery, verify:
 - [ ] Code quality metrics quantified (coverage, complexity, duplication)
 - [ ] Every finding classified by severity with effort estimate
 - [ ] Remediation roadmap prioritized with quick wins and strategic items separated
+
+---
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        MPA[Mobile Platform Assessment]
+    end
+
+    subgraph Inputs
+        I1[Project Requirements] --> MPA
+        I2[Team Skills Profile] --> MPA
+        I3[App Source Code] --> MPA
+        I4[Store Console Data] --> MPA
+        I5[Performance Telemetry] --> MPA
+    end
+
+    subgraph Outputs
+        MPA --> O1[Platform Strategy]
+        MPA --> O2[Architecture Design]
+        MPA --> O3[Offline-First Strategy]
+        MPA --> O4[Performance Budgets]
+        MPA --> O5[Health Profile & Compliance]
+        MPA --> O6[Remediation Roadmap]
+    end
+
+    subgraph Related Skills
+        RS1[software-architecture] -.-> MPA
+        RS2[mobile-assessment] -.-> MPA
+        RS3[quality-engineering] -.-> MPA
+        RS4[performance-engineering] -.-> MPA
+        RS5[api-architecture] -.-> MPA
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Mobile Platform Assessment: {project_name}
+## S1: Platform Strategy
+### Comparison Matrix | Decision Criteria | Recommendation
+
+## S2: App Architecture Patterns
+### Pattern Selection | Modularization | State Management
+
+## S3: Offline-First & Data Sync
+### Storage | Sync Strategy | Conflict Resolution
+
+## S4: Performance Design & Budgets
+### Cold Start | Memory | Animation | Battery
+
+## S5-S7: Health, Dependencies, Compliance
+### Vitals | CVEs | Privacy Manifest | Accessibility
+
+## S8: Backend Integration & Release Pipeline
+### BFF/GraphQL | CI/CD | Feature Flags | OTA
+
+## S9: Code Quality & Remediation Roadmap
+### Quick Wins | Strategic Fixes | Migration Paths
+```
+
+**Formato PPTX:**
+Resumen ejecutivo de plataforma mobile en formato presentacion: slide de comparativa de plataformas, slide de arquitectura (Mermaid renderizado), slide de health dashboard, slide de roadmap de remediacion con timeline visual.
+
+**Formato HTML (bajo demanda):**
+- Filename: `A-01_Mobile_Platform_Assessment_{project_name}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye platform comparison matrix interactiva, health dashboard con vitales y semaforos de compliance, dependency audit con severidades CVSS, y roadmap de remediacion con filtros por severidad. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_Mobile_Platform_Assessment_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Mobile_Platform_Assessment_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por severidad y estado de vitales, auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Platform Comparison, Health Metrics, Dependency Audit, Compliance Checklist, Remediation Roadmap.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de mobile platform, architecture, y assessment; no se confunde con backend architecture |
+| Completeness | 25% | Las 9 secciones cubren estrategia, arquitectura, offline, performance, health, compliance, y remediation |
+| Clarity | 20% | Tablas comparativas de plataformas y benchmarks son autoexplicativas; decisiones justificadas con trade-offs |
+| Robustness | 20% | Modos operacionales (evaluacion, diseno, integral) cubren casos de app nueva, existente, y refactor |
+| Efficiency | 10% | Variante ejecutiva (~40%) entrega decision de plataforma + compliance + roadmap sin overhead |
+| Value Density | 15% | Cada seccion produce recomendaciones accionables con justificacion tecnica y de negocio |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
 
 ---
 

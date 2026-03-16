@@ -4,6 +4,8 @@ description: >
   Target state (TO-BE) architecture design — C4 L2 containers, ADRs, nightmare scenario mitigations, MVP component, phased Strangler Fig migration.
   Use when the user asks to "design the target architecture", "create a TO-BE architecture", "plan a migration strategy",
   "define ADRs for a new system", "mitigate nightmare scenarios", or mentions Strangler Fig, C4 diagrams, saga pattern, anti-corruption layer, or legacy modernization.
+argument-hint: "<system-or-project-name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -310,6 +312,143 @@ Design the first deployable component (typically Authentication & Session Manage
 | ejecutiva | dual | Ambos archivos | Markdown + HTML |
 
 ---
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Cliente impone tecnologia especifica | Override la eleccion; documentar constraint en ADR relevante con trade-off analysis explicito. |
+| No cloud permitido | Reemplazar K8s con VM-based deployment (Terraform + Ansible) o on-prem K8s (OpenShift). Managed services por self-hosted. |
+| Equipo sin experiencia en microservicios | Iniciar con monolito + modular boundaries (DDD packages). Training phase +2-3 semanas. Flag riesgo elevado. |
+| Legacy system sin API | Sidecar critico. Wrap legacy via message queue o REST. Data extraction via CDC si schema accesible. |
+| Multiples legacy systems con schemas conflictivos | Federated data model; ACL por sistema mantiene separacion logica. EDW agrega para analytics. Consistencia eventual. |
+| Regulacion de data residency on-prem | Data layer on-prem, application layer en cloud. Encrypted tunnel (VPN/DX) entre capas. Documentar en ADRs de Zero Trust y Data Storage. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Strangler Fig sobre Big-Bang | Migracion Big-Bang completa | Strangler Fig reduce riesgo con fases independientemente reversibles. Big-bang maximiza blast radius y no permite aprendizaje incremental. |
+| Nightmare-first design (5 escenarios) | Happy-path-first design | Si la arquitectura no sobrevive los peores escenarios, no se construye. Disenar para nightmares primero asegura resiliencia antes de optimizar el happy path. |
+| MVP valida arquitectura antes de escalar | Implementar todos los servicios en paralelo | El MVP prueba patterns, performance y operational readiness con un componente real. Si falla, la arquitectura se ajusta antes de multiplicar el error. |
+| Saga + Outbox sobre 2PC | Distributed 2PC transactions | 2PC tiene latencia prohibitiva y single point of failure (coordinator). Saga + Outbox es resiliente, idempotente, y auditable. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        C4["C4 L2 Container Diagram"]
+        ADR["Architecture Decision Records"]
+        NIGHTMARE["Nightmare Scenarios"]
+        MVP["MVP Component"]
+        STRANGLER["Strangler Fig Migration"]
+    end
+
+    subgraph Inputs["Entradas"]
+        ASIS["AS-IS Analysis"]
+        SCENARIO["Approved Scenario"]
+        CONSTRAINTS["Constraints & NFRs"]
+        LEGACY["Legacy System Docs"]
+    end
+
+    subgraph Outputs["Salidas"]
+        TOBE["TO-BE Architecture Doc"]
+        TRADEOFF["Trade-off Matrices"]
+        MIGRATION["Phased Migration Plan"]
+        RACI["RACI Matrix"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        SWARCH["software-architecture"]
+        SOLARCH["solutions-architecture"]
+        INFRAARCH["infrastructure-architecture"]
+        DEVSEC["devsecops-architecture"]
+        ENTARCH["enterprise-architecture"]
+    end
+
+    ASIS --> C4
+    SCENARIO --> ADR
+    CONSTRAINTS --> ADR
+    LEGACY --> STRANGLER
+    C4 --> TOBE
+    ADR --> TOBE
+    NIGHTMARE --> TOBE
+    MVP --> TOBE
+    STRANGLER --> MIGRATION
+    TOBE --> TRADEOFF
+    TOBE --> RACI
+    SWARCH -.-> C4
+    SOLARCH -.-> C4
+    INFRAARCH -.-> MVP
+    DEVSEC -.-> STRANGLER
+    ENTARCH -.-> ADR
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Arquitectura TO-BE: {project}
+## 1. C4 Level 2 Container Architecture
+### Mermaid Diagram
+### Layer Descriptions
+## 2. Trade-off Matrix
+| Decision | TO-BE Choice | Alternative 1 | Alternative 2 | Trade-off |
+...
+## 3. ADRs (6+)
+### ADR-001: {title}
+- Decision: ...
+- Alternatives Considered: ...
+- Trade-off: ...
+- Consequences: ...
+## 4. Nightmare Scenarios (5+)
+### NS-001: {name}
+- Problem | Trigger | Mitigations | Monitoring | Go/No-Go
+## 5. MVP Component
+## 6. Phased Migration (Strangler Fig)
+## RACI Matrix
+```
+
+**Formato PPTX (bajo demanda):**
+
+```
+Slide 1: Portada — Arquitectura TO-BE: {project}
+Slide 2: Executive Summary — scenario + key architectural decisions
+Slide 3: C4 L2 Container Diagram
+Slide 4: Trade-off Matrix (top decisions)
+Slide 5-6: Nightmare Scenarios — top-3 con mitigaciones
+Slide 7: MVP Component Architecture
+Slide 8: Migration Phases (Strangler Fig timeline)
+Slide 9: RACI Matrix
+Slide 10: Next Steps + Validation Gates
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `04_Arquitectura_TO-BE_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con diagrama C4 L2 interactivo, ADRs colapsables, nightmare scenarios con accordions de mitigacion, y Strangler Fig timeline. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para trade-off matrices, registro de ADRs y RACI de migracion.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de TO-BE, target architecture, ADRs, Strangler Fig, migration, nightmare scenarios, C4 diagrams. |
+| Completeness | 25% | 6 entregables: C4 L2, trade-offs, 6+ ADRs, 5+ nightmares, MVP, migration plan. RACI incluido. |
+| Clarity | 20% | ADRs documentan decision + alternativas + trade-off + consecuencias. C4 diagram legible por audiencia tecnica y ejecutiva. |
+| Robustness | 20% | Conditional logic per scenario (Conservative/Moderate/Aggressive). Edge cases (no cloud, no API, team sin experiencia) cubiertos. |
+| Efficiency | 10% | Variante ejecutiva reduce a C4 + trade-offs + migration phases (~40%). Reusa scenario aprobado sin re-evaluar. |
+| Value Density | 15% | Nightmare scenarios con mitigaciones defense-in-depth. MVP valida arquitectura antes de escalar. Migration plan reversible por fase. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar ADR completeness y nightmare scenario mitigations.
 
 ## Cross-References
 

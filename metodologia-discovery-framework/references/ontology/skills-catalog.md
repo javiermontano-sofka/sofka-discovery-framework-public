@@ -154,7 +154,8 @@
 | Skill | Propósito | Fase |
 |-------|----------|------|
 | `html-brand` | Producción HTML con branding MetodologIA | Transversal |
-| `design-system` | Design system, tokens, componentes | Transversal |
+| `design-system` | Design system genérico configurable (v4) | Transversal |
+| `design-system-brand` | MetodologIA Design System v5 — full-fidelity branded outputs (HTML, DOCX, XLSX, PPTX, MD), 27 tokens, 126 componentes, 4 page types | Transversal |
 | `mermaid-diagramming` | Diagramación Mermaid avanzada | Transversal |
 | `developer-experience` | Evaluación de experiencia de desarrollador | 3-4 |
 | `team-topology` | Topologías de equipo, Team Topologies framework | 3-5 |

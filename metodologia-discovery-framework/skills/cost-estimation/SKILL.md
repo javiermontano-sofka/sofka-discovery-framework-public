@@ -7,6 +7,8 @@ description: >
   cost drivers", "size the project", "plan team composition", "identify effort inductors", or mentions
   WBS, sizing, contingency, burn rate, PERT, Monte Carlo, or "Phase 4" cost work. NEVER produces
   final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
+argument-hint: "<project-or-initiative-name>"
+author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -309,5 +311,154 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: taxonomía de cost drivers
 - Flowchart: árbol de decisión para escenarios de magnitud
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Cliente pide precio final | Redirigir: "Este analisis identifica drivers. El pricing es decision comercial separada." Producir drivers y magnitudes, nunca precios. |
+| Greenfield sin historia | Reference-class forecasting. Rangos mas amplios. Flag como alta incertidumbre (Cone of Uncertainty en fase concepto: 0.25x-4x). |
+| Legacy modernization | +30-50% buffer por complejidad no documentada. Parallel running como driver adicional. |
+| Multi-vendor engagement | +15-25% communication overhead driver. Coordination costs explicitos en taxonomia. |
+| Regulatory-heavy industry | Compliance driver: +20-40% testing effort. Auditoria y certificaciones como drivers separados. |
+| Scope muy ambiguo (pre-discovery) | Solo top-down analogous estimation. Rangos amplios con Cone of Uncertainty. Re-estimar post-discovery. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Drivers y magnitudes, NUNCA precios | Producir presupuesto final | Costear y cobrar son dominios separados. El skill produce la base de conocimiento (drivers, inductores, magnitudes). El pricing es decision comercial posterior con variables externas. |
+| Triangulacion obligatoria (3+ metodos) | Un solo metodo de estimacion | Un metodo es opinion. Dos son hipotesis. Tres convergentes son confianza. Divergencia >30% entre metodos es red flag que requiere investigacion. |
+| Margen de innovacion 5% separado de contingencia | Solo contingencia, sin margen de innovacion | El 5% de innovacion es inversion deliberada en excelencia y hospitalidad irracional. No es contingencia (que se calcula aparte por riesgo). |
+| Service-type specific sizing methods | COCOMO II para todo | COCOMO II aplica solo a SDA. QA, RPA, Cloud, Data-AI tienen unidades de sizing fundamentalmente diferentes (test cases, bots, workloads, pipelines). |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        WBS["Scope Decomposition"]
+        SIZING["Sizing Methods"]
+        TEAM["Team Composition"]
+        DRIVERS["Cost Driver Taxonomy"]
+        TIMELINE["Risk-Adjusted Timeline"]
+        MAGNITUDE["Magnitude Framing"]
+        GOVERNANCE["Costing Governance"]
+    end
+
+    subgraph Inputs["Entradas"]
+        ASIS["AS-IS Analysis"]
+        TOBE["TO-BE Architecture"]
+        SCENARIO["Approved Scenario"]
+        TIPO["Service Type"]
+    end
+
+    subgraph Outputs["Salidas"]
+        REPORT["Cost Drivers Report"]
+        GANTT["Ramp-up Gantt"]
+        MINDMAP["Driver Taxonomy Mindmap"]
+        FLOWCHART["Magnitude Decision Tree"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        ASISSK["asis-analysis"]
+        TOBEARCHSK["architecture-tobe"]
+        SCENARIOSK["scenario-evaluation"]
+        FEASIBILITY["feasibility-assessment"]
+    end
+
+    ASIS --> WBS
+    TOBE --> DRIVERS
+    SCENARIO --> MAGNITUDE
+    TIPO --> SIZING
+    WBS --> SIZING
+    SIZING --> TEAM
+    TEAM --> DRIVERS
+    DRIVERS --> TIMELINE
+    TIMELINE --> MAGNITUDE
+    MAGNITUDE --> GOVERNANCE
+    GOVERNANCE --> REPORT
+    REPORT --> GANTT
+    REPORT --> MINDMAP
+    REPORT --> FLOWCHART
+    ASISSK -.-> WBS
+    TOBEARCHSK -.-> DRIVERS
+    SCENARIOSK -.-> MAGNITUDE
+    FEASIBILITY -.-> TIMELINE
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Cost Drivers: {project} ({TIPO_SERVICIO})
+## S1: Scope Decomposition & Effort Drivers
+### WBS
+### Feature Inventory
+| Feature | Complexity | Effort Drivers | Dependencies |
+...
+## S2: Sizing Methods
+### Triangulacion de Magnitud
+| Metodo | Resultado (FTE-meses) | Confianza |
+...
+## S3: Team Composition Model
+### Modelo por Fase (roles y cantidades, NO tarifas)
+### Gantt de Ramp-up (Mermaid)
+## S4: Cost Driver Taxonomy
+### Mindmap (Mermaid)
+| Categoria | Driver | Magnitud | Fase(s) | Owner |
+...
+## S5: Risk-Adjusted Timeline
+### PERT: P50 / P80 / P95
+## S6: Magnitude Framing
+### Clasificacion: {micro|pequeno|mediano|grande|enterprise}
+### Margen de Innovacion: 5%
+## S7: Costing Governance
+> DISCLAIMER DE COSTEO
+```
+
+**Formato HTML (bajo demanda):**
+
+```
+06_Cost_Drivers_{TIPO_SERVICIO}_{project}_{WIP}.html
+```
+HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye cost driver taxonomy mindmap interactivo, magnitude framing visual, y Gantt de ramp-up del equipo. WCAG AA, responsive, print-ready.
+
+**Formato XLSX (bajo demanda):**
+
+```
+Sheet 1: WBS — epic, feature, task, complexity, effort drivers, dependencies
+Sheet 2: Sizing Triangulation — method, result (FTE-months), confidence, divergence
+Sheet 3: Team Model — role, seniority, dedication %, phase, quantity (NO rates)
+Sheet 4: Cost Driver Taxonomy — category, driver, magnitude, phase, owner
+Sheet 5: Timeline — feature, optimistic, probable, pessimistic, PERT, critical path
+Sheet 6: Magnitude Scenarios — optimistic, probable, pessimistic (FTE-months)
+Sheet 7: Sensitivity Analysis — driver, impact on magnitude, risk level
+```
+
+**Formato DOCX (bajo demanda):**
+
+```
+06_Cost_Drivers_{TIPO_SERVICIO}_{project}_{WIP}.docx
+```
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de cost estimation, effort drivers, sizing, team composition, PERT, Monte Carlo, Phase 4. |
+| Completeness | 25% | 7 secciones cubren scope, sizing, team, drivers, timeline, magnitude, y governance. 8+ categorias de drivers. Zero precios en output. |
+| Clarity | 20% | Magnitudes en FTE-meses (nunca dinero). Rangos con P50/P80/P95. Disclaimer de costeo presente y claro. |
+| Robustness | 20% | Edge cases (precio final solicitado, greenfield, legacy, multi-vendor, regulatory, scope ambiguo) manejados. 8 service types soportados. |
+| Efficiency | 10% | Variante ejecutiva reduce a S1+S4+S6 (~40%). Triangulacion flag automatico cuando divergencia >30%. |
+| Value Density | 15% | Driver taxonomy accionable (owner por driver). Sensitivity analysis identifica drivers que mas mueven la aguja. Innovation margin 5% explicito. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar triangulacion de sizing y completeness de driver taxonomy.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

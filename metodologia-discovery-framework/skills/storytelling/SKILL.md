@@ -1,6 +1,7 @@
 ---
 name: metodologia-storytelling
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<story-type: transformation|scenario|risk|success|cross-deliverable> <audience: executive|technical|mixed>"
 description: >
   Narrative arc design and transformation metodologia-storytelling for discovery deliverables.
   Use when structuring the overall narrative across deliverables, building scenario
@@ -153,6 +154,182 @@ Narrative threads that must be consistent across ALL deliverables:
 | Personalization present | At least one stakeholder perspective per major finding |
 | Tone calibrated | Executive ≠ technical ≠ mixed |
 | No orphan stories | Every narrative thread resolved by Pitch/Handover |
+
+## Supuestos y Limites
+
+- Los hallazgos tecnicos ya existen como input; esta skill estructura la narrativa, no genera datos.
+- Las historias deben estar ancladas en evidencia. Especulacion debe llevar tag [SUPUESTO] explicito.
+- Esta skill posee **estructura narrativa y arcos de historia**. NO posee calidad de prosa (eso es copywriting) ni narrativas de visualizacion de datos (eso es data-storytelling).
+- El arco maestro cubre entregables 00-12. Si el discovery es parcial, adaptar el arco a los entregables disponibles.
+
+## Casos Borde
+
+| Caso Borde | Estrategia de Manejo |
+|---|---|
+| Cliente sin analisis previo (discovery desde cero) | Construir narrativa exclusivamente desde analisis de codigo. Enmarcar como "el discovery revela lo que el codigo nos dice". Usar la ausencia de documentacion como tension narrativa. |
+| AS-IS positivo (sistema en buen estado, caso raro) | Buscar tension en escalabilidad, costo de oportunidad, o presion competitiva. "El sistema funciona hoy, pero el crecimiento proyectado de X% lo llevara al limite en Y meses." |
+| Multiples streams de transformacion en paralelo | Tejer narrativas paralelas con punto de resolucion compartido. Usar tecnica de "callback" entre streams. Crear timeline visual que muestre convergencia. |
+| Audiencia hostil o esceptica al cambio | Liderar con datos incuestionables [CODIGO]. Evitar recomendaciones tempranas. Construir caso acumulativamente: evidencia 1 + 2 + 3 = conclusion inevitable. Incluir "devil's advocate" section. |
+
+## Decisiones y Trade-offs
+
+| Decision | Justificacion | Alternativa Descartada |
+|---|---|---|
+| Arco narrativo unico cross-deliverable (00-12) | Coherencia total: cada entregable avanza la historia. El stakeholder percibe un argumento acumulativo, no documentos aislados. | Entregables narrativamente independientes: pierden fuerza acumulativa; el lector no conecta hallazgos. |
+| Tension como motor narrativo obligatorio | Sin conflicto no hay narrativa. La brecha entre estado actual y estado deseado es el motor que mueve al lector hacia la decision. | Narrativa descriptiva sin tension: informativa pero no accionable; no motiva decision. |
+| Evidencia como ancla de toda historia | Diferencia storytelling de ficcion. El lector ejecutivo detecta narrativas sin sustento y pierde confianza. | Historias sin datos: percibidas como opinion; pierden credibilidad con audiencias tecnicas. |
+| Perspectiva multi-stakeholder | Enriquece la narrativa mostrando como el mismo problema afecta a diferentes roles. Genera empatia cross-funcional. | Perspectiva unica: pierde a parte de la audiencia; no refleja complejidad organizacional. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Storytelling"]
+        ARC[Master Arc 00-12]
+        TRANS[Transformation Narrative]
+        SCENARIO[Scenario Narrative]
+        RISK[Risk Narrative]
+    end
+
+    subgraph Inputs["Inputs"]
+        TYPE[Story Type]
+        AUD[Audiencia]
+        FINDINGS[Hallazgos Tecnicos]
+        STAKEHOLDERS[Perspectivas Stakeholders]
+    end
+
+    subgraph Outputs["Outputs"]
+        MASTER[Cross-Deliverable Arc]
+        SCENE[Scenario Stories]
+        RISKN[Risk Narratives]
+        SUCCESS[Success Reference Stories]
+    end
+
+    subgraph Related["Related Skills"]
+        COPY[copywriting]
+        DATASTORY[data-storytelling]
+        EDITORIAL[editorial-director]
+        SECTOR[sector-intelligence]
+    end
+
+    TYPE --> ARC
+    AUD --> TRANS
+    FINDINGS --> SCENARIO
+    STAKEHOLDERS --> RISK
+    ARC --> MASTER
+    TRANS --> SCENE
+    SCENARIO --> SCENE
+    RISK --> RISKN
+    SECTOR --> SUCCESS
+    COPY --> Core
+    DATASTORY --> Core
+    EDITORIAL --> ARC
+```
+
+## Output Templates
+
+### Template 1: Transformation Narrative (Markdown)
+
+**Filename:** `Narrative_{project}_{deliverable}_{WIP|Aprobado}.md`
+
+```markdown
+# Narrativa de Transformacion: {project}
+
+## Acto 1: Estado Actual (Dolor)
+### Contexto
+{Equipo de [N] personas dedica [X]% de su tiempo a...}
+
+### Cuantificacion
+{[Y] incidentes/mes, [Z] horas de workaround}
+
+### Perspectiva Humana
+{El operador de turno debe... El desarrollador enfrenta...}
+
+## Acto 2: Punto de Decision (Tension)
+### Sin Accion
+{Proyeccion COI: costo acumulado en N trimestres}
+
+### Opciones
+{3 caminos posibles con trade-offs}
+
+### Evidencia
+{Tags y datos que soportan la recomendacion}
+
+## Acto 3: Estado Futuro (Resolucion)
+### Vision
+{En 12 meses, el equipo podra...}
+
+### Metricas Objetivo
+{Time-to-market de [X] a [Y], disponibilidad de [A]% a [B]%}
+
+### Primer Paso
+{Sprint 0 comienza con...}
+```
+
+### Template 2: Scenario Narrative (Markdown)
+
+**Filename:** `Scenario_Narrative_{project}_{scenario}_{WIP|Aprobado}.md`
+
+```markdown
+# Escenario {Name}: {project}
+
+## "Imagine que en 18 meses..."
+{Descripcion vivida del futuro: como se ve el trabajo diario}
+
+## Como Llegamos Aqui
+{Decisiones clave e inversiones realizadas}
+
+## Que Ganamos
+| Beneficio | Metrica Actual | Metrica Proyectada | Evidencia |
+|---|---|---|---|
+
+## Que Costo
+{FTE-meses, trade-offs explicitos, que se sacrifico}
+
+## Que Arriesgamos
+| Riesgo | Probabilidad | Impacto | Mitigacion |
+|---|---|---|---|
+```
+
+### Template 3: HTML (bajo demanda)
+
+- Filename: `{fase}_Narrative_{project}_{WIP|Aprobado}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye timeline visual del arco maestro (00-12), cards de escenario con tensión/resolución, y sección de callbacks cross-entregable. WCAG AA, responsive, print-ready.
+
+### Template 4: DOCX (bajo demanda)
+
+- Filename: `{fase}_storytelling_{cliente}_{WIP}.docx`
+- Generado con python-docx y MetodologIA Design System v5. Portada con tipo de historia y audiencia, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Arco Maestro (cross-deliverable), Narrativa de Transformación (3 actos), Narrativas de Escenario, Narrativas de Riesgo, Success Reference Stories.
+
+### Template 5: PPTX (bajo demanda)
+
+- Filename: `{fase}_storytelling_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Arco Maestro (00-12 timeline visual), Acto 1: Estado Actual (dolor cuantificado), Acto 2: Punto de Decisión (opciones y evidencia), Acto 3: Estado Futuro (visión y métricas objetivo), Narrativas de escenario (una por escenario relevante), Risk Narrative (consecuencias cuantificadas), Success Reference Story, próximos pasos.
+
+### Template 6: XLSX (bajo demanda)
+
+- Filename: `{fase}_storytelling_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Narrative Arc (entregable 00-12, tensión introducida, resolución, estado del thread), Thread Tracker (thread narrativo, entregable de introducción, entregable de resolución, estado activo/resuelto/pendiente), Scenario Narratives (escenario, visión futura, beneficio cuantificado, costo FTE-meses, riesgo principal), Risk Narratives (riesgo, consecuencia cuantificada, cascada de impacto, punto de no retorno). Conditional formatting por estado de threads (activo/resuelto/pendiente) y audiencia. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante solicitudes de narrativa, arco de historia, transformation story, o scenario narrative |
+| Completeness | 25% | Arco narrativo completo (tension -> decision -> resolucion), threads consistentes cross-deliverable, perspectiva multi-stakeholder |
+| Clarity | 20% | Narrativa fluida; transiciones logicas entre actos; el lector entiende la progresion sin saltos |
+| Robustness | 20% | Produce narrativas efectivas sin analisis previo, con AS-IS positivo, con audiencia esceptica |
+| Efficiency | 10% | Genera estructura narrativa completa con parametros minimos (tipo + audiencia) |
+| Value Density | 15% | Cada elemento narrativo aporta tension o resolucion; cero prosa decorativa sin funcion narrativa |
+
+**Umbral minimo: 7/10**
+
+## Cross-References
+
+- `metodologia-copywriting` — Calidad de prosa y persuasion dentro de cada seccion narrativa
+- `metodologia-data-storytelling` — Interpretacion de metricas que alimenta la narrativa
+- `metodologia-editorial-director` — Coordinacion del arco maestro cross-entregable
+- `metodologia-sector-intelligence` — Benchmarks y analogias sectoriales para success reference stories
 
 ## Edge Cases
 

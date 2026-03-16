@@ -1,13 +1,13 @@
 # MAO — MetodologIA de Aprovechamiento de Oportunidades
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > **"Método + TecnologIA = Soberanía"**
 > La metodología precede la tecnología. La tecnología sin método amplifica el caos.
 
-**Framework universal de discovery técnico y consultoría para Claude Code — copyleft, para el profesional en la era de la IA.**
+**Framework universal de discovery técnico y consultoría para Claude Code — open-source, para el profesional en la era de la IA.**
 
-100 skills MOAT · 48 agentes · 96 comandos · 49 prompts NL-HP · 4 quality gates · Think Tank de 7 Sabios · markdown-first con Mermaid
+100 skills MOAT · 100 agentes · 100 comandos · 49 prompts NL-HP · 4 quality gates · Think Tank de 7 Sabios · markdown-first con Mermaid
 
 ---
 
@@ -129,19 +129,27 @@ MAO transforma Claude Code en un consultor técnico universal con:
 
 ---
 
-## Comité de 48 Agentes
+## Comité de 100 Agentes
 
-### Tríada Permanente
+### Tríada Permanente (3)
 - `discovery-conductor` — Orquestador imparcial
 - `delivery-manager` — Timelines, alcance, riesgos
 - `risk-controller` — Gobernanza continua
 
-### Think Tank de 7 Sabios
+### Core Team (9) + Think Tank de 7 Sabios
 Research Scientist · Economics Researcher · Systems Theorist · Technology Scout ·
 Integration Researcher · Hardware Systems Engineer · Data Scientist
 
-### 36+ Especialistas
-Se activan según `{TIPO_SERVICIO}` y fase del pipeline.
+### 36 Especialistas de Dominio
+Arquitectura, Data & AI, Calidad, Investigación, Negocio, UX, AI Especializado.
+
+### 52 Agentes Extendidos (MAO 10×)
+Coaching (9): prompt-engineer, assistant-designer, methodological-coach, agile-coach, enterprise-coach, conscious-business-coach, productivity-coach, team-coach, leadership-coach.
+Técnicos (15): automation-architect, ai-native-architect, performance-architect, api-designer, database-specialist, accessibility-specialist, sre-engineer, observability-architect, migration-specialist, testing-strategist, release-manager, chaos-engineer, iot-architect, low-code-architect, technical-debt-specialist.
+Estrategia (10): finops-specialist, pricing-analyst, market-researcher, competitive-analyst, innovation-catalyst, customer-success-architect, negotiation-strategist, vendor-manager, sustainability-analyst, digital-twin-architect.
+Comunicación (8): knowledge-manager, technical-writer, diagram-specialist, executive-communicator, training-designer, documentation-specialist, developer-advocate, open-source-strategist.
+Gobernanza (5): incident-commander, capacity-planner, regulatory-specialist, data-privacy-officer, ethical-ai-specialist.
+Facilitación (5): lean-practitioner, design-thinking-facilitator, organizational-psychologist, blockchain-architect, edge-computing-specialist.
 
 Todos los agentes siguen el estándar de 4 secciones: **Core Responsibilities**, **Assigned Skills**, **Output Configuration**, **Escalation Triggers**.
 
@@ -258,7 +266,7 @@ metodologia-discovery-framework/
 
 ## Contributing
 
-MAO es **open-source bajo copyleft** (GPL-3.0). Contribuciones bienvenidas.
+MAO es **open-source bajo licencia MIT**. Contribuciones bienvenidas.
 
 1. **Fork** del repositorio
 2. **Branch** con prefijo: `feat/`, `fix/`, `docs/`
@@ -271,15 +279,15 @@ MAO es **open-source bajo copyleft** (GPL-3.0). Contribuciones bienvenidas.
 
 ## License
 
-**GNU General Public License v3.0** (Copyleft)
+**MIT License**
 
-Copyleft significa: cualquier trabajo derivado debe mantener la misma licencia. El conocimiento que se construye sobre este framework permanece abierto.
+Conocimiento libre, crédito al origen. Uso comercial, modificación y distribución ilimitados con atribución.
 
 ---
 
 <p align="center">
 <strong>MAO v1.0 — MetodologIA de Aprovechamiento de Oportunidades</strong><br>
-© 2026 Javier Montaño · Comunidad MetodologIA · GPL-3.0 (Copyleft)<br>
+© 2026 Javier Montaño · Comunidad MetodologIA · MIT License<br>
 <a href="https://metodologia.info">metodologia.info</a><br>
 <em>Método + TecnologIA = Soberanía. Para el profesional en la era de la IA.</em>
 </p>

@@ -1,5 +1,7 @@
 ---
 name: metodologia-devsecops-architecture
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<system-or-pipeline-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   DevSecOps pipeline architecture — CI/CD design, shift-left security, supply chain integrity, release management, and compliance automation.
   Use when the user asks to "design the CI/CD pipeline", "integrate security into delivery", "set up SBOM and artifact signing",
@@ -242,22 +244,97 @@ Security gates: non-negotiable vs. optional by risk classification.
 
 ---
 
-## Edge Cases
+## Casos Borde
 
-**Legacy System (No Pipeline):**
-Manual deploys, no automated tests. Build pipeline incrementally: add tests first, then automation, then gates.
+| Caso | Estrategia de Manejo |
+|---|---|
+| Sistema legacy sin pipeline | Construir pipeline incrementalmente: tests primero, luego automatizacion, luego gates; no intentar todo de una vez |
+| Sistema de alta compliance (financiero, salud) | Cada cambio requiere audit trail, aprobacion y evidencia; security gates mandatorios; automatizar coleccion de evidencia de compliance |
+| Startup con innovacion rapida | Velocidad sobre perfeccion; tolerancia al riesgo alta; gates minimos; automatizar solo seguridad critica; canary por defecto con rollback |
+| Microservicios distribuidos (cientos de servicios) | Pipeline monolitico no escala; platform team provee template compartido; service teams customizar; contratos de integracion validados en pipeline |
+| Riesgo de compromiso de supply chain | Artefactos firmados, build environment inmutable, provenance attestation; verificar integridad end-to-end desde commit hasta produccion |
 
-**High-Compliance System (Financial, Healthcare):**
-Every change requires audit trail, approval, evidence. Security gates mandatory. Automate compliance evidence collection; gate all changes.
+## Decisiones y Trade-offs
 
-**Rapid Innovation (Startup):**
-Speed over perfection; risk tolerance high. Minimal gates; automate only critical security. Continuous deployment, canary by default, rollback emphasis.
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Seguridad integrada en cada stage del pipeline | Seguridad como gate final antes de produccion | La seguridad que se agrega al final es la que se olvida; shift-left con SAST, SCA y secrets scanning en cada etapa reduce costo de remediacion |
+| Supply chain integrity (SBOM + signing) obligatorio | Confiar en dependencias sin verificacion | La cadena de suministro de software es un vector de ataque creciente; verificar integridad es mas barato que remediar un compromiso |
+| DORA metrics como North Star del pipeline | Metricas ad-hoc o sin metricas | Deployment frequency, lead time, failure rate y MTTR son los 4 indicadores que correlacionan con rendimiento organizacional; medir para mejorar |
+| Risk-based deployment gates (bajo/medio/alto) | Mismos gates para todo tipo de cambio | Un cambio de docs no necesita security review + CAB; un cambio de auth si; gates proporcionales al riesgo evitan friction innecesaria |
 
-**Distributed Systems (Microservices):**
-Hundreds of independent services; monolithic pipeline doesn't scale. Platform team provides shared pipeline template, service teams customize.
+## Knowledge Graph
 
-**Supply Chain Compromise Risk:**
-Sophisticated attackers targeting build system. Signed artifacts, immutable build environment, provenance attestation.
+```mermaid
+graph TD
+    subgraph Core["Core: DevSecOps Architecture"]
+        CICD[CI/CD Pipeline]
+        SLS[Shift-Left Security]
+        SC[Supply Chain Security]
+        RM[Release Management]
+        PO[Pipeline Observability]
+        CA[Compliance Automation]
+        MC[Minimum Controls]
+    end
+
+    subgraph Inputs["Inputs"]
+        REPO[Repositories & Code]
+        SECREQ[Security Requirements]
+        COMP[Compliance Policies]
+        INFRA[Infrastructure]
+    end
+
+    subgraph Outputs["Outputs"]
+        PIPE[Pipeline Architecture]
+        GATES[Security Gate Checklist]
+        DORA[DORA Metrics Dashboard]
+        EVID[Compliance Evidence]
+    end
+
+    subgraph Related["Related Skills"]
+        SWA[software-architecture]
+        SOL[solutions-architecture]
+        INF[infrastructure-architecture]
+        QUAL[quality-engineering]
+    end
+
+    REPO --> CICD
+    SECREQ --> SLS
+    COMP --> CA
+    INFRA --> RM
+    CICD --> SLS --> SC --> RM --> PO --> CA --> MC
+    MC --> PIPE
+    MC --> GATES
+    MC --> DORA
+    MC --> EVID
+    SWA --> CICD
+    SOL --> SLS
+    INF --> RM
+    QUAL --> CICD
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `A-05_DevSecOps_Architecture_Deep.md` | Documento completo con CI/CD pipeline, shift-left security, supply chain, release management, pipeline observability, compliance automation y risk matrix. Diagramas Mermaid de pipeline stages y security gates. |
+| **HTML** | `A-05_DevSecOps_Architecture_Deep.html` | Mismo contenido en HTML branded (Design System MetodologIA). Pipeline diagram interactivo, DORA metrics dashboard template, y compliance evidence tracker. |
+| **DOCX** | `{fase}_{entregable}_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría. |
+| **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por severidad/estado, auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: DORA Metrics Tracker, Security Gates Matrix, Pipeline Stage Checklist, Risk Matrix. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 30 slides técnico / 20 ejecutivo. Notas del orador con referencias de evidencia. Secciones: CI/CD Pipeline Overview, Shift-Left Security Gates, Supply Chain Integrity, Release Management, DORA Metrics Dashboard, Compliance Automation, Risk Matrix. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (CI/CD, SAST, SCA, DAST, SBOM, DORA, canary, policy-as-code) sin falsos positivos con software-architecture o infrastructure-architecture |
+| Completeness | 25% | Las 7 secciones cubren pipeline, security, supply chain, release, observability, compliance y controls sin huecos; todos los stages con gates definidos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada gate con criterio de pass/fail, timeout y escalation; DORA targets numericos; risk classification con ejemplos |
+| Robustness | 20% | Maneja legacy sin pipeline, alta compliance, startup rapido, microservicios distribuidos y supply chain compromise con estrategias diferenciadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S2+S5 sin perder pipeline core y metricas |
+| Value Density | 15% | Cada seccion aporta valor practico directo; risk matrix y minimum controls son herramientas de decision inmediata para security y release |
+
+**Umbral minimo: 7/10.**
 
 ---
 

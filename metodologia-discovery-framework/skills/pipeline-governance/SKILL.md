@@ -1,6 +1,7 @@
 ---
 name: metodologia-pipeline-governance
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<project-or-program-name>"
 description: >
   Discovery pipeline governance — phase gate management, resource orchestration,
   dependency control, and proposal QA validation across the entire discovery pipeline.
@@ -345,6 +346,94 @@ Location: `plugins/metodologia-discovery-framework/skills/{skill-name}/examples/
 - [ ] Scope change log with impact assessments
 - [ ] Mermaid diagrams: Gantt (program), flowchart (resources), sequence (data)
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        PG[Pipeline Governance]
+    end
+
+    subgraph Inputs
+        I1[Discovery Pipeline State] --> PG
+        I2[Phase Deliverables] --> PG
+        I3[Expert Committee Roster] --> PG
+        I4[Scope & Timeline] --> PG
+    end
+
+    subgraph Outputs
+        PG --> O1[Program Charter]
+        PG --> O2[Gate Evaluations]
+        PG --> O3[Resource Tracking]
+        PG --> O4[Dependency Control]
+        PG --> O5[Proposal QA Scorecard]
+        PG --> O6[Status Dashboard]
+        PG --> O7[Lessons Learned]
+    end
+
+    subgraph Related Skills
+        RS1[risk-controlling-dynamics] -.-> PG
+        RS2[discovery-orchestrator] -.-> PG
+        RS3[discovery-handover] -.-> PG
+        RS4[cost-estimation] -.-> PG
+        RS5[executive-pitch] -.-> PG
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Pipeline Governance: {project_name}
+## S1: Program Charter & Governance Framework
+### Phase Dependency Map | Decision Rights | Communication Plan
+
+## S2: Phase Gate Management
+### Gate Evaluation Protocol (G1, 3b, G2, G3)
+
+## S3: Resource & Capacity Orchestration
+### Expert Allocation | Bottleneck Detection | Skill Activation
+
+## S4: Cross-Phase Dependency Control
+### Input/Output Matrix | Data Contracts | Scope Change Log
+
+## S5: Proposal QA Validation
+### Coherencia | Completitud | Viabilidad | Alineacion | Composite Score
+
+## S6: Status Reporting & Dashboard
+### RAG Status | Milestone Tracking | Risk Burn-Down | Decision Log
+
+## S7: Continuous Governance & Lessons Learned
+### Retrospective | Governance Effectiveness | Process Improvement
+```
+
+**Formato DOCX:**
+Reporte de gobernanza de programa en formato documento formal: charter ejecutivo, evaluaciones de gate con firmas de aprobacion, scorecard de propuesta, y dashboard de estado con graficos de varianza y tendencia de riesgos.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Pipeline_Governance_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por RAG status (verde/amarillo/rojo) y veredicto de gate (PASS/CONDITIONAL/FAIL), auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Phase Gate Status, Resource Allocation, Dependency Matrix, Proposal QA Scorecard.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Pipeline_Governance_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de governance, pipeline, gate, proposal QA; no se confunde con PM generico |
+| Completeness | 25% | Las 7 secciones cubren charter, gates, recursos, dependencias, QA de propuesta, dashboard, y lecciones |
+| Clarity | 20% | Gate criteria, QA scorecard, y RAG status son inequivocos; verdicts son PASS/CONDITIONAL/FAIL |
+| Robustness | 20% | Edge cases (phase skip, scope change, expert unavailable, QA fail) tienen protocolo definido |
+| Efficiency | 10% | Modos operacionales (integral, seguimiento, validacion-propuesta) permiten activacion parcial |
+| Value Density | 15% | Cada gate produce veredicto accionable; QA scorecard traza fallas a fase origen con remediacion |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Format Protocol
 
 | Format | Default | Description |
@@ -352,6 +441,7 @@ Location: `plugins/metodologia-discovery-framework/skills/{skill-name}/examples/
 | `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
+| **HTML** | `{fase}_Pipeline_Governance_{proyecto}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Dark-First Executive. Incluye Gantt interactivo de programa, gate scorecard con RAG status, y proposal QA dashboard. |
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 

@@ -7,6 +7,7 @@ description: >
   "cloud cost analysis", "rightsizing", "reservation strategy", "showback/chargeback model",
   "cloud unit economics", "cost allocation", or mentions "cloud financial management",
   "cost optimization", "FinOps maturity".
+argument-hint: "[cloud-provider] [scope: full|assessment|optimization]"
 allowed-tools:
   - Read
   - Write
@@ -132,6 +133,129 @@ Budget policies, alerting thresholds, anomaly detection rules, approval workflow
 
 ### S8: FinOps Operating Model
 Team structure (centralized, embedded, federated). RACI for cost decisions. Reporting cadence and audience. Tool recommendations. Training plan for engineering teams.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Organizacion con zero tagging y zero billing exports | Analisis basado exclusivamente en IaC; toda recomendacion marcada [INFERENCIA]; proponer tagging taxonomy como prerequisito antes de optimizacion |
+| Migracion multi-cloud activa (workloads moviendose entre proveedores) | Congelar analisis en snapshot temporal; separar recomendaciones por cloud destino; agregar capa de arbitraje cross-cloud |
+| Startup en hyper-growth con costos duplicandose cada trimestre | Priorizar unit economics y auto-scaling sobre reservaciones; enfocar en costo por transaccion, no en gasto absoluto |
+| Organizacion con contratos enterprise (EDP/PPA) ya firmados | Analizar dentro de restricciones contractuales; enfocar optimizacion en rightsizing y waste, no en rate optimization |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Expresar costos en magnitudes y porcentajes, nunca en valores exactos | Reportar cifras exactas de billing | Los valores exactos caducan rapidamente y crean compromisos contractuales implicitos; las magnitudes son accionables sin ser vinculantes |
+| Evaluar madurez FinOps con el modelo Crawl/Walk/Run de FinOps Foundation | Crear modelo de madurez propietario | El framework de FinOps Foundation es el estandar de la industria; usar otro reduce comparabilidad con benchmarks externos |
+| Incluir unit economics como seccion mandatoria | Limitarse a analisis de gasto absoluto | El gasto absoluto sin contexto de negocio no permite tomar decisiones; costo por transaccion es la metrica que conecta infra con valor |
+| Separar modos operacionales (assessment/optimization/framework) | Un unico flujo monolitico para todos los casos | Cada modo tiene audiencia y profundidad distintas; forzar el analisis completo cuando solo se necesita quick wins desperdicia tiempo |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["FinOps Core"]
+        A[metodologia-finops]
+        A1[S1: Maturity Assessment]
+        A2[S2: Cost Visibility]
+        A3[S3: Waste Identification]
+        A4[S4: Optimization]
+        A5[S5: Unit Economics]
+        A6[S6: Rate Optimization]
+        A7[S7: Governance]
+        A8[S8: Operating Model]
+    end
+    subgraph Inputs["Inputs"]
+        I1[IaC / Terraform / CloudFormation]
+        I2[Billing Exports / Cost Explorer]
+        I3[Architecture Diagrams]
+        I4[Tagging Strategy Docs]
+    end
+    subgraph Outputs["Outputs"]
+        O1[FinOps Assessment Report]
+        O2[Quick Wins Summary]
+        O3[Optimization Roadmap]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-technical-feasibility]
+        R2[metodologia-cost-estimation]
+        R3[metodologia-software-viability]
+        R4[metodologia-sector-intelligence]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    I4 --> A
+    A --> A1 --> A2 --> A3 --> A4
+    A4 --> A5 --> A6 --> A7 --> A8
+    A --> O1
+    A --> O2
+    A --> O3
+    A --- R1
+    A --- R2
+    A --- R3
+    R4 --> A
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# FinOps Assessment — {proyecto}
+## Resumen Ejecutivo
+> Hallazgo clave en 3 lineas.
+## S1: Evaluacion de Madurez FinOps
+| Dominio | Score (1-5) | Evidencia | Recomendacion |
+|---------|-------------|-----------|---------------|
+## S2-S8: [secciones completas]
+## Roadmap de Optimizacion
+```mermaid
+gantt
+    title Roadmap FinOps
+    section Quick Wins
+    ...
+```
+## Apendice: Datos de Soporte
+```
+
+**Formato XLSX (para audiencia financiera):**
+
+```
+Hoja 1: Resumen Ejecutivo (madurez + top 5 optimizaciones)
+Hoja 2: Desglose de Costos por Servicio/Equipo/Ambiente
+Hoja 3: Inventario de Waste con Ahorro Estimado (%)
+Hoja 4: Oportunidades de Optimizacion (esfuerzo x impacto)
+Hoja 5: Unit Economics (costo por transaccion/usuario/API call)
+Hoja 6: Roadmap de Implementacion con Timeline
+```
+
+**Formato HTML (bajo demanda):**
+- Filename: `FinOps_Assessment_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con maturity radar chart, waste breakdown interactivo, y optimization roadmap con filtros por tier. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `FinOps_Assessment_{project}_{WIP}.docx`
+- Generado con python-docx bajo Metodología Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: FinOps Maturity Assessment, Cost Visibility & Waste Identification, Top Optimization Opportunities (Quick Wins / Medium / Strategic), Unit Economics, Governance & Operating Model, Roadmap de Implementación.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante prompts de FinOps, cloud cost, rightsizing | 7/10 |
+| Completeness | 25% | Las 8 secciones estan pobladas con contenido basado en evidencia; unit economics definidos | 7/10 |
+| Clarity | 20% | Ejecutivos no tecnicos pueden entender el resumen; costos expresados en magnitudes con contexto | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (multi-cloud, serverless, no billing data); workarounds documentados | 7/10 |
+| Efficiency | 10% | El modo operacional correcto se selecciona segun contexto; no se genera analisis innecesario | 7/10 |
+| Value Density | 15% | Cada optimizacion tiene ahorro estimado (%), esfuerzo, y timeline; zero recomendaciones genericas | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Cross-Section Traceability
 

@@ -148,7 +148,7 @@ For every AI use case recommended:
 - Recommend open-source tools by default; commercial alternatives only when justified by specific requirements
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Comunidad MetodologIA** | **Licencia:** MIT | **Ultima actualizacion:** 14 de marzo de 2026
 
 ## Assigned Skills
 

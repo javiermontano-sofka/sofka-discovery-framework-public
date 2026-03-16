@@ -597,7 +597,7 @@
 
 ### Skills (59)
 
-Skills identicos al core pero bajo licencia GPL-3.0. Ruta: `~/skills/plugins/metodologia-discovery-framework/skills/{nombre}/`
+Skills identicos al core pero bajo licencia MIT. Ruta: `~/skills/plugins/metodologia-discovery-framework/skills/{nombre}/`
 
 Listado completo: ai-center-discovery, analytics-engineering, api-architecture, architecture-tobe, asis-analysis, bi-analytics-discovery, bi-architecture, cloud-migration, cloud-native-architecture, cloud-service-discovery, commercial-model, cost-estimation, data-engineering, data-governance, data-quality, data-science-architecture, database-architecture, design-system, devsecops-architecture, digital-transformation-discovery, discovery-handover, discovery-orchestrator, dynamic-sme, enterprise-architecture, event-architecture, executive-pitch, flow-mapping, functional-spec, functional-toolbelt, html-brand, infrastructure-architecture, management-discovery, mentoring-training-discovery, mermaid-diagramming, mini-apps-discovery, mobile-architecture, mobile-assessment, observability, performance-engineering, project-program-management, qa-service-discovery, quality-engineering, risk-controlling-dynamics, roadmap-poc, rpa-discovery, scenario-analysis, security-architecture, software-architecture, software-viability, solution-roadmap, solutions-architecture, staff-augmentation-discovery, stakeholder-mapping, technical-feasibility, testing-strategy, user-representative, ux-design-discovery, ux-writing, workshop-facilitator.
 

@@ -7,6 +7,8 @@ description: >
   "service assessment", "QA maturity", "PMO assessment", "RPA readiness", "data maturity",
   "cloud readiness", "design maturity", "talent gap analysis", or mentions "Phase 1", "current state",
   "legacy system review", "technical health check".
+argument-hint: "<codebase-path-or-project-name>"
+author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -337,5 +339,138 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - C4 Container diagram: internal components and their relationships
 - Mindmap: technology stack overview
 
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Monorepo con multiples deployment units | Descomponer por deployment unit. Analizar coupling entre units. Metricas por servicio separado. |
+| No CI/CD configurado | Inferir de Dockerfiles, cloud configs, README scripts. Flag inference risk explicitamente. |
+| No test suite existente | Flag coverage como CRITICAL (0%). Extrapolar quality risk via complexity. Recomendar test buildout prioritario. |
+| Multiples lenguajes en codebase | Metricas por lenguaje separadas. +1 risk por lenguaje adicional por carga de integracion. |
+| Sistema >500K LOC | Analisis faseado: Tier 1 core domains, Tier 2 supporting. Executive summary + deep-dives priorizados. |
+| Framework EOL detectado | Escalar a CRITICAL risk. Documentar security exposure y upgrade path complexity. |
+| Vendor lock-in con dependencias propietarias | Flag dependencias propietarias con migration cost estimates y alternativas open-source. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| 10 secciones como framework universal | Framework de 5 secciones, assessment libre | 10 secciones cubren el espectro completo (exec, tech, arch, quality, debt, NFR, security, ops, risk, recommendations). Sections S0, S9, S10 son universales cross-service-type. |
+| Service-type variants para S1-S8 | Framework unico para todos los tipos de servicio | SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design tienen dimensiones de evaluacion fundamentalmente diferentes. Adaptar S1-S8 maximiza relevancia. |
+| Evidence-based diagnostico con tags | Opinion-based assessment | Tags [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO] garantizan trazabilidad. Cada hallazgo tiene backing verificable. |
+| Cross-section traceability (S10 to S0-S9) | Recomendaciones desconectadas de hallazgos | Toda recomendacion S10 referencia evidencia de secciones previas. Elimina recomendaciones sin fundamento. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Conceptos Core"]
+        EXEC["S0: Executive Dashboard"]
+        TECH["S1-S8: Domain Sections"]
+        DEBT["S5: Technical Debt"]
+        RISK["S9: Risk Register"]
+        RECS["S10: Recommendations"]
+    end
+
+    subgraph Inputs["Entradas"]
+        CODE["Codebase / Artifacts"]
+        CONFIG["Build & Deploy Config"]
+        HISTORY["Operational History"]
+        TIPO["Service Type"]
+    end
+
+    subgraph Outputs["Salidas"]
+        ASIS["AS-IS Analysis Report"]
+        BRIEF["Technical Brief"]
+        C4["C4 Diagrams"]
+        NFR["NFR Heatmap"]
+    end
+
+    subgraph Related["Skills Relacionados"]
+        TOBE["architecture-tobe"]
+        SCENARIOS["scenario-evaluation"]
+        COST["cost-estimation"]
+        SECURITY["security-assessment"]
+    end
+
+    CODE --> TECH
+    CONFIG --> TECH
+    HISTORY --> RISK
+    TIPO --> TECH
+    EXEC --> ASIS
+    TECH --> DEBT
+    DEBT --> RISK
+    RISK --> RECS
+    RECS --> ASIS
+    ASIS --> BRIEF
+    TECH --> C4
+    TECH --> NFR
+    ASIS -.-> TOBE
+    RISK -.-> SCENARIOS
+    DEBT -.-> COST
+    TECH -.-> SECURITY
+```
+
+## Output Templates
+
+**Formato Markdown (default):**
+
+```
+# Analisis AS-IS: {project} ({TIPO_SERVICIO})
+## S0: Executive Dashboard
+| Indicador | Valor |
+| LOC | ... |
+| Health Score | .../10 |
+## S1-S8: [Domain-Specific Sections]
+## S5: Technical Debt Inventory
+| Item | Category | Severity | Impact | Remediation | Priority Score |
+...
+## S9: Risk Register
+| Risk | Probability | Impact | Score | Mitigations | Owner |
+...
+## S10: Recommendations
+### Quick Wins (<5 eng-days)
+### Strategic Roadmap
+```
+
+**Formato HTML (bajo demanda):**
+
+```
+HTML branded con Design System MetodologIA:
+- Executive Dashboard con color-coded health indicators
+- C4 Diagrams interactivos (Mermaid rendered)
+- NFR Heatmap como quadrant chart visual
+- Collapsible sections para S1-S8
+- Risk Register con severity color coding
+- Responsive layout para presentacion en pantalla
+```
+- Filename: `03_Analisis_AS-IS_{TIPO_SERVICIO}_{project}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical page con health score dashboard, secciones S0-S10 colapsables, y risk register con color coding por severidad. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para inventario de deuda tecnica, registro de riesgos y heatmap NFR por servicio.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Activacion correcta ante keywords de AS-IS, current state, tech debt, code quality, architecture assessment, y variantes por service type. |
+| Completeness | 25% | 10 secciones completas con service-type adaptation. Cross-section traceability S10 a S0-S9 verificable. |
+| Clarity | 20% | Health score 1-10 interpretable. Debt items con severity scoring cuantitativo. NFR heatmap con evidencia. |
+| Robustness | 20% | 8 service types soportados. Edge cases (monorepo, no CI/CD, >500K LOC, multi-language, EOL frameworks) manejados. |
+| Efficiency | 10% | Variante ejecutiva reduce a S0+S5+S9+S10 (~40%). Context injection automatica detecta lenguaje y build system. |
+| Value Density | 15% | S10 produce quick wins (<5 dias) y strategic roadmap. Debt scored por impact x cost-to-fix. Risk register con velocity indicator. |
+
+**Umbral minimo: 7/10.** Debajo de este umbral, revisar evidence backing de findings y cross-section traceability.
+
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026

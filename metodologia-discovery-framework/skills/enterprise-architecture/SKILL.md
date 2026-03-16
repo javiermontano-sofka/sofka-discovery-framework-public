@@ -4,6 +4,8 @@ description: >
   Enterprise architecture alignment — capability mapping, domain decomposition, governance, technology radar, and strategic initiative roadmap.
   Use when the user asks to "map business capabilities", "build a technology radar", "define architecture governance",
   "prioritize strategic initiatives", "design team topologies", or mentions DDD domains, ARB, DORA metrics, maturity models, or target operating model.
+argument-hint: "<enterprise_or_organization_name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -248,6 +250,98 @@ How the organization is structured and operates to deliver and manage architectu
 - Does not design infrastructure topology (see **metodologia-infrastructure-architecture**)
 - Does not manage day-to-day delivery (product/engineering management)
 - Governance is advisory; enforcement requires executive sponsorship
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Legacy enterprise con deuda tecnica masiva y >50 sistemas en produccion | Capability map retroactivo desde sistemas existentes. Priorizar modernizacion por valor de negocio (Pareto: 20% de sistemas = 80% valor). Parallel running durante transicion. No big-bang. |
+| Startup en crecimiento rapido sin governance previo | Introducir governance gradualmente. Empezar con technology radar y principios arquitectonicos (3-5 maximos). ARB ligero (async reviews). Evitar burocracia prematura que frene innovacion. |
+| Fusion o adquisicion con dos stacks tecnologicos incompatibles | Capability analysis separada por empresa. Identificar sinergias (shared kernel). Roadmap de integracion phased: datos primero, plataforma despues, aplicaciones ultimo. Domain model por region si regulacion difiere. |
+| Organizacion multi-geografica con regulaciones divergentes (GDPR, CCPA, LGPD) | Arquitectura con regional customization. Domain model per region con shared kernel para capabilities comunes. Compliance controls mapeados a controles de arquitectura por jurisdiccion. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Capability map como eje organizador sobre inventario de sistemas | Inventario de aplicaciones como base de analisis | Los sistemas cambian; las capacidades del negocio persisten. Organizar por capability permite razonar sobre inversion en terminos de negocio, no de tecnologia. |
+| Technology radar advisory (Adopt/Trial/Assess/Hold) sobre mandatos tecnologicos | Lista de tecnologias aprobadas con prohibicion de alternativas | Mandatos generan shadow IT y resentimiento. Radar advisory guia decisiones respetando autonomia de equipos. Platform team facilita, no impone. |
+| Team topologies (stream-aligned, platform, enabling) sobre equipos funcionales | Organizacion por funcion (frontend, backend, QA, ops) | Conway's Law: estructura org = estructura sistema. Equipos stream-aligned reducen handoffs y aceleran delivery. Equipos funcionales crean silos y dependencias. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        EA[enterprise-architecture]
+    end
+    subgraph Inputs
+        STR[Business Strategy & Objectives] --> EA
+        CAPS[Current Capability Baseline] --> EA
+        TECH[Technology Landscape Inventory] --> EA
+    end
+    subgraph Outputs
+        EA --> CMAP[Capability Map with Maturity]
+        EA --> RADAR[Technology Radar]
+        EA --> PORT[Initiative Portfolio]
+        EA --> TOM[Target Operating Model]
+    end
+    subgraph Related Skills
+        EA -.-> SA[software-architecture]
+        EA -.-> SOL[solutions-architecture]
+        EA -.-> IA[infrastructure-architecture]
+        EA -.-> DSO[devsecops-architecture]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Enterprise Architecture: {organization_name}
+## S1: Capability Map
+  - Heat map (capability x maturity x color)
+  - Dependency matrix
+## S2: Domain Model (DDD)
+  - Bounded contexts, context mapping
+## S3: Technology Radar
+  - Adopt/Trial/Assess/Hold per dimension
+## S4-S6: [remaining sections]
+## Anexos: ARB charter, initiative scorecards, DORA metrics baseline
+```
+
+**Formato PPTX (secondary):**
+- Slide 1: Capability heat map (visual, color-coded)
+- Slide 2: Domain model con bounded contexts (Mermaid rendered)
+- Slide 3: Technology radar (circular visualization)
+- Slide 4: Initiative portfolio (risk vs value plot)
+- Slide 5: Target operating model (team topologies diagram)
+- Slide 6: Strategic roadmap (Gantt con initiatives phased)
+
+**Formato HTML (bajo demanda):**
+- Filename: `A-03_Enterprise_Architecture_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive page con capability heat map interactivo, technology radar visual, e initiative portfolio con filtros. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (bajo demanda):**
+- Filename: `A-03_Enterprise_Architecture_{cliente}_{WIP}.docx`
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por madurez (1-5) y estado de iniciativa (Adopt/Trial/Assess/Hold), auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Capability Map (maturity heatmap), Technology Radar, Initiative Portfolio Scorecard, ARB Decision Log.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de capability map, radar, governance, DDD domains, team topologies | 7/10 |
+| Completeness | 25% | Las 6 secciones cubren capabilities, domains, radar, governance, portfolio, y operating model | 7/10 |
+| Clarity | 20% | Cada capability con maturity score justificado. Radar entries con rationale. Initiative portfolio con scoring transparente. | 7/10 |
+| Robustness | 20% | Edge cases de legacy, M&A, multi-geo cubiertos. Governance proporcional al riesgo. Portfolio <20 iniciativas (focus). | 7/10 |
+| Efficiency | 10% | Output proporcional al contexto (ejecutiva vs tecnica). Sin overlap con skills de arquitectura especifica. | 7/10 |
+| Value Density | 15% | Capability gaps accionables. Radar entries con alternatives. Initiative portfolio con ROI estimado. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ---
 

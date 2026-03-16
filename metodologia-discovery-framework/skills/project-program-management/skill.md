@@ -1,6 +1,7 @@
 ---
 name: metodologia-project-program-management
 author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<project-or-program-name>"
 description: >
   PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
   dependency control, and proposal QA validation across the entire discovery pipeline. Use when
@@ -341,11 +342,98 @@ Ubicación: `plugins/metodologia-discovery-framework/skills/{skill-name}/example
 - [ ] Scope change log with impact assessments
 - [ ] Diagramas Mermaid: Gantt (programa), flowchart (recursos), sequence (datos)
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        PPM[Project & Program Management]
+    end
+
+    subgraph Inputs
+        I1[Discovery Pipeline Context] --> PPM
+        I2[Phase Deliverables] --> PPM
+        I3[Expert Committee] --> PPM
+        I4[Scope Baseline] --> PPM
+    end
+
+    subgraph Outputs
+        PPM --> O1[Program Charter]
+        PPM --> O2[Gate Evaluations]
+        PPM --> O3[Resource Tracking]
+        PPM --> O4[Dependency Matrix]
+        PPM --> O5[Proposal QA Scorecard]
+        PPM --> O6[Status Dashboard]
+        PPM --> O7[Lessons Learned]
+    end
+
+    subgraph Related Skills
+        RS1[risk-controlling-dynamics] -.-> PPM
+        RS2[pipeline-governance] -.-> PPM
+        RS3[discovery-orchestrator] -.-> PPM
+        RS4[discovery-handover] -.-> PPM
+        RS5[cost-estimation] -.-> PPM
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Program Governance: {project_name}
+## S1: Program Charter & Governance Framework
+### Scope | Decision Rights | Communication | Phase Dependencies (Gantt)
+
+## S2: Phase Gate Management
+### Gate Protocol | G1 | 3b Checkpoint | G2 | G3
+
+## S3: Resource & Capacity Orchestration
+### Allocation Table | Bottlenecks | Skill Gaps (Flowchart)
+
+## S4: Cross-Phase Dependency Control
+### I/O Matrix | Data Contracts | Scope Change Log (Sequence Diagram)
+
+## S5: Proposal QA Validation
+### Coherencia | Completitud | Viabilidad | Alineacion | Scorecard
+
+## S6: Status Reporting & Dashboard
+### RAG | Milestones | Risk Burn-Down | Decision Log
+
+## S7: Governance & Lessons Learned
+```
+
+**Formato DOCX:**
+Reporte formal de gobernanza PMO: charter con firmas, evaluaciones de gate documentadas, scorecard de propuesta con trazabilidad a fase origen, dashboard de estado con graficos de tendencia, y log de decisiones auditable.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_project_program_management_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por RAG status y veredicto de gate (PASS/CONDITIONAL/FAIL), auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Phase Gate Status, Resource Allocation, Dependency Matrix, Proposal QA Scorecard.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_project_program_management_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Program Charter, Phase Dependency Map (Gantt), Gate Evaluation Scorecards, Resource Allocation, Dependency Matrix, Proposal QA Scorecard, Status Dashboard RAG.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de PMO, governance, portfolio, gate, proposal QA; no ante PM generico de proyectos |
+| Completeness | 25% | Las 7 secciones cubren charter, gates, recursos, dependencias, QA, dashboard, y retrospectiva |
+| Clarity | 20% | Gate criteria son binarios (PASS/CONDITIONAL/FAIL); QA scorecard tiene threshold numerico claro |
+| Robustness | 20% | Edge cases (phase skip, scope change, expert unavailable, multi-dimension QA fail) tienen protocolo |
+| Efficiency | 10% | Variante ejecutiva y modos operacionales permiten activacion parcial sin perder trazabilidad |
+| Value Density | 15% | Cada gate produce veredicto accionable; QA fallas se trazan a fase origen con plan de remediacion |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Format Protocol
 
 | Format | Default | Description |
 |--------|---------|-------------|
-| `markdown` | ✅ | Rich Markdown + Mermaid diagrams. Token-efficient. |
+| `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
@@ -354,6 +442,8 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 ## Output Artifact
 
 **Primary:** `P-01_Program_Governance_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Program charter, gate evaluations, resource tracking, dependency control, proposal QA scorecard, status dashboard, lessons learned.
+
+| **HTML** | `{fase}_Program_Governance_{proyecto}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Dark-First Executive. Incluye Gantt de programa con gates como milestones, proposal QA scorecard interactivo, y dashboard RAG de fases. |
 
 **Diagramas incluidos:**
 - Gantt chart: timeline del programa con milestones de gates

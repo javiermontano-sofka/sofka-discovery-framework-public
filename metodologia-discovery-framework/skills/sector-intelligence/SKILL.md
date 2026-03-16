@@ -6,6 +6,7 @@ description: >
   regulatory context, benchmarks, and risk overlays. Replaces former dynamic-sme.
   Use when the user asks to "add industry context", "analyze sector", "give me the banking/retail/health perspective",
   or mentions "sector intelligence", "industry analysis", "industry lens", "sector analysis", "regulatory context".
+argument-hint: "[industry] [phase/task] [depth]"
 allowed-tools:
   - Read
   - Write
@@ -175,6 +176,127 @@ metodologia-multidimensional-feasibility (Think Tank validation)
 | Depth vs speed | Deep industry analysis (2-3 pages) | Quick context card (1 paragraph + 5 risks) | Use quick card for early phases; deep analysis for architecture and strategy |
 | Single lens vs composite | One industry focus | Blended multi-industry | Single lens unless client spans 2+ regulated industries |
 | Quantified vs qualitative | Benchmark numbers with ranges | Directional guidance only | Quantify when public benchmarks exist; qualify when data is proprietary |
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Industria desconocida o nicho sin benchmarks publicos | Usar lente generalista "Technology Services"; documentar limitaciones; proporcionar 3 preguntas de discovery para resolver ambiguedad |
+| Cliente multi-industria (e.g., fintech = banking + tech) | Aplicar lente compuesta; marcar donde las recomendaciones divergen entre industrias; recomendar tracks separados si la divergencia es alta |
+| Cambio de contexto de industria a mitad del engagement | Actualizar lente inmediatamente; revisar outputs anteriores por consistencia; documentar el cambio explicitamente |
+| Sub-industria nicho sin datos de la industria padre | Comenzar con lente de industria padre; superponer especificos del nicho; documentar donde los supuestos generalistas pueden no aplicar |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Aplicar test "So What?" a cada insight generado | Entregar datos de industria sin filtro de relevancia | Los datos sin contexto de negocio son ruido; el test "So What?" fuerza la conexion entre insight e impacto en el cliente |
+| Cuantificar benchmarks con rangos cuando existen datos publicos | Solo orientacion cualitativa sin numeros | Los rangos cuantificados anclan las recomendaciones en realidad; la orientacion cualitativa sola carece de fuerza persuasiva |
+| Separar modos operacionales (integral/regulatorio/benchmarks) | Un unico flujo que siempre produce los 6 entregables | No todo engagement necesita analisis regulatorio profundo; los modos permiten eficiencia sin sacrificar profundidad cuando se necesita |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Sector Intelligence Core"]
+        A[metodologia-sector-intelligence]
+        A1[Industry Context Brief]
+        A2[Risk Overlay]
+        A3[Benchmark Data]
+        A4[Regulatory Flags]
+        A5[Competitive Landscape]
+        A6[So What Summary]
+    end
+    subgraph Inputs["Inputs"]
+        I1[Industry Identification]
+        I2[Phase/Task Context]
+        I3[Depth Parameter]
+    end
+    subgraph Outputs["Outputs"]
+        O1[SME Industry Context Report]
+        O2[Regulatory Landscape Map]
+        O3[Benchmark Comparison]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-technology-vigilance]
+        R2[metodologia-technical-feasibility]
+        R3[metodologia-software-viability]
+        R4[metodologia-commercial-model]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6
+    A --> O1
+    A --> O2
+    A --> O3
+    A --> R1
+    A --- R2
+    A --- R3
+    A --- R4
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Sector Intelligence — {industria} — {proyecto}
+## Industry Context Brief
+> Factores clave de la industria que afectan esta iniciativa.
+## Risk Overlay
+| Riesgo | Severidad | Mitigacion | Evidencia |
+## Benchmark Data
+| Metrica | Benchmark Industria | Estado Actual | Gap |
+## Regulatory Flags
+| Regulacion | Requisito | Impacto en Arquitectura | Timeline |
+## Competitive Landscape
+> Como los peers resuelven desafios similares.
+## "So What?" Summary
+> Por que esto importa para el resultado de negocio del cliente.
+```
+
+**Formato HTML (para presentacion ejecutiva):**
+
+```
+Header: Logo + industria + proyecto
+Section 1: Context Brief (2 parrafos max, callout box)
+Section 2: Risk Overlay (cards con semaforo verde/amarillo/rojo)
+Section 3: Benchmarks (tabla comparativa con highlighting)
+Section 4: Regulatory Flags (timeline visual si aplica)
+Section 5: Competitive Landscape (1 parrafo + diagram)
+Section 6: So What (callout box con accion recomendada)
+Footer: Attribution MetodologIA + fecha
+```
+
+### HTML (bajo demanda)
+- Filename: `{fase}_sector_intelligence_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Risk overlay con cards de semáforo, benchmark table con highlighting de gaps, y regulatory flags en timeline visual. WCAG AA, responsive, print-ready.
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_sector_intelligence_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de risk overlay, benchmark data y regulatory flags con zebra striping. Encabezados y pies de página con branding MetodologIA.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_sector_intelligence_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Risk Overlay (riesgo, severidad, mitigación, evidencia, industria), Benchmark Data (métrica, benchmark industria, estado actual, gap, fuente), Regulatory Flags (regulación, requisito, impacto en arquitectura, timeline, prioridad), Competitive Landscape (empresa comparable, solución adoptada, resultado cuantificado, relevancia). Conditional formatting por severidad de riesgo y tamaño de gap vs benchmark. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_sector_intelligence_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Industry Context Brief, Risk Overlay (cards con semáforo), Benchmark Data (tabla comparativa), Regulatory Flags (timeline visual), Competitive Landscape, "So What?" Summary y Recomendaciones.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de analisis sectorial, industria, regulatorio, benchmarks | 7/10 |
+| Completeness | 25% | Los 6 entregables presentes; benchmarks con fuente; regulaciones con impacto en arquitectura | 7/10 |
+| Clarity | 20% | Cada insight pasa el test "So What?"; 3 opciones con trade-offs para decisiones importantes | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (industria desconocida, multi-industria, cambio de contexto); supuestos declarados | 7/10 |
+| Efficiency | 10% | Modo operacional correcto seleccionado; profundidad adaptada a la fase del engagement | 7/10 |
+| Value Density | 15% | Riesgos invisibles desde analisis tecnico puro identificados; benchmarks cuantificados con rangos | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Validation Gate
 

@@ -4,6 +4,8 @@ description: >
   Database design — schema patterns, indexing, partitioning, replication, migration, performance tuning.
   Use when the user asks to "design the database schema", "plan indexing strategy", "set up replication",
   "partition large tables", "migrate database schema", "tune query performance", or mentions normalization, sharding, B-tree indexes, zero-downtime migration, or connection pooling.
+argument-hint: "<system_or_database_name>"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -278,6 +280,95 @@ Query optimization, connection management, caching, and monitoring.
 - Cost estimates for managed database services vary by region and commitment terms — use as order-of-magnitude guidance
 - Schema recommendations assume relational as default; document or graph models require explicit justification
 - Migration complexity estimates assume clean schemas; legacy databases with undocumented triggers/procedures add 30-50% overhead
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Base de datos legacy sin documentacion (triggers ocultos, stored procedures sin versionado) | Reverse-engineer desde `information_schema` y `pg_stat_statements`. Documentar as-is antes de proponer cambios. Agregar 30-50% overhead a estimaciones de migracion. |
+| Multi-tenant con >1000 tenants y tablas >1TB | Evaluar shard-by-tenant con consistent hashing. Implementar RLS para aislamiento en shared-schema. Monitorear noisy-neighbor con metricas per-tenant. |
+| Migracion zero-downtime en tablas con >100M filas | Usar expand-contract con backfill en batches de 5K-10K filas. Shadow columns con triggers de sync. Validar checksums antes de cutover. Definir ventana de rollback de 48h. |
+| Requisitos regulatorios cruzados (GDPR + HIPAA + data residency) | Replicacion restringida por geografia. Soft-delete con audit trail para right-to-erasure. TDE + TLS obligatorio. Separar PII en esquemas dedicados con acceso auditado. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Backward-compatible migrations con expand-contract | ALTER directo en tabla activa | ALTER bloquea lecturas/escrituras en tablas grandes. Expand-contract permite zero-downtime con rollback seguro. |
+| BRIN indexes para tablas time-series en vez de B-tree | B-tree convencional | BRIN ocupa 1000x menos espacio para datos naturalmente ordenados. B-tree innecesario cuando las queries siempre filtran por rango temporal. |
+| PgBouncer transaction-mode en vez de session-mode | Session pooling | Transaction-mode permite reutilizar conexiones entre requests, soportando mas usuarios concurrentes con menos conexiones al backend. Session-mode desperdicia conexiones en idle. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        DB[database-architecture]
+    end
+    subgraph Inputs
+        REQ[Access Patterns & Query Workloads] --> DB
+        VOL[Data Volume & Growth Projections] --> DB
+        SLA[RPO/RTO Requirements] --> DB
+    end
+    subgraph Outputs
+        DB --> SCH[Schema Design & ER Model]
+        DB --> IDX[Indexing Strategy Report]
+        DB --> MIG[Migration Plan & Scripts]
+        DB --> REP[Replication Topology]
+    end
+    subgraph Related Skills
+        DB -.-> DE[data-engineering]
+        DB -.-> DG[data-governance]
+        DB -.-> SA[software-architecture]
+        DB -.-> IA[infrastructure-architecture]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Database Architecture: {system_name}
+## S1: Schema Design & Modeling
+  - ER diagram (Mermaid)
+  - Normalization analysis
+  - Constraint catalog
+## S2: Indexing Strategy
+  - Index recommendations table
+  - EXPLAIN ANALYZE evidence
+## S3-S6: [remaining sections]
+## Anexos: DDL scripts, migration files
+```
+
+**Formato XLSX (secondary):**
+- Hoja 1: Catalogo de tablas (nombre, columnas, constraints, owner)
+- Hoja 2: Index inventory (tabla, columnas, tipo, justificacion, tamano estimado)
+- Hoja 3: Migration tracker (version, descripcion, status, rollback window)
+
+**Formato HTML (bajo demanda):**
+- Filename: `A-01_Database_Architecture_{system}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye diagrama ER interactivo (Mermaid CDN), tabla de índices colapsable y checklist de validación. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (circulación formal):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de schema, indexing, partitioning, replication, migration, tuning | 7/10 |
+| Completeness | 25% | Las 6 secciones cubren el dominio completo con profundidad proporcional al contexto | 7/10 |
+| Clarity | 20% | Decisiones documentadas con justificacion cuantitativa, sin ambiguedad en recommendations | 7/10 |
+| Robustness | 20% | Edge cases cubiertos, rollback strategy para cada migracion, monitoring thresholds definidos | 7/10 |
+| Efficiency | 10% | Output generado sin redundancia, reutiliza context del codebase detectado | 7/10 |
+| Value Density | 15% | Cada seccion entrega insights accionables (scripts, configs, thresholds), no solo teoria | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ## Edge Cases
 

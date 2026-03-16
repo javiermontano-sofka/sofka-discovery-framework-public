@@ -1,5 +1,7 @@
 ---
 name: metodologia-flow-mapping
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<codebase-path> [flow-count:4-12] [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--tipo-servicio SDA|QA|Management|RPA|Data-AI|Cloud]"
 description: >
   DDD domain taxonomy + 8-12 end-to-end business flows with trama specifications,
   process mapping, service flow documentation, and operational flow tracing.
@@ -233,6 +235,98 @@ IF single system handles multiple bounded contexts:
 - **No clear entry points:** Identify trigger sources (queues, cron, webhooks). Trace from trigger to completion.
 - **CQRS/Event Sourcing:** Separate command flows from query flows. Document event store projection patterns.
 - **Legacy COBOL/mainframe:** Map at job/program level. Document JCL/batch sequences as flows.
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Sistema event-driven sin entry points claros | Identificar trigger sources (queues, cron, webhooks); trazar desde trigger hasta completion; documentar event contracts, timing y ordering guarantees |
+| Procesamiento batch sin flujos interactivos | Documentar como scheduled triggers + transformation pipeline; incluir batch SLA y recovery ante fallo; mapear dependencias entre jobs |
+| CQRS/Event Sourcing | Separar command flows de query flows; documentar event store projection patterns; trazar eventual consistency boundaries |
+| Legacy COBOL/mainframe sin API specs | Mapear a nivel job/programa; documentar secuencias JCL/batch como flujos; reverse-engineer desde DB triggers, stored procedures y scheduled jobs; flag confianza reducida |
+| >20 puntos de integracion | Agrupar por dominio (Finance, Customer, Risk); detallar top 12 flujos por criticidad; resumir el resto solo en integration matrix |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Dominios DDD antes que flujos | Mapear flujos sin taxonomia previa | Sin taxonomia DDD, los flujos son secuencias sin contexto; los bounded contexts dan el marco semantico para interpretar las interacciones |
+| Cada flecha de integracion es un contrato documentado | Flechas sin etiqueta entre sistemas | Una flecha sin protocolo, payload, SLA y comportamiento ante fallo es deuda de documentacion que se convierte en riesgo operativo |
+| Fuente de verdad adaptada al tipo de servicio | Usar codigo como unica fuente de verdad siempre | Para SDA el codigo es verdad, pero para RPA los BPMN son la verdad, para Management los ceremonies, y para Data-AI los pipelines; la fuente se adapta al contexto |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Flow Mapping"]
+        DDD[Domain Taxonomy - DDD]
+        E2E[E2E Business Flows]
+        TRAMA[Trama Specifications]
+        INTM[Integration Matrix]
+        FP[Critical Failure Points]
+        DEP[System Dependency Graph]
+    end
+
+    subgraph Inputs["Inputs"]
+        ASIS[AS-IS Analysis Output]
+        CODE[Source Code & APIs]
+        DB[Database Schema]
+        CONFIG[Integration Config]
+    end
+
+    subgraph Outputs["Outputs"]
+        FLOWS[Flow Documentation]
+        SEQ[Sequence Diagrams]
+        MATRIX[Integration Matrix]
+        RISK[Failure Point Analysis]
+    end
+
+    subgraph Related["Related Skills"]
+        ASIS_SK[asis-analysis]
+        SOL[solutions-architecture]
+        SWA[software-architecture]
+        QUAL[quality-engineering]
+    end
+
+    ASIS --> DDD
+    CODE --> E2E
+    DB --> TRAMA
+    CONFIG --> INTM
+    DDD --> E2E --> TRAMA --> INTM --> FP --> DEP
+    DEP --> FLOWS
+    DEP --> SEQ
+    DEP --> MATRIX
+    DEP --> RISK
+    ASIS_SK --> DDD
+    FLOWS --> SOL
+    FLOWS --> SWA
+    RISK --> QUAL
+```
+
+## Output Templates
+
+| Formato | Nombre | Contenido |
+|---|---|---|
+| **Markdown** | `04_Mapeo_Flujos_{TIPO_SERVICIO}_{project}.md` | Documento completo con taxonomia DDD, 8-12 flujos E2E con sequence diagrams y trama specs, integration matrix, failure points, dependency graph. Diagramas Mermaid embebidos. |
+| **DOCX** | `04_Mapeo_Flujos_{TIPO_SERVICIO}_{project}.docx` | Documento ejecutivo con diagramas exportados como imagenes, tablas de trama formateadas, y analisis de failure points para revision con stakeholders no tecnicos. |
+| **HTML** | `04_Mapeo_Flujos_{TIPO_SERVICIO}_{project}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Light-First Technical page con sequence diagrams navegables, integration matrix con filtros, y failure points con severity semáforo. WCAG AA, responsive, print-ready. |
+| **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por tipo de dominio (Core/Supporting/Generic) y severidad de fallo, auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Domain Taxonomy, Integration Matrix, Critical Failure Points (Top-10), System Dependency Register. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Domain Taxonomy (DDD), E2E Business Flows Overview, Integration Matrix, Critical Failure Points (Top-10), System Dependency Graph, Recomendaciones. |
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Descripcion activa triggers correctos (map flows, DDD, integration matrix, business process) sin falsos positivos con asis-analysis o solutions-architecture |
+| Completeness | 25% | Las 9 secciones cubren taxonomia DDD, 8+ flujos E2E, trama specs, integration matrix, failure points y dependency graph; todos los Core domains cubiertos |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; cada flujo tiene sequence diagram, trama table, narrative y error handling; SLAs explicitos |
+| Robustness | 20% | Maneja event-driven, batch, CQRS, legacy COBOL, y sistemas con >20 integraciones con estrategias diferenciadas por tipo de servicio |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; variante ejecutiva reduce a S1+S7+S8 sin perder vision de integraciones criticas |
+| Value Density | 15% | Cada seccion aporta valor practico directo; integration matrix y failure points son herramientas de decision inmediata para mitigacion de riesgos |
+
+**Umbral minimo: 7/10.**
+
+---
 
 ## Escalation to Human Architect
 

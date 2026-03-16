@@ -1,5 +1,7 @@
 ---
 name: metodologia-roadmap-poc
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[scope] [duration] [team-model]"
 description: >
   Execution roadmap generator with sprint breakdown, prerequisites, gates, team/budget, and risk register.
   Use when the user asks to "create a roadmap", "plan a PoC", "build sprint plan", "execution timeline",
@@ -231,6 +233,138 @@ Before delivering roadmap:
 - [ ] Budget range is plus/minus 20% with breakdown and burn rate
 - [ ] Risk register has 5-6 risks with delay/cost estimates
 - [ ] Roadmap is immediately actionable — team can execute Day 1 without rework
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|------|---------------------|
+| Prerequisito critico bloqueado en Week 0 sin resolucion a la vista | Escalar con costo cuantificado ("Equipo esperando cuesta $X/dia"); no iniciar Sprint 1 hasta resolucion; documentar impacto en timeline |
+| Equipo menor a 4 ingenieros | Extender sprints a 3 semanas para reducir ratio ceremonies/coding; ajustar expectativas de velocidad; reducir scope por sprint |
+| Gate de Sprint 1 falla (entregables no cumplen criterios) | Ejecutar sprint de remediacion antes de Sprint 2; no saltar adelante porque los defectos se acumulan; re-evaluar scope si persiste |
+| Budget aprobado pero equipo no contratado aun | Insertar fase de reclutamiento de 2-4 semanas antes de Week 0; ajustar timeline total; documentar riesgo de hiring delays |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|----------|----------------------|---------------|
+| Sprints de 2 semanas como default | Sprints de 3 semanas o 1 semana | 2 semanas balancea feedback rapido con overhead de ceremonies; 1 semana es demasiado overhead; 3 semanas retrasa deteccion de problemas |
+| Prerequisites validados en Week 0 antes de Sprint 1 | Descubrir prerequisites durante ejecucion | El equipo mas talentoso no compensa un prerequisito bloqueado; descubrirlos en Sprint 2 es desperdicio puro |
+| Budget ranges con +/-20% y burn rate mensual | Estimaciones puntuales sin rango | Las estimaciones puntuales crean expectativas falsas de precision; los rangos comunican incertidumbre honestamente |
+| Risk register con delay estimado en dias y cost impact | Lista de riesgos sin cuantificar | Sin cuantificacion, los riesgos no generan decisiones de mitigacion; con costo, el trade-off inversion-mitigacion vs costo-del-riesgo es explicito |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Roadmap & PoC Core"]
+        A[metodologia-roadmap-poc]
+        A1[S1: Pre-Service Kickoff]
+        A2[S2: Prerequisites Validation]
+        A3[S3: Sprint Breakdown]
+        A4[S4: Team & Budget]
+        A5[S5: Timeline Visualization]
+        A6[S6: Gate Criteria]
+        A7[S7: Risk Register]
+    end
+    subgraph Inputs["Inputs"]
+        I1[PoC/MVP Scope]
+        I2[Duration Constraint]
+        I3[Team Model]
+        I4[Architecture/Design Phase Output]
+    end
+    subgraph Outputs["Outputs"]
+        O1[Roadmap Document]
+        O2[Gantt Chart]
+        O3[Prerequisites Tracker]
+        O4[Risk Register]
+    end
+    subgraph Related["Related Skills"]
+        R1[metodologia-cost-estimation]
+        R2[metodologia-commercial-model]
+        R3[metodologia-solution-roadmap]
+        R4[metodologia-discovery-handover]
+    end
+    I1 --> A
+    I2 --> A
+    I3 --> A
+    I4 --> A
+    A --> A1 --> A2 --> A3 --> A4 --> A5 --> A6 --> A7
+    A --> O1
+    A --> O2
+    A --> O3
+    A --> O4
+    R1 --> A
+    A --> R2
+    R3 --- A
+    A --> R4
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Roadmap & PoC — {proyecto}
+## Resumen Ejecutivo
+> Duracion: N semanas. Sprints: M. Team: X FTEs. Budget range: $Y +/-20%.
+## S1: Pre-Service Kickoff (Week 0)
+| Actividad | Owner | Duracion | Outcomes |
+## S2: Prerequisites
+| ID | Prerequisite | Status | Owner | Deadline | Blocker |
+## S3: Sprint Breakdown
+### Sprint 1 — [Target]
+[Day-by-day plan with owners and deliverables]
+## S4-S7: [secciones completas]
+## Timeline
+```mermaid
+gantt
+    title PoC Roadmap
+    ...
+```
+```
+
+**Formato HTML (para kickoff con cliente):**
+
+```
+Header: Logo + proyecto + timeline visual
+Section 1: Timeline Overview (Gantt visual con milestones)
+Section 2: Prerequisites Status Board (cards con semaforo)
+Section 3: Sprint Plans (accordion expandible por sprint)
+Section 4: Team Composition (org chart visual)
+Section 5: Gate Criteria (checklist interactivo)
+Section 6: Risk Register (tabla con highlighting por severidad)
+Section 7: Budget Summary (breakdown visual)
+Footer: Attribution MetodologIA + proximos pasos
+```
+
+### HTML (bajo demanda)
+- Filename: `{fase}_roadmap_poc_{cliente}_{WIP}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Timeline visual tipo Timeline con Gantt interactivo, prerequisites status board con semáforo, sprint accordion expandible y gate criteria checklist. WCAG AA, responsive, print-ready.
+
+### DOCX (bajo demanda)
+- Filename: `{fase}_roadmap_poc_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de prerequisites, sprint breakdown y risk register con zebra striping. Encabezados y pies de página con branding MetodologIA.
+
+### XLSX (bajo demanda)
+- Filename: `{fase}_roadmap_poc_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Prerequisites Tracker (ID, prerequisito, status, owner, deadline, blocker flag), Sprint Breakdown (sprint, día, tarea, owner, entregable, acceptance criteria), Risk Register (ID, descripción, probabilidad, impacto, delay días, cost impact, mitigación, owner), Team & Budget (rol, tipo, FTE, fase). Conditional formatting por status de prerequisitos y severidad de riesgos. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+
+### PPTX (bajo demanda)
+- Filename: `{fase}_roadmap_poc_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Pre-Service Kickoff Agenda, Prerequisites Status Board, Timeline Visualization (Gantt), Sprint Breakdown, Team Composition, Gate Criteria, Risk Register, Budget Summary.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|-----------|------|----------|---------------|
+| Trigger Accuracy | 10% | El skill se activa ante prompts de roadmap, PoC, sprint plan, execution timeline, milestones | 7/10 |
+| Completeness | 25% | 9+ prerequisites con status y blocker flag; sprints con task allocation diaria; gates con criterios medibles; budget con breakdown y burn rate | 7/10 |
+| Clarity | 20% | Timeline muestra 4+ milestones con critical path; el equipo puede ejecutar Day 1 sin retrabajo; gates son binarios | 7/10 |
+| Robustness | 20% | Edge cases cubiertos (prerequisito bloqueado, equipo chico, gate fails, budget sin equipo); conditional logic documentada | 7/10 |
+| Efficiency | 10% | Variante ejecutiva vs tecnica correctamente aplicada; duracion de kickoff adaptada al contexto (full vs lightweight) | 7/10 |
+| Value Density | 15% | Risk register con 5-6 riesgos cuantificados (delay days + cost impact); cada entregable tiene acceptance criteria testeable | 7/10 |
+
+**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
 
 ## Cross-References
 

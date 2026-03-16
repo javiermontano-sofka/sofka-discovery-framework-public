@@ -172,7 +172,7 @@ At every cross-workstream boundary:
 - Map capabilities to the full service portfolio, highlighting cross-service synergies
 
 ---
-**Comunidad MetodologIA** | **Licencia:** GPL-3.0 | **Ultima actualizacion:** 14 de marzo de 2026
+**Comunidad MetodologIA** | **Licencia:** MIT | **Ultima actualizacion:** 14 de marzo de 2026
 
 ## Assigned Skills
 

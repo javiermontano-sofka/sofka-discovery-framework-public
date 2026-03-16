@@ -6,6 +6,8 @@ description: >
   "manage discovery inputs", or mentions discovery orchestration, phase sequencing, quality gates,
   data contracts, expert committee, dream team, or consulting pipeline. Always use this skill
   as the entry point for any discovery engagement — it coordinates all other skills.
+argument-hint: "<project_name> [full-pipeline|minimal|quick-reference] [codebase_path]"
+author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -215,6 +217,96 @@ Every deliverable supports two output formats controlled by `{FORMATO}`:
 - Each phase skill owns its own quality; the orchestrator validates against acceptance criteria
 - Full pipeline: 18-25 working days + 9-15 calendar days for gates
 - Phase 5a/5b can run in parallel after Gate 2; all other phases are sequential
+
+## Casos Borde
+
+| Caso | Estrategia de Manejo |
+|---|---|
+| Sistema >500K LOC con >15 integraciones | Descomponer en subsistemas antes de Phase 2. Ejecutar un pipeline por subsistema. Consolidar en Phase 4 con roadmap unificado. Escalar timeline +50%. |
+| Gate falla repetidamente (2+ veces) sin progreso | Recomendar reduccion de scope o pivot de engagement. Escalar a executive sponsor. Documentar opciones: (a) scope reduction, (b) additional discovery time, (c) engagement pause. |
+| Stakeholders no disponibles durante discovery | Documentar todas las decisiones como supuestos con tag [SUPUESTO]. Programar sesion de validacion when available. Flag impacto en downstream phases. Nunca proceder sin documentar. |
+| Cambio de industria o contexto mid-engagement | Reactivar SME con nuevo lens. Re-evaluar deliverables previos para consistencia. Recalcular timeline. Confirmar con usuario antes de continuar. Documentar pivot en discovery plan. |
+
+## Decisiones y Trade-offs
+
+| Decision | Alternativa Descartada | Justificacion |
+|---|---|---|
+| Comite de 7 expertos (numero impar) sobre panel de 5 o 9 | Panel de 5 (menos cobertura) o 9 (overhead de coordinacion) | 7 cubre los dominios criticos (architecture, domain, implementation, delivery, quality, data, change) con numero impar para consensus. 5 sacrifica data o change; 9 agrega ruido. |
+| Gates con hard-stop obligatorio sobre gates advisory | Gates que solo generan warnings sin bloquear | Hard-stop previene que deliverables de baja calidad contaminen fases downstream. Advisory gates generan deuda tecnica acumulada que se descubre en Gate 3 cuando el costo de fix es maximo. |
+| Data contracts explicitos entre fases sobre paso implicito de informacion | Cada fase lee lo que necesita sin contrato formal | Contratos explicitos aseguran que cada transicion tiene datos verificables. Sin contratos, fases downstream reciben datos incompletos y generan supuestos no documentados. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        DO[discovery-orchestrator]
+    end
+    subgraph Inputs
+        PRJ[Project Name & Context] --> DO
+        SRC[Source Code / Artifacts] --> DO
+        STK[Stakeholder Access] --> DO
+    end
+    subgraph Outputs
+        DO --> PLAN[Discovery Plan 00]
+        DO --> DEL[10 Deliverables 01-09 + P-01 + P-02]
+        DO --> STATUS[Pipeline Status Reports]
+    end
+    subgraph Related Skills
+        DO -.-> ASIS[asis-analysis]
+        DO -.-> SCEN[scenario-analysis]
+        DO -.-> ROAD[solution-roadmap]
+        DO -.-> HAND[discovery-handover]
+        DO -.-> PPM[project-program-management]
+        DO -.-> RCD[risk-controlling-dynamics]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Discovery Pipeline: {project_name}
+## Discovery Plan
+  - Engagement context, phase schedule, input registry
+## Expert Committee Declaration
+  - 7 experts + conductor + governance roles
+## Phase Status Reports
+  - Per-phase: acceptance criteria, assumptions, risks
+## Gate Evaluations
+  - G1, G2, G3 criteria with pass/fail evidence
+## Deliverable Manifest
+  - 10+ files with status and cross-references
+```
+
+**Formato HTML (secondary):**
+- Filename: `00_Discovery_Pipeline_{project}_{WIP}.html`
+- Dashboard HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye phase cards con progress indicators, gate scorecards con pass/fail visual y expert allocation matrix interactiva. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (circulación formal):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+
+**Formato XLSX (tracking y control):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por estado de fase/gate (Pass/Fail/Pending), auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Discovery Plan & Phase Schedule, Input Registry, Expert Committee Allocation, Gate Evaluation Scorecards, Deliverable Manifest.
+
+**Formato PPTX (presentación ejecutiva):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Discovery Overview, Expert Committee, Phase Progress & Gate Status, Deliverable Manifest, Next Steps.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa como entry point para cualquier discovery engagement, detecta servicio tipo correctamente | 7/10 |
+| Completeness | 25% | Pipeline completo ejecutado segun variante. Todas las fases con deliverables. Gates evaluados. Contracts verificados. | 7/10 |
+| Clarity | 20% | Discovery plan claro con schedule, inputs, assumptions. Status reports sin ambiguedad. Expert roles definidos. | 7/10 |
+| Robustness | 20% | Error recovery funcional. Gate rejections con opciones. Input missing con workarounds documentados. | 7/10 |
+| Efficiency | 10% | Variante correcta seleccionada. Sin fases redundantes. Parallel execution donde posible (5a+5b). | 7/10 |
+| Value Density | 15% | Cada status report entrega insights accionables. Deliverable manifest completo. Cross-references consistentes. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ## Usage
 

@@ -4,6 +4,8 @@ description: >
   Product roadmap prioritization, backlog strategy, value stream mapping, product-market fit validation.
   Use when the user asks to "define product roadmap", "prioritize backlog", "map value streams",
   "validate product-market fit", or mentions product vision, RICE scoring, opportunity trees, dual-track agile.
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<product-or-initiative-name> [etapa: inception|growth|maturity]"
 model: opus
 context: fork
 allowed-tools:
@@ -74,6 +76,87 @@ The user provides a product or initiative name as `$ARGUMENTS`. Parse `$1` as th
 - Does not replace user research — flags where primary research is needed
 - Financial projections are directional estimates, not forecasts
 - Market analysis relies on available data and documented assumptions
+
+## Casos Borde
+
+| Escenario | Estrategia de Manejo |
+|---|---|
+| Producto sin usuarios actuales (greenfield) | Usar Lean Canvas en lugar de data historica; todas las hipotesis marcadas [SUPUESTO]; enfasis en experimentos de validacion rapida |
+| Multiples stakeholders con visiones conflictivas | Ejecutar ejercicio de alignment (vision statement vote) antes de priorizar; documentar desacuerdos como riesgos |
+| Producto legacy con backlog heredado de +500 items | Aplicar triage agresivo: archivar items >12 meses sin actividad, re-score solo los top 50 por volumen de solicitud |
+| Pivot en curso — cambio de mercado objetivo | Generar two-track roadmap (current + pivot), con decision gate y criterios explicitos de go/no-go |
+
+## Decisiones y Trade-offs
+
+| Decision | Habilita | Restringe | Justificacion |
+|---|---|---|---|
+| RICE como framework default | Comparabilidad cuantitativa entre iniciativas | Requiere estimaciones de Reach y Confidence que pueden ser imprecisas | RICE es el mas adoptado y entendido; se complementa con WSJF para contextos SAFe |
+| Roadmap Now/Next/Later en lugar de Gantt | Flexibilidad ante cambios, enfoque en outcomes | Menor precision temporal para stakeholders que piden fechas | Evita compromisos de fecha prematuros; se acompana de milestones medibles |
+| Dual-track agile como default | Discovery continuo alimenta delivery | Requiere capacidad dedicada a discovery (minimo 20% del equipo) | Reduce riesgo de construir features sin validar; escalable con equipo pequeno |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Product Strategy"]
+        A[Vision de Producto] --> B[Opportunity Tree]
+        A --> C[Priorizacion RICE/WSJF]
+        B --> D[Value Hypothesis Canvas]
+        C --> E[Roadmap Now/Next/Later]
+    end
+    subgraph Inputs["Inputs"]
+        F[Objetivos de Negocio] --> A
+        G[User Research / Personas] --> B
+        H[Backlog Existente] --> C
+    end
+    subgraph Outputs["Outputs"]
+        E --> I[Roadmap Estrategico]
+        D --> J[Experimentos de Validacion]
+        C --> K[Matriz de Priorizacion]
+    end
+    subgraph Related["Related Skills"]
+        L[business-analysis] -.-> A
+        M[software-architecture] -.-> C
+        N[change-management] -.-> E
+    end
+```
+
+## Output Templates
+
+**Formato 1 — Markdown (default)**
+- Filename: `Product_Strategy_{producto}_{WIP|Aprobado}.md`
+- Estructura: Vision > Personas > Opportunity Tree > Priorizacion > Value Hypotheses > Roadmap > Metricas
+- Incluye tablas de scoring y diagramas Mermaid inline
+
+**Formato 2 — HTML (presentacion ejecutiva)**
+- Filename: `Product_Strategy_{producto}_{WIP|Aprobado}.html`
+- Estructura: Executive summary (1 pagina) > Roadmap visual > Priorizacion highlights > Appendix con datos completos
+- Optimizado para compartir con stakeholders no tecnicos
+
+**Formato 3 — DOCX (bajo demanda)**
+- Filename: `{fase}_product_strategy_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de scoring RICE/WSJF y value hypotheses con zebra striping. Encabezados y pies de página con branding MetodologIA.
+
+**Formato 4 — XLSX (bajo demanda)**
+- Filename: `{fase}_product_strategy_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por score RICE/WSJF y horizonte de roadmap (Now/Next/Later), auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Prioritization Matrix, Value Hypotheses, Value Stream Map, Roadmap.
+
+**Formato 5 — PPTX (bajo demanda)**
+- Filename: `{fase}_product_strategy_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Vision y North Star, Personas y JTBD, Opportunity Tree, Prioritization Matrix RICE/WSJF, Value Hypotheses, Roadmap Now/Next/Later, Métricas de tracción.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|-----------|------|----------|
+| Trigger Accuracy | 10% | Activa triggers correctos sin falsos positivos ante keywords de producto y estrategia |
+| Completeness | 25% | Todos los entregables cubren vision, priorizacion, value stream, roadmap y metricas |
+| Clarity | 20% | Instrucciones ejecutables sin ambiguedad; vision statement es especifica y medible |
+| Robustness | 20% | Maneja edge cases (greenfield, pivot, backlog masivo) con estrategias documentadas |
+| Efficiency | 10% | Proceso no tiene pasos redundantes; escala con variante ejecutiva al 40% |
+| Value Density | 15% | Cada seccion aporta valor practico directo; metricas son actionable |
+
+**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
 
 ## Cross-References
 
