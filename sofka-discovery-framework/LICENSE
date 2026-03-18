@@ -1,24 +1,39 @@
 Copyright (c) 2026 Sofka Technologies — Javier Montaño
 All Rights Reserved.
 
-This software and associated documentation files (the "Software") are the
-exclusive property of Sofka Technologies. No part of this Software may be
-reproduced, distributed, transmitted, displayed, published, or broadcast
-in any form or by any means, including photocopying, recording, or other
-electronic or mechanical methods, without the prior written permission of
-Sofka Technologies.
+USO EXCLUSIVO PARA COLABORADORES DE SOFKA TECHNOLOGIES ("SOFKIANOS")
 
-The Software is provided for use exclusively under license from Sofka
-Technologies. Unauthorized copying, modification, distribution, or use of
-this Software, in whole or in part, is strictly prohibited and may result
-in civil and criminal penalties.
+Este software y los archivos de documentación asociados (el "Software") son
+propiedad exclusiva de Sofka Technologies. El Software fue desarrollado en
+el marco del proyecto Heka, con el sponsorship ejecutivo de Luis Felipe Reyes
+(CFO) y la colaboración del equipo de PreSales de Sofka Technologies.
 
-For licensing inquiries, contact: info@sofka.com.co
+TÉRMINOS DE USO:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-SOFKA TECHNOLOGIES OR ITS CONTRIBUTORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-DEALINGS IN THE SOFTWARE.
+1. ACCESO RESTRINGIDO — El Software está destinado exclusivamente para uso
+   interno de colaboradores activos de Sofka Technologies ("Sofkianos").
+   Ninguna persona o entidad externa a Sofka Technologies está autorizada
+   para utilizar, copiar o distribuir este Software.
+
+2. PROHIBICIÓN DE REDISTRIBUCIÓN — Queda estrictamente prohibido reproducir,
+   distribuir, transmitir, publicar o difundir este Software, en todo o en
+   parte, por cualquier medio, incluyendo fotocopiado, grabación u otros
+   métodos electrónicos o mecánicos, sin la autorización previa y por
+   escrito de Sofka Technologies.
+
+3. MODIFICACIONES — Cualquier modificación, derivación o extensión del
+   Software requiere autorización del autor y debe permanecer dentro del
+   ámbito de uso de Sofka Technologies.
+
+4. PROPIEDAD INTELECTUAL — Todos los derechos de propiedad intelectual
+   sobre el Software, incluyendo pero no limitado a algoritmos, prompts,
+   skills, agentes y metodologías, pertenecen a Sofka Technologies.
+
+Para consultas sobre licenciamiento: info@sofka.com.co
+
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA
+O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD,
+IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO SOFKA
+TECHNOLOGIES O SUS COLABORADORES SERÁN RESPONSABLES POR CUALQUIER RECLAMACIÓN,
+DAÑOS U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCIÓN CONTRACTUAL, AGRAVIO O DE
+OTRO TIPO, QUE SURJA DE O EN CONEXIÓN CON EL SOFTWARE O SU USO.
