@@ -21,7 +21,7 @@ user-invocable: true
 2. **Reportar** — Presentar tabla de hallazgos con tipo, archivo, línea y severidad
 3. **Clasificar** — Agrupar por severidad: CRÍTICO (private keys, prod passwords), ALTO (API keys, tokens), MEDIO (connection strings genéricos)
 4. **Recomendar** — Si hay hallazgos, sugerir ejecutar `/sdf:mask-secrets` para enmascarar
-5. **Auditar** — Confirmar que `.discovery/.sage-secrets-audit.log` fue generado y está gitignored
+5. **Auditar** — Confirmar que `discovery/sage-secrets-audit.log` fue generado y está gitignored
 
 ## Output
 
@@ -37,4 +37,4 @@ Si se ejecuta como parte de `/sdf:run-auto` o `/sdf:run-deep` y hay hallazgos:
 
 - NUNCA incluir valores de secretos en el output — solo tipo + ubicación
 - Auditoría local únicamente — no enviar hallazgos a servicios externos
-- `.sage-secrets-audit.log` siempre gitignored
+- `sage-secrets-audit.log` siempre gitignored

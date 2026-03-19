@@ -20,7 +20,7 @@ Al inicio de sesión, **antes** de cualquier otro gate. Se ejecuta automáticame
 
 - [ ] Escaneo de secretos completado (`secrets-scan.sh` exit 0)
 - [ ] Cero hallazgos de credenciales, tokens, o llaves privadas en archivos del repo
-- [ ] `.discovery/.sage-secrets-audit.log` generado con status CLEAN
+- [ ] `discovery/sage-secrets-audit.log` generado con status CLEAN
 - [ ] Archivos `.env`, `credentials.*`, `*.pem` revisados o enmascarados
 
 ### Quién aprueba
@@ -41,8 +41,8 @@ Al inicio de sesión, **antes** de cualquier otro gate. Se ejecuta automáticame
 ### Archivos relacionados
 - `scripts/secrets-scan.sh` — Motor de detección
 - `scripts/secrets-mask.sh` — Enmascaramiento reversible
-- `.discovery/.sage-secrets-audit.log` — Registro de auditoría (gitignored)
-- `.discovery/.sage-secrets-map.json` — Mapa de placeholders (gitignored, NUNCA commitear)
+- `discovery/sage-secrets-audit.log` — Registro de auditoría (gitignored)
+- `discovery/sage-secrets-map.json` — Mapa de placeholders (gitignored, NUNCA commitear)
 
 ---
 

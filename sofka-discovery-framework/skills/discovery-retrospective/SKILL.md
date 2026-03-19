@@ -27,7 +27,7 @@ Generates a data-driven retrospective report with JSON snapshots for longitudina
 2. **Analyze Evidence Quality** — Compute hard evidence ratio ([CÓDIGO]+[CONFIG]+[DOC]+[STAKEHOLDER] / total tags). Target: >70%
 3. **Assess Phase Velocity** — Compare changelog entries per phase. Identify bottlenecks
 4. **Deliverable Health** — Ratio of WIP to Approved. High WIP count = delivery risk
-5. **Longitudinal Comparison** — If previous retro JSON exists in `.discovery/retro/`, compare trends
+5. **Longitudinal Comparison** — If previous retro JSON exists in `discovery/retro/`, compare trends
 6. **Recommendations** — Generate 3-5 actionable improvement suggestions
 
 ---
@@ -36,12 +36,12 @@ Generates a data-driven retrospective report with JSON snapshots for longitudina
 
 | Metric | Source | Target |
 |--------|--------|--------|
-| Evidence density (tags/deliverable) | Grep [TAG] in .discovery/*.md | >5 tags per deliverable |
+| Evidence density (tags/deliverable) | Grep [TAG] in discovery/*.md | >5 tags per deliverable |
 | Hard evidence ratio | (CÓDIGO+CONFIG+DOC+STAKEHOLDER) / total | >70% |
 | Deliverable completion | WIP vs Aprobado count | >60% approved by Phase 4 |
 | Phase distribution | Changelog entries per phase | Balanced, no empty phases |
 | Diagram density | Mermaid blocks per deliverable | >1 diagram per deliverable |
-| G0 security posture | .sage-secrets-audit.log status | Clean |
+| G0 security posture | sage-secrets-audit.log status | Clean |
 | Session activity | Changelog entries, git commits | Monotonically increasing |
 
 ---
@@ -49,10 +49,10 @@ Generates a data-driven retrospective report with JSON snapshots for longitudina
 ## Output
 
 ### JSON Snapshot
-`.discovery/retro/retro-YYYYMMDD-HHMM.json` — Machine-readable metrics for trend analysis.
+`discovery/retro/retro-YYYYMMDD-HHMM.json` — Machine-readable metrics for trend analysis.
 
 ### Markdown Report
-`.discovery/retro/retro-YYYYMMDD-HHMM.md` — Human-readable report with tables and recommendations.
+`discovery/retro/retro-YYYYMMDD-HHMM.md` — Human-readable report with tables and recommendations.
 
 ---
 

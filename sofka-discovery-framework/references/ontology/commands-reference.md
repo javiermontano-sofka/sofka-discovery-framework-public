@@ -1,7 +1,7 @@
 # Referencia de Comandos
 
-> Sofka SAGE — Ontología viva
-> Referencia canónica de los 96 comandos organizados por categoría funcional.
+> Sofka SAGE v12.2 — Ontología viva
+> Referencia canónica de los 104 comandos organizados por categoría funcional.
 
 ---
 
@@ -14,11 +14,11 @@
 | REPORT | 5 | Reportes especializados (10-14) |
 | ASSESS | 7 | Evaluaciones dimensionales |
 | SERVICE DISCOVERY | 9 | Discovery por línea de servicio |
-| SECURITY & DX | 5 | Seguridad, rendering, context, inicialización |
+| SECURITY & DX | 8 | Seguridad, rendering, context, inicialización, retro, browser, conversion |
 | OPS | 6 | Operaciones sobre el discovery |
 | UX | 3 | Navegación y experiencia del usuario |
 | **Aliases** | **~51** | Atajos para comandos primarios |
-| **Total** | **101** | |
+| **Total** | **104** | |
 
 ---
 

@@ -75,7 +75,7 @@ When the user provides URLs or requests investigation:
 
 ## OUTPUT
 
-Files saved to `references/` (if inside SDF plugin) or `.discovery/` (if in a client repo):
+Files saved to `references/` (if inside SDF plugin) or `discovery/` (if in a client repo):
 
 | File pattern | Content |
 |-------------|---------|

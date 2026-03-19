@@ -38,7 +38,7 @@ contextual, ghost menu persistente y changelog automático de sesión.
 - 8 priming-RAG docs nuevos (agrupados por dominio lógico)
 - Master index de 696+ líneas
 - Política automática de procesamiento de adjuntos
-- `.discovery/` como directorio estándar de sesión
+- `discovery/` como directorio estándar de sesión
 
 ### Design System v5 (DOCUMENTADO)
 - Referencia canónica: `references/design-system-v5.md`

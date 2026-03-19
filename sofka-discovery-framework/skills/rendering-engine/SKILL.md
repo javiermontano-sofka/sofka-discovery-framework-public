@@ -23,7 +23,7 @@ Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entre
 
 ## Core Responsibilities
 
-1. **PNG Generation** — Detectar bloques ` ```mermaid ` en entregables, renderizar con Mermaid CLI a `.discovery/assets/`
+1. **PNG Generation** — Detectar bloques ` ```mermaid ` en entregables, renderizar con Mermaid CLI a `discovery/assets/`
 2. **PDF Compilation** — Compilar markdown a PDF con Pandoc + wkhtmltopdf (o Typst como alternativa)
 3. **Branding Enforcement** — Paleta Sofka (#FF7E08, #EFEAE4, #FFD700), tipografía Inter, NUNCA verde para éxito
 4. **Evidence Badges** — Tags de evidencia renderizados como badges HTML coloreados por tipo
@@ -52,7 +52,7 @@ Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entre
 |---------|---------------|
 | **Markdown** | Source de verdad — contiene bloques Mermaid originales + evidence tags en texto. |
 | **HTML** | Self-contained con CSS Sofka. Mermaid renderizado inline. Evidence tags como badges. WCAG AA. |
-| **DOCX** | python-docx. Inter font. Imágenes PNG embebidas desde `.discovery/assets/`. Header Sofka. |
+| **DOCX** | python-docx. Inter font. Imágenes PNG embebidas desde `discovery/assets/`. Header Sofka. |
 | **XLSX** | openpyxl. Hoja "Rendering Log" con columnas: Diagram ID, Source File, Output PNG, Status. |
 | **PPTX** | python-pptx. PNGs de diagramas como imágenes full-slide. Slide master naranja Sofka. |
 

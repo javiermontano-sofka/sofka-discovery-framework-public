@@ -7,7 +7,7 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="${TARGET_DIR}/.discovery"
+DISCOVERY_DIR="${TARGET_DIR}/discovery"
 CHANGELOG="${DISCOVERY_DIR}/session-changelog.md"
 STATE_FILE="${DISCOVERY_DIR}/session-state.json"
 
@@ -62,7 +62,7 @@ if [[ -d "${TARGET_DIR}/.git" ]]; then
   fi
 fi
 
-# Also check for recently modified files in .discovery/
+# Also check for recently modified files in discovery/
 RECENT_DISCOVERY=""
 if [[ -d "$DISCOVERY_DIR" ]]; then
   RECENT_DISCOVERY=$(find "$DISCOVERY_DIR" -name "*.md" -newer "$CHANGELOG" -type f 2>/dev/null | head -10 || echo "")

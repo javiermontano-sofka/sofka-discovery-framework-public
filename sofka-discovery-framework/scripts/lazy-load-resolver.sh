@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-# lazy-load-resolver.sh — Dynamic agent/skill resolver by phase and service type
-# Sofka SAGE v12.1 — Agentic PreSales as Service
+# lazy-load-resolver.sh — Dynamic agent/skill resolver with progressive MOAT loading
+# Sofka SAGE v12.2 — Agentic PreSales as Service
 # © 2026 Sofka Technologies. All Rights Reserved.
 #
-# Usage: lazy-load-resolver.sh <PHASE_NUM> <TIPO_SERVICIO> [PLUGIN_DIR]
+# Usage: lazy-load-resolver.sh <PHASE_NUM> <TIPO_SERVICIO> [PLUGIN_DIR] [LOAD_LEVEL]
 # Output: List of agent and skill file paths to load into context
+#
+# LOAD_LEVEL (progressive MOAT):
+#   L1 = Metadata only (SKILL.md frontmatter + TL;DR) — minimal context cost
+#   L2 = Core body (SKILL.md full content) — standard operation
+#   L3 = Deep (SKILL.md + references/ + examples/) — full knowledge base
 
 set -euo pipefail
 
 PHASE="${1:-0}"
 TIPO="${2:-SDA}"
 PLUGIN_DIR="${3:-.}"
+LOAD_LEVEL="${4:-L2}"
 
 AGENTS_DIR="$PLUGIN_DIR/agents"
 SKILLS_DIR="$PLUGIN_DIR/skills"
@@ -71,12 +77,47 @@ TIPO_SKILLS[SAS]="staff-augmentation-discovery adoption-strategy"
 TIPO_SKILLS[UX-Design]="ux-design-discovery mobile-assessment accessibility-audit"
 TIPO_SKILLS[Digital-Transformation]="digital-transformation-discovery enterprise-architecture change-readiness-assessment"
 
+# ─── Helper: emit skill paths by load level ───
+emit_skill() {
+  local skill="$1"
+  local skill_dir="$SKILLS_DIR/$skill"
+  local skill_file="$skill_dir/SKILL.md"
+
+  [ -f "$skill_file" ] || return 0
+
+  case "$LOAD_LEVEL" in
+    L1)
+      # Metadata only: just the SKILL.md path (agent reads frontmatter + TL;DR)
+      echo "$skill_file  # L1:metadata"
+      ;;
+    L2)
+      # Core: full SKILL.md
+      echo "$skill_file  # L2:core"
+      ;;
+    L3)
+      # Deep: SKILL.md + references/ + examples/
+      echo "$skill_file  # L3:deep"
+      [ -d "$skill_dir/references" ] && find "$skill_dir/references" -name "*.md" -type f 2>/dev/null | while read -r ref; do
+        echo "$ref  # L3:reference"
+      done
+      [ -d "$skill_dir/examples" ] && find "$skill_dir/examples" -name "*.md" -type f 2>/dev/null | while read -r ex; do
+        echo "$ex  # L3:example"
+      done
+      ;;
+  esac
+}
+
 # ─── Collect results ───
-echo "# SAGE Lazy Load — Phase $PHASE, Tipo $TIPO"
+echo "# SAGE Lazy Load — Phase $PHASE, Tipo $TIPO, Level $LOAD_LEVEL"
 echo "# Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+echo "#"
+echo "# Load Levels:"
+echo "#   L1 = Metadata (frontmatter + TL;DR) — ~20 lines/skill"
+echo "#   L2 = Core (full SKILL.md) — ~200 lines/skill"
+echo "#   L3 = Deep (SKILL.md + references/ + examples/) — ~500+ lines/skill"
 echo ""
 
-# Agents
+# Agents (always full file — agents are small)
 echo "## Agents"
 for agent in "${CORE_AGENTS[@]}"; do
   [ -f "$AGENTS_DIR/$agent" ] && echo "$AGENTS_DIR/$agent"
@@ -93,21 +134,21 @@ for agent in $TIPO_AGENT_LIST; do
 done
 
 echo ""
-echo "## Skills"
+echo "## Skills ($LOAD_LEVEL)"
 
-# Skills
+# Skills — progressive loading
 for skill in "${CORE_SKILLS[@]}"; do
-  [ -f "$SKILLS_DIR/$skill/SKILL.md" ] && echo "$SKILLS_DIR/$skill/SKILL.md"
+  emit_skill "$skill"
 done
 
 PHASE_SKILL_LIST="${PHASE_SKILLS[$PHASE]:-}"
 for skill in $PHASE_SKILL_LIST; do
-  [ -f "$SKILLS_DIR/$skill/SKILL.md" ] && echo "$SKILLS_DIR/$skill/SKILL.md"
+  emit_skill "$skill"
 done
 
 TIPO_SKILL_LIST="${TIPO_SKILLS[$TIPO]:-}"
 for skill in $TIPO_SKILL_LIST; do
-  [ -f "$SKILLS_DIR/$skill/SKILL.md" ] && echo "$SKILLS_DIR/$skill/SKILL.md"
+  emit_skill "$skill"
 done
 
 # Count
@@ -115,4 +156,4 @@ TOTAL_AGENTS=$(echo "${CORE_AGENTS[*]} $PHASE_AGENT_LIST $TIPO_AGENT_LIST" | tr 
 TOTAL_SKILLS=$(echo "${CORE_SKILLS[*]} $PHASE_SKILL_LIST $TIPO_SKILL_LIST" | tr ' ' '\n' | sort -u | grep -c '[a-z]' || echo 0)
 
 echo ""
-echo "# Summary: $TOTAL_AGENTS agents, $TOTAL_SKILLS skills loaded (of 48/101 total)"
+echo "# Summary: $TOTAL_AGENTS agents, $TOTAL_SKILLS skills at $LOAD_LEVEL (of 48/107 total)"

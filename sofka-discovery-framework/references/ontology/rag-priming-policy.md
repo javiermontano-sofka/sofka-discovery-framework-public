@@ -12,7 +12,7 @@ Cuando el plugin se activa en un repositorio, se ejecuta la siguiente secuencia 
 | Paso | Acción | Resultado |
 |------|--------|-----------|
 | 1 | **Escanear entregables** | Detectar progreso del pipeline (0/16 a 16/16) |
-| 2 | **Generar contexto** | Crear `SESSION-README.md` + `SESSION-CLAUDE.md` en `.discovery/` |
+| 2 | **Generar contexto** | Crear `SESSION-README.md` + `SESSION-CLAUDE.md` en `discovery/` |
 | 3 | **Activar ghost menu** | Navegación contextual persistente al final de cada artefacto |
 | 4 | **Iniciar changelog** | Registro de acciones para continuidad ante crisis de sesión |
 | 5 | **Cargar priming-RAG** | 20+ archivos de conocimiento base desde `references/` |
@@ -68,7 +68,7 @@ El `discovery-conductor` clasifica el tipo de adjunto y delega al agente especia
 - URLs → `research-scientist`
 
 ### Paso 2 — Creación de extracto Markdown
-Se genera un extracto estructurado en `.discovery/rag-priming/` con formato estándar: resumen ejecutivo, contenido clave, relevancia para discovery, vinculación a entregables, tags de evidencia.
+Se genera un extracto estructurado en `discovery/rag-priming/` con formato estándar: resumen ejecutivo, contenido clave, relevancia para discovery, vinculación a entregables, tags de evidencia.
 
 ### Paso 3 — Clasificación y vinculación
 El extracto se vincula al entregable destino según su tipo:
@@ -92,7 +92,7 @@ Si un adjunto no encaja en ningún documento RAG existente, se crea uno nuevo:
 | Regla | Detalle |
 |-------|---------|
 | **Naming** | `priming-rag-{tema-descriptivo}.md` |
-| **Ubicación** | `references/` (persistente) o `.discovery/rag-priming/` (sesión) |
+| **Ubicación** | `references/` (persistente) o `discovery/rag-priming/` (sesión) |
 | **Estructura** | Fuentes, valor para discovery, takeaways, keywords, query hooks |
 | **Decisión** | Solo el `discovery-conductor` autoriza la creación |
 

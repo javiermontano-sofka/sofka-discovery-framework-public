@@ -20,7 +20,7 @@ user-invocable: true
 3. **Preprocesar evidence tags** — Convertir `[CÓDIGO]`, `[DOC]`, etc. a badges HTML coloreados
 4. **Compilar PDF** — Ejecutar `scripts/export-pdf.sh` con template Sofka v5
 5. **Verificar branding** — Confirmar: orange headers, beige bg, gold success, NUNCA verde
-6. **Entregar** — PDF guardado en `.discovery/assets/` + ghost menu
+6. **Entregar** — PDF guardado en `discovery/assets/` + ghost menu
 
 ## Dependencias
 

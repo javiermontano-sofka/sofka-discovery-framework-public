@@ -144,7 +144,7 @@ Todo archivo generado debe incluir su estado en el nombre:
 3. Nombre del cliente sin espacios ni caracteres especiales
 4. El tag de estado `{WIP}` o `{Aprobado}` va al final, antes de la extensión
 5. Al aprobar un entregable: renombrar de `{WIP}` a `{Aprobado}`
-6. Repos de discovery: usar el mismo patrón en los directorios `.discovery/deliverables/`
+6. Repos de discovery: usar el mismo patrón en los directorios `discovery/deliverables/`
 
 ---
 

@@ -238,19 +238,9 @@ Se activan según `{TIPO_SERVICIO}` y fase del pipeline.
 
 ---
 
-## Agradecimiento
-
-**Luis Felipe Reyes** — Chief Financial Officer, Sofka Technologies.
-
-En el marco del proyecto **Heka**, Luis Felipe apostó por la innovación en PreSales e invirtió en el desarrollo del Sofka Discovery Framework. Gracias a la colaboración entre Heka, su sponsorship ejecutivo y el equipo de PreSales, una idea se transformó en un ecosistema agéntico de clase empresarial al servicio de Sofka.
-
-*La excelencia en discovery es un diferenciador competitivo — y se construye en equipo.*
-
----
-
 ## Licencia
 
-All Rights Reserved — © 2026 Sofka Technologies. Uso exclusivo para colaboradores de Sofka.
+All Rights Reserved — © 2026 Sofka Technologies.
 
 ## Autor
 

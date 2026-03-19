@@ -23,7 +23,7 @@ user-invocable: true
 3. **Console** — Revisar errores JavaScript, warnings
 4. **Network** — Identificar APIs, tiempos de respuesta
 5. **Accessibility** — Contraste, alt text, ARIA, keyboard nav
-6. **Documentar** — Guardar evidencia en `.discovery/assets/screenshots/`
+6. **Documentar** — Guardar evidencia en `discovery/assets/screenshots/`
 
 ## Requisitos
 

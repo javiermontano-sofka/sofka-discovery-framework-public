@@ -1,7 +1,7 @@
 #!/bin/bash
 # Sofka Discovery Framework — Deliverable Scanner
 # SessionStart hook: scans working directory for existing deliverables
-# Also scans .discovery/ directory and common output subdirectories
+# Also scans discovery/ directory and common output subdirectories
 # Reports discovery pipeline status with companion file detection
 
 set -euo pipefail
@@ -29,10 +29,10 @@ declare -A DELIVERABLES=(
 FOUND=()
 MISSING=()
 
-# Search directories: cwd, .discovery/deliverables/, and common output locations
+# Search directories: cwd, discovery/deliverables/, and common output locations
 SEARCH_DIRS=(
   "."
-  "./.discovery/deliverables"
+  "./discovery/deliverables"
   "./discovery"
   "./output"
   "./outputs"
@@ -67,12 +67,12 @@ for num in $(echo "${!DELIVERABLES[@]}" | tr ' ' '\n' | sort); do
   fi
 done
 
-# Check for companion files (.discovery/ structure)
+# Check for companion files (discovery/ structure)
 COMPANION_COUNT=0
-if [[ -d "./.discovery" ]]; then
+if [[ -d "./discovery" ]]; then
   for subdir in insights transcripts rag-priming; do
-    if [[ -d "./.discovery/$subdir" ]]; then
-      count=$(find "./.discovery/$subdir" -name "*.md" 2>/dev/null | wc -l)
+    if [[ -d "./discovery/$subdir" ]]; then
+      count=$(find "./discovery/$subdir" -name "*.md" 2>/dev/null | wc -l)
       COMPANION_COUNT=$((COMPANION_COUNT + count))
     fi
   done
@@ -80,7 +80,7 @@ fi
 
 # Check for repo index
 HAS_INDEX=false
-[[ -f "./.discovery/repo-index.json" ]] && HAS_INDEX=true
+[[ -f "./discovery/repo-index.json" ]] && HAS_INDEX=true
 
 # Build status report
 TOTAL=${#DELIVERABLES[@]}
@@ -103,7 +103,7 @@ if [[ $COMPANION_COUNT -gt 0 ]] || $HAS_INDEX; then
   extras=""
   $HAS_INDEX && extras="repo-index"
   [[ $COMPANION_COUNT -gt 0 ]] && extras="${extras:+$extras, }${COMPANION_COUNT} companion files"
-  echo "  📁 .discovery/: $extras"
+  echo "  📁 discovery/: $extras"
 fi
 
 exit 0

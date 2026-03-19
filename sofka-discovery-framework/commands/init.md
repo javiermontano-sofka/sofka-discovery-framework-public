@@ -5,7 +5,7 @@ user-invocable: true
 
 # /sdf:init
 
-> Wizard de inicialización que configura `.discovery/`, pre-puebla el contexto del cliente y ejecuta G0.
+> Wizard de inicialización que configura `discovery/`, pre-puebla el contexto del cliente y ejecuta G0.
 
 ## Uso
 
@@ -20,7 +20,7 @@ user-invocable: true
 Como este comando se ejecuta dentro de Claude Code (no en terminal directa), el wizard funciona así:
 
 1. **Preguntar datos del cliente** — Nombre, tipo de servicio, contacto principal, sector/industria
-2. **Crear estructura** — Generar `.discovery/` con subdirectorios y archivos base
+2. **Crear estructura** — Generar `discovery/` con subdirectorios y archivos base
 3. **Pre-poblar contexto** — SESSION-README.md con datos del cliente, session-state.json con configuración
 4. **Auto-discovery** — Ejecutar `index-repo.sh` para indexar el repositorio
 5. **G0 Security Scan** — Ejecutar `secrets-scan.sh` para verificar secretos
@@ -40,5 +40,5 @@ bash scripts/sdf-init.sh [ruta-del-repo]
 ## Reglas
 
 - SIEMPRE ejecutar G0 durante la inicialización
-- NUNCA sobrescribir un `.discovery/` existente sin confirmación del usuario
+- NUNCA sobrescribir un `discovery/` existente sin confirmación del usuario
 - Si `session-state.json` ya tiene `initialized_by: "sdf-init"`, avisar que ya fue inicializado

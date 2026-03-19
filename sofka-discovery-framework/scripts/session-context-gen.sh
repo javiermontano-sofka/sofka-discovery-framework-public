@@ -7,7 +7,7 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="${TARGET_DIR}/.discovery"
+DISCOVERY_DIR="${TARGET_DIR}/discovery"
 SESSION_README="${DISCOVERY_DIR}/SESSION-README.md"
 SESSION_CLAUDE="${DISCOVERY_DIR}/SESSION-CLAUDE.md"
 
@@ -98,11 +98,11 @@ fi)
 ## Archivos de sesión
 | Archivo | Ruta | Estado |
 |---------|------|--------|
-| Session README | \`.discovery/SESSION-README.md\` | ✅ |
-| Session CLAUDE | \`.discovery/SESSION-CLAUDE.md\` | ✅ |
-| Repo Index | \`.discovery/repo-index.json\` | $([[ -f "${DISCOVERY_DIR}/repo-index.json" ]] && echo "✅" || echo "⚠️ pendiente") |
-| Changelog | \`.discovery/session-changelog.md\` | $([[ -f "${DISCOVERY_DIR}/session-changelog.md" ]] && echo "✅" || echo "⚠️ pendiente") |
-| Ghost Menu | \`.discovery/ghost-menu.md\` | $([[ -f "${DISCOVERY_DIR}/ghost-menu.md" ]] && echo "✅" || echo "⚠️ pendiente") |
+| Session README | \`discovery/SESSION-README.md\` | ✅ |
+| Session CLAUDE | \`discovery/SESSION-CLAUDE.md\` | ✅ |
+| Repo Index | \`discovery/repo-index.json\` | $([[ -f "${DISCOVERY_DIR}/repo-index.json" ]] && echo "✅" || echo "⚠️ pendiente") |
+| Changelog | \`discovery/session-changelog.md\` | $([[ -f "${DISCOVERY_DIR}/session-changelog.md" ]] && echo "✅" || echo "⚠️ pendiente") |
+| Ghost Menu | \`discovery/ghost-menu.md\` | $([[ -f "${DISCOVERY_DIR}/ghost-menu.md" ]] && echo "✅" || echo "⚠️ pendiente") |
 
 ---
 *Sofka SAGE v12.0 — session context auto-generated.*
@@ -134,14 +134,14 @@ debe incluir un bloque de navegación contextual al final con:
 - Links a archivos de sesión relevantes
 
 ### Changelog automático
-Cada acción significativa se registra en \`.discovery/session-changelog.md\`.
+Cada acción significativa se registra en \`discovery/session-changelog.md\`.
 Si la sesión se interrumpe, usar el changelog para retomar.
 Ante crisis de contexto: leer primero el changelog, luego el ghost menu.
 
 ### Preparación RAG
 Cada adjunto nuevo debe procesarse automáticamente:
 1. Leer/interpretar
-2. Crear extracto Markdown en \`.discovery/rag-priming/\`
+2. Crear extracto Markdown en \`discovery/rag-priming/\`
 3. Actualizar índice
 4. Incorporar al riel de discovery
 

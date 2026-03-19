@@ -4,18 +4,18 @@
 # © 2026 Sofka Technologies. All Rights Reserved.
 #
 # Usage: discovery-retro.sh [PROJECT_DIR]
-# Output: JSON metrics + markdown report in .discovery/retro/
+# Output: JSON metrics + markdown report in discovery/retro/
 
 set -euo pipefail
 
 PROJECT_DIR="${1:-.}"
-DISCOVERY_DIR="$PROJECT_DIR/.discovery"
+DISCOVERY_DIR="$PROJECT_DIR/discovery"
 RETRO_DIR="$DISCOVERY_DIR/retro"
 TIMESTAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 DATE_SLUG="$(date -u +%Y%m%d-%H%M)"
 
 if [ ! -d "$DISCOVERY_DIR" ]; then
-  echo "⚠ No .discovery/ directory found in $PROJECT_DIR"
+  echo "⚠ No discovery/ directory found in $PROJECT_DIR"
   echo "  Run /sdf:init first to initialize the engagement."
   exit 1
 fi
@@ -127,12 +127,12 @@ fi
 # ─── 7. Security Audit Status ───
 G0_STATUS="not_run"
 SECRETS_FOUND=0
-if [ -f "$DISCOVERY_DIR/.sage-secrets-audit.log" ]; then
-  if grep -q "CLEAN" "$DISCOVERY_DIR/.sage-secrets-audit.log" 2>/dev/null; then
+if [ -f "$DISCOVERY_DIR/sage-secrets-audit.log" ]; then
+  if grep -q "CLEAN" "$DISCOVERY_DIR/sage-secrets-audit.log" 2>/dev/null; then
     G0_STATUS="clean"
   else
     G0_STATUS="findings"
-    SECRETS_FOUND=$(grep -c "FINDING" "$DISCOVERY_DIR/.sage-secrets-audit.log" 2>/dev/null || echo 0)
+    SECRETS_FOUND=$(grep -c "FINDING" "$DISCOVERY_DIR/sage-secrets-audit.log" 2>/dev/null || echo 0)
   fi
 fi
 

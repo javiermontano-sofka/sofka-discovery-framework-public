@@ -91,7 +91,7 @@ Alimenta: {entregables destino}
 ```
 
 **Ubicacion del extracto:** `output/extractos/{nombre_archivo}_extracto.md`
-**Alternativa (sesion):** `.discovery/rag-priming/priming-rag-adjunto-{nombre}.md`
+**Alternativa (sesion):** `discovery/rag-priming/priming-rag-adjunto-{nombre}.md`
 
 ### Paso 3: Clasificacion y vinculacion
 
@@ -289,7 +289,7 @@ ADJUNTO RECIBIDO
 - "Como se procesa un adjunto nuevo?" -> Flujo automatico de 5 pasos
 - "Quien decide donde va el extracto?" -> discovery-conductor
 - "Que pasa si hay informacion contradictoria?" -> Tag [CONFLICTO], conductor decide
-- "Donde se guardan los extractos?" -> output/extractos/ o .discovery/rag-priming/
+- "Donde se guardan los extractos?" -> output/extractos/ o discovery/rag-priming/
 - "Que formato tiene un extracto?" -> Formato estandar con 8 secciones
 - "Puedo incluir credenciales en extractos?" -> NUNCA, usar [REDACTADO]
 - "Que tags de evidencia hay?" -> [DOC] [CODIGO] [CONFIG] [STAKEHOLDER] [INFERENCIA] [SUPUESTO] [CONFLICTO] [REDACTADO]

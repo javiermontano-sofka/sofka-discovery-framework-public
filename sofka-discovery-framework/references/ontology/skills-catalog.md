@@ -1,7 +1,7 @@
-# Catálogo de 100 Skills
+# Catálogo de 107 Skills
 
-> Sofka SAGE — Ontología viva
-> Referencia canónica de los 100 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
+> Sofka SAGE v12.2 — Ontología viva
+> Referencia canónica de los 107 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
 
 ---
 
@@ -18,9 +18,9 @@
 | Editorial & Comunicación | 9 | 5-6 (Pitch a Reportes) |
 | Cambio & Adopción | 5 | 4-6 (Escenarios a Handover) |
 | Innovación | 5 | 3-5 (ASIS a Roadmap) |
-| Herramientas & DX | 7 | Transversal |
+| Herramientas & DX | 10 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
-| **Total** | **104** | |
+| **Total** | **107** | |
 
 ---
 
@@ -163,6 +163,9 @@
 | `context-optimization` | Optimización de context window, lazy loading, pruning semántico | Transversal |
 | `rendering-engine` | Renderizado Mermaid→PNG y markdown→PDF con branding Sofka v5 | Transversal |
 | `cli-init` | CLI interactivo de inicialización para nuevos engagements | 0 |
+| `discovery-retrospective` | Retrospectiva cuantitativa de engagement: evidencia, deliverables, velocidad | Transversal |
+| `client-browser-audit` | Auditoría visual de app del cliente via MCP Playwright: screenshots, accessibility | 1-2 |
+| `cross-platform-convert` | Conversión de skills MOAT a Cursor, Codex CLI, Gemini CLI, Aider, Windsurf | Transversal |
 
 ## 11. Service Discovery (11 skills)
 

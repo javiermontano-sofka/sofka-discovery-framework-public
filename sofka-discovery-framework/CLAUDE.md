@@ -118,7 +118,7 @@ sofka-discovery-framework/
 
 ## Sesión Automática
 
-Al activar el plugin, los hooks generan en `.discovery/`:
+Al activar el plugin, los hooks generan en `discovery/`:
 - `SESSION-README.md` — Contexto del proyecto
 - `SESSION-CLAUDE.md` — Instrucciones de sesión
 - `calibration-digest.md` — Estado de priming y calibración
@@ -126,7 +126,7 @@ Al activar el plugin, los hooks generan en `.discovery/`:
 - `session-changelog.md` — Registro para continuidad
 - `session-state.json` — Estado del pipeline
 
-Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `.needs-priming` y se sugiere `/sdf:prime-repo`.
+Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `needs-priming` y se sugiere `/sdf:prime-repo`.
 Cada adjunto o URL investigada genera `priming-rag-{nombre}.md` y recalibra automáticamente.
 
 > Detalle completo → `references/ontology/session-automation.md`

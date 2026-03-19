@@ -22,7 +22,7 @@ Si el archivo no existe, usa el catálogo embebido en este comando como fallback
 
 ### Paso 2 — Detección de pipeline activo
 
-Verifica si `.discovery/session-state.json` existe en el directorio de trabajo actual.
+Verifica si `discovery/session-state.json` existe en el directorio de trabajo actual.
 - Si existe: extrae fase actual, gate pendiente, entregables completados, próxima acción recomendada.
 - Si no existe: marca estado como `IDLE — sin pipeline activo`.
 

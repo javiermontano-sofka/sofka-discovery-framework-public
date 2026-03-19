@@ -8,7 +8,7 @@ set -euo pipefail
 INPUT_FILE="${1:-}"
 TARGET_DIR="${2:-.}"
 OUTPUT_FILE="${3:-}"
-ASSETS_DIR="$TARGET_DIR/.discovery/assets"
+ASSETS_DIR="$TARGET_DIR/discovery/assets"
 TEMPLATE_DIR="$(dirname "$0")/../references/templates"
 
 if [ -z "$INPUT_FILE" ] || [ ! -f "$INPUT_FILE" ]; then

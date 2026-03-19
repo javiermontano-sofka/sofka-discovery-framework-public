@@ -1,6 +1,6 @@
 # Engagement Templates Index
 
-> Pre-configured `.discovery/` templates per TIPO_SERVICIO.
+> Pre-configured `discovery/` templates per TIPO_SERVICIO.
 > Used by `sdf-init.sh` to pre-populate engagement context.
 
 ---
