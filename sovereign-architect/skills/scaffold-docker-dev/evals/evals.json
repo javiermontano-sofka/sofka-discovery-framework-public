@@ -1,0 +1,70 @@
+{
+  "skill_name": "scaffold-docker-dev",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Scaffold a Docker dev environment for a Node.js TypeScript API with PostgreSQL 16 and Redis. Include health checks and hot reload.",
+      "expected_output": "Complete compose.yml, Dockerfile.dev, Dockerfile production, and .dockerignore",
+      "assertions": [
+        {"text": "Output contains compose.yml or docker compose service definitions", "type": "contains"},
+        {"text": "Output contains healthcheck configuration", "type": "contains"},
+        {"text": "Output contains condition: service_healthy in depends_on", "type": "contains"},
+        {"text": "Output contains anonymous volume for node_modules", "type": "contains"},
+        {"text": "Output contains CMD in exec form with square brackets", "type": "contains"},
+        {"text": "Output contains pg_isready health check for PostgreSQL", "type": "contains"},
+        {"text": "Output contains evidence tags [HECHO], [INFERENCIA], or [SUPUESTO]", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review this Dockerfile: 'FROM node:latest\\nCOPY . .\\nRUN npm install\\nCMD npm start' — find all issues and fix them.",
+      "expected_output": "Detailed critique with fixed Dockerfile",
+      "assertions": [
+        {"text": "Output identifies FROM latest as an issue", "type": "contains"},
+        {"text": "Output identifies COPY . . before npm install as layer caching problem", "type": "contains"},
+        {"text": "Output identifies CMD npm start as shell form issue", "type": "contains"},
+        {"text": "Output provides corrected Dockerfile with specific version tag", "type": "contains"},
+        {"text": "Output provides COPY package*.json before RUN npm ci", "type": "contains"},
+        {"text": "Output provides CMD in exec form", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Design a multi-stage Dockerfile for a Next.js application with separate builder and runner stages. Minimize final image size.",
+      "expected_output": "Multi-stage Dockerfile with deps, builder, and runner stages",
+      "assertions": [
+        {"text": "Output contains at least 2 FROM statements (multi-stage)", "type": "contains"},
+        {"text": "Output uses alpine or slim base for runner stage", "type": "contains"},
+        {"text": "Output copies only necessary files to runner stage", "type": "contains"},
+        {"text": "Output sets non-root USER", "type": "contains"},
+        {"text": "Output uses npm ci --only=production or equivalent for production deps", "type": "contains"},
+        {"text": "Output does NOT copy node_modules from builder to runner without filtering", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Add Dev Container support to an existing project with compose.yml. The team uses VS Code and needs shared extension configuration.",
+      "expected_output": "devcontainer.json with VS Code extensions, postCreateCommand, and compose override",
+      "assertions": [
+        {"text": "Output contains devcontainer.json", "type": "contains"},
+        {"text": "Output contains dockerComposeFile array", "type": "contains"},
+        {"text": "Output contains customizations.vscode.extensions", "type": "contains"},
+        {"text": "Output contains postCreateCommand", "type": "contains"},
+        {"text": "Output contains forwardPorts", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Diagnose why 'docker compose up' fails with 'connection refused to postgres' despite postgres service running. The compose.yml does not have health checks.",
+      "expected_output": "Diagnosis of race condition + fix with health checks",
+      "assertions": [
+        {"text": "Output identifies the race condition between app and database startup", "type": "contains"},
+        {"text": "Output explains that depends_on without condition: service_healthy is insufficient", "type": "contains"},
+        {"text": "Output provides healthcheck configuration for PostgreSQL", "type": "contains"},
+        {"text": "Output provides depends_on with condition: service_healthy", "type": "contains"},
+        {"text": "Output mentions start_period or pg_isready command", "type": "contains"}
+      ]
+    }
+  ]
+}

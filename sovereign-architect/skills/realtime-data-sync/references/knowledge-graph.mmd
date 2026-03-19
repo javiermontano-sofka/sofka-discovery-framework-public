@@ -1,0 +1,50 @@
+graph TD
+    RT[Realtime Data Sync]
+
+    RT --> TR[Transport Layer]
+    RT --> SU[Supabase Realtime]
+    RT --> OP[Optimistic Updates]
+    RT --> CR[Conflict Resolution]
+    RT --> RC[Reconnection Strategy]
+    RT --> PR[Presence]
+
+    TR --> WS[WebSocket Bidirectional]
+    TR --> SSE[Server-Sent Events Unidirectional]
+    TR --> LP[Long Polling Fallback]
+
+    WS --> AUTH[Token Auth on Upgrade]
+    WS --> HB[Heartbeat Ping/Pong]
+    WS --> SCALE[Horizontal Scale - Redis PubSub]
+
+    SSE --> EVT[EventSource API]
+    SSE --> AUTO[Auto-Reconnect Built-in]
+    SSE --> BUFF[Disable Nginx Buffering]
+
+    SU --> CDC[Postgres WAL CDC]
+    SU --> FILTER[Row Filter user_id=eq.x]
+    SU --> RLTBL[ALTER PUBLICATION ADD TABLE]
+
+    OP --> CANCEL[Cancel In-flight Queries]
+    OP --> SNAP[Snapshot for Rollback]
+    OP --> INVQ[Invalidate on Settled]
+
+    CR --> LWW[Last Write Wins Timestamp]
+    CR --> OT[Operational Transform Google Docs]
+    CR --> CRDT[CRDT with Yjs]
+
+    CRDT --> YMAP[Y.Map Key-Value]
+    CRDT --> YTEXT[Y.Text Collaborative]
+    CRDT --> PERSIST[encode/applyUpdate DB Persist]
+
+    RC --> EXP[Exponential Backoff]
+    RC --> JITTER[+ Random Jitter]
+    RC --> MAX[Max Attempts Cap]
+
+    PR --> TRACK[channel.track state]
+    PR --> SYNC[presence sync event]
+    PR --> TTL[Ephemeral TTL-based]
+
+    RT --> MODE[Mode Selection]
+    MODE --> BCST[Broadcast Ephemeral]
+    MODE --> SYNC2[State Sync Persistent]
+    MODE --> PRES[Presence Best-effort]

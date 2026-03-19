@@ -1,0 +1,22 @@
+{
+  "name": "sa",
+  "version": "4.0.0",
+  "description": "Sovereign Architect — Evidence-based technical leadership for software engineering. 66 specialists · 127 skills MOAT · 119 commands · 19 scripts · 13 ontology files · 39 RAG docs · 4 quality gates (G0-G2). Development Kit Edition: Supabase, Firebase, React, Angular, Vue, Next.js, PostgreSQL, MongoDB, Redis, CSS architecture, web performance, scaffolding. Zero-assumption protocol.",
+  "author": {
+    "name": "Javier Montaño (JM Labs)",
+    "url": "https://metodologia.info"
+  },
+  "homepage": "https://metodologia.info",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "architecture",
+    "software-engineering",
+    "technical-leadership",
+    "code-review",
+    "evidence-based",
+    "diagnosis",
+    "implementation",
+    "quality",
+    "sovereign"
+  ]
+}

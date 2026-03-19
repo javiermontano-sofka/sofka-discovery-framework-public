@@ -1,0 +1,78 @@
+{
+  "skill_name": "css-architecture",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit the CSS architecture of this project and produce a full assessment report",
+      "expected_output": "Structured report with layer strategy, token audit, specificity findings, dark mode readiness, and remediation plan",
+      "assertions": [
+        {"text": "Output contains evidence tags [HECHO], [INFERENCIA], or [SUPUESTO]", "type": "contains"},
+        {"text": "Output contains TL;DR section", "type": "contains"},
+        {"text": "Output mentions !important count or specificity analysis", "type": "contains"},
+        {"text": "Output mentions CSS custom properties or design tokens", "type": "contains"},
+        {"text": "Output mentions @layer or cascade layer strategy", "type": "contains"},
+        {"text": "Output provides priority-sorted remediation (P1/P2/P3)", "type": "contains"},
+        {"text": "Output includes effort estimate for recommendations", "type": "contains"},
+        {"text": "Output identifies at least one anti-pattern from the skill definition", "type": "contains"},
+        {"text": "Output does not fabricate file paths not confirmed with scan", "type": "not_fabricated"},
+        {"text": "Output references scanning commands or evidence sources", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design a design token system for a React application with dark mode and multi-brand theming",
+      "expected_output": "Three-tier token architecture with primitives, semantic tokens, component tokens, and dark mode strategy",
+      "assertions": [
+        {"text": "Output defines primitive tokens (raw values)", "type": "contains"},
+        {"text": "Output defines semantic tokens (meaningful names)", "type": "contains"},
+        {"text": "Output separates primitive and semantic token layers", "type": "contains"},
+        {"text": "Output provides dark mode override strategy using [data-theme] or @media", "type": "contains"},
+        {"text": "Output mentions color-scheme property for native elements", "type": "contains"},
+        {"text": "Output includes CSS custom property syntax (-- prefix)", "type": "contains"},
+        {"text": "Semantic tokens reference primitive tokens via var()", "type": "contains"},
+        {"text": "Output mentions Style Dictionary for multi-platform if multi-brand", "type": "contains"},
+        {"text": "Output provides concrete token file structure", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Migrate an existing codebase from Tailwind CSS v3 to Tailwind v4",
+      "expected_output": "Migration plan with @theme configuration, breaking changes, and verification steps",
+      "assertions": [
+        {"text": "Output mentions reading tailwind.config.js first [HECHO]", "type": "contains"},
+        {"text": "Output explains @theme directive in CSS replacing tailwind.config.js", "type": "contains"},
+        {"text": "Output mentions @source replacing content array", "type": "contains"},
+        {"text": "Output identifies breaking changes", "type": "contains"},
+        {"text": "Output provides concrete @theme CSS block example", "type": "contains"},
+        {"text": "Output provides verification/testing steps", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Implement CSS @scope for component isolation in a design system",
+      "expected_output": "Implementation of @scope with root boundary, lower boundary, and comparison to CSS Modules",
+      "assertions": [
+        {"text": "Output uses @scope syntax correctly", "type": "contains"},
+        {"text": "Output explains :scope pseudo-class within @scope", "type": "contains"},
+        {"text": "Output mentions browser support (Chrome 118+, Firefox 128+)", "type": "contains"},
+        {"text": "Output compares @scope to CSS Modules as alternative", "type": "contains"},
+        {"text": "Output provides lower boundary syntax example", "type": "contains"},
+        {"text": "Output tags browser support as risk or assumption if project has older support targets", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "There are 847 !important declarations in this codebase. Design a migration strategy to CSS Layers",
+      "expected_output": "Phased migration strategy from !important-heavy CSS to CSS Layers without breaking the application",
+      "assertions": [
+        {"text": "Output reads the codebase before proposing", "type": "contains"},
+        {"text": "Output defines the layer order with @layer statement", "type": "contains"},
+        {"text": "Output provides phased migration plan (not one big bang change)", "type": "contains"},
+        {"text": "Output explains how to wrap third-party CSS in layers", "type": "contains"},
+        {"text": "Output provides testing strategy to verify no regressions", "type": "contains"},
+        {"text": "Output identifies which !important uses can be eliminated vs. which need investigation", "type": "contains"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+graph TD
+    A[Monorepo] --> B[Tool Selection]
+    A --> C[Workspace Structure]
+    A --> D[Shared Packages]
+    A --> E[CI/CD Strategy]
+    A --> F[Versioning]
+
+    B --> B1{Nx}
+    B --> B2{Turborepo}
+    B1 --> B1a[Code Generators]
+    B1 --> B1b[Affected Detection]
+    B1 --> B1c[Nx Cloud Cache]
+    B2 --> B2a[File Hashing]
+    B2 --> B2b[Turbo Remote Cache]
+    B2 --> B2c[Simple Pipeline]
+
+    C --> C1[apps/]
+    C --> C2[packages/]
+    C --> C3[tools/]
+    C1 --> C1a[web Next.js]
+    C1 --> C1b[api Node.js]
+    C2 --> C2a[ui components]
+    C2 --> C2b[types zero-runtime]
+    C2 --> C2c[utils functions]
+    C2 --> C2d[config eslint/ts]
+
+    D --> D1[packages/types]
+    D --> D2[tsconfig.base.json]
+    D --> D3[pnpm-workspace.yaml]
+    D1 --> D1a[workspace:^ protocol]
+    D1 --> D1b[TypeScript source direct]
+
+    E --> E1[turbo.json pipeline]
+    E --> E2[CI matrix]
+    E --> E3[Remote cache]
+    E1 --> E1a[dependsOn ^build]
+    E1 --> E1b[outputs cached]
+    E1 --> E1c[dev persistent]
+    E2 --> E2a[frozen-lockfile]
+    E2 --> E2b[turbo affected filter]
+
+    F --> F1[Changesets]
+    F --> F2{Fixed vs Independent}
+    F1 --> F1a[Developer adds changeset]
+    F1 --> F1b[CI version bump PR]
+    F1 --> F1c[Publish on merge]
+    F2 --> F2a[Fixed for apps]
+    F2 --> F2b[Independent for libs]
+
+    style A fill:#FF7E08,color:#fff
+    style B1 fill:#FFD700,color:#000
+    style B2 fill:#FFD700,color:#000
+    style F fill:#FFD700,color:#000

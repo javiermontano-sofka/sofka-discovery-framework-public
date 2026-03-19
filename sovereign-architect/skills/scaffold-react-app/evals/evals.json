@@ -1,0 +1,81 @@
+{
+  "skill_name": "scaffold-react-app",
+  "version": "2.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "Greenfield SPA scaffold completeness",
+      "prompt": "Scaffold a React app for a SaaS project management tool. Team of 5, TypeScript required, deploy to Vercel, REST API backend. Use Vite, React Router v7, Zustand, TanStack Query, Tailwind, Vitest, Playwright.",
+      "expected_output": "Full scaffold with feature-first structure, all config files, CI pipeline, env validation",
+      "assertions": [
+        {"text": "Output includes vite.config.ts with path aliases", "type": "contains"},
+        {"text": "Output includes tsconfig.json with strict: true", "type": "contains"},
+        {"text": "Output includes src/env.ts with Zod validation", "type": "contains"},
+        {"text": "Output includes package.json with vitest, @testing-library/react, playwright", "type": "contains"},
+        {"text": "Output includes GitHub Actions CI workflow file", "type": "contains"},
+        {"text": "Output includes src/test/setup.ts with MSW configuration", "type": "contains"},
+        {"text": "Output includes feature-first folder structure (src/features/)", "type": "contains"},
+        {"text": "Output does NOT reference create-react-app or react-scripts", "type": "not_contains"},
+        {"text": "Output includes ADR documenting stack decisions", "type": "contains"},
+        {"text": "Output includes Dockerfile with multi-stage build", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "CRA migration to Vite",
+      "prompt": "I have a Create React App project with React 17 and JavaScript. Help me migrate to Vite 5 + TypeScript incrementally. Team has mixed TS experience.",
+      "expected_output": "Migration guide with incremental TypeScript adoption, new tsconfig with allowJs, vite.config, migration checklist",
+      "assertions": [
+        {"text": "Output addresses CRA deprecation with evidence", "type": "contains"},
+        {"text": "Output provides tsconfig.json with allowJs: true for incremental migration", "type": "contains"},
+        {"text": "Output provides vite.config.ts that handles CommonJS imports", "type": "contains"},
+        {"text": "Output provides a migration checklist with ordered steps", "type": "contains"},
+        {"text": "Output does NOT suggest enabling strict: true immediately (incremental approach)", "type": "not_contains"},
+        {"text": "Output documents React Router v5 to v7 breaking changes", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Config audit on existing scaffold",
+      "prompt": "Audit this React project configuration: tsconfig has strict: false, .env file is not in .gitignore, vite.config has no test config, no ESLint setup.",
+      "expected_output": "Config audit report with [PASS], [WARN], [FAIL] tags and specific fixes for each failure",
+      "assertions": [
+        {"text": "Output flags strict: false as [FAIL] or [WARN]", "type": "contains"},
+        {"text": "Output flags missing .gitignore .env entry as [FAIL]", "type": "contains"},
+        {"text": "Output flags missing ESLint setup as [FAIL] or [WARN]", "type": "contains"},
+        {"text": "Output provides specific fix for each failure, not just description", "type": "contains"},
+        {"text": "Output uses [PASS], [WARN], [FAIL] classification consistently", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Testing infrastructure setup",
+      "prompt": "Set up the complete testing infrastructure for a React app: Vitest unit tests with RTL, MSW for API mocking, and Playwright E2E. Include example tests for a LoginForm component.",
+      "expected_output": "Complete test setup: setup.ts, handlers.ts, render-utils.tsx, LoginForm test with 3 scenarios, playwright.config.ts, smoke E2E test",
+      "assertions": [
+        {"text": "Output includes src/test/setup.ts with jest-dom import and MSW hooks", "type": "contains"},
+        {"text": "Output includes MSW handlers.ts with at least one example handler", "type": "contains"},
+        {"text": "Output includes custom render function wrapping QueryClientProvider", "type": "contains"},
+        {"text": "Output uses userEvent.setup() not fireEvent", "type": "contains"},
+        {"text": "Output uses findBy* for async assertions, not waitFor + getBy", "type": "contains"},
+        {"text": "Output includes playwright.config.ts with baseURL and browser projects", "type": "contains"},
+        {"text": "Output includes at least one smoke E2E test", "type": "contains"},
+        {"text": "Output does NOT use getByTestId as primary query", "type": "not_contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Performance-critical SPA with budget constraints",
+      "prompt": "Scaffold a React SPA with 120KB gzipped bundle budget, LCP <2.5s target, manual chunk splitting, and module federation support. No SSR available.",
+      "expected_output": "vite.config with manualChunks, React.lazy usage, performance-oriented config, rollup-plugin-visualizer",
+      "assertions": [
+        {"text": "Output includes manualChunks configuration in vite.config", "type": "contains"},
+        {"text": "Output uses React.lazy + Suspense for route splitting", "type": "contains"},
+        {"text": "Output includes rollup-plugin-visualizer for bundle analysis", "type": "contains"},
+        {"text": "Output does NOT recommend SSR (constraint is SPA-only)", "type": "not_contains"},
+        {"text": "Output documents the chunk splitting strategy with rationale", "type": "contains"},
+        {"text": "Output references TanStack Query staleTime for caching strategy", "type": "contains"}
+      ]
+    }
+  ]
+}

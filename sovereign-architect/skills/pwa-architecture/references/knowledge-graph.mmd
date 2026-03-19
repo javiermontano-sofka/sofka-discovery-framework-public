@@ -1,0 +1,56 @@
+graph TD
+    A[PWA Architecture] --> B[Installability]
+    A --> C[Service Worker]
+    A --> D[Offline Strategy]
+    A --> E[Web Push]
+    A --> F[Background Sync]
+
+    B --> B1[manifest.webmanifest]
+    B --> B2[Install Prompt]
+    B --> B3[HTTPS required]
+    B1 --> B1a[name + short_name]
+    B1 --> B1b[icons 192 + 512]
+    B1 --> B1c[display standalone]
+    B1 --> B1d[start_url ?source=pwa]
+    B2 --> B2a[beforeinstallprompt]
+    B2 --> B2b[prompt on user action]
+    B2 --> B2c[track outcome]
+
+    C --> C1[Lifecycle]
+    C1 --> C1a[Install precache]
+    C1 --> C1b[Activate claim]
+    C1 --> C1c[Fetch intercept]
+    C --> C2[Workbox]
+    C2 --> C2a[CacheFirst]
+    C2 --> C2b[NetworkFirst]
+    C2 --> C2c[StaleWhileRevalidate]
+    C2 --> C2d[globPatterns precache]
+
+    D --> D1[App Shell]
+    D --> D2[Offline Fallback Page]
+    D --> D3[IndexedDB local data]
+    D --> D4[Cache API responses]
+    D1 --> D1a[Precached on install]
+    D2 --> D2a[NavigationRoute fallback]
+
+    E --> E1[VAPID Keys]
+    E --> E2[PushManager.subscribe]
+    E --> E3[web-push server library]
+    E --> E4[showNotification]
+    E --> E5[notificationclick handler]
+    E2 --> E2a[userVisibleOnly: true]
+    E2 --> E2b[applicationServerKey]
+
+    F --> F1[BackgroundSyncPlugin Workbox]
+    F --> F2[Mutation Queue]
+    F --> F3[Replay on reconnect]
+    F --> F4[24h retention]
+
+    A --> G[Update Flow]
+    G --> G1[SW update detected]
+    G --> G2[Prompt user]
+    G --> G3[skipWaiting + reload]
+
+    style A fill:#FF7E08,color:#fff
+    style C fill:#FFD700,color:#000
+    style E fill:#FFD700,color:#000
