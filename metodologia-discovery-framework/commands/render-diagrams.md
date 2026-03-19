@@ -5,7 +5,7 @@ user-invocable: true
 
 # /mao:render-diagrams
 
-> Detecta bloques ` ```mermaid ` en un entregable markdown y los renderiza como PNGs en `.discovery/assets/`.
+> Detecta bloques ` ```mermaid ` en un entregable markdown y los renderiza como PNGs en `discovery/assets/`.
 
 ## Uso
 

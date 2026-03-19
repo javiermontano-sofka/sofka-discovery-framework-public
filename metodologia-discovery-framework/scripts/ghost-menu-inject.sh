@@ -8,7 +8,7 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="${TARGET_DIR}/.discovery"
+DISCOVERY_DIR="${TARGET_DIR}/discovery"
 GHOST_FILE="${DISCOVERY_DIR}/ghost-menu.md"
 
 mkdir -p "${DISCOVERY_DIR}"

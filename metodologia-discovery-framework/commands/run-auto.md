@@ -36,11 +36,11 @@ If `$ARGUMENTS` is provided, use as project name and/or path to repository. Stil
 ### CP-0 · Ingestion
 
 1. **Full repo scan**: Read every file in the repository (respect .gitignore, max 500 files). Prioritize: manifests → configs → source code → tests → docs → scripts → migrations → schemas.
-2. **Companion file generation**: For every document file (md, pdf, docx, txt, xlsx) found in the repo, generate 3 companion files in `.discovery/`:
+2. **Companion file generation**: For every document file (md, pdf, docx, txt, xlsx) found in the repo, generate 3 companion files in `discovery/`:
    - `insights-{slug}.md` — distilled actionable intelligence (max 1 page)
    - `transcript-{slug}.md` — faithful text extraction and structured summary (max 3 pages)
    - `rag-priming-{slug}.md` — pre-chunked self-contained paragraphs for retrieval (max 5 pages)
-3. **Repo index**: Generate `.discovery/repo-index.json` with file inventory, structure, manifests, configs, docs, tests.
+3. **Repo index**: Generate `discovery/repo-index.json` with file inventory, structure, manifests, configs, docs, tests.
 4. **Attachment classification**: Auto-classify all non-code files: specs, constraints, org charts, budgets, business data, prior deliverables.
 5. **Industry identification**: Activate `metodologia-sector-intelligence` with inferred sector lens.
 6. **Gap declaration**: Declare findings and gaps. If CRITICAL gaps → document as assumption [ASSUMPTION] and continue.

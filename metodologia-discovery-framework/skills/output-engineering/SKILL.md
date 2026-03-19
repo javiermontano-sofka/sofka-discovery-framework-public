@@ -1,11 +1,11 @@
 ---
 name: metodologia-output-engineering
-author: Javier Montaño · Comunidad MetodologIA
+author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[source-file.md] [format: html|docx|pptx|xlsx|pdf|all] — e.g. './06_Roadmap.md html'"
 description: >
   Ghost menu system and multi-format production pipeline — converts markdown source
   of truth into HTML, DOCX, PPTX, XLSX, and PDF outputs while preserving content
-  integrity and brand compliance. Use when producing format conversions, managing
+  integrity and Neo-Swiss brand compliance. Use when producing format conversions, managing
   the ghost menu workflow, or orchestrating multi-format delivery packages.
 allowed-tools:
   - Read
@@ -18,7 +18,7 @@ allowed-tools:
 
 # Output Engineering — Ghost Menu & Multi-Format Pipeline
 
-Orchestrates the ghost menu system: markdown as source of truth, format conversion on demand, brand compliance across all output formats, and production quality control. Owns the .md to HTML | DOCX | PPTX | XLSX | PDF pipeline.
+Orchestrates the ghost menu system: markdown as source of truth, format conversion on demand, **Neo-Swiss brand compliance across all output formats**, and production quality control. Owns the .md to HTML | DOCX | PPTX | XLSX | PDF pipeline.
 
 ## Guiding Principle
 
@@ -28,8 +28,27 @@ Orchestrates the ghost menu system: markdown as source of truth, format conversi
 
 1. **Single source of truth.** Markdown is the master. Derived formats are regenerated from the markdown.
 2. **Format-optimized, not format-duplicated.** Each format leverages its strengths. A PPTX is not a markdown with slides — it is a visual narrative.
-3. **Brand compliance is non-negotiable.** MetodologIA Design System v4 in every pixel of every format.
+3. **Brand compliance is non-negotiable.** MetodologIA Neo-Swiss Design System v6 in every pixel of every format.
 4. **Production-ready means finished.** No "drafts" in derived formats. If it is generated, it is ready for the client.
+
+## CRITICAL: Auto-Brand Protocol
+
+**Every format produced by this pipeline MUST be Neo-Swiss brand-compliant.** Before generating any output:
+
+```
+Read ${CLAUDE_SKILL_DIR}/../../references/brand-config-neoswiss.json
+```
+
+### Format Routing
+
+| Target Format | Skill to Invoke | Brand Assets Required |
+|--------------|----------------|----------------------|
+| **HTML** | `metodologia-html-brand` | `brand-config-neoswiss.json` + `neo-swiss-template.css` + `logo-metodologia.svg` |
+| **DOCX** | `metodologia-brand-docx` | `brand-config-neoswiss.json` (docx section) |
+| **PPTX** | `metodologia-brand-pptx` | `brand-config-neoswiss.json` (pptx section) |
+| **XLSX** | `metodologia-brand-xlsx` | `brand-config-neoswiss.json` (xlsx section) |
+| **PDF** | Generate from HTML (highest fidelity) | Same as HTML |
+| **MD** | markdown-excellence standard | Evidence tags, Mermaid, cross-references |
 
 ## Inputs
 
@@ -56,10 +75,11 @@ After ANY deliverable markdown is generated and passes editorial review:
 1. Deliverable.md created → editorial review passes
 2. Ghost menu offered to user
 3. User selects format(s)
-4. Format-specialist activated with source + target
-5. Output generated with brand compliance
-6. Quality check: content integrity + brand + accessibility
-7. File delivered to user
+4. Read brand-config-neoswiss.json
+5. Route to format-specific skill (see Format Routing table)
+6. Output generated with Neo-Swiss brand compliance
+7. Quality check: content integrity + brand + accessibility
+8. File delivered to user
 ```
 
 ### Auto-Activation Rules
@@ -83,50 +103,54 @@ After ANY deliverable markdown is generated and passes editorial review:
 
 | Element | Standard |
 |---------|----------|
-| Template | MetodologIA Design System v4 |
+| Template | MetodologIA Neo-Swiss Design System v6 |
 | Structure | Self-contained single file |
-| CSS | Inline (no external dependencies) |
+| CSS | Inline (embed `neo-swiss-template.css` + custom components) |
 | Mermaid | CDN v10 `<pre class="mermaid">` |
-| Colors | Primary #6366F1, Dark #1A1A2E, Success #22D3EE |
-| Typography | Clash Grotesk (display), Inter (body) |
+| Colors | Navy #122562, Gold #FFD700, Blue #137DC5 |
+| Typography | Poppins (titles), Trebuchet MS (body) |
+| Body bg | Off-white #F8F9FC |
+| Shadows | Navy-tinted rgba(18,37,98,...) |
 | Print | `@media print` styles included |
 | Accessibility | WCAG 2.1 AA, semantic HTML5, aria labels |
-| Footer | © Comunidad MetodologIA, date, page number |
+| Logo | Inline SVG from `logo-metodologia.svg` |
+| Footer | Navy bg, gold border, badges, tagline |
 
 ### DOCX Production
 
 | Element | Standard |
 |---------|----------|
-| Conversion | Pandoc-compatible markdown structure |
-| Cover page | Project name, date, version, MetodologIA logo |
+| Conversion | python-docx with Neo-Swiss brand styles |
+| Cover page | Navy bg, white title, gold accent, logo |
 | TOC | Auto-generated from heading hierarchy |
 | Headers/Footers | Branded with page numbers |
-| Tables | Zebra stripes, semaphore colors preserved |
+| Typography | Poppins headings, Trebuchet MS body, Century Gothic notes |
+| Tables | Navy header fill (#122562), zebra stripes (#F8F9FC) |
 | Diagrams | Pre-rendered or described (Mermaid to description) |
-| Font | Inter family fallback |
 
 ### PPTX Production
 
 | Element | Standard |
 |---------|----------|
-| Slide master | MetodologIA brand template |
-| Layouts | Title, Content, Two-Column, Full-Image |
+| Slide master | Navy bg (#122562), Poppins titles, Trebuchet MS body |
+| Accent | Gold #FFD700 for highlights, KPI values, divider numbers |
+| Layouts | Title, Section Divider, Content, Two-Column, Full-Image, KPI, Closing |
 | Narrative arc | Hook -> Context -> Findings -> Implications -> Action |
 | Density | One key message per slide (NO wall-of-text) |
 | Speaker notes | Evidence references + talking points |
 | Limit | 20 slides max executive, 30 max technical |
-| Transitions | Finding -> So What -> Now What |
 
 ### XLSX Production
 
 | Element | Standard |
 |---------|----------|
-| Structure | Headers, filters, conditional formatting |
-| Data | Values only (NO formulas — formula-free) |
-| Color coding | Green/Yellow/Red as cell background colors |
-| Sheets | One per scoring matrix or data table |
-| Pivot-ready | Structure compatible with pivot tables |
-| Dashboard | Summary sheet first, detail sheets after |
+| Headers | Navy fill (#122562), white Poppins text |
+| Accent rows | Gold fill (#FFD700), navy text |
+| Body | Trebuchet MS, dark text (#1F2833) |
+| Borders | Light gray (#E8EAF0) |
+| Zebra | Off-white (#F8F9FC) alternating |
+| Conditional formatting | Blue positive, amber warning, red critical |
+| Structure | Summary sheet first, detail sheets after, filters auto |
 
 ### PDF Production
 
@@ -135,23 +159,41 @@ After ANY deliverable markdown is generated and passes editorial review:
 | Source | Generated from HTML (highest fidelity) |
 | Layout | Print-optimized margins, orphan/widow control |
 | Contrast | High contrast for readability |
-| TOC | Page numbers included |
 | Quality | Embed fonts, flatten transparency |
-| Archival | Signature-ready where applicable |
 
-## Brand Compliance Checklist
+## Brand Compliance Checklist (ALL Formats)
 
 Every output format MUST pass:
 
-| Element | Check |
-|---------|-------|
-| Primary color | #6366F1 (orange) used correctly |
-| Dark color | #1A1A2E (navy) for text/headers |
-| Success color | #22D3EE (gold) — **NEVER green** |
-| Logo | Top-left, consistent sizing |
-| Footer | © Comunidad MetodologIA + page + date |
-| Typography | Clash Grotesk display, Inter body |
-| Disclaimer | Cost magnitude disclaimer on roadmap/pitch |
+| Element | Neo-Swiss Standard |
+|---------|-------------------|
+| Primary color | Navy #122562 |
+| Accent color | Gold #FFD700 |
+| Action color | Blue #137DC5 |
+| Body text | Dark #1F2833 |
+| Title font | Poppins |
+| Body font | Trebuchet MS |
+| Note font | Futura / Century Gothic |
+| Logo | MetodologIA SVG (squircle + 3 pillars + gold circle) |
+| Footer | MetodologIA tagline + badges |
+| Shadows | Navy-tinted rgba(18,37,98,...) — NOT black |
+| Success color | Blue #137DC5 — **NEVER green, NEVER cyan** |
+
+### Legacy Token Blocklist
+
+These tokens are BANNED. If any appear in output, the deliverable FAILS brand compliance:
+
+| Banned Token | Was Used In | Replaced By |
+|-------------|------------|-------------|
+| `#6366F1` (indigo) | DS v4/v5 primary | `#122562` (navy) |
+| `#22D3EE` (cyan) | DS v4/v5 success | `#137DC5` (blue) |
+| `#1A1A2E` (dark) | DS v4/v5 bg | `#F8F9FC` (off-white) or `#122562` (navy) |
+| `#0F172A` (slate) | DS v4/v5 body bg | `#F8F9FC` (off-white) |
+| `#0A122A` (deep navy) | DS brand v1 | `#122562` (navy) |
+| Clash Grotesk | DS v4/v5 display | Poppins |
+| Inter | DS v4/v5 body | Trebuchet MS |
+| Montserrat | DS brand v1 body | Trebuchet MS |
+| `rgba(0,0,0,...)` shadows | DS v4/v5 | `rgba(18,37,98,...)` |
 
 ## Content Integrity Validation
 
@@ -162,9 +204,9 @@ After format conversion, verify:
 | All sections present | Compare heading count md vs output |
 | Tables complete | Row/column count matches |
 | Diagrams rendered | Mermaid visible or described |
-| Evidence tags preserved | [CÓDIGO] etc. visible in output |
+| Evidence tags preserved | [CODIGO] etc. visible in output |
 | Cross-references working | Links/references intact |
-| Semaphore colors correct | Green/Yellow/Red rendered in correct colors |
+| Semantic colors correct | Blue positive, amber warning, red critical |
 | Numbers match | Financial figures identical to source |
 
 ## Multi-Format Delivery Package
@@ -174,30 +216,20 @@ When user requests `all`:
 ```
 {project_name}/
 ├── {deliverable}.md          ← Source of truth
-├── {deliverable}.html        ← Digital presentation
-├── {deliverable}.docx        ← Editable/signable
-├── {deliverable}.pptx        ← Live presentation (if applicable)
-├── {deliverable}.xlsx        ← Data tables (if applicable)
+├── {deliverable}.html        ← Digital presentation (Neo-Swiss)
+├── {deliverable}.docx        ← Editable/signable (Neo-Swiss)
+├── {deliverable}.pptx        ← Live presentation (Neo-Swiss) — if applicable
+├── {deliverable}.xlsx        ← Data tables (Neo-Swiss) — if applicable
 ├── {deliverable}.pdf         ← Archival
 └── README.md                 ← Package contents + generation metadata
 ```
-
-## Validation Gate
-
-| Criterion | Check |
-|-----------|-------|
-| Source markdown passes editorial review | markdown-excellence standard met |
-| Brand compliance | All 7 brand elements verified |
-| Content integrity | All sections, tables, diagrams preserved |
-| Format optimization | Each format leverages its medium's strengths |
-| Accessibility | WCAG 2.1 AA for HTML, alt-text for all visuals |
-| Production quality | No draft watermarks, no placeholder content |
 
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
 - **Attribution**: Expert committee of the MetodologIA Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
+- **Tagline**: *"Construido por profesionales, potenciado por la red agentica de MetodologIA."*
+- **Brand**: Neo-Swiss Clean & Soft Explainer v6
 
 ## Edge Cases
 
@@ -205,66 +237,13 @@ When user requests `all`:
 - **Very long deliverables**: PPTX should summarize, not transcribe. XLSX extracts data tables only.
 - **No tabular data**: Skip XLSX suggestion in ghost menu.
 - **Client without MetodologIA brand permission**: Degrade gracefully to neutral styling.
+- **Legacy HTML with DS v4/v5 tokens**: Migrate to Neo-Swiss. Replace all banned tokens.
 
 ## Limits
 
-- This skill owns **format production and the ghost menu pipeline**. It does NOT own content quality (that is editorial-director + content-strategist) or individual format expertise (that is format-specialist agent).
+- This skill owns **format production and the ghost menu pipeline**. It does NOT own content quality (that is editorial-director + content-strategist) or individual format expertise (that is format-specific skills).
 - NEVER modify content during format conversion. Form changes, substance does not.
 - NEVER produce formats not requested. Ghost menu suggests — user decides.
-
-## Casos Borde
-
-| Caso | Estrategia de Manejo |
-|------|---------------------|
-| Source markdown contains raw Mermaid but target format is DOCX or PPTX (no native Mermaid support) | Convert Mermaid to descriptive text paragraphs; add a note "[Diagram available in HTML/Markdown version]"; never leave raw Mermaid syntax in non-rendering formats |
-| Client does not have MetodologIA brand permission (white-label engagement) | Degrade gracefully to neutral styling: remove MetodologIA logo, switch to system fonts (sans-serif), replace brand colors with neutral gray palette; preserve content structure |
-| Source markdown is >30 pages and target is PPTX | Do NOT transcribe; extract key findings, decisions, and visuals into max 20 slides; add "Full report available in .md/.html" reference on title slide |
-| User requests "all" formats but source has no tabular data | Skip XLSX from the package; add a note in README.md explaining XLSX omission; generate remaining formats normally |
-
-## Decisiones y Trade-offs
-
-| Decision | Alternativa Descartada | Justificacion |
-|----------|----------------------|---------------|
-| Markdown as single source of truth; all other formats are projections | Allow direct editing in derived formats (DOCX, HTML) | Direct editing in derived formats creates version divergence; single-source ensures content integrity and enables regeneration on demand |
-| Ghost menu is offered but never auto-executes format conversion | Auto-generate all formats after every deliverable | Auto-generation wastes tokens and storage for formats the user may not need; the ghost menu gives the user control over what gets produced |
-| PPTX follows "1 message per slide" rule with 20-slide max | Allow dense slides to preserve all source content | Dense slides defeat the purpose of a presentation format; the 1-message rule forces the author to distill, which improves communication quality |
-
-## Knowledge Graph
-
-```mermaid
-graph TD
-    subgraph Core["Output Engineering Pipeline"]
-        A["Source Markdown"] --> B["Ghost Menu Trigger"]
-        B --> C["Format Selection"]
-        C --> D["Brand Compliance Check"]
-        D --> E["Content Integrity Validation"]
-    end
-    subgraph Inputs["Inputs"]
-        F["Deliverable .md"] --> A
-        G["Target Format"] --> C
-    end
-    subgraph Outputs["Outputs"]
-        E --> H["HTML"]
-        E --> I["DOCX"]
-        E --> J["PPTX"]
-        E --> K["XLSX"]
-        E --> L["PDF"]
-    end
-    subgraph Related["Related Skills"]
-        M["mermaid-diagramming"] -.-> A
-        N["data-viz-storytelling"] -.-> A
-    end
-```
-
-## Output Templates
-
-### Markdown (default)
-- Filename: `{deliverable}_{cliente}_{WIP}.md`
-- Structure: Source of truth; all content sections; embedded Mermaid; ghost menu at bottom offering format conversion
-
-### HTML
-- Filename: `{deliverable}_{cliente}_{WIP}.html`
-- Structure: Self-contained single file; MetodologIA Design System v4; inline CSS; Mermaid CDN v10; responsive; print-ready @media print; WCAG 2.1 AA; branded footer
 
 ## Evaluacion
 
@@ -278,3 +257,6 @@ graph TD
 | Value Density | 15% | Cada seccion aporta valor practico directo |
 
 **Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+
+---
+**Autor:** Javier Montano · Comunidad MetodologIA | **Version:** 2.0.0 Neo-Swiss

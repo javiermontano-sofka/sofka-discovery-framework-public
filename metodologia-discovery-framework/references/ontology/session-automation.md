@@ -1,7 +1,7 @@
 # Automatización de Sesión
 
 > MAO Framework — Ontología viva
-> Referencia canónica del comportamiento automático de sesión, ghost menu y estructura `.discovery/`.
+> Referencia canónica del comportamiento automático de sesión, ghost menu y estructura `discovery/`.
 
 ---
 
@@ -103,12 +103,12 @@ Contiene instrucciones específicas del orquestador para esta sesión:
 
 ---
 
-## Estructura `.discovery/`
+## Estructura `discovery/`
 
-Cada repositorio de cliente mantiene un directorio `.discovery/` con el estado completo del discovery:
+Cada repositorio de cliente mantiene un directorio `discovery/` con el estado completo del discovery:
 
 ```
-.discovery/
+discovery/
 ├── repo-index.json          # Inventario estructurado del repositorio
 ├── SESSION-README.md         # Contexto del proyecto (auto-generado)
 ├── SESSION-CLAUDE.md         # Instrucciones del orquestador (auto-generado)
@@ -137,7 +137,7 @@ Cada repositorio de cliente mantiene un directorio `.discovery/` con el estado c
 | `session-changelog.md` | Automática | Automática en cada acción |
 | `session-state.json` | Automática | Automática (serialización de estado) |
 | `rag-priming/*.md` | Por comando o automática | Automática al procesar adjuntos |
-| `.needs-priming` | Automática (marker) | Eliminado al completar priming |
+| `needs-priming` | Automática (marker) | Eliminado al completar priming |
 | `insights/*` | Manual (durante discovery) | Manual |
 | `deliverables/*` | Por comando | Manual (improve) |
 
@@ -153,7 +153,7 @@ El sistema de auto-priming detecta y gestiona el estado de conocimiento previo (
 SessionStart
   → auto-prime-check.sh
     → ¿Existen priming-rag-*.md?
-      → NO: crear .needs-priming marker + calibration-digest (NO PRIMED)
+      → NO: crear needs-priming marker + calibration-digest (NO PRIMED)
       → SI: generar calibration-digest con cobertura y dominios
   → prompt injection incluye instrucción de priming
 
@@ -178,7 +178,7 @@ El archivo `calibration-digest.md` contiene:
 
 Cada adjunto o referencia web investigada durante el discovery genera automáticamente un archivo de priming:
 
-1. **Archivo recibido** → leer/interpretar → `priming-rag-{nombre}.md` en `.discovery/rag-priming/`
+1. **Archivo recibido** → leer/interpretar → `priming-rag-{nombre}.md` en `discovery/rag-priming/`
 2. **URL investigada** → fetch + extract → `priming-rag-{dominio-tema}.md`
 3. **Después de crear** → `post-prime-calibrate.sh` actualiza `calibration-digest.md`
 4. **El orquestador** → lee calibración actualizada → ajusta profundidad de análisis

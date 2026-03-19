@@ -3,7 +3,7 @@
 # MetodologIA MAO v1.2 — Open Discovery Framework
 # MIT License
 #
-# Sets up .discovery/ structure, pre-populates session context,
+# Sets up discovery/ structure, pre-populates session context,
 # runs G0 security scan, and prepares the environment for Claude Code.
 
 set -euo pipefail
@@ -70,22 +70,22 @@ echo ""
 read -rp "  Sector/industria (banking, retail, health, SaaS, manufacturing, gov, energy): " INDUSTRY
 INDUSTRY="${INDUSTRY:-N/A}"
 
-# ─── Step 2: Create .discovery/ structure ───
+# ─── Step 2: Create discovery/ structure ───
 echo ""
-echo "━━━ Step 2/5: Creating .discovery/ structure ━━━"
+echo "━━━ Step 2/5: Creating discovery/ structure ━━━"
 
-DISCOVERY_DIR="$TARGET_DIR/.discovery"
+DISCOVERY_DIR="$TARGET_DIR/discovery"
 mkdir -p "$DISCOVERY_DIR"/{deliverables,insights,transcripts,rag-priming,assets,attachments}
 
 # Create .gitignore for sensitive files
 cat > "$DISCOVERY_DIR/.gitignore" << 'GIEOF'
 # MAO session files (sensitive, ephemeral)
-.mao-secrets-audit.log
-.mao-secrets-map.json
+mao-secrets-audit.log
+mao-secrets-map.json
 session-state.json
 GIEOF
 
-echo "  ✅ .discovery/ structure created (7 subdirs)"
+echo "  ✅ discovery/ structure created (7 subdirs)"
 
 # ─── Step 3: Pre-populate SESSION-README.md ───
 echo ""
@@ -164,7 +164,7 @@ if bash "$PLUGIN_DIR/scripts/secrets-scan.sh" "$TARGET_DIR" 2>/dev/null; then
 else
   G0_STATUS="FINDINGS"
   echo "  ⚠️  G0 Security Gate: FINDINGS DETECTED"
-  echo "     Review: .discovery/.mao-secrets-audit.log"
+  echo "     Review: discovery/mao-secrets-audit.log"
 fi
 
 # Update session state with G0 result
@@ -185,7 +185,7 @@ echo "     Servicio:    ${TIPO_SERVICIO}"
 echo "     Industria:   ${INDUSTRY}"
 echo "     G0 Security: ${G0_STATUS}"
 echo ""
-echo "  📁 .discovery/ structure:"
+echo "  📁 discovery/ structure:"
 
 # Print tree if available
 if command -v tree >/dev/null 2>&1; then

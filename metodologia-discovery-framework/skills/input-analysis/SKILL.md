@@ -1,8 +1,6 @@
 ---
-name: metodologia-input-analysis
-author: Javier Montaño · Comunidad MetodologIA
-description: "Pre-processing layer that analyzes raw user inputs — detects surface errors (dyslexia, haste, spelling, punctuation, syntax), performs root cause analysis (5 Whys), impact tracing (7 So-Whats), and intent gap analysis — reformulating into a precise, actionable prompt."
-argument-hint: "<raw user input> [--passes 1,2,3,4,5] [--language es|en]"
+name: input-analysis
+description: "This skill should be used when the user's input is messy, vague, ambiguous, contains typos, spanglish, or abbreviations, or when you need to understand what the user really means before executing a complex task. Pre-processing layer that detects surface errors (dyslexia, haste, spelling, punctuation, syntax), performs root cause analysis (5 Whys), impact tracing (7 So-Whats), and intent gap analysis — reformulating into a precise, actionable prompt. Make sure to use this skill whenever the user writes in informal shorthand, voice-to-text produces garbled text, a message contains multiple questions that need decomposition, emotional undertones mask the real request, or when dangling references like 'that thing we discussed' need resolution — even if the user doesn't explicitly ask for input analysis."
 allowed-tools:
   - Read
   - Grep
@@ -10,35 +8,44 @@ allowed-tools:
   - Bash
 ---
 
-# Input Analysis — Input Pre-processing Layer
+# Input Analysis
 
-> **Guiding Principle:** Presume imperfection — every human input contains surface noise, intent gaps, or implicit context. Capture what the user *meant*, not just what they *wrote*.
+Pre-processing layer that captures what the user *meant*, not just what they *wrote*. Every human input may contain surface noise, intent gaps, or implicit context — this skill detects and resolves them before downstream skills execute.
 
-## When to Activate
+## Assumptions & Limits
 
-This skill is a **pre-processing layer**. It executes BEFORE other skills activate. Not all inputs need deep analysis.
+- Infers intent from textual signals. When inference confidence is low, flag the ambiguity instead of committing to a guess.
+- Language detection is heuristic. Spanglish inputs may lose nuance in reformulation.
+- The 5 Whys analysis works best with sufficient thread context. On cold-start (first message, no history), root cause depth is limited.
+- Reformulation adds nothing the user did not express or imply. The reason: adding phantom requirements derails downstream skills and wastes cycles.
+- For very short inputs (< 5 words), skip passes 2-3 and focus only on intent verification.
+
+## Usage
+
+```
+/input-analysis "eso q hblamos ayer dl tema ese pa la reunion d mañna"
+/input-analysis --mode superficie "ncsito el diganostico del legasy"
+/input-analysis --mode intencion "Ayúdame con el proyecto del banco"
+```
+
+## Before Analyzing
+
+1. Read the raw user input in full — including any attachments or referenced context.
+2. Assess input quality against this activation table to determine which passes to run:
 
 | Input Quality | Passes to Execute | Example |
-|-------------------|------------------|---------|
+|---|---|---|
 | Clear + specific | Pass 4 only (intent verification) | "Crear análisis AS-IS del sistema de facturación SAP" |
 | Clear + vague scope | Passes 2, 4, 5 | "Ayúdame con el proyecto del banco" |
 | Messy + clear intent | Passes 1, 5 | "ncsito el diganostico del legasy" |
 | Messy + vague | All 5 passes | "eso q hblamos ayer dl tema ese pa la reunion d mañna" |
 
-**Critical rule:** Do NOT over-analyze clear and well-formed inputs.
-
-## Inputs
-
-| Input | Source | Usage |
-|-------|--------|-----|
-| Raw user text | Direct conversation | Material to analyze |
-| Prior thread context | Previous messages | Reference resolution |
-| Mentioned attachments | Documents, code, images | Implicit context |
+Over-analyzing clear inputs wastes time and can introduce phantom intent. The activation table exists to prevent this — match depth to noise level.
 
 ## Parameters
 
 | Parameter | Values | Default |
-|-----------|---------|---------|
+|---|---|---|
 | `{MODO_OPERACIONAL}` | `integral`, `superficie`, `intencion`, `reformulacion` | `integral` |
 | `{IDIOMA}` | `es`, `en`, `mixed` | `es` |
 | `{PROFUNDIDAD}` | `express`, `standard`, `deep` | `standard` |
@@ -78,7 +85,7 @@ Detect and catalog surface errors. **Always presume** that the input has noise.
 
 **Output:** Corrected text + list of corrections + quality assessment.
 
-**Critical rule:** Preserve intent when correcting. Correct only surface errors — NEVER change meaning.
+Preserve intent when correcting. Correct only surface errors, not meaning — the reason: if a correction alters what the user meant, every downstream pass operates on a false premise.
 
 ### Pass 2: Five Whys (Root Cause)
 
@@ -166,27 +173,11 @@ CALIBRACIÓN: [standard | premium | flagship]
 
 ## Integration with Discovery Pipeline
 
+The reformulated prompt from Pass 5 becomes the input for downstream skills. Higher input quality leads to fewer downstream iterations.
+
 ```
-[metodologia-input-analysis] → [metodologia-discovery-orchestrator] → [specific skill] → [excellence-loop]
+[input-analysis] → [discovery-orchestrator] → [specific skill] → [excellence-loop]
 ```
-
-The reformulated prompt from Pass 5 becomes the input for the metodologia-discovery-orchestrator or any pipeline skill. Higher input quality leads to higher baseline quality and fewer downstream iterations.
-
-**Command activation:**
-
-| Command | Activation |
-|---------|-----------|
-| `/discovery`, `/discovery-auto` | Automatic in CP-0 (Ingestion) |
-| Any document command | On demand if input is ambiguous |
-| Direct interaction | When the conductor detects noise |
-
-## Assumptions & Limits
-
-- This skill infers intent from textual signals. It does not read minds. When inference confidence is low, flag the ambiguity instead of committing to a guess.
-- Language detection is heuristic. Spanglish inputs may lose nuance in reformulation.
-- The 5 Whys analysis works best with sufficient thread context. On cold-start (first message, no history), root cause depth is limited.
-- Reformulation MUST NEVER add requirements the user did not express or imply. Clarify, do not invent.
-- For very short inputs (< 5 words), skip passes 2-3 and focus only on intent verification.
 
 ## Workarounds
 
@@ -215,36 +206,50 @@ The reformulated prompt from Pass 5 becomes the input for the metodologia-discov
 | Inference vs question | Infer intent | Ask the user | Confidence >80% → infer; <80% → ask |
 | Short vs full reformulation | Minimal prompt | Prompt with full context | Downstream task complexity |
 
-## Antipatterns
+## Example: Good vs Bad
 
-| Problem | Bad Pattern | Fix |
-|----------|-------------|-----|
-| Over-analysis | Running 5 Whys on "What time is it?" | Use the escalation table |
-| Projection | Assuming intent without textual evidence | Ground every inference in specific words/signals |
-| Corrective arrogance | Changing meaning when correcting errors | Preserve intent; correct only surface |
-| Lost nuance | Reformulation eliminates emotional context | Include emotional signals in context section |
-| Inflated reformulation | Output 10x longer than input | Separate "necessary context" from "nice to have" |
+**Input:** `"ncsito q m ayuden cn el tema dl banco ese d la reunion xq el jefe sta presinando"`
+
+**Bad analysis:**
+```
+Corrected: "Necesito que me ayuden con el tema del banco de la reunión porque el jefe está presionando."
+Intent: El usuario quiere ayuda con un proyecto bancario.
+Recommendation: Crear un documento de análisis del banco.
+```
+Why it fails: Surface-only correction with no root cause analysis. "Proyecto bancario" is a guess — nothing says it's a project. Skipped emotional signals ("presionando" = stress). The recommendation invents a deliverable the user never requested.
+
+**Good analysis:**
+```
+Surface: 11 corrections (79% haste, 14% spelling, 7% spanglish). Confidence: HIGH.
+Root cause (4 whys): Methodological blockage analyzing an opaque legacy system under leadership pressure.
+Impact: PREMIUM — chain reaches level 6 (commercial credibility).
+Intent gaps: Scope (underestimated), Context (missing meeting details), Emotional (stress undertone).
+Reformulated: OBJETIVO: Strategy for AS-IS analysis of opaque banking legacy system...
+Open questions: 5 clarification items flagged for conductor.
+```
+Why it works: Every pass adds distinct value. Root cause goes beyond the literal ask. Emotional signals preserved. Open questions flagged instead of guessed. Calibration justified by impact chain.
+
+See `references/examples/sample-output.md` for a complete 5-pass example with this input.
 
 ## Validation Gate
 
 Before passing the reformulated prompt downstream, confirm:
 
-- [ ] Surface corrections (if any) did NOT alter meaning
+- [ ] Surface corrections (if any) did not alter meaning
 - [ ] Root cause analysis is grounded in available context, not speculation
 - [ ] The "real ask" differs from the literal ask only where evidence supports it
 - [ ] Reformulated prompt has: objective, constraints, context, and expected output
-- [ ] Unresolvable ambiguities are explicitly flagged
-- [ ] Analysis depth matches input quality (do not over-analyze clear inputs)
+- [ ] Unresolvable ambiguities are explicitly flagged as open questions
+- [ ] Analysis depth matches input quality (activation table was followed)
 - [ ] Output language matches user language (or pipeline default)
+- [ ] Emotional signals from the input are preserved in the CONTEXTO or INTENCIÓN fields
 
 ## Output Format Protocol
-
-**Analysis output format:**
 
 ```markdown
 ## Análisis de Input
 
-**Input original:** [texto crudo]
+**Input original:** [raw text]
 **Confianza:** ALTA | MEDIA | BAJA
 **Pases ejecutados:** 1, 2, 3, 4, 5
 
@@ -252,13 +257,12 @@ Before passing the reformulated prompt downstream, confirm:
 | Original | Corregido | Tipo | Confianza |
 |----------|-----------|------|-----------|
 | ncsito | necesito | Afán — vocales faltantes | ALTA |
-| diganostico | diagnóstico | Ortografía — transposición | ALTA |
 
 ### Causa raíz (5 Porqués)
-[Cadena de porqués con parada natural]
+[Chain with natural stop + open questions]
 
 ### Impacto (7 Entonces-qués)
-[Cadena de impacto con calibración]
+[Impact chain with calibration level]
 
 ### Brechas de intención
 | Tipo | Explícito | Implícito | Brecha |
@@ -279,110 +283,16 @@ Escalate to the conductor when:
 - Intent confidence < 50% after all passes
 - Input contains irreconcilable contradictory information
 - Multiple valid interpretations with divergent impact
-- User appears to be in emotional mode (frustration, pressure) — conductor must validate before proceeding
+- User appears to be in emotional mode (frustration, pressure) — conductor should validate before proceeding
 - Input suggests significant scope change relative to ongoing discovery
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the MetodologIA Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
-
-## Casos Borde
-
-| Caso | Estrategia de Manejo |
-|---|---|
-| Input intencionalmente informal | No corregir tono; corregir solo errores objetivos y preservar la voz del usuario; flag diferencia entre informalidad y error |
-| "Just do X" — senial de skip deep analysis | Ejecutar solo Pass 4 (intent verification); pass-through con reformulacion minima; no sobre-analizar |
-| Input con emojis como contenido semantico | Interpretar emojis como seniales emocionales (fuego = urgencia, cara enojada = frustracion, checkmark = confirmacion); incluir en contexto |
-| Voice-to-text con artefactos | Capitalizacion aleatoria, ausencia de puntuacion, homofonia extrema; tratar como Pass 1 con confianza ALTA en correcciones |
-| Contexto solo en attachments, no en texto | Si el usuario dice "review this" adjuntando un PDF, el analisis de intencion se basa en contenido del attachment, no en el texto |
-
-## Decisiones y Trade-offs
-
-| Decision | Alternativa Descartada | Justificacion |
-|---|---|---|
-| Presume imperfeccion en cada input humano | Asumir que el input es correcto hasta demostrar lo contrario | La evidencia muestra que la mayoria de inputs contienen noise, gaps o contexto implicito; presuponer imperfeccion activa la deteccion sin sobrecargar inputs limpios |
-| Profundidad de analisis adaptada a calidad del input | Misma profundidad para todos los inputs | Sobre-analizar inputs claros desperdicia tokens y tiempo; sub-analizar inputs confusos produce reformulaciones incorrectas; la tabla de escalacion calibra el esfuerzo |
-| Inferir cuando confianza > 80%, preguntar cuando < 80% | Siempre inferir o siempre preguntar | Inferir siempre arriesga errores de interpretacion; preguntar siempre frustra al usuario y ralentiza el pipeline; el umbral de 80% balancea flujo y precision |
-| Corregir solo superficie, NUNCA cambiar significado | Corregir agresivamente incluyendo reestructuracion | Alterar el significado cuando se corrigen errores destruye la intencion del usuario; preservar intent es mas importante que correccion gramatical |
-
-## Knowledge Graph
-
-```mermaid
-graph TD
-    subgraph Core["Core: Input Analysis"]
-        P1[Pass 1: Surface Analysis]
-        P2[Pass 2: Five Whys]
-        P3[Pass 3: Seven So-Whats]
-        P4[Pass 4: Intent Analysis]
-        P5[Pass 5: Reformulation]
-    end
-
-    subgraph Inputs["Inputs"]
-        RAW[Raw User Text]
-        CTX[Thread Context]
-        ATT[Attachments]
-    end
-
-    subgraph Outputs["Outputs"]
-        CORR[Corrected Text]
-        ROOT[Root Cause]
-        INTENT[Real Ask]
-        PROMPT[Reformulated Prompt]
-    end
-
-    subgraph Related["Related Skills"]
-        ORCH[discovery-orchestrator]
-        EXCEL[excellence-loop]
-        ANY[Any Pipeline Skill]
-    end
-
-    RAW --> P1
-    CTX --> P2
-    ATT --> P4
-    P1 --> P2 --> P3 --> P4 --> P5
-    P5 --> CORR
-    P5 --> ROOT
-    P5 --> INTENT
-    P5 --> PROMPT
-    PROMPT --> ORCH
-    PROMPT --> ANY
-    ORCH --> EXCEL
-```
-
-## Output Templates
-
-| Formato | Nombre | Contenido |
-|---|---|---|
-| **Markdown** | `Input_Analysis_{timestamp}.md` | Analisis completo: input original, confianza, pases ejecutados, correcciones de superficie, causa raiz, impacto, brechas de intencion y prompt reformulado con objetivo, contexto, intencion, restricciones y calibracion. |
-| **DOCX** | `Input_Analysis_Report_{timestamp}.docx` | Reporte formal de analisis para documentar decisiones de interpretacion en contexto de discovery; util cuando el input ambiguo requiere trazabilidad de la reformulacion. |
-| **HTML** | `Input_Analysis_{timestamp}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Light-First Technical. Incluye tabla de correcciones de superficie con indicador de confianza, cadena de 5 Porqués colapsable, y prompt reformulado resaltado. |
-| **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Correcciones de Superficie, Análisis de Causa Raíz, Impacto, Brechas de Intención, Prompt Reformulado. |
-| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]). |
-
-## Evaluacion
-
-| Dimension | Peso | Criterio |
-|---|---|---|
-| Trigger Accuracy | 10% | Se activa como pre-processing layer cuando el input tiene noise, vaguedad o gaps; no sobre-analiza inputs claros y bien formados |
-| Completeness | 25% | Los 5 pases cubren superficie, causa raiz, impacto, intencion y reformulacion sin huecos; ambiguedades no resueltas flaggeadas explicitamente |
-| Clarity | 20% | Correcciones de superficie no alteran significado; reformulacion tiene objetivo, contexto, intencion, restricciones y output esperado; calibracion explicita |
-| Robustness | 20% | Maneja dislexia, prisa, spanglish, voice-to-text, emojis, sarcasmo e inputs con solo attachments con estrategias diferenciadas |
-| Efficiency | 10% | Modos operacionales (integral, superficie, intencion, reformulacion) calibran profundidad al input; no ejecuta pases innecesarios |
-| Value Density | 15% | Cada pase aporta valor practico directo; la reformulacion produce prompts de mayor calidad que reducen iteraciones downstream |
-
-**Umbral minimo: 7/10.**
-
----
 
 ## Additional Resources
 
-- `references/knowledge-graph.mmd` — Skill relationship graph
-- `references/body-of-knowledge.md` — Primary sources (linguistics, UX writing, NLP)
-- `references/state-of-the-art.md` — Natural language processing trends 2024-2028
-- `examples/sample-output.md` — Complete input analysis example
-- `prompts/use-case-prompts.md` — Ready-to-use prompts
-- `prompts/metaprompts.md` — Meta-analysis strategies
-
----
+- `references/knowledge-graph.mmd` — Skill relationship graph (read when tracing cross-skill dependencies)
+- `references/body-of-knowledge.md` — Primary sources: linguistics, UX writing, NLP (read for theoretical grounding)
+- `references/state-of-the-art.md` — NLP trends 2024-2028 (read for state-of-art context)
+- `references/output-templates.md` — Format specs for MD, DOCX, HTML, XLSX, PPTX outputs
+- `references/use-case-prompts.md` — Parameterized prompts UC-01 through UC-07 (read for prompt templates)
+- `references/metaprompts.md` — Meta-analysis strategies MP-01 through MP-05 (read for advanced analysis patterns)
+- `references/examples/sample-output.md` — Complete 5-pass input analysis example
+- `references/examples/sample-output.html` — Branded HTML version of sample output

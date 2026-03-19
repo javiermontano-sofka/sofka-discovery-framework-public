@@ -43,7 +43,7 @@ Create a production-ready, full-branded document from markdown source or raw con
 
 When invoked without explicit source:
 
-1. **Last deliverable**: Scan `.discovery/` and cwd for most recent `.md` deliverable (00-14 pattern).
+1. **Last deliverable**: Scan `discovery/` and cwd for most recent `.md` deliverable (00-14 pattern).
 2. **Page type inference**: Detect from deliverable type:
    - `08_Pitch`, `09_Handover` → Dark-First Executive (Type A)
    - `03_ASIS`, `07_Spec`, `04_Flujos` → Light-First Technical (Type B)
@@ -125,7 +125,7 @@ Output the file and offer conversion:
 - **Primary**: The requested format file, production-ready
 - **Secondary**: Ghost menu for additional format conversions
 - **Naming**: `{fase}_{entregable}_{cliente}_{WIP|Aprobado}.{ext}`
-- **Location**: Current working directory or `.discovery/outputs/`
+- **Location**: Current working directory or `discovery/outputs/`
 
 ## GUARDRAILS
 

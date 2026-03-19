@@ -27,7 +27,7 @@ Escanea el repositorio del cliente para detectar secretos (API keys, tokens, pas
 1. **Detección de secretos** — Escaneo regex de archivos fuente y configuración con 14 patrones (AWS, GitHub, JWT, Slack, Azure, Anthropic, OpenAI, Stripe, genéricos)
 2. **Enmascaramiento reversible** — Reemplazar valores sensibles con placeholders estandarizados manteniendo el contexto arquitectónico del código
 3. **Gate G0** — Validación obligatoria pre-pipeline que aborta `/mao:run-auto` y `/mao:run-deep` si detecta archivos sin enmascarar
-4. **Auditoría local** — Registro de hallazgos en `.discovery/.mao-secrets-audit.log` (gitignored, sin acceso del conductor)
+4. **Auditoría local** — Registro de hallazgos en `discovery/mao-secrets-audit.log` (gitignored, sin acceso del conductor)
 
 ---
 
@@ -91,7 +91,7 @@ Escanea el repositorio del cliente para detectar secretos (API keys, tokens, pas
 
 - Binarios (png, jpg, zip, jar, exe, dll, etc.)
 - `node_modules/`, `.git/`, `vendor/`, `dist/`, `__pycache__/`
-- `.discovery/` (propio directorio de sesión)
+- `discovery/` (propio directorio de sesión)
 - Archivos > 1MB
 
 ### Flujo de enmascaramiento
@@ -101,7 +101,7 @@ Detección → Clasificación → Placeholder → Mapa reversible → Auditoría
                                 ↓
                     [MAO_MASKED_{N}]
                                 ↓
-                    .mao-secrets-map.json (NUNCA commitear)
+                    mao-secrets-map.json (NUNCA commitear)
 ```
 
 ---

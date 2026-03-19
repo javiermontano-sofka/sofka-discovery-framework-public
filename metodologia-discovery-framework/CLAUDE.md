@@ -3,7 +3,7 @@
 > **MAO** = MetodologIA de Aprovechamiento de Oportunidades.
 > **"Método + TecnologIA = Soberanía"** — La metodología precede la tecnología.
 > Tu IDE se convierte en una agencia de discovery universal.
-> 101 agentes · 108 skills MOAT · 109 comandos · 19 scripts · 5 quality gates (G0–G3) · Design System v5 · MIT.
+> 101 agentes · 111 skills MOAT · 109 comandos · 19 scripts · 5 quality gates (G0–G3) · Design System v6 Neo-Swiss · GPL-3.0.
 > Meta-cognition protocols (FULL triad + LIGHT all agents) · Formalized committee spawning.
 > © 2026 MetodologIA · Javier Montaño.
 
@@ -105,13 +105,60 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 
 - **Formato**: Markdown-Excellence (TL;DR + bullets, prosa densa, Mermaid, ghost menu)
 - **Idioma**: Español (registro empresarial latinoamericano)
-- **Branding**: #6366F1 indigo · #22D3EE cyan (éxito) · #0F172A dark · #A78BFA accent · Inter
-- **HTML**: Usar tokens canónicos de `references/ontology/canonical-tokens.md`
+- **Branding**: Neo-Swiss Clean & Soft Explainer — Navy #122562 · Gold #FFD700 · Blue #137DC5 · Poppins + Trebuchet MS
+- **HTML**: Leer `references/brand-config-neoswiss.json` + `references/neo-swiss-template.css` ANTES de generar
+- **DOCX/PPTX/XLSX**: Leer `references/brand-config-neoswiss.json` sección del formato correspondiente
 - **Artefactos**: Guardar como archivos, no inline
 - **Naming**: Usar `{WIP}` en archivos en progreso, `{Aprobado}` cuando estén aprobados
 - **Slugging**: `{fase}_{entregable}_{cliente}_{WIP|Aprobado}.{ext}` — ej: `03_ASIS_Acme Corp_{WIP}.md`
 
 > Detalle completo → `references/ontology/output-standards.md`
+
+---
+
+## Brand Assets (Neo-Swiss v6)
+
+| Asset | Path | Descripcion |
+|-------|------|-------------|
+| **Brand Config** (SSoT) | `references/brand-config-neoswiss.json` | Single source of truth — ALL tokens para todos los formatos |
+| **CSS Template** | `references/neo-swiss-template.css` | 488 lineas de CSS canonico para HTML |
+| **Logo SVG** | `references/assets/logo-metodologia.svg` | Squircle + 3 pilares + circulo gold |
+| **Asset README** | `references/assets/README.md` | Inventario y reglas de uso |
+
+### Paleta Rapida
+
+| Color | Hex | Uso |
+|-------|-----|-----|
+| **Navy** | `#122562` | Hero bg, footer bg, section numbers, table headers |
+| **Gold** | `#FFD700` | Accent, CTA, highlights, borders |
+| **Blue** | `#137DC5` | Action, links, positive/success — **NUNCA verde** |
+| **Dark** | `#1F2833` | Body text |
+| **Lavender** | `#BBA0CC` | Decorativo, inference chips |
+| **Off-white** | `#F8F9FC` | Body background |
+
+### Tipografia
+
+| Uso | Fuente | Pesos |
+|-----|--------|-------|
+| Titulos/headings | **Poppins** (Google Fonts) | 400-800 |
+| Body | **Trebuchet MS** (system) | 400 |
+| Notas/footnotes | **Futura / Century Gothic** (system) | 400 |
+
+### Format Skills
+
+| Formato | Skill | Tecnologia |
+|---------|-------|------------|
+| HTML | `metodologia-html-brand` | Self-contained, inline CSS |
+| DOCX | `metodologia-brand-docx` | python-docx |
+| PPTX | `metodologia-brand-pptx` | python-pptx |
+| XLSX | `metodologia-brand-xlsx` | openpyxl |
+| Orquestador | `metodologia-output-engineering` | Ghost menu pipeline |
+| Multi-formato | `metodologia-design-system-brand` | Todos los formatos |
+
+### Tokens PROHIBIDOS (Legacy)
+
+**NUNCA usar** en outputs MetodologIA:
+`#6366F1` (indigo) · `#22D3EE` (cyan) · `#1A1A2E` (dark) · `#0F172A` (slate) · `#0A122A` (deep) · Clash Grotesk · Inter · Montserrat
 
 ---
 
@@ -136,7 +183,7 @@ metodologia-discovery-framework/
 
 ## Sesión Automática
 
-Al activar el plugin, los hooks generan en `.discovery/`:
+Al activar el plugin, los hooks generan en `discovery/`:
 - `SESSION-README.md` — Contexto del proyecto
 - `SESSION-CLAUDE.md` — Instrucciones de sesión
 - `calibration-digest.md` — Estado de priming y calibración
@@ -144,7 +191,7 @@ Al activar el plugin, los hooks generan en `.discovery/`:
 - `session-changelog.md` — Registro para continuidad
 - `session-state.json` — Estado del pipeline
 
-Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `.needs-priming` y se sugiere `/mao:prime-repo`.
+Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `needs-priming` y se sugiere `/mao:prime-repo`.
 Cada adjunto o URL investigada genera `priming-rag-{nombre}.md` y recalibra automáticamente.
 
 ### Progressive MOAT Loading
@@ -164,6 +211,6 @@ Revisarlo al inicio de cada sesión para no repetir errores.
 
 ---
 
-*MAO v1.3 — MetodologIA de Aprovechamiento de Oportunidades.*
-*Método + TecnologIA = Soberanía. Para el profesional en la era de la IA.*
-*MIT License — El conocimiento se comparte, crédito al origen.*
+*MAO v1.5 — MetodologIA de Aprovechamiento de Oportunidades.*
+*Metodo + TecnologIA = Soberania. Para el profesional en la era de la IA.*
+*GPL-3.0 — El conocimiento se comparte, credito al origen.*

@@ -1,58 +1,85 @@
-# Orquestación de Marca
+# Orquestacion de Marca
 
-> MAO Framework — Ontología viva
-> Referencia canónica para detección de contexto de marca, reglas de aislamiento y directrices de output por brand.
+> MAO Framework — Ontologia viva
+> Referencia canonica para deteccion de contexto de marca, reglas de aislamiento y directrices de output por brand.
+> Single Source of Truth: `references/brand-config-neoswiss.json`
+> Actualizado: 2026-03-17
 
 ---
 
 ## Las 3 marcas del ecosistema
 
-| Marca | Color primario | Color oscuro | Color éxito | Licencia | Contexto |
+| Marca | Color primario | Color acento | Color exito | Licencia | Contexto |
 |-------|---------------|-------------|-------------|----------|----------|
-| **MetodologIA** | `#6366F1` (naranja) | `#1A1A2E` | `#22D3EE` (dorado) | MIT | Trabajo de cliente, pre-venta, consultoría |
-| **MetodologIA** | `#6366F1` (índigo) | `#0F172A` | `#10B981` (esmeralda) | MIT | Metodología abierta, comunidad, formación |
-| **JM Labs** | `#14B8A6` (teal) | `#0C0A09` | `#F59E0B` (ámbar) | Caso por caso | Experimentación personal, prototipos, POCs |
+| **MetodologIA** | `#122562` (navy) | `#FFD700` (gold) | `#137DC5` (blue) | GPL-3.0 | Trabajo de cliente, pre-venta, consultoria, comunidad |
+| **Sofka (SDF)** | Per SDF config | Per SDF config | Per SDF config | All Rights Reserved | Enterprise discovery, corporate engagements |
+| **JM Labs** | `#14B8A6` (teal) | `#F59E0B` (amber) | `#F59E0B` (amber) | Caso por caso | Experimentacion personal, prototipos, POCs |
 
 ---
 
-## Reglas de detección de contexto
+## MetodologIA — Neo-Swiss Clean & Soft Explainer
 
-El sistema determina la marca activa evaluando las siguientes señales en orden de prioridad:
+### Identidad Visual
 
-### 1. Prefijo explícito (máxima prioridad)
+| Dimension | Especificacion |
+|-----------|---------------|
+| **Estetica** | Neo-Swiss Clean & Soft Explainer |
+| **Descripcion** | Light off-white body, navy hero+footer, gold accents, Swiss 8px grid, soft corporate shadows |
+| **Navy** | `#122562` — Hero bg, footer bg, section numbers, table headers |
+| **Gold** | `#FFD700` — Accent, CTA, hero highlights, badge emphasis |
+| **Blue** | `#137DC5` — Action primary, links, positive/success |
+| **Dark** | `#1F2833` — Body text |
+| **Lavender** | `#BBA0CC` — Decorative accent, inference chips |
+| **Off-white** | `#F8F9FC` — Body background |
+| **Font titulo** | Poppins (Google Fonts) |
+| **Font body** | Trebuchet MS (system) |
+| **Font nota** | Futura / Century Gothic (system) |
+| **Shadows** | Navy-tinted: `rgba(18,37,98,...)` |
+| **Grid** | Swiss 8px increments |
+| **Logo** | Squircle + 3 pillars + gold circle (see `references/assets/logo-metodologia.svg`) |
+
+### Tono
+Profesional, autoritativo, orientado a resultados. Registro empresarial. Sin informalidades.
+
+### Exito
+Blue (`#137DC5`) — **NUNCA verde para exito en MetodologIA.**
+
+---
+
+## Reglas de deteccion de contexto
+
+El sistema determina la marca activa evaluando las siguientes senales en orden de prioridad:
+
+### 1. Prefijo explicito (maxima prioridad)
 - `/mao:` → **MetodologIA**
-- `/metodologia-discovery-framework:` → **MetodologIA**
-- Mención explícita de la marca en el prompt del usuario
+- `/sdf:` → **Sofka**
+- `/jm:` → **JM Labs**
+- Mencion explicita de la marca en el prompt del usuario
 
 ### 2. Directorio de trabajo
 | Ruta | Marca |
 |------|-------|
-| `~/skills/plugins/metodologia-discovery-framework/` | **MetodologIA** |
-| `~/skills/plugins/metodologia-discovery-framework/` | **MetodologIA** |
-| Otros repos con contexto de cliente MetodologIA | **MetodologIA** |
+| `metodologia-discovery-framework/` | **MetodologIA** |
+| `sofka-discovery-framework/` | **Sofka** |
 | Repos personales / experimentales | **JM Labs** |
 
 ### 3. Keywords en contexto
 | Keywords | Marca |
 |----------|-------|
 | "MetodologIA", "MAO", "pre-venta", "cliente", "engagement", "discovery" | **MetodologIA** |
-| "MetodologIA", "open-source", "comunidad", "metodología abierta", "MIT" | **MetodologIA** |
-| "lab", "experimento", "prototipo", "personal", "JM" | **JM Labs** |
+| "Sofka", "SDF", "enterprise", "corporate" | **Sofka** |
+| "lab", "experimento", "prototipo", "personal", "JM" | **Experimentacion** |
 
-### 4. Ambigüedad
+### 4. Ambiguedad
 Si no se puede determinar la marca → **preguntar al usuario** antes de generar output con branding.
 
 ---
 
 ## Regla de aislamiento de marca
 
-> **NUNCA mezclar branding de dos o más marcas en el mismo output.**
+> **NUNCA mezclar branding de dos o mas marcas en el mismo output.**
 
-Esta regla es absoluta. Un entregable, HTML, presentación o cualquier artefacto debe pertenecer a una sola marca. Las violaciones incluyen:
-
-- Usar colores de MetodologIA en un documento de MetodologIA
-- Incluir logo o referencia de MetodologIA en un entregable de cliente MetodologIA
-- Mezclar disclaimers de licencia (MIT + MIT)
+Esta regla es absoluta. Un entregable, HTML, presentacion o cualquier artefacto debe pertenecer a una sola marca.
 
 ---
 
@@ -61,94 +88,66 @@ Esta regla es absoluta. Un entregable, HTML, presentación o cualquier artefacto
 ### MetodologIA
 
 ```markdown
-# {Título del entregable}
+# {Titulo del entregable}
 > MetodologIA Discovery Framework — {contexto}
-> © 2026 MetodologIA · Javier Montaño. MIT.
+> Generado: {fecha} | Version: {version}
 
 {contenido}
 
 ---
-*MetodologIA — Método + TecnologIA = Soberanía.*
+*Construido por profesionales, potenciado por la red agentica de MetodologIA.*
 ```
 
-**Tono:** Profesional, autoritativo, orientado a resultados. Registro empresarial. Sin informalidades.
-**Visual:** Dark Authority + Neo-Swiss. Naranja como acento, fondos oscuros.
-**Éxito:** Dorado (`#22D3EE`) — NUNCA verde.
-
-### MetodologIA
-
-```markdown
-# {Título del entregable}
-> MetodologIA — {contexto}
-> Licencia: MIT · Open Source · Comunidad abierta
-
-{contenido}
-
----
-*MetodologIA — Metodología para profesionales de la era AI.*
-```
-
-**Tono:** Colaborativo, pedagógico, inclusivo. Registro profesional pero accesible.
-**Visual:** Índigo como primario, fondos oscuros suaves. Estilo moderno y limpio.
-**Éxito:** Esmeralda (`#10B981`) — verde permitido en MetodologIA.
+**Visual:** Neo-Swiss Clean & Soft Explainer. Navy hero+footer, gold accents, off-white body.
+**Exito:** Blue (`#137DC5`) — NUNCA verde.
+**Logo:** `references/assets/logo-metodologia.svg`
 
 ### JM Labs
 
 ```markdown
-# {Título del entregable}
+# {Titulo del entregable}
 > JM Labs — {contexto}
-> Experimental · Javier Montaño
+> Experimental · Javier Montano
 
 {contenido}
 
 ---
-*JM Labs — Experimentación continua.*
+*JM Labs — Experimentacion continua.*
 ```
 
-**Tono:** Directo, técnico, experimental. Sin formalidades corporativas.
 **Visual:** Teal como primario, fondos muy oscuros. Estilo minimalista.
-**Éxito:** Ámbar (`#F59E0B`).
+**Exito:** Amber (`#F59E0B`).
 
 ---
 
-## Directrices de tono por marca
+## Tokens de diseno por marca
 
-| Dimensión | MetodologIA | MetodologIA | JM Labs |
-|-----------|-------|-------------|---------|
-| Registro | Empresarial formal | Profesional accesible | Técnico directo |
-| Audiencia | C-Level, equipos técnicos de cliente | Comunidad, profesionales AI | Personal, colaboradores |
-| Idioma | Español (LatAm business) | Español (LatAm neutro) | Español o Inglés |
-| Pronombre | "MetodologIA" / "el equipo" | "la comunidad" / "nosotros" | "yo" / primera persona |
-| Emojis | NO en entregables | Moderado en docs comunitarios | Libre |
-| Humor | NO | Ocasional, sutil | Libre |
-| Disclaimers | Obligatorios (estimaciones, legal) | Licencia MIT en cada output | Mínimos |
-
----
-
-## Tokens de diseño por marca
-
-| Token CSS | MetodologIA | MetodologIA | JM Labs |
-|-----------|-------|-------------|---------|
-| `--brand-primary` | `#6366F1` | `#6366F1` | `#14B8A6` |
-| `--brand-dark` | `#1A1A2E` | `#0F172A` | `#0C0A09` |
-| `--brand-success` | `#22D3EE` | `#10B981` | `#F59E0B` |
-| `--brand-danger` | `#FF4444` | `#EF4444` | `#F43F5E` |
-| `--brand-font` | Inter | Inter | JetBrains Mono |
-| `--brand-pattern` | Dark Authority | Modern Indigo | Terminal Minimal |
+| Token CSS | MetodologIA | Sofka (SDF) | JM Labs |
+|-----------|-------------|-------------|---------|
+| `--brand-primary` | `#122562` (navy) | Per SDF config | `#14B8A6` (teal) |
+| `--brand-accent` | `#FFD700` (gold) | Per SDF config | `#F59E0B` (amber) |
+| `--brand-success` | `#137DC5` (blue) | Per SDF config | `#F59E0B` (amber) |
+| `--brand-danger` | `#DC2626` (red) | Per SDF config | `#F43F5E` (rose) |
+| `--brand-font-title` | Poppins | Per SDF config | JetBrains Mono |
+| `--brand-font-body` | Trebuchet MS | Per SDF config | System UI |
+| `--brand-pattern` | Neo-Swiss | Per SDF config | Terminal Minimal |
+| `--brand-body-bg` | `#F8F9FC` (off-white) | Per SDF config | `#0C0A09` (dark) |
 
 ---
 
-## Checklist de validación de marca
+## Checklist de validacion de marca
 
 Antes de entregar cualquier artefacto con branding:
 
-- [ ] Marca identificada correctamente (MetodologIA / MetodologIA / JM Labs)
+- [ ] Marca identificada correctamente (MetodologIA / Sofka / JM Labs)
+- [ ] `brand-config-neoswiss.json` leido (para MetodologIA)
 - [ ] Colores corresponden a la marca activa
+- [ ] Tipografia corresponde a la marca activa
 - [ ] Tono y registro son apropiados
-- [ ] Disclaimers de licencia correctos
 - [ ] No hay mezcla de elementos de otra marca
 - [ ] Footer y cierre corresponden a la marca
+- [ ] Zero legacy tokens (#6366F1, #22D3EE, #1A1A2E, Clash Grotesk, Inter)
 
 ---
 
-*MAO Framework — La excelencia no se improvisa, se diseña.*
+*MAO Framework — La excelencia no se improvisa, se disena.*

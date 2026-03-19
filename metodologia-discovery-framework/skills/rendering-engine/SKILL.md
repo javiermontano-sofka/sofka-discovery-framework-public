@@ -24,7 +24,7 @@ Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entre
 
 ## Core Responsibilities
 
-1. **PNG Generation** — Detectar bloques ` ```mermaid ` en entregables, renderizar con Mermaid CLI a `.discovery/assets/`
+1. **PNG Generation** — Detectar bloques ` ```mermaid ` en entregables, renderizar con Mermaid CLI a `discovery/assets/`
 2. **PDF Compilation** — Compilar markdown a PDF con Pandoc + wkhtmltopdf (o Typst como alternativa)
 3. **Branding Enforcement** — Paleta MetodologIA (#6366F1, #0F172A), tipografía Poppins/Montserrat
 4. **Evidence Badges** — Tags de evidencia renderizados como badges HTML coloreados por tipo
@@ -53,7 +53,7 @@ Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entre
 |---------|---------------|
 | **Markdown** | Source de verdad — contiene bloques Mermaid originales + evidence tags en texto. |
 | **HTML** | Self-contained con CSS MetodologIA. Mermaid renderizado inline. Evidence tags como badges. WCAG AA. |
-| **DOCX** | python-docx. Poppins/Montserrat font. Imágenes PNG embebidas desde `.discovery/assets/`. Header MetodologIA. |
+| **DOCX** | python-docx. Poppins/Montserrat font. Imágenes PNG embebidas desde `discovery/assets/`. Header MetodologIA. |
 | **XLSX** | openpyxl. Hoja "Rendering Log" con columnas: Diagram ID, Source File, Output PNG, Status. |
 | **PPTX** | python-pptx. PNGs de diagramas como imágenes full-slide. Slide master indigo MetodologIA. |
 

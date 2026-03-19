@@ -1,7 +1,7 @@
-# Catálogo de 100 Skills
+# Catálogo de 108 Skills
 
 > MAO Framework — Ontología viva
-> Referencia canónica de los 100 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
+> Referencia canónica de los 108 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
 
 ---
 
@@ -13,14 +13,14 @@
 | Data & Analytics | 10 | 2-6 (Brief a Reportes) |
 | Análisis & Discovery | 12 | 0-4 (Plan a Flujos) |
 | Cloud & Platform | 5 | 2-5 (ASIS a Roadmap) |
-| Calidad & Ops | 10 | 2-6 (ASIS a Reportes) |
+| Calidad & Ops | 11 | 2-6 (ASIS a Reportes) |
 | Gestión & Estrategia | 10 | 0-6 (Plan a Handover) |
 | Editorial & Comunicación | 9 | 5-6 (Pitch a Reportes) |
 | Cambio & Adopción | 5 | 4-6 (Escenarios a Handover) |
 | Innovación | 5 | 3-5 (ASIS a Roadmap) |
-| Herramientas & DX | 6 | Transversal |
+| Herramientas & DX | 8 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
-| **Total** | **100** | |
+| **Total** | **108** | |
 
 ---
 
@@ -99,6 +99,7 @@
 | `pipeline-governance` | Gobernanza del pipeline CI/CD | 3-5 |
 | `vendor-assessment` | Evaluación de proveedores y herramientas | 3-5 |
 | `compliance-assessment` | Evaluación de compliance, regulaciones | 3-5 |
+| `discovery-retrospective` | Retrospectiva cuantitativa de engagement, métricas de evidencia | Transversal |
 
 ## 6. Gestión & Estrategia (10 skills)
 
@@ -160,6 +161,8 @@
 | `developer-experience` | Evaluación de experiencia de desarrollador | 3-4 |
 | `team-topology` | Topologías de equipo, Team Topologies framework | 3-5 |
 | `mini-apps-discovery` | Discovery de mini-aplicaciones complementarias | 0-2 |
+| `client-browser-audit` | Auditoría visual de app del cliente via MCP Playwright | Transversal |
+| `cross-platform-convert` | Conversión de skills MOAT a formatos cross-platform | Transversal |
 
 ## 11. Service Discovery (11 skills)
 

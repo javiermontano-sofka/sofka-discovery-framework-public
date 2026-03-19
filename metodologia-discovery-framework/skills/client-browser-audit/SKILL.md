@@ -17,7 +17,7 @@ allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, mcp__playwright__browser_na
 
 ## TL;DR
 
-Leverages MCP Playwright to navigate the client's application during Phase 1 (AS-IS) or Phase 2 (Flow Mapping). Captures screenshots as evidence, inspects console errors, audits accessibility, and maps user flows visually. All screenshots saved to `.discovery/assets/screenshots/` with evidence tags [CÓDIGO] for UI evidence.
+Leverages MCP Playwright to navigate the client's application during Phase 1 (AS-IS) or Phase 2 (Flow Mapping). Captures screenshots as evidence, inspects console errors, audits accessibility, and maps user flows visually. All screenshots saved to `discovery/assets/screenshots/` with evidence tags [CÓDIGO] for UI evidence.
 
 ---
 
@@ -39,7 +39,7 @@ Leverages MCP Playwright to navigate the client's application during Phase 1 (AS
 2. Navigate to homepage, take screenshot
 3. Follow 3-5 critical user flows (login, main action, settings, error states)
 4. At each step: screenshot + console check + network snapshot
-5. Save all evidence to `.discovery/assets/screenshots/`
+5. Save all evidence to `discovery/assets/screenshots/`
 6. Generate summary: `fase_1_browser_audit_{client}_{WIP}.md`
 
 ### Phase 2 (Flow Mapping) Usage
@@ -55,7 +55,7 @@ Leverages MCP Playwright to navigate the client's application during Phase 1 (AS
 ## Screenshot Naming Convention
 
 ```
-.discovery/assets/screenshots/
+discovery/assets/screenshots/
 ├── {flow-name}_step_{N}_{timestamp}.png
 ├── {flow-name}_console_{timestamp}.png
 └── {flow-name}_network_{timestamp}.png

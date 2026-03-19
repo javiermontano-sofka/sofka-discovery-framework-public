@@ -29,7 +29,7 @@ When invoked without arguments or with minimal context:
 
 1. **Project root**: Use current working directory as source code root.
 2. **Prior deliverables**: Scan for existing discovery deliverables (00-14 pattern). Load relevant prior deliverables as context.
-3. **Companion files**: Check `.discovery/` for repo-index and companion files (insights-*, transcript-*, rag-priming-*). Load relevant ones.
+3. **Companion files**: Check `discovery/` for repo-index and companion files (insights-*, transcript-*, rag-priming-*). Load relevant ones.
 4. **Attachments**: Scan for PDFs, XLSX, DOCX in cwd. Auto-classify as inputs.
 5. **If no context available**: Run mini-ingestion (scan + index) before generating.
 

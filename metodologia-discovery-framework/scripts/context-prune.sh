@@ -11,7 +11,7 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-CHANGELOG="$TARGET_DIR/.discovery/session-changelog.md"
+CHANGELOG="$TARGET_DIR/discovery/session-changelog.md"
 THRESHOLD=150
 KEEP_RECENT=50
 

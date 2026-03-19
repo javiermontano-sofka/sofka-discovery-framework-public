@@ -6,19 +6,19 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="$TARGET_DIR/.discovery"
-AUDIT_LOG="$DISCOVERY_DIR/.mao-secrets-audit.log"
+DISCOVERY_DIR="$TARGET_DIR/discovery"
+AUDIT_LOG="$DISCOVERY_DIR/mao-secrets-audit.log"
 
 mkdir -p "$DISCOVERY_DIR"
 
 # Ensure audit log is gitignored
 GITIGNORE="$DISCOVERY_DIR/.gitignore"
 if [ ! -f "$GITIGNORE" ]; then
-  echo ".mao-secrets-audit.log" > "$GITIGNORE"
-  echo ".mao-secrets-map.json" >> "$GITIGNORE"
-elif ! grep -q '.mao-secrets-audit.log' "$GITIGNORE" 2>/dev/null; then
-  echo ".mao-secrets-audit.log" >> "$GITIGNORE"
-  echo ".mao-secrets-map.json" >> "$GITIGNORE"
+  echo "mao-secrets-audit.log" > "$GITIGNORE"
+  echo "mao-secrets-map.json" >> "$GITIGNORE"
+elif ! grep -q 'mao-secrets-audit.log' "$GITIGNORE" 2>/dev/null; then
+  echo "mao-secrets-audit.log" >> "$GITIGNORE"
+  echo "mao-secrets-map.json" >> "$GITIGNORE"
 fi
 
 # Initialize audit log
@@ -63,7 +63,7 @@ scan_files() {
     find "$TARGET_DIR" -type f \
       -not -path "*/.git/*" \
       -not -path "*/node_modules/*" \
-      -not -path "*/.discovery/*" \
+      -not -path "*/discovery/*" \
       -not -path "*/vendor/*" \
       -not -path "*/__pycache__/*" \
       2>/dev/null | grep -vE "\.($EXCLUDE_EXTS)$" || true
@@ -111,7 +111,7 @@ if [ "$FINDINGS" -gt 0 ]; then
   echo "Action: Run /mao:scan-secrets to review and /mao:mask-secrets to remediate" >> "$AUDIT_LOG"
   # Output warning for prompt injection
   echo "⚠️  G0 SECURITY GATE: $FINDINGS potential secret(s) detected in the repository."
-  echo "   Review: .discovery/.mao-secrets-audit.log"
+  echo "   Review: discovery/mao-secrets-audit.log"
   echo "   Remediate: /mao:scan-secrets"
   exit 1
 else

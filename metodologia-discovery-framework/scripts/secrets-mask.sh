@@ -6,9 +6,9 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="$TARGET_DIR/.discovery"
-AUDIT_LOG="$DISCOVERY_DIR/.mao-secrets-audit.log"
-SECRETS_MAP="$DISCOVERY_DIR/.mao-secrets-map.json"
+DISCOVERY_DIR="$TARGET_DIR/discovery"
+AUDIT_LOG="$DISCOVERY_DIR/mao-secrets-audit.log"
+SECRETS_MAP="$DISCOVERY_DIR/mao-secrets-map.json"
 
 if [ ! -f "$AUDIT_LOG" ]; then
   echo "No audit log found. Run secrets-scan.sh first."
@@ -79,6 +79,6 @@ echo '  ]' >> "$SECRETS_MAP"
 echo '}' >> "$SECRETS_MAP"
 
 echo ""
-echo "✅ Masked $COUNTER secret(s). Map saved to .discovery/.mao-secrets-map.json"
-echo "⚠️  NEVER commit .mao-secrets-map.json — it contains original values."
+echo "✅ Masked $COUNTER secret(s). Map saved to discovery/mao-secrets-map.json"
+echo "⚠️  NEVER commit mao-secrets-map.json — it contains original values."
 echo "   The map file is gitignored by default."

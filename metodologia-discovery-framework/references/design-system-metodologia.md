@@ -5,7 +5,7 @@
 **Version:** 5.0.0
 **Date:** 15 de marzo de 2026
 **Author:** Javier Montaño · Comunidad MetodologIA
-**Source:** `.discovery/brand-samples/` (14 production HTML files)
+**Source:** `discovery/brand-samples/` (14 production HTML files)
 
 ---
 

@@ -1,7 +1,7 @@
 # Referencia de Comandos
 
 > MAO Framework — Ontología viva
-> Referencia canónica de los 100 comandos organizados por categoría funcional.
+> Referencia canónica de los 109 comandos organizados por categoría funcional.
 
 ---
 
@@ -14,11 +14,11 @@
 | REPORT | 5 | Reportes especializados (10-14) |
 | ASSESS | 7 | Evaluaciones dimensionales |
 | SERVICE DISCOVERY | 9 | Discovery por línea de servicio |
-| OPS | 6 | Operaciones sobre el discovery |
+| OPS | 9 | Operaciones sobre el discovery |
 | UX | 3 | Navegación y experiencia del usuario |
 | COACHING & AI | 4 | Coaching, AI design, prompt engineering, automatización |
 | **Aliases** | **~51** | Atajos para comandos primarios |
-| **Total** | **100** | |
+| **Total** | **109** | |
 
 ---
 
@@ -103,6 +103,9 @@
 | `/mao:simulate-scenarios` | — | Simulación Monte Carlo what-if sobre el roadmap |
 | `/mao:benchmark-maturity` | — | Benchmark de madurez vs industria |
 | `/mao:prime-repo` | `prime` | Explorar repo/adjuntos/URLs y generar priming-rag-*.md |
+| `/mao:retro` | `retro` | Retrospectiva cuantitativa del engagement (JSON + markdown) |
+| `/mao:browse-client` | `browse` | Auditoría visual de la app del cliente via Playwright |
+| `/mao:convert-skills` | `convert` | Convertir skills MOAT a formatos cross-platform |
 
 ---
 
@@ -154,6 +157,9 @@
 | `menu` | `/mao:menu` |
 | `a` | `/mao:a` |
 | `demo` | `/mao:demo` |
+| `retro` | `/mao:retro` |
+| `browse` | `/mao:browse-client` |
+| `convert` | `/mao:convert-skills` |
 
 ### Aliases extendidos (variantes de verbo)
 

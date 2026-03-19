@@ -1,6 +1,6 @@
 ---
 name: cli-init
-description: CLI interactivo de inicialización que configura el entorno del cliente, pre-puebla .discovery/, ejecuta G0 security scan y prepara el contexto para discovery.
+description: CLI interactivo de inicialización que configura el entorno del cliente, pre-puebla discovery/, ejecuta G0 security scan y prepara el contexto para discovery.
 author: Equipo MetodologIA
 version: 1.0.0
 license: MIT
@@ -18,14 +18,14 @@ allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
 
 ## TL;DR
 
-Wizard interactivo que pre-puebla `.discovery/SESSION-README.md` con datos del cliente (nombre, tipo de servicio, industria), ejecuta auto-discovery del repositorio, corre el gate G0 de seguridad, y prepara toda la estructura de sesión. Reemplaza la activación manual propensa a errores.
+Wizard interactivo que pre-puebla `discovery/SESSION-README.md` con datos del cliente (nombre, tipo de servicio, industria), ejecuta auto-discovery del repositorio, corre el gate G0 de seguridad, y prepara toda la estructura de sesión. Reemplaza la activación manual propensa a errores.
 
 ---
 
 ## Core Responsibilities
 
 1. **Interactive Wizard** — Preguntas por consola: nombre del cliente, TIPO_SERVICIO, contacto, industria
-2. **Structure Generation** — Crear `.discovery/` con todos los subdirectorios y archivos de sesión
+2. **Structure Generation** — Crear `discovery/` con todos los subdirectorios y archivos de sesión
 3. **Auto-Discovery** — Ejecutar `index-repo.sh` para generar `repo-index.json` antes de que Claude despierte
 4. **G0 Integration** — Ejecutar `secrets-scan.sh` durante inicialización para verificar seguridad
 5. **Hook Configuration** — Enlazar ghost menu y changelog automático
@@ -46,7 +46,7 @@ Wizard interactivo que pre-puebla `.discovery/SESSION-README.md` con datos del c
 
 ### Output Artifact
 
-**Nombre**: `.discovery/SESSION-README.md` + `.discovery/session-state.json`
+**Nombre**: `discovery/SESSION-README.md` + `discovery/session-state.json`
 
 ### Output Templates
 

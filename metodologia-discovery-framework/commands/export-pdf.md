@@ -20,7 +20,7 @@ user-invocable: true
 3. **Preprocesar evidence tags** — Convertir `[CÓDIGO]`, `[DOC]`, etc. a badges HTML coloreados
 4. **Compilar PDF** — Ejecutar `scripts/export-pdf.sh` con template MetodologIA
 5. **Verificar branding** — Confirmar: indigo headers (#6366F1), dark bg (#0F172A), Poppins/Montserrat typography
-6. **Entregar** — PDF guardado en `.discovery/assets/` + ghost menu
+6. **Entregar** — PDF guardado en `discovery/assets/` + ghost menu
 
 ## Dependencias
 

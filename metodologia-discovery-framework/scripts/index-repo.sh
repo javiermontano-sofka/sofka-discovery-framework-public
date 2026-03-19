@@ -1,12 +1,12 @@
 #!/bin/bash
 # MetodologIA Discovery Framework — Repository Indexer
-# Creates .discovery/repo-index.json with structured file inventory
+# Creates discovery/repo-index.json with structured file inventory
 # Used during CP-0 (Ingestion) for auto-detection and context loading
 
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="${TARGET_DIR}/.discovery"
+DISCOVERY_DIR="${TARGET_DIR}/discovery"
 OUTPUT_FILE="${DISCOVERY_DIR}/repo-index.json"
 
 # Create .discovery directory structure
@@ -50,7 +50,7 @@ fi
 if [[ -d "${TARGET_DIR}/.git" ]]; then
   FILE_LIST=$(cd "$TARGET_DIR" && git ls-files 2>/dev/null || find . -type f -not -path './.git/*' | head -500)
 else
-  FILE_LIST=$(find "$TARGET_DIR" -type f -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/.discovery/*' 2>/dev/null | head -500)
+  FILE_LIST=$(find "$TARGET_DIR" -type f -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/discovery/*' 2>/dev/null | head -500)
 fi
 
 # Count by category

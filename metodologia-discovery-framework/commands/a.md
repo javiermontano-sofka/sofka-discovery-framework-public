@@ -17,7 +17,7 @@ Skills: pipeline state management, gate validation, session tracking.
 
 ### Paso 1 — Lectura de estado actual
 
-Lee `.discovery/session-state.json` para determinar la fase actual del pipeline.
+Lee `discovery/session-state.json` para determinar la fase actual del pipeline.
 
 Si el archivo no existe o no hay pipeline activo:
 
@@ -45,7 +45,7 @@ Si la posición actual está en un quality gate:
 2. Evalúa cada criterio contra los entregables generados.
 3. **Si TODOS los criterios se cumplen**:
    - Aprueba el gate.
-   - Actualiza `.discovery/session-state.json` con el nuevo estado.
+   - Actualiza `discovery/session-state.json` con el nuevo estado.
    - Presenta la siguiente fase.
 4. **Si hay criterios NO cumplidos**:
    - Lista los criterios bloqueantes con detalle.
@@ -70,7 +70,7 @@ Si la posición actual NO está en un gate:
 
 ### Paso 5 — Actualización de estado
 
-Actualiza `.discovery/session-state.json` con:
+Actualiza `discovery/session-state.json` con:
 - Nueva fase actual
 - Timestamp de avance
 - Gate aprobado (si aplica)
@@ -106,4 +106,4 @@ Incluye el ghost menu de navegación al final.
 - Si el usuario insiste en saltar un gate, documenta la decisión con tag [SUPUESTO] y registra el riesgo.
 - SIEMPRE presenta el ghost menu después de avanzar.
 - Si `$ARGUMENTS` contiene un número de fase, intenta avanzar a esa fase específica (validando gates intermedios).
-- Actualiza `.discovery/session-state.json` en cada avance.
+- Actualiza `discovery/session-state.json` en cada avance.

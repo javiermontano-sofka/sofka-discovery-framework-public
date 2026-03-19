@@ -8,10 +8,10 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="${TARGET_DIR}/.discovery"
+DISCOVERY_DIR="${TARGET_DIR}/discovery"
 RAG_DIR="${DISCOVERY_DIR}/rag-priming"
 CALIBRATION_FILE="${DISCOVERY_DIR}/calibration-digest.md"
-PRIME_MARKER="${DISCOVERY_DIR}/.needs-priming"
+PRIME_MARKER="${DISCOVERY_DIR}/needs-priming"
 
 mkdir -p "${DISCOVERY_DIR}"
 
@@ -68,7 +68,7 @@ DOMAIN_HINTS=""
 [[ -d "${TARGET_DIR}/k8s" || -d "${TARGET_DIR}/kubernetes" ]] && DOMAIN_HINTS="${DOMAIN_HINTS}k8s,"
 DOMAIN_HINTS=$(echo "$DOMAIN_HINTS" | sed 's/,$//')
 
-# Count attachments in .discovery/attachments/
+# Count attachments in discovery/attachments/
 ATTACHMENT_COUNT=0
 UNPRIMED_ATTACHMENTS=""
 if [[ -d "${DISCOVERY_DIR}/attachments" ]]; then

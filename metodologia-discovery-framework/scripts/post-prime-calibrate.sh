@@ -7,10 +7,10 @@
 set -euo pipefail
 
 TARGET_DIR="${1:-.}"
-DISCOVERY_DIR="${TARGET_DIR}/.discovery"
+DISCOVERY_DIR="${TARGET_DIR}/discovery"
 RAG_DIR="${DISCOVERY_DIR}/rag-priming"
 CALIBRATION_FILE="${DISCOVERY_DIR}/calibration-digest.md"
-PRIME_MARKER="${DISCOVERY_DIR}/.needs-priming"
+PRIME_MARKER="${DISCOVERY_DIR}/needs-priming"
 
 # Quick check: was a priming-rag file recently modified?
 # The PostToolUse hook fires after Write/Edit, so check if any priming file

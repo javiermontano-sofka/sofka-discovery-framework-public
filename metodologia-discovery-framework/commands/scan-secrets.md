@@ -21,7 +21,7 @@ user-invocable: true
 2. **Reportar** — Presentar tabla de hallazgos con tipo, archivo, línea y severidad
 3. **Clasificar** — Agrupar por severidad: CRÍTICO (private keys, prod passwords), ALTO (API keys, tokens), MEDIO (connection strings genéricos)
 4. **Recomendar** — Si hay hallazgos, sugerir ejecutar `/mao:mask-secrets` para enmascarar
-5. **Auditar** — Confirmar que `.discovery/.sage-secrets-audit.log` fue generado y está gitignored
+5. **Auditar** — Confirmar que `discovery/.sage-secrets-audit.log` fue generado y está gitignored
 
 ## Output
 

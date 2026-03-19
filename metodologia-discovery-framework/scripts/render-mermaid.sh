@@ -7,7 +7,7 @@ set -euo pipefail
 
 INPUT_FILE="${1:-}"
 TARGET_DIR="${2:-.}"
-ASSETS_DIR="$TARGET_DIR/.discovery/assets"
+ASSETS_DIR="$TARGET_DIR/discovery/assets"
 
 if [ -z "$INPUT_FILE" ] || [ ! -f "$INPUT_FILE" ]; then
   echo "Usage: render-mermaid.sh <markdown-file> [target-dir]"
@@ -92,7 +92,7 @@ if [ "$BLOCK_NUM" -eq 0 ]; then
   echo "No Mermaid blocks found in $(basename "$INPUT_FILE")"
 else
   echo ""
-  echo "📊 Rendered $RENDERED/$BLOCK_NUM Mermaid diagrams → .discovery/assets/"
+  echo "📊 Rendered $RENDERED/$BLOCK_NUM Mermaid diagrams → discovery/assets/"
 fi
 
 exit 0
