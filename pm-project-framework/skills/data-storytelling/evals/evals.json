@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Tell the story of declining velocity using project metrics.",
+    "assertions": [
+      "identifies key data points",
+      "selects appropriate chart type",
+      "builds narrative arc",
+      "provides context and recommendations"
+    ]
+  },
+  {
+    "prompt": "Create executive data visualization for budget status.",
+    "assertions": [
+      "selects executive-appropriate chart",
+      "minimizes clutter",
+      "highlights key message",
+      "includes trend context"
+    ]
+  },
+  {
+    "prompt": "Compare 3 project options using data storytelling.",
+    "assertions": [
+      "presents fair comparison",
+      "uses consistent scales",
+      "highlights trade-offs visually",
+      "supports decision-making"
+    ]
+  },
+  {
+    "prompt": "Turn 20 project metrics into a 3-slide story.",
+    "assertions": [
+      "selects most impactful metrics",
+      "builds logical narrative flow",
+      "uses progressive disclosure",
+      "ends with clear call to action"
+    ]
+  }
+]

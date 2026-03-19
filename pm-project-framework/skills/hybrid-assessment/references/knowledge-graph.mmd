@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[methodology-assessment] --> F
+        B[agile-assessment] --> F
+        C[kanban-assessment] --> F
+        D[maturity-assessment] --> F
+    end
+
+    subgraph Process
+        F[hybrid-assessment<br/>Evaluate Methodology<br/>Readiness & Fit]:::skill
+        F --> G[Collect Dimensional Data]
+        G --> H[Score Maturity Levels]
+        H --> I[Generate Recommendations]
+    end
+
+    subgraph Outputs
+        I --> J[hybrid-methodology]
+        I --> K[methodology-playbook]
+        I --> L[governance-framework]
+    end
+
+    subgraph Agents
+        M[methodology-advisor-agent]:::agent --> F
+        N[assessment-facilitator-agent]:::agent --> G
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

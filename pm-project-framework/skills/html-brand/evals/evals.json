@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Generate branded HTML report with APEX tokens.",
+    "assertions": [
+      "applies royal blue primary color",
+      "uses Inter typography",
+      "creates data-dense tables",
+      "includes responsive layout"
+    ]
+  },
+  {
+    "prompt": "Create executive dashboard in HTML.",
+    "assertions": [
+      "uses APEX component library",
+      "applies RAG status colors",
+      "creates print-friendly layout",
+      "includes navigation"
+    ]
+  },
+  {
+    "prompt": "Ensure accessibility in branded output.",
+    "assertions": [
+      "meets WCAG 2.1 AA",
+      "provides sufficient contrast",
+      "includes ARIA labels",
+      "supports keyboard navigation"
+    ]
+  },
+  {
+    "prompt": "Generate HTML from markdown deliverable.",
+    "assertions": [
+      "preserves content structure",
+      "applies design tokens",
+      "generates table of contents",
+      "adds ghost menu"
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+graph TD
+    subgraph Inputs
+        A[Project Data] --> D
+        B[Stakeholder Profiles] --> D
+        C[Document Template] --> D
+    end
+    subgraph "Copywriting Process"
+        D[Audience Analysis]:::skill --> E[Message Framing]:::skill
+        E --> F[Draft Generation]:::skill
+        F --> G[Review and Polish]:::skill
+    end
+    subgraph Agents
+        H[Communication Agent]:::agent --> F
+        I[Style Guide Agent]:::agent --> G
+    end
+    subgraph Downstream
+        G --> J[Communication Plan]
+        G --> K[Executive Briefing]
+        G --> L[Engagement Strategy]
+    end
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Write technical specification for a new module.",
+    "assertions": [
+      "uses progressive disclosure",
+      "standardizes terminology",
+      "attributes evidence sources",
+      "optimizes for developer audience"
+    ]
+  },
+  {
+    "prompt": "Standardize terminology across 10 project documents.",
+    "assertions": [
+      "builds terminology glossary",
+      "identifies inconsistent terms",
+      "proposes standard terms",
+      "creates usage guidelines"
+    ]
+  },
+  {
+    "prompt": "Optimize readability of a risk assessment for mixed audience.",
+    "assertions": [
+      "adapts language for audience mix",
+      "uses clear structure",
+      "includes executive summary",
+      "provides technical appendix"
+    ]
+  },
+  {
+    "prompt": "Attribute evidence in an architecture decision record.",
+    "assertions": [
+      "links decisions to evidence",
+      "tags evidence types",
+      "documents alternatives considered",
+      "traces to requirements"
+    ]
+  }
+]

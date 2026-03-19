@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Markdown Content<br/>Deliverable Data] --> D
+        B[Design Tokens<br/>Brand Configuration] --> D
+        C[Template Library<br/>Layout Patterns] --> D
+    end
+
+    subgraph "Rendering Engine"
+        D[Content Parsing<br/>& Validation] --> E[Template Selection<br/>& Token Injection]
+        E --> F[Visual Rendering<br/>& Diagram Compilation]
+        F --> G[Output Generation<br/>& Export]
+    end
+
+    subgraph Outputs
+        G --> H[HTML Reports]
+        G --> I[PDF Documents]
+        G --> J[Dashboard Widgets]
+        G --> K[Presentation Slides]
+    end
+
+    subgraph Agents
+        L[Rendering Engine Agent] --> F
+        M[Brand Compliance Agent] --> E
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

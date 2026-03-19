@@ -1,0 +1,92 @@
+flowchart TD
+    subgraph Inputs["Entradas"]
+        A1[Cost Estimates]
+        A2[Benefits Quantification]
+        A3[Discount Rate]
+        A4[Benefit Timeline]
+        A5[Operating Costs]
+    end
+
+    subgraph Process["Financial Business Case"]
+        B1[Cost Identification]
+        B2[Benefit Quantification]
+        B3[Cash Flow Modeling]
+        B4[NPV Calculation]
+        B5[IRR Calculation]
+        B6[Payback Period]
+        B7[Sensitivity Analysis]
+        B8[Scenario Modeling]
+        B9[Non-Financial Benefits]
+        B10[Recommendation]
+    end
+
+    subgraph Outputs["Salidas"]
+        C1[Business Case Document]
+        C2[Cash Flow Projection]
+        C3[NPV/IRR/Payback Analysis]
+        C4[Sensitivity Results]
+        C5[Scenario Comparison]
+        C6[Go/No-Go Recommendation]
+    end
+
+    subgraph Downstream["Downstream"]
+        D1[Project Charter]
+        D2[Budget Baseline]
+        D3[Benefits Realization Plan]
+        D4[Portfolio Prioritization]
+    end
+
+    subgraph Agents["Agentes"]
+        E1[Financial Analyst]
+        E2[Benefits Manager]
+        E3[Portfolio Analyst]
+    end
+
+    A1 --> B1
+    A2 --> B2
+    A3 --> B4
+    A4 --> B3
+    A5 --> B3
+    B1 --> B3
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 --> B7
+    B7 --> B8
+    B8 --> B9
+    B9 --> B10
+    B10 --> C1
+    B10 --> C2
+    B10 --> C3
+    B10 --> C4
+    B10 --> C5
+    B10 --> C6
+    C1 --> D1
+    C2 --> D2
+    C3 --> D4
+    C6 --> D3
+
+    E1 --> B4
+    E2 --> B2
+    E3 --> D4
+
+    style B1 fill:#2563EB,color:#fff
+    style B2 fill:#2563EB,color:#fff
+    style B3 fill:#2563EB,color:#fff
+    style B4 fill:#2563EB,color:#fff
+    style B5 fill:#2563EB,color:#fff
+    style B6 fill:#2563EB,color:#fff
+    style B7 fill:#2563EB,color:#fff
+    style B8 fill:#2563EB,color:#fff
+    style B9 fill:#2563EB,color:#fff
+    style B10 fill:#2563EB,color:#fff
+    style C1 fill:#F59E0B,color:#000
+    style C2 fill:#F59E0B,color:#000
+    style C3 fill:#F59E0B,color:#000
+    style C4 fill:#F59E0B,color:#000
+    style C5 fill:#F59E0B,color:#000
+    style C6 fill:#F59E0B,color:#000
+    style E1 fill:#0F172A,color:#fff
+    style E2 fill:#0F172A,color:#fff
+    style E3 fill:#0F172A,color:#fff

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assess gate readiness for G2 (design-to-build transition). Available deliverables: architecture document (complete), data model (80% complete), API specification (draft), security review (not started), and updated risk register (complete).",
+    "assertions": [
+      "Output evaluates each deliverable against gate criteria and assigns pass/fail/partial status",
+      "Output identifies the incomplete data model, draft API spec, and missing security review as gate blockers",
+      "Output provides a clear go/no-go recommendation based on the readiness assessment",
+      "Output suggests remediation actions with estimated effort for each blocker"
+    ]
+  },
+  {
+    "prompt": "Audit the quality of a project charter that contains: project objectives (vague, no metrics), scope statement (detailed with in/out boundaries), timeline (high-level milestones only), budget (lump sum with no breakdown), and risk section (3 risks with no mitigation plans).",
+    "assertions": [
+      "Output identifies vague objectives and missing metrics as critical quality findings",
+      "Output flags the budget lacking breakdown and risks lacking mitigation as major findings",
+      "Output acknowledges the scope statement as meeting quality standards",
+      "Output produces a prioritized remediation plan addressing critical findings first"
+    ]
+  },
+  {
+    "prompt": "Check consistency across these artifacts: The project charter says delivery in Q3, the schedule shows completion in Q4, the resource plan assumes a team of 8, but the RACI only lists 6 roles, and the risk register references an assumption not found in the assumption log.",
+    "assertions": [
+      "Output detects the Q3 vs Q4 timeline contradiction between charter and schedule",
+      "Output identifies the team size mismatch between resource plan (8) and RACI (6 roles)",
+      "Output flags the orphan assumption reference in the risk register",
+      "Output provides specific resolution recommendations for each inconsistency"
+    ]
+  },
+  {
+    "prompt": "Perform a readiness assessment for go-live. The application has passed UAT with 2 minor open defects, runbooks are complete, the support team has been trained, but the data migration has only been tested with 60% of production data volume, and the rollback plan has not been tested.",
+    "assertions": [
+      "Output evaluates readiness across multiple dimensions including technical, operational, and organizational",
+      "Output flags the incomplete data migration testing and untested rollback plan as readiness blockers",
+      "Output acknowledges passed UAT and trained support team as positive readiness indicators",
+      "Output provides a conditional-go or no-go recommendation with specific conditions that must be met"
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[design-system] --> F
+        B[dashboard-tooling] --> F
+        C[data-storytelling] --> F
+        D[executive-dashboard] --> F
+    end
+
+    subgraph Process
+        F[html-brand<br/>Generate Branded<br/>HTML Artifacts]:::skill
+        F --> G[Apply Design Tokens]
+        G --> H[Render Components]
+        H --> I[Validate Accessibility]
+    end
+
+    subgraph Outputs
+        I --> J[executive-briefing]
+        I --> K[portfolio-dashboard]
+        I --> L[copywriting]
+    end
+
+    subgraph Agents
+        M[brand-renderer-agent]:::agent --> F
+        N[accessibility-auditor-agent]:::agent --> I
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Forecast completion at 40% with declining velocity.",
+    "assertions": [
+      "analyzes velocity",
+      "calculates range",
+      "identifies factors",
+      "recommends actions"
+    ]
+  },
+  {
+    "prompt": "Predict materialization for top 10 risks.",
+    "assertions": [
+      "uses leading indicators",
+      "calculates probability changes",
+      "identifies trending risks",
+      "recommends actions"
+    ]
+  },
+  {
+    "prompt": "Forecast resource demand for 3 sprints.",
+    "assertions": [
+      "projects from backlog",
+      "identifies gaps",
+      "recommends adjustments",
+      "accounts for absences"
+    ]
+  },
+  {
+    "prompt": "Simulate 3 scenarios.",
+    "assertions": [
+      "models cases",
+      "uses distributions",
+      "presents outcomes",
+      "recommends planning"
+    ]
+  }
+]

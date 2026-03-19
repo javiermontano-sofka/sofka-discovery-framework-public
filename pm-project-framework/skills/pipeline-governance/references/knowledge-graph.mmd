@@ -1,0 +1,46 @@
+%% Knowledge Graph — Pipeline Governance
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    PG["Pipeline Governance"]:::blue
+
+    %% Gates
+    G0["G0 — Security Gate"]:::amber
+    G1["G1 — Discovery Gate"]:::amber
+    G15["G1.5 — Planning Gate"]:::amber
+    G2["G2 — Execution Gate"]:::amber
+    G3["G3 — Closure Gate"]:::amber
+
+    %% Decisions
+    GO["GO"]:::blue
+    CGO["CONDITIONAL GO"]:::amber
+    NOGO["NO-GO"]:::dark
+
+    %% Inputs
+    EVD["Evidence Artifacts"]:::dark
+    DC["Data Contracts"]:::dark
+    CRIT["Gate Criteria"]:::dark
+
+    %% Process
+    AUDIT["Evidence Audit"]:::blue
+    EVAL["Criteria Evaluation"]:::blue
+    REC["Recommendation"]:::blue
+
+    %% Flow
+    PG --> G0 --> G1 --> G15 --> G2 --> G3
+    EVD --> AUDIT
+    DC --> EVAL
+    CRIT --> EVAL
+    AUDIT --> REC
+    EVAL --> REC
+    REC --> GO
+    REC --> CGO
+    REC --> NOGO
+
+    %% Feedback
+    CGO -.->|"conditions"| EVAL
+    NOGO -.->|"remediation"| EVD

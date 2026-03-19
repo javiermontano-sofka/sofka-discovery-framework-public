@@ -1,0 +1,53 @@
+[
+  {
+    "prompt": "Quantify 15 risks for a $25M commercial construction project using Expected Monetary Value. The project has a 24-month timeline, 120-person workforce, and includes structural, MEP, and finishing phases.",
+    "assertions": [
+      "calculates EMV (probability x impact) for all 15 risks",
+      "separates threats (negative EMV) from opportunities (positive EMV)",
+      "aggregates total portfolio exposure with net threat and net opportunity subtotals",
+      "recommends a contingency reserve amount based on total threat EMV",
+      "identifies concentration risks exceeding 5% of project budget",
+      "every probability and impact value has an evidence tag (not solely [SUPUESTO])",
+      "includes a ranked EMV table sorted by absolute value",
+      "output file follows naming convention with {WIP} tag"
+    ]
+  },
+  {
+    "prompt": "Run a Monte Carlo simulation for a 12-month software delivery program with 8 identified risk events. Activities have three-point duration estimates and risks have defined probabilities. Provide P50, P80, and P95 confidence intervals for both schedule and cost.",
+    "assertions": [
+      "specifies ≥10,000 simulation iterations",
+      "maps each activity to a probability distribution (triangular or PERT-beta)",
+      "models risk events as Bernoulli triggers with defined probabilities",
+      "addresses correlation between related risks and activities",
+      "produces P50, P80, and P95 confidence intervals for schedule",
+      "produces P50, P80, and P95 confidence intervals for cost",
+      "calculates criticality index for activities identifying persistent bottlenecks",
+      "recommends P80 as the commitment level with rationale"
+    ]
+  },
+  {
+    "prompt": "Perform a sensitivity analysis on our ERP implementation project to reveal the top 5 risk drivers. We have 22 uncertain variables including vendor delivery timelines, integration complexity, data migration volume, user adoption rate, and regulatory approval delays.",
+    "assertions": [
+      "produces a tornado diagram specification with variables ranked by impact magnitude",
+      "identifies the top 5 variables by variance contribution percentage",
+      "tests pairwise interactions among top variables for amplification effects",
+      "cross-references sensitivity drivers with existing mitigation plans",
+      "quantifies potential variance reduction for each driver if range is narrowed",
+      "flags high-sensitivity variables lacking mitigation strategies",
+      "provides cost-effectiveness ranking for mitigation investments"
+    ]
+  },
+  {
+    "prompt": "Build a decision tree for a build-vs-buy decision on a customer portal platform. Three uncertainty factors: (1) internal team capacity availability (60% likely sufficient), (2) vendor product fit to requirements (70% likely adequate), (3) regulatory compliance timeline (50% chance of accelerated deadline).",
+    "assertions": [
+      "constructs a decision tree with ≥2 decision nodes and ≥3 chance nodes",
+      "all chance node branches sum to 1.0 probability",
+      "calculates EMV for both build and buy alternatives",
+      "quantifies terminal payoffs including implementation cost, operational cost, and risk cost",
+      "identifies switching probabilities where the optimal decision changes",
+      "performs ±10% sensitivity test on the 3 uncertainty factors",
+      "provides a Mermaid-compatible tree diagram specification",
+      "delivers a clear recommendation with confidence level and key assumptions"
+    ]
+  }
+]

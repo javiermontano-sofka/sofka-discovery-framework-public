@@ -1,0 +1,22 @@
+graph TD
+    subgraph Inputs
+        A[WBS Work Packages] --> D
+        B[Historical Data] --> D
+        C[Resource Rates] --> D
+    end
+    subgraph "Cost Estimation Process"
+        D[Method Selection]:::skill --> E[Estimate Development]:::skill
+        E --> F[Bias Correction]:::skill
+        F --> G[Confidence Assessment]:::skill
+    end
+    subgraph Agents
+        H[Estimation Agent]:::agent --> E
+        I[Calibration Agent]:::agent --> F
+    end
+    subgraph Downstream
+        G --> J[Budget Baseline]
+        G --> K[Financial Business Case]
+        G --> L[Cost of Delay]
+    end
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

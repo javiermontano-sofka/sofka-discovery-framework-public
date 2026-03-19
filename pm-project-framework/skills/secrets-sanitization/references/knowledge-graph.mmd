@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Project Artifacts<br/>Code & Documents] --> D
+        B[Git Repository<br/>History & Branches] --> D
+        C[Compliance Tracking<br/>Security Policy] --> D
+    end
+    subgraph "Secrets Sanitization"
+        D[Detection &<br/>Scanning] --> E[Classification &<br/>Risk Assessment]
+        E --> F[Remediation &<br/>Rotation]
+        F --> G[Prevention &<br/>Monitoring]
+    end
+    subgraph Outputs
+        G --> H[Quality Gate G0]
+        G --> I[Compliance Report]
+        F --> J[Security Incident Log]
+        G --> K[CI/CD Pipeline Gates]
+    end
+    subgraph Agents
+        L[Security Scanner Agent] --> D
+        M[Remediation Agent] --> F
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

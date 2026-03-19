@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Create a communication plan for a 6-month ERP migration project with 4 stakeholder groups: C-suite sponsors, department heads, end users (200+), and the external vendor team.",
+    "assertions": [
+      "Output segments stakeholders into at least 4 distinct communication groups with differentiated needs",
+      "Output specifies at least 3 different communication channels mapped to stakeholder segments",
+      "Output includes a cadence or frequency recommendation per stakeholder group",
+      "Output describes a feedback mechanism or measurement approach for communication effectiveness"
+    ]
+  },
+  {
+    "prompt": "A project sponsor complains they receive too many operational emails and miss strategic updates. Redesign the communication approach for executive stakeholders.",
+    "assertions": [
+      "Output distinguishes between strategic and operational communication and reduces noise for executives",
+      "Output recommends a specific cadence and channel optimized for executive consumption patterns",
+      "Output includes an escalation path for critical items that require immediate executive attention",
+      "Output proposes a feedback loop to validate the redesigned approach is working"
+    ]
+  },
+  {
+    "prompt": "Build a communication plan for a cross-functional team spanning 3 time zones (US-East, EU-Central, Asia-Pacific) working on a platform modernization initiative.",
+    "assertions": [
+      "Output addresses time zone overlap windows and recommends synchronous vs asynchronous channels accordingly",
+      "Output segments communication needs by geographic region or time zone cluster",
+      "Output defines a cadence that accounts for regional working hours and avoids off-hours overload",
+      "Output includes a channel strategy with at least one asynchronous and one synchronous option"
+    ]
+  },
+  {
+    "prompt": "Evaluate this existing communication plan and identify gaps: 'Weekly status email to all stakeholders every Monday. Monthly steering committee meeting. Ad-hoc Slack messages for urgent issues.'",
+    "assertions": [
+      "Output identifies the lack of stakeholder segmentation as a gap",
+      "Output flags the absence of a structured feedback or effectiveness measurement mechanism",
+      "Output recommends differentiated cadence or channels for different stakeholder groups",
+      "Output suggests adding trigger-based or event-driven communications beyond the fixed schedule"
+    ]
+  }
+]

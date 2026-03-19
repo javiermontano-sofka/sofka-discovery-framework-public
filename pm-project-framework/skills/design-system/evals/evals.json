@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Define APEX design token system.",
+    "assertions": [
+      "defines color tokens",
+      "sets typography scale",
+      "establishes spacing system",
+      "documents usage guidelines"
+    ]
+  },
+  {
+    "prompt": "Create component library for PM deliverables.",
+    "assertions": [
+      "designs table components",
+      "creates card patterns",
+      "builds chart components",
+      "provides usage examples"
+    ]
+  },
+  {
+    "prompt": "Design page template for status reports.",
+    "assertions": [
+      "creates consistent header/footer",
+      "designs content layout",
+      "includes branding elements",
+      "supports print"
+    ]
+  },
+  {
+    "prompt": "Ensure design system consistency across 10 deliverables.",
+    "assertions": [
+      "audits token usage",
+      "identifies inconsistencies",
+      "recommends corrections",
+      "updates guidelines"
+    ]
+  }
+]

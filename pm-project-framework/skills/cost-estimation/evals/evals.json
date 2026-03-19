@@ -1,0 +1,54 @@
+[
+  {
+    "prompt": "Estimate the cost for ProjectNova, a greenfield cloud-native SaaS platform with no historical data available. Team of 8, 12-month timeline, microservices architecture.",
+    "assertions": [
+      "recognizes absence of historical data limits analogous estimation accuracy",
+      "falls back to parametric and three-point techniques as primary methods",
+      "uses industry benchmarks (ISBSG, COCOMO II) as proxy when organizational data is absent",
+      "produces three-point estimates with O, M, P for each cost element",
+      "calculates confidence intervals at P50, P80, and P95",
+      "flags estimate as having higher uncertainty (>+/-35%) due to no analogues",
+      "tags all benchmark-derived values with [SUPUESTO] or [INFERENCIA]",
+      "output file named XX_cost_estimate_ProjectNova_{WIP}.md"
+    ]
+  },
+  {
+    "prompt": "Perform a parametric cost estimation using function points for ProjectERP, an SAP S/4HANA implementation with 1,200 identified function points, 3 integration interfaces, and a 15-person team across 2 geographies.",
+    "assertions": [
+      "applies IFPUG or COSMIC function point costing model",
+      "incorporates cost-per-function-point rate with evidence source",
+      "adjusts for COCOMO II cost drivers: platform complexity, team distribution, integration difficulty",
+      "accounts for geographic labor rate differentials between the 2 locations",
+      "decomposes cost by phase (blueprint, realization, testing, go-live)",
+      "includes sensitivity analysis showing top parameters by cost impact",
+      "cross-validates with at least one secondary parametric model",
+      "regression R-squared or confidence band is stated for the chosen model"
+    ]
+  },
+  {
+    "prompt": "We have 3 estimates for ProjectBridge that diverge significantly: analogous says $2.1M, parametric says $3.4M, and three-point PERT says $2.8M. Reconcile these into a single defensible number.",
+    "assertions": [
+      "calculates pairwise divergence percentages (analogous vs parametric = ~38%)",
+      "flags the analogous-parametric gap as exceeding 20% threshold",
+      "investigates root causes for each divergence (Data, Assumption, Model, or Scope)",
+      "does NOT simply average the three estimates",
+      "assigns credibility weights to each technique with documented rationale",
+      "produces a single reconciled estimate with confidence range",
+      "includes a decision log for every judgment call made during reconciliation",
+      "recommends contingency reserve based on remaining uncertainty"
+    ]
+  },
+  {
+    "prompt": "ProjectOmega had a baseline cost estimate of $1.5M but just received a 40% scope increase after Phase 2 approval. Re-estimate the project cost incorporating the scope change.",
+    "assertions": [
+      "does NOT simply multiply baseline by 1.4 — analyzes the nature of added scope",
+      "decomposes the scope change into specific new work packages or deliverables",
+      "re-estimates affected cost elements using three-point technique for new scope",
+      "preserves original estimates for unchanged scope elements",
+      "recalculates contingency reserve reflecting increased uncertainty from mid-project change",
+      "flags non-linear cost impacts: rework, re-integration, extended coordination overhead",
+      "updates confidence intervals at P50, P80, P95 for the revised total",
+      "recommends change control board review before baselining the new estimate"
+    ]
+  }
+]

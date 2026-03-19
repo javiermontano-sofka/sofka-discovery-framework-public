@@ -1,0 +1,6 @@
+[
+  {"prompt":"Onboarding playbook for a developer joining mid-sprint on an agile project.","assertions":["creates role-specific checklist","assembles knowledge package with architecture overview","designs buddy pairing","sets ramp-up milestones"]},
+  {"prompt":"New PM taking over a troubled project from departing PM.","assertions":["prioritizes critical knowledge transfer","includes stakeholder re-introduction","provides project health assessment","accelerates ramp-up timeline"]},
+  {"prompt":"5 contractors joining simultaneously next Monday.","assertions":["creates shared orientation session","designs role-specific tracks","assigns buddies with workload distribution","sets staggered milestone checkpoints"]},
+  {"prompt":"Remote member in UTC+9 struggling after 3 weeks.","assertions":["identifies timezone-specific blockers","detects milestone delays","recommends timezone-adapted adjustments","provides async-first alternatives"]}
+]

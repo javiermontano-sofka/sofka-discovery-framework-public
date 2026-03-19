@@ -1,0 +1,62 @@
+flowchart TD
+    %% Inputs
+    PM[Project Metrics<br>EVM, velocity, quality]
+    DR[Deliverables Register<br>Aceptacion por entregable]
+    LL[Lessons Learned<br>De retrospectivas]
+    BR[Benefits Register<br>Realizados vs planificados]
+    RR[Risk Register<br>Disposicion final]
+
+    %% Process
+    CR[Closure Report<br>Skill]
+
+    %% Outputs
+    RP[Closure Report<br>Reporte completo]
+    LS[Lessons Synthesis<br>Categorizadas y accionables]
+    BA[Benefits Assessment<br>Realizados vs target]
+    AC[Admin Closure<br>Checklist completado]
+    FA[Formal Acceptance<br>Firma del sponsor]
+
+    %% Downstream
+    BRP[Benefits Realization Plan]
+    KB[Organizational Knowledge Base]
+    PD[PMO Portfolio Dashboard]
+    FP[Future Projects<br>Estimacion y planning]
+
+    %% Agents
+    PA[Project Analyst Agent]
+    KA[Knowledge Agent]
+
+    %% Input Flow
+    PM --> CR
+    DR --> CR
+    LL --> CR
+    BR --> CR
+    RR --> CR
+
+    %% Output Flow
+    CR --> RP
+    CR --> LS
+    CR --> BA
+    CR --> AC
+    CR --> FA
+
+    %% Downstream Flow
+    RP --> PD
+    LS --> KB
+    LS --> FP
+    BA --> BRP
+    AC --> PD
+
+    %% Agent Flow
+    PA --> CR
+    KA --> CR
+
+    %% Styles — APEX Branding
+    style CR fill:#2563EB,color:#fff
+    style RP fill:#F59E0B,color:#000
+    style LS fill:#F59E0B,color:#000
+    style BA fill:#F59E0B,color:#000
+    style AC fill:#F59E0B,color:#000
+    style FA fill:#F59E0B,color:#000
+    style PA fill:#0F172A,color:#fff
+    style KA fill:#0F172A,color:#fff

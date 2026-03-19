@@ -1,0 +1,61 @@
+flowchart TD
+    %% Inputs
+    TU[Tool URLs<br>Jira, ADO, Monday]
+    AC[Audit Criteria<br>Best practices por herramienta]
+    SD[Source Data<br>Datos originales para validacion]
+    MC[Methodology Context<br>Agile, Waterfall, SAFe]
+
+    %% Process
+    CBA[Client Browser Audit<br>Skill]
+
+    %% Outputs
+    AR[Audit Report<br>Hallazgos con evidencia]
+    SC[Screenshots<br>Capturas anotadas]
+    RM[Remediation Roadmap<br>Plan de correccion priorizado]
+    BP[Best Practice Scorecard<br>Conformidad por seccion]
+    AI[Accessibility Report<br>WCAG compliance]
+
+    %% Downstream Skills
+    DT[Dashboard Tooling]
+    ED[Executive Dashboard]
+    CT[Compliance Tracking]
+    JC[Jira Configuration]
+    QA[Quality Audit]
+
+    %% Agents
+    BA[Browser Automation Agent]
+    QV[QA Validation Agent]
+
+    %% Input Flow
+    TU --> CBA
+    AC --> CBA
+    SD --> CBA
+    MC --> CBA
+
+    %% Output Flow
+    CBA --> AR
+    CBA --> SC
+    CBA --> RM
+    CBA --> BP
+    CBA --> AI
+
+    %% Downstream Flow
+    AR --> DT
+    AR --> QA
+    RM --> JC
+    BP --> ED
+    AI --> CT
+
+    %% Agent Flow
+    BA --> CBA
+    QV --> CBA
+
+    %% Styles — APEX Branding
+    style CBA fill:#2563EB,color:#fff
+    style AR fill:#F59E0B,color:#000
+    style SC fill:#F59E0B,color:#000
+    style RM fill:#F59E0B,color:#000
+    style BP fill:#F59E0B,color:#000
+    style AI fill:#F59E0B,color:#000
+    style BA fill:#0F172A,color:#fff
+    style QV fill:#0F172A,color:#fff

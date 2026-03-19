@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Write executive summary for a quarterly project review.",
+    "assertions": [
+      "leads with key message",
+      "uses active voice",
+      "keeps under 200 words",
+      "includes call to action"
+    ]
+  },
+  {
+    "prompt": "Craft value proposition for project funding renewal.",
+    "assertions": [
+      "articulates value delivered",
+      "quantifies benefits",
+      "addresses stakeholder concerns",
+      "frames future value"
+    ]
+  },
+  {
+    "prompt": "Design messages for 4 different stakeholder groups.",
+    "assertions": [
+      "adapts language per audience",
+      "highlights relevant benefits",
+      "uses appropriate detail level",
+      "maintains consistent core message"
+    ]
+  },
+  {
+    "prompt": "Write call to action for budget approval.",
+    "assertions": [
+      "states specific ask clearly",
+      "provides deadline",
+      "outlines consequences of delay",
+      "makes approval easy"
+    ]
+  }
+]

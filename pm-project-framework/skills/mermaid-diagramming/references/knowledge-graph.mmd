@@ -1,0 +1,26 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["📊 Source Data<br/>Schedule, Process, Risks"]:::primary --> B["🎨 Mermaid Diagramming<br/>Skill Entry Point"]:::primary
+
+    B --> C["📐 Type Selection<br/>Gantt/Flow/Sequence/Quad"]:::primary
+    B --> D["🎯 Audience Analysis<br/>Exec vs Technical"]:::amber
+
+    C --> E["💻 Diagram Creation<br/>Mermaid Syntax"]:::primary
+    D --> E
+
+    E --> F["🎨 APEX Styling<br/>#2563EB #F59E0B #0F172A"]:::amber
+    E --> G["📏 Complexity Check<br/>Max 50 Nodes"]:::amber
+
+    F --> H["✅ Render Validation<br/>Platform Testing"]:::dark
+    G --> H
+
+    H --> I["📋 Data Table<br/>Accessibility Alt"]:::primary
+    H --> J["📦 Deliverable<br/>Embedded Diagram"]:::primary
+
+    I --> K["✅ Validation Gate<br/>10 Criteria"]:::dark
+    J --> K
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

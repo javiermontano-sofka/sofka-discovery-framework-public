@@ -1,0 +1,50 @@
+%% Knowledge Graph — Technical Writing & Documentation
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        ARCH[architecture-assessment<br/>System design]
+        CODE[codebase<br/>Source code]
+        PROCESS[process-definitions<br/>Workflows]
+        DECISIONS[decision-log<br/>ADR sources]
+    end
+
+    subgraph "Technical Writing (This Skill)"
+        AUDIENCE[Audience Analysis<br/>Reader profiles]
+        STRUCTURE[Structure Selection<br/>ADR/spec/guide/SOP]
+        DRAFT[Content Drafting<br/>Clear, precise writing]
+        REVIEW[Review Cycle<br/>SME validation]
+    end
+
+    subgraph Downstream
+        HANDOVER[discovery-handover<br/>Documentation package]
+        ONBOARD[onboarding<br/>New member docs]
+        OPS[operations<br/>Runbooks and SOPs]
+        GOVERNANCE[governance-framework<br/>Process docs]
+    end
+
+    subgraph Agents
+        TECH_WRITER[technical-writer<br/>L2 Specialist]
+        SME[subject-matter-expert<br/>L3 Support]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    ARCH --> STRUCTURE
+    CODE --> DRAFT
+    PROCESS --> DRAFT
+    DECISIONS --> STRUCTURE
+
+    AUDIENCE --> STRUCTURE --> DRAFT --> REVIEW
+
+    REVIEW --> HANDOVER
+    REVIEW --> ONBOARD
+    REVIEW --> OPS
+    REVIEW --> GOVERNANCE
+
+    TECH_WRITER -.->|executes| DRAFT
+    SME -.->|validates| REVIEW
+    CONDUCTOR -.->|orchestrates| REVIEW
+
+    style REVIEW fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style TECH_WRITER fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

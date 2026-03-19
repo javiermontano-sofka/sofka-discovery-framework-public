@@ -1,0 +1,84 @@
+[
+  {
+    "id": "agile-assessment-eval-001",
+    "title": "Waterfall-to-Agile Transition Maturity Assessment",
+    "description": "A 40-person development team at a financial services company has been doing waterfall for 10 years and started a Scrum adoption 6 months ago. They have a Scrum Master but no formal Product Owner. Sprints are 4 weeks. They hold standups and Sprint Reviews but skip Retrospectives. No CI/CD pipeline exists. Leadership is supportive but still requests Gantt charts and fixed-scope commitments. Assess their agile maturity.",
+    "input": "We're a 40-person dev team at FinCorp that's been waterfall for a decade. Six months ago we started 'doing Scrum.' We have a Scrum Master (also the team lead), no dedicated Product Owner — the project manager fills that role. We run 4-week sprints, do daily standups (usually 30 min), and hold Sprint Reviews with stakeholders. We don't do Retrospectives because 'we don't have time.' There's no CI/CD — we deploy manually every quarter. Our VP of Engineering supports the transition but still asks for Gantt charts and wants fixed-date commitments for everything. Developers work in functional silos (frontend, backend, QA) and hand off work between groups. Morale is mixed — some people like the change, others see it as 'just more meetings.'",
+    "expected_behavior": [
+      "Agent scores all 8 maturity dimensions with evidence-based ratings",
+      "Culture scores low (2/5 or below) due to functional silos and mixed morale",
+      "Practices scores low-to-moderate due to missing Retrospectives and 30-min standups",
+      "Tooling scores very low (1/5) due to no CI/CD and manual quarterly deploys",
+      "Leadership scores moderate — supportive but still waterfall-minded (Gantt charts, fixed scope)",
+      "Team Autonomy scores low due to functional silos and team-lead-as-SM anti-pattern",
+      "Identifies the Scrum Master / Team Lead dual-role as an anti-pattern",
+      "Flags missing Retrospectives as a critical gap undermining continuous improvement",
+      "Aggregate maturity index falls in the 1.5–2.5 range (Initial to Emerging)"
+    ],
+    "agents_involved": ["agile-maturity-scorer"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "agile-assessment-eval-002",
+    "title": "Scrum-in-Name-Only Practice Gap Analysis",
+    "description": "A SaaS product team of 12 claims to follow Scrum but exhibits significant deviations: no Sprint Goal, no Definition of Done, Sprint Planning is a task-assignment meeting run by the manager, Daily Scrum is a status report to the manager, Sprint Review is a demo with no feedback loop, and the backlog is a flat list with no refinement. Analyze gaps against the Scrum Guide 2020.",
+    "input": "We're a 12-person SaaS team and we've been 'doing Scrum' for 2 years. Here's how it works: The engineering manager runs Sprint Planning — he assigns stories to developers based on his judgment. We don't set Sprint Goals. There's no written Definition of Done. Daily standup is where each person reports to the manager what they did yesterday and what they'll do today — it takes about 25 minutes. Sprint Review is a demo where devs show what they built; stakeholders watch but rarely give feedback and we don't adjust the backlog based on it. We don't have a Product Owner — the manager prioritizes the backlog, which is a flat Jira list with 400+ items and no refinement sessions. Retrospectives happen occasionally but action items are never tracked. We have 2-week sprints but regularly carry over 40% of stories.",
+    "expected_behavior": [
+      "Agent maps every Scrum Guide 2020 element against current practice",
+      "Marks Sprint Goal as Missing with Critical severity",
+      "Marks Definition of Done as Missing with Critical severity",
+      "Marks Product Owner role as Missing/Deviated — manager is not a PO",
+      "Flags Sprint Planning as Deviated (task assignment, not collaborative planning)",
+      "Flags Daily Scrum as Deviated (status report to manager, not team self-organization)",
+      "Flags Sprint Review as Partial (demo only, no inspection/adaptation of backlog)",
+      "Flags Retrospectives as Partial (occasional, no action tracking)",
+      "Identifies anti-patterns: manager-driven planning, status-report standups, 40% carryover",
+      "Overall adherence falls below 40%",
+      "Prioritized remediation starts with establishing PO role and Definition of Done"
+    ],
+    "agents_involved": ["practice-gap-analyzer"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "agile-assessment-eval-003",
+    "title": "Enterprise Agile Readiness for 200-Person IT Department",
+    "description": "A 200-person IT department at a manufacturing company wants to adopt SAFe. The CTO is the sponsor but middle managers are resistant. Teams are organized by technology layer. There's no agile experience. Budget for training is limited. Legacy systems dominate the landscape with minimal automated testing.",
+    "input": "We're a 200-person IT department at GlobalMfg Corp. Our CTO wants us to adopt SAFe across all 18 teams within 12 months. Current state: We've never done agile — everything is PRINCE2/waterfall with stage gates. Teams are organized by technology layer (mainframe team, middleware team, front-end team, DBA team, QA team, infrastructure team). Middle managers are vocal about this being 'another management fad' and worry about losing their roles. Developers are cautiously curious but have zero agile training. Our tooling: HP ALM for project tracking, manual deployments, no automated tests (legacy COBOL/Java monolith), Jenkins exists but only runs nightly builds with no test stage. Budget for external coaching/training: $50K total (we know it's low). Two previous change initiatives (DevOps adoption in 2022, Lean in 2020) were abandoned after 4 months each. The union contract requires 6-month notice for role changes.",
+    "expected_behavior": [
+      "Agent evaluates all 5 readiness pillars with evidence",
+      "Change Appetite scores very low — two failed initiatives, 'management fad' sentiment",
+      "Leadership Buy-In scores split — CTO sponsor (positive) but resistant middle managers (negative)",
+      "Team Skills scores very low — zero agile experience across 200 people",
+      "Tooling Maturity scores very low — HP ALM, no automated tests, COBOL monolith",
+      "Cultural Barriers scores high-risk — technology silos, union constraints, failed change history",
+      "Overall verdict is 'Not Ready' or 'Conditionally Ready' with significant prerequisites",
+      "Risk register includes: middle management resistance, insufficient training budget, union constraints",
+      "Prerequisites include: middle management alignment workshops, realistic budget increase, pilot scope reduction",
+      "Recommends starting with 1-2 pilot teams rather than 18-team SAFe rollout",
+      "Flags the 12-month timeline as unrealistic for enterprise-wide SAFe with zero agile experience"
+    ],
+    "agents_involved": ["transformation-readiness-evaluator"],
+    "difficulty": "hard"
+  },
+  {
+    "id": "agile-assessment-eval-004",
+    "title": "Kanban Recommendation for Maintenance Team",
+    "description": "A 6-person team handles production support, bug fixes, and minor enhancements for a stable SaaS platform. They tried Scrum but struggled with Sprint commitments because interrupt-driven work made planning impossible. Assess and recommend the appropriate framework.",
+    "input": "We're a 6-person team responsible for production support (L3 incidents), bug fixes, and minor feature enhancements for a stable SaaS platform with 2000 users. We tried Scrum for 6 months but it was painful: 60% of our Sprint backlog gets disrupted by production incidents. We can't commit to Sprint Goals because P1 incidents override everything. Sprint Planning feels wasted because we end up working on completely different things. The team is demoralized by constantly 'failing' sprints. Our work is interrupt-driven — we get 15-20 support tickets per week plus 3-5 planned enhancement requests per month. We have a mature CI/CD pipeline, good automated test coverage (78%), and the team is technically strong. We just need a better way to manage flow. Maturity scores from a previous assessment: Culture 3/5, Practices 2/5 (Scrum-specific), Tooling 4/5, Leadership 3/5, Team Autonomy 3/5, CI 3/5, Customer Collaboration 3/5, Technical Excellence 4/5. Practice gaps: Sprint commitments consistently broken, Sprint Planning ineffective for interrupt-driven work. Readiness: team is eager for change, leadership supports experimentation.",
+    "expected_behavior": [
+      "Agent recommends Kanban over Scrum with clear rationale tied to interrupt-driven work profile",
+      "Explains why Scrum is a poor fit: unpredictable demand, Sprint commitments impossible with 60% disruption",
+      "Start matrix includes: WIP limits, service classes (P1 incidents vs. enhancements), flow metrics, explicit policies",
+      "Stop matrix includes: fixed Sprint commitments, Sprint Planning as currently practiced",
+      "Continue matrix includes: CI/CD pipeline, automated testing, daily standups (reframed as flow review)",
+      "Training needs are minimal — Kanban fundamentals workshop, flow metrics literacy",
+      "Roadmap Phase 1 focuses on visualizing current workflow and establishing WIP limits",
+      "Defines service classes: Expedite (P1), Standard (bugs), Scheduled (enhancements)",
+      "Success metrics focus on flow: cycle time, throughput, WIP age, blocked time percentage",
+      "Does NOT recommend SAFe or XP as primary framework",
+      "Acknowledges team's technical maturity as a strength to build on"
+    ],
+    "agents_involved": ["agile-recommendation-engine"],
+    "difficulty": "medium"
+  }
+]

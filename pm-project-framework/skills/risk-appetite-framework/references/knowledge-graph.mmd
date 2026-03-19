@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Strategic Alignment<br/>Org Strategy] --> D
+        B[Risk Monitoring<br/>Current Risk Profile] --> D
+        C[Governance Framework<br/>Decision Authorities] --> D
+    end
+
+    subgraph "Risk Appetite Framework"
+        D[Appetite Definition<br/>& Categorization] --> E[Tolerance &<br/>Threshold Setting]
+        E --> F[Cascading to<br/>Project Level]
+        F --> G[Communication &<br/>Governance]
+    end
+
+    subgraph Outputs
+        G --> H[Risk Response Planning]
+        G --> I[Risk Quantification]
+        F --> J[Project Charter Constraints]
+        G --> K[Steering Review Criteria]
+    end
+
+    subgraph Agents
+        L[Risk Strategist Agent] --> E
+        M[Governance Architect Agent] --> G
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

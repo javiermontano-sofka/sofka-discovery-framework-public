@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Generate Gantt chart for a 6-month project with 5 phases.",
+    "assertions": [
+      "creates valid Mermaid Gantt syntax",
+      "includes milestones",
+      "shows dependencies",
+      "highlights critical path"
+    ]
+  },
+  {
+    "prompt": "Build sequence diagram for change control process.",
+    "assertions": [
+      "models all participants",
+      "shows message flow",
+      "includes decision points",
+      "handles alternative paths"
+    ]
+  },
+  {
+    "prompt": "Design decision flowchart for risk response selection.",
+    "assertions": [
+      "maps decision criteria",
+      "shows all paths",
+      "includes conditions",
+      "produces valid Mermaid"
+    ]
+  },
+  {
+    "prompt": "Create C4 container diagram for project architecture.",
+    "assertions": [
+      "defines system boundary",
+      "shows containers",
+      "maps relationships",
+      "includes technology annotations"
+    ]
+  }
+]
