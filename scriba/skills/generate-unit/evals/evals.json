@@ -1,0 +1,38 @@
+[
+  {
+    "id": "unit-full-generation",
+    "prompt": "Genera la Unidad 1 de Lengua y Literatura 5to EGB titulada 'Explorando la narrativa' con 2 temas, usando la matriz A&S proporcionada con destrezas DZ-LENG-5-001 a DZ-LENG-5-004.",
+    "expected_output": "Complete editorial unit with all 4 sections (apertura, desarrollo with 2 themes each having 4 phases, cierre, evaluacion). Every paragraph tagged with DZ-ref. Inserciones curriculares present.",
+    "expectations": [
+      "Unit contains Apertura section with 'Me preparo para mis competencias', 'Seguridad Integral', and 'Piensa y Reflexiona'",
+      "Desarrollo contains 2 themes, each with Experiencia, Conceptualizacion, Reflexion, Aplicacion phases",
+      "Cierre contains 'Construyo mi Aprendizaje', 'Mi emocion cuenta', and 'Ponte pilas'",
+      "Evaluacion contains both formative and summative items",
+      "Every content paragraph has a [REF: DZ-LENG-5-XXX] tag",
+      "At least one ODS reference, one INS-SE section, one INS-SI tip present"
+    ]
+  },
+  {
+    "id": "unit-traceability-check",
+    "prompt": "Genera una unidad para Matematica 6to EGB con 3 destrezas. Al final, incluye una tabla de trazabilidad mostrando donde aparece cada destreza.",
+    "expected_output": "Editorial unit with traceability summary table at the end mapping each DZ code to the sections where it appears. All 3 destrezas should appear in both content and evaluation.",
+    "expectations": [
+      "Traceability table present at end of unit",
+      "All 3 DZ codes appear in the traceability table",
+      "Each DZ code appears in at least one content section and one evaluation item",
+      "No orphaned destrezas (all 3 mapped)",
+      "Taxonomy progression visible (earlier phases use lower Bloom levels)"
+    ]
+  },
+  {
+    "id": "unit-error-no-matrix",
+    "prompt": "Genera la unidad 3 de Ciencias Naturales 7mo EGB sin proporcionar la Matriz A&S.",
+    "expected_output": "Error response explaining that the Matriz A&S is required before unit generation. Should suggest running generate-matrix first. Should not produce a unit without curricular alignment.",
+    "expectations": [
+      "Response indicates Matriz A&S is required",
+      "Suggests running generate-matrix skill first",
+      "Does not generate unit content without matrix",
+      "Explains that content without curricular alignment fails Gate G1"
+    ]
+  }
+]

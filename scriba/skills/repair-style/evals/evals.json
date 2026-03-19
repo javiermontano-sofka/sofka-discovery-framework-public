@@ -1,0 +1,44 @@
+[
+  {
+    "id": "repair-style-01",
+    "name": "Multi-severity violation batch repair",
+    "prompt": "El changelog de estilo reporta 5 violaciones en U2: 1 critica (uso de 'tu' en seccion docente que requiere 'usted'), 2 mayores (registro informal 'ojo que' y 'un monton de' en texto expositivo), 2 menores (nominalizaciones 'la realizacion del experimento', 'la comprension del texto'). Aplica todas las correcciones.",
+    "expected_behavior": [
+      "Processes the critical violation first (tu -> usted)",
+      "Fixes both major violations (informal register replacements)",
+      "Fixes both minor violations (denominalization)",
+      "Each correction includes before/after text in the report",
+      "No pedagogical content is altered (meaning preservation verified)",
+      "No [REF: DZ-...] tags are modified",
+      "Residual scan shows 0 remaining violations",
+      "Report shows 5/5 corrections applied"
+    ],
+    "quality_gate": "G2"
+  },
+  {
+    "id": "repair-style-02",
+    "name": "Contextual tone exception handling",
+    "prompt": "El changelog marca la frase 'Dale con todo, tu puedes!' en la seccion 'Ponte pilas' como violacion de registro informal (V-01). Sin embargo, 'Ponte pilas' es una seccion intencionalmente informal segun el Manual de Voz Sinapsis. Maneja correctamente esta excepcion.",
+    "expected_behavior": [
+      "Recognizes that 'Ponte pilas' is a contextual tone exception per the voice manual",
+      "Does NOT apply the formal register correction",
+      "Classifies the violation as a false positive with justification",
+      "Repair report shows '1 false positive (justified)' instead of '1 correction applied'",
+      "Cites the voice manual rule that permits informal tone in this section"
+    ],
+    "quality_gate": "G2"
+  },
+  {
+    "id": "repair-style-03",
+    "name": "Correction that would alter curricular term",
+    "prompt": "El changelog sugiere cambiar 'Los estudiantes evaluaran criticamente las fuentes' a 'Los estudiantes revisaran las fuentes' para simplificar. Sin embargo, 'evaluar criticamente' es el verbo taxonomico de Bloom nivel 5 vinculado a la destreza DZ-LENG-6-12. Protege el termino curricular.",
+    "expected_behavior": [
+      "Identifies 'evaluar criticamente' as a Bloom taxonomy verb tied to a destreza",
+      "Does NOT apply the suggested correction",
+      "Logs the entry as 'requires manual review' with explanation",
+      "Tags with [SUPUESTO] for style-corrector human review",
+      "Suggests an alternative fix that preserves the taxonomy verb (e.g., restructure sentence without changing the verb)"
+    ],
+    "quality_gate": "G2"
+  }
+]

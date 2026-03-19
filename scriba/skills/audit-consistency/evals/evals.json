@@ -1,0 +1,41 @@
+[
+  {
+    "id": "ac-eval-01",
+    "name": "Terminological contradiction detection",
+    "prompt": "Audit consistency across 4 units of Ciencias Naturales 5to grado. Unit 2 defines 'ecosistema' as 'conjunto de seres vivos y su entorno fisico que interactuan entre si.' Unit 5 defines 'ecosistema' as 'sistema biologico cerrado que se autorregula.' These definitions are incompatible. Also, Unit 3 uses the term 'fotosintesis' in an activity, but the term is first defined in Unit 4. Produce the consistency audit report.",
+    "expected_behavior": [
+      "Flags 'ecosistema' contradiction as CRITICAL with both definitions and locations",
+      "Recommends unifying to one definition and updating the other unit",
+      "Flags 'fotosintesis' forward reference as CRITICAL: used in U3 before defined in U4",
+      "Recommends either moving the definition to U3 or removing the U3 reference",
+      "Produces properly formatted terminology contradiction and sequential logic tables"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "ac-eval-02",
+    "name": "Progressive complexity regression detection",
+    "prompt": "Audit the complexity progression for DZ-CCNN-5-03 across 4 units. Unit 1 has activities at Aplicar level. Unit 2 drops to Comprender level. Unit 3 jumps to Evaluar level. Unit 4 returns to Analizar level. Produce the progression curve analysis.",
+    "expected_behavior": [
+      "Detects regression from Aplicar (U1) to Comprender (U2) — WARNING",
+      "Detects regression from Evaluar (U3) to Analizar (U4) — WARNING",
+      "Maps the full progression curve: Aplicar -> Comprender -> Evaluar -> Analizar",
+      "Notes the curve is non-monotonic with 2 regressions",
+      "Recommends restructuring: Comprender -> Aplicar -> Analizar -> Evaluar for proper scaffolding"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "ac-eval-03",
+    "name": "Cross-reference integrity with broken links",
+    "prompt": "Audit cross-references in a 5-unit textbook. Unit 4 Block 2 says 'como vimos en la Unidad 2, los ecosistemas acuaticos...' but Unit 2 only covers ecosistemas terrestres, not acuaticos. Unit 5 says 'recuerda la actividad de clasificacion de la Unidad 3' but Unit 3 has no classification activity. Produce the cross-reference integrity report.",
+    "expected_behavior": [
+      "Flags U4-B2 cross-reference as CRITICAL: claims U2 covers 'ecosistemas acuaticos' but U2 covers terrestres",
+      "Flags U5 cross-reference as CRITICAL: references a classification activity that does not exist in U3",
+      "Classifies both as broken cross-references that mislead students",
+      "Recommends correcting U4 reference to match U2 content or adding aquatic ecosystem content to U2",
+      "Recommends removing U5 reference or adding classification activity to U3"
+    ],
+    "category": "edge-cases"
+  }
+]

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "repair-alignment-01",
+    "name": "Orphaned destreza content insertion",
+    "prompt": "El reporte de cobertura muestra 3 destrezas huerfanas: DZ-MAT-5-14 (fracciones equivalentes), DZ-MAT-5-18 (medidas de longitud), DZ-MAT-5-22 (patrones numericos). La Matriz A&S indica que DZ-MAT-5-14 pertenece a U3, DZ-MAT-5-18 a U4, y DZ-MAT-5-22 a U5. Genera el contenido necesario para cubrir las 3 destrezas.",
+    "expected_behavior": [
+      "Creates 3 new activities, one per orphaned destreza",
+      "Each activity follows the Sinapsis 4-phase structure (Experiencia, Conceptualizacion, Reflexion, Aplicacion)",
+      "Each activity includes the correct [REF: DZ-MAT-5-XX] traceability tag",
+      "Activities are inserted in the correct units per the matrix",
+      "Tone and complexity match surrounding content in each unit",
+      "Re-verification shows 100% coverage (0 orphans remaining)",
+      "Repair log documents all 3 insertions"
+    ],
+    "quality_gate": "G1"
+  },
+  {
+    "id": "repair-alignment-02",
+    "name": "Missing traceability tag correction",
+    "prompt": "La actividad 2.3 de la unidad U2 de Lengua claramente desarrolla la destreza DZ-LENG-5-08 (identificar ideas principales en textos informativos), pero no tiene la etiqueta [REF: DZ-LENG-5-08]. El reporte la marca como huerfana. Aplica la correccion de mapeo.",
+    "expected_behavior": [
+      "Identifies that the activity substantively covers the destreza (not just tangential mention)",
+      "Inserts [REF: DZ-LENG-5-08] tag in the correct location (after activity title)",
+      "Does NOT create new content (mapping correction only)",
+      "Repair log classifies this as 'Mapping correction' type",
+      "Re-verification confirms the destreza is no longer orphaned"
+    ],
+    "quality_gate": "G1"
+  },
+  {
+    "id": "repair-alignment-03",
+    "name": "Unit restructure with matrix conflict",
+    "prompt": "La destreza DZ-CCNN-5-22 esta desarrollada en la actividad 4.6 de U4, pero la Matriz A&S la asigna a U5. El reporte de cobertura y la matriz se contradicen: el reporte dice que la destreza esta cubierta, pero esta en la unidad incorrecta. Repara la alineacion.",
+    "expected_behavior": [
+      "Uses the Matriz A&S as source of truth",
+      "Moves or adapts the content from U4 to U5",
+      "Adapts the content to fit the context of U5 (not a verbatim copy)",
+      "Updates traceability tags in both units",
+      "Adjusts activity numbering in both units",
+      "Logs the discrepancy between report and matrix",
+      "Repair log classifies this as 'Unit restructure' type"
+    ],
+    "quality_gate": "G1"
+  }
+]

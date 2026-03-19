@@ -1,0 +1,42 @@
+[
+  {
+    "id": "rp-eval-01",
+    "name": "Taxonomy mismatch detection",
+    "prompt": "Review the pedagogical alignment of this unit. Activity 1.1 claims to develop DZ-LENG-5-03 at the Evaluar level, but the activity prompt says: 'Lista los personajes principales del cuento y escribe sus nombres.' Activity 1.2 claims Comprender level with prompt: 'Argumenta por que el protagonista tomo esa decision, usando evidencia del texto.' Produce the taxonomy alignment report.",
+    "expected_behavior": [
+      "Flags Activity 1.1 as CRITICAL: 'Lista' is Recordar level, not Evaluar",
+      "Flags Activity 1.2 as potential mislabel: 'Argumenta' is Evaluar level, declared as Comprender",
+      "Provides specific verb replacement recommendations for Act 1.1",
+      "Notes the taxonomy inversion: Act 1.1 (Recordar) followed by Act 1.2 (Evaluar) skips intermediate levels",
+      "Produces properly formatted taxonomy alignment table"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "rp-eval-02",
+    "name": "DUA compliance audit with threshold failures",
+    "prompt": "Audit DUA compliance for a unit with 4 activities. Act 1: has a visual diagram (representation). Act 2: has choice of individual or group work (engagement) plus a graphic organizer (representation). Act 3: has no adaptations listed. Act 4: has 'the teacher can adapt as needed.' Report DUA compliance per activity.",
+    "expected_behavior": [
+      "Act 1: WARNING — only 1 adaptation, 1 principle. Below 2-adaptation threshold",
+      "Act 2: OK — 2 adaptations across 2 principles",
+      "Act 3: CRITICAL — zero adaptations",
+      "Act 4: CRITICAL — 'teacher can adapt' is not a valid DUA adaptation (delegates responsibility)",
+      "Reports overall DUA compliance rate: 1/4 activities compliant (25%)",
+      "Provides specific adaptation suggestions for non-compliant activities"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "rp-eval-03",
+    "name": "Backward design chain with broken links",
+    "prompt": "Validate backward design for a unit with 3 objectives. OBJ-01 has a rubric and 2 activities. OBJ-02 has activities but no rubric or assessment instrument. OBJ-03 has a rubric but no activities develop the assessed skill. Produce the backward design audit.",
+    "expected_behavior": [
+      "OBJ-01: Chain COMPLETE — objective, assessment, and activities all linked",
+      "OBJ-02: Chain BROKEN — CRITICAL: objective is taught but never assessed (assessment gap)",
+      "OBJ-03: Chain BROKEN — CRITICAL: objective is assessed but never practiced (activity gap)",
+      "Provides remediation: add assessment for OBJ-02, add activities for OBJ-03",
+      "Notes that Gate G1 cannot pass with broken backward design chains"
+    ],
+    "category": "edge-cases"
+  }
+]

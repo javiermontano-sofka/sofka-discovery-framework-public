@@ -1,0 +1,60 @@
+[
+  {
+    "id": "amplify-draft-001",
+    "prompt": "Amplifica este borrador del autor para la Unidad 3 de Ciencias Naturales 5to EGB. El archivo esta en drafts/unidad3_borrador.md.",
+    "expected_behavior": [
+      "Reads the human draft file",
+      "Analyzes structure against Sinapsis model (apertura, desarrollo, cierre, evaluacion)",
+      "Adds DZ traceability tags to every paragraph",
+      "Generates DUA adaptations for activities missing them",
+      "Produces style correction suggestions (not auto-applied)",
+      "Fills gaps with [GENERADO] sections for missing Sinapsis components",
+      "Runs comprehensibility validation",
+      "Presents diff report showing 100% original preservation"
+    ],
+    "acceptance_criteria": {
+      "original_100_preserved": true,
+      "dz_tags_added": true,
+      "dua_adaptations_generated": true,
+      "style_suggestions_not_auto_applied": true,
+      "generated_content_tagged": true,
+      "comprehensibility_reported": true
+    }
+  },
+  {
+    "id": "amplify-draft-002",
+    "prompt": "El autor escribio solo el desarrollo de la unidad. Necesito que generes apertura, cierre y evaluacion manteniendo su contenido intacto.",
+    "expected_behavior": [
+      "Identifies only 'desarrollo' section as present",
+      "Marks apertura, cierre, evaluacion as ABSENT",
+      "Generates all missing sections tagged [GENERADO]",
+      "Connects generated sections logically with original desarrollo content",
+      "Adds DZ tags to both original and generated content",
+      "Reports clear distinction between [ORIGINAL] and [GENERADO]"
+    ],
+    "acceptance_criteria": {
+      "missing_sections_generated": true,
+      "logical_connection_maintained": true,
+      "original_desarrollo_untouched": true,
+      "all_sections_tagged": true
+    }
+  },
+  {
+    "id": "amplify-draft-003",
+    "prompt": "Amplify this draft but the curriculum matrix is not available. Do the best you can with traceability.",
+    "expected_behavior": [
+      "Warns that matrix is not available — traceability will be best-effort",
+      "Proceeds with structural analysis and DUA pass",
+      "Uses [REF: PENDIENTE] for all DZ tags (since matrix unavailable)",
+      "Completes style review and gap-filling normally",
+      "Reports that traceability needs human review once matrix is generated",
+      "Suggests running /scriba:matrix first for full traceability"
+    ],
+    "acceptance_criteria": {
+      "warning_issued": true,
+      "pendiente_tags_used": true,
+      "other_passes_completed": true,
+      "recommendation_to_generate_matrix": true
+    }
+  }
+]

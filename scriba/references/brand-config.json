@@ -1,0 +1,46 @@
+{
+  "brand": {
+    "name": "JM Labs",
+    "wordmark": "Scriba",
+    "wordmarkAccent": "Editorial K-12",
+    "tagline": "Asistente editorial agentico para textos escolares",
+    "positioning": "Todo libro educativo es un sistema de aprendizaje"
+  },
+  "colors": {
+    "primary": "#6366F1",
+    "accent": "#22D3EE",
+    "background": "#EFEAE4",
+    "black": "#1A1A2E",
+    "white": "#FFFFFF",
+    "muted": "#B8A894",
+    "primarySoft": "#EEF2FF",
+    "success": "#22D3EE",
+    "warning": "#F59E0B",
+    "critical": "#EF4444"
+  },
+  "decorative": ["#22D3EE", "#6366F1", "#A78BFA", "#34D399"],
+  "typography": {
+    "display": "Inter",
+    "displayFallback": "Calibri",
+    "body": "Inter",
+    "bodyFallback": "Calibri",
+    "fontLinks": [
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    ]
+  },
+  "spacing": {
+    "radiusSm": "8px",
+    "radiusMd": "12px",
+    "radiusLg": "24px"
+  },
+  "docx": {
+    "year": "2026",
+    "confidential": false,
+    "pageSize": "A4",
+    "margins": "2.5cm"
+  },
+  "html": {
+    "maxWidth": "960px",
+    "sidebarWidth": "260px"
+  }
+}

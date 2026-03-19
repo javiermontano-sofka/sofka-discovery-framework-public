@@ -1,0 +1,62 @@
+[
+  {
+    "id": "book-express-001",
+    "prompt": "Genera un libro express de Ciencias Naturales para 5to EGB con 6 unidades.",
+    "expected_behavior": [
+      "Collects parameters: asignatura=CN, grado=5to, units=6, mode=express",
+      "Phase 1: Generates matrix with 100% destreza coverage",
+      "Phase 2: Generates 6 units with Sinapsis structure (1 theme each in express)",
+      "Phase 3: Validates each unit (comprehensibility >85%)",
+      "Phase 4: Repairs any validation failures",
+      "Phase 5: Audits cross-unit consistency",
+      "Phase 6: Exports to DOCX",
+      "Phase 7: Generates final dashboard report"
+    ],
+    "acceptance_criteria": {
+      "matrix_100_coverage": true,
+      "all_units_generated": true,
+      "comprehensibility_above_85": true,
+      "consistency_verified": true,
+      "docx_exported": true,
+      "dashboard_generated": true
+    }
+  },
+  {
+    "id": "book-express-002",
+    "prompt": "Resume the book generation — we stopped at Phase 3 validation last session.",
+    "expected_behavior": [
+      "Reads session-state.json to detect interrupted pipeline",
+      "Identifies Phase 3 as the resume point",
+      "Loads previously generated matrix and units",
+      "Continues validation from where it stopped",
+      "Proceeds through remaining phases (4-7)",
+      "Reports what was restored vs what was re-generated"
+    ],
+    "acceptance_criteria": {
+      "session_restored": true,
+      "resume_from_correct_phase": true,
+      "no_duplicate_generation": true,
+      "pipeline_completed": true
+    }
+  },
+  {
+    "id": "book-express-003",
+    "prompt": "Genera un libro completo (no express) de Matematicas 3ro EGB con 8 unidades. Quiero DOCX y HTML.",
+    "expected_behavior": [
+      "Detects complete mode (not express)",
+      "Verifies calibration level is HOT or DEEP (warns if not)",
+      "Generates all themes per unit (not just 1)",
+      "Validates with 3 student profiles per unit",
+      "Generates 2+ DUA adaptations per activity",
+      "Exports both DOCX and HTML ebook",
+      "Reports comprehensive dashboard with all metrics"
+    ],
+    "acceptance_criteria": {
+      "complete_mode_detected": true,
+      "calibration_verified": true,
+      "all_themes_generated": true,
+      "three_profiles_validated": true,
+      "both_formats_exported": true
+    }
+  }
+]

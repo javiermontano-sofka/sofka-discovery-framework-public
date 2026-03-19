@@ -1,0 +1,40 @@
+[
+  {
+    "id": "comprehensibility-full-validation",
+    "prompt": "Valida la comprensibilidad de la Unidad 1 de Lengua y Literatura 5to EGB (contenido proporcionado). Ejecuta los 3 perfiles de Student Simulator y genera el reporte completo.",
+    "expected_output": "YAML comprehensibility report with global score, per-section scores for all 3 dimensions, per-profile scores, flagged fragments with severity and suggestions, and APROBADO/OBSERVACIONES/BLOQUEO decision.",
+    "expectations": [
+      "Report includes all 3 profiles: AR, PR, NEE",
+      "Every section scored on legibilidad (0-100), carga_cognitiva (baja/media/alta), enganche (bajo/medio/alto)",
+      "Global score calculated from PR profile legibility scores",
+      "Decision field present with correct threshold application",
+      "Flagged fragments include section, paragraph number, problem description, severity, and concrete suggestion",
+      "YAML format follows the schema with all required fields"
+    ]
+  },
+  {
+    "id": "comprehensibility-block-detection",
+    "prompt": "Valida este parrafo para 5to EGB: 'La fotosintesis, proceso bioquimico mediante el cual los organismos autotrofos sintetizan moleculas organicas complejas a partir de sustancias inorganicas simples utilizando la energia luminica captada por pigmentos clorofilicos, constituye la base fundamental de las cadenas troficas ecosistemicas.'",
+    "expected_output": "Report flagging the paragraph as high severity for all profiles. Should score well below 80% for PR profile and trigger BLOQUEO decision with specific simplification suggestions.",
+    "expectations": [
+      "PR profile legibility score below 80%",
+      "Decision is BLOQUEO",
+      "Fragment flagged with severity 'alta'",
+      "Specific problems identified: sentence length, technical vocabulary without definition, high concept density",
+      "Concrete simplification suggestion provided (e.g., split sentence, define terms, reduce concepts per sentence)",
+      "NEE profile shows very low comprehensibility score"
+    ]
+  },
+  {
+    "id": "comprehensibility-partial-unit",
+    "prompt": "Valida la comprensibilidad de una unidad que solo tiene la seccion de apertura y desarrollo tema 1 (falta cierre y evaluacion).",
+    "expected_output": "Report that validates available sections but flags missing sections as 'no evaluada'. Should warn that the global score is partial and cannot be used for Gate G2 advancement.",
+    "expectations": [
+      "Available sections (apertura, desarrollo_tema1) are scored normally",
+      "Missing sections (cierre, evaluacion) marked as 'no evaluada'",
+      "Warning that global score is partial",
+      "Does not fabricate scores for missing sections",
+      "Recommends completing the unit before final validation"
+    ]
+  }
+]

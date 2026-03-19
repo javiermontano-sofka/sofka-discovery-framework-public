@@ -1,0 +1,58 @@
+[
+  {
+    "id": "auto-prime-001",
+    "prompt": "Procesa todos los documentos del directorio y genera los archivos de priming RAG correspondientes.",
+    "expected_behavior": [
+      "Lists all unprocessed documents in working directory",
+      "Checks calibration-digest.md to skip already-processed files",
+      "Reads each document and applies correct extraction strategy",
+      "Generates one priming file per document in references/priming-rag/",
+      "Each priming file has TL;DR, Key Entities, Constraints, Evidence",
+      "Updates calibration-digest.md with new priming level",
+      "Reports summary: N docs processed, N priming files generated, new level"
+    ],
+    "acceptance_criteria": {
+      "all_docs_processed": true,
+      "priming_files_generated": true,
+      "evidence_tags_present": true,
+      "calibration_updated": true,
+      "no_content_fabrication": true
+    }
+  },
+  {
+    "id": "auto-prime-002",
+    "prompt": "Acabo de subir un PDF del curriculo de Ciencias Naturales 5to EGB. Genera el priming RAG para este documento.",
+    "expected_behavior": [
+      "Identifies the new PDF as curriculum type",
+      "Reads the PDF (first 20 pages if large)",
+      "Extracts destrezas, indicators, competencies, grade mapping",
+      "Generates rag-curriculo-cn-5to.md with proper frontmatter",
+      "Tags all extracted content with [CODIGO] or [DOC] evidence tags",
+      "Updates calibration level if threshold crossed"
+    ],
+    "acceptance_criteria": {
+      "document_classified": true,
+      "destrezas_extracted": true,
+      "priming_file_structured": true,
+      "evidence_tagged": true,
+      "no_invented_content": true
+    }
+  },
+  {
+    "id": "auto-prime-003",
+    "prompt": "Re-process the HTML deliverable file — it was updated since the last priming run.",
+    "expected_behavior": [
+      "Identifies the HTML file as already processed",
+      "Updates existing priming file instead of creating duplicate",
+      "Extracts updated architecture decisions and process flows",
+      "Notes what changed vs previous version",
+      "Updates calibration-digest.md with refresh timestamp"
+    ],
+    "acceptance_criteria": {
+      "existing_file_updated": true,
+      "no_duplicate_created": true,
+      "changes_noted": true,
+      "digest_refreshed": true
+    }
+  }
+]

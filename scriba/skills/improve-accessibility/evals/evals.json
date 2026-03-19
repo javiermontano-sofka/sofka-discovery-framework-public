@@ -1,0 +1,45 @@
+[
+  {
+    "id": "improve-accessibility-01",
+    "name": "Below-threshold fragment simplification",
+    "prompt": "El reporte de comprensibilidad muestra 3 fragmentos por debajo del 85%: P2-S1 (58%, oracion de 45 palabras con 3 clausulas subordinadas), P4-S3 (72%, vocabulario tecnico no curricular 'yuxtaposicion' y 'paradigma'), P6-S2 (79%, falta de conectores transicionales). Aplica improve-accessibility a la unidad U2 de Estudios Sociales.",
+    "expected_behavior": [
+      "Processes fragments in order of severity (P2-S1 first at 58%)",
+      "Splits the 45-word sentence into 2-3 sentences under 25 words each",
+      "Replaces 'yuxtaposicion' and 'paradigma' with age-appropriate synonyms",
+      "Adds transitional phrases to P6-S2",
+      "Preserves all curricular terms without substitution",
+      "Produces before/after score comparison table",
+      "All fragments score >= 85% after modification"
+    ],
+    "quality_gate": "G1.5"
+  },
+  {
+    "id": "improve-accessibility-02",
+    "name": "Curricular term preservation with inline definition",
+    "prompt": "Un fragmento de Ciencias Naturales usa el termino curricular 'fotosintesis' 4 veces en un parrafo de 3 oraciones. El score es 68% porque las oraciones son largas y no hay definicion del termino. Mejora la accesibilidad sin eliminar 'fotosintesis'.",
+    "expected_behavior": [
+      "Keeps all 4 instances of 'fotosintesis' intact",
+      "Adds an inline parenthetical definition on first use",
+      "Simplifies sentence structure around the term",
+      "Does not replace 'fotosintesis' with a synonym",
+      "Score improves to >= 85%",
+      "Changelog shows sentence restructuring, not term replacement"
+    ],
+    "quality_gate": "G1.5"
+  },
+  {
+    "id": "improve-accessibility-03",
+    "name": "Regression detection and recovery",
+    "prompt": "Al simplificar el fragmento P3-S1 (score 74%), la primera estrategia de simplificacion baja el score a 65% porque se perdio coherencia al dividir la oracion. Detecta la regresion y aplica una estrategia alternativa.",
+    "expected_behavior": [
+      "Attempts first simplification strategy",
+      "Detects that the score dropped (regression)",
+      "Reverts the failed change",
+      "Applies an alternative strategy (e.g., scaffolding insertion instead of sentence splitting)",
+      "Logs the failed attempt and the successful alternative",
+      "Final score for the fragment is >= 85%"
+    ],
+    "quality_gate": "G1.5"
+  }
+]

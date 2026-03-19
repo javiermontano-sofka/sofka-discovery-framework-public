@@ -1,0 +1,21 @@
+{
+  "name": "scriba",
+  "version": "1.0.0",
+  "description": "Asistente editorial agentico K-12 SOAP. 14 agentes, 24 skills, 37 comandos (19 canonicos + 18 aliases), 5 quality gates.",
+  "author": {
+    "name": "JM Labs",
+    "url": "https://github.com/jm-labs"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "editorial",
+    "educacion",
+    "pedagogia",
+    "neurociencia",
+    "K-12",
+    "prolipa",
+    "sinapsis",
+    "curriculum",
+    "textbooks"
+  ]
+}

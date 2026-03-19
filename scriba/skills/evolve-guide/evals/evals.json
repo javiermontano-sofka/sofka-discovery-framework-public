@@ -1,0 +1,45 @@
+[
+  {
+    "id": "eg-eval-01",
+    "name": "DUA enhancement to meet threshold",
+    "prompt": "Evolve a teacher guide for Lengua y Literatura 5to grado Unit 1. The guide has 3 activities. Activity 1.1 has 1 DUA adaptation (a visual diagram — representation only). Activity 1.2 has 0 DUA adaptations. Activity 1.3 has 2 adaptations (choice of task — engagement, and oral response option — action/expression). Enhance DUA to meet the 2+ threshold for all activities.",
+    "expected_behavior": [
+      "Identifies Act 1.1 as below threshold (1 adaptation, 1 principle)",
+      "Identifies Act 1.2 as CRITICAL (0 adaptations)",
+      "Identifies Act 1.3 as compliant (2 adaptations, 2 principles)",
+      "Adds at least 1 concrete adaptation to Act 1.1 from a different DUA principle",
+      "Adds at least 2 concrete adaptations to Act 1.2 across 2 DUA principles",
+      "Produces DUA Enhancement Summary table with before/after counts",
+      "Every added adaptation is specific and actionable (not 'use visual resources')"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "eg-eval-02",
+    "name": "Rubric descriptor refinement from vague to observable",
+    "prompt": "Evolve the rubric in a teacher guide. Current rubric for indicator I.LENG.5.1.1 has these descriptors: Inicio: 'No logra el objetivo', En proceso: 'Logra parcialmente el objetivo', Adquirido: 'Logra satisfactoriamente el objetivo'. Review feedback says all descriptors are vague and not observable. Rewrite with observable behaviors.",
+    "expected_behavior": [
+      "Identifies all 3 descriptors as vague (non-observable)",
+      "Replaces 'No logra' with specific observable behavior (e.g., count-based or action-based)",
+      "Replaces 'Logra parcialmente' with specific threshold (e.g., '2-3 of 5 elements')",
+      "Replaces 'Logra satisfactoriamente' with full achievement descriptor with quality indicator",
+      "Each level is clearly distinguishable from the others by observable criteria",
+      "Produces Rubric Updates table with before/after for each level"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "eg-eval-03",
+    "name": "Indicator coverage preservation during evolution",
+    "prompt": "Evolve a teacher guide. Feedback recommends removing the rubric criterion for indicator I.LENG.5.2.1 because 'it overlaps with I.LENG.5.1.2.' However, I.LENG.5.2.1 is a distinct indicator in the Matriz A&S that measures a different learning outcome. Handle this situation without losing indicator coverage.",
+    "expected_behavior": [
+      "Detects that removing the rubric criterion would orphan indicator I.LENG.5.2.1",
+      "Does NOT blindly follow the feedback recommendation",
+      "Explains why the indicators are distinct despite apparent overlap",
+      "Proposes alternative: refine the rubric criterion to reduce overlap while preserving coverage",
+      "Or: defers the removal with documented rationale citing indicator coverage requirement",
+      "Runs indicator coverage verification showing all indicators remain covered"
+    ],
+    "category": "error-handling"
+  }
+]

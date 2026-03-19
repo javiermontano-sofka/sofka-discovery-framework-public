@@ -1,0 +1,48 @@
+[
+  {
+    "id": "repair-progression-01",
+    "name": "Major taxonomy gap scaffolding",
+    "prompt": "El reporte de progresion detecta un salto de Recordar (nivel 1) en Act 2.3 a Analizar (nivel 4) en Act 2.4. Es un gap de 3 niveles. Inserta las actividades de andamiaje necesarias para crear una progresion suave en la unidad U2 de Ciencias Naturales.",
+    "expected_behavior": [
+      "Identifies a 3-level gap requiring 2 scaffolding activities",
+      "Inserts Act 2.3b at Comprender level (2) with appropriate Bloom verb",
+      "Inserts Act 2.3c at Aplicar level (3) with appropriate Bloom verb",
+      "Both scaffolding activities follow Sinapsis structure",
+      "Content is contextually relevant to the surrounding science topic",
+      "Activity numbering is updated correctly",
+      "Repair log shows before/after taxonomy levels",
+      "Progression map shows smooth ascent: 1 -> 2 -> 3 -> 4"
+    ],
+    "quality_gate": "G1"
+  },
+  {
+    "id": "repair-progression-02",
+    "name": "Cross-unit bridge insertion",
+    "prompt": "La unidad U2 termina con una actividad de Crear (nivel 6) sobre ecosistemas. La unidad U3 comienza directamente con Recordar (nivel 1) sobre el cuerpo humano, sin ninguna conexion con el tema anterior. Agrega un puente cross-unidad.",
+    "expected_behavior": [
+      "Identifies the cross-unit reset as needing a recall bridge",
+      "Inserts a 'Conectando con lo aprendido' opener at the start of U3",
+      "The bridge references ecosystems from U2 and connects to human body in U3",
+      "Includes a connection question for students",
+      "Does NOT modify U2 content",
+      "Repair log classifies this as 'Cross-unit bridge' type",
+      "Progression map shows the bridge element"
+    ],
+    "quality_gate": "G1"
+  },
+  {
+    "id": "repair-progression-03",
+    "name": "Resequencing with traceability preservation",
+    "prompt": "Las actividades 3.1 (Aplicar, DZ-MAT-6-05), 3.2 (Evaluar, DZ-MAT-6-09), 3.3 (Recordar, DZ-MAT-6-01) y 3.4 (Analizar, DZ-MAT-6-07) forman un patron de diente de sierra: 3-5-1-4. Reordena para lograr progresion suave sin perder las etiquetas de trazabilidad.",
+    "expected_behavior": [
+      "Identifies the sawtooth pattern as a resequencing case",
+      "Reorders to: 3.3(Recordar) -> 3.1(Aplicar) -> 3.4(Analizar) -> 3.2(Evaluar) = 1-3-4-5",
+      "Inserts scaffolding for the Recordar->Aplicar gap (1->3, gap=2)",
+      "All [REF: DZ-MAT-6-XX] tags are preserved and correctly associated",
+      "Internal cross-references ('as we saw in Activity 3.1') are updated",
+      "Activity numbering is updated to reflect new order",
+      "Repair log documents the resequencing with before/after order"
+    ],
+    "quality_gate": "G1"
+  }
+]

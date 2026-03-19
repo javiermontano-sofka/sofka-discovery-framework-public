@@ -1,0 +1,40 @@
+[
+  {
+    "id": "digital-full-generation",
+    "prompt": "Genera recursos digitales para la Unidad 1 de Lengua y Literatura 5to EGB con 3 destrezas (DZ-LENG-5-001, DZ-LENG-5-002, DZ-LENG-5-003). Incluye minijuegos, banco de preguntas y contenido QR.",
+    "expected_output": "JSON output with minigames, question bank, and QR content. At least 1 minigame, 5+ question bank items per destreza, and 1+ QR content. All resources linked to DZ-refs.",
+    "expectations": [
+      "Output contains valid JSON with minigames, question_bank, and qr_content arrays",
+      "Every resource has a dz_ref field matching DZ-LENG-5-XXX pattern",
+      "Minigame specs include tipo, mecanica with feedback messages, and difficulty levels",
+      "Question bank items include stem, opciones with razon_distractor, and bloom level",
+      "QR content includes fallback_offline field for each item",
+      "At least 3 different resource types present"
+    ]
+  },
+  {
+    "id": "digital-question-bank-quality",
+    "prompt": "Genera un banco de 10 preguntas para la destreza DZ-MAT-6-005 (resolver operaciones con fracciones) con preguntas de opcion multiple.",
+    "expected_output": "10 question bank items in JSON with varied Bloom levels, plausible distractors with documented rationale, and clear DZ-ref alignment.",
+    "expectations": [
+      "Exactly 10 question items in the output",
+      "Each item has 4 options with exactly 1 correct answer",
+      "Every distractor has a razon_distractor explaining the misconception it represents",
+      "Bloom levels vary across items (not all at Recordar level)",
+      "All items reference DZ-MAT-6-005",
+      "Option lengths are similar within each question (no obvious correct answer by length)"
+    ]
+  },
+  {
+    "id": "digital-error-offline-fallback",
+    "prompt": "Genera un recurso QR de video para Ciencias Naturales 7mo EGB sobre el ciclo del agua. Contexto: escuela rural sin internet confiable.",
+    "expected_output": "QR content spec with robust offline fallback. Should emphasize the print alternative given the rural context.",
+    "expectations": [
+      "QR content spec includes video description and DZ-ref",
+      "fallback_offline field contains a detailed print alternative, not just 'see appendix'",
+      "Response acknowledges offline context and prioritizes accessibility",
+      "Fallback is pedagogically equivalent (not just a lesser version)",
+      "Duration is appropriate for age group (max 5 min for video)"
+    ]
+  }
+]

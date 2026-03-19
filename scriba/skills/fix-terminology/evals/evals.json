@@ -1,0 +1,46 @@
+[
+  {
+    "id": "fix-terminology-01",
+    "name": "Multi-unit synonym unification",
+    "prompt": "El reporte de terminologia detecta que 'ser vivo' se usa en U1 (12 veces) y U3 (5 veces), mientras que 'organismo' se usa en U2 (8 veces) y U5 (3 veces) para referirse al mismo concepto. La destreza DZ-CCNN-5-03 usa el termino 'seres vivos'. Unifica la terminologia y actualiza el glosario.",
+    "expected_behavior": [
+      "Selects 'ser vivo/seres vivos' as canonical term (MinEduc priority)",
+      "Replaces all 11 instances of 'organismo/organismos' across U2 and U5",
+      "Uses whole-word matching (does not affect 'microorganismo' or 'unicelular')",
+      "Adjusts articles where needed (el organismo -> el ser vivo)",
+      "Updates glossary with canonical entry including deprecated synonyms",
+      "Re-audit shows 0 remaining contradictions",
+      "Unification report lists all 11 substitutions with locations"
+    ],
+    "quality_gate": "G2"
+  },
+  {
+    "id": "fix-terminology-02",
+    "name": "Polysemy collision disambiguation",
+    "prompt": "El termino 'tabla' aparece en U2 de Matematicas significando 'tabla de multiplicar' (7 veces) y en U4 de Ciencias Naturales significando 'tabla de datos' (5 veces). No es un sinonimo sino un caso de polisemia. Resuelve la ambiguedad sin unificar falsamente.",
+    "expected_behavior": [
+      "Identifies this as a polysemy collision, NOT a synonym conflict",
+      "Does NOT unify the terms (they refer to different concepts)",
+      "Disambiguates by adding qualifiers: 'tabla de multiplicar' and 'tabla de datos'",
+      "Creates separate glossary entries for each meaning",
+      "Applies the qualified forms consistently in their respective units",
+      "Report explains the polysemy decision and why unification was rejected"
+    ],
+    "quality_gate": "G2"
+  },
+  {
+    "id": "fix-terminology-03",
+    "name": "Glossary-MinEduc conflict resolution",
+    "prompt": "El glosario editorial define el termino preferido como 'adicion' para la operacion matematica de sumar. Sin embargo, la destreza DZ-MAT-5-02 del MinEduc usa el termino 'suma'. Hay 15 instancias de 'adicion' y 8 de 'suma' en las unidades. Resuelve el conflicto.",
+    "expected_behavior": [
+      "Identifies the conflict between glossary ('adicion') and MinEduc ('suma')",
+      "Selects 'suma' as canonical term (MinEduc overrides glossary)",
+      "Replaces all 15 instances of 'adicion' with 'suma'",
+      "Updates glossary: changes canonical term to 'suma', adds 'adicion' as deprecated synonym",
+      "Logs the override decision with rationale (MinEduc priority)",
+      "Adjusts any grammatical dependencies (la adicion -> la suma)",
+      "Re-audit shows 0 contradictions"
+    ],
+    "quality_gate": "G2"
+  }
+]

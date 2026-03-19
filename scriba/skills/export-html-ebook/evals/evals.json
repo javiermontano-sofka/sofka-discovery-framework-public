@@ -1,0 +1,60 @@
+[
+  {
+    "id": "export-html-001",
+    "prompt": "Exporta las unidades a un ebook HTML interactivo con navegacion lateral, modo oscuro y secciones colapsables.",
+    "expected_behavior": [
+      "Reads brand-config.json for design tokens",
+      "Collects all units from units/ directory",
+      "Generates self-contained HTML5 file with inline CSS and JS",
+      "Includes sticky sidebar TOC with smooth scroll",
+      "Implements dark/light mode toggle",
+      "Makes all phase sections collapsible (details/summary)",
+      "Adds DZ-ref badges as clickable elements",
+      "Includes print-friendly mode",
+      "Saves to exports/ directory"
+    ],
+    "acceptance_criteria": {
+      "single_html_file": true,
+      "self_contained": true,
+      "responsive_design": true,
+      "dark_mode_functional": true,
+      "collapsible_sections": true,
+      "dz_badges_present": true,
+      "file_under_1mb": true
+    }
+  },
+  {
+    "id": "export-html-002",
+    "prompt": "Genera el ebook HTML pero incluye los scores de comprensibilidad como badges en cada seccion.",
+    "expected_behavior": [
+      "Reads validation report from reports/ directory",
+      "Extracts comprehensibility scores per section",
+      "Generates HTML ebook with score badges on each section header",
+      "Color-codes badges: green (>90%), yellow (85-90%), red (<85%)",
+      "Includes legend explaining badge colors"
+    ],
+    "acceptance_criteria": {
+      "scores_displayed": true,
+      "color_coding_correct": true,
+      "legend_included": true,
+      "validation_report_referenced": true
+    }
+  },
+  {
+    "id": "export-html-003",
+    "prompt": "The book has 25 units — export it to HTML handling the size limit.",
+    "expected_behavior": [
+      "Detects >20 units triggers multi-file split",
+      "Generates index.html with links to individual unit files",
+      "Each unit file is self-contained with navigation back to index",
+      "Shared CSS via inline styles in each file",
+      "Reports total size and number of files generated"
+    ],
+    "acceptance_criteria": {
+      "multi_file_generated": true,
+      "index_file_present": true,
+      "cross_navigation_works": true,
+      "each_file_under_1mb": true
+    }
+  }
+]

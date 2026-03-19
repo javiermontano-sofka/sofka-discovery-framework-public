@@ -1,0 +1,54 @@
+[
+  {
+    "id": "export-docx-001",
+    "prompt": "Exporta las unidades generadas a DOCX. Necesito el texto del alumno y la guia docente como archivos separados.",
+    "expected_behavior": [
+      "Reads brand-config.json for styling (or uses JM Labs defaults)",
+      "Collects all units from units/ directory",
+      "Generates texto alumno DOCX with cover, TOC, all units, page breaks",
+      "Generates guia docente DOCX with planning tables, DUA boxes, rubrics",
+      "Saves both files to exports/ directory",
+      "Reports file sizes and structure summary"
+    ],
+    "acceptance_criteria": {
+      "two_files_generated": true,
+      "cover_page_present": true,
+      "all_units_included": true,
+      "tables_formatted": true,
+      "page_breaks_correct": true,
+      "dz_tags_preserved": true
+    }
+  },
+  {
+    "id": "export-docx-002",
+    "prompt": "Genera el DOCX pero usa los colores de la editorial Prolipa, no los defaults de JM Labs.",
+    "expected_behavior": [
+      "Reads brand-config.json for Prolipa branding",
+      "If not found, asks user for color tokens",
+      "Applies custom branding to headings, tables, and cover",
+      "Generates DOCX with Prolipa-specific styling",
+      "Reports which brand config was applied"
+    ],
+    "acceptance_criteria": {
+      "custom_brand_applied": true,
+      "not_default_colors": true,
+      "brand_source_reported": true
+    }
+  },
+  {
+    "id": "export-docx-003",
+    "prompt": "Export only the teacher guide to DOCX — I don't need the student text right now.",
+    "expected_behavior": [
+      "Reads guides/ directory for teacher guide content",
+      "Generates only guia docente DOCX (not texto alumno)",
+      "Includes planning tables, methodological orientations, DUA boxes",
+      "Reports single file generated"
+    ],
+    "acceptance_criteria": {
+      "single_file_generated": true,
+      "guide_content_complete": true,
+      "planning_tables_present": true,
+      "dua_boxes_included": true
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "matrix-basic-generation",
+    "prompt": "Genera la Matriz de Alcance y Secuencia para Lengua y Literatura 5to EGB con 6 destrezas de ejemplo.",
+    "expected_output": "JSON matrix with 6 destrezas mapped to units, each with DZ-LENG-5-XXX codes, indicadores, Bloom and Marzano levels, and evidence tags. Coverage report showing 6/6 destrezas mapped, 0 orphaned.",
+    "expectations": [
+      "Output contains valid JSON with 'matriz_as' root key",
+      "Every destreza has a DZ code matching pattern DZ-LENG-5-\\d{3}",
+      "Every destreza has at least one indicador de logro",
+      "Bloom level is one of: Recordar, Comprender, Aplicar, Analizar, Evaluar, Crear",
+      "Marzano level is one of: Recuperacion, Comprension, Analisis, Utilizacion, Metacognicion, Sistema del Yo",
+      "Coverage section shows orphaned: 0",
+      "At least one insercion curricular per unit"
+    ]
+  },
+  {
+    "id": "matrix-coverage-verification",
+    "prompt": "Genera una matriz para Matematica 6to EGB. Incluye 10 destrezas y verifica la cobertura completa.",
+    "expected_output": "JSON matrix with exactly 10 destrezas distributed across units with 100% coverage. Units should show cognitive progression from lower to higher Bloom levels.",
+    "expectations": [
+      "Total destrezas count equals 10",
+      "Coverage status is 'COMPLETA'",
+      "Earlier units contain lower Bloom levels (Recordar, Comprender)",
+      "Later units contain higher Bloom levels (Analizar, Evaluar, Crear)",
+      "All DZ codes use MAT asignatura code and 6 for year",
+      "Evidence tags present on every entry"
+    ]
+  },
+  {
+    "id": "matrix-error-handling-missing-input",
+    "prompt": "Genera la Matriz A&S sin especificar la asignatura.",
+    "expected_output": "Error message requesting the asignatura and grado, explaining they are required inputs. Should not generate a partial or guessed matrix.",
+    "expectations": [
+      "Response asks user for asignatura code",
+      "Response asks user for grado",
+      "No JSON matrix is generated",
+      "Lists valid asignatura codes (LENG, MAT, CCNN, etc.)",
+      "Does not fabricate or assume a default asignatura"
+    ]
+  }
+]

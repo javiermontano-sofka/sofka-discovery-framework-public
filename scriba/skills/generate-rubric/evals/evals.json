@@ -1,0 +1,40 @@
+[
+  {
+    "id": "rubric-full-generation",
+    "prompt": "Genera rubricas para 3 indicadores de logro de Lengua y Literatura 5to EGB: (1) Identifica elementos narrativos DZ-LENG-5-001, (2) Secuencia eventos DZ-LENG-5-002, (3) Produce texto narrativo DZ-LENG-5-003.",
+    "expected_output": "Three rubric tables with 3+ performance levels each, observable descriptors, DZ-ref traceability, taxonomy levels, DUA modality alternatives, and a scoring summary.",
+    "expectations": [
+      "Three separate rubric tables present, one per indicador",
+      "Each rubric has at least 3 performance levels (basico, intermedio, avanzado)",
+      "Descriptors use observable action verbs, not subjective language",
+      "At least 50% of descriptors include quantity thresholds (e.g., '3 de 4')",
+      "Each rubric maps to a DZ-ref and Bloom/Marzano level",
+      "Modality alternatives noted (DUA P3 compliance)",
+      "Scoring summary table present"
+    ]
+  },
+  {
+    "id": "rubric-dua-compliance",
+    "prompt": "Genera una rubrica para la destreza 'Produce un texto argumentativo' (DZ-LENG-7-015, Bloom: Crear) asegurando que no penalice la modalidad de expresion.",
+    "expected_output": "Rubric with Crear-level descriptors that explicitly allow oral, written, and visual response modalities. DUA P3 annotation present.",
+    "expectations": [
+      "Rubric includes Crear-level descriptors (produce, diseña, construye)",
+      "Explicit mention of accepted modalities (written, oral, visual)",
+      "No criterion requires exclusively written response",
+      "DUA P3 annotation present",
+      "Descriptors at Avanzado level show creative transfer, not just completion"
+    ]
+  },
+  {
+    "id": "rubric-error-vague-input",
+    "prompt": "Genera una rubrica para 'el estudiante comprende el tema de fracciones' sin indicadores especificos ni DZ codes.",
+    "expected_output": "Response requesting specific indicadores de logro and DZ codes. Should explain that vague descriptions produce vague rubrics. May offer to help identify indicators from the curriculum.",
+    "expectations": [
+      "Response asks for specific indicadores de logro",
+      "Response asks for DZ code references",
+      "Explains that rubrics need observable, measurable indicators",
+      "Does not generate a rubric with vague descriptors",
+      "Optionally offers to help identify indicators from MinEduc curriculum"
+    ]
+  }
+]

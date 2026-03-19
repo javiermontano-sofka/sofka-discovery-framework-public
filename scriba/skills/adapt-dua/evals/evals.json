@@ -1,0 +1,42 @@
+[
+  {
+    "id": "adapt-dua-01",
+    "name": "Basic DUA gap fill",
+    "prompt": "La unidad U3 de Ciencias Naturales tiene 4 actividades. La actividad 3.1 tiene 1 adaptacion DUA (representacion visual para NEE visual). Las actividades 3.2, 3.3 y 3.4 no tienen adaptaciones DUA. Aplica adapt-dua para que todas cumplan el minimo de 2 adaptaciones cubriendo al menos 2 principios.",
+    "expected_behavior": [
+      "Identifies Act 3.1 as needing 1 additional adaptation covering Engagement or Action/Expression",
+      "Generates 2+ adaptations for each of Acts 3.2, 3.3, 3.4",
+      "Each adaptation specifies principle, modality, and target NEE profile",
+      "At least 2 of 3 DUA principles are covered per activity",
+      "At least 3 distinct NEE profiles are addressed across the unit",
+      "Produces a DUA coverage summary table with all activities showing PASS"
+    ],
+    "quality_gate": "G1.5"
+  },
+  {
+    "id": "adapt-dua-02",
+    "name": "NEE profile diversity enforcement",
+    "prompt": "Tengo una unidad de Matematicas donde todas las adaptaciones DUA existentes apuntan a NEE visual (diagramas en alto contraste, descripciones de audio para graficos). Necesito diversificar para cubrir al menos 3 perfiles NEE diferentes sin eliminar las adaptaciones existentes.",
+    "expected_behavior": [
+      "Preserves all existing visual-targeted adaptations",
+      "Adds adaptations targeting at least 2 additional NEE profiles (e.g., TDAH, motor, cognitive, TEA)",
+      "New adaptations are contextually relevant to math activities (not generic)",
+      "Covers at least 2 DUA principles per activity after augmentation",
+      "Produces changelog showing only additions, no deletions"
+    ],
+    "quality_gate": "G1.5"
+  },
+  {
+    "id": "adapt-dua-03",
+    "name": "Already compliant unit verification",
+    "prompt": "Verifica la unidad U1 de Lengua y Literatura. Cada actividad ya tiene 3 adaptaciones DUA cubriendo los 3 principios y 4 perfiles NEE. Ejecuta adapt-dua y confirma que no se necesitan cambios.",
+    "expected_behavior": [
+      "Reads and inventories all existing adaptations",
+      "Correctly identifies that all activities meet the >= 2 adaptations and >= 2 principles threshold",
+      "Does NOT add unnecessary adaptations",
+      "Produces a DUA coverage summary table with all PASS statuses",
+      "Reports 'No gaps found. Unit is DUA-compliant.' or equivalent"
+    ],
+    "quality_gate": "G1.5"
+  }
+]

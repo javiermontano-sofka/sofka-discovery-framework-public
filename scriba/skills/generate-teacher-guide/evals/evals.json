@@ -1,0 +1,38 @@
+[
+  {
+    "id": "guide-full-generation",
+    "prompt": "Genera la Guia Docente para la Unidad 1 de Lengua y Literatura 5to EGB 'Explorando la narrativa' con 2 temas y 4 destrezas (DZ-LENG-5-001 a DZ-LENG-5-004).",
+    "expected_output": "Complete teacher guide with weekly planning, methodological orientations for all phases, DUA adaptations for every activity, rubrics for all indicators, and coverage summary.",
+    "expectations": [
+      "Weekly planning table maps activities to sessions with time estimates",
+      "Methodological orientations cover all 4 phases (Experiencia, Conceptualizacion, Reflexion, Aplicacion)",
+      "At least 2 DUA adaptations per activity covering at least 2 of 3 DUA principles",
+      "Rubrics have 3+ performance levels (basico, intermedio, avanzado)",
+      "Rubric descriptors use observable action verbs, not subjective language",
+      "Coverage summary shows 100% indicator coverage"
+    ]
+  },
+  {
+    "id": "guide-dua-compliance",
+    "prompt": "Genera adaptaciones DUA para una actividad de escritura creativa en 6to EGB donde el estudiante debe escribir un cuento corto.",
+    "expected_output": "DUA adaptations covering all 3 principles with specific, actionable strategies. Should include modality alternatives that don't penalize students who struggle with writing.",
+    "expectations": [
+      "Representacion adaptation present (e.g., visual story map template)",
+      "Compromiso adaptation present (e.g., choice of topic, pair work option)",
+      "Accion/Expresion adaptation present (e.g., oral storytelling or comic format as alternative)",
+      "Adaptations specify which student profiles benefit",
+      "No adaptation penalizes expression modality"
+    ]
+  },
+  {
+    "id": "guide-error-no-unit",
+    "prompt": "Genera la Guia Docente para Matematica 7mo EGB sin proporcionar la unidad editorial.",
+    "expected_output": "Error response indicating the generated unit is required before creating the guide. Should suggest running generate-unit first.",
+    "expectations": [
+      "Response indicates the editorial unit is required input",
+      "Suggests running generate-unit first",
+      "Does not generate guide content without the companion unit",
+      "Explains that a guide without its unit is an orphaned document"
+    ]
+  }
+]

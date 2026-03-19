@@ -1,0 +1,44 @@
+[
+  {
+    "id": "rs-eval-01",
+    "name": "Tone violations with rule citations",
+    "prompt": "Review this 5to grado text for style compliance: 'Debes memorizar las tablas de multiplicar. Si no lo haces, vas a reprobar. Es muy facil, cualquier nino puede hacerlo. Los alumnos deben abrir su libro en la pagina 15.' Produce the style changelog.",
+    "expected_behavior": [
+      "Flags 'Debes memorizar' as CRITICAL tone violation (VOZ-04: imperative commanding)",
+      "Flags 'vas a reprobar' as CRITICAL tone violation (VOZ-07: negative framing/threat)",
+      "Flags 'Es muy facil' as CRITICAL tone violation (VOZ-06: condescending)",
+      "Flags 'Los alumnos' as CRITICAL inclusivity violation (INC-01: gendered default)",
+      "Provides corrected alternatives for each violation",
+      "Every correction cites a specific rule ID",
+      "Generates violation summary by category"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "rs-eval-02",
+    "name": "Ortotipographic convention enforcement",
+    "prompt": "Review this text for ortotipographic compliance: 'En la pagina 5, hay 3 ejercicios. El estudiante debe usar \"comillas rectas\" para citas. los titulos van en minuscula. IMPORTANTE: no olvidar el punto final' Apply Manual de Voz ortotipographic rules.",
+    "expected_behavior": [
+      "Flags number formatting: '3 ejercicios' should be 'tres ejercicios' (ORT-01: spell out 1-10)",
+      "Flags quotation marks: should use angular quotes instead of straight quotes (ORT-12)",
+      "Flags lowercase heading start: 'los titulos' needs capitalization (ORT-05)",
+      "Flags 'IMPORTANTE' full caps as non-standard emphasis (ORT-08)",
+      "Produces changelog with all corrections and rule citations"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "rs-eval-03",
+    "name": "Grade-inappropriate vocabulary detection",
+    "prompt": "Review vocabulary appropriateness for 5to grado (age 9-10): 'La epistemologia nos ayuda a comprender el paradigma hermeneutico de la interpretacion textual. El feedback del docente es crucial para el scaffolding metacognitivo.' Generate corrections with rule citations.",
+    "expected_behavior": [
+      "Flags 'epistemologia' as WARNING: grade-inappropriate for 5to grado (VOC-07)",
+      "Flags 'paradigma hermeneutico' as WARNING: unexplained jargon (VOC-01)",
+      "Flags 'feedback' as WARNING: unnecessary anglicism (VOC-05)",
+      "Flags 'scaffolding metacognitivo' as WARNING: unexplained jargon + anglicism (VOC-01, VOC-05)",
+      "Provides grade-appropriate alternatives for each term",
+      "Notes that the entire passage exceeds vocabulary complexity for target grade"
+    ],
+    "category": "edge-cases"
+  }
+]

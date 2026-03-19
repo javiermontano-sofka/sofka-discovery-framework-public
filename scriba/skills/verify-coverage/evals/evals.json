@@ -1,0 +1,41 @@
+[
+  {
+    "id": "vc-eval-01",
+    "name": "Basic coverage verification with orphans",
+    "prompt": "Verify curriculum coverage for Lengua y Literatura 5to grado. The Matriz A&S contains 12 destrezas (DZ-LENG-5-01 through DZ-LENG-5-12). The units folder has 4 units. Unit 1 covers DZ-LENG-5-01, 02, 03. Unit 2 covers DZ-LENG-5-04, 05, 06. Unit 3 covers DZ-LENG-5-07, 08, 09. Unit 4 covers DZ-LENG-5-10, 11. Produce the coverage dashboard.",
+    "expected_behavior": [
+      "Identifies DZ-LENG-5-12 as orphaned with CRITICAL severity",
+      "Reports 11/12 destrezas covered (91.7%)",
+      "Generates a coverage map table with all 12 destrezas",
+      "Flags that 100% coverage is NOT met — Gate G1 cannot pass",
+      "Recommends remediation: assign DZ-LENG-5-12 to a unit"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "vc-eval-02",
+    "name": "Malformed DZ-ref tag detection",
+    "prompt": "Verify coverage for Matematicas 6to grado. During scanning, you find these tags: [REF: DZ-MAT-6-01], [REF: DZ-MAT-6-02], [REF: DZ-MAT-6-3], [REF: DZ MAT-6-04], [REF: DZ-MAT-6-05]. The Matriz lists 5 destrezas. Report coverage status.",
+    "expected_behavior": [
+      "Flags [REF: DZ-MAT-6-3] as malformed (missing zero-padding) with WARNING",
+      "Flags [REF: DZ MAT-6-04] as malformed (missing colon after DZ) with WARNING",
+      "Reports only 3 valid DZ-ref tags found (01, 02, 05)",
+      "Lists DZ-MAT-6-03 and DZ-MAT-6-04 as effectively orphaned due to malformed tags",
+      "Recommends fixing the malformed tags before re-running coverage verification"
+    ],
+    "category": "error-handling"
+  },
+  {
+    "id": "vc-eval-03",
+    "name": "Over-coverage and inserciones verification",
+    "prompt": "Verify coverage for Ciencias Naturales 5to grado. All 8 destrezas are covered. However, DZ-CCNN-5-03 appears in 6 different activities across 4 units. Also check whether the unit set includes educacion ambiental content as required by MinEduc inserciones curriculares.",
+    "expected_behavior": [
+      "Reports 100% coverage (8/8 destrezas)",
+      "Flags DZ-CCNN-5-03 as OVER-COVERED (6 activities) with recommendation to review for redundancy",
+      "Checks for educacion ambiental insercion and reports presence or absence",
+      "Includes inserciones curriculares table in the dashboard",
+      "Notes that Gate G1 coverage criterion is met but over-coverage warrants review"
+    ],
+    "category": "edge-cases"
+  }
+]

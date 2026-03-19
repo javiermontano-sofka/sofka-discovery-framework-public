@@ -1,0 +1,42 @@
+[
+  {
+    "id": "eu-eval-01",
+    "name": "Feedback incorporation with DZ-ref preservation",
+    "prompt": "Evolve Unit 1 of Lengua y Literatura 5to grado. The unit has 3 DZ-ref tags: DZ-LENG-5-01, DZ-LENG-5-02, DZ-LENG-5-03. Review feedback says: (1) CRITICAL: Activity 1.2 verb 'Lista' must change to 'Argumenta' for Evaluar level alignment. (2) WARNING: Activity 2.1 needs a DUA adaptation for representation. (3) INFO: Paragraph B1-P2 uses imperative tone 'Debes'. Apply all changes and produce the evolution report.",
+    "expected_behavior": [
+      "Addresses CRITICAL item first (taxonomy verb change)",
+      "Addresses WARNING item second (DUA adaptation)",
+      "Addresses INFO item third (tone correction)",
+      "Verifies all 3 DZ-ref tags remain present after changes",
+      "Produces change log with 3 entries, each citing the feedback source",
+      "Includes post-evolution validation checklist showing DZ-ref integrity preserved"
+    ],
+    "category": "core-functionality"
+  },
+  {
+    "id": "eu-eval-02",
+    "name": "Conflicting feedback resolution",
+    "prompt": "Evolve Unit 3. Review-style recommends simplifying the vocabulary in Activity 2.3 by replacing 'hipotesis' with 'idea' (VOC-07: grade-inappropriate). Review-pedagogical requires maintaining 'hipotesis' because it is the target taxonomy term for the Analizar-level destreza. These recommendations conflict. Resolve and produce the evolution report.",
+    "expected_behavior": [
+      "Identifies the conflict between style and pedagogical feedback",
+      "Resolves in favor of pedagogical alignment (taxonomy term preservation)",
+      "Applies a compromise: retains 'hipotesis' but adds inline definition",
+      "Documents the conflict resolution with pedagogical rationale",
+      "Cites evidence tag [PEDAGOGIA] for the resolution decision"
+    ],
+    "category": "edge-cases"
+  },
+  {
+    "id": "eu-eval-03",
+    "name": "DZ-ref tag loss detection and recovery",
+    "prompt": "Evolve Unit 2. Feedback recommends removing Activity 1.3 because it is redundant. Activity 1.3 contains the only reference to DZ-LENG-5-04. If removed, DZ-LENG-5-04 becomes orphaned. Handle this situation in the evolution process.",
+    "expected_behavior": [
+      "Detects that removing Activity 1.3 would orphan DZ-LENG-5-04",
+      "Does NOT silently remove the activity and lose traceability",
+      "Proposes alternative: merge Activity 1.3 content into another activity while preserving the DZ-ref tag",
+      "Or: defers the removal with documented rationale (cannot remove without coverage loss)",
+      "DZ-ref tag count remains unchanged in the evolved unit"
+    ],
+    "category": "error-handling"
+  }
+]

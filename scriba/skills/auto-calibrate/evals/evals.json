@@ -1,0 +1,55 @@
+[
+  {
+    "id": "auto-calibrate-001",
+    "prompt": "Calibra el entorno Scriba. Detecta todos los documentos disponibles y dime en que nivel de priming estamos.",
+    "expected_behavior": [
+      "Scans working directory recursively for all document types",
+      "Classifies documents by type (PDF, HTML, MD, images, Word)",
+      "Checks for existing session-state.json and calibration-digest.md",
+      "Calculates calibration level (COLD/WARM/HOT/DEEP)",
+      "Generates calibration report with document counts and domain coverage",
+      "Writes calibration-digest.md to working directory"
+    ],
+    "acceptance_criteria": {
+      "files_scanned": true,
+      "level_calculated": true,
+      "digest_written": true,
+      "recommendations_provided": true
+    }
+  },
+  {
+    "id": "auto-calibrate-002",
+    "prompt": "Reanuda la sesion anterior. Necesito saber en que fase quedamos y que documentos tenemos disponibles.",
+    "expected_behavior": [
+      "Reads session-state.json to restore previous session",
+      "Reads calibration-digest.md for previous priming level",
+      "Detects any new documents added since last session",
+      "Reports restored state including active phase and gates passed",
+      "Recalculates calibration level if new documents found"
+    ],
+    "acceptance_criteria": {
+      "session_restored": true,
+      "new_docs_detected": true,
+      "level_recalculated": true,
+      "phase_reported": true
+    }
+  },
+  {
+    "id": "auto-calibrate-003",
+    "prompt": "Environment check — I just added 4 new PDF files to the directory. What's my calibration level now?",
+    "expected_behavior": [
+      "Detects the 4 new PDF files",
+      "Classifies them by domain",
+      "Compares against previous calibration-digest.md",
+      "Recalculates level (potentially upgrading from current)",
+      "Reports delta: what changed since last calibration",
+      "Updates calibration-digest.md with new state"
+    ],
+    "acceptance_criteria": {
+      "new_files_detected": true,
+      "delta_reported": true,
+      "level_updated": true,
+      "digest_updated": true
+    }
+  }
+]
