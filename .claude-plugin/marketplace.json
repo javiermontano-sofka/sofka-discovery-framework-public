@@ -5,42 +5,115 @@
     "email": "javier@sofka.com.co"
   },
   "metadata": {
-    "description": "Discovery framework plugins — enterprise consulting (Sofka) and open methodology (MetodologIA). 8-agent dream team, 48 skills, 8 pipeline phases each.",
-    "version": "1.0.0"
+    "description": "Sofka SAGE + MetodologIA + PMO-APEX + Sovereign Architect + Scriba + Plugin QA — Agentic PreSales, open methodology, project management, evidence-based software engineering, educational editorial, and plugin quality assurance. 6 plugins, 3 brands (Sofka, MetodologIA, JM Labs).",
+    "version": "6.0.0"
   },
   "plugins": [
     {
       "name": "sofka-discovery-framework",
       "source": "./sofka-discovery-framework",
-      "description": "Enterprise technical discovery & consulting framework v7 — NL-HP v3.0 prompts, 8-agent dream team, 17 commands, 48 skills, 8 pipeline phases. Proprietary (Sofka Technologies).",
-      "version": "7.0.0",
+      "description": "Sofka SAGE v12.0 — Agentic PreSales as Service. Living ontology (hub + 12 sub-files), UX commands (menu, advance, demo), canonical tokens, 3-brand orchestration. 48 agentes, 100 skills MOAT, 87 comandos, 4 quality gates, Think Tank de 7 Sabios.",
+      "version": "12.0.0",
       "author": {
-        "name": "Javier Montaño"
+        "name": "Javier Montaño · Equipo PreSales Sofka"
       },
       "homepage": "https://sofka.com.co",
       "license": "SEE LICENSE IN LICENSE",
       "category": "consulting",
-      "tags": ["discovery", "enterprise", "architecture", "consulting", "sofka"],
+      "tags": ["sage", "discovery", "enterprise", "architecture", "consulting", "sofka", "zero-hallucination", "rag-priming", "agentic"],
       "keywords": [
-        "discovery", "consulting", "architecture", "assessment", "enterprise",
-        "modernization", "dream-team", "orchestration", "pre-sales"
+        "sage", "discovery", "consulting", "architecture", "assessment", "enterprise",
+        "modernization", "expert-committee", "orchestration", "pre-sales",
+        "zero-hallucination", "rag-priming", "ghost-menu", "agentic-presales"
       ]
     },
     {
       "name": "metodologia-discovery-framework",
       "source": "./metodologia-discovery-framework",
-      "description": "Enterprise technical discovery & consulting framework — 8-agent dream team orchestrates 48 specialized skills across 8 pipeline phases. Open methodology (GPL-3.0 Copyleft).",
-      "version": "6.0.0",
+      "description": "MetodologIA Discovery v9.0 — Open methodology for AI-era professionals. 59 skills, 12 agents, 23 commands. GPL-3.0 Copyleft.",
+      "version": "9.0.0",
       "author": {
         "name": "Javier Montaño"
       },
       "homepage": "https://metodologia.info",
       "license": "GPL-3.0",
       "category": "consulting",
-      "tags": ["discovery", "open-source", "architecture", "consulting", "copyleft"],
+      "tags": ["discovery", "open-source", "architecture", "consulting", "copyleft", "metodologia"],
       "keywords": [
         "discovery", "consulting", "architecture", "assessment",
-        "modernization", "dream-team", "orchestration", "copyleft"
+        "modernization", "orchestration", "copyleft", "open-methodology"
+      ]
+    },
+    {
+      "name": "pm-project-framework",
+      "source": "./pm-project-framework",
+      "description": "PMO-APEX v1.0 — Agentic Project Excellence. 100 skills MOAT, 48 agents, 104 commands, 19 scripts. Project management lifecycle (Agile, Waterfall, SAFe, Kanban, Hybrid, PMO, Portfolio). 5 quality gates, Steering Committee, EVM, zero-hallucination.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Javier Montaño (with Claude Code)"
+      },
+      "homepage": "https://sofka.com.co",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "project-management",
+      "tags": ["apex", "project-management", "pmo", "agile", "waterfall", "safe", "evm", "governance", "zero-hallucination", "agentic"],
+      "keywords": [
+        "apex", "project-management", "pmo", "agile", "scrum", "kanban", "safe",
+        "waterfall", "pmbok", "prince2", "evm", "risk-management", "governance",
+        "steering-committee", "portfolio", "zero-hallucination", "agentic-pm"
+      ]
+    },
+    {
+      "name": "sovereign-architect",
+      "source": "./sovereign-architect",
+      "description": "Sovereign Architect v1.0 — Evidence-based technical leadership. 10 specialists, 9 commands, 4 skills, 4 movements (CREATE/REVIEW/EVOLVE/REPAIR), zero-assumption protocol.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Javier Montaño (JM Labs)"
+      },
+      "homepage": "https://metodologia.info",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "software-engineering",
+      "tags": ["sovereign", "architect", "evidence-based", "code-review", "diagnosis", "technical-leadership", "jm-labs"],
+      "keywords": [
+        "architecture", "software-engineering", "technical-leadership", "code-review",
+        "evidence-based", "diagnosis", "implementation", "quality", "sovereign",
+        "create", "review", "evolve", "repair"
+      ]
+    },
+    {
+      "name": "scriba",
+      "source": "./scriba",
+      "description": "Asistente Scriba v1.0 — Editorial educativa agentica K-12 SOAP. 14 agentes, 24 skills, 37 comandos, 5 quality gates. Neuropsicologia del aprendizaje + pedagogia fundamentada.",
+      "version": "1.0.0",
+      "author": {
+        "name": "JM Labs"
+      },
+      "homepage": "https://github.com/jm-labs",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "editorial-education",
+      "tags": ["scriba", "editorial", "educacion", "K-12", "pedagogia", "neurociencia", "prolipa", "jm-labs"],
+      "keywords": [
+        "editorial", "educacion", "pedagogia", "neurociencia", "K-12", "prolipa",
+        "sinapsis", "curriculum", "textbooks", "bloom", "gagne", "backward-design",
+        "dual-coding", "spacing-effect", "retrieval-practice", "agentic-editorial"
+      ]
+    },
+    {
+      "name": "plugin-qa",
+      "source": "./plugin-qa",
+      "description": "Plugin QA v2.0 — Full plugin development lifecycle for Claude Code plugins. 4 agents, 20 skills, 31 commands, 9 movements (IDEATE, PLAN, DESIGN, SPECIFY, BUILD, VALIDATE, AUDIT, REPORT, FIX). Auto-fix, scorecards, conformance.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Javier Montaño (JM Labs)"
+      },
+      "homepage": "https://metodologia.info",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "developer-tools",
+      "tags": ["plugin-qa", "quality", "validation", "audit", "auto-fix", "scorecard", "lifecycle", "jm-labs"],
+      "keywords": [
+        "plugin", "qa", "quality-assurance", "validation", "audit", "scorecard",
+        "conformance", "auto-fix", "lifecycle", "ideate", "plan", "design",
+        "specify", "build", "validate", "report", "fix", "moat"
       ]
     }
   ]

@@ -22,10 +22,6 @@
           {
             "type": "command",
             "command": "bash \"$PLUGIN_DIR/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
-          },
-          {
-            "type": "prompt",
-            "prompt": "Sofka SAGE v12.0 activo — Agentic PreSales as Service.\n\n48 agentes | 100 skills MOAT | 96 comandos | 4 quality gates (G1→G3)\nNL-HP v3.0 | Think Tank 7 Sabios | {TIPO_SERVICIO} routing\n\nSesión inicializada:\n- .discovery/SESSION-CLAUDE.md → instrucciones del orquestador para este repo\n- .discovery/SESSION-README.md → contexto del proyecto\n- .discovery/ghost-menu.md → navegación contextual\n- .discovery/session-changelog.md → changelog para continuidad\n- .discovery/calibration-digest.md → estado de priming y calibración\n\nGhost Menu ACTIVO: incluir bloque de navegación contextual al final de cada artefacto importante.\nChangelog ACTIVO: cada acción significativa queda registrada para retomar ante crisis.\nAuto-Priming ACTIVO: si .discovery/.needs-priming existe, sugerir /sdf:prime-repo antes de iniciar discovery.\nCalibración ACTIVA: leer .discovery/calibration-digest.md para conocer profundidad de contexto disponible.\n\nProtocolo de adjuntos: cada archivo adjunto o URL investigada debe generar un priming-rag-{nombre}.md en .discovery/rag-priming/. Actualizar calibración después.\n\nComandos rápidos: /sdf:run-auto (completo) | /sdf:run-express (Go/No-Go) | /sdf:run-guided (cocreado) | /sdf:menu (paleta) | /sdf:a (avanzar) | /sdf:demo (tour) | /sdf:prime-repo (priming)\nCost outputs = FTE-meses + magnitudes, NUNCA precios. Branding: #FF7E08, #EFEAE4, #FFD700 (NUNCA verde).\n\nPresenta esto como nota breve de estado. Si el repo no está primed, indicarlo prominentemente."
           }
         ]
       }
@@ -42,9 +38,7 @@
             "command": "bash \"$PLUGIN_DIR/scripts/post-prime-calibrate.sh\" \"$PWD\" 2>/dev/null || true"
           }
         ],
-        "matcher": {
-          "tool_name": "Write|Edit"
-        }
+        "matcher": "Write|Edit"
       }
     ]
   }

@@ -5,6 +5,8 @@
 > 48 agentes · 100 skills MOAT · 96 comandos · 42 prompts NL-HP · Protocolo zero-hallucination.
 > © 2026 Sofka Technologies. All Rights Reserved.
 
+> **Global orchestration**: `~/.claude/orchestration/` — metacognition, input amplification, workflow discipline, auto-calibration, RAG priming, self-improvement.
+
 ---
 
 ## Zero-Hallucination Protocol
