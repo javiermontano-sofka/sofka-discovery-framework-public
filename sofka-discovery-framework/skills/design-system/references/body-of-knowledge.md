@@ -70,7 +70,7 @@ Fuentes fundacionales, estándares de referencia y glosario para el skill de Des
 | Open Props | Modern CSS custom property library, animation tokens | https://open-props.style/ |
 | Figma Variables | Design-to-code token sync, multi-mode variables | https://help.figma.com/hc/en-us/articles/15339657135383 |
 | axe-core | Automated accessibility testing rules, color contrast algorithms | https://github.com/dequelabs/axe-core |
-| Sofka Brand Manual (interno) | Paleta oficial (#FF7E08, #1A1A2E, #FFD700), tipografía, uso de logo | Documentación interna Sofka Technologies |
+| MetodologIA Brand Manual (interno) | Paleta oficial (#6366F1, #1A1A2E, #22D3EE), tipografía, uso de logo | Documentación interna Comunidad MetodologIA |
 
 ---
 
@@ -80,7 +80,7 @@ Fuentes fundacionales, estándares de referencia y glosario para el skill de Des
 |---------|-----------|
 | **Design Token** | Valor atómico de diseño (color, spacing, typography) almacenado como variable CSS custom property y definido en `brand-config.json`. Unidad mínima del sistema. |
 | **Brand Config** | Archivo JSON (`brand-config.json`) que contiene todos los valores de identidad visual de una marca. Cambiar este archivo reconfigura todo el design system sin tocar CSS. |
-| **Semantic Color** | Color con significado funcional independiente de la marca: positive (yellow #FFD700), warning (amber), critical (red), info (blue). Nunca cambian por brand. |
+| **Semantic Color** | Color con significado funcional independiente de la marca: positive (yellow #22D3EE), warning (amber), critical (red), info (blue). Nunca cambian por brand. |
 | **Component Library** | Catálogo de elementos HTML reutilizables (cards, badges, callouts, tables, timelines) con clases CSS estandarizadas y documentación de uso. |
 | **Atomic Design** | Metodología de Brad Frost que organiza UI en cinco niveles: atoms → molecules → organisms → templates → pages. |
 | **WCAG AA** | Nivel de conformidad de accesibilidad que requiere contrast ratio mínimo 4.5:1 para texto normal y 3:1 para texto grande. Estándar del skill. |

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Evaluate hybrid methodology fit for a banking core modernization program with 12 teams, regulatory compliance requirements, and a mix of waterfall-mandated vendor contracts alongside internal agile squads.",
+    "assertions": [
+      "Must assess the agile-predictive balance ratio across teams and workstreams",
+      "Must address regulatory compliance as a factor favoring predictive governance gates",
+      "Must evaluate governance bridging between vendor waterfall contracts and internal agile squads",
+      "Must recommend ceremony harmonization to reduce meeting overhead across 12 teams"
+    ]
+  },
+  {
+    "prompt": "A mid-size retail company runs Scrum for digital products but uses waterfall for ERP implementations. Assess whether their current hybrid approach is effective or creating organizational friction.",
+    "assertions": [
+      "Must identify governance friction points between Scrum and waterfall streams",
+      "Must evaluate whether ceremony redundancy exists across the two methodologies",
+      "Must assess organizational readiness for a more integrated hybrid model",
+      "Must provide a balance scorecard showing current agile-predictive weight distribution"
+    ]
+  },
+  {
+    "prompt": "Our PMO wants to introduce a hybrid methodology for a new IoT platform project. The team has strong agile experience but no waterfall background. What is the readiness level?",
+    "assertions": [
+      "Must score team readiness across multiple dimensions including skills and culture",
+      "Must identify the gap in predictive methodology experience as a critical risk",
+      "Must recommend enablement actions to build predictive practice competency",
+      "Must assess whether the project context genuinely requires hybrid or could remain agile"
+    ]
+  },
+  {
+    "prompt": "Analyze ceremony overlap in our hybrid project: we run daily standups, weekly status meetings, sprint reviews, monthly steering committees, phase-gate reviews, and quarterly business reviews.",
+    "assertions": [
+      "Must map each ceremony to its purpose and identify overlapping objectives",
+      "Must quantify participant meeting load and detect ceremony fatigue risks",
+      "Must propose a consolidated ceremony calendar that reduces redundancy",
+      "Must define how outputs from agile ceremonies feed into predictive governance checkpoints"
+    ]
+  }
+]

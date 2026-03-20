@@ -271,4 +271,4 @@ OUTPUT:
 ---
 
 **Autor:** Javier Montaño | **Última actualización:** 13 de marzo de 2026
-**© Sofka Technologies — Todos los derechos reservados**
+**© Comunidad MetodologIA — Todos los derechos reservados**

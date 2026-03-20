@@ -132,3 +132,110 @@ File named "schedule_v3_final_FINAL.docx" with no evidence tags, random colors, 
 - **Language**: Spanish (Latin American, business register)
 - **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
 - **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
+
+---
+
+---
+
+## Sub-Agents
+
+### Format Converter
+
+
+## Format Converter Agent
+
+### Core Responsibility
+
+Converts markdown to HTML, DOCX, XLSX formats. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Ghost Menu Injector
+
+
+## Ghost Menu Injector Agent
+
+### Core Responsibility
+
+Injects navigation ghost menus into deliverables. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Multi Format Packager
+
+
+## Multi Format Packager Agent
+
+### Core Responsibility
+
+Packages deliverables in multiple formats for distribution. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Template Processor
+
+
+## Template Processor Agent
+
+### Core Responsibility
+
+Processes templates with project data. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+

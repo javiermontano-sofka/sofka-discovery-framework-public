@@ -54,7 +54,7 @@ Tendencias, avances y dirección del ecosistema de design systems relevantes par
 **Estado:** El modelo de "design system como producto interno" se consolidó. Equipos dedicados con product owner, roadmap, métricas de adopción (component coverage, token compliance), y versioning semántico.
 
 **Impacto en el skill:**
-- El skill funciona como el "design system product" para deliverables de discovery Sofka.
+- El skill funciona como el "design system product" para deliverables de discovery MetodologIA.
 - Métricas relevantes: % de deliverables que pasan validación, tiempo medio de generación, número de componentes reutilizados.
 - Governance: el `operations-guide.md` ya define acceptance criteria y extension protocol.
 

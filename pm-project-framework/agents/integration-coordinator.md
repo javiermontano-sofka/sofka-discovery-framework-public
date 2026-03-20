@@ -111,14 +111,6 @@ PARA CADA dependencia:
 5. Define pass/fail criteria for each integration
 6. Assign test ownership and reporting responsibility
 
-## Reasoning Discipline
-
-1. **Decompose** — Break integration challenges into dependency, interface, timing, and ownership dimensions
-2. **Evidence-check** — Dependency status based on deliverable progress, not verbal assurances
-3. **Bias scan** — Check for proximity bias (assuming nearby teams will coordinate naturally)
-4. **Structure-first** — Map all dependencies before assessing risk
-5. **Escalate** — When dependency is at risk and teams cannot resolve, involve both project sponsors
-
 ## Escalation Triggers
 
 - Dependency due date missed with downstream project impact
@@ -126,9 +118,3 @@ PARA CADA dependencia:
 - Integration test failure blocking release
 - Resource dependency conflict between projects with no resolution
 - Dependency owner unresponsive for more than 3 business days
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

@@ -1,0 +1,103 @@
+%% Knowledge Graph — AS-IS Technical Analysis
+%% Dominio: Evaluación del estado actual de sistemas de software
+%% Autor: Javier Montaño | Última actualización: 12 de marzo de 2026
+
+graph TB
+    subgraph SKILL["🔍 asis-analysis"]
+        direction TB
+        PR["Principio Rector:<br/>Diagnóstico basado en evidencia"]
+        FW["Framework: 10 Secciones"]
+        VG["Validation Gate: 9 criterios"]
+    end
+
+    subgraph INPUTS["📥 Inputs"]
+        CODE["Codebase + Git History"]
+        BUILD["Build Config<br/>(Maven/Gradle/npm)"]
+        DEPLOY["Deploy Config<br/>(Docker/K8s/IaC)"]
+        API["API Specs<br/>(OpenAPI/gRPC)"]
+        OPS["Operational Data<br/>(logs, incidents)"]
+    end
+
+    subgraph SECCIONES["📊 10-Section Framework"]
+        S0["S0: Executive Dashboard"]
+        S1["S1: Technology Inventory"]
+        S2["S2: Code Organization"]
+        S3["S3: Architecture C4"]
+        S4["S4: Code Quality Metrics"]
+        S5["S5: Technical Debt"]
+        S6["S6: NFR Heatmap"]
+        S7["S7: Security Assessment"]
+        S8["S8: Operational Model"]
+        S9["S9: Risk Register"]
+        S10["S10: Recommendations"]
+    end
+
+    subgraph OUTPUTS["📤 Outputs"]
+        AS_IS["03_Analisis_AS-IS"]
+        BRIEF["02_Brief_Tecnico"]
+        C4D["C4 Diagrams (Mermaid)"]
+        DEBT["Tech Debt Inventory"]
+        RISK["Risk Register"]
+    end
+
+    subgraph STANDARDS["📚 Standards & Frameworks"]
+        ISO25010["ISO 25010<br/>Quality Model"]
+        C4MODEL["C4 Model<br/>(Simon Brown)"]
+        OWASP["OWASP Top 10"]
+        DORA["DORA Metrics"]
+        TOGAF["TOGAF ADM<br/>Phase A (Vision)"]
+    end
+
+    subgraph CONSUMERS["🔗 Skills Dependientes"]
+        FLOW["flow-mapping<br/>(usa S3 como input)"]
+        SCENARIO["scenario-analysis<br/>(usa S9 como input)"]
+        ROADMAP["solution-roadmap<br/>(usa S10 como input)"]
+        SPEC["functional-spec<br/>(usa S2 como input)"]
+        SECURITY["security-architecture<br/>(usa S7 como input)"]
+    end
+
+    subgraph AGENTS["🤖 Agentes"]
+        IA["implementation-analyst<br/>(owner)"]
+        TA["technical-architect<br/>(support)"]
+        DS["data-engineer<br/>(support: data layer)"]
+        SE["security-architect<br/>(support: S7)"]
+        PE["platform-engineer<br/>(support: infra)"]
+    end
+
+    %% Flows
+    INPUTS --> SKILL
+    SKILL --> SECCIONES
+    SECCIONES --> OUTPUTS
+    STANDARDS -.->|fundamentan| SECCIONES
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Agent relationships
+    IA -->|opera| SKILL
+    TA -.->|consulta S3| SKILL
+    DS -.->|aporta data layer| S1
+    SE -.->|aporta S7| S7
+    PE -.->|aporta infra| S8
+
+    %% Traceability
+    S2 -.->|coupling = debt| S5
+    S4 -.->|low coverage = debt| S5
+    S5 -.->|high debt = risk| S9
+    S7 -.->|CVEs = risk| S9
+    S9 -.->|top risks = roadmap| S10
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class CODE,BUILD,DEPLOY,API,OPS input
+    class S0,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10 section
+    class AS_IS,BRIEF,C4D,DEBT,RISK output
+    class ISO25010,C4MODEL,OWASP,DORA,TOGAF standard
+    class FLOW,SCENARIO,ROADMAP,SPEC,SECURITY consumer
+    class IA,TA,DS,SE,PE agent

@@ -97,14 +97,6 @@ SIEMPRE: documentar_razones Y confirmar_con_sponsor
 | Artifact currency | < 3 days stale | 3-7 days | > 7 days |
 | Practice adoption | > 80% practices active | 60-80% | < 60% |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break methodology decisions into context dimensions before recommending
-2. **Evidence-check** — Tag methodology recommendations with supporting evidence from project context
-3. **Bias scan** — Check for methodology bias (favoring what you know over what fits)
-4. **Structure-first** — Build ceremony cadence skeleton before detailing each ceremony
-5. **Escalate** — When project context is ambiguous, present 2-3 options with trade-offs
-
 ## Escalation Triggers
 
 - Team consistently skips ceremonies without replacement practices
@@ -112,9 +104,3 @@ SIEMPRE: documentar_razones Y confirmar_con_sponsor
 - Project context shifts significantly (e.g., regulatory change, team size doubles)
 - Stakeholders request methodology change without understanding impact
 - Framework practices actively harming team productivity (ceremony overhead > 25% of capacity)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

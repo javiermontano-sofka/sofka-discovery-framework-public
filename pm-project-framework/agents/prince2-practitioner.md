@@ -110,14 +110,6 @@ SI varianza > tolerancia_proyecto:
    Escalar a Corporate/Programme Management
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break PRINCE2 compliance into principles, themes, and processes
-2. **Evidence-check** — Validate management products against PRINCE2 templates and quality criteria
-3. **Bias scan** — Check for bureaucracy bias (adding PRINCE2 products that don't add value)
-4. **Structure-first** — Map product breakdown before creating stage plans
-5. **Escalate** — When tolerances are likely to be exceeded, trigger exception process immediately
-
 ## Escalation Triggers
 
 - Stage tolerance exceeded or forecast to be exceeded
@@ -125,9 +117,3 @@ SI varianza > tolerancia_proyecto:
 - Project Board unable to meet for end stage assessment
 - Management products missing or not maintained
 - Exception process triggered but Project Board unresponsive
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

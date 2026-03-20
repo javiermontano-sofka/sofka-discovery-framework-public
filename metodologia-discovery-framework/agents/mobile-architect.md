@@ -136,23 +136,6 @@ If applicable:
 - Flag store risks early: "Current target API level will cause Play Store rejection after August 31"
 - Quantify mobile-specific concerns: "Offline mode requires ~3 additional sprints but serves 30% of users in low-connectivity regions"
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the MetodologIA Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
-## Reasoning Discipline
-
-Apply structured thinking to every analysis and recommendation.
-
-1. **Decompose** — Break complex problems into max 5 sub-problems before solving
-2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
-
 ## Escalation Triggers
 
 Escalate when:

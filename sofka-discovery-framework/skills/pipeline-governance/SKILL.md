@@ -1,6 +1,7 @@
 ---
-name: sofka-pipeline-governance
-author: Equipo PreSales Sofka
+name: metodologia-pipeline-governance
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<project-or-program-name>"
 description: >
   Discovery pipeline governance — phase gate management, resource orchestration,
   dependency control, and proposal QA validation across the entire discovery pipeline.
@@ -73,7 +74,7 @@ Parse `$1` as **project/program name**. Detect discovery context from repo.
 
 - Single-phase quick assessments (< 2 phases)
 - Pure technical analysis (use domain-specific skills)
-- Post-delivery — use sofka-discovery-handover instead
+- Post-delivery — use metodologia-discovery-handover instead
 
 ## Delivery Structure: 7 Sections
 
@@ -285,16 +286,16 @@ The project manager is the governance backbone that accompanies ALL prompts. It 
 
 | Domain | Skills | Count |
 |---------|--------|----------|
-| Discovery Pipeline | sofka-discovery-orchestrator, sofka-stakeholder-mapping, sofka-workshop-design, sofka-asis-analysis, sofka-sector-intelligence, sofka-flow-mapping, sofka-scenario-analysis, sofka-technical-feasibility, sofka-software-viability, sofka-solution-roadmap, sofka-cost-estimation, sofka-commercial-model, sofka-functional-spec, sofka-executive-pitch, sofka-discovery-handover | 15 |
-| Architecture Design | sofka-software-architecture, sofka-architecture-tobe, sofka-enterprise-architecture, sofka-solutions-architecture, sofka-infrastructure-architecture, sofka-devsecops-architecture, sofka-design-system | 7 |
-| Data Strategy | sofka-data-science-architecture, sofka-bi-architecture, sofka-data-engineering, sofka-database-architecture, sofka-data-governance, sofka-analytics-engineering, sofka-data-mesh-strategy | 7 |
-| Cloud & Mobile | sofka-cloud-native-architecture, sofka-cloud-migration, sofka-mobile-platform-assessment, sofka-finops | 4 |
-| Engineering Excellence | sofka-api-architecture, sofka-event-architecture, sofka-security-architecture, sofka-performance-engineering, sofka-observability | 5 |
-| Consulting & Quality | sofka-quality-engineering, sofka-testing-strategy, sofka-user-representative | 3 |
-| Governance & Risk | sofka-pipeline-governance, sofka-risk-controlling-dynamics | 2 |
-| Change Management | sofka-change-readiness-assessment, sofka-adoption-strategy | 2 |
-| Delivery & UX | sofka-ux-writing, sofka-roadmap-poc | 2 |
-| Delivery & Brand | html-brand, sofka-ux-writing, sofka-roadmap-poc | 3 |
+| Discovery Pipeline | metodologia-discovery-orchestrator, metodologia-stakeholder-mapping, metodologia-workshop-design, metodologia-asis-analysis, metodologia-sector-intelligence, metodologia-flow-mapping, metodologia-scenario-analysis, metodologia-technical-feasibility, metodologia-software-viability, metodologia-solution-roadmap, metodologia-cost-estimation, metodologia-commercial-model, metodologia-functional-spec, metodologia-executive-pitch, metodologia-discovery-handover | 15 |
+| Architecture Design | metodologia-software-architecture, metodologia-architecture-tobe, metodologia-enterprise-architecture, metodologia-solutions-architecture, metodologia-infrastructure-architecture, metodologia-devsecops-architecture, metodologia-design-system | 7 |
+| Data Strategy | metodologia-data-science-architecture, metodologia-bi-architecture, metodologia-data-engineering, metodologia-database-architecture, metodologia-data-governance, metodologia-analytics-engineering, metodologia-data-mesh-strategy | 7 |
+| Cloud & Mobile | metodologia-cloud-native-architecture, metodologia-cloud-migration, metodologia-mobile-platform-assessment, metodologia-finops | 4 |
+| Engineering Excellence | metodologia-api-architecture, metodologia-event-architecture, metodologia-security-architecture, metodologia-performance-engineering, metodologia-observability | 5 |
+| Consulting & Quality | metodologia-quality-engineering, metodologia-testing-strategy, metodologia-user-representative | 3 |
+| Governance & Risk | metodologia-pipeline-governance, metodologia-risk-controlling-dynamics | 2 |
+| Change Management | metodologia-change-readiness-assessment, metodologia-adoption-strategy | 2 |
+| Delivery & UX | metodologia-ux-writing, metodologia-roadmap-poc | 2 |
+| Delivery & Brand | html-brand, metodologia-ux-writing, metodologia-roadmap-poc | 3 |
 | **TOTAL** | | **48** |
 
 ### Asset Inventory
@@ -304,7 +305,7 @@ All 48 skills have `examples/` with:
 - `sample-output.html` — Branded HTML output (Design System CSS)
 - `README.md` — Asset index
 
-Location: `plugins/sofka-discovery-framework/skills/{skill-name}/examples/`
+Location: `plugins/metodologia-discovery-framework/skills/{skill-name}/examples/`
 
 ## Trade-off Matrix
 
@@ -345,6 +346,94 @@ Location: `plugins/sofka-discovery-framework/skills/{skill-name}/examples/`
 - [ ] Scope change log with impact assessments
 - [ ] Mermaid diagrams: Gantt (program), flowchart (resources), sequence (data)
 
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        PG[Pipeline Governance]
+    end
+
+    subgraph Inputs
+        I1[Discovery Pipeline State] --> PG
+        I2[Phase Deliverables] --> PG
+        I3[Expert Committee Roster] --> PG
+        I4[Scope & Timeline] --> PG
+    end
+
+    subgraph Outputs
+        PG --> O1[Program Charter]
+        PG --> O2[Gate Evaluations]
+        PG --> O3[Resource Tracking]
+        PG --> O4[Dependency Control]
+        PG --> O5[Proposal QA Scorecard]
+        PG --> O6[Status Dashboard]
+        PG --> O7[Lessons Learned]
+    end
+
+    subgraph Related Skills
+        RS1[risk-controlling-dynamics] -.-> PG
+        RS2[discovery-orchestrator] -.-> PG
+        RS3[discovery-handover] -.-> PG
+        RS4[cost-estimation] -.-> PG
+        RS5[executive-pitch] -.-> PG
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+
+```
+# Pipeline Governance: {project_name}
+## S1: Program Charter & Governance Framework
+### Phase Dependency Map | Decision Rights | Communication Plan
+
+## S2: Phase Gate Management
+### Gate Evaluation Protocol (G1, 3b, G2, G3)
+
+## S3: Resource & Capacity Orchestration
+### Expert Allocation | Bottleneck Detection | Skill Activation
+
+## S4: Cross-Phase Dependency Control
+### Input/Output Matrix | Data Contracts | Scope Change Log
+
+## S5: Proposal QA Validation
+### Coherencia | Completitud | Viabilidad | Alineacion | Composite Score
+
+## S6: Status Reporting & Dashboard
+### RAG Status | Milestone Tracking | Risk Burn-Down | Decision Log
+
+## S7: Continuous Governance & Lessons Learned
+### Retrospective | Governance Effectiveness | Process Improvement
+```
+
+**Formato DOCX:**
+Reporte de gobernanza de programa en formato documento formal: charter ejecutivo, evaluaciones de gate con firmas de aprobacion, scorecard de propuesta, y dashboard de estado con graficos de varianza y tendencia de riesgos.
+
+**Formato XLSX (bajo demanda):**
+- Filename: `{fase}_Pipeline_Governance_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por RAG status (verde/amarillo/rojo) y veredicto de gate (PASS/CONDITIONAL/FAIL), auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Phase Gate Status, Resource Allocation, Dependency Matrix, Proposal QA Scorecard.
+
+**Formato PPTX (bajo demanda):**
+- Filename: `{fase}_Pipeline_Governance_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+
+## Evaluacion
+
+| Dimension | Peso | Criterio (7/10 minimo) |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante keywords de governance, pipeline, gate, proposal QA; no se confunde con PM generico |
+| Completeness | 25% | Las 7 secciones cubren charter, gates, recursos, dependencias, QA de propuesta, dashboard, y lecciones |
+| Clarity | 20% | Gate criteria, QA scorecard, y RAG status son inequivocos; verdicts son PASS/CONDITIONAL/FAIL |
+| Robustness | 20% | Edge cases (phase skip, scope change, expert unavailable, QA fail) tienen protocolo definido |
+| Efficiency | 10% | Modos operacionales (integral, seguimiento, validacion-propuesta) permiten activacion parcial |
+| Value Density | 15% | Cada gate produce veredicto accionable; QA scorecard traza fallas a fase origen con remediacion |
+
+**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+
+---
+
 ## Output Format Protocol
 
 | Format | Default | Description |
@@ -352,14 +441,15 @@ Location: `plugins/sofka-discovery-framework/skills/{skill-name}/examples/`
 | `markdown` | Yes | Rich Markdown + Mermaid diagrams. Token-efficient. |
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
+| **HTML** | `{fase}_Pipeline_Governance_{proyecto}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Dark-First Executive. Incluye Gantt interactivo de programa, gate scorecard con RAG status, y proposal QA dashboard. |
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
 ## Output Configuration
 
 - **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- **Attribution**: Expert committee of the MetodologIA Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
 
 ## Output Artifact
 

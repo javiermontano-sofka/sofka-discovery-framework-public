@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Map dependencies for a platform migration project with 3 workstreams: frontend rebuild (React), backend API migration (Java to Go), and database migration (Oracle to PostgreSQL). The frontend depends on the new APIs, the APIs depend on the new database schema, and there is a shared authentication service used by all three.",
+    "assertions": [
+      "Output identifies at least 4 dependencies including frontend-to-API, API-to-database, and shared auth service dependencies",
+      "Output classifies dependency types and directionality (upstream provider vs downstream consumer)",
+      "Output identifies the shared authentication service as a single point of failure or risk concentration",
+      "Output produces a visual or structured dependency map showing the relationships between all 3 workstreams"
+    ]
+  },
+  {
+    "prompt": "Analyze critical path impact: Project A delivers an API in sprint 6 that Project B needs to start integration testing in sprint 7. Project A is currently 1 sprint behind schedule. What is the cascade effect and what are the options?",
+    "assertions": [
+      "Output quantifies the cascade delay impact on Project B's integration testing timeline",
+      "Output identifies this as a critical path dependency with zero float",
+      "Output proposes at least 2 resolution options such as mock APIs, parallel development, or scope negotiation",
+      "Output estimates the cost or risk trade-off of each proposed resolution approach"
+    ]
+  },
+  {
+    "prompt": "Detect and resolve a circular dependency: Team A needs Team B's data model to build the API, Team B needs Team A's API specification to design the data model, and both teams are blocked waiting on each other.",
+    "assertions": [
+      "Output identifies the circular dependency between the API specification and data model",
+      "Output proposes a resolution strategy such as interface contracts, stub definitions, or joint design sessions",
+      "Output suggests which team should deliver a preliminary artifact first to break the cycle",
+      "Output recommends a process change to prevent similar circular dependencies in the future"
+    ]
+  },
+  {
+    "prompt": "Create a dependency visualization for a portfolio of 5 projects sharing a common data platform, 2 vendor integrations, and a shared DevOps team. Include both inter-project dependencies and shared resource dependencies.",
+    "assertions": [
+      "Output produces a Mermaid diagram or structured visual showing all 5 projects and their dependency links",
+      "Output distinguishes between technical dependencies (data platform, vendor integrations) and resource dependencies (shared DevOps)",
+      "Output highlights the most critical or highest-risk dependency chains across the portfolio",
+      "Output provides both an executive summary view and a detailed technical view of the dependency landscape"
+    ]
+  }
+]

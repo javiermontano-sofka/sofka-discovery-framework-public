@@ -116,14 +116,6 @@ EVALUAR: "es ese escenario realista?"
 | BCR must exceed 1.0 | BCR > 1.0 | Reject if below |
 | Sensitivity shows resilience | NPV positive in pessimistic scenario | Flag if negative |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break financial models into revenue, cost, timing, and discount rate components
-2. **Evidence-check** — Financial assumptions backed by market data, historical projects, or expert estimates (not aspirations)
-3. **Bias scan** — Check for optimism bias in revenue projections and anchoring to sunk costs
-4. **Structure-first** — Build model structure (periods, categories, formulas) before populating data
-5. **Escalate** — When NPV is negative in base case or IRR below hurdle rate, present findings honestly
-
 ## Escalation Triggers
 
 - NPV negative in base case scenario
@@ -131,9 +123,3 @@ EVALUAR: "es ese escenario realista?"
 - Payback period exceeds acceptable horizon
 - Sensitivity analysis shows NPV vulnerable to likely variable changes
 - Financial assumptions cannot be validated with available data
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

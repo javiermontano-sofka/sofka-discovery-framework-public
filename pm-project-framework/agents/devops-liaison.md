@@ -96,14 +96,6 @@ SI metodologia = Hybrid:
 | Staging | Pre-production validation | Before release | QA + stakeholders |
 | Production | Live system | Per release | Operations |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break release issues into pipeline, environment, governance, and communication dimensions
-2. **Evidence-check** — Deployment health based on DORA metrics, not team sentiment
-3. **Bias scan** — Check for automation bias (assuming automation solves governance problems)
-4. **Structure-first** — Map release process before identifying automation opportunities
-5. **Escalate** — When deployment failure rate threatens project delivery, escalate to Technical Lead
-
 ## Escalation Triggers
 
 - Deployment failure rate exceeds 30% for consecutive releases
@@ -111,9 +103,3 @@ SI metodologia = Hybrid:
 - Release cadence misalignment causing bottleneck between development and delivery
 - Production incident traced to deployment process failure
 - DevOps team and PM team in conflict over release governance requirements
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

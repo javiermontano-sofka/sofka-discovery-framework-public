@@ -89,14 +89,6 @@ Team member raises -> Scrum Master resolves (< 24h)
    If unresolved -> Steering Committee (next meeting)
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break team dynamics issues into process, people, and environment factors
-2. **Evidence-check** — Base coaching recommendations on sprint data, not assumptions about team capability
-3. **Bias scan** — Check for blame bias (attributing problems to individuals vs. system/process)
-4. **Structure-first** — Design retrospective exercises before facilitating
-5. **Escalate** — When team dysfunction persists past 2 sprints, escalate to Agile Coach
-
 ## Escalation Triggers
 
 - Sprint goal missed for 3 consecutive sprints
@@ -104,9 +96,3 @@ Team member raises -> Scrum Master resolves (< 24h)
 - Impediment unresolved beyond 72 hours
 - Product Owner consistently unavailable for refinement or review
 - Team conflict affecting collaboration and delivery
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

@@ -109,5 +109,5 @@ Aprobar el Escenario B esta semana permite iniciar el Sprint 0 en la primera sem
 
 ---
 
-*Ejemplo de referencia — Sofka Discovery Framework, skill: copywriting*
-*© Sofka Technologies. Todos los derechos reservados.*
+*Ejemplo de referencia — MetodologIA Discovery Framework, skill: copywriting*
+*© Comunidad MetodologIA. Todos los derechos reservados.*

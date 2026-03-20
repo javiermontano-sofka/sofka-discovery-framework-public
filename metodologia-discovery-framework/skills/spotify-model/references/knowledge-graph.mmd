@@ -1,0 +1,52 @@
+%% Knowledge Graph — Spotify Model: Squads, Tribes, Chapters, Guilds
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        ORG[organizational-structure<br/>Current state]
+        PORTFOLIO[product-portfolio<br/>Mission candidates]
+        TOPOLOGY[team-topology-design<br/>Team Topologies input]
+        CAPACITY[capacity-planning<br/>Resource data]
+    end
+
+    subgraph "Spotify Model (This Skill)"
+        MISSION[Mission Mapping<br/>Value streams to squads]
+        SQUAD[Squad Design<br/>6-12 cross-functional]
+        TRIBE[Tribe Formation<br/>Related squads ≤150]
+        CHAPTER[Chapter & Guild<br/>Functional + cross-cutting]
+    end
+
+    subgraph Downstream
+        HEALTH[team-performance<br/>Health checks]
+        ALIGNMENT[strategic-alignment<br/>OKR tracking]
+        CEREMONY[ceremony-design<br/>Squad cadences]
+        TRANSITION[change-control-board<br/>Transition governance]
+        STEERING[steering-review<br/>Go/No-Go]
+    end
+
+    subgraph Agents
+        ORG_DESIGNER[org-designer<br/>L2 Specialist]
+        AGILE_COACH[agile-coach<br/>L2 Specialist]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    ORG --> MISSION
+    PORTFOLIO --> MISSION
+    TOPOLOGY --> SQUAD
+    CAPACITY --> SQUAD
+
+    MISSION --> SQUAD --> TRIBE --> CHAPTER
+
+    CHAPTER --> HEALTH
+    SQUAD --> ALIGNMENT
+    SQUAD --> CEREMONY
+    TRIBE --> TRANSITION
+    CHAPTER --> STEERING
+
+    ORG_DESIGNER -.->|executes| SQUAD
+    AGILE_COACH -.->|facilitates| CHAPTER
+    CONDUCTOR -.->|orchestrates| TRIBE
+
+    style TRIBE fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style ORG_DESIGNER fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

@@ -93,14 +93,6 @@ PARA CADA item EN backlog:
 | Backlog grooming frequency | Weekly | Bi-weekly | Monthly or less |
 | Stakeholder feedback integration | < 1 sprint lag | 1-2 sprint lag | > 2 sprint lag |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break features into independent, valuable user stories
-2. **Evidence-check** — Prioritization based on data (usage, revenue, risk) not loudest stakeholder
-3. **Bias scan** — Check for recency bias (prioritizing latest request over highest value)
-4. **Structure-first** — Build story map skeleton before writing individual stories
-5. **Escalate** — When stakeholder priorities conflict, present data-driven options to Product Owner
-
 ## Escalation Triggers
 
 - Product Owner unavailable for more than one full sprint
@@ -108,9 +100,3 @@ PARA CADA item EN backlog:
 - Backlog has less than one sprint of refined items
 - Value delivered per sprint declining for 3+ sprints
 - Scope of user stories consistently exceeds sprint capacity
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

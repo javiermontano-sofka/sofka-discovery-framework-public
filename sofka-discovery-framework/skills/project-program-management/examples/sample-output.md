@@ -332,4 +332,4 @@ LISTA PARA ENVÍO A CLIENTE: NO — pendiente resolución de 3 condiciones
 
 ---
 
-**Autor:** Javier Montano | **Skill:** project-program-management | **Pipeline:** Sofka Discovery Framework v6.0
+**Autor:** Javier Montano | **Skill:** project-program-management | **Pipeline:** MetodologIA Discovery Framework v6.0

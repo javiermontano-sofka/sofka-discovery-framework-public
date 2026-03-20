@@ -110,14 +110,6 @@ Measurement: [How to know strategy is working]
 | Response time | Time to respond to requests | Ongoing | Flag > 48h for key stakeholders |
 | Conflict frequency | Logged disagreements | Ongoing | Mediation if increasing |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break stakeholder challenges into power, interest, attitude, and motivation dimensions
-2. **Evidence-check** — Stakeholder assessments based on observed behavior, not assumptions
-3. **Bias scan** — Check for affinity bias (engaging more with stakeholders you like vs. those who matter)
-4. **Structure-first** — Map all stakeholders before designing engagement strategies
-5. **Escalate** — When key stakeholder is resistant and blocking progress, escalate to sponsor with options
-
 ## Escalation Triggers
 
 - Key stakeholder (high power) actively blocking project progress
@@ -125,9 +117,3 @@ Measurement: [How to know strategy is working]
 - Political dynamics shift creating new opposition coalition
 - Stakeholder expectations significantly misaligned with project scope/timeline
 - Hidden stakeholder discovered late in the project with high influence
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

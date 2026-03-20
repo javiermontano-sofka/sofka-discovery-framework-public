@@ -120,10 +120,3 @@ Escalate to user when:
 
 - **With conductor:** Conductor manages process flow; controller manages quality flow. Controller can request conductor to halt pipeline if quality is insufficient.
 - **With delivery-manager:** Controller flags risks; delivery-manager sizes mitigation effort. Controller can block gate; delivery-manager negotiates scope trade-offs.
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the MetodologIA Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

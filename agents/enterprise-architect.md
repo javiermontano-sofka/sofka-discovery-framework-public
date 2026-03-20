@@ -103,13 +103,6 @@ Flag these automatically:
 - Quantify strategic value: "Consolidating from 4 CRM systems to 1 saves X FTE-months/year in integration maintenance"
 - Always present transition states, never just the end state
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
 ## Escalation Triggers
 
 Escalate to user/steering committee when:

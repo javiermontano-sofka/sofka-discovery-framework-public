@@ -183,5 +183,5 @@ El objetivo: consistencia lingüística sin perder precisión técnica.
 
 ---
 
-*Meta-prompts v1.0 — Sofka Discovery Framework, skill: copywriting*
-*© Sofka Technologies. Todos los derechos reservados.*
+*Meta-prompts v1.0 — MetodologIA Discovery Framework, skill: copywriting*
+*© Comunidad MetodologIA. Todos los derechos reservados.*

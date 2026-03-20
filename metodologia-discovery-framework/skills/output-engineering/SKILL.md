@@ -1,12 +1,12 @@
 ---
-name: metodologia-output-engineering
-author: Javier Montano · Comunidad MetodologIA
-argument-hint: "[source-file.md] [format: html|docx|pptx|xlsx|pdf|all] — e.g. './06_Roadmap.md html'"
+name: apex-output-engineering
 description: >
-  Ghost menu system and multi-format production pipeline — converts markdown source
-  of truth into HTML, DOCX, PPTX, XLSX, and PDF outputs while preserving content
-  integrity and Neo-Swiss brand compliance. Use when producing format conversions, managing
-  the ghost menu workflow, or orchestrating multi-format delivery packages.
+  Use when the user asks to "produce deliverables", "convert formats",
+  "generate multi-format output", "apply naming conventions", "manage deliverable pipeline",
+  or mentions output engineering, format conversion, deliverable production, markdown to HTML,
+  multi-format generation. Triggers on: converts markdown to branded HTML, applies evidence
+  tagging to deliverables, enforces naming conventions, manages version tagging (WIP/Aprobado),
+  produces deliverables in multiple formats simultaneously.
 allowed-tools:
   - Read
   - Write
@@ -16,247 +16,226 @@ allowed-tools:
   - Bash
 ---
 
-# Output Engineering — Ghost Menu & Multi-Format Pipeline
+# Multi-Format Deliverable Production
 
-Orchestrates the ghost menu system: markdown as source of truth, format conversion on demand, **Neo-Swiss brand compliance across all output formats**, and production quality control. Owns the .md to HTML | DOCX | PPTX | XLSX | PDF pipeline.
+**TL;DR**: Produces project deliverables in multiple formats (Markdown, HTML, Mermaid diagrams) while maintaining brand consistency, evidence tagging, and quality standards. Manages the deliverable production pipeline from draft through review to approved final versions.
 
-## Guiding Principle
+## Principio Rector
+Un entregable de calidad es invisible en su formato y visible en su contenido. El formato debe servir al contenido, no al revés. Markdown-first asegura versionabilidad; HTML agrega interactividad y branding; PDF asegura distribución fiel. El pipeline de producción aplica quality checks consistentes independientemente del formato.
 
-**Markdown is the source of truth. Everything else is a projection.** Content lives in markdown following the markdown-excellence standard. Each additional format is an optimization for a specific medium: HTML for digital presentation, DOCX for signatures and editing, PPTX for live presentation, XLSX for data analysis, PDF for archival. Conversion never loses content — it only adapts the form.
+## Assumptions & Limits
+- Assumes content is authored in Markdown as primary format [SUPUESTO]
+- Assumes APEX branding tokens are available in canonical-tokens.md [SUPUESTO]
+- Breaks if content lacks evidence tags — output engineering cannot add evidence post-hoc [PLAN]
+- Scope limited to format production and quality enforcement; content creation is handled by domain skills [PLAN]
+- Does not generate content — transforms and formats content produced by other skills [PLAN]
 
-### Production Philosophy
-
-1. **Single source of truth.** Markdown is the master. Derived formats are regenerated from the markdown.
-2. **Format-optimized, not format-duplicated.** Each format leverages its strengths. A PPTX is not a markdown with slides — it is a visual narrative.
-3. **Brand compliance is non-negotiable.** MetodologIA Neo-Swiss Design System v6 in every pixel of every format.
-4. **Production-ready means finished.** No "drafts" in derived formats. If it is generated, it is ready for the client.
-
-## CRITICAL: Auto-Brand Protocol
-
-**Every format produced by this pipeline MUST be Neo-Swiss brand-compliant.** Before generating any output:
-
+## Usage
+```bash
+/pm:output-engineering $SOURCE_FILE --format=html --brand=apex
+/pm:output-engineering $SOURCE_FILE --format=markdown,html --status=WIP
+/pm:output-engineering $PROJECT_DIR --batch --format=html --quality-check
 ```
-Read ${CLAUDE_SKILL_DIR}/../../references/brand-config-neoswiss.json
-```
+**Parameters:**
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `$SOURCE_FILE` | Yes | Path to source Markdown file or project directory |
+| `--format` | No | `markdown` / `html` / `both` (default: `markdown`) |
+| `--brand` | No | `apex` / `minimal` (default: `apex`) |
+| `--status` | No | `WIP` / `Aprobado` (default: `WIP`) |
+| `--batch` | No | Process all deliverables in directory |
+| `--quality-check` | No | Run Excellence Loop validation |
 
-### Format Routing
+## Service Type Routing
+`{TIPO_PROYECTO}`: All project types produce deliverables. Format selection depends on audience (technical = Markdown, executive = HTML/PDF, regulatory = PDF with signatures).
 
-| Target Format | Skill to Invoke | Brand Assets Required |
-|--------------|----------------|----------------------|
-| **HTML** | `metodologia-html-brand` | `brand-config-neoswiss.json` + `neo-swiss-template.css` + `logo-metodologia.svg` |
-| **DOCX** | `metodologia-brand-docx` | `brand-config-neoswiss.json` (docx section) |
-| **PPTX** | `metodologia-brand-pptx` | `brand-config-neoswiss.json` (pptx section) |
-| **XLSX** | `metodologia-brand-xlsx` | `brand-config-neoswiss.json` (xlsx section) |
-| **PDF** | Generate from HTML (highest fidelity) | Same as HTML |
-| **MD** | markdown-excellence standard | Evidence tags, Mermaid, cross-references |
+## Before Producing Output
+1. Read source content — verify completeness and evidence tagging [PLAN]
+2. Read `references/ontology/canonical-tokens.md` — load design tokens for HTML production [PLAN]
+3. Check naming convention — apply `{fase}_{entregable}_{proyecto}_{status}.{ext}` [PLAN]
+4. Verify approval status — only {Aprobado} after governance approval [PLAN]
 
-## Inputs
+## Entrada (Input Requirements)
+- Draft content in Markdown
+- Target format(s) required
+- Branding requirements (APEX tokens)
+- Evidence tags for content verification
+- Approval workflow requirements
 
-- `$1` — Source file: path to markdown deliverable (required)
-- `$2` — Target format: `html`, `docx`, `pptx`, `xlsx`, `pdf`, `all` (default: `html`)
-
-Parse from `$ARGUMENTS`.
-
-## Ghost Menu Protocol
-
-### Trigger
-
-After ANY deliverable markdown is generated and passes editorial review:
-
-```
-📄 Entregable listo: [filename].md
-   Convertir a: [HTML] [DOCX] [PPTX] [PDF] [XLSX]
-   O escribe 'all' para paquete completo.
-```
-
-### Activation Flow
-
-```
-1. Deliverable.md created → editorial review passes
-2. Ghost menu offered to user
-3. User selects format(s)
-4. Read brand-config-neoswiss.json
-5. Route to format-specific skill (see Format Routing table)
-6. Output generated with Neo-Swiss brand compliance
-7. Quality check: content integrity + brand + accessibility
-8. File delivered to user
-```
-
-### Auto-Activation Rules
-
-| Deliverable | Auto-Suggest Formats | Reason |
-|-------------|---------------------|--------|
-| 00 Plan | DOCX | Governance document, may need signature |
-| 01-04 Analysis | HTML | Rich presentation, Mermaid rendering |
-| 05 Scenarios | HTML + PPTX | Analysis + steering committee presentation |
-| 06 Roadmap | HTML + XLSX | Visual + financial data tables |
-| 07 Spec | HTML + DOCX | Reference + contractual |
-| 08 Pitch | HTML + PPTX | Digital + live presentation |
-| 09 Handover | HTML + DOCX | Reference + operations handoff |
-| 10 Findings | PPTX + HTML | Executive deck + digital backup |
-| 11 Recommendations | PPTX + HTML | Strategy deck + reference |
-| 12 AI Opportunities | HTML + PPTX | Innovation showcase |
-
-## Format Production Specifications
-
-### HTML Production
-
-| Element | Standard |
-|---------|----------|
-| Template | MetodologIA Neo-Swiss Design System v6 |
-| Structure | Self-contained single file |
-| CSS | Inline (embed `neo-swiss-template.css` + custom components) |
-| Mermaid | CDN v10 `<pre class="mermaid">` |
-| Colors | Navy #122562, Gold #FFD700, Blue #137DC5 |
-| Typography | Poppins (titles), Trebuchet MS (body) |
-| Body bg | Off-white #F8F9FC |
-| Shadows | Navy-tinted rgba(18,37,98,...) |
-| Print | `@media print` styles included |
-| Accessibility | WCAG 2.1 AA, semantic HTML5, aria labels |
-| Logo | Inline SVG from `logo-metodologia.svg` |
-| Footer | Navy bg, gold border, badges, tagline |
-
-### DOCX Production
-
-| Element | Standard |
-|---------|----------|
-| Conversion | python-docx with Neo-Swiss brand styles |
-| Cover page | Navy bg, white title, gold accent, logo |
-| TOC | Auto-generated from heading hierarchy |
-| Headers/Footers | Branded with page numbers |
-| Typography | Poppins headings, Trebuchet MS body, Century Gothic notes |
-| Tables | Navy header fill (#122562), zebra stripes (#F8F9FC) |
-| Diagrams | Pre-rendered or described (Mermaid to description) |
-
-### PPTX Production
-
-| Element | Standard |
-|---------|----------|
-| Slide master | Navy bg (#122562), Poppins titles, Trebuchet MS body |
-| Accent | Gold #FFD700 for highlights, KPI values, divider numbers |
-| Layouts | Title, Section Divider, Content, Two-Column, Full-Image, KPI, Closing |
-| Narrative arc | Hook -> Context -> Findings -> Implications -> Action |
-| Density | One key message per slide (NO wall-of-text) |
-| Speaker notes | Evidence references + talking points |
-| Limit | 20 slides max executive, 30 max technical |
-
-### XLSX Production
-
-| Element | Standard |
-|---------|----------|
-| Headers | Navy fill (#122562), white Poppins text |
-| Accent rows | Gold fill (#FFD700), navy text |
-| Body | Trebuchet MS, dark text (#1F2833) |
-| Borders | Light gray (#E8EAF0) |
-| Zebra | Off-white (#F8F9FC) alternating |
-| Conditional formatting | Blue positive, amber warning, red critical |
-| Structure | Summary sheet first, detail sheets after, filters auto |
-
-### PDF Production
-
-| Element | Standard |
-|---------|----------|
-| Source | Generated from HTML (highest fidelity) |
-| Layout | Print-optimized margins, orphan/widow control |
-| Contrast | High contrast for readability |
-| Quality | Embed fonts, flatten transparency |
-
-## Brand Compliance Checklist (ALL Formats)
-
-Every output format MUST pass:
-
-| Element | Neo-Swiss Standard |
-|---------|-------------------|
-| Primary color | Navy #122562 |
-| Accent color | Gold #FFD700 |
-| Action color | Blue #137DC5 |
-| Body text | Dark #1F2833 |
-| Title font | Poppins |
-| Body font | Trebuchet MS |
-| Note font | Futura / Century Gothic |
-| Logo | MetodologIA SVG (squircle + 3 pillars + gold circle) |
-| Footer | MetodologIA tagline + badges |
-| Shadows | Navy-tinted rgba(18,37,98,...) — NOT black |
-| Success color | Blue #137DC5 — **NEVER green, NEVER cyan** |
-
-### Legacy Token Blocklist
-
-These tokens are BANNED. If any appear in output, the deliverable FAILS brand compliance:
-
-| Banned Token | Was Used In | Replaced By |
-|-------------|------------|-------------|
-| `#6366F1` (indigo) | DS v4/v5 primary | `#122562` (navy) |
-| `#22D3EE` (cyan) | DS v4/v5 success | `#137DC5` (blue) |
-| `#1A1A2E` (dark) | DS v4/v5 bg | `#F8F9FC` (off-white) or `#122562` (navy) |
-| `#0F172A` (slate) | DS v4/v5 body bg | `#F8F9FC` (off-white) |
-| `#0A122A` (deep navy) | DS brand v1 | `#122562` (navy) |
-| Clash Grotesk | DS v4/v5 display | Poppins |
-| Inter | DS v4/v5 body | Trebuchet MS |
-| Montserrat | DS brand v1 body | Trebuchet MS |
-| `rgba(0,0,0,...)` shadows | DS v4/v5 | `rgba(18,37,98,...)` |
-
-## Content Integrity Validation
-
-After format conversion, verify:
-
-| Check | Method |
-|-------|--------|
-| All sections present | Compare heading count md vs output |
-| Tables complete | Row/column count matches |
-| Diagrams rendered | Mermaid visible or described |
-| Evidence tags preserved | [CODIGO] etc. visible in output |
-| Cross-references working | Links/references intact |
-| Semantic colors correct | Blue positive, amber warning, red critical |
-| Numbers match | Financial figures identical to source |
-
-## Multi-Format Delivery Package
-
-When user requests `all`:
-
-```
-{project_name}/
-├── {deliverable}.md          ← Source of truth
-├── {deliverable}.html        ← Digital presentation (Neo-Swiss)
-├── {deliverable}.docx        ← Editable/signable (Neo-Swiss)
-├── {deliverable}.pptx        ← Live presentation (Neo-Swiss) — if applicable
-├── {deliverable}.xlsx        ← Data tables (Neo-Swiss) — if applicable
-├── {deliverable}.pdf         ← Archival
-└── README.md                 ← Package contents + generation metadata
-```
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the MetodologIA Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agentica de MetodologIA."*
-- **Brand**: Neo-Swiss Clean & Soft Explainer v6
+## Proceso (Protocol)
+1. **Content review** — Verify draft content completeness and accuracy
+2. **Evidence tagging** — Ensure all assertions have evidence tags
+3. **Format selection** — Determine target format(s) based on audience
+4. **Template application** — Apply appropriate template per format
+5. **Brand compliance** — Verify brand colors, fonts, and layout
+6. **Diagram rendering** — Render Mermaid diagrams to appropriate format
+7. **Quality check** — Apply Excellence Loop criteria
+8. **Version tagging** — Apply {WIP} or {Aprobado} naming convention
+9. **Slug naming** — Apply `{fase}_{entregable}_{proyecto}_{status}.{ext}` convention
+10. **Distribution** — Deliver to appropriate channels per communication plan
 
 ## Edge Cases
+1. **Format conversion losing content or structure** — Validate output against source; flag any content loss; provide both formats if conversion is lossy.
+2. **Evidence tags missing from content** — Return to content author; do not produce final format without evidence compliance.
+3. **Deliverable blocked in approval workflow** — Maintain {WIP} tag; do not allow {Aprobado} without governance sign-off.
+4. **Batch processing with mixed quality levels** — Produce quality report per deliverable; do not batch-approve inconsistent quality.
 
-- **Mermaid in DOCX/PPTX**: Pre-render as description or embed as image. Never leave raw Mermaid syntax.
-- **Very long deliverables**: PPTX should summarize, not transcribe. XLSX extracts data tables only.
-- **No tabular data**: Skip XLSX suggestion in ghost menu.
-- **Client without MetodologIA brand permission**: Degrade gracefully to neutral styling.
-- **Legacy HTML with DS v4/v5 tokens**: Migrate to Neo-Swiss. Replace all banned tokens.
+## Example: Good vs Bad
 
-## Limits
+**Good Output Engineering:**
+| Attribute | Value |
+|-----------|-------|
+| Naming | `03_Schedule_ProyectoAlfa_{WIP}.md` — correct convention [PLAN] |
+| Evidence | Every assertion tagged: [PLAN], [METRIC], [SCHEDULE], [STAKEHOLDER] |
+| Brand compliance | APEX tokens applied; zero green indicators; correct fonts [PLAN] |
+| Quality check | 10/10 Excellence Loop criteria passed |
+| Format | Markdown source + HTML branded version produced simultaneously |
 
-- This skill owns **format production and the ghost menu pipeline**. It does NOT own content quality (that is editorial-director + content-strategist) or individual format expertise (that is format-specific skills).
-- NEVER modify content during format conversion. Form changes, substance does not.
-- NEVER produce formats not requested. Ghost menu suggests — user decides.
+**Bad Output Engineering:**
+File named "schedule_v3_final_FINAL.docx" with no evidence tags, random colors, no branding, and "final" version that is actually still in draft. No naming convention, no quality check, no version control.
 
-## Evaluacion
+## Salida (Deliverables)
+- Formatted deliverable in target format(s)
+- Quality check report
+- Version history
+- Distribution confirmation
 
-| Dimension | Peso | Criterio |
-|-----------|------|----------|
-| Trigger Accuracy | 10% | Descripcion activa triggers correctos sin falsos positivos |
-| Completeness | 25% | Todos los entregables cubren el dominio sin huecos |
-| Clarity | 20% | Instrucciones ejecutables sin ambiguedad |
-| Robustness | 20% | Maneja edge cases y variantes de input |
-| Efficiency | 10% | Proceso no tiene pasos redundantes |
-| Value Density | 15% | Cada seccion aporta valor practico directo |
+## Validation Gate
+- [ ] All content assertions have evidence tags — zero untagged claims
+- [ ] No formatting errors — HTML renders correctly, Markdown parses cleanly
+- [ ] All sections present in output — no content loss during conversion
+- [ ] Brand compliance verified — APEX colors, fonts, and layout tokens only
+- [ ] Naming convention followed: `{fase}_{entregable}_{proyecto}_{status}.{ext}`
+- [ ] {WIP}/{Aprobado} status matches actual approval state
+- [ ] Version history maintained — changes traceable between versions
+- [ ] Format serves audience — technical gets Markdown, executives get HTML/PDF
+- [ ] Quality check (Excellence Loop) passed with documented results
+- [ ] Deliverable self-contained — no broken links or missing dependencies
 
-**Umbral minimo**: 7/10 en cada dimension para considerar el skill production-ready.
+## Escalation Triggers
+- Format conversion losing content or structure
+- Brand compliance failures
+- Deliverable blocked in approval workflow
+- Format not supported by recipient platform
+
+## Additional Resources
+| Resource | When to Read | Location |
+|----------|-------------|----------|
+| Body of Knowledge | When applying deliverable production best practices | `references/body-of-knowledge.md` |
+| State of the Art | When implementing automated deliverable pipelines | `references/state-of-the-art.md` |
+| Knowledge Graph | When mapping output to pipeline deliverable requirements | `references/knowledge-graph.mmd` |
+| Use Case Prompts | When producing deliverables for specific project types | `prompts/use-case-prompts.md` |
+| Metaprompts | When adapting output for non-APEX branding | `prompts/metaprompts.md` |
+| Sample Output | When reviewing expected deliverable quality | `examples/sample-output.md` |
+
+## Output Configuration
+- **Language**: Spanish (Latin American, business register)
+- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
+- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
 
 ---
-**Autor:** Javier Montano · Comunidad MetodologIA | **Version:** 2.0.0 Neo-Swiss
+
+---
+
+## Sub-Agents
+
+### Format Converter
+
+
+## Format Converter Agent
+
+### Core Responsibility
+
+Converts markdown to HTML, DOCX, XLSX formats. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Ghost Menu Injector
+
+
+## Ghost Menu Injector Agent
+
+### Core Responsibility
+
+Injects navigation ghost menus into deliverables. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Multi Format Packager
+
+
+## Multi Format Packager Agent
+
+### Core Responsibility
+
+Packages deliverables in multiple formats for distribution. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Template Processor
+
+
+## Template Processor Agent
+
+### Core Responsibility
+
+Processes templates with project data. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+

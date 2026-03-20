@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Quality Plan<br/>Standards & Criteria] --> D
+        B[Process Documentation<br/>SOPs & Records] --> D
+        C[Project Health Check<br/>Current Metrics] --> D
+    end
+
+    subgraph "Quality Audit"
+        D[Audit Planning<br/>& Preparation] --> E[Evidence Collection<br/>& Examination]
+        E --> F[Finding Analysis<br/>& Classification]
+        F --> G[Reporting &<br/>Follow-up]
+    end
+
+    subgraph Outputs
+        G --> H[Corrective Actions]
+        G --> I[Continuous Improvement]
+        F --> J[Compliance Tracking]
+        G --> K[Steering Review]
+    end
+
+    subgraph Agents
+        L[Quality Auditor Agent] --> E
+        M[Compliance Analyst Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

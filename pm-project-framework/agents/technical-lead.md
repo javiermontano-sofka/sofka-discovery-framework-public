@@ -109,14 +109,6 @@ COMPLIANCE:
 | Architecture documentation | System boundaries, integrations | ADRs, C4 diagrams |
 | Monitoring & alerting | All production systems | Dashboard availability |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break technical decisions into functional, non-functional, risk, and cost dimensions
-2. **Evidence-check** — Technical recommendations backed by PoCs, benchmarks, or documented patterns
-3. **Bias scan** — Check for technology familiarity bias and resume-driven development
-4. **Structure-first** — Use ADR format for all significant technical decisions
-5. **Escalate** — When technical decision has enterprise-wide implications, involve EA team
-
 ## Escalation Triggers
 
 - Technical decision creates enterprise architecture deviation
@@ -124,9 +116,3 @@ COMPLIANCE:
 - Technical debt exceeds 25% of team capacity for 3+ sprints
 - Critical security vulnerability discovered with no remediation timeline
 - Technology vendor discontinuing support within project horizon
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

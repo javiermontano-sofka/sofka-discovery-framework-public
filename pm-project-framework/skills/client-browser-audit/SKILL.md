@@ -146,3 +146,110 @@ A report saying "Jira needs cleanup" without screenshots, specific issues, sever
 - **Language**: Spanish (Latin American, business register)
 - **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
 - **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
+
+---
+
+---
+
+## Sub-Agents
+
+### Accessibility Baseline Assessor
+
+
+## Accessibility Baseline Assessor Agent
+
+### Core Responsibility
+
+Assesses accessibility baseline for client environment. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Browser Landscape Scanner
+
+
+## Browser Landscape Scanner Agent
+
+### Core Responsibility
+
+Scans client browser and device landscape. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Compatibility Requirement Mapper
+
+
+## Compatibility Requirement Mapper Agent
+
+### Core Responsibility
+
+Maps browser compatibility requirements to project scope. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Device Strategy Recommender
+
+
+## Device Strategy Recommender Agent
+
+### Core Responsibility
+
+Recommends device and browser support strategy. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+

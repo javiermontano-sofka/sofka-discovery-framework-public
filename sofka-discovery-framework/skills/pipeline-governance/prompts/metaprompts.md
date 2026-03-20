@@ -3,7 +3,7 @@ skill: pipeline-governance
 type: metaprompts
 version: 1.0
 author: Javier Montaño
-copyright: © Sofka Technologies
+copyright: © Comunidad MetodologIA
 updated: 2026-03-13
 ---
 
@@ -242,4 +242,4 @@ Genera:
 - Si "¿Habrá un discovery completo después?" = SÍ, el metaprompt ajusta la propuesta para posicionar el Quick Reference como Fase 0 de un engagement más amplio
 
 ---
-**Autor:** Javier Montaño | **© Sofka Technologies** | **Actualización:** 13 de marzo de 2026
+**Autor:** Javier Montaño | **© Comunidad MetodologIA** | **Actualización:** 13 de marzo de 2026

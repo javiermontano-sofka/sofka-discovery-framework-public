@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Define risk appetite framework for a financial services project.",
+    "assertions": [
+      "drafts risk appetite statement per category",
+      "calibrates quantified thresholds",
+      "addresses regulatory constraints on risk-taking",
+      "defines escalation triggers when appetite is exceeded"
+    ]
+  },
+  {
+    "prompt": "Calibrate risk thresholds for a startup vs enterprise project.",
+    "assertions": [
+      "recognizes different risk appetites per organization type",
+      "sets appropriate schedule tolerance",
+      "defines cost overrun thresholds",
+      "adjusts quality risk acceptance levels"
+    ]
+  },
+  {
+    "prompt": "Audit project decisions against organizational risk appetite.",
+    "assertions": [
+      "identifies decisions that exceed risk appetite",
+      "classifies severity of appetite violations",
+      "recommends escalation for out-of-appetite decisions",
+      "documents audit trail for governance"
+    ]
+  },
+  {
+    "prompt": "Project team wants to accept a high-impact risk. Does it align with organizational appetite?",
+    "assertions": [
+      "evaluates risk against appetite thresholds",
+      "considers risk category and organizational tolerance",
+      "recommends accept or escalate decision",
+      "documents rationale regardless of decision"
+    ]
+  }
+]

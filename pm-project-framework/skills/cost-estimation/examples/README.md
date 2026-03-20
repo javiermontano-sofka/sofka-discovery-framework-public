@@ -1,7 +1,12 @@
-# Examples — Cost Estimation
+# Cost Estimation — Example Outputs
 
-| File | Format | Description |
-|------|--------|-------------|
-| sample-output.md | Markdown | Three-point estimation for Acme Corp feature development |
+Sample outputs demonstrating what the cost-estimation skill produces: effort drivers, magnitude indicators, team composition models, and risk-adjusted timeline ranges for a fictional "Acme Corp Banking Modernization" project.
 
-*PMO-APEX v1.0 — Examples · Cost Estimation*
+## Files
+
+- `sample-output.md` — Markdown cost estimation (default output)
+- `sample-output.html` — HTML branded version
+
+## Key Principle
+
+These examples produce ZERO final prices, rates, or budgets. They identify cost DRIVERS, effort INDUCTORS, and magnitude INDICATORS. Costear =/= Cobrar.

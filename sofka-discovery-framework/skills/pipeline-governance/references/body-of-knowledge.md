@@ -3,7 +3,7 @@ skill: pipeline-governance
 type: body-of-knowledge
 version: 1.0
 author: Javier Montaño
-copyright: © Sofka Technologies
+copyright: © Comunidad MetodologIA
 updated: 2026-03-13
 ---
 
@@ -121,4 +121,4 @@ Todo cambio de alcance durante el engagement — por descubrimiento de complejid
 | **Dashboard Estático** | Actualizar el RAG dashboard solo al inicio | Decisiones basadas en información desactualizada | Dashboard actualizado después de cada phase completion |
 
 ---
-**Autor:** Javier Montaño | **© Sofka Technologies** | **Actualización:** 13 de marzo de 2026
+**Autor:** Javier Montaño | **© Comunidad MetodologIA** | **Actualización:** 13 de marzo de 2026

@@ -3,7 +3,7 @@ skill: pipeline-governance
 type: state-of-the-art
 version: 1.0
 author: Javier Montaño
-copyright: © Sofka Technologies
+copyright: © Comunidad MetodologIA
 updated: 2026-03-13
 ---
 
@@ -87,4 +87,4 @@ La gobernanza de programas tecnológicos está siendo redefinida por tres fuerza
 
 ---
 
-**Autor:** Javier Montaño | **© Sofka Technologies** | **Actualización:** 13 de marzo de 2026
+**Autor:** Javier Montaño | **© Comunidad MetodologIA** | **Actualización:** 13 de marzo de 2026

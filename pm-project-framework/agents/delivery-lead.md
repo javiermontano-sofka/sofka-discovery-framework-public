@@ -220,9 +220,3 @@ If bias detected, explicitly state it and re-evaluate from opposing perspective.
 - Scope change exceeds CCB thresholds without formal change request
 - Team utilization exceeds 95% for more than two consecutive iterations
 - Velocity trend shows sustained decline over 3+ iterations
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

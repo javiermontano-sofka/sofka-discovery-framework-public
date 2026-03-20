@@ -1,149 +1,339 @@
 ---
-name: apex-technical-writing
+name: metodologia-technical-writing
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<doc-type: analysis|spec|handover|architecture|assessment> <depth: ejecutivo|tecnico|exhaustivo>"
 description: >
-  Use when the user asks to "write technical documentation", "create specs",
-  "document architecture decisions", "produce ADRs", "write SOPs",
-  or mentions technical writing, specifications, ADRs, architecture decision records,
-  documentation standards, docs-as-code.
+  Technical documentation precision — progressive disclosure, terminology consistency,
+  evidence attribution, and reproducible analysis. Use when writing AS-IS analyses,
+  functional specs, architecture documents, handover guides, or any deliverable
+  requiring technical rigor and documentation standards.
 allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
-  - Bash
 ---
 
-# Technical Writing & Documentation
+# Technical Writing — Documentation Precision & Progressive Disclosure
 
-**TL;DR**: Produces technical documentation including specifications, Architecture Decision Records (ADRs), process documentation, user guides, and standard operating procedures. Follows documentation-as-code principles with version control, peer review, and living document maintenance.
+Ensures technical deliverables are precise, reproducible, and progressively disclosed. Owns terminology consistency, evidence attribution, structural patterns, and anti-pattern enforcement across all discovery documentation.
 
-## Principio Rector
-La documentación no escrita no existe; la documentación no mantenida es peligrosa. La documentación técnica tiene dos clientes: el lector actual que necesita entender, y el lector futuro que necesitará entender por qué. ADRs capturan el "por qué" de las decisiones — sin ellos, las decisiones futuras carecen del contexto necesario.
+## Guiding Principle
 
-## Assumptions & Limits
-- Assumes subject matter content is available from SMEs or existing artifacts [PLAN]
-- Assumes target audience and technical level are defined [STAKEHOLDER]
-- Breaks when no SME is available and topic is novel — cannot document what is unknown
-- Does not create technical decisions; documents them. Use architecture skills for decision-making
-- Assumes documentation platform and standards exist or will be defined [SUPUESTO]
-- Limited to project documentation; for organizational documentation systems use doc-ops practices
+**Technical documentation is a knowledge contract.** Every assertion is verifiable. Every term is consistent. Every section builds on the previous one. The reader must be able to reproduce the analysis, validate the conclusions, and act on the recommendations without needing the author.
 
-## Usage
+### Documentation Philosophy
 
-```bash
-# Architecture Decision Record
-/pm:technical-writing $ARGUMENTS="--type adr --decision 'Select PostgreSQL over MongoDB'"
+1. **Progressive disclosure.** TL;DR → sections → details → appendix. The executive reads 2 pages, the architect reads 20, the implementer reads 50.
+2. **Terminology as contract.** One term = one meaning across the entire discovery. Zero ambiguous synonyms.
+3. **Traceable evidence.** Every data point carries a source tag. The reader can verify without asking.
+4. **Information density.** Every sentence contributes new information. Zero filler, zero repetition.
 
-# Technical specification
-/pm:technical-writing --type spec --scope "API integration layer" --audience developers
+## Inputs
 
-# Process documentation (SOP)
-/pm:technical-writing --type sop --process "deployment-pipeline"
+- `$1` — Document type: `analysis`, `spec`, `handover`, `architecture`, `assessment` (default: `analysis`)
+- `$2` — Depth: `ejecutivo`, `técnico`, `exhaustivo` (default: `técnico`)
+
+Parse from `$ARGUMENTS`.
+
+## Document Structure Patterns
+
+### Progressive Disclosure Architecture
+
+```
+Level 0: TL;DR (3-5 bullets)
+  ├── Level 1: Section summaries (1 paragraph each)
+  │     ├── Level 2: Full sections with evidence
+  │     │     ├── Level 3: Technical detail, code refs, configs
+  │     │     └── Level 3: Diagrams, matrices, data tables
+  │     └── Level 2: Cross-references to related deliverables
+  └── Appendix: Raw data, methodology notes, glossary
 ```
 
-**Parameters:**
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `$ARGUMENTS` | Yes | Documentation scope and type |
-| `--type` | No | `spec` (default), `adr`, `sop`, `guide`, `runbook` |
-| `--scope` | No | Documentation scope description |
-| `--audience` | No | Target audience (developers, ops, managers) |
-| `--decision` | No | Decision statement for ADR |
+### Section Template
 
-## Service Type Routing
-`{TIPO_PROYECTO}` variants:
-- **Agile**: Living documentation; ADRs, lightweight specs, and docs-as-code maintained alongside the product backlog
-- **Waterfall**: Formal specifications, design documents, and SOPs per phase; document review and approval as gate criteria
-- **SAFe**: Solution intent documentation; architectural runway specs; PI-level release notes and system documentation
-- **Kanban**: Process documentation for board policies, service level expectations, and operational runbooks
-- **PMO**: Governance documentation templates; portfolio reporting standards; methodology playbooks and process guides
-- **Hybrid**: Formal documentation for gate deliverables; lightweight living docs for iterative workstreams
+```markdown
+## [N]. Section Title
 
-## Before Writing
-1. **Read** existing documentation on the topic to avoid duplication [PLAN]
-2. **Glob** `**/docs/**` or `**/adr/**` to find existing documentation structure [PLAN]
-3. **Read** documentation standards if they exist [PLAN]
-4. **Grep** for prior decisions or specifications on the same topic [PLAN]
+> **TL;DR**: [1-2 sentence summary with key metric]
 
-## Entrada (Input Requirements)
-- Subject matter content and expertise
-- Target audience and their technical level
-- Documentation standards and templates
-- Review and approval process
-- Version control requirements
+[Analysis body — dense, evidence-tagged paragraphs]
 
-## Proceso (Protocol)
-1. **Audience analysis** — Identify reader profile and knowledge level
-2. **Structure selection** — Choose document structure (ADR, spec, guide, SOP)
-3. **Outline creation** — Build document outline with sections and key points
-4. **Content drafting** — Write clear, precise technical content
-5. **Diagram inclusion** — Add Mermaid diagrams for architecture and process flows
-6. **Review cycle** — Submit for technical review and incorporate feedback
-7. **Standards compliance** — Verify compliance with documentation standards
-8. **Version management** — Apply version control and change tracking
-9. **Publication** — Publish to agreed documentation platform
-10. **Maintenance plan** — Define review and update cadence
+| Finding | Evidence | Impact | Source |
+|---------|----------|--------|--------|
+| ... | ... | 🟢/🟡/🔴 | [TAG] |
 
-## Edge Cases
-1. **SME unavailable for content review** — Draft based on available artifacts. Tag all unverified content with [SUPUESTO]. Schedule SME review as blocking task before publication [SUPUESTO].
-2. **Documentation standards not defined** — Propose lightweight standards (ADR template, doc structure, naming convention). Get team agreement before writing [PLAN].
-3. **Critical decisions undocumented** — Retroactive ADR creation. Interview decision-makers to reconstruct context. Tag reconstructed rationale as [INFERENCIA] [INFERENCIA].
-4. **Documentation significantly outdated** — Archive outdated version. Create fresh document from current state. Note historical context where relevant [PLAN].
+💡 **Insight**: [Actionable interpretation of the data]
 
-## Example: Good vs Bad
+→ See [XX_Deliverable § Section] for related analysis
+```
 
-**Good example — Well-structured ADR:**
+## Evidence Attribution System
 
-| Attribute | Value |
-|-----------|-------|
-| Title | ADR-007: Select PostgreSQL for user data persistence |
-| Status | Accepted (2026-03-15) |
-| Context | Problem statement with constraints and requirements |
-| Decision | Clear decision with rationale |
-| Alternatives | 3 alternatives evaluated with trade-off analysis |
-| Consequences | Positive and negative consequences documented |
-| Evidence | [PLAN] tags on decision criteria, [INFERENCIA] on future impact |
+| Tag | Meaning | Confidence |
+|-----|---------|-----------|
+| [CÓDIGO] | Verified in source code | High — directly observable |
+| [CONFIG] | Found in configuration files | High — directly observable |
+| [DOC] | Referenced in documentation | Medium — may be outdated |
+| [INFERENCIA] | Deduced from patterns | Medium — requires validation |
+| [SUPUESTO] | Assumption, explicitly declared | Low — must be validated |
+| [STAKEHOLDER] | Reported by stakeholder | Medium — subjective, cross-validate |
+| [BENCHMARK] | Industry standard reference | Medium — context-dependent |
 
-**Bad example — Knowledge buried in email:**
-Critical architecture decision made in a Slack thread, never documented. New team members make conflicting decisions because they lack context. When asked "why PostgreSQL?", nobody remembers. Without ADRs, organizational knowledge degrades with staff turnover.
+### Attribution Rules
 
-## Salida (Deliverables)
-- Technical documentation per scope
-- ADR register (for architecture decisions)
-- Process flow diagrams (Mermaid)
-- Documentation style guide compliance report
+1. **Every quantitative claim** must have at least one evidence tag
+2. **Mixed evidence** uses highest-confidence tag first: `[CÓDIGO][CONFIG]`
+3. **Inferences** always state the reasoning: "X is inferred based on Y [INFERENCIA]"
+4. **Assumptions** always state the validation path: "Assumption: X. Validate with: Y [SUPUESTO]"
 
-## Validation Gate
-- [ ] Document type correctly selected (ADR, spec, SOP, guide) [PLAN]
-- [ ] Target audience identified and content appropriate for their level [PLAN]
-- [ ] ≥1 Mermaid diagram included for architecture/process topics [PLAN]
-- [ ] Technical content reviewed by SME or tagged [SUPUESTO] if unreviewed [PLAN]
-- [ ] Version control applied (document version, last updated, author) [PLAN]
-- [ ] ADRs include: context, decision, alternatives considered, consequences [PLAN]
-- [ ] Documentation follows agreed standards or proposes standards [PLAN]
-- [ ] Maintenance/review cadence defined [SCHEDULE]
-- [ ] Evidence ratio: ≥80% [PLAN], <20% [SUPUESTO]
-- [ ] Document is self-contained (readable without external context) [PLAN]
+## Terminology Consistency Protocol
 
-## Escalation Triggers
-- SME unavailable for content review
-- Documentation standards not defined
-- Critical decisions undocumented
-- Documentation significantly outdated
+```
+1. First use: define the term in context
+   "El monolito (aplicación principal desplegada como una unidad) presenta..."
 
-## Additional Resources
+2. Subsequent uses: use the defined term consistently
+   ✅ "El monolito requiere..."
+   ❌ "La aplicación legacy..." (undefined synonym)
+   ❌ "El sistema principal..." (another synonym)
 
-| Resource | When to Read | Location |
-|----------|-------------|----------|
-| Body of Knowledge | Technical writing best practices | `references/body-of-knowledge.md` |
-| State of the Art | Docs-as-code and living documentation | `references/state-of-the-art.md` |
-| Knowledge Graph | Documentation in project lifecycle | `references/knowledge-graph.mmd` |
-| Use Case Prompts | Documentation scenarios | `prompts/use-case-prompts.md` |
-| Metaprompts | Custom documentation frameworks | `prompts/metaprompts.md` |
-| Sample Output | Reference technical documents | `examples/sample-output.md` |
+3. Glossary: maintain implicit glossary across deliverables
+   - Same term = same meaning in 00 through 09
+   - If a term evolves (AS-IS → TO-BE), explicitly note the transition
+```
+
+## Structural Patterns by Document Type
+
+| Type | Structure | Key Sections | Mermaid Budget |
+|------|-----------|-------------|---------------|
+| Analysis (02-03) | Finding → Evidence → Impact | TL;DR, 10 sections, cross-refs | 2-4 diagrams |
+| Spec (07) | Use Case → Rules → Acceptance | Actors, flows, business rules | 2-3 diagrams |
+| Handover (09) | Phase → Tasks → Criteria | 90-day plan, RACI, risks | 1-2 diagrams |
+| Architecture | Component → Interaction → Quality | C4, ADRs, quality attributes | 3-4 diagrams |
+| Assessment | Dimension → Score → Evidence | Matrix, findings, recommendations | 1-2 diagrams |
+
+## Anti-Pattern Enforcement
+
+| Anti-Pattern | Rule | Fix |
+|-------------|------|-----|
+| Filler phrases | BLOCK | Delete entirely |
+| Passive voice without agent | WARN | "Se implementó" → "El equipo implementó" or "El módulo X implementa" |
+| Scores without justification | BLOCK | Every 🟢/🟡/🔴 needs evidence in same row |
+| Tables without headers | BLOCK | Every table has labeled columns |
+| Headings that skip levels | BLOCK | h1→h2→h3 only, no h1→h3 |
+| Orphan sections (<2 sentences) | WARN | Expand or merge with parent |
+| Acronyms without definition | BLOCK | Define on first use |
+
+## Callout System
+
+| Icon | Usage | When |
+|------|-------|------|
+| 💡 **Insight** | Actionable interpretation | After data/finding presentation |
+| ⚖️ **Trade-off** | Decision with competing factors | Architecture/scenario choices |
+| ⚠️ **Risk** | Identified risk with impact | Risk-bearing findings |
+| 🔍 **Evidence** | Supporting data point | Deep technical evidence |
 
 ## Output Configuration
-- **Language**: Spanish (Latin American, business register)
-- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the MetodologIA Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
+
+## Validation Gate
+
+| Criterion | Check |
+|-----------|-------|
+| TL;DR present | 3-5 bullets at document top |
+| Evidence tags on all claims | [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO] |
+| Heading hierarchy valid | h1→h2→h3, no skips |
+| Tables have headers | Every table labeled |
+| Cross-references valid | → See format, target deliverable exists |
+| Zero filler | No "cabe señalar", "es importante destacar" |
+| Terminology consistent | Same terms across the document |
+| Mermaid diagrams present | Minimum 1 per deliverable |
+
+## Supuestos y Limites
+
+- El input contiene datos tecnicos verificados o claramente etiquetados con nivel de confianza.
+- Toda documentacion sigue el estandar markdown-excellence como baseline.
+- Esta skill posee **precision documental y estructura**. NO posee persuasion narrativa (eso es copywriting) ni produccion de formato visual (eso es output-engineering).
+- NUNCA producir precios. Solo FTE-meses, magnitudes, cost drivers.
+
+## Casos Borde
+
+| Caso Borde | Estrategia de Manejo |
+|---|---|
+| Codebase con cobertura parcial (<30% documentado) | Usar [INFERENCIA] y [SUPUESTO] extensivamente. Declarar limitacion de cobertura en TL;DR. Priorizar documentacion de modulos criticos sobre cobertura uniforme. Incluir "Coverage Disclaimer" al inicio. |
+| Codebase multilenguaje (>3 lenguajes) | Documentar distribucion de lenguajes como hallazgo. Usar identificadores en idioma original del codigo. Crear seccion de "Language Map" con porcentajes y modulos por lenguaje. |
+| Cero documentacion previa existente | Flaggear como hallazgo critico en TL;DR. Usar [CODIGO] y [CONFIG] como fuentes primarias. Recomendar Sprint 0 de documentacion. Producir glossario como primer entregable. |
+| Terminologia inconsistente en el sistema existente | Crear tabla de reconciliacion de terminos. Documentar sinonimos encontrados y el termino canonico elegido. Aplicar termino canonico consistentemente con nota de mapeo. |
+
+## Decisiones y Trade-offs
+
+| Decision | Justificacion | Alternativa Descartada |
+|---|---|---|
+| Progressive disclosure (TL;DR -> detalle -> apendice) | Multiples audiencias consumen el mismo documento a diferente profundidad. Reduce necesidad de documentos separados. | Documento monolitico: el ejecutivo nunca lo lee; el implementador pierde tiempo buscando detalle. |
+| Terminologia como contrato (1 termino = 1 significado) | Elimina ambiguedad en documentacion tecnica. Evita errores de interpretacion en implementacion. | Sinonimos permitidos: genera confusion especialmente en equipos distribuidos. |
+| Evidence tags obligatorios en toda afirmacion | Permite al lector verificar sin preguntar. Distingue hechos de inferencias. Reduce riesgo de decisiones basadas en supuestos no declarados. | Sin tags: imposible distinguir dato verificado de opinion. |
+| Mermaid como formato de diagramas | Versionable en git, renderizable en markdown, editable sin herramientas especiales. | Imagenes estaticas: no versionables, dificiles de actualizar, rompen flujo de documentacion-as-code. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Technical Writing"]
+        PD[Progressive Disclosure]
+        TERM[Terminology Contract]
+        EVID[Evidence Attribution]
+        STRUCT[Structural Patterns]
+    end
+
+    subgraph Inputs["Inputs"]
+        DOCTYPE[Document Type]
+        DEPTH[Profundidad]
+        CODE[Codebase Analysis]
+        FINDINGS[Hallazgos]
+    end
+
+    subgraph Outputs["Outputs"]
+        ANALYSIS[AS-IS Analysis]
+        SPEC[Functional Spec]
+        HANDOVER[Handover Guide]
+        ARCHIDOC[Architecture Doc]
+    end
+
+    subgraph Related["Related Skills"]
+        COPY[copywriting]
+        STORY[storytelling]
+        OUTPUT[output-engineering]
+        EDITORIAL[editorial-director]
+    end
+
+    DOCTYPE --> STRUCT
+    DEPTH --> PD
+    CODE --> EVID
+    FINDINGS --> TERM
+    PD --> ANALYSIS
+    STRUCT --> SPEC
+    EVID --> HANDOVER
+    TERM --> ARCHIDOC
+    COPY --> Core
+    STORY --> Core
+    Core --> OUTPUT
+    EDITORIAL --> Core
+```
+
+## Output Templates
+
+### Template 1: Technical Analysis Document (Markdown)
+
+**Filename:** `{NN}_{Entregable}_{contexto}_{WIP|Aprobado}.md`
+
+```markdown
+# {NN}. {Titulo del Entregable}
+
+## TL;DR
+- {Hallazgo 1 con metrica clave}
+- {Hallazgo 2 con metrica clave}
+- {Hallazgo 3 con metrica clave}
+
+## 1. {Seccion}
+
+> **TL;DR**: {Resumen en 1-2 oraciones con metrica principal}
+
+{Cuerpo de analisis con parrafos densos y evidence-tagged}
+
+| Hallazgo | Evidencia | Impacto | Fuente |
+|---|---|---|---|
+| ... | ... | Alto/Medio/Bajo | [TAG] |
+
+**Insight**: {Interpretacion accionable del dato}
+
+> Ver [{XX}_Entregable Seccion] para analisis relacionado
+
+## Glosario
+| Termino | Definicion | Primera aparicion |
+|---|---|---|
+```
+
+### Template 2: Handover Guide (Markdown)
+
+**Filename:** `09_Handover_{contexto}_{WIP|Aprobado}.md`
+
+```markdown
+# Handover Guide: {project}
+
+## TL;DR
+{5 bullets: que se entrega, a quien, y como empezar}
+
+## Plan de 90 Dias
+### Fase 1: Quick Wins (Dias 1-30)
+| Actividad | Responsable | Criterio de Exito | Dependencia |
+|---|---|---|---|
+
+### Fase 2: Estabilizacion (Dias 31-60)
+...
+
+### Fase 3: Aceleracion (Dias 61-90)
+...
+
+## RACI
+| Actividad | Responsable | Aprobador | Consultado | Informado |
+|---|---|---|---|---|
+
+## Riesgos de Transicion
+| Riesgo | Probabilidad | Impacto | Mitigacion |
+|---|---|---|---|
+
+## Criterios de Exito de la Transicion
+- [ ] {Criterio medible 1}
+- [ ] {Criterio medible 2}
+```
+
+### Template 3: HTML (bajo demanda)
+
+- Filename: `{NN}_{Entregable}_{contexto}_{WIP|Aprobado}.html`
+- Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye tabla de evidencias con filtros por tag ([CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]), índice de secciones con progressive disclosure, y callouts con iconografía semántica. WCAG AA, responsive, print-ready.
+
+### Template 4: XLSX (bajo demanda)
+
+- Filename: `{fase}_{entregable}_{contexto}_{WIP}.xlsx`
+- Generado con openpyxl y MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, formato condicional por tag de evidencia y nivel de impacto, auto-filtros en todas las columnas, valores calculados sin fórmulas. Hojas: Hallazgos con evidencia, Glosario de términos, Matriz de cross-references, Anti-patterns detectados.
+
+### Template 5: PPTX (bajo demanda)
+
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, TL;DR de hallazgos clave, estructura de progressive disclosure (niveles 0-3), tabla de evidencias con tags, glosario de términos canónicos, cross-references activos, anti-patterns detectados, recomendaciones priorizadas.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante solicitudes de documentacion tecnica, AS-IS, spec, handover, o assessment |
+| Completeness | 25% | TL;DR presente, evidence tags en toda afirmacion, jerarquia de headings valida, cross-refs activos |
+| Clarity | 20% | Terminologia consistente; progressive disclosure funcional; cero frases de relleno |
+| Robustness | 20% | Produce documentacion util con codebase parcial, sin documentacion previa, o con terminologia inconsistente |
+| Efficiency | 10% | Genera estructura completa con parametros minimos (tipo + profundidad) |
+| Value Density | 15% | Cada seccion aporta informacion nueva; cero repeticion entre niveles de disclosure |
+
+**Umbral minimo: 7/10**
+
+## Cross-References
+
+- `metodologia-copywriting` — Transforma precision tecnica en prosa ejecutiva persuasiva
+- `metodologia-storytelling` — Aporta arco narrativo a la estructura documental
+- `metodologia-output-engineering` — Produce formatos finales (HTML, DOCX) desde el markdown tecnico
+- `metodologia-editorial-director` — Coordina consistencia cross-entregable
+
+## Edge Cases
+
+- **Sparse codebase**: Rely more on [INFERENCIA] and [SUPUESTO] tags. Explicitly declare coverage limitations.
+- **Multilingual codebase**: Document language distribution; use original-language identifiers.
+- **No documentation**: Flag as finding. Use [CÓDIGO] and [CONFIG] as primary evidence sources.
+
+## Limits
+
+- This skill owns **documentation precision and structure**. It does NOT own narrative persuasion (that's metodologia-copywriting) or visual format production (that's metodologia-output-engineering).
+- Follows markdown-excellence standard as baseline.

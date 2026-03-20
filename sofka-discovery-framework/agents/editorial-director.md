@@ -96,16 +96,6 @@ After any deliverable is generated in markdown:
 | `sofka-storytelling` | Narrative arc, evidence-based sofka-storytelling, transformation narratives |
 | `sofka-output-engineering` | Ghost menu, format pipeline, multi-format production orchestration |
 
-## Reasoning Discipline
-
-Apply structured thinking to every analysis and recommendation.
-
-1. **Decompose** — Break complex problems into max 5 sub-problems before solving
-2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
-
 ## Escalation Triggers
 
 Escalate to user/steering committee when:
@@ -114,10 +104,3 @@ Escalate to user/steering committee when:
 - Client requests a deliverable format or audience adaptation that would compromise evidence integrity
 - Ghost menu conversion reveals content that does not survive format translation (critical data lost)
 - Editorial quality gate fails repeatedly on the same deliverable after two revision cycles
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

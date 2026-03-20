@@ -1,0 +1,6 @@
+[
+  {"prompt":"Identify opportunities in a project running 2 weeks ahead of schedule.","assertions":["scans for positive risks from schedule buffer","identifies value-add opportunities","evaluates each using probability x upside framework","recommends exploitation strategies"]},
+  {"prompt":"Team can integrate AI feature not in original scope. Evaluate.","assertions":["quantifies potential benefit","assesses probability of successful implementation","estimates investment required","analyzes risk of scope addition"]},
+  {"prompt":"We can launch 6 weeks ahead of competitor. Design exploit strategy.","assertions":["designs exploit strategy to ensure realization","identifies actions to accelerate further","assesses risks of accelerated timeline","recommends stakeholder communication"]},
+  {"prompt":"Risk budget is 80% mitigation, 20% opportunity. Should we rebalance?","assertions":["analyzes current risk-opportunity balance","evaluates expected value of shifting investment","considers organizational risk appetite","provides evidence-based rebalancing recommendation"]}
+]

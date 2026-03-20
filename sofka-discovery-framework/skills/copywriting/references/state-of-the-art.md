@@ -177,5 +177,5 @@ Creciente demanda de **transparencia en las limitaciones** de las recomendacione
 
 ---
 
-*State of the Art v1.0 — Sofka Discovery Framework*
-*© Sofka Technologies. Todos los derechos reservados.*
+*State of the Art v1.0 — MetodologIA Discovery Framework*
+*© Comunidad MetodologIA. Todos los derechos reservados.*

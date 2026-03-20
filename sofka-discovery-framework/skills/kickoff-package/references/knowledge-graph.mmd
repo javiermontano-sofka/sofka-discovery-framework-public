@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[governance-framework] --> F
+        B[communication-plan] --> F
+        C[engagement-strategy] --> F
+        D[integration-plan] --> F
+    end
+
+    subgraph Process
+        F[kickoff-package<br/>Prepare & Deliver<br/>Project Launch Materials]:::skill
+        F --> G[Assemble Materials]
+        G --> H[Facilitate Meeting]
+        H --> I[Distribute & Follow Up]
+    end
+
+    subgraph Outputs
+        I --> J[ceremony-design]
+        I --> K[onboarding-playbook]
+        I --> L[jira-configuration]
+    end
+
+    subgraph Agents
+        M[kickoff-facilitator-agent]:::agent --> H
+        N[materials-assembler-agent]:::agent --> G
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

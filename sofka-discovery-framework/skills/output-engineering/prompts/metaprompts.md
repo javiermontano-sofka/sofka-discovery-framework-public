@@ -1,232 +1,93 @@
 # Metaprompts — Output Engineering
 
-Estrategias de razonamiento que el skill aplica internamente para resolver problemas de producción multi-formato, ghost menu orchestration, y content integrity. Cada metaprompt define un enfoque cognitivo reutilizable.
+> PMO-APEX Skill: `output-engineering` · Metaprompts para adaptación y extensión
+> Última actualización: 2026-03-17
 
 ---
 
-## 1. Content-First, Format-Second
-
-**Cuando aplicar:** Al iniciar CUALQUIER conversión de formato. Antes de pensar en HTML, DOCX o PPTX.
-
-**Estrategia:**
+## MP-01: Adaptación de Branding
 
 ```
-Antes de producir cualquier formato derivado, establece el contrato de contenido:
+Eres un ingeniero de output del PMO-APEX. El cliente {nombre_cliente}
+requiere branding personalizado diferente a APEX estándar.
+Colores del cliente: {color_primario}, {color_secundario}, {color_fondo}.
+Tipografía: {fuente}.
 
-PASO 1 — Inventario de contenido del markdown source
-Cuenta: secciones (h1, h2, h3), tablas (filas x columnas), diagramas Mermaid,
-callouts, evidence tags, cifras financieras, cross-references.
-Este inventario es el CONTRATO. El output debe cumplirlo al 100%.
-
-PASO 2 — Identificación de elementos format-sensitive
-¿Hay Mermaid que necesita rendering especial? (HTML: CDN, DOCX: descripción, PPTX: visual equivalente)
-¿Hay tablas con semáforos que necesitan color mapping?
-¿Hay evidence tags que deben ser visibles en el formato destino?
-¿Hay footnotes o cross-references que necesitan mecanismo alternativo?
-
-PASO 3 — Plan de conversión
-Para cada elemento format-sensitive, define la estrategia de conversión ANTES de ejecutar.
-Documenta decisiones: "Mermaid flowchart → rendered via CDN en HTML" o "Mermaid → descripción
-textual + diagrama simplificado en PPTX".
-
-PASO 4 — Producción
-Ejecuta la conversión siguiendo el plan.
-
-PASO 5 — Verificación de contrato
-Compara el inventario del PASO 1 contra el output producido.
-TODO debe estar presente. Si algo falta, es un defecto — no una decisión de diseño.
+Adapta el pipeline de producción para este cliente manteniendo la
+estructura Markdown-Excellence y el Excellence Loop. Define los tokens
+CSS personalizados y documenta las desviaciones respecto al estándar APEX.
 ```
 
----
-
-## 2. Brand Compliance as Constraint (Not Decoration)
-
-**Cuando aplicar:** Al producir cualquier formato con identidad visual Sofka.
-
-**Estrategia:**
+## MP-02: Generación de Template por Tipo de Entregable
 
 ```
-La brand compliance no es un paso final de polish — es un constraint de diseño que se
-aplica desde el primer momento:
-
-REGLA 1 — Tokens, no valores literales
-Nunca escribir #FF7E08 directamente en un componente. Usar var(--brand-primary).
-Esto permite cambio de marca sin refactor.
-
-REGLA 2 — El color "success/positive" es GOLD (#FFD700), NUNCA verde
-Este es el error más común. Cada vez que escribas un estado positivo, verificación
-explícita: ¿estoy usando gold? Si ves green, #00FF00, #4CAF50, o cualquier
-tonalidad verde para success → es un defecto de brand compliance.
-
-REGLA 3 — Typography hierarchy es inmutable
-Clash Grotesk para títulos, headers, y elementos de display.
-Inter para body text, tablas, y contenido general.
-NO mezclar. NO sustituir. Si una fuente no carga, el fallback es system-ui.
-
-REGLA 4 — Footer es contractual
-"© Sofka Technologies" + fecha + identificador de página/slide.
-Presente en CADA formato. Sin excepciones.
-
-REGLA 5 — Disclaimer de costos
-TODO deliverable que mencione FTE-meses, magnitudes o cifras de inversión
-DEBE incluir el disclaimer: "Magnitud referencial, no constituye cotización."
-
-VERIFICACIÓN: Antes de entregar cualquier output, recorrer los 7 elementos del
-checklist de brand compliance. 7/7 o no se entrega.
+Genera un template Markdown-Excellence para el tipo de entregable
+"{tipo_entregable}" en la fase {numero_fase} del pipeline APEX.
+El template debe incluir:
+- Frontmatter con metadata del entregable
+- Estructura de secciones obligatorias para este tipo
+- Placeholders con evidence tags esperados
+- Ghost menu de navegación
+- Naming convention pre-aplicada: {fase}_{tipo}_{proyecto}_{WIP}.md
 ```
 
----
-
-## 3. Ghost Menu as Contextual Signifier
-
-**Cuando aplicar:** Al orquestar el ghost menu después de producción editorial.
-
-**Estrategia:**
+## MP-03: Calibración de Excellence Loop por Audiencia
 
 ```
-El ghost menu es un signifier contextual — aparece en el momento justo con la
-información relevante para la decisión del usuario:
-
-PASO 1 — Determinar tipo de deliverable
-Parsea el nombre del archivo: 00_ = Plan, 01_ = Stakeholders, ..., 14_ = IA Opportunities.
-Si no matchea ningún patrón, tratar como deliverable genérico.
-
-PASO 2 — Consultar tabla auto-suggest
-Cada tipo de deliverable tiene formatos primarios (resaltados) y secundarios (disponibles).
-Ejemplo: 05_Escenarios → HTML (primario) + PPTX (primario) + DOCX/PDF/XLSX (secundario).
-
-PASO 3 — Evaluar contenido para format relevance
-¿Tiene tablas de datos extensas? → XLSX es relevante
-¿Tiene diagramas Mermaid complejos? → HTML es preferido sobre DOCX
-¿Es un documento de gobernanza? → DOCX para firma
-¿Es para presentación ejecutiva? → PPTX prioritario
-
-PASO 4 — Presentar ghost menu
-Formato exacto:
-📄 Entregable listo: [filename].md
-   Convertir a: [HTML] [DOCX] [PPTX] [PDF] [XLSX]
-   O escribe 'all' para paquete completo.
-
-Los formatos primarios se resaltan en bold. Los secundarios en texto normal.
-
-PASO 5 — Esperar decisión del usuario
-NUNCA auto-convertir. El ghost menu sugiere — el usuario decide.
-Si el usuario no responde, el ghost menu desaparece. Sin recordatorios.
+El entregable destino tiene audiencia "{tipo_audiencia}"
+(ejecutivo/técnico/regulatorio/operativo).
+Calibra los 10 criterios del Excellence Loop para esta audiencia:
+- Qué peso tiene cada criterio para esta audiencia?
+- Qué nivel de detalle técnico es apropiado?
+- Qué formato de presentación prefiere esta audiencia?
+Genera el checklist calibrado con umbrales específicos por criterio.
 ```
 
----
-
-## 4. Format-Optimized Thinking
-
-**Cuando aplicar:** Al producir un formato específico. Cada formato tiene fortalezas que deben aprovecharse.
-
-**Estrategia:**
+## MP-04: Diseño de Pipeline de Producción Personalizado
 
 ```
-No transcribas markdown a otro formato — OPTIMIZA para el medio destino:
-
-HTML — Interactive + Visual
-- Sticky navigation para documentos largos
-- Hover states en tablas para exploración de datos
-- Mermaid rendering nativo via CDN
-- Collapsible sections para contenido denso
-- Responsive: mobile-first, desktop-enhanced
-Pregunta: "¿Qué puede hacer HTML que markdown no puede?"
-
-DOCX — Editable + Signable
-- TOC auto-generado con page numbers
-- Track changes habilitado para revisión
-- Headers/footers con branding y paginación
-- Styles vinculados (no formato directo)
-Pregunta: "¿Quién va a editar/firmar esto y qué necesita?"
-
-PPTX — Narrative + Persuasive
-- Un mensaje clave por slide — JAMÁS wall-of-text
-- Narrative arc: Hook → Context → Findings → Implications → Action
-- Speaker notes con evidence y talking points
-- Visual hierarchy: título + key message + soporte visual
-Pregunta: "Si alguien solo viera este slide 3 segundos, ¿captaría el mensaje?"
-
-XLSX — Analytical + Explorable
-- Dashboard summary primero, detail sheets después
-- Conditional formatting para semáforos visuales
-- Filters y freeze panes para exploración
-- Pivot-ready structure
-Pregunta: "¿El destinatario puede hacer su propio análisis con estos datos?"
-
-PDF — Archival + Print-Ready
-- Margins optimizados para impresión
-- Orphan/widow control
-- Fonts embedded
-- Table of contents con page numbers
-Pregunta: "¿Este documento se verá perfecto impreso en 5 años?"
+El proyecto {nombre_proyecto} tiene requisitos de producción no estándar:
+{descripcion_requisitos}.
+Diseña un pipeline de producción personalizado que:
+1. Mantenga los quality gates del Excellence Loop
+2. Incorpore los requisitos específicos del proyecto
+3. Defina los puntos de transformación de formato
+4. Especifique los checkpoints de quality
+Documenta las desviaciones respecto al pipeline estándar APEX.
 ```
 
----
-
-## 5. Content Integrity as Mathematical Proof
-
-**Cuando aplicar:** Después de CADA conversión de formato.
-
-**Estrategia:**
+## MP-05: Automatización de Quality Checks
 
 ```
-La validación de content integrity no es subjetiva — es cuantitativa:
-
-AXIOMA: |content(markdown)| = |content(output)|
-
-VERIFICACIÓN FORMAL:
-1. count(h2, markdown) = count(equivalent_sections, output)
-2. count(tables, markdown) = count(tables, output)
-3. Para cada tabla: rows(md) = rows(output) AND cols(md) = cols(output)
-4. count(mermaid_blocks, markdown) = count(rendered_diagrams, output)
-5. set(evidence_tags, markdown) ⊆ set(evidence_tags, output)
-6. set(financial_figures, markdown) = set(financial_figures, output)
-7. count(cross_references, markdown) ≤ count(links, output)
-
-Si CUALQUIER verificación falla → el output tiene un defecto de integridad.
-NO es aceptable. No es "bueno suficiente." Es un defecto.
-
-ESTRATEGIA DE REPARACIÓN:
-- Identificar el delta exacto
-- Determinar si es omisión (contenido perdido) o distorsión (contenido alterado)
-- Omisión → agregar el contenido faltante
-- Distorsión → revertir al valor del markdown source
-- Re-ejecutar verificación completa (no solo el elemento reparado)
+Diseña un script de automatización para los quality checks del
+entregable tipo "{tipo_entregable}". El script debe verificar:
+- Presencia de evidence tags en todas las afirmaciones
+- Cumplimiento de naming convention
+- Completitud de secciones obligatorias
+- Threshold de [SUPUESTO] < 30%
+- Enlaces internos válidos
+Output: reporte con PASS/FAIL por check y acciones correctivas.
 ```
 
----
-
-## 6. Evolución del Pipeline Multi-Formato
-
-**Cuando aplicar:** Al evaluar mejoras al skill o integrar nuevas herramientas al pipeline.
-
-**Estrategia:**
+## MP-06: Migración de Formato Legacy
 
 ```
-El pipeline de producción multi-formato evoluciona continuamente. Para evaluar
-cualquier mejora propuesta:
+El proyecto tiene {cantidad} entregables en formato legacy ({formato_legacy}).
+Diseña un plan de migración a Markdown-Excellence que:
+1. Priorice entregables por impacto y frecuencia de uso
+2. Defina el proceso de conversión por tipo de documento
+3. Establezca quality checks post-migración
+4. Estime esfuerzo en FTE-horas por tipo de documento
+No perder contenido ni evidence tags durante la migración.
+```
 
-CRITERIO 1 — ¿Mejora fidelidad de contenido?
-¿La nueva herramienta/técnica produce outputs con mayor content integrity?
-Medir: delta en los 7 checks de verificación antes vs después.
+## MP-07: Multi-idioma Output
 
-CRITERIO 2 — ¿Reduce tiempo de producción?
-¿Se genera el output más rápido sin sacrificar calidad?
-Medir: tiempo de generación por formato.
-
-CRITERIO 3 — ¿Mantiene brand compliance?
-¿La nueva herramienta respeta los 7 elementos de brand compliance automáticamente?
-O requiere post-processing manual?
-
-CRITERIO 4 — ¿Es reproducible?
-Dado el mismo markdown source, ¿produce el mismo output cada vez?
-Determinismo > creatividad en producción de formatos.
-
-CRITERIO 5 — ¿Es mantenible?
-¿El equipo puede entender, debuggear y extender el pipeline?
-Complejidad oculta es deuda técnica.
-
-EVALUACIÓN: Score 1-10 en cada criterio. Mínimo 7/10 en TODOS para aprobar.
-Si algún criterio < 7, la mejora se rechaza o se itera hasta alcanzar el umbral.
+```
+El proyecto requiere entregables en {idioma_1} y {idioma_2}.
+Define el proceso de producción multi-idioma que:
+- Mantiene una sola fuente (SSOT) en {idioma_primario}
+- Gestiona traducciones como transformaciones del pipeline
+- Aplica naming convention con sufijo de idioma
+- Verifica consistencia entre versiones idiomáticas
 ```

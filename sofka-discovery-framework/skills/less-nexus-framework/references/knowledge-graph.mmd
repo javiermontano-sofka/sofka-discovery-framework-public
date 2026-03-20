@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[hybrid-methodology] --> F
+        B[ceremony-design] --> F
+        C[capacity-planning] --> F
+        D[dependency-mapping] --> F
+    end
+
+    subgraph Process
+        F[less-nexus-framework<br/>Configure Scaled<br/>Scrum Framework]:::skill
+        F --> G[Select Framework]
+        G --> H[Design Team Structure]
+        H --> I[Configure Events & Artifacts]
+    end
+
+    subgraph Outputs
+        I --> J[jira-configuration]
+        I --> K[ceremony-facilitation]
+        I --> L[onboarding-playbook]
+    end
+
+    subgraph Agents
+        M[scaling-coach-agent]:::agent --> F
+        N[integration-coordinator-agent]:::agent --> H
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

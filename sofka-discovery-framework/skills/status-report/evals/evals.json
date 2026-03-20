@@ -1,0 +1,52 @@
+[
+  {
+    "prompt": "Generate a weekly status report for ProjectBeta. Current EVM data: SPI=0.92, CPI=1.05, BAC=1200 FTE-hours, EV=552, PV=600, AC=525. We completed the API integration module and database migration. Authentication module is 60% complete but blocked on SSO vendor response for 5 days. Milestone M3 (Backend Complete) was due last Friday and is now 3 days late.",
+    "assertions": [
+      "SPI=0.92 flagged as Amber (behind schedule but recoverable)",
+      "CPI=1.05 flagged as Green (under budget)",
+      "identifies the SPI/CPI divergence — ahead on cost but behind on schedule — and explains the implication",
+      "blocker on SSO vendor is classified as external and flagged for escalation",
+      "milestone M3 marked as Red or Amber with 3-day slip documented",
+      "generates action item for SSO vendor follow-up with owner and due date",
+      "does NOT fabricate progress data for workstreams not mentioned"
+    ]
+  },
+  {
+    "prompt": "Prepare a monthly executive status report for ProjectGamma. The project is Red status: SPI=0.78, CPI=0.85, 3 critical risks have triggered, the lead architect resigned last week, and the client escalated dissatisfaction to our VP. We are 60% through the execution phase with 4 months remaining.",
+    "assertions": [
+      "opens with clear Red status declaration — no sugar-coating",
+      "presents SPI=0.78 and CPI=0.85 both as Red with EAC showing significant overrun",
+      "calculates TCPI and assesses recovery feasibility honestly",
+      "architect resignation treated as triggered risk with impact on remaining technical work",
+      "client escalation documented as issue with recommended response strategy",
+      "recommends concrete corrective actions: re-baseline, scope reduction, or resource injection",
+      "tags recovery forecasts as [SUPUESTO] or [INFERENCIA] given instability",
+      "does NOT present an optimistic recovery plan without evidence"
+    ]
+  },
+  {
+    "prompt": "Create a sprint report for Team Velocity (Scrum). Sprint 14 just ended. Planned: 34 story points across 8 stories. Completed: 28 points (6 stories). 2 stories (6 points) carried over — one was blocked by environment issues for 3 days, the other had underestimated complexity. Team velocity last 3 sprints: 30, 32, 28. One impediment: CI/CD pipeline instability causing 2-hour delays on merge.",
+    "assertions": [
+      "reports sprint completion rate: 82% by points (28/34), 75% by stories (6/8)",
+      "calculates average velocity over last 4 sprints (including current): ~29.5 points",
+      "identifies velocity trend as stable (not declining despite the miss)",
+      "documents both carry-over stories with root causes (environment block, underestimation)",
+      "CI/CD impediment logged with quantified impact (2-hour delays per merge)",
+      "generates action items for both carry-over stories and CI/CD fix",
+      "does NOT convert story points to FTE-hours or impose waterfall metrics on agile data"
+    ]
+  },
+  {
+    "prompt": "Generate a status report for ProjectDelta which is transitioning from Planning phase to Execution phase. The project charter is approved, WBS is baselined, schedule baseline was approved yesterday, and resource onboarding starts next week. Risk register has 22 identified risks (3 Critical, 7 High). The steering committee approved the phase gate last Thursday.",
+    "assertions": [
+      "clearly marks the phase transition from Planning to Execution",
+      "references steering committee gate approval with date as [DECISION]",
+      "lists approved baseline artifacts (charter, WBS, schedule) as the execution foundation",
+      "risk register summary included with 22 risks broken down by severity",
+      "resource onboarding flagged as key near-term activity with readiness assessment",
+      "generates forward-looking action items for execution kickoff (team onboarding, first milestone, communication cadence)",
+      "does NOT report variance metrics — acknowledges this is first execution period with no actuals yet",
+      "sets expectations for when EVM data will be available (after first reporting period)"
+    ]
+  }
+]

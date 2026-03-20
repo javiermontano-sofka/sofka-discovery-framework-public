@@ -70,9 +70,9 @@ graph TD
     RUTAS -->|18 llamadas| PEDIDOS
     FACTURACION -->|SOAP| DIAN["DIAN<br/>(facturación electrónica)"]
 
-    classDef server fill:#1A1A2E,stroke:#FF7E08,color:#fff,stroke-width:2px
-    classDef module fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
-    classDef db fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef server fill:#1A1A2E,stroke:#6366F1,color:#fff,stroke-width:2px
+    classDef module fill:#FFF3E0,stroke:#6366F1,color:#1A1A2E
+    classDef db fill:#22D3EE,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
     classDef external fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
 
     class SERVIDOR,TOMCAT server
@@ -217,4 +217,4 @@ Se ejecutó una prueba de carga controlada en el ambiente de producción en vent
 ---
 
 **Autor:** Javier Montaño | **Última actualización:** 13 de marzo de 2026
-**© Sofka Technologies — Todos los derechos reservados**
+**© Comunidad MetodologIA — Todos los derechos reservados**

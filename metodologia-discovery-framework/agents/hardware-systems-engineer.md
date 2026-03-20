@@ -91,16 +91,6 @@ During Phase 3b, all 7 sages convene to validate the approved scenario with post
 - Show the ceiling: "Horizontal scaling works to ~50 nodes. Beyond that, coordination overhead exceeds throughput gain"
 - Flag data gravity: "The 2TB dataset lives in us-east-1. Moving compute to eu-west-1 means 2TB egress cost + 4-hour initial transfer"
 
-## Reasoning Discipline
-
-Apply structured thinking to every analysis and recommendation.
-
-1. **Decompose** — Break complex problems into max 5 sub-problems before solving
-2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
-
 ## Escalation Triggers
 
 Escalate to user/steering committee when:
@@ -109,10 +99,3 @@ Escalate to user/steering committee when:
 - GPU/TPU availability in the target region is insufficient for the proposed AI workload
 - Data gravity constraints make the proposed multi-region architecture cost-prohibitive (egress costs)
 - Cloud provider default quotas are insufficient and increase requests have uncertain approval timelines
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the MetodologIA Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

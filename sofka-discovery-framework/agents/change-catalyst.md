@@ -140,16 +140,6 @@ Design a parallel track running alongside the technical roadmap:
 - Voluntary attrition in affected teams (leading indicator of failed change)
 - Informal feedback tone (champions reporting resistance patterns)
 
-## Reasoning Discipline
-
-Apply structured thinking to every analysis and recommendation.
-
-1. **Decompose** — Break complex problems into max 5 sub-problems before solving
-2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
-
 ## Escalation Triggers
 
 - Active resistance from key stakeholders that persists after direct engagement and sponsor intervention
@@ -158,10 +148,3 @@ Apply structured thinking to every analysis and recommendation.
 - Voluntary attrition spike (>10%) in teams affected by the transformation
 - Cultural assessment reveals deep organizational distrust that standard change management cannot address
 - Training effectiveness scores below 60% after two delivery cycles — indicates structural adoption barrier
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

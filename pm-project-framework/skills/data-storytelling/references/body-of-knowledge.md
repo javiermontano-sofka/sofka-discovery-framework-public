@@ -1,84 +1,175 @@
-# Body of Knowledge — Project Data Storytelling & Visualization
+# Data Storytelling — Body of Knowledge
 
-## Marco Teórico
+> Transformar métricas en significado. Extracción de insights, conversión métrica-a-narrativa, enmarcado comparativo y comunicación de magnitudes.
 
-Data storytelling combina tres disciplinas: ciencia de datos (extracción de insight), diseño de información (visualización) y narrativa (estructura persuasiva). En gestión de proyectos, transforma métricas crudas en comunicaciones que impulsan decisiones.
+---
 
-## Estructura Narrativa: CIAR Framework
+## 1. Fundamentos Teóricos
 
-| Fase | Propósito | Ejemplo PM |
-|------|-----------|-----------|
-| **Context** | Establecer situación actual | "El proyecto lleva 6 sprints de 12 planificados" |
-| **Insight** | Revelar el dato clave | "La velocidad ha caído 30% en los últimos 2 sprints" |
-| **Implication** | Explicar consecuencias | "Al ritmo actual, el proyecto se extenderá 3 sprints adicionales" |
-| **Action** | Recomendar decisión | "Reducir scope del Sprint 7 o agregar 2 desarrolladores" |
+### 1.1 Definición
 
-## Taxonomía de Visualizaciones PM
+Data storytelling es la disciplina de convertir datos cuantitativos en narrativas comprensibles que impulsen decisiones. No es visualización (eso es data-viz-storytelling) ni arco narrativo general (eso es storytelling). Data storytelling ocupa el espacio intermedio: **interpretar números y darles significado contextual**.
 
-| Tipo de Insight | Visualización Recomendada | Cuándo Usar |
-|----------------|--------------------------|-------------|
-| Tendencia temporal | Línea / Área | Velocity, burndown, budget burn |
-| Comparación | Barras horizontales | Equipos, sprints, proyectos |
-| Proporción | Donut / Treemap | Distribución de esfuerzo, scope |
-| Correlación | Scatter plot | Complejidad vs. duración |
-| Distribución | Histograma / Box plot | Tiempos de ciclo, estimaciones |
-| Jerarquía | Treemap / Sunburst | WBS, portfolio por programa |
-| Flujo | Sankey / Mermaid flowchart | Pipeline, dependency chains |
-| Estado | RAG cards / Heatmap | Portfolio health, risk matrix |
+### 1.2 La Tríada del Dato Narrativo
 
-## Principios de Visualización Efectiva
+Toda métrica presentada requiere tres componentes:
 
-1. **Data-ink ratio** — Maximizar tinta dedicada a datos, minimizar decoración (Tufte) [PLAN]
-2. **Pre-attentive processing** — Usar color, tamaño y posición para highlight automático [PLAN]
-3. **Cognitive load** — Máximo 7±2 elementos por visualización [METRIC]
-4. **Annotation** — Cada chart necesita al menos un callout que diga "mira aquí" [PLAN]
-5. **Honesty** — No truncar ejes, no usar 3D engañoso, no cherry-pick datos [PLAN]
+1. **Contexto** — ¿En qué situación se produce este número? ¿Qué estaba pasando?
+2. **Comparación** — ¿Con respecto a qué? Baseline, benchmark, objetivo, periodo anterior.
+3. **Consecuencia** — ¿Y qué? ¿Qué implica? ¿Qué acción se deriva?
 
-## Errores Comunes en Visualización PM
+Un número sin estos tres componentes es **ruido**, no información.
 
-| Error | Impacto | Corrección |
-|-------|---------|-----------|
-| Eje Y truncado | Exagera variaciones | Comenzar eje en 0 o documentar |
-| Gráfico 3D | Distorsiona proporciones | Usar 2D siempre |
-| Demasiados colores | Confusión visual | Máximo 5 colores por chart |
-| Sin contexto | Datos sin significado | Agregar benchmarks y targets |
-| Cherry-picking | Narrativa engañosa | Mostrar rango completo |
-| Escala temporal inconsistente | Comparación inválida | Normalizar periodos |
+### 1.3 Principio de Números No Desnudos
 
-## Fórmula de Efectividad Narrativa
+Ningún dato cuantitativo debe aparecer sin interpretación. "92% de cobertura" no comunica nada. "92% de cobertura, 12 puntos por encima de la línea base del Q1, pero el 8% sin cobertura concentra los módulos de pago donde se acumula el 60% de los incidentes [CÓDIGO]" comunica un insight.
+
+## 2. Patrones Fundamentales
+
+### 2.1 Metrics-to-Meaning (M2M)
+
+Pipeline de transformación en 6 pasos:
 
 ```
-Narrative Effectiveness = (Clarity × Accuracy × Actionability) / Complexity
-Donde:
-  Clarity = ¿El insight es entendible en <30 segundos? (1-5)
-  Accuracy = ¿Los datos son correctos y verificables? (1-5)
-  Actionability = ¿La audiencia sabe qué hacer? (1-5)
-  Complexity = Número de conceptos presentados simultáneamente
-Objetivo: Score ≥ 3.0
+Raw metric → Context → Comparison → Insight → Implication → Action
 ```
 
-## Adaptación por Audiencia
+| Paso | Pregunta clave | Ejemplo |
+|------|---------------|---------|
+| Raw | ¿Cuál es el número? | Deployment frequency: 1/mes |
+| Context | ¿En qué situación? | Equipo de 8, monolito legacy, proceso manual |
+| Comparison | ¿Vs. qué referente? | DORA elite: múltiples/día (brecha 30x) |
+| Insight | ¿Qué revela? | Proceso manual bloquea velocity |
+| Implication | ¿Qué consecuencia tiene? | Features esperan 15 días promedio en cola |
+| Action | ¿Qué hacer? | CI/CD automatizado cierra brecha a 1/semana en 3 sprints |
 
-| Audiencia | Nivel de Detalle | Formato Preferido | Tiempo Disponible |
-|-----------|-----------------|-------------------|-------------------|
-| C-Suite | Mínimo | Dashboard 1-pager | 3 minutos |
-| Sponsor | Resumen con drill-down | Briefing + anexos | 10 minutos |
-| Steering Committee | Estratégico | Presentación 10 slides | 30 minutos |
-| PM Peers | Detallado | Reporte técnico | 20 minutos |
-| Team | Operativo | Board metrics | Continuo |
+### 2.2 Insight Extraction
 
-## Herramientas de Visualización en APEX
+Proceso de 5 pasos para extraer insights de conjuntos de datos:
 
-| Herramienta | Fortaleza | Limitación |
-|-------------|-----------|-----------|
-| Mermaid | Diagramas de flujo, Gantt, pie | Sin interactividad |
-| Tablas Markdown | Datos tabulares | Sin gráficos |
-| HTML + CSS APEX | Dashboards branded | Requiere rendering |
-| ASCII Charts | Compatible con Markdown | Resolución limitada |
+1. **Observar** — Dato puntual sin interpretación
+2. **Detectar patrón** — Regularidad o tendencia en múltiples datos
+3. **Identificar anomalía** — Lo que rompe el patrón
+4. **Interpretar significado** — Por qué la anomalía importa
+5. **Recomendar** — Acción derivada del significado
 
-## Estándares Relevantes
+### 2.3 Comparison Framing
 
-- **Cole Nussbaumer Knaflic**: "Storytelling with Data" — framework SWD
-- **Edward Tufte**: "Visual Display of Quantitative Information" — principios de diseño
-- **Alberto Cairo**: "How Charts Lie" — ética de visualización
-- **IBCS (International Business Communication Standards)**: Notación estandarizada
+Seis marcos de comparación, cada uno apropiado para contextos distintos:
+
+| Marco | Cuándo usar | Estructura |
+|-------|------------|-----------|
+| Before/After | Proyección de mejora | "De X a Y" con delta explícito |
+| Peer Benchmark | Comparación sectorial | "vs. mediana/percentil del sector" |
+| Industry Standard | Frameworks reconocidos | "vs. DORA/OWASP/ISO referencia" |
+| Internal Baseline | Evolución propia | "vs. Q anterior / línea base" |
+| Target Gap | Distancia al objetivo | "A N puntos/% del objetivo" |
+| Cost Equivalence | Hacer tangible FTE | "Equivalente a N personas × M meses" |
+
+### 2.4 Magnitude Communication
+
+Transformar abstracto en concreto:
+
+- **FTE-meses → equipo-tiempo**: "40 FTE-meses = equipo de 8 personas durante 5 meses"
+- **Porcentajes → horas reales**: "99.5% disponibilidad = 43 horas de downtime/año"
+- **Ratios → impacto calendario**: "Lead time de 30 días = cada feature espera un mes"
+
+**Regla absoluta:** NUNCA usar valores monetarios. Solo FTE-meses y magnitudes relativas.
+
+## 3. Scoring Matrix Narratives
+
+### 3.1 Sistema Semáforo
+
+| Nivel | Criterio | Significado |
+|-------|----------|------------|
+| Verde | >80% | Cumple o supera expectativa |
+| Amarillo | 50-80% | Funcional con mejoras necesarias |
+| Rojo | <50% | Requiere intervención inmediata |
+
+### 3.2 Narrativa de Matrices
+
+Las matrices de scoring no se presentan celda por celda. Se narran:
+
+1. **Liderar con el patrón** — "De las 6 dimensiones, 2 están en rojo y comparten causa raíz"
+2. **Destacar anomalías** — "Seguridad sorprende en verde sin rol dedicado"
+3. **Conectar a acción** — "Los 2 rojos se resuelven con Escenario B, Fase 1"
+
+### 3.3 Cross-dimensional Analysis
+
+Buscar correlaciones entre dimensiones:
+- Dimensiones en rojo que comparten causa raíz
+- Dimensiones en verde que podrían degradarse sin atención
+- Patrones que revelan problemas sistémicos vs. puntuales
+
+## 4. Dashboard Narrative Sequences
+
+Para presentaciones ejecutivas multi-chart:
+
+| Secuencia | Función | Pregunta |
+|-----------|---------|----------|
+| Chart 1: Headline | Estado actual | ¿Dónde estamos? |
+| Chart 2: Context | Tendencia histórica | ¿Cómo llegamos aquí? |
+| Chart 3: Comparison | Benchmark gap | ¿Dónde deberíamos estar? |
+| Chart 4: Path | Proyección roadmap | ¿Cómo cerramos la brecha? |
+
+Cada chart construye sobre el anterior. No hay charts standalone.
+
+## 5. Semantic Density
+
+### 5.1 Evidence Tagging
+
+Toda afirmación cuantitativa debe tener tag de evidencia:
+
+| Tag | Significado |
+|-----|------------|
+| [CÓDIGO] | Verificado en código fuente |
+| [CONFIG] | Verificado en configuración |
+| [DOC] | Documentado formalmente |
+| [INFERENCIA] | Derivado de datos parciales |
+| [SUPUESTO] | Asumido sin verificación directa |
+| [STAKEHOLDER] | Reportado por interlocutor |
+
+### 5.2 Reglas de Densidad
+
+- **Tablas**: Datos en celdas, metodología en footnotes
+- **Semáforos**: Umbrales definidos explícitamente
+- **Cross-references**: Vincular a sección de metodología
+- **Source attribution**: Tag inline junto al dato
+
+## 6. Edge Cases
+
+| Caso | Tratamiento |
+|------|------------|
+| Sin benchmark disponible | Usar baseline interno + declarar: "Sin benchmark sectorial; línea base Q1 como referencia [SUPUESTO]" |
+| Métricas contradictorias | Presentar contradicción como hallazgo: "Cobertura alta (92%) vs. incidentes frecuentes (8/mes) sugiere tests superficiales [INFERENCIA]" |
+| Datos escasos | Declarar limitación: "Con N datos, tendencia indicativa, no concluyente" |
+| Datos outlier | Separar outlier, analizar con y sin él, documentar decisión |
+| Métricas vanidosas | Identificar y reemplazar con métricas accionables |
+
+## 7. Anti-patterns
+
+| Anti-pattern | Corrección |
+|-------------|-----------|
+| Número desnudo | Agregar contexto + comparación + consecuencia |
+| Gráfico sin narrativa | Cada visualización necesita párrafo interpretativo |
+| Promedio sin distribución | Mostrar distribución o al menos rangos |
+| Correlación como causalidad | Etiquetar [INFERENCIA], plantear hipótesis alternativas |
+| Precisión falsa | No "92.37%" cuando la medición tiene ±5% de error |
+| Valores monetarios | Convertir a FTE-meses |
+
+## 8. Frameworks de Referencia
+
+- **DORA Metrics**: Deployment frequency, lead time, change failure rate, MTTR
+- **Accelerate / State of DevOps**: Benchmarks anuales de rendimiento
+- **OWASP Top 10**: Baseline de seguridad web
+- **ISO/IEC 25010**: Modelo de calidad de producto software
+- **CMMI**: Niveles de madurez de procesos
+- **SRE Golden Signals**: Latencia, tráfico, errores, saturación
+
+## 9. Bibliografía Esencial
+
+- Knaflic, C.N. — *Storytelling with Data* (2015)
+- Dykes, B. — *Effective Data Storytelling* (2020)
+- Tufte, E. — *The Visual Display of Quantitative Information* (2001)
+- Forsell, N. et al. — *DORA State of DevOps Reports* (2018-2024)
+- Kahneman, D. — *Thinking, Fast and Slow* (2011) — sesgos en interpretación de datos

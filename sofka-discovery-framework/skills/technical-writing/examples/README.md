@@ -5,7 +5,7 @@ Sample outputs demonstrating what the technical-writing skill produces when appl
 ## Files
 
 - `sample-output.md` — Markdown format (default output)
-- `sample-output.html` — HTML branded format (Sofka Design System)
+- `sample-output.html` — HTML branded format (MetodologIA Design System)
 
 ## Usage
 

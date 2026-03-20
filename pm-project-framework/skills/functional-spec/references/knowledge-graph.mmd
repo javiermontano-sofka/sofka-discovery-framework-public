@@ -1,0 +1,114 @@
+```mermaid
+graph TD
+    %% Core: Especificación Funcional
+    FuncSpec["Especificación Funcional"]
+
+    %% Módulos MVP
+    ModuleInventory["Inventario de Módulos MVP"]
+    ModuleCard["Tarjeta de Módulo"]
+    ModuleOwner["Ownership de Módulo"]
+    ScopeIn["Scope IN"]
+    ScopeOut["Scope OUT"]
+
+    %% Casos de Uso
+    UseCase["Caso de Uso"]
+    PrimaryActor["Actor Primario"]
+    MainFlow["Flujo Principal"]
+    AltFlow["Flujo Alternativo"]
+    ExceptionFlow["Flujo de Excepción"]
+    Precondition["Precondición"]
+    Postcondition["Postcondición"]
+    CockburnFormat["Formato Cockburn"]
+    ActorGoalFormat["Formato Actor-Goal"]
+
+    %% Reglas de Negocio
+    BusinessRule["Regla de Negocio"]
+    RuleSeverity["Severidad de Regla"]
+    ValidationLogic["Lógica de Validación"]
+    RuleStatus["Estado de Validación"]
+    UnvalidatedFlag["Flag UNVALIDATED"]
+
+    %% Matriz de Complejidad y Riesgo
+    ComplexityRiskMatrix["Matriz Complejidad/Riesgo"]
+    QuickWin["Quick Win"]
+    TechnicalSpike["Spike Técnico"]
+
+    %% Criterios de Aceptación
+    AcceptanceCriteria["Criterios de Aceptación"]
+    FunctionalCriteria["Criterios Funcionales"]
+    NonFunctionalCriteria["Criterios No Funcionales"]
+    SecurityCriteria["Criterios de Seguridad"]
+
+    %% Modelo de Datos
+    DataModel["Modelo de Datos"]
+    Entity["Entidad"]
+    Relationship["Relación"]
+    DataConstraint["Restricción de Datos"]
+
+    %% Integraciones
+    IntegrationSpec["Especificación de Integración"]
+    ExternalSystem["Sistema Externo"]
+    SLA["SLA / Contrato"]
+    FailureMode["Modo de Falla"]
+    CircuitBreaker["Circuit Breaker"]
+
+    %% Relaciones principales
+    FuncSpec --> ModuleInventory
+    FuncSpec --> UseCase
+    FuncSpec --> BusinessRule
+    FuncSpec --> ComplexityRiskMatrix
+    FuncSpec --> AcceptanceCriteria
+    FuncSpec --> DataModel
+    FuncSpec --> IntegrationSpec
+
+    ModuleInventory --> ModuleCard
+    ModuleCard --> ModuleOwner
+    ModuleCard --> ScopeIn
+    ModuleCard --> ScopeOut
+
+    UseCase --> PrimaryActor
+    UseCase --> MainFlow
+    UseCase --> AltFlow
+    UseCase --> ExceptionFlow
+    UseCase --> Precondition
+    UseCase --> Postcondition
+    UseCase --> CockburnFormat
+    UseCase --> ActorGoalFormat
+
+    BusinessRule --> RuleSeverity
+    BusinessRule --> ValidationLogic
+    BusinessRule --> RuleStatus
+    RuleStatus --> UnvalidatedFlag
+
+    ComplexityRiskMatrix --> QuickWin
+    ComplexityRiskMatrix --> TechnicalSpike
+
+    AcceptanceCriteria --> FunctionalCriteria
+    AcceptanceCriteria --> NonFunctionalCriteria
+    AcceptanceCriteria --> SecurityCriteria
+
+    DataModel --> Entity
+    Entity --> Relationship
+    Entity --> DataConstraint
+
+    IntegrationSpec --> ExternalSystem
+    IntegrationSpec --> SLA
+    IntegrationSpec --> FailureMode
+    FailureMode --> CircuitBreaker
+
+    %% Cross-referencias
+    BusinessRule --> UseCase
+    DataModel --> BusinessRule
+    AcceptanceCriteria --> UseCase
+    AcceptanceCriteria --> BusinessRule
+
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef usecase fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef rule fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef data fill:#4A4A6A,stroke:#FF7E08,color:#fff
+
+    class FuncSpec core
+    class UseCase,MainFlow,AltFlow,ExceptionFlow,CockburnFormat,ActorGoalFormat,PrimaryActor,Precondition,Postcondition usecase
+    class BusinessRule,RuleSeverity,ValidationLogic,RuleStatus,UnvalidatedFlag rule
+    class DataModel,Entity,Relationship,DataConstraint,IntegrationSpec,ExternalSystem,SLA,FailureMode,CircuitBreaker data
+```

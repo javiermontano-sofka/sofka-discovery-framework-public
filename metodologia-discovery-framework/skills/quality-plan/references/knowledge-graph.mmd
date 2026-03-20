@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Project Charter<br/>Quality Requirements] --> D
+        B[Scope WBS<br/>Deliverable List] --> D
+        C[Stakeholder Register<br/>Quality Expectations] --> D
+    end
+
+    subgraph "Quality Plan"
+        D[Standards &<br/>Criteria Definition] --> E[Quality Activities<br/>Design]
+        E --> F[Metrics &<br/>Thresholds Setup]
+        F --> G[Review & Approval<br/>Schedule]
+    end
+
+    subgraph Outputs
+        G --> H[Quality Audit]
+        F --> I[Project Health Check]
+        G --> J[Definition of Done]
+        E --> K[Continuous Improvement]
+    end
+
+    subgraph Agents
+        L[Quality Planner Agent] --> E
+        M[Metrics Designer Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

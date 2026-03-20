@@ -89,14 +89,6 @@ Flag when:
 |--------|------------|--------|-----|------------|------|--------|
 | R-001 | [description] | [stakeholder] | WP-1.2 | [deliverable] | T-001 | Approved |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break scope ambiguities into discrete, testable elements
-2. **Evidence-check** — Every scope item traces to a stakeholder need or project objective
-3. **Bias scan** — Check for scope optimism (assuming things are "obviously" included)
-4. **Structure-first** — Build WBS skeleton before detailing work packages
-5. **Escalate** — When scope boundary is ambiguous, present options to sponsor with trade-offs
-
 ## Escalation Triggers
 
 - Scope creep detected exceeding 10% of baseline without change request
@@ -104,9 +96,3 @@ Flag when:
 - Change request backlog exceeds 10 items without CCB disposition
 - Requirements conflict between stakeholders with no resolution path
 - WBS work packages consistently exceed 80-hour threshold
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

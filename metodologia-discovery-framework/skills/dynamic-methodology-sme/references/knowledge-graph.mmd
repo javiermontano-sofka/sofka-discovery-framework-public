@@ -1,0 +1,78 @@
+flowchart TD
+    subgraph Inputs["Entradas"]
+        A1[TIPO_PROYECTO Declaration]
+        A2[Methodology Question]
+        A3[Project Context]
+        A4[Current Pain Points]
+    end
+
+    subgraph Process["Dynamic Methodology SME"]
+        B1[Context Detection]
+        B2[Persona Loading]
+        B3[Knowledge Activation]
+        B4[Question Parsing]
+        B5[Principle Application]
+        B6[Anti-Pattern Check]
+        B7[Trade-Off Analysis]
+        B8[Recommendation]
+    end
+
+    subgraph Outputs["Salidas"]
+        C1[Methodology Guidance]
+        C2[Decision Record]
+        C3[Anti-Pattern Alert]
+        C4[Practice Recommendation]
+        C5[Monitoring Criteria]
+    end
+
+    subgraph Downstream["Downstream"]
+        D1[Ceremony Design]
+        D2[Methodology Assessment]
+        D3[Team Performance]
+        D4[Retrospective]
+    end
+
+    subgraph Agents["Agentes"]
+        E1[Methodology SME Agent]
+        E2[Anti-Pattern Detector]
+    end
+
+    A1 --> B1
+    A2 --> B4
+    A3 --> B1
+    A4 --> B4
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 --> B7
+    B7 --> B8
+    B8 --> C1
+    B8 --> C2
+    B8 --> C3
+    B8 --> C4
+    B8 --> C5
+    C1 --> D1
+    C2 --> D2
+    C4 --> D3
+    C3 --> D4
+
+    E1 --> B5
+    E2 --> B6
+
+    style B1 fill:#2563EB,color:#fff
+    style B2 fill:#2563EB,color:#fff
+    style B3 fill:#2563EB,color:#fff
+    style B4 fill:#2563EB,color:#fff
+    style B5 fill:#2563EB,color:#fff
+    style B6 fill:#2563EB,color:#fff
+    style B7 fill:#2563EB,color:#fff
+    style B8 fill:#2563EB,color:#fff
+    style C1 fill:#F59E0B,color:#000
+    style C2 fill:#F59E0B,color:#000
+    style C3 fill:#F59E0B,color:#000
+    style C4 fill:#F59E0B,color:#000
+    style C5 fill:#F59E0B,color:#000
+    style E1 fill:#0F172A,color:#fff
+    style E2 fill:#0F172A,color:#fff

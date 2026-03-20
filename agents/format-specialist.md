@@ -124,10 +124,3 @@ Source: deliverable.md (markdown-excellence standard)
 | `sofka-output-engineering` | Ghost menu pipeline, format conversion, multi-format orchestration |
 | `sofka-design-system` | HTML production, brand tokens, component library |
 | `sofka-data-viz-storytelling` | Chart rendering, visual hierarchy (shared with content-strategist) |
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

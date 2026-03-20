@@ -1,122 +1,250 @@
 ---
-name: secrets-sanitization
-description: Motor de sanitización y enmascaramiento de datos sensibles pre-LLM. Implementa Gate G0 de seguridad para interceptar credenciales antes de inyectarlas al contexto de Claude.
-author: Equipo MetodologIA
-version: 1.0.0
-license: MIT
-category: Calidad & Ops
-tags: [security, secrets, sanitization, G0, data-masking, pre-hook]
-allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+name: apex-secrets-sanitization
+description: >
+  Use when the user asks to "scan for secrets", "detect credentials", "sanitize sensitive data",
+  "check for exposed passwords", "run security gate G0", or mentions secret detection,
+  credential scanning, security gate G0, sensitive data masking, API key exposure,
+  token detection.
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 ---
 
-# secrets-sanitization
+# Secrets Sanitization (Gate G0)
 
-> Motor de sanitización y enmascaramiento de datos sensibles (Pre-LLM).
-> Gate G0: interceptar credenciales, tokens, y llaves privadas antes de que entren al context window de Claude.
+**TL;DR**: Scans project artifacts for exposed credentials, API keys, passwords, tokens, and sensitive data. Implements Gate G0: no pipeline execution proceeds with unmasked secrets. Detects patterns across configuration files, documents, and code artifacts, then masks or flags findings for remediation.
 
----
+## Principio Rector
+Un solo secreto expuesto puede comprometer todo el proyecto. Gate G0 es un hard stop: si se detectan credenciales sin enmascarar en cualquier artefacto del proyecto, el pipeline se detiene hasta que se remedien. La seguridad no es una fase — es una precondición.
 
-## TL;DR
+## Assumptions & Limits
+- Assumes project workspace path is provided and accessible [PLAN]
+- Assumes pattern library covers common secret formats (AWS, Azure, GCP, JWT, etc.) [PLAN]
+- Breaks when secrets are encoded or obfuscated — pattern matching cannot detect encrypted secrets
+- Does not manage secrets (rotation, vaulting); only detects exposure. Use dedicated vault solutions for management
+- Assumes false positive rate is managed through context analysis [SUPUESTO]
+- Limited to text-based artifacts; binary files require separate scanning tools
 
-Escanea el repositorio del cliente para detectar secretos (API keys, tokens, passwords, connection strings, private keys) y los enmascara con placeholders reversibles (`[MAO_MASKED_CREDENTIAL]`). Implementa Gate G0 como primera línea de defensa antes de G1.
+## Usage
 
----
+```bash
+# Full secrets scan of project workspace
+/pm:secrets-sanitization $ARGUMENTS="--path /project/workspace"
 
-## Core Responsibilities
+# Scan specific file types only
+/pm:secrets-sanitization --type targeted --glob "**/*.{md,yaml,json,env}"
 
-1. **Detección de secretos** — Escaneo regex de archivos fuente y configuración con 14 patrones (AWS, GitHub, JWT, Slack, Azure, Anthropic, OpenAI, Stripe, genéricos)
-2. **Enmascaramiento reversible** — Reemplazar valores sensibles con placeholders estandarizados manteniendo el contexto arquitectónico del código
-3. **Gate G0** — Validación obligatoria pre-pipeline que aborta `/mao:run-auto` y `/mao:run-deep` si detecta archivos sin enmascarar
-4. **Auditoría local** — Registro de hallazgos en `discovery/mao-secrets-audit.log` (gitignored, sin acceso del conductor)
+# Remediation verification after masking
+/pm:secrets-sanitization --type verify --baseline scan-report-v1.md
+```
 
----
+**Parameters:**
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `$ARGUMENTS` | Yes | Path to project workspace |
+| `--type` | No | `full` (default), `targeted`, `verify` |
+| `--glob` | No | File pattern to scan |
+| `--baseline` | No | Previous scan report for verification |
+| `--severity` | No | Minimum severity to report: `critical`, `high`, `medium` |
 
-## Assigned Skills
+## Service Type Routing
+`{TIPO_PROYECTO}` variants:
+- **Agile**: G0 scan integrated into sprint CI pipeline; secrets detected pre-commit and in PR reviews
+- **Waterfall**: G0 scan at each phase gate; formal remediation sign-off before proceeding to next phase
+- **SAFe**: G0 enforced at ART level; system demo artifacts scanned; cross-team credential sharing patterns audited
+- **Kanban**: G0 as entry policy on the board; no work item moves to "In Progress" with unmasked secrets
+- **PMO**: G0 governance policy across all portfolio projects; centralized secrets management audit schedule
+- **Hybrid**: G0 applied uniformly regardless of methodology component; both iterative and phase-gate artifacts scanned
 
-| Skill | Rol |
-|-------|-----|
-| `secrets-sanitization` (self) | Motor principal de detección y enmascaramiento |
-| `discovery-orchestrator` | Integración con pipeline — G0 gate check |
-| `quality-engineering` | Definición de umbrales y criterios de paso |
+## Before Scanning
+1. **Glob** `**/*.{env,yaml,yml,json,conf,cfg,properties}` to identify configuration files [PLAN]
+2. **Glob** `**/*.{md,txt,doc}` to identify documentation files that may contain credentials [PLAN]
+3. **Read** the pattern library to understand detection rules [PLAN]
+4. **Grep** for common secret prefixes (`AKIA`, `sk-`, `ghp_`, `Bearer`) as initial indicators [PLAN]
 
----
+## Entrada (Input Requirements)
+- Project workspace path
+- Configuration files and environment settings
+- Documentation and deliverables
+- Integration specifications
 
-## Output Configuration
+## Proceso (Protocol)
+1. **Pattern library** — Load secret detection patterns (API keys, passwords, tokens, certificates)
+2. **File scan** — Scan all project files matching target patterns
+3. **Context analysis** — Distinguish between actual secrets and false positives
+4. **Severity classification** — Rate findings: Critical (active credentials), High (test credentials), Medium (patterns)
+5. **Masking** — Apply masking to detected secrets in documents
+6. **Remediation guidance** — Provide specific remediation steps per finding type
+7. **Gate decision** — Determine G0 pass/fail based on findings
+8. **Report generation** — Compile security scan report (without exposing secrets in report)
 
-### Output Artifact
+## Edge Cases
+1. **Active production credentials found** — CRITICAL. Immediate notification to security team. Recommend credential rotation within 24 hours. Do not include the actual credential in the report [PLAN].
+2. **High false positive rate** — Refine pattern matching with context rules. Add project-specific allowlist for known safe patterns (e.g., example API keys in documentation) [INFERENCIA].
+3. **Secrets in git history** — Current scan only detects in working tree. Recommend `git log` scan or BFG Repo-Cleaner for historical secrets [SUPUESTO].
+4. **Encrypted or base64-encoded secrets** — Flag base64-encoded strings that match key length patterns. Document limitation for truly encrypted content [INFERENCIA].
 
-**Nombre**: `{fase}_Secrets_Sanitization_{cliente}_{WIP|Aprobado}.md`
+## Example: Good vs Bad
 
-### Output Templates
+**Good example — Thorough G0 scan:**
 
-| Formato | Especificación |
-|---------|---------------|
-| **Markdown** | Reporte de hallazgos con tabla de secretos detectados, clasificación por severidad, estado de enmascaramiento. Ghost menu + evidence tags. |
-| **HTML** | Self-contained con tokens canónicos MetodologIA (#6366F1, #0F172A). Tabla de hallazgos con badges de severidad. WCAG AA. |
-| **DOCX** | python-docx. Heading 1 = Montserrat 700 #6366F1. Tabla de hallazgos con colores por severidad. Header con logo MetodologIA. |
-| **XLSX** | openpyxl. Hoja "Secrets Audit" con columnas: ID, Tipo, Archivo, Línea, Severidad, Estado. Header indigo #6366F1. |
-| **PPTX** | python-pptx. Max 10 slides ejecutivo. Slide master indigo. Resumen de hallazgos + recomendaciones. Speaker notes con evidencia. |
+| Attribute | Value |
+|-----------|-------|
+| Files scanned | 342 files across 12 file types |
+| Findings | 3 findings: 1 Critical, 1 High, 1 Medium |
+| False positive rate | 2 false positives identified and filtered |
+| Remediation | Specific steps per finding with owner assigned |
+| Gate decision | FAIL — Critical finding requires remediation before proceed |
+| Report | Findings described without exposing actual secrets |
 
----
+**Bad example — Superficial scan:**
+Scan of only `.env` files, ignoring documentation, YAML, and JSON. No severity classification, no context analysis. A narrow scan gives false confidence — secrets hide in unexpected places (README examples, CI configs, integration docs).
+
+## Salida (Deliverables)
+- G0 security scan report (pass/fail)
+- Findings register with severity and location (masked)
+- Remediation action items
+- Updated artifacts with masked secrets
+
+## Validation Gate
+- [ ] All file types in workspace scanned (not just .env files) [PLAN]
+- [ ] Every finding classified by severity (Critical/High/Medium) [METRIC]
+- [ ] Zero Critical findings for G0 PASS (hard requirement) [METRIC]
+- [ ] Report does not expose actual secret values [PLAN]
+- [ ] Remediation steps specific per finding type [PLAN]
+- [ ] False positives documented and filtered [INFERENCIA]
+- [ ] Gate decision clearly stated (PASS/FAIL) [PLAN]
+- [ ] Findings include file path and line number (masked) [METRIC]
+- [ ] Evidence ratio: ≥90% [PLAN]/[METRIC], <10% [SUPUESTO]
+- [ ] Scan execution logged for audit trail [PLAN]
 
 ## Escalation Triggers
+- Active production credentials found in artifacts
+- G0 failure blocking pipeline execution
+- Secret exposure in shared/public documents
+- Recurring secret exposure after remediation
 
-- >10 secretos detectados en un solo repositorio → Escalar a `risk-controller`
-- Private key detectada → Alerta CRÍTICA inmediata
-- `.env` con valores de producción → Bloqueo obligatorio de pipeline
-- Secrets en archivos de CI/CD → Escalar a `devsecops-architect`
+## Additional Resources
 
----
+| Resource | When to Read | Location |
+|----------|-------------|----------|
+| Body of Knowledge | Secret detection patterns and tools | `references/body-of-knowledge.md` |
+| State of the Art | Modern secrets management practices | `references/state-of-the-art.md` |
+| Knowledge Graph | G0 gate in pipeline security | `references/knowledge-graph.mmd` |
+| Use Case Prompts | Secret scanning scenarios | `prompts/use-case-prompts.md` |
+| Metaprompts | Custom detection pattern design | `prompts/metaprompts.md` |
+| Sample Output | Reference G0 scan report | `examples/sample-output.md` |
 
-## Protocolo de Escaneo
-
-### Patrones detectados
-
-| Categoría | Patrón | Ejemplo |
-|-----------|--------|---------|
-| AWS Access Key | `AKIA[0-9A-Z]{16}` | `AKIAIOSFODNN7EXAMPLE` |
-| GitHub Token | `gh[ps]_[A-Za-z0-9_]{36,}` | `ghp_xxxxxxxxxxxx` |
-| API Key genérica | `api[_-]?key\s*[=:]\s*...` | `API_KEY=abc123...` |
-| Password genérico | `(secret\|password\|pwd)\s*[=:]...` | `DB_PASSWORD="..."` |
-| Bearer Token | `bearer\s+...` | `Authorization: Bearer eyJ...` |
-| Connection String | `(mongodb\|postgres\|mysql)://...` | `postgres://user:pass@host/db` |
-| Private Key | `-----BEGIN...PRIVATE KEY-----` | RSA/EC/DSA/OPENSSH |
-| JWT | `eyJ...` (3 segmentos base64) | `eyJhbGciOiJIUzI1NiJ9...` |
-| Slack Token | `xox[bpors]-...` | `xoxb-123456-abcdef` |
-| Anthropic Key | `sk-ant-...` | `sk-ant-api03-xxxxx` |
-| OpenAI Key | `sk-[A-Za-z0-9]{32,}` | `sk-xxxxxxxxxxxxxxxx` |
-| Stripe Key | `[sr]k_(live\|test)_...` | `sk_live_xxxxxxxxxxxx` |
-
-### Archivos excluidos
-
-- Binarios (png, jpg, zip, jar, exe, dll, etc.)
-- `node_modules/`, `.git/`, `vendor/`, `dist/`, `__pycache__/`
-- `discovery/` (propio directorio de sesión)
-- Archivos > 1MB
-
-### Flujo de enmascaramiento
-
-```
-Detección → Clasificación → Placeholder → Mapa reversible → Auditoría
-                                ↓
-                    [MAO_MASKED_{N}]
-                                ↓
-                    mao-secrets-map.json (NUNCA commitear)
-```
+## Output Configuration
+- **Language**: Spanish (Latin American, business register)
+- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
+- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
 
 ---
 
-## Scripts
-
-| Script | Ubicación | Propósito |
-|--------|-----------|----------|
-| `secrets-scan.sh` | `scripts/secrets-scan.sh` | Escaneo de secretos con regex |
-| `secrets-mask.sh` | `scripts/secrets-mask.sh` | Enmascaramiento reversible |
-
 ---
 
-## Evidence Tags
+## Sub-Agents
 
-- `[SECURITY]` — Hallazgo de seguridad confirmado por escaneo
-- `[CÓDIGO]` — Patrón detectado en código fuente
-- `[CONFIG]` — Patrón detectado en archivo de configuración
+### Compliance Reporter
+
+
+## Compliance Reporter Agent
+
+### Core Responsibility
+
+Reports on secrets compliance status for security gates. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Credential Scanner
+
+
+## Credential Scanner Agent
+
+### Core Responsibility
+
+Scans project files for exposed credentials and secrets. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Masking Engine
+
+
+## Masking Engine Agent
+
+### Core Responsibility
+
+Masks detected secrets with reversible or irreversible redaction. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Pattern Matcher
+
+
+## Pattern Matcher Agent
+
+### Core Responsibility
+
+Matches secret patterns: API keys, tokens, passwords, connection strings. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+

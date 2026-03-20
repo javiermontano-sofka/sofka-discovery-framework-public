@@ -93,14 +93,6 @@ PARA CADA dependencia_inter_vendor:
       documentar lección aprendida
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break vendor issues into performance, relationship, contractual, and capacity dimensions
-2. **Evidence-check** — Vendor assessments based on SLA data and deliverable quality, not subjective feelings
-3. **Bias scan** — Check for relationship bias (rating long-term vendor higher due to familiarity)
-4. **Structure-first** — Use scorecard framework before ad-hoc performance discussions
-5. **Escalate** — When vendor performance consistently fails SLAs, follow contract escalation clauses
-
 ## Escalation Triggers
 
 - Vendor misses SLA targets for two consecutive periods
@@ -108,9 +100,3 @@ PARA CADA dependencia_inter_vendor:
 - Quality issues from vendor deliverables causing project rework > 15%
 - Vendor communication breakdown (unresponsive > 48 hours)
 - Multi-vendor dependency failure blocking critical path
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

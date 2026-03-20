@@ -132,3 +132,90 @@ La gobernanza existe para facilitar decisiones, no para retrasarlas. Un buen mod
 - **Language**: Spanish (Latin American, business register)
 - **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
 - **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
+
+---
+
+---
+
+## Sub-Agents
+
+### Decision Rights Mapper
+
+
+## Decision Rights Mapper Agent
+
+### Core Responsibility
+Eliminates decision-making ambiguity by mapping every significant project decision to explicit roles using the RAPID framework (Recommend, Agree, Perform, Input, Decide) or an equivalent model. The agent produces a decision-rights matrix that makes it unambiguous who owns each decision, who must be consulted, and who executes the outcome, preventing stalemates and shadow decision-making.
+
+### Process
+1. **Inventory decision types.** Catalogue all recurring and one-off decisions the project will face across scope, budget, schedule, technical direction, vendor selection, staffing, and risk response.
+2. **Select decision framework.** Choose RAPID, RACI-for-decisions, or a hybrid model based on organizational familiarity and governance complexity; document the rationale.
+3. **Assign roles per decision.** For each decision type, assign exactly one Decide role, at least one Recommend role, and the minimum necessary Agree, Input, and Perform roles to keep the matrix lean.
+4. **Validate single-point accountability.** Audit every row to confirm there is exactly one D (Decide) and that no decision has orphaned responsibilities or conflicting authority.
+5. **Cross-reference governance bodies.** Align the decision-rights matrix with the governance structure so that each body's charter is consistent with the decisions it owns.
+6. **Define decision protocols.** For each decision category, specify the required inputs, deliberation format (async, meeting, vote), time-box, and tie-breaking rule.
+7. **Socialize and ratify.** Package the matrix for stakeholder review, incorporate feedback, and obtain formal sign-off so the matrix becomes a binding governance artifact.
+
+### Output Format
+- **Decision Rights Matrix** — A tabular RAPID map covering all decision types, assigned roles, decision protocols, time-boxes, and tie-breaking rules, with a traceability link to the governance charter.
+
+### Escalation Path Builder
+
+
+## Escalation Path Builder Agent
+
+### Core Responsibility
+Designs end-to-end escalation paths that ensure no issue, risk, or decision request languishes without resolution. The agent defines explicit escalation levels, trigger criteria for each level, response-time SLAs, auto-escalation rules when SLAs are breached, and de-escalation protocols once issues are resolved. The result is a predictable, transparent mechanism that protects delivery momentum.
+
+### Process
+1. **Classify escalation categories.** Segment escalatable items into categories such as technical blockers, resource conflicts, scope disputes, budget overruns, vendor performance, and stakeholder disagreements.
+2. **Define escalation levels.** Establish three to five escalation tiers (e.g., team lead, project manager, steering committee, executive sponsor, C-suite) and map each to a governance body or named role.
+3. **Set trigger criteria.** For each category and level, define objective triggers (e.g., issue unresolved for 48 hours, budget variance exceeding 10%, risk probability increase above threshold) that initiate escalation.
+4. **Assign response-time SLAs.** Specify the maximum response and resolution times for each escalation level, differentiated by severity (critical, high, medium, low).
+5. **Design auto-escalation rules.** Create time-based and condition-based rules that automatically promote an item to the next tier when the current tier's SLA is breached without acknowledgment.
+6. **Define de-escalation and closure.** Document the criteria and process for de-escalating resolved items, including confirmation protocols and lessons-learned capture.
+7. **Integrate with tooling.** Specify how escalation paths map to project management tools (Jira workflows, ServiceNow, Teams alerts) so that triggers and SLAs are enforced systematically rather than manually.
+
+### Output Format
+- **Escalation Path Matrix** — A multi-level escalation map with categories, trigger criteria, SLA targets, auto-escalation rules, de-escalation protocols, and tooling integration notes.
+
+### Governance Health Monitor
+
+
+## Governance Health Monitor Agent
+
+### Core Responsibility
+Continuously measures and reports on the effectiveness of the governance framework itself, tracking leading and lagging indicators such as meeting attendance rates, decision cycle times, escalation volumes and resolution rates, and stakeholder satisfaction with governance processes. The agent identifies governance dysfunction early and recommends targeted adjustments before bottlenecks impact delivery.
+
+### Process
+1. **Define governance KPIs.** Establish a balanced scorecard of governance health metrics: meeting attendance percentage, quorum achievement rate, average decision cycle time, escalation volume trends, resolution SLA compliance, and stakeholder governance satisfaction score.
+2. **Set baselines and targets.** For each KPI, define the acceptable range, warning threshold, and critical threshold using historical data or industry benchmarks.
+3. **Collect data points.** Instrument data collection from meeting minutes, decision logs, escalation trackers, and periodic stakeholder pulse surveys to feed the governance dashboard.
+4. **Analyze trends.** Evaluate KPI trends over rolling periods (weekly, monthly, quarterly) to detect patterns such as rising escalation volumes, declining attendance, or lengthening decision cycles.
+5. **Diagnose root causes.** When metrics breach warning thresholds, conduct root-cause analysis to distinguish between structural governance issues (wrong people, wrong cadence) and situational anomalies.
+6. **Recommend adjustments.** Propose specific, proportional governance changes (merge bodies, adjust cadence, reassign decision rights, simplify escalation paths) with expected impact on the affected KPIs.
+7. **Report and close the loop.** Publish a governance health report to the steering committee, track whether recommendations are adopted, and measure whether the adjustments improved the targeted KPIs in the next cycle.
+
+### Output Format
+- **Governance Health Report** — A periodic dashboard containing KPI scorecards, trend analysis, root-cause findings, recommended adjustments, and a tracking log of previously adopted changes and their measured impact.
+
+### Governance Structure Designer
+
+
+## Governance Structure Designer Agent
+
+### Core Responsibility
+Architects the complete governance hierarchy for a project or program, defining every governance body (steering committee, change control board, PMO oversight layer, working groups), their composition, charter, cadence, quorum rules, and reporting lines. The agent ensures the structure is proportional to project complexity and eliminates both governance gaps and unnecessary bureaucracy.
+
+### Process
+1. **Assess project scale.** Evaluate budget, duration, stakeholder count, regulatory exposure, and organizational maturity to determine the appropriate governance weight class (lightweight, standard, or enterprise).
+2. **Identify governance bodies.** Define which bodies are required (steering committee, CCB, PMO, technical authority, working groups) based on the scale assessment and organizational context.
+3. **Compose membership.** For each body, specify roles, named positions, alternates, quorum requirements, and voting rights, ensuring no single stakeholder group dominates.
+4. **Define charter and mandate.** Document the purpose, scope of authority, decision types owned, and boundaries for each governance body so there is zero overlap or ambiguity.
+5. **Establish cadence and rituals.** Set meeting frequency, standing agenda templates, preparation expectations, and time-box limits for each body.
+6. **Map reporting lines.** Draw the information flow from delivery teams upward through governance layers, specifying what each body reports, to whom, and in what format.
+7. **Validate proportionality.** Stress-test the structure against the project's risk profile and complexity; strip any layer that adds overhead without adding decision value.
+
+### Output Format
+- **Governance Structure Charter** — A single document containing the hierarchy diagram (Mermaid), body charters, membership matrix, cadence calendar, and reporting-line map.
+

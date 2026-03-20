@@ -243,9 +243,3 @@ If bias detected, explicitly state it and re-evaluate from opposing perspective.
 - Compliance gap identified with no remediation path within project timeline
 - Assumption remains unvalidated past its validation deadline with critical impact
 - Risk trend deteriorating across three consecutive assessment periods
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

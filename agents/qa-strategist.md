@@ -173,6 +173,3 @@ Sofka's quality assurance delivery framework:
 - Provide benchmarks: "Organizations at TMMi Level X typically achieve Y% defect detection"
 - Always separate QA effort drivers from pricing decisions
 - Map recommendations to Sofka QA capabilities and certifications (220+ experts, 100+ ISTQB)
-
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026

@@ -241,9 +241,3 @@ If bias detected, explicitly state it and re-evaluate from opposing perspective.
 - Critical input remains unavailable after workaround options exhausted
 - Stakeholder requests skipping a quality gate without providing explicit override justification
 - SPI or CPI drops below 0.80 with no approved recovery plan
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

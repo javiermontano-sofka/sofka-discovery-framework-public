@@ -7,7 +7,7 @@
 ## 1. Executive Summary para Brief Técnico
 
 ```
-/sdf:brief
+/mao:brief
 
 Contexto: Tenemos el análisis AS-IS completo de [ClienteCo]. Necesito el executive summary
 del Brief Técnico (02). Audiencia: CEO y CTO juntos en la misma reunión.
@@ -167,5 +167,5 @@ Contexto: plataforma e-commerce, 450K LOC, equipo de 18 devs.
 
 ---
 
-*Prompts de caso de uso v1.0 — Sofka Discovery Framework, skill: copywriting*
-*© Sofka Technologies. Todos los derechos reservados.*
+*Prompts de caso de uso v1.0 — MetodologIA Discovery Framework, skill: copywriting*
+*© Comunidad MetodologIA. Todos los derechos reservados.*

@@ -1,0 +1,114 @@
+%% Knowledge Graph — data-governance
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    SKILL["🛡️ data-governance"]
+
+    %% Inputs
+    IN_SCHEMAS["📥 Data Schemas & Models"]
+    IN_PIPELINES["📥 Pipeline Inventory"]
+    IN_REGULATIONS["📥 Regulatory Requirements"]
+    IN_STAKEHOLDERS["📥 Stakeholder Map"]
+
+    %% 8-Section Framework
+    S1["S1: Data Catalog & Discovery"]
+    S2["S2: Ownership & Stewardship"]
+    S3["S3: Classification & Sensitivity"]
+    S4["S4: Retention & Lifecycle"]
+    S5["S5: Privacy & Compliance"]
+    S6["S6: Computational Governance & Data Products"]
+    S7["S7: Data Quality Dimensions & Assessment"]
+    S8["S8: Validation, Anomaly Detection & Remediation"]
+
+    %% Data Quality Dimensions (absorbed from data-quality)
+    DQ_ACC["📐 Accuracy"]
+    DQ_COM["📐 Completeness"]
+    DQ_CON["📐 Consistency"]
+    DQ_TIM["📐 Timeliness"]
+    DQ_UNI["📐 Uniqueness"]
+    DQ_VAL["📐 Validity"]
+
+    %% Standards
+    STD_DAMA["📚 DAMA-DMBOK2"]
+    STD_GDPR["📚 GDPR"]
+    STD_CCPA["📚 CCPA"]
+    STD_ISO8000["📚 ISO 8000"]
+    STD_ISO27001["📚 ISO 27001"]
+
+    %% Outputs
+    OUT_CATALOG["📤 Data Catalog"]
+    OUT_POLICIES["📤 Governance Policies"]
+    OUT_CLASSIFICATION["📤 Classification Matrix"]
+    OUT_QUALITY["📤 Quality Assessment Report"]
+
+    %% Consumers
+    CON_DATAENG["🎯 data-engineering"]
+    CON_DATAMESH["🎯 data-mesh-strategy"]
+    CON_SECURITY["🎯 security-architecture"]
+    CON_ANALYTICS["🎯 analytics-engineering"]
+
+    %% Agents
+    AGT_DATAARCH["🤖 data-architect"]
+    AGT_DATAENG["🤖 data-engineer"]
+    AGT_ANALYTICS["🤖 analytics-architect"]
+
+    %% Input → Skill
+    IN_SCHEMAS -->|"tablas, columnas, tipos"| SKILL
+    IN_PIPELINES -->|"fuentes, destinos, frecuencia"| SKILL
+    IN_REGULATIONS -->|"marco legal aplicable"| SKILL
+    IN_STAKEHOLDERS -->|"owners, stewards, consumers"| SKILL
+
+    %% Skill → Sections
+    SKILL -->|"descubre activos"| S1
+    S1 -->|"assets → owners"| S2
+    S2 -->|"owners → clasificación"| S3
+    S3 -->|"sensibilidad → retención"| S4
+    S3 -->|"sensibilidad → compliance"| S5
+    S5 -->|"políticas → policy-as-code"| S6
+    S6 -->|"contratos → calidad"| S7
+    S7 -->|"dimensiones → validación"| S8
+    S1 -->|"metadata → calidad"| S7
+
+    %% Quality Dimensions → S7 (traceability)
+    DQ_ACC -->|"mide exactitud"| S7
+    DQ_COM -->|"mide completitud"| S7
+    DQ_CON -->|"mide coherencia"| S7
+    DQ_TIM -->|"mide frescura"| S7
+    DQ_UNI -->|"mide deduplicación"| S7
+    DQ_VAL -->|"mide conformidad"| S7
+
+    %% Standards → Sections
+    STD_DAMA -->|"11 knowledge areas"| S1
+    STD_DAMA -->|"stewardship model"| S2
+    STD_GDPR -->|"data subject rights"| S5
+    STD_CCPA -->|"consumer privacy"| S5
+    STD_ISO8000 -->|"quality dimensions"| S7
+    STD_ISO27001 -->|"security controls"| S3
+
+    %% Sections → Outputs
+    S1 -->|"genera"| OUT_CATALOG
+    S2 -->|"genera"| OUT_POLICIES
+    S3 -->|"genera"| OUT_CLASSIFICATION
+    S7 -->|"genera"| OUT_QUALITY
+
+    %% Outputs → Consumers
+    OUT_CATALOG -->|"assets para pipelines"| CON_DATAENG
+    OUT_POLICIES -->|"governance federada"| CON_DATAMESH
+    OUT_CLASSIFICATION -->|"niveles de protección"| CON_SECURITY
+    OUT_QUALITY -->|"data trust scores"| CON_ANALYTICS
+
+    %% Agents
+    AGT_DATAARCH -->|"lidera"| SKILL
+    AGT_DATAENG -->|"soporta"| SKILL
+    AGT_ANALYTICS -->|"soporta"| SKILL
+
+    %% Styles
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef standard fill:#1A1A2E,stroke:#FF7E08,color:#FFD700
+    classDef section fill:#2D2D4E,stroke:#FF7E08,color:#fff
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+
+    class SKILL skill
+    class STD_DAMA,STD_GDPR,STD_CCPA,STD_ISO8000,STD_ISO27001 standard
+    class S1,S2,S3,S4,S5,S6,S7,S8 section
+    class OUT_CATALOG,OUT_POLICIES,OUT_CLASSIFICATION,OUT_QUALITY output

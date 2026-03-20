@@ -95,14 +95,6 @@ PARA CADA skill_critica:
    SI bus_factor >= 3: ACEPTABLE — monitorear
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break talent needs into technical, domain, methodology, and soft skills
-2. **Evidence-check** — Proficiency levels validated through demonstrated work, not self-assessment alone
-3. **Bias scan** — Check for halo effect (assuming strength in one area means strength in all)
-4. **Structure-first** — Map required profile before assessing current team
-5. **Escalate** — When critical skill gap has no viable solution within project timeline, escalate to sponsor
-
 ## Escalation Triggers
 
 - Critical skill gap with bus factor = 1 and no training plan
@@ -110,9 +102,3 @@ PARA CADA skill_critica:
 - Key team member departure creating unmitigated skill gap
 - Training plan not progressing within committed timeline
 - Required skill not available internally or externally within project geography
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

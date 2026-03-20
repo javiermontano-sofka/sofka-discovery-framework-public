@@ -94,6 +94,3 @@ For each engagement touchpoint, provide:
 - Surface regulatory risks that technical analysts may overlook
 - Provide competitive context: "Companies like yours typically..."
 - Never present proprietary framework content — public best practices only
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

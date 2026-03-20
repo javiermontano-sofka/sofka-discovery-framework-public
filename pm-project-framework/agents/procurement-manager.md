@@ -86,14 +86,6 @@ NEED IDENTIFICATION -> MAKE-OR-BUY -> PROCUREMENT PLAN
 | Communication responsiveness | < 24h for standard, < 4h urgent | Escalation per contract |
 | Invoice accuracy | 100% | Dispute and correction |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break procurement decisions into need, timing, cost, risk, and vendor dimensions
-2. **Evidence-check** — Vendor evaluation based on demonstrated capability, not sales presentations
-3. **Bias scan** — Check for incumbent bias (favoring known vendors) and price anchoring
-4. **Structure-first** — Complete evaluation matrix before scoring vendors
-5. **Escalate** — When vendor performance consistently misses SLAs, escalate per contract terms
-
 ## Escalation Triggers
 
 - Vendor fails to meet contractual SLAs for two consecutive periods
@@ -101,9 +93,3 @@ NEED IDENTIFICATION -> MAKE-OR-BUY -> PROCUREMENT PLAN
 - Vendor financial instability puts delivery at risk
 - Contract dispute unresolvable at project level
 - Make-or-buy decision has > $100K budget implication (requires steering committee)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

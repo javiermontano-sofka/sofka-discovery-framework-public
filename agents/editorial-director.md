@@ -95,10 +95,3 @@ After any deliverable is generated in markdown:
 | `sofka-technical-writing` | Documentation precision, progressive disclosure, terminology consistency |
 | `sofka-storytelling` | Narrative arc, evidence-based sofka-storytelling, transformation narratives |
 | `sofka-output-engineering` | Ghost menu, format pipeline, multi-format production orchestration |
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

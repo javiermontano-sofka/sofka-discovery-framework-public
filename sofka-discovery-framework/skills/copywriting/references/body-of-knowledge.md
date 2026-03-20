@@ -258,5 +258,5 @@ El headline es la pieza más importante. Reglas:
 
 ---
 
-*Body of Knowledge v1.0 — Sofka Discovery Framework*
-*© Sofka Technologies. Todos los derechos reservados.*
+*Body of Knowledge v1.0 — MetodologIA Discovery Framework*
+*© Comunidad MetodologIA. Todos los derechos reservados.*

@@ -1,7 +1,7 @@
-# Catálogo de 108 Skills
+# Catálogo de 209 Skills
 
 > MAO Framework — Ontología viva
-> Referencia canónica de los 108 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
+> Referencia canónica de los 209 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 12 dominios MAO + 12 dominios PM (cross-framework mirror).
 
 ---
 
@@ -10,6 +10,7 @@
 | Dominio | Cantidad | Fases del pipeline |
 |---------|----------|-------------------|
 | Arquitectura | 14 | 2-6 (Brief a Reportes) |
+| AI Architecture | 6 | 2-6 (CONOPS a Testing) |
 | Data & Analytics | 10 | 2-6 (Brief a Reportes) |
 | Análisis & Discovery | 12 | 0-4 (Plan a Flujos) |
 | Cloud & Platform | 5 | 2-5 (ASIS a Roadmap) |
@@ -20,7 +21,8 @@
 | Innovación | 5 | 3-5 (ASIS a Roadmap) |
 | Herramientas & DX | 8 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
-| **Total** | **108** | |
+| PM Cross-Framework | 88 | Importados de PMO-APEX |
+| **Total** | **209** | |
 
 ---
 
@@ -181,6 +183,17 @@
 | `dynamic-sme` | SME dinámico según dominio detectado | 0-2 |
 | `user-representative` | Representación del usuario final | 0-2 |
 | `accessibility-audit` | Auditoría de accesibilidad | 3-4 |
+
+## 12. AI Architecture (6 skills)
+
+| Skill | Propósito | Fase |
+|-------|----------|------|
+| `ai-software-architecture` | Arquitectura de software para sistemas de IA, stack 6 capas, quality attributes ATAM+AI, ADRs | 3-5 |
+| `ai-conops` | CONOPS para IA — visión, stakeholders, espectro de interacción humano-IA, valor de negocio, métricas de éxito | 2-3 |
+| `ai-pipeline-architecture` | Pipelines de desarrollo y producción, data stores, model registry, CI/CD Blue & Gold | 3-5 |
+| `ai-design-patterns` | Patrones de diseño para IA — Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection, anti-patrones | 3-5 |
+| `ai-testing-strategy` | Estrategia de testing para IA — matriz 6x6, model testing, data quality, fairness, integración | 3-5 |
+| `genai-architecture` | Arquitectura GenAI — RAG, orquestación LLM, multi-model tiering, agentes, vector DB, guardrails | 3-6 |
 
 ---
 

@@ -292,4 +292,4 @@ Key risks: React Native TurboModule migration for legacy native modules (3 remai
 
 ---
 
-**Autor:** Javier Montano | Sofka | 12 de marzo de 2026
+**Autor:** Javier Montano | MetodologIA | 12 de marzo de 2026

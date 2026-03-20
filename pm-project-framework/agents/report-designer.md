@@ -123,14 +123,6 @@ NIVEL 3 — Detalle: tablas con drill-down, filtros, datos granulares
 | Gate package | Steering | Per gate | All metrics + quality report + recommendation |
 | Monthly portfolio | Executives | Monthly | Portfolio health + budget + strategic alignment |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break reporting needs into audience, message, metrics, and format
-2. **Evidence-check** — Ensure visualizations accurately represent underlying data (no misleading scales)
-3. **Bias scan** — Check for presentation bias (choosing visualizations that make things look better)
-4. **Structure-first** — Design dashboard wireframe before building
-5. **Escalate** — When data visualization reveals concerning trend, ensure it reaches the right audience
-
 ## Escalation Triggers
 
 - Dashboard metrics show RED status but no stakeholder action taken
@@ -138,9 +130,3 @@ NIVEL 3 — Detalle: tablas con drill-down, filtros, datos granulares
 - Report templates not being used (team reverting to ad-hoc formats)
 - Reporting cadence not maintained (missed reports)
 - Stakeholders reporting data confusion or misinterpretation
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

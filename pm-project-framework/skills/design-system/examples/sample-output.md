@@ -1,106 +1,108 @@
-# Design System Reference — Acme Corp PMO (APEX Branded)
-
-**Proyecto**: Acme Corp — Digital Transformation PMO
-**Versión**: 1.0.0
-**Fecha**: 2026-03-17
-
-## Color Tokens
-
-```css
-:root {
-  /* Primary */
-  --apex-primary: #2563EB;
-  --apex-primary-hover: #1D4ED8;
-  --apex-primary-light: #DBEAFE;
-
-  /* Accent (Warning) */
-  --apex-accent: #F59E0B;
-  --apex-accent-hover: #D97706;
-  --apex-accent-light: #FEF3C7;
-
-  /* Danger */
-  --apex-danger: #DC2626;
-  --apex-danger-hover: #B91C1C;
-  --apex-danger-light: #FEE2E2;
-
-  /* Dark */
-  --apex-dark: #0F172A;
-  --apex-dark-secondary: #1E293B;
-
-  /* Surfaces */
-  --apex-surface: #F8FAFC;
-  --apex-surface-card: #FFFFFF;
-  --apex-border: #E2E8F0;
-
-  /* Text */
-  --apex-text-primary: #0F172A;
-  --apex-text-secondary: #334155;
-  --apex-text-muted: #94A3B8;
-}
-```
-
-[PLAN] Tokens verificados contra WCAG AA. Amber no usar para texto <18px.
-
-## RAG Status Components
-
-| Estado | Color | Icono | Significado |
-|--------|-------|-------|-------------|
-| Healthy | `--apex-primary` (#2563EB) | Check circle | En camino, sin issues |
-| At Risk | `--apex-accent` (#F59E0B) | Warning triangle | Requiere atención |
-| Critical | `--apex-danger` (#DC2626) | X circle | Fuera de control, acción inmediata |
-
-**NUNCA usar verde.** Blue reemplaza Green en todo el sistema RAG. [PLAN]
-
-## KPI Card Component
-
-```html
-<div class="apex-kpi-card">
-  <span class="apex-kpi-label">SPI</span>
-  <span class="apex-kpi-value">0.92</span>
-  <span class="apex-kpi-trend apex-trend-down">-3%</span>
-  <span class="apex-kpi-target">Target: 1.00</span>
-</div>
-```
-
-```css
-.apex-kpi-card {
-  background: var(--apex-surface-card);
-  border: 1px solid var(--apex-border);
-  border-radius: 8px;
-  padding: 16px;
-  font-family: 'Inter', system-ui, sans-serif;
-}
-.apex-kpi-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--apex-dark);
-}
-.apex-trend-down { color: var(--apex-danger); }
-.apex-trend-up { color: var(--apex-primary); }
-```
-
-## Accessibility Audit Results
-
-| Combinación | Ratio | WCAG AA | WCAG AAA |
-|-------------|-------|---------|----------|
-| Primary (#2563EB) on White | 4.7:1 | Pass | Fail |
-| Dark (#0F172A) on White | 16.8:1 | Pass | Pass |
-| Danger (#DC2626) on White | 4.6:1 | Pass | Fail |
-| Accent (#F59E0B) on White | 3.1:1 | Pass (large text) | Fail |
-| Text Secondary (#334155) on White | 7.5:1 | Pass | Pass |
-
-**Overall**: AA compliant for all text combinations. AAA compliant for body text (dark + secondary). [METRIC]
-
-## Do / Don't
-
-| Do | Don't |
-|----|-------|
-| Usar `--apex-primary` para estados positivos | Usar verde (#22C55E) |
-| Tokens CSS custom properties | Hardcode hex values |
-| Inter font con fallback system-ui | Otras fonts sin aprobación |
-| RAG: Blue/Amber/Red | RAG: Green/Yellow/Red |
-| ≥4.5:1 contraste para texto | Texto amber en fondo blanco (<18px) |
-
 ---
-*PMO-APEX v1.0 — Design System Reference*
-*Sofka, your technology partner.*
+title: Design System Token Configuration
+brand: Acme Corp
+format: markdown
+variante: tecnica
+date: 2026-03-12
+---
+
+# Design System — Acme Corp
+
+Token configuration and component reference for the Acme Corp engagement.
+
+## 1. Brand Token Configuration
+
+Source: `brand-config.json`
+
+| Token | Value | CSS Variable |
+|-------|-------|-------------|
+| Primary | `#3B82F6` | `var(--brand-primary)` |
+| Primary Light | `#60A5FA` | `var(--brand-primary-light)` |
+| Primary Dark | `#2563EB` | `var(--brand-primary-dark)` |
+| Primary Dim | `rgba(59,130,246,0.10)` | `var(--brand-primary-dim)` |
+| Black | `#000000` | `var(--brand-black)` |
+| White | `#FFFFFF` | `var(--brand-white)` |
+| Background | `#F5F5F5` | `var(--brand-background)` |
+| Muted | `#9CA3AF` | `var(--brand-muted)` |
+
+### Font Stack
+
+| Role | Family | Google Fonts URL |
+|------|--------|-----------------|
+| Display | `'Inter', system-ui, sans-serif` | `https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap` |
+| Body | `'Inter', system-ui, sans-serif` | (same) |
+
+## 2. Semantic Colors (Universal)
+
+These never change per brand:
+
+| State | Color | Dim | Border | Text |
+|-------|-------|-----|--------|------|
+| Positive | `#22D3EE` | `rgba(255,215,0,0.12)` | `rgba(255,215,0,0.45)` | `#06B6D4` |
+| Warning | `#D97706` | `rgba(217,119,6,0.08)` | — | — |
+| Critical | `#DC2626` | `rgba(220,38,38,0.07)` | — | — |
+| Info | `#2563EB` | `rgba(37,99,235,0.07)` | — | — |
+
+## 3. Sample Styled Section — Architecture Overview
+
+> **Section Header Pattern:** 60x60px black box with brand-primary number
+
+### 01 — Current State Assessment
+
+The current architecture presents three critical findings:
+
+**Finding 1: Monolithic coupling**
+- Severity: `critical` — Red left border, red tint background
+- Impact: Deployment frequency limited to 1x/month
+- Recommendation: Decompose into 3 bounded contexts
+
+**Finding 2: Missing observability**
+- Severity: `high` — Orange left border
+- Impact: MTTR averages 4 hours due to blind spots
+- Recommendation: Implement distributed tracing
+
+**Finding 3: Manual scaling**
+- Severity: `medium` — Amber left border, BLACK text (WCAG AA)
+- Impact: Peak traffic causes 30% error rate
+- Recommendation: Auto-scaling policies on compute tier
+
+### Component Usage in This Section
+
+```
+card-critical  → Finding 1 (monolithic coupling)
+card-warning   → Finding 3 (manual scaling)
+callout-info   → Architecture recommendation callout
+badge          → Severity labels
+badge-outline  → Impact category tags
+```
+
+## 4. Mermaid Diagram Integration
+
+Architecture diagrams use Mermaid with brand-primary theming:
+
+```mermaid
+graph TD
+    A[Client App] -->|REST API| B[API Gateway]
+    B --> C[Auth Service]
+    B --> D[Order Service]
+    B --> E[Inventory Service]
+    D --> F[(Order DB)]
+    E --> G[(Inventory DB)]
+
+    style A fill:#3B82F6,color:#FFFFFF
+    style B fill:#000000,color:#FFFFFF
+    style C fill:#F5F5F5,stroke:#3B82F6
+    style D fill:#F5F5F5,stroke:#3B82F6
+    style E fill:#F5F5F5,stroke:#3B82F6
+```
+
+> **Note:** Mermaid node colors use brand tokens. `fill:#3B82F6` maps to `var(--brand-primary)`. In production HTML, these are injected from brand-config.json.
+
+## 5. Validation Checklist
+
+- [x] All colors reference CSS custom properties (no hex in components)
+- [x] Semantic colors: positive=yellow, not green
+- [x] Hero border: 8px solid brand-primary
+- [x] WCAG AA contrast verified (severity-medium uses black text)
+- [x] Font fallbacks: system-ui, sans-serif
+- [x] Responsive: 3 breakpoints configured

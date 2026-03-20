@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[kanban-assessment] --> F
+        B[jira-configuration] --> F
+        C[definition-of-done] --> F
+        D[capacity-planning] --> F
+    end
+
+    subgraph Process
+        F[kanban-system<br/>Design & Implement<br/>Kanban Board & Flow]:::skill
+        F --> G[Design Board Layout]
+        G --> H[Set WIP Limits & Policies]
+        H --> I[Configure Cadences & Metrics]
+    end
+
+    subgraph Outputs
+        I --> J[dashboard-tooling]
+        I --> K[monte-carlo-simulation]
+        I --> L[continuous-improvement]
+    end
+
+    subgraph Agents
+        M[kanban-designer-agent]:::agent --> F
+        N[flow-metrics-agent]:::agent --> I
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

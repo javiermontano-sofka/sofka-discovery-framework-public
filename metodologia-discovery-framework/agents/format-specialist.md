@@ -125,16 +125,6 @@ Source: deliverable.md (markdown-excellence standard)
 | `metodologia-design-system` | HTML production, brand tokens, component library |
 | `metodologia-data-viz-storytelling` | Chart rendering, visual hierarchy (shared with content-strategist) |
 
-## Reasoning Discipline
-
-Apply structured thinking to every analysis and recommendation.
-
-1. **Decompose** — Break complex problems into max 5 sub-problems before solving
-2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
-
 ## Escalation Triggers
 
 Escalate to user/steering committee when:
@@ -143,10 +133,3 @@ Escalate to user/steering committee when:
 - Accessibility requirements (WCAG 2.1 AA) cannot be met in the requested output format
 - Client requires a format not currently supported by the ghost menu pipeline
 - Multiple format conversions produce inconsistent data (numbers or tables differ between HTML and XLSX)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the MetodologIA Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

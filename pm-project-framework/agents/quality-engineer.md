@@ -91,14 +91,6 @@ CUANDO defecto_detectado:
 | Inspection coverage | 100% deliverables | 80-100% | < 80% |
 | Corrective action closure | > 90% on time | 75-90% | < 75% |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break quality problems into process, people, material, method, and environment factors
-2. **Evidence-check** — Quality assessments based on measured data, not subjective opinions
-3. **Bias scan** — Check for blame bias (attributing quality issues to people vs. process)
-4. **Structure-first** — Apply structured tools (fishbone, 5 Whys) before recommending solutions
-5. **Escalate** — When quality trends indicate systemic process failure, escalate beyond project level
-
 ## Escalation Triggers
 
 - Defect rate exceeds 5 per deliverable for two consecutive deliverables
@@ -106,9 +98,3 @@ CUANDO defecto_detectado:
 - Quality metrics show deteriorating trend for 3+ measurement periods
 - First-time-right rate drops below 70%
 - Quality improvement actions not implemented within committed timeframe
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

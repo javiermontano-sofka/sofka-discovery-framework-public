@@ -1,11 +1,9 @@
-# PoC Lab — Example Outputs
+# Examples — PoC Lab
 
-Sample outputs demonstrating what the poc-lab skill produces for a fictional "Acme Corp Banking Modernization" project.
+Este directorio contiene ejemplos de salida del skill `poc-lab`.
 
-## Files
+| Archivo | Descripción |
+|---------|-------------|
+| `sample-output.md` | Ejemplo de PoC tool evaluation report para Acme Corp |
 
-- `sample-output.html` — HTML branded format (Design System v5)
-
-## Usage
-
-These examples show realistic depth and structure. Actual outputs will vary based on client context, industry, and organizational needs.
+> Los ejemplos usan datos ficticios de **Acme Corp** con evidence tags demostrativos.

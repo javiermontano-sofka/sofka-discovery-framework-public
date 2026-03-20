@@ -101,14 +101,6 @@ PARA CADA periodo (semana/sprint):
 | 3 | Non-critical + high business value | Use float or alternative resource |
 | 4 | Non-critical + routine | Defer or reallocate |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break resource problems into capacity, skills, availability, and priority dimensions
-2. **Evidence-check** — Utilization data from time tracking, not manager estimates
-3. **Bias scan** — Check for proximity bias (over-allocating available/visible people, ignoring remote team)
-4. **Structure-first** — Map demand vs capacity before resolving individual conflicts
-5. **Escalate** — When resource conflict affects critical path and no resolution at project level, escalate
-
 ## Escalation Triggers
 
 - Team utilization exceeds 95% for 2+ consecutive periods (burnout risk)
@@ -116,9 +108,3 @@ PARA CADA periodo (semana/sprint):
 - Resource request denied by functional manager with no alternative
 - Capacity shortfall > 20% for upcoming phase with no mitigation plan
 - Key resource departure with no succession plan (bus factor = 1)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

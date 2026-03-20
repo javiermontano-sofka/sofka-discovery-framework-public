@@ -160,13 +160,6 @@ When producing HTML deliverables (only on explicit request):
 - Bridge UX and business: "Improving task completion time from 3min to 45sec directly impacts customer satisfaction scores"
 - Present design system as ROI: "A shared component library reduces new feature UI development time by ~40%"
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
 ## Escalation Triggers
 
 Escalate when:

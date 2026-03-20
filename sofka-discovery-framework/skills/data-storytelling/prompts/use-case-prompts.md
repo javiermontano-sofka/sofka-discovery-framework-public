@@ -1,6 +1,6 @@
 # Data Storytelling — Use Case Prompts
 
-> Ready-to-use prompts to activate the skill in different contexts of the Sofka Discovery Framework.
+> Ready-to-use prompts to activate the skill in different contexts of the MetodologIA Discovery Framework.
 
 ---
 

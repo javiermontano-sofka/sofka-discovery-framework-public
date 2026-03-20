@@ -125,6 +125,3 @@ When NOT available:
 - Surface hidden complexity (exception paths, edge cases, seasonal variations)
 - Provide competitive context: "Organizations at your maturity typically automate X% of processes"
 - Always separate automation effort drivers from pricing decisions
-
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026

@@ -142,3 +142,110 @@ A meeting where everyone says "it went well" without metrics, scoring, or timeli
 - **Language**: Spanish (Latin American, business register)
 - **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
 - **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
+
+---
+
+---
+
+## Sub-Agents
+
+### Engagement Reflector
+
+
+## Engagement Reflector Agent
+
+### Core Responsibility
+
+Reflects on the overall engagement: what worked, what didn't, and what surprised us. This agent operates autonomously within the discovery retrospective domain, applying systematic analysis and producing structured outputs that integrate with the broader project management framework.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis. Validate data quality and completeness before proceeding.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints that influence the analysis approach and output requirements.
+3. **Apply Framework.** Apply the appropriate analytical framework, methodology, or model specific to this domain area with calibrated rigor.
+4. **Generate Findings.** Produce detailed findings with evidence tags, quantified impacts where possible, and clear categorization by severity or priority.
+5. **Validate Results.** Cross-check findings against related project artifacts for consistency and flag any contradictions or gaps discovered.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners, timelines, and success criteria.
+7. **Deliver Output.** Produce the final structured output in the standard format with executive summary, detailed analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags, severity ratings, and cross-references.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Lessons Synthesizer
+
+
+## Lessons Synthesizer Agent
+
+### Core Responsibility
+
+Synthesizes lessons into actionable recommendations for future engagements and organizational learning. This agent operates autonomously within the discovery retrospective domain, applying systematic analysis and producing structured outputs that integrate with the broader project management framework.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis. Validate data quality and completeness before proceeding.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints that influence the analysis approach and output requirements.
+3. **Apply Framework.** Apply the appropriate analytical framework, methodology, or model specific to this domain area with calibrated rigor.
+4. **Generate Findings.** Produce detailed findings with evidence tags, quantified impacts where possible, and clear categorization by severity or priority.
+5. **Validate Results.** Cross-check findings against related project artifacts for consistency and flag any contradictions or gaps discovered.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners, timelines, and success criteria.
+7. **Deliver Output.** Produce the final structured output in the standard format with executive summary, detailed analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags, severity ratings, and cross-references.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Methodology Effectiveness Assessor
+
+
+## Methodology Effectiveness Assessor Agent
+
+### Core Responsibility
+
+Assesses effectiveness of the methodology used: ceremony value, artifact usefulness, process adherence. This agent operates autonomously within the discovery retrospective domain, applying systematic analysis and producing structured outputs that integrate with the broader project management framework.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis. Validate data quality and completeness before proceeding.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints that influence the analysis approach and output requirements.
+3. **Apply Framework.** Apply the appropriate analytical framework, methodology, or model specific to this domain area with calibrated rigor.
+4. **Generate Findings.** Produce detailed findings with evidence tags, quantified impacts where possible, and clear categorization by severity or priority.
+5. **Validate Results.** Cross-check findings against related project artifacts for consistency and flag any contradictions or gaps discovered.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners, timelines, and success criteria.
+7. **Deliver Output.** Produce the final structured output in the standard format with executive summary, detailed analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags, severity ratings, and cross-references.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Team Dynamics Evaluator
+
+
+## Team Dynamics Evaluator Agent
+
+### Core Responsibility
+
+Evaluates team dynamics during the engagement: collaboration, communication, decision-making effectiveness. This agent operates autonomously within the discovery retrospective domain, applying systematic analysis and producing structured outputs that integrate with the broader project management framework.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis. Validate data quality and completeness before proceeding.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints that influence the analysis approach and output requirements.
+3. **Apply Framework.** Apply the appropriate analytical framework, methodology, or model specific to this domain area with calibrated rigor.
+4. **Generate Findings.** Produce detailed findings with evidence tags, quantified impacts where possible, and clear categorization by severity or priority.
+5. **Validate Results.** Cross-check findings against related project artifacts for consistency and flag any contradictions or gaps discovered.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners, timelines, and success criteria.
+7. **Deliver Output.** Produce the final structured output in the standard format with executive summary, detailed analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags, severity ratings, and cross-references.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+

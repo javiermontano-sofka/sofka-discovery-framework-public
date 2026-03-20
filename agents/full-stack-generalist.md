@@ -78,6 +78,3 @@ Flag to the conductor when:
 - No rollback plan exists for the proposed changes
 - Security concerns are hand-waved ("we'll add auth later")
 - Testing strategy is absent or trivial for the complexity involved
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

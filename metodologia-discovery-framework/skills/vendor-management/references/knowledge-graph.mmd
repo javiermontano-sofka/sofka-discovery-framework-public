@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Vendor Cost Analysis<br/>TCO & Selection] --> D
+        B[Staff Augmentation Plan<br/>Vendor Requirements] --> D
+        C[Quality Plan<br/>SLA Standards] --> D
+    end
+    subgraph "Vendor Management"
+        D[Onboarding &<br/>Integration] --> E[Performance<br/>Monitoring]
+        E --> F[Relationship<br/>Governance]
+        F --> G[Offboarding &<br/>Transition]
+    end
+    subgraph Outputs
+        G --> H[Lessons Learned]
+        E --> I[Status Report]
+        F --> J[Steering Review]
+        G --> K[Knowledge Transfer]
+    end
+    subgraph Agents
+        L[Vendor Manager Agent] --> E
+        M[Contract Compliance Agent] --> F
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

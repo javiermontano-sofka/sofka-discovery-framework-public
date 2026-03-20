@@ -1,20 +1,12 @@
 ---
-name: metodologia-onboarding-playbook
+name: apex-onboarding-playbook
 description: >
-  Developer and team onboarding program design, knowledge transfer framework, and ramp-up metrics
-  definition. Use when the user asks to "design onboarding program", "create onboarding playbook",
-  "plan knowledge transfer", or mentions onboarding checklist, 30-60-90 plan, ramp-up metrics,
-  or knowledge map.
-argument-hint: "<project-or-org> <role-or-team>"
-author: Javier Montaño · Comunidad MetodologIA
-version: 1.0.0
-tags:
-  - onboarding
-  - knowledge-transfer
-  - ramp-up
-  - team-building
-  - developer-enablement
-  - moat
+  Use when the user asks to "create onboarding plan", "plan knowledge transfer",
+  "design team onboarding", "reduce ramp-up time", "capture institutional knowledge",
+  or mentions onboarding playbook, knowledge transfer, new team member ramp-up,
+  team integration. Triggers on: creates role-specific onboarding paths, designs knowledge
+  transfer sessions, establishes buddy system, defines ramp-up milestones, captures
+  institutional knowledge for preservation.
 allowed-tools:
   - Read
   - Write
@@ -22,277 +14,230 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
-  - WebFetch
 ---
 
-# Playbook de Onboarding
+# Team Onboarding & Knowledge Transfer Playbook
 
-Diseno de programa de onboarding para developers y equipos, framework de transferencia
-de conocimiento y definicion de metricas de ramp-up.
+**TL;DR**: Creates structured onboarding playbooks for new team members including role-specific learning paths, knowledge transfer sessions, buddy system design, and ramp-up milestones. Reduces time-to-productivity and preserves institutional knowledge through systematic knowledge transfer protocols.
 
-## TL;DR
+## Principio Rector
+Cada persona nueva que llega al proyecto sin onboarding estructurado consume capacidad del equipo existente de forma caótica. Un playbook de onboarding transforma el ramp-up de un evento aleatorio a un proceso predecible con milestones verificables. El costo de un buen onboarding se recupera en semanas; el costo de un mal onboarding se paga durante meses.
 
-- Disena programa de onboarding estructurado con checkpoints medibles
-- Crea knowledge map del sistema/organizacion para acelerar ramp-up
-- Define plan 30-60-90 con objetivos claros y metricas de progreso
-- Establece framework de knowledge transfer para reducir dependencia de conocimiento tribal
-- Genera checklists reutilizables por rol y nivel de experiencia
+## Assumptions & Limits
+- Assumes team structure and role definitions are stable — frequent reorgs undermine onboarding investment [SUPUESTO]
+- Assumes knowledge owners are available for transfer sessions [STAKEHOLDER]
+- Breaks if critical knowledge lives only in one person's head with no documentation — knowledge extraction must precede onboarding design [PLAN]
+- Scope limited to project-level onboarding; organizational HR onboarding is separate [PLAN]
+- Does not replace methodology training — references methodology playbook for process training [PLAN]
 
-## Inputs
-
-Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo target**.
-
+## Usage
+```bash
+/pm:onboarding-playbook $PROJECT_NAME --role=developer
+/pm:onboarding-playbook $PROJECT_NAME --role=all --include=buddy-system
+/pm:onboarding-playbook $PROJECT_NAME --role=pm --ramp-up=30days
+```
 **Parameters:**
-- `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-- `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
-- `{ROL}`: `developer` (default) | `qa` | `devops` | `lead` | `manager`
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `$PROJECT_NAME` | Yes | Target project identifier |
+| `--role` | No | `developer` / `analyst` / `pm` / `qa` / `all` (default: `all`) |
+| `--include` | No | `buddy-system` / `knowledge-map` / `access-checklist` / `all` |
+| `--ramp-up` | No | Target ramp-up period (default: `30days`) |
 
-## Entregables
+## Service Type Routing
+`{TIPO_PROYECTO}` variants:
+- **Agile**: Onboarding to ceremonies, backlog, Definition of Done, and team working agreements; pair programming buddy system
+- **Waterfall**: Formal onboarding to project plan, RACI, deliverable templates, and phase-gate procedures
+- **SAFe**: ART-level onboarding covering PI cadence, team ceremonies, system demo expectations, and cross-team coordination
+- **Kanban**: Onboarding to board policies, WIP limits, service classes, and flow metrics; shadowing through work item lifecycle
+- **Transformation**: Onboarding includes change management context, stakeholder map orientation, and ADKAR awareness training
+- **Recovery**: Accelerated onboarding for rescue team members; crisis context briefing and immediate priority alignment
 
-1. **Onboarding Checklist** — Lista de actividades por dia/semana con responsables
-2. **Knowledge Map** — Mapa visual de conocimiento critico del sistema/organizacion
-3. **Plan 30-60-90** — Objetivos y metricas por periodo con checkpoints
-4. **Knowledge Transfer Framework** — Proceso estructurado de transferencia de conocimiento
-5. **Buddy/Mentor Guide** — Guia para el buddy o mentor asignado
+## Before Creating Onboarding
+1. Read `team-performance` and role definitions — understand current team structure [STAKEHOLDER]
+2. Glob `*methodology-playbook*` — onboarding must reference the active methodology [PLAN]
+3. Read tool ecosystem — compile access requirements list [PLAN]
+4. Identify knowledge owners — map who holds critical knowledge for transfer sessions [STAKEHOLDER]
 
-## Proceso
+## Entrada (Input Requirements)
+- Team structure and role definitions
+- Project methodology and processes
+- Tool ecosystem and access requirements
+- Key project knowledge and context documents
+- Buddy/mentor availability
 
-1. **Mapeo de Conocimiento Critico** — Identificar conocimiento necesario por categoria:
-   | Categoria | Ejemplos | Prioridad |
-   |---|---|---|
-   | Arquitectura | System overview, design decisions, patterns | Semana 1 |
-   | Codebase | Estructura, convenciones, key modules | Semana 1-2 |
-   | Procesos | Git workflow, PR review, deploy, on-call | Semana 1 |
-   | Dominio | Business domain, key concepts, stakeholders | Semana 2-3 |
-   | Herramientas | IDE setup, CI/CD, monitoring, communication | Dia 1 |
-   | Cultura | Team norms, communication style, decision making | Continuo |
-2. **Diseno del Plan 30-60-90**:
-   - **30 dias (Absorber)**: Setup completo, primer commit, conocer equipo, entender arquitectura
-   - **60 dias (Contribuir)**: Features independientes, participar en code reviews, on-call shadow
-   - **90 dias (Liderar)**: Ownership de componente, mentoria a nuevos, propuestas de mejora
-3. **Creacion de Checklists** — Actividades diarias/semanales con responsable y criterio de completitud
-4. **Framework de Knowledge Transfer** — Estructura sesiones de KT:
-   - Sesiones grabadas con outline previo
-   - Documentacion write-up post-sesion
-   - Ejercicios practicos por cada sesion
-   - Q&A asincronico documentado
-5. **Guia de Buddy/Mentor** — Responsabilidades, cadencia de check-ins, escalation
-6. **Metricas de Ramp-up** — Definir indicadores de progreso:
-   | Metrica | Target 30d | Target 60d | Target 90d |
-   |---|---|---|---|
-   | Primer commit productivo | Completado | — | — |
-   | PRs mergeados sin rework | — | >70% | >85% |
-   | Resolucion de incidentes | Shadow | Con soporte | Independiente |
-   | Contribucion a code reviews | Observa | Participa | Lidera |
-
-## Criterios de Calidad
-
-- [ ] Knowledge map completo con priorizacion temporal
-- [ ] Plan 30-60-90 con objetivos SMART por periodo
-- [ ] Checklists con responsables y criterios de completitud claros
-- [ ] Framework de KT con templates de sesion y follow-up
-- [ ] Metricas de ramp-up definidas y medibles
-- [ ] Guia de buddy/mentor con responsabilidades explicitas
-- [ ] Adaptable por rol (developer, QA, DevOps, lead)
-
-## Supuestos y Limites
-
-- Se asume acceso a al menos 1 persona con conocimiento del sistema para sesiones de KT.
-- El programa de onboarding cubre los primeros 90 dias; retenciones posteriores son responsabilidad del equipo.
-- Esta skill NO ejecuta el onboarding; genera los artefactos de planificacion y seguimiento.
-- Los roles soportados son: developer, QA, DevOps, lead, manager. Roles adicionales requieren extension.
-
-## Casos Borde
-
-| Caso Borde | Estrategia de Manejo |
-|---|---|
-| Equipo remoto/distribuido sin overlap de horarios | Disenar programa 100% asincrono: videos grabados, documentacion escrita exhaustiva, Q&A asincrono con SLA de 24h. Definir 2 horas minimas de overlap semanal para check-ins criticos. |
-| Onboarding masivo (>5 personas simultaneas) | Implementar modelo cohort-based: bootcamp de 1 semana, peer learning entre nuevos integrantes, mentores asignados por ratio 1:3. Crear canal dedicado de preguntas frecuentes. |
-| Legacy system sin documentacion ni tests | Sprint 0 de documentacion obligatorio antes del onboarding. Pair programming intensivo con knowledge holders. Priorizar documentar arquitectura y flujos criticos como primer entregable del nuevo integrante. |
-| Unico knowledge holder (bus factor = 1) | Priorizar KT de ese conocimiento como urgente. Grabar todas las sesiones. Documentar como riesgo operativo. Disenar plan de redundancia de conocimiento como entregable del onboarding. |
-
-## Decisiones y Trade-offs
-
-| Decision | Justificacion | Alternativa Descartada |
-|---|---|---|
-| Plan 30-60-90 sobre plan libre | Checkpoints definidos permiten medir progreso y detectar problemas temprano. Expectativas claras para ambas partes. | Plan libre: sin estructura medible, dificil detectar bloqueos hasta que es tarde. |
-| Knowledge map visual sobre documentacion lineal | Facilita navegacion no secuencial. El nuevo integrante elige su camino segun prioridad. | Documento largo: dificil de navegar, no refleja relaciones entre conceptos. |
-| Buddy/mentor asignado sobre soporte organico del equipo | Responsabilidad clara. El nuevo integrante tiene un punto de contacto definido. Reduce friccion de "a quien pregunto". | Soporte organico: diluye responsabilidad, el nuevo queda a la deriva. |
-
-## Knowledge Graph
-
-```mermaid
-graph TD
-    subgraph Core["Core: Onboarding Playbook"]
-        PLAY[Playbook]
-        PLAN[Plan 30-60-90]
-        KMAP[Knowledge Map]
-        CHECK[Checklists]
-    end
-
-    subgraph Inputs["Inputs"]
-        ORG[Organizacion / Proyecto]
-        ROL[Rol Target]
-        SYSARCH[Arquitectura del Sistema]
-        CULTURE[Cultura del Equipo]
-    end
-
-    subgraph Outputs["Outputs"]
-        CHECKLIST[Onboarding Checklist]
-        PLAN_DOC[Plan 30-60-90 Document]
-        KMAP_DOC[Knowledge Map Visual]
-        BUDDY[Buddy/Mentor Guide]
-        METRICS[Ramp-up Metrics Dashboard]
-    end
-
-    subgraph Related["Related Skills"]
-        BURNDOWN[execution-burndown]
-        TECHWRITE[technical-writing]
-        DATASTORY[data-storytelling]
-    end
-
-    ORG --> PLAY
-    ROL --> PLAY
-    SYSARCH --> KMAP
-    CULTURE --> PLAY
-    PLAY --> CHECK
-    PLAY --> PLAN
-    KMAP --> PLAY
-    CHECK --> CHECKLIST
-    PLAN --> PLAN_DOC
-    KMAP --> KMAP_DOC
-    PLAY --> BUDDY
-    PLAN --> METRICS
-    BURNDOWN --> METRICS
-    TECHWRITE --> PLAY
-    METRICS --> DATASTORY
-```
-
-## Output Templates
-
-### Template 1: Onboarding Playbook (Markdown)
-
-**Filename:** `Onboarding_Playbook_{project}_{rol}_{WIP|Aprobado}.md`
-
-```markdown
-# Onboarding Playbook: {project} - {rol}
-
-## TL;DR
-{3-5 bullets resumen del programa}
-
-## Knowledge Map
-{Mermaid mind map con categorias de conocimiento priorizadas}
-
-## Plan 30-60-90
-
-### Dias 1-30: Absorber
-| Semana | Objetivo | Actividades | Criterio de Completitud |
-|---|---|---|---|
-
-### Dias 31-60: Contribuir
-| Semana | Objetivo | Actividades | Criterio de Completitud |
-|---|---|---|---|
-
-### Dias 61-90: Liderar
-| Semana | Objetivo | Actividades | Criterio de Completitud |
-|---|---|---|---|
-
-## Checklist Dia 1
-- [ ] Setup de entorno
-- [ ] Accesos y permisos
-- [ ] Reunion con buddy/mentor
-
-## Metricas de Ramp-up
-| Metrica | Target 30d | Target 60d | Target 90d |
-|---|---|---|---|
-
-## Guia del Buddy/Mentor
-{Responsabilidades, cadencia de check-ins, escalation}
-```
-
-### Template 2: Knowledge Transfer Session Log (Markdown)
-
-**Filename:** `KT_Session_{topic}_{date}_{WIP|Aprobado}.md`
-
-```markdown
-# Knowledge Transfer: {topic}
-
-## Metadata
-- Fecha: {date}
-- Facilitador: {name}
-- Asistentes: {list}
-- Duracion: {time}
-
-## Outline
-{Temas cubiertos con profundidad por tema}
-
-## Key Takeaways
-{3-5 puntos criticos documentados}
-
-## Preguntas Pendientes
-| Pregunta | Responsable | Fecha Limite |
-|---|---|---|
-
-## Ejercicios Practicos
-{Actividades para reforzar conocimiento transferido}
-
-## Grabacion
-{Link a grabacion si aplica}
-```
-
-## Evaluacion
-
-| Dimension | Peso | Criterio |
-|---|---|---|
-| Trigger Accuracy | 10% | Se activa ante solicitudes de onboarding, KT, ramp-up, 30-60-90, o knowledge map |
-| Completeness | 25% | Incluye checklist, knowledge map, plan 30-60-90, guia de buddy, y metricas de ramp-up |
-| Clarity | 20% | Objetivos por periodo son SMART; checklists tienen criterio de completitud explicito |
-| Robustness | 20% | Adapta programa a diferentes roles, modalidades (remoto/presencial), y volumenes de onboarding |
-| Efficiency | 10% | Genera playbook completo con parametros minimos (proyecto + rol) |
-| Value Density | 15% | Cada actividad tiene responsable y criterio de exito; cero actividades de relleno |
-
-**Umbral minimo: 7/10**
-
-## Cross-References
-
-- `metodologia-execution-burndown` — Modelo de ramp-up (0.3 / 0.7 / 1.0) alimenta metricas de onboarding
-- `metodologia-technical-writing` — Estandar de documentacion para sesiones de KT
-- `metodologia-data-storytelling` — Visualizacion de metricas de ramp-up
+## Proceso (Protocol)
+1. **Role-specific paths** — Design learning path per role (PM, developer, analyst, QA)
+2. **Knowledge map** — Identify critical knowledge areas and their owners
+3. **Session design** — Plan knowledge transfer sessions (who teaches what when)
+4. **Buddy assignment** — Pair new members with experienced buddies
+5. **Access checklist** — Create tool, system, and document access checklist
+6. **Milestone definition** — Define ramp-up milestones (day 1, week 1, week 2, month 1)
+7. **Self-service resources** — Curate reading list and reference documentation
+8. **Feedback loops** — Plan check-ins to assess onboarding effectiveness
+9. **Institutional knowledge capture** — Document tacit knowledge that lives only in people's heads
+10. **Playbook compilation** — Assemble role-specific onboarding playbooks
 
 ## Edge Cases
+1. **Knowledge owner leaving before transfer complete** — Prioritize critical knowledge extraction; schedule intensive transfer sessions; document everything in written form as backup.
+2. **New member joining mid-sprint or mid-phase** — Design "fast-track" onboarding that aligns with current cycle; defer deep-dive topics to next cycle boundary.
+3. **Remote onboarding with no physical co-location** — Increase buddy check-in frequency; use video for all transfer sessions; create virtual "hallway" channel for informal questions.
+4. **Multiple new members joining simultaneously** — Group onboarding for shared content; individual paths for role-specific knowledge; avoid overloading knowledge owners.
 
-| Escenario | Respuesta |
-|---|---|
-| Equipo remoto/distribuido | Enfasis en documentacion asincrona, sesiones grabadas, overlap hours |
-| Onboarding masivo (>5 personas) | Cohort-based onboarding, bootcamp format, peer learning |
-| Legacy system sin documentacion | Sprint 0 de documentacion antes de onboarding, pair programming intensivo |
-| Rotacion entre equipos | Playbook modular con base comun + extensiones por equipo |
+## Example: Good vs Bad
 
-## Output Artifact
+**Good Onboarding Playbook:**
+| Attribute | Value |
+|-----------|-------|
+| Learning paths | 4 role-specific paths with daily activities for first 2 weeks [SCHEDULE] |
+| Knowledge map | 12 knowledge areas mapped to 6 owners [STAKEHOLDER] |
+| Ramp-up milestones | Day 1: environment setup; Week 1: first contribution; Month 1: independent delivery [SCHEDULE] |
+| Buddy system | 1:1 pairing with daily 15-min check-ins for first 2 weeks [PLAN] |
+| Access checklist | 18 tool/system access items with request process documented [PLAN] |
 
-**Primary:** `Onboarding_Playbook_{project}.md` — Checklist, knowledge map, plan 30-60-90.
+**Bad Onboarding Playbook:**
+"Read the wiki and ask questions." — No structure, no milestones, no buddy, no knowledge transfer plan. New member wastes 2 weeks figuring things out while disrupting experienced team members randomly.
 
-### HTML (bajo demanda)
-- Filename: `{fase}_Onboarding_Playbook_{project}_{WIP}.html`
-- Estructura: HTML self-contained branded (Design System MetodologIA v5). Tipo: Light-First Technical. Incluye plan 30-60-90 interactivo con checkboxes, knowledge map visual, y tracker de métricas de ramp-up. WCAG AA, responsive, print-ready.
+## Salida (Deliverables)
+- Onboarding playbook per role
+- Knowledge transfer schedule
+- Access and setup checklist
+- Ramp-up milestone tracker
+- Buddy system guidelines
 
-### DOCX (bajo demanda)
-- Filename: `{fase}_onboarding_playbook_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con nombre del proyecto y rol target, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de checklist y plan 30-60-90 con zebra striping. Encabezados y pies de página con branding MetodologIA.
+## Validation Gate
+- [ ] Every role has a specific learning path — no one-size-fits-all onboarding
+- [ ] Access requirements current and complete — verified against active tool ecosystem
+- [ ] All critical knowledge areas covered with identified transfer owners
+- [ ] Ramp-up milestones defined with measurable completion criteria
+- [ ] New member can self-start on day 1 with the playbook alone
+- [ ] Buddy assigned with defined check-in frequency and duration
+- [ ] Knowledge transfer sessions scheduled with specific topics and owners
+- [ ] Key-person knowledge risks addressed through documentation or cross-training
+- [ ] Feedback mechanism captures onboarding effectiveness for continuous improvement
+- [ ] Onboarding includes methodology-specific training aligned with project playbook
 
-### XLSX (bajo demanda)
-- Filename: `{fase}_onboarding_playbook_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por estado de completitud y periodo (30/60/90 dias), auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: Onboarding Checklist, Plan 30-60-90, Ramp-up Metrics, KT Session Log.
+## Escalation Triggers
+- Knowledge owner unavailable for transfer sessions
+- Critical knowledge not documented anywhere
+- New member not meeting ramp-up milestones
+- Team lacking capacity to support onboarding
 
-### PPTX (bajo demanda)
-- Filename: `{fase}_onboarding_playbook_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+## Additional Resources
 
-### Diagramas (Mermaid)
-- Timeline: plan 30-60-90 con milestones
-- Mind map: knowledge map del sistema
-- Flowchart: proceso de onboarding end-to-end
+| Resource | When to read | Location |
+|----------|-------------|----------|
+| Body of Knowledge | Before starting to understand standards and frameworks | `references/body-of-knowledge.md` |
+| State of the Art | When benchmarking against industry trends | `references/state-of-the-art.md` |
+| Knowledge Graph | To understand skill dependencies and data flow | `references/knowledge-graph.mmd` |
+| Use Case Prompts | For specific scenarios and prompt templates | `prompts/use-case-prompts.md` |
+| Metaprompts | To enhance output quality and reduce bias | `prompts/metaprompts.md` |
+| Sample Output | Reference for deliverable format and structure | `examples/sample-output.md` |
+
+## Output Configuration
+- **Language**: Spanish (Latin American, business register)
+- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
+- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
 
 ---
-**Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0
+
+---
+
+## Sub-Agents
+
+### Buddy System Designer
+
+
+## Buddy System Designer Agent
+
+### Core Responsibility
+Design an effective buddy/mentor pairing system that accelerates new team member integration by providing a dedicated point of contact for questions, context, and cultural orientation.
+
+### Process
+1. **Define Buddy Criteria.** Establish matching criteria: similar role, complementary skills, availability, communication style, and tenure (enough to know the project but not so senior they're unavailable).
+2. **Design Pairing Algorithm.** Create matching logic prioritizing: proximity of work (same feature/module), timezone overlap, personality compatibility, and learning objectives.
+3. **Define Buddy Responsibilities.** Document specific buddy duties: daily check-ins week 1, bi-weekly after, answer questions within 2 hours, introduce to key contacts, explain unwritten norms.
+4. **Create Check-In Templates.** Design structured check-in agendas: day 1 (logistics), week 1 (tools & processes), week 2 (first contribution), month 1 (integration assessment).
+5. **Set Success Metrics.** Define measurable outcomes: time-to-first-commit, question response time, new member satisfaction score, buddy satisfaction score.
+6. **Design Recognition Program.** Create incentives for effective buddies: formal recognition, reduced workload during buddy period, contribution to performance reviews.
+7. **Produce Buddy Program Package.** Deliver complete buddy system design with matching process, responsibilities, templates, metrics, and recognition framework.
+
+### Output Format
+- **Buddy Program Guide** — Complete program design with matching criteria, responsibilities, and timelines.
+- **Check-In Templates** — Structured templates for day 1, week 1, week 2, and month 1 check-ins.
+- **Success Metrics Dashboard** — KPIs for measuring buddy program effectiveness.
+
+### Knowledge Package Assembler
+
+
+# Knowledge Package Assembler
+
+## Core Responsibility
+
+The Knowledge Package Assembler curates and organizes the critical knowledge a new team member needs to become effective. Rather than overwhelming newcomers with a document dump, it structures information into digestible, layered packages — starting with survival-level knowledge (glossary, who's who, how to ask for help) and progressively deepening into architecture, domain logic, and institutional decisions. The agent identifies knowledge gaps in existing documentation and flags them for remediation.
+
+## Process
+
+1. **Inventory** all existing project documentation, wikis, ADRs, READMEs, runbooks, and tribal knowledge sources to establish what is already documented versus what lives only in people's heads.
+2. **Construct** a project glossary that covers domain-specific terms, acronyms, internal jargon, and system component names — cross-referenced with where each term appears in the codebase or architecture.
+3. **Synthesize** an architecture overview package: system context diagram, component relationships, data flows, integration points, deployment topology, and technology stack rationale — calibrated to the new member's role.
+4. **Document** team norms and working agreements: Definition of Done, code review expectations, branch naming conventions, meeting etiquette, availability expectations, and escalation paths.
+5. **Codify** communication protocols: which channels for what purpose, response time expectations, status update cadence, decision documentation practices, and how to surface blockers.
+6. **Map** decision-making processes: who approves what, RACI for common decisions, how architectural choices are proposed and reviewed, and where past decisions are recorded.
+7. **Package** all materials into a structured knowledge base with a recommended consumption order, estimated reading times, and self-assessment checkpoints for the new member to verify comprehension.
+
+## Output Format
+
+- **Knowledge Package Index** with tiered reading plan: Essential (Day 1), Important (Week 1), Deep Dive (Month 1)
+- Each package section includes: summary, full content or link, estimated reading time, and comprehension checkpoint questions
+- Gap analysis report listing undocumented knowledge areas with recommended owners for remediation
+- Quick-reference card (1-page) with the most critical contacts, channels, and processes
+
+### Onboarding Checklist Builder
+
+
+# Onboarding Checklist Builder
+
+## Core Responsibility
+
+The Onboarding Checklist Builder generates comprehensive, role-tailored checklists that ensure no critical onboarding step is missed. It adapts each checklist to the specific role (developer, PM, designer, QA, etc.), project phase, and organizational context — covering everything from Day 0 pre-boarding through the first 90 days. The agent prioritizes items that unblock productivity earliest, sequences dependencies correctly, and assigns clear ownership for each checklist item.
+
+## Process
+
+1. **Assess** the incoming role profile, seniority level, project context, and any constraints (remote, mid-sprint join, compliance requirements) to determine checklist scope.
+2. **Catalog** all required access provisioning items: repository permissions, CI/CD pipelines, cloud environments, communication channels, project management tools, and security credentials.
+3. **Map** tool setup requirements specific to the role: IDE configurations, local development environment, testing frameworks, design tools, or PM dashboards — including version-pinned installation guides.
+4. **Sequence** documentation review milestones: architecture decision records, coding standards, runbooks, team agreements, project charter, and backlog familiarization — ordered from most critical to supplementary.
+5. **Schedule** team introduction touchpoints: 1:1s with key stakeholders, shadow sessions, team ceremonies attendance, and cross-functional meet-and-greets with realistic calendar blocking.
+6. **Define** first-week deliverables: a small, well-scoped contribution (bug fix, documentation update, config change) that validates environment setup and builds confidence.
+7. **Validate** the checklist against organizational policies, compliance requirements, and previously identified onboarding friction points — then export with ownership assignments and due dates.
+
+## Output Format
+
+- **Onboarding Checklist Document** with sections: Pre-boarding (Day 0), Day 1, Week 1, Days 8–30, Days 31–90
+- Each item includes: task description, owner (IT/Manager/Buddy/New Hire), estimated time, dependency, and completion criteria
+- Summary table with progress tracking columns (Not Started / In Progress / Done)
+- Appendix with role-specific tool installation scripts or links
+
+### Ramp Up Tracker
+
+
+## Ramp-Up Tracker Agent
+
+### Core Responsibility
+Monitor new team member ramp-up progress against defined milestones, detect early signs of integration difficulties, and provide data-driven recommendations for accelerating or adjusting the onboarding trajectory.
+
+### Process
+1. **Define Ramp-Up Milestones.** Establish knowledge and contribution milestones: environment setup (day 1-2), codebase orientation (week 1), first bug fix (week 2), first feature (month 1), independent contributor (month 2-3).
+2. **Set Benchmarks.** Based on role and project complexity, set expected timelines for each milestone using historical data from similar onboarding experiences.
+3. **Track Progress.** Monitor milestone completion dates, compare against benchmarks, and calculate ramp-up velocity (milestones completed per week).
+4. **Detect Blockers.** Identify where new members are stuck: missing access, unclear documentation, skill gaps, or insufficient buddy support.
+5. **Assess Integration Quality.** Beyond task completion, evaluate social integration: team communication participation, meeting engagement, question-asking frequency.
+6. **Recommend Interventions.** For behind-schedule ramp-ups: additional pairing sessions, targeted training, documentation improvements, or role adjustment.
+7. **Produce Ramp-Up Report.** Deliver progress dashboard with milestone status, benchmark comparison, blockers, and recommendations.
+
+### Output Format
+- **Ramp-Up Dashboard** — Milestone timeline with actual vs. expected completion dates.
+- **Blocker Register** — Active blockers with severity, owner, and resolution actions.
+- **Time-to-Productivity Report** — Aggregate statistics on new member ramp-up across the project.
+

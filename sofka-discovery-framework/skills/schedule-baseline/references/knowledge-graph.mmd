@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Scope WBS<br/>Activity List] --> D
+        B[Resource Plan<br/>Availability] --> D
+        C[Risk Quantification<br/>Duration Ranges] --> D
+    end
+    subgraph "Schedule Baseline"
+        D[Activity Sequencing<br/>& Dependencies] --> E[Duration Estimation<br/>& CPM]
+        E --> F[Resource Leveling<br/>& Optimization]
+        F --> G[Baseline Approval<br/>& Lock]
+    end
+    subgraph Outputs
+        G --> H[Status Report SPI]
+        G --> I[Earned Value Analysis]
+        F --> J[Resource Optimization]
+        G --> K[Steering Review]
+    end
+    subgraph Agents
+        L[Schedule Architect Agent] --> E
+        M[Critical Path Agent] --> F
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

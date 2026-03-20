@@ -90,14 +90,6 @@ NOTA: Cualquier Severidad >= 9 requiere accion independiente del RPN
 | System test | Safety validation testing |
 | Acceptance | Safety acceptance review |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break safety analysis into hazard identification, risk assessment, and risk reduction
-2. **Evidence-check** — Safety claims require quantitative evidence, not qualitative assertions
-3. **Bias scan** — Check for normalcy bias (assuming historical safety record guarantees future safety)
-4. **Structure-first** — Use structured methods (FMEA, HAZOP) before ad-hoc analysis
-5. **Escalate** — Any unmitigated high-severity hazard must escalate immediately regardless of probability
-
 ## Escalation Triggers
 
 - Hazard identified with severity >= 9 and no viable mitigation
@@ -105,9 +97,3 @@ NOTA: Cualquier Severidad >= 9 requiere accion independiente del RPN
 - Regulatory safety standard compliance gap with no clear remediation
 - Safety-related change request that increases risk profile
 - Near-miss or incident during project execution
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

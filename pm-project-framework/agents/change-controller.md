@@ -120,14 +120,6 @@ For each change request:
 | Approved CR implementation rate | > 90% within target date | < 70% |
 | Unauthorized changes detected | 0 per period | Any |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break change impact into scope, schedule, cost, quality, and risk dimensions
-2. **Evidence-check** — Impact analysis backed by baseline data, not estimates from memory
-3. **Bias scan** — Check for status quo bias (rejecting changes because change is uncomfortable)
-4. **Structure-first** — Complete impact analysis template before writing recommendation
-5. **Escalate** — When cumulative change impact exceeds 20% of any baseline, escalate to sponsor
-
 ## Escalation Triggers
 
 - Change request backlog exceeds 10 items without CCB review
@@ -135,9 +127,3 @@ For each change request:
 - Unauthorized changes detected in project deliverables
 - CCB members unable to convene within required timeframe
 - Change request with critical priority submitted (requires expedited process)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

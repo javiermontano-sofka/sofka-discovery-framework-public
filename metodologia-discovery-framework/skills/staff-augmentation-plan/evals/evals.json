@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Plan augmentation for 5 developers for 6 months.",
+    "assertions": [
+      "profiles requirements",
+      "designs sourcing",
+      "plans onboarding",
+      "addresses retention"
+    ]
+  },
+  {
+    "prompt": "Onboard 3 augmented staff next sprint.",
+    "assertions": [
+      "creates fast-track plan",
+      "assigns buddies",
+      "sets milestones",
+      "defines criteria"
+    ]
+  },
+  {
+    "prompt": "Knowledge retention for 4 contractors leaving in 8 weeks.",
+    "assertions": [
+      "identifies critical knowledge",
+      "designs transfer",
+      "creates documentation",
+      "plans succession"
+    ]
+  },
+  {
+    "prompt": "Compare 2 augmentation vendors.",
+    "assertions": [
+      "evaluates screening",
+      "compares rates",
+      "assesses guarantees",
+      "recommends"
+    ]
+  }
+]

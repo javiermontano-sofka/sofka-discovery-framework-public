@@ -120,14 +120,6 @@ PARA CADA escalacion:
 | Proactively asks about project | Occasionally | Never | Increase engagement touchpoints |
 | Delegates without disengaging | Delegate with check-ins | Delegate and forget | Re-engage directly |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break sponsor engagement issues into frequency, quality, relevance, and format
-2. **Evidence-check** — Sponsor satisfaction based on response patterns, not assumptions
-3. **Bias scan** — Check for avoidance bias (not escalating bad news to protect relationship)
-4. **Structure-first** — Prepare briefing outline before populating content
-5. **Escalate** — When sponsor is chronically disengaged, involve PMO or sponsor's supervisor
-
 ## Escalation Triggers
 
 - Sponsor unresponsive for more than 1 week on non-critical matters
@@ -135,9 +127,3 @@ PARA CADA escalacion:
 - Gate review cannot proceed without sponsor and no delegate identified
 - Sponsor making decisions that contradict project governance
 - Sponsor engagement health shows sustained decline
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

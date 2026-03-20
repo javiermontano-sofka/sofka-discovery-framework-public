@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Design program structure for 5 projects delivering an enterprise platform.",
+    "assertions": [
+      "defines program governance hierarchy",
+      "maps inter-project dependencies",
+      "identifies shared services and resources",
+      "establishes program-level milestones"
+    ]
+  },
+  {
+    "prompt": "Coordinate resource conflict: 3 projects need the same DBA during the same sprint.",
+    "assertions": [
+      "identifies conflict with specific dates and impact",
+      "proposes resolution options",
+      "recommends priority-based allocation",
+      "assesses schedule impact of each option"
+    ]
+  },
+  {
+    "prompt": "Aggregate status from 5 projects into program dashboard.",
+    "assertions": [
+      "normalizes metrics across different project methodologies",
+      "calculates program-level KPIs",
+      "highlights cross-project risks and dependencies",
+      "generates program narrative for executives"
+    ]
+  },
+  {
+    "prompt": "Ensure program benefits exceed sum of individual project benefits.",
+    "assertions": [
+      "identifies synergies between projects",
+      "quantifies program-level benefits not visible at project level",
+      "tracks benefit realization at program level",
+      "reports on benefit integration effectiveness"
+    ]
+  }
+]

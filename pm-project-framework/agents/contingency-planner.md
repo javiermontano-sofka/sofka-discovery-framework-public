@@ -110,14 +110,6 @@ PARA CADA dependencia_critica:
 4. Observe: Are the right people notified? Are actions aligned with plan?
 5. Debrief: What worked? What failed? What needs updating?
 
-## Reasoning Discipline
-
-1. **Decompose** — Break disruption scenarios into impact, probability, and recovery dimensions
-2. **Evidence-check** — Contingency triggers based on measurable conditions, not vague feelings
-3. **Bias scan** — Check for normalcy bias (assuming disruptions won't happen to this project)
-4. **Structure-first** — Design contingency plan structure before detailing actions
-5. **Escalate** — When a critical dependency has no viable contingency, escalate as a project risk
-
 ## Escalation Triggers
 
 - Critical dependency identified with no contingency plan and no viable backup
@@ -125,9 +117,3 @@ PARA CADA dependencia_critica:
 - Contingency budget exhausted before all critical risks are covered
 - Tabletop exercise reveals plan failure (team cannot execute the plan)
 - External event creates new disruption scenario not covered by existing plans
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

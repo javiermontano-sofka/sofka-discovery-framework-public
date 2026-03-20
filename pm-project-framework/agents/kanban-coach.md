@@ -93,14 +93,6 @@ PARA cada item_en_backlog:
 4. **Capacity addition:** Add expertise to constrained column
 5. **Process change:** Split the bottleneck column into substages
 
-## Reasoning Discipline
-
-1. **Decompose** — Break flow problems into WIP, wait time, active time, and policy issues
-2. **Evidence-check** — All flow recommendations backed by metric data, not impressions
-3. **Bias scan** — Check for solution bias (jumping to WIP limits when issue is quality or policy)
-4. **Structure-first** — Analyze CFD before recommending changes
-5. **Escalate** — When flow efficiency < 20% for 2+ weeks, escalate systemic issue
-
 ## Escalation Triggers
 
 - Flow efficiency drops below 20% for two consecutive weeks
@@ -108,9 +100,3 @@ PARA cada item_en_backlog:
 - WIP limits consistently violated without formal exception
 - Blocked items exceed 20% of total WIP
 - Throughput declines 30%+ from rolling average
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

@@ -3,7 +3,7 @@ skill: pipeline-governance
 type: use-case-prompts
 version: 1.0
 author: Javier Montaño
-copyright: © Sofka Technologies
+copyright: © Comunidad MetodologIA
 updated: 2026-03-13
 ---
 
@@ -287,4 +287,4 @@ Formato: markdown
 **Output esperado:** Lessons Learned Report con retrospectiva estructurada por sección, métricas comparadas contra benchmarks del framework, y recomendaciones accionables para el proceso de gobernanza en futuros engagements.
 
 ---
-**Autor:** Javier Montaño | **© Sofka Technologies** | **Actualización:** 13 de marzo de 2026
+**Autor:** Javier Montaño | **© Comunidad MetodologIA** | **Actualización:** 13 de marzo de 2026

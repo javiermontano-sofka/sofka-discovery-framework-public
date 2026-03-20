@@ -1,0 +1,25 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["📐 Methodology Assessment<br/>Selected Approach"]:::primary --> B["📖 Methodology Playbook<br/>Skill Entry Point"]:::primary
+    C["👥 Team Structure<br/>Size & Distribution"]:::amber --> B
+
+    B --> D["📋 Ceremony Catalog<br/>Purpose, Agenda, Duration"]:::primary
+    B --> E["📅 Cadence Calendar<br/>Weekly/Bi-weekly/PI"]:::amber
+    B --> F["✅ DoD Matrix<br/>Per Deliverable Type"]:::primary
+
+    D --> G["👤 Role Mapping<br/>Facilitator + Participants"]:::amber
+    E --> G
+    F --> G
+
+    G --> H["📦 Playbook Document<br/>Searchable, Actionable"]:::dark
+
+    H --> I["🔄 Adaptation Rules<br/>When to Modify"]:::primary
+    H --> J["📊 Tool Mapping<br/>Ceremony-Tool Alignment"]:::amber
+
+    I --> K["✅ Validation Gate<br/>10 Criteria"]:::primary
+    J --> K
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

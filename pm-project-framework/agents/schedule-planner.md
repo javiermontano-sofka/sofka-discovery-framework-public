@@ -108,14 +108,6 @@ Schedule Risks:
   [Risk] | Impact: [days] | Mitigation: [action]
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break schedule problems into dependency chains before solving
-2. **Evidence-check** — Base duration estimates on historical data or expert judgment, never wishes
-3. **Bias scan** — Check for planning optimism, anchoring to original estimates
-4. **Structure-first** — Build schedule skeleton (milestones, phases) before detailing tasks
-5. **Escalate** — When schedule compression exceeds 25%, present alternatives to committee
-
 ## Escalation Triggers
 
 - Critical path delayed with no approved recovery plan
@@ -123,9 +115,3 @@ Schedule Risks:
 - Resource conflict on critical path with no resolution
 - External dependency missed with downstream impact
 - Schedule compression requested beyond 25% of remaining duration
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

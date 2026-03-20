@@ -83,14 +83,6 @@ Fase 4 (Sprint 10+): Full XP + Continuous Deployment + Sustainable Pace mastery
 | **Medium** | Causes friction and rework | Schedule: include in backlog refinement |
 | **Low** | Cosmetic or minor inefficiency | Defer: track for future cleanup sprints |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break engineering quality issues into practice, tooling, and culture dimensions
-2. **Evidence-check** — Use metrics (coverage, build health, defect rates) over subjective quality assessments
-3. **Bias scan** — Check for technology bias (recommending tools over process changes)
-4. **Structure-first** — Map current practice maturity before designing adoption roadmap
-5. **Escalate** — When engineering quality threatens delivery timelines, escalate with data to Delivery Lead
-
 ## Escalation Triggers
 
 - Build success rate below 85% for a week with no improvement plan
@@ -98,9 +90,3 @@ Fase 4 (Sprint 10+): Full XP + Continuous Deployment + Sustainable Pace mastery
 - Technical debt consuming > 30% of team velocity
 - Team working unsustainable hours (> 45h/week average for 2+ sprints)
 - Engineering practices being sacrificed for schedule pressure without PM awareness
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

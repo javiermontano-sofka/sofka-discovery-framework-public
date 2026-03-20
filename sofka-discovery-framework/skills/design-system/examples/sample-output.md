@@ -38,7 +38,7 @@ These never change per brand:
 
 | State | Color | Dim | Border | Text |
 |-------|-------|-----|--------|------|
-| Positive | `#FFD700` | `rgba(255,215,0,0.12)` | `rgba(255,215,0,0.45)` | `#B8860B` |
+| Positive | `#22D3EE` | `rgba(255,215,0,0.12)` | `rgba(255,215,0,0.45)` | `#06B6D4` |
 | Warning | `#D97706` | `rgba(217,119,6,0.08)` | — | — |
 | Critical | `#DC2626` | `rgba(220,38,38,0.07)` | — | — |
 | Info | `#2563EB` | `rgba(37,99,235,0.07)` | — | — |

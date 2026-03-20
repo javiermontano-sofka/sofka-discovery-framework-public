@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[financial-business-case] --> F
+        B[cost-estimation] --> F
+        C[portfolio-prioritization] --> F
+        D[benefits-realization-plan] --> F
+    end
+
+    subgraph Process
+        F[funding-request<br/>Prepare & Submit<br/>Funding Proposal]:::skill
+        F --> G[Validate Financial Model]
+        G --> H[Stakeholder Review]
+        H --> I[Approval Gate]
+    end
+
+    subgraph Outputs
+        I --> J[budget-baseline]
+        I --> K[portfolio-dashboard]
+        I --> L[governance-framework]
+    end
+
+    subgraph Agents
+        M[financial-analyst-agent]:::agent --> F
+        N[sponsor-liaison-agent]:::agent --> H
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

@@ -86,6 +86,3 @@ Escalate to user/steering committee when:
 - Current architecture is fundamentally incompatible with business requirements
 - Technology choice requires skills the team doesn't have (>3 month ramp-up)
 - Security or compliance implications require legal/regulatory input
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

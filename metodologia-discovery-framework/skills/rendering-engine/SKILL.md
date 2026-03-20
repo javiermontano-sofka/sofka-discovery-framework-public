@@ -1,84 +1,249 @@
 ---
-name: rendering-engine
-description: Motor de renderizado automático para generación de diagramas (PNG) desde Mermaid y exportación de propuestas a PDF con branding MetodologIA.
-author: Equipo MetodologIA
-version: 1.0.0
-license: MIT
-category: Herramientas & DX
-tags: [rendering, mermaid, pdf, png, export, branding, diagrams]
-allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+name: apex-rendering-engine
+description: >
+  Use when the user asks to "render to PNG", "convert to PDF",
+  "export Mermaid diagrams", "generate printable deliverables", "create branded exports",
+  or mentions rendering engine, Mermaid-to-PNG, markdown-to-PDF, format rendering,
+  export engine, visual format conversion.
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
-# rendering-engine
+# Rendering Engine (Mermaid-to-PNG, Markdown-to-PDF)
 
-> Motor de renderizado automático: Mermaid → PNG, Markdown → PDF.
-> Branding estricto MetodologIA en todos los outputs visuales.
+**TL;DR**: Converts project deliverables between formats: Mermaid diagrams to PNG/SVG images, Markdown to styled PDF with APEX branding, and HTML to print-ready PDF. Ensures visual fidelity across format conversions while maintaining brand consistency.
 
----
+## Principio Rector
+El formato de entrega debe ser el que el receptor puede consumir. No todos los stakeholders pueden renderizar Mermaid o leer Markdown. El rendering engine es el puente entre el formato de trabajo (Markdown + Mermaid) y el formato de distribución (PDF, PNG, HTML). La fidelidad visual en la conversión es no negociable.
 
-## TL;DR
+## Assumptions & Limits
+- Assumes source content (Markdown, Mermaid, HTML) is syntactically valid before rendering [PLAN]
+- Assumes APEX brand tokens are available in `references/ontology/canonical-tokens.md` [PLAN]
+- Breaks when rendering tools (mmdc, puppeteer, wkhtmltopdf) are not installed on the system
+- Does not create content; only transforms existing content between formats
+- Assumes target audience format preferences are known from communication plan [SUPUESTO]
+- Limited to static format conversion; interactive dashboards require separate tooling
 
-Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entregables completos a PDF profesional con branding MetodologIA. Los evidence tags `[CÓDIGO]`, `[DOC]`, etc. se renderizan como badges visuales en el documento final.
+## Usage
 
----
+```bash
+# Render Mermaid diagram to PNG
+/pm:rendering-engine $ARGUMENTS="--source diagram.mmd --target PNG --resolution 300dpi"
 
-## Core Responsibilities
+# Convert Markdown deliverable to branded PDF
+/pm:rendering-engine --type md-to-pdf --source charter.md --branding apex
 
-1. **PNG Generation** — Detectar bloques ` ```mermaid ` en entregables, renderizar con Mermaid CLI a `discovery/assets/`
-2. **PDF Compilation** — Compilar markdown a PDF con Pandoc + wkhtmltopdf (o Typst como alternativa)
-3. **Branding Enforcement** — Paleta MetodologIA (#6366F1, #0F172A), tipografía Poppins/Montserrat
-4. **Evidence Badges** — Tags de evidencia renderizados como badges HTML coloreados por tipo
+# Batch render all Mermaid files in project
+/pm:rendering-engine --type batch --glob "**/*.mmd" --target SVG
+```
 
----
+**Parameters:**
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `$ARGUMENTS` | Yes | Path to source file |
+| `--type` | No | `mermaid-to-png` (default), `md-to-pdf`, `html-to-pdf`, `batch` |
+| `--target` | No | `PNG`, `SVG`, `PDF` |
+| `--resolution` | No | Image resolution (default 150dpi) |
+| `--branding` | No | `apex` (default), `none` |
+| `--glob` | No | Pattern for batch rendering |
 
-## Assigned Skills
+## Service Type Routing
+`{TIPO_PROYECTO}`: All project types need format rendering. Executive deliverables typically need PDF; dashboard elements need PNG/SVG; working documents stay in Markdown.
 
-| Skill | Rol |
-|-------|-----|
-| `rendering-engine` (self) | Motor principal de renderizado |
-| `design-system` | Tokens canónicos y componentes de branding |
-| `mermaid-diagramming` | Validación de sintaxis Mermaid |
+## Before Rendering
+1. **Read** the source content to verify it renders correctly in its native format [PLAN]
+2. **Read** `references/ontology/canonical-tokens.md` to load APEX brand tokens for styling [PLAN]
+3. **Glob** for all files matching the source pattern if batch rendering [PLAN]
+4. **Grep** for Mermaid syntax errors (unclosed brackets, invalid node refs) in source files [INFERENCIA]
 
----
+## Entrada (Input Requirements)
+- Source content (Markdown, Mermaid, HTML)
+- Target format (PNG, SVG, PDF)
+- APEX brand tokens for styling
+- Page layout requirements (for PDF)
+- Resolution requirements (for images)
 
-## Output Configuration
+## Proceso (Protocol)
+1. **Source validation** — Verify source content renders correctly in native format
+2. **Format mapping** — Determine conversion pipeline (source → intermediate → target)
+3. **Style preparation** — Prepare CSS/styling for target format
+4. **Rendering execution** — Execute format conversion using appropriate tools
+5. **Quality verification** — Compare rendered output against source for fidelity
+6. **Brand compliance** — Verify brand colors and typography in output
+7. **Resolution check** — Verify image resolution meets requirements
+8. **Page layout** — For PDF, verify pagination, margins, and headers/footers
+9. **Accessibility** — Ensure rendered output meets accessibility standards
+10. **Distribution** — Deliver rendered output per communication plan
 
-### Output Artifact
+## Edge Cases
+1. **Mermaid diagram too complex for single PNG** — Split into sub-diagrams or increase canvas size. For diagrams with >50 nodes, recommend SVG format for scalability [INFERENCIA].
+2. **PDF page breaks split tables or diagrams** — Apply CSS page-break-inside: avoid rules. For long tables, add repeated headers [PLAN].
+3. **Rendering tool not installed** — Provide installation instructions. Fall back to HTML output which requires no external tools. Document the limitation [SUPUESTO].
+4. **Brand colors render differently on screen vs print** — Use CMYK-safe color equivalents for print PDF. Verify with test print before distribution [PLAN].
 
-**Nombre**: `{fase}_{entregable}_{cliente}_{WIP|Aprobado}.pdf`
+## Example: Good vs Bad
 
-### Output Templates
+**Good example — High-fidelity rendering:**
 
-| Formato | Especificación |
-|---------|---------------|
-| **Markdown** | Source de verdad — contiene bloques Mermaid originales + evidence tags en texto. |
-| **HTML** | Self-contained con CSS MetodologIA. Mermaid renderizado inline. Evidence tags como badges. WCAG AA. |
-| **DOCX** | python-docx. Poppins/Montserrat font. Imágenes PNG embebidas desde `discovery/assets/`. Header MetodologIA. |
-| **XLSX** | openpyxl. Hoja "Rendering Log" con columnas: Diagram ID, Source File, Output PNG, Status. |
-| **PPTX** | python-pptx. PNGs de diagramas como imágenes full-slide. Slide master indigo MetodologIA. |
+| Attribute | Value |
+|-----------|-------|
+| Source | Mermaid Gantt chart with 30 activities |
+| Target | PNG at 300dpi + PDF with branded header |
+| Brand compliance | APEX blue #2563EB and amber #F59E0B verified |
+| Fidelity | All text readable, no truncation, correct encoding |
+| File size | PNG 2.1MB (web-optimized), PDF 450KB |
+| Accessibility | Alt text included for PNG, tagged PDF structure |
 
----
+**Bad example — Broken rendering:**
+PNG exported at 72dpi with text too small to read, brand colors replaced with default Mermaid theme, and Spanish characters showing as encoding artifacts. Low-resolution exports fail the professional standard test and damage credibility.
+
+## Salida (Deliverables)
+- Rendered output in target format
+- Rendering quality report
+- Format conversion log
+
+## Validation Gate
+- [ ] Source content validates without syntax errors before rendering [PLAN]
+- [ ] Rendered output visually matches source content (no data loss) [METRIC]
+- [ ] APEX brand colors (#2563EB, #F59E0B, #0F172A) present in output [PLAN]
+- [ ] Image resolution ≥150dpi for screen, ≥300dpi for print [METRIC]
+- [ ] All text readable at intended viewing size [PLAN]
+- [ ] Spanish characters render correctly (accents, ñ, ¿, ¡) [METRIC]
+- [ ] PDF pagination does not split tables or diagrams [PLAN]
+- [ ] File size within distribution limits (email <10MB, web <5MB) [METRIC]
+- [ ] Accessibility requirements met (alt text, tagged PDF) [PLAN]
+- [ ] Output verified on ≥2 target platforms (browser, reader) [METRIC]
 
 ## Escalation Triggers
+- Rendering tool unavailable
+- Visual fidelity loss in conversion
+- Format not supported by rendering pipeline
+- Output file size exceeds distribution limits
 
-- `mmdc` no instalado → Warning graceful, no bloqueo (diagramas permanecen como código)
-- Pandoc/wkhtmltopdf no instalados → Export como HTML en lugar de PDF
-- Diagrama Mermaid con sintaxis inválida → Log error, continuar con siguientes bloques
+## Additional Resources
+
+| Resource | When to read | Location |
+|----------|-------------|----------|
+| Body of Knowledge | Before starting to understand standards and frameworks | `references/body-of-knowledge.md` |
+| State of the Art | When benchmarking against industry trends | `references/state-of-the-art.md` |
+| Knowledge Graph | To understand skill dependencies and data flow | `references/knowledge-graph.mmd` |
+| Use Case Prompts | For specific scenarios and prompt templates | `prompts/use-case-prompts.md` |
+| Metaprompts | To enhance output quality and reduce bias | `prompts/metaprompts.md` |
+| Sample Output | Reference for deliverable format and structure | `examples/sample-output.md` |
+
+## Output Configuration
+- **Language**: Spanish (Latin American, business register)
+- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
+- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
 
 ---
 
-## Scripts
-
-| Script | Ubicación | Propósito |
-|--------|-----------|----------|
-| `render-mermaid.sh` | `scripts/render-mermaid.sh` | Renderizar bloques Mermaid a PNG |
-| `export-pdf.sh` | `scripts/export-pdf.sh` | Compilar entregable a PDF con branding |
-
 ---
 
-## Branding Rules (Inmutable)
+## Sub-Agents
 
-- **Primary**: #6366F1 (indigo) — headers, bordes, acentos
-- **Background**: #0F172A (dark) — fondo de tablas alternas, backgrounds
-- **Typography**: Poppins/Montserrat (pesos 300-700)
-- **Evidence badges**: Coloreados por tipo (CÓDIGO=green bg, CONFIG=blue bg, DOC=indigo bg, INFERENCIA=purple bg, SUPUESTO=red bg)
+### Markdown To Html Converter
+
+
+## Markdown To Html Converter Agent
+
+### Core Responsibility
+
+Converts markdown to styled HTML with design tokens. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Mermaid Renderer
+
+
+## Mermaid Renderer Agent
+
+### Core Responsibility
+
+Renders Mermaid diagrams to PNG/SVG images. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Pdf Exporter
+
+
+## Pdf Exporter Agent
+
+### Core Responsibility
+
+Exports HTML deliverables to print-ready PDF format. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Template Engine
+
+
+## Template Engine Agent
+
+### Core Responsibility
+
+Processes document templates with variable substitution. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+

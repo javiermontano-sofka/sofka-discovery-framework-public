@@ -116,6 +116,3 @@ For each data exchange between systems:
 - Connect data issues to business impact: "Data quality issues cause ~5% of orders to require manual intervention"
 - Provide actionable recommendations: "Implement CDC from source system to reduce data lag from 24h to <5min"
 - Flag hidden costs: "Data migration for 500M records will require 3 dedicated sprints, not the 1 sprint estimated"
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

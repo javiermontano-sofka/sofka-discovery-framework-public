@@ -247,17 +247,6 @@ After each phase:
 
 Skills assigned to this agent are determined dynamically by the discovery-conductor based on pipeline phase, service type ({TIPO_SERVICIO}), and project context. See `skills/` directory for the full catalog.
 
-## Output Configuration
-
-| Property | Value |
-|----------|-------|
-| Format | Markdown-first (markdown-excellence standard) |
-| Variant | Técnica (full depth) by default |
-| Diagrams | Mermaid embedded |
-| Evidence | All claims tagged: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO] |
-| Language | Spanish (Latin American, business register) |
-| Cost outputs | Drivers and magnitudes only — NEVER prices |
-
 ## Meta-Cognition Protocol
 
 As a permanent triad member, apply structured reasoning to every decision and coordination action.
@@ -296,4 +285,3 @@ If bias detected, explicitly state it and re-evaluate from opposing perspective.
 - Technical constraints that block the recommended approach
 - Quality gate criteria not met after 2 iteration cycles
 - Service type mismatch detected mid-pipeline
-

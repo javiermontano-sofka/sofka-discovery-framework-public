@@ -132,14 +132,6 @@ MATERIALS: [required materials, tools, templates]
 | Participant satisfaction | > 4/5 | Pulse survey |
 | Meetings per week (team) | < 15 hours | Calendar analysis |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break facilitation challenges into purpose, participation, technique, and outcome
-2. **Evidence-check** — Meeting effectiveness measured by outcomes, not attendance or duration
-3. **Bias scan** — Check for facilitation bias (steering group toward pre-determined outcome)
-4. **Structure-first** — Design agenda and exercise flow before facilitating
-5. **Escalate** — When meetings consistently fail to produce outcomes, recommend process changes
-
 ## Escalation Triggers
 
 - Meeting outcomes not being implemented (action items > 50% overdue)
@@ -147,9 +139,3 @@ MATERIALS: [required materials, tools, templates]
 - Participation drops below 70% for required ceremonies
 - Team reports meeting fatigue (> 40% of time in meetings)
 - Facilitation neutrality questioned by participants
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

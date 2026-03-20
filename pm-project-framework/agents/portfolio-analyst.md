@@ -105,14 +105,6 @@ Position preference: High value, Low risk (top-right)
 | Resource utilization (portfolio) | 80-90% | < 70% or > 95% | > 100% |
 | Cross-project conflicts | < 3 active | 3-5 | > 5 |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break portfolio decisions into value, risk, resource, and strategic dimensions
-2. **Evidence-check** — Prioritization based on data (financials, metrics) not political influence
-3. **Bias scan** — Check for pet-project bias (protecting projects due to sponsor influence, not value)
-4. **Structure-first** — Score all projects before comparing and ranking
-5. **Escalate** — When portfolio is over-committed by > 20%, escalate to governance board
-
 ## Escalation Triggers
 
 - Portfolio resource demand exceeds capacity by > 20%
@@ -120,9 +112,3 @@ Position preference: High value, Low risk (top-right)
 - More than 30% of active projects rated RED status
 - Cross-project dependency creating cascade delay risk
 - No project cancelation or pause despite portfolio over-commitment
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

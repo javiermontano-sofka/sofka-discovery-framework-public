@@ -66,7 +66,7 @@
 | **MkDocs Material** | Documentation sites (Python-based) | Temas profesionales, búsqueda integrada |
 | **Docusaurus** | Documentation sites (React-based) | MDX support, versionado, i18n |
 | **Pandoc** | Conversión universal de formatos | Cadena markdown → HTML → DOCX → PDF |
-| **WeasyPrint** | HTML → PDF con CSS Paged Media | Producción de PDFs con diseño Sofka desde HTML |
+| **WeasyPrint** | HTML → PDF con CSS Paged Media | Producción de PDFs con diseño MetodologIA desde HTML |
 
 ---
 
@@ -131,4 +131,4 @@
 ---
 
 **Autor:** Javier Montaño | **Última actualización:** 13 de marzo de 2026
-**© Sofka Technologies — Todos los derechos reservados**
+**© Comunidad MetodologIA — Todos los derechos reservados**

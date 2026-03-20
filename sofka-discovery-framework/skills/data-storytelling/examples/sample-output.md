@@ -70,7 +70,7 @@
 | Change Failure Rate | 18% | 5-8% | 2-3x mejora | Test coverage >80% + canary deploys [INFERENCIA] |
 | MTTR | 4 horas | 30-45 min | 5-8x mejora | Tracing distribuido + alertas inteligentes [INFERENCIA] |
 
-> **Nota**: Proyecciones basadas en resultados observados en modernizaciones similares del portafolio Sofka (N=12 proyectos, vertical retail/e-commerce). Tendencia indicativa, no garantía. Resultados reales dependen de adopción del equipo y gestión del cambio. [SUPUESTO]
+> **Nota**: Proyecciones basadas en resultados observados en modernizaciones similares del portafolio MetodologIA (N=12 proyectos, vertical retail/e-commerce). Tendencia indicativa, no garantía. Resultados reales dependen de adopción del equipo y gestión del cambio. [SUPUESTO]
 
 ### Impacto Tangibilizado
 
@@ -131,5 +131,5 @@ Si la deuda técnica no se aborda [INFERENCIA]:
 
 ---
 
-*Documento generado por el Sofka Discovery Framework. Métricas con evidence tags. Magnitudes en FTE-meses. NUNCA valores monetarios.*
-*© Sofka Technologies — Todos los derechos reservados.*
+*Documento generado por el MetodologIA Discovery Framework. Métricas con evidence tags. Magnitudes en FTE-meses. NUNCA valores monetarios.*
+*© Comunidad MetodologIA — Todos los derechos reservados.*

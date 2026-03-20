@@ -1,83 +1,95 @@
-# Body of Knowledge — Design System & Visual Identity
+# Body of Knowledge — Design System v4
 
-## Marco Teórico
+Fuentes fundacionales, estándares de referencia y glosario para el skill de Design System con generación de HTML de marca.
 
-Un sistema de diseño es un conjunto de componentes reutilizables, tokens de diseño, y directrices que aseguran consistencia visual y funcional en todos los outputs de un framework. En PMO-APEX, el design system define la identidad visual de todos los entregables de gestión de proyectos.
+---
 
-## APEX Color Token System
+## Fuentes Primarias
 
-| Token | Hex | Uso Semántico | Contraste |
-|-------|-----|---------------|-----------|
-| `--apex-primary` | #2563EB | Autoridad, acción, links, headers | 4.7:1 sobre blanco |
-| `--apex-secondary` | #1E40AF | Hover states, emphasis | 7.0:1 sobre blanco |
-| `--apex-accent` | #F59E0B | Alertas, highlights, atención | 3.1:1 sobre blanco* |
-| `--apex-danger` | #DC2626 | Errores, riesgo crítico, RAG Red | 4.6:1 sobre blanco |
-| `--apex-dark` | #0F172A | Texto principal, backgrounds oscuros | 16.8:1 sobre blanco |
-| `--apex-surface` | #F8FAFC | Backgrounds claros, cards | N/A (background) |
-| `--apex-border` | #E2E8F0 | Bordes, separadores | N/A (decorativo) |
-| `--apex-text` | #334155 | Texto secundario | 7.5:1 sobre blanco |
-| `--apex-muted` | #94A3B8 | Texto terciario, placeholder | 3.0:1 sobre blanco* |
+### 1. Brad Frost — Atomic Design (2016)
 
-*Nota: amber y muted no cumplen AAA para texto normal; usar solo para texto grande (≥18px) o decorativo.
+- **Relevancia:** Modelo de composición de interfaces en cinco niveles (atoms, molecules, organisms, templates, pages). Fundamento para la jerarquía de componentes del skill.
+- **Aporte clave:** La abstracción en niveles permite reutilización máxima y consistencia visual transversal.
+- **Referencia:** Frost, B. (2016). *Atomic Design*. https://atomicdesign.bradfrost.com/
 
-## NUNCA Verde
+### 2. Nathan Curtis — Modular Web Design (2010)
 
-| Contexto | Incorrecto | Correcto |
-|----------|-----------|----------|
-| Estado saludable | Verde (#22C55E) | Azul (#2563EB) |
-| Aprobado/Success | Verde | Azul con check icon |
-| RAG Green | Verde | RAG Blue |
-| Progress bars | Verde | Azul |
+- **Relevancia:** Metodología para construir sistemas de componentes web modulares con contratos claros entre piezas.
+- **Aporte clave:** Principios de naming conventions, documentación de componentes, y gobernanza de bibliotecas.
+- **Referencia:** Curtis, N. (2010). *Modular Web Design*. New Riders.
 
-## Typography System
+### 3. WCAG 2.1 — Web Content Accessibility Guidelines (W3C, 2018)
 
-| Elemento | Font | Size | Weight | Line Height |
-|----------|------|------|--------|-------------|
-| H1 | Inter | 2rem (32px) | 700 Bold | 1.2 |
-| H2 | Inter | 1.5rem (24px) | 600 Semibold | 1.3 |
-| H3 | Inter | 1.25rem (20px) | 600 Semibold | 1.4 |
-| H4 | Inter | 1.125rem (18px) | 500 Medium | 1.4 |
-| Body | Inter | 1rem (16px) | 400 Regular | 1.6 |
-| Small | Inter | 0.875rem (14px) | 400 Regular | 1.5 |
-| Caption | Inter | 0.75rem (12px) | 400 Regular | 1.4 |
+- **Relevancia:** Estándar mandatorio para accesibilidad. El skill implementa nivel AA: contrast ratios 4.5:1 (body) y 3:1 (large text), skip links, focus states.
+- **Aporte clave:** Criterios de éxito medibles para percepción, operabilidad, comprensión y robustez.
+- **Referencia:** W3C. (2018). *Web Content Accessibility Guidelines (WCAG) 2.1*. https://www.w3.org/TR/WCAG21/
 
-## Spacing System (4px base)
+### 4. WAI-ARIA Practices (W3C)
 
-| Token | Value | Uso |
-|-------|-------|-----|
-| `--space-1` | 4px | Inline spacing, icon gaps |
-| `--space-2` | 8px | Input padding, badge padding |
-| `--space-3` | 12px | Card padding internal |
-| `--space-4` | 16px | Section padding, card margin |
-| `--space-6` | 24px | Section margin |
-| `--space-8` | 32px | Page section gap |
-| `--space-12` | 48px | Major section divider |
+- **Relevancia:** Patrones de implementación para widgets accesibles — modales, tabs, menus, live regions.
+- **Aporte clave:** Roles, states y properties ARIA para componentes interactivos del design system (modales, nav sticky, badges).
+- **Referencia:** W3C. *WAI-ARIA Authoring Practices*. https://www.w3.org/WAI/ARIA/apg/
 
-## PM-Specific Components
+### 5. Material Design System (Google, 2014–presente)
 
-| Componente | Uso | Tokens Principales |
-|------------|-----|-------------------|
-| RAG Card | Estado por dimensión | primary (blue), accent (amber), danger (red) |
-| KPI Card | Métrica con trend | primary + surface |
-| Risk Heatmap Cell | Prob × Impact matrix | accent gradient |
-| Milestone Badge | Estado de hito | primary (complete), accent (at risk), danger (overdue) |
-| Evidence Tag | [PLAN], [METRIC], etc. | Cada tag con color semántico |
-| Ghost Menu | Navegación contextual | surface + border |
-| Budget Burn Bar | Gasto acumulado | primary (actual) + muted (planned) |
-| Gantt Row | Timeline de actividad | primary + accent for milestones |
+- **Relevancia:** Sistema de diseño maduro con tokens, motion, theming dinámico. Referencia para patrones de componentes (cards, badges, callouts).
+- **Aporte clave:** Material Design 3 introduce design tokens como primera clase y theming dinámico basado en color source.
+- **Referencia:** Google. *Material Design*. https://m3.material.io/
 
-## Accessibility Requirements
+### 6. Carbon Design System (IBM, 2017–presente)
 
-| Criterio WCAG | Nivel | Requisito |
-|---------------|-------|-----------|
-| 1.4.3 Contrast | AA | ≥4.5:1 texto normal, ≥3:1 texto grande |
-| 1.4.6 Enhanced Contrast | AAA | ≥7:1 texto normal (goal) |
-| 1.4.11 Non-text Contrast | AA | ≥3:1 para componentes UI |
-| 1.4.1 Use of Color | A | Color no como único indicador — usar iconos |
+- **Relevancia:** Sistema enterprise-grade con fuerte énfasis en tokens, temas, y accesibilidad. Modelo para la arquitectura de tokens del skill.
+- **Aporte clave:** Estructura de tokens en tres capas (global → alias → component), theme switching, y grid system.
+- **Referencia:** IBM. *Carbon Design System*. https://carbondesignsystem.com/
 
-## Estándares Relevantes
+### 7. Storybook — Documentation Patterns
 
-- **Material Design 3**: Token system architecture y naming conventions
-- **WCAG 2.1**: Accessibility guidelines para color y contraste
-- **Design Tokens W3C**: Especificación emergente para tokens cross-platform
-- **Tailwind CSS**: Utility-first approach para spacing y color systems
+- **Relevancia:** Herramienta de referencia para documentación interactiva de componentes. Informa el formato de documentación del skill (component tables, usage examples, anti-patterns).
+- **Aporte clave:** Modelo de stories, args/controls, y docs page como estándar de documentación de component libraries.
+- **Referencia:** Storybook. *Component-Driven Development*. https://storybook.js.org/docs
+
+### 8. Design Tokens W3C Community Group Spec (2019–presente)
+
+- **Relevancia:** Especificación emergente para formato interoperable de design tokens (DTCG). El skill usa CSS custom properties como target, alineado con la dirección del estándar.
+- **Aporte clave:** Formato JSON canónico para tokens con $value, $type, $description. Resolución de alias tokens.
+- **Referencia:** W3C DTCG. *Design Tokens Format Module*. https://tr.designtokens.org/format/
+
+### 9. Inclusive Design Principles (Microsoft, 2016)
+
+- **Relevancia:** Marco para diseño inclusivo que trasciende compliance técnico. Informa la filosofía accessibility-first del skill.
+- **Aporte clave:** Reconocer exclusión, resolver para uno / extender a muchos, y aprender de la diversidad. Persona spectrum (permanente, temporal, situacional).
+- **Referencia:** Microsoft. *Inclusive Design Toolkit*. https://inclusive.microsoft.design/
+
+---
+
+## Fuentes Complementarias
+
+| Fuente | Aporte | URL |
+|--------|--------|-----|
+| Tailwind CSS | Utility-first token naming conventions, responsive breakpoint patterns | https://tailwindcss.com/docs |
+| Open Props | Modern CSS custom property library, animation tokens | https://open-props.style/ |
+| Figma Variables | Design-to-code token sync, multi-mode variables | https://help.figma.com/hc/en-us/articles/15339657135383 |
+| axe-core | Automated accessibility testing rules, color contrast algorithms | https://github.com/dequelabs/axe-core |
+| MetodologIA Brand Manual (interno) | Paleta oficial (#6366F1, #1A1A2E, #22D3EE), tipografía, uso de logo | Documentación interna Comunidad MetodologIA |
+
+---
+
+## Glosario
+
+| Término | Definición |
+|---------|-----------|
+| **Design Token** | Valor atómico de diseño (color, spacing, typography) almacenado como variable CSS custom property y definido en `brand-config.json`. Unidad mínima del sistema. |
+| **Brand Config** | Archivo JSON (`brand-config.json`) que contiene todos los valores de identidad visual de una marca. Cambiar este archivo reconfigura todo el design system sin tocar CSS. |
+| **Semantic Color** | Color con significado funcional independiente de la marca: positive (yellow #22D3EE), warning (amber), critical (red), info (blue). Nunca cambian por brand. |
+| **Component Library** | Catálogo de elementos HTML reutilizables (cards, badges, callouts, tables, timelines) con clases CSS estandarizadas y documentación de uso. |
+| **Atomic Design** | Metodología de Brad Frost que organiza UI en cinco niveles: atoms → molecules → organisms → templates → pages. |
+| **WCAG AA** | Nivel de conformidad de accesibilidad que requiere contrast ratio mínimo 4.5:1 para texto normal y 3:1 para texto grande. Estándar del skill. |
+| **Skip Link** | Enlace oculto visualmente (`#main`) que permite a usuarios de teclado/screen reader saltar la navegación directamente al contenido principal. |
+| **CSS Custom Property** | Variable CSS nativa (`--brand-primary`) que permite theming dinámico sin preprocesadores. Base técnica del token system. |
+| **Token Alias** | Token que referencia otro token (e.g., `--card-border` → `var(--brand-primary)`). Permite cambios en cascada desde un único punto. |
+| **Hero Section** | Sección prominente al inicio del documento con fondo oscuro, borde brand-primary, logo, KPIs y título destacado. Componente de máximo impacto visual. |
+| **Responsive Breakpoint** | Punto de quiebre CSS donde el layout se adapta: mobile (<768px), tablet (768-1024px), desktop (>1024px). |
+| **Design System as Product** | Enfoque donde el design system se gestiona como un producto interno con roadmap, versionado, consumers, y governance propia. |
+| **White-Label System** | Arquitectura de design system que soporta múltiples marcas cambiando únicamente el `brand-config.json`, sin modificar componentes ni templates. |
+| **Focus State** | Indicador visual (outline 2px solid brand-primary) que muestra qué elemento tiene foco de teclado. Requerimiento de accesibilidad. |
+| **Print Stylesheet** | Reglas CSS `@media print` que optimizan el documento para impresión: ocultan nav, ajustan márgenes, fuerzan colores legibles en papel. |

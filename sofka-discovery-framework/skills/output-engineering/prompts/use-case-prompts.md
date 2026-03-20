@@ -1,189 +1,99 @@
 # Use Case Prompts — Output Engineering
 
-Prompts listos para invocar el skill en escenarios concretos de producción multi-formato y ghost menu. Cada prompt incluye contexto, parámetros y resultado esperado.
+> PMO-APEX Skill: `output-engineering` · Prompts NL-HP para producción de entregables
+> Última actualización: 2026-03-17
 
 ---
 
-## 1. Conversión HTML con Brand Compliance
+## UC-01: Conversión Markdown a HTML Branded
 
 ```
-Convierte el deliverable {RUTA_MARKDOWN} a formato HTML usando Sofka Design System v4.
-
-Requisitos:
-1. HTML self-contained (inline CSS, sin dependencias externas excepto fonts CDN y Mermaid CDN v10)
-2. Brand tokens: Primary #FF7E08, Dark #1A1A2E, Success #FFD700 (NUNCA verde)
-3. Tipografía: Clash Grotesk display, Inter body
-4. Hero con fondo negro, borde 8px solid brand-primary, logo SOFKA., título y metadata badges
-5. Sticky nav con links a cada sección (h2)
-6. Section headers con number box (48x48 negro, número brand-primary)
-7. Tablas con thead negro, zebra stripes, hover brand-primary-dim
-8. Callouts semánticos: info (azul), warning (amber), critical (rojo), positive (gold)
-9. Mermaid diagrams: <pre class="mermaid"> con CDN v10 y theme variables brand
-10. Footer: © Sofka Technologies, fecha, "Confidencial"
-11. Accesibilidad: skip link, ARIA labels, roles, focus states, contrast WCAG AA
-12. Print styles: ocultar nav, simplificar layout, break-inside: avoid en cards
-
-Después de generar, ejecuta validación de content integrity: compara heading count, table count, diagram count, y evidence tags entre source y output.
-
-MODO=desatendido FORMATO=html
+Convierte el siguiente entregable Markdown a HTML con branding APEX.
+Aplica los tokens canónicos (#2563EB, #F59E0B, #0F172A), tipografía Inter,
+y estructura Markdown-Excellence. Verifica que todos los evidence tags
+estén presentes y visibles en el HTML resultante.
+Archivo fuente: {ruta_archivo}
 ```
 
----
-
-## 2. Paquete Multi-Formato Completo (all)
+## UC-02: Producción Batch de Entregables
 
 ```
-Genera el paquete multi-formato completo para el deliverable {RUTA_MARKDOWN}.
-
-Para cada formato:
-- .html — Sofka Design System v4, self-contained, Mermaid CDN, WCAG AA
-- .docx — Cover page con nombre de proyecto y fecha, TOC auto-generado, headers/footers branded, Inter font
-- .pptx — Máximo 20 slides, un mensaje clave por slide, arco narrativo Hook → Context → Findings → Implications → Action, speaker notes con evidence references
-- .xlsx — Solo si hay tablas de datos: una sheet por matriz de scoring, dashboard summary first, conditional formatting
-- .pdf — Generado desde HTML, margins print-optimized, fonts embedded
-
-Para CADA formato producido:
-1. Verifica brand compliance (7 elementos checklist)
-2. Verifica content integrity (secciones, tablas, diagramas, números)
-3. Genera README.md del paquete con metadata de generación
-
-Estructura de salida:
-{project_name}/
-├── {deliverable}.md
-├── {deliverable}.html
-├── {deliverable}.docx
-├── {deliverable}.pptx (si aplica)
-├── {deliverable}.xlsx (si aplica)
-├── {deliverable}.pdf
-└── README.md
-
-MODO=desatendido FORMATO=all
+Procesa todos los entregables Markdown en {directorio_proyecto} y genera
+versiones HTML branded para cada uno. Aplica naming convention
+{fase}_{entregable}_{proyecto}_{WIP}.html. Genera un reporte de quality
+check con el resultado del Excellence Loop para cada archivo procesado.
 ```
 
----
-
-## 3. Ghost Menu Manual Trigger
+## UC-03: Verificación de Evidence Tags
 
 ```
-El deliverable {RUTA_MARKDOWN} ya pasó editorial review. Activa el ghost menu.
-
-1. Analiza el tipo de deliverable (00-14) basado en el nombre del archivo
-2. Determina los formatos auto-sugeridos según la tabla de auto-activation rules
-3. Presenta el ghost menu con los formatos sugeridos resaltados:
-   📄 Entregable listo: [filename].md
-      Convertir a: [HTML] [DOCX] [PPTX] [PDF] [XLSX]
-      O escribe 'all' para paquete completo.
-4. Espera selección del usuario
-5. Ejecuta conversión del formato seleccionado
-
-MODO=supervisado
+Escanea el entregable {ruta_archivo} y verifica que toda afirmación tenga
+un evidence tag válido ([PLAN], [SCHEDULE], [METRIC], [INFERENCIA],
+[SUPUESTO], [STAKEHOLDER], [DECISION], [HISTORICO]). Reporta el porcentaje
+de [SUPUESTO] y genera warning si supera 30%. Lista las afirmaciones
+sin evidencia para corrección.
 ```
 
----
-
-## 4. Validación de Content Integrity Post-Conversión
+## UC-04: Aplicación de Naming Convention
 
 ```
-Ejecuta validación de content integrity entre el markdown source {RUTA_MD} y el output generado {RUTA_OUTPUT}.
-
-Verifica cuantitativamente:
-1. Heading count: mismo número de h1, h2, h3 en ambos
-2. Table count: mismo número de tablas
-3. Table completeness: mismo número de filas y columnas por tabla
-4. Diagram count: mismo número de bloques Mermaid
-5. Evidence tags: todos los tags [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER] presentes
-6. Cross-references: links y referencias intactas
-7. Financial figures: cifras numéricas idénticas (FTE-meses, porcentajes, montos)
-8. Semaphore preservation: indicadores de severidad preservados con colores correctos
-
-Output: tabla de compliance con resultado por check (PASS/FAIL) y delta si aplica.
-
-MODO=desatendido FORMATO=markdown
+Revisa todos los archivos en {directorio_proyecto} y verifica que sigan
+la naming convention {fase}_{entregable}_{proyecto}_{status}.{ext}.
+Genera un reporte de archivos que no cumplen y sugiere el nombre correcto
+para cada uno. No renombrar automáticamente — solo reportar.
 ```
 
----
-
-## 5. Conversión PPTX Ejecutiva
+## UC-05: Generación de Diagramas Mermaid
 
 ```
-Convierte el deliverable {RUTA_MARKDOWN} a formato PPTX ejecutivo.
-
-Reglas de producción:
-1. Máximo 20 slides
-2. Un mensaje clave por slide — NO wall-of-text
-3. Arco narrativo: Hook (1 slide) → Contexto (2-3) → Hallazgos (5-8) → Implicaciones (3-4) → Acción (2-3)
-4. Speaker notes en CADA slide: evidence references, talking points, datos de soporte
-5. Transiciones narrativas: Finding → So What → Now What
-6. Mermaid diagrams: convertir a descripción textual + layout visual equivalente
-7. Brand compliance: Sofka palette, Clash Grotesk display, Inter body
-8. Slide master: fondo oscuro para title slides, fondo claro para content slides
-9. Footer en cada slide: © Sofka Technologies + número de slide
-
-Después de generar, valida que NINGÚN slide tenga más de 6 bullet points o más de 40 palabras en el cuerpo principal.
-
-MODO=desatendido FORMATO=pptx VARIANTE=ejecutiva
+Revisa el entregable {ruta_archivo} e identifica conceptos que se
+beneficiarían de diagramación visual. Genera diagramas Mermaid para:
+flujos de proceso, dependencias, cronogramas, y estructuras jerárquicas.
+Usa colores APEX (#2563EB, #F59E0B, #0F172A) en las definiciones de clase.
 ```
 
----
-
-## 6. Auditoría de Brand Compliance Multi-Formato
+## UC-06: Quality Check con Excellence Loop
 
 ```
-Ejecuta auditoría de brand compliance sobre todos los outputs generados en {RUTA_DIRECTORIO}.
-
-Para CADA archivo (.html, .docx, .pptx, .xlsx, .pdf):
-1. Color primario: ¿#FF7E08 usado correctamente? ¿Sin hex literals fuera de tokens?
-2. Color oscuro: ¿#1A1A2E para texto/headers?
-3. Color éxito: ¿#FFD700 (gold) para estados positivos? ¿CERO instancias de verde para success?
-4. Logo: ¿Presente, posición top-left, tamaño consistente?
-5. Footer: ¿"© Sofka Technologies" + fecha + página?
-6. Tipografía: ¿Clash Grotesk para display, Inter para body?
-7. Disclaimer: ¿Presente en deliverables con magnitudes de costo?
-
-Output: tabla consolidada de compliance por archivo y elemento (🟢/🟡/🔴).
-Lista priorizada de correcciones necesarias.
-
-MODO=desatendido FORMATO=markdown VARIANTE=técnica
+Ejecuta el Excellence Loop completo (10 criterios) sobre el entregable
+{ruta_archivo}. Para cada criterio, asigna PASS/FAIL con justificación
+específica y evidencia. Genera un resumen ejecutivo del quality check
+y lista acciones correctivas para los criterios que fallaron.
 ```
 
----
-
-## 7. Regeneración de Formato desde Markdown Actualizado
+## UC-07: Producción Multi-formato Simultánea
 
 ```
-El markdown source {RUTA_MARKDOWN} fue actualizado después de la generación inicial de formatos.
-
-1. Identifica qué formatos derivados existen en el mismo directorio
-2. Para cada formato existente, ejecuta diff semántico contra el markdown actual
-3. Lista los cambios detectados: secciones nuevas/eliminadas, tablas modificadas, cifras actualizadas
-4. Confirma con el usuario qué formatos regenerar
-5. Regenera los formatos seleccionados
-6. Ejecuta validación de content integrity en cada formato regenerado
-7. Actualiza el README.md del paquete con metadata de regeneración (fecha, versión, delta)
-
-MODO=supervisado
+A partir del entregable fuente {ruta_archivo}, produce simultáneamente:
+1. Versión Markdown limpia con evidence tags
+2. Versión HTML con branding APEX completo
+3. Diagramas Mermaid renderizados
+Aplica naming convention y marca como {WIP} todos los archivos generados.
 ```
 
----
-
-## 8. Conversión Express para Hallazgos (Deliverables 10-12)
+## UC-08: Transición de {WIP} a {Aprobado}
 
 ```
-Los deliverables de hallazgos están listos para conversión:
-- {RUTA_10} — 10_Presentacion_Hallazgos
-- {RUTA_11} — 11_Hallazgos_Tecnicos (si existe)
-- {RUTA_12} — 12_Hallazgos_Funcionales (si existe)
+El entregable {ruta_archivo} ha sido aprobado en el gate {gate_id}.
+Renombra el archivo de {WIP} a {Aprobado}, actualiza metadata interna,
+registra la aprobación en el changelog, y genera la versión final HTML
+branded. Verifica que el Excellence Loop pase 10/10 antes de la transición.
+```
 
-Genera para cada uno los formatos auto-sugeridos:
-- 10: PPTX (primario) + HTML (backup digital)
-- 11: HTML (primario, para deep-dive técnico con Mermaid)
-- 12: HTML (primario, para user journeys con diagramas)
+## UC-09: Reporte de Estado de Producción
 
-Batch rules:
-- Consistencia visual: mismo hero layout, misma paleta, mismos componentes
-- Cross-references: links entre documentos funcionales en HTML
-- Numeración continua: los diagramas mantienen numeración secuencial del pipeline
-- Content integrity: validación cruzada entre los 3 deliverables
+```
+Genera un reporte de estado de todos los entregables del proyecto
+{nombre_proyecto}. Para cada entregable, muestra: nombre, fase, formato(s),
+status ({WIP}/{Aprobado}), quality check score, y fecha de última
+modificación. Agrupa por fase del pipeline.
+```
 
-MODO=desatendido FORMATO=auto
+## UC-10: Audit de Consistencia entre Formatos
+
+```
+Compara las versiones Markdown y HTML del entregable {nombre_entregable}
+y verifica que no hay pérdida de contenido en la conversión. Reporta
+diferencias en estructura, evidence tags, y contenido textual.
+Flag cualquier divergencia como error de producción.
 ```

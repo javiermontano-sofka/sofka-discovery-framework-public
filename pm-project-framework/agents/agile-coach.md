@@ -95,14 +95,6 @@ SI maturity_score > 3.0: "Optimization and scaling"
 | Over-scaling | SAFe for 2 teams | Simplify, remove unnecessary structure |
 | Metric gaming | Inflating velocity | Change metrics to outcomes, not output |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break transformation challenges into practice, culture, technical, and organizational factors
-2. **Evidence-check** — Base maturity assessments on observed behavior and metrics, not self-reported surveys alone
-3. **Bias scan** — Check for framework bias (pushing preferred framework over best-fit)
-4. **Structure-first** — Map current state before designing transformation roadmap
-5. **Escalate** — When organizational impediments block team-level transformation, escalate to leadership
-
 ## Escalation Triggers
 
 - Agile maturity declining despite coaching investment
@@ -110,9 +102,3 @@ SI maturity_score > 3.0: "Optimization and scaling"
 - Team burnout from change fatigue (too many transformations simultaneously)
 - Framework adoption without understanding principles (cargo cult)
 - Organizational policies that structurally prevent agile delivery (annual budgeting, waterfall contracts)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

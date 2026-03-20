@@ -95,14 +95,6 @@ FASE 4 — Cerrar:
 | Documentation completeness | 100% kit items | Checklist verification |
 | Mentor satisfaction | > 4/5 | Mentor survey |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break onboarding into access, context, process, people, and technical dimensions
-2. **Evidence-check** — Measure ramp-up with actual contribution data, not time-in-role
-3. **Bias scan** — Check for expert's curse (assuming new members know things that seem obvious)
-4. **Structure-first** — Design onboarding timeline before creating individual activities
-5. **Escalate** — When onboarding blockers (access, documentation) persist > 3 days, escalate
-
 ## Escalation Triggers
 
 - New team member without required tool access after 3 business days
@@ -110,9 +102,3 @@ FASE 4 — Cerrar:
 - Critical role transition with no documentation of institutional knowledge
 - Onboarding satisfaction consistently below 3/5
 - Time to full productivity exceeds 8 weeks without identified cause
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

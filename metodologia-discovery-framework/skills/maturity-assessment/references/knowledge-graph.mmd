@@ -1,0 +1,25 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["📋 PM Governance Model<br/>Organizational Input"]:::primary --> B["🔍 Maturity Assessment<br/>Skill Entry Point"]:::primary
+    C["📊 Performance Data<br/>On-time/Budget/Scope"]:::amber --> B
+    D["👥 Stakeholder Interviews<br/>Multi-Perspective"]:::amber --> B
+
+    B --> E["📐 Framework Selection<br/>OPM3 / P3M3 / APEX"]:::primary
+    E --> F["🗂️ Domain Scoring<br/>Project - Program - Portfolio"]:::primary
+    E --> G["📊 Data Collection<br/>Artifacts + Interviews"]:::amber
+
+    F --> H["🗺️ Capability Heat Map<br/>Visual Maturity Profile"]:::dark
+    G --> H
+
+    H --> I["📈 Gap Analysis<br/>Current vs Target"]:::primary
+    H --> J["🏢 Benchmark<br/>Industry Comparison"]:::amber
+
+    I --> K["🛤️ Strategic Roadmap<br/>12-24 Month Plan"]:::dark
+    J --> K
+
+    K --> L["✅ Validation Gate<br/>10 Criteria"]:::primary
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

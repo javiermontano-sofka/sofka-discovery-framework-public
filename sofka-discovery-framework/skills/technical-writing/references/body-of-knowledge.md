@@ -180,7 +180,7 @@
 | **Terminología como contrato** | Principio de usar un único término para cada concepto en todo el discovery |
 | **Anti-patrón** | Patrón de escritura que se identifica y bloquea: filler, pasiva sin agente, scores sin justificación |
 | **Validation Gate** | Checklist de 8 criterios que todo entregable debe pasar antes de entrega |
-| **Markdown-excellence** | Estándar Sofka de calidad para documentación markdown en entregables de discovery |
+| **Markdown-excellence** | Estándar MetodologIA de calidad para documentación markdown en entregables de discovery |
 | **Topic-based authoring** | Escritura modular donde cada unidad (tópico) es autocontenida y tipificada |
 | **DITA** | Darwin Information Typing Architecture — estándar OASIS para documentación modular XML |
 | **Information Mapping** | Método de estructuración de información en bloques clasificados por tipo |
@@ -188,4 +188,4 @@
 ---
 
 **Autor:** Javier Montaño | **Última actualización:** 13 de marzo de 2026
-**© Sofka Technologies — Todos los derechos reservados**
+**© Comunidad MetodologIA — Todos los derechos reservados**

@@ -179,6 +179,3 @@ At every cross-workstream boundary:
 - Provide program benchmarks: "Transformations at this scale typically span X waves over Y months"
 - Always separate transformation effort drivers from pricing decisions
 - Map capabilities to Sofka's full service portfolio, highlighting cross-service synergies
-
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026

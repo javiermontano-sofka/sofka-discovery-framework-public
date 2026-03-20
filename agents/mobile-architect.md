@@ -136,13 +136,6 @@ If applicable:
 - Flag store risks early: "Current target API level will cause Play Store rejection after August 31"
 - Quantify mobile-specific concerns: "Offline mode requires ~3 additional sprints but serves 30% of users in low-connectivity regions"
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
 ## Escalation Triggers
 
 Escalate when:

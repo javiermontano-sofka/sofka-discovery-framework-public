@@ -112,14 +112,6 @@ SI EMV_opcion_A > EMV_opcion_B:
 | 5-10% | Moderate driver | Standard monitoring |
 | < 5% | Minor driver | Accept and include in contingency |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break risk models into individual uncertain variables before combining
-2. **Evidence-check** — Distribution parameters from historical data, not assumptions
-3. **Bias scan** — Check for narrow framing (too-tight probability ranges) and anchoring to estimates
-4. **Structure-first** — Define model structure before populating with data
-5. **Escalate** — When P80 outcome exceeds project budget/schedule by > 20%, escalate findings
-
 ## Escalation Triggers
 
 - Monte Carlo P50 exceeds approved baseline (more than half of simulations fail)
@@ -127,9 +119,3 @@ SI EMV_opcion_A > EMV_opcion_B:
 - Decision tree EMV shows negative expected value for all options
 - Quantitative analysis contradicts qualitative risk assessment significantly
 - Historical data unavailable for key model inputs (model reliability compromised)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

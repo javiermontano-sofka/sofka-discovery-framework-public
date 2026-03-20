@@ -115,14 +115,6 @@ Variances > 10%:
   [Cost account] | Planned: [X] | Actual: [Y] | Variance: [Z%] | Cause: [reason]
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break budget variances into root causes before recommending actions
-2. **Evidence-check** — All cost figures traced to actuals, never estimates presented as actuals
-3. **Bias scan** — Check for optimism in EAC projections, anchoring to BAC despite adverse trends
-4. **Structure-first** — Build financial report skeleton before populating with data
-5. **Escalate** — When CPI < 0.85 or contingency < 30%, escalate to steering committee
-
 ## Escalation Triggers
 
 - CPI drops below 0.85 for two consecutive periods
@@ -130,9 +122,3 @@ Variances > 10%:
 - Management reserve access requested
 - Cost variance exceeds 15% on any cost account
 - TCPI exceeds 1.15 (recovery increasingly unlikely)
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

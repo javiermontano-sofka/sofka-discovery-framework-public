@@ -101,7 +101,7 @@ No hay excepciones. No hay "es solo un borde". Todo pasa por tokens.
 
 PASO 2 — Semantic Color Audit
 Los colores semánticos son UNIVERSALES y NUNCA cambian por marca:
-- Positive/Success = #FFD700 (yellow). NUNCA green. NUNCA.
+- Positive/Success = #22D3EE (yellow). NUNCA green. NUNCA.
 - Warning = #D97706 (amber)
 - Critical/Error = #DC2626 (red)
 - Info = #2563EB (blue)

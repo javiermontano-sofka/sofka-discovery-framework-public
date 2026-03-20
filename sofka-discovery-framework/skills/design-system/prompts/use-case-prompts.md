@@ -13,7 +13,7 @@ Para cada archivo:
 1. Verifica que TODOS los colores usen CSS custom properties (cero hex literals fuera de :root)
 2. Valida contrast ratios WCAG AA (4.5:1 body, 3:1 large text)
 3. Confirma presencia de: skip link, focus states, ARIA labels en modales
-4. Verifica que success/positive states usen yellow (#FFD700), nunca green
+4. Verifica que success/positive states usen yellow (#22D3EE), nunca green
 5. Chequea responsive breakpoints (mobile <768px, tablet 768-1024px, desktop >1024px)
 6. Valida hero y footer: fondo negro, borde 8px solid brand-primary
 
@@ -60,19 +60,19 @@ MODO=desatendido FORMATO=markdown VARIANTE=técnica
 
 ---
 
-## 4. Brand HTML Generation (Sofka)
+## 4. Brand HTML Generation (MetodologIA)
 
 ```
-Genera un deliverable HTML completo con marca Sofka para: {TITULO_DOCUMENTO}.
+Genera un deliverable HTML completo con marca MetodologIA para: {TITULO_DOCUMENTO}.
 
-Usa el brand-config.json de Sofka:
-- Primary: #FF7E08 (naranja Sofka)
+Usa el brand-config.json de MetodologIA:
+- Primary: #6366F1 (naranja MetodologIA)
 - Dark: #1A1A2E
-- Success: #FFD700 (yellow, nunca green)
+- Success: #22D3EE (yellow, nunca green)
 - Fonts: Clash Grotesk (display) + Inter (body)
 
 El documento debe contener:
-- Hero con logo sofka_, 3-4 KPIs destacados, título con span naranja
+- Hero con logo metodologia_, 3-4 KPIs destacados, título con span naranja
 - Nav sticky con secciones del documento
 - {NUMERO_SECCIONES} secciones con contenido de: {FUENTE_CONTENIDO}
 - Footer con confidencialidad y referencia documental
@@ -145,7 +145,7 @@ MODO=desatendido FORMATO=html VARIANTE=técnica MODO_OPERACIONAL=componentes
 ## 8. Design System Governance
 
 ```
-Establece un modelo de gobernanza para el design system v4 del framework de discovery Sofka.
+Establece un modelo de gobernanza para el design system v4 del framework de discovery MetodologIA.
 
 Define:
 1. Roles: quién puede agregar componentes, quién aprueba cambios, quién mantiene tokens

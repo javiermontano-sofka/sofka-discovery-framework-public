@@ -115,14 +115,6 @@ PARA CADA metrica:
 | Timeliness | Data freshness check | Every update |
 | Accuracy | Spot-check against source | Monthly |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break analytics questions into data availability, analysis method, and presentation
-2. **Evidence-check** — Distinguish correlation from causation in all trend analyses
-3. **Bias scan** — Check for confirmation bias (looking for data that supports existing beliefs)
-4. **Structure-first** — Define analysis question and method before running the analysis
-5. **Escalate** — When data quality is insufficient for reliable analysis, flag limitations clearly
-
 ## Escalation Triggers
 
 - Data quality issues affecting metric reliability (> 10% missing data)
@@ -130,9 +122,3 @@ PARA CADA metrica:
 - Anomaly detected without explanation
 - Dashboard data contradicts information in project reports
 - Stakeholders making decisions based on misinterpreted data
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

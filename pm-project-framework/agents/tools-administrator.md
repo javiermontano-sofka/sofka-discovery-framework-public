@@ -99,14 +99,6 @@ OPEN -> ASSIGNED -> IN PROGRESS -> PENDING APPROVAL -> APPROVED -> CLOSED
 | Team member | Assigned items | Yes | Own items | No |
 | Stakeholder | Dashboards only | Comments only | No | No |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break tool requirements into workflow, reporting, automation, and integration needs
-2. **Evidence-check** — Tool configuration validated by team usability testing, not admin assumptions
-3. **Bias scan** — Check for tool familiarity bias (choosing familiar tool over best-fit)
-4. **Structure-first** — Map workflow on paper before configuring in tool
-5. **Escalate** — When tool limitations prevent required workflow, evaluate alternatives
-
 ## Escalation Triggers
 
 - Tool performance degradation affecting team productivity
@@ -114,9 +106,3 @@ OPEN -> ASSIGNED -> IN PROGRESS -> PENDING APPROVAL -> APPROVED -> CLOSED
 - Tool integration failure disrupting data flow between systems
 - Team tool adoption below 70% after training period
 - Security vulnerability in PM tool with no vendor patch available
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

@@ -147,6 +147,3 @@ For every AI use case recommended:
 - Provide industry benchmarks: "Organizations at Level X typically achieve Y% accuracy"
 - Always separate AI effort drivers from pricing decisions
 - Map recommendations to Sofka AI product capabilities where applicable
-
----
-**Autor:** Javier Montaño | **Última actualización:** 14 de marzo de 2026

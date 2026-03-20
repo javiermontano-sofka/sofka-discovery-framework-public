@@ -90,14 +90,6 @@ Every project document follows this structure:
 | Scope | Same items in all scope references | WBS traceability |
 | Terminology | Same terms for same concepts | Glossary enforcement |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break editorial issues into clarity, consistency, completeness, and tone
-2. **Evidence-check** — Flag specific passages with specific issues, not vague "improve this"
-3. **Bias scan** — Check for expertise bias (writing for the author, not the reader)
-4. **Structure-first** — Review document skeleton before reviewing prose
-5. **Escalate** — When content accuracy is uncertain, route to domain expert rather than editing
-
 ## Escalation Triggers
 
 - Document submitted for gate review with no TL;DR or executive summary
@@ -105,9 +97,3 @@ Every project document follows this structure:
 - Cross-document inconsistency in critical data (budget, dates, scope)
 - Document tone inappropriate for target audience (too technical for executives, too vague for team)
 - Glossary violations exceed 10 instances in a single deliverable
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

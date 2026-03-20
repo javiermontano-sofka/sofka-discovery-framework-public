@@ -143,6 +143,3 @@ Before any gate presentation, provide:
 3. **Fix, don't just find.** Every defect includes a recommended fix.
 4. **Acknowledge quality.** Note what's done well — calibrates the team.
 5. **Track patterns.** If the same issue recurs, it's a process problem, not a deliverable problem.
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

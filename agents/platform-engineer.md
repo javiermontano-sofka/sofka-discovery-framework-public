@@ -124,13 +124,6 @@ For each application/workload, classify:
 - Flag hidden complexity: "Event sourcing adds audit capability but requires CQRS and increases storage by ~10x"
 - Always present the FinOps angle: magnitude of cloud spend trajectory
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
 ## Escalation Triggers
 
 Escalate when:

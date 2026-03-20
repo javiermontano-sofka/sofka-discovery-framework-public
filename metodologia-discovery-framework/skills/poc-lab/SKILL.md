@@ -1,21 +1,12 @@
 ---
-name: metodologia-poc-lab
+name: apex-poc-lab
 description: >
-  Proof of concept design and execution framework, success criteria definition, and evaluation
-  methodology. Use when the user asks to "design a PoC", "plan a proof of concept", "define PoC
-  success criteria", or mentions PoC charter, evaluation framework, spike design, or prototype
-  planning.
-argument-hint: "<project-name> <technology-or-concept>"
-author: Javier Montaño · Comunidad MetodologIA
-version: 1.0.0
-tags:
-  - poc
-  - proof-of-concept
-  - prototype
-  - spike
-  - evaluation
-  - validation
-  - moat
+  Use when the user asks to "run a PoC", "prototype a solution",
+  "test a tool", "evaluate methodology feasibility", "compare vendor options",
+  or mentions proof of concept, PoC, prototype, tool evaluation, methodology pilot,
+  controlled experiment. Triggers on: designs controlled PoC experiments, defines
+  measurable success criteria, creates evaluation frameworks for tool comparison,
+  facilitates evidence-based go/no-go decisions, documents scale-up risks.
 allowed-tools:
   - Read
   - Write
@@ -23,269 +14,239 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
-  - WebFetch
 ---
 
-# Laboratorio de Pruebas de Concepto
+# PoC Lab for PM Tool & Methodology Evaluation
 
-Framework para diseno, ejecucion y evaluacion de pruebas de concepto (PoC),
-con definicion de criterios de exito y metodologia de evaluacion rigurosa.
+**TL;DR**: Designs and executes Proofs of Concept for PM tool evaluation (Jira vs. Azure DevOps vs. Monday.com), methodology pilot testing (2-sprint Scrum pilot, Kanban board pilot), and process innovation experiments. Defines PoC scope, success criteria, evaluation framework, time-box, and decision protocol. Prevents full-scale commitment to unproven approaches by validating hypotheses at small scale with controlled variables.
 
-## TL;DR
+## Principio Rector
+Un PoC no es un proyecto pequeño — es un experimento controlado. Su objetivo no es entregar valor de negocio, sino producir la evidencia necesaria para tomar una decisión de inversión. Un PoC exitoso produce una decisión informada, incluso si la decisión es "no proceder". El peor resultado no es un PoC que falla — es un PoC que no se hace y la organización invierte a ciegas.
 
-- Disena PoCs con hipotesis claras, criterios de exito medibles y kill criteria
-- Define alcance minimo viable para validar cada hipotesis con esfuerzo controlado
-- Establece metodologia de evaluacion objetiva y reproducible
-- Genera templates de charter, plan de pruebas y reporte de evaluacion
-- Previene PoC theater (demos que no validan nada real)
+## Assumptions & Limits
+- Assumes a clear hypothesis exists — PoC without a question to answer is exploration, not experimentation [SUPUESTO]
+- Assumes time-box and budget are allocated specifically for the PoC [PLAN]
+- Breaks if PoC scope expands beyond original hypothesis — scope creep turns PoC into mini-project [PLAN]
+- Scope limited to 2-4 alternatives maximum — too many options dilute evaluation quality [PLAN]
+- Does not replace full vendor procurement — PoC informs the decision, procurement executes it [PLAN]
+- Scale-up risks explicitly documented — PoC success does not guarantee production success [PLAN]
 
-## Inputs
-
-Parse `$1` como **nombre del proyecto**, `$2` como **tecnologia o concepto a validar**.
-
+## Usage
+```bash
+/pm:poc-lab $PROJECT_NAME --type=tool-eval --options="jira,azure-devops,monday"
+/pm:poc-lab $PROJECT_NAME --type=methodology-pilot --methodology=scrum --sprints=2
+/pm:poc-lab $PROJECT_NAME --type=process-innovation --hypothesis="Kanban reduces lead time by 30%"
+```
 **Parameters:**
-- `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-- `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `$PROJECT_NAME` | Yes | Target project identifier |
+| `--type` | No | `tool-eval` / `methodology-pilot` / `process-innovation` |
+| `--options` | No | Comma-separated alternatives to evaluate |
+| `--methodology` | No | Methodology to pilot |
+| `--sprints` | No | Number of sprints for pilot |
+| `--hypothesis` | No | Specific hypothesis to test |
 
-## Entregables
+## Service Type Routing
+`{TIPO_PROYECTO}` variants:
+- **Agile**: PoC for Scrum/Kanban adoption (2-sprint pilot with control team), tool fit evaluation
+- **Waterfall**: PoC for PM tool evaluation against phase-gate workflows, EVM tool testing
+- **SAFe**: PoC for ART formation feasibility, PI planning dry-run, portfolio tool evaluation
+- **Kanban**: PoC for Kanban board design, WIP limit calibration, flow metric tool evaluation
+- **Hybrid**: PoC for methodology integration approach, dual-governance feasibility testing
+- **PMO**: PoC for PMO service delivery models, governance tool evaluation
+- **Portfolio**: PoC for portfolio prioritization models, resource optimization tools
+- **Transformation**: PoC for change management approach, communication platform evaluation
 
-1. **PoC Charter** — Hipotesis, alcance, criterios de exito, kill criteria, timeline, equipo
-2. **Test Plan** — Escenarios de prueba, datos requeridos, metricas a capturar
-3. **Evaluation Report Template** — Template para documentar resultados y veredicto
-4. **Risk Register** — Riesgos del PoC y mitigacion
-5. **Decision Framework** — Criterios para go/no-go post-PoC
+## Before Designing PoC
+1. Read hypothesis or question — clearly define what the PoC will answer [PLAN]
+2. Glob `*vendor*` and `*tool*` — identify evaluation candidates [PLAN]
+3. Read decision-maker expectations — understand what evidence they need to decide [STAKEHOLDER]
+4. Confirm PoC budget and time-box — unfunded PoCs produce unreliable results [METRIC]
 
-## Proceso
+## Entrada (Input Requirements)
+- PoC hypothesis — the specific question the PoC will answer
+- Options to evaluate (2-4 alternatives maximum)
+- Evaluation criteria with weights and measurement methods
+- Available time-box, budget, and resources for the PoC
+- Decision-maker expectations and acceptance thresholds
 
-1. **Definicion de Hipotesis** — Formular hipotesis claras y falsificables:
-   - "La tecnologia X puede procesar Y transacciones/segundo con latencia <Z ms"
-   - "El modelo AI alcanza precision >X% en datos representativos del dominio"
-   - "La migracion de componente A a plataforma B se completa en <N sprints"
-2. **Diseno de PoC Charter**:
-   | Elemento | Descripcion |
-   |---|---|
-   | Hipotesis | Que se quiere validar (falsificable) |
-   | Alcance | Scope minimo para validar la hipotesis |
-   | Success Criteria | Metricas cuantitativas para declarar exito |
-   | Kill Criteria | Condiciones para abortar temprano |
-   | Timeline | Timebox estricto (1-4 semanas) |
-   | Equipo | Roles y dedicacion requerida |
-   | Datos | Datos reales (no mock) representativos |
-   | Entorno | Infraestructura necesaria |
-3. **Plan de Pruebas** — Disenar escenarios que cubran happy path, edge cases y failure modes
-4. **Definicion de Metricas** — Especificar que se mide, como se mide, baseline de comparacion
-5. **Template de Evaluacion** — Estructura para documentar resultados objetivamente:
-   - Resultados cuantitativos vs criterios de exito
-   - Observaciones cualitativas
-   - Riesgos descubiertos
-   - Veredicto: GO / NO-GO / PIVOT
-6. **Decision Framework** — Arbol de decision post-PoC con opciones claras
+## Proceso (Protocol)
+1. **Hypothesis definition** — Define the specific question the PoC will answer (falsifiable)
+2. **Scope constraint** — Limit PoC scope to the minimum needed for a valid evaluation
+3. **Success criteria definition** — Define measurable pass/fail criteria for each option being evaluated
+4. **Environment setup** — Prepare PoC environment (sandbox instances, pilot team, test data)
+5. **Variable control** — Identify and control variables that could bias evaluation
+6. **Time-boxed execution** — Run PoC within defined time-box (typically 2-4 weeks)
+7. **Data collection** — Gather evaluation data per defined criteria during execution
+8. **Comparative analysis** — Compare options against success criteria with quantified results
+9. **Scale-up risk assessment** — Document what changes at full-scale that the PoC cannot validate
+10. **Decision facilitation** — Present findings and facilitate evidence-based go/no-go decision
 
-## Criterios de Calidad
+## Edge Cases
+1. **PoC results inconclusive** — Redesign evaluation criteria; if still inconclusive after second time-box, choose option with lowest switching cost and plan post-implementation evaluation.
+2. **PoC scope creeping into mini-project** — Hard stop; re-scope to original hypothesis; deliver evaluation results from what was executed within original scope.
+3. **Decision-makers ignoring PoC results** — Document formal decision divergence; note that the decision is preference-based, not evidence-based; track outcome for lessons learned.
+4. **PoC budget exhausted before conclusive results** — Deliver partial results with explicit gaps; recommend additional PoC phase with specific scope or accept decision under uncertainty.
+5. **All options fail success criteria** — Valid PoC outcome; recommend alternative approaches not yet evaluated or adjust success criteria based on market reality.
 
-- [ ] Hipotesis formuladas como afirmaciones falsificables
-- [ ] Criterios de exito cuantitativos y medibles
-- [ ] Kill criteria definidos para evitar sunk cost fallacy
-- [ ] Timeline con timebox estricto (no scope creep)
-- [ ] Datos de prueba representativos (no datos demo/synthetic)
-- [ ] Evaluacion objetiva con metricas, no opiniones
-- [ ] Veredicto con opciones claras (GO, NO-GO, PIVOT)
+## Example: Good vs Bad
 
-## Anti-patrones a Evitar
+**Good PoC Lab:**
+| Attribute | Value |
+|-----------|-------|
+| Hypothesis | "Jira better supports our Scrum workflow than Azure DevOps" — falsifiable [PLAN] |
+| Success criteria | 8 criteria defined before testing with weighted scores [METRIC] |
+| Time-box | 3 weeks with 5-person pilot team [SCHEDULE] |
+| Variable control | Same team, same data, same 2-week period per tool [PLAN] |
+| Result | Jira scored 4.2/5 vs. Azure DevOps 3.7/5; scale-up risks documented [METRIC] |
 
-| Anti-patron | Sintoma | Mitigacion |
-|---|---|---|
-| PoC Theater | Demo bonita que no valida nada real | Hipotesis falsificable + datos reales |
-| Scope Creep | PoC se convierte en MVP | Timebox estricto + kill criteria |
-| Cherry Picking | Solo se prueban happy paths | Plan de pruebas con edge cases |
-| Sunk Cost | Se continua PoC fallido por inversion | Kill criteria claros y respetados |
-| Vendor Demo | Vendor ejecuta el PoC con su equipo | Equipo propio ejecuta con soporte |
+**Bad PoC Lab:**
+"We tried Jira and it seemed okay." — No hypothesis, no success criteria, no controlled comparison, no scale-up risk assessment. Decision has no evidence basis.
 
-## Supuestos y Limites
+## Salida (Deliverables)
+- `06_poc_lab_{proyecto}_{WIP}.md` — PoC design document and results report
+- Evaluation results matrix (options x criteria with scores)
+- PoC execution log with observations and incidents
+- Scale-up considerations and risk assessment
+- Evidence-based recommendation with confidence level
 
-- El equipo tiene acceso a datos representativos (no sinteticos) para ejecutar la PoC.
-- El timebox de la PoC no excede 4 semanas; si requiere mas, considerar un MVP.
-- Esta skill NO produce codigo ni ejecuta la PoC; genera los artefactos de planificacion y evaluacion.
-- NUNCA incluir precios; solo magnitudes en FTE-meses y cost drivers.
+## Validation Gate
+- [ ] PoC results from controlled experiment, not unstructured exploration
+- [ ] Evaluation criteria measured objectively with defined measurement methods
+- [ ] All options evaluated under comparable conditions — same time, same team, same data
+- [ ] Same criteria and time-box applied to all options being evaluated
+- [ ] Recommendation directly supports investment/adoption decision
+- [ ] Results understandable by decision-makers without technical deep-dive
+- [ ] Recommendation traces directly to PoC measurement data
+- [ ] Scale-up risks and PoC limitations explicitly documented
+- [ ] Decision-makers get evidence-based confidence, not vendor promises
+- [ ] PoC design appropriate for the methodology or tool being evaluated
 
-## Casos Borde
+## Escalation Triggers
+- PoC results inconclusive (no clear winner and criteria were well-defined)
+- PoC exceeding time-box or budget constraints
+- PoC scope expanding beyond original hypothesis (scope creep into mini-project)
+- Decision-makers ignoring PoC results in favor of pre-existing preferences
 
-| Caso Borde | Estrategia de Manejo |
-|---|---|
-| No hay datos reales disponibles para la PoC | Disenar fase previa de obtencion de datos con timeline propio. Documentar como prerequisito bloqueante en el charter. Usar datos sinteticos SOLO para validacion de infraestructura, nunca para resultados funcionales. |
-| El stakeholder quiere evaluar >3 tecnologias simultaneamente | Disenar PoCs secuenciales con kill criteria compartidos. Priorizar por riesgo/impacto. Establecer evaluacion comparativa con criterios normalizados. Maximo 2 PoCs en paralelo por equipo. |
-| La PoC tiene exito parcial (algunos criterios pasan, otros no) | Aplicar decision framework con pesos por criterio. Documentar que paso, que no, y el gap. Proponer PIVOT: redefinir alcance de adopcion basado en los criterios exitosos. |
-| El timebox se agota sin resultados concluyentes | Evaluar si la causa es scope creep, impedimentos tecnicos, o hipotesis mal formulada. Documentar hallazgos parciales. Proponer extension acotada (max 1 semana) O pivote de hipotesis. |
+## Additional Resources
+| Resource | When to Read | Location |
+|----------|-------------|----------|
+| Body of Knowledge | When designing controlled evaluation experiments | `references/body-of-knowledge.md` |
+| State of the Art | When implementing modern PoC and pilot methodologies | `references/state-of-the-art.md` |
+| Knowledge Graph | When mapping PoC to pipeline decision gates | `references/knowledge-graph.mmd` |
+| Use Case Prompts | When designing PoCs for specific tool or methodology types | `prompts/use-case-prompts.md` |
+| Metaprompts | When adapting PoC design for non-standard evaluation contexts | `prompts/metaprompts.md` |
+| Sample Output | When reviewing expected PoC report quality | `examples/sample-output.md` |
 
-## Decisiones y Trade-offs
-
-| Decision | Justificacion | Alternativa Descartada |
-|---|---|---|
-| Timebox estricto (1-4 semanas) en lugar de tiempo abierto | Previene sunk cost fallacy y scope creep. Fuerza priorizacion de hipotesis criticas. | Tiempo abierto: genera PoC Theater y pierde urgencia. |
-| Kill criteria obligatorios en el charter | Fuerza decision explicita de cuando abortar. Reduce sesgo de confirmacion. | Sin kill criteria: equipos persisten en PoCs fallidas por inercia. |
-| Evaluacion cuantitativa sobre cualitativa | Objetividad reproducible. Multiples evaluadores llegan al mismo veredicto. | Evaluacion cualitativa: genera sesgo de opinion y no es reproducible. |
-| Datos reales sobre datos sinteticos | Valida hipotesis en condiciones reales. Evita falsos positivos por datos idealizados. | Datos sinteticos: mas faciles de obtener pero no validan viabilidad real. |
-
-## Knowledge Graph
-
-```mermaid
-graph TD
-    subgraph Core["Core: PoC Lab"]
-        POC[PoC Charter]
-        HIP[Hipotesis Falsificable]
-        EVAL[Evaluation Framework]
-        KILL[Kill Criteria]
-    end
-
-    subgraph Inputs["Inputs"]
-        TECH[Tecnologia a Validar]
-        DATA[Datos Representativos]
-        TEAM[Equipo y Dedicacion]
-        TIME[Timebox]
-    end
-
-    subgraph Outputs["Outputs"]
-        CHARTER[PoC Charter Document]
-        TESTPLAN[Test Plan]
-        REPORT[Evaluation Report]
-        DECISION[Go / No-Go / Pivot]
-    end
-
-    subgraph Related["Related Skills"]
-        ROADMAP[chart-roadmap]
-        SCENARIOS[evaluate-scenarios]
-        FEASIBILITY[validate-feasibility]
-        BURNDOWN[execution-burndown]
-    end
-
-    TECH --> HIP
-    DATA --> HIP
-    TEAM --> POC
-    TIME --> POC
-    HIP --> POC
-    KILL --> POC
-    POC --> TESTPLAN
-    TESTPLAN --> EVAL
-    EVAL --> REPORT
-    REPORT --> DECISION
-    DECISION --> ROADMAP
-    SCENARIOS --> HIP
-    FEASIBILITY --> EVAL
-    DECISION --> BURNDOWN
-```
-
-## Output Templates
-
-### Template 1: PoC Charter (Markdown)
-
-**Filename:** `PoC_Charter_{project}_{WIP|Aprobado}.md`
-
-```markdown
-# PoC Charter: {project}
-
-## Hipotesis
-{Afirmacion falsificable con metricas de exito}
-
-## Alcance
-{Scope minimo para validar la hipotesis}
-
-## Criterios de Exito
-| Criterio | Metrica | Umbral | Metodo de Medicion |
-|---|---|---|---|
-| ... | ... | ... | ... |
-
-## Kill Criteria
-| Condicion | Accion |
-|---|---|
-| ... | Abortar / Escalar |
-
-## Timeline
-| Semana | Actividad | Responsable | Entregable |
-|---|---|---|---|
-| S1 | ... | ... | ... |
-
-## Equipo
-| Rol | Persona | Dedicacion |
-|---|---|---|
-
-## Riesgos
-| Riesgo | Probabilidad | Impacto | Mitigacion |
-|---|---|---|---|
-```
-
-### Template 2: Evaluation Report (Markdown)
-
-**Filename:** `PoC_Evaluation_{project}_{WIP|Aprobado}.md`
-
-```markdown
-# Evaluacion PoC: {project}
-
-## Resumen Ejecutivo
-{Veredicto en 3 lineas: GO / NO-GO / PIVOT}
-
-## Resultados vs Criterios
-| Criterio | Target | Resultado | Delta | Veredicto |
-|---|---|---|---|---|
-
-## Observaciones Cualitativas
-{Hallazgos no cuantificables relevantes}
-
-## Riesgos Descubiertos
-| Riesgo | Severidad | Mitigacion Propuesta |
-|---|---|---|
-
-## Veredicto y Recomendacion
-{GO / NO-GO / PIVOT con justificacion basada en evidencia}
-
-## Proximos Pasos
-{Acciones concretas con responsable y fecha}
-```
-
-## Evaluacion
-
-| Dimension | Peso | Criterio |
-|---|---|---|
-| Trigger Accuracy | 10% | La skill se activa correctamente ante solicitudes de PoC, spike, o prototipo |
-| Completeness | 25% | Charter incluye hipotesis, criterios de exito, kill criteria, timeline, equipo, y riesgos |
-| Clarity | 20% | Hipotesis son falsificables; criterios de exito son cuantitativos y no ambiguos |
-| Robustness | 20% | Maneja casos borde (datos parciales, exito parcial, timebox agotado) con estrategias claras |
-| Efficiency | 10% | Genera artefactos completos sin requerir multiples iteraciones del usuario |
-| Value Density | 15% | Cada seccion del charter aporta informacion accionable; cero filler |
-
-**Umbral minimo: 7/10**
-
-## Cross-References
-
-- `metodologia-evaluate-scenarios` — Alimenta hipotesis desde escenarios evaluados
-- `metodologia-validate-feasibility` — Complementa evaluacion tecnica de la PoC
-- `metodologia-chart-roadmap` — Recibe resultado GO para planificar ejecucion
-- `metodologia-execution-burndown` — Dimensiona esfuerzo post-PoC
-
-## Output Artifact
-
-**Primary:** `PoC_Lab_{project}.md` — Charter, test plan, evaluation template.
-
-### HTML (bajo demanda)
-- Filename: `{fase}_PoC_Lab_{project}_{WIP}.html`
-- Estructura: HTML self-contained branded (Design System MetodologIA v5). Tipo: Light-First Technical. Incluye PoC Charter con criterios de éxito/kill criteria tabulados, evaluation report template, y árbol de decisión GO/NO-GO/PIVOT. WCAG AA, responsive, print-ready.
-
-### DOCX (bajo demanda)
-- Filename: `{fase}_poc_lab_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de hipótesis, criterios de éxito y kill criteria con zebra striping. Encabezados y pies de página con branding MetodologIA.
-
-### XLSX (bajo demanda)
-- Filename: `{fase}_poc_lab_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Headers navy con texto blanco Poppins, formato condicional por veredicto (GO/NO-GO/PIVOT) y estado de criterio de exito, auto-filtros en todas las columnas, valores calculados sin formulas. Hojas: PoC Charter, Test Plan, Results vs Criteria, Risk Register.
-
-### PPTX (bajo demanda)
-- Filename: `{fase}_poc_lab_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: PoC Charter, Hipótesis y criterios de éxito, Kill criteria, Timeline y equipo, Risk Register, Veredicto GO/NO-GO/PIVOT.
-
-### Diagramas (Mermaid)
-- Flowchart: proceso de PoC (design -> execute -> evaluate -> decide)
-- Decision tree: framework de decision post-PoC
-- Gantt: timeline del PoC
+## Output Configuration
+- **Language**: Spanish (Latin American, business register)
+- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
+- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
 
 ---
-**Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0
+
+---
+
+## Sub-Agents
+
+### Evaluation Framework Builder
+
+
+## Evaluation Framework Builder Agent
+
+### Core Responsibility
+
+Builds evaluation framework. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Experiment Planner
+
+
+## Experiment Planner Agent
+
+### Core Responsibility
+
+Plans PoC experiments. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Findings Synthesizer
+
+
+## Findings Synthesizer Agent
+
+### Core Responsibility
+
+Synthesizes PoC findings. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Hypothesis Designer
+
+
+## Hypothesis Designer Agent
+
+### Core Responsibility
+
+Designs testable hypotheses. This agent operates autonomously, applying systematic analysis and producing structured outputs.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints.
+3. **Apply Framework.** Apply the appropriate analytical framework or model.
+4. **Generate Findings.** Produce detailed findings with evidence tags and quantified impacts.
+5. **Validate Results.** Cross-check findings against related artifacts for consistency.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners and timelines.
+7. **Deliver Output.** Produce the final structured output with executive summary, analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags and severity ratings.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+

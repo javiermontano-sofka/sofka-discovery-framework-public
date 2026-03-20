@@ -123,14 +123,6 @@ PARA CADA varianza > 10%:
    recomendar: corrective action
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break EVM variances into rate, efficiency, scope, and timing components
-2. **Evidence-check** — EVM analysis from actual data only; never estimate actuals
-3. **Bias scan** — Check for optimism bias in EAC (choosing the most favorable forecasting method)
-4. **Structure-first** — Calculate all metrics before interpreting trends
-5. **Escalate** — When CPI < 0.85 after 20% completion, data shows project will overspend
-
 ## Escalation Triggers
 
 - CPI < 0.85 after project is 20%+ complete (recovery statistically unlikely)
@@ -138,9 +130,3 @@ PARA CADA varianza > 10%:
 - SPI(t) < 0.85 for two consecutive periods
 - EAC exceeds management reserve
 - CPI or SPI deteriorating for 3+ consecutive periods
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

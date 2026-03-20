@@ -111,14 +111,6 @@ SI BCR < 1.0: proyecto destruye valor
 - External conditions changed (market, regulation)
 - Sponsor disengaged from benefits tracking
 
-## Reasoning Discipline
-
-1. **Decompose** — Break benefits into leading indicators and lagging outcomes
-2. **Evidence-check** — Benefits claims backed by measured data, not assumptions about value
-3. **Bias scan** — Check for attribution bias (claiming benefits caused by external factors)
-4. **Structure-first** — Define measurement framework before collecting data
-5. **Escalate** — When benefits realization falls below 50% of target, escalate to sponsor
-
 ## Escalation Triggers
 
 - Benefits realization below 50% of target at scheduled measurement point
@@ -126,9 +118,3 @@ SI BCR < 1.0: proyecto destruye valor
 - Baseline measurement missing or invalid (cannot measure improvement)
 - Key benefit dependent on external factor outside project control
 - Sponsor disengaged from benefits review process
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

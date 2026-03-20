@@ -133,13 +133,6 @@ For each critical service, define:
 - Provide actionable recommendations with effort: "Adding contract tests for the 5 critical APIs takes ~2 sprints but prevents 80% of integration failures"
 - Use SLO language with stakeholders: "We're proposing 99.9% availability — that means 43 minutes of downtime per month is acceptable"
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
 ## Escalation Triggers
 
 Escalate when:

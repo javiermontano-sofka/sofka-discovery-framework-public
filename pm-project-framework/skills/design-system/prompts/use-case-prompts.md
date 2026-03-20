@@ -1,71 +1,162 @@
-# Use Case Prompts — Design System & Visual Identity
+# Use Case Prompts — Design System v4
 
-## Caso de Uso 1: Generación de Token Reference Completo
+Prompts listos para invocar el skill en escenarios concretos. Cada prompt incluye contexto, parámetros y resultado esperado.
 
-**Contexto**: Nuevo proyecto APEX necesita la referencia completa de tokens CSS para comenzar a producir entregables con branding correcto.
+---
 
-**Prompt Template**:
+## 1. Full Design System Audit
+
 ```
-Genera la referencia completa de design tokens APEX para el proyecto {proyecto}:
-- Color tokens: primary, secondary, accent, danger, dark, surface, border, text, muted
-- Typography: font family, sizes (H1-H4, body, small, caption), weights, line heights
-- Spacing: escala 4px base (space-1 through space-12)
-- Shadows: elevation levels (card, dropdown, modal)
-- Border radius: small (4px), medium (8px), large (12px), pill (9999px)
-- Formato: CSS custom properties (:root block)
-- Incluir: dark mode variants
-```
+Ejecuta una auditoría completa del design system aplicado en los HTML de este directorio: {RUTA_DELIVERABLES}.
 
-**Output Esperado**: Bloque CSS :root con todos los tokens definidos, más bloque @media (prefers-color-scheme: dark).
+Para cada archivo:
+1. Verifica que TODOS los colores usen CSS custom properties (cero hex literals fuera de :root)
+2. Valida contrast ratios WCAG AA (4.5:1 body, 3:1 large text)
+3. Confirma presencia de: skip link, focus states, ARIA labels en modales
+4. Verifica que success/positive states usen yellow (#22D3EE), nunca green
+5. Chequea responsive breakpoints (mobile <768px, tablet 768-1024px, desktop >1024px)
+6. Valida hero y footer: fondo negro, borde 8px solid brand-primary
 
-## Caso de Uso 2: Librería de Componentes PM
+Genera un reporte consolidado con tabla de compliance por archivo (🟢/🟡/🔴) y lista priorizada de correcciones.
 
-**Contexto**: Se necesitan componentes HTML reutilizables para dashboards y reportes APEX.
-
-**Prompt Template**:
-```
-Crea la librería de componentes PM para APEX usando los design tokens canónicos:
-- RAG Card: Blue/Amber/Red status con icono, título, y descripción
-- KPI Card: valor numérico, trend arrow, comparación vs target
-- Risk Heatmap Cell: 5×5 matrix con color gradient
-- Milestone Badge: completed/at-risk/overdue states
-- Evidence Tag: [PLAN], [METRIC], [SUPUESTO], etc. con color coding
-- Budget Burn Bar: actual vs planned con porcentaje
-- Cada componente: HTML + CSS usando solo APEX tokens
+MODO=desatendido FORMATO=markdown VARIANTE=técnica
 ```
 
-**Output Esperado**: HTML + CSS para cada componente, copy-pasteable, usando CSS custom properties APEX.
+---
 
-## Caso de Uso 3: Auditoría de Accesibilidad del Design System
+## 2. Component Library Assessment
 
-**Contexto**: Verificar que todas las combinaciones de color del design system cumplen WCAG AA.
-
-**Prompt Template**:
 ```
-Ejecuta auditoría de accesibilidad WCAG 2.1 AA sobre el design system APEX:
-- Verificar: contraste de cada color de texto contra cada background posible
-- Calcular: ratio de contraste para cada combinación
-- Clasificar: Pass AA, Pass AAA, Fail
-- Identificar: combinaciones que fallan y proponer ajustes
-- Verificar: componentes no usan color como único indicador
-- Output: Tabla de contrast ratios + lista de fails + correcciones propuestas
-```
+Analiza el component library actual del design system v4 contra los deliverables generados en {RUTA_DELIVERABLES}.
 
-**Output Esperado**: Tabla exhaustiva de combinaciones con ratios, flag de fails, y paleta ajustada para cumplimiento.
+Determina:
+1. Component coverage: ¿qué componentes del catálogo se usan realmente? ¿cuáles nunca se usan?
+2. Component consistency: ¿cada instancia de un componente respeta la especificación? (clases correctas, tokens correctos)
+3. Missing components: ¿hay patrones visuales repetidos que no están catalogados como componentes?
+4. Anti-patterns detectados: ¿componentes usados fuera de su propósito documentado?
 
-## Caso de Uso 4: Override Layer para Branding de Cliente
+Output: tabla de componentes con frecuencia de uso, compliance score, y recomendaciones de evolución.
 
-**Contexto**: Cliente requiere que los entregables usen sus colores corporativos en lugar de APEX defaults.
-
-**Prompt Template**:
-```
-Genera override layer de design tokens para el cliente {cliente}:
-- Colores del cliente: primary={hex}, secondary={hex}, accent={hex}
-- Preservar: estructura APEX (spacing, typography, components)
-- Override: solo color tokens, manteniendo semántica
-- Verificar: nuevos colores cumplen WCAG AA
-- Si no cumplen: proponer ajustes al cliente con justificación
-- Output: CSS override file + accessibility report + side-by-side comparison
+MODO=desatendido FORMATO=markdown VARIANTE=técnica
 ```
 
-**Output Esperado**: Archivo CSS con overrides, reporte de accesibilidad, y comparación visual APEX vs. cliente.
+---
+
+## 3. Accessibility Audit
+
+```
+Realiza una auditoría de accesibilidad exhaustiva del archivo {ARCHIVO_HTML}.
+
+Evalúa contra WCAG 2.1 nivel AA:
+- Perceptible: contrast ratios, alt text, media alternatives, text resizing
+- Operable: keyboard navigation, skip link, focus visible, no traps, timing
+- Comprensible: language tag, labels, error identification, consistent navigation
+- Robusto: valid HTML, ARIA usage, name/role/value
+
+Para cada hallazgo indica: criterio WCAG violado, severidad (critical/major/minor), elemento afectado, y corrección propuesta con código.
+
+MODO=desatendido FORMATO=markdown VARIANTE=técnica
+```
+
+---
+
+## 4. Brand HTML Generation (MetodologIA)
+
+```
+Genera un deliverable HTML completo con marca MetodologIA para: {TITULO_DOCUMENTO}.
+
+Usa el brand-config.json de MetodologIA:
+- Primary: #6366F1 (naranja MetodologIA)
+- Dark: #1A1A2E
+- Success: #22D3EE (yellow, nunca green)
+- Fonts: Clash Grotesk (display) + Inter (body)
+
+El documento debe contener:
+- Hero con logo metodologia_, 3-4 KPIs destacados, título con span naranja
+- Nav sticky con secciones del documento
+- {NUMERO_SECCIONES} secciones con contenido de: {FUENTE_CONTENIDO}
+- Footer con confidencialidad y referencia documental
+- Print stylesheet funcional
+
+MODO_OPERACIONAL=brand-html MODO=piloto-auto FORMATO=html VARIANTE=ejecutiva
+```
+
+---
+
+## 5. Design Token Migration
+
+```
+Migra los design tokens del archivo {ARCHIVO_LEGACY} al formato Design System v4.
+
+Proceso:
+1. Extrae todos los valores hardcoded de color, spacing, typography del CSS existente
+2. Mapea cada valor a su token equivalente en el sistema v4 (brand tokens, semantic tokens, decorative tokens)
+3. Reemplaza hex literals por var(--token-name) en todo el documento
+4. Genera el bloque :root actualizado con todos los tokens
+5. Verifica que ningún valor visual haya cambiado (mismos colores renderizados)
+6. Documenta tokens sin mapeo (requieren decisión: nuevo token o eliminación)
+
+Output: archivo HTML migrado + reporte de migración con tabla de mapeo old→new.
+
+MODO=supervisado FORMATO=dual VARIANTE=técnica
+```
+
+---
+
+## 6. Multi-Brand Strategy
+
+```
+Diseña una estrategia multi-brand para el design system v4 que soporte las siguientes marcas: {LISTA_MARCAS}.
+
+Para cada marca genera:
+1. brand-config.json con paleta completa (primary, light, dark, dim, black, white, background, muted)
+2. Validación de contrast ratios WCAG AA para todas las combinaciones texto/fondo
+3. Typography recommendation (display + body fonts con Google Fonts URL)
+4. Preview HTML con hero, card grid, table, callout de cada tipo, y badge samples
+
+Entrega final: directorio por marca con brand-config.json + preview.html + compliance-report.md.
+
+MODO=piloto-auto FORMATO=html VARIANTE=técnica MODO_OPERACIONAL=sistema-completo
+```
+
+---
+
+## 7. Storybook Documentation
+
+```
+Genera documentación tipo Storybook para el component library del design system v4.
+
+Para cada componente del catálogo:
+1. Nombre y descripción funcional
+2. Variantes disponibles (default, accent, critical, warning, success, info, dark)
+3. HTML snippet con código copiable
+4. Tabla de CSS custom properties que consume
+5. Do's and Don'ts con ejemplos visuales
+6. Responsive behavior (cómo se adapta en mobile/tablet/desktop)
+7. Accessibility notes (ARIA, keyboard, screen reader behavior)
+
+Formato: un archivo HTML navegable con sidebar de componentes y área de preview.
+
+MODO=desatendido FORMATO=html VARIANTE=técnica MODO_OPERACIONAL=componentes
+```
+
+---
+
+## 8. Design System Governance
+
+```
+Establece un modelo de gobernanza para el design system v4 del framework de discovery MetodologIA.
+
+Define:
+1. Roles: quién puede agregar componentes, quién aprueba cambios, quién mantiene tokens
+2. Proceso de contribución: propuesta → review → test → merge → document
+3. Versionado semántico: cuándo bump major/minor/patch, changelog format
+4. Métricas de salud: component coverage, token compliance, accessibility score, adoption rate
+5. Deprecation policy: cómo retirar componentes sin romper deliverables existentes
+6. Acceptance criteria checklist actualizada (extensión del operations-guide.md)
+7. Cadencia de review: auditoría trimestral de tokens, componentes, y accesibilidad
+
+Output: documento de gobernanza listo para integrar en el framework.
+
+MODO=piloto-auto FORMATO=markdown VARIANTE=técnica
+```

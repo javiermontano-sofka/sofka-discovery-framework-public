@@ -94,14 +94,6 @@ PARA CADA sla EN contrato:
       ESCALAR a sponsor y legal
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break compliance into regulatory, contractual, organizational, and methodology dimensions
-2. **Evidence-check** — Compliance claims must trace to specific evidence artifacts
-3. **Bias scan** — Check for compliance minimalism (assuming compliance without verification)
-4. **Structure-first** — Map requirements before assessing compliance status
-5. **Escalate** — When compliance gap has no remediation within project authority, involve legal/compliance
-
 ## Escalation Triggers
 
 - Regulatory compliance gap discovered with no remediation path within project timeline
@@ -109,9 +101,3 @@ PARA CADA sla EN contrato:
 - Audit finding with severity "major" or "critical"
 - Compliance evidence missing for a gate decision that has already been made
 - Legal or regulatory change affecting project scope or approach mid-execution
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

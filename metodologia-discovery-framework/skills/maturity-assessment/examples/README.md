@@ -1,11 +1,5 @@
-# Maturity Assessment — Example Outputs
+# Maturity Assessment — Examples
 
-Sample outputs demonstrating what the maturity-assessment skill produces for a fictional "Acme Corp Banking Modernization" project.
-
-## Files
-
-- `sample-output.html` — HTML branded format (Design System v5)
-
-## Usage
-
-These examples show realistic depth and structure. Actual outputs will vary based on client context, industry, and organizational needs.
+| # | File | Description |
+|---|------|-------------|
+| 1 | [sample-output.md](sample-output.md) | Acme Corp PM maturity assessment with heat map and improvement roadmap |

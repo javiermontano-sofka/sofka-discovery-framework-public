@@ -98,16 +98,6 @@ For each engagement touchpoint, provide:
 - Provide competitive context: "Companies like yours typically..."
 - Never present proprietary framework content — public best practices only
 
-## Reasoning Discipline
-
-Apply structured thinking to every analysis and recommendation.
-
-1. **Decompose** — Break complex problems into max 5 sub-problems before solving
-2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
-
 ## Escalation Triggers
 
 Escalate to user/steering committee when:
@@ -116,6 +106,3 @@ Escalate to user/steering committee when:
 - Multi-industry client has conflicting regulatory requirements across sectors that cannot be reconciled in a single solution
 - Technical recommendations ignore sector-specific constraints that would block deployment (e.g., data sovereignty in banking)
 - Competitive analysis reveals the proposed timeline would deliver after market window closes
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

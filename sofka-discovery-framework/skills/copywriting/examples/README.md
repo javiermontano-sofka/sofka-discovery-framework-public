@@ -7,7 +7,7 @@ Este directorio contiene ejemplos de alta calidad que sirven como benchmark para
 | Archivo | Descripción |
 |---------|-------------|
 | `sample-output.md` | Extracto de pitch ejecutivo en markdown — cliente ficticio RetailCo |
-| `sample-output.html` | Versión HTML con Sofka Design System (misma pieza) |
+| `sample-output.html` | Versión HTML con MetodologIA Design System (misma pieza) |
 
 ## Caso de Ejemplo
 
@@ -37,4 +37,4 @@ El editorial committee debe usar estos ejemplos como referencia de calidad míni
 
 ---
 
-*© Sofka Technologies. Todos los derechos reservados.*
+*© Comunidad MetodologIA. Todos los derechos reservados.*

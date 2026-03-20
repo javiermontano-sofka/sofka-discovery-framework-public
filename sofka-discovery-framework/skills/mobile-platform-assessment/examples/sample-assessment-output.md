@@ -307,4 +307,4 @@ The 16-item remediation roadmap prioritizes store compliance and security (items
 
 ---
 
-**Autor:** Javier Montano | Sofka | 12 de marzo de 2026
+**Autor:** Javier Montano | MetodologIA | 12 de marzo de 2026

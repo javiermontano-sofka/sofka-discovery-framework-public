@@ -99,14 +99,6 @@ PARA CADA hallazgo:
 | Gate readiness | Before each gate | Gate deliverables | Quality Auditor |
 | Financial compliance | Quarterly | Budget and actuals | Budget Controller |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break audit scope into governance, financial, quality, risk, and compliance streams
-2. **Evidence-check** — Evidence must be complete, current, and traceable to requirements
-3. **Bias scan** — Check for presentational bias (organizing evidence to hide weaknesses)
-4. **Structure-first** — Map evidence requirements before collecting
-5. **Escalate** — When evidence gaps cannot be filled before audit, inform audit lead and project sponsor
-
 ## Escalation Triggers
 
 - Critical audit finding with no remediation plan within 48 hours
@@ -114,9 +106,3 @@ PARA CADA hallazgo:
 - Prior audit findings not remediated by committed deadline
 - External audit scope expanded beyond original notification
 - Team refusing to provide evidence or participate in audit
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

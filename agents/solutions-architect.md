@@ -98,13 +98,6 @@ Document the current state:
 - Flag hidden infrastructure assumptions: "This design assumes <10ms network latency between services, currently at 45ms"
 - Present infrastructure trade-offs with cost implications: "Multi-region adds resilience but doubles infrastructure magnitude by ~1.8x"
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
 ## Escalation Triggers
 
 Escalate when:

@@ -1,140 +1,284 @@
 ---
-name: apex-copywriting
+name: metodologia-copywriting
+author: Javier Montaño · Comunidad MetodologIA
+argument-hint: "<audience: ceo|cto|cfo|board|mixed> <context: pitch|scenario|roadmap|summary|recommendation>"
 description: >
-  Use when the user asks to "write persuasive content", "create messaging",
-  "draft project marketing", "craft elevator pitches", or "design stakeholder narratives".
-  Activates when a stakeholder needs persuasive project communications, elevator pitches,
-  change narratives, internal marketing copy, value propositions for diverse audiences,
-  or FAQ documents addressing common stakeholder objections.
+  Persuasive writing for executive audiences — value propositions, calls to action,
+  cost-of-inaction narratives, and compelling summaries. Use when generating executive
+  summaries, pitch narratives, scenario value propositions, recommendation justifications,
+  or any prose that must drive a decision.
 allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
-  - Bash
 ---
 
-# Persuasive Writing & Messaging
+# Copywriting — Persuasive Executive Communication
 
-**TL;DR**: Produces persuasive project communications including elevator pitches, stakeholder messaging, change narratives, internal marketing, and value propositions. Tailors tone, structure, and messaging to specific audiences to drive engagement, buy-in, and action.
+Transforms technical findings into decision-driving prose. Owns value propositions, calls to action, cost-of-inaction narratives, executive summaries, and recommendation justifications across all discovery deliverables.
 
-## Principio Rector
-La gestión de proyectos es, en gran parte, gestión de narrativas. Cómo se comunica un proyecto determina cómo se percibe. Un proyecto técnicamente sólido con comunicación deficiente será subestimado; un proyecto promedio con comunicación excelente será celebrado. El copywriting transforma hechos en historias que generan acción.
+## Guiding Principle
 
-## Assumptions & Limits
-- Assumes message objective and target audience are defined before writing [PLAN]
-- Assumes key facts and data are available and verified [SUPUESTO]
-- Breaks when the message objective conflicts with project reality — do not write fiction
-- Does not create deceptive messaging — persuasion must be grounded in evidence
-- Tone calibration requires understanding of organizational culture [SUPUESTO]
-- Multi-channel adaptation requires knowledge of channel constraints (character limits, format)
+**The best copy does not convince — it reveals what the reader already knows but has not articulated.** A C-level executive knows they have technical debt. They do not need to be told. They need the cost of inaction quantified and a clear path shown with options. Copy transforms data into decisions.
 
-## Usage
+### Persuasion Philosophy
 
-```bash
-# Create elevator pitch for project
-/pm:copywriting $PROJECT --type=pitch --audience="executive" --length="30-second"
+1. **Evidence before assertion.** Never "we believe that" — always "the data shows that." Every claim carries a number, a source, or an explicit assumption.
+2. **Demonstrated urgency, not declared.** Not "it is urgent to act." Instead "the cost of inaction is X FTE-months/quarter, equivalent to..."
+3. **Options, not mandates.** The decision-maker chooses. The consultant recommends with evidence and trade-offs.
+4. **Radical conciseness.** Every word must earn its place. If a sentence does not add information or move the reader, it is eliminated.
 
-# Write change narrative for transformation initiative
-/pm:copywriting $PROJECT --type=narrative --audience="all-staff" --tone="inspirational"
+## Inputs
 
-# Generate FAQ for common objections
-/pm:copywriting $PROJECT --type=faq --objections="cost,timeline,disruption"
+- `$1` — Target audience: `ceo`, `cto`, `cfo`, `board`, `mixed` (default: `mixed`)
+- `$2` — Deliverable context: `pitch`, `scenario`, `roadmap`, `summary`, `recommendation` (default: `summary`)
+
+Parse from `$ARGUMENTS`.
+
+## Techniques Arsenal
+
+### Value Proposition Construction
+
+```
+Structure: [Quantified benefit] + [for whom] + [eliminating what pain] + [in what timeframe]
+
+Example:
+  BAD: "Improve the system architecture"
+  GOOD: "Reduce time-to-market from 12 to 4 weeks, freeing 3 FTE-months/quarter
+      currently consumed by workarounds in the legacy system"
 ```
 
-**Parameters:**
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `$PROJECT` | Yes | Project identifier |
-| `--type` | Yes | `pitch`, `narrative`, `faq`, `value-proposition`, `messaging-matrix` |
-| `--audience` | No | Target audience (executive, technical, all-staff, customer) |
-| `--tone` | No | Desired tone (formal, conversational, urgent, inspirational) |
-| `--length` | No | Content length (30-second, 2-minute, one-page) |
-| `--objections` | No | Common objections to address in FAQ |
+### Cost-of-Inaction (COI) Narrative
 
-## Service Type Routing
-`{TIPO_PROYECTO}`: Transformation needs change narratives; Agile needs agile value messaging; PMO needs PMO value proposition; All types need stakeholder communication.
+```
+Pattern: [Quantified current state] → [Trend if no action] → [Cumulative impact] → [Point of no return]
 
-## Before Writing
+Framing: "Each quarter without action costs [X] and accumulates [Y] of additional technical debt.
+          In [Z] months, the remediation cost exceeds the transformation cost."
+```
 
-1. **Read** the stakeholder register to understand audience motivations and communication preferences
-2. **Read** the project charter for key facts, objectives, and value proposition
-3. **Glob** `skills/copywriting/references/*.md` for messaging frameworks and tone guidelines
-4. **Grep** for existing project communications to maintain consistency
+### Problem-Agitate-Solve (PAS)
 
-## Entrada (Input Requirements)
-- Message objective and target audience
-- Key facts and data to communicate
-- Desired audience action or response
-- Tone and style requirements
-- Channel and format constraints
+| Phase | Purpose | Technique |
+|-------|---------|-----------|
+| Problem | State pain with data | Metrics, benchmarks, evidence tags |
+| Agitate | Show consequences of inaction | COI projection, trend extrapolation |
+| Solve | Present solution with options | 3 scenarios, recommended path highlighted |
 
-## Proceso (Protocol)
-1. **Audience profiling** — Understand audience motivations, concerns, and language
-2. **Message framing** — Choose frame (benefit, problem-solution, comparison, narrative)
-3. **Value proposition** — Craft clear value proposition for the audience
-4. **Draft creation** — Write initial copy with attention to structure and flow
-5. **Persuasion techniques** — Apply appropriate techniques (social proof, urgency, authority)
-6. **Call to action** — Include clear, specific call to action
-7. **Tone calibration** — Adjust tone (formal, conversational, urgent, inspirational)
-8. **Review and refine** — Iterate on clarity, conciseness, and impact
-9. **Multi-version** — Create versions for different channels if needed
-10. **Testing** — Review with sample audience member for effectiveness
+### Call to Action Design
 
-## Edge Cases
+```
+Structure: [Specific action] + [concrete timeline] + [immediate next step] + [what happens if not]
 
-1. **Audience is hostile to the project**: Lead with acknowledged concerns, not benefits. Demonstrate listening before persuading. Use evidence-based messaging with [METRIC] tags. [STAKEHOLDER]
-2. **Conflicting messages from different project channels**: Audit all existing communications. Create master messaging matrix for consistency. Designate single source of truth for each message type. [PLAN]
-3. **Messaging accuracy challenged**: Provide evidence trail for every factual claim. Remove or tag unsupported claims. Credibility once lost is nearly impossible to recover. [METRIC]
-4. **Multiple audiences with opposing interests**: Create audience-specific versions with shared core message. Never promise contradictory outcomes to different audiences. [STAKEHOLDER]
+Example:
+  BAD: "It is recommended to proceed with modernization"
+  GOOD: "Approving scenario B (incremental modernization) this week allows
+      starting Sprint 0 in Q2 and capturing the first quick win (API gateway)
+      before July. → Next step: alignment workshop with technical team."
+```
 
-## Example: Good vs Bad
+## Tone Calibration by Audience
 
-**Good Copywriting:**
+| Audience | Tone | Lead With | Avoid |
+|----------|------|-----------|-------|
+| CEO | Strategic, visionary | Competitive advantage, positioning | Technical jargon, implementation details |
+| CTO | Technical-strategic | Technical risk, modernization | Excessive simplifications |
+| CFO | Financial, quantitative | NPV, payback, cost avoidance | Narratives without numbers |
+| Board | Governance, fiduciary | Risk-adjusted ROI, compliance | Operational detail |
+| Mixed | Progressive: impact → technical | Impact headline + progressive depth | Assuming a single profile |
 
-| Attribute | Value |
-|-----------|-------|
-| Audience profiling | Specific motivations and concerns documented |
-| Message framing | Problem-solution with evidence |
-| Elevator pitch | 30-second and 2-minute versions |
-| Call to action | Specific, actionable, time-bound |
-| Multi-channel | Adapted for email, presentation, Slack |
-| Evidence-backed | Every claim traceable to project data |
+## Anti-Patterns
 
-**Bad Copywriting:**
-A generic message saying "this project will transform our organization" sent to all audiences through all channels with no audience-specific framing, no evidence, no call to action. Fails because generic messaging resonates with no one — effective communication requires audience-specific framing and evidence-based claims.
-
-## Validation Gate
-- [ ] Every message has defined target audience with specific motivations documented
-- [ ] Claims supported by project data — no unsupported assertions
-- [ ] Clear, specific call to action included in every communication piece
-- [ ] Key messages adapted for ≥2 audiences or channels
-- [ ] Elevator pitch available in ≥2 lengths (30-second, 2-minute)
-- [ ] Messaging matrix maps audience x message x channel for consistency
-- [ ] No overpromising — claims aligned with realistic project outcomes
-- [ ] Tone calibrated to organizational culture and audience expectations
-- [ ] Audience motivated to take desired action after reading [STAKEHOLDER]
-- [ ] Messaging aligns with project brand and communication plan [PLAN]
-
-## Escalation Triggers
-- Key messaging rejected by stakeholders
-- Conflicting messages from different project channels
-- Messaging accuracy challenged
-- Audience not responding to communications
-
-## Additional Resources
-
-| Resource | When to read | Location |
-|----------|-------------|----------|
-| Body of Knowledge | Before writing to understand persuasion frameworks | `references/body-of-knowledge.md` |
-| State of the Art | When exploring modern communication techniques | `references/state-of-the-art.md` |
-| Knowledge Graph | To link copywriting to stakeholder and communication plan | `references/knowledge-graph.mmd` |
-| Use Case Prompts | When crafting messages for specific audiences | `prompts/use-case-prompts.md` |
-| Metaprompts | To generate messaging matrix templates | `prompts/metaprompts.md` |
-| Sample Output | To calibrate expected messaging quality | `examples/sample-output.md` |
+| Anti-Pattern | Correction |
+|-------------|-----------|
+| "It is worth noting that..." | Eliminate — go straight to the point |
+| "It is important to highlight..." | Eliminate — if it were important, it needs no announcement |
+| "It is recommended to consider..." | Recommend directly with evidence |
+| Passive voice without agent | Active voice: who does what |
+| Numbers without context | Always compare: vs baseline, vs industry, vs target |
+| Assertions without evidence | Mandatory tag: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA] |
+| Superlatives without support | "The best" → "Superior by X% according to [metric]" |
 
 ## Output Configuration
-- **Language**: Spanish (Latin American, business register)
-- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
+
+- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
+- **Attribution**: Expert committee of the MetodologIA Discovery Framework
+- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de MetodologIA."*
+
+## Validation Gate
+
+Before delivery, every copy section must pass:
+
+| Criterion | Check |
+|-----------|-------|
+| Every claim has evidence tag | [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO] |
+| Every number has context | vs baseline, vs benchmark, vs target |
+| COI is quantified | FTE-months, cost/quarter, trend projection |
+| CTA is specific | Action + timeline + next step |
+| Zero filler phrases | No filler constructions, no "undoubtedly" |
+| Audience tone match | Calibrated per target audience |
+
+## Supuestos y Limites
+
+- El input contiene hallazgos tecnicos ya validados; esta skill transforma, no investiga.
+- El copy se produce en espanol (registro empresarial latinoamericano) salvo indicacion explicita.
+- NUNCA producir precios. Solo FTE-meses, magnitudes, cost drivers.
+- NUNCA usar verde (#00FF00) para exito. Usar gold (#22D3EE) en contexto MetodologIA.
+- Esta skill posee **calidad de prosa y persuasion**. NO posee arco narrativo entre entregables (eso es storytelling) ni visualizacion de datos (eso es data-storytelling).
+
+## Casos Borde
+
+| Caso Borde | Estrategia de Manejo |
+|---|---|
+| No hay datos cuantitativos disponibles | Usar evidencia cualitativa con tags [INFERENCIA] explicitos. Enmarcar como "basado en patrones observados en [N] archivos/modulos/entrevistas". Declarar limitacion en la primera linea del entregable. |
+| Multiples audiencias en el mismo documento | Aplicar progressive disclosure: headline ejecutivo + detalle tecnico expandible. Usar callouts diferenciados por audiencia. Nunca asumir un solo perfil de lector. |
+| Recomendacion controversial o con riesgo politico | Presentar todas las opciones con igual rigor. Recomendar con evidencia explicita. Documentar dissent en registro de riesgos. Incluir seccion "Consideraciones Alternativas" antes del CTA. |
+| El cliente solicita copy en idioma diferente al espanol | Producir en el idioma solicitado manteniendo la estructura y tecnicas. Documentar terminologia clave en ambos idiomas. Priorizar claridad sobre estilo literario. |
+
+## Decisiones y Trade-offs
+
+| Decision | Justificacion | Alternativa Descartada |
+|---|---|---|
+| Evidencia antes que afirmacion como regla absoluta | Credibilidad con audiencias ejecutivas requiere datos primero. Un C-level detecta copy sin sustento en segundos. | Afirmar y luego justificar: percibido como opinion no fundamentada. |
+| Opciones sobre mandatos (3 escenarios) | El decision-maker elige; el consultor recomienda con evidencia. Aumenta ownership de la decision. | Recomendacion unica: percibida como imposicion, genera resistencia. |
+| Conciseness radical sobre exhaustividad | Tiempo de atencion ejecutivo es limitado. Cada palabra debe aportar informacion o mover al lector. | Prosa exhaustiva: pierde la audiencia ejecutiva en el segundo parrafo. |
+| COI cuantificado sobre urgencia declarada | "El costo de inaccion es X FTE-meses/trimestre" es verificable y accionable. "Es urgente actuar" es opinion. | Urgencia declarada: no diferencia de cualquier otra recomendacion. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core["Core: Copywriting"]
+        VP[Value Proposition]
+        COI[Cost-of-Inaction]
+        CTA[Call to Action]
+        PAS[Problem-Agitate-Solve]
+    end
+
+    subgraph Inputs["Inputs"]
+        AUD[Audiencia Target]
+        FIND[Hallazgos Tecnicos]
+        METRICS[Metricas y Datos]
+        CTX[Contexto del Entregable]
+    end
+
+    subgraph Outputs["Outputs"]
+        EXEC_SUM[Executive Summary]
+        PITCH[Pitch Narrative]
+        SCENARIO[Scenario Value Props]
+        RECO[Recommendation Copy]
+    end
+
+    subgraph Related["Related Skills"]
+        STORY[storytelling]
+        DATASTORY[data-storytelling]
+        TECHWRITE[technical-writing]
+        EDITORIAL[editorial-director]
+    end
+
+    AUD --> VP
+    FIND --> PAS
+    METRICS --> COI
+    CTX --> CTA
+    VP --> EXEC_SUM
+    COI --> PITCH
+    PAS --> SCENARIO
+    CTA --> RECO
+    STORY --> Core
+    DATASTORY --> METRICS
+    TECHWRITE --> FIND
+    EDITORIAL --> Core
+```
+
+## Output Templates
+
+### Template 1: Executive Summary (Markdown)
+
+**Filename:** `Executive_Summary_{project}_{WIP|Aprobado}.md`
+
+```markdown
+# Resumen Ejecutivo: {project}
+
+## Headline
+{Una linea: beneficio cuantificado + para quien + eliminando que dolor}
+
+## Situacion Actual
+{2-3 parrafos: estado actual con evidencia [TAGS], metricas con contexto}
+
+## Costo de Inaccion
+{Proyeccion cuantificada: FTE-meses/trimestre, tendencia, punto de no retorno}
+
+## Opciones
+| Escenario | Inversion (FTE-meses) | Beneficio | Timeline | Riesgo |
+|---|---|---|---|---|
+
+## Recomendacion
+{Escenario recomendado con justificacion basada en evidencia}
+
+## Siguiente Paso
+{Accion especifica + timeline + que pasa si no se actua}
+```
+
+### Template 1b: Executive Summary (HTML, bajo demanda)
+
+**Filename:** `Executive_Summary_{project}_{WIP|Aprobado}.html`
+
+HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye headline hero con metricas de impacto, COI projection visual, y comparativa de escenarios con CTA destacado. WCAG AA, responsive.
+
+### Template 1c: Executive Summary (DOCX, bajo demanda)
+
+**Filename:** `{fase}_Executive_Summary_{project}_{WIP}.docx`
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+
+### Template 1d: Executive Summary (XLSX, bajo demanda)
+
+**Filename:** `{fase}_Executive_Summary_{cliente}_{WIP}.xlsx`
+Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por escenario y prioridad, auto-filters en todas las columnas, valores directos sin fórmulas.
+
+### Template 1e: Executive Summary (PPTX, bajo demanda)
+
+**Filename:** `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+
+### Template 2: Pitch Narrative (HTML)
+
+**Filename:** `Pitch_{project}_{WIP|Aprobado}.html`
+
+```
+Estructura HTML con secciones:
+- Hero: headline con metricas de impacto
+- Problem: estado actual con datos y evidencia visual
+- Agitate: costo de inaccion con proyeccion temporal
+- Solve: 3 escenarios con comparativa visual
+- CTA: accion recomendada con timeline y siguiente paso
+- Footer: atribucion MetodologIA + evidencia tags summary
+Estilo: colores MetodologIA (#6366F1 primary, #0F172A background)
+```
+
+## Evaluacion
+
+| Dimension | Peso | Criterio |
+|---|---|---|
+| Trigger Accuracy | 10% | Se activa ante solicitudes de copy ejecutivo, pitch, value proposition, CTA, o resumen persuasivo |
+| Completeness | 25% | Incluye value proposition construida, COI cuantificado, CTA especifico, y tono calibrado por audiencia |
+| Clarity | 20% | Cero frases de relleno; cada afirmacion tiene evidencia; voz activa predominante |
+| Robustness | 20% | Produce copy efectivo con datos parciales, multiples audiencias, y recomendaciones controversiales |
+| Efficiency | 10% | Genera copy listo para entrega con parametros minimos (audiencia + contexto) |
+| Value Density | 15% | Cada parrafo contiene informacion accionable; ratio de conversion dato-a-decision es alto |
+
+**Umbral minimo: 7/10**
+
+## Cross-References
+
+- `metodologia-storytelling` — Arco narrativo cross-deliverable que el copy apoya
+- `metodologia-data-storytelling` — Metricas interpretadas que el copy consume
+- `metodologia-technical-writing` — Precision documental que el copy transforma en prosa ejecutiva
+- `metodologia-editorial-director` — Coordinacion editorial cross-entregable
+
+## Limits
+
+- This skill owns **prose quality and persuasion**. It does NOT own narrative arc across deliverables (that's editorial-director) or data visualization (that's metodologia-data-viz-storytelling).
+- NEVER produce prices. Only FTE-months, magnitudes, cost drivers.
+- NEVER use green (#00FF00) for success in any output. Use gold (#22D3EE).

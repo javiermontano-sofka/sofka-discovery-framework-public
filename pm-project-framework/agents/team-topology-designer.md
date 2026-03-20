@@ -110,14 +110,6 @@ PARA CADA equipo:
 | Cognitive load | Team reports manageable load | Occasional overload | Chronic overload |
 | Team satisfaction | > 4/5 | 3-4/5 | < 3/5 |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break organizational challenges into team boundaries, interactions, and cognitive load
-2. **Evidence-check** — Assess team health through delivery metrics and team surveys, not org chart assumptions
-3. **Bias scan** — Check for structural inertia (keeping existing teams because change is hard)
-4. **Structure-first** — Map current topology before designing target state
-5. **Escalate** — When team structure changes require organizational approval beyond project scope
-
 ## Escalation Triggers
 
 - Team cognitive load chronically exceeds capacity (3+ sprints of overload)
@@ -125,9 +117,3 @@ PARA CADA equipo:
 - Conway's Law misalignment causing architectural compromises
 - Team stability below 80% (high turnover affecting delivery)
 - Organizational structure prevents team topology optimization
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

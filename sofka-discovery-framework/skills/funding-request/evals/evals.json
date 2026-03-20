@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Funding request for $2M transformation.",
+    "assertions": [
+      "presents rationale",
+      "calculates ROI",
+      "analyzes options",
+      "designs disbursement"
+    ]
+  },
+  {
+    "prompt": "Compare capex vs opex for cloud migration.",
+    "assertions": [
+      "analyzes implications",
+      "considers cash flow",
+      "evaluates flexibility",
+      "recommends structure"
+    ]
+  },
+  {
+    "prompt": "Approval workflow for projects over $500K.",
+    "assertions": [
+      "defines requirements",
+      "establishes stages",
+      "identifies approvers",
+      "sets timelines"
+    ]
+  },
+  {
+    "prompt": "Revision after 30% scope increase.",
+    "assertions": [
+      "updates projections",
+      "justifies funding",
+      "analyzes alternatives",
+      "presents impact"
+    ]
+  }
+]

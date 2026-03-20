@@ -1,11 +1,7 @@
-# Capacity Planning — Example Outputs
+# Examples — Capacity Planning
 
-Sample outputs demonstrating what the capacity-planning skill produces for a fictional "Acme Corp Banking Modernization" project.
+| File | Format | Description |
+|------|--------|-------------|
+| sample-output.md | Markdown | Q2 capacity plan for Acme Corp engineering teams |
 
-## Files
-
-- `sample-output.html` — HTML branded format (Design System v5)
-
-## Usage
-
-These examples show realistic depth and structure. Actual outputs will vary based on client context, industry, and organizational needs.
+*PMO-APEX v1.0 — Examples · Capacity Planning*

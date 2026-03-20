@@ -1,0 +1,50 @@
+%% Knowledge Graph — Strategic Alignment & OKR Tracking
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        STRATEGY[organizational-strategy<br/>OKRs / BSC]
+        PORTFOLIO[portfolio-assessment<br/>Active projects]
+        CHARTER[project-charter<br/>Per project]
+        BUDGET[budget-baseline<br/>Investment allocation]
+    end
+
+    subgraph "Strategic Alignment (This Skill)"
+        DECOMPOSE[Strategy Decomposition<br/>Objectives → KRs]
+        MAP[Project Mapping<br/>Alignment scoring]
+        ORPHAN[Orphan Detection<br/>Unaligned projects]
+        COVERAGE[Coverage Analysis<br/>Unsupported objectives]
+    end
+
+    subgraph Downstream
+        REBALANCE[portfolio-prioritization<br/>Rebalancing]
+        BENEFITS[benefits-realization-plan<br/>Value tracking]
+        STEERING[steering-review<br/>Investment decisions]
+        DASHBOARD[executive-dashboard<br/>Alignment view]
+    end
+
+    subgraph Agents
+        STRATEGY_ADVISOR[strategy-advisor<br/>Committee]
+        PORTFOLIO_MGR[portfolio-manager<br/>L2 Specialist]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    STRATEGY --> DECOMPOSE
+    PORTFOLIO --> MAP
+    CHARTER --> MAP
+    BUDGET --> COVERAGE
+
+    DECOMPOSE --> MAP --> ORPHAN --> COVERAGE
+
+    COVERAGE --> REBALANCE
+    MAP --> BENEFITS
+    COVERAGE --> STEERING
+    MAP --> DASHBOARD
+
+    STRATEGY_ADVISOR -.->|validates| MAP
+    PORTFOLIO_MGR -.->|executes| COVERAGE
+    CONDUCTOR -.->|orchestrates| COVERAGE
+
+    style COVERAGE fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style PORTFOLIO_MGR fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

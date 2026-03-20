@@ -1,300 +1,270 @@
 ---
-name: sofka-input-analysis
-author: Equipo PreSales Sofka
-description: "Pre-processing layer that analyzes raw user inputs — detects surface errors (dyslexia, haste, spelling, punctuation, syntax), performs root cause analysis (5 Whys), impact tracing (7 So-Whats), and intent gap analysis — reformulating into a precise, actionable prompt."
-argument-hint: "<raw user input> [--passes 1,2,3,4,5] [--language es|en]"
+name: apex-input-analysis
+description: >
+  Use when the user asks to "analyze project inputs", "process documents", "extract requirements",
+  "review project brief", "parse RFP content", or mentions input processing, document analysis,
+  requirement extraction, project brief analysis. Triggers on: analyzes project input documents,
+  extracts structured requirements from briefs, detects contradictions in source documents,
+  normalizes project inputs for planning, produces input completeness scorecard.
 allowed-tools:
   - Read
-  - Grep
+  - Write
+  - Edit
   - Glob
+  - Grep
   - Bash
+  - WebFetch
 ---
 
-# Input Analysis — Input Pre-processing Layer
+# Project Input Processing & Document Analysis
 
-> **Guiding Principle:** Presume imperfection — every human input contains surface noise, intent gaps, or implicit context. Capture what the user *meant*, not just what they *wrote*.
+**TL;DR**: Analyzes project input documents (briefs, RFPs, SOWs, emails, meeting notes) to extract structured requirements, constraints, assumptions, stakeholders, and key decisions. Produces a normalized input digest that feeds the project charter and planning phases.
 
-## When to Activate
-
-This skill is a **pre-processing layer**. It executes BEFORE other skills activate. Not all inputs need deep analysis.
-
-| Input Quality | Passes to Execute | Example |
-|-------------------|------------------|---------|
-| Clear + specific | Pass 4 only (intent verification) | "Crear análisis AS-IS del sistema de facturación SAP" |
-| Clear + vague scope | Passes 2, 4, 5 | "Ayúdame con el proyecto del banco" |
-| Messy + clear intent | Passes 1, 5 | "ncsito el diganostico del legasy" |
-| Messy + vague | All 5 passes | "eso q hblamos ayer dl tema ese pa la reunion d mañna" |
-
-**Critical rule:** Do NOT over-analyze clear and well-formed inputs.
-
-## Inputs
-
-| Input | Source | Usage |
-|-------|--------|-----|
-| Raw user text | Direct conversation | Material to analyze |
-| Prior thread context | Previous messages | Reference resolution |
-| Mentioned attachments | Documents, code, images | Implicit context |
-
-## Parameters
-
-| Parameter | Values | Default |
-|-----------|---------|---------|
-| `{MODO_OPERACIONAL}` | `integral`, `superficie`, `intencion`, `reformulacion` | `integral` |
-| `{IDIOMA}` | `es`, `en`, `mixed` | `es` |
-| `{PROFUNDIDAD}` | `express`, `standard`, `deep` | `standard` |
-
-## The Five Passes
-
-```
-Raw Input → SURFACE → 5 WHYS → 7 SO-WHATS → INTENT → REFORMULATION → Structured Prompt
-```
-
-### Pass 1: Surface Analysis
-
-Detect and catalog surface errors. **Always presume** that the input has noise.
-
-**What to capture:**
-
-| Category | Patterns | Examples |
-|-----------|----------|----------|
-| **Dyslexia** | Letter inversions (b/d, p/q), adjacent transpositions, missing vowels | "buil → build", "teh → the", "frm → from" |
-| **Haste / speed** | Extreme abbreviations, merged words, no punctuation | "ncsito", "xfa", "q", "dl", "tmbn", "pa" |
-| **Spelling** | Phonetic errors, missing accents, c/s/z confusion, b/v, omitted h | "aver si", "haber si", "desición", "exito" |
-| **Punctuation** | Total absence, excessive, run-on sentences | No periods or commas across 3+ lines |
-| **Syntax** | Fragments, incomplete sentences, implicit subject | "y entonces lo del tema ese" |
-| **Autocorrect** | Keyboard substitutions, voice-to-text artifacts | "ducking", random words interspersed |
-| **Spanglish** | Spanish-English mixing within the same sentence | "Necesito hacer un deploy del feature" |
-
-**Detection patterns for Spanish:**
-
-| Pattern | Signal | Confidence |
-|--------|-------|-----------|
-| Consonants without vowels (3+) | Haste abbreviation: "prblm", "cntrl" | HIGH |
-| Total absence of accents | Fast typing or keyboard without accents | MEDIUM |
-| Standalone "q" | Abbreviation of "que" | VERY HIGH |
-| "x" as "por" | "xfa" = "por favor", "xq" = "porque" | VERY HIGH |
-| Adjacent QWERTY letters swapped | "wirking", "teh" | HIGH |
-| Spanish homophones: "a ver/haber", "hay/ahí/ay" | Phonetic confusion | MEDIUM (context) |
-
-**Output:** Corrected text + list of corrections + quality assessment.
-
-**Critical rule:** Preserve intent when correcting. Correct only surface errors — NEVER change meaning.
-
-### Pass 2: Five Whys (Root Cause)
-
-Dig beneath the surface request to find the root need.
-
-**Protocol:**
-```
-Usuario dice: "Necesito una presentación de los resultados Q4"
-¿Por qué 1? → El jefe pidió una revisión trimestral
-¿Por qué 2? → El equipo no cumplió objetivos, necesita realineamiento
-¿Por qué 3? → Pivote de estrategia a mitad del trimestre
-¿Por qué 4? → La planificación presupuestaria depende de ello
-¿Por qué 5? → Necesitan justificar inversión continua
-
-Necesidad raíz: Un caso persuasivo para inversión continua a pesar de incumplimientos Q4,
-               formateado como revisión trimestral.
-```
-
-**Rules:**
-- Stop before 5 if the root is clear. Do not force all 5.
-- Each "why" must be answerable from context or reasonable inference.
-- If a "why" requires unavailable information, note it as an **open question** — do not guess.
-
-### Pass 3: Seven So-Whats (Impact Tracing)
-
-Trace implications forward. If we solve this, what happens next?
-
-**Purpose:** Calibrate response depth. A "presentation" that determines budget allocation deserves more investment than a casual summary.
-
-**Calibration by depth:**
-
-| Chain reaches... | Quality investment |
-|-------------------|---------------------|
-| So-what 2-3 | Standard |
-| So-what 5-6 | Premium — strategic importance |
-| So-what 7 | Flagship — competitive advantage |
-
-**Rules:**
-- Follow the highest-impact chain, not all branches.
-- Stop when implications become speculative.
-- Use the result to calibrate downstream skill quality.
-
-### Pass 4: Intent Analysis
-
-Compare what was written with what was meant. Identify the gap.
-
-**Gap types:**
-
-| Type | Signal | Example |
-|------|-------|---------|
-| **Vocabulary** | Incorrect technical term for the correct concept | "algorithm" meaning "workflow" |
-| **Scope** | Underestimated need | "fix this" meaning "redesign the architecture" |
-| **Expertise** | Wrong terminology for the correct concept | Asks for "microservices" for 2 endpoints |
-| **Emotional** | Hedging, vagueness, hidden frustration | "make it better" meaning "I am frustrated with X" |
-| **Context** | Dangling references, assumed knowledge | "that thing we discussed" without shared context |
-
-**Protocol:**
-1. List explicit statements (what they literally said).
-2. List implicit signals (tone, word choice, what was NOT said).
-3. Identify gaps between explicit and implicit.
-4. Formulate the "real ask" — what they would say with perfect clarity.
-
-### Pass 5: Reformulation
-
-Synthesize all passes into a high-quality prompt.
-
-**Reformulation template:**
-```
-OBJETIVO: [Verbo de acción + resultado medible]
-CONTEXTO: [De 5 Porqués + 7 Entonces-qués]
-INTENCIÓN: [Del análisis de brechas Pase 4]
-RESTRICCIONES: [Explícitas + inferidas]
-OUTPUT ESPERADO: [Tipo de entregable, estructura, longitud]
-CALIBRACIÓN: [standard | premium | flagship]
-```
-
-## Operational Modes
-
-| Mode | Passes | When to Use |
-|------|-------|-------------|
-| `integral` | 1-5 | Messy and vague input — full analysis |
-| `superficie` | 1 only | Input with errors but clear intent — correction only |
-| `intencion` | 4 only | Clean but ambiguous input — intent verification only |
-| `reformulacion` | 2, 4, 5 | Clear input but vague scope — find root and reformulate |
-
-## Integration with Discovery Pipeline
-
-```
-[sofka-input-analysis] → [sofka-discovery-orchestrator] → [specific skill] → [excellence-loop]
-```
-
-The reformulated prompt from Pass 5 becomes the input for the sofka-discovery-orchestrator or any pipeline skill. Higher input quality leads to higher baseline quality and fewer downstream iterations.
-
-**Command activation:**
-
-| Command | Activation |
-|---------|-----------|
-| `/discovery`, `/discovery-auto` | Automatic in CP-0 (Ingestion) |
-| Any document command | On demand if input is ambiguous |
-| Direct interaction | When the conductor detects noise |
+## Principio Rector
+La calidad del proyecto es proporcional a la calidad de sus inputs. Documentos ambiguos, contradictorios o incompletos son la causa raíz de la mayoría de los fracasos en proyectos. Este skill transforma información no estructurada en insumos normalizados y verificables, identificando gaps antes de que se conviertan en riesgos.
 
 ## Assumptions & Limits
+- Assumes input documents are available in readable format (Markdown, PDF, DOCX, or plain text) [SUPUESTO]
+- Assumes at least one input document exists — cannot analyze from verbal-only briefings [SUPUESTO]
+- Breaks if input documents are in languages other than Spanish or English — translation must precede analysis [PLAN]
+- Scope limited to extraction and normalization; input validation requires stakeholder confirmation [STAKEHOLDER]
+- Does not generate requirements — extracts and structures what exists in source documents [PLAN]
+- Implicit requirements tagged as [INFERENCIA] require stakeholder confirmation before becoming [PLAN]
 
-- This skill infers intent from textual signals. It does not read minds. When inference confidence is low, flag the ambiguity instead of committing to a guess.
-- Language detection is heuristic. Spanglish inputs may lose nuance in reformulation.
-- The 5 Whys analysis works best with sufficient thread context. On cold-start (first message, no history), root cause depth is limited.
-- Reformulation MUST NEVER add requirements the user did not express or imply. Clarify, do not invent.
-- For very short inputs (< 5 words), skip passes 2-3 and focus only on intent verification.
+## Usage
+```bash
+/pm:input-analysis $DOCUMENT_PATH --type=rfp
+/pm:input-analysis $PROJECT_DIR --type=multi-doc --detect-contradictions
+/pm:input-analysis $DOCUMENT_PATH --type=brief --output=backlog-ready
+```
+**Parameters:**
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `$DOCUMENT_PATH` | Yes | Path to input document or project directory |
+| `--type` | No | `rfp` / `sow` / `brief` / `multi-doc` (default: `brief`) |
+| `--detect-contradictions` | No | Enable cross-document contradiction detection |
+| `--output` | No | Output format: `digest` / `backlog-ready` / `requirements-matrix` |
 
-## Workarounds
+## Service Type Routing
+`{TIPO_PROYECTO}` variants:
+- **Agile**: Inputs parsed into epics, user stories, and acceptance criteria; backlog-ready format with priority signals
+- **Waterfall**: Inputs mapped to formal requirements traceability matrix; scope statement and deliverable specifications extracted
+- **SAFe**: Inputs decomposed into capabilities, features, and enablers; aligned to value streams and PI objectives
+- **Hybrid**: Inputs classified by predictability — predictable components get formal specs, emergent components get story format
+- **Transformation**: Vision documents, maturity assessments, and change readiness surveys analyzed for organizational impact
+- **Portfolio**: Cross-project input consolidation; strategic alignment validation against portfolio investment themes
 
-| Problem | Workaround |
-|----------|-----------|
-| Input in unsupported language | Detect language → flag for manual processing |
-| Input with mixed code | Separate code blocks → analyze only natural text |
-| Multiple questions in one message | Decompose into separate reformulated prompts, one per question |
-| User self-corrects mid-message | Use the final version as intent. Ignore prior contradictions |
-| Sarcasm or irony | Flag as uncertain intent → request clarification |
+## Before Analyzing Inputs
+1. Glob `*brief*`, `*rfp*`, `*sow*` in project directory — inventory all input documents [PLAN]
+2. Read document metadata — identify document dates, authors, and version status [PLAN]
+3. Check for prior input analysis — avoid re-analyzing already-processed documents [PLAN]
+4. Confirm input language — verify Spanish or English; flag other languages for translation [PLAN]
+
+## Entrada (Input Requirements)
+- Project brief, RFP, SOW, or request document (any format)
+- Supporting documents (emails, meeting minutes, prior analyses)
+- Organizational context documents
+
+## Proceso (Protocol)
+1. **Document inventory** — Catalog all input documents with metadata
+2. **Content extraction** — Parse key information: objectives, scope, constraints, stakeholders
+3. **Requirement identification** — Extract explicit and implicit requirements
+4. **Contradiction detection** — Flag conflicting statements across documents
+5. **Gap analysis** — Identify missing critical information
+6. **Stakeholder extraction** — Identify mentioned stakeholders and their roles
+7. **Assumption tagging** — Tag inferred information as [SUPUESTO] vs. [DOC]
+8. **Normalize output** — Produce structured input digest in standard format
 
 ## Edge Cases
+1. **Input documents contradict each other on scope** — Document both versions side-by-side; tag as critical gap; generate specific clarification questions for stakeholder review.
+2. **Single-page brief with minimal information** — Extract what exists; produce gap analysis showing missing fields (budget, timeline, stakeholders, constraints); flag completeness score below 40%.
+3. **Input documents older than 6 months** — Tag all extracted data as [SUPUESTO] pending reconfirmation; generate revalidation questionnaire for stakeholders.
+4. **Technical jargon or domain-specific terminology** — Create glossary of extracted terms; flag terms requiring domain expert validation.
+5. **Multiple versions of same document** — Use latest version as primary; document delta between versions; flag scope changes.
 
-- **Intentionally informal input:** Some users write casually on purpose. Do not "fix" tone — correct only objective errors and preserve voice.
-- **"Just do X":** Signal to skip deep analysis. Execute Pass 4 only to confirm, then pass-through with minimal reformulation.
-- **Input with emojis as content:** Interpret emojis as emotional signals (fire = urgency, angry face = frustration, checkmark = confirmation).
-- **Voice-to-text artifacts:** Random capitalization, absent punctuation, extreme homophony. Treat as Pass 1 with HIGH confidence in corrections.
-- **Context only in attachments:** If the user says "review this" attaching a PDF, intent analysis is based on attachment content, not the text.
+## Example: Good vs Bad
 
-## Trade-off Matrix
+**Good Input Analysis:**
+| Attribute | Value |
+|-----------|-------|
+| Document inventory | 6 documents cataloged with dates and authors [PLAN] |
+| Requirements extracted | 34 explicit, 12 implicit (tagged [INFERENCIA]) [PLAN] |
+| Contradictions | 3 contradictions flagged with document references [PLAN] |
+| Gaps identified | 8 missing fields with specific clarification questions [PLAN] |
+| Completeness score | 72% — sufficient for charter draft with noted gaps [METRIC] |
 
-| Tension | Option A | Option B | Decision criterion |
-|---------|----------|----------|---------------------|
-| Depth vs speed | Full analysis (5 passes) | Surface only (1 pass) | Input quality determines |
-| Correction vs preservation | Correct everything | Preserve user voice | Correct errors, preserve style |
-| Inference vs question | Infer intent | Ask the user | Confidence >80% → infer; <80% → ask |
-| Short vs full reformulation | Minimal prompt | Prompt with full context | Downstream task complexity |
+**Bad Input Analysis:**
+"The project is about digital transformation for the client." — No structured extraction, no gap analysis, no contradiction detection, no completeness scoring. Planning proceeds on incomplete understanding.
 
-## Antipatterns
-
-| Problem | Bad Pattern | Fix |
-|----------|-------------|-----|
-| Over-analysis | Running 5 Whys on "What time is it?" | Use the escalation table |
-| Projection | Assuming intent without textual evidence | Ground every inference in specific words/signals |
-| Corrective arrogance | Changing meaning when correcting errors | Preserve intent; correct only surface |
-| Lost nuance | Reformulation eliminates emotional context | Include emotional signals in context section |
-| Inflated reformulation | Output 10x longer than input | Separate "necessary context" from "nice to have" |
+## Salida (Deliverables)
+- `00_input_digest_{proyecto}_{WIP}.md` — Structured input analysis
+- Requirements extraction table (explicit vs. implicit)
+- Contradictions and gaps register
+- Stakeholder mentions matrix
+- Information completeness scorecard
 
 ## Validation Gate
-
-Before passing the reformulated prompt downstream, confirm:
-
-- [ ] Surface corrections (if any) did NOT alter meaning
-- [ ] Root cause analysis is grounded in available context, not speculation
-- [ ] The "real ask" differs from the literal ask only where evidence supports it
-- [ ] Reformulated prompt has: objective, constraints, context, and expected output
-- [ ] Unresolvable ambiguities are explicitly flagged
-- [ ] Analysis depth matches input quality (do not over-analyze clear inputs)
-- [ ] Output language matches user language (or pipeline default)
-
-## Output Format Protocol
-
-**Analysis output format:**
-
-```markdown
-## Análisis de Input
-
-**Input original:** [texto crudo]
-**Confianza:** ALTA | MEDIA | BAJA
-**Pases ejecutados:** 1, 2, 3, 4, 5
-
-### Correcciones de superficie
-| Original | Corregido | Tipo | Confianza |
-|----------|-----------|------|-----------|
-| ncsito | necesito | Afán — vocales faltantes | ALTA |
-| diganostico | diagnóstico | Ortografía — transposición | ALTA |
-
-### Causa raíz (5 Porqués)
-[Cadena de porqués con parada natural]
-
-### Impacto (7 Entonces-qués)
-[Cadena de impacto con calibración]
-
-### Brechas de intención
-| Tipo | Explícito | Implícito | Brecha |
-|------|-----------|-----------|--------|
-
-### Prompt reformulado
-OBJETIVO: ...
-CONTEXTO: ...
-INTENCIÓN: ...
-RESTRICCIONES: ...
-OUTPUT ESPERADO: ...
-CALIBRACIÓN: [standard | premium | flagship]
-```
+- [ ] Every extraction tagged with source document and page/section reference
+- [ ] Zero misquotes or misinterpretations — direct quotes used for ambiguous content
+- [ ] All input documents analyzed — none skipped or partially processed
+- [ ] Contradictions explicitly flagged with both conflicting sources cited
+- [ ] Gaps have specific clarification questions, not generic "needs more info"
+- [ ] Digest readable without requiring access to original documents
+- [ ] Every item traces to source page/section with evidence tag
+- [ ] Ambiguities flagged as risks with severity rating
+- [ ] Completeness scorecard rates input quality on 0-100% scale
+- [ ] Input format appropriate for feeding chosen methodology deliverables
 
 ## Escalation Triggers
-
-Escalate to the conductor when:
-- Intent confidence < 50% after all passes
-- Input contains irreconcilable contradictory information
-- Multiple valid interpretations with divergent impact
-- User appears to be in emotional mode (frustration, pressure) — conductor must validate before proceeding
-- Input suggests significant scope change relative to ongoing discovery
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
+- More than 50% of critical information is [SUPUESTO]
+- Irreconcilable contradictions between input documents
+- No sponsor or decision-maker identifiable from inputs
+- Input documents older than 6 months without confirmation
 
 ## Additional Resources
 
-- `references/knowledge-graph.mmd` — Skill relationship graph
-- `references/body-of-knowledge.md` — Primary sources (linguistics, UX writing, NLP)
-- `references/state-of-the-art.md` — Natural language processing trends 2024-2028
-- `examples/sample-output.md` — Complete input analysis example
-- `prompts/use-case-prompts.md` — Ready-to-use prompts
-- `prompts/metaprompts.md` — Meta-analysis strategies
+| Resource | When to read | Location |
+|----------|-------------|----------|
+| Body of Knowledge | Before starting to understand standards and frameworks | `references/body-of-knowledge.md` |
+| State of the Art | When benchmarking against industry trends | `references/state-of-the-art.md` |
+| Knowledge Graph | To understand skill dependencies and data flow | `references/knowledge-graph.mmd` |
+| Use Case Prompts | For specific scenarios and prompt templates | `prompts/use-case-prompts.md` |
+| Metaprompts | To enhance output quality and reduce bias | `prompts/metaprompts.md` |
+| Sample Output | Reference for deliverable format and structure | `examples/sample-output.md` |
+
+## Output Configuration
+- **Language**: Spanish (Latin American, business register)
+- **Evidence**: [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
+- **Branding**: #2563EB royal blue, #F59E0B amber (NEVER green), #0F172A dark
 
 ---
+
+---
+
+## Sub-Agents
+
+### Completeness Assessor
+
+
+## Completeness Assessor Agent
+
+### Core Responsibility
+
+Evaluates project input documents against a comprehensive checklist of information typically required to begin planning and execution. Identifies missing information, insufficient detail, and ambiguous statements that would create risk if not clarified before proceeding.
+
+### Process
+
+1. **Load completeness checklist.** Apply a standard checklist covering: objectives, scope, constraints, stakeholders, budget, timeline, success criteria, risks, assumptions, and technical requirements.
+2. **Map inputs to checklist.** Cross-reference parsed document elements against each checklist item, marking as present, partial, or absent.
+3. **Assess information depth.** For present items, evaluate whether the detail level is sufficient for the project's complexity and methodology.
+4. **Identify critical gaps.** Flag missing information that would block planning, estimation, or team assembly if not provided.
+5. **Rate ambiguity levels.** Score statements that are present but vague or open to multiple interpretations, identifying interpretation risks.
+6. **Generate clarification questions.** For each gap or ambiguity, formulate specific questions to elicit the missing or unclear information.
+7. **Produce completeness report.** Deliver a scored assessment with gap analysis and prioritized clarification question list.
+
+### Output Format
+
+- **Completeness Scorecard** — Checklist with present/partial/absent status per category and overall completeness percentage.
+- **Gap Analysis** — Detailed list of missing information items with impact assessment and priority for resolution.
+- **Clarification Questions** — Prioritized list of specific questions to fill identified gaps, grouped by stakeholder who should answer.
+
+### Contradiction Detector
+
+
+## Contradiction Detector Agent
+
+### Core Responsibility
+
+Scans input documents for internal contradictions, cross-document conflicts, and logically inconsistent statements that would undermine project planning if not resolved. Identifies cases where different sections or documents make incompatible claims about scope, timeline, budget, requirements, or expectations.
+
+### Process
+
+1. **Build assertion index.** Extract all factual claims, requirements, constraints, and expectations from input documents as individual assertions.
+2. **Compare pairwise assertions.** Systematically compare related assertions for logical consistency: timeline vs scope, budget vs quality, requirements vs constraints.
+3. **Detect scope conflicts.** Identify where scope statements contradict each other or where requirements conflict with stated constraints.
+4. **Find timeline impossibilities.** Flag cases where stated timelines are inconsistent with scope volume, team size, or dependency chains.
+5. **Identify stakeholder misalignment.** Detect cases where different stakeholders express conflicting expectations or priorities in their inputs.
+6. **Classify contradiction severity.** Rate each contradiction as critical (blocks planning), major (requires clarification), or minor (cosmetic inconsistency).
+7. **Produce contradiction report.** Document all findings with exact source references, severity ratings, and resolution recommendations.
+
+### Output Format
+
+- **Contradiction Report** — Catalog of all detected conflicts with source references, severity, and affected planning areas.
+- **Conflict Pairs Table** — Side-by-side comparison of contradicting statements with document and line references.
+- **Resolution Recommendations** — For each contradiction, suggested resolution approach and the stakeholder who should arbitrate.
+
+### Document Parser
+
+
+## Document Parser Agent
+
+### Core Responsibility
+
+Ingests raw project input documents (RFPs, SOWs, briefs, emails, meeting transcripts) and decomposes them into structured, analyzable components. Extracts requirements, constraints, assumptions, stakeholders, timelines, and success criteria from unstructured text, producing a normalized data set for downstream analysis.
+
+### Process
+
+1. **Classify document type.** Identify the input document type (RFP, SOW, brief, transcript, email chain) to apply appropriate parsing rules.
+2. **Extract structural elements.** Identify sections, headers, numbered lists, tables, and other structural markers that organize the content.
+3. **Parse requirements.** Extract functional and non-functional requirements, distinguishing between explicit statements and implied needs.
+4. **Identify constraints.** Catalog hard constraints: budget limits, timeline deadlines, technology mandates, regulatory requirements, and vendor preferences.
+5. **Surface stakeholder references.** Extract all mentioned stakeholders, their roles, concerns, and stated expectations from the document.
+6. **Extract timeline markers.** Identify all dates, durations, milestones, and scheduling constraints mentioned in the input.
+7. **Produce structured output.** Deliver a normalized, categorized breakdown of all extracted elements with source line references.
+
+### Output Format
+
+- **Parsed Document Summary** — Structured breakdown of all extracted elements organized by category with source references.
+- **Requirements Catalog** — Numbered list of all extracted requirements with type classification and priority indicators.
+- **Constraint Register** — Table of all identified constraints with type, source, and flexibility assessment.
+
+### Priming Report Generator
+
+
+## Priming Report Generator Agent
+
+### Core Responsibility
+
+Generates priming report summarizing inputs: key facts, gaps, contradictions, and clarification questions. This agent operates autonomously within the input analysis domain, applying systematic analysis and producing structured outputs that integrate with the broader project management framework.
+
+### Process
+
+1. **Gather Inputs.** Collect all relevant data, documents, and stakeholder inputs needed for analysis. Validate data quality and completeness before proceeding.
+2. **Analyze Context.** Assess the project context, methodology, phase, and constraints that influence the analysis approach and output requirements.
+3. **Apply Framework.** Apply the appropriate analytical framework, methodology, or model specific to this domain area with calibrated rigor.
+4. **Generate Findings.** Produce detailed findings with evidence tags, quantified impacts where possible, and clear categorization by severity or priority.
+5. **Validate Results.** Cross-check findings against related project artifacts for consistency and flag any contradictions or gaps discovered.
+6. **Formulate Recommendations.** Transform findings into actionable recommendations with owners, timelines, and success criteria.
+7. **Deliver Output.** Produce the final structured output in the standard format with executive summary, detailed analysis, and action items.
+
+### Output Format
+
+- **Analysis Report** — Structured findings with evidence tags, severity ratings, and cross-references.
+- **Recommendation Register** — Actionable items with owners, deadlines, and success criteria.
+- **Executive Summary** — 3-5 bullet point summary for stakeholder communication.
+
+### Priming Reporter
+
+
+## Priming Reporter Agent
+
+### Core Responsibility
+
+Synthesizes all input analysis findings—parsed content, completeness assessment, and contradiction detection—into a comprehensive priming report that equips the project team with a clear understanding of what is known, what is unknown, and what is contested. Serves as the foundational context document for all subsequent planning activities.
+
+### Process
+
+1. **Aggregate analysis outputs.** Collect parsed document summaries, completeness scorecards, and contradiction reports from upstream agents.
+2. **Synthesize key findings.** Distill the most important insights: confirmed scope, validated constraints, critical gaps, and unresolved contradictions.
+3. **Assess planning readiness.** Determine whether sufficient information exists to proceed with planning or if blockers must be resolved first.
+4. **Map information confidence.** Create a confidence map showing which project aspects are well-defined (high confidence) versus uncertain (low confidence).
+5. **Generate action priorities.** Produce a prioritized list of information-gathering actions needed before planning can proceed safely.
+6. **Create context narrative.** Write a cohesive project context summary that a new team member could read to understand the project in 10 minutes.
+7. **Format as priming document.** Structure the report as a reusable priming document compatible with RAG-based context loading for AI-assisted workflows.
+
+### Output Format
+
+- **Priming Report** — Comprehensive synthesis document with project context, confidence map, gaps, contradictions, and action priorities.
+- **Planning Readiness Assessment** — Go/no-go determination for proceeding to planning with conditions and blockers listed.
+- **Context Narrative** — Concise project summary suitable for team onboarding and session priming.
+

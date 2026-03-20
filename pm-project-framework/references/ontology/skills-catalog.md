@@ -1,7 +1,7 @@
-# Catalogo de 100 Skills
+# Catalogo de 209 Skills
 
 > PMO-APEX — Ontologia viva
-> Referencia canonica de los 100 skills organizados por 12 dominios de gestion de proyectos.
+> Referencia canonica de los 209 skills organizados por 12 dominios PM + 12 dominios MAO + 1 dominio AI Architecture (cross-framework mirror).
 
 ---
 
@@ -21,7 +21,9 @@
 | Tools & DX | 8 | Transversal |
 | Innovation & Agility | 6 | 3-6 (Methodology a Kickoff) |
 | Methodology Discovery | 14 | 0-2 (Routing inicial) |
-| **Total** | **108** | |
+| MAO Cross-Framework | 96 | Importados de MetodologIA |
+| AI Architecture | 6 | AI software architecture skills |
+| **Total** | **209** | |
 
 ---
 

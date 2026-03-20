@@ -1,0 +1,105 @@
+%% Knowledge Graph — change-readiness-assessment
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    SKILL["🔍 change-readiness-assessment"]
+
+    %% Inputs
+    IN_STAKEHOLDER["📥 Stakeholder Map"]
+    IN_CHANGE_DESC["📥 Change Description"]
+    IN_HISTORY["📥 Historical Change Data"]
+    IN_ORG_CHART["📥 Org Chart"]
+
+    %% ADKAR Dimensions
+    ADKAR_A["Awareness"]
+    ADKAR_D["Desire"]
+    ADKAR_K["Knowledge"]
+    ADKAR_AB["Ability"]
+    ADKAR_R["Reinforcement"]
+
+    %% 7-Section Framework
+    S1["S1: Impact Profile"]
+    S2["S2: Readiness Scorecard"]
+    S3["S3: Resistance Heat Map"]
+    S4["S4: Change Capacity"]
+    S5["S5: Risk Register"]
+    S6["S6: Intervention Plan"]
+    S7["S7: Measurement Framework"]
+
+    %% Standards
+    STD_PROSCI["📚 Prosci ADKAR"]
+    STD_KOTTER["📚 Kotter 8-Step"]
+    STD_7S["📚 McKinsey 7S"]
+    STD_BRIDGES["📚 Bridges Transition"]
+    STD_KUBLER["📚 Kübler-Ross Curve"]
+
+    %% Outputs
+    OUT_REPORT["📤 Readiness Assessment Report"]
+    OUT_SCORECARD["📤 Executive Scorecard"]
+    OUT_DASHBOARD["📤 Dashboard Spec"]
+
+    %% Consumers
+    CON_ADOPTION["🎯 adoption-strategy"]
+    CON_PITCH["🎯 pitch-ejecutivo"]
+    CON_ROADMAP["🎯 solution-roadmap"]
+
+    %% Agents
+    AGT_CHANGE["🤖 change-catalyst"]
+    AGT_DELIVERY["🤖 delivery-manager"]
+    AGT_UX["🤖 ux-strategist"]
+
+    %% Input → Skill
+    IN_STAKEHOLDER -->|"segmenta grupos"| SKILL
+    IN_CHANGE_DESC -->|"define alcance"| SKILL
+    IN_HISTORY -->|"benchmarks previos"| SKILL
+    IN_ORG_CHART -->|"estructura cascada"| SKILL
+
+    %% Skill → Sections
+    SKILL -->|"produce"| S1
+    S1 -->|"identifica grupos"| S2
+    S2 -->|"scores bajos → resistencia"| S3
+    SKILL -->|"evalúa capacidad org"| S4
+    S3 -->|"riesgos de adopción"| S5
+    S5 -->|"riesgos → intervenciones"| S6
+    S4 -->|"constrains feasibility"| S6
+    S6 -->|"métricas de éxito"| S7
+
+    %% ADKAR → Scorecard
+    ADKAR_A -->|"dimensión 1"| S2
+    ADKAR_D -->|"dimensión 2"| S2
+    ADKAR_K -->|"dimensión 3"| S2
+    ADKAR_AB -->|"dimensión 4"| S2
+    ADKAR_R -->|"dimensión 5"| S2
+
+    %% Standards → Skill
+    STD_PROSCI -->|"modelo ADKAR"| S2
+    STD_KOTTER -->|"urgencia + coalición"| S1
+    STD_7S -->|"alineación organizacional"| S4
+    STD_BRIDGES -->|"transición emocional"| S3
+    STD_KUBLER -->|"curva de duelo"| S3
+
+    %% Sections → Outputs
+    S2 -->|"genera"| OUT_SCORECARD
+    S7 -->|"especifica"| OUT_DASHBOARD
+    SKILL -->|"consolida"| OUT_REPORT
+
+    %% Outputs → Consumers
+    OUT_REPORT -->|"alimenta"| CON_ADOPTION
+    OUT_SCORECARD -->|"informa"| CON_PITCH
+    OUT_REPORT -->|"riesgos → fases"| CON_ROADMAP
+
+    %% Agents
+    AGT_CHANGE -->|"lidera"| SKILL
+    AGT_DELIVERY -->|"soporta"| SKILL
+    AGT_UX -->|"soporta"| SKILL
+
+    %% Styles
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef standard fill:#1A1A2E,stroke:#FF7E08,color:#FFD700
+    classDef section fill:#2D2D4E,stroke:#FF7E08,color:#fff
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+
+    class SKILL skill
+    class STD_PROSCI,STD_KOTTER,STD_7S,STD_BRIDGES,STD_KUBLER standard
+    class S1,S2,S3,S4,S5,S6,S7 section
+    class OUT_REPORT,OUT_SCORECARD,OUT_DASHBOARD output

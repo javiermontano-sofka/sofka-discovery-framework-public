@@ -134,6 +134,3 @@ Escalate immediately when:
 - Budget variance exceeds 20%
 - Timeline slip exceeds 1 week with no recovery plan
 - Quality concerns are being overridden by time pressure
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

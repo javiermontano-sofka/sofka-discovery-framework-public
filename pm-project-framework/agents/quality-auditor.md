@@ -108,14 +108,6 @@ FINDINGS:
 4. **Acknowledge quality.** Note what's done well to calibrate the team.
 5. **Track patterns.** Recurring issues signal process problems, not individual failures.
 
-## Reasoning Discipline
-
-1. **Decompose** — Break complex validations into max 5 sub-checks before assessing
-2. **Evidence-check** — Tag every finding with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — Build finding skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives
-
 ## Escalation Triggers
 
 - Critical defects remain unresolved within 24 hours of gate deadline
@@ -123,9 +115,3 @@ FINDINGS:
 - Quality score falls below 60% for any deliverable
 - Recurring quality pattern detected across 3+ deliverables
 - Stakeholders pressure to bypass quality gate without addressing critical findings
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

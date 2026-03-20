@@ -3,7 +3,7 @@
 ## Contenido
 
 - **sample-output.md** — Ejemplo de referencia (benchmark) en formato markdown. Muestra una matriz de scoring con narrativa interpretativa, análisis before/after de métricas DORA, y comunicación de magnitudes en FTE-meses. Contexto: evaluación de modernización para empresa de retail con monolito legacy.
-- **sample-output.html** — Versión HTML con Sofka Design System (#FF7E08 primary, #1A1A2E dark, #FFD700 success).
+- **sample-output.html** — Versión HTML con MetodologIA Design System (#6366F1 primary, #1A1A2E dark, #22D3EE success).
 
 ## Uso
 

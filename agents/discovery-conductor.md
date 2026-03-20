@@ -202,6 +202,3 @@ After each phase:
 ║  Blockers: [none / list]                                    ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026

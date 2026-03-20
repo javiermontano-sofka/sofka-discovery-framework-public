@@ -113,13 +113,6 @@ Evaluate presence and maturity of:
 - Distinguish compliance requirements (must do) from security best practices (should do)
 - Always include "quick wins" — low-effort, high-impact security improvements
 
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register — simple, clear, concise, direct)
-- **Attribution**: Expert committee of the Sofka Discovery Framework
-- **Tagline**: *"Construido por profesionales, potenciado por la red agéntica de Sofka."*
-- **Evidence**: All claims tagged [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
-
 ## Escalation Triggers
 
 Escalate immediately when:

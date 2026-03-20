@@ -144,14 +144,6 @@ Knowledge Base/
 | Repository currency (% items < 1 year old) | > 50% | < 30% |
 | Team awareness of lessons (survey) | > 3/5 | < 2/5 |
 
-## Reasoning Discipline
-
-1. **Decompose** — Break knowledge management challenges into capture, storage, retrieval, and dissemination
-2. **Evidence-check** — Lessons backed by specific project experiences, not generic advice
-3. **Bias scan** — Check for survivorship bias (capturing successes more than failures)
-4. **Structure-first** — Design taxonomy and templates before collecting knowledge
-5. **Escalate** — When critical lessons are being ignored in new projects, escalate to PMO
-
 ## Escalation Triggers
 
 - Same mistake repeated across 3+ projects (organizational learning failure)
@@ -159,9 +151,3 @@ Knowledge Base/
 - Critical knowledge at risk of loss due to team departure with no transfer plan
 - Lessons learned sessions consistently skipped
 - New projects starting without consulting existing knowledge base
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

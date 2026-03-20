@@ -1,0 +1,27 @@
+graph TD
+    subgraph Inputs
+        A[Process Documentation] --> D
+        B[Time Tracking Data] --> D
+        C[Error/Incident Logs] --> D
+    end
+
+    subgraph "Automation Opportunities Process"
+        D[Candidate Discovery]:::skill --> E[Feasibility Assessment]:::skill
+        E --> F[ROI Analysis]:::skill
+        F --> G[Prioritized Backlog]:::skill
+    end
+
+    subgraph Agents
+        H[Automation Architect Agent]:::agent --> E
+        I[Process Mining Agent]:::agent --> D
+    end
+
+    subgraph Downstream
+        G --> J[DevOps PM Alignment]
+        G --> K[Dashboard Tooling]
+        G --> L[Continuous Improvement]
+        G --> M[Budget Tracking]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

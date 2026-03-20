@@ -1,6 +1,6 @@
 # Data Storytelling — State of the Art
 
-> Estado actual de la disciplina, tendencias emergentes y posición del skill dentro del Sofka Discovery Framework.
+> Estado actual de la disciplina, tendencias emergentes y posición del skill dentro del MetodologIA Discovery Framework.
 
 ---
 
@@ -25,7 +25,7 @@ Esto es exactamente el espacio que ocupa este skill en el framework de discovery
 
 ### 1.3 Narrativa Generada por IA
 
-Los LLMs han democratizado la generación de texto a partir de datos. El riesgo es la **narrativa genérica**. El diferenciador de Sofka es:
+Los LLMs han democratizado la generación de texto a partir de datos. El riesgo es la **narrativa genérica**. El diferenciador de MetodologIA es:
 
 - Narrativas ancladas en **evidencia etiquetada** (no opinión)
 - Comparaciones contra **benchmarks específicos del sector**
@@ -123,7 +123,7 @@ Integración de múltiples fuentes de evidencia (código, stakeholders, document
 
 | Gap | Oportunidad |
 |-----|------------|
-| Benchmarks sectoriales limitados para LATAM | Construir base de comparación interna Sofka por vertical |
+| Benchmarks sectoriales limitados para LATAM | Construir base de comparación interna MetodologIA por vertical |
 | Narrativa estática en documentos | Explorar narrativas interactivas en HTML con tooltips |
 | Métricas de impacto post-discovery | Definir framework de seguimiento de predicciones |
 | Calibración de [INFERENCIA] vs. [SUPUESTO] | Establecer criterios más granulares de confianza |

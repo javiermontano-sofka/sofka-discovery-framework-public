@@ -1,0 +1,57 @@
+[
+  {
+    "prompt": "Create a full financial business case for ProjectNova, a $3M digital transformation project replacing legacy order management with a cloud-native platform. 18-month implementation, 5-year investment horizon, 150-person user base.",
+    "assertions": [
+      "produces a benefit register with ≥8 quantified benefits across revenue, cost reduction, and productivity categories",
+      "every benefit has an assigned confidence level (High / Medium / Low)",
+      "TCO model covers implementation costs, ongoing operational costs, transition costs, and opportunity costs",
+      "year-by-year cash flow table spans the full 5-year investment horizon",
+      "calculates NPV, IRR, payback period, and benefit-cost ratio",
+      "presents conservative, expected, and optimistic scenarios for all financial metrics",
+      "includes sensitivity analysis on ≥3 key assumptions with tornado diagram or table",
+      "calculates cost of delay per month",
+      "evidence tags present on every major claim — not solely [SUPUESTO]",
+      "output file named {fase}_business_case_ProjectNova_{WIP}.md"
+    ]
+  },
+  {
+    "prompt": "Build a business case comparing 3 vendor options for a CRM platform: Salesforce, HubSpot, and a custom-built solution. Annual revenue $50M, 80-person sales team, 3-year horizon.",
+    "assertions": [
+      "includes do-nothing/status-quo as a mandatory baseline option alongside the 3 vendors",
+      "produces per-option TCO models with consistent scope boundaries and discount rate",
+      "side-by-side comparison matrix includes ≥6 weighted criteria (financial + strategic + operational)",
+      "every qualitative score has written justification — no unexplained ratings",
+      "weights are explicitly stated and sum to 100%",
+      "financial metrics (NPV, payback) calculated independently for each option",
+      "trade-off analysis explicitly states what is gained and sacrificed per option",
+      "addresses vendor lock-in risk and switching cost for each option",
+      "includes a recommendation with conditions under which it would change"
+    ]
+  },
+  {
+    "prompt": "Create a business case for ProjectShield, a regulatory compliance project mandated by new data privacy legislation. $1.2M budget, no direct revenue benefit. Non-compliance penalty is $5M per incident.",
+    "assertions": [
+      "recognizes compliance as a risk avoidance / cost avoidance benefit category",
+      "quantifies benefit as expected penalty avoidance (probability × penalty magnitude)",
+      "includes reputational damage and customer trust as intangible benefits with proxy metrics",
+      "does not fabricate direct revenue benefits where none exist",
+      "presents cost of non-compliance scenario vs cost of compliance scenario",
+      "TCO model includes ongoing compliance monitoring and audit costs beyond initial implementation",
+      "NPV calculation reflects risk-adjusted benefit (not full $5M penalty as guaranteed saving)",
+      "recommends approval framing appropriate for mandatory/regulatory projects"
+    ]
+  },
+  {
+    "prompt": "Our ProjectOrbit business case was approved at $2M but implementation costs have increased by 40% due to integration complexity. Revise the business case with the new $2.8M cost baseline.",
+    "assertions": [
+      "recalculates all financial metrics (NPV, IRR, payback, BCR) with the updated $2.8M cost baseline",
+      "shows before-and-after comparison of key metrics to quantify the impact",
+      "identifies which metrics cross from Green to Amber or Red status",
+      "recalculates cost of delay with updated figures",
+      "runs updated sensitivity analysis reflecting the new cost reality",
+      "evaluates whether the investment recommendation changes under the revised numbers",
+      "suggests scope reduction or phased delivery options if NPV turns negative or marginal",
+      "flags the 40% variance as a risk indicator for remaining cost estimates"
+    ]
+  }
+]

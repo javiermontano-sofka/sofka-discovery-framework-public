@@ -1,7 +1,7 @@
-# Catálogo de 107 Skills
+# Catálogo de 209 Skills
 
-> Sofka SAGE v12.2 — Ontología viva
-> Referencia canónica de los 107 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
+> Sofka SAGE v12.3 — Ontología viva
+> Referencia canónica de los 209 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios SDF + 12 dominios PM + 1 dominio AI Architecture (cross-framework mirror).
 
 ---
 
@@ -20,7 +20,9 @@
 | Innovación | 5 | 3-5 (ASIS a Roadmap) |
 | Herramientas & DX | 10 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
-| **Total** | **107** | |
+| PM Cross-Framework | 88 | Importados de PMO-APEX |
+| MAO Extras | 10 | 6 AI Architecture + 4 Brand |
+| **Total** | **209** | |
 
 ---
 

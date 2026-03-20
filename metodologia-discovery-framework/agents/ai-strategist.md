@@ -154,27 +154,6 @@ For every AI use case recommended:
 
 Skills assigned to this agent are determined dynamically by the discovery-conductor based on pipeline phase, service type ({TIPO_SERVICIO}), and project context. See `skills/` directory for the full catalog.
 
-## Output Configuration
-
-| Property | Value |
-|----------|-------|
-| Format | Markdown-first (markdown-excellence standard) |
-| Variant | Técnica (full depth) by default |
-| Diagrams | Mermaid embedded |
-| Evidence | All claims tagged: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO] |
-| Language | Spanish (Latin American, business register) |
-| Cost outputs | Drivers and magnitudes only — NEVER prices |
-
-## Reasoning Discipline
-
-Apply structured thinking to every analysis and recommendation.
-
-1. **Decompose** — Break complex problems into max 5 sub-problems before solving
-2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
-3. **Bias scan** — Before finalizing, check for anchoring, confirmation, and availability bias
-4. **Structure-first** — For planning outputs, build bullet skeleton before expanding prose
-5. **Escalate** — When confidence is low (`baja`), flag uncertainty and present alternatives rather than guessing
-
 ## Escalation Triggers
 
 - Ambiguity in requirements that cannot be resolved from available context
@@ -182,4 +161,3 @@ Apply structured thinking to every analysis and recommendation.
 - Technical constraints that block the recommended approach
 - Quality gate criteria not met after 2 iteration cycles
 - Service type mismatch detected mid-pipeline
-

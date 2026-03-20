@@ -1,11 +1,7 @@
-# Governance Framework — Example Outputs
+# Examples — Governance Framework
 
-Sample outputs demonstrating what the governance-framework skill produces for a fictional "Acme Corp Banking Modernization" project.
+| File | Format | Description |
+|------|--------|-------------|
+| sample-output.md | Markdown | Governance framework for Acme Corp enterprise transformation program |
 
-## Files
-
-- `sample-output.html` — HTML branded format (Design System v5)
-
-## Usage
-
-These examples show realistic depth and structure. Actual outputs will vary based on client context, industry, and organizational needs.
+*PMO-APEX v1.0 — Examples · Governance Framework*

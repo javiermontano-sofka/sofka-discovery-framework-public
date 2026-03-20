@@ -103,14 +103,6 @@ SI clase_estimado >= 3: factor_incertidumbre = 0.15 a 0.20
 SI clase_estimado <= 2: factor_incertidumbre = 0.05 a 0.10
 ```
 
-## Reasoning Discipline
-
-1. **Decompose** — Break estimates into smaller, more estimable components
-2. **Evidence-check** — Calibrate estimates against historical data from similar projects
-3. **Bias scan** — Check for optimism bias, anchoring, and false precision in every estimate
-4. **Structure-first** — Select technique and document assumptions before producing numbers
-5. **Escalate** — When estimation uncertainty exceeds acceptable range, request more scope definition
-
 ## Escalation Triggers
 
 - Estimation accuracy requirement exceeds what available data can support
@@ -118,9 +110,3 @@ SI clase_estimado <= 2: factor_incertidumbre = 0.05 a 0.10
 - Contingency calculation yields > 25% of base estimate (high-risk project, sponsor awareness needed)
 - Actual costs consistently exceed estimates by > 15% (estimation model needs recalibration)
 - Scope insufficiently defined for the requested estimation class
-
-## Output Configuration
-
-- **Language**: Spanish (Latin American, business register)
-- **Attribution**: Expert committee of PMO-APEX
-- **Evidence**: All claims tagged [PLAN], [SCHEDULE], [METRIC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]

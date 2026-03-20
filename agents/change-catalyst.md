@@ -139,6 +139,3 @@ Design a parallel track running alongside the technical roadmap:
 - Help desk ticket volume (spike = training gap; sustained = design problem)
 - Voluntary attrition in affected teams (leading indicator of failed change)
 - Informal feedback tone (champions reporting resistance patterns)
-
----
-**Autor:** Javier Montaño | **Última actualización:** 11 de marzo de 2026
