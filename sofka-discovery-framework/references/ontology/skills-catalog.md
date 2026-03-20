@@ -1,7 +1,7 @@
-# Catálogo de 209 Skills
+# Catálogo de 210 Skills
 
 > Sofka SAGE v12.3 — Ontología viva
-> Referencia canónica de los 209 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios SDF + 12 dominios PM + 1 dominio AI Architecture (cross-framework mirror).
+> Referencia canónica de los 210 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios SDF + 12 dominios PM + 1 dominio AI Architecture (cross-framework mirror).
 
 ---
 
@@ -21,8 +21,8 @@
 | Herramientas & DX | 10 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
 | PM Cross-Framework | 88 | Importados de PMO-APEX |
-| MAO Extras | 10 | 6 AI Architecture + 4 Brand |
-| **Total** | **209** | |
+| MAO Extras | 11 | 7 AI Architecture + 4 Brand |
+| **Total** | **210** | |
 
 ---
 
@@ -186,6 +186,18 @@
 | `dynamic-sme` | SME dinámico según dominio detectado | 0-2 |
 | `user-representative` | Representación del usuario final | 0-2 |
 | `accessibility-audit` | Auditoría de accesibilidad | 3-4 |
+
+## 12. AI Architecture (7 skills)
+
+| Skill | Propósito | Fase |
+|-------|----------|------|
+| `ai-software-architecture` | Arquitectura de software para sistemas de IA, stack 6 capas, quality attributes ATAM+AI, ADRs | 3-5 |
+| `ai-conops` | CONOPS para IA — visión, stakeholders, espectro de interacción humano-IA, valor de negocio, métricas de éxito | 2-3 |
+| `ai-pipeline-architecture` | Pipelines de desarrollo y producción, data stores, model registry, CI/CD Blue & Gold | 3-5 |
+| `ai-design-patterns` | Patrones de diseño para IA — Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection, anti-patrones | 3-5 |
+| `ai-testing-strategy` | Estrategia de testing para IA — matriz 6x6, model testing, data quality, fairness, integración | 3-5 |
+| `genai-architecture` | Arquitectura GenAI — RAG, orquestación LLM, multi-model tiering, agentes, vector DB, guardrails | 3-6 |
+| `aws-architecture-design` | Diseño de arquitectura AWS para workloads AI/GenAI, Well-Architected GenAI Lens | 3-6 |
 
 ---
 
