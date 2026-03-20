@@ -78,6 +78,7 @@ Read ${CLAUDE_SKILL_DIR}/references/ai-patterns-catalog.md
 - Deep pattern catalog with tactics and anti-patterns → **metodologia-ai-design-patterns**
 - Comprehensive testing strategy for AI systems → **metodologia-ai-testing-strategy**
 - GenAI/LLM-specific architecture (RAG, agents, vector DBs) → **metodologia-genai-architecture**
+- AWS-specific service selection and Well-Architected assessment → **metodologia-aws-architecture-design**
 - End-to-end solution design across multiple systems → **metodologia-solutions-architecture**
 - Enterprise portfolio alignment → **metodologia-enterprise-architecture**
 - Infrastructure and platform design → **metodologia-infrastructure-architecture**
@@ -183,6 +184,8 @@ Identifies current architectural debt — including AI-specific debt — and a s
 - **Dead feature debt**: Features computed but never used by any model
 - **Undeclared consumer debt**: Downstream systems depending on model outputs without formal contracts
 - **Experiment debt**: Abandoned experiments leaving orphaned code, configs, and data
+- **Responsible AI debt**: Missing fairness audits, absent explainability mechanisms, no bias monitoring — accumulates regulatory and reputational risk
+- **LLMOps debt**: Prompt templates without version control, untracked context window usage, no cost attribution per LLM call
 
 **Evolution strategy:**
 - Phased approach: debt reduction does not block feature delivery
@@ -274,6 +277,7 @@ Before finalizing delivery, verify:
 - **metodologia-ai-design-patterns**: Deep pattern catalog and system tactics for AI
 - **metodologia-ai-testing-strategy**: Testing strategy aligned to architecture quality attributes
 - **metodologia-genai-architecture**: GenAI/LLM-specific architectural patterns (RAG, agents, vector DBs)
+- **metodologia-aws-architecture-design**: Maps AI architecture to AWS services (Bedrock, SageMaker, OpenSearch)
 - **metodologia-software-architecture**: Traditional software architecture (non-AI) — complementary skill
 - **metodologia-solutions-architecture**: Integrates AI architecture into end-to-end solution design
 - **metodologia-infrastructure-architecture**: Receives compute and storage needs; designs the platform

@@ -112,9 +112,10 @@ Maps the data-to-prediction pipeline that serves AI capabilities in production.
 
 **Key decisions:**
 - Batch vs. streaming vs. hybrid pipeline topology
-- Feature store adoption (Feast, Tecton, Vertex AI Feature Store, or custom)
+- Feature store adoption (Feast, Tecton, Vertex AI Feature Store, or custom) → evolving toward Feature Platform (compute + store + monitoring + governance as integrated platform)
 - Model serving framework (TF Serving, TorchServe, Triton, vLLM, SageMaker Endpoints)
 - Monitoring granularity (sample rate, logging level, retention policy)
+- Streaming pipeline pattern (Kappa for pure streaming, Lambda for batch+streaming hybrid)
 
 ### S3: Data Store Technology Selection
 
@@ -215,6 +216,7 @@ Defines measurable requirements across four categories with thresholds and objec
 - Does not select *design patterns or tactics* (see **metodologia-ai-design-patterns**)
 - Does not define *testing strategy* beyond pipeline gates (see **metodologia-ai-testing-strategy**)
 - GenAI-specific pipelines (RAG indexing, agent orchestration) require **metodologia-genai-architecture**
+- AWS-specific pipeline services (SageMaker Pipelines, Step Functions, Bedrock) covered by **metodologia-aws-architecture-design**
 
 ---
 
@@ -259,6 +261,7 @@ Before finalizing delivery, verify:
 - **metodologia-ai-testing-strategy**: Testing strategy for pipeline validation and integration
 - **metodologia-genai-architecture**: GenAI-specific pipeline patterns (RAG indexing, embedding pipelines)
 - **metodologia-infrastructure-architecture**: Provides compute and storage platform for pipelines
+- **metodologia-aws-architecture-design**: Maps pipeline components to AWS services (SageMaker, Step Functions, Bedrock)
 - **metodologia-devsecops-architecture**: Pipeline security controls and supply chain security
 
 ## Output Format Protocol

@@ -94,6 +94,8 @@ Designs the complete retrieval-augmented generation pipeline from query to valid
 
 **RAG variants:**
 - Naive RAG (prototype only), Advanced RAG (production standard), Modular RAG (extensible)
+- GraphRAG: Knowledge graph-enhanced retrieval for entity-rich domains — combines vector similarity with graph traversal for relationship-aware context
+- Agentic RAG: Agent-driven retrieval with iterative search, query decomposition, and self-evaluation loops
 
 **CAG alternative:** Preload all context into LLM window — viable for small, stable knowledge bases.
 
@@ -139,6 +141,7 @@ Query Input -> Entity Extraction -> Intent Classification -> Intelligent Routing
 - Knowledge tools: vector DB search, SQL queries, web search, document retrieval
 - Action tools: API calls (CRM, ERP, ITSM), code execution, notifications
 - Reasoning tools: calculator, code interpreter, sub-agent delegation
+- MCP (Model Context Protocol) integration: standardized tool interface for interoperability across agent frameworks and LLM providers
 
 **Tool governance:**
 - Tool whitelisting per agent role
@@ -224,10 +227,11 @@ Defines the quality framework for GenAI systems covering hallucination reduction
 - Retrieval quality feedback: low-quality retrieval flagged before generation
 
 **Evaluation framework:**
-- **Retrieval quality**: Precision@K, Recall@K, MRR, NDCG
-- **Generation quality**: Faithfulness (grounded in context), relevance (answers the query), completeness, coherence
+- **Retrieval quality**: Precision@K, Recall@K, MRR, NDCG — use RAGAS framework for automated RAG evaluation
+- **Generation quality**: Faithfulness (grounded in context), relevance (answers the query), completeness, coherence — LLM-as-judge for scalable evaluation
 - **End-to-end quality**: User satisfaction, task completion rate, hallucination rate, citation accuracy
 - **Operational metrics**: Latency (P50, P95, P99), cost per query, token usage, cache hit rate
+- **Agent quality**: Tool selection accuracy, task completion rate, loop detection, cost per task
 
 **Continuous improvement cycle:**
 1. Monitor: track quality metrics in production
@@ -328,6 +332,7 @@ Before finalizing delivery, verify:
 - **metodologia-ai-pipeline-architecture**: Embedding pipeline and indexing pipeline are pipeline components
 - **metodologia-ai-design-patterns**: Champion-Challenger and Canary apply to LLM model promotion
 - **metodologia-ai-testing-strategy**: GenAI-specific tests (hallucination, retrieval quality) extend the testing matrix
+- **metodologia-aws-architecture-design**: AWS-specific GenAI services (Bedrock, Bedrock Agents, Bedrock KB, OpenSearch Serverless)
 - **metodologia-infrastructure-architecture**: GPU provisioning, vector DB hosting, LLM serving infrastructure
 - **metodologia-security-architecture**: GenAI-specific security (prompt injection, data exfiltration, model access)
 

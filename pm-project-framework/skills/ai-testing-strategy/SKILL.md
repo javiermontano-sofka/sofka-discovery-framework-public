@@ -227,6 +227,13 @@ Defines how tests are automated within the CI/CD pipeline for continuous validat
 - Security gate: vulnerability scan, access control verification
 - Regression gate: no degradation vs. current production model
 
+**GenAI-specific test automation:**
+- Prompt regression testing (prompt template changes validated against golden dataset)
+- Guardrail effectiveness testing (known-bad inputs verify filter activation)
+- Retrieval quality regression (RAG precision/recall tracked across knowledge base updates)
+- Hallucination rate tracking (automated grounding checks on sampled responses)
+- Cost regression testing (token usage per query type tracked, alerts on budget drift)
+
 **Continuous monitoring (post-deployment):**
 - Drift detection on inputs and outputs
 - Performance degradation alerting
@@ -316,6 +323,7 @@ Before finalizing delivery, verify:
 - **metodologia-ai-pipeline-architecture**: Pipeline stages define test boundaries; requirements framework provides thresholds
 - **metodologia-ai-design-patterns**: Patterns require pattern-specific tests (drift detection accuracy, rollback speed)
 - **metodologia-genai-architecture**: GenAI-specific tests (hallucination, retrieval quality) complement this general strategy
+- **metodologia-aws-architecture-design**: AWS testing infrastructure (SageMaker Model Monitor, Bedrock evaluation, CloudWatch)
 - **metodologia-testing-strategy**: Traditional testing strategy provides foundation; this skill adds AI-specific layers
 - **metodologia-quality-engineering**: Quality engineering provides broader quality framework context
 

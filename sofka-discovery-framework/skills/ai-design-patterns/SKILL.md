@@ -136,6 +136,9 @@ Catalogs the patterns purpose-built for AI system challenges.
 - **Explainability Wrapper**: Explanation generation alongside predictions for transparency and compliance
 - **Canary Deployment**: Gradual traffic shift with metric-driven rollback
 - **Bulkhead**: Fault isolation between pipeline components and model instances
+- **Model Distillation**: Compress large model into smaller, faster model preserving key capabilities
+- **Prompt Caching**: Store and reuse prompt-response pairs for repeated or similar queries
+- **Guardrail Pattern**: Input/output validation layer between user and model (content safety, PII, topic control)
 
 For each pattern: intent, structure, key decisions, and trade-offs. Detail in `references/ai-patterns-detail.md`.
 
@@ -185,6 +188,8 @@ Identifies known anti-patterns, detects their presence, and prescribes remediati
 - **Alert Fatigue**: Too many false-positive ML alerts, team ignores them
 - **God Model**: Single model handling all use cases
 - **Compliance Afterthought**: Explainability and fairness added post-hoc
+- **Unguarded LLM**: LLM exposed without input/output validation, prone to injection and misuse
+- **Token Budget Blindness**: No cost controls on LLM calls, unbounded agent loops, surprise bills
 
 For each: symptom, cause, detection signal, and recommended pattern fix.
 
@@ -232,6 +237,9 @@ Shadow Deployment -> Canary Deployment -> Blue & Gold CI/CD
 | **Canary Deployment** | Gradual risk mitigation | Slower deployment, routing complexity | All model deployments |
 | **Bulkhead** | Fault isolation, independent scaling | Resource overhead, operational complexity | Multi-model or multi-tenant systems |
 | **N-Party Voting** | Robustness, reduced variance | Latency, compute cost, model diversity | High-stakes or adversarial environments |
+| **Model Distillation** | Lower latency, reduced cost | Quality loss, training effort | High-volume inference with latency constraints |
+| **Prompt Caching** | Cost reduction, latency improvement | Cache invalidation, storage cost | High-volume systems with repeated query patterns |
+| **Guardrail Pattern** | Safety, compliance, brand protection | Added latency, false positives | All production GenAI systems |
 
 ---
 
@@ -293,6 +301,7 @@ Before finalizing delivery, verify:
 - **metodologia-ai-pipeline-architecture**: Patterns operate within pipeline stages; Feature Store is a pipeline component
 - **metodologia-ai-testing-strategy**: Tests validate pattern behavior (drift detection accuracy, rollback speed)
 - **metodologia-genai-architecture**: GenAI-specific patterns (RAG, agents) complement these general AI patterns
+- **metodologia-aws-architecture-design**: AWS-native pattern implementations (Bedrock Guardrails, Bedrock Agents, SageMaker A/B)
 - **metodologia-infrastructure-architecture**: Infrastructure supports pattern deployment (compute, storage, networking)
 - **metodologia-devsecops-architecture**: Security tactics complement availability tactics
 

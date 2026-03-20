@@ -191,22 +191,26 @@ Defines measurable success across three pillars, aligned with stakeholder concer
 
 Defines the operational states the AI system can inhabit and the transitions between them.
 
-**7 Operational Modes:**
+**8 Operational Modes:**
+- **Configuration** (orange): System setup or initial configuration before first deployment
+- **Startup** (yellow): System initialization, model loading, health checks, warm-up
 - **Executing** (green): Normal operation — processing requests, generating predictions
-- **Monitoring** (blue): Observing system behavior without making changes
+- **Monitoring** (blue): Observing system behavior, collecting metrics without changes
 - **Learning** (blue): Model being updated with new data or hyperparameter tuning
 - **Shadow** (blue): New model running in parallel without affecting production
-- **Degraded** (red): Reduced capabilities due to component failure
-- **Updating** (yellow): System components being modified or replaced
-- **Configuration** (orange): System setup or reconfiguration after manual intervention
+- **Degraded** (red): Reduced capabilities due to component failure or performance breach
+- **Recovery** (red): Active recovery from failure — model rollback, data repair, pipeline restart
 
 **Key transitions:**
+- Configuration → Startup: Initial setup complete, system ready to initialize
+- Startup → Executing: All health checks pass, models loaded, warm-up complete
 - Executing → Learning: Training trigger (scheduled, drift-detected, manual)
 - Learning → Executing: Training complete, validation passed
-- Executing → Degraded: Component failure, performance threshold breach
-- Degraded → Configuration: Manual intervention required
-- Configuration → Executing: Reconfiguration complete, validation passed
-- Executing → Monitoring: Performance check initiated
+- Executing → Degraded: Component failure, performance threshold breach, drift above tolerance
+- Degraded → Recovery: Automated or manual recovery initiated
+- Recovery → Executing: Recovery successful, system validated
+- Recovery → Configuration: Recovery failed, manual reconfiguration required
+- Executing → Monitoring: Performance check initiated, deep observability mode
 - Monitoring → Shadow: Shadow mode initiated for new model evaluation
 - Shadow → Executing: Shadow complete, model promoted or rejected
 
@@ -288,6 +292,7 @@ Before finalizing delivery, verify:
 - **metodologia-ai-design-patterns**: Uses interaction level to select appropriate patterns
 - **metodologia-ai-testing-strategy**: Uses success metrics to define test acceptance criteria
 - **metodologia-genai-architecture**: Uses CONOPS for GenAI-specific system design
+- **metodologia-aws-architecture-design**: Maps CONOPS operational modes to AWS service capabilities
 - **metodologia-stakeholder-mapping**: Complementary traditional stakeholder mapping
 - **metodologia-scenario-analysis**: Scenario-based evaluation of AI alternatives
 - **metodologia-cost-estimation**: Financial modeling based on business value assessment
