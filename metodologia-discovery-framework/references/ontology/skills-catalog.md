@@ -1,7 +1,7 @@
-# Catálogo de 210 Skills
+# Catálogo de 214 Skills
 
 > MAO Framework — Ontología viva
-> Referencia canónica de los 210 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 12 dominios MAO + 12 dominios PM (cross-framework mirror).
+> Referencia canónica de los 214 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 12 dominios MAO + 12 dominios PM (cross-framework mirror).
 
 ---
 
@@ -10,7 +10,7 @@
 | Dominio | Cantidad | Fases del pipeline |
 |---------|----------|-------------------|
 | Arquitectura | 14 | 2-6 (Brief a Reportes) |
-| AI Architecture | 7 | 2-6 (CONOPS a Testing) |
+| AI Architecture | 11 | 2-6 (CONOPS a Testing) |
 | Data & Analytics | 10 | 2-6 (Brief a Reportes) |
 | Análisis & Discovery | 12 | 0-4 (Plan a Flujos) |
 | Cloud & Platform | 5 | 2-5 (ASIS a Roadmap) |
@@ -22,7 +22,7 @@
 | Herramientas & DX | 8 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
 | PM Cross-Framework | 88 | Importados de PMO-APEX |
-| **Total** | **210** | |
+| **Total** | **214** | |
 
 ---
 
@@ -184,7 +184,7 @@
 | `user-representative` | Representación del usuario final | 0-2 |
 | `accessibility-audit` | Auditoría de accesibilidad | 3-4 |
 
-## 12. AI Architecture (7 skills)
+## 12. AI Architecture (11 skills)
 
 | Skill | Propósito | Fase |
 |-------|----------|------|
@@ -195,6 +195,10 @@
 | `ai-testing-strategy` | Estrategia de testing para IA — matriz 6x6, model testing, data quality, fairness, integración | 3-5 |
 | `genai-architecture` | Arquitectura GenAI — RAG, orquestación LLM, multi-model tiering, agentes, vector DB, guardrails | 3-6 |
 | `aws-architecture-design` | Diseño de arquitectura AWS para workloads AI/GenAI, Well-Architected GenAI Lens | 3-6 |
+| `ai-architecture-audit` | Auditoría de arquitecturas AI: integridad estructural, quality attributes, anti-patrones, seguridad, deuda técnica | 3-6 |
+| `ai-architecture-implementation` | Implementación de arquitecturas AI: selección de stack, pipelines, serving, CI/CD, monitoreo | 3-6 |
+| `aws-architecture-audit` | Auditoría de arquitecturas AI en AWS contra Well-Architected GenAI Lens, seguridad, costos | 3-6 |
+| `aws-architecture-implementation` | Implementación de arquitecturas AI en AWS: Bedrock, SageMaker, OpenSearch, security, CI/CD | 3-6 |
 
 ---
 

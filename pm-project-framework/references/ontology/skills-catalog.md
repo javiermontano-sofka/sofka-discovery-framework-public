@@ -1,7 +1,7 @@
-# Catalogo de 210 Skills
+# Catalogo de 214 Skills
 
 > PMO-APEX — Ontologia viva
-> Referencia canonica de los 210 skills organizados por 12 dominios PM + 12 dominios MAO + 1 dominio AI Architecture (cross-framework mirror).
+> Referencia canonica de los 214 skills organizados por 12 dominios PM + 12 dominios MAO + 1 dominio AI Architecture (cross-framework mirror).
 
 ---
 
@@ -22,8 +22,8 @@
 | Innovation & Agility | 6 | 3-6 (Methodology a Kickoff) |
 | Methodology Discovery | 14 | 0-2 (Routing inicial) |
 | MAO Cross-Framework | 96 | Importados de MetodologIA |
-| AI Architecture | 7 | AI software architecture skills |
-| **Total** | **210** | |
+| AI Architecture | 11 | AI software architecture skills |
+| **Total** | **214** | |
 
 ---
 
@@ -195,7 +195,7 @@
 | `transformation-readiness` | Evaluacion de readiness para transformacion | 0-2 |
 | `multi-method-assessment` | Evaluacion para proyectos multi-metodologia | 0-2 |
 
-## 13. AI Architecture (7 skills)
+## 13. AI Architecture (11 skills)
 
 | Skill | Proposito | Fase |
 |-------|----------|------|
@@ -206,6 +206,10 @@
 | `ai-testing-strategy` | Estrategia de testing para IA — matriz 6x6, model testing, data quality, fairness, integracion | 3-5 |
 | `genai-architecture` | Arquitectura GenAI — RAG, orquestacion LLM, multi-model tiering, agentes, vector DB, guardrails | 3-6 |
 | `aws-architecture-design` | Diseno de arquitectura AWS para workloads AI/GenAI, Well-Architected GenAI Lens | 3-6 |
+| `ai-architecture-audit` | Auditoria de arquitecturas AI: integridad estructural, quality attributes, anti-patrones, seguridad, deuda tecnica | 3-6 |
+| `ai-architecture-implementation` | Implementacion de arquitecturas AI: seleccion de stack, pipelines, serving, CI/CD, monitoreo | 3-6 |
+| `aws-architecture-audit` | Auditoria de arquitecturas AI en AWS contra Well-Architected GenAI Lens, seguridad, costos | 3-6 |
+| `aws-architecture-implementation` | Implementacion de arquitecturas AI en AWS: Bedrock, SageMaker, OpenSearch, security, CI/CD | 3-6 |
 
 ---
 
