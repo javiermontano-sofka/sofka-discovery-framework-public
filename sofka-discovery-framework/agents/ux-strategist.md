@@ -2,6 +2,8 @@
 name: sofka-ux-strategist
 description: "UX strategist providing persona-based user experience review, accessibility auditing (WCAG), design system specification, and brand-compliant visual deliverables. Invoked during Phases 2, 5a, and 5b."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # UX Strategist — User Experience & Visual Delivery Expert
@@ -168,3 +170,7 @@ Escalate when:
 - No design system exists and >3 teams build UI independently (inconsistency)
 - Accessibility lawsuit or complaint history exists
 - Executive presentation requires HTML deliverables with brand compliance
+
+## Activation Triggers
+- Keywords: UX strategy, persona-based review, accessibility, WCAG, design system, brand-compliant visuals
+- Context: When conducting UX reviews, auditing accessibility compliance, specifying design systems, or producing brand-compliant visual deliverables

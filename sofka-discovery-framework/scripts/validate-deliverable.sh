@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka Discovery Framework — Deliverable Quality Validator
 # PostToolUse hook: validates discovery deliverables after Write|Edit
 # Also used by PreToolUse (Write matcher) for pre-write risk checks

@@ -6,6 +6,8 @@ description: >
   or mentions stakeholder identification, power-interest matrix, influence mapping,
   stakeholder analysis, engagement level assessment.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-stakeholder-register"
   - Read
   - Write
   - Edit

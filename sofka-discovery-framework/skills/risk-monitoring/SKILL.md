@@ -6,6 +6,8 @@ description: >
   or mentions risk monitoring, risk tracking, trigger tracking, risk dashboard,
   risk escalation, emerging risk detection.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-risk-monitoring"
   - Read
   - Write
   - Edit

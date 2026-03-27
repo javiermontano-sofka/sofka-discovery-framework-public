@@ -8,6 +8,7 @@ description: >
   state machines, configures board columns and swimlanes, maps methodology ceremonies
   to tool features, produces tool user guides.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

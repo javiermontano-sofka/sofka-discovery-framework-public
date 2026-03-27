@@ -9,6 +9,7 @@ description: >
   Use when dimensioning execution effort, tracking delivery velocity, creating burndown projections,
   or when "burndown", "velocity", "sprints diarios", "1 feature por día", or "tracking de ejecución" is mentioned.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -211,7 +212,7 @@ graph TD
     end
 
     subgraph Related["Related Skills"]
-        ROADMAP[chart-roadmap]
+        ROADMAP[solution-roadmap]
         ONBOARD[onboarding-playbook]
         DATASTORY[data-storytelling]
         POCLAB[poc-lab]
@@ -325,7 +326,7 @@ graph TD
 
 ## Cross-References
 
-- `metodologia-chart-roadmap` — Produce el feature backlog que alimenta el burndown
+- `metodologia-solution-roadmap` — Produce el feature backlog que alimenta el burndown
 - `metodologia-onboarding-playbook` — Modelo de ramp-up (0.3/0.7/1.0) alineado con onboarding
 - `metodologia-data-storytelling` — Interpreta las metricas de velocity para audiencia ejecutiva
 - `metodologia-poc-lab` — Valida feasibility tecnica antes de comprometer backlog

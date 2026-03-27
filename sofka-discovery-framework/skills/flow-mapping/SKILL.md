@@ -10,6 +10,7 @@ description: >
   "flow mapping", "integration matrix", "dependency graph", "swimlane diagrams",
   "business process documentation".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

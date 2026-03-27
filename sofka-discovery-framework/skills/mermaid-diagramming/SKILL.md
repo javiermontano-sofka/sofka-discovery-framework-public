@@ -9,6 +9,7 @@ description: >
   Mermaid syntax, architecture diagrams, or visual documentation. Use this skill to embed
   precise, syntactically valid Mermaid diagrams in any discovery deliverable.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

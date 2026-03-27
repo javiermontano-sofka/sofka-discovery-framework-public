@@ -6,6 +6,8 @@ description: >
   or mentions Spotify, squads, tribes, chapters, guilds, autonomous teams, matrix organization,
   squad health check model.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-spotify-model"
   - Read
   - Write
   - Edit

@@ -7,6 +7,7 @@ description: >
   calculates initial WIP limits, defines pull policies, establishes flow measurement framework,
   produces Kanban system design document.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

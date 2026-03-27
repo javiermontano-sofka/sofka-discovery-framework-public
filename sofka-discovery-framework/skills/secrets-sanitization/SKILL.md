@@ -6,6 +6,8 @@ description: >
   credential scanning, security gate G0, sensitive data masking, API key exposure,
   token detection.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-secrets-sanitization"
   - Read
   - Glob
   - Grep

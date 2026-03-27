@@ -7,6 +7,7 @@ description: >
   create reporting templates, establish escalation communication paths, or measure communication
   effectiveness across the project.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

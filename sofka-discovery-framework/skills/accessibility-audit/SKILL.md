@@ -9,6 +9,7 @@ author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -112,7 +113,7 @@ graph TD
     end
     subgraph Related["Related Skills"]
         L[testing-strategy] -.-> D
-        M[ux-research] -.-> A
+        M[ux-design-discovery] -.-> A
         N[design-system] -.-> C
     end
 ```
@@ -155,7 +156,7 @@ graph TD
 ## Cross-References
 
 - **metodologia-testing-strategy:** Integration of a11y testing into overall test strategy
-- **metodologia-ux-research:** User research with people with disabilities
+- **metodologia-ux-design-discovery:** User research with people with disabilities
 - **metodologia-design-system:** Accessible component library and design tokens
 
 ---

@@ -7,6 +7,7 @@ description: >
   link assumptions to risks, establish assumption validation cadence, or audit planning
   hypotheses across the project lifecycle.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

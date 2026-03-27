@@ -8,6 +8,7 @@ description: >
   detects hybrid anti-patterns, scores integration capability, assesses dual-governance readiness,
   produces hybrid adoption roadmap.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

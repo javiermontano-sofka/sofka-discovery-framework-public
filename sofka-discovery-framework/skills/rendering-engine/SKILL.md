@@ -6,6 +6,8 @@ description: >
   or mentions rendering engine, Mermaid-to-PNG, markdown-to-PDF, format rendering,
   export engine, visual format conversion.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-rendering-engine"
   - Read
   - Write
   - Edit

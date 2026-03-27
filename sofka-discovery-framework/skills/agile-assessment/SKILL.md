@@ -7,6 +7,7 @@ description: >
   diagnose agile anti-patterns, compare agile readiness across teams, or baseline agile capability
   before a transformation initiative.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

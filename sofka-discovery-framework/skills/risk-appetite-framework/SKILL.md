@@ -6,6 +6,8 @@ description: >
   or mentions organizational risk tolerance, risk appetite statement, risk capacity,
   risk attitude, risk threshold matrix.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-risk-appetite-framework"
   - Read
   - Write
   - Edit

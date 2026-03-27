@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka SAGE — Auto-Priming Check
 # Hook: SessionStart (runs after session-context-gen)
 # Detects priming state and generates lightweight repo fingerprint.

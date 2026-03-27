@@ -9,6 +9,7 @@ description: >
   commercial models", or mentions earned value, joint venture, revenue share, outcome-based,
   licensing model, or commercial structure.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

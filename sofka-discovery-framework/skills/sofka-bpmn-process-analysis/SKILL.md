@@ -14,6 +14,7 @@ description: >
   automation ROI, RACI, fit-to-standard, process improvement, operational workflow.
 argument-hint: "<process-name-or-area> [--mode asis|tobe|fts]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Glob

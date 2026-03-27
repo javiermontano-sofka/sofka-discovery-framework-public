@@ -9,6 +9,7 @@ description: >
   "mini apps strategy", "Power Platform assessment", "low-code governance", "no-code evaluation",
   "automation apps discovery", or mentions "citizen development", "low-code adoption", "mini apps".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -315,7 +316,7 @@ graph TD
         RPA[rpa-discovery]
         SOL[solutions-architecture]
         SEC[security-architecture]
-        CHANGE[change-management]
+        CHANGE[organizational-change]
     end
 
     INV --> CDR

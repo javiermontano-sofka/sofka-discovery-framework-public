@@ -8,6 +8,7 @@ description: >
   Use when presenting scoring matrices, coverage metrics, performance data, cost
   estimates, or any quantitative finding that needs interpretation and context.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

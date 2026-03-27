@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biblioteca de Prompts NL-HP — Sofka SAGE v12.0</title>
+  <title>Biblioteca de Prompts NL-HP — Sofka SAGE v13.0</title>
   <meta name="description" content="Biblioteca de Prompts NL-HP v3.1: 49 especificaciones ejecutables con ROL, OBJETIVO, PROTOCOLO y parámetros. Zero-hallucination, dependency-aware, 100% preservada.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,7 +163,7 @@
 <div class="hero">
   <div class="logo">sofka<span>_</span></div>
   <h1>Biblioteca de Prompts NL-HP</h1>
-  <p>Natural Language High-Performance prompts — 49 especificaciones ejecutables con <strong>ROL</strong>, <strong>OBJETIVO</strong>, <strong>PROTOCOLO</strong> y parámetros ajustables para Sofka SAGE v12.0</p>
+  <p>Natural Language High-Performance prompts — 49 especificaciones ejecutables con <strong>ROL</strong>, <strong>OBJETIVO</strong>, <strong>PROTOCOLO</strong> y parámetros ajustables para Sofka SAGE v13.0</p>
   <div class="hero-badges">
     <span class="badge">v1.1</span>
     <span class="badge">48 Prompts</span>
@@ -1274,7 +1274,7 @@ a contexto: industria, madurez del cliente, urgencia, presupuesto y complejidad 
 
 ## OBJETIVO
 Generar un pipeline de discovery personalizado seleccionando fases, entregables, agentes
-y quality gates del catálogo SAGE (48 agentes, 100 skills, 16 entregables) según el
+y quality gates del catálogo SAGE (107 agentes, 314 skills, 16 entregables) según el
 contexto específico del engagement. El output es un flujo ejecutable con dependencias,
 tiempos estimados y criterios de salida por fase.
 
@@ -1617,7 +1617,7 @@ VARIANTE=ejecutiva`
 };
 
 const ALL_PROMPTS = [
-  { id: "run-guided", alias: "guide", category: "flujos", title: "Pipeline Guiado", time: "16h", complexity: "media", prereqs: [], description: "Pipeline completo con facilitación humana. 6 pausas para decisiones del cliente, validación cruzada en cada gate, 48 agentes asistiendo." },
+  { id: "run-guided", alias: "guide", category: "flujos", title: "Pipeline Guiado", time: "16h", complexity: "media", prereqs: [], description: "Pipeline completo con facilitación humana. 6 pausas para decisiones del cliente, validación cruzada en cada gate, 107 agentes asistiendo." },
   { id: "run-auto", alias: "auto", category: "flujos", title: "Pipeline Autónomo", time: "16h", complexity: "alta", prereqs: [], description: "Ejecución sin interrupciones. Toma decisiones automáticas en gates usando scoring 6D, simula Monte Carlo, genera artefactos completos." },
   { id: "run-express", alias: "express", category: "flujos", title: "Express (Go/No-Go)", time: "3h", complexity: "media", prereqs: [], description: "Decisión rápida en 1 sesión. 3 entregables críticos (Plan + Brief + Feasibility). Para boards ejecutivos con timeline apretado." },
   { id: "run-deep", alias: "deep", category: "flujos", title: "Deep Architecture", time: "40h", complexity: "experto", prereqs: [], description: "Dirección arquitectónica exhaustiva. 7 entregables, 2 quality gates, rigor académico para transformaciones críticas." },

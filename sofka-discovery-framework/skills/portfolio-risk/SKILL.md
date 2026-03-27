@@ -8,6 +8,7 @@ description: >
   identifies correlated risks across projects, detects vendor/technology/resource concentration,
   models portfolio-level risk scenarios, produces portfolio risk heatmap for governance.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

@@ -1,0 +1,66 @@
+{
+  "skill_name": "realtime-data-sync",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Choose between WebSocket and SSE for a notification system where the server pushes alerts to browser clients. The app runs behind Nginx and AWS ALB. Justify your choice.",
+      "expected_output": "SSE recommended with load balancer considerations and implementation",
+      "assertions": [
+        {"text": "Output recommends SSE over WebSocket for unidirectional server-to-client notifications", "type": "contains"},
+        {"text": "Output mentions EventSource API for browser-side SSE", "type": "contains"},
+        {"text": "Output discusses Nginx buffering (X-Accel-Buffering: no header)", "type": "contains"},
+        {"text": "Output mentions that SSE auto-reconnects unlike WebSocket", "type": "contains"},
+        {"text": "Output provides a minimal SSE server implementation with Content-Type: text/event-stream", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fix this TanStack Query mutation that causes the UI to revert for 300ms: mutationFn updates the server, onSuccess calls invalidateQueries. There is no onMutate handler.",
+      "expected_output": "Full onMutate/onError/onSettled pattern with cancelQueries and snapshot rollback",
+      "assertions": [
+        {"text": "Output adds onMutate handler with cancelQueries call", "type": "contains"},
+        {"text": "Output saves previous value as snapshot in onMutate", "type": "contains"},
+        {"text": "Output applies optimistic update via queryClient.setQueryData in onMutate", "type": "contains"},
+        {"text": "Output rolls back to snapshot in onError", "type": "contains"},
+        {"text": "Output uses onSettled (not onSuccess) for invalidateQueries to ensure cleanup on both success and error", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Implement exponential backoff reconnection for a WebSocket client. Requirements: start at 1s, max 30s, add jitter, stop after 10 attempts, notify user on failure.",
+      "expected_output": "Reconnection class with exponential backoff, jitter, max attempts, user notification",
+      "assertions": [
+        {"text": "Output implements exponential delay: baseDelay * 2^attempt", "type": "contains"},
+        {"text": "Output adds random jitter to prevent thundering herd", "type": "contains"},
+        {"text": "Output caps delay at maxDelay (30s or similar)", "type": "contains"},
+        {"text": "Output tracks attempt counter and stops after max attempts", "type": "contains"},
+        {"text": "Output notifies user when max attempts exceeded", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Set up Supabase Realtime CDC subscription for a tasks table in React. Handle INSERT, UPDATE, DELETE events and update the TanStack Query cache for each.",
+      "expected_output": "useEffect with supabase.channel subscription, event handlers for all 3 operations, cleanup",
+      "assertions": [
+        {"text": "Output uses supabase.channel().on('postgres_changes', ...).subscribe()", "type": "contains"},
+        {"text": "Output handles eventType === 'INSERT' by adding to cache", "type": "contains"},
+        {"text": "Output handles eventType === 'UPDATE' by patching cache item", "type": "contains"},
+        {"text": "Output handles eventType === 'DELETE' by filtering cache", "type": "contains"},
+        {"text": "Output returns cleanup function calling supabase.removeChannel()", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Implement collaborative text editing with Yjs. Two users edit the same document simultaneously. Include: ydoc setup, WebsocketProvider, IndexedDB persistence, and awareness for cursor sharing.",
+      "expected_output": "Yjs setup with WebsocketProvider, IndexeddbPersistence, Y.Text, and awareness API",
+      "assertions": [
+        {"text": "Output creates Y.Doc instance", "type": "contains"},
+        {"text": "Output sets up WebsocketProvider connected to a sync server", "type": "contains"},
+        {"text": "Output uses IndexeddbPersistence for offline support", "type": "contains"},
+        {"text": "Output uses Y.getText() for collaborative text", "type": "contains"},
+        {"text": "Output uses wsProvider.awareness.setLocalState() for cursor/presence sharing", "type": "contains"}
+      ]
+    }
+  ]
+}

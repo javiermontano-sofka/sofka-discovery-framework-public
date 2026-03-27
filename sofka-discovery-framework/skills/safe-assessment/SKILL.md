@@ -6,6 +6,8 @@ description: >
   or mentions SAFe assessment, SAFe maturity, SAFe adoption evaluation,
   ART readiness, SAFe implementation review, SAFe competency radar.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-safe-assessment"
   - Read
   - Write
   - Edit

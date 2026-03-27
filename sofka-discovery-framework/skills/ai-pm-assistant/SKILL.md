@@ -7,6 +7,7 @@ description: >
   build predictive scheduling models, automate status report parsing with NLP, design
   intelligent resource allocation, or create a human-AI collaboration model for project governance.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

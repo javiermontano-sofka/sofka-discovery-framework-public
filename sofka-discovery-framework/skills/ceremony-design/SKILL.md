@@ -7,6 +7,7 @@ description: >
   and agendas per ceremony, create facilitation guides, identify ceremony anti-patterns,
   or measure ceremony effectiveness across the project lifecycle.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

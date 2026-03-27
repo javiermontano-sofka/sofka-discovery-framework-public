@@ -9,6 +9,7 @@ description: >
   "cost optimization", "FinOps maturity".
 argument-hint: "[cloud-provider] [scope: full|assessment|optimization]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

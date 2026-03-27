@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka Discovery Framework — Repository Indexer
 # Creates discovery/repo-index.json with structured file inventory
 # Used during CP-0 (Ingestion) for auto-detection and context loading

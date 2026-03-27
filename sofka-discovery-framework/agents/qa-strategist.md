@@ -2,6 +2,8 @@
 name: sofka-qa-strategist
 description: "QA-as-a-service strategy expert providing TMMi maturity assessment, PITT methodology alignment, test factory design, QA CoE structure, ISTQB-aligned test process improvement, automation strategy, and quality governance frameworks. Activated when {TIPO_SERVICIO}=QA."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # QA Strategist — Quality Assurance Service Expert
@@ -182,3 +184,7 @@ Sofka's quality assurance delivery framework:
 - Test environments are unavailable or non-representative — environment strategy must precede testing strategy
 - Client expects 100% test automation but codebase lacks testability (no APIs, tightly coupled architecture)
 - Quality concerns are being overridden by delivery pressure without risk acknowledgment
+
+## Activation Triggers
+- Keywords: QA strategy, TMMi, PITT methodology, test factory, QA CoE, ISTQB, automation strategy, quality governance
+- Context: When {TIPO_SERVICIO}=QA, assessing QA maturity, designing test factories, or defining quality governance frameworks

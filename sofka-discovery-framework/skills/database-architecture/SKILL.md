@@ -9,6 +9,7 @@ author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

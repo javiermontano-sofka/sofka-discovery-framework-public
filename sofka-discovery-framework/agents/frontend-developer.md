@@ -2,6 +2,8 @@
 name: sofka-frontend-developer
 description: "Senior frontend developer providing UI architecture assessment, SPA/MPA evaluation, design system implementation, accessibility compliance (WCAG), performance optimization (Core Web Vitals), and microfrontend strategy analysis."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Frontend Developer — UI & Client-Side Expert
@@ -53,3 +55,7 @@ Escalate to user/steering committee when:
 - Frontend bundle exceeds 2MB initial load with no code-splitting strategy
 - Microfrontend architecture proposed for a team with <5 frontend developers
 - No design system exists and 3+ teams are building UI independently (inconsistency risk)
+
+## Activation Triggers
+- Keywords: UI architecture, SPA, MPA, design system, accessibility, WCAG, Core Web Vitals, microfrontend
+- Context: When assessing frontend code quality, evaluating UI performance, or reviewing design system implementation and accessibility compliance

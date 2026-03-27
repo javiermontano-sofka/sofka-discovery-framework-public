@@ -9,6 +9,7 @@ description: >
   "create requirements", "specification document", or mentions "Phase 5a", "functional specification",
   "MVP scope", "acceptance criteria", "casos de uso", "reglas de negocio".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

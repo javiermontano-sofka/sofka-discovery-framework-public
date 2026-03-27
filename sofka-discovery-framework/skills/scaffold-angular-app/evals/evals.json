@@ -1,0 +1,75 @@
+{
+  "skill_name": "scaffold-angular-app",
+  "version": "2.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "Angular 19 standalone scaffold completeness",
+      "prompt": "Scaffold an Angular 19 enterprise app with standalone components, Signals-based state, functional auth guard, functional HTTP interceptor, lazy routes with loadComponent, and Angular Material.",
+      "expected_output": "Complete scaffold with app.config.ts, app.routes.ts, auth service with Signals, functional guard, functional interceptor, and example dashboard component",
+      "assertions": [
+        {"text": "Output includes app.config.ts with provideRouter and provideHttpClient", "type": "contains"},
+        {"text": "Output includes functional authGuard using inject()", "type": "contains"},
+        {"text": "Output includes functional HttpInterceptorFn interceptor", "type": "contains"},
+        {"text": "Output uses signal() and computed() for state in services", "type": "contains"},
+        {"text": "Output uses loadComponent for lazy standalone routes", "type": "contains"},
+        {"text": "Output uses @if and @for control flow, NOT *ngIf or *ngFor", "type": "contains"},
+        {"text": "Output does NOT create NgModules for new components", "type": "not_contains"},
+        {"text": "Output uses inject() function, not constructor injection", "type": "contains"},
+        {"text": "Output includes standalone: true in all component metadata", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "BehaviorSubject to Signals migration",
+      "prompt": "Migrate this service from BehaviorSubject to Signals: a UserService with private _user$ = new BehaviorSubject<User | null>(null), user$ = this._user$.asObservable(), setUser(u: User) { this._user$.next(u) }",
+      "expected_output": "Migrated service using signal(), asReadonly(), and any needed computed() — with notes on template updates",
+      "assertions": [
+        {"text": "Output replaces BehaviorSubject with signal()", "type": "contains"},
+        {"text": "Output uses asReadonly() to expose signal publicly", "type": "contains"},
+        {"text": "Output uses .set() instead of .next()", "type": "contains"},
+        {"text": "Output does NOT use BehaviorSubject or Subject for state", "type": "not_contains"},
+        {"text": "Output notes that templates using async pipe need updating", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Class guard to functional guard migration",
+      "prompt": "Convert this class-based CanActivate guard to a functional guard: class AuthGuard implements CanActivate { constructor(private auth: AuthService, private router: Router) {} canActivate() { return this.auth.isLoggedIn ? true : this.router.createUrlTree(['/login']) } }",
+      "expected_output": "Functional guard using inject() that returns true or UrlTree",
+      "assertions": [
+        {"text": "Output does NOT use class implementing CanActivate", "type": "not_contains"},
+        {"text": "Output uses inject(AuthService) and inject(Router)", "type": "contains"},
+        {"text": "Output returns boolean or UrlTree", "type": "contains"},
+        {"text": "Output is a plain function, not a class", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Template control flow modernization",
+      "prompt": "Update this template from structural directives to Angular 17+ built-in control flow: <div *ngIf=\"loading; else content\"><app-spinner></app-spinner></div><ng-template #content><ul><li *ngFor=\"let item of items; trackBy: trackById\">{{ item.name }}</li></ul></ng-template>",
+      "expected_output": "Template using @if, @else, @for with track",
+      "assertions": [
+        {"text": "Output uses @if and @else blocks", "type": "contains"},
+        {"text": "Output uses @for with track clause", "type": "contains"},
+        {"text": "Output does NOT use *ngIf", "type": "not_contains"},
+        {"text": "Output does NOT use *ngFor", "type": "not_contains"},
+        {"text": "Output does NOT use ng-template with structural directives", "type": "not_contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "NgRx Signals Store for cross-feature state",
+      "prompt": "Create an NgRx Signals Store for a shopping cart with: items array, add/remove methods, computed itemCount and total price, and providedIn: root.",
+      "expected_output": "signalStore() with withState, withComputed, withMethods, providedIn root",
+      "assertions": [
+        {"text": "Output uses signalStore() from @ngrx/signals", "type": "contains"},
+        {"text": "Output uses withState() for initial state", "type": "contains"},
+        {"text": "Output uses withComputed() for itemCount and total", "type": "contains"},
+        {"text": "Output uses withMethods() for add and remove", "type": "contains"},
+        {"text": "Output includes { providedIn: 'root' } option", "type": "contains"},
+        {"text": "Output does NOT use classic NgRx actions/reducers/effects pattern", "type": "not_contains"}
+      ]
+    }
+  ]
+}

@@ -8,6 +8,7 @@ description: >
   minimum viable experiments, facilitates pivot-or-persevere decisions, documents validated
   learning, ranks hypotheses by risk and impact.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

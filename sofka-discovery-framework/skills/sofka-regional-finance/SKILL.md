@@ -15,6 +15,7 @@ description: >
   e-invoicing, SAP localization, withholding taxes, Activity Type rates, margin visibility.
 argument-hint: "<country-or-topic> [--scenario domestic|intercompany|shared-services]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Glob

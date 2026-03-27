@@ -9,6 +9,7 @@ argument-hint: "<product-or-initiative-name> [etapa: inception|growth|maturity]"
 model: opus
 context: fork
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -115,9 +116,9 @@ graph TD
         C --> K[Matriz de Priorizacion]
     end
     subgraph Related["Related Skills"]
-        L[business-analysis] -.-> A
+        L[financial-business-case] -.-> A
         M[software-architecture] -.-> C
-        N[change-management] -.-> E
+        N[organizational-change] -.-> E
     end
 ```
 
@@ -160,9 +161,9 @@ graph TD
 
 ## Cross-References
 
-- **metodologia-business-analysis:** Business requirements that feed product backlog
+- **metodologia-financial-business-case:** Business requirements that feed product backlog
 - **metodologia-software-architecture:** Technical feasibility constraints on product decisions
-- **metodologia-change-management:** Organizational readiness for product changes
+- **metodologia-organizational-change:** Organizational readiness for product changes
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0

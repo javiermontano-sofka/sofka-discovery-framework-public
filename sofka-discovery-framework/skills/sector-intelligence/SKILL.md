@@ -8,6 +8,7 @@ description: >
   or mentions "sector intelligence", "industry analysis", "industry lens", "sector analysis", "regulatory context".
 argument-hint: "[industry] [phase/task] [depth]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

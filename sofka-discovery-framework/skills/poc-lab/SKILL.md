@@ -8,6 +8,7 @@ description: >
   measurable success criteria, creates evaluation frameworks for tool comparison,
   facilitates evidence-based go/no-go decisions, documents scale-up risks.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

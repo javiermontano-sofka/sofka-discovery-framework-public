@@ -7,6 +7,7 @@ description: >
   extracts structured requirements from briefs, detects contradictions in source documents,
   normalizes project inputs for planning, produces input completeness scorecard.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

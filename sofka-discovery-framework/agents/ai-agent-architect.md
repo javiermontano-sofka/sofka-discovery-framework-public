@@ -2,6 +2,8 @@
 name: sofka-ai-agent-architect
 description: "AI agent systems architect providing agentic AI design, multi-agent orchestration patterns, tool use architecture, memory and context management, guardrails design, and agent evaluation frameworks. Specializes in designing production-grade AI agent systems."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # AI Agent Architect — Agentic Systems Design Authority
@@ -65,3 +67,7 @@ Escalate to user/steering committee when:
 - Agent orchestration cost per task exceeds business value threshold (runaway loop risk)
 - Multi-agent system proposed without observability, tracing, or decision audit logging
 - No rollback or kill-switch mechanism for autonomous agent actions
+
+## Activation Triggers
+- Keywords: agentic AI, multi-agent, agent orchestration, tool use, guardrails, LLM agents
+- Context: When designing AI agent systems, evaluating agent frameworks, or architecting multi-agent workflows with safety and governance requirements

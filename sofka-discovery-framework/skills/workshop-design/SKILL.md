@@ -9,6 +9,7 @@ description: >
   "design a sprint", "create user story map", "design discovery session",
   or mentions workshop design, design sprint, event storming, story mapping, or collaborative design.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

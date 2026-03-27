@@ -1,0 +1,53 @@
+graph TD
+    A[Schema Migration Strategy] --> B[Migration Tools]
+    A --> C[Migration Design]
+    A --> D[Zero-Downtime Patterns]
+    A --> E[Seed Data]
+    A --> F[Rollback Strategy]
+
+    B --> B1[Prisma Migrate]
+    B --> B2[Flyway / Liquibase]
+    B --> B3[Raw SQL Scripts]
+    B --> B4[Drizzle Migrations]
+
+    C --> C1[Naming Convention]
+    C --> C2[UP + DOWN scripts]
+    C --> C3[Idempotency guards]
+    C1 --> C1a[001_create_users.sql]
+    C1 --> C1b[20241201_add_role.sql]
+    C3 --> C3a[IF NOT EXISTS]
+    C3 --> C3b[ON CONFLICT DO NOTHING]
+
+    D --> D1[Expand-Contract Pattern]
+    D1 --> D1a[Step 1 Expand add column]
+    D1 --> D1b[Step 2 Backfill data]
+    D1 --> D1c[Step 3 Contract drop old]
+    D --> D2[DDL Lock Awareness]
+    D2 --> D2a[CREATE INDEX CONCURRENTLY]
+    D2 --> D2b[NOT VALID constraint]
+    D2 --> D2c[VALIDATE CONSTRAINT]
+    D --> D3[Batched Data Migration]
+
+    E --> E1[Reference Data]
+    E --> E2[Development Data]
+    E --> E3[Test Fixtures]
+    E1 --> E1a[Idempotent upserts]
+    E1 --> E1b[Runs in production]
+    E2 --> E2a[NODE_ENV gate]
+    E2 --> E2b[Never production]
+
+    F --> F1[Down Migration Script]
+    F --> F2[Point-in-Time Restore]
+    F --> F3[Blue-Green Deployment]
+    F1 --> F1a[Test DOWN before prod]
+    F2 --> F2a[Pre-migration snapshot]
+    F3 --> F3a[Traffic switch]
+
+    A --> G[CI/CD Integration]
+    G --> G1[prisma migrate deploy]
+    G --> G2[migration status check]
+    G --> G3[Pre-migration backup trigger]
+
+    style A fill:#FF7E08,color:#fff
+    style D fill:#FFD700,color:#000
+    style F fill:#FFD700,color:#000

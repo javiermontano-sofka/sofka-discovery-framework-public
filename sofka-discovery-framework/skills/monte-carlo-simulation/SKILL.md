@@ -8,6 +8,7 @@ description: >
   cost confidence curves, calculates contingency reserves from P-values, identifies
   sensitivity drivers via tornado diagram, produces S-curves with confidence levels.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

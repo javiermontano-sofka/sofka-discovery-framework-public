@@ -6,6 +6,8 @@ description: >
   "analyze sprint improvement data", or mentions retrospective engine, structured
   retrospective, sprint retro, team reflection, improvement commitment tracking.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-retrospective-engine"
   - Read
   - Write
   - Edit

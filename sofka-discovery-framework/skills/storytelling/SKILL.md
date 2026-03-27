@@ -8,6 +8,7 @@ description: >
   narratives, crafting transformation stories (current pain → decision → future state),
   or designing risk narratives and success reference stories.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

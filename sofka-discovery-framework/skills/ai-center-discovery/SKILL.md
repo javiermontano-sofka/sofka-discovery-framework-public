@@ -11,6 +11,7 @@ description: >
 argument-hint: "<project-or-client-name>"
 author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

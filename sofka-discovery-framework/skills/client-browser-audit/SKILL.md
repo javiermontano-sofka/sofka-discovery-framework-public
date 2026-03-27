@@ -8,6 +8,7 @@ description: >
   best practices, identify workflow anti-patterns in PM tools, or produce a remediation
   roadmap for tool optimization.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

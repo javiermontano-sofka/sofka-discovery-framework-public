@@ -8,6 +8,7 @@ description: >
   6 dimensions, evaluates strategic alignment effectiveness, reviews prioritization model
   quality, quantifies portfolio governance gaps, produces portfolio improvement roadmap.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

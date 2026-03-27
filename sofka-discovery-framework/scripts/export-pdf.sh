@@ -9,7 +9,8 @@ INPUT_FILE="${1:-}"
 TARGET_DIR="${2:-.}"
 OUTPUT_FILE="${3:-}"
 ASSETS_DIR="$TARGET_DIR/discovery/assets"
-TEMPLATE_DIR="$(dirname "$0")/../references/templates"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TEMPLATE_DIR="${SCRIPT_DIR}/../references/templates"
 
 if [ -z "$INPUT_FILE" ] || [ ! -f "$INPUT_FILE" ]; then
   echo "Usage: export-pdf.sh <markdown-file> [target-dir] [output-file]"

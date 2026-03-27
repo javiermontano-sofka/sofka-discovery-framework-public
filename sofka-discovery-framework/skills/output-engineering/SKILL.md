@@ -8,6 +8,7 @@ description: >
   tagging to deliverables, enforces naming conventions, manages version tagging (WIP/Aprobado),
   produces deliverables in multiple formats simultaneously.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

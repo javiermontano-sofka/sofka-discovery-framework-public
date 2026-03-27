@@ -11,6 +11,7 @@ description: >
   landscape, or when "vigilancia tecnológica", "tech watch", "Gartner", "Forrester", "tech radar",
   "Stanford HAI", "IEEE", or "tendencias tecnológicas" is mentioned.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

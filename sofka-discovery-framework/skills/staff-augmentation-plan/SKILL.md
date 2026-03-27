@@ -6,6 +6,8 @@ description: >
   or mentions staff augmentation, contractor sourcing, augmentation needs, external staffing,
   nearshore/offshore, resource augmentation strategy.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-staff-augmentation-plan"
   - Read
   - Write
   - Edit

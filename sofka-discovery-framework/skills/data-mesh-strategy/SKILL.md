@@ -9,6 +9,7 @@ description: >
   "data domain ownership", "data product thinking".
 argument-hint: "[path-to-data-architecture] [scope: full|readiness|pilot]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

@@ -8,6 +8,7 @@ description: >
   selecting chart types, designing diagram narratives, building visual sequences
   for presentations, or annotating data visualizations for maximum comprehension.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

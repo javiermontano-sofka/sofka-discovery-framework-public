@@ -7,6 +7,7 @@ description: >
   health, select and configure KPI visualizations, create drill-down capability for areas
   of concern, or establish dashboard refresh cadence and governance.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

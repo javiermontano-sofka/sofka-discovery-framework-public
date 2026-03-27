@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka Discovery Framework — Deliverable Scanner
 # SessionStart hook: scans working directory for existing deliverables
 # Also scans discovery/ directory and common output subdirectories

@@ -8,6 +8,7 @@ description: >
   "resistance mapping", "ADKAR assessment", "readiness scorecard", or mentions "Phase 5b", "adoption risk",
   "organizational capacity for change".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

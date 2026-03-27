@@ -7,6 +7,7 @@ description: >
   recommendations, methodology debate resolution, anti-pattern diagnosis and remediation,
   or contextual advice that shifts persona based on declared project methodology.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

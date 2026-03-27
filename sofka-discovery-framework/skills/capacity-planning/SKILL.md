@@ -7,6 +7,7 @@ description: >
   detect over-allocations, build time-phased capacity models, or plan proactive hiring
   and cross-training decisions before bottlenecks impact delivery.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

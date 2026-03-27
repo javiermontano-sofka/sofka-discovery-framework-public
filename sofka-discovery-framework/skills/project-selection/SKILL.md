@@ -6,6 +6,8 @@ description: >
   or mentions project selection, feasibility gate, go/no-go decision, project screening,
   investment gate, weighted scoring model.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-project-selection"
   - Read
   - Write
   - Edit

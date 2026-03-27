@@ -7,6 +7,7 @@ description: >
   pipelines to milestone tracking, align release cadences with sprint ceremonies, correlate
   DORA metrics with project KPIs, or design an integrated DevOps-PM operating model.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

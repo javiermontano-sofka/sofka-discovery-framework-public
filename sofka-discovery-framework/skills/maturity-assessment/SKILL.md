@@ -8,6 +8,7 @@ description: >
   established frameworks, produces capability heat maps, identifies improvement priorities,
   creates strategic maturity roadmap, benchmarks against industry standards.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

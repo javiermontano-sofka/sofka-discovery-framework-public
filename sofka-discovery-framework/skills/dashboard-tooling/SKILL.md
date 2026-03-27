@@ -7,6 +7,7 @@ description: >
   feeds from PM tools, design visualization components, configure alert thresholds, or establish
   dashboard refresh cadence and access control.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

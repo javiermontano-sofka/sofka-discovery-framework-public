@@ -6,6 +6,8 @@ description: >
   or mentions risk mitigation, risk transfer, risk avoidance, risk acceptance,
   response strategies, trigger-response mapping.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-risk-response-planning"
   - Read
   - Write
   - Edit

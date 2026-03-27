@@ -12,6 +12,7 @@ description: >
   scenarios, financial controls, or "what keeps you up at night". The paranoid voice that
   makes the discovery reliable and the proposal trustworthy.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

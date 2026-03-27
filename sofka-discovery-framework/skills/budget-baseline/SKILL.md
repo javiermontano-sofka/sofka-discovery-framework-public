@@ -7,6 +7,7 @@ description: >
   calculate contingency and management reserves, generate a time-phased budget with S-curve,
   or define cost accounts for earned value tracking.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

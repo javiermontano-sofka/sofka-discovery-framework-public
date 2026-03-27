@@ -6,6 +6,8 @@ description: >
   PI Planning, Agile Release Train, portfolio Kanban, value stream mapping,
   program increment, scaled agile implementation.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-safe-framework"
   - Read
   - Write
   - Edit

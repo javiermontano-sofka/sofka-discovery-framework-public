@@ -10,6 +10,7 @@ description: >
 argument-hint: "<project-or-initiative-name>"
 author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -362,7 +363,7 @@ graph TD
     subgraph Related["Skills Relacionados"]
         ASISSK["asis-analysis"]
         TOBEARCHSK["architecture-tobe"]
-        SCENARIOSK["scenario-evaluation"]
+        SCENARIOSK["scenario-analysis"]
         FEASIBILITY["feasibility-assessment"]
     end
 

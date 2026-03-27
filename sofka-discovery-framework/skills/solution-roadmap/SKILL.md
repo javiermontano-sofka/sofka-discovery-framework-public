@@ -9,6 +9,7 @@ description: >
   "risk-adjusted timeline", or mentions "Phase 4", "solution roadmap", "transformation plan",
   "phased execution", "PoC validation criteria", "kill criteria", "go/no-go gates".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

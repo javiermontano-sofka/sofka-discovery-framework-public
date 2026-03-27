@@ -8,6 +8,8 @@ description: >
 model: opus
 context: fork
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for metodologia-ai-software-architecture"
   - Read
   - Write
   - Edit

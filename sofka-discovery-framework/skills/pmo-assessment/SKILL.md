@@ -8,6 +8,7 @@ description: >
   measures stakeholder value perception, assesses PMO service catalog maturity, quantifies
   PMO impact on project success rates, produces PMO transformation roadmap.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

@@ -7,6 +7,7 @@ description: >
   multi-team Scrum scaling, configures shared product backlog, establishes cross-team coordination
   events, creates integration strategy for 2-8 teams, produces scaling metrics dashboard.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

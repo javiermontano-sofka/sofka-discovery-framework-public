@@ -7,6 +7,7 @@ description: >
   project activities, design evidence collection processes, track compliance gaps, or prepare
   documentation packages for external audits and certifications.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

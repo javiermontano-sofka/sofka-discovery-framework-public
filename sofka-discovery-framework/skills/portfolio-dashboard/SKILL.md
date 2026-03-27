@@ -8,6 +8,7 @@ description: >
   views, creates budget rollup summaries, visualizes risk concentration across portfolio,
   generates governance action items for steering committee.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

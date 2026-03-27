@@ -7,6 +7,7 @@ description: >
   request templates, define CCB composition and decision criteria, evaluate change impact
   on scope/schedule/cost, or track change request trends across the project.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

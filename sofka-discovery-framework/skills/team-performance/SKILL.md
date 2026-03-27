@@ -6,6 +6,8 @@ description: >
   or mentions team performance, velocity tracking, team health, morale,
   burndown, team metrics, sprint predictability.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-team-performance"
   - Read
   - Write
   - Edit

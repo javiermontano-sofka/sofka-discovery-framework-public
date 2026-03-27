@@ -6,6 +6,8 @@ description: >
   or mentions resource leveling, resource smoothing, optimization, what-if analysis,
   resource allocation optimization, capacity balancing.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-resource-optimization"
   - Read
   - Write
   - Edit

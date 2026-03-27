@@ -7,6 +7,8 @@ description: >
   phase sequencing, quality gates, data contracts, expert committee, PMO pipeline,
   consulting engagement. Always use this skill as the entry point for any PMO-APEX engagement.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-project-orchestrator"
   - Read
   - Write
   - Edit

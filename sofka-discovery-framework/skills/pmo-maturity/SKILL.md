@@ -8,6 +8,7 @@ description: >
   produces maturity radar charts, identifies improvement priorities by strategic impact,
   designs multi-year maturity roadmap, estimates improvement investment in FTE-months.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

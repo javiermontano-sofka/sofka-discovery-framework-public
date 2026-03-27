@@ -10,6 +10,7 @@ description: >
 argument-hint: "<codebase-path-or-project-name>"
 author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -388,9 +389,9 @@ graph TD
 
     subgraph Related["Skills Relacionados"]
         TOBE["architecture-tobe"]
-        SCENARIOS["scenario-evaluation"]
+        SCENARIOS["scenario-analysis"]
         COST["cost-estimation"]
-        SECURITY["security-assessment"]
+        SECURITY["security-architecture"]
     end
 
     CODE --> TECH

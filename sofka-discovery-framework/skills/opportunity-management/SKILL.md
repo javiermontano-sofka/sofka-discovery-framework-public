@@ -8,6 +8,7 @@ description: >
   applies exploit/share/enhance/accept strategies, quantifies opportunity value,
   integrates opportunity actions into project plan, tracks opportunity realization.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

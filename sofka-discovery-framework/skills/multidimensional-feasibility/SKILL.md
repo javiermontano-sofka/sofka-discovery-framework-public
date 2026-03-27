@@ -10,6 +10,7 @@ description: >
   commitment, when stakeholders need confidence in technical achievability, or when "Phase 3b"
   / "feasibility" / "think tank" / "7 sabios" is mentioned.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

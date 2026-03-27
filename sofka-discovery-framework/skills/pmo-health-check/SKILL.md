@@ -8,6 +8,7 @@ description: >
   RAG health dashboard, identifies corrective actions for underperforming dimensions,
   tracks quarter-over-quarter trends, produces PMO operational improvement plan.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

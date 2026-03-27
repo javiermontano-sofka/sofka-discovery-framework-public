@@ -8,6 +8,7 @@ description: >
   evaluates flow health metrics, assesses WIP limit enforcement, detects Kanban anti-patterns,
   produces evolutionary improvement roadmap.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

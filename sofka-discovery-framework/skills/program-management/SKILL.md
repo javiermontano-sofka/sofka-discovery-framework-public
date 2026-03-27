@@ -6,6 +6,8 @@ description: >
   or mentions program management, multi-project coordination, program benefits,
   program governance, cross-project dependencies, benefits realization tracking.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-program-management"
   - Read
   - Write
   - Edit

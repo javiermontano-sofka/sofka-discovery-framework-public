@@ -6,6 +6,8 @@ description: >
   or mentions quality audit, compliance verification, process audit, quality review,
   non-conformance assessment, corrective action planning.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-quality-audit"
   - Read
   - Write
   - Edit

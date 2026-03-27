@@ -7,6 +7,7 @@ description: >
   escalation matrix. Triggers on: builds a governance charter, designs escalation paths,
   defines decision-making authority, creates steering committee structure, maps authority levels.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

@@ -7,6 +7,7 @@ description: >
   from current to desired engagement levels, build champion coalitions, analyze and respond
   to resistance, or track engagement effectiveness over time.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

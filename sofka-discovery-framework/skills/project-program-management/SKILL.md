@@ -11,6 +11,7 @@ description: >
   tracking, or cross-phase dependency management. Works as the structural glue that holds
   the entire discovery pipeline together — from Phase 0 through Handover.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

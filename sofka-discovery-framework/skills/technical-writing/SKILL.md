@@ -8,6 +8,7 @@ description: >
   functional specs, architecture documents, handover guides, or any deliverable
   requiring technical rigor and documentation standards.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -157,7 +158,7 @@ Level 0: TL;DR (3-5 bullets)
 ## Supuestos y Limites
 
 - El input contiene datos tecnicos verificados o claramente etiquetados con nivel de confianza.
-- Toda documentacion sigue el estandar markdown-excellence como baseline.
+- Toda documentacion sigue el estandar output-engineering como baseline.
 - Esta skill posee **precision documental y estructura**. NO posee persuasion narrativa (eso es copywriting) ni produccion de formato visual (eso es output-engineering).
 - NUNCA producir precios. Solo FTE-meses, magnitudes, cost drivers.
 
@@ -336,4 +337,4 @@ graph TD
 ## Limits
 
 - This skill owns **documentation precision and structure**. It does NOT own narrative persuasion (that's metodologia-copywriting) or visual format production (that's metodologia-output-engineering).
-- Follows markdown-excellence standard as baseline.
+- Follows output-engineering standard as baseline.

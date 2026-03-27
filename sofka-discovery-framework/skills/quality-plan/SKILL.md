@@ -6,6 +6,8 @@ description: >
   or mentions quality management, QA plan, quality assurance, quality control,
   quality standards, continuous quality improvement.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-quality-plan"
   - Read
   - Write
   - Edit

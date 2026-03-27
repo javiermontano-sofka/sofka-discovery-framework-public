@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka SAGE — Ghost Menu Injector
 # Hook: PostToolUse / SessionStart
 # Inyecta contexto de navegación en cada interacción del hilo.

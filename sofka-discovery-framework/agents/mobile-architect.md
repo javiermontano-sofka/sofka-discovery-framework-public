@@ -2,6 +2,8 @@
 name: sofka-mobile-architect
 description: "Mobile architect providing cross-platform vs native assessment, store compliance, app vitals analysis, and mobile CI/CD design. Activated only when scope includes mobile applications. Invoked during Phases 1 and 3."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Mobile Architect — Mobile Strategy & Assessment Expert
@@ -144,3 +146,7 @@ Escalate when:
 - Platform strategy change would require full app rewrite (>6 months)
 - Privacy audit reveals undisclosed data collection (regulatory risk)
 - Mobile CI/CD is fully manual (release cycle >2 weeks)
+
+## Activation Triggers
+- Keywords: mobile architecture, cross-platform, native, store compliance, app vitals, mobile CI/CD, React Native, Flutter
+- Context: When scope includes mobile applications, assessing cross-platform vs native decisions, or designing mobile CI/CD pipelines

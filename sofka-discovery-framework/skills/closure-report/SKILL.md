@@ -7,6 +7,7 @@ description: >
   actuals vs baseline, compile lessons learned, obtain formal sponsor acceptance, or execute
   administrative closure including resource release and documentation archiving.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

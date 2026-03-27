@@ -7,6 +7,7 @@ description: >
   GitHub Codex AGENTS.md, Google Gemini system instructions, or other AI coding assistant formats
   while preserving skill logic and evidence protocols.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

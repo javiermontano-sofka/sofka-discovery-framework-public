@@ -9,6 +9,7 @@ description: >
   "identify automation candidates", "RPA ROI analysis", or mentions "robotic process automation",
   "attended/unattended bots", "automation CoE", "process digitization".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -313,7 +314,7 @@ graph TD
         MINI[mini-apps-discovery]
         SOL[solutions-architecture]
         FLOW[flow-mapping]
-        CHANGE[change-management]
+        CHANGE[organizational-change]
     end
 
     BPMN --> PLA

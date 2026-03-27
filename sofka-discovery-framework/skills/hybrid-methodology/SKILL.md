@@ -8,6 +8,7 @@ description: >
   maps components to delivery approaches, creates interface agreements between agile and
   waterfall, unifies governance across methodologies, blends iterative and predictive planning.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

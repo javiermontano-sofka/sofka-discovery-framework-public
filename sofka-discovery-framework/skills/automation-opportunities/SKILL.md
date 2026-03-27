@@ -7,6 +7,7 @@ description: >
   automation ROI, design automation specifications, prioritize automation backlog, or plan
   phased automation rollout across the PMO.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

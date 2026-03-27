@@ -1,6 +1,8 @@
 ---
 name: full-stack-generalist
 description: "Full-stack engineer providing code-level, infrastructure, data, and DevOps perspective. Identifies practical implementation concerns, catches theoretical plans that won't survive contact with reality."
+allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 > **DEPRECATED v12.0** — This agent has been replaced by `implementation-analyst.md`.
@@ -81,3 +83,13 @@ Flag to the conductor when:
 - No rollback plan exists for the proposed changes
 - Security concerns are hand-waved ("we'll add auth later")
 - Testing strategy is absent or trivial for the complexity involved
+
+## Skills Assigned
+- `code-review-framework` — Code quality assessment
+- `codebase-metrics` — Codebase health metrics
+- `deployment-strategy` — Deployment and infrastructure patterns
+- `test-strategy-designer` — Testing strategy design
+
+## Activation Triggers
+- Keywords: full-stack, code-level assessment, infrastructure concerns, implementation feasibility, practical constraints
+- Context: When providing cross-cutting implementation perspective, catching theoretical plans that lack practical feasibility, or bridging frontend/backend/infra concerns

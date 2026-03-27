@@ -6,6 +6,8 @@ description: >
   or mentions skills inventory, capability assessment, competency gap, training needs
   analysis, skill proficiency mapping.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-skills-gap-analysis"
   - Read
   - Write
   - Edit

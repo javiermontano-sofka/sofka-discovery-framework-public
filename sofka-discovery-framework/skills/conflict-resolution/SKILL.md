@@ -7,6 +7,7 @@ description: >
   facilitate interest-based negotiation, build coalitions for alignment, or design structural
   prevention measures to avoid recurring conflicts.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

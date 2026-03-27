@@ -6,6 +6,8 @@ description: >
   or mentions charter, project initiation, sponsor approval, project justification,
   SMART objectives, project kickoff document.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-project-charter"
   - Read
   - Write
   - Edit

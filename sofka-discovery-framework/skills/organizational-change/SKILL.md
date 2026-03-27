@@ -8,6 +8,7 @@ description: >
   assesses change readiness, creates communication campaigns, builds training plans,
   manages resistance through structured interventions, measures adoption KPIs.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

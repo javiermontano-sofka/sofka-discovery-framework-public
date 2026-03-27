@@ -8,6 +8,7 @@ description: >
   ceremonies with agendas and durations, creates Definition of Done per deliverable type,
   maps roles to ceremonies, produces ceremony calendar.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

@@ -8,6 +8,7 @@ description: >
   efficient frontier for portfolio optimization, runs sensitivity analysis on rankings,
   facilitates data-driven investment decisions, produces ranked portfolio with transparent scoring.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

@@ -6,6 +6,8 @@ description: >
   or mentions waterfall assessment, traditional PM maturity, PMBOK compliance,
   PRINCE2 maturity, predictive PM evaluation, earned value adoption.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-waterfall-assessment"
   - Read
   - Write
   - Edit

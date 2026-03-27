@@ -10,6 +10,7 @@ description: >
   "kill/pivot/persevere", or "validación de hipótesis" is mentioned.
 argument-hint: "[project-name]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

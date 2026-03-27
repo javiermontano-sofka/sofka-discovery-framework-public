@@ -1,7 +1,7 @@
 # Referencia de Comandos
 
-> Sofka SAGE v12.2 — Ontología viva
-> Referencia canónica de los 104 comandos organizados por categoría funcional.
+> Sofka SAGE v13.0 — Ontología viva
+> Referencia canónica de los 204 comandos organizados por categoría funcional.
 
 ---
 

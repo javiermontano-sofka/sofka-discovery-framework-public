@@ -8,6 +8,7 @@ description: >
   "write acceptance criteria", "build traceability matrix", "detect anti-patterns",
   or mentions "Given/When/Then", "functional toolbelt", "requirements quality".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

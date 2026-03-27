@@ -7,6 +7,7 @@ description: >
   levels, create Definition of Ready checklists, design acceptance criteria templates, define
   exception handling processes, or plan DoD evolution protocols.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

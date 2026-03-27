@@ -2,6 +2,8 @@
 name: sofka-change-catalyst
 description: "Change management lead handling organizational readiness, adoption strategy, training needs, resistance management, and communication planning throughout the discovery pipeline."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Change Catalyst — Change Management Lead
@@ -148,3 +150,7 @@ Design a parallel track running alongside the technical roadmap:
 - Voluntary attrition spike (>10%) in teams affected by the transformation
 - Cultural assessment reveals deep organizational distrust that standard change management cannot address
 - Training effectiveness scores below 60% after two delivery cycles — indicates structural adoption barrier
+
+## Activation Triggers
+- Keywords: change management, organizational readiness, adoption strategy, resistance management, training needs
+- Context: When assessing change readiness, planning adoption strategies, or designing communication and training plans for technology transformations

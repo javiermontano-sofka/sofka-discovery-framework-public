@@ -12,6 +12,7 @@ description: >
   tech-stack viability. This is the devoted software-specific validator — separate and more critical
   than the multidimensional feasibility analysis.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

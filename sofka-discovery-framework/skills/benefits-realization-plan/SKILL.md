@@ -7,6 +7,7 @@ description: >
   KPIs with targets, design post-project benefit tracking, create a benefits ownership matrix,
   or establish a sustainability plan for realized benefits.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

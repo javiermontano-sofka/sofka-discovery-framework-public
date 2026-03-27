@@ -6,6 +6,8 @@ description: >
   daily standup, sprint review, retrospective, product backlog, sprint backlog,
   Definition of Done, velocity tracking.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-scrum-framework"
   - Read
   - Write
   - Edit

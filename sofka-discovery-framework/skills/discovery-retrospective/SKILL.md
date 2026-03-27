@@ -7,6 +7,7 @@ description: >
   pipeline execution quality, assess deliverable completeness, evaluate estimation accuracy,
   or update APEX pipeline parameters based on retrospective findings.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

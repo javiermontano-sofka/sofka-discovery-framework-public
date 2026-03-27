@@ -6,6 +6,8 @@ description: >
   or mentions Team Topologies, Conway's Law, stream-aligned teams, platform teams,
   enabling teams, cognitive load, team interaction patterns.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-team-topology-design"
   - Read
   - Write
   - Edit

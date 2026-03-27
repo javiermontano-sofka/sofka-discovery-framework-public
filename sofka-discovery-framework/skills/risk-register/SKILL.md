@@ -6,6 +6,8 @@ description: >
   "build risk list", "assess project risks", or mentions risk identification, risk categorization, RBS,
   risk breakdown structure, risk inventory, probability-impact matrix, risk scoring.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-risk-register"
   - Read
   - Write
   - Edit

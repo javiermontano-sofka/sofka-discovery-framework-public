@@ -8,6 +8,7 @@ description: >
   creates PMO charter and service catalog, defines PMO staffing and roles,
   establishes PMO governance framework, produces phased PMO implementation roadmap.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

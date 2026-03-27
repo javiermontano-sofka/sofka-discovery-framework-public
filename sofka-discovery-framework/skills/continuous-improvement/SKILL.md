@@ -7,6 +7,7 @@ description: >
   apply root cause analysis techniques, prioritize improvements by effort-impact ratio,
   implement PDCA cycles, or embed improvements into standard processes.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

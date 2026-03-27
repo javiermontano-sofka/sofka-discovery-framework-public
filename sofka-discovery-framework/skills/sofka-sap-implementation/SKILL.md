@@ -15,6 +15,7 @@ description: >
   SAP localization, CATS integration, Strangler Fig, Activity Types, revenue recognition.
 argument-hint: "<module-or-topic> [--variant tm|fixprice|retainer|managed]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Glob

@@ -1,6 +1,8 @@
 ---
 name: data-strategist
 description: "Data and analytics expert providing data architecture, governance, migration planning, data quality assessment, and analytics pipeline design throughout the discovery pipeline."
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 > **DEPRECATED v12.0** — This agent has been replaced by `data-engineer.md` + `analytics-architect.md`.
@@ -129,3 +131,13 @@ Escalate to user/steering committee when:
 - Multiple conflicting sources of truth for a critical business entity with no MDM resolution plan
 - Real-time analytics requirement exists but current infrastructure is batch-only with no streaming capability
 - Data residency or sovereignty requirements are unmet by the current or proposed architecture
+
+## Skills Assigned
+- `data-governance` — Data governance framework assessment
+- `data-model-designer` — Data model design patterns
+- `data-engineering` — Data pipeline and infrastructure assessment
+- `analytics-engineering` — Analytics consumption layer design
+
+## Activation Triggers
+- Keywords: data strategy, data architecture, analytics pipeline, data governance, data quality, data migration
+- Context: When assessing end-to-end data landscape including architecture, governance, and analytics (DEPRECATED — use data-engineer + analytics-architect instead)

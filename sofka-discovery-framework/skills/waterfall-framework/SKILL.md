@@ -6,6 +6,8 @@ description: >
   or mentions waterfall, traditional PM, predictive lifecycle,
   stage-gate, PMBOK, PRINCE2, earned value management.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-waterfall-framework"
   - Read
   - Write
   - Edit

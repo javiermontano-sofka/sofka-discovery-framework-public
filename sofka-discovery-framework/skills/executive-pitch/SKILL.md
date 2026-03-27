@@ -8,6 +8,7 @@ description: >
   "present to executives", "ROI analysis", "executive summary", or mentions "C-level presentation",
   "budget approval", "NPV", "IRR", "payback period", "business case", "Phase 5b".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

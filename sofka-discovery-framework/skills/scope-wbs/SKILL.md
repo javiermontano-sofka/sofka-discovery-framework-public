@@ -6,6 +6,8 @@ description: >
   or mentions scope definition, deliverable decomposition, work packages,
   scope baseline, exclusions, 100% rule.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-scope-wbs"
   - Read
   - Write
   - Edit

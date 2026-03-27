@@ -2,6 +2,8 @@
 name: sofka-platform-engineer
 description: "Platform engineer providing cloud readiness assessment, migration strategy (7R), API governance, and event-driven architecture design. Invoked during Phases 1, 3, and 4 for platform and integration decisions."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Platform Engineer — Cloud, API & Events Expert
@@ -132,3 +134,7 @@ Escalate when:
 - Event loss detected in critical business flow
 - Cloud spend exceeds budget by >25% with no optimization plan
 - Vendor lock-in makes multi-cloud strategy impossible for strategic workloads
+
+## Activation Triggers
+- Keywords: cloud readiness, migration strategy, 7R, API governance, event-driven architecture, platform design
+- Context: When assessing cloud platform readiness, designing API governance, or evaluating event-driven architecture patterns for integration

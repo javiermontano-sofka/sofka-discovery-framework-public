@@ -6,6 +6,8 @@ description: >
   or mentions steering committee, steering review, Go/No-Go decision, advisory vote,
   project gate review, steering minutes, 7-advisor evaluation.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-steering-review"
   - Read
   - Write
   - Edit

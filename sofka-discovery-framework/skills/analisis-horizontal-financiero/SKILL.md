@@ -14,6 +14,7 @@ description: >
   evolución financiera, delta financiero, comparar períodos.
 argument-hint: "<archivo-financiero.xlsx|csv> [--periodos 2023,2024]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Glob

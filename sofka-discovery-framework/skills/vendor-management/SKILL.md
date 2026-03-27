@@ -6,6 +6,8 @@ description: >
   or mentions vendor management, supplier performance, SLA monitoring,
   contract compliance, vendor governance, vendor scorecard.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-vendor-management"
   - Read
   - Write
   - Edit

@@ -6,6 +6,8 @@ description: >
   or mentions RACI, responsibility assignment, accountability matrix, decision rights,
   RASCI, role ambiguity resolution, authority mapping.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-raci-matrix"
   - Read
   - Write
   - Edit

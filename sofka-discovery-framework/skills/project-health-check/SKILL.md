@@ -6,6 +6,8 @@ description: >
   or mentions health check, project diagnostics, RAG status, project vital signs,
   project wellness, leading indicator assessment.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-project-health-check"
   - Read
   - Write
   - Edit

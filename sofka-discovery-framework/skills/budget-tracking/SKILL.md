@@ -7,6 +7,7 @@ description: >
   contingency reserve consumption, update budget forecasts, generate burn rate analysis,
   or produce corrective action recommendations for cost overruns.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

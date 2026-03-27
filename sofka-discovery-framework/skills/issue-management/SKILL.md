@@ -7,6 +7,7 @@ description: >
   tracking workflow, assigns issue resolution owners, enforces resolution SLAs, captures
   root cause analysis, produces issue trend analysis.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

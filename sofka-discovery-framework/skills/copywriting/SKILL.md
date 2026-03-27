@@ -8,6 +8,7 @@ description: >
   summaries, pitch narratives, scenario value propositions, recommendation justifications,
   or any prose that must drive a decision.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

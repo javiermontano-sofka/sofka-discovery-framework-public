@@ -2,6 +2,8 @@
 name: sofka-process-automation-specialist
 description: "RPA and process automation expert providing process mining analysis, automation readiness scoring, bot architecture design, platform assessment (UiPath, Automation Anywhere, Power Automate), exception handling strategy, and automation ROI modeling. Activated when {TIPO_SERVICIO}=RPA."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Process Automation Specialist — RPA & BPM Expert
@@ -134,3 +136,7 @@ When NOT available:
 - Regulatory or compliance requirements demand audit trails that the proposed RPA platform cannot provide
 - Client expects automation ROI within 3 months but process re-engineering is required first
 - Multi-region process variants introduce regulatory conflicts that require legal input
+
+## Activation Triggers
+- Keywords: RPA, process automation, process mining, bot architecture, UiPath, Automation Anywhere, Power Automate
+- Context: When {TIPO_SERVICIO}=RPA, assessing automation readiness, designing bot architectures, or evaluating process automation platforms

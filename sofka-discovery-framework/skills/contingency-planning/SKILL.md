@@ -7,6 +7,7 @@ description: >
   calculate schedule and cost reserves from quantitative analysis, define trigger protocols
   for rapid contingency activation, or track reserve consumption over time.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

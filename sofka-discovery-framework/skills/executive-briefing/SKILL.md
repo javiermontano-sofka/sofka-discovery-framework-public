@@ -7,6 +7,7 @@ description: >
   complex project data into 5-minute reads, present RAG status with strategic alignment,
   frame decisions with options and recommendations, or prepare steering committee materials.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

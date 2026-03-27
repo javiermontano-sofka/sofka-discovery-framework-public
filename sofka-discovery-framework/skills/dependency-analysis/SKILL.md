@@ -129,7 +129,7 @@ graph TD
     end
     subgraph Related["Related Skills"]
         M[tech-debt-assessment] -.-> B
-        N[security-assessment] -.-> C
+        N[security-architecture] -.-> C
         O[software-architecture] -.-> A
     end
 ```
@@ -174,7 +174,7 @@ graph TD
 ## Cross-References
 
 - **metodologia-tech-debt-assessment:** Dependencias desactualizadas como categoria de deuda tecnica
-- **metodologia-security-assessment:** Vulnerabilidades de dependencias como riesgo de seguridad
+- **metodologia-security-architecture:** Vulnerabilidades de dependencias como riesgo de seguridad
 - **metodologia-software-architecture:** Grafo de dependencias como input para decisiones arquitectonicas
 
 ---

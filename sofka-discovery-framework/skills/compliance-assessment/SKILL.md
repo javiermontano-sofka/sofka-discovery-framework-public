@@ -9,6 +9,7 @@ author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -113,7 +114,7 @@ graph TD
     subgraph Related["Related Skills"]
         L[security-architecture] -.-> B
         M[data-architecture] -.-> A
-        N[risk-assessment] -.-> C
+        N[risk-quantification] -.-> C
     end
 ```
 
@@ -156,7 +157,7 @@ graph TD
 
 - **metodologia-security-architecture:** Security controls that support compliance requirements
 - **metodologia-data-architecture:** Data governance and classification relevant to GDPR/HIPAA
-- **metodologia-risk-assessment:** Enterprise risk framework aligned with compliance risks
+- **metodologia-risk-quantification:** Enterprise risk framework aligned with compliance risks
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0

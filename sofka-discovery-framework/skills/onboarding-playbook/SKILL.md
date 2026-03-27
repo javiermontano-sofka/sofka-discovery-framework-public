@@ -8,6 +8,7 @@ description: >
   transfer sessions, establishes buddy system, defines ramp-up milestones, captures
   institutional knowledge for preservation.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

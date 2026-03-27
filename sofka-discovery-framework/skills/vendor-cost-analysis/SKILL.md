@@ -6,6 +6,8 @@ description: >
   or mentions vendor comparison, total cost of ownership, vendor TCO, proposal evaluation,
   vendor scoring matrix, hidden cost analysis.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-vendor-cost-analysis"
   - Read
   - Write
   - Edit

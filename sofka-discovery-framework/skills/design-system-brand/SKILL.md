@@ -11,6 +11,7 @@ author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -28,7 +29,7 @@ Produces production-ready deliverables in 5 formats (HTML, DOCX, XLSX, PPTX, MD)
 - Estetica: **Neo-Swiss Clean & Soft Explainer** — light off-white body, navy hero+footer, gold accents, Swiss 8px grid
 - Palette: Navy #122562, Gold #FFD700, Blue #137DC5, Dark #1F2833, Lavender #BBA0CC
 - Typography: Poppins (titles), Trebuchet MS (body), Futura/Century Gothic (notes)
-- 5 formatos de salida: HTML (self-contained), DOCX (python-docx), XLSX (openpyxl), PPTX (python-pptx), MD (markdown-excellence)
+- 5 formatos de salida: HTML (self-contained), DOCX (python-docx), XLSX (openpyxl), PPTX (python-pptx), MD (output-engineering)
 - Brand compliance automatica via `brand-config-neoswiss.json` como single source of truth
 - WCAG AA accessibility en todos los formatos
 

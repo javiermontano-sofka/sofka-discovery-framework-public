@@ -7,6 +7,7 @@ description: >
   apply Weighted Shortest Job First prioritization, transform subjective prioritization
   into data-driven economic sequencing, or perform sensitivity analysis on priority rankings.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

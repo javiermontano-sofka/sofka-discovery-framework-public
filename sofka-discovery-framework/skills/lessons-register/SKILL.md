@@ -8,6 +8,7 @@ description: >
   lessons from retrospectives, categorizes lessons by domain, creates searchable
   lessons register, distributes knowledge to future projects, rates lesson impact.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

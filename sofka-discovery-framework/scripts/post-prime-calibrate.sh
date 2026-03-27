@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka SAGE — Post-Priming Calibration
 # Hook: PostToolUse (Write|Edit)
 # Detects when priming-rag files are created/updated and refreshes calibration.

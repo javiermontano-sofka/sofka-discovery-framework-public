@@ -10,6 +10,7 @@ description: >
   "PITT methodology", "QA team composition", "test automation assessment", "quality engineering assessment",
   or mentions "independent testing", "QA-as-a-Service", "test industrialization", "ISTQB".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

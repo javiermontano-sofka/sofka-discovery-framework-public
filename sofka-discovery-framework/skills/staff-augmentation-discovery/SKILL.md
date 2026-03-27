@@ -12,6 +12,7 @@ description: >
 model: opus
 context: fork
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -295,7 +296,7 @@ graph TD
 
     subgraph Related["Related Skills"]
         ASIS[asis-analysis]
-        CHANGE[change-management]
+        CHANGE[organizational-change]
         TRAIN[mentoring-training]
         DISC[discovery-orchestrator]
     end

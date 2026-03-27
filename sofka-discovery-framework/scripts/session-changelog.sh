@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka SAGE — Session Changelog Generator
 # Hook: PostToolUse (on file write/edit events)
 # Mantiene un changelog de sesión para retomar ante crisis de contexto.

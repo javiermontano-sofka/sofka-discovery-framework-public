@@ -8,6 +8,7 @@ description: >
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-or-initiative-name]"
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

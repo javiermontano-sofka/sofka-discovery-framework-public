@@ -6,6 +6,8 @@ description: >
   or mentions status report, weekly report, sprint summary, project update,
   progress report, RAG status update.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-status-report"
   - Read
   - Write
   - Edit

@@ -1,0 +1,79 @@
+{
+  "skill_name": "scaffold-api-rest",
+  "version": "2.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "Fastify API scaffold completeness",
+      "prompt": "Scaffold a Fastify 4 REST API for a task management system with resources: tasks and users. JWT auth, Zod validation, Drizzle ORM + PostgreSQL, OpenAPI spec, integration tests.",
+      "expected_output": "Complete scaffold with config.ts, app.ts, routes, handlers, services, Zod schemas, Drizzle schema, and integration tests",
+      "assertions": [
+        {"text": "Output includes src/config.ts with Zod env validation", "type": "contains"},
+        {"text": "Output includes src/app.ts with Fastify plugin registrations", "type": "contains"},
+        {"text": "Output includes Zod schemas for request bodies and path params", "type": "contains"},
+        {"text": "Output includes Drizzle schema with uuid primary keys and timestamps", "type": "contains"},
+        {"text": "Output includes JWT authentication middleware or preHandler", "type": "contains"},
+        {"text": "Output includes rate limiting configuration", "type": "contains"},
+        {"text": "Output includes global error handler that never exposes stack traces", "type": "contains"},
+        {"text": "Output includes GET /health endpoint", "type": "contains"},
+        {"text": "Output includes integration tests using Fastify inject()", "type": "contains"},
+        {"text": "Output includes multi-stage Dockerfile", "type": "contains"},
+        {"text": "Output does NOT use express (Fastify was specified)", "type": "not_contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Security audit of insecure API",
+      "prompt": "Audit this API: no validation on POST /users body, JWT_SECRET='secret', CORS origin='*' with credentials:true, error handler sends err.stack, no rate limit on /auth/login.",
+      "expected_output": "Security report with CRITICAL/HIGH/MEDIUM severity findings and specific fixes",
+      "assertions": [
+        {"text": "Output flags missing body validation as CRITICAL or HIGH", "type": "contains"},
+        {"text": "Output flags JWT_SECRET='secret' as CRITICAL", "type": "contains"},
+        {"text": "Output flags CORS origin=* with credentials as HIGH or CRITICAL", "type": "contains"},
+        {"text": "Output flags err.stack exposure as HIGH", "type": "contains"},
+        {"text": "Output flags missing login rate limit as HIGH", "type": "contains"},
+        {"text": "Output provides specific code fix for each finding", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "OpenAPI spec generation",
+      "prompt": "Write an OpenAPI 3.1 spec for a users CRUD API with JWT auth. Include all CRUD endpoints, consistent error schema, pagination on list, JWT bearer security scheme.",
+      "expected_output": "Complete openapi.yaml with paths, components/schemas, security scheme, all response codes",
+      "assertions": [
+        {"text": "Output starts with openapi: '3.1.0'", "type": "contains"},
+        {"text": "Output includes components/securitySchemes with bearerAuth", "type": "contains"},
+        {"text": "Output includes all CRUD paths: GET /, POST /, GET /:id, PATCH /:id, DELETE /:id", "type": "contains"},
+        {"text": "Output documents 400 and 401 responses for protected write endpoints", "type": "contains"},
+        {"text": "Output uses $ref for schema references (not inline duplication)", "type": "contains"},
+        {"text": "Output includes pagination params on list endpoint", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Handler architecture validation",
+      "prompt": "Review this handler: it contains a direct Drizzle query inside the route handler function body, business logic (discount calculation), and console.log for debugging. Flag the issues.",
+      "expected_output": "Architecture review identifying handler anti-patterns with specific refactoring guidance",
+      "assertions": [
+        {"text": "Output flags DB query in handler as anti-pattern (should be in service)", "type": "contains"},
+        {"text": "Output flags business logic in handler (should be in service)", "type": "contains"},
+        {"text": "Output flags console.log (should use pino logger)", "type": "contains"},
+        {"text": "Output provides refactored version separating handler, service, and repository", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Integration test setup for route coverage",
+      "prompt": "Write integration tests for GET /api/v1/products (list with pagination), POST /api/v1/products (requires admin JWT), and GET /api/v1/products/:id (returns 404 if not found). Use Fastify inject().",
+      "expected_output": "Test file with 3 describe blocks, each with happy path, validation error, and auth/not-found tests",
+      "assertions": [
+        {"text": "Output uses Fastify inject() not real HTTP requests", "type": "contains"},
+        {"text": "Output tests 400 for invalid pagination params", "type": "contains"},
+        {"text": "Output tests 401 for missing JWT on POST", "type": "contains"},
+        {"text": "Output tests 404 for non-existent product ID", "type": "contains"},
+        {"text": "Output uses beforeAll to build app once and afterAll to close", "type": "contains"},
+        {"text": "Output checks response body shape, not just status code", "type": "contains"}
+      ]
+    }
+  ]
+}

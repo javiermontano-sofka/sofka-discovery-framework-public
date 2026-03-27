@@ -7,6 +7,7 @@ description: >
   networks, identify critical dependency chains, detect circular dependencies, or establish
   cross-project coordination protocols for dependency management.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -47,7 +48,7 @@ Las dependencias no gestionadas son el asesino silencioso de los portfolios. Una
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | `$PROJECT` | Yes | Portfolio or program identifier |
-| `--type` | Yes | `portfolio`, `circular-detection`, `network-diagram`, `risk-assessment` |
+| `--type` | Yes | `portfolio`, `circular-detection`, `network-diagram`, `risk-quantification` |
 | `--scope` | No | Scope filter (all-active, program-X, team-Y) |
 | `--format` | No | Visualization format (mermaid, matrix, list) |
 

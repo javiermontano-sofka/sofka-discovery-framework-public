@@ -8,6 +8,7 @@ description: >
   creates dependency matrices, designs cross-project coordination protocols, produces
   integration verification checklists.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

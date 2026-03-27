@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sofka SAGE — Session Context Generator
 # Hook: SessionStart
 # Genera README.md y CLAUDE.md de sesión basados en el skill activo,

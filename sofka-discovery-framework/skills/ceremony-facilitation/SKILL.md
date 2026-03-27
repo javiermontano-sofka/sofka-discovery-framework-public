@@ -7,6 +7,7 @@ description: >
   techniques for team workshops, conflict navigation protocols for heated discussions,
   anti-pattern recognition during ceremony execution, or ceremony effectiveness measurement.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

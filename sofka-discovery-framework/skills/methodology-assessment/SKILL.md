@@ -8,6 +8,7 @@ description: >
   produces weighted scoring matrix, recommends best-fit methodology with confidence level,
   identifies organizational readiness gaps, generates tailoring guidance.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

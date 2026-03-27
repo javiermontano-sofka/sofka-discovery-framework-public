@@ -7,6 +7,7 @@ description: >
   drafts a budget approval package, justifies project funding, builds a capital expenditure request,
   creates a funding drawdown schedule.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

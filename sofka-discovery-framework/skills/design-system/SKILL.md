@@ -8,6 +8,7 @@ description: >
 argument-hint: "[action] [brand-config-path]"
 author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit
@@ -311,8 +312,8 @@ graph TD
     end
     subgraph Related Skills
         DS -.-> HB[html-brand]
-        DS -.-> BV[brand-voice]
-        DS -.-> ME[markdown-excellence]
+        DS -.-> BV[design-system-brand]
+        DS -.-> ME[output-engineering]
         DS -.-> UW[ux-writing]
     end
 ```
@@ -392,8 +393,8 @@ Before delivering design system output:
 ## Cross-References
 
 - `brand-html` — applies this design system to generate full HTML deliverables
-- `brand-voice` — brand tone and messaging (complements visual system)
-- `markdown-excellence` — writing standard for markdown output format
+- `design-system-brand` — brand tone and messaging (complements visual system)
+- `output-engineering` — writing standard for markdown output format
 
 ## Output Artifact
 

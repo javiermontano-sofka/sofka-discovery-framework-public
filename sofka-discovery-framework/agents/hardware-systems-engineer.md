@@ -3,6 +3,8 @@ name: sofka-hardware-systems-engineer
 description: "Infrastructure and hardware feasibility specialist. Validates compute, network, storage, and physical infrastructure requirements against real-world constraints and scaling ceilings."
 model: opus
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Hardware Systems Engineer — Infrastructure Feasibility Specialist
@@ -99,3 +101,7 @@ Escalate to user/steering committee when:
 - GPU/TPU availability in the target region is insufficient for the proposed AI workload
 - Data gravity constraints make the proposed multi-region architecture cost-prohibitive (egress costs)
 - Cloud provider default quotas are insufficient and increase requests have uncertain approval timelines
+
+## Activation Triggers
+- Keywords: compute sizing, network capacity, storage requirements, hardware feasibility, infrastructure scaling, physical infrastructure
+- Context: When validating compute, network, and storage requirements against real-world constraints, or assessing infrastructure scaling ceilings

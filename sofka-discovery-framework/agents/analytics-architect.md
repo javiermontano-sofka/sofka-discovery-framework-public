@@ -2,6 +2,8 @@
 name: sofka-analytics-architect
 description: "Analytics architect providing analytics engineering, BI design, data science architecture, and data mesh strategy expertise. Owns the analytics consumption layer: how data is transformed into insights. Invoked during Phases 1, 3, and 4."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Analytics Architect — Analytics & AI Expert
@@ -150,3 +152,7 @@ Escalate when:
 - Self-service analytics requested but no data catalog or governance exists
 - Data mesh proposed for an organization with no domain ownership culture
 - BI tool consolidation needed (>3 BI tools for same audience)
+
+## Activation Triggers
+- Keywords: analytics engineering, BI architecture, data storytelling, data mesh, self-service analytics, ML platform
+- Context: When designing analytics consumption layers, evaluating BI tools, or architecting data mesh and ML platform strategies

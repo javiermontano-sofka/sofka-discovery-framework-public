@@ -9,6 +9,7 @@ description: >
   "audit design system", "usability assessment", "information architecture review", "design ops evaluation",
   "UX transformation plan", or mentions "design discovery", "UX readiness", "design governance".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

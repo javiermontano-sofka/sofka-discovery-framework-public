@@ -6,6 +6,8 @@ description: >
   "track earned value", "measure project performance", or mentions earned value management,
   CPI, SPI, EAC, ETC, TCPI, BAC, cost performance, schedule performance, variance analysis.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-earned-value-analysis"
   - Read
   - Write
   - Edit

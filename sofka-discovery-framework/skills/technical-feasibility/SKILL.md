@@ -9,6 +9,7 @@ description: >
   "stress-test the approach", or mentions technical due diligence, feasibility study, risk validation,
   or "Phase 3b" verification work.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

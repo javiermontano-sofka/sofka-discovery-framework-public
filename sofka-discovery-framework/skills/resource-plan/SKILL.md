@@ -6,6 +6,8 @@ description: >
   or mentions resource allocation, team roles, staffing, organizational chart,
   responsibility matrix, resource histogram, capacity management.
 allowed-tools:
+version: "13.0.0"
+argument-hint: "Context, project name, or specific focus area for apex-resource-plan"
   - Read
   - Write
   - Edit

@@ -1,8 +1,10 @@
-# Sofka SAGE v12.3 — Agentic PreSales as Service
+# Sofka SAGE v13.0 — Unified Agentic PreSales as Service
 
 > **SAGE** = Sofka Agentic Gateway to Excellence.
-> Tu IDE se convierte en una agencia de discovery empresarial.
-> 48 agentes · 107 skills MOAT · 104 comandos · 19 scripts · 5 quality gates (G0–G3) · Protocolo zero-hallucination.
+> Tu IDE se convierte en una agencia de discovery empresarial + implementación + QA.
+> 107 agentes · 314 skills MOAT · 204 comandos · 19 scripts · 5 quality gates (G0–G3) · Protocolo zero-hallucination.
+> **v13.0 Consolidation**: Unified SDF + Sovereign Architect (80 impl skills) + Plugin QA (20 meta-skills).
+> Covers: discovery, architecture, implementation, QA, DevOps, security, performance, scaffolding, diagnostics, plugin dev.
 > Progressive MOAT loading (L1/L2/L3) · Cross-platform conversion · Browser audit · Discovery retrospective.
 > Meta-cognition protocols (FULL triad + LIGHT all agents) · Formalized committee spawning.
 > © 2026 Sofka Technologies. All Rights Reserved.
@@ -101,9 +103,9 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 
 ```
 sofka-discovery-framework/
-├── agents/              # 48 agentes especializados
-├── commands/            # 96 comandos (primarios + aliases + service discovery)
-├── skills/              # 100 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
+├── agents/              # 107 agentes especializados (48 SDF + 54 SA + 4 PQA + 1 shared)
+├── commands/            # 204 comandos (104 SDF + 84 SA + 16 PQA)
+├── skills/              # 314 skills MOAT (214 SDF + 80 SA + 20 PQA)
 ├── references/
 │   ├── ontology/        # 13 sub-archivos de ontología viva
 │   ├── priming-rag-*/   # 8 docs de conocimiento RAG
@@ -140,5 +142,5 @@ Revisarlo al inicio de cada sesión para no repetir errores.
 
 ---
 
-*Sofka SAGE v12.0 — Agentic PreSales as Service.*
+*Sofka SAGE v13.0 — Unified Agentic PreSales as Service.*
 *Sofka, your technology partner.*

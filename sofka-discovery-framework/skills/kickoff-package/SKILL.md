@@ -8,6 +8,7 @@ description: >
   agenda, facilitates ground rules agreement, produces communication quick-reference,
   compiles team charter from kickoff outcomes.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

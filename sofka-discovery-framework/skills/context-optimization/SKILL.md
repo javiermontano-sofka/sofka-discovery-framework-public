@@ -7,6 +7,7 @@ description: >
   MOAT loading levels, design intelligent pruning strategies, manage session state persistence,
   or implement token-efficient skill routing across the agent framework.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

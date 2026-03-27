@@ -11,6 +11,7 @@ description: >
 argument-hint: "<pmo_docs_path> [full|executive]"
 author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

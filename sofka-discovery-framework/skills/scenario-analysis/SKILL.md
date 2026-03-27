@@ -8,6 +8,7 @@ description: >
   "Tree of Thought", "which approach should we take", "compare architectures", or mentions
   "Phase 3", "strategic analysis", "trade-off analysis", "SWOT comparison".
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

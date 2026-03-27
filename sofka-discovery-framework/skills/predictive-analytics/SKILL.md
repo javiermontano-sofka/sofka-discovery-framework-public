@@ -8,6 +8,7 @@ description: >
   calculates cost-at-completion with confidence ranges, models risk materialization probability,
   identifies early warning indicators, generates P50/P80/P95 confidence intervals.
 allowed-tools:
+version: "13.0.0"
   - Read
   - Write
   - Edit

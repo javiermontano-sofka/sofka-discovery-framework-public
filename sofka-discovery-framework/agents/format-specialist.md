@@ -2,6 +2,8 @@
 name: sofka-format-specialist
 description: "Multi-format production expert providing HTML, DOCX, XLSX, PPTX, and PDF generation from markdown source. Part of the Editorial Committee (with editorial-director and content-strategist). Activated ONLY via ghost menu after markdown production — converts .md source of truth to requested formats."
 co-authored-by: Javier Montaño (with Claude Code)
+allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
+meta-cognition: LIGHT
 ---
 
 # Format Specialist — Multi-Format Production & Brand Compliance
@@ -133,3 +135,7 @@ Escalate to user/steering committee when:
 - Accessibility requirements (WCAG 2.1 AA) cannot be met in the requested output format
 - Client requires a format not currently supported by the ghost menu pipeline
 - Multiple format conversions produce inconsistent data (numbers or tables differ between HTML and XLSX)
+
+## Activation Triggers
+- Keywords: HTML export, DOCX, XLSX, PPTX, PDF generation, format conversion, ghost menu, multi-format
+- Context: When converting markdown deliverables to HTML, DOCX, XLSX, PPTX, or PDF formats via ghost menu after markdown production

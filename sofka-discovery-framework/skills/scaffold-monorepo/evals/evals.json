@@ -1,0 +1,67 @@
+{
+  "skill_name": "scaffold-monorepo",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Scaffold a new monorepo for a SaaS app with Next.js frontend, Node.js API, and shared types. Use pnpm and Turborepo.",
+      "expected_output": "Complete monorepo structure with turbo.json, pnpm-workspace.yaml, shared packages, and CI workflow",
+      "assertions": [
+        {"text": "Output contains pnpm-workspace.yaml or workspace configuration", "type": "contains"},
+        {"text": "Output contains turbo.json with tasks configuration", "type": "contains"},
+        {"text": "Output contains dependsOn: ['^build'] for build task", "type": "contains"},
+        {"text": "Output contains packages/types directory or package", "type": "contains"},
+        {"text": "Output contains packageManager field in root package.json", "type": "contains"},
+        {"text": "Output contains GitHub Actions CI workflow", "type": "contains"},
+        {"text": "Output contains --frozen-lockfile in CI", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Compare Nx vs Turborepo for a team of 5 building a React + NestJS monorepo. Make a recommendation.",
+      "expected_output": "Structured comparison with recommendation and rationale",
+      "assertions": [
+        {"text": "Output compares Nx and Turborepo on at least 3 criteria", "type": "contains"},
+        {"text": "Output makes a concrete recommendation", "type": "contains"},
+        {"text": "Output mentions code generators as an Nx differentiator", "type": "contains"},
+        {"text": "Output mentions NestJS as a factor favoring Nx", "type": "contains"},
+        {"text": "Output provides rationale specific to the described team/stack", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Fix this turbo.json: build task has no outputs or dependsOn configured. What's wrong and what are the consequences?",
+      "expected_output": "Analysis of caching consequences and corrected turbo.json",
+      "assertions": [
+        {"text": "Output explains that missing outputs means Turbo cannot cache build artifacts", "type": "contains"},
+        {"text": "Output explains that missing dependsOn means packages may build in wrong order", "type": "contains"},
+        {"text": "Output provides corrected turbo.json with outputs and dependsOn", "type": "contains"},
+        {"text": "Output mentions dist/ or .next/ as typical output directories", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Design the packages/ui package.json for a shared React component library that can be consumed by both Next.js apps and Node.js APIs without a build step.",
+      "expected_output": "package.json with correct exports, types, and workspace protocol",
+      "assertions": [
+        {"text": "Output contains exports field with import/types conditions", "type": "contains"},
+        {"text": "Output points main/types to TypeScript source (not dist)", "type": "contains"},
+        {"text": "Output uses workspace:^ for internal dependencies", "type": "contains"},
+        {"text": "Output marks package as not private if publishable, or private if internal", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set up Changesets for a monorepo where packages/ui and packages/types are publishable to npm but apps/ are private.",
+      "expected_output": "Changeset config and workflow for selective publishing",
+      "assertions": [
+        {"text": "Output contains .changeset/config.json", "type": "contains"},
+        {"text": "Output sets access: public or restricted appropriately", "type": "contains"},
+        {"text": "Output contains GitHub Actions release workflow", "type": "contains"},
+        {"text": "Output uses changesets/action in workflow", "type": "contains"},
+        {"text": "Output addresses ignoring private packages like apps/", "type": "contains"},
+        {"text": "Output mentions updateInternalDependencies setting", "type": "contains"}
+      ]
+    }
+  ]
+}
