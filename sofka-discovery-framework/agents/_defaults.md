@@ -1,3 +1,8 @@
+---
+name: _defaults
+description: Shared configuration inherited by all SDF agents. Not a standalone agent.
+---
+
 # SDF Agent Defaults
 
 Shared configuration inherited by all Sofka agents. Do not duplicate in individual agent files.
