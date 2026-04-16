@@ -1,0 +1,52 @@
+graph TD
+    DM[Data Modeling Patterns]
+
+    DM --> NF[Normalization]
+    DM --> DN[Denormalization]
+    DM --> PA[Polymorphic Associations]
+    DM --> SD[Soft Delete]
+    DM --> AT[Audit Trail]
+    DM --> BT[Bitemporal Data]
+    DM --> PK[Primary Key Strategy]
+    DM --> JS[JSONB Patterns]
+
+    NF --> NF1[1NF: Atomic Values]
+    NF --> NF2[2NF: No Partial Deps]
+    NF --> NF3[3NF: No Transitive Deps]
+    NF --> BCNF[BCNF: Candidate Keys]
+
+    DN --> MC[Materialized Counter]
+    DN --> WR[Wide Row / Flat Table]
+    DN --> SS[State Snapshot in Event Log]
+
+    MC --> TRG[DB Trigger]
+    MC --> APP[App-layer Maintenance]
+
+    PA --> DC[Discriminator Column - STI]
+    PA --> NK[Nullable FK Columns]
+    PA --> CT[Concrete Table Inheritance]
+
+    DC --> NOFK[No FK Integrity]
+    NK --> CHECK[CHECK Constraint: exactly one]
+    CT --> BASETBL[Shared Base entities Table]
+
+    SD --> DTAT[deleted_at TIMESTAMPTZ]
+    SD --> RLS[Row-Level Security Policy]
+    SD --> PIX[Partial Unique Index]
+
+    AT --> TRIG[Generic Audit Trigger]
+    AT --> ALOG[audit_log Table JSONB]
+    AT --> SESSVAR[Session Var app.current_user_id]
+
+    BT --> VT[Valid Time valid_from/valid_until]
+    BT --> TT[Transaction Time recorded_at/superseded_at]
+    BT --> EXCL[EXCLUDE USING gist no overlap]
+
+    PK --> BIGS[BIGSERIAL sequential fast insert]
+    PK --> UV4[UUID v4 random global]
+    PK --> UV7[UUID v7 time-ordered 2025]
+
+    JS --> GIN[GIN Index Full Document]
+    JS --> BTPATH[B-tree Path Index]
+    JS --> GEN[Generated Column Extract]
+    JS --> EAV[EAV Last Resort]

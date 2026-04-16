@@ -1,0 +1,70 @@
+[
+  {
+    "id": "ceremony-design-eval-001",
+    "name": "Scrum team ceremony calendar for 2-week sprints",
+    "description": "Design a complete ceremony calendar for a Scrum team of 7 developers, 1 PO, and 1 Scrum Master running 2-week sprints. Include all standard ceremonies with timing, duration, and recurrence rules.",
+    "input": "We're a Scrum team with 7 developers, a Product Owner, and a Scrum Master. We run 2-week sprints starting on Mondays. We need a complete ceremony calendar. We're all co-located in the same office, working 9am-5pm.",
+    "expected_behavior": [
+      "Produces a full ceremony calendar covering standup, planning, review, retro, and refinement",
+      "Standup is daily, 15 minutes max, scheduled at a consistent time",
+      "Sprint planning is on day 1 of the sprint, 2-4 hours",
+      "Sprint review is on the last day of the sprint, 1-2 hours",
+      "Sprint retrospective follows the review or is scheduled shortly after, 1-1.5 hours",
+      "Refinement sessions are mid-sprint, 1-2 hours per week",
+      "Ceremony load does not exceed 20% of total sprint hours",
+      "No day has more than 2 hours of ceremonies except sprint boundaries"
+    ],
+    "agents_under_test": ["ceremony-calendar-builder", "agenda-template-designer"]
+  },
+  {
+    "id": "ceremony-design-eval-002",
+    "name": "Distributed team ceremonies across 3 timezones",
+    "description": "Design ceremony schedule for a distributed team spanning US-East (UTC-5), Central Europe (UTC+1), and India (UTC+5:30) with fair overlap windows and async accommodations.",
+    "input": "Our team is distributed across 3 timezones: 4 people in New York (UTC-5), 3 people in Berlin (UTC+1), and 3 people in Bangalore (UTC+5:30). We need a ceremony design that doesn't always disadvantage the same timezone. We run 2-week sprints.",
+    "expected_behavior": [
+      "Identifies the overlap window between all 3 timezones (approximately 9:30-11:00 AM UTC+1)",
+      "Schedules critical ceremonies (planning, review, retro) within overlap windows",
+      "Rotates standup times across timezones or proposes async standup alternatives",
+      "Includes async pre-work to reduce synchronous meeting time",
+      "Provides remote facilitation adaptations for each ceremony",
+      "Addresses equalization strategies so no timezone is consistently disadvantaged",
+      "Recommends tools for async collaboration (digital whiteboards, async video updates)",
+      "Total synchronous ceremony time is minimized through async-first design"
+    ],
+    "agents_under_test": ["ceremony-calendar-builder", "facilitation-guide-writer"]
+  },
+  {
+    "id": "ceremony-design-eval-003",
+    "name": "Retrospective format for team with retro fatigue",
+    "description": "Recommend and design retrospective formats for a team that has been using the same Start-Stop-Continue format for 8 months and reports declining engagement and repetitive action items.",
+    "input": "Our team has been doing Start-Stop-Continue retros for 8 months. Attendance has dropped from 100% to 70%. People say retros feel repetitive and the same issues keep coming up. Last 3 retros produced zero new action items. The team is 9 people, remote-first. Help us fix our retros.",
+    "expected_behavior": [
+      "Diagnoses retro fatigue with specific evidence from the input (8 months same format, declining attendance, zero action items)",
+      "Recommends 3-4 alternative retro formats (e.g., Sailboat, 4Ls, Timeline, Appreciation Radar)",
+      "Provides a rotation schedule for formats to prevent future fatigue",
+      "Addresses the root cause of recurring issues: action item tracking and accountability",
+      "Includes facilitation techniques to re-engage disengaged team members",
+      "Proposes a mechanism to track action item completion between retros",
+      "Adapts all recommendations for remote-first execution",
+      "Suggests a retro-about-the-retro to let the team co-design their ceremony"
+    ],
+    "agents_under_test": ["agenda-template-designer", "facilitation-guide-writer", "ceremony-effectiveness-measurer"]
+  },
+  {
+    "id": "ceremony-design-eval-004",
+    "name": "Ceremony audit for 45-minute standups",
+    "description": "Conduct a ceremony effectiveness audit for a team whose daily standups have expanded from 15 to 45 minutes, identify root causes, and recommend corrective actions.",
+    "input": "Our daily standup has ballooned to 45 minutes. It was 15 minutes 3 months ago. The team is 8 people. People are solving problems during standup, giving detailed status reports, and the PO keeps asking clarifying questions that turn into mini-planning sessions. Team morale around standups is low. Some people have started skipping.",
+    "expected_behavior": [
+      "Identifies multiple root causes: problem-solving in standup, status reporting instead of sync, PO derailing with questions, scope creep into planning",
+      "Quantifies the impact: 30 min/day x 8 people = 20 person-hours/week wasted",
+      "Recommends specific corrective actions: parking lot for deep discussions, after-standup huddles, PO question protocol",
+      "Provides a redesigned standup agenda template with strict 15-min timebox",
+      "Includes facilitation scripts for redirecting off-topic discussions",
+      "Proposes metrics to track recovery: duration trending, skip rate reduction",
+      "Suggests a 2-week experiment with clear success criteria",
+      "Addresses the skip rate as a symptom requiring trust rebuilding"
+    ],
+    "agents_under_test": ["ceremony-effectiveness-measurer", "agenda-template-designer", "facilitation-guide-writer"]
+  }
+]

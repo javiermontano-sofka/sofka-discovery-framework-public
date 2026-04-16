@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Analyze 3 offshore vendor rate cards.",
+    "assertions": [
+      "normalizes rates",
+      "considers productivity",
+      "accounts for overhead",
+      "recommends option"
+    ]
+  },
+  {
+    "prompt": "Model TCO for 3-year engagement.",
+    "assertions": [
+      "includes all costs",
+      "factors transition costs",
+      "considers exit costs",
+      "presents total"
+    ]
+  },
+  {
+    "prompt": "Compare cloud vendor pricing.",
+    "assertions": [
+      "normalizes models",
+      "considers usage patterns",
+      "models at scale",
+      "recommends"
+    ]
+  },
+  {
+    "prompt": "Optimize $1M vendor contract.",
+    "assertions": [
+      "analyzes spending",
+      "identifies leverage points",
+      "recommends optimization",
+      "calculates savings"
+    ]
+  }
+]

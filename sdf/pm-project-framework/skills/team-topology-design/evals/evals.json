@@ -1,0 +1,54 @@
+[
+  {
+    "prompt": "Design a team topology for a microservices migration with 30 developers currently organized in 3 feature teams working on a monolith. We need to move to 12 microservices over 18 months.",
+    "assertions": [
+      "classifies teams using Team Topologies types (stream-aligned, platform, enabling, complicated-subsystem)",
+      "proposes ≥4 stream-aligned teams mapped to business value streams",
+      "recommends a platform team for shared infrastructure (CI/CD, observability, service mesh)",
+      "includes an enabling team for migration coaching with a defined exit timeline",
+      "designs interaction modes between all team pairs (collaboration, X-as-a-Service, facilitating)",
+      "assesses cognitive load per proposed team and flags any team owning >2 domains",
+      "addresses Conway's Law alignment between proposed team boundaries and target microservice boundaries",
+      "provides a phased team formation plan — not all teams created at once"
+    ]
+  },
+  {
+    "prompt": "Team Phoenix owns the payments domain, the notifications service, and the audit logging pipeline. They also handle on-call for 8 production services. They have 6 developers and are consistently missing sprint commitments. Assess their cognitive load.",
+    "assertions": [
+      "scores domain complexity across all 3 domains (payments, notifications, audit)",
+      "quantifies technology diversity across owned services",
+      "flags operational burden from on-call across 8 services as unsustainable",
+      "calculates a composite cognitive load score exceeding the sustainable threshold",
+      "classifies Team Phoenix as Red/overloaded status",
+      "recommends specific load-shedding actions (e.g., transfer notifications to another team, extract audit to platform)",
+      "identifies that 3 unrelated domains in a single team violates Team Topologies principles",
+      "estimates capacity recovered per recommended action"
+    ]
+  },
+  {
+    "prompt": "Our checkout team and payments team have been in collaboration mode for 9 months building the new payment gateway integration. Design a plan to evolve this interaction to X-as-a-Service.",
+    "assertions": [
+      "flags that 9-month collaboration exceeds recommended timebox (≤6 weeks for discovery, ≤12 weeks for complex integration)",
+      "defines a concrete API contract between checkout and payments teams",
+      "specifies SLA expectations for the payment gateway API (latency, availability, error budget)",
+      "designs a phased transition plan with measurable milestones",
+      "includes consumer-driven contract testing as a transition prerequisite",
+      "defines support channels and escalation paths post-transition",
+      "identifies risks of the transition (knowledge silos, untested edge cases)",
+      "sets a hard deadline for collaboration termination with accountability"
+    ]
+  },
+  {
+    "prompt": "We are migrating from a monolith to microservices. Currently 4 teams all commit to the same monolith repository. Our target architecture has 8 bounded contexts. Audit Conway's Law alignment and recommend a team restructuring plan.",
+    "assertions": [
+      "identifies the current state as a Conway's Law violation (4 teams, 1 shared codebase)",
+      "maps the 8 bounded contexts to potential team boundaries",
+      "detects split ownership patterns in the monolith (multiple teams touching same modules)",
+      "quantifies misalignment impact with observable symptoms (merge conflicts, deployment coupling, lead time)",
+      "proposes a team restructuring plan that aligns team boundaries with bounded contexts",
+      "recommends a strangler fig pattern or similar incremental extraction strategy",
+      "includes a platform team recommendation for shared infrastructure concerns",
+      "provides a Mermaid diagram or visual overlay of team-to-architecture mapping"
+    ]
+  }
+]

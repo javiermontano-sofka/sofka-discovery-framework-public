@@ -1,0 +1,93 @@
+graph TD
+    %% ─── Núcleo: Arquitectura Enterprise ───
+    enterpriseArchitecture["Arquitectura Enterprise"]
+
+    %% ─── Capa Estratégica ───
+    businessStrategy["Estrategia de Negocio"]
+    capabilityMap["Mapa de Capacidades"]
+    portfolioMgmt["Gestión de Portafolio"]
+    valueStream["Cadena de Valor"]
+    strategicInitiatives["Iniciativas Estratégicas"]
+
+    %% ─── Capa de Gobierno ───
+    arb["Architecture Review Board (ARB)"]
+    adr["Architectural Decision Records (ADR)"]
+    governancePrinciples["Principios Arquitectónicos"]
+    complianceControls["Controles de Cumplimiento"]
+    technologyRadar["Technology Radar"]
+
+    %% ─── Capa de Dominio ───
+    ddd["Domain-Driven Design (DDD)"]
+    boundedContext["Bounded Contexts"]
+    contextMapping["Context Mapping"]
+    ubiquitousLanguage["Lenguaje Ubicuo"]
+    domainOwnership["Propiedad de Dominio"]
+
+    %% ─── Capa Organizacional ───
+    teamTopologies["Team Topologies"]
+    streamAligned["Equipo Stream-Aligned"]
+    platformTeam["Equipo de Plataforma"]
+    enablingTeam["Equipo Habilitador"]
+    targetOperatingModel["Modelo Operativo Objetivo"]
+
+    %% ─── Capa de Métricas ───
+    doraMetrics["Métricas DORA"]
+    maturityModel["Modelo de Madurez (1-5)"]
+    kpiAlignment["Alineación de KPIs"]
+
+    %% ─── Marcos de Referencia ───
+    togaf["TOGAF / FEAF"]
+    zachman["Marco Zachman"]
+    conwaysLaw["Ley de Conway"]
+
+    %% ─── Relaciones Estratégicas ───
+    enterpriseArchitecture --> businessStrategy
+    enterpriseArchitecture --> capabilityMap
+    enterpriseArchitecture --> portfolioMgmt
+    businessStrategy --> valueStream
+    businessStrategy --> strategicInitiatives
+    capabilityMap --> maturityModel
+    portfolioMgmt --> strategicInitiatives
+
+    %% ─── Relaciones de Gobierno ───
+    enterpriseArchitecture --> arb
+    arb --> adr
+    arb --> governancePrinciples
+    arb --> technologyRadar
+    governancePrinciples --> complianceControls
+
+    %% ─── Relaciones de Dominio ───
+    enterpriseArchitecture --> ddd
+    ddd --> boundedContext
+    ddd --> ubiquitousLanguage
+    boundedContext --> contextMapping
+    boundedContext --> domainOwnership
+
+    %% ─── Relaciones Organizacionales ───
+    enterpriseArchitecture --> teamTopologies
+    teamTopologies --> streamAligned
+    teamTopologies --> platformTeam
+    teamTopologies --> enablingTeam
+    teamTopologies --> targetOperatingModel
+    conwaysLaw --> teamTopologies
+
+    %% ─── Relaciones de Métricas ───
+    targetOperatingModel --> doraMetrics
+    capabilityMap --> kpiAlignment
+    doraMetrics --> kpiAlignment
+
+    %% ─── Marcos de Referencia ───
+    togaf --> enterpriseArchitecture
+    zachman --> enterpriseArchitecture
+    conwaysLaw --> ddd
+
+    %% ─── Estilos (máx. 4 classDef) ───
+    classDef nucleo fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef estrategia fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef gobierno fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef organizacion fill:#F3F4F6,stroke:#1A1A2E,color:#1A1A2E
+
+    class enterpriseArchitecture nucleo
+    class businessStrategy,capabilityMap,portfolioMgmt,valueStream,strategicInitiatives estrategia
+    class arb,adr,governancePrinciples,complianceControls,technologyRadar,maturityModel,doraMetrics,kpiAlignment gobierno
+    class ddd,boundedContext,contextMapping,ubiquitousLanguage,domainOwnership,teamTopologies,streamAligned,platformTeam,enablingTeam,targetOperatingModel,togaf,zachman,conwaysLaw organizacion

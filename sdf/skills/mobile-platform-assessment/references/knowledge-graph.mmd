@@ -1,0 +1,117 @@
+%% Knowledge Graph — Mobile Platform Assessment
+%% Dominio: Evaluación unificada de plataformas móviles — estrategia, arquitectura, health, compliance, seguridad, performance, y remediación
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["mobile-platform-assessment"]
+        direction TB
+        PR["Principio Rector:<br/>Mobile no es web en pantalla chica —<br/>es un canal con restricciones únicas"]
+        FW["Framework: 9 Secciones"]
+        VG["Validation Gate: Benchmarks"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        REPO["Repo / Codebase<br/>(pubspec.yaml, build.gradle,<br/>*.xcodeproj, package.json)"]
+        METRICS["App Vitals<br/>(crash rate, ANR, cold start,<br/>memory, app size)"]
+        REQS["Business Requirements<br/>(plataformas target, offline,<br/>time-to-market)"]
+        TEAM["Team Profile<br/>(skills, headcount,<br/>experiencia cross-platform)"]
+    end
+
+    subgraph MODES["3 Modos Operacionales"]
+        EVAL["evaluacion<br/>AS-IS: health, compliance,<br/>dependencies, remediation"]
+        DESIGN["diseño<br/>Architecture: strategy, patterns,<br/>offline-first, release pipeline"]
+        INTEGRAL["integral<br/>Full: evaluation + design<br/>(9 secciones completas)"]
+    end
+
+    subgraph SECTIONS["9-Section Delivery"]
+        S1["S1: Platform Strategy<br/>Native vs Flutter vs RN vs KMP"]
+        S2["S2: Architecture Patterns<br/>MVVM, MVI, Clean Architecture"]
+        S3["S3: Offline-First<br/>Sync, cache, queue, conflict resolution"]
+        S4["S4: Performance<br/>Cold start, FPS, memory, battery"]
+        S5["S5: App Health<br/>Crash-free rate, ANR, vitals"]
+        S6["S6: Security<br/>OWASP MSTG, cert pinning,<br/>secure storage"]
+        S7["S7: Compliance<br/>Store policies, privacy manifests,<br/>target API levels"]
+        S8["S8: Release Pipeline<br/>CI/CD, code signing,<br/>staged rollouts, feature flags"]
+        S9["S9: Remediation Roadmap<br/>Prioritized tech debt,<br/>severity, effort, impact"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        ASSESSMENT["Mobile Platform<br/>Assessment Report"]
+        ARCHDOC["Architecture<br/>Design Document"]
+        ROADMAP["Remediation<br/>Roadmap"]
+        DASHBOARD["Health<br/>Dashboard"]
+    end
+
+    subgraph STANDARDS["Standards & Guidelines"]
+        HIG["Apple Human<br/>Interface Guidelines"]
+        MD["Material Design<br/>(Android)"]
+        WCAG["WCAG 2.2<br/>Mobile Accessibility"]
+        OWASP["OWASP MSTG<br/>(Mobile Security)"]
+        STORE_A["Apple App Store<br/>Review Guidelines"]
+        STORE_G["Google Play<br/>App Quality Guidelines"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        UX["user-representative<br/>(usa S1+S4 como input)"]
+        QE["quality-engineering<br/>(usa S5 como input)"]
+        SEC["security-architecture<br/>(usa S6 como input)"]
+        DEVSEC["devsecops-architecture<br/>(usa S8 como input)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        MA["mobile-architect<br/>(owner)"]
+        FD["frontend-developer<br/>(support: S1, S2)"]
+        QA["quality-engineer<br/>(support: S5)"]
+        SAG["security-architect<br/>(support: S6)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|routing por modo| MODES
+    MODES -->|estructura| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    STANDARDS -.->|fundamentan| SECTIONS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Mode routing
+    EVAL -.->|foco| S5
+    EVAL -.->|foco| S7
+    EVAL -.->|foco| S9
+    DESIGN -.->|foco| S1
+    DESIGN -.->|foco| S2
+    DESIGN -.->|foco| S3
+    INTEGRAL -.->|todas| SECTIONS
+
+    %% Agent relationships
+    MA -->|opera| SKILL
+    FD -.->|consulta S1, S2| SKILL
+    QA -.->|aporta S5| S5
+    SAG -.->|aporta S6| S6
+
+    %% Internal traceability
+    S1 -.->|platform choice constrains| S2
+    S2 -.->|architecture drives| S3
+    S3 -.->|offline patterns impact| S4
+    S4 -.->|vitals baseline feeds| S5
+    S6 -.->|security gates feed| S7
+    S7 -.->|compliance blocks| S8
+    S5 -.->|health gaps drive| S9
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef mode fill:#E0F2F1,stroke:#00796B,color:#1A1A2E
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class REPO,METRICS,REQS,TEAM input
+    class EVAL,DESIGN,INTEGRAL mode
+    class S1,S2,S3,S4,S5,S6,S7,S8,S9 section
+    class ASSESSMENT,ARCHDOC,ROADMAP,DASHBOARD output
+    class HIG,MD,WCAG,OWASP,STORE_A,STORE_G standard
+    class UX,QE,SEC,DEVSEC consumer
+    class MA,FD,QA,SAG agent

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Extract assumptions from this project charter excerpt: 'The platform will be built on AWS using serverless architecture. The client's IT team will provide API access to their legacy CRM within the first 2 weeks. We estimate 3 months for development based on a team of 5 senior developers being available full-time.'",
+    "assertions": [
+      "Output identifies at least 3 distinct assumptions: AWS/serverless suitability, API access timeline, and team availability",
+      "Output categorizes assumptions by domain (technical, resource, schedule)",
+      "Output rates confidence level for each assumption based on the evidence available in the excerpt",
+      "Output links each assumption to the project decisions that depend on it"
+    ]
+  },
+  {
+    "prompt": "Link these assumptions to risks: A1) Client will provide test data by sprint 2. A2) Legacy system supports REST APIs. A3) Team lead will remain on the project for the full duration. A4) Regulatory approval will take no more than 30 days.",
+    "assertions": [
+      "Output creates a corresponding risk entry for each assumption describing what happens if it proves false",
+      "Output quantifies or describes the impact of each assumption failing on schedule, budget, or scope",
+      "Output defines at least one trigger indicator or early warning sign per high-impact assumption",
+      "Output prioritizes assumptions by total project exposure"
+    ]
+  },
+  {
+    "prompt": "Create a validation plan for the assumption that 'the client's existing authentication system can be integrated with our platform using OAuth 2.0 within 2 sprints.' This is a critical path item.",
+    "assertions": [
+      "Output defines a specific validation method such as a technical spike, POC, or architecture review",
+      "Output assigns a validation deadline aligned with the critical path dependency",
+      "Output specifies clear success criteria for confirming or invalidating the assumption",
+      "Output includes a contingency plan if the assumption proves false"
+    ]
+  },
+  {
+    "prompt": "Generate an assumption log status report for a project with 15 assumptions: 3 validated true, 2 invalidated, 4 under validation, 5 open with no validation activity, and 1 expired past its deadline.",
+    "assertions": [
+      "Output presents a dashboard-style summary with counts per status category",
+      "Output flags the 5 open assumptions with no validation activity as requiring attention",
+      "Output escalates the 1 expired assumption and the 2 invalidated assumptions for immediate action",
+      "Output includes trend or aging analysis indicating how long assumptions have been in their current status"
+    ]
+  }
+]

@@ -1,0 +1,114 @@
+%% Knowledge Graph — Data Mesh Strategy
+%% Dominio: Data mesh readiness, domain ownership, data products, federated governance
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["data-mesh-strategy"]
+        direction TB
+        PR["Principio Rector:<br/>Data mesh es un modelo<br/>organizacional, no tecnico"]
+        FW["Framework: 7 Secciones"]
+        VG["Validation Gate: 8 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        DATAARCH["Data Architecture<br/>(AS-IS, warehouse, lake)"]
+        ORGSTRUCT["Organizational Structure<br/>(domains, teams)"]
+        DATAGOV["Data Governance<br/>(catalog, policies, ownership)"]
+        DATAFLOW["Data Flow Maps<br/>(sources, transforms, consumers)"]
+        TEAMMAT["Team Maturity<br/>(engineering capacity)"]
+    end
+
+    subgraph PRINCIPLES["4 Principios Fundacionales"]
+        P1["Domain Ownership<br/>Cada dominio es dueno<br/>de sus datos"]
+        P2["Data as a Product<br/>Datos con SLAs, docs,<br/>calidad garantizada"]
+        P3["Self-Serve Platform<br/>Infraestructura para<br/>autonomia de dominios"]
+        P4["Federated Governance<br/>Estandares globales,<br/>implementacion local"]
+    end
+
+    subgraph SECTIONS["7-Section Delivery"]
+        S1["S1: Readiness Assessment<br/>4 principios scored 1-5"]
+        S2["S2: Domain Decomposition<br/>DDD bounded contexts"]
+        S3["S3: Data Product Design<br/>Specs, SLAs, quality"]
+        S4["S4: Platform Requirements<br/>Capabilities, build vs buy"]
+        S5["S5: Federated Governance<br/>Global + local policies"]
+        S6["S6: Adoption Roadmap<br/>3 fases (3-6-12-24 meses)"]
+        S7["S7: Org Change Requirements<br/>Roles, training, culture"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        STRATEGY["Data Mesh Strategy<br/>(7-section report)"]
+        READINESS["Readiness Scorecard<br/>(executive summary)"]
+        DOMAINMAP["Domain Decomposition<br/>Map (Mermaid)"]
+        PRODCAT["Data Product Catalog<br/>Template"]
+    end
+
+    subgraph STANDARDS["Standards & Frameworks"]
+        DEHGHANI["Zhamak Dehghani<br/>Data Mesh (O'Reilly 2022)"]
+        DMBOK["DAMA-DMBOK2<br/>Data Management BoK"]
+        DDD["Domain-Driven Design<br/>(Eric Evans, 2003)"]
+        TEAMTOPO["Team Topologies<br/>(Skelton & Pais, 2019)"]
+        FOWLER["Martin Fowler<br/>Data Mesh Articles"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        DATAENG["data-engineering<br/>(usa S4 como platform input)"]
+        DATAGOV_SK["data-governance<br/>(usa S5 como governance input)"]
+        ANALYTICS["analytics-engineering<br/>(usa S3 para data products)"]
+        CHANGE["change-readiness-assessment<br/>(usa S7 como input)"]
+        ADOPTION["adoption-strategy<br/>(usa S6 como roadmap)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        AA["analytics-architect<br/>(owner)"]
+        DE["data-engineer<br/>(support: S4)"]
+        DA["domain-analyst<br/>(support: S2)"]
+        CC["change-catalyst<br/>(support: S7)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|evalua via| PRINCIPLES
+    PRINCIPLES -->|estructuran| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    STANDARDS -.->|fundamentan| SECTIONS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Principle-to-section mapping
+    P1 -.->|evalua en S1, diseña en| S2
+    P2 -.->|evalua en S1, diseña en| S3
+    P3 -.->|evalua en S1, diseña en| S4
+    P4 -.->|evalua en S1, diseña en| S5
+
+    %% Agent relationships
+    AA -->|opera| SKILL
+    DE -.->|consulta S3, S4| SKILL
+    DA -.->|aporta S2| S2
+    CC -.->|aporta S7| S7
+
+    %% Internal traceability
+    S1 -.->|readiness gaps determine| S6
+    S2 -.->|domains produce| S3
+    S3 -.->|product requirements drive| S4
+    S4 -.->|platform enforces| S5
+    S5 -.->|governance defines quality for| S3
+    S6 -.->|phases trigger| S7
+    S7 -.->|org changes improve| S1
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef principle fill:#FFECB3,stroke:#FF8F00,color:#1A1A2E,stroke-width:2px
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class DATAARCH,ORGSTRUCT,DATAGOV,DATAFLOW,TEAMMAT input
+    class P1,P2,P3,P4 principle
+    class S1,S2,S3,S4,S5,S6,S7 section
+    class STRATEGY,READINESS,DOMAINMAP,PRODCAT output
+    class DEHGHANI,DMBOK,DDD,TEAMTOPO,FOWLER standard
+    class DATAENG,DATAGOV_SK,ANALYTICS,CHANGE,ADOPTION consumer
+    class AA,DE,DA,CC agent

@@ -1,0 +1,137 @@
+%% Knowledge Graph — Technical Feasibility: Fact-Checking & Multidimensional Feasibility
+%% Dominio: Validación de claims técnicos y análisis de viabilidad 6D
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["🔍 technical-feasibility"]
+        direction TB
+        PR["Principio Rector:<br/>Evidencia sobre optimismo"]
+        FW["Framework: 6 Secciones"]
+        VG["Validation Gate: 7 criterios"]
+    end
+
+    subgraph INPUTS["📥 Inputs"]
+        SCENARIO["Escenario aprobado<br/>(Phase 3)"]
+        ASIS["Análisis AS-IS<br/>(Phase 1)"]
+        FLOWS["Mapeo de Flujos<br/>(Phase 2)"]
+        CODEBASE["Codebase &<br/>configuración"]
+        VENDOR_DOCS["Vendor docs &<br/>benchmarks"]
+    end
+
+    subgraph CLAIMS["📋 Claim Inventory"]
+        S1["S1: Claim Inventory &<br/>Evidence Mapping"]
+        VALIDATED["✅ VALIDATED<br/>evidencia sólida"]
+        UNVALIDATED["⚠️ UNVALIDATED<br/>sin evidencia, necesita spike"]
+        AT_RISK["🔴 AT RISK<br/>evidencia contradice"]
+        REFUTED["❌ REFUTED<br/>evidencia refuta"]
+    end
+
+    subgraph DIMENSIONS["📊 6D Feasibility"]
+        D1["D1: Technical<br/>Architecture, stack,<br/>integration, data"]
+        D2["D2: Organizational<br/>Skills, Conway's Law,<br/>change capacity"]
+        D3["D3: Timeline<br/>Critical path,<br/>hard deadlines"]
+        D4["D4: Financial<br/>Effort magnitudes,<br/>hidden cost drivers"]
+        D5["D5: Regulatory<br/>Compliance, data residency,<br/>certifications"]
+        D6["D6: Operational<br/>Monitoring, incident response,<br/>knowledge transfer"]
+    end
+
+    subgraph VALIDATION["🔬 Validation Methods"]
+        SPIKE["Spike: investigación<br/>time-boxed"]
+        POC["PoC: prototipo<br/>con datos reales"]
+        MUST_DO["MUST-DO<br/>bloquea Phase 4"]
+        SHOULD_DO["SHOULD-DO<br/>reduce riesgo"]
+        COULD_DO["COULD-DO<br/>riesgo aceptable"]
+    end
+
+    subgraph VERDICT["⚖️ Feasibility Verdict"]
+        S5["S5: Feasibility<br/>Verdict"]
+        FEASIBLE["FEASIBLE<br/>proceed to Phase 4"]
+        CONDITIONAL["FEASIBLE WITH<br/>CONDITIONS"]
+        NOT_FEASIBLE["NOT FEASIBLE<br/>pivot to alt scenario"]
+        COMPOSITE["Composite Score<br/>[X.X]/5.0"]
+    end
+
+    subgraph OUTPUTS["📤 Outputs"]
+        REPORT["A-02_Technical<br/>_Feasibility"]
+        BLOCKERS["S4: Blocker &<br/>Showstopper Analysis"]
+        RISK_REG["S6: Updated<br/>Risk Register"]
+        SPIKE_RECS["S3: Spike & PoC<br/>Recommendations"]
+    end
+
+    subgraph STANDARDS["📚 Standards"]
+        PMBOK["PMBOK<br/>Feasibility Analysis"]
+        ISO25010["ISO 25010<br/>Quality Model"]
+        IEEE1471["IEEE 1471<br/>Architecture"]
+        ATAM["ATAM<br/>Evaluation Method"]
+        BOEHM["Boehm Spiral<br/>Risk Model"]
+    end
+
+    subgraph CONSUMERS["🔗 Skills Dependientes"]
+        ROADMAP["solution-roadmap<br/>(consume verdict)"]
+        COST["cost-estimation<br/>(consume S4)"]
+        VIABILITY["software-viability<br/>(complementa S1)"]
+    end
+
+    %% Flows
+    INPUTS --> SKILL
+    SKILL --> CLAIMS
+    SKILL --> DIMENSIONS
+    CLAIMS -->|claims clasificados| VALIDATION
+    DIMENSIONS -->|scores 1-5| VERDICT
+    VALIDATION --> SPIKE_RECS
+    VERDICT --> OUTPUTS
+    STANDARDS -.->|fundamentan| DIMENSIONS
+    STANDARDS -.->|fundamentan| CLAIMS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Claim classification
+    S1 --> VALIDATED
+    S1 --> UNVALIDATED
+    S1 --> AT_RISK
+    S1 --> REFUTED
+
+    %% Validation routing
+    UNVALIDATED --> SPIKE
+    UNVALIDATED --> POC
+    AT_RISK --> POC
+    SPIKE --> MUST_DO
+    SPIKE --> SHOULD_DO
+    POC --> MUST_DO
+    POC --> COULD_DO
+
+    %% Dimensions to verdict
+    D1 --> COMPOSITE
+    D2 --> COMPOSITE
+    D3 --> COMPOSITE
+    D4 --> COMPOSITE
+    D5 --> COMPOSITE
+    D6 --> COMPOSITE
+    COMPOSITE --> FEASIBLE
+    COMPOSITE --> CONDITIONAL
+    COMPOSITE --> NOT_FEASIBLE
+
+    %% Blockers
+    AT_RISK -.->|escala a| BLOCKERS
+    REFUTED -.->|escala a| BLOCKERS
+    BLOCKERS -.->|puede cambiar| VERDICT
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef claim fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef dimension fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef consumer fill:#E8EAF6,stroke:#3F51B5,color:#1A1A2E
+    classDef validation fill:#FFF9C4,stroke:#F9A825,color:#1A1A2E
+    classDef verdict fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class SCENARIO,ASIS,FLOWS,CODEBASE,VENDOR_DOCS input
+    class S1,VALIDATED,UNVALIDATED,AT_RISK,REFUTED claim
+    class D1,D2,D3,D4,D5,D6 dimension
+    class REPORT,BLOCKERS,RISK_REG,SPIKE_RECS output
+    class PMBOK,ISO25010,IEEE1471,ATAM,BOEHM standard
+    class ROADMAP,COST,VIABILITY consumer
+    class SPIKE,POC,MUST_DO,SHOULD_DO,COULD_DO validation
+    class S5,FEASIBLE,CONDITIONAL,NOT_FEASIBLE,COMPOSITE verdict

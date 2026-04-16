@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Map a cloud migration project to 5 organizational strategic objectives.",
+    "assertions": [
+      "maps each deliverable to specific objectives",
+      "scores alignment strength per objective",
+      "identifies objectives not addressed by the project",
+      "recommends scope adjustments for better alignment"
+    ]
+  },
+  {
+    "prompt": "Assess strategic alignment across a portfolio of 10 projects.",
+    "assertions": [
+      "creates portfolio-strategy coverage matrix",
+      "identifies over-invested and under-invested themes",
+      "flags projects with weak strategic justification",
+      "recommends portfolio rebalancing"
+    ]
+  },
+  {
+    "prompt": "New strategic objective announced. Assess impact on current projects.",
+    "assertions": [
+      "evaluates each project's relevance to new objective",
+      "identifies projects that directly support it",
+      "flags projects that may conflict",
+      "recommends project adjustments or new project proposals"
+    ]
+  },
+  {
+    "prompt": "Connect project KPIs to organizational OKRs for quarterly reporting.",
+    "assertions": [
+      "maps project-level KPIs to relevant OKRs",
+      "defines contribution metrics",
+      "establishes reporting mechanism",
+      "tracks project contribution to organizational goals"
+    ]
+  }
+]

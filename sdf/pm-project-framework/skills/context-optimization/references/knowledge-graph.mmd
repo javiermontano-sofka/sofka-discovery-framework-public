@@ -1,0 +1,22 @@
+graph TD
+    subgraph Inputs
+        A[Task Intent] --> D
+        B[Project Knowledge Base] --> D
+        C[Session State] --> D
+    end
+    subgraph "Context Optimization Process"
+        D[Intent Classification]:::skill --> E[Context Selection]:::skill
+        E --> F[Loading Strategy]:::skill
+        F --> G[Quality Validation]:::skill
+    end
+    subgraph Agents
+        H[Context Router Agent]:::agent --> E
+        I[RAG Engine Agent]:::agent --> F
+    end
+    subgraph Downstream
+        G --> J[AI PM Assistant]
+        G --> K[All Skills]
+        G --> L[Session Management]
+    end
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

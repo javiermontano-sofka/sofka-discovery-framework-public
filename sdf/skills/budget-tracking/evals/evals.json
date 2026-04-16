@@ -1,0 +1,160 @@
+[
+  {
+    "id": "budget-tracking-eval-001",
+    "title": "Monthly budget tracking at 40% completion with CPI=0.91",
+    "description": "Evaluate budget tracking for a $2.4M software development project at 40% completion. The project has a CPI of 0.91 and SPI of 0.95, indicating cost overrun and slight schedule delay. The agent must collect actuals from 3 cost sources, compute all EVM metrics, identify the root cause of the 9% cost inefficiency, and produce a corrective action plan.",
+    "input": {
+      "project_name": "Phoenix Platform Migration",
+      "bac": 2400000,
+      "percent_complete": 0.40,
+      "planned_value_cumulative": 1020000,
+      "earned_value_cumulative": 960000,
+      "actual_cost_cumulative": 1054945,
+      "cpi": 0.91,
+      "spi": 0.95,
+      "cost_sources": [
+        { "type": "timesheets", "period_amount": 185000, "entries": 47 },
+        { "type": "vendor_invoices", "period_amount": 62000, "entries": 8 },
+        { "type": "expense_reports", "period_amount": 11500, "entries": 15 }
+      ],
+      "control_accounts": [
+        { "id": "CA-101", "name": "Backend Development", "bac": 800000, "ev": 300000, "ac": 348000, "cpi": 0.86 },
+        { "id": "CA-102", "name": "Frontend Development", "bac": 600000, "ev": 250000, "ac": 267000, "cpi": 0.94 },
+        { "id": "CA-103", "name": "QA & Testing", "bac": 400000, "ev": 160000, "ac": 170000, "cpi": 0.94 },
+        { "id": "CA-104", "name": "Infrastructure", "bac": 350000, "ev": 150000, "ac": 160945, "cpi": 0.93 },
+        { "id": "CA-105", "name": "Project Management", "bac": 250000, "ev": 100000, "ac": 109000, "cpi": 0.92 }
+      ]
+    },
+    "expected_behavior": [
+      "Calculates CV = -$94,945 and CV% = -9.89%",
+      "Identifies CA-101 Backend Development as the primary cost variance driver with CPI=0.86",
+      "Computes EAC using at least 2 methods, with EAC-Trend = BAC/CPI ≈ $2,637,363",
+      "Flags TCPI > 1.0 indicating required future performance improvement",
+      "Produces root cause analysis for the backend cost overrun",
+      "Recommends specific corrective actions with owners and deadlines"
+    ],
+    "agents_involved": ["actual-cost-collector", "variance-reporter", "forecast-updater"]
+  },
+  {
+    "id": "budget-tracking-eval-002",
+    "title": "Budget forecast update after major scope change",
+    "description": "Evaluate forecast updating when a $1.8M project receives a $320K approved scope change at 55% completion. The current CPI is 1.03 (slightly favorable) but the scope change introduces new work packages with different cost characteristics. The agent must determine that bottom-up ETC is the most appropriate forecasting method, recalculate EAC, and assess whether the revised BAC ($2.12M) is achievable.",
+    "input": {
+      "project_name": "Enterprise CRM Integration",
+      "original_bac": 1800000,
+      "approved_change_order": {
+        "id": "CR-047",
+        "amount": 320000,
+        "description": "Add real-time analytics dashboard module with 3 new integrations",
+        "new_work_packages": [
+          { "id": "WP-401", "name": "Analytics Engine", "budget": 140000 },
+          { "id": "WP-402", "name": "Dashboard UI", "budget": 95000 },
+          { "id": "WP-403", "name": "Integration Connectors", "budget": 85000 }
+        ]
+      },
+      "revised_bac": 2120000,
+      "percent_complete_original_scope": 0.55,
+      "earned_value_cumulative": 990000,
+      "actual_cost_cumulative": 961165,
+      "cpi": 1.03,
+      "spi": 1.01,
+      "bottom_up_etc_remaining_original": 780000,
+      "bottom_up_etc_new_scope": 335000
+    },
+    "expected_behavior": [
+      "Recognizes that scope change invalidates trend-based EAC methods for the new work",
+      "Selects bottom-up ETC as the primary method: EAC = AC + ETC_original + ETC_new ≈ $2,076,165",
+      "Computes VAC = revised BAC - EAC = $2,120,000 - $2,076,165 = +$43,835 favorable",
+      "Validates that TCPI against revised BAC is achievable (< 1.10)",
+      "Produces three-point forecast with optimistic, most likely, and pessimistic scenarios",
+      "Notes that CPI for new work packages should be monitored separately from original scope"
+    ],
+    "agents_involved": ["forecast-updater", "variance-reporter"]
+  },
+  {
+    "id": "budget-tracking-eval-003",
+    "title": "Reserve tracking with 60% contingency consumed at 30% completion",
+    "description": "Evaluate reserve tracking for a $5M construction-phase IT project where 60% of the contingency reserve ($180K of $300K) has been consumed at only 30% project completion. Management reserve is untouched at $200K. The risk register still shows $280K in remaining EMV for open risks. The agent must flag this as a critical situation and recommend escalation.",
+    "input": {
+      "project_name": "Data Center Consolidation",
+      "bac": 5000000,
+      "percent_complete": 0.30,
+      "contingency_reserve": {
+        "original": 300000,
+        "draws": [
+          { "date": "2026-01-15", "amount": 45000, "risk_id": "R-012", "reason": "Hardware supply chain delay — expediting fees" },
+          { "date": "2026-01-28", "amount": 30000, "risk_id": "R-008", "reason": "Additional firewall licensing for compliance" },
+          { "date": "2026-02-10", "amount": 55000, "risk_id": "R-015", "reason": "Subcontractor rate increase — labor market pressure" },
+          { "date": "2026-03-01", "amount": 50000, "risk_id": "R-012", "reason": "Second round expediting fees — continued supply issues" }
+        ],
+        "total_drawn": 180000,
+        "remaining": 120000
+      },
+      "management_reserve": {
+        "original": 200000,
+        "draws": [],
+        "total_drawn": 0,
+        "remaining": 200000
+      },
+      "risk_register_open_emv": {
+        "technical": 95000,
+        "external": 110000,
+        "organizational": 45000,
+        "project_management": 30000,
+        "total": 280000
+      },
+      "planned_burn_rate_per_month": 25000,
+      "actual_burn_rate_per_month": 60000
+    },
+    "expected_behavior": [
+      "Calculates Reserve Coverage Ratio = $120K / $280K = 0.43 — critically below 1.0 threshold",
+      "Triggers RED or CRITICAL alert due to RCR < 1.0",
+      "Identifies R-012 (supply chain) as a recurring risk consuming disproportionate reserves ($95K total)",
+      "Computes projected depletion date at current burn rate: ~2 months vs ~14 months remaining",
+      "Recommends escalation to steering committee with specific options: reserve replenishment, risk response re-planning, or management reserve reallocation",
+      "Flags that actual burn rate (60K/month) is 2.4x the planned rate (25K/month)"
+    ],
+    "agents_involved": ["reserve-burn-tracker", "variance-reporter"]
+  },
+  {
+    "id": "budget-tracking-eval-004",
+    "title": "Budget tracking for agile project using capacity-based budgeting",
+    "description": "Evaluate budget tracking for a 12-sprint agile product development project ($960K total budget) using capacity-based budgeting where budget is allocated per sprint based on team capacity (8 developers × $10K/sprint + overhead). The project is in Sprint 7 of 12. Velocity has been stable but the team added a contractor in Sprint 5, increasing the sprint cost. The agent must adapt EVM concepts to the agile cadence and track burn rate against the capacity-based budget.",
+    "input": {
+      "project_name": "NextGen Mobile App",
+      "methodology": "Scrum",
+      "total_budget": 960000,
+      "total_sprints": 12,
+      "current_sprint": 7,
+      "sprint_duration_weeks": 2,
+      "team_composition": {
+        "original": { "developers": 8, "cost_per_dev_per_sprint": 10000, "overhead_per_sprint": 5000 },
+        "current": { "developers": 8, "contractor": 1, "cost_per_dev_per_sprint": 10000, "contractor_cost_per_sprint": 13000, "overhead_per_sprint": 5500 }
+      },
+      "budget_per_sprint_original": 85000,
+      "budget_per_sprint_current": 98500,
+      "sprint_actuals": [
+        { "sprint": 1, "planned": 85000, "actual": 82000, "story_points_planned": 40, "story_points_completed": 36 },
+        { "sprint": 2, "planned": 85000, "actual": 86500, "story_points_planned": 40, "story_points_completed": 42 },
+        { "sprint": 3, "planned": 85000, "actual": 84000, "story_points_planned": 42, "story_points_completed": 40 },
+        { "sprint": 4, "planned": 85000, "actual": 87200, "story_points_planned": 42, "story_points_completed": 44 },
+        { "sprint": 5, "planned": 98500, "actual": 99800, "story_points_planned": 48, "story_points_completed": 50 },
+        { "sprint": 6, "planned": 98500, "actual": 101300, "story_points_planned": 50, "story_points_completed": 48 }
+      ],
+      "cumulative_actual": 540800,
+      "cumulative_budget": 537000,
+      "total_story_points_backlog": 520,
+      "story_points_completed": 260,
+      "remaining_budget": 419200
+    },
+    "expected_behavior": [
+      "Adapts EVM to agile: uses story points as the basis for Earned Value (260/520 = 50% earned)",
+      "Calculates agile CPI = (story_points_completed/total × total_budget) / actual = ($480K / $540.8K) ≈ 0.89",
+      "Identifies the contractor addition in Sprint 5 as the primary budget impact driver",
+      "Computes remaining budget sufficiency: $419.2K for 6 sprints at $98.5K/sprint = $591K needed — $171.8K shortfall",
+      "Flags that the revised run rate exceeds the original budget allocation",
+      "Recommends scope negotiation (reduce backlog) or budget augmentation to close the gap"
+    ],
+    "agents_involved": ["actual-cost-collector", "forecast-updater", "variance-reporter", "reserve-burn-tracker"]
+  }
+]

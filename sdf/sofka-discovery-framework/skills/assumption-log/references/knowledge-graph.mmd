@@ -1,0 +1,27 @@
+graph TD
+    subgraph Inputs
+        A[Project Charter] --> D
+        B[Stakeholder Interviews] --> D
+        C[Planning Sessions] --> D
+    end
+
+    subgraph "Assumption Log Process"
+        D[Assumption Identification]:::skill --> E[Classification & Scoring]:::skill
+        E --> F[Validation Planning]:::skill
+        F --> G[Tracking & Resolution]:::skill
+    end
+
+    subgraph Agents
+        H[Risk Analyst Agent]:::agent --> E
+        I[Validation Agent]:::agent --> F
+    end
+
+    subgraph Downstream
+        G --> J[Risk Register]
+        G --> K[Change Control Board]
+        G --> L[Contingency Planning]
+        G --> M[Executive Briefing]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

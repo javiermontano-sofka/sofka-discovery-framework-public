@@ -1,0 +1,45 @@
+[
+  {
+    "prompt": "Create a project charter for migrating our legacy CRM to Salesforce. Team of 8, 9-month timeline, sponsor is VP of Sales.",
+    "assertions": [
+      "produces a complete charter with all sections (Executive Summary, Business Case, Objectives, Scope, Milestones, Assumptions, Success Criteria, Governance, Risk Preview, Authorization)",
+      "business case includes strategic alignment to ≥1 organizational objective",
+      "contains 3-5 SMART objectives with KPI targets",
+      "scope section has ≥3 explicit exclusions with rationale",
+      "≥5 milestones with target dates defined",
+      "authorization block includes sponsor name (VP of Sales)",
+      "evidence tags present throughout — ≥70% [PLAN]/[STAKEHOLDER]",
+      "output file follows naming convention: 00_charter_{project}_{WIP}.md"
+    ]
+  },
+  {
+    "prompt": "Our startup wants a lean charter for a 3-sprint MVP. No formal sponsor identified yet.",
+    "assertions": [
+      "flags absence of sponsor as a critical gap",
+      "either refuses to produce charter without sponsor or creates draft with prominent warning",
+      "uses lean format (1-2 pages) appropriate for agile/startup context",
+      "adapts objectives to iterative/hypothesis-driven format",
+      "does NOT produce a full 5-8 page PMBOK charter for a 3-sprint MVP"
+    ]
+  },
+  {
+    "prompt": "Write SMART objectives for a project to 'improve customer satisfaction through technology'.",
+    "assertions": [
+      "rejects the vague statement as-is",
+      "asks clarifying questions or assumes specific metrics",
+      "produces objectives with specific KPI targets (e.g., NPS from X to Y)",
+      "each objective has a measurement method defined",
+      "each objective has a specific deadline (not 'ongoing')"
+    ]
+  },
+  {
+    "prompt": "We're rescuing a failed project that never had a charter. Create a recovery charter.",
+    "assertions": [
+      "recognizes this as a recovery/turnaround scenario",
+      "includes root cause analysis of the original failure",
+      "references original scope if discoverable",
+      "includes corrective plan section not found in standard charters",
+      "sets realistic re-baselined objectives acknowledging prior failure"
+    ]
+  }
+]

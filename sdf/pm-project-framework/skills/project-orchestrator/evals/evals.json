@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Design the phase sequence for a 12-month enterprise data warehouse project using a hybrid methodology. The project includes discovery, design, 3 build iterations, integration testing, UAT, and deployment. Identify which phases can overlap.",
+    "assertions": [
+      "Output defines at least 6 distinct phases with clear start/end conditions and deliverables",
+      "Output identifies opportunities for phase overlap such as parallel design and build iterations",
+      "Output places quality gates between phases with specific transition criteria",
+      "Output includes a visual roadmap or timeline showing the phase sequence and critical path"
+    ]
+  },
+  {
+    "prompt": "Define deliverable contracts for a digital transformation project that must produce: a current-state assessment, target architecture, migration plan, pilot implementation, and rollout playbook.",
+    "assertions": [
+      "Output includes acceptance criteria for each of the 5 deliverables",
+      "Output assigns an owner and approver for each deliverable",
+      "Output maps dependencies between deliverables showing which are inputs to others",
+      "Output defines quality standards or review requirements for each deliverable"
+    ]
+  },
+  {
+    "prompt": "Compose the governance committee structure for a $5M multi-vendor program with regulatory compliance requirements. The program involves 3 internal teams and 2 external vendors across 2 countries.",
+    "assertions": [
+      "Output defines at least 3 governance bodies such as steering committee, technical review board, and change control board",
+      "Output ensures vendor representation in appropriate committees without giving inappropriate authority",
+      "Output addresses regulatory compliance oversight with a dedicated governance mechanism",
+      "Output maps escalation paths and information flows between committees"
+    ]
+  },
+  {
+    "prompt": "Generate a pipeline status dashboard for a project in month 4 of 8. Current data: 55% of deliverables complete, budget at 60% consumed, 3 high risks open, velocity declining 10% over last 2 sprints, and 1 critical dependency unresolved.",
+    "assertions": [
+      "Output produces a RAG-classified dashboard covering schedule, budget, scope, risk, and velocity dimensions",
+      "Output flags the budget overconsumption relative to deliverable completion as a warning",
+      "Output identifies the declining velocity and unresolved dependency as early warning signals",
+      "Output recommends specific corrective actions with owners for the most critical issues"
+    ]
+  }
+]

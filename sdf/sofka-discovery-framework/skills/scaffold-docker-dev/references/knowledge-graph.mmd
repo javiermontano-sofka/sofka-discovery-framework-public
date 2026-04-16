@@ -1,0 +1,60 @@
+graph TD
+    A[Docker Dev Environment] --> B[compose.yml]
+    A --> C[Dockerfile.dev]
+    A --> D[Dockerfile Production]
+    A --> E[Dev Container]
+
+    B --> B1[Services]
+    B --> B2[Networks]
+    B --> B3[Volumes]
+    B --> B4[Health Checks]
+
+    B1 --> B1a[App Service]
+    B1 --> B1b[Database]
+    B1 --> B1c[Cache / Redis]
+    B1 --> B1d[Mail Catcher]
+
+    B1a --> B1a1[Bind Mount Source]
+    B1a --> B1a2[Anonymous node_modules]
+    B1a --> B1a3[depends_on healthy]
+
+    B4 --> B4a[pg_isready]
+    B4 --> B4b[redis-cli ping]
+    B4 --> B4c[curl /health]
+
+    C --> C1[Layer Cache Strategy]
+    C1 --> C1a[COPY package.json first]
+    C1 --> C1b[RUN npm ci cached]
+    C1 --> C1c[COPY source last]
+
+    C --> C2[Signal Handling]
+    C2 --> C2a[Exec form CMD]
+    C2 --> C2b[PID 1 = app]
+
+    D --> D1[Multi-Stage Build]
+    D1 --> D1a[Stage deps]
+    D1 --> D1b[Stage builder]
+    D1 --> D1c[Stage runner]
+    D1c --> D1c1[Non-root USER]
+    D1c --> D1c2[No devDependencies]
+
+    B2 --> B2a[bridge network]
+    B2 --> B2b[Service DNS resolution]
+
+    B3 --> B3a[Named volumes data]
+    B3 --> B3b[Bind mount code]
+    B3 --> B3c[Anonymous node_modules]
+
+    E --> E1[devcontainer.json]
+    E --> E2[VS Code Extensions]
+    E --> E3[postCreateCommand]
+    E --> E4[forwardPorts]
+
+    A --> F[.dockerignore]
+    F --> F1[Exclude node_modules]
+    F --> F2[Exclude .git]
+    F --> F3[Exclude .env files]
+
+    style A fill:#FF7E08,color:#fff
+    style D fill:#FFD700,color:#000
+    style E fill:#FFD700,color:#000

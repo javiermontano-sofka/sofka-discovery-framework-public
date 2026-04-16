@@ -1,0 +1,72 @@
+```mermaid
+graph TD
+    SI[Sector Intelligence] --> IL[Matriz de Lentes de Industria]
+    SI --> RA[Análisis de Riesgos Sectoriales]
+    SI --> RG[Marco Regulatorio]
+    SI --> BM[Benchmarks Sectoriales]
+    SI --> CL[Paisaje Competitivo]
+    SI --> SO[Resumen So What?]
+
+    IL --> BNK[Banca / Seguros]
+    IL --> RTL[Retail]
+    IL --> HLT[Salud / Healthcare]
+    IL --> TEC[Tecnología / SaaS]
+    IL --> MFG[Manufactura]
+    IL --> GOV[Gobierno / Sector Público]
+    IL --> ENR[Energía / Utilities]
+
+    BNK --> AML[AML / KYC]
+    BNK --> BSL[Basel III/IV]
+    BNK --> CBS[Core Banking Systems]
+    BNK --> FRD[Fraude y Crédito]
+
+    RTL --> SCH[Supply Chain]
+    RTL --> POS[POS / E-commerce]
+    RTL --> OMN[Omnicanal]
+    RTL --> DFP[Demanda y Pricing Dinámico]
+
+    HLT --> HL7[HL7 / FHIR]
+    HLT --> HIP[HIPAA / Privacidad Clínica]
+    HLT --> EHR[EHR / HIS / LIS]
+    HLT --> TLC[Telemedicina]
+
+    TEC --> SAS[SaaS Metrics MRR/ARR]
+    TEC --> PLG[Product-Led Growth]
+    TEC --> MTN[Multi-tenancy]
+    TEC --> CHR[Churn Management]
+
+    MFG --> OEE[OEE / Calidad]
+    MFG --> MES[MES / SCADA]
+    MFG --> ISO[ISO 9001 / 14001]
+
+    GOV --> PRO[Regulación de Contratación]
+    GOV --> DSV[Soberanía de Datos]
+    GOV --> ACC[Accesibilidad WCAG]
+
+    ENR --> SCD[SCADA / EMS]
+    ENR --> NRC[NERC CIP]
+    ENR --> REN[Penetración Renovable]
+
+    RA --> FRK[Riesgos Funcionales]
+    RA --> OPR[Riesgos Operativos]
+    RA --> REG[Riesgos Regulatorios]
+    RA --> CYB[Riesgos Cibernéticos]
+
+    RG --> CMR[Compliance Requerida]
+    RG --> LCL[Reguladores Locales]
+    RG --> INT[Estándares Internacionales]
+
+    BM --> KPI[KPIs Sectoriales]
+    BM --> PER[Performance Típico de Peers]
+    BM --> GAP[Gap Analysis vs Benchmark]
+
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#fff
+    classDef industry fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef regulatory fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef analysis fill:#e8e8f0,stroke:#1A1A2E,color:#1A1A2E
+
+    class SI,IL,RA,RG,BM,CL,SO core
+    class BNK,RTL,HLT,TEC,MFG,GOV,ENR industry
+    class AML,BSL,HIP,HL7,NRC,CMR,LCL,INT regulatory
+    class KPI,PER,GAP,FRK,OPR,REG,CYB analysis
+```

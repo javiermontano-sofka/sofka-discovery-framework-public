@@ -1,0 +1,66 @@
+{
+  "skill_name": "data-modeling-patterns",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This schema has a users table with: id, first_name, last_name, full_name, email, department_name, department_budget. Identify all normalization violations and provide the corrected schema.",
+      "expected_output": "3NF violations identified with corrected schema splitting departments and removing derived full_name",
+      "assertions": [
+        {"text": "Output identifies full_name as a derived/redundant value (3NF violation)", "type": "contains"},
+        {"text": "Output identifies department_name and department_budget as transitive dependencies (3NF)", "type": "contains"},
+        {"text": "Output proposes a separate departments table", "type": "contains"},
+        {"text": "Output provides corrected SQL with FK from users to departments", "type": "contains"},
+        {"text": "Output classifies the violations by normal form (2NF/3NF)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design soft delete for a projects table with 5M rows. Users should be able to restore deleted projects. The slug column must remain unique among active projects.",
+      "expected_output": "deleted_at column, partial unique index on slug, optional RLS policy",
+      "assertions": [
+        {"text": "Output adds deleted_at TIMESTAMPTZ column", "type": "contains"},
+        {"text": "Output creates a partial unique index WHERE deleted_at IS NULL", "type": "contains"},
+        {"text": "Output uses CREATE INDEX CONCURRENTLY for the large table", "type": "contains"},
+        {"text": "Output addresses the unique constraint collision problem on soft-deleted slugs", "type": "contains"},
+        {"text": "Output mentions RLS as an alternative to application-level filtering", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Design a polymorphic 'likes' system that works on posts, videos, and events. Evaluate all 3 approaches: discriminator column, nullable FKs, and shared base table.",
+      "expected_output": "Three patterns compared with FK integrity analysis and recommendation",
+      "assertions": [
+        {"text": "Output describes discriminator column (STI) pattern with actor_type/actor_id", "type": "contains"},
+        {"text": "Output describes nullable FK approach with CHECK constraint", "type": "contains"},
+        {"text": "Output describes shared base table / concrete table inheritance", "type": "contains"},
+        {"text": "Output explains that discriminator column cannot have FK constraints", "type": "contains"},
+        {"text": "Output provides a recommendation with justification based on type stability", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Set up a generic audit trigger for PostgreSQL that records who changed what and when for the orders table, including the user ID from the application session.",
+      "expected_output": "audit_log table, trigger function using JSONB, session variable for user attribution",
+      "assertions": [
+        {"text": "Output creates an audit_log table with old_data and new_data JSONB columns", "type": "contains"},
+        {"text": "Output creates a trigger function using to_jsonb(OLD) and to_jsonb(NEW)", "type": "contains"},
+        {"text": "Output uses current_setting('app.current_user_id') for user attribution", "type": "contains"},
+        {"text": "Output attaches trigger AFTER INSERT OR UPDATE OR DELETE", "type": "contains"},
+        {"text": "Output shows how to set the session variable from the application layer", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Design a bitemporal pricing table for a subscription product. Support: querying price on a specific date, retroactive corrections, and future-dated changes.",
+      "expected_output": "valid_from/valid_until + recorded_at/superseded_at schema with exclusion constraint and sample queries",
+      "assertions": [
+        {"text": "Output includes valid_from and valid_until columns for valid time", "type": "contains"},
+        {"text": "Output includes recorded_at or transaction_time column for transaction time", "type": "contains"},
+        {"text": "Output uses EXCLUDE USING gist to prevent overlapping valid periods", "type": "contains"},
+        {"text": "Output shows a query for 'what was the price on date X'", "type": "contains"},
+        {"text": "Output explains the difference between a correction and a new price period", "type": "contains"}
+      ]
+    }
+  ]
+}

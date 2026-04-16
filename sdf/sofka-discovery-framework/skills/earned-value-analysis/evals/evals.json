@@ -1,0 +1,43 @@
+[
+  {
+    "prompt": "Run EVM analysis for ProjectAlpha. BAC is 480 FTE-hours, we're 45% complete, PV=240, EV=216, AC=250.",
+    "assertions": [
+      "calculates all 11 metrics correctly: PV=240, EV=216, AC=250, CV=-34, SV=-24, CPI=0.864, SPI=0.9, EAC≈556, ETC≈306, VAC≈-76, TCPI≈1.15",
+      "CPI flagged as Red (<0.9)",
+      "SPI flagged as Amber (0.85-0.95)",
+      "TCPI assessed as challenging but achievable (<1.2)",
+      "includes narrative interpretation connecting numbers to actions",
+      "EAC formula selection is justified (not arbitrary)"
+    ]
+  },
+  {
+    "prompt": "This is our first EVM report for the project. We have no historical data.",
+    "assertions": [
+      "acknowledges this is first report — no trend data available",
+      "presents single-point metrics with caveat about trend reliability",
+      "tags forecast as [SUPUESTO] until trend is established",
+      "recommends collecting ≥3 periods before trend analysis",
+      "does NOT fabricate historical data or show fake trend lines"
+    ]
+  },
+  {
+    "prompt": "Our agile team uses story points. How do we do EVM?",
+    "assertions": [
+      "explains AgileEVM adaptation",
+      "uses story points as EV unit (not FTE-hours)",
+      "explains PV = planned story points per sprint",
+      "explains EV = completed (accepted) story points",
+      "mentions velocity-based forecasting as alternative to traditional EAC"
+    ]
+  },
+  {
+    "prompt": "Our TCPI is 1.35. What does this mean?",
+    "assertions": [
+      "flags TCPI > 1.2 as statistically improbable recovery",
+      "recommends re-baselining, scope reduction, or additional funding",
+      "presents all three options with impact analysis",
+      "does NOT suggest 'the team just needs to work harder'",
+      "recommends escalation to steering committee"
+    ]
+  }
+]

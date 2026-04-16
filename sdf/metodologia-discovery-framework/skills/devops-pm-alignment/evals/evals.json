@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Integrate DORA metrics into project dashboard.",
+    "assertions": [
+      "maps DORA metrics to project KPIs",
+      "designs collection method",
+      "creates visualization",
+      "establishes improvement targets"
+    ]
+  },
+  {
+    "prompt": "Align CI/CD pipeline with project milestones.",
+    "assertions": [
+      "maps deployment events to milestones",
+      "integrates release gates with project gates",
+      "tracks deployment frequency",
+      "reports on lead time"
+    ]
+  },
+  {
+    "prompt": "Track deployments as project deliverables.",
+    "assertions": [
+      "creates deployment register",
+      "links deployments to sprint goals",
+      "tracks rollback rates",
+      "measures deployment success"
+    ]
+  },
+  {
+    "prompt": "Bridge DevOps and PM reporting.",
+    "assertions": [
+      "maps DevOps metrics to PM language",
+      "integrates dashboards",
+      "creates unified governance view",
+      "addresses cultural differences"
+    ]
+  }
+]

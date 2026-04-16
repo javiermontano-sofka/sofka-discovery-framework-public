@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Evaluate 8 project proposals competing for next quarter's funding.",
+    "assertions": [
+      "defines weighted selection criteria",
+      "scores each proposal consistently",
+      "produces transparent comparative ranking",
+      "recommends top projects with justification"
+    ]
+  },
+  {
+    "prompt": "Strategic pivot: re-evaluate project portfolio against new CEO priorities.",
+    "assertions": [
+      "updates selection criteria to reflect new strategy",
+      "re-scores existing projects against updated criteria",
+      "identifies projects misaligned with new direction",
+      "recommends portfolio adjustments"
+    ]
+  },
+  {
+    "prompt": "Two proposals score identically. How to differentiate?",
+    "assertions": [
+      "applies tie-breaking criteria",
+      "considers strategic urgency and timing",
+      "evaluates risk-adjusted value",
+      "recommends with transparent rationale"
+    ]
+  },
+  {
+    "prompt": "Recommend no-go for a politically popular but financially weak proposal.",
+    "assertions": [
+      "presents financial analysis objectively",
+      "acknowledges political context without compromising analysis",
+      "frames no-go with conditions for future reconsideration",
+      "provides alternative suggestions to address the underlying need"
+    ]
+  }
+]

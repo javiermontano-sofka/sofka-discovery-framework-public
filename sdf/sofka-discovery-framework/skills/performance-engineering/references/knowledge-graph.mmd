@@ -1,0 +1,103 @@
+%% Knowledge Graph: Performance Engineering
+%% Autor: Javier Montaño | © Sofka Technologies
+%% Fecha: 13 de marzo de 2026
+%% Descripción: Grafo de conocimiento que conecta los conceptos fundamentales
+%% de performance engineering, sus relaciones y dependencias.
+
+graph TD
+    subgraph Estrategia["Performance Engineering"]
+        direction TB
+        PerfEng["Performance Engineering<br/>Assessment, optimization, capacity"]
+        SLODesign["SLO Design<br/>Percentile-based, error budgets"]
+        CapPlanning["Capacity Planning<br/>USL, demand forecasting"]
+    end
+
+    subgraph Medición["Medición & Baseline"]
+        direction TB
+        Profiling["Profiling<br/>CPU, memory, I/O, locks"]
+        APM["APM<br/>Datadog, New Relic, Dynatrace"]
+        DistTracing["Distributed Tracing<br/>OpenTelemetry, Jaeger"]
+        Benchmarks["Benchmarks<br/>p50, p95, p99, throughput"]
+    end
+
+    subgraph LoadTesting["Load Testing"]
+        direction TB
+        LoadTest["Load Testing<br/>k6, Gatling, Locust"]
+        StressTest["Stress Testing<br/>Breaking point, degradation"]
+        SoakTest["Soak Testing<br/>Memory leaks, connection exhaustion"]
+        SpikeTest["Spike Testing<br/>Autoscaling response, burst"]
+    end
+
+    subgraph Bottlenecks["Análisis de Cuellos de Botella"]
+        direction TB
+        BottleneckAnalysis["Bottleneck Analysis<br/>Classify, quantify, prioritize"]
+        ComputeBound["Compute-Bound<br/>CPU saturation, thread contention"]
+        IOBound["I/O-Bound<br/>Disk, network, DB queries"]
+        MemoryBound["Memory-Bound<br/>GC pressure, heap sizing"]
+    end
+
+    subgraph Optimización["Optimización"]
+        direction TB
+        CachingArch["Caching Architecture<br/>L1/L2/L3, invalidation"]
+        CDNEdge["CDN & Edge<br/>Origin shielding, edge compute"]
+        ConnPooling["Connection Pooling<br/>DB, HTTP, Redis"]
+        QueryOpt["Query Optimization<br/>Indexes, explain plans, N+1"]
+    end
+
+    subgraph Escalabilidad["Escalabilidad & SLOs"]
+        direction TB
+        HorizontalScale["Horizontal Scaling<br/>Stateless, autoscaling"]
+        VerticalScale["Vertical Scaling<br/>Resource sizing"]
+        ErrorBudget["Error Budget<br/>Burn rate alerts, policies"]
+        BurnRate["Burn Rate Alerts<br/>Fast burn page, slow burn ticket"]
+    end
+
+    %% Relaciones principales
+    PerfEng --> SLODesign
+    PerfEng --> CapPlanning
+    PerfEng --> BottleneckAnalysis
+
+    SLODesign --> Benchmarks
+    SLODesign --> ErrorBudget
+    ErrorBudget --> BurnRate
+
+    CapPlanning --> LoadTest
+    CapPlanning --> HorizontalScale
+    CapPlanning --> VerticalScale
+
+    Profiling --> BottleneckAnalysis
+    APM --> DistTracing
+    APM --> Benchmarks
+    DistTracing --> BottleneckAnalysis
+
+    BottleneckAnalysis --> ComputeBound
+    BottleneckAnalysis --> IOBound
+    BottleneckAnalysis --> MemoryBound
+
+    LoadTest --> StressTest
+    LoadTest --> SoakTest
+    LoadTest --> SpikeTest
+    LoadTest --> Benchmarks
+
+    ComputeBound --> HorizontalScale
+    IOBound --> CachingArch
+    IOBound --> QueryOpt
+    MemoryBound --> Profiling
+
+    CachingArch --> CDNEdge
+    CachingArch --> ConnPooling
+    CDNEdge --> HorizontalScale
+
+    StressTest --> CapPlanning
+    SoakTest --> MemoryBound
+
+    %% Estilos Sofka
+    classDef primary fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef secondary fill:#1A1A2E,stroke:#FF7E08,color:#fff,stroke-width:1px
+    classDef accent fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:1px
+    classDef neutral fill:#F3F4F6,stroke:#D1D5DB,color:#1F2937,stroke-width:1px
+
+    class PerfEng,SLODesign,CapPlanning primary
+    class LoadTest,StressTest,SoakTest,SpikeTest secondary
+    class BottleneckAnalysis,ComputeBound,IOBound,MemoryBound accent
+    class Profiling,APM,DistTracing,Benchmarks,CachingArch,CDNEdge,ConnPooling,QueryOpt,HorizontalScale,VerticalScale,ErrorBudget,BurnRate neutral

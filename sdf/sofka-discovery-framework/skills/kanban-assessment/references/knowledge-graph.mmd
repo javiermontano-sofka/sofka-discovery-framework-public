@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[agile-assessment] --> F
+        B[maturity-assessment] --> F
+        C[methodology-assessment] --> F
+        D[dashboard-tooling] --> F
+    end
+
+    subgraph Process
+        F[kanban-assessment<br/>Evaluate Kanban<br/>Maturity & Flow]:::skill
+        F --> G[Assess Practices]
+        G --> H[Analyze Flow Metrics]
+        H --> I[Score & Recommend]
+    end
+
+    subgraph Outputs
+        I --> J[kanban-system]
+        I --> K[continuous-improvement]
+        I --> L[hybrid-assessment]
+    end
+
+    subgraph Agents
+        M[kanban-coach-agent]:::agent --> F
+        N[flow-analyst-agent]:::agent --> H
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

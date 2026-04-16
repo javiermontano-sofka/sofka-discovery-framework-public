@@ -1,0 +1,22 @@
+graph TD
+    subgraph Inputs
+        A[Risk Register] --> D
+        B[Budget Baseline] --> D
+        C[Schedule Baseline] --> D
+    end
+    subgraph "Contingency Planning Process"
+        D[Risk Prioritization]:::skill --> E[Response Design]:::skill
+        E --> F[Reserve Calculation]:::skill
+        F --> G[Monitoring Setup]:::skill
+    end
+    subgraph Agents
+        H[Risk Analyst Agent]:::agent --> D
+        I[Simulation Agent]:::agent --> F
+    end
+    subgraph Downstream
+        G --> J[Budget Tracking]
+        G --> K[Change Control Board]
+        G --> L[Executive Briefing]
+    end
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

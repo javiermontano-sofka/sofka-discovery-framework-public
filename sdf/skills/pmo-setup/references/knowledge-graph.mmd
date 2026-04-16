@@ -1,0 +1,47 @@
+%% Knowledge Graph — PMO Setup
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    SETUP["PMO Setup"]:::blue
+
+    %% Inputs
+    MAT["Maturity Assessment"]:::dark
+    STRAT["Org Strategy"]:::dark
+    SPONSOR["Executive Sponsor"]:::dark
+
+    %% PMO Components
+    TYPE["PMO Type Selection"]:::amber
+    CHARTER["PMO Charter"]:::amber
+    CATALOG["Service Catalog"]:::amber
+    STAFF["Staffing Plan"]:::amber
+    GOV["Governance Framework"]:::amber
+    TOOLS["Tool Ecosystem"]:::amber
+
+    %% Outputs
+    ROAD["Implementation Roadmap"]:::blue
+    METRICS["Success Metrics"]:::blue
+    OPS["PMO Operations"]:::blue
+
+    %% Flow
+    MAT --> SETUP
+    STRAT --> SETUP
+    SPONSOR --> SETUP
+    SETUP --> TYPE
+    TYPE --> CHARTER
+    CHARTER --> CATALOG
+    CATALOG --> STAFF
+    STAFF --> GOV
+    GOV --> TOOLS
+    TOOLS --> ROAD
+    ROAD --> METRICS
+    METRICS --> OPS
+
+    %% Cross-refs
+    HC["PMO Health Check"]:::dark
+    ASSESS["PMO Assessment"]:::dark
+    OPS -.->|"quarterly"| HC
+    ASSESS -.->|"annual"| SETUP

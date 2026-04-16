@@ -1,0 +1,22 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["📅 Schedule Baseline<br/>3-Point Estimates"]:::primary --> B["🎲 Monte Carlo Simulation<br/>Skill Entry Point"]:::primary
+    C["💰 Cost Estimation<br/>Cost Ranges"]:::amber --> B
+    D["⚠️ Risk Register<br/>Discrete Risk Events"]:::amber --> B
+
+    B --> E["📊 Distribution Assignment<br/>PERT / Triangular / Normal"]:::primary
+    E --> F["🔄 Simulation Execution<br/>10,000+ Iterations"]:::primary
+
+    F --> G["📈 S-Curve Generation<br/>P10 / P50 / P80 / P90"]:::dark
+    F --> H["🌪️ Sensitivity Analysis<br/>Tornado Diagram"]:::amber
+
+    G --> I["💎 Contingency Calc<br/>P80 - P50 Reserve"]:::primary
+    H --> I
+
+    I --> J["📦 Deliverables<br/>Simulation Report"]:::dark
+    J --> K["✅ Validation Gate<br/>10 Criteria"]:::primary
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assess our SAFe implementation. We have 3 ARTs running Essential SAFe. PI predictability averages 65%, and teams report that PI Planning feels like a formality rather than a genuine planning event.",
+    "assertions": [
+      "Must evaluate ART health metrics including the 65% PI predictability as below target",
+      "Must assess PI Planning quality and identify why it feels ceremonial rather than valuable",
+      "Must analyze whether Essential SAFe core practices are properly implemented",
+      "Must recommend specific improvements to increase PI predictability toward the 80-100% target"
+    ]
+  },
+  {
+    "prompt": "Our organization is moving from Essential SAFe to Full SAFe. We have 5 ARTs and want to add portfolio-level practices. Assess our readiness for this transition.",
+    "assertions": [
+      "Must evaluate current Essential SAFe maturity as a foundation for Full SAFe",
+      "Must assess lean portfolio management readiness including funding model and epic flow",
+      "Must identify gaps in organizational agility and continuous learning culture",
+      "Must provide a phased roadmap for transitioning to Full SAFe configuration"
+    ]
+  },
+  {
+    "prompt": "Evaluate our PI execution. Last 3 PIs show declining objective achievement (85%, 72%, 61%) and increasing dependency conflicts between teams.",
+    "assertions": [
+      "Must analyze the declining PI objective achievement trend and root causes",
+      "Must evaluate dependency management practices during PI Planning and execution",
+      "Must assess whether PI objectives are properly SMART and confidence votes are genuine",
+      "Must recommend corrective actions to reverse the declining performance trend"
+    ]
+  },
+  {
+    "prompt": "Our lean portfolio management is struggling. Epics take 6+ months to go from Funnel to Implementation, and business stakeholders complain that SAFe slows everything down.",
+    "assertions": [
+      "Must analyze portfolio Kanban flow and identify bottleneck stages causing the 6-month cycle time",
+      "Must evaluate whether lean business cases are appropriately lightweight or overly bureaucratic",
+      "Must assess whether WSJF or another prioritization framework is effectively applied",
+      "Must address the perception that SAFe creates overhead rather than enabling agility"
+    ]
+  }
+]

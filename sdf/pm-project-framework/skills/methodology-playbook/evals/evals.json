@@ -1,0 +1,113 @@
+[
+  {
+    "id": "methodology-playbook-eval-001",
+    "title": "Scrum vs Kanban for a 12-person team",
+    "description": "A 12-person cross-functional team building a SaaS product with bi-weekly releases needs to choose between Scrum and Kanban. Requirements change moderately, the team has mixed agile experience, and stakeholders expect predictable delivery cadence.",
+    "input": {
+      "team_size": 12,
+      "domain": "SaaS product development",
+      "requirements_stability": "moderate",
+      "release_cadence": "bi-weekly",
+      "team_experience": "mixed agile maturity (3 seniors, 5 mid, 4 juniors)",
+      "stakeholder_expectation": "predictable sprint commitments with demo every 2 weeks",
+      "regulatory_constraints": "none",
+      "distribution": "single timezone, hybrid office"
+    },
+    "expected_behavior": [
+      "Methodology Evaluator scores both Scrum and Kanban, recommending Scrum due to the need for predictable cadence and structured ceremonies that benefit junior team members",
+      "Ceremony Choreographer produces a 2-week sprint calendar with standups, planning, review, retrospective, and mid-sprint refinement",
+      "Definition of Done Crafter delivers story-level and sprint-level DoD checklists with testing thresholds appropriate for a SaaS product",
+      "Toolchain Selector recommends Jira or Linear with Slack integration and Confluence for documentation"
+    ],
+    "evaluation_criteria": {
+      "methodology_justified": "Recommendation includes weighted scoring with clear rationale for Scrum over Kanban",
+      "ceremony_calendar_complete": "All 5 core Scrum ceremonies are scheduled with time, duration, and participants",
+      "dod_multi_level": "At least story-level and sprint-level DoD checklists are produced",
+      "toolchain_coherent": "Recommended tools integrate with each other and support Scrum workflows"
+    }
+  },
+  {
+    "id": "methodology-playbook-eval-002",
+    "title": "SAFe implementation for a 60-person program",
+    "description": "A financial services company with 60 engineers across 5 teams needs to coordinate delivery of a core banking platform. Teams are distributed across 3 time zones, there are hard regulatory deadlines, and leadership wants portfolio-level visibility.",
+    "input": {
+      "team_size": 60,
+      "number_of_teams": 5,
+      "domain": "core banking platform",
+      "requirements_stability": "low — regulatory changes drive frequent reprioritization",
+      "release_cadence": "quarterly regulatory releases with continuous internal deploys",
+      "team_experience": "teams practiced Scrum individually for 2 years",
+      "stakeholder_expectation": "portfolio-level roadmap, PI-level predictability, regulatory compliance traceability",
+      "regulatory_constraints": "SOX, PCI-DSS, central bank audit requirements",
+      "distribution": "3 time zones (Americas), mostly remote"
+    },
+    "expected_behavior": [
+      "Methodology Evaluator recommends SAFe Essential or Portfolio SAFe, scoring it higher than LeSS or Nexus due to portfolio visibility and regulatory traceability needs",
+      "Ceremony Choreographer designs a PI Planning cadence (8-10 week PIs) with team-level sprints, system demos, inspect-and-adapt, and cross-team sync ceremonies with time-zone-aware scheduling",
+      "Definition of Done Crafter produces story, sprint, PI, and release-level DoDs with explicit compliance checkpoints for SOX and PCI-DSS",
+      "Toolchain Selector recommends Azure DevOps or Jira Align for portfolio tracking with compliance plugins and audit trail capabilities"
+    ],
+    "evaluation_criteria": {
+      "scale_appropriate": "Recommendation addresses multi-team coordination, not just single-team agile",
+      "regulatory_integrated": "DoD includes compliance gates and audit trail requirements at every level",
+      "pi_planning_designed": "Ceremony calendar includes PI Planning with cross-team dependency mapping",
+      "toolchain_supports_scale": "Recommended tools handle portfolio-level tracking across 5+ teams"
+    }
+  },
+  {
+    "id": "methodology-playbook-eval-003",
+    "title": "Hybrid methodology for a regulated industry project",
+    "description": "A medical device company needs to develop embedded firmware with a companion mobile app. The firmware requires V-model documentation for FDA 510(k) submission, while the mobile app team wants agile flexibility. The 20-person team must satisfy both ISO 13485 and rapid market iteration.",
+    "input": {
+      "team_size": 20,
+      "domain": "medical device — embedded firmware + companion mobile app",
+      "requirements_stability": "firmware: high (FDA-locked); mobile app: low (market-driven iteration)",
+      "release_cadence": "firmware: milestone-gated (3 milestones); mobile app: bi-weekly",
+      "team_experience": "firmware team: V-model/waterfall; mobile team: Scrum practitioners",
+      "stakeholder_expectation": "FDA 510(k) submission readiness + competitive mobile app UX",
+      "regulatory_constraints": "FDA 21 CFR Part 820, ISO 13485, IEC 62304",
+      "distribution": "co-located, single site"
+    },
+    "expected_behavior": [
+      "Methodology Evaluator recommends a hybrid approach: V-model with agile overlay for firmware, Scrum for mobile app, with integration sync points at each firmware milestone",
+      "Ceremony Choreographer designs dual-track ceremonies: firmware milestone reviews and design reviews alongside mobile Scrum sprints, with cross-track integration syncs every 2 weeks",
+      "Definition of Done Crafter produces firmware DoD with full traceability matrix (requirements to test cases), design history file entries, and risk analysis updates per IEC 62304; mobile DoD with standard agile criteria",
+      "Toolchain Selector recommends a compliant ALM tool (Jama, Polarion, or Azure DevOps with compliance extensions) for firmware traceability alongside Jira for mobile app sprints"
+    ],
+    "evaluation_criteria": {
+      "dual_methodology_coherent": "Hybrid approach clearly separates firmware and mobile workflows while defining integration points",
+      "regulatory_traceability": "Firmware DoD includes FDA/ISO-mandated traceability, design history file, and risk management artifacts",
+      "ceremony_dual_track": "Calendar shows both V-model gates and Scrum ceremonies with explicit sync points",
+      "toolchain_compliant": "Firmware tooling supports regulatory audit trails; mobile tooling supports agile velocity tracking"
+    }
+  },
+  {
+    "id": "methodology-playbook-eval-004",
+    "title": "Methodology pivot from waterfall to agile mid-project",
+    "description": "An insurance company is 4 months into a 14-month waterfall project to modernize their claims processing system. The project is behind schedule, requirements have changed significantly, and leadership has mandated a pivot to agile. 25 team members have no agile experience, and 40% of the codebase is already built following waterfall design documents.",
+    "input": {
+      "team_size": 25,
+      "domain": "insurance claims processing modernization",
+      "requirements_stability": "volatile — business rules changed 3 times in 4 months",
+      "current_methodology": "waterfall (4 months in, behind schedule)",
+      "project_timeline": "14 months total, 10 months remaining",
+      "team_experience": "zero agile experience, strong waterfall discipline",
+      "stakeholder_expectation": "recover schedule, deliver incremental value, maintain existing commitments",
+      "regulatory_constraints": "insurance regulatory compliance, data privacy (state-level regulations)",
+      "codebase_state": "40% built following waterfall design docs, monolithic architecture",
+      "distribution": "single office, traditional 9-5 culture"
+    },
+    "expected_behavior": [
+      "Methodology Evaluator recommends a phased transition to Scrum with a 2-sprint 'training wheels' period, acknowledging the risk of mid-project pivots and providing a rollback plan",
+      "Ceremony Choreographer designs a graduated ceremony introduction: start with standups and retrospectives in sprint 1, add planning and review in sprint 2, full ceremony set by sprint 3, with extra time allocated for learning",
+      "Definition of Done Crafter creates a transitional DoD that honors existing waterfall artifacts (design docs, test plans) while progressively introducing agile quality criteria over 3 sprints",
+      "Toolchain Selector recommends migrating from the current waterfall tool (MS Project or equivalent) to Jira/Azure DevOps with a parallel-run period and data migration plan for existing work items"
+    ],
+    "evaluation_criteria": {
+      "transition_risk_addressed": "Recommendation explicitly addresses mid-project pivot risks including team resistance, knowledge loss, and schedule impact",
+      "graduated_adoption": "Ceremonies and DoD are introduced progressively, not all-at-once, respecting the team's zero agile experience",
+      "existing_artifacts_honored": "Transition plan preserves value from existing waterfall artifacts rather than discarding them",
+      "rollback_plan_included": "Recommendation includes fallback strategy if the agile transition fails to improve delivery velocity within a defined timeframe"
+    }
+  }
+]

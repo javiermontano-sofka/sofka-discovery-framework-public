@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Risk Response Planning<br/>Active Responses] --> D
+        B[Project Health Check<br/>Project Metrics] --> D
+        C[Risk Appetite Framework<br/>Thresholds] --> D
+    end
+
+    subgraph "Risk Monitoring"
+        D[KRI Tracking<br/>& Data Collection] --> E[Risk Assessment<br/>& Trend Analysis]
+        E --> F[Threshold Evaluation<br/>& Alerting]
+        F --> G[Reporting &<br/>Escalation]
+    end
+
+    subgraph Outputs
+        G --> H[Steering Review]
+        G --> I[Risk Response Updates]
+        F --> J[Status Report]
+        G --> K[Contingency Activation]
+    end
+
+    subgraph Agents
+        L[Risk Monitor Agent] --> E
+        M[Early Warning Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

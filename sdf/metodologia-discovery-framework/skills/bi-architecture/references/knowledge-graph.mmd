@@ -1,0 +1,143 @@
+%% Knowledge Graph — BI Architecture
+%% Dominio: Semantic layer, dashboard design, self-service BI, KPI frameworks, embedded analytics, OLAP
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["bi-architecture"]
+        direction TB
+        PR["Principio Rector:<br/>Un dashboard sin semantica es<br/>un grafico bonito sin significado"]
+        FW["Framework: 6 Secciones"]
+        VG["Validation Gate: 10 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        MARTS["Data Marts<br/>(fct_, dim_ models)"]
+        KPIS["Business KPIs<br/>(strategic objectives)"]
+        USERS["User Personas<br/>(executive, analyst, ops)"]
+        TOOLS["Existing BI Tools<br/>(Looker, PBI, Tableau)"]
+        DATALIT["Data Literacy<br/>(team maturity)"]
+    end
+
+    subgraph SEMANTIC["Semantic Layer"]
+        METRICDEFS["Metric Definitions<br/>Formula, grain,<br/>dimensions, owner"]
+        DIMENSIONS["Conformed Dimensions<br/>Hierarchies, SCDs,<br/>drill paths"]
+        GLOSSARY["Business Glossary<br/>Terms, synonyms,<br/>ownership"]
+        RLS["Access Control<br/>Row-level security,<br/>column masking"]
+    end
+
+    subgraph DASHBOARDS["Dashboard Hierarchy"]
+        L1["L1: Executive<br/>North star KPIs,<br/>daily refresh"]
+        L2["L2: Department<br/>Team KPIs, filters,<br/>daily refresh"]
+        L3["L3: Operational<br/>Detailed metrics,<br/>hourly/real-time"]
+        L4["L4: Ad-hoc<br/>Self-service exploration,<br/>on-demand"]
+    end
+
+    subgraph SECTIONS["6-Section Delivery"]
+        S1["S1: KPI & Metric<br/>Framework"]
+        S2["S2: Semantic Layer<br/>Design"]
+        S3["S3: Reporting<br/>Architecture"]
+        S4["S4: Self-Service<br/>Analytics"]
+        S5["S5: Visualization<br/>Standards"]
+        S6["S6: BI Platform &<br/>Governance"]
+    end
+
+    subgraph VISUALIZATION["Visualization Standards"]
+        CHARTS["Chart Selection<br/>Bar, line, scatter,<br/>table — match to question"]
+        COLORS["Color Palette<br/>WCAG 2.1 AA,<br/>color-blind safe"]
+        LAYOUT["Layout Templates<br/>Grid systems,<br/>information hierarchy"]
+        A11Y["Accessibility<br/>Screen readers,<br/>alt text, contrast"]
+    end
+
+    subgraph SELFSERVICE["Self-Service Zones"]
+        CERTIFIED["Certified Zone<br/>Curated marts,<br/>locked definitions"]
+        EXPLORATORY["Exploratory Zone<br/>Analysts, sandbox,<br/>labeled experimental"]
+        RAW["Raw Zone<br/>Engineers only,<br/>audit logging"]
+    end
+
+    subgraph PLATFORMS["BI Platforms"]
+        LOOKER["Looker<br/>LookML, governed"]
+        PBI["Power BI<br/>Microsoft ecosystem"]
+        TABLEAU["Tableau<br/>Visual exploration"]
+        SUPERSET["Superset / Metabase<br/>OSS, cost-effective"]
+        EMBEDDED["Embedded Analytics<br/>SDK, multi-tenant"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        BIARCH["BI Architecture<br/>(6-section report)"]
+        METRICCAT["Metric Catalog<br/>(definitions, owners)"]
+        CHARTGUIDE["Chart Selection<br/>Guide"]
+        ACCESSMATRIX["Access Control<br/>Matrix"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        ANALYTICS["analytics-engineering<br/>(upstream: data models)"]
+        DATAMESH["data-mesh-strategy<br/>(data products → BI)"]
+        DATAGOV["data-governance<br/>(governance policies)"]
+        DESIGN["design-system<br/>(visual standards)"]
+        ADOPTION["adoption-strategy<br/>(self-service enablement)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        AANAL["analytics-architect<br/>(owner)"]
+        UXS["ux-strategist<br/>(support: S5)"]
+        DA["domain-analyst<br/>(support: S1)"]
+        BA["business-analyst<br/>(support: S1, S4)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|estructura via| SEMANTIC
+    SEMANTIC -->|sirve a| DASHBOARDS
+    DASHBOARDS -->|implementan| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    VISUALIZATION -.->|estandariza| S5
+    SELFSERVICE -.->|define zonas en| S4
+    PLATFORMS -.->|evalua en| S6
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Semantic to dashboard flow
+    METRICDEFS -->|define KPIs en| L1
+    METRICDEFS -->|segmenta en| L2
+    METRICDEFS -->|detalla en| L3
+    DIMENSIONS -->|habilita drill en| L2
+    DIMENSIONS -->|habilita exploracion en| L4
+
+    %% Section traceability
+    S1 -.->|metric tree feeds| S2
+    S2 -.->|semantic layer serves| S3
+    S3 -.->|dashboard tiers enable| S4
+    S4 -.->|self-service requires| S5
+    S5 -.->|visual standards constrain| S3
+    S6 -.->|platform governs| S3
+    S6 -.->|access control enforces| S4
+
+    %% Agent relationships
+    AANAL -->|opera| SKILL
+    UXS -.->|aporta S5| S5
+    DA -.->|aporta S1| S1
+    BA -.->|aporta S1, S4| SKILL
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef semantic fill:#FFECB3,stroke:#FF8F00,color:#1A1A2E,stroke-width:2px
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef platform fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef dashboard fill:#FFF8E1,stroke:#F57F17,color:#1A1A2E
+    classDef viz fill:#E8EAF6,stroke:#3F51B5,color:#1A1A2E
+    classDef zone fill:#E0F2F1,stroke:#00695C,color:#1A1A2E
+
+    class SKILL skill
+    class MARTS,KPIS,USERS,TOOLS,DATALIT input
+    class METRICDEFS,DIMENSIONS,GLOSSARY,RLS semantic
+    class S1,S2,S3,S4,S5,S6 section
+    class BIARCH,METRICCAT,CHARTGUIDE,ACCESSMATRIX output
+    class LOOKER,PBI,TABLEAU,SUPERSET,EMBEDDED platform
+    class ANALYTICS,DATAMESH,DATAGOV,DESIGN,ADOPTION consumer
+    class AANAL,UXS,DA,BA agent
+    class L1,L2,L3,L4 dashboard
+    class CHARTS,COLORS,LAYOUT,A11Y viz
+    class CERTIFIED,EXPLORATORY,RAW zone

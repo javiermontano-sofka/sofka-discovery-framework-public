@@ -1,0 +1,87 @@
+%% Knowledge Graph — Design System v4 (Brand-Configurable) + HTML Brand Generation
+%% Accessibility: Directed graph showing skill inputs, core sections, standards, outputs, consumers, and agents.
+
+graph LR
+    %% Inputs
+    BRAND_CONFIG["brand-config.json"]
+    EXISTING_HTML["Existing HTML Files"]
+    CONTENT_SOURCE["Content Source<br/>(markdown, data)"]
+
+    %% Skill
+    SKILL["design-system<br/>v4 Skill"]
+
+    %% Core Sections
+    TOKENS["Design Tokens<br/>(:root CSS vars)"]
+    COMPONENTS["Component Library<br/>(cards, badges, callouts)"]
+    PATTERNS["Page Patterns<br/>(hero, nav, footer)"]
+    ACCESSIBILITY["Accessibility Layer<br/>(skip-link, focus, ARIA)"]
+    BRAND_HTML["Brand HTML Generation<br/>(absorbed html-brand)"]
+    TYPOGRAPHY["Typography System<br/>(Clash Grotesk + Inter)"]
+    SEMANTIC_COLORS["Semantic Color System<br/>(yellow-positive, red-critical)"]
+    RESPONSIVE["Responsive Breakpoints<br/>(mobile, tablet, desktop)"]
+    DOCUMENTATION["Documentation Output<br/>(markdown, dual format)"]
+
+    %% Standards
+    WCAG["WCAG 2.1 AA"]
+    MATERIAL["Material Design<br/>(Google)"]
+    CARBON["Carbon Design<br/>(IBM)"]
+    SOFKA_BRAND["Sofka Brand Guidelines<br/>(#FF7E08, #1A1A2E)"]
+    W3C_TOKENS["W3C Design Tokens<br/>Community Group"]
+    WAI_ARIA["WAI-ARIA Practices"]
+
+    %% Outputs
+    HTML_OUTPUT["Styled HTML Deliverable"]
+    MD_OUTPUT["Markdown Token Docs"]
+    VALIDATION["Validation Report<br/>(validate_html.sh)"]
+
+    %% Consumers
+    DISCOVERY_PIPELINE["Discovery Pipeline<br/>(10 deliverables)"]
+    PRESALES_TEAM["PreSales Architects"]
+    CLIENT_FACING["Client-Facing<br/>Presentations"]
+
+    %% Agents
+    BATCH_UPGRADER["batch-upgrader<br/>Agent"]
+    FRONTEND_DEV["frontend-developer<br/>Agent"]
+    UX_STRATEGIST["ux-strategist<br/>Agent"]
+
+    %% Input edges
+    BRAND_CONFIG -->|"loads tokens"| SKILL
+    EXISTING_HTML -->|"upgrade target"| SKILL
+    CONTENT_SOURCE -->|"raw content"| SKILL
+
+    %% Skill to sections
+    SKILL -->|"resolves"| TOKENS
+    SKILL -->|"catalogs"| COMPONENTS
+    SKILL -->|"structures"| PATTERNS
+    SKILL -->|"enforces"| ACCESSIBILITY
+    SKILL -->|"generates"| BRAND_HTML
+    SKILL -->|"configures"| TYPOGRAPHY
+    SKILL -->|"maps"| SEMANTIC_COLORS
+    SKILL -->|"adapts"| RESPONSIVE
+    SKILL -->|"exports"| DOCUMENTATION
+
+    %% Standards influence
+    WCAG -->|"contrast ratios"| ACCESSIBILITY
+    WAI_ARIA -->|"roles & labels"| ACCESSIBILITY
+    MATERIAL -->|"component patterns"| COMPONENTS
+    CARBON -->|"token architecture"| TOKENS
+    SOFKA_BRAND -->|"identity system"| BRAND_HTML
+    W3C_TOKENS -->|"token spec"| TOKENS
+
+    %% Sections to outputs
+    TOKENS -->|"injected into :root"| HTML_OUTPUT
+    COMPONENTS -->|"rendered"| HTML_OUTPUT
+    PATTERNS -->|"applied"| HTML_OUTPUT
+    BRAND_HTML -->|"produces"| HTML_OUTPUT
+    DOCUMENTATION -->|"produces"| MD_OUTPUT
+    ACCESSIBILITY -->|"validated by"| VALIDATION
+
+    %% Outputs to consumers
+    HTML_OUTPUT -->|"deliverables for"| DISCOVERY_PIPELINE
+    HTML_OUTPUT -->|"presentations for"| CLIENT_FACING
+    MD_OUTPUT -->|"reference for"| PRESALES_TEAM
+
+    %% Agents
+    BATCH_UPGRADER -->|"bulk upgrades via"| SKILL
+    FRONTEND_DEV -->|"consults"| SKILL
+    UX_STRATEGIST -->|"audits with"| SKILL

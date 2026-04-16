@@ -1,0 +1,58 @@
+[
+  {
+    "id": "safe-art-structure-50-person",
+    "title": "Design ART structure for a 50-person program with 3 value streams",
+    "prompt": "We have a 50-person software program organized around 3 value streams: Customer Onboarding, Payments Processing, and Merchant Analytics. Each value stream has between 12 and 20 people. Design the ART structure — define team-of-teams composition, map teams to value streams, identify whether we need one ART or multiple, and flag any shared-service dependencies. Include a topology diagram and sizing validation.",
+    "expected_agent": "art-structure-designer",
+    "expected_outputs": [
+      "ART topology diagram mapping value streams to teams",
+      "Team roster with headcount and competency assignments",
+      "Sizing validation against SAFe 50-125 guideline",
+      "Cross-team dependency matrix",
+      "Recommendation on single ART vs. multiple ARTs with rationale"
+    ],
+    "tags": ["safe", "art", "structure", "value-streams"]
+  },
+  {
+    "id": "safe-pi-planning-8-teams",
+    "title": "Plan PI Planning event for 8 teams with cross-team dependencies",
+    "prompt": "We are preparing a PI Planning event for our ART which has 8 teams (5 feature teams, 2 platform teams, 1 UX/design team). There are known cross-team dependencies on a shared authentication service and a new API gateway. Plan the full PI Planning event: define the agenda, prepare the top features for breakout sessions, identify how to surface and manage the cross-team dependencies, set up the ROAM risk classification, and describe how the program board should be structured for 5 iterations plus an IP iteration.",
+    "expected_agent": "pi-planning-orchestrator",
+    "expected_outputs": [
+      "PI Planning agenda with timings for each session",
+      "Top features list prepared for team breakouts",
+      "Cross-team dependency identification and program board layout",
+      "ROAM risk register template with pre-identified risks",
+      "Confidence vote process and criteria"
+    ],
+    "tags": ["safe", "pi-planning", "dependencies", "roam"]
+  },
+  {
+    "id": "safe-inspect-adapt-maturity",
+    "title": "Assess SAFe implementation maturity and recommend improvements",
+    "prompt": "Our ART just completed PI 4. Here are our results: 68% of committed PI objectives were met, average team velocity variance is 25%, cycle time increased 15% over the last 2 PIs, and three teams report recurring integration blockers. Conduct an Inspect & Adapt analysis — measure our PI performance quantitatively, perform root-cause analysis on the top impediments, prioritize improvement stories for PI 5, and produce a PI health scorecard with a maturity assessment and concrete recommendations.",
+    "expected_agent": "inspect-adapt-facilitator",
+    "expected_outputs": [
+      "PI objective scorecard with achievement percentages",
+      "Flow metrics analysis with trend indicators",
+      "Root-cause analysis for top 3 impediments",
+      "Prioritized improvement backlog for PI 5 with WSJF scores",
+      "PI health scorecard with maturity assessment and recommendations"
+    ],
+    "tags": ["safe", "inspect-adapt", "metrics", "improvement"]
+  },
+  {
+    "id": "safe-portfolio-epic-prioritization",
+    "title": "Connect ART execution to portfolio-level epic prioritization",
+    "prompt": "Our Lean Portfolio Management team needs to decide on funding for 6 epics competing for next quarter's budget across 2 value streams. The total available budget is 120 FTE-months. Each epic has a lean business case draft but they have not been WSJF-ranked or validated against strategic themes. Connect our ART execution data (PI outcomes, velocity, flow metrics) to the portfolio decision — rank the epics using WSJF, validate alignment with our 3 strategic themes (Digital Expansion, Operational Efficiency, Customer Retention), enforce budget guardrails, and produce funding recommendations for the LPM review.",
+    "expected_agent": "lean-portfolio-connector",
+    "expected_outputs": [
+      "Strategic theme traceability for all 6 epics",
+      "WSJF ranking table with cost-of-delay and job-size components",
+      "Budget allocation recommendation within 120 FTE-month guardrail",
+      "Portfolio Kanban snapshot showing epic pipeline state",
+      "Funding go/no-go recommendation per epic with rationale"
+    ],
+    "tags": ["safe", "portfolio", "wsjf", "lean-budgeting", "epic-funding"]
+  }
+]

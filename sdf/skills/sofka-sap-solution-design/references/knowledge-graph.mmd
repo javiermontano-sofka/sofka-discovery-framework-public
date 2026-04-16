@@ -1,0 +1,70 @@
+graph TB
+    subgraph Inputs["From Gap Analysis"]
+        I1[Classified Gap Register]
+        I2[ADR Collection]
+        I3[NFR Requirements]
+    end
+
+    subgraph CleanCore["Clean Core 5 Pillars"]
+        CC1[Clean Processes]
+        CC2[Clean Extensions]
+        CC3[Clean Data]
+        CC4[Clean Integration]
+        CC5[Clean Operations]
+    end
+
+    subgraph ExtDecision["Extension Decision"]
+        ED1{Standard?}
+        ED2{Key User?}
+        ED3{ABAP Cloud?}
+        ED4{BTP Side-by-Side?}
+        ED5[Process Redesign]
+    end
+
+    subgraph ABCD["Extensibility Levels"]
+        LA[Level A<br/>Released APIs Only]
+        LB[Level B<br/>Classic APIs]
+        LC[Level C<br/>Conditional]
+        LD[Level D<br/>FORBIDDEN]
+    end
+
+    subgraph Outputs["SAD Deliverable"]
+        O1[Module Landscape<br/>Mermaid Diagram]
+        O2[Extension Landscape<br/>KU vs RAP vs BTP]
+        O3[Integration Topology<br/>CPI + Event Mesh]
+        O4[Data Flow Architecture]
+        O5[NFR Specifications]
+    end
+
+    I1 --> ED1
+    ED1 -->|Yes| CC1
+    ED1 -->|No| ED2
+    ED2 -->|Yes| LA
+    ED2 -->|No| ED3
+    ED3 -->|Yes| LA
+    ED3 -->|No| ED4
+    ED4 -->|Yes| LA
+    ED4 -->|No| ED5
+
+    I2 --> O2
+    I3 --> O5
+
+    CC1 --> O1
+    CC2 --> O2
+    CC3 --> O4
+    CC4 --> O3
+    CC5 --> O5
+
+    classDef input fill:#FFD700,color:#1A1A2E
+    classDef core fill:#FF7E08,color:white
+    classDef decision fill:#EFEAE4,color:#1A1A2E
+    classDef level fill:#1A1A2E,color:white
+    classDef forbidden fill:#FF0000,color:white
+    classDef output fill:#1A1A2E,color:#FFD700
+
+    class I1,I2,I3 input
+    class CC1,CC2,CC3,CC4,CC5 core
+    class ED1,ED2,ED3,ED4,ED5 decision
+    class LA,LB,LC level
+    class LD forbidden
+    class O1,O2,O3,O4,O5 output

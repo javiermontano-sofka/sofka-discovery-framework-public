@@ -1,0 +1,75 @@
+flowchart TD
+    subgraph Inputs["Entradas"]
+        A1[Project Metrics / EVM]
+        A2[Risk Dashboard]
+        A3[Pending Decisions]
+        A4[Strategic Alignment Data]
+    end
+
+    subgraph Process["Executive Briefing"]
+        B1[Audience Calibration]
+        B2[Status Synthesis RAG]
+        B3[Metric Highlights]
+        B4[Risk Summary]
+        B5[Decision Framing]
+        B6[Strategic Alignment]
+        B7[Visual Layout]
+        B8[Action Items]
+    end
+
+    subgraph Outputs["Salidas"]
+        C1[Executive Briefing Document]
+        C2[One-Page Dashboard]
+        C3[Decision Request Package]
+        C4[Strategic Alignment Snapshot]
+    end
+
+    subgraph Downstream["Downstream"]
+        D1[Steering Review]
+        D2[Budget Decisions]
+        D3[Scope Decisions]
+        D4[Communication Plan]
+    end
+
+    subgraph Agents["Agentes"]
+        E1[Executive Communication Specialist]
+        E2[Data Storyteller]
+    end
+
+    A1 --> B2
+    A2 --> B4
+    A3 --> B5
+    A4 --> B6
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 --> B7
+    B7 --> B8
+    B8 --> C1
+    B8 --> C2
+    B8 --> C3
+    B8 --> C4
+    C1 --> D1
+    C3 --> D2
+    C3 --> D3
+    C2 --> D4
+
+    E1 --> B1
+    E2 --> B3
+
+    style B1 fill:#2563EB,color:#fff
+    style B2 fill:#2563EB,color:#fff
+    style B3 fill:#2563EB,color:#fff
+    style B4 fill:#2563EB,color:#fff
+    style B5 fill:#2563EB,color:#fff
+    style B6 fill:#2563EB,color:#fff
+    style B7 fill:#2563EB,color:#fff
+    style B8 fill:#2563EB,color:#fff
+    style C1 fill:#F59E0B,color:#000
+    style C2 fill:#F59E0B,color:#000
+    style C3 fill:#F59E0B,color:#000
+    style C4 fill:#F59E0B,color:#000
+    style E1 fill:#0F172A,color:#fff
+    style E2 fill:#0F172A,color:#fff

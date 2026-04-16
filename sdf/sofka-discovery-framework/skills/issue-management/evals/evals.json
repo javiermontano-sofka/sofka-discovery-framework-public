@@ -1,0 +1,6 @@
+[
+  {"prompt":"Manage 15 open issues across 4 severity levels in final sprint.","assertions":["classifies issues by type, severity, and urgency","prioritizes resolution based on phase and impact","assigns owners with deadlines","tracks aging and auto-escalation triggers"]},
+  {"prompt":"Critical issue blocking Friday deployment. Design escalation path.","assertions":["activates immediate escalation for critical severity","defines escalation timeline with response SLAs","identifies decision-makers at each level","documents containment actions"]},
+  {"prompt":"Root cause analysis: 5 of last 8 issues stem from inadequate CI testing.","assertions":["applies root cause analysis technique","identifies systemic testing process gap","distinguishes symptoms from underlying problem","recommends process improvement for prevention"]},
+  {"prompt":"Issue aging report: 5 issues overdue beyond SLA.","assertions":["calculates aging against resolution SLA","escalates overdue issues appropriately","identifies patterns in overdue issues","recommends actions to clear backlog"]}
+]

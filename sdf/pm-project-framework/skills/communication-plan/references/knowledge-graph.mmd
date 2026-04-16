@@ -1,0 +1,22 @@
+graph TD
+    subgraph Inputs
+        A[Stakeholder Register] --> D
+        B[Project Charter] --> D
+        C[Governance Framework] --> D
+    end
+    subgraph "Communication Plan Process"
+        D[Stakeholder Analysis]:::skill --> E[Channel Selection]:::skill
+        E --> F[Message Design]:::skill
+        F --> G[Schedule and Track]:::skill
+    end
+    subgraph Agents
+        H[Communication Agent]:::agent --> F
+        I[Stakeholder Agent]:::agent --> D
+    end
+    subgraph Downstream
+        G --> J[Executive Briefing]
+        G --> K[Engagement Strategy]
+        G --> L[Data Storytelling]
+    end
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

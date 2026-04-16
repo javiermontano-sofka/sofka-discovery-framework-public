@@ -1,0 +1,86 @@
+%% Knowledge Graph — UX Writing: Information Design & Cognitive Accessibility Standards
+%% Accessibility: Directed graph showing skill inputs, 5 standards, patterns, outputs, consumers, and cross-referenced agents.
+
+graph LR
+    %% Inputs
+    TARGET_CONTENT["Target Content<br/>(deliverable, HTML, markdown)"]
+    AUDIENCE["Audience Profile<br/>(ejecutiva, tecnica, regulatoria)"]
+    PATTERNS_REF["ux-writing-patterns.md<br/>(reference)"]
+
+    %% Skill
+    SKILL["ux-writing<br/>Skill"]
+
+    %% 5 Standards (Core Sections)
+    S1_HIERARCHY["S1: Information Hierarchy<br/>Executive Summary > What Changes ><br/>Impact > Next Steps"]
+    S2_COGNITIVE["S2: Cognitive Load Reduction<br/>Chunking, Progressive Disclosure,<br/>Terminology, Contextualized Numbers"]
+    S3_SCANNABILITY["S3: Scannability<br/>80/20 Rule, Visual Hierarchy,<br/>Callouts, Paragraph Rules"]
+    S4_MICROCOPY["S4: Microcopy<br/>CTAs, Error Messages, Empty States,<br/>Confirmations, Help Text"]
+    S5_READABILITY["S5: Readability Heuristics<br/>Flesch-Kincaid, Sentence Length,<br/>Passive Voice, Jargon Density"]
+
+    %% Patterns & Techniques
+    VOICE_TONE["Voice & Tone<br/>Consistent Terminology,<br/>Bilingual Spanish-first"]
+    NAMING["Naming Conventions<br/>Verb+Object CTAs,<br/>Glossary Consistency"]
+    CONTENT_HIERARCHY["Content Hierarchy<br/>Key Takeaway Box ><br/>Detail > Evidence > Implication"]
+    READABILITY_SCORING["Readability Scoring<br/>Grade Targets:<br/>Exec <=12, Tech <=16"]
+    ONBOARDING_TEXT["Onboarding Text<br/>Progressive Disclosure,<br/>First-use Explanations"]
+    ERROR_PATTERNS["Error Message Patterns<br/>What happened + Why +<br/>How to fix"]
+
+    %% Knowledge Sources
+    PODMAJERSKY["Strategic Writing for UX<br/>(Podmajersky)"]
+    KINNERET["Microcopy<br/>(Kinneret Yifrah)"]
+    RICHARDS["Content Design<br/>(Sarah Richards)"]
+    MATERIAL_WRITING["Material Design<br/>Writing Guidelines"]
+    APPLE_HIG["Apple HIG<br/>Content Guidelines"]
+
+    %% Outputs
+    AUDIT_REPORT["UW-01_UX_Writing_{project}<br/>5-Standard Audit Report"]
+    RADAR_CHART["Readability Radar Chart"]
+    TERMINOLOGY_REPORT["Terminology Consistency<br/>Report"]
+
+    %% Consumers / Cross-references
+    USER_REP["sofka-user-representative"]
+    HTML_BRAND["sofka-html-brand"]
+    DESIGN_SYS["sofka-design-system"]
+    EXEC_PITCH["sofka-executive-pitch"]
+
+    %% Input edges
+    TARGET_CONTENT -->|"content to audit"| SKILL
+    AUDIENCE -->|"adaptation rules"| SKILL
+    PATTERNS_REF -->|"reference patterns"| SKILL
+
+    %% Skill to standards
+    SKILL -->|"assesses"| S1_HIERARCHY
+    SKILL -->|"reduces"| S2_COGNITIVE
+    SKILL -->|"optimizes"| S3_SCANNABILITY
+    SKILL -->|"reviews"| S4_MICROCOPY
+    SKILL -->|"scores"| S5_READABILITY
+
+    %% Standards to patterns
+    S1_HIERARCHY -->|"applies"| CONTENT_HIERARCHY
+    S2_COGNITIVE -->|"enforces"| ONBOARDING_TEXT
+    S3_SCANNABILITY -->|"uses"| CONTENT_HIERARCHY
+    S4_MICROCOPY -->|"follows"| ERROR_PATTERNS
+    S4_MICROCOPY -->|"follows"| NAMING
+    S5_READABILITY -->|"measures"| READABILITY_SCORING
+    S5_READABILITY -->|"enforces"| VOICE_TONE
+
+    %% Knowledge sources influence
+    PODMAJERSKY -->|"UX strategy"| S4_MICROCOPY
+    KINNERET -->|"microcopy patterns"| S4_MICROCOPY
+    RICHARDS -->|"content design"| S1_HIERARCHY
+    MATERIAL_WRITING -->|"writing guidelines"| NAMING
+    APPLE_HIG -->|"content principles"| VOICE_TONE
+
+    %% Standards to outputs
+    S1_HIERARCHY -->|"hierarchy map"| AUDIT_REPORT
+    S2_COGNITIVE -->|"load analysis"| AUDIT_REPORT
+    S3_SCANNABILITY -->|"scan ratio"| AUDIT_REPORT
+    S4_MICROCOPY -->|"microcopy fixes"| AUDIT_REPORT
+    S5_READABILITY -->|"scores"| RADAR_CHART
+    S5_READABILITY -->|"consistency"| TERMINOLOGY_REPORT
+
+    %% Cross-references
+    AUDIT_REPORT -->|"informs"| USER_REP
+    AUDIT_REPORT -->|"validates"| HTML_BRAND
+    AUDIT_REPORT -->|"aligns with"| DESIGN_SYS
+    AUDIT_REPORT -->|"optimizes"| EXEC_PITCH

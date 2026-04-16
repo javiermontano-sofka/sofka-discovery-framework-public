@@ -1,0 +1,49 @@
+%% Knowledge Graph — Output Engineering
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    OE["Output Engineering"]:::blue
+
+    %% Inputs
+    MD["Markdown Source"]:::dark
+    ET["Evidence Tags"]:::dark
+    DT["Design Tokens APEX"]:::dark
+    NC["Naming Convention"]:::amber
+
+    %% Processes
+    VAL["Validation (Excellence Loop)"]:::amber
+    TRANS["Format Transformation"]:::blue
+    BRAND["Branding Application"]:::blue
+    QC["Quality Check"]:::amber
+
+    %% Outputs
+    HTML["HTML Branded"]:::blue
+    PDF["PDF Export"]:::blue
+    MERM["Mermaid Diagrams"]:::blue
+    DIST["Distribution"]:::dark
+
+    %% Relations
+    MD --> OE
+    ET --> OE
+    DT --> OE
+    NC --> OE
+    OE --> VAL
+    VAL --> TRANS
+    TRANS --> BRAND
+    BRAND --> QC
+    QC --> HTML
+    QC --> PDF
+    QC --> MERM
+    HTML --> DIST
+    PDF --> DIST
+    MERM --> DIST
+
+    %% Cross-references
+    PG["Pipeline Governance"]:::dark
+    OS["Output Standards"]:::dark
+    PG -.->|"gate approval"| OE
+    OS -.->|"standards"| BRAND

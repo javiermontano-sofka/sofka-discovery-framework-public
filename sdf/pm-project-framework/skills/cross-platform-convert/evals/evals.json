@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Convert SDF skill to PM-APEX format.",
+    "assertions": [
+      "analyzes source skill structure",
+      "maps to target format",
+      "preserves skill logic",
+      "validates converted output"
+    ]
+  },
+  {
+    "prompt": "Validate converted skill against PM-APEX requirements.",
+    "assertions": [
+      "checks frontmatter compliance",
+      "validates file structure",
+      "tests skill activation",
+      "reports compatibility issues"
+    ]
+  },
+  {
+    "prompt": "Build migration plan for 10 skills.",
+    "assertions": [
+      "sequences conversion by priority",
+      "estimates effort per skill",
+      "identifies conversion risks",
+      "plans validation testing"
+    ]
+  },
+  {
+    "prompt": "Handle incompatible features during conversion.",
+    "assertions": [
+      "identifies incompatible elements",
+      "proposes workarounds",
+      "documents limitations",
+      "recommends manual adjustments"
+    ]
+  }
+]

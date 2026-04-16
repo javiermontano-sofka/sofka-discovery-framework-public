@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Formulate hypothesis for a new feature.",
+    "assertions": [
+      "states hypothesis in testable format",
+      "defines success criteria",
+      "identifies measurable signals",
+      "sets decision timeline"
+    ]
+  },
+  {
+    "prompt": "Design Build-Measure-Learn cycle.",
+    "assertions": [
+      "defines minimum viable experiment",
+      "specifies measurements",
+      "plans learning extraction",
+      "sets cycle timebox"
+    ]
+  },
+  {
+    "prompt": "Experiment results are inconclusive.",
+    "assertions": [
+      "analyzes data quality",
+      "determines if more data needed",
+      "considers experiment design flaws",
+      "recommends next experiment or decision"
+    ]
+  },
+  {
+    "prompt": "Pivot or persevere after 3 experiment cycles.",
+    "assertions": [
+      "synthesizes learning across cycles",
+      "evaluates trend direction",
+      "assesses remaining uncertainty",
+      "recommends with evidence"
+    ]
+  }
+]

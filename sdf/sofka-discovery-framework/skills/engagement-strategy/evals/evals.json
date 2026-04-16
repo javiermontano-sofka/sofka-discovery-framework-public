@@ -1,0 +1,111 @@
+[
+  {
+    "id": "engagement-strategy-eval-001",
+    "name": "Multi-department stakeholder engagement strategy",
+    "description": "Design a comprehensive engagement strategy for 15 stakeholders across 4 departments (Finance, IT, Operations, HR) for an ERP migration project. Stakeholders range from executive sponsors to end-user team leads with varying levels of awareness and support.",
+    "input": "We are launching an ERP migration from SAP ECC to S/4HANA affecting 15 key stakeholders across Finance (CFO, Controller, AP Manager, AR Manager), IT (CIO, Infrastructure Lead, Security Officer, Integration Architect), Operations (COO, Supply Chain Director, Warehouse Manager, Logistics Coordinator), and HR (CHRO, Payroll Manager, Training Lead). The CFO and CIO are sponsors, the COO is neutral leaning skeptical, and several mid-level managers are unaware of the project scope. We need a full engagement strategy covering current assessment, desired levels, influence tactics, and monitoring plan.",
+    "expected_output_contains": [
+      "engagement gap matrix",
+      "influence strategy",
+      "communication cadence",
+      "monitoring dashboard",
+      "stakeholder tier",
+      "power-interest"
+    ],
+    "agents_involved": [
+      "engagement-level-assessor",
+      "influence-strategy-designer",
+      "engagement-tracker"
+    ],
+    "evaluation_criteria": {
+      "coverage": "All 15 stakeholders must appear with individual assessments",
+      "gap_analysis": "Current vs desired engagement level identified for each stakeholder",
+      "department_dynamics": "Cross-departmental dependencies and influence pathways addressed",
+      "actionability": "Specific actions with owners and timelines, not generic recommendations",
+      "monitoring": "Measurable engagement indicators defined per stakeholder"
+    }
+  },
+  {
+    "id": "engagement-strategy-eval-002",
+    "name": "Resistant CTO mitigation strategy",
+    "description": "Develop a targeted engagement and resistance mitigation strategy for a CTO who perceives the project as a threat to their technology autonomy and architectural vision.",
+    "input": "Our digital transformation project includes adopting a cloud-native microservices platform that will replace the CTO's custom-built monolithic architecture — their career achievement over 8 years. The CTO has been actively resistant: publicly questioning the project's technical feasibility in steering committees, delaying infrastructure provisioning requests, and privately telling their team the project will fail. They have high power (controls all infrastructure and the 40-person engineering team), high interest (directly threatens their technical legacy), and a data-driven communication style. The CEO supports the project but values the CTO's technical judgment. We need a strategy to move the CTO from Resistant to at minimum Neutral, ideally Supportive.",
+    "expected_output_contains": [
+      "root cause",
+      "loss of control",
+      "legacy",
+      "escalation",
+      "negotiation",
+      "influence tactic",
+      "behavioral indicator"
+    ],
+    "agents_involved": [
+      "engagement-level-assessor",
+      "influence-strategy-designer",
+      "resistance-mitigator"
+    ],
+    "evaluation_criteria": {
+      "root_cause_depth": "Must identify ego/legacy attachment, autonomy loss, and fear of obsolescence — not just surface opposition",
+      "tactic_appropriateness": "Influence tactics must respect CTO's data-driven style and high power position",
+      "escalation_boundaries": "Clear criteria for when to escalate to CEO without burning the relationship",
+      "concessions": "Identify what can be offered (architectural input, technology choices, team leadership) vs non-negotiables",
+      "timeline_realism": "Resistant-to-Supportive is a multi-month journey, plan must reflect this"
+    }
+  },
+  {
+    "id": "engagement-strategy-eval-003",
+    "name": "Sponsor transition re-engagement plan",
+    "description": "Create a re-engagement plan after the project's key executive sponsor (VP of Operations) is replaced mid-project by a new VP with no prior involvement and different strategic priorities.",
+    "input": "Six months into a 14-month supply chain optimization project, our executive sponsor (VP of Operations, Maria Chen) has been promoted to a different division. Her replacement, David Park, comes from a competitor with a strong cost-cutting background and has publicly stated his top priority is headcount reduction — not process optimization. The project team reports that since the transition 3 weeks ago: steering committee attendance from Operations dropped 40%, two approved budget items are now 'under review', the Operations team leads are hedging commitments, and the project's change champion network in Operations has gone quiet. The project is at Phase 3 (implementation) and cannot absorb a significant delay without triggering penalty clauses with the SI vendor.",
+    "expected_output_contains": [
+      "sponsor transition",
+      "re-engagement",
+      "quick win",
+      "alignment meeting",
+      "cost reduction",
+      "change champion",
+      "budget"
+    ],
+    "agents_involved": [
+      "engagement-level-assessor",
+      "influence-strategy-designer",
+      "resistance-mitigator",
+      "engagement-tracker"
+    ],
+    "evaluation_criteria": {
+      "urgency_recognition": "Plan must treat this as a critical-path risk given Phase 3 timing and vendor penalties",
+      "new_sponsor_strategy": "Tailored approach for David Park aligned to his cost-cutting priorities, not recycled from Maria Chen's plan",
+      "cascade_management": "Address the downstream disengagement of Operations team leads and change champions",
+      "reframing": "Project value proposition reframed from process optimization to cost reduction language",
+      "first_30_days": "Concrete actions for the first 30 days with specific milestones"
+    }
+  },
+  {
+    "id": "engagement-strategy-eval-004",
+    "name": "Declining executive engagement monitoring response",
+    "description": "Analyze an engagement monitoring dashboard showing declining executive support across 3 consecutive measurement periods and design an intervention plan.",
+    "input": "The engagement tracking dashboard for our data platform modernization project shows the following 3-period trend for executive stakeholders:\n\n- CEO: 85 → 78 → 71 (declining; stopped attending monthly steering, delegates to Chief of Staff)\n- CFO: 72 → 65 → 52 (sharp decline; questioning ROI after Q3 results missed forecast by 12%)\n- CIO: 90 → 88 → 85 (stable-declining; still supportive but flagged 'initiative fatigue' in last 1:1)\n- COO: 60 → 55 → 45 (consistent decline; Operations budget was cut 8% and COO is deprioritizing all non-core projects)\n- CHRO: 70 → 70 → 68 (stable; passive supporter, not a concern yet)\n\nThe project is 60% complete with 5 months remaining. The amber alert threshold is 60 and red is 45. The CFO has crossed amber and the COO has hit red. Overall executive engagement composite has dropped from 75.4 to 64.2 in 6 weeks.",
+    "expected_output_contains": [
+      "alert",
+      "threshold",
+      "trend analysis",
+      "intervention",
+      "ROI",
+      "budget cut",
+      "initiative fatigue",
+      "composite score"
+    ],
+    "agents_involved": [
+      "engagement-tracker",
+      "resistance-mitigator",
+      "influence-strategy-designer"
+    ],
+    "evaluation_criteria": {
+      "data_interpretation": "Must correctly identify CFO at amber and COO at red, with CEO trending toward amber",
+      "root_cause_per_executive": "Different causes for each decline — financial results, budget cuts, delegation pattern, fatigue",
+      "systemic_pattern": "Recognize this is a systemic executive disengagement pattern, not isolated incidents",
+      "intervention_prioritization": "COO red alert addressed first, CFO amber second, CEO trend-watch third",
+      "project_survival_framing": "Connect engagement decline to project completion risk at 60% done with 5 months left"
+    }
+  }
+]

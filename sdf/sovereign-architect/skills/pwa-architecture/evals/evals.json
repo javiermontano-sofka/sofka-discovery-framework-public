@@ -1,0 +1,69 @@
+{
+  "skill_name": "pwa-architecture",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Configure Workbox caching for a Next.js PWA with API routes at /api/*, static assets, and user-uploaded images at images.cdn.com.",
+      "expected_output": "Workbox config with appropriate strategies per URL pattern",
+      "assertions": [
+        {"text": "Output uses NetworkFirst for API routes", "type": "contains"},
+        {"text": "Output uses CacheFirst or StaleWhileRevalidate for images", "type": "contains"},
+        {"text": "Output uses precache/CacheFirst for static assets", "type": "contains"},
+        {"text": "Output sets maxEntries or maxAgeSeconds on all caches", "type": "contains"},
+        {"text": "Output does NOT cache POST/PUT/DELETE API calls with a caching strategy", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Build the useInstallPrompt hook for a React PWA that captures the beforeinstallprompt event, shows a custom install button, and tracks installs in analytics.",
+      "expected_output": "React hook with proper event lifecycle and analytics tracking",
+      "assertions": [
+        {"text": "Output adds beforeinstallprompt event listener", "type": "contains"},
+        {"text": "Output calls e.preventDefault() to capture the event", "type": "contains"},
+        {"text": "Output calls prompt.prompt() on user action", "type": "contains"},
+        {"text": "Output reads prompt.userChoice outcome", "type": "contains"},
+        {"text": "Output includes cleanup in useEffect return", "type": "contains"},
+        {"text": "Output tracks the install outcome in analytics", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Diagnose why a PWA is not showing the install prompt on mobile Chrome. The manifest exists and HTTPS is configured.",
+      "expected_output": "Checklist of install criteria with diagnostic steps",
+      "assertions": [
+        {"text": "Output checks for service worker with fetch handler", "type": "contains"},
+        {"text": "Output checks manifest for required icons (192px and 512px)", "type": "contains"},
+        {"text": "Output checks manifest display is not 'browser'", "type": "contains"},
+        {"text": "Output mentions that the app may already be installed", "type": "contains"},
+        {"text": "Output provides DevTools debugging steps", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Implement Web Push notifications for a PWA: client subscription, server-side sending with web-push, and service worker push handler.",
+      "expected_output": "Complete push implementation: client + server + service worker",
+      "assertions": [
+        {"text": "Output uses PushManager.subscribe with userVisibleOnly: true", "type": "contains"},
+        {"text": "Output uses applicationServerKey from VAPID public key", "type": "contains"},
+        {"text": "Output sends subscription to server via POST", "type": "contains"},
+        {"text": "Output uses web-push library on server with sendNotification", "type": "contains"},
+        {"text": "Output implements push event listener in service worker", "type": "contains"},
+        {"text": "Output implements notificationclick handler", "type": "contains"},
+        {"text": "Output does NOT request push permission on page load", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Implement Background Sync for a PWA that needs to submit forms when offline. Use Workbox BackgroundSyncPlugin.",
+      "expected_output": "Workbox Background Sync configuration for POST requests",
+      "assertions": [
+        {"text": "Output uses BackgroundSyncPlugin from workbox-background-sync", "type": "contains"},
+        {"text": "Output registers the plugin on POST requests to API", "type": "contains"},
+        {"text": "Output uses NetworkOnly strategy (not caching mutations)", "type": "contains"},
+        {"text": "Output sets maxRetentionTime in plugin options", "type": "contains"},
+        {"text": "Output explains that sync replays when the user comes back online", "type": "contains"}
+      ]
+    }
+  ]
+}

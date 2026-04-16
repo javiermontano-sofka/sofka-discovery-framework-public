@@ -1,0 +1,6 @@
+[
+  {"prompt":"Skills gap analysis for team of 12 adopting cloud-native Kubernetes.","assertions":["maps required competencies","assesses current proficiency levels","scores gap severity","recommends closure approach"]},
+  {"prompt":"PM team transitioning waterfall to agile. Assess methodology gaps.","assertions":["identifies specific agile skills needed","evaluates transferable waterfall skills","designs tailored training program","sets competency milestones"]},
+  {"prompt":"Only 1 person knows legacy COBOL system being replaced.","assertions":["identifies single-point-of-failure","quantifies unavailability risk","recommends knowledge transfer plan","evaluates need for external backup"]},
+  {"prompt":"8 critical gaps, 3 months before execution. Create closure plan.","assertions":["prioritizes by delivery impact","recommends fastest closure option","creates timeline within 3 months","identifies gaps that cannot be closed in time"]}
+]

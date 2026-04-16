@@ -1,0 +1,52 @@
+%% Knowledge Graph — Stakeholder Register & Analysis
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        CHARTER[project-charter<br/>Phase 0]
+        ORGCHART[organizational-chart<br/>Structure]
+        INPUT[input-analysis<br/>Mentioned stakeholders]
+        HISTORY[historical-data<br/>Similar projects]
+    end
+
+    subgraph "Stakeholder Register (This Skill)"
+        IDENTIFY[Identification<br/>All affected parties]
+        CLASSIFY[Classification<br/>Power/Interest rating]
+        ENGAGE[Engagement Assessment<br/>Current vs Desired]
+        STRATEGY[Strategy Design<br/>Per-quadrant approach]
+    end
+
+    subgraph Downstream
+        COMMS[communication-plan<br/>Channel design]
+        ENGAGE_STRAT[engagement-strategy<br/>Detailed engagement]
+        RISK[risk-register<br/>Stakeholder risks]
+        CHANGE[change-control-board<br/>Approval paths]
+        STEERING[steering-review<br/>Go/No-Go]
+    end
+
+    subgraph Agents
+        STAKEHOLDER_ANALYST[stakeholder-analyst<br/>L2 Specialist]
+        COMMS_LEAD[communications-lead<br/>L2 Specialist]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    CHARTER --> IDENTIFY
+    ORGCHART --> IDENTIFY
+    INPUT --> IDENTIFY
+    HISTORY --> IDENTIFY
+
+    IDENTIFY --> CLASSIFY --> ENGAGE --> STRATEGY
+
+    STRATEGY --> COMMS
+    STRATEGY --> ENGAGE_STRAT
+    CLASSIFY --> RISK
+    STRATEGY --> CHANGE
+    STRATEGY --> STEERING
+
+    STAKEHOLDER_ANALYST -.->|executes| CLASSIFY
+    COMMS_LEAD -.->|designs| STRATEGY
+    CONDUCTOR -.->|orchestrates| STRATEGY
+
+    style STRATEGY fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style STAKEHOLDER_ANALYST fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

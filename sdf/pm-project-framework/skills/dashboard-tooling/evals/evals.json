@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Evaluate Power BI vs Grafana for project dashboard.",
+    "assertions": [
+      "compares features against requirements",
+      "evaluates cost and licensing",
+      "assesses team skill requirements",
+      "recommends with justification"
+    ]
+  },
+  {
+    "prompt": "Connect dashboard to 4 data sources.",
+    "assertions": [
+      "designs data pipeline",
+      "handles data format normalization",
+      "plans refresh frequency",
+      "addresses data quality"
+    ]
+  },
+  {
+    "prompt": "Design visualizations for executive vs team dashboards.",
+    "assertions": [
+      "adapts detail level per audience",
+      "selects appropriate chart types",
+      "ensures consistency",
+      "handles drill-down capability"
+    ]
+  },
+  {
+    "prompt": "Plan automated daily dashboard refresh.",
+    "assertions": [
+      "designs refresh schedule",
+      "handles data source failures",
+      "plans distribution automation",
+      "monitors data freshness"
+    ]
+  }
+]

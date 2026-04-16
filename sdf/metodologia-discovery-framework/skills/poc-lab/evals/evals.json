@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Design PoC for AI testing tool.",
+    "assertions": [
+      "defines hypothesis",
+      "scopes experiment",
+      "establishes criteria",
+      "plans evaluation"
+    ]
+  },
+  {
+    "prompt": "Plan 2-week PoC with 3 developers.",
+    "assertions": [
+      "defines scope",
+      "allocates resources",
+      "creates milestones",
+      "plans capture"
+    ]
+  },
+  {
+    "prompt": "Compare 3 technology options.",
+    "assertions": [
+      "defines metrics",
+      "includes qualitative assessment",
+      "establishes thresholds",
+      "plans fair evaluation"
+    ]
+  },
+  {
+    "prompt": "Mixed PoC results.",
+    "assertions": [
+      "analyzes validated hypotheses",
+      "assesses failures",
+      "recommends next steps",
+      "identifies conditions"
+    ]
+  }
+]

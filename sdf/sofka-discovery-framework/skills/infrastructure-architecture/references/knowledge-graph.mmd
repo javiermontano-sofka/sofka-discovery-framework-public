@@ -1,0 +1,97 @@
+%% Knowledge Graph — Infrastructure Architecture
+%% Dominio: Diseño de plataforma e infraestructura cloud — IaC, networking, compute, storage, HA/DR, landing zones
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["infrastructure-architecture"]
+        direction TB
+        PR["Principio Rector:<br/>La infraestructura invisible<br/>es la mejor infraestructura"]
+        FW["Framework: 7 Secciones"]
+        VG["Validation Gate: 10 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        IAC["IaC Configs<br/>(Terraform/Pulumi/CDK)"]
+        NETCFG["Network Specs<br/>(VPC/CIDR/DNS)"]
+        WORKLOAD["Workload Requirements<br/>(TPS, latency, SLA)"]
+        COMPLIANCE["Compliance Requirements<br/>(PCI, HIPAA, SOX)"]
+        BUDGET["Budget Constraints<br/>(FinOps targets)"]
+    end
+
+    subgraph SECTIONS["7-Section Delivery"]
+        S1["S1: Network Topology<br/>VPC, subnets, firewalls, LB, CDN"]
+        S2["S2: Compute & Containers<br/>VMs, K8s, serverless, auto-scaling"]
+        S3["S3: Storage & Data<br/>Block, object, file, backup, tiering"]
+        S4["S4: HA & Disaster Recovery<br/>Multi-AZ, multi-region, chaos"]
+        S5["S5: IAM & Platform Security<br/>Federation, secrets, encryption"]
+        S6["S6: Cloud Landing Zone<br/>Account structure, SCPs, tagging"]
+        S7["S7: Cost Optimization<br/>Right-sizing, RI, spot, FinOps"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        A04["A-04 Infrastructure<br/>Architecture Deep"]
+        NETDIAG["Network Diagram<br/>(Mermaid)"]
+        HADR["HA/DR Runbook"]
+        COSTPLAN["Cost Optimization<br/>Plan"]
+    end
+
+    subgraph STANDARDS["Standards & Frameworks"]
+        WAF["AWS Well-Architected<br/>(6 pillars)"]
+        CAF["Azure Cloud Adoption<br/>Framework"]
+        GAF["GCP Architecture<br/>Framework"]
+        NIST["NIST SP 800-53<br/>(Security Controls)"]
+        TOGAF["TOGAF ADM<br/>Phase D (Technology)"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        CLOUD["cloud-native-architecture<br/>(usa S2 como input)"]
+        DEVSEC["devsecops-architecture<br/>(usa S5 como input)"]
+        MIGRATION["cloud-migration<br/>(usa S6 como input)"]
+        FINOPS["finops<br/>(usa S7 como input)"]
+        SOLUTIONS["solutions-architecture<br/>(usa S1+S4 como input)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        PE["platform-engineer<br/>(owner)"]
+        TA["technical-architect<br/>(support)"]
+        SA["security-architect<br/>(support: S5)"]
+        DE["data-engineer<br/>(support: S3)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|estructura| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    STANDARDS -.->|fundamentan| SECTIONS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Agent relationships
+    PE -->|opera| SKILL
+    TA -.->|consulta S1, S2| SKILL
+    SA -.->|aporta S5| S5
+    DE -.->|aporta S3| S3
+
+    %% Internal traceability
+    S1 -.->|segmentation enables| S5
+    S2 -.->|resource demands drive| S7
+    S3 -.->|backup policy feeds| S4
+    S4 -.->|DR costs impact| S7
+    S6 -.->|guardrails constrain| S1
+    S6 -.->|tagging enables| S7
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class IAC,NETCFG,WORKLOAD,COMPLIANCE,BUDGET input
+    class S1,S2,S3,S4,S5,S6,S7 section
+    class A04,NETDIAG,HADR,COSTPLAN output
+    class WAF,CAF,GAF,NIST,TOGAF standard
+    class CLOUD,DEVSEC,MIGRATION,FINOPS,SOLUTIONS consumer
+    class PE,TA,SA,DE agent

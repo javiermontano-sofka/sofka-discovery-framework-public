@@ -1,0 +1,6 @@
+[
+  {"prompt":"Integration check across 8 subsidiary plans for a new project.","assertions":["checks consistency between each plan pair","identifies misalignments with specific details","classifies severity of each inconsistency","provides prioritized fix recommendations"]},
+  {"prompt":"Schedule slipped 3 weeks on critical path. Propagate impact to all plans.","assertions":["traces cascade from schedule to resource, budget, risk plans","quantifies first-order and second-order impacts","recommends plan update sequence","assesses cumulative project-level impact"]},
+  {"prompt":"Budget allocates $200K for a role not in the resource plan. Resolve.","assertions":["identifies the specific inconsistency","traces root cause to determine correct plan","recommends which plan to update","checks for additional triggered inconsistencies"]},
+  {"prompt":"Build integrated dashboard for 12 subsidiary plans showing cross-plan health.","assertions":["creates plan-pair consistency heatmap","calculates synchronization scores per plan","highlights out-of-sync plans","generates executive narrative with attention items"]}
+]

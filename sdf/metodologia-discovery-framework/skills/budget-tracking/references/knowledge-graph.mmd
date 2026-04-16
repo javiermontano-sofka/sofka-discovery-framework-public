@@ -1,0 +1,27 @@
+graph TD
+    subgraph Inputs
+        A[Budget Baseline] --> D
+        B[Actual Cost Data] --> D
+        C[Progress Reports] --> D
+    end
+
+    subgraph "Budget Tracking Process"
+        D[Data Collection]:::skill --> E[Variance Analysis]:::skill
+        E --> F[Forecasting EAC]:::skill
+        F --> G[Corrective Actions]:::skill
+    end
+
+    subgraph Agents
+        H[Financial Analyst Agent]:::agent --> E
+        I[Forecasting Agent]:::agent --> F
+    end
+
+    subgraph Downstream
+        G --> J[Executive Dashboard]
+        G --> K[Change Control Board]
+        G --> L[Earned Value Analysis]
+        G --> M[Closure Report]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

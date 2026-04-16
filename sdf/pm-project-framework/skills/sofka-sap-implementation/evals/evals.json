@@ -1,0 +1,46 @@
+{
+  "skill_name": "sofka-sap-implementation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Necesito configurar SAP S/4HANA para un modelo T&M donde los consultores registran horas en Awards 2.0 pero necesitamos que lleguen a SAP para la facturacion. Tenemos 8 niveles de seniority y cada uno tiene tarifa distinta. Como se configura esto?",
+      "expected_output": "Explicacion de ADR-001 (Awards+CATS), ADR-002 (8 Activity Types), integracion via CATS BAPI, con Cost Rates y Sales Prices por AT. Debe referenciar el flujo tecnico Awards->CPI->CATS->PS/CO y la tabla de error handling.",
+      "files": [],
+      "expectations": [
+        "Describe la integracion Awards 2.0 + CATS API con flujo tecnico",
+        "Menciona los 8 Activity Types y como mapean a Cost Rate + Sales Price",
+        "Explica que GAP-02 (Tarifa Purina) debe resolverse antes de cargar rates",
+        "Incluye PoC checklist o criterios de validacion en sandbox",
+        "Referencia a sofka-regional-finance para CTC detallado por pais"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Tenemos 15+ archivos Excel que funcionan como middleware en Sofka. No queremos un big-bang de migracion. Cual es la estrategia correcta para migrar estos datos a SAP S/4HANA Public Cloud incrementalmente? Los Excel incluyen ASIGNACION_DALE, ASIGNACION_SURA, ASIGNACION_PICHINCHA, PLANNED_RECOGNITION, el CTC de Gabriel, y el Validador entre otros.",
+      "expected_output": "Explicacion del patron Strangler Fig (ADR-006), priority matrix de los Excel (PLANNED primero, CTC segundo, ASIGNACION_* tercero), protocolo de migracion por Excel (map->cleanse->load->validate->shadow->cutover), y criterio de tolerancia 0.1%.",
+      "files": [],
+      "expectations": [
+        "Explica Strangler Fig como patron incremental, no big-bang",
+        "Presenta la priority matrix con al menos 5 Excel/herramientas priorizados",
+        "Aclara que ASIGNACION_* es una familia de Excel por cuenta (DALE, SURA, PICHINCHA, etc.)",
+        "Describe el protocolo de 8 pasos por cada Excel",
+        "Menciona el criterio de tolerancia SAP=Excel <= 0.1%",
+        "Identifica el riesgo key-person (Gabriel y su CTC Excel)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Necesito entender como SAP S/4HANA maneja el reconocimiento de ingresos para 4 modelos distintos de servicio: T&M con horas fijas, T&M con horas variables en USD, precio fijo por hitos, y recursos en bench sin facturacion. Como configuro cada uno?",
+      "expected_output": "Tabla de las 4 variantes (Dale T&M, Ecuador actual hours, Fix Price, Talent Zone) con config SAP especifica (Scope 1IL, milestone billing, Internal Orders). Decision tree de reconocimiento. Debe mencionar que Fix Price esta roto y requiere rediseno post-MVP.",
+      "files": [],
+      "expectations": [
+        "Documenta las 4 variantes con nombre HENKA (Dale, Ecuador, Fix Price, Talent Zone)",
+        "Cada variante tiene config SAP distinta (Sales Order vs Milestone vs Internal Order)",
+        "Incluye decision tree de reconocimiento",
+        "Identifica Fix Price como roto y post-MVP (S-12)",
+        "Talent Zone como cost-only (Internal Orders en CO, sin SD)",
+        "Menciona ADR-005 y Scope 1IL"
+      ]
+    }
+  ]
+}

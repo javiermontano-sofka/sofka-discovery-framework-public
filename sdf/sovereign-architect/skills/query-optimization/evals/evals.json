@@ -1,0 +1,65 @@
+{
+  "skill_name": "query-optimization",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Read this EXPLAIN output: 'Seq Scan on orders (cost=0..285000 rows=1234) Filter: (user_id=42). Rows Removed: 9998766'. What is wrong and how do you fix it?",
+      "expected_output": "Diagnosis of missing index with CREATE INDEX CONCURRENTLY fix",
+      "assertions": [
+        {"text": "Output identifies the Seq Scan as the primary issue", "type": "contains"},
+        {"text": "Output mentions that 9998766 rows were filtered out (inefficient)", "type": "contains"},
+        {"text": "Output recommends an index on user_id", "type": "contains"},
+        {"text": "Output uses CREATE INDEX CONCURRENTLY", "type": "contains"},
+        {"text": "Output provides expected plan after index creation", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Detect N+1 queries in this code: 'const posts = await db.post.findMany(); for (const post of posts) { const author = await db.user.findUnique({ where: { id: post.authorId } }); }'",
+      "expected_output": "N+1 diagnosis with query count and fixed version using include",
+      "assertions": [
+        {"text": "Output identifies this as an N+1 pattern", "type": "contains"},
+        {"text": "Output calculates the total query count (1 + N)", "type": "contains"},
+        {"text": "Output provides fixed version using include or equivalent eager loading", "type": "contains"},
+        {"text": "Output shows the fixed version results in 1 or 2 queries", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Design the optimal index for: SELECT * FROM events WHERE user_id = $1 AND event_type = $2 ORDER BY created_at DESC LIMIT 20",
+      "expected_output": "Composite index with correct column order explanation",
+      "assertions": [
+        {"text": "Output creates a composite index with user_id and event_type", "type": "contains"},
+        {"text": "Output puts equality columns (user_id, event_type) before created_at", "type": "contains"},
+        {"text": "Output includes created_at DESC in index for ORDER BY", "type": "contains"},
+        {"text": "Output uses CREATE INDEX CONCURRENTLY", "type": "contains"},
+        {"text": "Output explains why column order matters for composite indexes", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "When should you use a GIN index instead of a B-tree index? Give 3 concrete examples with SQL.",
+      "expected_output": "GIN explanation with full-text search, JSONB, and array examples",
+      "assertions": [
+        {"text": "Output mentions full-text search as a GIN use case", "type": "contains"},
+        {"text": "Output mentions JSONB @> containment operator", "type": "contains"},
+        {"text": "Output mentions array @> containment", "type": "contains"},
+        {"text": "Output provides CREATE INDEX ... USING GIN syntax", "type": "contains"},
+        {"text": "Output explains that B-tree cannot support these operators", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set up pg_stat_statements to identify the top 10 slowest queries by average execution time in PostgreSQL.",
+      "expected_output": "CREATE EXTENSION command and SELECT query against pg_stat_statements",
+      "assertions": [
+        {"text": "Output includes CREATE EXTENSION IF NOT EXISTS pg_stat_statements", "type": "contains"},
+        {"text": "Output queries pg_stat_statements view", "type": "contains"},
+        {"text": "Output uses mean_exec_time or total_exec_time for ordering", "type": "contains"},
+        {"text": "Output uses LIMIT 10", "type": "contains"},
+        {"text": "Output selects meaningful columns: query, calls, avg_ms", "type": "contains"}
+      ]
+    }
+  ]
+}

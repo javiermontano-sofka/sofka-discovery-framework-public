@@ -1,0 +1,22 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["⚠️ Risk Register<br/>Opportunity Entries"]:::primary --> B["🌟 Opportunity Management<br/>Skill Entry Point"]:::primary
+    C["📊 Project Baselines<br/>Schedule / Cost / Scope"]:::amber --> B
+
+    B --> D["🔍 Identification<br/>Scan All Dimensions"]:::primary
+    D --> E["📊 Assessment<br/>Probability x Impact"]:::primary
+    E --> F["🎯 Strategy Selection<br/>Exploit/Share/Enhance/Accept"]:::amber
+
+    F --> G["📋 Action Planning<br/>Investment vs Upside"]:::primary
+    G --> H["👤 Owner Assignment<br/>Opportunity Champion"]:::amber
+
+    H --> I["📅 Plan Integration<br/>Activities in Schedule"]:::dark
+    I --> J["📈 Monitoring<br/>Realization Tracking"]:::primary
+
+    J --> K["📦 Deliverables<br/>Opportunity Register"]:::dark
+    K --> L["✅ Validation Gate<br/>10 Criteria"]:::primary
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

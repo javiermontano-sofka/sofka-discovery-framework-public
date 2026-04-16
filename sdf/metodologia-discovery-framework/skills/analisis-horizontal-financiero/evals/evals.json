@@ -1,0 +1,53 @@
+{
+  "skill_name": "analisis-horizontal-financiero",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Necesito que analices el estado de resultados de TechnoLatam adjunto. Hazme el análisis horizontal completo comparando 2023 vs 2024. Quiero el informe ejecutivo para presentar a la junta directiva.",
+      "expected_output": "Informe ejecutivo con las 10 secciones, tabla de análisis horizontal con variaciones absolutas y relativas correctas, identificación de que los ingresos crecieron ~19%, márgenes mejoraron, y archivo Excel con la plantilla estandarizada.",
+      "files": ["evals/files/test1_pl_technolatam.xlsx"],
+      "expectations": [
+        "El informe contiene las 10 secciones obligatorias (Resumen Ejecutivo hasta Notas Metodológicas)",
+        "Las variaciones absolutas son aritméticamente correctas (ej: Ingresos Var = 28,500)",
+        "Las variaciones porcentuales son correctas (ej: Ingresos ~19%)",
+        "El semáforo de salud financiera está presente y es consistente con los hallazgos",
+        "Se identifican al menos 3 drivers de variación con clasificación",
+        "Se generan indicadores derivados (márgenes: bruto, operacional, neto)",
+        "Se produce un archivo Excel con la estructura estandarizada de 6 hojas",
+        "Los términos técnicos incluyen equivalente en inglés en primera mención"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Adjunto el balance general de TechnoLatam S.A.S al cierre de 2023 y 2024. Necesito un análisis horizontal completo. La junta quiere entender cómo cambió la posición financiera de la empresa. Incluye alertas de liquidez y endeudamiento.",
+      "expected_output": "Informe con análisis de bloques de activos, pasivos y patrimonio. Alertas sobre deterioro de liquidez (efectivo cayó, CxC subieron), aumento de deuda CP, y cálculo de indicadores como razón corriente, prueba ácida, D/E ratio. Excel estandarizado.",
+      "files": ["evals/files/test2_balance_technolatam.xlsx"],
+      "expectations": [
+        "El informe contiene las 10 secciones obligatorias",
+        "Los bloques funcionales son de Balance (Activos Corrientes, No Corrientes, Pasivos, Patrimonio)",
+        "Se identifica la caída de efectivo (-28.8%) como alerta",
+        "Se calcula la razón corriente para ambos períodos",
+        "Se identifica el aumento de deuda financiera CP (+50%) como alerta",
+        "Se verifican que activos = pasivos + patrimonio en ambos períodos",
+        "Las recomendaciones son accionables y se derivan de hallazgos específicos",
+        "Se produce un archivo Excel con la estructura estandarizada"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Tengo este CSV con el income statement de GlobalTech Inc. en USD (miles). Los resultados de FY2023 fueron malos comparados con FY2022. Necesito el análisis horizontal completo para entender qué pasó y presentar a los directivos. El archivo está en formato CSV, no Excel.",
+      "expected_output": "Informe que adapta el formato de input (CSV) y detecta la caída severa en utilidad operacional (-58.7%) y neta (-69.9%). Semáforo rojo. Identifica que R&D creció mientras ingresos cayeron. Recomendaciones sobre control de gastos y eficiencia de R&D.",
+      "files": ["evals/files/test3_pl_globaltech.csv"],
+      "expectations": [
+        "El skill maneja correctamente un CSV como input (no solo Excel)",
+        "Se detecta que los ingresos cayeron ~5.7% (245k a 231k)",
+        "Se identifica la caída dramática en Operating Income (-58.7%)",
+        "Se identifica el aumento de R&D (+17.1%) como driver importante",
+        "El semáforo indica deterioro (rojo o amarillo)",
+        "Se adapta la moneda (USD) y escala (miles) correctamente",
+        "Las alertas incluyen el deterioro de márgenes y la compresión de rentabilidad",
+        "Se produce un archivo Excel con la estructura estandarizada"
+      ]
+    }
+  ]
+}

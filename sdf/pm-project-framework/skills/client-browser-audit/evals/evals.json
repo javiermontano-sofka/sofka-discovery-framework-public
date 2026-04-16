@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Audit browser landscape for enterprise client with 5000 users.",
+    "assertions": [
+      "identifies browser distribution",
+      "maps device types",
+      "assesses version diversity",
+      "identifies support challenges"
+    ]
+  },
+  {
+    "prompt": "Map compatibility requirements for web application.",
+    "assertions": [
+      "defines browser support matrix",
+      "identifies compatibility risks",
+      "maps to testing requirements",
+      "recommends polyfill strategy"
+    ]
+  },
+  {
+    "prompt": "Assess accessibility baseline.",
+    "assertions": [
+      "evaluates current WCAG compliance",
+      "identifies accessibility gaps",
+      "maps assistive technology usage",
+      "recommends improvements"
+    ]
+  },
+  {
+    "prompt": "Recommend device support strategy.",
+    "assertions": [
+      "analyzes cost-benefit per device",
+      "prioritizes by user population",
+      "recommends support tiers",
+      "addresses progressive enhancement"
+    ]
+  }
+]

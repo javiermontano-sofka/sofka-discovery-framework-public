@@ -1,0 +1,47 @@
+%% Knowledge Graph — PoC Lab
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    POC["PoC Lab"]:::blue
+
+    %% Types
+    TOOL["Tool Evaluation"]:::amber
+    METHOD["Methodology Pilot"]:::amber
+    INNOV["Process Innovation"]:::amber
+
+    %% Process
+    HYP["Hypothesis"]:::dark
+    CRITERIA["Success Criteria"]:::dark
+    EXEC["Time-boxed Execution"]:::blue
+    EVAL["Comparative Analysis"]:::blue
+    SCALE["Scale-up Risk"]:::amber
+
+    %% Decisions
+    GO["GO"]:::blue
+    NOGO["NO-GO"]:::dark
+    PIVOT["PIVOT"]:::amber
+
+    %% Flow
+    HYP --> POC
+    CRITERIA --> POC
+    POC --> TOOL
+    POC --> METHOD
+    POC --> INNOV
+    TOOL --> EXEC
+    METHOD --> EXEC
+    INNOV --> EXEC
+    EXEC --> EVAL
+    EVAL --> SCALE
+    SCALE --> GO
+    SCALE --> NOGO
+    SCALE --> PIVOT
+
+    %% Cross-refs
+    PROC["Procurement Plan"]:::dark
+    VENDOR["Vendor Management"]:::dark
+    GO -.->|"informs"| PROC
+    GO -.->|"informs"| VENDOR

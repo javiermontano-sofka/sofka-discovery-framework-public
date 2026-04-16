@@ -1,0 +1,52 @@
+%% Knowledge Graph — Status Report Generation
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        SCHEDULE[schedule-baseline<br/>Progress data]
+        RISK[risk-register<br/>Current risks]
+        BUDGET[budget-tracking<br/>Financial data]
+        METRICS[team-performance<br/>Velocity/throughput]
+        DECISIONS[decision-log<br/>Pending decisions]
+    end
+
+    subgraph "Status Report (This Skill)"
+        COLLECT[Data Collection<br/>Gather metrics]
+        RAG[RAG Assessment<br/>Blue/Amber/Red]
+        NARRATIVE[Narrative Writing<br/>Story + context]
+        ADAPT[Audience Adaptation<br/>Detail level]
+    end
+
+    subgraph Downstream
+        STEERING[steering-review<br/>Evidence for gate]
+        EXEC[executive-briefing<br/>Exec summary]
+        DASHBOARD[dashboard-tooling<br/>Visual display]
+        COMMS[communication-plan<br/>Distribution]
+    end
+
+    subgraph Agents
+        PM_ANALYST[pm-analyst<br/>L2 Specialist]
+        COMMS_LEAD[communications-lead<br/>L2 Specialist]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    SCHEDULE --> COLLECT
+    RISK --> COLLECT
+    BUDGET --> COLLECT
+    METRICS --> COLLECT
+    DECISIONS --> COLLECT
+
+    COLLECT --> RAG --> NARRATIVE --> ADAPT
+
+    ADAPT --> STEERING
+    ADAPT --> EXEC
+    ADAPT --> DASHBOARD
+    ADAPT --> COMMS
+
+    PM_ANALYST -.->|executes| COLLECT
+    COMMS_LEAD -.->|reviews| NARRATIVE
+    CONDUCTOR -.->|orchestrates| ADAPT
+
+    style ADAPT fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style PM_ANALYST fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

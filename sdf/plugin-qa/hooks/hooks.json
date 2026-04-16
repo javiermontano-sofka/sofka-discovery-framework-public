@@ -1,0 +1,49 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;mkdir -p \"$1/pqa\"&&echo \"$M\">\"$G\";bash \"$2/scripts/plugin-scan.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/session-context-gen.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/session-init.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/ghost-menu-inject.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/session-changelog.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/session-changelog.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/context-prune.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/pqa/active-plugin\";M=\"pqa\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/post-write-validate.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          }
+        ],
+        "matcher": "Write|Edit"
+      }
+    ]
+  }
+}

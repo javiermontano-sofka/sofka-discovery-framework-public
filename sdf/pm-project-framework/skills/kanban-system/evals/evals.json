@@ -1,0 +1,50 @@
+[
+  {
+    "prompt": "Design a Kanban board for a support team handling 50 tickets/week across L1 triage, L2 investigation, and L3 engineering escalation.",
+    "assertions": [
+      "board includes distinct columns for each support tier (L1, L2, L3) plus queue/buffer columns between them",
+      "WIP limits are assigned to every active-work column",
+      "swimlanes differentiate by severity or service class (e.g., expedite vs. standard)",
+      "entry and exit criteria are defined for each column transition",
+      "includes a blocker/escalation zone for aged tickets",
+      "card template includes required fields: ticket ID, severity, age-in-column, assignee, blocker flag",
+      "output includes a Mermaid diagram of the board layout"
+    ]
+  },
+  {
+    "prompt": "Calibrate WIP limits for a software team with 6 developers and 2 testers. Current average cycle time is 12 days, throughput is 8 items/week, and average WIP is 14.",
+    "assertions": [
+      "applies Little's Law explicitly: Lead Time = WIP / Throughput",
+      "identifies that current WIP of 14 is likely too high given the team size and cycle time",
+      "recommends per-column WIP limits, not just a system-wide number",
+      "accounts for the tester bottleneck (2 testers vs. 6 developers) in limit distribution",
+      "includes sensitivity analysis with at least 2 scenarios (tight vs. balanced)",
+      "defines re-calibration triggers with specific thresholds",
+      "predicts cycle time improvement after WIP reduction"
+    ]
+  },
+  {
+    "prompt": "Our team's average cycle time has doubled from 5 days to 10 days over the last 6 weeks. Diagnose the flow bottleneck and recommend fixes.",
+    "assertions": [
+      "requests or analyzes cumulative flow diagram data to identify widening bands",
+      "checks WIP trends to determine if WIP increased (overloading) or throughput decreased (capacity loss)",
+      "identifies the specific column or stage where items are accumulating",
+      "analyzes blocker frequency and duration as a potential root cause",
+      "provides at least 2 concrete intervention recommendations tied to the diagnosed bottleneck",
+      "uses percentile-based cycle time analysis (P50, P85, P95) rather than just averages",
+      "tags findings with evidence markers: [METRIC] for data-backed, [INFERENCIA] for hypotheses"
+    ]
+  },
+  {
+    "prompt": "Implement service classes for a team that handles both BAU production support (30 tickets/week) and strategic project work (3-4 features/sprint).",
+    "assertions": [
+      "defines at least 3 service classes with distinct cost-of-delay profiles",
+      "includes an Expedite class with strict WIP limit (max 1 item) for critical production incidents",
+      "sets allocation percentages that balance BAU and project work without starving either",
+      "defines aging thresholds per service class based on cycle time percentiles",
+      "includes a classification flowchart or decision tree for incoming work",
+      "specifies Service Level Expectations (SLEs) as probabilistic commitments (not guarantees)",
+      "addresses conflict resolution when multiple expedite items arrive simultaneously"
+    ]
+  }
+]

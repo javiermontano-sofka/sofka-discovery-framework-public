@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Design squad structure for 40 developers.",
+    "assertions": [
+      "creates autonomous squads with clear missions",
+      "sizes squads appropriately (5-9)",
+      "aligns with value streams",
+      "defines squad interfaces"
+    ]
+  },
+  {
+    "prompt": "Organize tribes for a product with 6 squads.",
+    "assertions": [
+      "groups squads into coherent tribes",
+      "defines tribe leader role",
+      "establishes tribe-level coordination",
+      "manages tribe size"
+    ]
+  },
+  {
+    "prompt": "Architect chapters and guilds.",
+    "assertions": [
+      "defines chapters for functional alignment",
+      "creates guilds for cross-cutting interests",
+      "establishes meeting cadence",
+      "measures chapter/guild value"
+    ]
+  },
+  {
+    "prompt": "Balance autonomy with alignment.",
+    "assertions": [
+      "defines autonomy boundaries",
+      "establishes alignment mechanisms",
+      "creates feedback loops",
+      "measures autonomy-alignment health"
+    ]
+  }
+]

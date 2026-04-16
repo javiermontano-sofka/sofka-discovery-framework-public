@@ -1,0 +1,66 @@
+{
+  "skill_name": "vector-database-design",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up pgvector for a document Q&A system with 50,000 chunks. Choose an embedding model, create the schema, and build the HNSW index with recommended parameters.",
+      "expected_output": "text-embedding-3-small model selection, CREATE TABLE with vector column, HNSW index with m=16 ef_construction=64",
+      "assertions": [
+        {"text": "Output enables the vector extension with CREATE EXTENSION IF NOT EXISTS vector", "type": "contains"},
+        {"text": "Output creates a table with a vector column specifying correct dimensions (768, 1536, or similar)", "type": "contains"},
+        {"text": "Output creates HNSW index using hnsw (embedding vector_cosine_ops)", "type": "contains"},
+        {"text": "Output specifies m and ef_construction parameters for HNSW", "type": "contains"},
+        {"text": "Output selects an embedding model with dimension and cost justification", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design hybrid search combining pgvector semantic search with PostgreSQL full-text search using Reciprocal Rank Fusion for a product catalog.",
+      "expected_output": "SQL CTE with semantic results, keyword results, and RRF fusion formula",
+      "assertions": [
+        {"text": "Output uses ROW_NUMBER() OVER (ORDER BY embedding <=> ...) for semantic ranking", "type": "contains"},
+        {"text": "Output uses ts_rank() or plainto_tsquery() for full-text search", "type": "contains"},
+        {"text": "Output implements RRF formula: 1.0 / (60 + rank)", "type": "contains"},
+        {"text": "Output uses FULL OUTER JOIN to combine both result sets", "type": "contains"},
+        {"text": "Output orders final results by combined RRF score DESC", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Explain parent-child chunking strategy and implement it. Documents should be chunked into small pieces for embedding but retrieved as larger sections for context.",
+      "expected_output": "Schema with documents + chunks tables, ingest storing both parent and children, search returning parents",
+      "assertions": [
+        {"text": "Output explains that small chunks are embedded for precision while large parents provide context", "type": "contains"},
+        {"text": "Output stores parent sections and child chunks in separate records or tables", "type": "contains"},
+        {"text": "Output links child chunks to parent via parent_id or similar FK", "type": "contains"},
+        {"text": "Output shows search returning parent content (not child snippet)", "type": "contains"},
+        {"text": "Output deduplicates parent retrieval when multiple children from same parent match", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Design multi-tenant vector storage where each tenant's embeddings are isolated. 300 tenants, 5,000 chunks average. Enforce isolation at the database level, not application level.",
+      "expected_output": "tenant_id column, RLS policy, and query pattern with tenant filter before vector scan",
+      "assertions": [
+        {"text": "Output adds tenant_id column to the chunks table", "type": "contains"},
+        {"text": "Output enables Row-Level Security with ALTER TABLE ... ENABLE ROW LEVEL SECURITY", "type": "contains"},
+        {"text": "Output creates an RLS policy filtering by tenant_id using current_setting or auth function", "type": "contains"},
+        {"text": "Output explains the index strategy (global HNSW vs partial index per tenant)", "type": "contains"},
+        {"text": "Output includes a query demonstrating tenant filter is applied before vector search", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Implement content-hash deduplication to avoid re-embedding unchanged documents during updates. Documents are re-indexed nightly.",
+      "expected_output": "MD5 content hash column, check before re-embedding, skip or update logic",
+      "assertions": [
+        {"text": "Output stores a content hash (MD5 or similar) alongside the embedding", "type": "contains"},
+        {"text": "Output checks existing hash before calling the embedding API", "type": "contains"},
+        {"text": "Output skips embedding when hash matches (content unchanged)", "type": "contains"},
+        {"text": "Output deletes old chunks and re-inserts when content has changed", "type": "contains"},
+        {"text": "Output batches embedding API calls (multiple texts per request)", "type": "contains"}
+      ]
+    }
+  ]
+}

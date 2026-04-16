@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Prepare an executive briefing for the CTO on a cloud migration project that is 2 weeks behind schedule due to unexpected legacy system complexity. The project has consumed 60% of budget at 45% completion.",
+    "assertions": [
+      "Output adapts language for a CTO audience focusing on technical capability and architectural impact rather than pure financials",
+      "Output includes a clear TL;DR or executive summary that conveys the core situation in under 3 sentences",
+      "Output presents at least 2 options for addressing the schedule delay with trade-off analysis",
+      "Output includes a visual element such as a traffic light status, dashboard, or Mermaid diagram"
+    ]
+  },
+  {
+    "prompt": "The CEO has 5 minutes in tomorrow's board meeting to discuss the digital transformation portfolio. Distill the status of 4 active projects into a single-page briefing.",
+    "assertions": [
+      "Output condenses 4 projects into a scannable single-page format with key metrics per project",
+      "Output uses visual indicators like traffic lights or RAG status for quick comprehension",
+      "Output identifies which projects need board-level decisions or attention versus which are on track",
+      "Output includes a TL;DR that captures the portfolio health in one paragraph"
+    ]
+  },
+  {
+    "prompt": "Frame a decision for the executive committee: should we extend the project timeline by 4 weeks to include additional security features, or ship on time with a follow-up security sprint?",
+    "assertions": [
+      "Output presents both options with clear trade-offs across cost, risk, timeline, and quality dimensions",
+      "Output includes a recommendation with explicit rationale tied to business objectives",
+      "Output specifies who needs to approve and by what deadline",
+      "Output quantifies the risk or business impact of each option in business terms"
+    ]
+  },
+  {
+    "prompt": "Convert this technical status update into an executive briefing: 'Sprint 14 completed 23 of 28 story points. Velocity trending down 15% over last 3 sprints. CI/CD pipeline reliability at 87%. 3 P2 bugs in backlog. API integration with legacy ERP blocked on firewall configuration.'",
+    "assertions": [
+      "Output translates technical metrics into business impact language without jargon",
+      "Output identifies the most critical item (ERP integration blocker) and frames it as a business risk",
+      "Output provides a concise narrative rather than repeating raw metrics",
+      "Output includes a recommended action or decision needed from the executive audience"
+    ]
+  }
+]

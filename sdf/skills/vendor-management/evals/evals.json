@@ -1,0 +1,6 @@
+[
+  {"prompt":"Evaluate 4 vendors for $500K outsourced development.","assertions":["defines weighted evaluation criteria","scores vendors consistently","produces comparative ranking","recommends selection with risk analysis"]},
+  {"prompt":"Vendor SLA breaches in 3 of 5 metrics, second consecutive month.","assertions":["documents specific breaches with evidence","triggers escalation process","requests formal improvement plan","assesses penalty clause invocation"]},
+  {"prompt":"Analyze multi-year vendor contract for risks before signing.","assertions":["identifies SLA gaps and ambiguous terms","evaluates IP and termination clauses","assesses liability limitations","recommends contract modifications"]},
+  {"prompt":"Vendor quality declining 3 months. Critical relationship, can't easily replace.","assertions":["designs graduated escalation approach","focuses on root cause discussion","proposes improvement plan with milestones","develops contingency plan"]}
+]

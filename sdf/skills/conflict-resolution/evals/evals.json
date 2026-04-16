@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "The development lead and QA manager are in conflict over release criteria. Dev wants to ship with known low-severity bugs, QA insists on zero-defect releases. This has delayed the last 3 sprints. Diagnose and propose a resolution.",
+    "assertions": [
+      "Output identifies the root cause as misaligned quality standards or unclear definition of done between teams",
+      "Output recommends a specific Thomas-Kilmann mode (collaborating or compromising) with justification",
+      "Output proposes a concrete agreement structure with acceptance criteria for release readiness",
+      "Output includes a follow-up mechanism to prevent recurrence of the same conflict"
+    ]
+  },
+  {
+    "prompt": "Two project managers are competing for the same senior developer resource across parallel projects. Both claim their project has higher priority. The PMO has not provided clear prioritization guidance.",
+    "assertions": [
+      "Output identifies resource contention and absent governance as root causes rather than interpersonal issues",
+      "Output recommends escalation to PMO or portfolio level for priority clarification",
+      "Output proposes a structured resource allocation agreement with transparent criteria",
+      "Output suggests a preventive control such as a resource arbitration process or portfolio prioritization framework"
+    ]
+  },
+  {
+    "prompt": "A client stakeholder repeatedly changes requirements mid-sprint, causing friction with the delivery team who feels their work is being wasted. The account manager sides with the client. Mediate this situation.",
+    "assertions": [
+      "Output distinguishes between the stakeholder management issue and the change control process gap",
+      "Output designs a mediation approach that addresses both client expectations and team sustainability",
+      "Output proposes a formal change request process as part of the resolution agreement",
+      "Output documents clear commitments for all three parties with accountability measures"
+    ]
+  },
+  {
+    "prompt": "Review this conflict log from the last quarter: 5 conflicts about unclear ownership, 3 about deadline disagreements, 2 about technical approach differences. All involved the same 2 teams. Produce a prevention analysis.",
+    "assertions": [
+      "Output identifies the concentration of conflicts between the same 2 teams as a systemic pattern",
+      "Output traces unclear ownership conflicts to RACI or governance gaps",
+      "Output provides prioritized prevention recommendations addressing the most frequent conflict type first",
+      "Output includes an estimated impact or ROI of implementing the preventive measures"
+    ]
+  }
+]

@@ -1,0 +1,96 @@
+{
+  "schema": "mao-brand-config/1.0",
+  "version": "6.0.0",
+  "updated": "2026-03-17",
+  "brand": {
+    "name": "MetodologIA",
+    "wordmark_html": "metodolog<span>IA</span>",
+    "tagline": "Construido por profesionales, potenciado por la red agentica de MetodologIA.",
+    "aesthetic": "Neo-Swiss Clean & Soft Explainer",
+    "description": "Light off-white body, navy hero+footer, gold accents, Swiss 8px grid, soft corporate shadows",
+    "license": "GPL-3.0"
+  },
+  "colors": {
+    "navy": "#122562",
+    "gold": "#FFD700",
+    "blue": "#137DC5",
+    "dark": "#1F2833",
+    "lavender": "#BBA0CC",
+    "gray": "#808080",
+    "white": "#FFFFFF",
+    "offWhite": "#F8F9FC",
+    "lightGray": "#E8EAF0"
+  },
+  "semantic": {
+    "positive": "#137DC5",
+    "warning": "#D97706",
+    "critical": "#DC2626"
+  },
+  "typography": {
+    "title": { "family": "Poppins", "fallback": "'Segoe UI', sans-serif", "weights": "400;500;600;700;800", "googleFonts": "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" },
+    "body": { "family": "Trebuchet MS", "fallback": "'Lucida Sans', sans-serif" },
+    "note": { "family": "Futura", "fallback": "'Century Gothic', 'Trebuchet MS', sans-serif" }
+  },
+  "spacing": {
+    "unit": 8,
+    "scale": { "sp-1": "8px", "sp-2": "16px", "sp-3": "24px", "sp-4": "32px", "sp-5": "40px", "sp-6": "48px", "sp-8": "64px", "sp-10": "80px" }
+  },
+  "shadows": {
+    "sm": "0 1px 3px rgba(18,37,98,.06)",
+    "md": "0 4px 16px rgba(18,37,98,.08)",
+    "lg": "0 8px 32px rgba(18,37,98,.10)",
+    "card": "0 2px 8px rgba(18,37,98,.05), 0 8px 24px rgba(18,37,98,.06)"
+  },
+  "radii": { "sm": "8px", "md": "12px", "lg": "16px", "xl": "24px" },
+  "structure": {
+    "hero": "Navy bg, gold 6px bottom border, logo+wordmark, badges, h1 with gold <em>, subtitle, 4-column KPIs",
+    "toc": "White bg, sticky top:0, gold active underline, uppercase font-note links",
+    "sections": "Navy 56px numbered squares with gold text, h2 title, gray subtitle",
+    "footer": "Navy bg, gold 4px top border, logo+wordmark, gold chip badges, muted bottom row"
+  },
+  "docx": {
+    "heading1": { "font": "Poppins", "size": 24, "color": "122562", "bold": true },
+    "heading2": { "font": "Poppins", "size": 18, "color": "137DC5", "bold": true },
+    "heading3": { "font": "Poppins", "size": 14, "color": "122562", "bold": true },
+    "body": { "font": "Trebuchet MS", "size": 11, "color": "1F2833" },
+    "note": { "font": "Century Gothic", "size": 9, "color": "808080" },
+    "tableHeader": { "bg": "122562", "fontColor": "FFFFFF", "font": "Poppins", "size": 10 },
+    "tableAccent": { "bg": "FFD700", "fontColor": "122562" },
+    "coverPage": { "bg": "122562", "titleColor": "FFFFFF", "accentColor": "FFD700" },
+    "footer": { "text": "MetodologIA · Construido por profesionales", "color": "808080", "size": 8 }
+  },
+  "xlsx": {
+    "headerFill": "122562",
+    "headerFont": "FFFFFF",
+    "headerFontFamily": "Poppins",
+    "headerFontSize": 11,
+    "accentFill": "FFD700",
+    "accentFont": "122562",
+    "bodyFont": "1F2833",
+    "bodyFontFamily": "Trebuchet MS",
+    "bodyFontSize": 10,
+    "positiveFill": "137DC5",
+    "positiveFont": "FFFFFF",
+    "warningFill": "D97706",
+    "warningFont": "FFFFFF",
+    "criticalFill": "DC2626",
+    "criticalFont": "FFFFFF",
+    "borderColor": "E8EAF0",
+    "zebraLight": "F8F9FC",
+    "zebraDark": "FFFFFF"
+  },
+  "pptx": {
+    "slideMaster": { "bg": "122562", "titleFont": "Poppins", "titleSize": 36, "titleColor": "FFFFFF", "bodyFont": "Trebuchet MS", "bodySize": 18, "bodyColor": "F8F9FC" },
+    "accent": "FFD700",
+    "primary": "137DC5",
+    "dividerSlide": { "bg": "122562", "numberFont": "Poppins", "numberSize": 72, "numberColor": "FFD700" },
+    "contentSlide": { "bg": "FFFFFF", "titleColor": "122562", "bodyColor": "1F2833" },
+    "maxSlidesExecutive": 20,
+    "maxSlidesTechnical": 30
+  },
+  "logo": {
+    "type": "inline-svg",
+    "file": "assets/logo-metodologia.svg",
+    "description": "Squircle container with dark gradient bg, 3 white rectangular pillars of varying heights, gold circle at top center"
+  }
+}

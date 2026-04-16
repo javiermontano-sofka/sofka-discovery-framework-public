@@ -1,0 +1,135 @@
+%% Knowledge Graph — User Representative
+%% Dominio: Representación del usuario — claridad, carga cognitiva, accesibilidad, riesgo de adopción, sesgos
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["user-representative"]
+        direction TB
+        PR["Principio Rector:<br/>Si el usuario necesita un manual<br/>para entender el deliverable,<br/>el deliverable falló"]
+        FW["Framework: 5 Dimensiones"]
+        VG["Validation Gate: 6 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        DELIVERABLE["Deliverable<br/>(path o contenido)"]
+        AUDIENCE["Audiencia<br/>(executive, tech lead,<br/>developer, BA)"]
+        CONTEXT["Contexto de uso<br/>(presentación, review,<br/>decisión, implementación)"]
+    end
+
+    subgraph PERSONAS["Reader Personas"]
+        EXEC["Executive<br/>5 min scan, zero jargon"]
+        TECHLEAD["Technical Lead<br/>15 min read, moderate jargon"]
+        DEV["Developer<br/>30 min deep dive, high precision"]
+        BA["Business Analyst<br/>20 min review, domain terms OK"]
+    end
+
+    subgraph DIMENSIONS["5-Dimension Scorecard"]
+        D1["D1: Comprensión<br/>Entendimiento sin ayuda externa"]
+        D2["D2: Carga Cognitiva<br/>Chunks, jerarquía, longitud"]
+        D3["D3: Accesibilidad/Escaneabilidad<br/>80/20, highlights, TL;DR"]
+        D4["D4: Riesgos de Adopción<br/>Barreras, CTA, asunciones"]
+        D5["D5: Sesgos Detectados<br/>Técnico, organizacional,<br/>cultural, optimismo"]
+    end
+
+    subgraph HEURISTICS["Heurísticas de Usabilidad"]
+        NIELSEN["Nielsen Norman Group<br/>10 Heurísticas de Usabilidad"]
+        KRUG["Don't Make Me Think<br/>(Krug)"]
+        WCAG["WCAG 2.1 AA<br/>Accesibilidad"]
+        PLAIN["Plain Language<br/>Guidelines"]
+    end
+
+    subgraph UX_RESEARCH["User Research"]
+        JOURNEYS["User Journeys<br/>Mapeo de experiencia"]
+        PAINPOINTS["Pain Points<br/>Puntos de fricción"]
+        JTBD["Jobs-to-Be-Done<br/>(Christensen)"]
+        SATISFACTION["Satisfaction Metrics<br/>NPS, SUS, CSAT"]
+    end
+
+    subgraph ADJUSTMENTS["Micro-Adjustments"]
+        COPY["Copy<br/>Simplificar lenguaje"]
+        STRUCTURE["Structure<br/>Reordenar secciones"]
+        VISUAL["Visual<br/>Callouts, highlights"]
+        NAV["Navigation<br/>Links, TOC, jumps"]
+        SIMPLIFY["Simplification<br/>Dividir tablas, reducir"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        A01["A-01 User Representative<br/>Review"]
+        SCORECARD["5-Dimension<br/>Scorecard"]
+        MICROADJ["Top 5<br/>Micro-Adjustments"]
+        VERDICT["Verdict<br/>PASS / CONDITIONAL / FAIL"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        UXWRITE["ux-writing<br/>(aplica micro-ajustes de copy)"]
+        HTMLBRAND["html-brand<br/>(aplica ajustes visuales)"]
+        DESIGNSYS["design-system<br/>(aplica accesibilidad)"]
+        PITCH["executive-pitch<br/>(clarity gate)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        UXSTRAT["ux-strategist<br/>(owner)"]
+        UXRES["ux-researcher<br/>(support: D4)"]
+        CHANGE["change-catalyst<br/>(support: D4)"]
+        FRONTEND["frontend-developer<br/>(support: D3)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|evalúa con| DIMENSIONS
+    PERSONAS -->|filtran perspectiva| DIMENSIONS
+    DIMENSIONS -->|generan| ADJUSTMENTS
+    ADJUSTMENTS -->|producen| OUTPUTS
+    HEURISTICS -.->|fundamentan| DIMENSIONS
+    UX_RESEARCH -.->|informan| D4
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Persona to dimension emphasis
+    EXEC -.->|prioriza| D3
+    TECHLEAD -.->|prioriza| D1
+    DEV -.->|prioriza| D2
+    BA -.->|prioriza| D4
+
+    %% Heuristic to dimension mapping
+    NIELSEN -.->|fundamenta| D1
+    KRUG -.->|fundamenta| D2
+    WCAG -.->|fundamenta| D3
+    PLAIN -.->|fundamenta| D1
+
+    %% UX Research connections
+    JOURNEYS -.->|identifica| PAINPOINTS
+    PAINPOINTS -.->|alimenta| D4
+    JTBD -.->|contextualiza| D4
+    SATISFACTION -.->|mide| VERDICT
+
+    %% Internal traceability
+    D1 -.->|comprehension impacts| D2
+    D2 -.->|cognitive load affects| D3
+    D3 -.->|scannability reveals| D4
+    D4 -.->|adoption risk exposes| D5
+
+    %% Agent relationships
+    UXSTRAT -->|opera| SKILL
+    UXRES -.->|aporta D4| D4
+    CHANGE -.->|aporta D4| D4
+    FRONTEND -.->|aporta D3| D3
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef persona fill:#FFCCBC,stroke:#E64A19,color:#1A1A2E
+
+    class SKILL skill
+    class DELIVERABLE,AUDIENCE,CONTEXT input
+    class D1,D2,D3,D4,D5 section
+    class A01,SCORECARD,MICROADJ,VERDICT output
+    class NIELSEN,KRUG,WCAG,PLAIN,JOURNEYS,PAINPOINTS,JTBD,SATISFACTION standard
+    class UXWRITE,HTMLBRAND,DESIGNSYS,PITCH consumer
+    class UXSTRAT,UXRES,CHANGE,FRONTEND agent
+    class EXEC,TECHLEAD,DEV,BA persona
+    class COPY,STRUCTURE,VISUAL,NAV,SIMPLIFY section

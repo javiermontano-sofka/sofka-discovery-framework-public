@@ -1,0 +1,27 @@
+graph TD
+    subgraph Inputs
+        A[Resource Calendar] --> D
+        B[Product Backlog] --> D
+        C[Velocity History] --> D
+    end
+
+    subgraph "Capacity Planning Process"
+        D[Capacity Calculation]:::skill --> E[Demand Analysis]:::skill
+        E --> F[Gap Identification]:::skill
+        F --> G[Allocation Plan]:::skill
+    end
+
+    subgraph Agents
+        H[Resource Manager Agent]:::agent --> D
+        I[Forecasting Agent]:::agent --> F
+    end
+
+    subgraph Downstream
+        G --> J[Sprint Planning]
+        G --> K[Budget Baseline]
+        G --> L[Dependency Mapping]
+        G --> M[Executive Dashboard]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Analyze this RFP excerpt: 'We need a customer portal that integrates with SAP and Salesforce. Budget is $500K. Timeline: 6 months. Must support 10,000 concurrent users. The solution should be cloud-native and comply with SOC 2. We prefer React for the frontend. The portal should replace the existing legacy system which handles 50 transactions per second.'",
+    "assertions": [
+      "Output extracts and categorizes at least 5 distinct requirements (integration, performance, compliance, technology, migration)",
+      "Output identifies constraints including budget, timeline, technology preference, and compliance requirements",
+      "Output flags gaps such as missing functional requirements, user personas, and migration strategy details",
+      "Output generates clarification questions for the identified gaps"
+    ]
+  },
+  {
+    "prompt": "Assess completeness of project inputs that include: a 2-page project brief with objectives and high-level scope, an org chart showing the client team, and a list of 5 business requirements. No budget information, no timeline, no technical constraints, and no risk assessment provided.",
+    "assertions": [
+      "Output identifies budget, timeline, technical constraints, and risk assessment as critical missing elements",
+      "Output scores the overall completeness as low or insufficient for planning",
+      "Output differentiates between what is present (objectives, scope, org chart, requirements) and what is absent",
+      "Output produces prioritized clarification questions targeting the most critical gaps first"
+    ]
+  },
+  {
+    "prompt": "Detect contradictions in these inputs: Document A says 'delivery must complete by Q2 2026' while Document B says 'the project requires 12 months starting from March 2026'. Document A lists budget as $300K but Document B references 'the approved $450K budget'. Document A says 'cloud-only deployment' while the technical appendix mentions 'on-premise failover requirements'.",
+    "assertions": [
+      "Output detects the timeline contradiction between Q2 2026 delivery and 12-month duration from March 2026",
+      "Output identifies the budget discrepancy between $300K and $450K across documents",
+      "Output flags the cloud-only vs on-premise failover inconsistency",
+      "Output rates contradiction severity and recommends which stakeholder should resolve each conflict"
+    ]
+  },
+  {
+    "prompt": "Generate a priming report for a project where input analysis found: 70% completeness score, 3 critical gaps (no budget confirmation, unclear integration scope, missing stakeholder sign-off), 2 contradictions (timeline conflict, technology preference conflict), and 15 confirmed requirements.",
+    "assertions": [
+      "Output synthesizes all findings into a cohesive narrative covering knowns, unknowns, and conflicts",
+      "Output provides a planning readiness assessment with a clear go/conditional/no-go recommendation",
+      "Output maps information confidence levels across different project aspects",
+      "Output prioritizes actions needed to resolve gaps and contradictions before planning proceeds"
+    ]
+  }
+]

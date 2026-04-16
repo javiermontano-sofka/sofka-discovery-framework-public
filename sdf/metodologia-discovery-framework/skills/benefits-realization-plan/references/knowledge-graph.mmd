@@ -1,0 +1,27 @@
+graph TD
+    subgraph Inputs
+        A[Business Case] --> D
+        B[Strategic Objectives] --> D
+        C[Stakeholder Requirements] --> D
+    end
+
+    subgraph "Benefits Realization Process"
+        D[Benefit Identification]:::skill --> E[Benefits Mapping]:::skill
+        E --> F[KPI Definition]:::skill
+        F --> G[Tracking and Review]:::skill
+    end
+
+    subgraph Agents
+        H[Benefits Analyst Agent]:::agent --> E
+        I[Metrics Agent]:::agent --> F
+    end
+
+    subgraph Downstream
+        G --> J[Executive Dashboard]
+        G --> K[Financial Business Case]
+        G --> L[Closure Report]
+        G --> M[Continuous Improvement]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

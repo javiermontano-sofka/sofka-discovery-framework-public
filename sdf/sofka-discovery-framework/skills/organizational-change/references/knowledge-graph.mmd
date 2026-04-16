@@ -1,0 +1,24 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["📋 Project Scope<br/>Impact Assessment"]:::primary --> B["🔄 Organizational Change<br/>Skill Entry Point"]:::primary
+    C["👥 Stakeholder Register<br/>Impacted Groups"]:::amber --> B
+
+    B --> D["📊 ADKAR Diagnostic<br/>Per Audience Group"]:::primary
+    D --> E["📢 Communication Campaign<br/>Awareness + Desire"]:::amber
+    D --> F["📚 Training Plan<br/>Knowledge + Ability"]:::primary
+
+    E --> G["🛡️ Resistance Management<br/>Targeted Interventions"]:::amber
+    F --> G
+
+    G --> H["🌟 Champion Network<br/>Change Ambassadors"]:::primary
+    H --> I["🔁 Reinforcement Plan<br/>Sustain the Change"]:::amber
+
+    I --> J["📈 Adoption KPIs<br/>Utilization + Proficiency"]:::dark
+    J --> K["📦 OCM Plan<br/>Deliverable"]:::dark
+
+    K --> L["✅ Validation Gate<br/>10 Criteria"]:::primary
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

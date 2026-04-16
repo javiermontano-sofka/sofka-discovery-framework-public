@@ -1,0 +1,23 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["📋 Portfolio Inventory<br/>Active Projects"]:::primary --> B["🛡️ Portfolio Risk<br/>Skill Entry Point"]:::primary
+    C["⚠️ Project Risk Registers<br/>Aggregated Risks"]:::amber --> B
+    D["🎯 Strategic Objectives<br/>Portfolio Goals"]:::primary --> B
+
+    B --> E["📊 Risk Aggregation<br/>Cross-Project Analysis"]:::primary
+    E --> F["🔗 Dependency Risks<br/>Inter-Project Links"]:::amber
+    E --> G["📈 Concentration Risks<br/>Resource & Tech"]:::primary
+
+    F --> H["🎲 Portfolio Simulation<br/>Monte Carlo"]:::amber
+    G --> H
+
+    H --> I["🚨 Risk Appetite<br/>Threshold Monitoring"]:::dark
+    I --> J["📋 Response Strategy<br/>Portfolio-Level Actions"]:::primary
+
+    J --> K["📦 Portfolio Risk Report<br/>Deliverable"]:::dark
+    K --> L["✅ Validation Gate<br/>10 Criteria"]:::primary
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

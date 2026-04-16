@@ -1,0 +1,44 @@
+[
+  {
+    "prompt": "Create a stakeholder register for an ERP migration affecting Sales, Finance, IT, and Operations departments. Executive sponsor is the COO.",
+    "assertions": [
+      "identifies stakeholders across all 4 departments plus executive level",
+      "includes both internal and external stakeholders (e.g., ERP vendor)",
+      "every stakeholder has a unique ID (SH-XXX format)",
+      "power/interest classification applied to each stakeholder",
+      "engagement strategy defined for at least top 10 stakeholders",
+      "produces a power/interest matrix visualization",
+      "COO identified as Manage Closely / Definitive stakeholder"
+    ]
+  },
+  {
+    "prompt": "Two stakeholders have conflicting interests — the CFO wants to minimize cost and the CTO wants best-of-breed technology. How do I handle this in the register?",
+    "assertions": [
+      "documents both perspectives without averaging or dismissing either",
+      "identifies this as a stakeholder conflict requiring facilitation",
+      "recommends alignment workshop or structured decision process",
+      "does NOT try to resolve the conflict by picking a side",
+      "records both positions with evidence tags [STAKEHOLDER]"
+    ]
+  },
+  {
+    "prompt": "Map our stakeholders using the Mitchell salience model.",
+    "assertions": [
+      "explains the three dimensions: power, legitimacy, urgency",
+      "scores each stakeholder on all three dimensions",
+      "classifies into salience types (Definitive, Dominant, Dependent, etc.)",
+      "identifies dynamic salience — stakeholders who change type across phases",
+      "prioritizes engagement based on salience classification"
+    ]
+  },
+  {
+    "prompt": "We discovered a key regulatory stakeholder 3 months into the project. Update the register.",
+    "assertions": [
+      "flags this as a stakeholder identification gap — should have been caught earlier",
+      "adds the regulator with full classification (likely Dormant→Definitive)",
+      "assesses impact on existing project plans",
+      "recommends updating the engagement calendar with regulatory touchpoints",
+      "documents the lesson learned for future risk register update"
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Health check for a project with SPI=0.88, CPI=1.02, 3 red risks.",
+    "assertions": [
+      "assesses all 8 dimensions with evidence",
+      "correlates schedule pressure with risk exposure",
+      "identifies leading indicators of further deterioration",
+      "recommends specific recovery actions"
+    ]
+  },
+  {
+    "prompt": "Health check revealing team burnout at 95% utilization for 3 sprints.",
+    "assertions": [
+      "detects unsustainable utilization as health risk",
+      "correlates burnout with quality and velocity trends",
+      "recommends immediate utilization reduction",
+      "addresses root cause of over-allocation"
+    ]
+  },
+  {
+    "prompt": "Health check for a green-status project \u2014 validate all dimensions.",
+    "assertions": [
+      "validates each dimension meets green thresholds",
+      "identifies any dimensions trending toward yellow",
+      "confirms leading indicators are stable",
+      "documents health baseline for future comparison"
+    ]
+  },
+  {
+    "prompt": "Health check correlating scope creep with schedule and budget degradation.",
+    "assertions": [
+      "quantifies scope growth with evidence",
+      "traces schedule impact of scope additions",
+      "calculates budget impact of uncontrolled scope",
+      "recommends change control enforcement"
+    ]
+  }
+]

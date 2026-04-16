@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Analyze velocity over 8 sprints.",
+    "assertions": [
+      "calculates per-sprint velocity",
+      "identifies trend",
+      "investigates causes",
+      "recommends actions"
+    ]
+  },
+  {
+    "prompt": "Increasing defect rate.",
+    "assertions": [
+      "measures trend",
+      "correlates with other metrics",
+      "identifies root cause",
+      "recommends improvements"
+    ]
+  },
+  {
+    "prompt": "Measure distributed team collaboration.",
+    "assertions": [
+      "assesses communication",
+      "evaluates knowledge sharing",
+      "detects barriers",
+      "recommends improvements"
+    ]
+  },
+  {
+    "prompt": "Improvement plan for underperforming team.",
+    "assertions": [
+      "identifies gaps",
+      "sets targets",
+      "designs interventions",
+      "establishes monitoring"
+    ]
+  }
+]

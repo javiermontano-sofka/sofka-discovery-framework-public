@@ -1,0 +1,110 @@
+%% Knowledge Graph — FinOps (Cloud Financial Operations)
+%% Dominio: Cloud cost management, optimization, governance, unit economics
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["finops"]
+        direction TB
+        PR["Principio Rector:<br/>Cada dólar de cloud debe<br/>trazarse a valor de negocio"]
+        FW["Framework: 8 Secciones"]
+        VG["Validation Gate: 7 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        BILLING["Billing Exports<br/>(Cost Explorer, 3-6 meses)"]
+        IAC["IaC Configs<br/>(Terraform/CDK/ARM)"]
+        TAGS["Tagging Strategy<br/>(allocation, ownership)"]
+        ARCH["Cloud Architecture<br/>(diagrams, services)"]
+        RI["Reservation Inventory<br/>(RI/SP/EDP)"]
+    end
+
+    subgraph PHASES["FinOps Phases"]
+        INFORM["Inform<br/>(Visibility, Allocation,<br/>Benchmarking)"]
+        OPTIMIZE["Optimize<br/>(Rightsizing, Rate,<br/>Usage)"]
+        OPERATE["Operate<br/>(Governance, Policies,<br/>Automation)"]
+    end
+
+    subgraph SECTIONS["8-Section Delivery"]
+        S1["S1: FinOps Maturity<br/>Crawl/Walk/Run scoring"]
+        S2["S2: Cost Visibility<br/>Allocation, tagging, breakdown"]
+        S3["S3: Waste Identification<br/>Idle, oversized, zombie"]
+        S4["S4: Optimization Opportunities<br/>Quick wins, medium, strategic"]
+        S5["S5: Unit Economics<br/>Cost per tx, user, API call"]
+        S6["S6: Rate Optimization<br/>RI/SP coverage, spot, EDP"]
+        S7["S7: Governance & Guardrails<br/>Budgets, alerts, anomalies"]
+        S8["S8: Operating Model<br/>Team structure, RACI, cadence"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        ASSESS["FinOps Assessment<br/>(8-section report)"]
+        QUICKWINS["Quick Wins Report<br/>(S3+S4 executive)"]
+        COSTMAP["Cost Allocation Map<br/>(Mermaid mindmap)"]
+        ROADMAP["Optimization Roadmap<br/>(Gantt)"]
+    end
+
+    subgraph STANDARDS["Standards & Frameworks"]
+        FINOPS_FDN["FinOps Foundation<br/>Framework v1.0"]
+        WAF_COST["AWS Well-Architected<br/>(Cost Optimization Pillar)"]
+        AZURE_CM["Azure Cost Management<br/>Best Practices"]
+        GCP_CO["GCP Cost Optimization<br/>Guide"]
+        GARTNER["Gartner Cloud Cost<br/>Optimization"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        INFRA["infrastructure-architecture<br/>(usa S4 para rightsizing)"]
+        CLOUD["cloud-native-architecture<br/>(usa S5 para unit econ)"]
+        MIGRATION["cloud-migration<br/>(usa S6 para rate plan)"]
+        COST_EST["cost-estimation<br/>(usa S5+S8 como input)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        PE["platform-engineer<br/>(owner)"]
+        TA["technical-architect<br/>(support: S4)"]
+        DM["delivery-manager<br/>(support: S8)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|estructura via| PHASES
+    PHASES -->|desglosan en| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    STANDARDS -.->|fundamentan| SECTIONS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Phase-to-section mapping
+    INFORM -.->|S1, S2, S5| S1
+    OPTIMIZE -.->|S3, S4, S6| S3
+    OPERATE -.->|S7, S8| S7
+
+    %% Agent relationships
+    PE -->|opera| SKILL
+    TA -.->|consulta S3, S4| SKILL
+    DM -.->|aporta S8| S8
+
+    %% Internal traceability
+    S1 -.->|maturity gaps drive| S8
+    S2 -.->|visibility enables| S3
+    S3 -.->|waste maps to| S4
+    S4 -.->|optimizations improve| S5
+    S5 -.->|unit economics define| S7
+    S6 -.->|rate optimization subset of| S4
+    S7 -.->|governance requires| S8
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef phase fill:#FFECB3,stroke:#FF8F00,color:#1A1A2E,stroke-width:2px
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class BILLING,IAC,TAGS,ARCH,RI input
+    class INFORM,OPTIMIZE,OPERATE phase
+    class S1,S2,S3,S4,S5,S6,S7,S8 section
+    class ASSESS,QUICKWINS,COSTMAP,ROADMAP output
+    class FINOPS_FDN,WAF_COST,AZURE_CM,GCP_CO,GARTNER standard
+    class INFRA,CLOUD,MIGRATION,COST_EST consumer
+    class PE,TA,DM agent

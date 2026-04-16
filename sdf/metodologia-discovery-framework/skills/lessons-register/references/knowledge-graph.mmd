@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[issue-management] --> F
+        B[continuous-improvement] --> F
+        C[discovery-retrospective] --> F
+        D[closure-report] --> F
+    end
+
+    subgraph Process
+        F[lessons-register<br/>Capture, Validate &<br/>Disseminate Lessons]:::skill
+        F --> G[Identify & Categorize]
+        G --> H[Root Cause Analysis]
+        H --> I[Validate & Distribute]
+    end
+
+    subgraph Outputs
+        I --> J[onboarding-playbook]
+        I --> K[methodology-playbook]
+        I --> L[kickoff-package]
+    end
+
+    subgraph Agents
+        M[knowledge-curator-agent]:::agent --> F
+        N[retrospective-facilitator-agent]:::agent --> G
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

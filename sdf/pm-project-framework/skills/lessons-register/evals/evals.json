@@ -1,0 +1,58 @@
+[
+  {
+    "id": "lessons-register-eval-001",
+    "title": "Lessons from a project that finished 3 months late",
+    "description": "Evaluate the skill's ability to harvest, analyze root causes, and produce actionable recommendations from a delayed project.",
+    "input": "Project Alpha was a 12-month ERP implementation that delivered 3 months late and 20% over budget. Key events: requirements changed 4 times after sign-off, the lead architect resigned at month 6, integration testing was compressed from 8 weeks to 3 weeks, and the client escalated twice to the steering committee. The team ran 4 sprint retrospectives and 1 post-mortem. Stakeholder satisfaction scored 2.8/5. Produce a full lessons learned register with root cause analysis and actionable recommendations.",
+    "expected_behavior": [
+      "Harvests lessons from all listed sources: retrospectives, post-mortem, stakeholder satisfaction, escalation records, and schedule/budget variances",
+      "Identifies at least 3 distinct root causes using 5 Whys or fishbone (e.g., scope creep governance failure, single-point-of-failure in architecture staffing, compressed testing window)",
+      "Classifies lessons by project phase and domain (scope, schedule, cost, quality, risk, stakeholder)",
+      "Produces actionable recommendations with owner, priority, and implementation steps",
+      "Distinguishes between symptoms (late delivery) and root causes (change control process gaps)"
+    ],
+    "tags": ["negative-lessons", "schedule-delay", "root-cause-analysis", "post-mortem"]
+  },
+  {
+    "id": "lessons-register-eval-002",
+    "title": "Capturing positive lessons from a highly successful agile delivery",
+    "description": "Evaluate the skill's ability to capture and codify success factors — not just failures — from a high-performing agile team.",
+    "input": "Project Beta was a 6-month mobile app delivery using Scrum with 2-week sprints. It delivered 2 weeks early, under budget, with a stakeholder satisfaction score of 4.7/5. The team had stable velocity after sprint 3, zero critical defects in production, and the client praised the demo cadence. The PO was embedded full-time and the team practiced mob programming for complex features. Capture the positive lessons learned and package them as replicable practices for future agile projects.",
+    "expected_behavior": [
+      "Extracts positive lessons with the same rigor as negative ones — not just 'everything went well'",
+      "Identifies specific success drivers: embedded PO, mob programming, stable velocity, demo cadence",
+      "Applies root cause analysis to successes — explains WHY these practices produced the outcome",
+      "Packages replicable practices with conditions and context (team size, domain, methodology) so future teams know when they apply",
+      "Produces recommendations that are adoption-oriented: how to introduce these practices in teams that don't currently use them"
+    ],
+    "tags": ["positive-lessons", "agile", "success-factors", "replicable-practices"]
+  },
+  {
+    "id": "lessons-register-eval-003",
+    "title": "Cross-project pattern analysis from a portfolio of 5 completed projects",
+    "description": "Evaluate the skill's ability to detect systemic patterns across multiple projects rather than treating each in isolation.",
+    "input": "Analyze lessons from 5 completed projects in the 2025 portfolio: (1) Project Alpha — ERP, 3 months late, scope creep issues; (2) Project Beta — Mobile app, early delivery, strong PO engagement; (3) Project Gamma — Data migration, on time but 3 critical production defects, testing was outsourced; (4) Project Delta — Cloud migration, 6 weeks late, vendor dependency delays; (5) Project Epsilon — API platform, on time and budget, but team burnout reported at 70% by closure. Identify cross-project patterns, systemic issues, and organizational-level recommendations.",
+    "expected_behavior": [
+      "Detects recurring patterns across the 5 projects rather than analyzing each in isolation",
+      "Identifies at least 2 systemic patterns (e.g., testing quality issues appear in Alpha and Gamma; schedule pressure appears in Alpha, Delta, and Epsilon)",
+      "Distinguishes project-specific lessons from organizational-level patterns",
+      "Maps patterns to organizational dimensions: methodology, team structure, vendor management, quality assurance",
+      "Produces portfolio-level recommendations targeting the PMO or organizational leadership, not just individual project teams"
+    ],
+    "tags": ["cross-project", "pattern-detection", "portfolio-analysis", "systemic-issues"]
+  },
+  {
+    "id": "lessons-register-eval-004",
+    "title": "Mid-project lessons capture during a sprint retrospective",
+    "description": "Evaluate the skill's ability to capture lessons in-flight rather than waiting for project closure, enabling real-time course correction.",
+    "input": "We are at sprint 8 of a 20-sprint project (Project Zeta, healthcare platform). The last 3 retrospectives flagged: (1) environment provisioning takes 3-5 days and blocks every sprint; (2) the BA and QA are not aligned on acceptance criteria — 40% of stories get bounced back; (3) the client stakeholder misses 50% of refinement sessions causing last-minute scope changes. We have not yet done a formal lessons capture. Produce a mid-project lessons register with immediate corrective actions — do not wait for closure.",
+    "expected_behavior": [
+      "Captures lessons immediately from retrospective data without requiring project closure",
+      "Treats in-flight lessons with urgency — recommendations are corrective actions for the current project, not just future reference",
+      "Applies root cause analysis to the 3 flagged issues (environment provisioning, BA-QA misalignment, stakeholder absence)",
+      "Produces time-bound corrective actions with owners that can be implemented in the next 1-2 sprints",
+      "Distinguishes between quick wins (implement now) and structural changes (plan for next quarter) in the recommendations"
+    ],
+    "tags": ["mid-project", "in-flight-capture", "corrective-action", "retrospective", "real-time"]
+  }
+]

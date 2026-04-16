@@ -1,0 +1,26 @@
+{
+  "name": "pm",
+  "version": "1.0.0",
+  "description": "PMO-APEX v1.0 — Agentic Project Excellence. Living ontology (CLAUDE.md hub + 13 sub-files), progressive MOAT loading (L1/L2/L3), G0 security gate, context optimization, rendering engine, CLI init wizard, PM retrospective, browser audit (MCP Playwright), cross-platform skill conversion, meta-cognition protocols (FULL/LIGHT), formalized committee spawning (Steering Committee 7 Advisors). 48 agentes, 109 skills MOAT, 103 comandos, 19 scripts, 5 quality gates (G0-G3). Zero-hallucination protocol. Evidence tagging obligatorio. NUNCA precios — solo magnitudes de esfuerzo.",
+  "author": {
+    "name": "Javier Montaño (with Claude Code)",
+    "url": "https://sofka.com.co"
+  },
+  "homepage": "https://sofka.com.co",
+  "repository": "https://github.com/sofka-technologies/pm-project-framework",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "apex", "agentic-pm", "project-management", "pmo", "governance",
+    "zero-hallucination", "rag-priming", "ghost-menu", "session-changelog",
+    "evidence-tagging", "steering-committee", "orchestration",
+    "NL-HP", "checkpoint-model", "quality-gates", "markdown-excellence",
+    "seven-advisors", "methodology-selection",
+    "agile", "scrum", "kanban", "safe", "waterfall", "hybrid",
+    "earned-value", "risk-management", "stakeholder-management",
+    "portfolio-management", "capacity-planning", "team-topology",
+    "priming-rag", "knowledge-base", "hypothesis-driven-development",
+    "progressive-moat-loading", "cross-platform", "browser-audit",
+    "pm-retrospective", "engagement-templates", "skill-dependency-graph",
+    "meta-cognition", "reasoning-discipline", "committee-spawning"
+  ]
+}

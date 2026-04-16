@@ -1,0 +1,54 @@
+[
+  {
+    "prompt": "Create a risk register for ProjectAlpha, an ERP migration project with 6-month timeline, 5-person team, cloud-native target.",
+    "assertions": [
+      "produces ≥15 identified risks",
+      "every risk follows cause-event-effect format",
+      "all 4 RBS categories have ≥1 risk (Technical, External, Organizational, PM)",
+      "every risk has a named owner (not TBD)",
+      "P×I scores are calculated using 5-point scale (0.1-0.9)",
+      "includes a P×I heat map visualization",
+      "top 10 risks have evidence tags not solely [SUPUESTO]",
+      "output file named 03_risk_register_ProjectAlpha_{WIP}.md"
+    ]
+  },
+  {
+    "prompt": "What RBS categories should a risk register cover?",
+    "assertions": [
+      "lists 4 top-level categories: Technical, External, Organizational, PM",
+      "provides subcategories for each (e.g., Technical > Architecture, Technical > Integration)",
+      "references ISO 31000 or PMBOK as source standard",
+      "mentions that all 4 categories must have ≥1 risk for register completeness"
+    ]
+  },
+  {
+    "prompt": "We're recovering a failed CRM project with no existing risk register. Create one.",
+    "assertions": [
+      "recognizes this as a Recovery type project",
+      "performs forensic risk archaeology from issue logs and change requests",
+      "identifies root-cause risks from original failure",
+      "builds forward-looking register separate from materialized issues",
+      "tags historical findings with [HISTORICO] evidence tag"
+    ]
+  },
+  {
+    "prompt": "Our agile team wants to track risks during sprint planning. How should the risk register adapt?",
+    "assertions": [
+      "recommends risk-adjusted backlog pattern",
+      "suggests surfacing risks in sprint planning and retrospectives",
+      "recommends lightweight probability/impact tracking suited for sprints",
+      "mentions ROAM classification as SAFe alternative if applicable",
+      "does not force full PMBOK-style register on agile team"
+    ]
+  },
+  {
+    "prompt": "I have 60 identified risks. How should I prioritize them?",
+    "assertions": [
+      "recommends two-pass filter approach",
+      "suggests archiving risks with P×I < 0.09 as watch list",
+      "recommends presenting top 20 to steering committee",
+      "mentions that maximum 50 risks per initial register is the guideline",
+      "warns against averaging or simplifying — preserve the full inventory"
+    ]
+  }
+]
