@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Optimize context for a session with 50 loaded references.",
+    "assertions": [
+      "analyzes token usage per reference",
+      "identifies low-priority content",
+      "recommends pruning strategy",
+      "preserves critical context"
+    ]
+  },
+  {
+    "prompt": "Implement progressive loading for skill catalog.",
+    "assertions": [
+      "designs L1/L2/L3 loading levels",
+      "defines trigger conditions",
+      "minimizes initial load",
+      "ensures on-demand availability"
+    ]
+  },
+  {
+    "prompt": "Prune session context approaching token limit.",
+    "assertions": [
+      "identifies least-used content",
+      "preserves active work context",
+      "compresses changelog",
+      "maintains critical references"
+    ]
+  },
+  {
+    "prompt": "Resolve lazy-loaded content for activated skill.",
+    "assertions": [
+      "loads full skill content",
+      "includes referenced documents",
+      "updates context budget",
+      "reports token usage"
+    ]
+  }
+]

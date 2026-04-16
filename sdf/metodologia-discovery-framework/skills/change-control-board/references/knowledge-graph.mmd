@@ -1,0 +1,62 @@
+flowchart TD
+    %% Inputs
+    CR[Change Requests<br>Solicitudes de cambio]
+    BL[Project Baselines<br>Alcance, cronograma, costo]
+    RR[Risk Register<br>Riesgos activos]
+    GF[Governance Framework<br>Umbrales de autoridad]
+
+    %% Process
+    CCB[Change Control Board<br>Skill]
+
+    %% Outputs
+    IA[Impact Analysis<br>Analisis multidimensional]
+    DL[Decision Log<br>Aprobado/Rechazado/Diferido]
+    BU[Baseline Updates<br>Baselines actualizados]
+    TA[Trend Analysis<br>Patrones de cambio]
+    EP[Emergency Protocol<br>Protocolo de emergencia]
+
+    %% Downstream Skills
+    BB[Budget Baseline]
+    SB[Schedule Baseline]
+    SW[Scope WBS]
+    SC[Stakeholder Communication]
+    RM[Risk Monitoring]
+
+    %% Agents
+    CA[Change Analyst Agent]
+    GA[Governance Agent]
+
+    %% Input Flow
+    CR --> CCB
+    BL --> CCB
+    RR --> CCB
+    GF --> CCB
+
+    %% Output Flow
+    CCB --> IA
+    CCB --> DL
+    CCB --> BU
+    CCB --> TA
+    CCB --> EP
+
+    %% Downstream Flow
+    BU --> BB
+    BU --> SB
+    BU --> SW
+    DL --> SC
+    TA --> RM
+    IA --> SC
+
+    %% Agent Flow
+    CA --> CCB
+    GA --> CCB
+
+    %% Styles — APEX Branding
+    style CCB fill:#2563EB,color:#fff
+    style IA fill:#F59E0B,color:#000
+    style DL fill:#F59E0B,color:#000
+    style BU fill:#F59E0B,color:#000
+    style TA fill:#F59E0B,color:#000
+    style EP fill:#F59E0B,color:#000
+    style CA fill:#0F172A,color:#fff
+    style GA fill:#0F172A,color:#fff

@@ -1,0 +1,15 @@
+{
+  "name": "{plugin-name}",
+  "version": "{version}",
+  "description": "{Plugin description}",
+  "author": "{author}",
+  "license": "{license}",
+  "keywords": [
+    "{keyword-1}",
+    "{keyword-2}",
+    "{keyword-3}"
+  ],
+  "homepage": "{homepage-url}",
+  "repository": "{repository-url}",
+  "bugs": "{issues-url}"
+}

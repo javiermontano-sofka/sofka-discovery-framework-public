@@ -1,0 +1,44 @@
+%% Knowledge Graph — Portfolio Dashboard
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    PD["Portfolio Dashboard"]:::blue
+
+    %% Data Sources
+    PS["Project Status Data"]:::dark
+    RD["Resource Data"]:::dark
+    BD["Budget Data"]:::dark
+    RR["Risk Registers"]:::dark
+
+    %% Views
+    HEAT["Health Heatmap"]:::amber
+    RES["Resource Utilization"]:::amber
+    BUD["Budget Rollup"]:::amber
+    RISK["Risk Concentration"]:::amber
+    STRAT["Strategic Alignment"]:::amber
+    EXC["Exception List"]:::amber
+
+    %% Outputs
+    GOV["Governance Decisions"]:::blue
+    TREND["Trend Analysis"]:::blue
+
+    %% Flow
+    PS --> PD
+    RD --> PD
+    BD --> PD
+    RR --> PD
+    PD --> HEAT & RES & BUD
+    PD --> RISK & STRAT & EXC
+    HEAT & RES & BUD --> GOV
+    RISK & STRAT & EXC --> GOV
+    GOV --> TREND
+
+    %% Cross-refs
+    PA["Portfolio Assessment"]:::dark
+    PR["Portfolio Risk"]:::dark
+    PA -.->|"maturity data"| PD
+    PR -.->|"risk data"| RISK

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign Architect — Evidence-Based Technical Leadership</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --primary:#6366F1;--accent:#22D3EE;--bg:#0F172A;--surface:#1E293B;
+    --text:#F8FAFC;--muted:#94A3B8;--border:#334155;
+    --radius:10px;--transition:0.25s ease;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+  a{color:var(--accent);text-decoration:none}
+  ::selection{background:var(--primary);color:#fff}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:100;background:rgba(15,23,42,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between}
+  nav .brand{font-weight:700;font-size:1.1rem;color:var(--accent)}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav ul a{color:var(--muted);font-size:.85rem;font-weight:500;transition:color var(--transition)}
+  nav ul a:hover,nav ul a:focus-visible{color:var(--accent)}
+
+  /* ---------- HERO ---------- */
+  .hero{text-align:center;padding:5rem 2rem 4rem;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(99,102,241,.18) 0%,transparent 70%);pointer-events:none}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero .subtitle{font-size:1.25rem;color:var(--muted);margin:.6rem 0 .3rem;font-weight:400}
+  .hero .tagline{font-size:.95rem;color:var(--muted);opacity:.8}
+  .hero .tagline strong{color:var(--accent)}
+  .badge{display:inline-block;margin-top:1.2rem;padding:.35rem 1rem;border:1px solid var(--primary);border-radius:999px;font-size:.75rem;font-weight:600;color:var(--primary);letter-spacing:.04em;text-transform:uppercase}
+
+  /* ---------- SECTION ---------- */
+  section{max-width:1200px;margin:0 auto;padding:3rem 1.5rem}
+  .section-title{font-size:1.6rem;font-weight:700;margin-bottom:.4rem}
+  .section-desc{color:var(--muted);margin-bottom:1.5rem;font-size:.9rem}
+
+  /* ---------- SEARCH ---------- */
+  .search-bar{position:relative;max-width:420px;margin-bottom:1.5rem}
+  .search-bar input{width:100%;padding:.65rem 1rem .65rem 2.6rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);font-size:.9rem;outline:none;transition:border-color var(--transition)}
+  .search-bar input:focus{border-color:var(--primary)}
+  .search-bar input::placeholder{color:var(--muted)}
+  .search-bar svg{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted)}
+
+  /* ---------- TABS ---------- */
+  .tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+  .tab-btn{padding:.45rem 1rem;border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--muted);font-size:.8rem;font-weight:600;cursor:pointer;transition:all var(--transition)}
+  .tab-btn:hover{border-color:var(--primary);color:var(--text)}
+  .tab-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+  .tab-btn .count{margin-left:.3rem;opacity:.65;font-weight:400}
+
+  /* ---------- CARDS GRID ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.2rem;transition:border-color var(--transition),transform var(--transition)}
+  .card:hover{border-color:var(--primary);transform:translateY(-2px)}
+  .card h3{font-size:.95rem;font-weight:700;margin-bottom:.3rem;color:var(--text)}
+  .card p{font-size:.82rem;color:var(--muted);line-height:1.5}
+  .card .agent-tag{display:inline-block;margin-top:.5rem;padding:.15rem .55rem;border-radius:999px;background:rgba(99,102,241,.15);color:var(--primary);font-size:.7rem;font-weight:600}
+  .no-results{color:var(--muted);font-style:italic;padding:2rem 0;text-align:center;display:none}
+
+  /* ---------- AGENT ROSTER ---------- */
+  .tier-section{margin-bottom:2rem}
+  .tier-label{display:inline-block;padding:.25rem .75rem;border-radius:999px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+  .tier-label.permanent{background:rgba(99,102,241,.2);color:var(--primary)}
+  .tier-label.core{background:rgba(34,211,238,.15);color:var(--accent)}
+  .tier-label.specialist{background:rgba(148,163,184,.15);color:var(--muted)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem}
+  .agent-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem;transition:border-color var(--transition)}
+  .agent-card:hover{border-color:var(--accent)}
+  .agent-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+  .agent-icon.p{background:rgba(99,102,241,.2);color:var(--primary)}
+  .agent-icon.c{background:rgba(34,211,238,.15);color:var(--accent)}
+  .agent-icon.s{background:rgba(148,163,184,.12);color:var(--muted)}
+  .agent-name{font-size:.85rem;font-weight:600}
+  .agent-role{font-size:.75rem;color:var(--muted)}
+
+  /* ---------- COMMAND TABLE ---------- */
+  .cmd-table{width:100%;border-collapse:collapse}
+  .cmd-table th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:.6rem .8rem;border-bottom:1px solid var(--border)}
+  .cmd-table td{padding:.55rem .8rem;font-size:.82rem;border-bottom:1px solid rgba(51,65,85,.5)}
+  .cmd-table tr:hover td{background:rgba(99,102,241,.04)}
+  .cmd-table .cmd-name{color:var(--accent);font-family:'SF Mono',Consolas,monospace;font-weight:600;font-size:.8rem}
+  .cmd-table .cmd-alias{color:var(--muted);font-family:'SF Mono',Consolas,monospace;font-size:.75rem}
+  .cmd-cat-header td{font-weight:700;color:var(--primary);padding-top:1.2rem;font-size:.85rem;border-bottom:none}
+  .cmd-wrapper{overflow-x:auto}
+
+  /* ---------- PIPELINE ---------- */
+  .pipeline{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;padding:2rem 0}
+  .gate{text-align:center;padding:1.2rem 1.8rem;border-radius:var(--radius);background:var(--surface);border:2px solid var(--border);min-width:160px;transition:border-color var(--transition)}
+  .gate:hover{border-color:var(--primary)}
+  .gate-name{font-size:1.1rem;font-weight:800;color:var(--primary)}
+  .gate-title{font-size:.8rem;color:var(--text);font-weight:600;margin:.3rem 0 .15rem}
+  .gate-desc{font-size:.72rem;color:var(--muted);line-height:1.4}
+  .gate-arrow{font-size:1.4rem;color:var(--muted);padding:0 .4rem;flex-shrink:0}
+
+  /* ---------- FOOTER ---------- */
+  footer{text-align:center;padding:3rem 1.5rem 2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
+  footer strong{color:var(--accent)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:640px){
+    nav ul{gap:.8rem}
+    .pipeline{flex-direction:column;gap:.5rem}
+    .gate-arrow{transform:rotate(90deg)}
+    .cards{grid-template-columns:1fr}
+    section{padding:2rem 1rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <span class="brand">SA</span>
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>Sovereign Architect</h1>
+  <p class="subtitle">Evidence-Based Technical Leadership</p>
+  <p class="tagline"><strong>35</strong> specialists · <strong>60</strong> skills · <strong>63</strong> commands · <strong>14</strong> scripts · <strong>15</strong> RAG docs</p>
+  <span class="badge">JM Labs</span>
+</header>
+
+<!-- SKILLS -->
+<section id="skills" aria-label="Skills Browser">
+  <h2 class="section-title">Skills Browser</h2>
+  <p class="section-desc">60 evidence-driven capabilities organized by architectural phase.</p>
+
+  <div class="search-bar">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+    <input type="search" id="skillSearch" placeholder="Search skills..." aria-label="Search skills">
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Skill categories">
+    <button class="tab-btn active" role="tab" aria-selected="true" data-cat="all">All<span class="count">60</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-cat="discovery">Discovery<span class="count">15</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-cat="diagnosis">Diagnosis<span class="count">12</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-cat="design">Design<span class="count">15</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-cat="planning">Planning<span class="count">12</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-cat="cross-cutting">Cross-Cutting<span class="count">6</span></button>
+  </div>
+
+  <div class="cards" id="skillCards"></div>
+  <p class="no-results" id="skillNoResults">No skills match your search.</p>
+</section>
+
+<!-- AGENTS -->
+<section id="agents" aria-label="Agent Roster">
+  <h2 class="section-title">Agent Roster</h2>
+  <p class="section-desc">35 specialists organized in a 3-tier committee structure.</p>
+
+  <div class="tier-section">
+    <span class="tier-label permanent">Permanent Triad</span>
+    <div class="agent-grid" id="permanentAgents"></div>
+  </div>
+  <div class="tier-section">
+    <span class="tier-label core">Core Team</span>
+    <div class="agent-grid" id="coreAgents"></div>
+  </div>
+  <div class="tier-section">
+    <span class="tier-label specialist">Domain Specialists</span>
+    <div class="agent-grid" id="specialistAgents"></div>
+  </div>
+</section>
+
+<!-- COMMANDS -->
+<section id="commands" aria-label="Command Reference">
+  <h2 class="section-title">Command Reference</h2>
+  <p class="section-desc">63 commands to orchestrate discovery, diagnosis, design, and planning.</p>
+
+  <div class="search-bar">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+    <input type="search" id="cmdSearch" placeholder="Search commands..." aria-label="Search commands">
+  </div>
+
+  <div class="cmd-wrapper">
+    <table class="cmd-table" id="cmdTable" role="table">
+      <thead><tr><th>Command</th><th>Alias</th><th>Description</th></tr></thead>
+      <tbody id="cmdBody"></tbody>
+    </table>
+  </div>
+  <p class="no-results" id="cmdNoResults">No commands match your search.</p>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline" aria-label="Quality Gates Pipeline">
+  <h2 class="section-title">Quality Gates</h2>
+  <p class="section-desc">Evidence-gated pipeline ensuring rigor at every architectural decision point.</p>
+  <div class="pipeline">
+    <div class="gate">
+      <div class="gate-name">G0</div>
+      <div class="gate-title">Security & Context</div>
+      <div class="gate-desc">Input validation, context boundary check, priming verification</div>
+    </div>
+    <span class="gate-arrow" aria-hidden="true">&#8594;</span>
+    <div class="gate">
+      <div class="gate-name">G1</div>
+      <div class="gate-title">Discovery Complete</div>
+      <div class="gate-desc">Repository scanned, dependencies mapped, architecture understood</div>
+    </div>
+    <span class="gate-arrow" aria-hidden="true">&#8594;</span>
+    <div class="gate">
+      <div class="gate-name">G1.5</div>
+      <div class="gate-title">Diagnosis Validated</div>
+      <div class="gate-desc">Risks scored, root causes identified, debt classified</div>
+    </div>
+    <span class="gate-arrow" aria-hidden="true">&#8594;</span>
+    <div class="gate">
+      <div class="gate-name">G2</div>
+      <div class="gate-title">Design Approved</div>
+      <div class="gate-desc">ADRs generated, trade-offs analyzed, architecture designed</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Sovereign Architect v2.0</strong> &middot; JM Labs &middot; Evidence over enthusiasm
+</footer>
+
+<script>
+(function(){
+  // ===== SKILLS DATA =====
+  const skills = [
+    // Discovery (15)
+    {name:"technical-discovery",desc:"Comprehensive technical landscape assessment of a codebase or system.",agent:"Lead Architect",cat:"discovery"},
+    {name:"repository-scanner",desc:"Automated scanning of repository structure, conventions, and health indicators.",agent:"Repository Analyst",cat:"discovery"},
+    {name:"dependency-auditor",desc:"Audit dependency trees for vulnerabilities, staleness, and licensing risks.",agent:"Dependency Analyst",cat:"discovery"},
+    {name:"architecture-mapper",desc:"Generate architectural maps from code: layers, boundaries, communication flows.",agent:"Lead Architect",cat:"discovery"},
+    {name:"codebase-metrics",desc:"Extract quantitative metrics: LOC, complexity, coupling, cohesion, churn.",agent:"Metrics Analyst",cat:"discovery"},
+    {name:"api-surface-analyzer",desc:"Catalog all API endpoints, contracts, versioning, and consistency patterns.",agent:"API Analyst",cat:"discovery"},
+    {name:"data-model-analyzer",desc:"Analyze data models, schemas, relationships, normalization, and integrity.",agent:"Data Architect",cat:"discovery"},
+    {name:"test-coverage-analyzer",desc:"Map test coverage gaps, quality of assertions, and testing patterns.",agent:"QA Strategist",cat:"discovery"},
+    {name:"ci-cd-analyzer",desc:"Evaluate CI/CD pipelines for speed, reliability, and best-practice adherence.",agent:"DevOps Analyst",cat:"discovery"},
+    {name:"documentation-auditor",desc:"Audit documentation completeness, freshness, and alignment with code.",agent:"Documentation Analyst",cat:"discovery"},
+    {name:"security-surface-scanner",desc:"Identify attack surface: exposed endpoints, secrets, misconfigurations.",agent:"Security Analyst",cat:"discovery"},
+    {name:"performance-profiler",desc:"Profile runtime performance: latency hotspots, memory, throughput baselines.",agent:"Performance Analyst",cat:"discovery"},
+    {name:"infrastructure-mapper",desc:"Map infrastructure topology: services, networking, scaling, and cost.",agent:"Infra Analyst",cat:"discovery"},
+    {name:"tech-debt-quantifier",desc:"Quantify technical debt with severity, effort, and business-impact scores.",agent:"Tech Debt Analyst",cat:"discovery"},
+    {name:"developer-experience-auditor",desc:"Evaluate DX: onboarding friction, tooling, inner-loop speed, ergonomics.",agent:"DX Analyst",cat:"discovery"},
+    // Diagnosis (12)
+    {name:"diagnostic-engine",desc:"Orchestrate multi-signal diagnosis across all analyzed dimensions.",agent:"Lead Architect",cat:"diagnosis"},
+    {name:"root-cause-analyzer",desc:"Trace symptoms to root causes using 5-whys and causal-chain analysis.",agent:"Diagnostician",cat:"diagnosis"},
+    {name:"risk-scorer",desc:"Score risks by probability, impact, and detectability (RPN methodology).",agent:"Risk Analyst",cat:"diagnosis"},
+    {name:"friction-detector",desc:"Detect developer and operational friction points across the SDLC.",agent:"DX Analyst",cat:"diagnosis"},
+    {name:"debt-classifier",desc:"Classify tech debt by type: architecture, code, test, infrastructure, process.",agent:"Tech Debt Analyst",cat:"diagnosis"},
+    {name:"security-threat-modeler",desc:"Model threats using STRIDE/DREAD for identified attack surfaces.",agent:"Security Analyst",cat:"diagnosis"},
+    {name:"performance-bottleneck-identifier",desc:"Identify and rank performance bottlenecks by system impact.",agent:"Performance Analyst",cat:"diagnosis"},
+    {name:"scalability-assessor",desc:"Assess scalability limits and predict capacity thresholds.",agent:"Scalability Analyst",cat:"diagnosis"},
+    {name:"maintainability-scorer",desc:"Score maintainability across modules using composite quality metrics.",agent:"Quality Analyst",cat:"diagnosis"},
+    {name:"observability-gap-analyzer",desc:"Find gaps in logging, metrics, tracing, and alerting coverage.",agent:"Observability Analyst",cat:"diagnosis"},
+    {name:"incident-analyzer",desc:"Analyze incident history patterns, MTTR trends, and recurrence factors.",agent:"SRE Analyst",cat:"diagnosis"},
+    {name:"code-smell-detector",desc:"Detect code smells and anti-patterns with severity classification.",agent:"Quality Analyst",cat:"diagnosis"},
+    // Design (15)
+    {name:"architecture-design",desc:"Produce target-state architecture with ADRs and migration path.",agent:"Lead Architect",cat:"design"},
+    {name:"adr-generator",desc:"Generate Architecture Decision Records with context, options, and rationale.",agent:"Lead Architect",cat:"design"},
+    {name:"trade-off-analyzer",desc:"Analyze architectural trade-offs using weighted-criteria matrices.",agent:"Trade-off Analyst",cat:"design"},
+    {name:"component-designer",desc:"Design component boundaries, interfaces, and responsibility allocation.",agent:"Component Designer",cat:"design"},
+    {name:"api-designer-skill",desc:"Design API contracts following RESTful, GraphQL, or gRPC best practices.",agent:"API Designer",cat:"design"},
+    {name:"data-model-designer",desc:"Design target data models, migration strategies, and integrity constraints.",agent:"Data Architect",cat:"design"},
+    {name:"migration-planner",desc:"Plan incremental migration from current to target architecture.",agent:"Migration Planner",cat:"design"},
+    {name:"microservices-decomposer",desc:"Decompose monoliths into microservices using domain-driven boundaries.",agent:"Domain Analyst",cat:"design"},
+    {name:"caching-strategy",desc:"Design caching layers: invalidation, consistency, and tiering strategies.",agent:"Performance Architect",cat:"design"},
+    {name:"event-driven-design",desc:"Design event-driven architectures: topics, schemas, ordering, idempotency.",agent:"Event Architect",cat:"design"},
+    {name:"auth-architecture",desc:"Design authentication and authorization architecture and flows.",agent:"Security Architect",cat:"design"},
+    {name:"observability-design",desc:"Design observability stack: metrics, logs, traces, dashboards, alerts.",agent:"Observability Architect",cat:"design"},
+    {name:"deployment-strategy",desc:"Design deployment strategies: blue-green, canary, rolling, feature flags.",agent:"DevOps Architect",cat:"design"},
+    {name:"state-management-design",desc:"Design state management patterns for distributed or frontend systems.",agent:"State Architect",cat:"design"},
+    {name:"resilience-design",desc:"Design resilience patterns: circuit breakers, retries, bulkheads, fallbacks.",agent:"Resilience Architect",cat:"design"},
+    // Planning (12)
+    {name:"implementation-planning",desc:"Create phased implementation roadmap with priorities and dependencies.",agent:"Planning Lead",cat:"planning"},
+    {name:"file-change-planner",desc:"Plan file-level changes needed to implement architectural decisions.",agent:"Implementation Planner",cat:"planning"},
+    {name:"rollback-strategy",desc:"Design rollback strategies for each migration and deployment phase.",agent:"Risk Planner",cat:"planning"},
+    {name:"test-strategy-designer",desc:"Design comprehensive test strategies: unit, integration, e2e, contract.",agent:"QA Strategist",cat:"planning"},
+    {name:"ci-cd-pipeline-designer",desc:"Design CI/CD pipeline architecture for target state.",agent:"DevOps Planner",cat:"planning"},
+    {name:"documentation-generator",desc:"Generate architectural documentation, runbooks, and onboarding guides.",agent:"Documentation Lead",cat:"planning"},
+    {name:"code-review-framework",desc:"Establish code review standards, checklists, and automation rules.",agent:"Quality Lead",cat:"planning"},
+    {name:"acceptance-criteria-writer",desc:"Write precise acceptance criteria for architectural work items.",agent:"Requirements Analyst",cat:"planning"},
+    {name:"release-planner",desc:"Plan release cadence, versioning strategy, and changelog automation.",agent:"Release Planner",cat:"planning"},
+    {name:"monitoring-setup",desc:"Plan monitoring infrastructure: tools, dashboards, alerting thresholds.",agent:"Observability Planner",cat:"planning"},
+    {name:"disaster-recovery-planner",desc:"Design DR plans: RPO/RTO targets, failover procedures, testing cadence.",agent:"DR Planner",cat:"planning"},
+    {name:"performance-budget",desc:"Define performance budgets: load time, bundle size, API latency targets.",agent:"Performance Planner",cat:"planning"},
+    // Cross-Cutting (6)
+    {name:"evidence-classifier",desc:"Classify every claim with evidence tags: CODE, CONFIG, DOC, INFERENCE, ASSUMPTION.",agent:"Evidence Auditor",cat:"cross-cutting"},
+    {name:"mermaid-diagramming",desc:"Generate Mermaid diagrams for architecture, flows, sequences, and ERDs.",agent:"Diagram Specialist",cat:"cross-cutting"},
+    {name:"output-engineering",desc:"Engineer output format: structure, clarity, actionability, branding compliance.",agent:"Output Engineer",cat:"cross-cutting"},
+    {name:"context-optimization",desc:"Optimize context window usage: prioritize, compress, lazy-load references.",agent:"Context Optimizer",cat:"cross-cutting"},
+    {name:"excellence-loop",desc:"Apply 10-criteria excellence loop to every deliverable before output.",agent:"Quality Auditor",cat:"cross-cutting"},
+    {name:"lessons-learned-tracker",desc:"Track corrections, patterns, and anti-patterns across sessions.",agent:"Knowledge Curator",cat:"cross-cutting"}
+  ];
+
+  // ===== AGENTS DATA =====
+  const agents = {
+    permanent:[
+      {name:"Lead Architect",role:"Architectural authority, final decisions, ADR ownership"},
+      {name:"Evidence Auditor",role:"Zero-hallucination enforcement, claim classification"},
+      {name:"Quality Auditor",role:"Excellence loop, output standards, gate verification"}
+    ],
+    core:[
+      {name:"Repository Analyst",role:"Codebase structure and convention analysis"},
+      {name:"Security Analyst",role:"Attack surface, threat modeling, vulnerability assessment"},
+      {name:"Performance Analyst",role:"Latency profiling, bottleneck identification, budgets"},
+      {name:"Data Architect",role:"Data model analysis, schema design, migration strategy"},
+      {name:"DevOps Analyst",role:"CI/CD evaluation, deployment strategy, infrastructure"},
+      {name:"QA Strategist",role:"Test coverage analysis, test strategy design"},
+      {name:"Risk Analyst",role:"Risk scoring, probability-impact matrices, mitigation"},
+      {name:"Planning Lead",role:"Implementation roadmaps, phasing, dependency ordering"},
+      {name:"Documentation Lead",role:"Documentation auditing, generation, onboarding guides"}
+    ],
+    specialist:[
+      {name:"Dependency Analyst",role:"Dependency tree auditing and licensing"},
+      {name:"Metrics Analyst",role:"Quantitative codebase metrics extraction"},
+      {name:"API Analyst",role:"API surface cataloging and consistency"},
+      {name:"Infra Analyst",role:"Infrastructure topology mapping"},
+      {name:"Tech Debt Analyst",role:"Debt quantification and classification"},
+      {name:"DX Analyst",role:"Developer experience and friction analysis"},
+      {name:"Diagnostician",role:"Root cause analysis and causal chains"},
+      {name:"Scalability Analyst",role:"Capacity assessment and scaling limits"},
+      {name:"Quality Analyst",role:"Maintainability scoring and smell detection"},
+      {name:"Observability Analyst",role:"Logging, metrics, and tracing gap analysis"},
+      {name:"SRE Analyst",role:"Incident pattern analysis and MTTR trends"},
+      {name:"Trade-off Analyst",role:"Weighted criteria matrices for decisions"},
+      {name:"Component Designer",role:"Component boundaries and interfaces"},
+      {name:"API Designer",role:"API contract design and standards"},
+      {name:"Migration Planner",role:"Incremental migration path planning"},
+      {name:"Domain Analyst",role:"Domain-driven decomposition boundaries"},
+      {name:"Event Architect",role:"Event-driven architecture design"},
+      {name:"Security Architect",role:"Auth architecture and flow design"},
+      {name:"Observability Architect",role:"Observability stack design"},
+      {name:"DevOps Architect",role:"Deployment strategy architecture"},
+      {name:"Resilience Architect",role:"Resilience pattern design"},
+      {name:"Implementation Planner",role:"File-level change planning"},
+      {name:"Output Engineer",role:"Output format and branding compliance"}
+    ]
+  };
+
+  // ===== COMMANDS DATA =====
+  const commands = [
+    {cat:"Workflow",items:[
+      {cmd:"/sa:run",alias:"/sa:r",desc:"Full autonomous pipeline: discovery through planning"},
+      {cmd:"/sa:run-express",alias:"/sa:rx",desc:"Quick Go/No-Go assessment in a single session"},
+      {cmd:"/sa:run-guided",alias:"/sa:rg",desc:"Guided pipeline with human facilitation at each gate"},
+      {cmd:"/sa:run-deep",alias:"/sa:rd",desc:"Deep architectural direction with 7 deliverables"},
+      {cmd:"/sa:menu",alias:"/sa:m",desc:"Interactive command palette with contextual options"},
+      {cmd:"/sa:advance",alias:"/sa:a",desc:"Advance to the next pipeline step"},
+      {cmd:"/sa:status",alias:"/sa:st",desc:"Show current pipeline state and progress"},
+      {cmd:"/sa:reset",alias:"/sa:rs",desc:"Reset pipeline to initial state"}
+    ]},
+    {cat:"Movements",items:[
+      {cmd:"/sa:discover",alias:"/sa:disc",desc:"Execute full discovery phase across all dimensions"},
+      {cmd:"/sa:diagnose",alias:"/sa:diag",desc:"Execute full diagnosis phase on discovery findings"},
+      {cmd:"/sa:design",alias:"/sa:des",desc:"Execute full design phase based on diagnosis"},
+      {cmd:"/sa:plan",alias:"/sa:pl",desc:"Execute full planning phase from approved design"}
+    ]},
+    {cat:"Focused",items:[
+      {cmd:"/sa:scan-repo",alias:"/sa:sr",desc:"Scan repository structure and conventions"},
+      {cmd:"/sa:scan-deps",alias:"/sa:sd",desc:"Audit dependencies for risks and staleness"},
+      {cmd:"/sa:scan-arch",alias:"/sa:sa",desc:"Map architecture layers and boundaries"},
+      {cmd:"/sa:scan-api",alias:"/sa:sapi",desc:"Analyze API surface and contracts"},
+      {cmd:"/sa:scan-data",alias:"/sa:sdata",desc:"Analyze data models and schemas"},
+      {cmd:"/sa:scan-tests",alias:"/sa:stest",desc:"Analyze test coverage and quality"},
+      {cmd:"/sa:scan-cicd",alias:"/sa:sci",desc:"Evaluate CI/CD pipeline health"},
+      {cmd:"/sa:scan-docs",alias:"/sa:sdoc",desc:"Audit documentation completeness"},
+      {cmd:"/sa:scan-security",alias:"/sa:ssec",desc:"Scan security attack surface"},
+      {cmd:"/sa:scan-perf",alias:"/sa:sp",desc:"Profile performance hotspots"},
+      {cmd:"/sa:scan-infra",alias:"/sa:si",desc:"Map infrastructure topology"},
+      {cmd:"/sa:scan-debt",alias:"/sa:sdebt",desc:"Quantify technical debt"},
+      {cmd:"/sa:scan-dx",alias:"/sa:sdx",desc:"Audit developer experience"}
+    ]},
+    {cat:"Audit",items:[
+      {cmd:"/sa:diagnose-risks",alias:"/sa:dr",desc:"Score and rank all identified risks"},
+      {cmd:"/sa:diagnose-root",alias:"/sa:drc",desc:"Trace symptoms to root causes"},
+      {cmd:"/sa:diagnose-debt",alias:"/sa:dd",desc:"Classify tech debt by type and severity"},
+      {cmd:"/sa:diagnose-security",alias:"/sa:dsec",desc:"Model threats with STRIDE/DREAD"},
+      {cmd:"/sa:diagnose-perf",alias:"/sa:dp",desc:"Identify performance bottlenecks"},
+      {cmd:"/sa:diagnose-scale",alias:"/sa:dsc",desc:"Assess scalability limits"},
+      {cmd:"/sa:diagnose-maintain",alias:"/sa:dm",desc:"Score maintainability across modules"},
+      {cmd:"/sa:diagnose-observe",alias:"/sa:do",desc:"Find observability gaps"}
+    ]},
+    {cat:"Map",items:[
+      {cmd:"/sa:map-arch",alias:"/sa:ma",desc:"Generate architecture diagram (Mermaid)"},
+      {cmd:"/sa:map-deps",alias:"/sa:md",desc:"Generate dependency graph"},
+      {cmd:"/sa:map-data",alias:"/sa:mdata",desc:"Generate data model ERD"},
+      {cmd:"/sa:map-flow",alias:"/sa:mf",desc:"Generate system flow diagram"},
+      {cmd:"/sa:map-infra",alias:"/sa:mi",desc:"Generate infrastructure topology diagram"}
+    ]},
+    {cat:"Design",items:[
+      {cmd:"/sa:design-arch",alias:"/sa:da",desc:"Produce target-state architecture"},
+      {cmd:"/sa:design-adr",alias:"/sa:dadr",desc:"Generate Architecture Decision Record"},
+      {cmd:"/sa:design-api",alias:"/sa:dapi",desc:"Design API contracts"},
+      {cmd:"/sa:design-data",alias:"/sa:ddata",desc:"Design target data models"},
+      {cmd:"/sa:design-events",alias:"/sa:de",desc:"Design event-driven architecture"},
+      {cmd:"/sa:design-auth",alias:"/sa:dauth",desc:"Design auth architecture"},
+      {cmd:"/sa:design-deploy",alias:"/sa:ddep",desc:"Design deployment strategy"},
+      {cmd:"/sa:design-resilience",alias:"/sa:dres",desc:"Design resilience patterns"}
+    ]},
+    {cat:"Generate",items:[
+      {cmd:"/sa:gen-plan",alias:"/sa:gp",desc:"Generate implementation roadmap"},
+      {cmd:"/sa:gen-files",alias:"/sa:gf",desc:"Generate file change plan"},
+      {cmd:"/sa:gen-tests",alias:"/sa:gt",desc:"Generate test strategy"},
+      {cmd:"/sa:gen-cicd",alias:"/sa:gci",desc:"Generate CI/CD pipeline design"},
+      {cmd:"/sa:gen-docs",alias:"/sa:gd",desc:"Generate documentation package"},
+      {cmd:"/sa:gen-criteria",alias:"/sa:gc",desc:"Generate acceptance criteria"},
+      {cmd:"/sa:gen-release",alias:"/sa:gr",desc:"Generate release plan"},
+      {cmd:"/sa:gen-monitor",alias:"/sa:gm",desc:"Generate monitoring setup plan"},
+      {cmd:"/sa:gen-dr",alias:"/sa:gdr",desc:"Generate disaster recovery plan"}
+    ]},
+    {cat:"Ops",items:[
+      {cmd:"/sa:prime",alias:"/sa:p",desc:"Load RAG context from repository analysis"},
+      {cmd:"/sa:calibrate",alias:"/sa:cal",desc:"Recalibrate context and session state"},
+      {cmd:"/sa:evidence",alias:"/sa:ev",desc:"Show evidence classification summary"},
+      {cmd:"/sa:lessons",alias:"/sa:ll",desc:"Review and update lessons learned"},
+      {cmd:"/sa:export",alias:"/sa:ex",desc:"Export all deliverables as structured package"},
+      {cmd:"/sa:gate-check",alias:"/sa:gc",desc:"Verify current gate criteria are met"}
+    ]}
+  ];
+
+  // ===== RENDER SKILLS =====
+  const skillContainer = document.getElementById('skillCards');
+  const skillNoResults = document.getElementById('skillNoResults');
+  const skillSearch = document.getElementById('skillSearch');
+
+  function renderSkills(filter,query){
+    skillContainer.innerHTML='';
+    let count=0;
+    const q=query?query.toLowerCase():'';
+    skills.forEach(s=>{
+      if(filter!=='all' && s.cat!==filter) return;
+      if(q && !s.name.includes(q) && !s.desc.toLowerCase().includes(q) && !s.agent.toLowerCase().includes(q)) return;
+      count++;
+      const d=document.createElement('div');
+      d.className='card';
+      d.innerHTML=`<h3>${s.name}</h3><p>${s.desc}</p><span class="agent-tag">${s.agent}</span>`;
+      skillContainer.appendChild(d);
+    });
+    skillNoResults.style.display=count===0?'block':'none';
+  }
+  renderSkills('all','');
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+      this.classList.add('active');
+      this.setAttribute('aria-selected','true');
+      renderSkills(this.dataset.cat,skillSearch.value);
+    });
+  });
+
+  skillSearch.addEventListener('input',function(){
+    const active=document.querySelector('.tab-btn.active');
+    renderSkills(active.dataset.cat,this.value);
+  });
+
+  // ===== RENDER AGENTS =====
+  function renderAgents(containerId,list,cls){
+    const el=document.getElementById(containerId);
+    list.forEach(a=>{
+      const d=document.createElement('div');
+      d.className='agent-card';
+      d.innerHTML=`<div class="agent-icon ${cls}">${a.name.charAt(0)}</div><div><div class="agent-name">${a.name}</div><div class="agent-role">${a.role}</div></div>`;
+      el.appendChild(d);
+    });
+  }
+  renderAgents('permanentAgents',agents.permanent,'p');
+  renderAgents('coreAgents',agents.core,'c');
+  renderAgents('specialistAgents',agents.specialist,'s');
+
+  // ===== RENDER COMMANDS =====
+  const cmdBody=document.getElementById('cmdBody');
+  const cmdSearch=document.getElementById('cmdSearch');
+  const cmdNoResults=document.getElementById('cmdNoResults');
+
+  function renderCommands(query){
+    cmdBody.innerHTML='';
+    const q=query?query.toLowerCase():'';
+    let count=0;
+    commands.forEach(group=>{
+      let rows=[];
+      group.items.forEach(c=>{
+        if(q && !c.cmd.toLowerCase().includes(q) && !c.alias.toLowerCase().includes(q) && !c.desc.toLowerCase().includes(q)) return;
+        rows.push(`<tr><td class="cmd-name">${c.cmd}</td><td class="cmd-alias">${c.alias}</td><td>${c.desc}</td></tr>`);
+      });
+      if(rows.length){
+        cmdBody.innerHTML+=`<tr class="cmd-cat-header"><td colspan="3">${group.cat}</td></tr>`+rows.join('');
+        count+=rows.length;
+      }
+    });
+    cmdNoResults.style.display=count===0?'block':'none';
+  }
+  renderCommands('');
+
+  cmdSearch.addEventListener('input',function(){renderCommands(this.value)});
+})();
+</script>
+</body>
+</html>

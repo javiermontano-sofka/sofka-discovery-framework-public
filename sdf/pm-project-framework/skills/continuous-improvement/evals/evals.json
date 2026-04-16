@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Establish a continuous improvement program for a PMO managing 20 projects.",
+    "assertions": [
+      "implements PDCA cycles with defined cadence",
+      "creates improvement backlog from multiple sources",
+      "establishes baseline metrics for tracking",
+      "designs kaizen events for quick wins"
+    ]
+  },
+  {
+    "prompt": "Retrospectives have generated 45 improvement items over 6 months. Prioritize them.",
+    "assertions": [
+      "categorizes items by domain and impact",
+      "prioritizes using effort-impact matrix",
+      "identifies quick wins vs structural changes",
+      "creates implementation roadmap"
+    ]
+  },
+  {
+    "prompt": "Track improvement metrics showing cycle time reduced 20% but defect rate increased 15%.",
+    "assertions": [
+      "analyzes correlation between speed and quality changes",
+      "identifies root cause of quality degradation",
+      "recommends balancing actions",
+      "adjusts improvement targets to prevent gaming"
+    ]
+  },
+  {
+    "prompt": "Design a kaizen event to reduce meeting overhead from 40% to 25% of team time.",
+    "assertions": [
+      "defines clear scope and success criteria",
+      "designs 2-3 day focused improvement event",
+      "establishes measurement method for meeting time",
+      "plans follow-up to sustain improvements"
+    ]
+  }
+]

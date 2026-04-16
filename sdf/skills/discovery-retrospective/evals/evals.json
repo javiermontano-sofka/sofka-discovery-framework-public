@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Conduct a retrospective after completing a 6-month project delivery.",
+    "assertions": [
+      "gathers feedback from all team roles",
+      "identifies what worked well and what didn't",
+      "extracts actionable lessons learned",
+      "documents recommendations for future projects"
+    ]
+  },
+  {
+    "prompt": "Retrospective for a failed project that was cancelled at 60% completion.",
+    "assertions": [
+      "creates safe space for honest reflection",
+      "identifies root causes of failure",
+      "distinguishes controllable from uncontrollable factors",
+      "extracts prevention strategies for future projects"
+    ]
+  },
+  {
+    "prompt": "Mid-project retrospective for a team that hasn't done one before.",
+    "assertions": [
+      "introduces retrospective concept and value",
+      "uses beginner-friendly format",
+      "establishes ground rules for constructive feedback",
+      "generates actionable improvement items"
+    ]
+  },
+  {
+    "prompt": "Synthesize lessons from 3 completed projects to identify patterns.",
+    "assertions": [
+      "identifies recurring themes across projects",
+      "distinguishes project-specific vs systemic issues",
+      "creates pattern-based recommendations",
+      "proposes organizational process changes"
+    ]
+  }
+]

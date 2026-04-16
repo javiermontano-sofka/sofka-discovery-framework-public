@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Status Report<br/>Current Metrics] --> D
+        B[Schedule Baseline<br/>Planned Values] --> D
+        C[Risk Monitoring<br/>Active Risks] --> D
+    end
+
+    subgraph "Project Health Check"
+        D[Data Collection<br/>& Aggregation] --> E[Multi-Dimension<br/>Assessment]
+        E --> F[RAG Status<br/>Determination]
+        F --> G[Corrective Action<br/>Recommendations]
+    end
+
+    subgraph Outputs
+        G --> H[Steering Review]
+        G --> I[Resource Optimization]
+        F --> J[Risk Response Planning]
+        G --> K[Retrospective Engine]
+    end
+
+    subgraph Agents
+        L[Health Diagnostics Agent] --> E
+        M[Recovery Planner Agent] --> G
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

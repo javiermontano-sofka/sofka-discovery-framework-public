@@ -1,0 +1,42 @@
+[
+  {
+    "prompt": "Create a resource plan for a 15-person project team delivering a cloud migration with 6 workstreams over 12 months.",
+    "assertions": [
+      "calculates net capacity using realistic availability factors (0.65-0.75)",
+      "produces resource histograms showing demand vs. capacity per role",
+      "identifies over-allocation periods with severity ratings",
+      "generates a RACI matrix for all deliverables with exactly 1 Accountable per row",
+      "recommends leveling actions for over-allocated periods"
+    ]
+  },
+  {
+    "prompt": "Our team has 8 developers but the project requires Kubernetes expertise that only 1 person has. Assess the risk.",
+    "assertions": [
+      "identifies the single-point-of-failure for Kubernetes skills",
+      "calculates bus factor for the critical skill area",
+      "rates gap severity based on impact on delivery",
+      "recommends gap closure options (training, hiring, outsourcing)",
+      "quantifies timeline and cost for each closure option"
+    ]
+  },
+  {
+    "prompt": "Design the team structure for a SAFe program with 3 Agile Release Trains, each needing 4-5 teams.",
+    "assertions": [
+      "applies Team Topologies patterns (stream-aligned, platform, enabling)",
+      "sizes teams at 5-9 members following the two-pizza rule",
+      "defines interaction modes between teams",
+      "assesses cognitive load per team",
+      "aligns team boundaries with architectural boundaries (Conway's Law)"
+    ]
+  },
+  {
+    "prompt": "The project has both in-house developers and an offshore vendor team in a different timezone. Create the RACI and communication structure.",
+    "assertions": [
+      "addresses timezone overlap challenges in RACI assignments",
+      "ensures Accountable roles are reachable within reasonable response times",
+      "defines escalation paths that account for timezone gaps",
+      "recommends async communication protocols for distributed teams",
+      "flags handoff points that cross timezone boundaries"
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+%% Knowledge Graph — Agile Maturity Assessment
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        STAKE[stakeholder-register<br/>Phase 1]
+        METHASS[methodology-assessment<br/>Phase 4]
+        RETRO[retrospective-engine<br/>Phase 7]
+        METRICS[status-report<br/>Phase 6]
+    end
+
+    subgraph "Agile Assessment (This Skill)"
+        COLLECT[Data Collection<br/>6 methods]
+        SCORE[Dimension Scoring<br/>6 dimensions × 5 levels]
+        GAP[Gap Analysis<br/>Current vs Target]
+        RADAR[Maturity Radar<br/>Visualization]
+    end
+
+    subgraph Downstream
+        ORGCHANGE[organizational-change<br/>Transformation roadmap]
+        SAFEASS[safe-assessment<br/>Scaling readiness]
+        METHPLAY[methodology-playbook<br/>Ceremony design]
+        TEAMTOPO[team-topology-design<br/>Team restructuring]
+        STEERING[steering-review<br/>Go/No-Go G1.5]
+    end
+
+    subgraph Agents
+        AGILE_COACH[agile-coach<br/>L3 Specialist]
+        METH_ARCH[methodology-architect<br/>L2 Core]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    STAKE --> COLLECT
+    METHASS --> COLLECT
+    RETRO --> COLLECT
+    METRICS --> COLLECT
+
+    COLLECT --> SCORE --> GAP --> RADAR
+
+    RADAR --> ORGCHANGE
+    RADAR --> SAFEASS
+    RADAR --> METHPLAY
+    RADAR --> TEAMTOPO
+    RADAR --> STEERING
+
+    AGILE_COACH -.->|executes| COLLECT
+    METH_ARCH -.->|validates| RADAR
+    CONDUCTOR -.->|orchestrates| RADAR
+
+    style RADAR fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style AGILE_COACH fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

@@ -1,0 +1,53 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;mkdir -p \"$1/project\"&&echo \"$M\">\"$G\";bash \"$2/scripts/secrets-scan.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/scan-deliverables.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/session-context-gen.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/auto-prime-check.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/ghost-menu-inject.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/session-changelog.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/session-changelog.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/context-prune.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'G=\"$1/project/active-plugin\";M=\"pm\";[ -f \"$G\" ]&&[ \"$(cat \"$G\" 2>/dev/null)\" != \"$M\" ]&&exit 0;bash \"$2/scripts/post-prime-calibrate.sh\" \"$1\"' _ \"$PWD\" \"$PLUGIN_DIR\" 2>/dev/null || true"
+          }
+        ],
+        "matcher": "Write|Edit"
+      }
+    ]
+  }
+}

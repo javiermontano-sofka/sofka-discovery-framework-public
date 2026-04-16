@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Strategic Alignment<br/>Portfolio Strategy] --> D
+        B[SAFe Assessment<br/>Maturity Baseline] --> D
+        C[Team Topology Design<br/>Team Structure] --> D
+    end
+    subgraph "SAFe Framework"
+        D[ART Design<br/>& Configuration] --> E[PI Planning<br/>& Execution]
+        E --> F[Continuous Delivery<br/>& DevOps]
+        F --> G[Inspect & Adapt<br/>& Improvement]
+    end
+    subgraph Outputs
+        G --> H[Schedule Baseline]
+        G --> I[Team Performance]
+        F --> J[Quality Plan]
+        G --> K[Retrospective Engine]
+    end
+    subgraph Agents
+        L[RTE Agent] --> E
+        M[Agile Coach Agent] --> G
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

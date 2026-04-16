@@ -1,0 +1,22 @@
+# Use Case Prompts — Compliance Assessment
+
+## 1. Full Assessment
+```
+assess compliance for {PROJECT_NAME}.
+Evaluate against industry standards.
+Deliver prioritized findings with improvement roadmap.
+```
+
+## 2. Gap Analysis
+```
+Identify gaps in compliance-assessment for {PROJECT_PATH}.
+Compare current state vs target state.
+Deliver gap report with remediation plan.
+```
+
+## 3. Quick Health Check
+```
+Quick compliance-assessment health check for the current repository.
+Focus on critical issues only (P0).
+Deliver 1-page summary with top 3 actions.
+```

@@ -1,0 +1,72 @@
+```mermaid
+graph TD
+    SM[Stakeholder Mapping] --> ID[Identificación de Stakeholders]
+    SM --> II[Matriz Influencia-Interés]
+    SM --> RC[RACI y Derechos de Decisión]
+    SM --> CP[Plan de Comunicación]
+    SM --> CR[Evaluación de Cambio]
+    SM --> EM[Monitoreo de Engagement]
+
+    ID --> ORG[Análisis de Organigrama]
+    ID --> HST[Stakeholders Ocultos]
+    ID --> EXT[Stakeholders Externos]
+    ID --> SBW[Método Snowball]
+    ID --> DTA[Análisis de Rastro de Decisiones]
+
+    HST --> INF[Red Informal de Influencia]
+    HST --> BDG[Rastro Presupuestario]
+    HST --> VTO[Escaneo de Veto]
+
+    II --> HP[Alta Poder / Alto Interés]
+    II --> LS[Alta Poder / Bajo Interés]
+    II --> KI[Bajo Poder / Alto Interés]
+    II --> MON[Bajo Poder / Bajo Interés]
+    II --> ATT[Overlay de Actitud +/-/?]
+    II --> CBL[Construcción de Coalición]
+    II --> POW[Dinámicas de Poder]
+
+    HP --> MGC[Gestionar de Cerca]
+    LS --> KST[Mantener Satisfecho]
+    KI --> KNF[Mantener Informado]
+    MON --> WCH[Monitorear]
+
+    RC --> RSP[Responsable]
+    RC --> ACC[Accountable — único]
+    RC --> CNS[Consultado]
+    RC --> INR[Informado]
+    RC --> ESC[Protocolo de Escalamiento]
+    RC --> CFR[Resolución de Conflictos]
+
+    CP --> CHN[Selección de Canal]
+    CP --> MSG[Encuadre de Mensaje]
+    CP --> FBL[Loops de Retroalimentación]
+    CP --> CAD[Calendario de Cadencia]
+    CP --> CRS[Comunicación de Crisis]
+
+    CR --> ADC[Curva de Adopción]
+    CR --> RSA[Arquetipos de Resistencia]
+    CR --> CHM[Identificación de Champions]
+    CR --> TNA[Análisis de Necesidades de Capacitación]
+    CR --> RDS[Puntuación de Readiness]
+
+    RSA --> SKP[El Escéptico]
+    RSA --> BLK[El Bloqueador]
+    RSA --> PSR[El Resistente Pasivo]
+    RSA --> SAB[El Saboteador]
+    RSA --> MNR[El Doliente]
+
+    EM --> SNT[Seguimiento de Sentimiento]
+    EM --> MET[Métricas de Participación]
+    EM --> ISL[Log de Issues]
+    EM --> EWI[Indicadores de Alerta Temprana]
+
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#fff
+    classDef quadrant fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef resistance fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef action fill:#e8e8f0,stroke:#1A1A2E,color:#1A1A2E
+
+    class SM,ID,II,RC,CP,CR,EM core
+    class HP,LS,KI,MON quadrant
+    class SKP,BLK,PSR,SAB,MNR resistance
+    class MGC,KST,KNF,WCH,RSP,ACC,CNS,INR action
+```

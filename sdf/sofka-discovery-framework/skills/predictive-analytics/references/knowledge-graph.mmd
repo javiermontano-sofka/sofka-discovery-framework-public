@@ -1,0 +1,30 @@
+graph TD
+    A[Historical Data] --> B[Predictive Analytics Engine]
+    C[EVM Metrics] --> B
+    D[Risk Register] --> B
+    E[Velocity Data] --> B
+    F[Resource Utilization] --> B
+
+    B --> G[Monte Carlo Simulation]
+    B --> H[EVM Forecasting]
+    B --> I[Bayesian Estimation]
+
+    G --> J[Probabilistic Ranges]
+    H --> K[EAC / TCPI / Completion Date]
+    I --> L[Updated Risk Probabilities]
+
+    J --> M[Predictive Dashboard]
+    K --> M
+    L --> M
+
+    M --> N[Steering Committee]
+    M --> O[Portfolio Prioritization]
+    M --> P[Risk Register Updates]
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef output fill:#F59E0B,stroke:#0F172A,color:#000000
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF
+
+    class B primary
+    class G,H,I dark
+    class J,K,L,M output

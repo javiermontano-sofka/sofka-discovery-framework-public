@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Risk Monitoring<br/>Identified Risks] --> D
+        B[Schedule Baseline<br/>Activity Estimates] --> D
+        C[Risk Appetite Framework<br/>Thresholds] --> D
+    end
+
+    subgraph "Risk Quantification"
+        D[Distribution<br/>Modeling] --> E[Monte Carlo<br/>Simulation]
+        E --> F[Sensitivity &<br/>Tornado Analysis]
+        F --> G[Contingency<br/>Calculation]
+    end
+
+    subgraph Outputs
+        G --> H[Budget Baseline Reserve]
+        G --> I[Schedule Baseline Buffer]
+        F --> J[Risk Response Planning]
+        G --> K[Steering Review Data]
+    end
+
+    subgraph Agents
+        L[Risk Quantifier Agent] --> E
+        M[Statistical Analyst Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

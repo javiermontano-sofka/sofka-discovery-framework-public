@@ -1,0 +1,60 @@
+[
+  {
+    "prompt": "Generate a monthly executive dashboard for Project Neptune. Budget is $2M, we're at month 4 of 12. SPI=0.92, CPI=0.87, 3 high risks open (2 with expired mitigations), 4 critical defects in UAT, team satisfaction at 6.2/10. Last month SPI was 0.95, CPI was 0.91.",
+    "assertions": [
+      "overall project status is Red (CPI < 0.85 threshold or multiple Amber metrics triggering Red)",
+      "CPI flagged as Red or Amber with down-arrow trend (declined from 0.91 to 0.87)",
+      "SPI flagged as Amber with down-arrow trend (declined from 0.95 to 0.92)",
+      "risk exposure highlighted — 2 expired mitigations flagged for immediate action",
+      "4 critical UAT defects surfaced as Red quality indicator",
+      "team health 6.2/10 flagged as Amber with burnout risk narrative",
+      "executive narrative follows So-What framework: what happened, why it matters, what we're doing, what decisions are needed",
+      "includes EAC or budget-at-completion forecast based on CPI trend",
+      "decision requests are explicit — not buried in narrative prose",
+      "does NOT present raw CPI/SPI numbers without plain-language interpretation"
+    ]
+  },
+  {
+    "prompt": "Create a sprint dashboard for Team Velocity. Sprint 14 of 20. Velocity: 34, 38, 31, 42, 36 (last 5 sprints). Sprint goal: 8 of 10 stories completed. Escaped defects: 2. Cycle time: 4.2 days average. WIP: 7 items (limit is 5).",
+    "assertions": [
+      "velocity trend shown with sparkline or series data (34, 38, 31, 42, 36) — average ~36",
+      "sprint goal completion at 80% flagged as Amber (not Green)",
+      "WIP violation highlighted — 7 items vs. limit of 5, flagged as Red",
+      "escaped defects (2) assessed against quality threshold",
+      "cycle time 4.2 days contextualized against team's historical average",
+      "narrative connects WIP violation to potential quality/velocity impact",
+      "does NOT use waterfall metrics (SPI/CPI) for an agile team dashboard",
+      "includes recommendation to address WIP discipline before next sprint"
+    ]
+  },
+  {
+    "prompt": "Project Phoenix is Red status. SPI=0.72, CPI=0.68, 5 critical risks materialized, sponsor threatening cancellation. We need a recovery dashboard that shows what went wrong and the recovery plan options.",
+    "assertions": [
+      "overall status unambiguously Red with severity emphasis",
+      "SPI 0.72 interpreted as 28% behind schedule with projected completion delay",
+      "CPI 0.68 interpreted as 47% cost overrun trajectory with EAC calculation",
+      "5 materialized risks analyzed — not just listed but connected to schedule/cost impact",
+      "recovery narrative presents 2-3 options: (a) re-baseline, (b) scope reduction with specifics, (c) additional funding/resources",
+      "each option includes trade-off analysis and recommendation",
+      "tone is recovery-focused, not blame-focused",
+      "decision request section is prominent — this dashboard exists to get a decision",
+      "does NOT sugarcoat the situation or present optimistic bias",
+      "includes criteria for go/no-go decision on project continuation"
+    ]
+  },
+  {
+    "prompt": "Generate a portfolio-level dashboard aggregating 5 projects: Alpha (Green, $500K), Beta (Amber, $1.2M), Gamma (Red, $3M), Delta (Green, $800K), Epsilon (Amber, $1.5M). Total portfolio budget is $7M. Show cross-project resource conflicts and overall portfolio health.",
+    "assertions": [
+      "portfolio-level RAG status computed — not just 'worst of' but weighted by budget significance",
+      "Gamma ($3M, Red) dominates portfolio risk narrative due to 43% budget share",
+      "individual project RAG shown in summary table with budget weight",
+      "cross-project resource conflicts identified or flagged for investigation",
+      "portfolio health index computed as weighted composite",
+      "Amber projects (Beta + Epsilon = $2.7M, 39% of portfolio) analyzed for escalation risk",
+      "executive narrative focuses on portfolio-level decisions, not project-level details",
+      "includes recommendation on portfolio rebalancing or resource reallocation",
+      "does NOT simply stack 5 individual dashboards — provides true portfolio synthesis",
+      "budget allocation visualization data included (pie or bar chart ready)"
+    ]
+  }
+]

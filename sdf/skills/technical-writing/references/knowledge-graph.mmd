@@ -1,0 +1,125 @@
+%% Knowledge Graph — Technical Writing: Documentation Precision & Progressive Disclosure
+%% Dominio: Documentación técnica enterprise, escritura de precisión, atribución de evidencia
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["📝 technical-writing"]
+        direction TB
+        PR["Principio Rector:<br/>La documentación técnica<br/>es un contrato de conocimiento"]
+        FW["Framework: Progressive<br/>Disclosure + Evidence"]
+        VG["Validation Gate: 8 criterios"]
+    end
+
+    subgraph INPUTS["📥 Inputs"]
+        RAW["Análisis raw<br/>(hallazgos, datos)"]
+        CODE["Artefactos de código<br/>y configuración"]
+        STAKE["Input de<br/>stakeholders"]
+        TEMPLATES["Templates y<br/>patrones de sección"]
+    end
+
+    subgraph PILLARS["🏛️ Pilares de Precisión"]
+        P1["Progressive Disclosure<br/>TL;DR → Sección → Detalle"]
+        P2["Terminología<br/>como Contrato"]
+        P3["Evidencia Trazable<br/>[CÓDIGO][CONFIG][DOC]"]
+        P4["Densidad Informativa<br/>cero filler, cero repetición"]
+    end
+
+    subgraph STRUCTURE["🏗️ Patrones Estructurales"]
+        S_ANALYSIS["Analysis (02-03)<br/>Finding → Evidence → Impact"]
+        S_SPEC["Spec (07)<br/>Use Case → Rules → Acceptance"]
+        S_HANDOVER["Handover (09)<br/>Phase → Tasks → Criteria"]
+        S_ARCH["Architecture<br/>Component → Interaction → QA"]
+        S_ASSESS["Assessment<br/>Dimension → Score → Evidence"]
+    end
+
+    subgraph EVIDENCE["🔍 Sistema de Evidencia"]
+        E_CODE["[CÓDIGO]<br/>Alta — verificable en fuente"]
+        E_CONFIG["[CONFIG]<br/>Alta — en archivos config"]
+        E_DOC["[DOC]<br/>Media — puede estar desactualizado"]
+        E_INF["[INFERENCIA]<br/>Media — requiere validación"]
+        E_SUP["[SUPUESTO]<br/>Baja — debe validarse"]
+        E_STAKE["[STAKEHOLDER]<br/>Media — subjetivo"]
+    end
+
+    subgraph ANTIPATTERNS["🚫 Anti-Patrones"]
+        AP1["Filler phrases<br/>BLOCK — eliminar"]
+        AP2["Pasiva sin agente<br/>WARN — identificar actor"]
+        AP3["Scores sin justificación<br/>BLOCK — evidencia obligatoria"]
+        AP4["Headings que saltan nivel<br/>BLOCK — h1→h2→h3"]
+        AP5["Acrónimos sin definición<br/>BLOCK — definir primer uso"]
+    end
+
+    subgraph CALLOUTS["💡 Sistema de Callouts"]
+        C_INSIGHT["💡 Insight<br/>Interpretación accionable"]
+        C_TRADEOFF["⚖️ Trade-off<br/>Factores en competencia"]
+        C_RISK["⚠️ Risk<br/>Riesgo identificado"]
+        C_EVIDENCE["🔍 Evidence<br/>Dato de soporte"]
+    end
+
+    subgraph OUTPUTS["📤 Outputs"]
+        OUT_ASIS["03_Analisis_AS-IS<br/>10 secciones"]
+        OUT_SPEC["07_Especificacion_Funcional<br/>use cases, reglas"]
+        OUT_HANDOVER["09_Handover_Operaciones<br/>plan 90 días"]
+        OUT_BRIEF["02_Brief_Tecnico<br/>resumen ejecutivo"]
+    end
+
+    subgraph CONSUMERS["🔗 Skills Dependientes"]
+        COPY["copywriting<br/>(consume estructura)"]
+        OUTPUT_ENG["output-engineering<br/>(consume markdown)"]
+        STORY["storytelling<br/>(consume narrativa)"]
+        DESIGN["design-system<br/>(consume formato)"]
+    end
+
+    subgraph STANDARDS["📚 Estándares"]
+        DITA["DITA / DocBook"]
+        PLAIN["Plain Language<br/>Standards"]
+        ISO_26514["ISO/IEC 26514<br/>Software User Docs"]
+        ASD_STE["ASD-STE100<br/>Simplified English"]
+        MARKDOWN["Markdown Excellence<br/>Sofka Standard"]
+    end
+
+    %% Flows
+    INPUTS --> SKILL
+    SKILL --> PILLARS
+    PILLARS --> STRUCTURE
+    PILLARS --> EVIDENCE
+    EVIDENCE --> OUTPUTS
+    STRUCTURE --> OUTPUTS
+    ANTIPATTERNS -.->|enforcement| PILLARS
+    CALLOUTS -.->|enriquecen| OUTPUTS
+    STANDARDS -.->|fundamentan| PILLARS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Internal flows
+    P1 -->|estructura| S_ANALYSIS
+    P1 -->|estructura| S_SPEC
+    P1 -->|estructura| S_HANDOVER
+    P2 -->|consistencia| S_ANALYSIS
+    P3 -->|trazabilidad| E_CODE
+    P3 -->|trazabilidad| E_CONFIG
+    P3 -->|trazabilidad| E_DOC
+    P3 -->|trazabilidad| E_INF
+    P4 -.->|elimina| AP1
+
+    %% Anti-pattern enforcement
+    AP3 -.-> E_CODE
+    AP5 -.-> P2
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef pillar fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef antipattern fill:#FFCDD2,stroke:#C62828,color:#1A1A2E
+    classDef evidence fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class RAW,CODE,STAKE,TEMPLATES input
+    class P1,P2,P3,P4,S_ANALYSIS,S_SPEC,S_HANDOVER,S_ARCH,S_ASSESS pillar
+    class OUT_ASIS,OUT_SPEC,OUT_HANDOVER,OUT_BRIEF output
+    class DITA,PLAIN,ISO_26514,ASD_STE,MARKDOWN standard
+    class COPY,OUTPUT_ENG,STORY,DESIGN consumer
+    class AP1,AP2,AP3,AP4,AP5 antipattern
+    class E_CODE,E_CONFIG,E_DOC,E_INF,E_SUP,E_STAKE,C_INSIGHT,C_TRADEOFF,C_RISK,C_EVIDENCE evidence

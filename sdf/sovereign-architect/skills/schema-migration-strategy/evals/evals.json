@@ -1,0 +1,64 @@
+{
+  "skill_name": "schema-migration-strategy",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Plan a zero-downtime migration to add a NOT NULL column 'status VARCHAR(20)' to a 'subscriptions' table with 5 million rows in PostgreSQL.",
+      "expected_output": "Expand-Contract migration plan with DDL lock analysis and batched backfill",
+      "assertions": [
+        {"text": "Output identifies that ADD COLUMN NOT NULL can cause table rewrite in older Postgres", "type": "contains"},
+        {"text": "Output proposes adding the column as nullable first", "type": "contains"},
+        {"text": "Output proposes batched UPDATE for backfill", "type": "contains"},
+        {"text": "Output proposes adding NOT NULL constraint after backfill", "type": "contains"},
+        {"text": "Output contains DOWN migration or rollback procedure", "type": "contains"},
+        {"text": "Output contains evidence tags [HECHO], [INFERENCIA], or [SUPUESTO]", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a PostgreSQL migration to create an index on 'orders.user_id' for a table with 10 million rows, without blocking production traffic.",
+      "expected_output": "CREATE INDEX CONCURRENTLY with explanation",
+      "assertions": [
+        {"text": "Output uses CREATE INDEX CONCURRENTLY", "type": "contains"},
+        {"text": "Output explains why CONCURRENTLY is needed for a large table", "type": "contains"},
+        {"text": "Output mentions that CONCURRENTLY cannot run inside a transaction", "type": "contains"},
+        {"text": "Output provides DOWN migration with DROP INDEX CONCURRENTLY IF EXISTS", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Design a seed.ts file for a Prisma project with subscription plans (must be in production) and test users (must NOT be in production).",
+      "expected_output": "Prisma seed.ts with upserts for reference data and env-gated dev data",
+      "assertions": [
+        {"text": "Output uses db.plan.upsert or createMany with skipDuplicates for plans", "type": "contains"},
+        {"text": "Output gates test user creation with NODE_ENV !== production check", "type": "contains"},
+        {"text": "Output uses upsert to make seed idempotent", "type": "contains"},
+        {"text": "Output includes main() with disconnect in finally block", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Diagnose this migration failure: 'ERROR: column \"name\" of relation \"users\" already exists'. The CI ran the migration twice.",
+      "expected_output": "Root cause analysis and fix with idempotency",
+      "assertions": [
+        {"text": "Output explains the migration ran twice without idempotency guard", "type": "contains"},
+        {"text": "Output provides fix using ALTER TABLE ADD COLUMN IF NOT EXISTS", "type": "contains"},
+        {"text": "Output explains how to check migration history table to prevent re-running", "type": "contains"},
+        {"text": "Output mentions prisma migrate status or equivalent tool command", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Write a batched data migration in PostgreSQL to backfill 'full_name' from 'first_name || last_name' for 20 million rows without locking the table.",
+      "expected_output": "PL/pgSQL batched UPDATE with SKIP LOCKED and pg_sleep",
+      "assertions": [
+        {"text": "Output uses a LOOP with batch_size limit", "type": "contains"},
+        {"text": "Output uses FOR UPDATE SKIP LOCKED to avoid lock contention", "type": "contains"},
+        {"text": "Output exits loop when rows_updated = 0", "type": "contains"},
+        {"text": "Output includes pg_sleep or delay between batches", "type": "contains"},
+        {"text": "Output concatenates first_name and last_name in the UPDATE", "type": "contains"}
+      ]
+    }
+  ]
+}

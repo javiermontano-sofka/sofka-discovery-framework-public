@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assemble a kickoff package for a 12-person agile team starting a 9-month healthcare data platform project. The project charter and stakeholder register are available but no RACI or communication plan exists yet.",
+    "assertions": [
+      "Output identifies the missing RACI and communication plan as gaps requiring immediate creation",
+      "Output includes a structured kickoff presentation outline covering vision, scope, team, process, and success criteria",
+      "Output provides onboarding guidance differentiated by at least 2 team roles",
+      "Output defines a ceremony cadence appropriate for an agile team including stand-ups, planning, review, and retro"
+    ]
+  },
+  {
+    "prompt": "Design an onboarding flow for 3 developers joining the project in sprint 4. They need to understand the domain (insurance claims processing), the tech stack (Java/Spring, PostgreSQL, Kafka), and team norms.",
+    "assertions": [
+      "Output sequences onboarding from domain context to technical stack to team processes",
+      "Output includes specific day-by-day or milestone-based checkpoints within the first week",
+      "Output assigns buddy pairing or mentorship structure for accelerated ramp-up",
+      "Output addresses the late-joiner context by including sprint 1-3 summary or catch-up materials"
+    ]
+  },
+  {
+    "prompt": "The project charter states success criteria as: 'Deliver a high-quality platform that meets stakeholder expectations on time and within budget.' Validate these criteria and recommend improvements.",
+    "assertions": [
+      "Output identifies all criteria as failing SMART validation due to lack of specificity and measurability",
+      "Output proposes concrete, measurable replacements for each vague criterion",
+      "Output defines measurement methods and data sources for the improved criteria",
+      "Output recommends baseline measurements to capture before execution begins"
+    ]
+  },
+  {
+    "prompt": "Prepare the ceremony structure for a hybrid team of 8 (5 onsite, 3 remote) using Scrum with 2-week sprints. Include working agreements that address the hybrid collaboration challenge.",
+    "assertions": [
+      "Output defines all core Scrum ceremonies with time, duration, and participant expectations",
+      "Output includes working agreements that specifically address hybrid meeting equity for remote participants",
+      "Output specifies facilitation tools or techniques for inclusive hybrid ceremonies",
+      "Output provides a visual ceremony calendar or schedule showing the sprint cadence"
+    ]
+  }
+]

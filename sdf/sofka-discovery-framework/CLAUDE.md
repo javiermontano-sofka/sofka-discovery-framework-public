@@ -1,0 +1,146 @@
+# Sofka SAGE v13.0 — Unified Agentic PreSales as Service
+
+> **SAGE** = Sofka Agentic Gateway to Excellence.
+> Tu IDE se convierte en una agencia de discovery empresarial + implementación + QA.
+> 107 agentes · 314 skills MOAT · 204 comandos · 19 scripts · 5 quality gates (G0–G3) · Protocolo zero-hallucination.
+> **v13.0 Consolidation**: Unified SDF + Sovereign Architect (80 impl skills) + Plugin QA (20 meta-skills).
+> Covers: discovery, architecture, implementation, QA, DevOps, security, performance, scaffolding, diagnostics, plugin dev.
+> Progressive MOAT loading (L1/L2/L3) · Cross-platform conversion · Browser audit · Discovery retrospective.
+> Meta-cognition protocols (FULL triad + LIGHT all agents) · Formalized committee spawning.
+> © 2026 Sofka Technologies. All Rights Reserved.
+
+---
+
+## Zero-Hallucination Protocol
+
+Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFERENCIA]` `[SUPUESTO]` `[STAKEHOLDER]`
+- Si >30% es `[SUPUESTO]` → banner de advertencia obligatorio
+- Si `severity=CRÍTICO` + `[SUPUESTO]` → flag para validación
+- NUNCA presentar inferencias como hechos
+
+> Detalle completo → `references/ontology/protocol-zero-hallucination.md`
+
+---
+
+## Inicio Rápido
+
+```bash
+/sdf:init              # Wizard de inicialización para nuevo engagement
+/sdf:run-auto          # Pipeline autónomo completo
+/sdf:run-express       # Go/No-Go en 1 sesión (3 entregables)
+/sdf:run-guided        # Pipeline guiado con facilitación humana
+/sdf:run-deep          # Dirección arquitectónica (7 entregables, 2 gates)
+/sdf:scan-secrets      # Escanear secretos expuestos (Gate G0)
+/sdf:export-pdf        # Exportar entregable a PDF con branding Sofka
+/sdf:retro             # Retrospectiva cuantitativa del engagement
+/sdf:browse-client     # Auditoría visual de la app del cliente (MCP Playwright)
+/sdf:convert-skills    # Convertir skills MOAT a Cursor, Codex, Gemini, etc.
+/sdf:menu              # Paleta de comandos interactiva
+/sdf:a                 # Avanzar al siguiente paso del pipeline
+/sdf:demo              # Demo guiado de SAGE en el repo actual
+```
+
+---
+
+## Ontología Viva — Índice de Navegación
+
+Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos especializados que el orquestador consulta según contexto.
+
+> **⚡ Progressive MOAT Loading:** NO leer los 13 sub-archivos al inicio de sesión. Usar `scripts/lazy-load-resolver.sh <fase> <tipo_servicio> [PLUGIN_DIR] [L1|L2|L3]` para determinar qué cargar:
+> - **L1** (Metadata): Solo frontmatter + TL;DR (~20 líneas/skill). Para routing y exploración.
+> - **L2** (Core): SKILL.md completo (~200 líneas/skill). Operación estándar.
+> - **L3** (Deep): SKILL.md + references/ + examples/ (~500+ líneas/skill). Análisis profundo o priming completo.
+
+| Necesidad | Leer |
+|-----------|------|
+| Reglas de etiquetado de evidencia | `references/ontology/protocol-zero-hallucination.md` |
+| Fases del pipeline y quality gates | `references/ontology/pipeline-orchestration.md` |
+| Roster de 48 agentes y roles | `references/ontology/agent-committee.md` |
+| Catálogo de 100 skills por dominio | `references/ontology/skills-catalog.md` |
+| Referencia de 96 comandos | `references/ontology/commands-reference.md` |
+| Política de RAG-priming y adjuntos | `references/ontology/rag-priming-policy.md` |
+| Estándares de output y branding | `references/ontology/output-standards.md` |
+| Routing por tipo de servicio | `references/ontology/service-routing.md` |
+| Automatización de sesión | `references/ontology/session-automation.md` |
+| Lecciones aprendidas (viviente) | `references/ontology/lessons-learned.md` |
+| Criterios de quality gates | `references/ontology/quality-gates.md` |
+| Orquestación multi-marca | `references/ontology/brand-orchestration.md` |
+| Tokens CSS canónicos | `references/ontology/canonical-tokens.md` |
+
+---
+
+## Reglas de Orquestación (Hard Rules)
+
+1. **Evidence first** — Sin evidencia → `[SUPUESTO]`
+2. **Pipeline secuencial** — Respetar dependencias de fases
+3. **Gates son hard stops** — G1, G1.5, G2, G3. Pausa para aprobación
+4. **NUNCA precios** — Solo FTE-meses + disclaimers
+5. **Ghost menu** — En cada artefacto importante
+6. **Changelog** — Cada acción significativa registrada
+7. **RAG priming** — Cargar contexto al inicio de sesión
+8. **{TIPO_SERVICIO}** — Routing automático de agentes y skills
+9. **Consistencia cruzada** — Verificar alineación entre entregables
+10. **Excellence loop** — 10 criterios en cada entregable
+11. **Security gate G0** — No unmasked credentials. `secrets-scan.sh` ejecuta antes que cualquier otro hook. Si detecta secretos, abortar `run-auto`/`run-deep`
+
+---
+
+## Output Standards
+
+- **Formato**: Markdown-Excellence (TL;DR + bullets, prosa densa, Mermaid, ghost menu)
+- **Idioma**: Español (registro empresarial latinoamericano)
+- **Branding**: #FF7E08 orange · #FFD700 gold (NUNCA verde) · #EFEAE4 fondo · Inter
+- **HTML**: Usar tokens canónicos de `references/ontology/canonical-tokens.md`
+- **Artefactos**: Guardar como archivos, no inline
+- **Naming**: Usar `{WIP}` en archivos en progreso, `{Aprobado}` cuando estén aprobados
+- **Slugging**: `{fase}_{entregable}_{cliente}_{WIP|Aprobado}.{ext}` — ej: `03_ASIS_Bancoomeva_{WIP}.md`
+
+> Detalle completo → `references/ontology/output-standards.md`
+
+---
+
+## Arquitectura
+
+```
+sofka-discovery-framework/
+├── agents/              # 107 agentes especializados (48 SDF + 54 SA + 4 PQA + 1 shared)
+├── commands/            # 204 comandos (104 SDF + 84 SA + 16 PQA)
+├── skills/              # 314 skills MOAT (214 SDF + 80 SA + 20 PQA)
+├── references/
+│   ├── ontology/        # 13 sub-archivos de ontología viva
+│   ├── priming-rag-*/   # 8 docs de conocimiento RAG
+│   └── *.md             # Service matrix, design system, etc.
+├── hooks/               # Ghost menu + changelog + session context
+├── scripts/             # Indexación, escaneo, validación
+├── landing.html         # Landing interactivo del ecosistema
+└── prompt-library.html  # Catálogo searchable de prompts
+```
+
+---
+
+## Sesión Automática
+
+Al activar el plugin, los hooks generan en `discovery/`:
+- `SESSION-README.md` — Contexto del proyecto
+- `SESSION-CLAUDE.md` — Instrucciones de sesión
+- `calibration-digest.md` — Estado de priming y calibración
+- `ghost-menu.md` — Navegación contextual
+- `session-changelog.md` — Registro para continuidad
+- `session-state.json` — Estado del pipeline
+
+Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `needs-priming` y se sugiere `/sdf:prime-repo`.
+Cada adjunto o URL investigada genera `priming-rag-{nombre}.md` y recalibra automáticamente.
+
+> Detalle completo → `references/ontology/session-automation.md`
+
+---
+
+## Lecciones Aprendidas
+
+Ante correcciones del usuario, actualizar `references/ontology/lessons-learned.md`.
+Revisarlo al inicio de cada sesión para no repetir errores.
+
+---
+
+*Sofka SAGE v13.0 — Unified Agentic PreSales as Service.*
+*Sofka, your technology partner.*

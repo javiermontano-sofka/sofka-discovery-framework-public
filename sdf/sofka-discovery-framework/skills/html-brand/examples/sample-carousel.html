@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Ejecutiva — Modernización Integral Sistema Vigía Barcos | Aseguradora del Sur</title>
+<meta name="description" content="Propuesta ejecutiva de modernización integral del Sistema Vigía Barcos — Sofka Technologies">
+<meta property="og:title" content="Modernización Integral — Sistema Vigía Barcos">
+<meta property="og:description" content="Propuesta ejecutiva para Aseguradora del Sur — Sofka Technologies">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   Sofka Design System v5.1 — Carousel Edition
+   Matched to deliverable HTML aesthetic
+   ═══════════════════════════════════════════ */
+
+/* 1. TOKENS */
+:root {
+  --sofka-orange: #FF7E08;
+  --sofka-orange-light: #FF9E42;
+  --sofka-orange-dark: #CC6506;
+  --sofka-orange-dim: rgba(255,126,8,.10);
+  --sofka-black: #000000;
+  --sofka-white: #FFFFFF;
+  --sofka-light: #EFEAE4;
+  --sofka-positive: #FFD700;
+  --sofka-positive-dim: rgba(255,215,0,.12);
+  --sofka-positive-border: rgba(255,215,0,.45);
+  --sofka-positive-text: #B8860B;
+  --sofka-warning: #D97706;
+  --sofka-warning-dim: rgba(217,119,6,.08);
+  --sofka-warning-border: rgba(217,119,6,.3);
+  --sofka-critical: #DC2626;
+  --sofka-critical-dim: rgba(220,38,38,.07);
+  --sofka-critical-border: rgba(220,38,38,.25);
+  --sofka-info: #2563EB;
+  --sofka-info-dim: rgba(37,99,235,.07);
+  --sofka-gray-50: #FAF8F6;
+  --sofka-gray-100: #F4F0EC;
+  --sofka-gray-200: #E4DED7;
+  --sofka-gray-300: #D1C9BE;
+  --sofka-gray-500: #6B6560;
+  --sofka-gray-700: #333130;
+  --sofka-gray-900: #111110;
+  --font-display: 'Clash Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+  --transition-base: 0.2s ease;
+}
+
+/* 2. RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  background: var(--sofka-black);
+  color: var(--sofka-gray-900);
+  line-height: 1.65;
+  font-size: 16px;
+  overflow: hidden;
+  height: 100vh;
+}
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; }
+a { color: var(--sofka-orange-dark); text-decoration: none; font-weight: 600; }
+a:hover { text-decoration: underline; color: var(--sofka-orange); }
+
+/* 3. CAROUSEL LAYOUT */
+.carousel {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+}
+.slide {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 48px 100px;
+  overflow-y: auto;
+}
+.slide-inner {
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* ─── DARK SLIDE ─── */
+.slide--dark {
+  background: var(--sofka-black);
+  color: var(--sofka-white);
+  position: relative;
+  overflow: hidden;
+}
+.slide--dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -20%;
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(ellipse at 100% 50%, rgba(255,126,8,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.slide--dark .slide-inner { position: relative; z-index: 2; }
+
+.hero-border-bottom {
+  border-bottom: 8px solid var(--sofka-orange);
+}
+
+/* ─── LIGHT SLIDE ─── */
+.slide--light {
+  background: var(--sofka-white);
+}
+
+/* ─── LIGHT SLIDE TYPOGRAPHY ─── */
+.slide--light .slide-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--sofka-orange);
+  margin-bottom: 12px;
+  padding: .35rem .9rem;
+  background: var(--sofka-orange-dim);
+  border: 1px solid rgba(255,126,8,.2);
+  border-radius: var(--radius-sm);
+}
+
+.slide--light .slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--sofka-black);
+}
+.slide--light .slide-title .accent { color: var(--sofka-orange); }
+.slide--light .slide-title .gold { color: var(--sofka-positive-text); }
+
+.slide--light .slide-subtitle {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 400;
+  color: var(--sofka-gray-500);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.slide--light .slide-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--sofka-gray-900);
+  margin-bottom: 20px;
+}
+
+/* ─── DARK SLIDE TYPOGRAPHY ─── */
+.slide--dark .slide-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--sofka-orange);
+  margin-bottom: 12px;
+  padding: .35rem .9rem;
+  background: rgba(255,126,8,.12);
+  border: 1px solid rgba(255,126,8,.25);
+  border-radius: var(--radius-sm);
+}
+
+.slide--dark .slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--sofka-white);
+}
+.slide--dark .slide-title .accent { color: var(--sofka-orange); }
+.slide--dark .slide-title .gold { color: var(--sofka-positive); }
+
+.slide--dark .slide-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ─── HERO ─── */
+.hero-logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--sofka-orange);
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+.hero-meta-badges {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.hero-meta-badge {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.85);
+  padding: .35rem .9rem;
+  border-radius: var(--radius-sm);
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--sofka-white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.hero-title .accent { color: var(--sofka-orange); }
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  max-width: 750px;
+}
+.hero-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.hero-kpi { text-align: center; }
+.hero-kpi-value {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--sofka-orange);
+}
+.hero-kpi-label {
+  font-size: .78rem;
+  color: rgba(255,255,255,.6);
+  margin-top: .4rem;
+  font-weight: 500;
+  letter-spacing: .5px;
+}
+
+/* ─── CARDS — DS v5.1 light style ─── */
+.cards-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 24px;
+}
+.cards-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.cards-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.cards-grid--4 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: var(--sofka-gray-50);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow .2s, transform .2s;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--sofka-orange);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border: 1px solid rgba(255,126,8,.2);
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: var(--radius-sm);
+  background: var(--sofka-orange-dim);
+}
+
+.card-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--sofka-gray-900);
+  margin-bottom: 6px;
+  margin-top: 8px;
+}
+
+.card-text {
+  font-size: 0.85rem;
+  color: var(--sofka-gray-500);
+  line-height: 1.55;
+}
+.card-text strong {
+  color: var(--sofka-gray-900);
+  font-weight: 700;
+}
+
+/* ─── STAT ROW ─── */
+.stat-row {
+  display: flex;
+  gap: 32px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--sofka-orange);
+  line-height: 1;
+}
+.stat-unit {
+  font-size: 0.82rem;
+  color: var(--sofka-gray-500);
+  margin-top: 4px;
+  font-weight: 500;
+}
+.slide--dark .stat-number { color: var(--sofka-orange); }
+.slide--dark .stat-unit { color: rgba(255,255,255,.6); }
+
+/* ─── Pain Point List (light) ─── */
+.pain-list {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+}
+.pain-list li {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--sofka-gray-200);
+  align-items: flex-start;
+}
+.pain-list li:last-child { border-bottom: none; }
+.pain-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--sofka-critical-dim);
+  border: 1px solid var(--sofka-critical-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.pain-text strong {
+  color: var(--sofka-gray-900);
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.95rem;
+}
+.pain-text span {
+  color: var(--sofka-gray-500);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+/* ─── TABLE — DS v5.1 ─── */
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--sofka-gray-300);
+}
+.mini-table thead th {
+  background: var(--sofka-gray-900);
+  color: var(--sofka-white);
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.mini-table tbody td {
+  padding: .875rem 1.25rem;
+  border-bottom: 1px solid var(--sofka-gray-200);
+  background: var(--sofka-gray-100);
+  color: var(--sofka-gray-900);
+}
+.mini-table tbody tr:last-child td { border-bottom: none; }
+.mini-table tbody tr:hover td {
+  background: var(--sofka-gray-200);
+}
+.mini-table .highlight {
+  color: var(--sofka-orange);
+  font-weight: 700;
+}
+.mini-table .gold {
+  color: var(--sofka-positive-text);
+  font-weight: 700;
+}
+.mini-table .critical {
+  color: var(--sofka-critical);
+  font-weight: 600;
+}
+.mini-table td strong {
+  color: var(--sofka-gray-900);
+}
+
+/* ─── Timeline (light) ─── */
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 28px 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--sofka-gray-300);
+  z-index: 0;
+}
+.timeline-phase {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 8px;
+}
+.timeline-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--sofka-orange);
+  margin: 20px auto 12px;
+  position: relative;
+  box-shadow: 0 0 0 4px rgba(255,126,8,0.15);
+}
+.timeline-phase:last-child .timeline-dot {
+  background: var(--sofka-positive);
+  box-shadow: 0 0 0 4px rgba(255,215,0,0.2);
+}
+.timeline-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--sofka-orange);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.timeline-desc {
+  font-size: 0.78rem;
+  color: var(--sofka-gray-500);
+  line-height: 1.5;
+}
+.timeline-desc strong {
+  color: var(--sofka-gray-900);
+}
+
+/* ─── Callout box (light) ─── */
+.callout-box {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin-top: 24px;
+}
+.callout-box--orange {
+  background: var(--sofka-orange-dim);
+  border: 1px solid rgba(255,126,8,.2);
+  border-left: 4px solid var(--sofka-orange);
+}
+.callout-box--gold {
+  background: var(--sofka-positive-dim);
+  border: 1px solid var(--sofka-positive-border);
+  border-left: 4px solid var(--sofka-positive);
+}
+.callout-box p {
+  font-size: 0.88rem;
+  color: var(--sofka-gray-700);
+  margin: 0;
+  line-height: 1.6;
+}
+.callout-box strong {
+  color: var(--sofka-orange-dark);
+}
+.callout-box .gold-label {
+  color: var(--sofka-positive-text);
+  font-weight: 700;
+}
+
+/* ─── CTA Button ─── */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  background: linear-gradient(135deg, var(--sofka-orange) 0%, var(--sofka-orange-dark) 100%);
+  color: var(--sofka-white);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-base);
+  box-shadow: 0 4px 14px rgba(255,126,8,0.3);
+  margin-top: 24px;
+}
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,126,8,0.4);
+  text-decoration: none;
+  color: var(--sofka-white);
+}
+.cta-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: transparent;
+  color: rgba(255,255,255,.6);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-base);
+  margin-top: 12px;
+  margin-left: 12px;
+}
+.cta-button-secondary:hover {
+  border-color: var(--sofka-orange);
+  color: var(--sofka-orange);
+  text-decoration: none;
+}
+
+/* ─── Carousel Navigation ─── */
+.carousel-nav {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+  background: rgba(17,17,16,0.85);
+  backdrop-filter: blur(12px);
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 4px 24px rgba(0,0,0,.3);
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+  padding: 0;
+}
+.carousel-dot:hover {
+  background: rgba(255,255,255,.5);
+}
+.carousel-dot.active {
+  background: var(--sofka-orange);
+  width: 28px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(255,126,8,0.4);
+}
+
+.carousel-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: var(--transition-base);
+}
+.carousel-arrow:hover {
+  border-color: var(--sofka-orange);
+  color: var(--sofka-orange);
+  background: rgba(255,126,8,0.1);
+}
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.slide-counter {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,.5);
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Sofka Logo watermark ─── */
+.sofka-watermark {
+  position: fixed;
+  top: 20px;
+  left: 28px;
+  z-index: 100;
+}
+.sofka-logo-mark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sofka-orange);
+  letter-spacing: -1px;
+}
+
+/* ─── Progress bar top ─── */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sofka-orange), var(--sofka-positive));
+  z-index: 200;
+  transition: width 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 8px rgba(255,126,8,0.4);
+}
+
+/* ─── Keyboard hint ─── */
+.keyboard-hint {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,.4);
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 2s ease;
+  background: rgba(17,17,16,.7);
+  padding: 6px 14px;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+}
+.keyboard-hint.hidden { opacity: 0; pointer-events: none; }
+.keyboard-hint kbd {
+  display: inline-block;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Menlo','Monaco',monospace;
+  font-size: 0.65rem;
+  margin: 0 2px;
+  color: rgba(255,255,255,.7);
+}
+
+/* ─── CTA Footer ─── */
+.cta-footer {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,.4);
+  margin-top: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.cta-footer .brand {
+  color: var(--sofka-orange);
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: -0.5px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .slide { padding: 40px 24px 80px; }
+  .cards-grid--2, .cards-grid--3, .cards-grid--4 { grid-template-columns: 1fr; }
+  .stat-row { gap: 20px; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .timeline { flex-direction: column; gap: 16px; }
+  .timeline::before { display: none; }
+  .timeline-dot { margin: 0 0 8px 0; }
+  .mini-table { font-size: 0.8rem; }
+  .mini-table thead th, .mini-table tbody td { padding: 8px 10px; }
+  .cta-button { padding: 14px 28px; font-size: 1rem; }
+  .cta-button-secondary { display: block; margin-left: 0; }
+  .hero-title { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  .hero-kpi-value { font-size: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .slide { padding: 30px 16px 80px; }
+  .stat-row { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .carousel-nav { padding: 8px 14px; gap: 6px; }
+  .hero-kpis { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { transition: none; }
+  .card, .cta-button, .carousel-dot, .carousel-arrow { transition: none; }
+}
+
+/* ─── Print ─── */
+@media print {
+  body { background: white; color: black; overflow: visible; height: auto; }
+  .carousel { height: auto; overflow: visible; }
+  .carousel-track { display: block; transform: none !important; }
+  .slide { min-width: auto; height: auto; page-break-after: always; padding: 40px; }
+  .carousel-nav, .sofka-watermark, .progress-bar, .keyboard-hint { display: none; }
+  .card { border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar" style="width: 9.09%;"></div>
+
+<!-- Sofka Brand Header -->
+<div class="sofka-watermark">
+  <div class="sofka-logo-mark">sofka_</div>
+</div>
+
+<!-- Keyboard Hint -->
+<div class="keyboard-hint" id="keyboardHint">
+  Navega con <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> o desliza
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CAROUSEL
+     ═══════════════════════════════════════════ -->
+<div class="carousel" id="carousel">
+  <div class="carousel-track" id="carouselTrack">
+
+    <!-- ════════ SLIDE 1: HERO (Dark) ════════ -->
+    <div class="slide slide--dark hero-border-bottom">
+      <div class="slide-inner">
+        <div class="hero-logo">sofka_</div>
+        <div class="hero-meta-badges">
+          <span class="hero-meta-badge">Sofka Discovery Framework v5.1</span>
+          <span class="hero-meta-badge">Req. #134042</span>
+          <span class="hero-meta-badge">Confidencial</span>
+          <span class="hero-meta-badge">Marzo 2026</span>
+        </div>
+        <h1 class="hero-title">
+          Modernizaci&oacute;n Integral &mdash;<br><span class="accent">Sistema V&iacute;gia Barcos</span>
+        </h1>
+        <p class="hero-subtitle">
+          Aseguradora del Sur &mdash; Seguros Mar&iacute;timos, Casco y Maquinaria<br>
+          Automatizaci&oacute;n de Devoluciones de Primas por Amarre &middot; Fuerzas Armadas del Ecuador<br>
+          <em style="color:rgba(255,255,255,.55); font-size:0.9em;">Del Excel al sistema: trazabilidad, auditor&iacute;a y precisi&oacute;n desde el d&iacute;a uno.</em>
+        </p>
+
+        <div class="hero-kpis">
+          <div class="hero-kpi">
+            <div class="hero-kpi-value">52</div>
+            <div class="hero-kpi-label">pantallas dise&ntilde;adas</div>
+          </div>
+          <div class="hero-kpi">
+            <div class="hero-kpi-value">8</div>
+            <div class="hero-kpi-label">requerimientos funcionales</div>
+          </div>
+          <div class="hero-kpi">
+            <div class="hero-kpi-value">62</div>
+            <div class="hero-kpi-label">reglas de negocio</div>
+          </div>
+          <div class="hero-kpi">
+            <div class="hero-kpi-value">3</div>
+            <div class="hero-kpi-label">integraciones mapeadas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 2: EL PROBLEMA (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Diagn&oacute;stico</span>
+        <h2 class="slide-title">El Problema:<br><span class="accent">Proceso Manual Insostenible</span></h2>
+        <p class="slide-subtitle">
+          Hoy, la devoluci&oacute;n del 10% de prima se gestiona 100% en Excel &mdash; sin validaci&oacute;n, sin auditor&iacute;a, sin trazabilidad.<br>
+          <strong style="color:var(--sofka-gray-700);">Cada corte es una oportunidad para el error y una exposici&oacute;n regulatoria.</strong>
+        </p>
+
+        <ul class="pain-list">
+          <li>
+            <div class="pain-icon">&#9888;&#65039;</div>
+            <div class="pain-text">
+              <strong>Error factor 100&times; en tasa</strong>
+              <span>Tasa 0.857957 vs 0.00857957 produce Prima de $10.4M en vez de $104K. Un solo campo corrompe toda la liquidaci&oacute;n.</span>
+            </div>
+          </li>
+          <li>
+            <div class="pain-icon">&#128269;</div>
+            <div class="pain-text">
+              <strong>Cero trazabilidad</strong>
+              <span>No se registra qui&eacute;n calcul&oacute;, cu&aacute;ndo ni con qu&eacute; par&aacute;metros. Exposici&oacute;n regulatoria ante la Superintendencia.</span>
+            </div>
+          </li>
+          <li>
+            <div class="pain-icon">&#128683;</div>
+            <div class="pain-text">
+              <strong>Sin validaci&oacute;n de siniestros</strong>
+              <span>Se pueden devolver primas sobre embarcaciones con reclamos activos en Visual Time. Riesgo de pago indebido.</span>
+            </div>
+          </li>
+          <li>
+            <div class="pain-icon">&#128100;</div>
+            <div class="pain-text">
+              <strong>Riesgo de persona clave</strong>
+              <span>El proceso completo depende de 1-2 personas que conocen las f&oacute;rmulas. Sin documentaci&oacute;n operativa.</span>
+            </div>
+          </li>
+          <li>
+            <div class="pain-icon">&#128200;</div>
+            <div class="pain-text">
+              <strong>Escalabilidad agotada</strong>
+              <span>825 registros/corte &times; 3-6 cortes/p&oacute;liza &times; 3-5 p&oacute;lizas activas = hasta 12,500 registros/a&ntilde;o. Sin margen de crecimiento.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 3: LA OPORTUNIDAD (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Oportunidad</span>
+        <h2 class="slide-title">No es <span class="accent">greenfield</span>.<br>Es un m&oacute;dulo dentro de una plataforma operativa.</h2>
+        <p class="slide-subtitle">
+          Todo el ecosistema necesario ya existe &mdash; la oportunidad es de integraci&oacute;n, no de construcci&oacute;n desde cero.<br>
+          <strong style="color:var(--sofka-gray-700);">Esto reduce el riesgo y acelera el tiempo de entrega.</strong>
+        </p>
+
+        <div class="cards-grid cards-grid--3">
+          <div class="card">
+            <span class="card-icon">&#127959;&#65039;</span>
+            <div class="card-label">Plataforma</div>
+            <div class="card-value">EASYCORE</div>
+            <div class="card-text">Ya opera en producci&oacute;n para ADS. Proveedor conocido (Citytech).</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128202;</span>
+            <div class="card-label">Datos Reales</div>
+            <div class="card-value">828 reg</div>
+            <div class="card-text">Registros verificados. 10 vectores de prueba con datos de producci&oacute;n.</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#127912;</span>
+            <div class="card-label">Dise&ntilde;o UI</div>
+            <div class="card-value">52 frames</div>
+            <div class="card-text">Dise&ntilde;o Figma para 4 roles RBAC con 14 casos de error cubiertos.</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128279;</span>
+            <div class="card-label">Integraciones</div>
+            <div class="card-value">Mapeadas</div>
+            <div class="card-text">Visual Time (siniestros) + INFOBIP (notificaciones con templates configurados).</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#9989;</span>
+            <div class="card-label">Factibilidad</div>
+            <div class="card-value">3.9 / 5.0</div>
+            <div class="card-text">7 de 7 dimensiones favorables. 13 condiciones documentadas.</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128203;</span>
+            <div class="card-label">Especificaci&oacute;n</div>
+            <div class="card-value">62 BRs</div>
+            <div class="card-text">Reglas de negocio numeradas, 8 RFs, 19 edge cases, criterios de aceptaci&oacute;n.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 4: NUESTRA SOLUCION (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Soluci&oacute;n</span>
+        <h2 class="slide-title">M&oacute;dulo <span class="accent">V&iacute;gia Barcos</span><br>
+          <span style="font-size:0.55em; font-weight:400; color:var(--sofka-gray-500);">Escenario H&iacute;brido Pragm&aacute;tico &mdash; Score 4.25/5.00</span>
+        </h2>
+
+        <div class="cards-grid cards-grid--4">
+          <div class="card">
+            <div class="card-label">RF01 + RF02</div>
+            <div class="card-text"><strong>Entrada</strong> &mdash; Gesti&oacute;n de p&oacute;lizas, cortes y carga masiva de hasta 5,000 unidades con auto-detecci&oacute;n de formato de tasa.</div>
+          </div>
+          <div class="card">
+            <div class="card-label">RF03 + RF05 + RF06</div>
+            <div class="card-text"><strong>Motor Core</strong> &mdash; Registro de amarres, c&aacute;lculo de 7 pasos con banker&rsquo;s rounding, dashboard por Fuerza en tiempo real.</div>
+          </div>
+          <div class="card">
+            <div class="card-label">RF04 + RF07</div>
+            <div class="card-text"><strong>Salida</strong> &mdash; Reportes PDF/Excel formato ADS + notificaciones INFOBIP con desglose por Fuerza.</div>
+          </div>
+          <div class="card">
+            <div class="card-label">RF08 + Visual Time</div>
+            <div class="card-text"><strong>Transversal</strong> &mdash; RBAC 4 niveles con herencia jer&aacute;rquica + validaci&oacute;n de siniestros con fallback.</div>
+          </div>
+        </div>
+
+        <div class="callout-box callout-box--gold">
+          <p>
+            <span class="gold-label">Precisi&oacute;n verificada</span> &mdash; Motor de c&aacute;lculo validado con 10 vectores de prueba de producci&oacute;n. Auto-detecci&oacute;n de formato de tasa elimina el riesgo factor 100&times;.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 5: PROPUESTA DE VALOR (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Valor</span>
+        <h2 class="slide-title">Excel <span style="color:var(--sofka-critical)">&#8594;</span> <span class="accent">V&iacute;gia Barcos</span></h2>
+        <p class="slide-subtitle">Transformaci&oacute;n concreta y medible del proceso de devoluciones.<br>
+          <strong style="color:var(--sofka-gray-700);">No es una promesa &mdash; es lo que el discovery ya demostr&oacute; que es posible.</strong></p>
+
+        <table class="mini-table">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Excel (hoy)</th>
+              <th>V&iacute;gia Barcos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tiempo por corte</strong></td>
+              <td class="critical">~8-12 horas</td>
+              <td class="gold">~15-30 minutos</td>
+            </tr>
+            <tr>
+              <td><strong>Capacidad</strong></td>
+              <td class="critical">~825 registros</td>
+              <td class="gold">5,000 registros</td>
+            </tr>
+            <tr>
+              <td><strong>Trazabilidad</strong></td>
+              <td class="critical">Ninguna</td>
+              <td class="gold">Usuario + timestamp + par&aacute;metros</td>
+            </tr>
+            <tr>
+              <td><strong>Validaci&oacute;n siniestros</strong></td>
+              <td class="critical">Manual, opcional</td>
+              <td class="gold">Automatizada (Visual Time)</td>
+            </tr>
+            <tr>
+              <td><strong>Protecci&oacute;n de f&oacute;rmulas</strong></td>
+              <td class="critical">Celdas editables</td>
+              <td class="gold">Motor de c&aacute;lculo inmutable</td>
+            </tr>
+            <tr>
+              <td><strong>Auditor&iacute;a</strong></td>
+              <td class="critical">Sin versionado</td>
+              <td class="gold">Audit trail nativo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout-box callout-box--orange">
+          <p>
+            <strong>Diferenciador Sofka:</strong> Discovery completo con 18 entregables, 62 reglas de negocio documentadas y 52 frames de dise&ntilde;o &mdash; antes de escribir una l&iacute;nea de c&oacute;digo.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 6: ROADMAP (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Roadmap</span>
+        <h2 class="slide-title">4 Fases, <span class="accent">9 Sprints</span>, 18 Semanas</h2>
+        <p class="slide-subtitle">Entregas incrementales con gates de validaci&oacute;n entre cada fase.<br>
+          <strong style="color:var(--sofka-gray-700);">Cada fase produce valor tangible. Nunca esperamos al final para demostrar resultados.</strong></p>
+
+        <div class="timeline">
+          <div class="timeline-phase">
+            <div class="timeline-label">Fase 1</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-desc"><strong>Fundaci&oacute;n</strong><br>Sprints 1-3 &middot; 6 semanas<br>RF01, RF02, RF08<br>Modelo de datos, RBAC, p&oacute;lizas, carga masiva</div>
+          </div>
+          <div class="timeline-phase">
+            <div class="timeline-label">Fase 2</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-desc"><strong>Motor Core</strong><br>Sprints 4-6 &middot; 6 semanas<br>RF03, RF05, RF06<br>C&aacute;lculo 7 pasos, amarres, filtros, dashboard</div>
+          </div>
+          <div class="timeline-phase">
+            <div class="timeline-label">Fase 3</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-desc"><strong>Reportes</strong><br>Sprints 7-9 &middot; 6 semanas<br>RF04, RF07, VT<br>PDF/Excel, INFOBIP, Visual Time</div>
+          </div>
+          <div class="timeline-phase">
+            <div class="timeline-label">Cierre</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-desc"><strong>Go-Live</strong><br>2 semanas UAT<br>Validaci&oacute;n con usuarios finales</div>
+          </div>
+        </div>
+
+        <div class="callout-box callout-box--orange">
+          <p>
+            <strong>Prerrequisitos cr&iacute;ticos:</strong>
+            Formato can&oacute;nico de tasa y reglas de redondeo (antes de Sprint 1) &middot; Contrato API Visual Time (antes de Fase 2) &middot; Protocolo datos militares (antes de go-live).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 7: ALCANCE DE IMPLEMENTACION (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Alcance de Implementaci&oacute;n</span>
+        <h2 class="slide-title">Qu&eacute; se <span class="accent">Construye</span></h2>
+        <p class="slide-subtitle">52 pantallas, 8 RFs, 3 integraciones, 62 reglas de negocio &mdash; en 3 fases.</p>
+
+        <div class="cards-grid cards-grid--4">
+          <div class="card">
+            <span class="card-icon">&#128241;</span>
+            <div class="card-label">Pantallas</div>
+            <div class="card-value">52</div>
+            <div class="card-text">Frames Figma para 4 roles RBAC, 14 estados de error</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#9881;&#65039;</span>
+            <div class="card-label">Requerimientos</div>
+            <div class="card-value">8 RFs</div>
+            <div class="card-text">P&oacute;lizas, carga masiva, motor c&aacute;lculo, reportes, dashboard, RBAC, notificaciones, filtros</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128279;</span>
+            <div class="card-label">Integraciones</div>
+            <div class="card-value">3</div>
+            <div class="card-text">Visual Time (siniestros), INFOBIP (notificaciones), Sesame (batch importaci&oacute;n)</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128203;</span>
+            <div class="card-label">Reglas de Negocio</div>
+            <div class="card-value">62</div>
+            <div class="card-text">BR-001 a BR-062 numeradas con criterios de aceptaci&oacute;n y 19 edge cases</div>
+          </div>
+        </div>
+
+        <table class="mini-table" style="margin-top:20px;">
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>RFs</th>
+              <th>Componentes Clave</th>
+              <th>Integraciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fase 1 &mdash; Fundaci&oacute;n</strong></td>
+              <td class="highlight">RF01, RF02, RF08</td>
+              <td>Modelo de datos, RBAC 4 niveles, p&oacute;lizas, carga masiva async hasta 5K</td>
+              <td>Sesame (import)</td>
+            </tr>
+            <tr>
+              <td><strong>Fase 2 &mdash; Motor Core</strong></td>
+              <td class="highlight">RF03, RF05, RF06</td>
+              <td>Motor c&aacute;lculo 7 pasos, registro amarres, dashboard por Fuerza, filtros multi</td>
+              <td>Visual Time (ACL)</td>
+            </tr>
+            <tr>
+              <td><strong>Fase 3 &mdash; Reportes</strong></td>
+              <td class="highlight">RF04, RF07</td>
+              <td>Reportes PDF/Excel formato ADS, notificaciones batch por Fuerza</td>
+              <td>INFOBIP (templates)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 8: INVERSION Y EQUIPO (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Inversi&oacute;n</span>
+        <h2 class="slide-title">C&eacute;lula de <span class="accent">Transformaci&oacute;n Digital Ag&eacute;ntica</span></h2>
+        <p class="slide-subtitle">
+          Un equipo compacto y de alto rendimiento, potenciado con IA, para entregar <strong>52 pantallas, 8 RFs, 3 integraciones y 62 reglas de negocio</strong> en 18 semanas.
+        </p>
+
+        <div class="cards-grid cards-grid--4">
+          <div class="card">
+            <span class="card-icon">&#128736;&#65039;</span>
+            <div class="card-label">Tech Lead</div>
+            <div class="card-value">1 FTE</div>
+            <div class="card-text">Arquitectura, decisiones t&eacute;cnicas, integraciones con EASYCORE y Visual Time. Gobierno de calidad de c&oacute;digo.</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128187;</span>
+            <div class="card-label">Full Cycle Engineer</div>
+            <div class="card-value">1 FTE</div>
+            <div class="card-text">Desarrollo front + back, implementaci&oacute;n del motor de c&aacute;lculo, carga masiva y reportes PDF/Excel.</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128270;</span>
+            <div class="card-label">QA</div>
+            <div class="card-value">1 FTE</div>
+            <div class="card-text">Validaci&oacute;n de los 10 vectores de prueba, 19 edge cases, pruebas de regresi&oacute;n y aceptaci&oacute;n.</div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#128202;</span>
+            <div class="card-label">Product Manager</div>
+            <div class="card-value">1 FTE</div>
+            <div class="card-text">Gesti&oacute;n de backlog, priorizaci&oacute;n y coordinaci&oacute;n con ADS. <strong>Apalancado con IA</strong> para documentaci&oacute;n y seguimiento.</div>
+          </div>
+        </div>
+
+        <div class="stat-row" style="justify-content:center; margin-top:28px;">
+          <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-unit">FTE dedicados</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" style="font-size:2rem;">$30K</div>
+            <div class="stat-unit">USD / mes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">18</div>
+            <div class="stat-unit">semanas estimadas</div>
+          </div>
+        </div>
+
+        <div class="callout-box callout-box--orange" style="margin-top:20px;">
+          <p>
+            <strong>Modelo de arranque:</strong> Primer mes a <strong>Tiempo y Materiales (T&amp;M)</strong> para validar supuestos en una Prueba de Concepto. A partir del segundo mes, migramos a estimaci&oacute;n <strong>Fixed</strong> con alcance y costo predecible.
+          </p>
+        </div>
+
+        <div class="callout-box callout-box--gold" style="margin-top:12px;">
+          <p>
+            <span class="gold-label">Alternativa convencional:</span> Si el cliente prefiere no acelerar con IA, se requerir&iacute;a una c&eacute;lula convencional con m&aacute;s FTE y mayor inversi&oacute;n mensual. La c&eacute;lula ag&eacute;ntica es nuestra apuesta por entregar m&aacute;s valor con menos fricci&oacute;n.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 9: DISCLAIMERS Y TRANSPARENCIA (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Transparencia</span>
+        <h2 class="slide-title">Estimaciones con <span class="accent">Honestidad</span></h2>
+        <p class="slide-subtitle">
+          Un buen socio no promete certezas donde hay supuestos. Preferimos ser transparentes y construir confianza con datos reales.
+        </p>
+
+        <div class="cards-grid cards-grid--3" style="margin-bottom:20px;">
+          <div class="card" style="border-left: 4px solid var(--sofka-orange);">
+            <span class="card-icon">&#128161;</span>
+            <div class="card-text" style="font-size:0.9rem; line-height:1.65;">
+              <strong>Sobre las estimaciones de tiempo</strong><br>
+              Las estimaciones parten de supuestos y nociones iniciales del discovery. Una <strong>Prueba de Concepto (PoC)</strong> entre las partes resolver&iacute;a las incertidumbres y permitir&iacute;a ajustar la planificaci&oacute;n con datos reales.
+            </div>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--sofka-positive);">
+            <span class="card-icon">&#129302;</span>
+            <div class="card-text" style="font-size:0.9rem; line-height:1.65;">
+              <strong>Sobre la aceleraci&oacute;n con IA</strong><br>
+              Nuestro benchmark interno sugiere poder acelerar hasta un <strong>50% con IA</strong>, pero elegimos validar juntos y compartir las eficiencias. No prometemos &mdash; demostramos.
+            </div>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--sofka-warning);">
+            <span class="card-icon">&#9888;&#65039;</span>
+            <div class="card-text" style="font-size:0.9rem; line-height:1.65;">
+              <strong>IA en entornos legacy</strong><br>
+              Las aceleraciones de IA son problem&aacute;ticas en entornos legacy. Por ello, estimamos primero de forma <strong>conservadora</strong> para luego validar y compartir las eficiencias de IA en el contexto real del cliente.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout-box callout-box--gold">
+          <p>
+            <span class="gold-label">Nuestro compromiso:</span> Arrancamos con T&amp;M para que ambas partes validen supuestos sin riesgo. Los n&uacute;meros finales nacen de la realidad del proyecto, no de una presentaci&oacute;n comercial.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 10: RIESGOS Y MITIGACIONES (Light) ════════ -->
+    <div class="slide slide--light">
+      <div class="slide-inner">
+        <span class="slide-label">Riesgos</span>
+        <h2 class="slide-title">4 Riesgos Clave,<br><span class="accent">Todos Mitigados</span></h2>
+        <p class="slide-subtitle">Cada riesgo identificado tiene una estrategia de mitigaci&oacute;n documentada y validada.<br>
+          <strong style="color:var(--sofka-gray-700);">No ocultamos riesgos &mdash; los anticipamos y los resolvemos juntos.</strong></p>
+
+        <div class="cards-grid cards-grid--2">
+          <div class="card" style="border-left: 4px solid var(--sofka-critical);">
+            <div class="card-label">R1 &middot; Probabilidad Alta</div>
+            <div class="card-text">
+              <strong>Visual Time API sin contrato</strong><br>
+              <span style="color:var(--sofka-gray-500)">Mitigaci&oacute;n: ACL (Anti-Corruption Layer) + flag &ldquo;pendiente_verificaci&oacute;n&rdquo;. Dise&ntilde;o desacoplado permite operar sin VT.</span>
+            </div>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--sofka-critical);">
+            <div class="card-label">R2 &middot; Impacto Cr&iacute;tico</div>
+            <div class="card-text">
+              <strong>Formato de tasa 100&times;</strong><br>
+              <span style="color:var(--sofka-gray-500)">Mitigaci&oacute;n: Auto-detecci&oacute;n (si tasa &gt; 0.1 &rarr; dividir por 100) + registro de conversi&oacute;n para auditor&iacute;a.</span>
+            </div>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--sofka-warning);">
+            <div class="card-label">R3 &middot; Impacto Alto</div>
+            <div class="card-text">
+              <strong>Datos militares sensibles</strong><br>
+              <span style="color:var(--sofka-gray-500)">Mitigaci&oacute;n: Clasificaci&oacute;n con Min. Defensa. INFOBIP solo datos agregados. RBAC restringe por Fuerza.</span>
+            </div>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--sofka-info);">
+            <div class="card-label">R4 &middot; Probabilidad Baja-Media</div>
+            <div class="card-text">
+              <strong>Async workers EASYCORE</strong><br>
+              <span style="color:var(--sofka-gray-500)">Mitigaci&oacute;n: Confirmar en Sprint 0. Fallback: procesamiento s&iacute;ncrono con paginaci&oacute;n (degrada UX, no bloquea).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SLIDE 11: CTA (Dark) ════════ -->
+    <div class="slide slide--dark">
+      <div class="slide-inner" style="text-align:center;">
+        <span class="slide-label">Siguiente Paso</span>
+        <h2 class="slide-title" style="margin-bottom:24px;">
+          <span class="gold">Agenda tu Sesi&oacute;n</span><br>de Socializaci&oacute;n
+        </h2>
+        <p style="font-size:1.1rem; color:rgba(255,255,255,.75); max-width:700px; margin:0 auto 32px; line-height:1.7;">
+          Ya hicimos el trabajo pesado: entendimos el negocio, mapeamos los riesgos y dise&ntilde;amos la soluci&oacute;n.<br>
+          Ahora queremos <strong style="color:var(--sofka-orange);">validar juntos</strong> y dar el siguiente paso hacia una Prueba de Concepto.
+        </p>
+
+        <div class="stat-row" style="justify-content:center; margin-bottom:36px;">
+          <div class="stat-item">
+            <div class="stat-number" style="font-size:2.2rem;">18</div>
+            <div class="stat-unit">entregables de discovery</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" style="font-size:2.2rem;">62</div>
+            <div class="stat-unit">reglas de negocio</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" style="font-size:2.2rem;">52</div>
+            <div class="stat-unit">frames de dise&ntilde;o</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" style="font-size:2.2rem;">10</div>
+            <div class="stat-unit">vectores de prueba</div>
+          </div>
+        </div>
+
+        <a href="mailto:javier.montano@sofka.com.co,carlos.coca@sofka.com.co,domenika.enriquez@sofka.us,cristhian.jarrin@sofka.com.co?subject=Vig%C3%ADa%20Barcos%20%E2%80%94%20Solicitud%20de%20Sesi%C3%B3n%20de%20Socializaci%C3%B3n&body=Estimados%20equipo%20Sofka%2C%0A%0ANos%20interesa%20conocer%20en%20detalle%20la%20propuesta%20de%20modernizaci%C3%B3n%20del%20Sistema%20Vig%C3%ADa%20Barcos%20presentada%20en%20el%20discovery.%0A%0AQuisi%C3%A9ramos%20agendar%20una%20sesi%C3%B3n%20de%20socializaci%C3%B3n%20para%3A%0A%0A%E2%80%A2%20Profundizar%20en%20los%20hallazgos%20t%C3%A9cnicos%20y%20funcionales%0A%E2%80%A2%20Explorar%20los%20escenarios%20de%20implementaci%C3%B3n%0A%E2%80%A2%20Definir%20los%20pr%C3%B3ximos%20pasos%20hacia%20una%20Prueba%20de%20Concepto%0A%0AQuedamos%20atentos%20para%20coordinar%20fecha%20y%20hora.%0A%0ACordialmente%2C" class="cta-button">
+          &#128197; Agendar Sesi&oacute;n de Socializaci&oacute;n
+        </a>
+        <a href="#" class="cta-button-secondary" onclick="goToSlide(0);return false;">
+          &#8592; Volver al inicio
+        </a>
+
+        <p class="cta-footer">
+          Confidencial &mdash; Aseguradora del Sur &middot; Marzo 2026<br>
+          <span class="brand">sofka_</span> &middot; Discovery Framework v5.1
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /carousel-track -->
+</div><!-- /carousel -->
+
+<!-- Navigation -->
+<nav class="carousel-nav" id="carouselNav">
+  <button class="carousel-arrow" id="prevBtn" aria-label="Anterior" disabled>&#8592;</button>
+  <span class="slide-counter" id="slideCounter">1 / 11</span>
+  <div id="dotsContainer" style="display:flex; gap:8px; align-items:center;"></div>
+  <button class="carousel-arrow" id="nextBtn" aria-label="Siguiente">&#8594;</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT — Carousel Engine
+     ═══════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  const track = document.getElementById('carouselTrack');
+  const slides = track.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counter = document.getElementById('slideCounter');
+  const dotsContainer = document.getElementById('dotsContainer');
+  const progressBar = document.getElementById('progressBar');
+  const keyboardHint = document.getElementById('keyboardHint');
+
+  let currentSlide = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  // Create dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Ir a slide ' + (i + 1));
+    dot.addEventListener('click', function() { goToSlide(i); });
+    dotsContainer.appendChild(dot);
+  }
+
+  function goToSlide(index) {
+    if (index < 0 || index >= totalSlides) return;
+    currentSlide = index;
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + 'vw)';
+
+    // Update dots
+    var dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === currentSlide); });
+
+    // Update counter
+    counter.textContent = (currentSlide + 1) + ' / ' + totalSlides;
+
+    // Update arrows
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide === totalSlides - 1;
+
+    // Update progress bar
+    progressBar.style.width = (((currentSlide + 1) / totalSlides) * 100) + '%';
+
+    // Hide keyboard hint after first navigation
+    if (currentSlide > 0) {
+      keyboardHint.classList.add('hidden');
+    }
+  }
+
+  // Make goToSlide global for CTA button
+  window.goToSlide = goToSlide;
+
+  prevBtn.addEventListener('click', function() { goToSlide(currentSlide - 1); });
+  nextBtn.addEventListener('click', function() { goToSlide(currentSlide + 1); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      goToSlide(currentSlide + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      goToSlide(currentSlide - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goToSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goToSlide(totalSlides - 1);
+    }
+  });
+
+  // Touch / swipe support
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    var diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goToSlide(currentSlide + 1);
+      else goToSlide(currentSlide - 1);
+    }
+  }, { passive: true });
+
+  // Mouse wheel (debounced 800ms)
+  var wheelTimeout;
+  document.addEventListener('wheel', function(e) {
+    if (wheelTimeout) return;
+    wheelTimeout = setTimeout(function() { wheelTimeout = null; }, 800);
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      if (e.deltaX > 30) goToSlide(currentSlide + 1);
+      else if (e.deltaX < -30) goToSlide(currentSlide - 1);
+    } else {
+      if (e.deltaY > 30) goToSlide(currentSlide + 1);
+      else if (e.deltaY < -30) goToSlide(currentSlide - 1);
+    }
+  }, { passive: true });
+
+  // Auto-hide keyboard hint after 5 seconds
+  setTimeout(function() { keyboardHint.classList.add('hidden'); }, 5000);
+
+  // Initialize
+  goToSlide(0);
+})();
+</script>
+
+</body>
+</html>

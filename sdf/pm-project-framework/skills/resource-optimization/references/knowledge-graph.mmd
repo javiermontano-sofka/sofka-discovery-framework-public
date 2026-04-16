@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Resource Plan<br/>Demand Forecast] --> D
+        B[Schedule Baseline<br/>Activity Timeline] --> D
+        C[Skills Gap Analysis<br/>Capability Map] --> D
+    end
+
+    subgraph "Resource Optimization"
+        D[Demand vs Supply<br/>Analysis] --> E[Leveling &<br/>Smoothing]
+        E --> F[Multi-Project<br/>Balancing]
+        F --> G[Optimized Plan<br/>& Recommendations]
+    end
+
+    subgraph Outputs
+        G --> H[Schedule Baseline Update]
+        G --> I[Staff Augmentation Plan]
+        F --> J[Budget Baseline Impact]
+        G --> K[Team Performance]
+    end
+
+    subgraph Agents
+        L[Resource Optimizer Agent] --> E
+        M[Capacity Planner Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

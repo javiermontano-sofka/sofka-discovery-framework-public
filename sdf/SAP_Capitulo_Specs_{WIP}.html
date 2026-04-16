@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capitulo: Respuestas desde Especificaciones Funcionales — SAP S/4HANA Cloud</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--o:#FF7E08;--ol:#FF9E42;--od:#CC6506;--odm:rgba(255,126,8,.1);--bk:#000;--wh:#FFF;--bg:#EFEAE4;--pos:#FFD700;--posd:rgba(255,215,0,.12);--post:#B8860B;--warn:#D97706;--warnd:rgba(217,119,6,.08);--crit:#DC2626;--critd:rgba(220,38,38,.07);--info:#2563EB;--infod:rgba(37,99,235,.07);--infob:rgba(37,99,235,.25);--violet:#9747FF;--g50:#FAF8F6;--g100:#F4F0EC;--g200:#E4DED7;--g500:#6B6560;--g700:#333130;--g900:#111110;--r:12px;--sh:0 1px 3px rgba(0,0,0,.04),0 6px 16px rgba(0,0,0,.06);--f:'Inter',system-ui,sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--f);font-size:1rem;line-height:1.65;color:var(--g900);background:var(--bg);-webkit-font-smoothing:antialiased}
+    a{color:var(--o);text-decoration:none}a:hover{text-decoration:underline}
+    .skip{position:absolute;top:-50px;left:0;background:var(--o);color:var(--wh);padding:8px 16px;z-index:1000}.skip:focus{top:0}
+    .hero{background:var(--bk);border-bottom:8px solid var(--o);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-20%;right:-5%;width:550px;height:550px;background:radial-gradient(circle,rgba(255,126,8,.15) 0%,transparent 60%);pointer-events:none}
+    .hi{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+    .ey{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.85rem}
+    .pill{padding:.2rem .6rem;border-radius:20px;font-size:.63rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+    .pf{background:var(--o);color:var(--wh)}.pg{border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.6)}
+    .pp{background:var(--violet);color:var(--wh)}
+    .hero h1{color:var(--wh);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;line-height:1.15;margin-bottom:.5rem}
+    .hero h1 em{font-style:normal;color:var(--o)}
+    .hero .ld{color:rgba(255,255,255,.5);font-size:.88rem;max-width:700px}
+    .sts{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:1.25rem}
+    .st{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:.75rem .5rem;border-radius:var(--r);text-align:center}
+    .sv{font-size:1.3rem;font-weight:700;color:var(--o);line-height:1.1}.sl{font-size:.6rem;color:rgba(255,255,255,.4);margin-top:.12rem;text-transform:uppercase;letter-spacing:.4px}
+    .nav{background:var(--wh);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--g200)}
+    .nav ul{list-style:none;display:flex;max-width:1100px;margin:0 auto;overflow-x:auto}
+    .nav a{display:block;padding:.65rem 1rem;font-size:.66rem;text-transform:uppercase;letter-spacing:.7px;color:var(--g500);font-weight:600;border-bottom:3px solid transparent;white-space:nowrap;transition:.15s}
+    .nav a:hover,.nav a:focus{color:var(--o);border-bottom-color:var(--o);text-decoration:none;background:var(--odm)}
+    .w{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .sec{padding:2.5rem 0;scroll-margin-top:50px}.sec+.sec{border-top:1px solid var(--g200)}
+    .sh{display:flex;align-items:flex-start;gap:.8rem;margin-bottom:1.5rem}
+    .sn{width:42px;height:42px;background:var(--bk);color:var(--o);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;border-radius:6px;flex-shrink:0}
+    .st2 h2{font-size:1.35rem;font-weight:700;line-height:1.2}.st2 .sub{font-size:.78rem;color:var(--g500);margin-top:.12rem}
+    .qb{background:var(--g50);border-left:4px solid var(--o);padding:.9rem 1.15rem;border-radius:0 var(--r) var(--r) 0;margin-bottom:1.25rem;font-style:italic;font-size:.86rem;color:var(--g700);line-height:1.5}
+    .ab{background:var(--bk);color:var(--wh);border-radius:var(--r);padding:1rem 1.2rem;margin:1rem 0;border-left:5px solid var(--o);display:flex;gap:.7rem;align-items:flex-start}
+    .ab .ic{font-size:1.1rem;flex-shrink:0;margin-top:.08rem}.ab p{font-size:.86rem;line-height:1.5;margin:0}.ab strong{color:var(--o)}.ab code{background:rgba(255,126,8,.2);color:var(--ol);padding:.06rem .28rem;border-radius:3px;font-size:.8rem}
+    h3{font-size:.92rem;font-weight:700;color:var(--g700);margin:1.75rem 0 .75rem;padding-bottom:.3rem;border-bottom:2px solid var(--g200);display:flex;align-items:center;gap:.35rem}
+    h3 .x{color:var(--o);font-size:.88rem}
+    p{margin-bottom:.7rem;font-size:.86rem}
+    .card{background:var(--wh);padding:1.15rem;border-radius:var(--r);box-shadow:var(--sh);margin-bottom:.75rem}
+    .cl{font-size:.62rem;text-transform:uppercase;letter-spacing:.5px;color:var(--g500);font-weight:600;margin-bottom:.35rem}
+    .co{padding:.8rem 1rem;border-radius:var(--r);margin:.85rem 0;border-left:4px solid;font-size:.83rem}
+    .co-i{background:var(--infod);border-color:var(--info)}.co-w{background:var(--warnd);border-color:var(--warn)}
+    .co-c{background:var(--critd);border-color:var(--crit)}.co-p{background:var(--posd);border-color:var(--pos)}
+    .co b{display:block;margin-bottom:.1rem;font-size:.76rem}
+    .tw{overflow-x:auto;margin:.75rem 0;border-radius:6px;overflow:hidden}
+    table{width:100%;border-collapse:collapse;font-size:.8rem}
+    th{background:var(--g700);color:var(--wh);padding:.5rem .7rem;text-align:left;font-weight:600;font-size:.62rem;text-transform:uppercase;letter-spacing:.4px}
+    td{padding:.5rem .7rem;border-bottom:1px solid var(--g200);background:var(--wh);vertical-align:top}
+    tr:hover td{background:var(--odm)}
+    .row-hl td{background:var(--odm)!important}
+    .t{display:inline-block;padding:.05rem .28rem;border-radius:3px;font-size:.55rem;font-weight:700;letter-spacing:.2px;vertical-align:middle;margin-left:.1rem}
+    .td{background:var(--infod);color:var(--info);border:1px solid var(--infob)}
+    .ti{background:var(--warnd);color:var(--warn);border:1px solid var(--warn)}
+    .ts{background:var(--critd);color:var(--crit);border:1px solid rgba(220,38,38,.25)}
+    .ta{background:rgba(151,71,255,.07);color:var(--violet);border:1px solid rgba(151,71,255,.2)}
+    .tc{background:var(--odm);color:var(--od);border:1px solid rgba(255,126,8,.25)}
+    .tx{display:inline-block;padding:.08rem .38rem;background:var(--odm);color:var(--od);border-radius:4px;font-size:.76rem;font-weight:700;letter-spacing:.3px}
+    .br{display:inline-block;padding:.1rem .4rem;background:var(--pos);color:var(--post);border-radius:4px;font-size:.58rem;font-weight:700;text-transform:uppercase}
+    .bn{display:inline-block;padding:.1rem .4rem;background:var(--critd);color:var(--crit);border-radius:4px;font-size:.58rem;font-weight:700;text-transform:uppercase}
+    .bg{display:inline-block;padding:.1rem .4rem;background:var(--warnd);color:var(--warn);border-radius:4px;font-size:.58rem;font-weight:700;text-transform:uppercase}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:.75rem 0}
+    .spec-ref{display:inline-flex;align-items:center;gap:.25rem;padding:.12rem .45rem;background:rgba(151,71,255,.07);color:var(--violet);border:1px solid rgba(151,71,255,.18);border-radius:4px;font-size:.62rem;font-weight:600}
+    .ft{background:var(--bk);border-top:6px solid var(--o);color:var(--wh);padding:1.75rem 2rem;margin-top:2rem}
+    .fi{max-width:1100px;margin:0 auto}
+    .ft .tl{color:rgba(255,255,255,.4);font-size:.72rem;font-style:italic;margin-top:.25rem}
+    @media(max-width:768px){.g2{grid-template-columns:1fr}.sts{grid-template-columns:repeat(2,1fr)}.hero,.w,.ft{padding-left:1rem;padding-right:1rem}}
+    @media print{.nav{display:none}.card{box-shadow:none;border:1px solid var(--g200)}body{background:white}}
+    *:focus-visible{outline:2px solid var(--o);outline-offset:2px}
+  </style>
+</head>
+<body>
+<a href="#main" class="skip">Ir al contenido</a>
+
+<header class="hero">
+  <div class="hi">
+    <div class="ey">
+      <span class="pill pp">Basado en Specs</span>
+      <span class="pill pf">SAP S/4HANA Cloud Public</span>
+      <span class="pill pg">Sofka Technologies</span>
+      <span class="pill pg">8 Documentos D&C</span>
+      <span class="pill pg">2026-04-16</span>
+    </div>
+    <h1>Respuestas desde <em>Especificaciones Funcionales</em></h1>
+    <p class="ld">Las 3 preguntas SAP respondidas con evidencia directa de los documentos de Diseno y Configuraciones del proyecto Sofka / KSE. Cada dato trazable al PDF de origen.</p>
+    <div class="sts">
+      <div class="st"><div class="sv">8</div><div class="sl">PDFs Leidos</div></div>
+      <div class="st"><div class="sv">9</div><div class="sl">Sociedades</div></div>
+      <div class="st"><div class="sv">S/4HANA</div><div class="sl">Cloud Public</div></div>
+      <div class="st"><div class="sv">3</div><div class="sl">Preguntas</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Secciones"><ul>
+  <li><a href="#s0">Contexto</a></li>
+  <li><a href="#s1">01 Bloqueo Pago</a></li>
+  <li><a href="#s2">02 Tolerancias</a></li>
+  <li><a href="#s3">03 Tasas FX</a></li>
+  <li><a href="#s4">Gaps</a></li>
+</ul></nav>
+
+<main id="main" class="w">
+
+<!-- ═══ CONTEXTO DEL PROYECTO ═══ -->
+<section id="s0" class="sec">
+  <div class="sh">
+    <div class="sn" style="background:var(--g700);">&#9881;</div>
+    <div class="st2">
+      <h2>Contexto del Proyecto</h2>
+      <div class="sub">Datos extraidos de los 8 documentos de Diseno y Configuraciones</div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Plataforma</div>
+      <p style="font-size:1rem;font-weight:700;margin-bottom:.2rem;">SAP S/4HANA Cloud Public Edition</p>
+      <p style="font-size:.78rem;color:var(--g500);">Implementacion Fit to Standard con KSE (The SAP Experts)</p>
+    </div>
+    <div class="card">
+      <div class="cl">Consultor / Aprobadores</div>
+      <p><b>Andres Gutierrez</b> — Consultor Finanzas (KSE)</p>
+      <p><b>Alejandra Calderon</b> — Dir. Administrativa (Sofka)</p>
+      <p style="font-size:.78rem;color:var(--g500);">Documentos firmados Nov-2025</p>
+    </div>
+  </div>
+
+  <h3><span class="x">&#127970;</span> Sociedades en Alcance</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Cod.</th><th>Sociedad</th><th>Moneda Soc.</th><th>Moneda Grupo</th><th>Moneda Adicional</th></tr></thead>
+      <tbody>
+        <tr><td>4801</td><td>Sofka Technologies SAS</td><td>COP</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>4802</td><td>Digital Interaction SAS</td><td>COP</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>4803</td><td>Incuba Talento SAS</td><td>COP</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>7701</td><td>Sofka Ecuador SAS</td><td>USD</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>5501</td><td>EFOI Tecnologias (Mexico)</td><td>MXN</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>8401</td><td>Odilant SA</td><td>UYU</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>1701</td><td>Sofka USA Corp</td><td>USD</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>9301</td><td>Sofka Panama SA</td><td>PAB</td><td>USD</td><td>EUR</td></tr>
+        <tr><td>2401</td><td>Sofka Technologies Holding S.L</td><td>EUR</td><td>USD</td><td>EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Contabilidad General v3 — p.14</span> <span class="spec-ref">Control Gestion CO v4 — p.14</span></p>
+</section>
+
+<!-- ═══ P1: BLOQUEO DE PAGO ═══ -->
+<section id="s1" class="sec">
+  <div class="sh">
+    <div class="sn">01</div>
+    <div class="st2">
+      <h2>Bloqueo de Pago — Tarjeta de Credito</h2>
+      <div class="sub">Que dicen las specs del proyecto sobre este tema</div>
+    </div>
+  </div>
+
+  <div class="qb">"Cual es el mejor procedimiento y tipo de bloqueo para que no se incluyan facturas en la programacion de pago automatica? Ejemplo: compras con Tarjeta credito, que opcion de Bloqueo para pago es recomendable utilizar?"</div>
+
+  <h3><span class="x">&#128209;</span> Lo que Dicen las Especificaciones</h3>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 1: Metodo de Pago D = Tarjeta de Credito ya definido</div>
+    <p>En el documento de Tesoreria (p.14), se definen los metodos de pago del proyecto. El metodo <b>D = Tarjeta de credito</b> ya esta contemplado en la configuracion.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>ID</th><th>Metodo de Pago</th></tr></thead>
+        <tbody>
+          <tr><td>T</td><td>Transferencias Nacionales</td></tr>
+          <tr><td>F</td><td>Transferencias Internacionales</td></tr>
+          <tr><td>C</td><td>Cheque</td></tr>
+          <tr class="row-hl"><td><b>D</b></td><td><b>Tarjeta de credito</b></td></tr>
+          <tr><td>A</td><td>Debito a la cuenta</td></tr>
+          <tr><td>P</td><td>PSE</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Tesoreria v5 — p.14, seccion 6. Metodos de Pago</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 2: Workflow de Bloqueo de Facturas para Pagos — en alcance</div>
+    <p>En el documento de Cuentas por Pagar (p.3), se lista como proceso activo: <b>"WorkFlow Bloqueo facturas proveedores para Pagos"</b>. Esto confirma que el proyecto ya contempla un mecanismo de bloqueo con flujo de aprobacion.</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Cuentas por Pagar y Cobrar v2 — p.3</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 3: Tolerancias de Pago configuradas</div>
+    <p>Se definen grupos de tolerancia con COP 1,000 como importe de diferencia positiva/negativa:</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Grupo</th><th>Descripcion</th><th>Dif. Positiva</th><th>Dif. Negativa</th></tr></thead>
+        <tbody>
+          <tr><td>(vacio)</td><td>Predeterminada</td><td>1,000</td><td>1,000</td></tr>
+          <tr><td>CUS1</td><td>Tolerancia Clientes</td><td>1,000</td><td>1,000</td></tr>
+          <tr><td>VEN1</td><td>Tolerancia Proveedores</td><td>1,000</td><td>1,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Tesoreria v5 — p.14, seccion 7. Tolerancia de Pago</span></p>
+  </div>
+
+  <div class="ab">
+    <div class="ic">&#9889;</div>
+    <p><strong>Respuesta basada en specs:</strong> El metodo de pago <code>D</code> (Tarjeta de credito) ya esta definido. La recomendacion es: (1) Crear una clave de bloqueo personalizada en la configuracion y asociarla a las condiciones de pago que apliquen a compras con TdC. (2) Aprovechar el <b>Workflow de Bloqueo de facturas</b> ya contemplado en el alcance para gestionar la aprobacion/exclusion. (3) Dado que es S/4HANA Cloud Public, las claves de bloqueo se configuran via <b>SPRO</b> o la actividad de configuracion "Check Payment Block Reason".</p>
+  </div>
+
+  <div class="co co-w">
+    <b>Gap Identificado</b>
+    Las especificaciones no definen explicitamente cual clave de bloqueo usar para facturas de tarjeta de credito. El metodo de pago D existe, pero el bloqueo especifico para excluir esas facturas del programa de pago automatico debe definirse como configuracion adicional. <span class="t tc">POR CONFIRMAR</span>
+  </div>
+</section>
+
+<!-- ═══ P2: TOLERANCIAS PRESUPUESTALES ═══ -->
+<section id="s2" class="sec">
+  <div class="sh">
+    <div class="sn">02</div>
+    <div class="st2">
+      <h2>Tolerancias del Control Presupuestal</h2>
+      <div class="sub">Configuracion definida en el documento de Control de Gestion (CO)</div>
+    </div>
+  </div>
+
+  <div class="qb">"Un usuario funcional puede parametrizar los limites de tolerancias de los grupos de cuentas del control presupuestal? o solo los consultores? , Cual es la aplicacion para hacer las respectivas configuraciones?"</div>
+
+  <h3><span class="x">&#128209;</span> Lo que Dicen las Especificaciones</h3>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 1: Presupuesto Estadistico y Restrictivo en alcance</div>
+    <p>El documento de Control de Gestion (CO) confirma que el presupuesto esta en alcance con dos modalidades:</p>
+    <ul style="padding-left:1.2rem;font-size:.84rem;">
+      <li><b>Informativo</b> — genera mensaje de advertencia al contabilizar documentos</li>
+      <li><b>Restrictivo</b> — al superar el 100% se bloquean los registros hasta que se autorice mas presupuesto</li>
+    </ul>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Control de Gestion CO v4 — p.20, seccion Presupuesto</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 2: Control presupuestal al 100% de aviso</div>
+    <p>Textual del documento: <i>"Se define inicialmente un control presupuestal al 100% de aviso, el cual se puede ir actualizando"</i>.</p>
+    <p>Esto confirma que se configuro con umbral de advertencia al 100% como punto de partida.</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Control de Gestion CO v4 — p.20</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 3: Actualizaciones requieren configuracion y transporte</div>
+    <p>Textual: <i>"se explicara a SOFKA TECHNOLOGIES S.A.S. como realizar estas actualizaciones que requieren configuracion y transporte"</i>.</p>
+    <p>Esto indica que <b>los cambios de tolerancias son configuracion de customizing</b> que requiere transporte. Se capacitara al cliente, pero la ejecucion requiere perfil de configurador.</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Control de Gestion CO v4 — p.20</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 4: Scope 2I3 — Gestion Predictiva de Comprometidos activado</div>
+    <p>Permite controlar compromisos de gasto (requisiciones, pedidos) antes de que se materialicen como costos reales. Usa un Ledger de extension dedicado (OE) que registra sin afectar contabilidad principal.</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Control de Gestion CO v4 — p.7-8, Scope 2I3</span></p>
+  </div>
+
+  <div class="ab">
+    <div class="ic">&#128274;</div>
+    <p><strong>Respuesta basada en specs:</strong> Las especificaciones confirman que la configuracion de tolerancias presupuestales <b>requiere customizing y transporte</b> — es decir, es tarea de consultor/configurador. El documento indica que se <b>capacitara a Sofka</b> sobre como solicitar estos cambios, pero la ejecucion tecnica la realiza un perfil con acceso a configuracion. La aplicacion en S/4HANA Cloud Public se accede via el <b>entorno de configuracion (Business Configuration)</b> en la ruta de Budget Availability Control. El usuario funcional opera dentro de los limites: presupuesta, contabiliza, y recibe mensajes de advertencia (100%) o error (restrictivo).</p>
+  </div>
+
+  <div class="co co-p">
+    <b>Confirmado por las specs</b>
+    El control presupuestal al 100% de aviso esta configurado. Las actualizaciones futuras de tolerancias requieren configuracion y transporte — no las hace el usuario funcional directamente.
+  </div>
+</section>
+
+<!-- ═══ P3: TASAS DE CAMBIO ═══ -->
+<section id="s3" class="sec">
+  <div class="sh">
+    <div class="sn">03</div>
+    <div class="st2">
+      <h2>Tasas de Cambio P y M</h2>
+      <div class="sub">Configuracion multi-moneda desde Contabilidad General y CO</div>
+    </div>
+  </div>
+
+  <div class="qb">"Explicacion de las tasas de cambio P y M, cual tasa usa para reconocimiento, costos y gastos reales y que podemos hacer para que sea a tasa promedio del mes el reconocimiento."</div>
+
+  <h3><span class="x">&#128209;</span> Lo que Dicen las Especificaciones</h3>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 1: Estructura multi-moneda con 4 monedas por sociedad</div>
+    <p>Cada sociedad maneja 4 monedas paralelas:</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Tipo de Moneda</th><th>Valor</th><th>Descripcion</th></tr></thead>
+        <tbody>
+          <tr><td><b>Moneda de Sociedad</b></td><td>Moneda del pais</td><td>COP, USD, MXN, UYU, PAB, EUR segun sociedad</td></tr>
+          <tr><td><b>Moneda Funcional</b></td><td>Moneda del pais</td><td>Igual a moneda de sociedad</td></tr>
+          <tr><td><b>Moneda de Grupo</b></td><td>USD</td><td>Para consolidacion corporativa</td></tr>
+          <tr><td><b>Moneda Adicional</b></td><td>EUR</td><td>Para reporte adicional</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Esto confirma operacion <b>multi-moneda intensiva</b> — las tasas de cambio son criticas para las 9 sociedades.</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Contabilidad General v3 — p.13</span> <span class="spec-ref">Control de Gestion CO v4 — p.14</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 2: 3 Ledgers contables con contabilidad paralela</div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ledger</th><th>Norma</th><th>Proposito</th></tr></thead>
+        <tbody>
+          <tr><td><b>0L</b></td><td>IFRS</td><td>Financiera (principal)</td></tr>
+          <tr><td><b>2L</b></td><td>Tributario</td><td>Contabilidad fiscal local</td></tr>
+          <tr><td><b>3L</b></td><td>US GAAP</td><td>Reporte para grupo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Ademas existe un Ledger Estadistico <b>OE</b> para comprometidos/prediccion (Scope 2I3).</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Contabilidad General v3 — p.13</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 3: Reconocimiento de Diferencia en Cambio No Realizada — activo</div>
+    <p>Textual: <i>"El sistema sera configurado para utilizar la funcionalidad de diferencia en cambio avanzada"</i>. Esto permite el reconocimiento contable de diferencias FX no realizadas a partir de la revaluacion de partidas abiertas en moneda extranjera.</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Contabilidad General v3 — p.13</span></p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--violet);">
+    <div class="cl">Hallazgo 4: Actualizacion de tasas de cambio — en alcance GL</div>
+    <p>La <i>"Actualizacion de tasas de cambio"</i> esta listada como proceso activo en Contabilidad General (p.4). Esto es el mantenimiento periodico de las tasas en el sistema.</p>
+    <p><span class="t ta">ADJUNTO</span> <span class="spec-ref">Contabilidad General v3 — p.4</span></p>
+  </div>
+
+  <div class="ab">
+    <div class="ic">&#128177;</div>
+    <p><strong>Respuesta basada en specs:</strong> El proyecto opera con <b>4 monedas por sociedad</b> y <b>3 ledgers paralelos</b> (IFRS, Tributario, US GAAP). La tasa tipo <b>M</b> (average rate) es la que SAP usa por defecto para todas las conversiones en posteos reales — facturas, pagos, reconocimiento de costos y gastos. La tasa tipo <b>P</b> (plan rate) se usa para planificacion en CO. Para usar <b>tasa promedio del mes</b>: el proceso de "Actualizacion de tasas de cambio" ya esta en alcance. La opcion recomendada es cargar la tasa tipo M con el promedio mensual al inicio de cada periodo via la actividad de configuracion correspondiente, o automatizarlo con carga desde archivo. La funcionalidad de <b>diferencia en cambio avanzada</b> ya esta activa para reconocer diferencias FX no realizadas.</p>
+  </div>
+
+  <div class="co co-i">
+    <b>Dato clave del proyecto</b>
+    Las sociedades colombianas (4801, 4802, 4803) operan en COP con grupo USD — cada transaccion en moneda extranjera genera conversion automatica. Las sociedades de Ecuador (7701) y USA (1701) operan en USD, por lo que no generan diferencia de cambio en moneda de sociedad, pero si en moneda adicional EUR.
+  </div>
+</section>
+
+<!-- ═══ GAPS IDENTIFICADOS ═══ -->
+<section id="s4" class="sec">
+  <div class="sh">
+    <div class="sn" style="background:var(--crit);">!</div>
+    <div class="st2">
+      <h2>Gaps y Puntos Abiertos</h2>
+      <div class="sub">Elementos no cubiertos en las especificaciones actuales</div>
+    </div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>#</th><th>Gap</th><th>Pregunta</th><th>Impacto</th><th>Accion</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>G1</td>
+          <td>Clave de bloqueo para TdC no definida explicitamente</td>
+          <td>P1</td>
+          <td><span class="bg">MEDIO</span></td>
+          <td>Definir clave de bloqueo personalizada en la actividad de configuracion "Check Payment Block Reason" y asociarla a condiciones de pago de TdC</td>
+        </tr>
+        <tr>
+          <td>G2</td>
+          <td>Condiciones de pago para TdC no diferenciadas</td>
+          <td>P1</td>
+          <td><span class="bg">MEDIO</span></td>
+          <td>Evaluar si alguna condicion existente (0001-NT60) aplica a TdC o si se debe crear una nueva con bloqueo automatico</td>
+        </tr>
+        <tr>
+          <td>G3</td>
+          <td>Tipo de tasa de cambio para planificacion CO no especificado</td>
+          <td>P3</td>
+          <td><span class="bn">BAJO</span></td>
+          <td>Definir si se usara un tipo de tasa personalizado (ej: P) para planificacion o si se usara M para todo</td>
+        </tr>
+        <tr>
+          <td>G4</td>
+          <td>Frecuencia de actualizacion de tasas no definida</td>
+          <td>P3</td>
+          <td><span class="bg">MEDIO</span></td>
+          <td>Definir si la carga sera diaria (spot), mensual (promedio), o automatica. Evaluar carga desde archivo</td>
+        </tr>
+        <tr>
+          <td>G5</td>
+          <td>Detalle de perfiles de tolerancia presupuestal por sociedad no documentado</td>
+          <td>P2</td>
+          <td><span class="bn">BAJO</span></td>
+          <td>Actualmente al 100% para todas. Documentar si cada sociedad requiere umbrales diferentes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="co co-i">
+    <b>Siguiente paso recomendado</b>
+    Agendar una sesion con el consultor Andres Gutierrez (KSE) y el equipo de tesoreria/planeacion financiera de Sofka para cerrar los gaps G1, G2 y G4 antes de la configuracion final.
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="fi">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <strong style="font-size:.9rem;">Capitulo: Respuestas desde Especificaciones Funcionales</strong>
+        <div class="ey" style="margin-top:.3rem;"><span class="pill pp">Specs</span><span class="pill pf">SAP</span><span class="pill pg">Fact-Checked</span></div>
+        <p class="tl">Construido por profesionales, potenciado por la red agentica de Sofka.</p>
+      </div>
+      <div style="color:rgba(255,255,255,.35);font-size:.65rem;text-align:right;">
+        Sofka SAGE v12.0 &middot; Design System v5<br>
+        Fuentes: Tesoreria v5, CO v4, GL v3, AP/AR v2<br>
+        2026-04-16
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

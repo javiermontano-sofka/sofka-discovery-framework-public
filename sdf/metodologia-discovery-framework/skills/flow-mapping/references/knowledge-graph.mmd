@@ -1,0 +1,61 @@
+```mermaid
+graph TD
+    FM[Flow Mapping] --> DDD[Domain-Driven Design]
+    FM --> E2E[Flujos E2E de Negocio]
+    FM --> IM[Matriz de Integración]
+    FM --> CFP[Puntos de Falla Críticos]
+    FM --> SDG[Grafo de Dependencias]
+
+    DDD --> BC[Bounded Contexts]
+    DDD --> UL[Ubiquitous Language]
+    DDD --> DomTypes[Tipos de Dominio]
+    DomTypes --> CoreDom[Core Domain]
+    DomTypes --> SuppDom[Supporting Domain]
+    DomTypes --> GenDom[Generic Domain]
+    DDD --> CMP[Context Mapping Patterns]
+    CMP --> SK[Shared Kernel]
+    CMP --> CS[Customer-Supplier]
+    CMP --> Conf[Conformist]
+    CMP --> ACL[Anti-Corruption Layer]
+
+    E2E --> SeqDiag[Diagrama de Secuencia]
+    E2E --> TramaSpec[Especificación Trama]
+    E2E --> Narrative[Narrativa Paso a Paso]
+    E2E --> ErrScen[Escenarios de Error]
+    E2E --> IntDeps[Dependencias de Integración]
+
+    TramaSpec --> MsgID[Msg ID]
+    TramaSpec --> Protocol[Protocolo: REST / gRPC / AMQP]
+    TramaSpec --> SLA[SLA / Timeout]
+    TramaSpec --> SyncAsync[Sync / Async]
+
+    IM --> IntTypes[Tipos de Integración]
+    IntTypes --> SyncInt[Síncrona: REST / gRPC]
+    IntTypes --> AsyncInt[Asíncrona: Kafka / RabbitMQ]
+    IntTypes --> BatchInt[Batch / ETL]
+
+    CFP --> FanIn[Alta convergencia Fan-In]
+    CFP --> NoFallback[Sin fallback definido]
+    CFP --> CircDep[Dependencia circular]
+    CFP --> CascadeRisk[Riesgo en cascada]
+
+    SDG --> Nodes[Nodos: sistemas]
+    SDG --> Edges[Aristas: tipo de dependencia]
+    SDG --> SPOF[Single Points of Failure]
+    SDG --> RecovOrder[Orden de recuperación]
+
+    FM --> TriggerSrc[Fuentes de Trigger]
+    TriggerSrc --> HTTP[HTTP / Webhooks]
+    TriggerSrc --> Queue[Colas de mensajes]
+    TriggerSrc --> Cron[Cron / Schedules]
+
+    classDef core fill:#FF7E08,color:#fff,stroke:#FF7E08
+    classDef ddd fill:#1A1A2E,color:#fff,stroke:#1A1A2E
+    classDef integration fill:#FFD700,color:#1A1A2E,stroke:#FFD700
+    classDef risk fill:#c0392b,color:#fff,stroke:#c0392b
+
+    class FM,E2E,DDD core
+    class BC,UL,DomTypes,CoreDom,SuppDom,GenDom,CMP,SK,CS,Conf,ACL ddd
+    class IM,IntTypes,SyncInt,AsyncInt,BatchInt,TramaSpec,MsgID,Protocol,SLA,SyncAsync integration
+    class CFP,FanIn,NoFallback,CircDep,CascadeRisk risk
+```

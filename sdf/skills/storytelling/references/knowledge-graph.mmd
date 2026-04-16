@@ -1,0 +1,120 @@
+%% Knowledge Graph — Storytelling (Narrative Arc & Transformation Stories)
+%% Dominio: Diseño narrativo, arcos de transformación, historias de escenarios y riesgo para discovery
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["storytelling"]
+        direction TB
+        PR["Principio Rector:<br/>Los datos informan.<br/>Las historias transforman."]
+        MASTER["Master Arc:<br/>Plan → Handover<br/>(UN arco narrativo)"]
+        THREADS["Thread Management:<br/>5 hilos narrativos<br/>cross-deliverable"]
+        VG["Validation Gate:<br/>6 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        ASIS["03_Analisis_AS-IS<br/>(pain points, tech debt)"]
+        FLOWS["04_Mapeo_Flujos<br/>(value flow gaps)"]
+        STKH["01_Stakeholder_Map<br/>(personas, perspectives)"]
+        SCENARIOS["05_Escenarios_ToT<br/>(futures, decisions)"]
+        FINDINGS["10-12 Hallazgos<br/>(evidence base)"]
+    end
+
+    subgraph ARCHITECTURES["Arquitecturas Narrativas"]
+        TRANSF["Transformation Narrative<br/>(3 actos: Pain → Decision → Future)"]
+        SCENAR["Scenario Narrative<br/>(futuros plausibles vividos)"]
+        RISKN["Risk Narrative<br/>(consecuencial, no alarmista)"]
+        SUCCREF["Success Reference Story<br/>(analogía de industria)"]
+        CROSSD["Cross-Deliverable Arc<br/>(00-14 coherent thread)"]
+    end
+
+    subgraph TECHNIQUES["Técnicas Narrativas"]
+        CONTRAST["Contraste<br/>(before/after)"]
+        ESCALATION["Escalamiento<br/>(finding → cascade → crisis)"]
+        ANALOGY["Analogía<br/>(técnico → tangible)"]
+        PERSPECTIVE["Perspectiva<br/>(multi-stakeholder)"]
+        PROGRESSION["Progresión<br/>(evidence 1+2+3 = conclusion)"]
+        CALLBACK["Callback<br/>(cross-deliverable coherence)"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        NARRARC["Master Narrative Arc<br/>(cross-deliverable)"]
+        TRANSTORY["Transformation Stories<br/>(per-deliverable)"]
+        SCENNARR["Scenario Narratives<br/>(deliverable 05)"]
+        RISKSTORY["Risk Narratives<br/>(factual, quantified)"]
+        THREADMAP["Thread Continuity Map<br/>(introduced → resolved)"]
+    end
+
+    subgraph STANDARDS["Fundamentos"]
+        CAMPBELL["Joseph Campbell<br/>(Hero's Journey)"]
+        MCKEE["Robert McKee<br/>(Story: Substance, Structure)"]
+        DUARTE["Nancy Duarte<br/>(Resonate, DataStory)"]
+        HEATH["Chip & Dan Heath<br/>(Made to Stick, Switch)"]
+        DAVENPORT["Davenport & Kim<br/>(Keeping Up with the Quants)"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        COPY["copywriting<br/>(prose quality)"]
+        DATASTORY["data-storytelling<br/>(data narrative layer)"]
+        DATAVIZ["data-viz-storytelling<br/>(visual narratives)"]
+        PITCH["executive-pitch<br/>(call to action arc)"]
+        HANDOVER["discovery-handover<br/>(resolution arc)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        ED["editorial-director<br/>(owner — narrative coherence)"]
+        CS["content-strategist<br/>(support — writing craft)"]
+        CC["change-catalyst<br/>(support — adoption narrative)"]
+        BA["business-analyst<br/>(support — evidence base)"]
+    end
+
+    %% Primary flows
+    INPUTS --> SKILL
+    SKILL --> ARCHITECTURES
+    ARCHITECTURES --> OUTPUTS
+    STANDARDS -.->|fundamentan| ARCHITECTURES
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Agent relationships
+    ED -->|opera| SKILL
+    CS -.->|aporta craft narrativo| TRANSF
+    CC -.->|aporta perspectiva de cambio| RISKN
+    BA -.->|aporta evidencia de dominio| SCENAR
+
+    %% Internal traceability
+    TRANSF --> CROSSD
+    SCENAR --> CROSSD
+    RISKN --> CROSSD
+    SUCCREF --> CROSSD
+
+    %% Technique mapping
+    CONTRAST -.->|usa| TRANSF
+    ESCALATION -.->|usa| RISKN
+    ANALOGY -.->|usa| SUCCREF
+    PERSPECTIVE -.->|usa| SCENAR
+    PROGRESSION -.->|usa| TRANSF
+    CALLBACK -.->|usa| CROSSD
+
+    %% Cross-skill traceability
+    ASIS -.->|pain points feed| TRANSF
+    STKH -.->|personas feed| PERSPECTIVE
+    SCENARIOS -.->|futures feed| SCENAR
+    FLOWS -.->|value gaps feed| RISKN
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef arch fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef technique fill:#FFF8E1,stroke:#FF7E08,color:#1A1A2E
+
+    class SKILL skill
+    class ASIS,FLOWS,STKH,SCENARIOS,FINDINGS input
+    class TRANSF,SCENAR,RISKN,SUCCREF,CROSSD arch
+    class NARRARC,TRANSTORY,SCENNARR,RISKSTORY,THREADMAP output
+    class CAMPBELL,MCKEE,DUARTE,HEATH,DAVENPORT standard
+    class COPY,DATASTORY,DATAVIZ,PITCH,HANDOVER consumer
+    class ED,CS,CC,BA agent
+    class CONTRAST,ESCALATION,ANALOGY,PERSPECTIVE,PROGRESSION,CALLBACK technique

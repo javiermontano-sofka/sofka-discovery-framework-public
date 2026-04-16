@@ -1,0 +1,52 @@
+%% Knowledge Graph — Staff Augmentation Planning
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        SKILLS[skills-gap-analysis<br/>Capability gaps]
+        RESOURCE[resource-plan<br/>Staffing needs]
+        BUDGET[budget-baseline<br/>Available budget]
+        VENDOR[vendor-management<br/>Vendor relationships]
+    end
+
+    subgraph "Staff Augmentation (This Skill)"
+        NEEDS[Needs Definition<br/>Roles and skills]
+        SOURCING[Sourcing Strategy<br/>Model selection]
+        INTEGRATION[Integration Plan<br/>Onboarding design]
+        GOVERNANCE[Governance & Exit<br/>KT + IP protection]
+    end
+
+    subgraph Downstream
+        ONBOARD[onboarding-checklist<br/>Day-1 readiness]
+        PERF[team-performance<br/>Velocity tracking]
+        VENDOR_MGMT[vendor-management<br/>SLA monitoring]
+        RISK[risk-register<br/>Vendor dependency risks]
+        STEERING[steering-review<br/>Go/No-Go]
+    end
+
+    subgraph Agents
+        RESOURCE_PLANNER[resource-planner<br/>L2 Specialist]
+        PROCUREMENT[procurement-lead<br/>L2 Specialist]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    SKILLS --> NEEDS
+    RESOURCE --> NEEDS
+    BUDGET --> SOURCING
+    VENDOR --> SOURCING
+
+    NEEDS --> SOURCING --> INTEGRATION --> GOVERNANCE
+
+    INTEGRATION --> ONBOARD
+    GOVERNANCE --> PERF
+    GOVERNANCE --> VENDOR_MGMT
+    NEEDS --> RISK
+    GOVERNANCE --> STEERING
+
+    RESOURCE_PLANNER -.->|executes| NEEDS
+    PROCUREMENT -.->|supports| SOURCING
+    CONDUCTOR -.->|orchestrates| GOVERNANCE
+
+    style GOVERNANCE fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style RESOURCE_PLANNER fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

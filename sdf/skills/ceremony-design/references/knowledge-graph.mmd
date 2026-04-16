@@ -1,0 +1,26 @@
+graph TD
+    subgraph Inputs
+        A[Team Feedback] --> D
+        B[Agile Assessment] --> D
+        C[Framework Selection] --> D
+    end
+
+    subgraph "Ceremony Design Process"
+        D[Ceremony Audit]:::skill --> E[Format Selection]:::skill
+        E --> F[Facilitation Planning]:::skill
+        F --> G[Effectiveness Tracking]:::skill
+    end
+
+    subgraph Agents
+        H[Agile Coach Agent]:::agent --> E
+        I[Facilitation Agent]:::agent --> F
+    end
+
+    subgraph Downstream
+        G --> J[Ceremony Facilitation]
+        G --> K[Continuous Improvement]
+        G --> L[Communication Plan]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

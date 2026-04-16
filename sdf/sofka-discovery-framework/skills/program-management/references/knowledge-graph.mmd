@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Strategic Alignment<br/>Portfolio Strategy] --> D
+        B[Project Charter<br/>Component Projects] --> D
+        C[Stakeholder Register<br/>Program Stakeholders] --> D
+    end
+
+    subgraph "Program Management"
+        D[Program Definition<br/>& Planning] --> E[Program Governance<br/>& Oversight]
+        E --> F[Benefit Realization<br/>& Tracking]
+        F --> G[Program Closure<br/>& Transition]
+    end
+
+    subgraph Outputs
+        G --> H[Benefits Report]
+        G --> I[Lessons Learned]
+        F --> J[Status Report]
+        E --> K[Resource Optimization]
+    end
+
+    subgraph Agents
+        L[Program Director Agent] --> E
+        M[Benefits Analyst Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

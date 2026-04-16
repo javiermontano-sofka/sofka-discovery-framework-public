@@ -1,0 +1,150 @@
+%% Knowledge Graph — Database Architecture: Schema Design, Storage Strategy & Data Evolution
+%% Autor: Javier Montaño | Fecha: 13 de marzo de 2026
+%% (c) Sofka Technologies — All Rights Reserved
+
+graph LR
+
+  %% === INPUTS ===
+  subgraph INPUTS["INPUTS"]
+    direction TB
+    WORKLOAD["Workload Profile"]
+    ACCESS["Access Patterns"]
+    VOLUME["Data Volume & Growth"]
+  end
+
+  %% === RELATIONAL ===
+  subgraph RELATIONAL["Relational & SQL"]
+    direction TB
+    POSTGRES["PostgreSQL"]
+    MYSQL["MySQL"]
+    NEWSQL["NewSQL / CockroachDB"]
+    ALLOYDB["AlloyDB / TiDB"]
+  end
+
+  %% === NOSQL ===
+  subgraph NOSQL["NoSQL"]
+    direction TB
+    MONGODB["MongoDB / Document"]
+    CASSANDRA["Cassandra / Wide-Column"]
+    REDIS["Redis / Cache"]
+    DYNAMODB["DynamoDB"]
+  end
+
+  %% === SPECIALIZED ===
+  subgraph SPECIALIZED["Specialized Engines"]
+    direction TB
+    GRAPH_DB["Neo4j / Graph"]
+    TIMESERIES["TimescaleDB / Time-Series"]
+    VECTOR_DB["pgvector / Pinecone / Vector"]
+    SEARCH["Elasticsearch / Search"]
+  end
+
+  %% === DESIGN ===
+  subgraph DESIGN["Schema Design"]
+    direction TB
+    NORMALIZATION["Normalization 3NF"]
+    DENORM["Denormalization"]
+    CONSTRAINTS["PKs, FKs, Checks"]
+    NAMING["Naming Conventions"]
+    TEMPORAL["SCD / Event Sourcing"]
+  end
+
+  %% === OPTIMIZATION ===
+  subgraph OPTIMIZATION["Indexing & Performance"]
+    direction TB
+    BTREE["B-tree Index"]
+    GIN["GIN / Full-Text"]
+    BRIN["BRIN / Time-Series"]
+    COVERING["Covering Index"]
+    PARTIAL["Partial Index"]
+    MVCC["MVCC / Autovacuum"]
+  end
+
+  %% === DISTRIBUTION ===
+  subgraph DISTRIBUTION["Partitioning & Replication"]
+    direction TB
+    RANGE_PART["Range Partitioning"]
+    HASH_PART["Hash Partitioning"]
+    SHARDING["Horizontal Sharding"]
+    REPLICATION["Primary-Replica"]
+    CONSENSUS["Raft / Paxos"]
+    FAILOVER["Auto-Failover"]
+  end
+
+  %% === OUTPUTS ===
+  subgraph OUTPUTS["OUTPUTS"]
+    direction TB
+    ER_DIAGRAM["ER Diagram"]
+    MIGRATION_PLAN["Migration Plan"]
+    PERF_REPORT["Performance Report"]
+    MONITORING["Monitoring Config"]
+  end
+
+  %% === AGENTS ===
+  subgraph AGENTS["AGENTS"]
+    direction TB
+    DATA_ARCH["data-architect"]
+    BACKEND_DEV["backend-developer"]
+    DBA["data-engineer"]
+  end
+
+  %% === Conexiones ===
+  WORKLOAD --> POSTGRES
+  WORKLOAD --> MONGODB
+  WORKLOAD --> GRAPH_DB
+  ACCESS --> BTREE
+  ACCESS --> GIN
+  VOLUME --> RANGE_PART
+  VOLUME --> SHARDING
+
+  POSTGRES --> NORMALIZATION
+  MYSQL --> NORMALIZATION
+  NEWSQL --> SHARDING
+  ALLOYDB --> REPLICATION
+  MONGODB --> DENORM
+  CASSANDRA --> HASH_PART
+  REDIS --> COVERING
+  DYNAMODB --> HASH_PART
+
+  GRAPH_DB --> CONSTRAINTS
+  TIMESERIES --> BRIN
+  VECTOR_DB --> PARTIAL
+  SEARCH --> GIN
+
+  NORMALIZATION --> BTREE
+  DENORM --> COVERING
+  CONSTRAINTS --> NAMING
+  TEMPORAL --> RANGE_PART
+
+  BTREE --> MVCC
+  BRIN --> RANGE_PART
+  PARTIAL --> MVCC
+  MVCC --> REPLICATION
+
+  RANGE_PART --> FAILOVER
+  SHARDING --> CONSENSUS
+  REPLICATION --> FAILOVER
+
+  NORMALIZATION --> ER_DIAGRAM
+  FAILOVER --> MONITORING
+  CONSENSUS --> MIGRATION_PLAN
+  MVCC --> PERF_REPORT
+
+  DATA_ARCH --> DESIGN
+  BACKEND_DEV --> OPTIMIZATION
+  DBA --> DISTRIBUTION
+
+  %% === Estilos Sofka ===
+  classDef sofkaPrimary fill:#FF7E08,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+  classDef sofkaDark fill:#1A1A2E,stroke:#FF7E08,color:#FFFFFF,stroke-width:2px
+  classDef sofkaSuccess fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+  classDef sofkaLight fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E,stroke-width:1px
+
+  class WORKLOAD,ACCESS,VOLUME sofkaPrimary
+  class POSTGRES,MYSQL,NEWSQL,ALLOYDB,MONGODB,CASSANDRA,REDIS,DYNAMODB sofkaDark
+  class GRAPH_DB,TIMESERIES,VECTOR_DB,SEARCH sofkaDark
+  class NORMALIZATION,DENORM,CONSTRAINTS,NAMING,TEMPORAL sofkaLight
+  class BTREE,GIN,BRIN,COVERING,PARTIAL,MVCC sofkaSuccess
+  class RANGE_PART,HASH_PART,SHARDING,REPLICATION,CONSENSUS,FAILOVER sofkaPrimary
+  class ER_DIAGRAM,MIGRATION_PLAN,PERF_REPORT,MONITORING sofkaSuccess
+  class DATA_ARCH,BACKEND_DEV,DBA sofkaDark

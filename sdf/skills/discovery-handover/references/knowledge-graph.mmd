@@ -1,0 +1,117 @@
+```mermaid
+graph TD
+    %% Core: Discovery Handover
+    Handover["Discovery Handover\n(Phase 6)"]
+
+    %% Receptores
+    Operaciones["Receptor: Operaciones"]
+    Comercial["Receptor: Comercial"]
+
+    %% S1: Resumen Ejecutivo
+    EjecutiveSummary["Resumen Ejecutivo\nde Transición"]
+    ApprovedScenario["Escenario Aprobado"]
+    ActiveRisks["Riesgos Críticos\nActivos"]
+    NextSteps["Próximos Pasos\nInmediatos"]
+
+    %% S2: Activación Comercial
+    CommercialPackage["Paquete de\nActivación Comercial"]
+    ProposalNarrative["Narrativa de Propuesta"]
+    PricingStructure["Estructura de Pricing"]
+    CommercialConditions["Condiciones Comerciales"]
+    CommercialTimeline["Cronograma de\nCierre Comercial"]
+
+    %% S3: Readiness Operacional
+    OperationalReadiness["Checklist de\nReadiness Operacional"]
+    TeamReadiness["Readiness de Equipo"]
+    InfraReadiness["Readiness de\nInfraestructura"]
+    AccessAndPermissions["Accesos y Permisos"]
+    BaseDocumentation["Documentación Base"]
+
+    %% S4: Plan 90 Días
+    Plan90Days["Plan de Kickoff\n90 Días"]
+    Sprint0["Sprint 0\n(Setup)"]
+    Sprints13["Sprints 1-3\n(Foundation Execution)"]
+    Sprints46["Sprints 4-6\n(Foundation Completion)"]
+    TrackingMetrics["Métricas de\nSeguimiento"]
+
+    %% S5: Gobernanza
+    GovernanceTransition["Protocolo de\nTransición de Gobernanza"]
+    RoleTransition["Transición de Roles"]
+    CeremonyStructure["Estructura de\nCeremonias"]
+    EscalationPath["Escalation Path"]
+
+    %% S6: Tracker de Riesgos
+    RiskTracker["Tracker de Validación\nde Supuestos y Riesgos"]
+    CriticalAssumptions["Supuestos Críticos"]
+    InheritedRisks["Riesgos Heredados"]
+    KillCriteria["Kill Criteria"]
+
+    %% S7: Stakeholders
+    StakeholderTransition["Matriz de Transición\nde Stakeholders"]
+
+    %% Dependencias de Fases Anteriores
+    Gate3["Gate 3 Aprobado"]
+    Phase0Output["Phase 0:\nStakeholder Map"]
+    Phase1Output["Phase 1:\nAS-IS Analysis"]
+    Phase4Output["Phase 4:\nSolution Roadmap"]
+    Phase5aOutput["Phase 5a:\nFunctional Spec"]
+    Phase5bOutput["Phase 5b:\nPitch Ejecutivo"]
+
+    %% Relaciones centrales
+    Handover --> EjecutiveSummary
+    Handover --> CommercialPackage
+    Handover --> OperationalReadiness
+    Handover --> Plan90Days
+    Handover --> GovernanceTransition
+    Handover --> RiskTracker
+    Handover --> StakeholderTransition
+
+    Handover --> Operaciones
+    Handover --> Comercial
+
+    EjecutiveSummary --> ApprovedScenario
+    EjecutiveSummary --> ActiveRisks
+    EjecutiveSummary --> NextSteps
+
+    CommercialPackage --> ProposalNarrative
+    CommercialPackage --> PricingStructure
+    CommercialPackage --> CommercialConditions
+    CommercialPackage --> CommercialTimeline
+
+    OperationalReadiness --> TeamReadiness
+    OperationalReadiness --> InfraReadiness
+    OperationalReadiness --> AccessAndPermissions
+    OperationalReadiness --> BaseDocumentation
+
+    Plan90Days --> Sprint0
+    Plan90Days --> Sprints13
+    Plan90Days --> Sprints46
+    Plan90Days --> TrackingMetrics
+
+    GovernanceTransition --> RoleTransition
+    GovernanceTransition --> CeremonyStructure
+    GovernanceTransition --> EscalationPath
+
+    RiskTracker --> CriticalAssumptions
+    RiskTracker --> InheritedRisks
+    RiskTracker --> KillCriteria
+
+    %% Dependencias de fases anteriores
+    Gate3 --> Handover
+    Phase0Output --> StakeholderTransition
+    Phase1Output --> OperationalReadiness
+    Phase4Output --> Plan90Days
+    Phase4Output --> RiskTracker
+    Phase5aOutput --> Plan90Days
+    Phase5bOutput --> CommercialPackage
+
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef section fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef dependency fill:#4A4A6A,stroke:#FF7E08,color:#fff
+    classDef gate fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+
+    class Handover core
+    class EjecutiveSummary,CommercialPackage,OperationalReadiness,Plan90Days,GovernanceTransition,RiskTracker,StakeholderTransition section
+    class Phase0Output,Phase1Output,Phase4Output,Phase5aOutput,Phase5bOutput dependency
+    class Gate3 gate
+```

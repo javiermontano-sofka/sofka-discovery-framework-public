@@ -1,0 +1,97 @@
+[
+  {
+    "id": "ccb-eval-001",
+    "title": "Process change request adding 3 new features to a fixed-timeline project",
+    "description": "A stakeholder submits a change request to add 3 new features (real-time notifications, export-to-PDF, and multi-language support) to a fixed-timeline e-commerce platform project with 6 weeks remaining. The schedule baseline cannot shift. Evaluate the full CCB pipeline: intake classification, multi-dimensional impact quantification, board deliberation, and baseline updates if approved.",
+    "input": "Change Request CR-2026-047: The VP of Product requests adding 3 features to the e-commerce platform — (1) real-time push notifications, (2) export-to-PDF for order history, (3) multi-language support for ES/PT. The project has a hard deadline in 6 weeks (contractual penalty clause). Current team: 8 developers, 2 QA. Budget has 12% contingency remaining. The sprint backlog is 85% committed for the next 3 sprints.",
+    "expected_behavior": [
+      "Change Request Analyst classifies as scope-primary with schedule and budget secondary impacts, severity HIGH, urgency EXPEDITED given the fixed deadline and scope expansion tension",
+      "Impact Assessor quantifies schedule delta showing critical path compression required, cost delta for additional resources needed to absorb scope within fixed timeline, risk exposure increase for quality and deadline miss, and resource gap of at minimum 2-3 additional FTEs",
+      "CCB Facilitator presents the trade-off analysis: all 3 features cannot fit in 6 weeks without either adding resources (budget impact) or reducing scope elsewhere (scope trade-off), recommends phased approval or partial approval",
+      "If partially approved, Baseline Updater updates scope baseline with approved features only, adjusts budget baseline for additional resources, and documents deferred features for post-release backlog"
+    ],
+    "agents_involved": [
+      "change-request-analyst",
+      "impact-assessor",
+      "ccb-facilitator",
+      "baseline-updater"
+    ],
+    "evaluation_criteria": {
+      "classification_accuracy": "Correctly identifies scope as primary dimension with schedule constraint as the dominant risk",
+      "impact_quantification": "Provides numeric estimates for schedule compression, cost of additional resources, and risk EMV change with confidence levels",
+      "decision_quality": "Recommends a pragmatic disposition (partial approve or approve with conditions) rather than binary approve/reject",
+      "baseline_integrity": "Updates only the baselines authorized by the CCB decision, maintains audit trail"
+    }
+  },
+  {
+    "id": "ccb-eval-002",
+    "title": "Emergency change request requiring fast-track CCB approval",
+    "description": "A critical security vulnerability is discovered in a production dependency, requiring an emergency change to replace the library mid-sprint. The change must bypass normal CCB cadence and use the emergency fast-track process with abbreviated impact analysis and asynchronous voting.",
+    "input": "EMERGENCY CR-2026-048: Security team discovered a CVE-9.8 critical vulnerability in the authentication library (auth-jwt v3.2.1) used across all microservices. The vulnerability is actively being exploited in the wild. Patch requires migrating to auth-jwt v4.0.0 which has breaking API changes affecting 12 microservices. Normal CCB meets next Thursday — 5 business days away. The project is in Phase 3 (system integration testing) with go-live in 3 weeks.",
+    "expected_behavior": [
+      "Change Request Analyst classifies as quality/security-primary, urgency EMERGENCY, and triggers the fast-track CCB process bypassing normal scheduling cadence",
+      "Impact Assessor performs abbreviated but thorough analysis: schedule impact of 3-5 days for migration across 12 services, cost impact of diverting 4-6 developers from SIT activities, risk analysis showing the CVE risk (do nothing) vs. regression risk (migrate), quality impact on SIT timeline",
+      "CCB Facilitator initiates asynchronous emergency vote via documented channel, requires minimum 3 of 5 voting members within 4 hours, documents the expedited rationale and any dissent",
+      "Baseline Updater fast-tracks schedule baseline update showing SIT phase extension, adjusts resource assignments for migration team, and flags go-live date risk for sponsor escalation"
+    ],
+    "agents_involved": [
+      "change-request-analyst",
+      "impact-assessor",
+      "ccb-facilitator",
+      "baseline-updater"
+    ],
+    "evaluation_criteria": {
+      "emergency_recognition": "Correctly identifies the need for fast-track process and triggers emergency protocols without waiting for normal cadence",
+      "abbreviated_rigor": "Performs condensed but substantive impact analysis — not skipping dimensions, just reducing depth appropriately",
+      "async_governance": "Manages asynchronous voting with proper quorum, time-boxing, and documentation that maintains governance integrity",
+      "speed_vs_completeness": "Balances urgency with sufficient analysis to avoid reckless approval — the security risk of inaction must be weighed against regression risk"
+    }
+  },
+  {
+    "id": "ccb-eval-003",
+    "title": "Change request impacting 4 baselines simultaneously",
+    "description": "A regulatory compliance change mandated by a government agency requires modifications to scope (new audit trail features), schedule (compliance deadline precedes original go-live), budget (third-party audit costs), and quality (new certification requirements). All four baselines must be updated simultaneously while maintaining cross-baseline consistency.",
+    "input": "Change Request CR-2026-049: Government agency published new regulation (Reg-2026-114) effective July 1, requiring all financial platforms to implement full transaction audit trails with 7-year retention, real-time regulatory reporting API, and annual third-party security certification. Our platform go-live was August 15 but must now comply by July 1 — a 45-day acceleration. Scope adds 3 major features (audit trail, reporting API, data retention engine). Budget must absorb $180K for third-party certification and estimated $95K in additional cloud infrastructure for 7-year data retention. Quality standards must meet ISO 27001 and SOC 2 Type II certification requirements not previously in scope.",
+    "expected_behavior": [
+      "Change Request Analyst classifies all four dimensions (scope, schedule, budget, quality) as HIGH severity, urgency EXPEDITED, with regulatory compliance as the non-negotiable driver that constrains the decision space",
+      "Impact Assessor quantifies: schedule requires 45-day acceleration with critical path re-baselining, budget impact of $275K+ direct costs plus resource acceleration costs, risk register gains 5+ new regulatory and technical risks, quality plan requires ISO 27001 and SOC 2 Type II certification activities added to the Definition of Done",
+      "CCB Facilitator frames this as a mandatory change (regulatory) where the decision is not if but how — focuses deliberation on implementation approach, resource strategy, and risk mitigation rather than approve/reject",
+      "Baseline Updater performs coordinated four-baseline update ensuring cross-consistency: schedule milestones align with new scope packages, budget accounts map to new WBS elements, quality gates incorporate certification checkpoints, and all baselines reference the same effective date and CR authorization"
+    ],
+    "agents_involved": [
+      "change-request-analyst",
+      "impact-assessor",
+      "ccb-facilitator",
+      "baseline-updater"
+    ],
+    "evaluation_criteria": {
+      "multi_baseline_coverage": "All four baselines are analyzed and updated — none is overlooked or treated superficially",
+      "cross_baseline_consistency": "Schedule dates align with scope deliverables, budget accounts map to WBS packages, quality gates are sequenced correctly in the schedule",
+      "regulatory_framing": "Correctly recognizes this as a mandatory change and adjusts the CCB process accordingly — the board decides implementation approach, not whether to proceed",
+      "cascade_completeness": "Identifies and updates all dependent artifacts beyond the four primary baselines: risk register, procurement schedule, communication plan, resource assignments"
+    }
+  },
+  {
+    "id": "ccb-eval-004",
+    "title": "Reject a change request and document alternatives",
+    "description": "A stakeholder submits a change request for a nice-to-have feature that does not align with project objectives and would consume remaining contingency. The CCB must reject with clear rationale, document alternatives for the requestor, and ensure the rejection is properly recorded for audit purposes.",
+    "input": "Change Request CR-2026-050: The Marketing Director requests adding a gamification engine (achievement badges, leaderboards, point system) to the B2B enterprise procurement platform. Justification: 'It would make the platform more engaging and modern.' The project is a B2B procurement tool for enterprise buyers managing $50M+ in annual spend. The project has 8% budget contingency remaining (earmarked for risk responses), is on track for on-time delivery, and the current scope was approved by the steering committee as the minimum viable feature set. No enterprise customer has requested gamification in any discovery interview.",
+    "expected_behavior": [
+      "Change Request Analyst classifies as scope-primary, severity LOW, urgency ROUTINE, and flags misalignment with project objectives and target user persona in the preliminary assessment",
+      "Impact Assessor quantifies: 4-6 week schedule extension or equivalent resource addition, $120K-$160K estimated cost consuming remaining contingency, risk of scope creep precedent, and quality risk of feature bloat in an enterprise context",
+      "CCB Facilitator presents the analysis with a clear recommendation to REJECT, manages the discussion ensuring the requestor's perspective is heard, documents the vote with rationale tied to strategic misalignment and contingency preservation, and proposes alternatives",
+      "No baseline updates required — instead, the rejection is logged in the change request register, alternatives are documented (post-launch Phase 2 evaluation, separate innovation spike, customer validation study), and the requestor receives formal notification with the rationale and alternative paths"
+    ],
+    "agents_involved": [
+      "change-request-analyst",
+      "impact-assessor",
+      "ccb-facilitator"
+    ],
+    "evaluation_criteria": {
+      "strategic_alignment_check": "Correctly identifies that gamification does not align with B2B enterprise procurement platform objectives and user needs",
+      "rejection_diplomacy": "Rejects with clear, objective rationale without dismissing the requestor — acknowledges the intent while explaining why it does not fit current scope",
+      "alternative_documentation": "Provides at least 2-3 concrete alternatives (Phase 2 backlog, innovation spike, customer validation study) that give the requestor a constructive path forward",
+      "governance_completeness": "Rejection is fully documented: vote tally, rationale, alternatives offered, formal notification to requestor, and entry in change request register with REJECTED status"
+    }
+  }
+]

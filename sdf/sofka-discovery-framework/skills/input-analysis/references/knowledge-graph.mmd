@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[financial-business-case] --> F
+        B[assumption-log] --> F
+        C[communication-plan] --> F
+        D[engagement-strategy] --> F
+    end
+
+    subgraph Process
+        F[input-analysis<br/>Validate & Prioritize<br/>Project Inputs]:::skill
+        F --> G[Inventory & Classify]
+        G --> H[Validate Quality]
+        H --> I[Reconcile & Prioritize]
+    end
+
+    subgraph Outputs
+        I --> J[hypothesis-driven-delivery]
+        I --> K[cost-estimation]
+        I --> L[dependency-mapping]
+    end
+
+    subgraph Agents
+        M[input-analyst-agent]:::agent --> F
+        N[requirements-validator-agent]:::agent --> H
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

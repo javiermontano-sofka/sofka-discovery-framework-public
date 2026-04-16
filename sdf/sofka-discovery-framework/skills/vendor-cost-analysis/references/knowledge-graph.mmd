@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Staff Augmentation Plan<br/>Vendor Requirements] --> D
+        B[Budget Baseline<br/>Cost Constraints] --> D
+        C[Resource Plan<br/>Internal vs External] --> D
+    end
+    subgraph "Vendor Cost Analysis"
+        D[Cost Data Collection<br/>& Benchmarking] --> E[TCO Modeling<br/>& Hidden Costs]
+        E --> F[Comparison &<br/>Recommendation]
+        F --> G[Decision &<br/>Negotiation Support]
+    end
+    subgraph Outputs
+        G --> H[Vendor Management]
+        G --> I[Budget Baseline Update]
+        F --> J[Steering Review]
+        G --> K[Contract Terms]
+    end
+    subgraph Agents
+        L[Cost Analyst Agent] --> E
+        M[Procurement Advisor Agent] --> G
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

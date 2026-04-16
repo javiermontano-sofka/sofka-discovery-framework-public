@@ -1,0 +1,121 @@
+graph LR
+    %% === CLOUD MIGRATION — Knowledge Graph ===
+    %% Sofka Technologies © | Autor: Javier Montaño
+
+    cloudMigration["Cloud Migration"]
+
+    %% --- INPUTS ---
+    subgraph INPUTS["INPUTS — Contexto de Entrada"]
+        appInventory["Inventario de Aplicaciones"]
+        infraActual["Infraestructura Actual (On-Prem)"]
+        businessDrivers["Drivers de Negocio"]
+        complianceReqs["Requisitos de Compliance"]
+    end
+
+    cloudMigration --> appInventory
+    cloudMigration --> infraActual
+    cloudMigration --> businessDrivers
+    cloudMigration --> complianceReqs
+
+    %% --- SECTIONS (7R Framework) ---
+    subgraph SECTIONS["SECCIONES — Framework 7R + Ejecucion"]
+        sevenR["7R Assessment"]
+        rehost["Rehost (Lift-and-Shift)"]
+        replatform["Replatform (Lift-and-Reshape)"]
+        refactor["Refactor (Re-architect)"]
+        repurchase["Repurchase (Drop-and-Shop)"]
+        retire["Retire (Decommission)"]
+        retain["Retain (Keep On-Prem)"]
+        relocate["Relocate (Hypervisor-Level)"]
+        wavePlanning["Wave Planning"]
+        landingZone["Landing Zone Design"]
+        cutoverExecution["Cutover & Rollback"]
+        dependencyMapping["Dependency Mapping"]
+    end
+
+    sevenR --> rehost
+    sevenR --> replatform
+    sevenR --> refactor
+    sevenR --> repurchase
+    sevenR --> retire
+    sevenR --> retain
+    sevenR --> relocate
+    wavePlanning --> cutoverExecution
+    dependencyMapping --> wavePlanning
+
+    %% --- OUTPUTS ---
+    subgraph OUTPUTS["OUTPUTS — Entregables"]
+        migrationPlan["Plan de Migracion"]
+        tcoComparison["Comparacion TCO"]
+        waveCalendar["Calendario de Oleadas"]
+        cutoverRunbook["Runbook de Cutover"]
+        validationReport["Reporte de Validacion"]
+    end
+
+    sevenR --> migrationPlan
+    cutoverExecution --> cutoverRunbook
+    cutoverExecution --> validationReport
+    landingZone --> migrationPlan
+    wavePlanning --> waveCalendar
+
+    %% --- STANDARDS ---
+    subgraph STANDARDS["ESTANDARES — Marcos de Referencia"]
+        awsCAF["AWS Cloud Adoption Framework"]
+        azureCAF["Azure Cloud Adoption Framework"]
+        googleCAF["Google Cloud Adoption Framework"]
+        gartner7R["Gartner 7R Framework"]
+        togaf["TOGAF Migration Planning"]
+        wellArchitected["Well-Architected Frameworks"]
+    end
+
+    sevenR --> gartner7R
+    landingZone --> awsCAF
+    landingZone --> azureCAF
+    landingZone --> googleCAF
+    migrationPlan --> togaf
+    landingZone --> wellArchitected
+
+    %% --- CONSUMERS ---
+    subgraph CONSUMERS["CONSUMIDORES — Roles"]
+        cloudArchitect["Cloud Architect"]
+        migrationEngineer["Migration Engineer"]
+        appOwner["Application Owner"]
+        factoryManager["Factory Manager"]
+        finopsAnalyst["FinOps Analyst"]
+    end
+
+    migrationPlan --> cloudArchitect
+    cutoverRunbook --> migrationEngineer
+    validationReport --> appOwner
+    waveCalendar --> factoryManager
+    tcoComparison --> finopsAnalyst
+
+    %% --- AGENTS ---
+    subgraph AGENTS["AGENTES — Comite de Expertos"]
+        cloudArch["cloud-architect"]
+        platformEng["platform-engineer"]
+        riskController["risk-controller"]
+        deliveryMgr["delivery-manager"]
+        implAnalyst["implementation-analyst"]
+    end
+
+    cloudArch --> sevenR
+    platformEng --> landingZone
+    riskController --> cutoverExecution
+    deliveryMgr --> wavePlanning
+    implAnalyst --> dependencyMapping
+
+    %% --- Clases visuales (Sofka branding) ---
+    classDef pilar fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef componente fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef herramienta fill:#2C2C4E,stroke:#FFD700,color:#FFD700
+    classDef principio fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+
+    class cloudMigration principio
+    class sevenR,wavePlanning,landingZone,cutoverExecution,dependencyMapping pilar
+    class rehost,replatform,refactor,repurchase,retire,retain,relocate componente
+    class appInventory,infraActual,businessDrivers,complianceReqs componente
+    class migrationPlan,tcoComparison,waveCalendar,cutoverRunbook,validationReport herramienta
+    class awsCAF,azureCAF,googleCAF,gartner7R,togaf,wellArchitected herramienta
+    class cloudArchitect,migrationEngineer,appOwner,factoryManager,finopsAnalyst componente
+    class cloudArch,platformEng,riskController,deliveryMgr,implAnalyst herramienta

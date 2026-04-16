@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Project Charter<br/>Product Vision] --> D
+        B[Scope WBS<br/>Product Backlog] --> D
+        C[Team Topology Design<br/>Team Composition] --> D
+    end
+    subgraph "Scrum Framework"
+        D[Sprint Planning<br/>& Goal Setting] --> E[Sprint Execution<br/>& Daily Scrum]
+        E --> F[Sprint Review<br/>& Demonstration]
+        F --> G[Sprint Retrospective<br/>& Adaptation]
+    end
+    subgraph Outputs
+        G --> H[Retrospective Engine]
+        F --> I[Status Report]
+        G --> J[Continuous Improvement]
+        F --> K[Stakeholder Feedback]
+    end
+    subgraph Agents
+        L[Scrum Master Agent] --> E
+        M[Product Owner Agent] --> D
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

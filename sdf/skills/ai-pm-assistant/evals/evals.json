@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Automate status from Jira, Confluence, Slack.",
+    "assertions": [
+      "identifies sources",
+      "designs collection",
+      "normalizes data",
+      "flags quality issues"
+    ]
+  },
+  {
+    "prompt": "Predictive alerts at 60% completion.",
+    "assertions": [
+      "analyzes trends",
+      "identifies trajectory",
+      "detects signals",
+      "generates alerts"
+    ]
+  },
+  {
+    "prompt": "What is current CPI and budget impact?",
+    "assertions": [
+      "retrieves CPI",
+      "interprets in context",
+      "calculates impact",
+      "recommends actions"
+    ]
+  },
+  {
+    "prompt": "Recommend actions from 4 weeks of data.",
+    "assertions": [
+      "analyzes trends",
+      "identifies areas",
+      "prioritizes recommendations",
+      "provides rationale"
+    ]
+  }
+]

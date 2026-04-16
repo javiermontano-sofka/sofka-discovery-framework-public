@@ -1,0 +1,29 @@
+graph TD
+    A[Project Scope / WBS] --> B[Procurement Planning]
+    C[Budget Baseline] --> B
+    D[Risk Register] --> B
+    E[Make-or-Buy Analysis] --> B
+
+    B --> F[SOW Development]
+    B --> G[Contract Strategy]
+    B --> H[Vendor Evaluation Criteria]
+
+    F --> I[RFx Documents]
+    G --> I
+    H --> I
+
+    I --> J[Proposal Evaluation]
+    J --> K[Vendor Selection]
+    K --> L[Contract Award]
+
+    L --> M[Vendor Management Plan]
+    M --> N[Performance Monitoring]
+    N --> O[Project Schedule Integration]
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef output fill:#F59E0B,stroke:#0F172A,color:#000000
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF
+
+    class B primary
+    class F,G,H,I dark
+    class J,K,L,M,N output

@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetodologIA Discovery Framework — Ecosistema Ag&eacute;ntico de Pre-Venta T&eacute;cnica</title>
+  <meta name="description" content="100 Skills, 48 Agentes, 84 Comandos. El framework de discovery empresarial m&aacute;s completo, orquestado por IA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       MetodologIA Design System v5 — Dark Authority
+       Neo-Swiss + Minto Pyramid + Rule 3-3-3
+       3 colors: #6366F1, #22D3EE, #1A1A2E
+       3 fonts: Inter 300/400/700
+       3x negative space
+       ======================================== */
+    :root {
+      --orange: #6366F1;
+      --orange-glow: rgba(255, 126, 8, 0.15);
+      --orange-bright: #818CF8;
+      --gold: #22D3EE;
+      --gold-dim: rgba(255, 215, 0, 0.12);
+      --dark: #1A1A2E;
+      --dark-surface: #16213E;
+      --dark-card: #1C2541;
+      --dark-border: rgba(255, 255, 255, 0.06);
+      --text-primary: #F0F0F0;
+      --text-secondary: rgba(240, 240, 240, 0.6);
+      --text-tertiary: rgba(240, 240, 240, 0.35);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --radius-xl: 24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       Navigation
+       ======================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26, 26, 46, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-brand .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.85rem;
+      color: var(--dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-version {
+      font-size: 0.7rem;
+      color: var(--gold);
+      background: var(--gold-dim);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 46, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--dark-border);
+      z-index: 99;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu a {
+      display: block;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.75rem 0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .mobile-menu a:hover { color: var(--orange); }
+
+    /* ========================================
+       Hero — Minto: Conclusion First
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 126, 8, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .accent { color: var(--orange); }
+    .hero h1 .gold { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ========================================
+       Metric Counters — The Evidence
+       ======================================== */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--dark-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 800px;
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    .metric {
+      background: var(--dark-surface);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .metric-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 126, 8, 0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    /* ========================================
+       Sections — General
+       ======================================== */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ========================================
+       Pipeline — The Process
+       ======================================== */
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .phase-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .phase-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(255, 126, 8, 0.08);
+    }
+
+    .phase-number {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-output {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    .gate-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--gold-dim);
+      padding: 3px 8px;
+      border-radius: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ========================================
+       Service Types — Universal Coverage
+       ======================================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .service-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      transition: all 0.25s ease;
+    }
+
+    .service-chip:hover {
+      border-color: var(--gold);
+      background: var(--dark-card);
+    }
+
+    .service-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .service-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .service-code {
+      font-size: 0.65rem;
+      color: var(--text-tertiary);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* ========================================
+       Skills — The Arsenal (clickable)
+       ======================================== */
+    .skills-domains {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .domain-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .domain-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .domain-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .domain-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--orange);
+      background: var(--orange-glow);
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .domain-skills {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .domain-skills li {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .domain-skills li:hover {
+      background: var(--orange-glow);
+      color: var(--orange);
+      border-color: rgba(255, 126, 8, 0.2);
+    }
+
+    .domain-skills li::after {
+      content: ' \2139';
+      font-family: sans-serif;
+      font-size: 0.6rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      margin-left: 2px;
+    }
+
+    .domain-skills li:hover::after { opacity: 0.6; }
+
+    /* ========================================
+       Agents — The Committee (clickable)
+       ======================================== */
+    .agents-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .agents-summary {
+      position: sticky;
+      top: 100px;
+    }
+
+    .agent-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .agent-stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--orange);
+    }
+
+    .agent-stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .agent-pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 10px 14px;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .agent-pill:hover {
+      border-color: var(--orange);
+      color: var(--text-primary);
+      background: rgba(255, 126, 8, 0.05);
+    }
+
+    .agent-pill.core {
+      border-left: 3px solid var(--orange);
+    }
+
+    /* ========================================
+       Commands — Tabbed Interface
+       ======================================== */
+    .cmd-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .cmd-tab {
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+
+    .cmd-tab:hover { border-color: var(--orange); color: var(--text-primary); }
+
+    .cmd-tab.active {
+      background: var(--orange);
+      color: var(--dark);
+      border-color: var(--orange);
+    }
+
+    .cmd-search {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 16px;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-family: inherit;
+      margin-bottom: 1.5rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .cmd-search:focus { border-color: var(--orange); }
+    .cmd-search::placeholder { color: var(--text-tertiary); }
+
+    .cmd-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1rem;
+    }
+
+    .cmd-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.25s;
+    }
+
+    .cmd-card:hover {
+      border-color: rgba(255, 126, 8, 0.3);
+    }
+
+    .cmd-card-name {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .cmd-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .cmd-card-aliases {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .alias-chip {
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: var(--orange-glow);
+      color: var(--orange);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-weight: 500;
+    }
+
+    .cmd-card-example {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      background: rgba(0, 0, 0, 0.25);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+
+    .cmd-card[style*="display: none"] { display: none !important; }
+
+    /* ========================================
+       Suggested Prompts
+       ======================================== */
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .prompt-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.25s;
+    }
+
+    .prompt-card:hover {
+      border-color: rgba(255, 215, 0, 0.25);
+    }
+
+    .prompt-card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .prompt-card-context {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .prompt-card-text {
+      font-size: 0.78rem;
+      color: var(--orange);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      white-space: pre-wrap;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .prompt-card-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-copy {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 4px;
+      background: var(--gold-dim);
+      color: var(--gold);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-copy:hover { background: rgba(255, 215, 0, 0.25); }
+    .btn-copy.copied { background: rgba(255, 215, 0, 0.3); }
+
+    /* ========================================
+       Modal System
+       ======================================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-container {
+      background: var(--dark-card);
+      border: 1px solid rgba(255, 126, 8, 0.2);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: modalSlideUp 0.3s ease-out;
+      position: relative;
+    }
+
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 1;
+    }
+
+    .modal-close:hover { background: rgba(255, 126, 8, 0.15); color: var(--orange); }
+    .modal-close:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+    .modal-header {
+      padding: 2rem 2rem 1rem;
+    }
+
+    .modal-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: var(--orange-glow);
+      color: var(--orange);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .modal-body {
+      padding: 0 2rem 1.5rem;
+    }
+
+    .modal-section {
+      margin-top: 1.25rem;
+    }
+
+    .modal-section-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-section p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 0.5rem;
+    }
+
+    .modal-tag {
+      font-size: 0.65rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-tertiary);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .modal-prompt-block {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      color: var(--orange);
+      line-height: 1.6;
+      white-space: pre-wrap;
+      margin-top: 0.5rem;
+    }
+
+    .modal-footer {
+      padding: 1rem 2rem 2rem;
+      border-top: 1px solid var(--dark-border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    /* ========================================
+       Getting Started
+       ======================================== */
+    .getting-started {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-xl);
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    .step {
+      padding: 1.5rem;
+    }
+
+    .step-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .code-block {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: var(--orange);
+      margin-top: 0.75rem;
+      overflow-x: auto;
+    }
+
+    /* ========================================
+       Footer
+       ======================================== */
+    footer {
+      border-top: 1px solid var(--dark-border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-philosophy {
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-philosophy .highlight {
+      color: var(--gold);
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .footer-meta {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+    }
+
+    .footer-meta a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    /* ========================================
+       Divider
+       ======================================== */
+    .divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--dark-border);
+    }
+
+    /* ========================================
+       Responsive
+       ======================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: 1fr; }
+      .agents-layout { grid-template-columns: 1fr; }
+      .agents-summary { position: static; }
+      .getting-started { padding: 2rem; }
+      .skills-domains { grid-template-columns: 1fr; }
+      .cmd-cards { grid-template-columns: 1fr; }
+      .prompts-grid { grid-template-columns: 1fr; }
+      .modal-container { max-width: 100%; margin: 0; border-radius: var(--radius); }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .pipeline-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       Animations
+       ======================================== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1, .hero-sub, .metrics, .hero-cta {
+      animation: fadeUp 0.8s ease-out both;
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease-out both; }
+    .hero h1 { animation-delay: 0.1s; }
+    .hero-sub { animation-delay: 0.2s; }
+    .metrics { animation-delay: 0.3s; }
+    .hero-cta { animation-delay: 0.4s; }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="logo-mark">S</span>
+        Discovery Framework
+      </a>
+      <ul class="nav-links">
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#agents">Agentes</a></li>
+        <li><a href="#commands">Comandos</a></li>
+        <li><a href="#prompts">Prompts</a></li>
+        <li><a href="#start">Empezar</a></li>
+      </ul>
+      <div class="nav-right">
+        <span class="nav-version">v10.0.0</span>
+        <button class="hamburger" aria-label="Men&uacute;" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#pipeline" onclick="closeMenu()">Pipeline</a>
+    <a href="#services" onclick="closeMenu()">Servicios</a>
+    <a href="#skills" onclick="closeMenu()">Skills</a>
+    <a href="#agents" onclick="closeMenu()">Agentes</a>
+    <a href="#commands" onclick="closeMenu()">Comandos</a>
+    <a href="#prompts" onclick="closeMenu()">Prompts</a>
+    <a href="#start" onclick="closeMenu()">Empezar</a>
+  </div>
+
+  <!-- Hero — Conclusion First (Minto Pyramid) -->
+  <section class="hero">
+    <p class="hero-eyebrow">Comunidad MetodologIA</p>
+    <h1>
+      Tu IDE es tu<br>
+      <span class="accent">ecosistema de<br>pre-venta</span> <span class="gold">t&eacute;cnica.</span>
+    </h1>
+    <p class="hero-sub">
+      100 skills especializados. 48 agentes expertos. 84 comandos.
+      Un framework de discovery empresarial completo, orquestado por IA,
+      que transforma Claude Code en el consultor t&eacute;cnico m&aacute;s riguroso del mercado.
+    </p>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-number">100</div>
+        <div class="metric-label">Skills</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">48</div>
+        <div class="metric-label">Agentes</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">84</div>
+        <div class="metric-label">Comandos</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">10</div>
+        <div class="metric-label">Tipos de Servicio</div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#start" class="btn btn-primary">Comenzar ahora</a>
+      <a href="#pipeline" class="btn btn-ghost">Explorar pipeline</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Pipeline — Arguments Layer -->
+  <section id="pipeline" class="reveal">
+    <p class="section-label">Pipeline de Discovery</p>
+    <h2 class="section-title">De la ingesta al handover.<br>10 fases. 4 quality gates.</h2>
+    <p class="section-desc">
+      Cada discovery sigue un pipeline gobernado con checkpoints NL-HP v3.0,
+      gates de calidad obligatorios y trazabilidad de evidencia completa.
+    </p>
+
+    <div class="pipeline-grid">
+      <div class="phase-card">
+        <div class="phase-number">Fase 00</div>
+        <div class="phase-name">Discovery Plan</div>
+        <div class="phase-output">Gobernanza, alcance, comit&eacute;</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Fase 01</div>
+        <div class="phase-name">Stakeholders</div>
+        <div class="phase-output">Mapa de influencia, RACI</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Fase 02</div>
+        <div class="phase-name">Brief T&eacute;cnico</div>
+        <div class="phase-output">Resumen ejecutivo, 3 p&aacute;ginas</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Fase 03</div>
+        <div class="phase-name">An&aacute;lisis AS-IS</div>
+        <div class="phase-output">10 secciones, estado actual</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Fase 04</div>
+        <div class="phase-name">Mapeo de Flujos</div>
+        <div class="phase-output">DDD, flujos E2E, integraciones</div>
+      </div>
+      <div class="phase-card">
+        <span class="gate-badge">GATE 1</span>
+        <div class="phase-number">Fase 05</div>
+        <div class="phase-name">Escenarios ToT</div>
+        <div class="phase-output">Tree-of-Thought, scoring 6D</div>
+      </div>
+      <div class="phase-card">
+        <span class="gate-badge">GATE 1.5</span>
+        <div class="phase-number">Fase 05b</div>
+        <div class="phase-name">Feasibility</div>
+        <div class="phase-output">Think Tank de 7 Sabios</div>
+      </div>
+      <div class="phase-card">
+        <span class="gate-badge">GATE 2</span>
+        <div class="phase-number">Fase 06</div>
+        <div class="phase-name">Roadmap</div>
+        <div class="phase-output">5 fases, Monte Carlo</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Fase 07</div>
+        <div class="phase-name">Spec Funcional</div>
+        <div class="phase-output">Casos de uso, reglas de negocio</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Fase 08</div>
+        <div class="phase-name">Pitch Ejecutivo</div>
+        <div class="phase-output">Business case C-level</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Fase 09</div>
+        <div class="phase-name">Handover</div>
+        <div class="phase-output">Transici&oacute;n operativa 90 d&iacute;as</div>
+      </div>
+      <div class="phase-card">
+        <span class="gate-badge">GATE 3</span>
+        <div class="phase-number">Final</div>
+        <div class="phase-name">Quality Review</div>
+        <div class="phase-output">Consistencia cruzada, cierre</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Service Types -->
+  <section id="services" class="reveal">
+    <p class="section-label">Cobertura Universal</p>
+    <h2 class="section-title">Un framework. <span style="color: var(--gold)">10 tipos de servicio.</span></h2>
+    <p class="section-desc">
+      El par&aacute;metro <code style="color: var(--orange); background: var(--orange-glow); padding: 2px 8px; border-radius: 4px;">{TIPO_SERVICIO}</code> adapta
+      autom&aacute;ticamente el pipeline, los agentes y los entregables
+      al tipo de servicio que MetodologIA va a proponer.
+    </p>
+
+    <div class="services-grid">
+      <div class="service-chip"><span class="service-icon">&#9881;</span><div><div class="service-name">Software Dev</div><div class="service-code">SDA</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#9989;</span><div><div class="service-name">QA as a Service</div><div class="service-code">QA</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#128202;</span><div><div class="service-name">Management</div><div class="service-code">Management</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#129302;</span><div><div class="service-name">RPA &amp; Automation</div><div class="service-code">RPA</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#129504;</span><div><div class="service-name">Data &amp; AI</div><div class="service-code">Data-AI</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#9729;</span><div><div class="service-name">Cloud Services</div><div class="service-code">Cloud</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#128187;</span><div><div class="service-name">Staff Augmentation</div><div class="service-code">SAS</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#127912;</span><div><div class="service-name">UX &amp; Design</div><div class="service-code">UX-Design</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#128640;</span><div><div class="service-name">Digital Transf.</div><div class="service-code">Digital-Transformation</div></div></div>
+      <div class="service-chip"><span class="service-icon">&#127760;</span><div><div class="service-name">Multi-Service</div><div class="service-code">Multi-Service</div></div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Skills — 100 total across 13 domains -->
+  <section id="skills" class="reveal">
+    <p class="section-label">Arsenal de Skills</p>
+    <h2 class="section-title">100 skills MOAT.<br>13 dominios de experticia.</h2>
+    <p class="section-desc">
+      Cada skill sigue el patr&oacute;n MOAT: SKILL.md + references/ + examples/ + prompts/.
+      Reutilizables, componibles, auditables. <strong style="color: var(--text-primary)">Haz clic en cualquier skill</strong> para ver detalles.
+    </p>
+
+    <div class="skills-domains" id="skillsGrid">
+      <!-- Skills are rendered by JavaScript -->
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Agents -->
+  <section id="agents" class="reveal">
+    <p class="section-label">Comit&eacute; de Expertos</p>
+    <h2 class="section-title">48 agentes especializados.</h2>
+    <p class="section-desc">
+      12 agentes core que gobiernan el pipeline + 36 especialistas de dominio
+      que se activan seg&uacute;n el tipo de servicio y la fase.
+      <strong style="color: var(--text-primary)">Haz clic en cualquier agente</strong> para ver su rol.
+    </p>
+
+    <div class="agents-layout">
+      <div class="agents-summary">
+        <div class="agent-stat">
+          <span class="agent-stat-num">12</span>
+          <span class="agent-stat-label">Core (siempre activos)</span>
+        </div>
+        <div class="agent-stat">
+          <span class="agent-stat-num">36</span>
+          <span class="agent-stat-label">Especialistas de dominio</span>
+        </div>
+        <div class="agent-stat" style="margin-top: 1.5rem;">
+          <span class="agent-stat-num" style="color: var(--gold)">7</span>
+          <span class="agent-stat-label">Sabios del Think Tank</span>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-tertiary); margin-top: 1.5rem; line-height: 1.6;">
+          Cada agente tiene su constituci&oacute;n: rol, herramientas,
+          restricciones, y criterios de activaci&oacute;n. El <strong style="color: var(--orange)">discovery-conductor</strong>
+          orquesta el comit&eacute;.
+        </p>
+      </div>
+
+      <div class="agents-grid" id="agentsGrid">
+        <!-- Agents are rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Commands — Enhanced with tabs -->
+  <section id="commands" class="reveal">
+    <p class="section-label">L&iacute;nea de Comandos</p>
+    <h2 class="section-title">84 comandos. <span style="color: var(--text-secondary)">21 primarios + 63 aliases.</span></h2>
+    <p class="section-desc">
+      Cada comando del pipeline tiene aliases de acceso r&aacute;pido.
+      Verbo primero: run, generate, diagnose, assess, report, deliver.
+    </p>
+
+    <input type="text" class="cmd-search" id="cmdSearch" placeholder="Buscar comandos...">
+
+    <div class="cmd-tabs" id="cmdTabs">
+      <button class="cmd-tab active" data-cat="all">Todos</button>
+      <button class="cmd-tab" data-cat="RUN">Run</button>
+      <button class="cmd-tab" data-cat="GENERATE">Generate</button>
+      <button class="cmd-tab" data-cat="ASSESS">Assess</button>
+      <button class="cmd-tab" data-cat="REPORT">Report</button>
+      <button class="cmd-tab" data-cat="OPS">Ops</button>
+      <button class="cmd-tab" data-cat="SERVICE">Service</button>
+    </div>
+
+    <div class="cmd-cards" id="cmdCards">
+      <!-- Commands are rendered by JavaScript -->
+    </div>
+
+    <p style="font-size: 0.78rem; color: var(--text-tertiary); margin-top: 1.5rem;">
+      Cada comando acepta par&aacute;metros: <code style="color: var(--orange);">{MODO}</code>,
+      <code style="color: var(--orange);">{FORMATO}</code>,
+      <code style="color: var(--orange);">{VARIANTE}</code>,
+      <code style="color: var(--orange);">{TIPO_SERVICIO}</code>.
+    </p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Suggested Prompts -->
+  <section id="prompts" class="reveal">
+    <p class="section-label">Prompts Sugeridos</p>
+    <h2 class="section-title">Comienza con un prompt.<br><span style="color: var(--gold)">Obt&eacute;n resultados inmediatos.</span></h2>
+    <p class="section-desc">
+      Copia estos prompts directamente en Claude Code para gatillar flujos de discovery
+      completos. Cada prompt est&aacute; optimizado para m&aacute;ximo rendimiento.
+    </p>
+
+    <div class="prompts-grid" id="promptsGrid">
+      <!-- Prompts are rendered by JavaScript -->
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="prompt-library.html" class="btn btn-primary">Explorar biblioteca completa de prompts</a>
+      <a href="#commands" class="btn btn-ghost">Ver todos los comandos</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Getting Started -->
+  <section id="start" class="reveal">
+    <div class="getting-started">
+      <p class="section-label">Comenzar</p>
+      <h2 class="section-title">3 pasos para activar tu ecosistema.</h2>
+      <p class="section-desc" style="margin: 1rem auto 0;">
+        Instala el plugin en Claude Code y convierte tu terminal en el consultor t&eacute;cnico
+        m&aacute;s riguroso de MetodologIA.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">Paso 01</div>
+          <div class="step-title">Clonar el repositorio</div>
+          <div class="step-text">
+            Clona el repo en tu directorio de plugins de Claude Code.
+          </div>
+          <div class="code-block">
+            git clone https://github.com/javiermontano-metodologia/metodologia-discovery-framework.git<br>
+            ~/skills/plugins/metodologia-discovery-framework
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">Paso 02</div>
+          <div class="step-title">Configurar CLAUDE.md</div>
+          <div class="step-text">
+            Copia el CLAUDE.md del repo a tu configuraci&oacute;n global para activar
+            el enrutamiento de comandos <code>/mao:</code>.
+          </div>
+          <div class="code-block">
+            # Lee el CLAUDE.md del repo<br>
+            # para instrucciones completas
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">Paso 03</div>
+          <div class="step-title">Ejecutar tu primer discovery</div>
+          <div class="step-text">
+            Usa el comando express para validar la instalaci&oacute;n con un Go/No-Go r&aacute;pido.
+          </div>
+          <div class="code-block">
+            /mao:run-express
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-philosophy">
+        MetodologIA, your <span class="highlight">technology partner.</span>
+      </p>
+      <p class="footer-meta">
+        MetodologIA Discovery Framework v10.0.0 &mdash;
+        <a href="https://metodologia.info" target="_blank" rel="noopener">Comunidad MetodologIA</a>
+        &mdash; 2024&ndash;2026
+      </p>
+    </div>
+  </footer>
+
+  <!-- Modal Shell -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Cerrar" onclick="closeModal()">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge" id="modalBadge"></span>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-subtitle" id="modalSubtitle"></p>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <!-- Data + Scripts -->
+  <script>
+    // ═══════════════════════════════════════
+    // SKILLS DATA (100 entries)
+    // ═══════════════════════════════════════
+    const SKILLS = [
+      // Discovery Pipeline (16)
+      { id:"discovery-orchestrator", name:"Discovery Orchestrator", desc:"Entry point for end-to-end pipeline orchestration. Sequences phases, enforces gates, manages data contracts, and coordinates the expert committee.", domain:"An\u00e1lisis & Discovery", phase:"all", cmd:"/mao:run-guided", prompt:"Ejecutar discovery completo del proyecto en el directorio actual. Modo: piloto-auto. Formato: markdown." },
+      { id:"mermaid-diagramming", name:"Mermaid Diagramming", desc:"Mermaid diagram generation \u2014 C4, gantt, quadrant, sequence, ER, state diagrams. Embeds in markdown deliverables.", domain:"Herramientas & DX", phase:"all", cmd:null, prompt:null },
+      { id:"stakeholder-mapping", name:"Stakeholder Mapping", desc:"Stakeholder analysis producing influence/interest matrix, RACI, communication plan, and change readiness lens.", domain:"An\u00e1lisis & Discovery", phase:"00", cmd:"/mao:map-stakeholders", prompt:"Generar 01_Stakeholder_Map para el proyecto actual. Incluir matriz de influencia y RACI." },
+      { id:"workshop-facilitator", name:"Workshop Facilitator", desc:"Workshop design methodology \u2014 event storming, impact mapping, user story mapping, design sprints.", domain:"Cambio & Adopci\u00f3n", phase:"00-05", cmd:null, prompt:null },
+      { id:"asis-analysis", name:"AS-IS Analysis", desc:"Universal current-state assessment producing 10-section analysis. Adapts to any MetodologIA service type via {TIPO_SERVICIO}.", domain:"An\u00e1lisis & Discovery", phase:"03", cmd:"/mao:diagnose-asis", prompt:"Ejecutar an\u00e1lisis AS-IS completo del codebase actual. Modo: piloto-auto. Variante: t\u00e9cnica." },
+      { id:"dynamic-sme", name:"Dynamic SME", desc:"Context-adaptive industry expert that dynamically adopts the right SME lens based on client sector (banking, retail, health, etc.).", domain:"An\u00e1lisis & Discovery", phase:"01-03", cmd:null, prompt:null },
+      { id:"flow-mapping", name:"Flow Mapping", desc:"DDD domain taxonomy + 8-12 end-to-end business flows with integration matrix and failure point identification.", domain:"An\u00e1lisis & Discovery", phase:"04", cmd:"/mao:trace-flows", prompt:"Generar 04_Mapeo_Flujos con taxonom\u00eda DDD y 8-12 flujos end-to-end." },
+      { id:"scenario-analysis", name:"Scenario Analysis", desc:"Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension weighted scoring.", domain:"An\u00e1lisis & Discovery", phase:"05", cmd:"/mao:evaluate-scenarios", prompt:"Evaluar 3 escenarios de modernizaci\u00f3n con scoring 6D. Modo: piloto-auto." },
+      { id:"technical-feasibility", name:"Technical Feasibility", desc:"Technical fact-checking and multidimensional feasibility analysis. Validates claims, assumptions, and technical decisions.", domain:"Calidad & Operaciones", phase:"03b", cmd:"/mao:validate-feasibility", prompt:"Activar Think Tank de 7 Sabios para validar feasibility del escenario ganador." },
+      { id:"software-viability", name:"Software Viability", desc:"Deep forensic analysis of proposed software solutions. Validates technology choices and architecture viability.", domain:"Calidad & Operaciones", phase:"03b", cmd:null, prompt:null },
+      { id:"solution-roadmap", name:"Solution Roadmap", desc:"5-phase transformation roadmap with cost drivers, Monte Carlo analysis, risk-adjusted timeline, and pivot points.", domain:"Entregables & Roadmap", phase:"06", cmd:"/mao:chart-roadmap", prompt:"Generar 06_Solution_Roadmap con 5 fases, Monte Carlo, y burndown por sprint." },
+      { id:"cost-estimation", name:"Cost Estimation", desc:"Cost driver identification \u2014 effort inductors, scope drivers, magnitude estimation. NEVER final prices.", domain:"Gesti\u00f3n & Estrategia", phase:"06", cmd:null, prompt:null },
+      { id:"commercial-model", name:"Commercial Model", desc:"Business model and value capture strategy \u2014 Earned Value, JV, usage-based, hybrid commercial structures.", domain:"Gesti\u00f3n & Estrategia", phase:"06b", cmd:null, prompt:null },
+      { id:"functional-spec", name:"Functional Spec", desc:"Comprehensive functional specification with use cases, business rules, acceptance criteria, and complexity matrix.", domain:"An\u00e1lisis & Discovery", phase:"07", cmd:"/mao:write-spec", prompt:"Generar 07_Especificacion_Funcional con casos de uso y reglas de negocio." },
+      { id:"executive-pitch", name:"Executive Pitch", desc:"C-level executive pitch with financial modeling, cost-of-inaction narrative, and persuasion architecture.", domain:"Editorial & Comunicaci\u00f3n", phase:"08", cmd:"/mao:craft-pitch", prompt:"Generar 08_Pitch_Ejecutivo con business case C-level y cost-of-inaction." },
+      { id:"discovery-handover", name:"Discovery Handover", desc:"Discovery-to-execution handover \u2014 operational transition package, commercial activation, 90-day governance transfer.", domain:"Entregables & Roadmap", phase:"09", cmd:"/mao:deliver-handover", prompt:"Generar 09_Handover con plan de transici\u00f3n 90 d\u00edas." },
+      // Architecture Design (10)
+      { id:"software-architecture", name:"Software Architecture", desc:"Internal architecture patterns, ADRs, C4 models, module boundaries, and quality attributes.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"architecture-tobe", name:"Architecture TO-BE", desc:"Target-state (TO-BE) architecture design with C4 L2, ADRs, nightmare scenario mitigations.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"enterprise-architecture", name:"Enterprise Architecture", desc:"TOGAF-aligned capability mapping, domain decomposition, technology radar, and governance framework.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"solutions-architecture", name:"Solutions Architecture", desc:"End-to-end solution design integrating multiple systems with cross-cutting concerns.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"infrastructure-architecture", name:"Infrastructure Architecture", desc:"Compute, network, storage, HA/DR, IAM, and cloud landing zone design.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"devsecops-architecture", name:"DevSecOps Architecture", desc:"CI/CD design with shift-left security, supply chain integrity (SLSA), and DORA metrics.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"design-system", name:"Design System", desc:"Configurable design system with tokens, components, page structure, and brand configuration.", domain:"Herramientas & DX", phase:null, cmd:null, prompt:null },
+      { id:"functional-toolbelt", name:"Functional Toolbelt", desc:"Event storming, story mapping, business rule extraction, traceability matrices, anti-pattern detection.", domain:"Herramientas & DX", phase:null, cmd:null, prompt:null },
+      { id:"integration-architecture", name:"Integration Architecture", desc:"ESB, iPaaS, API gateway, event mesh, and protocol integration patterns.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"disaster-recovery", name:"Disaster Recovery", desc:"DR/BCP planning \u2014 RPO/RTO definition, failover design, backup strategies.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      // Data Strategy (8)
+      { id:"data-science-architecture", name:"Data Science Architecture", desc:"ML/AI system design \u2014 model lifecycle, feature stores, experiment tracking, model serving, MLOps.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"bi-architecture", name:"BI Architecture", desc:"BI solution design \u2014 semantic layers, dashboard patterns, self-service analytics, KPI frameworks.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"data-engineering", name:"Data Engineering", desc:"Data pipeline architecture \u2014 ingestion, orchestration, quality, lineage, SLA monitoring.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"database-architecture", name:"Database Architecture", desc:"Schema design, indexing, partitioning, replication, migration, performance tuning.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"data-governance", name:"Data Governance", desc:"Data catalog, ownership models, classification, retention, privacy compliance.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"data-quality", name:"Data Quality", desc:"Profiling, validation, anomaly detection, data contracts, SLA monitoring.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"analytics-engineering", name:"Analytics Engineering", desc:"dbt-style transformations, data modeling, testing, documentation, metric definitions.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"dependency-analysis", name:"Dependency Analysis", desc:"Dependency mapping, vulnerability scanning, upgrade risk assessment, license compliance.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      // Cloud & Mobile (7)
+      { id:"cloud-native-architecture", name:"Cloud Native Architecture", desc:"Microservices, serverless, containers, service mesh, multi-cloud, FinOps patterns.", domain:"Cloud & Platform", phase:null, cmd:null, prompt:null },
+      { id:"cloud-migration", name:"Cloud Migration", desc:"Migration planning with 7R assessment, workload classification, wave planning, cutover.", domain:"Cloud & Platform", phase:null, cmd:"/mao:assess-cloud", prompt:"Evaluar readiness de migraci\u00f3n cloud con framework 7R." },
+      { id:"mobile-architecture", name:"Mobile Architecture", desc:"Native vs cross-platform assessment, offline-first, state management, release management.", domain:"Cloud & Platform", phase:null, cmd:null, prompt:null },
+      { id:"mobile-assessment", name:"Mobile Assessment", desc:"Mobile app maturity evaluation, dependency audit, app health assessment.", domain:"Cloud & Platform", phase:null, cmd:null, prompt:null },
+      { id:"mobile-platform-assessment", name:"Mobile Platform Assessment", desc:"Unified mobile platform assessment merging architecture and app-level evaluation.", domain:"Cloud & Platform", phase:null, cmd:null, prompt:null },
+      { id:"capacity-planning", name:"Capacity Planning", desc:"Infrastructure and team capacity forecasting with scaling triggers and resource optimization.", domain:"Cloud & Platform", phase:null, cmd:null, prompt:null },
+      { id:"sustainability-assessment", name:"Sustainability Assessment", desc:"Green IT assessment, carbon footprint, energy efficiency, architecture pattern recommendations.", domain:"Cloud & Platform", phase:null, cmd:null, prompt:null },
+      // Engineering Excellence (9)
+      { id:"api-architecture", name:"API Architecture", desc:"REST/GraphQL/gRPC design, versioning, rate limiting, contract-first, DX optimization.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"event-architecture", name:"Event Architecture", desc:"Event-driven systems \u2014 event catalog, schema registry, eventual consistency, saga, CQRS.", domain:"Arquitectura", phase:null, cmd:null, prompt:null },
+      { id:"security-architecture", name:"Security Architecture", desc:"Threat modeling, zero trust, IAM, SLSA compliance, supply chain security.", domain:"Arquitectura", phase:null, cmd:"/mao:assess-security", prompt:"Evaluar postura de seguridad con threat modeling y OWASP Top 10." },
+      { id:"performance-engineering", name:"Performance Engineering", desc:"Benchmarking, SLO definition, capacity planning, caching strategy, load testing.", domain:"Calidad & Operaciones", phase:null, cmd:null, prompt:null },
+      { id:"observability", name:"Observability", desc:"Logs, metrics, traces, alerting, telemetry pipeline, SLO/SLI definition.", domain:"Calidad & Operaciones", phase:null, cmd:null, prompt:null },
+      { id:"sla-design", name:"SLA Design", desc:"SLO/SLA/SLI definition with error budgets, reliability targets, service level negotiation.", domain:"Calidad & Operaciones", phase:null, cmd:null, prompt:null },
+      { id:"incident-management", name:"Incident Management", desc:"Incident response framework \u2014 severity, escalation, postmortem templates, on-call design.", domain:"Calidad & Operaciones", phase:null, cmd:null, prompt:null },
+      { id:"tech-debt-assessment", name:"Tech Debt Assessment", desc:"Tech debt quantification, debt quadrant classification, remediation prioritization.", domain:"Calidad & Operaciones", phase:null, cmd:null, prompt:null },
+      { id:"release-strategy", name:"Release Strategy", desc:"Release management, deployment patterns (canary, blue-green, rolling), rollback procedures.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      // Consulting & Quality (8)
+      { id:"quality-engineering", name:"Quality Engineering", desc:"Test strategy design, automation frameworks, quality gates, quality metrics.", domain:"Calidad & Operaciones", phase:null, cmd:null, prompt:null },
+      { id:"testing-strategy", name:"Testing Strategy", desc:"Test pyramid, shift-left, contract testing, QA-as-a-service, test factory, TMMi/PITT.", domain:"Calidad & Operaciones", phase:null, cmd:null, prompt:null },
+      { id:"user-representative", name:"User Representative", desc:"End-user advocate \u2014 clarity review, readability, usability evaluation, accessibility.", domain:"Herramientas & DX", phase:null, cmd:null, prompt:null },
+      { id:"workshop-design", name:"Workshop Design", desc:"Workshop design methodology \u2014 event storming, impact mapping, story mapping, design thinking.", domain:"Cambio & Adopci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"multidimensional-feasibility", name:"Multidimensional Feasibility", desc:"Think Tank de 7 Sabios: postdoctoral-level validation of scenarios and technical claims across 7 dimensions.", domain:"Calidad & Operaciones", phase:null, cmd:"/mao:validate-feasibility", prompt:null },
+      { id:"compliance-assessment", name:"Compliance Assessment", desc:"Regulatory compliance \u2014 GDPR, SOX, PCI-DSS, HIPAA, ISO 27001, NIST CSF.", domain:"An\u00e1lisis & Discovery", phase:null, cmd:null, prompt:null },
+      { id:"maturity-assessment", name:"Maturity Assessment", desc:"Capability maturity evaluation (CMMI, TMMi, DORA, DCAM standards).", domain:"An\u00e1lisis & Discovery", phase:null, cmd:null, prompt:null },
+      { id:"accessibility-audit", name:"Accessibility Audit", desc:"WCAG 2.1/2.2 compliance assessment, a11y testing, inclusive design, remediation priorities.", domain:"Innovaci\u00f3n & Validaci\u00f3n", phase:null, cmd:null, prompt:null },
+      // Governance, Risk & Strategy (7)
+      { id:"project-program-management", name:"Project & Program Management", desc:"PMO governance, phase gates, dependency control, proposal QA, risk assessment.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      { id:"risk-controlling-dynamics", name:"Risk Controlling Dynamics", desc:"Proactive risk controller \u2014 stress-tests assumptions, tracks risk exposure, financial controls.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      { id:"pipeline-governance", name:"Pipeline Governance", desc:"Discovery pipeline governance \u2014 phase gate management, resource orchestration, dependency control.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      { id:"product-strategy", name:"Product Strategy", desc:"Product roadmap, backlog prioritization, value stream mapping, product-market fit.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      { id:"vendor-assessment", name:"Vendor Assessment", desc:"Vendor evaluation \u2014 RFP design, scoring matrices, TCO analysis, platform comparison.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      { id:"governance-framework", name:"Governance Framework", desc:"IT governance (COBIT, ITIL), decision rights, policy framework, audit readiness.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      { id:"competitive-intelligence", name:"Competitive Intelligence", desc:"Competitive landscape analysis, differentiation assessment, build-vs-buy analysis.", domain:"An\u00e1lisis & Discovery", phase:null, cmd:null, prompt:null },
+      // Delivery, DX & Brand (10)
+      { id:"html-brand", name:"HTML Brand", desc:"MetodologIA Design System HTML deliverables \u2014 branded reports, executive documents, visual identity.", domain:"Herramientas & DX", phase:null, cmd:null, prompt:null },
+      { id:"ux-writing", name:"UX Writing", desc:"Microcopy, naming conventions, product voice, information architecture.", domain:"Editorial & Comunicaci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"roadmap-poc", name:"Roadmap PoC", desc:"PoC planning with go/no-go criteria, validation strategy, MVP scope.", domain:"Entregables & Roadmap", phase:null, cmd:null, prompt:null },
+      { id:"output-engineering", name:"Output Engineering", desc:"Multi-format production: ghost menu, Markdown \u2192 HTML/DOCX/XLSX/PPTX/PDF.", domain:"Herramientas & DX", phase:null, cmd:null, prompt:null },
+      { id:"input-analysis", name:"Input Analysis", desc:"Pre-processing layer that analyzes raw user inputs \u2014 detects errors, root cause, intent gap.", domain:"An\u00e1lisis & Discovery", phase:null, cmd:null, prompt:null },
+      { id:"developer-experience", name:"Developer Experience", desc:"DX platform assessment, inner loop optimization, toolchain evaluation.", domain:"Herramientas & DX", phase:null, cmd:null, prompt:null },
+      { id:"documentation-architecture", name:"Documentation Architecture", desc:"Doc-as-code strategy, taxonomy design, knowledge base architecture, content governance.", domain:"Editorial & Comunicaci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"mentoring-training-discovery", name:"Mentoring & Training Discovery", desc:"Capability training assessment, training delivery model, learning paths.", domain:"Service Discovery", phase:null, cmd:null, prompt:null },
+      { id:"onboarding-playbook", name:"Onboarding Playbook", desc:"Developer and team onboarding program design, knowledge transfer, ramp-up metrics.", domain:"Editorial & Comunicaci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"poc-lab", name:"PoC Lab", desc:"Proof of concept design and execution framework, success criteria, evaluation methodology.", domain:"Innovaci\u00f3n & Validaci\u00f3n", phase:null, cmd:null, prompt:null },
+      // Service Discovery (11)
+      { id:"rpa-discovery", name:"RPA Discovery", desc:"RPA discovery \u2014 process landscape assessment, automation opportunity scoring, bot architecture.", domain:"Service Discovery", phase:null, cmd:"/mao:rpa-discovery", prompt:"Ejecutar discovery RPA completo. Evaluar procesos candidatos a automatizaci\u00f3n." },
+      { id:"qa-service-discovery", name:"QA Service Discovery", desc:"QA-as-a-Service discovery \u2014 TMMi maturity assessment, test coverage, PITT methodology.", domain:"Service Discovery", phase:null, cmd:"/mao:qa-discovery", prompt:"Ejecutar discovery QA-as-a-Service con assessment TMMi." },
+      { id:"ai-center-discovery", name:"AI Center Discovery", desc:"AI Center discovery \u2014 AI readiness assessment using MetodologIA AI SCALE methodology.", domain:"Service Discovery", phase:null, cmd:"/mao:ai-discovery", prompt:"Ejecutar discovery AI Center con metodolog\u00eda AI SCALE." },
+      { id:"management-discovery", name:"Management Discovery", desc:"Management discovery \u2014 PMO maturity, methodology fitness, Factor WOW assessment.", domain:"Service Discovery", phase:null, cmd:null, prompt:null },
+      { id:"staff-augmentation-discovery", name:"Staff Augmentation Discovery", desc:"Talent gap analysis, skills matrix profiling, team composition modeling.", domain:"Service Discovery", phase:null, cmd:null, prompt:null },
+      { id:"digital-transformation-discovery", name:"Digital Transformation Discovery", desc:"Program-level digital transformation \u2014 digital maturity, service portfolio mapping.", domain:"Service Discovery", phase:null, cmd:"/mao:transformation", prompt:"Ejecutar discovery de Transformaci\u00f3n Digital con assessment de madurez." },
+      { id:"cloud-service-discovery", name:"Cloud Service Discovery", desc:"Cloud readiness assessment, DORA metrics, FinOps assessment, cloud operations model.", domain:"Service Discovery", phase:null, cmd:null, prompt:null },
+      { id:"bi-analytics-discovery", name:"BI Analytics Discovery", desc:"Data maturity assessment (DCAM/DMM), dashboard landscape inventory, self-service readiness.", domain:"Service Discovery", phase:null, cmd:null, prompt:null },
+      { id:"ux-design-discovery", name:"UX Design Discovery", desc:"Design maturity assessment, design system inventory, user research capability.", domain:"Service Discovery", phase:null, cmd:null, prompt:null },
+      { id:"mini-apps-discovery", name:"Mini Apps Discovery", desc:"Citizen developer readiness, low-code assessment, governance model.", domain:"Service Discovery", phase:null, cmd:null, prompt:null },
+      // Narrative & Editorial (7)
+      { id:"copywriting", name:"Copywriting", desc:"Persuasive writing for executive audiences \u2014 value propositions, calls to action, cost-of-inaction.", domain:"Editorial & Comunicaci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"storytelling", name:"Storytelling", desc:"Narrative arc design and transformation storytelling for discovery deliverables.", domain:"Editorial & Comunicaci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"data-storytelling", name:"Data Storytelling", desc:"Transforms metrics into meaningful narratives \u2014 insight extraction, metrics-to-meaning conversion.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"data-viz-storytelling", name:"Data Viz Storytelling", desc:"Visual data narrative design \u2014 chart selection, Mermaid diagrams, visual hierarchy.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"technical-writing", name:"Technical Writing", desc:"Technical documentation precision \u2014 progressive disclosure, terminology consistency, evidence attribution.", domain:"Editorial & Comunicaci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"sector-intelligence", name:"Sector Intelligence", desc:"Industry/sector intelligence \u2014 benchmarks, regulatory context, market dynamics, risk overlays.", domain:"An\u00e1lisis & Discovery", phase:null, cmd:null, prompt:null },
+      { id:"technology-vigilance", name:"Technology Vigilance", desc:"Structured technology monitoring across Gartner, Forrester, IDC, ThoughtWorks Radar.", domain:"Innovaci\u00f3n & Validaci\u00f3n", phase:null, cmd:null, prompt:null },
+      // Strategic Methods (8)
+      { id:"execution-burndown", name:"Execution Burndown", desc:"Execution tracking with 1-day sprints, burndown charts, velocity using MetodologIA productivity model.", domain:"Gesti\u00f3n & Estrategia", phase:null, cmd:null, prompt:null },
+      { id:"finops", name:"FinOps", desc:"Cloud financial operations assessment using FinOps Foundation framework.", domain:"Cloud & Platform", phase:null, cmd:null, prompt:null },
+      { id:"hypothesis-driven-development", name:"Hypothesis-Driven Development", desc:"HDD framework \u2014 structuring modernization proposals as testable hypotheses with Lean Startup cycles.", domain:"Innovaci\u00f3n & Validaci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"adoption-strategy", name:"Adoption Strategy", desc:"Adoption roadmap, communication plan, training strategy, resistance management tactics.", domain:"Cambio & Adopci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"change-readiness-assessment", name:"Change Readiness Assessment", desc:"Organizational readiness scorecard, ADKAR assessment, change impact analysis.", domain:"Cambio & Adopci\u00f3n", phase:null, cmd:"/mao:assess-change", prompt:"Evaluar readiness organizacional con ADKAR y mapa de resistencia." },
+      { id:"data-mesh-strategy", name:"Data Mesh Strategy", desc:"Data mesh readiness assessment using Zhamak Dehghani\u2019s 4 principles.", domain:"Data & Analytics", phase:null, cmd:null, prompt:null },
+      { id:"team-topology", name:"Team Topology", desc:"Conway\u2019s Law analysis, team interaction modes, cognitive load assessment.", domain:"Cambio & Adopci\u00f3n", phase:null, cmd:null, prompt:null },
+      { id:"migration-playbook", name:"Migration Playbook", desc:"Migration execution guide \u2014 strangler fig, parallel run, big bang, rollback procedures.", domain:"Innovaci\u00f3n & Validaci\u00f3n", phase:null, cmd:null, prompt:null },
+    ];
+
+    // ═══════════════════════════════════════
+    // AGENTS DATA (48 entries)
+    // ═══════════════════════════════════════
+    const AGENTS = [
+      // Core Team (12)
+      { id:"discovery-conductor", name:"Discovery Conductor", desc:"Impartial orchestrator that sequences phases, enforces gates, manages data contracts, declares the expert committee, and maintains the discovery plan.", category:"Core Team", type:"core" },
+      { id:"technical-architect", name:"Technical Architect", desc:"Senior architect providing system design expertise, pattern evaluation, quality attribute analysis, and architecture trade-off assessment.", category:"Core Team", type:"core" },
+      { id:"domain-analyst", name:"Domain Analyst", desc:"Subject matter expert providing industry-specific context, regulatory flags, competitive benchmarks, and business domain analysis.", category:"Core Team", type:"core" },
+      { id:"full-stack-generalist", name:"Full-Stack Generalist", desc:"Full-stack engineer providing code-level, infrastructure, data, and DevOps perspective.", category:"Core Team", type:"core" },
+      { id:"delivery-manager", name:"Delivery Manager", desc:"Project manager handling timelines, scope, risks, stakeholder communication, budget management, and resource allocation.", category:"Core Team", type:"core" },
+      { id:"quality-guardian", name:"Quality Guardian", desc:"Quality assurance lead that validates every deliverable against acceptance criteria and catches inconsistencies.", category:"Core Team", type:"core" },
+      { id:"data-strategist", name:"Data Strategist", desc:"Data and analytics expert providing data architecture, governance, migration planning, and analytics pipeline design.", category:"Core Team", type:"core" },
+      { id:"change-catalyst", name:"Change Catalyst", desc:"Change management lead handling organizational readiness, adoption strategy, training needs, and resistance management.", category:"Core Team", type:"core" },
+      { id:"ai-strategist", name:"AI Strategist", desc:"AI/ML strategy expert providing AI readiness assessment (AI SCALE), use case portfolio design, and model governance.", category:"Core Team", type:"core" },
+      { id:"process-automation-specialist", name:"Process Automation Specialist", desc:"RPA expert providing process mining analysis, automation readiness scoring, bot architecture, and platform assessment.", category:"Core Team", type:"core" },
+      { id:"qa-strategist", name:"QA Strategist", desc:"QA-as-a-service strategy expert providing TMMi maturity assessment, PITT methodology, and test factory design.", category:"Core Team", type:"core" },
+      { id:"transformation-architect", name:"Transformation Architect", desc:"Multi-service transformation architect providing digital transformation strategy and program design.", category:"Core Team", type:"core" },
+      // Architecture (5)
+      { id:"enterprise-architect", name:"Enterprise Architect", desc:"Portfolio strategy, TOGAF alignment, capability mapping, and target-state architecture design.", category:"Architecture", type:"specialist" },
+      { id:"solutions-architect", name:"Solutions Architect", desc:"End-to-end integration design, cross-cutting concerns, and infrastructure architecture.", category:"Architecture", type:"specialist" },
+      { id:"cloud-architect", name:"Cloud Architect", desc:"Cloud strategy assessment, multi-cloud evaluation, migration planning (7R), cloud-native patterns.", category:"Architecture", type:"specialist" },
+      { id:"security-architect", name:"Security Architect", desc:"Threat modeling, zero trust assessment, SLSA compliance, DevSecOps pipeline security.", category:"Architecture", type:"specialist" },
+      { id:"mobile-architect", name:"Mobile Architect", desc:"Cross-platform vs native assessment, store compliance, app vitals, mobile CI/CD.", category:"Architecture", type:"specialist" },
+      // Development (5)
+      { id:"backend-developer", name:"Backend Developer", desc:"Server-side architecture assessment, API design review, database interaction patterns, business logic evaluation.", category:"Development", type:"specialist" },
+      { id:"frontend-developer", name:"Frontend Developer", desc:"UI architecture assessment, SPA/MPA evaluation, design system implementation, accessibility compliance.", category:"Development", type:"specialist" },
+      { id:"technical-lead", name:"Technical Lead", desc:"Code-level authority, development practices assessment, team capability evaluation, implementation feasibility.", category:"Development", type:"specialist" },
+      { id:"devops-engineer", name:"DevOps Engineer", desc:"CI/CD pipeline architecture, branching strategy, artifact management, deployment automation.", category:"Development", type:"specialist" },
+      { id:"middle-integrations-developer", name:"Middle Integrations Developer", desc:"API integration assessment, ESB/iPaaS evaluation, message broker analysis, cross-system interoperability.", category:"Development", type:"specialist" },
+      // Data & AI (6)
+      { id:"data-architect", name:"Data Architect", desc:"Strategic data modeling, enterprise data strategy, data platform design, data mesh/fabric evaluation.", category:"Data & AI", type:"specialist" },
+      { id:"data-engineer", name:"Data Engineer", desc:"Pipeline architecture, database design, data governance expertise.", category:"Data & AI", type:"specialist" },
+      { id:"data-scientist", name:"Data Scientist", desc:"Statistical validation specialist and quantitative evidence analyst.", category:"Data & AI", type:"specialist" },
+      { id:"analytics-architect", name:"Analytics Architect", desc:"Analytics engineering, BI design, data science architecture, data mesh strategy.", category:"Data & AI", type:"specialist" },
+      { id:"ai-architect", name:"AI Architect", desc:"AI strategy assessment, ML pipeline design, MLOps maturity, model governance, responsible AI.", category:"Data & AI", type:"specialist" },
+      { id:"ai-agent-architect", name:"AI Agent Architect", desc:"Agentic AI design, multi-agent orchestration, tool use architecture, memory and context management.", category:"Data & AI", type:"specialist" },
+      // Infrastructure (3)
+      { id:"platform-engineer", name:"Platform Engineer", desc:"Cloud readiness assessment, migration strategy (7R), API governance, event-driven architecture.", category:"Infrastructure", type:"specialist" },
+      { id:"hardware-systems-engineer", name:"Hardware Systems Engineer", desc:"Compute, network, storage, and physical infrastructure validation against real-world constraints.", category:"Infrastructure", type:"specialist" },
+      { id:"devsecops-expert", name:"DevSecOps Expert", desc:"CI/CD security, supply chain security (SLSA), secrets management, container security.", category:"Infrastructure", type:"specialist" },
+      // Quality & Research (6)
+      { id:"quality-engineer", name:"Quality Engineer", desc:"Test strategy design, performance engineering, SLO definition, observability architecture.", category:"Quality & Research", type:"specialist" },
+      { id:"research-scientist", name:"Research Scientist", desc:"Deep technology researcher with postdoctoral rigor \u2014 literature reviews, state-of-the-art validation.", category:"Quality & Research", type:"specialist" },
+      { id:"economics-researcher", name:"Economics Researcher", desc:"Financial feasibility with academic rigor \u2014 TCO, ROI, and opportunity cost modeling.", category:"Quality & Research", type:"specialist" },
+      { id:"systems-theorist", name:"Systems Theorist", desc:"Emergent behaviors, failure cascades, systemic risks \u2014 systems thinking and chaos theory.", category:"Quality & Research", type:"specialist" },
+      { id:"technology-scout", name:"Technology Scout", desc:"Vendor maturity evaluation, adoption curves, technology lifecycle positioning.", category:"Quality & Research", type:"specialist" },
+      { id:"integration-researcher", name:"Integration Researcher", desc:"Integration and interoperability validation \u2014 protocol changes, migration feasibility.", category:"Quality & Research", type:"specialist" },
+      // Business & UX (6)
+      { id:"business-analyst", name:"Business Analyst", desc:"Business process modeling, requirements engineering, capability mapping, gap analysis.", category:"Business & UX", type:"specialist" },
+      { id:"subject-matter-expert", name:"Subject Matter Expert", desc:"Sector-specific context, regulatory constraints, competitive benchmarks, market dynamics.", category:"Business & UX", type:"specialist" },
+      { id:"ux-researcher", name:"UX Researcher", desc:"User research synthesis, persona development, usability assessment, user journey mapping.", category:"Business & UX", type:"specialist" },
+      { id:"ux-strategist", name:"UX Strategist", desc:"Persona-based UX review, accessibility auditing (WCAG), design system specification.", category:"Business & UX", type:"specialist" },
+      { id:"implementation-analyst", name:"Implementation Analyst", desc:"Code-level assessment, infrastructure evaluation, DevOps analysis, implementation feasibility.", category:"Business & UX", type:"specialist" },
+      { id:"product-strategist", name:"Product Strategist", desc:"Roadmap prioritization, value stream mapping, product-market fit, backlog strategy.", category:"Business & UX", type:"specialist" },
+      // Compliance (2)
+      { id:"compliance-analyst", name:"Compliance Analyst", desc:"Regulatory analysis \u2014 GDPR, SOX, PCI-DSS, HIPAA, ISO 27001 assessment.", category:"Compliance", type:"specialist" },
+      { id:"risk-controller", name:"Risk Controller", desc:"Continuous governance, gate enforcement, deliverable validation, risk monitoring.", category:"Compliance", type:"specialist" },
+      // Editorial (3)
+      { id:"content-strategist", name:"Content Strategist", desc:"Copywriting, storytelling, data visualization storytelling, and narrative design.", category:"Editorial", type:"specialist" },
+      { id:"editorial-director", name:"Editorial Director", desc:"Narrative coherence, audience adaptation, ghost menu orchestration, editorial quality gates.", category:"Editorial", type:"specialist" },
+      { id:"format-specialist", name:"Format Specialist", desc:"Multi-format production \u2014 HTML, DOCX, XLSX, PPTX, PDF generation from markdown.", category:"Editorial", type:"specialist" },
+    ];
+
+    // ═══════════════════════════════════════
+    // COMMANDS DATA (21 primary)
+    // ═══════════════════════════════════════
+    const COMMANDS = [
+      { name:"/mao:run-guided", desc:"Pipeline completo con facilitaci\u00f3n humana. 9 fases, 4 gates, 16 entregables.", aliases:["discovery","guide"], cat:"RUN", example:"/mao:run-guided" },
+      { name:"/mao:run-auto", desc:"Pipeline aut\u00f3nomo sin interrupciones. Gates auto-aprobados con supuestos documentados.", aliases:["auto","discovery-auto"], cat:"RUN", example:"/mao:run-auto" },
+      { name:"/mao:run-express", desc:"Go/No-Go en 1 sesi\u00f3n. 3 entregables: Brief, AS-IS, Pitch.", aliases:["express"], cat:"RUN", example:"/mao:run-express" },
+      { name:"/mao:run-deep", desc:"Discovery intermedio con direcci\u00f3n arquitect\u00f3nica. 7 entregables.", aliases:["deep","intermediate"], cat:"RUN", example:"/mao:run-deep" },
+      { name:"/mao:generate-plan", desc:"Plan de discovery con gobernanza, alcance, comit\u00e9 de expertos y cronograma.", aliases:["plan"], cat:"GENERATE", example:"/mao:generate-plan" },
+      { name:"/mao:map-stakeholders", desc:"Mapa de stakeholders con matriz de influencia/inter\u00e9s y plan de comunicaci\u00f3n.", aliases:["stakeholders"], cat:"GENERATE", example:"/mao:map-stakeholders" },
+      { name:"/mao:generate-brief", desc:"Brief t\u00e9cnico ejecutivo de m\u00e1ximo 3 p\u00e1ginas.", aliases:["brief"], cat:"GENERATE", example:"/mao:generate-brief" },
+      { name:"/mao:diagnose-asis", desc:"An\u00e1lisis AS-IS exhaustivo de 10 secciones con health score.", aliases:["asis","diagnose"], cat:"GENERATE", example:"/mao:diagnose-asis" },
+      { name:"/mao:trace-flows", desc:"Mapeo de flujos DDD con 8-12 flujos E2E y matriz de integraciones.", aliases:["flows","trace"], cat:"GENERATE", example:"/mao:trace-flows" },
+      { name:"/mao:evaluate-scenarios", desc:"Evaluaci\u00f3n de 3+ escenarios con scoring 6D y Tree-of-Thought.", aliases:["scenarios","evaluate"], cat:"GENERATE", example:"/mao:evaluate-scenarios" },
+      { name:"/mao:chart-roadmap", desc:"Roadmap de soluci\u00f3n con 5 fases, Monte Carlo, y burndown.", aliases:["roadmap","chart"], cat:"GENERATE", example:"/mao:chart-roadmap" },
+      { name:"/mao:write-spec", desc:"Especificaci\u00f3n funcional con casos de uso y reglas de negocio.", aliases:["spec"], cat:"GENERATE", example:"/mao:write-spec" },
+      { name:"/mao:craft-pitch", desc:"Pitch ejecutivo C-level con business case y cost-of-inaction.", aliases:["pitch","craft"], cat:"GENERATE", example:"/mao:craft-pitch" },
+      { name:"/mao:deliver-handover", desc:"Handover operativo con plan de transici\u00f3n de 90 d\u00edas.", aliases:["handover","deliver"], cat:"GENERATE", example:"/mao:deliver-handover" },
+      { name:"/mao:assess-architecture", desc:"Deep-dive arquitectura C4 multinivel con ADRs.", aliases:["arch","architecture-deep-dive"], cat:"ASSESS", example:"/mao:assess-architecture" },
+      { name:"/mao:assess-data", desc:"Landscape de datos, pipelines y ecosistema.", aliases:["data","data-landscape"], cat:"ASSESS", example:"/mao:assess-data" },
+      { name:"/mao:assess-cloud", desc:"Readiness de migraci\u00f3n cloud con framework 7R.", aliases:["cloud","cloud-readiness"], cat:"ASSESS", example:"/mao:assess-cloud" },
+      { name:"/mao:assess-security", desc:"Postura de seguridad con threat modeling y OWASP.", aliases:["security","security-posture"], cat:"ASSESS", example:"/mao:assess-security" },
+      { name:"/mao:assess-change", desc:"Readiness organizacional con ADKAR.", aliases:["change","change-readiness"], cat:"ASSESS", example:"/mao:assess-change" },
+      { name:"/mao:validate-feasibility", desc:"Think Tank de 7 Sabios \u2014 validaci\u00f3n multidimensional.", aliases:["validate","feasibility"], cat:"ASSESS", example:"/mao:validate-feasibility" },
+      { name:"/mao:present-findings", desc:"Presentaci\u00f3n ejecutiva de hallazgos.", aliases:["findings","findings-deck"], cat:"REPORT", example:"/mao:present-findings" },
+      { name:"/mao:report-tech", desc:"Hallazgos t\u00e9cnicos en profundidad.", aliases:["tech","technical-findings"], cat:"REPORT", example:"/mao:report-tech" },
+      { name:"/mao:report-func", desc:"Hallazgos funcionales \u2014 journeys, gaps, UX.", aliases:["func","functional-findings"], cat:"REPORT", example:"/mao:report-func" },
+      { name:"/mao:review-business", desc:"Revisi\u00f3n de negocio (INTERNO).", aliases:["biz","business-review"], cat:"REPORT", example:"/mao:review-business" },
+      { name:"/mao:discover-ai", desc:"Oportunidades de aceleraci\u00f3n con IA.", aliases:["ai","ai-opportunities"], cat:"REPORT", example:"/mao:discover-ai" },
+      { name:"/mao:audit-quality", desc:"Auditor\u00eda de entregables con scorecard.", aliases:["audit","discovery-review"], cat:"OPS", example:"/mao:audit-quality" },
+      { name:"/mao:improve-deliverables", desc:"Evolucionar y mejorar entregables existentes.", aliases:["improve","discovery-improve"], cat:"OPS", example:"/mao:improve-deliverables" },
+      { name:"/mao:rescue-stalled", desc:"Rescatar discovery estancado.", aliases:["rescue"], cat:"OPS", example:"/mao:rescue-stalled" },
+      { name:"/mao:benchmark-maturity", desc:"Benchmark de madurez contra est\u00e1ndares.", aliases:["benchmark"], cat:"OPS", example:"/mao:benchmark-maturity" },
+      { name:"/mao:simulate-scenarios", desc:"Simulaci\u00f3n Monte Carlo what-if.", aliases:["simulate"], cat:"OPS", example:"/mao:simulate-scenarios" },
+      { name:"/mao:rpa-discovery", desc:"Discovery RPA y automatizaci\u00f3n de procesos.", aliases:[], cat:"SERVICE", example:"/mao:rpa-discovery" },
+      { name:"/mao:qa-discovery", desc:"Discovery QA-as-a-Service.", aliases:[], cat:"SERVICE", example:"/mao:qa-discovery" },
+      { name:"/mao:ai-discovery", desc:"Discovery AI Center & Data Platform.", aliases:[], cat:"SERVICE", example:"/mao:ai-discovery" },
+      { name:"/mao:transformation", desc:"Discovery Transformaci\u00f3n Digital.", aliases:[], cat:"SERVICE", example:"/mao:transformation" },
+    ];
+
+    // ═══════════════════════════════════════
+    // SUGGESTED PROMPTS (12)
+    // ═══════════════════════════════════════
+    const PROMPTS = [
+      { title:"Discovery Completo Aut\u00f3nomo", context:"Codebase disponible, sin acceso a stakeholders. An\u00e1lisis overnight o pre-trabajo.", text:"/mao:run-auto\n\nEjecutar discovery completo sin interrupciones.\nGates auto-aprobados. Supuestos etiquetados [SUPUESTO]. 16 entregables.\nCriterio: pipeline completo, excellence-loop \u22657/10, trazabilidad.\n\nMODO=desatendido | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", tags:["pipeline","full"] },
+      { title:"Go/No-Go R\u00e1pido", context:"Decisi\u00f3n comercial urgente. 1 sesi\u00f3n para evaluar viabilidad y presentar al C-level.", text:"/mao:run-express\n\nGo/No-Go en 1 sesi\u00f3n: Brief (02) + Escenarios (05) + Pitch (08).\n3 entregables. Orientado a decisi\u00f3n comercial r\u00e1pida.\nCriterio: sem\u00e1foro 6D, \u22653 escenarios, pitch con CTA claro.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=ejecutiva\n{RUTA}: .", tags:["express","quick"] },
+      { title:"An\u00e1lisis AS-IS Completo", context:"Deep-dive t\u00e9cnico del estado actual. Requiere acceso completo al c\u00f3digo.", text:"/mao:diagnose-asis\n\nGenerar 03_Analisis_AS-IS exhaustivo: 10 secciones con evidencia.\nS0-Executive a S10-Recomendaciones. C4 L1\u2013L3 Mermaid.\nCada hallazgo etiquetado [CODIGO]/[CONFIG]/[DOC]/[INFERENCIA]/[SUPUESTO].\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", tags:["asis","diagnostic"] },
+      { title:"Deep-Dive Arquitectura", context:"La decisi\u00f3n de inversi\u00f3n depende de la salud arquitect\u00f3nica del sistema.", text:"/mao:assess-architecture\n\nC4 multinivel (L1\u2013L3) Mermaid, quality attributes ISO 25010,\ndeuda arquitect\u00f3nica cuantificada, \u22653 ADRs formales,\nTO-BE target state con milestones de transici\u00f3n.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=exhaustivo\n{RUTA}: .", tags:["arch","c4"] },
+      { title:"Evaluaci\u00f3n de Seguridad", context:"Identificar vulnerabilidades, gaps de compliance y remediaci\u00f3n priorizada.", text:"/mao:assess-security\n\nThreat model STRIDE, OWASP Top 10 con evidencia de c\u00f3digo,\nzero trust (identity, network, data, workload),\nsupply chain (SLSA, CVEs, SBom gaps),\nremediaci\u00f3n priorizada por riesgo residual.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=exhaustivo\n{RUTA}: .", tags:["security","owasp"] },
+      { title:"Mapeo de Flujos DDD", context:"Traza flujos E2E del negocio sobre la arquitectura diagnosticada.", text:"/mao:trace-flows\n\nTaxonom\u00eda DDD (dominios \u2192 bounded contexts \u2192 aggregates),\n8\u201312 flujos E2E con diagramas de secuencia Mermaid,\nmatriz de integraciones (protocolo + SLA + acoplamiento),\ntop 10 puntos de falla con mitigaci\u00f3n propuesta.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", tags:["flows","ddd"] },
+      { title:"Think Tank de 7 Sabios", context:"Validaci\u00f3n cruzada del escenario recomendado por 7 expertos independientes.", text:"/mao:validate-feasibility\n\n7 dimensiones con score independiente y justificaci\u00f3n,\nvalidaci\u00f3n cruzada (contraargumentos entre expertos),\nveredicto Go/No-Go (umbral \u22655/7),\ncondiciones de \u00e9xito y riesgos residuales.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=exhaustivo\n{RUTA}: .", tags:["feasibility","think-tank"] },
+      { title:"Pitch Ejecutivo C-Level", context:"Presentaci\u00f3n al C-level. Lenguaje de negocio, orientado a decisi\u00f3n de inversi\u00f3n.", text:"/mao:craft-pitch\n\nPitch \u22645 p\u00e1ginas: cost-of-inaction cuantificado,\n4 pilares de valor (m\u00e9trica antes \u2192 despu\u00e9s),\ninversi\u00f3n FTE-meses \u2014 CERO precios,\nCTA concreto. Disclaimer obligatorio.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=ejecutiva\n{RUTA}: .", tags:["pitch","executive"] },
+      { title:"Discovery Data & AI", context:"Identificar oportunidades de IA/ML. Use cases priorizados por valor/factibilidad.", text:"/mao:discover-ai\n\nUse cases priorizados (valor \u00d7 factibilidad \u00d7 riesgo),\nAI readiness SCALE (5 dimensiones, score 1\u20135),\npuntos de integraci\u00f3n con sistemas existentes,\nquick wins <30 d\u00edas, governance de IA.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", tags:["ai","data"] },
+      { title:"Readiness Cloud (7R)", context:"Evaluar preparaci\u00f3n para migraci\u00f3n cloud con framework 7R por workload.", text:"/mao:assess-cloud\n\nFramework 7R por componente/workload,\nDORA metrics baseline, cloud-native maturity (12-factor),\nFinOps readiness, migration path priorizado.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=t\u00e9cnico\n{RUTA}: .", tags:["cloud","migration"] },
+      { title:"Auditor\u00eda de Calidad", context:"Validar calidad de entregables antes de presentar al cliente.", text:"/mao:audit-quality\n\nScorecard por entregable (10 criterios excellence-loop),\nconsistencia cruzada entre entregables,\ngaps con severidad (cr\u00edtico/alto/medio/bajo),\nrecomendaciones priorizadas por impacto.\n\nMODO=piloto-auto | FORMATO=markdown\n{RUTA}: .", tags:["audit","quality"] },
+      { title:"Rescate de Discovery", context:"Discovery estancado. Diagnosticar estado real y restablecer pipeline.", text:"/mao:rescue-stalled\n\nTriage: clasificar entregables (completo/incompleto/faltante/corrupto).\nDiagn\u00f3stico de punto de falla y causa ra\u00edz.\nReparar incompletos, generar faltantes cr\u00edticos.\nRestablecer pipeline con cronograma actualizado.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=t\u00e9cnico\n{RUTA}: .", tags:["rescue","recovery"] },
+    ];
+
+    // ═══════════════════════════════════════
+    // DOMAIN CONFIG (for skills section)
+    // ═══════════════════════════════════════
+    const DOMAINS = [
+      "Arquitectura", "Data & Analytics", "An\u00e1lisis & Discovery", "Cloud & Platform",
+      "Calidad & Operaciones", "Gesti\u00f3n & Estrategia", "Editorial & Comunicaci\u00f3n",
+      "Cambio & Adopci\u00f3n", "Innovaci\u00f3n & Validaci\u00f3n", "Herramientas & DX",
+      "Entregables & Roadmap", "Service Discovery"
+    ];
+
+    // ═══════════════════════════════════════
+    // RENDER FUNCTIONS
+    // ═══════════════════════════════════════
+
+    // Render Skills Grid
+    function renderSkills() {
+      const grid = document.getElementById('skillsGrid');
+      DOMAINS.forEach(domain => {
+        const skills = SKILLS.filter(s => s.domain === domain);
+        if (!skills.length) return;
+        const card = document.createElement('div');
+        card.className = 'domain-card';
+        card.innerHTML = `
+          <div class="domain-header">
+            <span class="domain-name">${domain}</span>
+            <span class="domain-count">${skills.length} skills</span>
+          </div>
+          <ul class="domain-skills">
+            ${skills.map(s => `<li role="button" tabindex="0" data-skill="${s.id}" onclick="openSkillModal('${s.id}')" onkeydown="if(event.key==='Enter')openSkillModal('${s.id}')">${s.id}</li>`).join('')}
+          </ul>`;
+        grid.appendChild(card);
+      });
+    }
+
+    // Render Agents Grid
+    function renderAgents() {
+      const grid = document.getElementById('agentsGrid');
+      const coreFirst = [...AGENTS].sort((a,b) => a.type === 'core' ? -1 : b.type === 'core' ? 1 : a.id.localeCompare(b.id));
+      coreFirst.forEach(a => {
+        const pill = document.createElement('div');
+        pill.className = 'agent-pill' + (a.type === 'core' ? ' core' : '');
+        pill.setAttribute('role', 'button');
+        pill.setAttribute('tabindex', '0');
+        pill.textContent = a.id;
+        pill.onclick = () => openAgentModal(a.id);
+        pill.onkeydown = (e) => { if (e.key === 'Enter') openAgentModal(a.id); };
+        grid.appendChild(pill);
+      });
+    }
+
+    // Render Commands
+    function renderCommands() {
+      const container = document.getElementById('cmdCards');
+      COMMANDS.forEach(cmd => {
+        const card = document.createElement('div');
+        card.className = 'cmd-card';
+        card.dataset.cat = cmd.cat;
+        card.dataset.search = (cmd.name + ' ' + cmd.desc + ' ' + cmd.aliases.join(' ')).toLowerCase();
+        card.innerHTML = `
+          <div class="cmd-card-name">${cmd.name}</div>
+          <div class="cmd-card-desc">${cmd.desc}</div>
+          ${cmd.aliases.length ? `<div class="cmd-card-aliases">${cmd.aliases.map(a => `<span class="alias-chip">${a}</span>`).join('')}</div>` : ''}
+          <div class="cmd-card-example">${cmd.example}</div>`;
+        container.appendChild(card);
+      });
+    }
+
+    // Render Suggested Prompts
+    function renderPrompts() {
+      const grid = document.getElementById('promptsGrid');
+      PROMPTS.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'prompt-card';
+        card.innerHTML = `
+          <div class="prompt-card-title">${p.title}</div>
+          <div class="prompt-card-context">${p.context}</div>
+          <div class="prompt-card-text">${escapeHtml(p.text)}</div>
+          <div class="prompt-card-actions">
+            <button class="btn-copy" onclick="copyPrompt(this, '${escapeJs(p.text)}')">Copiar prompt</button>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    function escapeHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function escapeJs(t) { return t.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,'\\n'); }
+
+    // ═══════════════════════════════════════
+    // MODAL LOGIC
+    // ═══════════════════════════════════════
+    function openSkillModal(id) {
+      const s = SKILLS.find(x => x.id === id);
+      if (!s) return;
+      document.getElementById('modalBadge').textContent = s.domain;
+      document.getElementById('modalTitle').textContent = s.name;
+      document.getElementById('modalSubtitle').textContent = s.desc;
+      let body = '';
+      if (s.phase) {
+        body += `<div class="modal-section"><div class="modal-section-title">Fase del Pipeline</div><p>Fase ${s.phase}</p></div>`;
+      }
+      if (s.cmd) {
+        body += `<div class="modal-section"><div class="modal-section-title">Comando</div><div class="modal-tags"><span class="modal-tag">${s.cmd}</span></div></div>`;
+      }
+      if (s.prompt) {
+        body += `<div class="modal-section"><div class="modal-section-title">Prompt Sugerido</div><div class="modal-prompt-block">${escapeHtml(s.prompt)}</div></div>`;
+      }
+      body += `<div class="modal-section"><div class="modal-section-title">Patr\u00f3n MOAT</div><p>skills/${s.id}/SKILL.md + references/ + prompts/ + examples/</p></div>`;
+      document.getElementById('modalBody').innerHTML = body;
+      document.getElementById('modalFooter').innerHTML = s.prompt ? `<button class="btn-copy" onclick="copyPrompt(this, '${escapeJs(s.prompt)}')">Copiar prompt</button>` : '';
+      showModal();
+    }
+
+    function openAgentModal(id) {
+      const a = AGENTS.find(x => x.id === id);
+      if (!a) return;
+      document.getElementById('modalBadge').textContent = a.category + (a.type === 'core' ? ' \u2022 Core' : ' \u2022 Especialista');
+      document.getElementById('modalTitle').textContent = a.name;
+      document.getElementById('modalSubtitle').textContent = a.desc;
+      let body = `<div class="modal-section"><div class="modal-section-title">Categor\u00eda</div><p>${a.category}</p></div>`;
+      body += `<div class="modal-section"><div class="modal-section-title">Tipo</div><p>${a.type === 'core' ? 'Agente core \u2014 siempre activo en todas las fases' : 'Especialista de dominio \u2014 activado seg\u00fan servicio y fase'}</p></div>`;
+      body += `<div class="modal-section"><div class="modal-section-title">Archivo</div><div class="modal-tags"><span class="modal-tag">agents/${a.id}.md</span></div></div>`;
+      document.getElementById('modalBody').innerHTML = body;
+      document.getElementById('modalFooter').innerHTML = '';
+      showModal();
+    }
+
+    function showModal() {
+      const overlay = document.getElementById('modalOverlay');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      overlay.querySelector('.modal-close').focus();
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on overlay click
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ═══════════════════════════════════════
+    // COMMANDS FILTER/SEARCH
+    // ═══════════════════════════════════════
+    document.getElementById('cmdTabs').addEventListener('click', function(e) {
+      if (!e.target.classList.contains('cmd-tab')) return;
+      this.querySelectorAll('.cmd-tab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      filterCommands();
+    });
+
+    document.getElementById('cmdSearch').addEventListener('input', filterCommands);
+
+    function filterCommands() {
+      const cat = document.querySelector('.cmd-tab.active').dataset.cat;
+      const q = document.getElementById('cmdSearch').value.toLowerCase();
+      document.querySelectorAll('.cmd-card').forEach(card => {
+        const matchCat = cat === 'all' || card.dataset.cat === cat;
+        const matchSearch = !q || card.dataset.search.includes(q);
+        card.style.display = (matchCat && matchSearch) ? '' : 'none';
+      });
+    }
+
+    // ═══════════════════════════════════════
+    // COPY TO CLIPBOARD
+    // ═══════════════════════════════════════
+    function copyPrompt(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiado';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copiar prompt'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    // ═══════════════════════════════════════
+    // MOBILE MENU
+    // ═══════════════════════════════════════
+    function toggleMenu() {
+      document.querySelector('.hamburger').classList.toggle('active');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.querySelector('.hamburger').classList.remove('active');
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // ═══════════════════════════════════════
+    // SCROLL REVEAL
+    // ═══════════════════════════════════════
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ═══════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════
+    renderSkills();
+    renderAgents();
+    renderCommands();
+    renderPrompts();
+  </script>
+</body>
+</html>

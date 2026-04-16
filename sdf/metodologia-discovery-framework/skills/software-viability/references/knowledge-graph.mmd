@@ -1,0 +1,119 @@
+%% Knowledge Graph — Software Viability: Substance vs Smoke Technology Validator
+%% Dominio: Validación forense de viabilidad de software, IA/ML y tecnologías propuestas
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["🔍 software-viability"]
+        direction TB
+        PR["Principio Rector:<br/>Todo es promesa hasta<br/>que se demuestra en producción"]
+        FW["Framework: 7 Secciones"]
+        VG["Validation Gate: 8 criterios"]
+    end
+
+    subgraph INPUTS["📥 Inputs"]
+        TECH["Tecnologías propuestas"]
+        VENDOR["Vendor decks &<br/>marketing materials"]
+        AI_CLAIMS["Claims de IA/ML"]
+        BENCH["Benchmarks &<br/>datos de producción"]
+        OSS["Repos open-source<br/>(GitHub, GitLab)"]
+    end
+
+    subgraph FORENSICS["🔬 Tech Forensics"]
+        S1["S1: Technology Inventory<br/>& Claim Extraction"]
+        S2["S2: Software Maturity<br/>(lifecycle, community, production)"]
+        S4["S4: Vendor &<br/>Dependency Risk"]
+    end
+
+    subgraph AI_VALIDATION["🤖 AI Validation"]
+        S3["S3: AI/ML Specific<br/>Validation"]
+        CLAIMS_MATRIX["Claims vs Reality<br/>Matrix"]
+        LLM_FLAGS["LLM Red Flags<br/>Checklist"]
+        AI_MATURITY["AI Maturity<br/>Indicators"]
+    end
+
+    subgraph SCORING["📊 Viability Scoring"]
+        S6["S6: Technology<br/>Viability Scorecard"]
+        SUBSTANCE["🟢 SUBSTANCIA<br/>producción comprobada"]
+        PROMISE["🟡 PROMESA VIABLE<br/>fundamentos sólidos"]
+        HIGH_RISK["🟠 RIESGO ALTO<br/>lock-in, roadmap incierto"]
+        SMOKE["🔴 HUMO<br/>vaporware, hype"]
+    end
+
+    subgraph RISK_FACTORS["⚠️ Risk Factors"]
+        BUS_FACTOR["Bus Factor<br/>(single maintainer)"]
+        LOCK_IN["Vendor Lock-in<br/>(switching cost)"]
+        DEP_CHAIN["Dependency Chain<br/>(transitive risk)"]
+        EOL["End-of-Life &<br/>Sunset Patterns"]
+    end
+
+    subgraph OUTPUTS["📤 Outputs"]
+        SCORECARD["A-04_Software_Viability"]
+        POC["S5: PoC Designs<br/>para 🟡/🟠"]
+        GUARDRAILS["S7: Guardrails &<br/>Vendor Exit Strategy"]
+        ALT["Alternativas<br/>identificadas"]
+    end
+
+    subgraph STANDARDS["📚 Standards"]
+        GARTNER["Gartner Hype Cycle"]
+        TECHRADAR["ThoughtWorks<br/>Tech Radar"]
+        WARDLEY["Wardley Maps"]
+        IEEE["IEEE Software<br/>Engineering Standards"]
+    end
+
+    subgraph CONSUMERS["🔗 Skills Dependientes"]
+        FEASIBILITY["technical-feasibility<br/>(consume scorecard)"]
+        SCENARIO["scenario-analysis<br/>(informa opciones)"]
+        ROADMAP["solution-roadmap<br/>(informa stack)"]
+    end
+
+    %% Flows
+    INPUTS --> SKILL
+    SKILL --> FORENSICS
+    SKILL --> AI_VALIDATION
+    FORENSICS --> SCORING
+    AI_VALIDATION --> SCORING
+    RISK_FACTORS -.->|incrementan riesgo| SCORING
+    SCORING --> OUTPUTS
+    STANDARDS -.->|fundamentan| FORENSICS
+    STANDARDS -.->|fundamentan| AI_VALIDATION
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Internal flows
+    S1 -->|claims extraídos| CLAIMS_MATRIX
+    S2 -->|maturity score| S6
+    S3 -->|AI score| S6
+    S4 -->|vendor score| S6
+    CLAIMS_MATRIX --> AI_MATURITY
+    AI_MATURITY --> LLM_FLAGS
+    LLM_FLAGS -->|red flags detectados| S6
+
+    %% Risk flow
+    BUS_FACTOR -.-> S2
+    LOCK_IN -.-> S4
+    DEP_CHAIN -.-> S4
+    EOL -.-> S2
+
+    %% Scoring to verdicts
+    S6 --> SUBSTANCE
+    S6 --> PROMISE
+    S6 --> HIGH_RISK
+    S6 --> SMOKE
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef forensic fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef risk fill:#FFCDD2,stroke:#C62828,color:#1A1A2E
+    classDef verdict fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class TECH,VENDOR,AI_CLAIMS,BENCH,OSS input
+    class S1,S2,S3,S4,CLAIMS_MATRIX,LLM_FLAGS,AI_MATURITY forensic
+    class SCORECARD,POC,GUARDRAILS,ALT output
+    class GARTNER,TECHRADAR,WARDLEY,IEEE standard
+    class FEASIBILITY,SCENARIO,ROADMAP consumer
+    class BUS_FACTOR,LOCK_IN,DEP_CHAIN,EOL risk
+    class S6,SUBSTANCE,PROMISE,HIGH_RISK,SMOKE verdict

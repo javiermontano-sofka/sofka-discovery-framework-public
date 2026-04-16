@@ -1,0 +1,49 @@
+graph TB
+    subgraph Pyramid["Testing Pyramid"]
+        T1[Unit / Config Validation]
+        T2[Integration Testing<br/>Cross-Module + CPI]
+        T3[UAT<br/>Business Scenarios]
+        T4[Regression<br/>Post-Update]
+        T5[Performance<br/>Load + Stress]
+    end
+
+    subgraph Tools["SAP Tools"]
+        TL1[SAP Cloud ALM<br/>Test Management]
+        TL2[ATC<br/>Code Quality]
+        TL3[CPI Monitoring<br/>Integration Health]
+    end
+
+    subgraph Cutover["Cutover Validation"]
+        C1[Rehearsal 1<br/>Dry Run]
+        C2[Rehearsal 2<br/>Go-Live Team]
+        C3[Go-Live Checklist<br/>10 Criteria]
+        C4[Day 1 Validation<br/>First Transactions]
+    end
+
+    subgraph GoLive["Go-Live Decision"]
+        G1{Pass Rate >= 95%?}
+        G2{0 Critical Defects?}
+        G3{Data Variance <= 0.1%?}
+        G4[GO / NO-GO<br/>Steering Committee]
+    end
+
+    T1 --> T2 --> T3 --> T4 --> T5
+    TL1 --> T3
+    TL2 --> T1
+    TL3 --> T2
+
+    T5 --> C1 --> C2 --> C3 --> C4
+    C3 --> G1
+    G1 -->|Yes| G2
+    G2 -->|Yes| G3
+    G3 -->|Yes| G4
+
+    classDef test fill:#FF7E08,color:white
+    classDef tool fill:#FFD700,color:#1A1A2E
+    classDef cutover fill:#1A1A2E,color:white
+    classDef decision fill:#EFEAE4,color:#1A1A2E
+
+    class T1,T2,T3,T4,T5 test
+    class TL1,TL2,TL3 tool
+    class C1,C2,C3,C4 cutover
+    class G1,G2,G3,G4 decision

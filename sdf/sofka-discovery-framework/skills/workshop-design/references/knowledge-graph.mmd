@@ -1,0 +1,98 @@
+%% Knowledge Graph — Workshop Design: Collaborative Discovery & Design Techniques
+%% Accessibility: Directed graph showing skill inputs, 6 delivery sections, techniques, outputs, consumers, and cross-referenced agents.
+
+graph LR
+    %% Inputs
+    PROJECT_GOAL["Project/Workshop Goal<br/>(discovery objective)"]
+    PARTICIPANTS["Participant Profiles<br/>(roles, count, location)"]
+    CONTEXT_FILES["Context Files<br/>(*.md, *.miro, *.pdf)"]
+
+    %% Skill
+    SKILL["workshop-design<br/>Skill"]
+
+    %% 6 Delivery Sections
+    S1_SELECTION["S1: Workshop Selection<br/>& Design<br/>Technique Matrix, Agenda,<br/>Facilitation Principles"]
+    S2_EVENT_STORMING["S2: Event Storming<br/>Domain Events, Commands,<br/>Aggregates, Bounded Contexts"]
+    S3_IMPACT_MAPPING["S3: Impact Mapping<br/>Goal > Actors > Impacts ><br/>Deliverables"]
+    S4_STORY_MAPPING["S4: User Story Mapping<br/>Backbone, Walking Skeleton,<br/>Release Planning"]
+    S5_DESIGN_SPRINT["S5: Design Sprint<br/>Understand > Sketch > Decide ><br/>Prototype > Test"]
+    S6_SYNTHESIS["S6: Synthesis & Handoff<br/>Insights, Action Items,<br/>Decision Log, Follow-up"]
+
+    %% Facilitation Patterns
+    DIVERGE_CONVERGE["Diverge-Converge<br/>Generate > Cluster ><br/>Vote > Decide"]
+    SILENT_SPOKEN["Silent-before-Spoken<br/>5-10 min solo ideation<br/>then group discussion"]
+    ENERGIZERS["Energizer Techniques<br/>Session start, post-break,<br/>attention reset"]
+    AGENDA_DESIGN["Agenda Design<br/>Time-boxed blocks,<br/>clear activities per slot"]
+    FACILITATION_GUIDE["Facilitation Guide<br/>Internal script vs.<br/>external schedule"]
+
+    %% Technique Outputs
+    DOMAIN_MODEL["Domain Model<br/>(events, aggregates,<br/>bounded contexts)"]
+    IMPACT_MAP["Impact Map<br/>(goal-actor-impact-<br/>deliverable tree)"]
+    STORY_MAP["Story Map<br/>(backbone + releases<br/>+ MVP slice)"]
+    PROTOTYPE["Prototype<br/>(Figma, HTML, slides)"]
+    ACTION_ITEMS["Action Items<br/>(who, what, when)"]
+    DECISION_LOG["Decision Log<br/>(what, by whom, rationale)"]
+
+    %% Knowledge Sources
+    KANER["Facilitator's Guide<br/>(Kaner)"]
+    GAMESTORMING["Gamestorming<br/>(Gray/Brown/Macanufo)"]
+    BRANDOLINI["Event Storming<br/>(Brandolini)"]
+    KNAPP["Sprint<br/>(Knapp)"]
+    BOWMAN["Training from the<br/>Back of the Room<br/>(Bowman)"]
+
+    %% Consumers / Cross-references
+    FLOW_MAPPING["sofka-flow-mapping"]
+    CHANGE_READINESS["sofka-change-readiness"]
+    STAKEHOLDER_MAP["sofka-stakeholder-mapping"]
+    DISCOVERY_PIPELINE["Discovery Pipeline"]
+
+    %% Agents
+    CHANGE_CATALYST["change-catalyst<br/>Agent"]
+    DOMAIN_ANALYST["domain-analyst<br/>Agent"]
+    UX_RESEARCHER["ux-researcher<br/>Agent"]
+
+    %% Input edges
+    PROJECT_GOAL -->|"defines objective"| SKILL
+    PARTICIPANTS -->|"shapes format"| SKILL
+    CONTEXT_FILES -->|"informs context"| SKILL
+
+    %% Skill to sections
+    SKILL -->|"selects technique"| S1_SELECTION
+    SKILL -->|"designs"| S2_EVENT_STORMING
+    SKILL -->|"designs"| S3_IMPACT_MAPPING
+    SKILL -->|"designs"| S4_STORY_MAPPING
+    SKILL -->|"designs"| S5_DESIGN_SPRINT
+    SKILL -->|"consolidates"| S6_SYNTHESIS
+
+    %% Selection to facilitation patterns
+    S1_SELECTION -->|"applies"| DIVERGE_CONVERGE
+    S1_SELECTION -->|"applies"| SILENT_SPOKEN
+    S1_SELECTION -->|"applies"| ENERGIZERS
+    S1_SELECTION -->|"produces"| AGENDA_DESIGN
+    S1_SELECTION -->|"produces"| FACILITATION_GUIDE
+
+    %% Sections to outputs
+    S2_EVENT_STORMING -->|"produces"| DOMAIN_MODEL
+    S3_IMPACT_MAPPING -->|"produces"| IMPACT_MAP
+    S4_STORY_MAPPING -->|"produces"| STORY_MAP
+    S5_DESIGN_SPRINT -->|"produces"| PROTOTYPE
+    S6_SYNTHESIS -->|"produces"| ACTION_ITEMS
+    S6_SYNTHESIS -->|"produces"| DECISION_LOG
+
+    %% Knowledge sources influence
+    KANER -->|"facilitation methods"| S1_SELECTION
+    GAMESTORMING -->|"activity patterns"| S1_SELECTION
+    BRANDOLINI -->|"event storming"| S2_EVENT_STORMING
+    KNAPP -->|"sprint methodology"| S5_DESIGN_SPRINT
+    BOWMAN -->|"engagement design"| ENERGIZERS
+
+    %% Outputs to consumers
+    DOMAIN_MODEL -->|"feeds"| FLOW_MAPPING
+    ACTION_ITEMS -->|"informs"| CHANGE_READINESS
+    DECISION_LOG -->|"aligns"| STAKEHOLDER_MAP
+    AGENDA_DESIGN -->|"structures"| DISCOVERY_PIPELINE
+
+    %% Agents
+    CHANGE_CATALYST -->|"co-designs with"| SKILL
+    DOMAIN_ANALYST -->|"consults"| SKILL
+    UX_RESEARCHER -->|"validates with"| SKILL

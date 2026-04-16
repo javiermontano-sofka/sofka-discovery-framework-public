@@ -1,0 +1,164 @@
+{
+  "name": "jm-discovery-plugins",
+  "owner": {
+    "name": "Javier Montaño",
+    "email": "javier@sofka.com.co"
+  },
+  "metadata": {
+    "description": "Sofka SAGE + MetodologIA + PMO-APEX + Sovereign Architect + Scriba + Plugin QA — Agentic PreSales, open methodology, project management, evidence-based software engineering, educational editorial, and plugin quality assurance. 6 plugins, 3 brands (Sofka, MetodologIA, JM Labs).",
+    "version": "6.0.0"
+  },
+  "plugins": [
+    {
+      "name": "metodologia-discovery-framework",
+      "source": "./metodologia-discovery-framework",
+      "description": "MetodologIA Discovery v9.0 — Open methodology for AI-era professionals. 59 skills, 12 agents, 23 commands. GPL-3.0 Copyleft.",
+      "version": "9.0.0",
+      "author": {
+        "name": "Javier Montaño"
+      },
+      "homepage": "https://metodologia.info",
+      "license": "GPL-3.0",
+      "category": "consulting",
+      "tags": [
+        "discovery",
+        "open-source",
+        "architecture",
+        "consulting",
+        "copyleft",
+        "metodologia"
+      ],
+      "keywords": [
+        "discovery",
+        "consulting",
+        "architecture",
+        "assessment",
+        "modernization",
+        "orchestration",
+        "copyleft",
+        "open-methodology"
+      ]
+    },
+    {
+      "name": "pm-project-framework",
+      "source": "./pm-project-framework",
+      "description": "PMO-APEX v1.0 — Agentic Project Excellence. 100 skills MOAT, 48 agents, 104 commands, 19 scripts. Project management lifecycle (Agile, Waterfall, SAFe, Kanban, Hybrid, PMO, Portfolio). 5 quality gates, Steering Committee, EVM, zero-hallucination.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Javier Montaño (with Claude Code)"
+      },
+      "homepage": "https://sofka.com.co",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "project-management",
+      "tags": [
+        "apex",
+        "project-management",
+        "pmo",
+        "agile",
+        "waterfall",
+        "safe",
+        "evm",
+        "governance",
+        "zero-hallucination",
+        "agentic"
+      ],
+      "keywords": [
+        "apex",
+        "project-management",
+        "pmo",
+        "agile",
+        "scrum",
+        "kanban",
+        "safe",
+        "waterfall",
+        "pmbok",
+        "prince2",
+        "evm",
+        "risk-management",
+        "governance",
+        "steering-committee",
+        "portfolio",
+        "zero-hallucination",
+        "agentic-pm"
+      ]
+    },
+    {
+      "name": "sovereign-architect",
+      "source": "./sovereign-architect",
+      "description": "Sovereign Architect v1.0 — Evidence-based technical leadership. 10 specialists, 9 commands, 4 skills, 4 movements (CREATE/REVIEW/EVOLVE/REPAIR), zero-assumption protocol.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Javier Montaño (JM Labs)"
+      },
+      "homepage": "https://metodologia.info",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "software-engineering",
+      "tags": [
+        "sovereign",
+        "architect",
+        "evidence-based",
+        "code-review",
+        "diagnosis",
+        "technical-leadership",
+        "jm-labs"
+      ],
+      "keywords": [
+        "architecture",
+        "software-engineering",
+        "technical-leadership",
+        "code-review",
+        "evidence-based",
+        "diagnosis",
+        "implementation",
+        "quality",
+        "sovereign",
+        "create",
+        "review",
+        "evolve",
+        "repair"
+      ]
+    },
+    {
+      "name": "plugin-qa",
+      "source": "./plugin-qa",
+      "description": "Plugin QA v2.0 — Full plugin development lifecycle for Claude Code plugins. 4 agents, 20 skills, 31 commands, 9 movements (IDEATE, PLAN, DESIGN, SPECIFY, BUILD, VALIDATE, AUDIT, REPORT, FIX). Auto-fix, scorecards, conformance.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Javier Montaño (JM Labs)"
+      },
+      "homepage": "https://metodologia.info",
+      "license": "SEE LICENSE IN LICENSE",
+      "category": "developer-tools",
+      "tags": [
+        "plugin-qa",
+        "quality",
+        "validation",
+        "audit",
+        "auto-fix",
+        "scorecard",
+        "lifecycle",
+        "jm-labs"
+      ],
+      "keywords": [
+        "plugin",
+        "qa",
+        "quality-assurance",
+        "validation",
+        "audit",
+        "scorecard",
+        "conformance",
+        "auto-fix",
+        "lifecycle",
+        "ideate",
+        "plan",
+        "design",
+        "specify",
+        "build",
+        "validate",
+        "report",
+        "fix",
+        "moat"
+      ]
+    }
+  ]
+}

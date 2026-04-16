@@ -1,0 +1,50 @@
+%% Knowledge Graph — Earned Value Management Analysis
+graph TB
+    subgraph Inputs
+        BUDGET[budget-baseline<br/>Phase 5]
+        SCHED[schedule-baseline<br/>Phase 3]
+        STATUS[status-report<br/>Phase 6]
+        SCOPE[scope-wbs<br/>Phase 2]
+    end
+
+    subgraph "EVM Analysis (This Skill)"
+        COLLECT[Data Collection<br/>PV, EV, AC]
+        CALC[Variance & Index<br/>CV, SV, CPI, SPI]
+        FORECAST[Forecasting<br/>EAC, ETC, TCPI, VAC]
+        TREND[Trend Analysis<br/>CPI/SPI over time]
+    end
+
+    subgraph Downstream
+        DASHBOARD[executive-dashboard<br/>KPI visualization]
+        BUDGET_TRACK[budget-tracking<br/>Cost control]
+        PREDICT[predictive-analytics<br/>ML-augmented forecast]
+        STEERING[steering-review<br/>Go/No-Go G1.5]
+        CLOSURE[closure-report<br/>Final performance]
+    end
+
+    subgraph Agents
+        EVM_ANALYST[evm-analyst<br/>L3 Specialist]
+        BUDGET_CTRL[budget-controller<br/>L2 Core]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    BUDGET --> COLLECT
+    SCHED --> COLLECT
+    STATUS --> COLLECT
+    SCOPE --> COLLECT
+
+    COLLECT --> CALC --> FORECAST --> TREND
+
+    TREND --> DASHBOARD
+    TREND --> BUDGET_TRACK
+    TREND --> PREDICT
+    TREND --> STEERING
+    TREND --> CLOSURE
+
+    EVM_ANALYST -.->|executes| CALC
+    BUDGET_CTRL -.->|validates| FORECAST
+    CONDUCTOR -.->|orchestrates| TREND
+
+    style TREND fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style EVM_ANALYST fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

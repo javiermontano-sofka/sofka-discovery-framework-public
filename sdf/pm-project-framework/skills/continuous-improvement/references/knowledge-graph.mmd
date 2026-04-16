@@ -1,0 +1,22 @@
+graph TD
+    subgraph Inputs
+        A[Retrospective Actions] --> D
+        B[Project Metrics] --> D
+        C[Agile Assessment] --> D
+    end
+    subgraph "Continuous Improvement Process"
+        D[Opportunity Identification]:::skill --> E[Prioritization]:::skill
+        E --> F[Experiment Design]:::skill
+        F --> G[Impact Measurement]:::skill
+    end
+    subgraph Agents
+        H[Improvement Coach Agent]:::agent --> E
+        I[Metrics Analyst Agent]:::agent --> G
+    end
+    subgraph Downstream
+        G --> J[Ceremony Design]
+        G --> K[Definition of Done]
+        G --> L[Executive Dashboard]
+    end
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

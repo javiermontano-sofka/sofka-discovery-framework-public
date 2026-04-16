@@ -1,0 +1,6 @@
+[
+  {"prompt":"Create a compliance tracking plan for a project subject to GDPR and SOX with 25 compliance items.","assertions":["catalogs all compliance requirements by regulation type","maps requirements to project deliverables","defines audit trail with evidence collection methods","prioritizes gaps by regulatory severity"]},
+  {"prompt":"Prepare for an external audit in 6 weeks with 30 compliance items needing evidence.","assertions":["creates evidence checklist per compliance item","identifies gaps in evidence availability","prioritizes evidence collection by audit risk","builds audit-ready documentation packages"]},
+  {"prompt":"Gap assessment reveals 5 unaddressed HIPAA requirements after scope expanded to include patient data.","assertions":["assesses severity of newly discovered gaps","creates remediation plan with owners and deadlines","defines evidence requirements for each gap","schedules re-assessment to verify closure"]},
+  {"prompt":"Track compliance in an agile project with continuous delivery and no traditional phase gates.","assertions":["integrates compliance checks into sprint Definition of Done","automates compliance evidence collection where possible","maps continuous delivery to compliance checkpoints","maintains audit trail despite rapid iteration"]}
+]

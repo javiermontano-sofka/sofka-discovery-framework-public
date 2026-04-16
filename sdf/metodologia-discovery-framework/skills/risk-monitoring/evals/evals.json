@@ -1,0 +1,78 @@
+[
+  {
+    "id": "risk-monitoring-eval-001",
+    "name": "Weekly risk monitoring report for 40 active risks",
+    "description": "Validates the Risk Report Generator can produce a comprehensive weekly report for a project with 40 active risks across all categories, including heat map, top-10 ranking, and reserve burn-down.",
+    "prompt": "Generate a weekly risk monitoring report for the CloudMigrate project (Sprint 14, March 10-14 2026). The project has 40 active risks: 12 technical, 10 organizational, 8 external, and 10 project management. This sprint: 3 new risks identified, 2 risks closed, 1 risk triggered (R-017: key vendor missed SLA). Risk reserve started at $450K, $280K remaining. SPI is 0.91 and CPI is 0.88. The top risk is R-003 (data migration integrity failure, P=High, I=Catastrophic, exposure=20). Include the full heat map, top-10 list, and reserve burn-down showing the last 4 sprints.",
+    "expected_output_patterns": [
+      "heat map with 5x5 probability-impact matrix",
+      "top-10 risks ranked by exposure score",
+      "3 newly identified risks with source attribution",
+      "2 closed risks with resolution summary",
+      "triggered risk R-017 with contingency activation status",
+      "risk reserve burn-down table with 4 sprint history",
+      "reserve forecast for remaining project duration",
+      "actions required section with owners and deadlines"
+    ],
+    "agents_involved": ["risk-report-generator"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "risk-monitoring-eval-002",
+    "name": "Risk trigger activation when SPI drops below 0.85",
+    "description": "Validates the Trigger Monitor correctly detects an SPI threshold breach, classifies severity, and activates the linked contingency plan with proper notifications.",
+    "prompt": "The FinTech Platform Modernization project has risk R-029 defined as: 'Schedule overrun on payment gateway module exceeding 15% of baseline.' Trigger condition: SPI < 0.85 for the payment gateway work package. The latest earned value data shows SPI dropped from 0.87 last week to 0.82 this week. The linked contingency plan is 'CONT-029: Fast-track critical path by adding 2 senior developers and compressing testing phases with automated regression suite.' Risk owner is Maria Chen (Tech Lead). PM is David Park. Response SLA is 48 hours. Process this trigger breach and generate the full alert.",
+    "expected_output_patterns": [
+      "alert classification as TRIGGERED or CRITICAL",
+      "breach details with threshold 0.85 vs actual 0.82",
+      "breach magnitude calculation",
+      "contingency plan CONT-029 activation",
+      "Maria Chen and David Park notification records",
+      "48-hour response SLA documented",
+      "specific actions with owners and deadlines",
+      "trigger history showing previous week value 0.87"
+    ],
+    "agents_involved": ["trigger-monitor"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "risk-monitoring-eval-003",
+    "name": "Trend analysis showing increasing risk exposure over 3 sprints",
+    "description": "Validates the Risk Trend Analyst can detect and articulate an increasing risk exposure trajectory across 3 sprints with proper metrics, segmentation, and actionable recommendations.",
+    "prompt": "Analyze the risk trends for the HealthConnect EHR Integration project over Sprints 8, 9, and 10. Data: Sprint 8 had 22 active risks (exposure score 145), Sprint 9 had 28 active risks (exposure score 178), Sprint 10 has 35 active risks (exposure score 215). New risks per sprint: 5, 8, 11. Closed per sprint: 3, 2, 4. Average time-to-mitigation went from 12 days to 15 days to 19 days. Mitigation success rate dropped from 78% to 71% to 65%. Technical risks are the fastest-growing category (8, 12, 18). Risk reserve is at 55% with 40% of project remaining. The risk appetite threshold is exposure score 250. Produce the full trend analysis.",
+    "expected_output_patterns": [
+      "exposure trend direction identified as Increasing",
+      "acceleration identified as Accelerating",
+      "forecast projecting next-period exposure score",
+      "time-to-risk-appetite-breach calculation against 250 threshold",
+      "metrics dashboard with all 3 sprints compared",
+      "technical category flagged as highest growth concern",
+      "mitigation success rate decline highlighted as concern",
+      "reserve consumption vs project completion gap identified",
+      "3 specific concerns with data evidence",
+      "actionable recommendations for strategy adjustment"
+    ],
+    "agents_involved": ["risk-trend-analyst"],
+    "difficulty": "hard"
+  },
+  {
+    "id": "risk-monitoring-eval-004",
+    "name": "New risk identification from external regulatory change",
+    "description": "Validates the Risk Radar Scanner can detect and properly classify a new risk signal from an external regulatory change, correlate it with existing project risks, and escalate appropriately.",
+    "prompt": "The DataVault Analytics Platform project is in Phase 3 (data pipeline development). The Risk Radar Scanner detects the following external signal: the EU has announced GDPR Amendment 2026.3 effective July 1, requiring all cross-border data processing to implement real-time consent verification. The project currently processes data across 4 EU member states and the architecture assumes batch consent verification (daily). Additionally, the schedule shows the data pipeline module is already 8% behind baseline (SPI 0.92), and the team lead for the compliance module resigned last week. Scan these signals, identify correlations, and produce the radar report with draft risk register entries.",
+    "expected_output_patterns": [
+      "GDPR Amendment 2026.3 identified as external regulatory signal",
+      "correlation between regulatory change and existing architecture gap",
+      "correlation with compliance team lead resignation",
+      "compound risk assessment across all 3 signals",
+      "severity scoring above threshold for escalation",
+      "draft risk register entry with probability and impact",
+      "classification as external/regulatory risk category",
+      "recommended risk owner assignment",
+      "suggested response strategy addressing real-time consent requirement",
+      "schedule impact assessment given existing SPI 0.92"
+    ],
+    "agents_involved": ["risk-radar-scanner"],
+    "difficulty": "hard"
+  }
+]

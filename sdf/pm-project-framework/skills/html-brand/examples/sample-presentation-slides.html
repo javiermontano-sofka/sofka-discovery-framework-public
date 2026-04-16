@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Socialización — Sistema Vigía Barcos | Aseguradora del Sur</title>
+<meta name="description" content="Presentación de socialización del discovery — Sofka Technologies para Aseguradora del Sur">
+<meta property="og:title" content="Socialización — Sistema Vigía Barcos">
+<meta property="og:description" content="Presentación ejecutiva de socialización — Aseguradora del Sur">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   Sofka Design System v5.1 — Deck / Slides Edition
+   ═══════════════════════════════════════════ */
+
+/* 1. TOKENS */
+:root {
+  --sofka-orange: #FF7E08;
+  --sofka-orange-light: #FF9E42;
+  --sofka-orange-dark: #CC6506;
+  --sofka-orange-dim: rgba(255,126,8,.10);
+  --sofka-black: #000000;
+  --sofka-white: #FFFFFF;
+  --sofka-light: #EFEAE4;
+  --sofka-positive: #FFD700;
+  --sofka-positive-dim: rgba(255,215,0,.12);
+  --sofka-positive-text: #B8860B;
+  --sofka-warning: #D97706;
+  --sofka-critical: #DC2626;
+  --sofka-info: #2563EB;
+  --sofka-gray-50: #FAF8F6;
+  --sofka-gray-100: #F4F0EC;
+  --sofka-gray-200: #E4DED7;
+  --sofka-gray-300: #D1C9BE;
+  --sofka-gray-500: #6B6560;
+  --sofka-gray-700: #333130;
+  --sofka-gray-900: #111110;
+  --font-display: 'Clash Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+}
+
+/* 2. RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  background: var(--sofka-black);
+  color: var(--sofka-white);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ─── Deck Container ─── */
+.deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.deck-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 400ms ease, transform 400ms ease;
+  pointer-events: none;
+  overflow-y: auto;
+}
+.deck-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  z-index: 10;
+}
+.deck-slide.exit-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+.slide-content {
+  max-width: 1100px;
+  width: 100%;
+  z-index: 2;
+}
+
+/* ─── Slide Themes ─── */
+.theme-dark {
+  background: var(--sofka-black);
+}
+.theme-dark::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -25%;
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,126,8,0.06) 0%, transparent 65%);
+  z-index: 1;
+}
+.theme-white {
+  background: var(--sofka-white);
+}
+.theme-section {
+  background: var(--sofka-black);
+}
+.theme-section .slide-content {
+  text-align: center;
+}
+
+/* ─── Typography ─── */
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; }
+
+.s-label {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sofka-orange);
+  margin-bottom: 12px;
+  padding: .25rem .75rem;
+  border: 1px solid rgba(255,126,8,0.25);
+  border-radius: var(--radius-sm);
+}
+
+/* s-label on white slides */
+.theme-white .s-label {
+  color: var(--sofka-orange);
+  border-color: rgba(255,126,8,0.25);
+}
+
+.s-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.s-title .accent { color: var(--sofka-orange); }
+.s-title .gold { color: var(--sofka-positive); }
+
+.s-subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* Dark slide typography */
+.theme-dark .s-title, .theme-section .s-title { color: var(--sofka-white); }
+.theme-dark .s-subtitle, .theme-section .s-subtitle { color: var(--sofka-gray-300); }
+
+/* White slide typography */
+.theme-white .s-title { color: var(--sofka-gray-900); }
+.theme-white .s-subtitle { color: var(--sofka-gray-500); }
+.theme-white p { color: var(--sofka-gray-900); }
+
+/* Section Divider */
+.section-number {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  color: rgba(255,126,8,0.08);
+  line-height: 1;
+  margin-bottom: -20px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--sofka-white);
+  margin-bottom: 12px;
+}
+
+/* ─── Cards (on white bg) ─── */
+.card {
+  background: var(--sofka-gray-50);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1rem;
+  transition: box-shadow .2s, transform .2s;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.card-accent { border-top: 4px solid var(--sofka-orange); }
+.card-critical { border-left: 4px solid var(--sofka-critical); }
+.card-warning { border-left: 4px solid var(--sofka-warning); }
+.card-info { border-left: 4px solid var(--sofka-info); }
+.card-positive { border-left: 4px solid var(--sofka-positive); }
+
+.card h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sofka-gray-900);
+  margin-bottom: .5rem;
+}
+.card p, .card li {
+  font-size: .9rem;
+  color: var(--sofka-gray-700);
+  line-height: 1.65;
+}
+
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.card-grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+/* ─── Tables (on white bg) ─── */
+.s-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+  margin: 1rem 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.s-table th {
+  background: var(--sofka-gray-900);
+  color: var(--sofka-white);
+  padding: .875rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.s-table td {
+  padding: .75rem 1.25rem;
+  border-bottom: 1px solid var(--sofka-gray-200);
+  background: var(--sofka-gray-100);
+  color: var(--sofka-gray-900);
+  font-size: .88rem;
+}
+.s-table tr:last-child td { border-bottom: none; }
+.s-table tr:hover td { background: var(--sofka-gray-200); }
+.s-table .hl { color: var(--sofka-orange); font-weight: 700; }
+
+/* ─── Severity badges ─── */
+.sev-critical { display: inline-block; background: var(--sofka-critical); color: white; padding: .2rem .6rem; border-radius: var(--radius-sm); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+.sev-high { display: inline-block; background: #EA580C; color: white; padding: .2rem .6rem; border-radius: var(--radius-sm); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+.sev-medium { display: inline-block; background: var(--sofka-warning); color: black; padding: .2rem .6rem; border-radius: var(--radius-sm); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+.sev-positive { display: inline-block; background: var(--sofka-positive); color: black; padding: .2rem .6rem; border-radius: var(--radius-sm); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+
+/* ─── Blockquotes (on white bg) ─── */
+.s-blockquote {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin: 1rem 0;
+  border-left: 4px solid var(--sofka-orange);
+  background: rgba(255,126,8,.08);
+}
+.s-blockquote p { color: var(--sofka-gray-900); margin: .25rem 0; font-size: .9rem; }
+.s-blockquote strong { color: var(--sofka-orange-dark); }
+
+/* ─── Scenario Cards ─── */
+.scenario-card {
+  background: var(--sofka-gray-50);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  border-left: 6px solid;
+  position: relative;
+}
+.scenario-card.conservative { border-left-color: var(--sofka-orange); }
+.scenario-card.recommended { border-left-color: var(--sofka-info); box-shadow: 0 8px 32px rgba(37,99,235,.15); border: 2px solid var(--sofka-info); border-left: 6px solid var(--sofka-info); }
+.scenario-card.aggressive { border-left-color: var(--sofka-critical); }
+.scenario-badge {
+  display: inline-block;
+  padding: .3rem .8rem;
+  border-radius: var(--radius-sm);
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: .75rem;
+}
+.scenario-badge.a { background: rgba(255,126,8,.12); color: var(--sofka-orange); }
+.scenario-badge.b { background: rgba(37,99,235,.12); color: var(--sofka-info); }
+.scenario-badge.c { background: rgba(220,38,38,.12); color: var(--sofka-critical); }
+.recommended-tag {
+  position: absolute;
+  top: -12px;
+  left: 2rem;
+  background: var(--sofka-info);
+  color: white;
+  padding: .3rem .85rem;
+  border-radius: var(--radius-sm);
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(37,99,235,.3);
+}
+
+/* ─── Score Bars ─── */
+.score-bars { display: flex; flex-direction: column; gap: .6rem; margin-top: .75rem; }
+.score-row { display: flex; align-items: center; gap: .75rem; }
+.score-label { min-width: 120px; font-size: .78rem; font-weight: 600; color: var(--sofka-gray-700); }
+.score-track { flex: 1; height: 24px; background: var(--sofka-gray-200); border-radius: var(--radius-sm); overflow: hidden; }
+.score-fill { height: 100%; border-radius: var(--radius-sm); }
+.score-fill.orange { background: linear-gradient(90deg, var(--sofka-orange), var(--sofka-orange-light)); }
+.score-fill.blue { background: linear-gradient(90deg, var(--sofka-info), #60A5FA); }
+.score-fill.red { background: linear-gradient(90deg, var(--sofka-critical), #F87171); }
+.score-value { min-width: 36px; font-size: .76rem; font-weight: 700; text-align: right; }
+
+/* ─── Timeline ─── */
+.timeline { display: flex; gap: 0; margin: 1.5rem 0; position: relative; }
+.timeline::before { content: ''; position: absolute; top: 28px; left: 0; right: 0; height: 3px; background: var(--sofka-gray-200); z-index: 0; }
+.tl-item { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 6px; }
+.tl-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--sofka-orange); margin: 22px auto 10px; box-shadow: 0 0 0 3px rgba(255,126,8,.2); }
+.tl-item:last-child .tl-dot { background: var(--sofka-positive); box-shadow: 0 0 0 3px rgba(255,215,0,.2); }
+.tl-gate .tl-dot { background: var(--sofka-gray-300); width: 10px; height: 10px; box-shadow: none; }
+.tl-label { font-size: .72rem; font-weight: 700; color: var(--sofka-orange-dark); margin-bottom: 3px; }
+.tl-desc { font-size: .7rem; color: var(--sofka-gray-500); line-height: 1.4; }
+.tl-desc strong { color: var(--sofka-gray-900); }
+
+/* ─── KPI row (dark) ─── */
+.hero-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.hero-kpi { text-align: center; }
+.hero-kpi-value { font-family: var(--font-display); font-size: 2.8rem; font-weight: 700; line-height: 1; color: var(--sofka-orange); }
+.hero-kpi-label { font-size: .76rem; color: rgba(255,255,255,.6); margin-top: .4rem; font-weight: 500; letter-spacing: .5px; }
+
+/* ─── Meta badges (dark) ─── */
+.hero-meta-badges { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
+.hero-meta-badge { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.85); padding: .35rem .9rem; border-radius: var(--radius-sm); font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.hero-meta-badge.orange { background: rgba(255,126,8,.12); color: var(--sofka-orange); border-color: rgba(255,126,8,.25); }
+
+/* ─── Risk Card (on white bg) ─── */
+.risk-card {
+  background: var(--sofka-gray-50);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  border-left: 4px solid var(--sofka-critical);
+  box-shadow: var(--shadow-card);
+}
+.risk-card.warning { border-left-color: var(--sofka-warning); }
+.risk-card h4 { font-size: .95rem; color: var(--sofka-gray-900); margin-bottom: .5rem; }
+.risk-card .mitigation { background: var(--sofka-gray-100); padding: .75rem; border-radius: var(--radius-sm); margin-top: .5rem; font-size: .82rem; color: var(--sofka-gray-700); }
+
+/* ─── CTA button (dark) ─── */
+.cta-btn {
+  display: inline-block;
+  background: var(--sofka-orange);
+  color: var(--sofka-white);
+  padding: .85rem 2.5rem;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+  box-shadow: 0 4px 16px rgba(255,126,8,.3);
+}
+.cta-btn:hover {
+  background: var(--sofka-orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255,126,8,.4);
+}
+
+/* ─── Speaker Notes ─── */
+.speaker-notes {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,126,8,0.2);
+  padding: 14px 24px;
+  font-size: 0.82rem;
+  color: var(--sofka-gray-300);
+  line-height: 1.5;
+  z-index: 200;
+  transform: translateY(100%);
+  transition: transform 300ms ease;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+.speaker-notes.visible {
+  transform: translateY(0);
+}
+.speaker-notes-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sofka-orange);
+  margin-bottom: 6px;
+}
+
+/* ─── Controls ─── */
+.deck-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 100;
+  background: rgba(17,17,16,0.88);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.deck-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--sofka-gray-300);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: var(--transition-normal);
+}
+.deck-arrow:hover { border-color: var(--sofka-orange); color: var(--sofka-orange); }
+.deck-arrow:disabled { opacity: 0.25; cursor: not-allowed; }
+
+.deck-counter {
+  font-size: 0.72rem;
+  color: var(--sofka-gray-500);
+  font-weight: 600;
+  min-width: 50px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.deck-notes-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: var(--sofka-gray-500);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: var(--transition-normal);
+}
+.deck-notes-toggle:hover { color: var(--sofka-orange); border-color: rgba(255,126,8,0.3); }
+.deck-notes-toggle.active { color: var(--sofka-orange); background: rgba(255,126,8,0.1); border-color: rgba(255,126,8,0.3); }
+
+/* ─── Progress bar ─── */
+.deck-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sofka-orange), var(--sofka-positive));
+  z-index: 200;
+  transition: width 400ms ease;
+  box-shadow: 0 0 6px rgba(255,126,8,0.3);
+}
+
+/* ─── Watermark ─── */
+.wm {
+  position: fixed;
+  top: 16px;
+  left: 24px;
+  z-index: 100;
+}
+.sofka-logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--sofka-orange);
+  letter-spacing: -1px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .deck-slide { padding: 40px 20px 70px; }
+  .card-grid-2, .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); }
+  .timeline { flex-direction: column; gap: 12px; }
+  .timeline::before { display: none; }
+}
+
+@media (max-width: 480px) {
+  .deck-slide { padding: 28px 14px 70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-slide { transition: none; }
+  .card, .deck-arrow { transition: none; }
+}
+
+@media print {
+  body { background: white; color: black; overflow: visible; height: auto; }
+  .deck { height: auto; overflow: visible; }
+  .deck-slide { position: static; opacity: 1; transform: none; pointer-events: auto; height: auto; min-height: 100vh; page-break-after: always; }
+  .deck-controls, .wm, .deck-progress, .speaker-notes { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress -->
+<div class="deck-progress" id="deckProgress" style="width: 0%;"></div>
+
+<!-- Sofka Brand -->
+<div class="wm">
+  <div class="sofka-logo">sofka_</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDES
+     ═══════════════════════════════════════════ -->
+<div class="deck" id="deck">
+
+  <!-- ═══ SLIDE 1: PORTADA — Dark Authority ═══ -->
+  <div class="deck-slide theme-dark active" data-notes="Bienvenida. Agradecer por el tiempo. Este es el resultado del discovery técnico-funcional del sistema Vigía Barcos. No es un pitch de venta, sino hallazgos objetivos y una recomendación fundamentada basada en 18 entregables de discovery.">
+    <div class="slide-content" style="text-align:center;">
+      <div style="font-family:var(--font-display); font-size:1.8rem; font-weight:700; color:var(--sofka-orange); margin-bottom:1.5rem; letter-spacing:-1px;">sofka_</div>
+      <div class="hero-meta-badges">
+        <span class="hero-meta-badge orange">Sofka Discovery Framework v5.1</span>
+        <span class="hero-meta-badge">Req. #134042</span>
+        <span class="hero-meta-badge">Confidencial</span>
+        <span class="hero-meta-badge">Marzo 2026</span>
+      </div>
+      <h1 class="s-title" style="font-size:clamp(2rem, 5vw, 3.5rem); color:var(--sofka-white);">
+        Modernización Integral<br><span class="accent">Sistema Vigía Barcos</span>
+      </h1>
+      <p class="s-subtitle" style="max-width:700px; margin:0 auto; color:rgba(255,255,255,.85);">
+        Automatización de Devoluciones de Primas por Amarre<br>
+        Aseguradora del Sur — Fuerzas Armadas del Ecuador
+      </p>
+      <div class="hero-kpis">
+        <div class="hero-kpi"><div class="hero-kpi-value">18</div><div class="hero-kpi-label">Entregables</div></div>
+        <div class="hero-kpi"><div class="hero-kpi-value">62</div><div class="hero-kpi-label">Reglas de Negocio</div></div>
+        <div class="hero-kpi"><div class="hero-kpi-value">52</div><div class="hero-kpi-label">Pantallas Figma</div></div>
+        <div class="hero-kpi"><div class="hero-kpi-value">10</div><div class="hero-kpi-label">Vectores de Prueba</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 2: SECTION — 01 Contexto ═══ -->
+  <div class="deck-slide theme-section" data-notes="Transición a la sección de contexto. Explicamos qué es Vigía Barcos, por qué este discovery y cuál es el estado actual.">
+    <div class="slide-content">
+      <div class="section-number">01</div>
+      <div class="section-title">Contexto</div>
+      <p class="s-subtitle">¿Qué es Vigía Barcos y por qué importa?</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 3: AS-IS — EASYCORE / Vigía Barcos ═══ -->
+  <div class="deck-slide theme-white" data-notes="Vigía Barcos es un módulo NUEVO para EASYCORE, no un sistema independiente. Citytech ya opera EASYCORE para ADS. El alcance es específico: devoluciones de primas por amarre de embarcaciones de las Fuerzas Armadas. El 95.7% del volumen corresponde a la Armada del Ecuador.">
+    <div class="slide-content">
+      <span class="s-label">Contexto</span>
+      <h2 class="s-title">AS-IS: <span class="accent">EASYCORE / Vigía Barcos</span></h2>
+      <p class="s-subtitle">Módulo nuevo dentro de EASYCORE para automatizar la devolución del 10% de prima por amarre de embarcaciones.</p>
+
+      <div class="card-grid-2">
+        <div>
+          <table class="s-table">
+            <tbody>
+              <tr><td style="font-weight:700; width:40%;">Cliente</td><td>Aseguradora del Sur (Ecuador)</td></tr>
+              <tr><td style="font-weight:700;">Dominio</td><td>Seguros marítimos — casco y maquinaria</td></tr>
+              <tr><td style="font-weight:700;">Beneficiarios</td><td>Fuerzas Armadas del Ecuador</td></tr>
+              <tr><td style="font-weight:700;">Plataforma</td><td>EASYCORE (Citytech)</td></tr>
+              <tr><td style="font-weight:700;">Tipo</td><td>Módulo nuevo (no greenfield)</td></tr>
+              <tr><td style="font-weight:700;">Requerimiento</td><td>#134042</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="card card-accent">
+            <h4>Proceso Actual: 100% Manual</h4>
+            <p>Plantilla Excel con 7 fórmulas encadenadas, sin validación intermedia. Generación manual de PDF y envío de email sin automatización ni seguimiento.</p>
+            <div style="display:flex; gap:.75rem; flex-wrap:wrap; margin-top:.75rem;">
+              <span style="font-family:var(--font-display); font-size:1.4rem; font-weight:700; color:var(--sofka-orange);">$111K</span>
+              <span style="font-size:.82rem; color:var(--sofka-gray-500); align-self:center;">por corte</span>
+              <span style="font-family:var(--font-display); font-size:1.4rem; font-weight:700; color:var(--sofka-orange);">825</span>
+              <span style="font-size:.82rem; color:var(--sofka-gray-500); align-self:center;">registros</span>
+              <span style="font-family:var(--font-display); font-size:1.4rem; font-weight:700; color:var(--sofka-orange);">8-12h</span>
+              <span style="font-size:.82rem; color:var(--sofka-gray-500); align-self:center;">por corte</span>
+            </div>
+          </div>
+          <div class="s-blockquote">
+            <p><strong>Dato clave:</strong> El 95.7% del volumen corresponde a la Armada del Ecuador (~790 de 825 registros por corte). Las devoluciones por corte suman $111,868.29.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 4: Hallazgos Críticos ═══ -->
+  <div class="deck-slide theme-white" data-notes="6 puntos de dolor documentados con evidencia. El más crítico es P1: el error factor 100× en la tasa. Si alguien pone 0.857957 en vez de 0.00857957, la prima se multiplica por 100. También cero trazabilidad y sin validación de siniestros.">
+    <div class="slide-content">
+      <span class="s-label">Hallazgos</span>
+      <h2 class="s-title">Hallazgos <span class="accent">Críticos</span></h2>
+      <p class="s-subtitle">11 hallazgos técnicos + 8 funcionales documentados con evidencia</p>
+
+      <div class="card-grid-2">
+        <div class="card card-critical">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
+            <h4 style="margin:0;">P1 — Error factor 100× en tasa</h4>
+            <span class="sev-critical">Crítica</span>
+          </div>
+          <p>Tasa 0.857957 vs 0.00857957. Prima de $10.4M vs $104K. Una celda corrompe toda la liquidación.</p>
+        </div>
+        <div class="card card-critical">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
+            <h4 style="margin:0;">P2 — Cero trazabilidad</h4>
+            <span class="sev-critical">Crítica</span>
+          </div>
+          <p>Sin registro de quién calculó, cuándo, ni con qué parámetros. Exposición ante la Superintendencia.</p>
+        </div>
+        <div class="card card-warning">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
+            <h4 style="margin:0;">P3 — Sin validación de siniestros</h4>
+            <span class="sev-high">Alta</span>
+          </div>
+          <p>Se devuelven primas sin verificar reclamos activos en Visual Time. Riesgo de pago indebido.</p>
+        </div>
+        <div class="card card-warning">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
+            <h4 style="margin:0;">P4 — Concentración de volumen</h4>
+            <span class="sev-high">Alta</span>
+          </div>
+          <p>Armada = 95.7% del volumen. Un error impacta casi la totalidad del proceso.</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--sofka-gray-300);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
+            <h4 style="margin:0;">P5 — Persona clave</h4>
+            <span class="sev-medium">Media</span>
+          </div>
+          <p>1-2 personas conocen las fórmulas. Sin documentación operativa. Riesgo por rotación.</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--sofka-gray-300);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
+            <h4 style="margin:0;">P6 — Escalabilidad agotada</h4>
+            <span class="sev-medium">Media</span>
+          </div>
+          <p>825 reg/corte × 3-6 cortes × 3-5 pólizas = hasta 12,500 reg/año sin margen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 5: Impacto — Costo de no actuar ═══ -->
+  <div class="deck-slide theme-white" data-notes="Para tomadores de decisión. El costo de no hacer nada no es cero: riesgo financiero (factor 100×), regulatorio (Superintendencia), operacional (dependencia de personas) y reputacional (Fuerzas Armadas).">
+    <div class="slide-content">
+      <span class="s-label">Impacto</span>
+      <h2 class="s-title">El Costo de <span class="accent">No Actuar</span></h2>
+      <p class="s-subtitle">4 dimensiones de riesgo activo si se mantiene el proceso manual.</p>
+
+      <div class="card-grid-2">
+        <div class="card card-critical">
+          <h4>Financiero</h4>
+          <p>Error factor 100× en tasa puede producir devoluciones de <strong>$10.4M en vez de $104K</strong> por registro. Riesgo sobre $111K por corte.</p>
+        </div>
+        <div class="card card-warning">
+          <h4>Regulatorio</h4>
+          <p>Sin trazabilidad en proceso financiero regulado. La <strong>Superintendencia exige audit trail</strong> de operaciones institucionales.</p>
+        </div>
+        <div class="card card-info">
+          <h4>Operacional</h4>
+          <p>7 pasos manuales × 825 registros × múltiples cortes/año. <strong>~8-12 horas persona</strong> por corte, sin respaldo sistematizado.</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--sofka-gray-700);">
+          <h4>Reputacional</h4>
+          <p>Devoluciones erróneas a <strong>Fuerzas Armadas del Ecuador</strong> impactan la relación institucional Estado-aseguradora.</p>
+        </div>
+      </div>
+
+      <div class="s-blockquote" style="margin-top:1rem;">
+        <p><strong>Conclusión:</strong> El proceso actual no es sostenible. Cada corte ejecutado manualmente es una exposición financiera y regulatoria activa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 6: SECTION — 02 Solución ═══ -->
+  <div class="deck-slide theme-section" data-notes="Pasamos a la solución propuesta. Esto no es un pitch, es la recomendación técnica fundamentada del discovery basada en el análisis de 3 escenarios.">
+    <div class="slide-content">
+      <div class="section-number">02</div>
+      <div class="section-title">Solución</div>
+      <p class="s-subtitle">Escenario Híbrido Pragmático — Módulo Vigía Barcos</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 7: Arquitectura TO-BE ═══ -->
+  <div class="deck-slide theme-white" data-notes="Arquitectura TO-BE: módulo EASYCORE para el core funcional, ACL para Visual Time, Sesame para batch, INFOBIP para notificaciones. Score 4.25/5.00 en 7 criterios de evaluación.">
+    <div class="slide-content">
+      <span class="s-label">Arquitectura</span>
+      <h2 class="s-title">TO-BE: <span class="accent">Híbrido Pragmático</span></h2>
+      <p class="s-subtitle">Score 4.25/5.00 en 7 criterios. Factibilidad 3.9/5.0 (7/7 dimensiones favorables).</p>
+
+      <div class="card-grid-3">
+        <div class="card" style="border-top: 4px solid var(--sofka-gray-300);">
+          <h4 style="color:var(--sofka-gray-500);">Escenario A — EASYCORE Puro</h4>
+          <p>Todo dentro de EASYCORE. Riesgo: capacidades async no confirmadas.</p>
+          <div class="score-bars">
+            <div class="score-row"><span class="score-label">Score</span><div class="score-track"><div class="score-fill orange" style="width:68%;"></div></div><span class="score-value">3.4</span></div>
+          </div>
+        </div>
+        <div class="card" style="border-top: 4px solid var(--sofka-info); box-shadow: 0 8px 32px rgba(37,99,235,.1);">
+          <div style="background:var(--sofka-info); color:white; display:inline-block; padding:.2rem .6rem; border-radius:var(--radius-sm); font-size:.65rem; font-weight:700; text-transform:uppercase; margin-bottom:.5rem;">Seleccionado</div>
+          <h4 style="color:var(--sofka-info);">Escenario C — Híbrido</h4>
+          <p>Core en EASYCORE + ACL para Visual Time + fallbacks. Balance riesgo/complejidad óptimo.</p>
+          <div class="score-bars">
+            <div class="score-row"><span class="score-label">Score</span><div class="score-track"><div class="score-fill blue" style="width:85%;"></div></div><span class="score-value" style="color:var(--sofka-info);">4.25</span></div>
+          </div>
+        </div>
+        <div class="card" style="border-top: 4px solid var(--sofka-gray-300);">
+          <h4 style="color:var(--sofka-gray-500);">Escenario B — Microservicios</h4>
+          <p>Servicios independientes. Riesgo: sobreingeniería para el alcance actual.</p>
+          <div class="score-bars">
+            <div class="score-row"><span class="score-label">Score</span><div class="score-track"><div class="score-fill orange" style="width:74%;"></div></div><span class="score-value">3.7</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s-blockquote" style="margin-top:1rem;">
+        <p><strong>Factibilidad validada:</strong> 7 de 7 dimensiones favorables, 13 condiciones documentadas, aprobado por comité de expertos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 8: Technology Stack ═══ -->
+  <div class="deck-slide theme-white" data-notes="Stack tecnológico del módulo. Frontend Angular dentro de EASYCORE, backend Java/Spring, base de datos PostgreSQL, INFOBIP para notificaciones, Visual Time vía ACL.">
+    <div class="slide-content">
+      <span class="s-label">Tecnología</span>
+      <h2 class="s-title">Stack y <span class="accent">Patrones</span></h2>
+      <p class="s-subtitle">Componentes técnicos del módulo Vigía Barcos.</p>
+
+      <div class="card-grid-3">
+        <div class="card card-accent">
+          <h4>Frontend</h4>
+          <p><strong>Angular</strong> dentro de EASYCORE. 52 pantallas Figma para 4 roles RBAC. Design system reconstruido con 11 componentes y 3 templates.</p>
+        </div>
+        <div class="card card-accent">
+          <h4>Backend</h4>
+          <p><strong>Java / Spring Boot</strong> módulo EASYCORE. Motor de cálculo de 7 pasos con banker's rounding. Carga masiva asíncrona hasta 5,000 registros.</p>
+        </div>
+        <div class="card card-accent">
+          <h4>Base de Datos</h4>
+          <p><strong>PostgreSQL</strong> (EASYCORE existente). Modelo relacional con audit trail nativo, snapshots inmutables por cálculo.</p>
+        </div>
+        <div class="card card-accent">
+          <h4>Integraciones</h4>
+          <p><strong>Visual Time</strong> (siniestros vía ACL), <strong>INFOBIP</strong> (notificaciones batch), <strong>Sesame</strong> (procesamiento nocturno).</p>
+        </div>
+        <div class="card card-accent">
+          <h4>Seguridad</h4>
+          <p><strong>RBAC 4 niveles</strong> con herencia jerárquica. Restricción por Fuerza/Cuenta. Datos militares clasificados con protocolo Min. Defensa.</p>
+        </div>
+        <div class="card card-accent">
+          <h4>Reportes</h4>
+          <p><strong>PDF/Excel</strong> con formato numérico LA (5.053.047,00). Plantillas corporativas ADS. Generación automática por corte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 9: Capacidades Clave ═══ -->
+  <div class="deck-slide theme-white" data-notes="8 RFs cubren el ciclo completo: desde pólizas y cortes hasta reportes y notificaciones. 62 reglas de negocio numeradas, 19 edge cases, criterios de aceptación por RF.">
+    <div class="slide-content">
+      <span class="s-label">Capacidades</span>
+      <h2 class="s-title"><span class="accent">8 RFs</span> + 62 Reglas de Negocio</h2>
+      <p class="s-subtitle">Cada requerimiento funcional tiene criterios de aceptación y reglas numeradas BR-001 a BR-062.</p>
+
+      <table class="s-table">
+        <thead><tr><th>RF</th><th>Módulo</th><th>Diferenciador</th></tr></thead>
+        <tbody>
+          <tr><td class="hl">RF01</td><td>Gestión Pólizas y Cortes</td><td>Algoritmo automático de cortes temporales + validación de continuidad</td></tr>
+          <tr><td class="hl">RF02</td><td>Carga Masiva Unidades</td><td>Asíncrona hasta 5,000 reg + auto-detección formato tasa (factor 100×)</td></tr>
+          <tr><td class="hl">RF03</td><td>Amarres y Cálculo</td><td>Motor de 7 pasos: banker's rounding + snapshot inmutable + Visual Time</td></tr>
+          <tr><td class="hl">RF04</td><td>Reportes PDF/Excel</td><td>Formato numérico LA (5.053.047,00) + plantillas corporativas ADS</td></tr>
+          <tr><td class="hl">RF05</td><td>Filtros de Consulta</td><td>Multicriterio: fuerza, reparto, cuenta, póliza, estado + buscador global</td></tr>
+          <tr><td class="hl">RF06</td><td>Resumen Valor Ajustado</td><td>Dashboard por Fuerza en tiempo real, dinámico si se agregan fuerzas</td></tr>
+          <tr><td class="hl">RF07</td><td>Notificaciones</td><td>INFOBIP batch nocturno, solo si hay 1+ registro nuevo, desglose por Fuerza</td></tr>
+          <tr><td class="hl">RF08</td><td>Roles y Permisos</td><td>RBAC 4 niveles con herencia jerárquica + restricción por Fuerza/Cuenta</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 10: Mapa de Integraciones ═══ -->
+  <div class="deck-slide theme-white" data-notes="Mapa de integraciones. Visual Time es el más crítico: no tiene API documentada, se resuelve con ACL pattern. INFOBIP ya tiene templates configurados en UAT y PROD. Sesame se usa para batch nocturno.">
+    <div class="slide-content">
+      <span class="s-label">Integraciones</span>
+      <h2 class="s-title">Mapa de <span class="accent">Integraciones</span></h2>
+      <p class="s-subtitle">3 sistemas externos + EASYCORE como plataforma base.</p>
+
+      <div class="card-grid-2">
+        <div class="card card-critical">
+          <h4>Visual Time — Siniestros</h4>
+          <p><strong>Estado:</strong> API sin contrato documentado. Sin endpoints confirmados.</p>
+          <p><strong>Estrategia:</strong> Anti-Corruption Layer (ACL). Si la API no está disponible, flag "pendiente_verificación" permite continuar el proceso.</p>
+          <p style="margin-top:.5rem;"><span class="sev-high">Riesgo Alto</span></p>
+        </div>
+        <div class="card card-positive">
+          <h4>INFOBIP — Notificaciones</h4>
+          <p><strong>Estado:</strong> Templates ya configurados en UAT y PROD.</p>
+          <p><strong>Templates:</strong> UAT #351669/#351670, PROD #351657/#351658. Batch nocturno con desglose por Fuerza.</p>
+          <p style="margin-top:.5rem;"><span class="sev-positive">Listo</span></p>
+        </div>
+        <div class="card card-info">
+          <h4>Sesame — Batch Processing</h4>
+          <p><strong>Estado:</strong> Disponible dentro de EASYCORE.</p>
+          <p><strong>Uso:</strong> Procesamiento nocturno de cargas masivas. Jobs programables para conciliación automática.</p>
+          <p style="margin-top:.5rem;"><span class="sev-positive">Disponible</span></p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--sofka-gray-700);">
+          <h4>EASYCORE — Plataforma Base</h4>
+          <p><strong>Estado:</strong> Operativo. Citytech lo administra.</p>
+          <p><strong>Pendiente:</strong> Confirmar soporte para workers asíncronos y capacidad batch en Sprint 0.</p>
+          <p style="margin-top:.5rem;"><span class="sev-medium">Por Confirmar</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 11: SECTION — 03 Escenarios ═══ -->
+  <div class="deck-slide theme-section" data-notes="Sección de escenarios de implementación. Se evaluaron 3 escenarios con metodología Tree of Thought en 7 criterios.">
+    <div class="slide-content">
+      <div class="section-number">03</div>
+      <div class="section-title">Escenarios</div>
+      <p class="s-subtitle">3 escenarios evaluados con Tree of Thought</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 12: Escenario A — Conservador ═══ -->
+  <div class="deck-slide theme-white" data-notes="Escenario A: todo dentro de EASYCORE sin componentes externos. Menor complejidad pero riesgo con capacidades async. 7 sprints, menor alcance de integraciones.">
+    <div class="slide-content">
+      <span class="s-label">Escenario A</span>
+      <h2 class="s-title">Conservador: <span class="accent">EASYCORE Puro</span></h2>
+
+      <div class="card-grid-2">
+        <div class="scenario-card conservative">
+          <span class="scenario-badge a">Escenario A</span>
+          <h4 style="font-size:1.2rem; margin-bottom:.75rem;">Todo dentro de EASYCORE</h4>
+          <p>Módulo 100% nativo. Sin componentes externos. Carga síncrona con paginación. Notificaciones por email nativo.</p>
+          <div class="score-bars" style="margin-top:1rem;">
+            <div class="score-row"><span class="score-label">Viabilidad</span><div class="score-track"><div class="score-fill orange" style="width:80%;"></div></div><span class="score-value">4.0</span></div>
+            <div class="score-row"><span class="score-label">Escalabilidad</span><div class="score-track"><div class="score-fill orange" style="width:50%;"></div></div><span class="score-value">2.5</span></div>
+            <div class="score-row"><span class="score-label">Riesgo</span><div class="score-track"><div class="score-fill orange" style="width:60%;"></div></div><span class="score-value">3.0</span></div>
+            <div class="score-row"><span class="score-label">Score Global</span><div class="score-track"><div class="score-fill orange" style="width:68%;"></div></div><span class="score-value" style="font-size:.88rem;">3.4/5</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="border-left: 4px solid var(--sofka-positive);">
+            <h4>Ventajas</h4>
+            <ul style="padding-left:1.25rem; margin:.5rem 0;">
+              <li>Menor complejidad de despliegue</li>
+              <li>Sin dependencias externas</li>
+              <li>Equipo Citytech ya conoce la plataforma</li>
+            </ul>
+          </div>
+          <div class="card card-critical" style="margin-top:.75rem;">
+            <h4>Riesgos</h4>
+            <ul style="padding-left:1.25rem; margin:.5rem 0;">
+              <li>Capacidad async no confirmada</li>
+              <li>Sin validación de siniestros en tiempo real</li>
+              <li>Límite de 825 registros por carga síncrona</li>
+            </ul>
+          </div>
+          <table class="s-table" style="margin-top:.75rem;">
+            <tbody>
+              <tr><td style="font-weight:700;">Pantallas</td><td>38</td></tr>
+              <tr><td style="font-weight:700;">APIs</td><td>12 endpoints</td></tr>
+              <tr><td style="font-weight:700;">Sprints</td><td>7 (14 semanas)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 13: Escenario B — Recomendado ═══ -->
+  <div class="deck-slide theme-white" data-notes="Escenario C Híbrido es el recomendado. Score 4.25 en 7 criterios. Core en EASYCORE + ACL para Visual Time + Sesame batch + INFOBIP. Balance óptimo de riesgo y funcionalidad.">
+    <div class="slide-content">
+      <span class="s-label">Escenario C — Recomendado</span>
+      <h2 class="s-title">Recomendado: <span class="accent">Híbrido Pragmático</span></h2>
+
+      <div class="card-grid-2">
+        <div class="scenario-card recommended" style="margin-top:14px;">
+          <div class="recommended-tag">Recomendado</div>
+          <span class="scenario-badge b">Escenario C</span>
+          <h4 style="font-size:1.2rem; margin-bottom:.75rem;">Core EASYCORE + ACL + Batch</h4>
+          <p>Módulo principal en EASYCORE. Anti-Corruption Layer para Visual Time. Sesame para batch nocturno. INFOBIP para notificaciones. Carga asíncrona hasta 5,000 registros.</p>
+          <div class="score-bars" style="margin-top:1rem;">
+            <div class="score-row"><span class="score-label">Viabilidad</span><div class="score-track"><div class="score-fill blue" style="width:78%;"></div></div><span class="score-value" style="color:var(--sofka-info);">3.9</span></div>
+            <div class="score-row"><span class="score-label">Escalabilidad</span><div class="score-track"><div class="score-fill blue" style="width:90%;"></div></div><span class="score-value" style="color:var(--sofka-info);">4.5</span></div>
+            <div class="score-row"><span class="score-label">Riesgo</span><div class="score-track"><div class="score-fill blue" style="width:86%;"></div></div><span class="score-value" style="color:var(--sofka-info);">4.3</span></div>
+            <div class="score-row"><span class="score-label">Score Global</span><div class="score-track"><div class="score-fill blue" style="width:85%;"></div></div><span class="score-value" style="color:var(--sofka-info); font-size:.88rem;">4.25/5</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="border-left: 4px solid var(--sofka-positive);">
+            <h4>Por qué este escenario</h4>
+            <ul style="padding-left:1.25rem; margin:.5rem 0;">
+              <li>Balance óptimo riesgo/complejidad</li>
+              <li>Desacoplamiento de Visual Time vía ACL</li>
+              <li>Carga asíncrona confirmable en Sprint 0</li>
+              <li>INFOBIP ya tiene templates en UAT+PROD</li>
+              <li>Fallbacks para cada punto de falla</li>
+            </ul>
+          </div>
+          <table class="s-table" style="margin-top:.75rem;">
+            <tbody>
+              <tr><td style="font-weight:700;">Pantallas</td><td>52</td></tr>
+              <tr><td style="font-weight:700;">APIs</td><td>18 endpoints + ACL</td></tr>
+              <tr><td style="font-weight:700;">Integraciones</td><td>3 sistemas</td></tr>
+              <tr><td style="font-weight:700;">Reglas de Negocio</td><td>62 (BR-001 a BR-062)</td></tr>
+              <tr><td style="font-weight:700;">Sprints</td><td>9 (18 semanas + 2 UAT)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 14: Escenario C — Agresivo ═══ -->
+  <div class="deck-slide theme-white" data-notes="Escenario B Microservicios: servicios independientes, máximo desacoplamiento, pero sobreingeniería para el alcance actual. Más costoso y más complejo de operar.">
+    <div class="slide-content">
+      <span class="s-label">Escenario B</span>
+      <h2 class="s-title">Agresivo: <span class="accent">Microservicios</span></h2>
+
+      <div class="card-grid-2">
+        <div class="scenario-card aggressive">
+          <span class="scenario-badge c">Escenario B</span>
+          <h4 style="font-size:1.2rem; margin-bottom:.75rem;">Servicios Independientes</h4>
+          <p>Cada RF como microservicio. API Gateway. Event-driven. Máximo desacoplamiento pero complejidad operacional alta para el volumen actual.</p>
+          <div class="score-bars" style="margin-top:1rem;">
+            <div class="score-row"><span class="score-label">Viabilidad</span><div class="score-track"><div class="score-fill red" style="width:56%;"></div></div><span class="score-value">2.8</span></div>
+            <div class="score-row"><span class="score-label">Escalabilidad</span><div class="score-track"><div class="score-fill red" style="width:96%;"></div></div><span class="score-value">4.8</span></div>
+            <div class="score-row"><span class="score-label">Riesgo</span><div class="score-track"><div class="score-fill red" style="width:66%;"></div></div><span class="score-value">3.3</span></div>
+            <div class="score-row"><span class="score-label">Score Global</span><div class="score-track"><div class="score-fill red" style="width:74%;"></div></div><span class="score-value" style="font-size:.88rem;">3.7/5</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="border-left: 4px solid var(--sofka-positive);">
+            <h4>Ventajas</h4>
+            <ul style="padding-left:1.25rem; margin:.5rem 0;">
+              <li>Máxima escalabilidad futura</li>
+              <li>Despliegue independiente por servicio</li>
+              <li>Aislamiento de fallos</li>
+            </ul>
+          </div>
+          <div class="card card-critical" style="margin-top:.75rem;">
+            <h4>Riesgos</h4>
+            <ul style="padding-left:1.25rem; margin:.5rem 0;">
+              <li>Sobreingeniería para 825 reg/corte</li>
+              <li>Complejidad operacional innecesaria</li>
+              <li>Mayor tiempo y costo de implementación</li>
+              <li>Equipo requiere skills distribuidos</li>
+            </ul>
+          </div>
+          <table class="s-table" style="margin-top:.75rem;">
+            <tbody>
+              <tr><td style="font-weight:700;">Pantallas</td><td>52+</td></tr>
+              <tr><td style="font-weight:700;">APIs</td><td>24+ endpoints</td></tr>
+              <tr><td style="font-weight:700;">Sprints</td><td>12 (24 semanas)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 15: Comparación de Escenarios ═══ -->
+  <div class="deck-slide theme-white" data-notes="Tabla comparativa directa. Esta es la slide que más comunica el valor: de 8-12 horas a minutos, de 825 registros con dificultad a 5,000 asíncronos, de cero trazabilidad a audit trail completo.">
+    <div class="slide-content">
+      <span class="s-label">Comparativa</span>
+      <h2 class="s-title">Excel <span style="color:var(--sofka-critical);">vs</span> <span class="accent">Vigía Barcos</span></h2>
+      <p class="s-subtitle">Comparación directa: proceso actual vs sistema propuesto.</p>
+
+      <table class="s-table" style="font-size:.9rem;">
+        <thead><tr><th>Criterio</th><th>Excel (Hoy)</th><th>Vigía Barcos</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;">Tiempo por corte</td><td style="color:var(--sofka-critical);">~8-12 horas</td><td style="color:var(--sofka-positive-text); font-weight:700;">~15-30 minutos</td></tr>
+          <tr><td style="font-weight:700;">Capacidad</td><td style="color:var(--sofka-critical);">~825 registros</td><td style="color:var(--sofka-positive-text); font-weight:700;">5,000 registros</td></tr>
+          <tr><td style="font-weight:700;">Trazabilidad</td><td style="color:var(--sofka-critical);">Ninguna</td><td style="color:var(--sofka-positive-text); font-weight:700;">Usuario + timestamp + parámetros</td></tr>
+          <tr><td style="font-weight:700;">Validación siniestros</td><td style="color:var(--sofka-critical);">Manual, opcional</td><td style="color:var(--sofka-positive-text); font-weight:700;">Automatizada (Visual Time / flag)</td></tr>
+          <tr><td style="font-weight:700;">Protección fórmulas</td><td style="color:var(--sofka-critical);">Celdas editables</td><td style="color:var(--sofka-positive-text); font-weight:700;">Motor inmutable</td></tr>
+          <tr><td style="font-weight:700;">Auditoría</td><td style="color:var(--sofka-critical);">Sin versionado</td><td style="color:var(--sofka-positive-text); font-weight:700;">Audit trail nativo</td></tr>
+          <tr><td style="font-weight:700;">Notificaciones</td><td style="color:var(--sofka-critical);">Email manual</td><td style="color:var(--sofka-positive-text); font-weight:700;">INFOBIP automático</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 16: SECTION — 04 Roadmap ═══ -->
+  <div class="deck-slide theme-section" data-notes="Sección de roadmap. 4 fases con gates de validación entre cada una. Célula de 4 FTE a $30K USD/mes con aceleración IA. Primer mes T&M para PoC, luego fixed price. Las estimaciones parten de supuestos iniciales — la PoC resuelve incertidumbres. Benchmark interno sugiere hasta 50% aceleración con IA, pero validamos juntos.">
+    <div class="slide-content">
+      <div class="section-number">04</div>
+      <div class="section-title">Roadmap</div>
+      <p class="s-subtitle">4 fases con gates de validación</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 17: Fase 1 — Fundación ═══ -->
+  <div class="deck-slide theme-white" data-notes="Fase 1 Fundación: modelo de datos, RBAC 4 niveles, gestión de pólizas y cortes, carga masiva asíncrona. 3 sprints, 6 semanas. 18 pantallas, 6 endpoints, 22 reglas de negocio.">
+    <div class="slide-content">
+      <span class="s-label">Fase 1</span>
+      <h2 class="s-title">Fundación <span class="accent">(S1-S3)</span></h2>
+      <p class="s-subtitle">Sprints 1-3 &bull; 6 semanas &bull; RF01 + RF02 + RF08</p>
+
+      <div class="card-grid-2">
+        <div>
+          <div class="card card-accent">
+            <h4>RF01 — Gestión de Pólizas y Cortes</h4>
+            <p>Algoritmo automático de cortes temporales. Validación de continuidad entre períodos. CRUD completo de pólizas con asociación a Fuerzas.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>RF02 — Carga Masiva de Unidades</h4>
+            <p>Carga asíncrona hasta 5,000 registros. Auto-detección del formato de tasa (factor 100×). Validación de estructura Excel antes de procesamiento.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>RF08 — Roles y Permisos</h4>
+            <p>RBAC 4 niveles con herencia jerárquica. Restricción por Fuerza y por Cuenta. Modelo de permisos granular.</p>
+          </div>
+        </div>
+        <div>
+          <table class="s-table">
+            <thead><tr><th colspan="2">Entregables Fase 1</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:700;">Pantallas</td><td>18 screens (4 roles)</td></tr>
+              <tr><td style="font-weight:700;">APIs</td><td>6 endpoints REST</td></tr>
+              <tr><td style="font-weight:700;">Reglas de Negocio</td><td>22 BRs (BR-001 a BR-022)</td></tr>
+              <tr><td style="font-weight:700;">Modelo de Datos</td><td>Esquema relacional completo</td></tr>
+              <tr><td style="font-weight:700;">Infraestructura</td><td>Pipeline CI/CD + ambientes</td></tr>
+            </tbody>
+          </table>
+
+          <div class="s-blockquote" style="margin-top:1rem;">
+            <p><strong>Gate 1:</strong> Validación de modelo de datos, RBAC funcional, y carga masiva asíncrona operativa con 828 registros reales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 18: Fase 2 — Core Modules ═══ -->
+  <div class="deck-slide theme-white" data-notes="Fase 2 Motor Core: motor de cálculo de 7 pasos, amarres, dashboard por Fuerza, filtros multicriterio. Aquí es donde entra Visual Time vía ACL. 3 sprints, 6 semanas.">
+    <div class="slide-content">
+      <span class="s-label">Fase 2</span>
+      <h2 class="s-title">Motor Core <span class="accent">(S4-S6)</span></h2>
+      <p class="s-subtitle">Sprints 4-6 &bull; 6 semanas &bull; RF03 + RF05 + RF06</p>
+
+      <div class="card-grid-2">
+        <div>
+          <div class="card card-accent">
+            <h4>RF03 — Amarres y Motor de Cálculo</h4>
+            <p>Motor de 7 pasos con banker's rounding. Snapshot inmutable por cada cálculo. Validación cruzada con Visual Time vía ACL. Auto-detección de anomalías en tasas.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>RF05 — Filtros de Consulta</h4>
+            <p>Multicriterio: fuerza, reparto, cuenta, póliza, estado. Buscador global con autocompletado. Exportación filtrada a Excel.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>RF06 — Resumen Valor Ajustado</h4>
+            <p>Dashboard por Fuerza en tiempo real. Dinámico si se agregan nuevas fuerzas. Indicadores de estado por corte y por póliza.</p>
+          </div>
+        </div>
+        <div>
+          <table class="s-table">
+            <thead><tr><th colspan="2">Entregables Fase 2</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:700;">Pantallas</td><td>20 screens (dashboard + filtros)</td></tr>
+              <tr><td style="font-weight:700;">APIs</td><td>8 endpoints + ACL Visual Time</td></tr>
+              <tr><td style="font-weight:700;">Reglas de Negocio</td><td>28 BRs (BR-023 a BR-050)</td></tr>
+              <tr><td style="font-weight:700;">Edge Cases</td><td>14 casos documentados</td></tr>
+              <tr><td style="font-weight:700;">Integración</td><td>ACL Visual Time + fallback</td></tr>
+            </tbody>
+          </table>
+
+          <div class="s-blockquote" style="margin-top:1rem;">
+            <p><strong>Gate 2:</strong> Motor de cálculo validado con 10 vectores de prueba (datos reales Jun-Dic 2024). Dashboard operativo con 828 registros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 19: Fase 3 — Advanced Features ═══ -->
+  <div class="deck-slide theme-white" data-notes="Fase 3 Reportes y Notificaciones: generación PDF/Excel automática, INFOBIP batch nocturno, integración completa Visual Time. 3 sprints, 6 semanas.">
+    <div class="slide-content">
+      <span class="s-label">Fase 3</span>
+      <h2 class="s-title">Reportes y Notificaciones <span class="accent">(S7-S9)</span></h2>
+      <p class="s-subtitle">Sprints 7-9 &bull; 6 semanas &bull; RF04 + RF07</p>
+
+      <div class="card-grid-2">
+        <div>
+          <div class="card card-accent">
+            <h4>RF04 — Reportes PDF/Excel</h4>
+            <p>Formato numérico LA (5.053.047,00). Plantillas corporativas ADS. Generación automática por corte. Historial de reportes generados con trazabilidad.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>RF07 — Notificaciones INFOBIP</h4>
+            <p>Batch nocturno vía Sesame. Solo dispara si hay 1+ registro nuevo. Desglose por Fuerza. Templates UAT #351669/#351670, PROD #351657/#351658.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Visual Time — Integración Completa</h4>
+            <p>Si la API está disponible: validación automática de siniestros. Si no: flag "pendiente_verificación" con workflow manual de resolución.</p>
+          </div>
+        </div>
+        <div>
+          <table class="s-table">
+            <thead><tr><th colspan="2">Entregables Fase 3</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:700;">Pantallas</td><td>14 screens (reportes + config)</td></tr>
+              <tr><td style="font-weight:700;">APIs</td><td>4 endpoints + batch jobs</td></tr>
+              <tr><td style="font-weight:700;">Reglas de Negocio</td><td>12 BRs (BR-051 a BR-062)</td></tr>
+              <tr><td style="font-weight:700;">Templates</td><td>PDF corporativo + Excel exportable</td></tr>
+              <tr><td style="font-weight:700;">Integración</td><td>INFOBIP + Sesame + Visual Time</td></tr>
+            </tbody>
+          </table>
+
+          <div class="s-blockquote" style="margin-top:1rem;">
+            <p><strong>Gate 3:</strong> Reportes PDF generados con formato numérico correcto. INFOBIP enviando notificaciones de prueba. Sistema end-to-end validado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 20: Fase 4 — UAT y Go-Live ═══ -->
+  <div class="deck-slide theme-white" data-notes="Fase 4 Optimización y Go-Live: 2 semanas de UAT con usuarios finales, 10 vectores de prueba con datos reales, ajustes finales y despliegue en producción.">
+    <div class="slide-content">
+      <span class="s-label">Fase 4</span>
+      <h2 class="s-title">Optimización y <span class="accent">Go-Live</span></h2>
+      <p class="s-subtitle">2 semanas UAT + despliegue en producción</p>
+
+      <div class="card-grid-2">
+        <div>
+          <div class="card card-accent">
+            <h4>UAT con Usuarios Finales</h4>
+            <p>Pruebas con los 4 roles RBAC. 10 vectores de prueba con datos reales Jun-Dic 2024. Validación de montos: PDF = XLSX = Sistema.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Ajustes y Optimización</h4>
+            <p>Corrección de bugs UAT. Ajustes de UX basados en feedback. Optimización de performance para cargas masivas.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Despliegue y Cutover</h4>
+            <p>Despliegue en producción EASYCORE. Migración de datos históricos. Período de operación paralela (Excel + Vigía Barcos) por 1 corte.</p>
+          </div>
+        </div>
+        <div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-label">Fase 1</div><div class="tl-dot"></div><div class="tl-desc"><strong>Fundación</strong><br>S1-S3 &bull; 6 sem</div></div>
+            <div class="tl-item tl-gate"><div class="tl-label" style="color:var(--sofka-gray-500);">Gate</div><div class="tl-dot"></div><div class="tl-desc">Validación</div></div>
+            <div class="tl-item"><div class="tl-label">Fase 2</div><div class="tl-dot"></div><div class="tl-desc"><strong>Motor Core</strong><br>S4-S6 &bull; 6 sem</div></div>
+            <div class="tl-item tl-gate"><div class="tl-label" style="color:var(--sofka-gray-500);">Gate</div><div class="tl-dot"></div><div class="tl-desc">Validación</div></div>
+            <div class="tl-item"><div class="tl-label">Fase 3</div><div class="tl-dot"></div><div class="tl-desc"><strong>Reportes</strong><br>S7-S9 &bull; 6 sem</div></div>
+            <div class="tl-item"><div class="tl-label">Go-Live</div><div class="tl-dot"></div><div class="tl-desc"><strong>UAT</strong><br>2 sem</div></div>
+          </div>
+
+          <table class="s-table" style="margin-top:1rem;">
+            <thead><tr><th>Fase</th><th>Sprints</th><th>Duración</th></tr></thead>
+            <tbody>
+              <tr><td class="hl">Fase 1 — Fundación</td><td>S1-S3</td><td>6 semanas</td></tr>
+              <tr><td class="hl">Fase 2 — Motor Core</td><td>S4-S6</td><td>6 semanas</td></tr>
+              <tr><td class="hl">Fase 3 — Reportes</td><td>S7-S9</td><td>6 semanas</td></tr>
+              <tr><td style="color:var(--sofka-positive-text); font-weight:700;">Total</td><td>9 sprints + UAT</td><td style="color:var(--sofka-positive-text); font-weight:700;">18 + 2 semanas</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 21: SECTION — 05 Siguientes Pasos ═══ -->
+  <div class="deck-slide theme-section" data-notes="Última sección: qué sigue. Resumen de alcance, inversión ($30K USD/mes, 4 FTE, T&M primer mes, luego fixed), riesgos mitigados, y KPIs de éxito. Recordar disclaimers: estimaciones basadas en supuestos iniciales, PoC resuelve incertidumbres, aceleraciones IA se validan juntos.">
+    <div class="slide-content">
+      <div class="section-number">05</div>
+      <div class="section-title">Siguientes Pasos</div>
+      <p class="s-subtitle">Plan de acción post-socialización</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 22: Scope Summary ═══ -->
+  <div class="deck-slide theme-white" data-notes="Resumen de alcance por fase. Todo expresado en entregables concretos. La siguiente slide presenta la inversión: $30K USD/mes, célula de 4 FTE con aceleración IA. Primer mes T&M para PoC en ambientes del cliente, luego migrar a fixed price. Si no hay apertura a IA, se necesita célula convencional con más FTE.">
+    <div class="slide-content">
+      <span class="s-label">Alcance</span>
+      <h2 class="s-title">Resumen de <span class="accent">Alcance</span></h2>
+      <p class="s-subtitle">8 RFs, 52 pantallas, 3 integraciones, 62 reglas de negocio.</p>
+
+      <table class="s-table">
+        <thead><tr><th>Fase</th><th>RFs</th><th>Pantallas</th><th>APIs</th><th>BRs</th><th>Integraciones</th></tr></thead>
+        <tbody>
+          <tr><td class="hl">1 — Fundación</td><td>RF01, RF02, RF08</td><td>18</td><td>6 endpoints</td><td>22</td><td>EASYCORE base</td></tr>
+          <tr><td class="hl">2 — Motor Core</td><td>RF03, RF05, RF06</td><td>20</td><td>8 + ACL</td><td>28</td><td>Visual Time (ACL)</td></tr>
+          <tr><td class="hl">3 — Reportes</td><td>RF04, RF07</td><td>14</td><td>4 + batch</td><td>12</td><td>INFOBIP + Sesame</td></tr>
+          <tr><td style="color:var(--sofka-positive-text); font-weight:700;">Total</td><td style="font-weight:700;">8 RFs</td><td style="font-weight:700;">52</td><td style="font-weight:700;">18+ endpoints</td><td style="font-weight:700;">62</td><td style="font-weight:700;">3 sistemas</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card-grid-3" style="margin-top:1rem;">
+        <div class="card card-accent" style="text-align:center;">
+          <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--sofka-orange);">52</div>
+          <p style="margin:0; font-size:.82rem;">Pantallas diseñadas en Figma</p>
+        </div>
+        <div class="card card-accent" style="text-align:center;">
+          <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--sofka-orange);">62</div>
+          <p style="margin:0; font-size:.82rem;">Reglas de Negocio numeradas</p>
+        </div>
+        <div class="card card-accent" style="text-align:center;">
+          <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--sofka-orange);">19</div>
+          <p style="margin:0; font-size:.82rem;">Edge Cases documentados</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 23: Inversión y Composición del Equipo ═══ -->
+  <div class="deck-slide theme-white" data-notes="Inversión: $30,000 USD/mes por una célula de 4 FTE con aceleración IA. El modelo propuesto es T&M el primer mes para ejecutar una PoC en ambientes del cliente, y luego migrar a fixed price con estimaciones validadas. Si el cliente no está abierto a aceleración con IA, se necesitaría una célula convencional con más FTE y mayor costo. Las estimaciones parten de supuestos iniciales — la PoC resuelve las incertidumbres. Nuestro benchmark sugiere hasta 50% de aceleración con IA, pero preferimos validar juntos. En entornos legacy las aceleraciones IA son problemáticas — estimamos primero, validamos después.">
+    <div class="slide-content">
+      <span class="s-label">Inversión</span>
+      <h2 class="s-title">Célula de <span class="accent">Transformación Digital Agéntica</span></h2>
+      <p class="s-subtitle">Equipo dedicado con aceleración IA — 4 FTE &bull; $30,000 USD/mes</p>
+
+      <div class="card-grid-2">
+        <div>
+          <div class="card card-accent">
+            <h4>Composición del Equipo — 4 FTE</h4>
+            <table class="s-table" style="margin-top:.5rem;">
+              <thead><tr><th>Rol</th><th>Cantidad</th><th>Responsabilidad</th></tr></thead>
+              <tbody>
+                <tr><td class="hl">Tech Lead</td><td>1</td><td>Arquitectura, decisiones técnicas, code review</td></tr>
+                <tr><td class="hl">Full Cycle Engineer</td><td>1</td><td>Desarrollo front + back + integraciones</td></tr>
+                <tr><td class="hl">QA</td><td>1</td><td>Automatización de pruebas, validación de BRs</td></tr>
+                <tr><td class="hl">Product Manager</td><td>1</td><td>Gestión de backlog, stakeholders (apalancado con IA)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card" style="border-top: 4px solid var(--sofka-info); margin-top:1rem;">
+            <h4>Modelo Comercial</h4>
+            <table class="s-table" style="margin-top:.5rem;">
+              <tbody>
+                <tr><td style="font-weight:700; width:40%;">Inversión mensual</td><td><span style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--sofka-orange);">$30,000 USD/mes</span></td></tr>
+                <tr><td style="font-weight:700;">Mes 1</td><td>Tiempo y Materiales (T&M) — incluye PoC</td></tr>
+                <tr><td style="font-weight:700;">Mes 2+</td><td>Fixed Price — tras validación PoC en ambientes cliente</td></tr>
+                <tr><td style="font-weight:700;">Duración estimada</td><td>~5 meses (20 semanas)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="s-blockquote">
+            <p><strong>Disclaimer:</strong> Las estimaciones de tiempo parten de supuestos y nociones iniciales. Una PoC entre las partes podría resolver las incertidumbres.</p>
+          </div>
+          <div class="s-blockquote">
+            <p><strong>Aceleración IA:</strong> Nuestro benchmark interno sugiere poder acelerar hasta un 50% con IA, pero elegimos validar juntos y compartir las eficiencias.</p>
+          </div>
+          <div class="s-blockquote">
+            <p><strong>Entornos Legacy:</strong> Las aceleraciones de IA son problemáticas en entornos legacy — estimamos primero, validamos después.</p>
+          </div>
+          <div class="s-blockquote">
+            <p><strong>Modelo T&M → Fixed:</strong> Sugerimos que el primer mes sea a Tiempo y Materiales, de forma que el resto del proyecto se pueda estimar como fixed price tras una PoC en ambientes del cliente.</p>
+          </div>
+
+          <div class="card card-warning" style="margin-top:1rem;">
+            <h4>Sin aceleración IA</h4>
+            <p>Si el cliente no está abierto a aceleración con IA, se requiere una célula convencional con más FTE, mayor duración y mayor inversión mensual.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 24: Riesgos y Mitigaciones ═══ -->
+  <div class="deck-slide theme-white" data-notes="4 riesgos clave, todos con mitigación documentada. R1 Visual Time es el más probable pero tiene ACL como fallback. R2 tasa 100× es el de mayor impacto pero la auto-detección lo resuelve. 5 prerrequisitos, 2 son P0 bloqueantes.">
+    <div class="slide-content">
+      <span class="s-label">Riesgos</span>
+      <h2 class="s-title">Riesgos y <span class="accent">Mitigaciones</span></h2>
+      <p class="s-subtitle">4 riesgos clave, todos con mitigación documentada + 5 prerrequisitos.</p>
+
+      <div class="card-grid-2">
+        <div class="risk-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4 style="margin:0;">R1 — Visual Time API sin contrato</h4>
+            <span class="sev-high">Prob: Alta</span>
+          </div>
+          <div class="mitigation"><strong>Mitigación:</strong> ACL + flag "pendiente_verificación". Diseño desacoplado permite continuar sin API.</div>
+        </div>
+        <div class="risk-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4 style="margin:0;">R2 — Formato tasa 100×</h4>
+            <span class="sev-critical">Impacto: Crítico</span>
+          </div>
+          <div class="mitigation"><strong>Mitigación:</strong> Auto-detección (>0.1 se divide entre 100) + registro para auditoría + alerta visual al operador.</div>
+        </div>
+        <div class="risk-card warning">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4 style="margin:0;">R3 — Datos militares sensibles</h4>
+            <span class="sev-high">Impacto: Alto</span>
+          </div>
+          <div class="mitigation"><strong>Mitigación:</strong> Clasificación con Min. Defensa. INFOBIP solo envía datos agregados, nunca detalle individual.</div>
+        </div>
+        <div class="risk-card warning">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4 style="margin:0;">R4 — Workers async EASYCORE</h4>
+            <span class="sev-medium">Prob: Baja-Media</span>
+          </div>
+          <div class="mitigation"><strong>Mitigación:</strong> Confirmar en Sprint 0. Fallback síncrono con paginación de 500 registros.</div>
+        </div>
+      </div>
+
+      <table class="s-table" style="margin-top:1rem;">
+        <thead><tr><th>Prioridad</th><th>Prerrequisito</th><th>Propietario</th><th>Plazo</th></tr></thead>
+        <tbody>
+          <tr><td><span class="sev-critical">P0</span></td><td>Formato canónico de tasa: decimal vs porcentual</td><td>ADS Negocio</td><td>Antes Sprint 1</td></tr>
+          <tr><td><span class="sev-critical">P0</span></td><td>Reglas de redondeo: banker's rounding + decimales por paso</td><td>ADS Finanzas</td><td>Antes Sprint 1</td></tr>
+          <tr><td><span class="sev-high">P1</span></td><td>Contrato/documentación API Visual Time</td><td>ADS + Proveedor VT</td><td>Antes Fase 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 24: KPIs de Éxito ═══ -->
+  <div class="deck-slide theme-white" data-notes="Criterios de éxito y KPIs medibles. Estos KPIs son los que validaríamos en la PoC del primer mes (T&M). Al demostrar precisión financiera y reducción de tiempo en ambientes reales, se genera la confianza para estimar el resto como fixed price. Recordar: $30K USD/mes, célula de 4 FTE con IA.">
+    <div class="slide-content">
+      <span class="s-label">Éxito</span>
+      <h2 class="s-title">Criterios de <span class="accent">Éxito</span></h2>
+      <p class="s-subtitle">KPIs medibles para validar el éxito del proyecto.</p>
+
+      <div class="card-grid-2">
+        <div>
+          <div class="card card-accent">
+            <h4>Precisión Financiera</h4>
+            <p><strong>KPI:</strong> 0 errores de cálculo en tasas y montos de devolución. Validación automática del factor 100×. Montos PDF = XLSX = Sistema.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Tiempo de Procesamiento</h4>
+            <p><strong>KPI:</strong> Reducción de 8-12h a menos de 30 min por corte. Carga masiva de 5,000 registros en menos de 5 min (asíncrona).</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Trazabilidad Completa</h4>
+            <p><strong>KPI:</strong> 100% de operaciones con audit trail: usuario, timestamp, parámetros, resultado. Cumplimiento Superintendencia.</p>
+          </div>
+        </div>
+        <div>
+          <div class="card card-accent">
+            <h4>Capacidad Operativa</h4>
+            <p><strong>KPI:</strong> Procesamiento de hasta 5,000 registros por carga. Soporte para 3-5 pólizas y 3-6 cortes anuales simultáneos.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Disponibilidad</h4>
+            <p><strong>KPI:</strong> 99.5% uptime en horario laboral. Batch nocturno operativo sin intervención manual. INFOBIP con delivery rate >95%.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Adopción</h4>
+            <p><strong>KPI:</strong> 4 roles RBAC operando en producción. 0 procesos manuales en Excel después del segundo corte con Vigía Barcos.</p>
+          </div>
+        </div>
+      </div>
+
+      <table class="s-table" style="margin-top:1rem;">
+        <thead><tr><th>Siguiente Acción</th><th>Responsable</th><th>Plazo</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;">Aprobar alcance y enfoque de 3 fases</td><td>Sponsor Ejecutivo ADS</td><td>Tras esta sesión</td></tr>
+          <tr><td>Resolver formato canónico de tasa + reglas redondeo</td><td>ADS Negocio + Finanzas</td><td>1 semana</td></tr>
+          <tr><td>Iniciar gestión contrato API Visual Time</td><td>ADS + Proveedor VT</td><td>2 semanas</td></tr>
+          <tr><td>Confirmar disponibilidad equipo Citytech + Sprint 0</td><td>ADS + Citytech</td><td>1 semana</td></tr>
+          <tr><td>Sesión validación con Ejecutivo de Fuerza (Armada)</td><td>Admin Min. Defensa</td><td>2 semanas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 25: CIERRE — Dark Authority ═══ -->
+  <div class="deck-slide theme-dark" data-notes="Slide final. Agradecer y abrir espacio para preguntas. CTA directo al equipo Sofka: Javier Montaño, Carlos Coca, Domenika Enríquez y Cristhian Jarrín. Recordar la propuesta: célula de 4 FTE a $30K USD/mes, primer mes T&M para PoC, luego fixed price. Paquete completo de 18 entregables disponible. Estamos listos para avanzar cuando ADS lo esté.">
+    <div class="slide-content" style="text-align:center;">
+      <span class="s-label">Siguiente Paso</span>
+      <h2 class="s-title" style="font-size:clamp(2rem, 5vw, 3.2rem); color:var(--sofka-white); margin-bottom:20px;">
+        Estamos listos para <span class="accent">avanzar</span>
+      </h2>
+      <p class="s-subtitle" style="max-width:650px; margin:0 auto 32px; color:rgba(255,255,255,.85);">
+        El paquete completo del discovery está disponible para su revisión.<br>
+        18 entregables, 62 reglas de negocio, 52 pantallas diseñadas.
+      </p>
+
+      <div class="hero-kpis" style="margin-bottom:2rem;">
+        <div class="hero-kpi"><div class="hero-kpi-value">18</div><div class="hero-kpi-label">Entregables</div></div>
+        <div class="hero-kpi"><div class="hero-kpi-value">62</div><div class="hero-kpi-label">Reglas de Negocio</div></div>
+        <div class="hero-kpi"><div class="hero-kpi-value">9</div><div class="hero-kpi-label">Sprints Planificados</div></div>
+        <div class="hero-kpi"><div class="hero-kpi-value">3</div><div class="hero-kpi-label">Integraciones</div></div>
+      </div>
+
+      <a href="mailto:javier.montano@sofka.com.co,carlos.coca@sofka.com.co,domenika.enriquez@sofka.us,cristhian.jarrin@sofka.com.co?subject=Vig%C3%ADa%20Barcos%20%E2%80%94%20Solicitud%20de%20Sesi%C3%B3n%20de%20Socializaci%C3%B3n&body=Estimados%20equipo%20Sofka%2C%0A%0ANos%20interesa%20conocer%20en%20detalle%20la%20propuesta%20de%20modernizaci%C3%B3n%20del%20Sistema%20Vig%C3%ADa%20Barcos%20presentada%20en%20el%20discovery.%0A%0AQuisi%C3%A9ramos%20agendar%20una%20sesi%C3%B3n%20de%20socializaci%C3%B3n%20para%3A%0A%0A%E2%80%A2%20Profundizar%20en%20los%20hallazgos%20t%C3%A9cnicos%20y%20funcionales%0A%E2%80%A2%20Explorar%20los%20escenarios%20de%20implementaci%C3%B3n%0A%E2%80%A2%20Definir%20los%20pr%C3%B3ximos%20pasos%20hacia%20una%20Prueba%20de%20Concepto%0A%0AQuedamos%20atentos%20para%20coordinar%20fecha%20y%20hora.%0A%0ACordialmente%2C" class="cta-btn">Agendar Sesi&oacute;n de Socializaci&oacute;n</a>
+
+      <p style="font-size:0.8rem; color:var(--sofka-gray-500); margin-top:3rem;">
+        Confidencial — Aseguradora del Sur &bull; Marzo 2026<br>
+        <span style="color:var(--sofka-orange); font-weight:700; font-family:var(--font-display); font-size:1.3rem; letter-spacing:-0.5px;">sofka_</span>
+        <br><span style="font-size:.7rem; letter-spacing:1px;">Discovery Framework v5.1</span>
+      </p>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- Speaker Notes Panel -->
+<div class="speaker-notes" id="speakerNotes">
+  <div class="speaker-notes-label">Notas del Presentador</div>
+  <div id="notesContent"></div>
+</div>
+
+<!-- Controls -->
+<nav class="deck-controls" id="deckControls">
+  <button class="deck-arrow" id="deckPrev" aria-label="Anterior" disabled>&larr;</button>
+  <span class="deck-counter" id="deckCounter">1 / 26</span>
+  <button class="deck-arrow" id="deckNext" aria-label="Siguiente">&rarr;</button>
+  <button class="deck-notes-toggle" id="notesToggle" aria-label="Toggle notas" title="Notas del presentador (N)">N</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT — Deck Engine
+     ═══════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  const slides = document.querySelectorAll('.deck-slide');
+  const total = slides.length;
+  const prevBtn = document.getElementById('deckPrev');
+  const nextBtn = document.getElementById('deckNext');
+  const counter = document.getElementById('deckCounter');
+  const progress = document.getElementById('deckProgress');
+  const notesPanel = document.getElementById('speakerNotes');
+  const notesContent = document.getElementById('notesContent');
+  const notesToggle = document.getElementById('notesToggle');
+
+  let current = 0;
+  let notesVisible = false;
+  let touchStartX = 0;
+
+  function go(index) {
+    if (index < 0 || index >= total) return;
+
+    // Exit current slide
+    slides[current].classList.remove('active');
+    if (index > current) {
+      slides[current].classList.add('exit-left');
+    }
+
+    current = index;
+
+    // Clean up all slides
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'exit-left');
+      if (i === current) s.classList.add('active');
+    });
+
+    // Update UI
+    counter.textContent = `${current + 1} / ${total}`;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+    progress.style.width = `${((current + 1) / total) * 100}%`;
+
+    // Update speaker notes
+    const notes = slides[current].getAttribute('data-notes') || 'Sin notas para esta slide.';
+    notesContent.textContent = notes;
+  }
+
+  prevBtn.addEventListener('click', () => go(current - 1));
+  nextBtn.addEventListener('click', () => go(current + 1));
+
+  // Toggle notes
+  function toggleNotes() {
+    notesVisible = !notesVisible;
+    notesPanel.classList.toggle('visible', notesVisible);
+    notesToggle.classList.toggle('active', notesVisible);
+  }
+  notesToggle.addEventListener('click', toggleNotes);
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown':
+        e.preventDefault(); go(current + 1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+        e.preventDefault(); go(current - 1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End': e.preventDefault(); go(total - 1); break;
+      case 'n': case 'N': e.preventDefault(); toggleNotes(); break;
+      case 'f': case 'F':
+        e.preventDefault();
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+        break;
+    }
+  });
+
+  // Touch / swipe
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) go(current + 1);
+      else go(current - 1);
+    }
+  }, { passive: true });
+
+  // Init
+  go(0);
+})();
+</script>
+
+</body>
+</html>

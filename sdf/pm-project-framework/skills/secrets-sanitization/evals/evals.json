@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Scan project files for exposed secrets.",
+    "assertions": [
+      "detects API keys and tokens",
+      "identifies passwords and credentials",
+      "finds connection strings",
+      "reports with file locations"
+    ]
+  },
+  {
+    "prompt": "Mask secrets in a deliverable before sharing.",
+    "assertions": [
+      "applies consistent masking pattern",
+      "preserves document readability",
+      "handles different secret types",
+      "maintains traceability"
+    ]
+  },
+  {
+    "prompt": "G0 security gate compliance check.",
+    "assertions": [
+      "runs full secrets scan",
+      "reports pass/fail status",
+      "identifies any new secrets since last scan",
+      "blocks pipeline if secrets found"
+    ]
+  },
+  {
+    "prompt": "Generate compliance report for security audit.",
+    "assertions": [
+      "documents scanning coverage",
+      "reports secrets found and remediated",
+      "tracks compliance trend",
+      "provides evidence for audit"
+    ]
+  }
+]

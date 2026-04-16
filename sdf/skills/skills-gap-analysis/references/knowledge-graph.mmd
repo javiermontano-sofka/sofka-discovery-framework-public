@@ -1,0 +1,52 @@
+%% Knowledge Graph — Skills Gap Analysis & Training Plan
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        CHARTER[project-charter<br/>Phase 0]
+        RESOURCE[resource-plan<br/>Phase 2]
+        ROSTER[team-roster<br/>Organizational]
+        TECHSTACK[technology-stack<br/>Architecture]
+    end
+
+    subgraph "Skills Gap Analysis (This Skill)"
+        INVENTORY[Skills Inventory<br/>Person x Skill x Level]
+        GAP[Gap Identification<br/>Required vs Actual]
+        SEVERITY[Gap Severity Rating<br/>Critical/High/Medium/Low]
+        PLAN[Closure Plan<br/>Train/Hire/Augment]
+    end
+
+    subgraph Downstream
+        TRAINING[training-plan<br/>L&D execution]
+        AUGMENT[staff-augmentation-plan<br/>External talent]
+        RISK[risk-register<br/>Key-person risks]
+        CAPACITY[capacity-planning<br/>Resource allocation]
+        STEERING[steering-review<br/>Go/No-Go G1.5]
+    end
+
+    subgraph Agents
+        RESOURCE_PLANNER[resource-planner<br/>L2 Specialist]
+        HR_LIAISON[hr-liaison<br/>L3 Support]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    CHARTER --> INVENTORY
+    RESOURCE --> INVENTORY
+    ROSTER --> INVENTORY
+    TECHSTACK --> GAP
+
+    INVENTORY --> GAP --> SEVERITY --> PLAN
+
+    PLAN --> TRAINING
+    PLAN --> AUGMENT
+    SEVERITY --> RISK
+    PLAN --> CAPACITY
+    PLAN --> STEERING
+
+    RESOURCE_PLANNER -.->|executes| INVENTORY
+    HR_LIAISON -.->|supports| PLAN
+    CONDUCTOR -.->|orchestrates| PLAN
+
+    style PLAN fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style RESOURCE_PLANNER fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

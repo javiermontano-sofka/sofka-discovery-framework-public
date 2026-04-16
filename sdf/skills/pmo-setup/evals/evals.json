@@ -1,0 +1,6 @@
+[
+  {"prompt":"Set up new PMO for organization with no governance, 15 concurrent projects.","assertions":["selects PMO model with justification","builds process framework","creates template library","defines PMO roles and responsibilities"]},
+  {"prompt":"Evolve supportive PMO to controlling PMO.","assertions":["identifies gaps between models","designs phased transition plan","addresses organizational resistance","defines new authority boundaries"]},
+  {"prompt":"PMO for 500-person IT department, 40 projects, $50M portfolio.","assertions":["scales PMO structure for enterprise","implements portfolio governance","designs multi-tier reporting","addresses cross-project resource management"]},
+  {"prompt":"Lightweight PMO for startup scaling from 3 to 15 projects.","assertions":["starts with minimal viable governance","prioritizes tools over heavy processes","plans scalable approach","avoids over-engineering"]}
+]

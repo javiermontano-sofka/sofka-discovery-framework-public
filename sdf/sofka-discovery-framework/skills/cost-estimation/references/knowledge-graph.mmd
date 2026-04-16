@@ -1,0 +1,91 @@
+%% Knowledge Graph: cost-estimation skill
+%% Accessibility: Directed graph showing skill inputs, core methods, outputs, standards, consumers, and agents
+
+graph LR
+    SKILL["cost-estimation<br/>Skill"]
+
+    %% INPUTS
+    IN_WBS["WBS / Scope<br/>Decomposition"]
+    IN_STACK["Technology<br/>Stack"]
+    IN_TEAM["Team<br/>Composition"]
+    IN_HISTORY["Historical<br/>Project Data"]
+
+    %% CORE METHODS
+    M_PERT["PERT<br/>Three-Point<br/>Estimation"]
+    M_MONTE["Monte Carlo<br/>Simulation"]
+    M_RCF["Reference-Class<br/>Forecasting"]
+    M_COCOMO["COCOMO II<br/>Parametric Model"]
+    M_FPA["Function Point<br/>Analysis"]
+    M_TCO["TCO Analysis<br/>Build vs Buy"]
+    M_RISK["Risk Contingency<br/>& Innovation 5%"]
+
+    %% OUTPUTS
+    OUT_FTE["FTE-Months<br/>& Magnitudes"]
+    OUT_DRIVERS["Cost Driver<br/>Taxonomy"]
+    OUT_TIMELINE["Risk-Adjusted<br/>Timeline Ranges"]
+    OUT_SCENARIOS["Magnitude<br/>Framing<br/>(NEVER prices)"]
+
+    %% STANDARDS
+    STD_PMBOK["PMI PMBOK 7th<br/>Cost Management"]
+    STD_COCOMO["Boehm<br/>COCOMO II"]
+    STD_FPA_STD["IFPUG<br/>Function Points"]
+
+    %% CONSUMERS
+    C_PRESALES["PreSales<br/>Architect"]
+    C_DELIVERY["Delivery<br/>Manager"]
+    C_EXECUTIVE["Executive<br/>Stakeholder"]
+
+    %% AGENTS
+    A_BUDGET["budget-modeler<br/>Agent"]
+    A_CALIB["estimation-calibrator<br/>Agent"]
+
+    %% EDGES: Inputs → Skill
+    IN_WBS -->|"scope & features"| SKILL
+    IN_STACK -->|"tech drivers"| SKILL
+    IN_TEAM -->|"roles & seniority"| SKILL
+    IN_HISTORY -->|"reference classes"| SKILL
+
+    %% EDGES: Skill → Methods
+    SKILL -->|"decomposes via"| M_PERT
+    SKILL -->|"simulates via"| M_MONTE
+    SKILL -->|"benchmarks via"| M_RCF
+    SKILL -->|"parameterizes via"| M_COCOMO
+    SKILL -->|"sizes via"| M_FPA
+    SKILL -->|"compares via"| M_TCO
+    SKILL -->|"adjusts via"| M_RISK
+
+    %% EDGES: Methods → Outputs
+    M_PERT -->|"produces ranges"| OUT_FTE
+    M_MONTE -->|"P50/P80/P95"| OUT_TIMELINE
+    M_RCF -->|"anchors magnitude"| OUT_SCENARIOS
+    M_COCOMO -->|"effort-person"| OUT_FTE
+    M_FPA -->|"function sizing"| OUT_FTE
+    M_TCO -->|"build vs buy drivers"| OUT_DRIVERS
+    M_RISK -->|"contingency buffer"| OUT_TIMELINE
+
+    %% EDGES: Standards → Methods
+    STD_PMBOK -.->|"governs"| M_PERT
+    STD_PMBOK -.->|"governs"| M_RISK
+    STD_COCOMO -.->|"defines"| M_COCOMO
+    STD_FPA_STD -.->|"defines"| M_FPA
+
+    %% EDGES: Outputs → Consumers
+    OUT_FTE -->|"magnitudes only"| C_PRESALES
+    OUT_DRIVERS -->|"driver taxonomy"| C_DELIVERY
+    OUT_TIMELINE -->|"risk-adjusted ranges"| C_EXECUTIVE
+    OUT_SCENARIOS -->|"investment framing"| C_EXECUTIVE
+
+    %% EDGES: Agents assist Skill
+    A_BUDGET -->|"models scenarios"| SKILL
+    A_CALIB -->|"calibrates estimates"| SKILL
+
+    %% STYLES
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef method fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#f5f5f5,stroke:#666,color:#333
+
+    class SKILL skill
+    class M_PERT,M_MONTE,M_RCF,M_COCOMO,M_FPA,M_TCO,M_RISK method
+    class OUT_FTE,OUT_DRIVERS,OUT_TIMELINE,OUT_SCENARIOS output
+    class STD_PMBOK,STD_COCOMO,STD_FPA_STD standard

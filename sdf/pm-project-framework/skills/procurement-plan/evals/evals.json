@@ -1,0 +1,6 @@
+[
+  {"prompt":"Procurement plan for project needing 3 vendor contracts.","assertions":["conducts make-vs-buy analysis per area","designs strategy with appropriate contract types","creates timeline aligned with project schedule","defines evaluation criteria per category"]},
+  {"prompt":"Build custom reporting module vs buy COTS solution?","assertions":["compares costs across 3-5 year horizon","assesses capability fit","evaluates time-to-delivery","analyzes long-term maintenance implications"]},
+  {"prompt":"RFP for cloud infrastructure vendor selection from 4 candidates.","assertions":["structures requirements specification","defines weighted evaluation criteria","specifies submission format","includes pricing model template"]},
+  {"prompt":"Uncertain scope: T&M or fixed-price contract?","assertions":["analyzes risk allocation per contract type","recommends based on scope certainty","considers hybrid approaches","defines protective clauses"]}
+]

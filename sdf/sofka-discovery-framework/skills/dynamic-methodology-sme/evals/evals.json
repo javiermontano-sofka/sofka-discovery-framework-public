@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Detect methodology needs for a vaguely described project.",
+    "assertions": [
+      "asks clarifying questions",
+      "identifies context signals",
+      "maps signals to methodology options",
+      "recommends with confidence level"
+    ]
+  },
+  {
+    "prompt": "Recommend methodology for a regulated healthcare project with agile team.",
+    "assertions": [
+      "recognizes regulatory constraints",
+      "evaluates agile compatibility",
+      "recommends appropriate hybrid",
+      "addresses compliance concerns"
+    ]
+  },
+  {
+    "prompt": "Advise on adapting Scrum for a 3-person team.",
+    "assertions": [
+      "identifies ceremonies to simplify",
+      "recommends role combinations",
+      "suggests artifact simplification",
+      "maintains Scrum values"
+    ]
+  },
+  {
+    "prompt": "Guide methodology transition mid-project.",
+    "assertions": [
+      "assesses transition risks",
+      "designs phased transition",
+      "manages team change impact",
+      "maintains delivery continuity"
+    ]
+  }
+]

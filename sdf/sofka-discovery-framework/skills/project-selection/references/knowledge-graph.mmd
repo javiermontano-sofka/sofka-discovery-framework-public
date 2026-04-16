@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Strategic Alignment<br/>Corporate Strategy] --> D
+        B[Financial Business Case<br/>NPV & ROI Data] --> D
+        C[Resource Plan<br/>Capacity Data] --> D
+    end
+
+    subgraph "Project Selection"
+        D[Criteria Definition<br/>& Weighting] --> E[Scoring &<br/>Ranking]
+        E --> F[Portfolio Balancing<br/>& Optimization]
+        F --> G[Selection Decision<br/>& Authorization]
+    end
+
+    subgraph Outputs
+        G --> H[Project Charter]
+        G --> I[Budget Baseline]
+        F --> J[Resource Optimization]
+        G --> K[Program Management]
+    end
+
+    subgraph Agents
+        L[Portfolio Analyst Agent] --> E
+        M[Investment Committee Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

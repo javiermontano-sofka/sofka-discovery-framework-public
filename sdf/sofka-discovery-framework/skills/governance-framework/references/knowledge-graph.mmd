@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[pmo-setup] --> F
+        B[pipeline-governance] --> F
+        C[compliance-tracking] --> F
+        D[funding-request] --> F
+    end
+
+    subgraph Process
+        F[governance-framework<br/>Define Decision Rights<br/>& Escalation Protocols]:::skill
+        F --> G[Establish Committees]
+        G --> H[Define Tolerances]
+        H --> I[Activate Monitoring]
+    end
+
+    subgraph Outputs
+        I --> J[change-control-board]
+        I --> K[issue-management]
+        I --> L[portfolio-dashboard]
+    end
+
+    subgraph Agents
+        M[governance-architect-agent]:::agent --> F
+        N[compliance-auditor-agent]:::agent --> I
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

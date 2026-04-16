@@ -1,0 +1,69 @@
+{
+  "skill_name": "seo-technical",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit technical SEO for a Next.js app. The robots.txt disallows /api/ but also /products/ accidentally. The product pages have no canonical tags.",
+      "expected_output": "Findings with severity and specific fixes for robots.txt and canonical",
+      "assertions": [
+        {"text": "Output identifies Disallow: /products/ as a P0 critical finding", "type": "contains"},
+        {"text": "Output explains that blocking /products/ prevents indexing of product pages", "type": "contains"},
+        {"text": "Output provides corrected robots.txt removing the products disallow", "type": "contains"},
+        {"text": "Output provides canonical tag implementation for product pages", "type": "contains"},
+        {"text": "Output contains evidence tags [HECHO] or [INFERENCIA]", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Implement Product structured data with AggregateRating for an e-commerce product page in Next.js 14 App Router.",
+      "expected_output": "JSON-LD component with Product + AggregateRating schema",
+      "assertions": [
+        {"text": "Output contains @context: https://schema.org", "type": "contains"},
+        {"text": "Output contains @type: Product", "type": "contains"},
+        {"text": "Output contains offers object with price and availability", "type": "contains"},
+        {"text": "Output contains aggregateRating with ratingValue and reviewCount", "type": "contains"},
+        {"text": "Output uses script type application/ld+json in JSX", "type": "contains"},
+        {"text": "Output does NOT render JSON-LD client-side only", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The site's LCP is 5.2s on mobile. The LCP element is a hero image loaded with <img src='/hero.jpg'>. What are all the steps to fix it to < 2.5s?",
+      "expected_output": "Ordered list of LCP optimizations with code and expected impact",
+      "assertions": [
+        {"text": "Output mentions preload with fetchPriority or priority prop", "type": "contains"},
+        {"text": "Output mentions converting to WebP or AVIF format", "type": "contains"},
+        {"text": "Output mentions CDN or edge delivery", "type": "contains"},
+        {"text": "Output mentions width and height attributes to prevent CLS", "type": "contains"},
+        {"text": "Output provides Next.js Image component with priority prop", "type": "contains"},
+        {"text": "Output orders fixes by expected impact", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Generate a complete sitemap.ts for a Next.js App Router site with static pages, 5000 blog posts, and 20000 products.",
+      "expected_output": "sitemap.ts with dynamic generation and proper priorities",
+      "assertions": [
+        {"text": "Output exports default async function returning MetadataRoute.Sitemap", "type": "contains"},
+        {"text": "Output fetches blog posts and products dynamically", "type": "contains"},
+        {"text": "Output sets different priority values for different page types", "type": "contains"},
+        {"text": "Output sets lastModified from actual data", "type": "contains"},
+        {"text": "Output includes homepage with priority 1.0", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Design Open Graph metadata for a blog post page in Next.js. The post has a custom OG image, publication date, and author.",
+      "expected_output": "generateMetadata function with full OG and Twitter card configuration",
+      "assertions": [
+        {"text": "Output contains openGraph.type: article", "type": "contains"},
+        {"text": "Output contains publishedTime from post data", "type": "contains"},
+        {"text": "Output contains openGraph.images with width 1200 and height 630", "type": "contains"},
+        {"text": "Output contains twitter.card: summary_large_image", "type": "contains"},
+        {"text": "Output contains alternates.canonical with the post URL", "type": "contains"},
+        {"text": "Output uses generateMetadata async function pattern", "type": "contains"}
+      ]
+    }
+  ]
+}

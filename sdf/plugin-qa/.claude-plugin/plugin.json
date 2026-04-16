@@ -1,0 +1,39 @@
+{
+  "name": "pqa",
+  "version": "3.0.0",
+  "description": "Plugin QA — Full plugin development lifecycle for Claude Code plugins. 4 agents, 20 skills, 31 commands, 9 scripts, 13 ontology files, 9 movements (IDEATE, PLAN, DESIGN, SPECIFY, BUILD, VALIDATE, AUDIT, REPORT, FIX). Session automation with hooks, living ontology, and the autoridad moral: the plugin that audits plugins passes its own standards.",
+  "author": {
+    "name": "Javier Montano (JM Labs)",
+    "url": "https://metodologia.info"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmontanomo/plugin-qa"
+  },
+  "bugs": {
+    "url": "https://github.com/jmontanomo/plugin-qa/issues"
+  },
+  "homepage": "https://metodologia.info/pqa",
+  "keywords": [
+    "qa",
+    "plugin-quality",
+    "validation",
+    "hooks",
+    "linting",
+    "security-scan",
+    "auto-fix",
+    "claude-code",
+    "plugin-builder",
+    "conformance",
+    "scorecard",
+    "audit",
+    "lifecycle",
+    "ideation",
+    "architecture",
+    "moat",
+    "scaffold",
+    "design",
+    "specification"
+  ]
+}

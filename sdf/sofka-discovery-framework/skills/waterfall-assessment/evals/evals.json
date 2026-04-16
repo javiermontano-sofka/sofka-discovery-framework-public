@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assess our waterfall process for a government defense contract. We have 5 phase gates but projects routinely start coding before the design gate is approved. Documentation is often completed retroactively.",
+    "assertions": [
+      "Must flag phase leakage as a critical compliance risk especially in a defense context",
+      "Must assess whether retroactive documentation undermines audit trail integrity",
+      "Must evaluate gate review rigor and whether gates are functioning as genuine decision points",
+      "Must recommend enforcement mechanisms to restore phase-gate discipline"
+    ]
+  },
+  {
+    "prompt": "Our waterfall project has experienced 47 change requests in the first 6 months against an original baseline of 200 requirements. Is this level of requirements volatility acceptable?",
+    "assertions": [
+      "Must calculate the requirements volatility index (approximately 23.5%)",
+      "Must assess whether this volatility level is appropriate for a waterfall project",
+      "Must analyze the timing distribution of changes across project phases",
+      "Must evaluate whether a different methodology might better suit the apparent requirements instability"
+    ]
+  },
+  {
+    "prompt": "Review our project documentation quality. We have all required documents but stakeholders complain they are too long, inconsistent with each other, and rarely consulted after creation.",
+    "assertions": [
+      "Must assess document fitness for purpose beyond mere existence",
+      "Must identify cross-document inconsistencies as a process quality issue",
+      "Must evaluate whether documents are maintained as living artifacts or created once and abandoned",
+      "Must recommend documentation right-sizing to improve utility without sacrificing rigor"
+    ]
+  },
+  {
+    "prompt": "Our waterfall projects take 40% longer than estimated. Phase transitions involve 2-3 weeks of waiting for approvals. How can we optimize without abandoning waterfall?",
+    "assertions": [
+      "Must identify approval wait times as a primary source of process waste",
+      "Must calculate cycle efficiency ratios to quantify value-adding vs waiting time",
+      "Must propose specific handoff and approval process improvements",
+      "Must maintain waterfall discipline while reducing unnecessary overhead"
+    ]
+  }
+]

@@ -1,0 +1,55 @@
+graph TD
+    A[Query Optimization] --> B[Slow Query Detection]
+    A --> C[EXPLAIN ANALYZE]
+    A --> D[Index Strategy]
+    A --> E[N+1 Elimination]
+    A --> F[Connection Pooling]
+
+    B --> B1[pg_stat_statements]
+    B --> B2[slow_query_log]
+    B --> B3[ORM query logging]
+    B1 --> B1a[total_exec_time]
+    B1 --> B1b[calls count]
+    B1 --> B1c[avg_ms]
+
+    C --> C1[Plan Nodes]
+    C --> C2[Key Signals]
+    C1 --> C1a[Seq Scan = bad on large table]
+    C1 --> C1b[Index Scan = good]
+    C1 --> C1c[Index Only Scan = best]
+    C2 --> C2a[actual vs estimated rows]
+    C2 --> C2b[Buffers read = disk I/O]
+    C2 --> C2c[Sort external merge = work_mem]
+
+    D --> D1[B-tree default]
+    D --> D2[GIN full-text/JSONB/array]
+    D --> D3[GiST ranges/geo]
+    D --> D4[BRIN sequential data]
+    D --> D5[Partial index subset]
+    D --> D6[Covering index INCLUDE]
+    D5 --> D5a[WHERE deleted_at IS NULL]
+    D6 --> D6a[avoid heap fetch]
+
+    D --> D7[Composite Index Order]
+    D7 --> D7a[Equality columns first]
+    D7 --> D7b[Range/sort columns last]
+
+    E --> E1[ORM Eager Loading]
+    E --> E2[DataLoader batching]
+    E --> E3[Query counter middleware]
+    E1 --> E1a[Prisma include]
+    E1 --> E1b[SELECT columns not star]
+
+    F --> F1[PgBouncer]
+    F --> F2[Transaction pooling mode]
+    F --> F3[Direct URL for migrations]
+    F1 --> F1a[Application → PgBouncer → Postgres]
+
+    A --> G[Statistics]
+    G --> G1[ANALYZE after bulk insert]
+    G --> G2[pg_stat_user_tables]
+    G --> G3[SET STATISTICS 200 for skewed]
+
+    style A fill:#FF7E08,color:#fff
+    style C fill:#FFD700,color:#000
+    style D fill:#FFD700,color:#000

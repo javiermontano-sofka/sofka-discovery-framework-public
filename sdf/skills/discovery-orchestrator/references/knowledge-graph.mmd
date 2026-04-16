@@ -1,0 +1,103 @@
+```mermaid
+graph TD
+    %% Core: El Orquestador
+    ORCH[discovery-orchestrator<br/>Punto de entrada único]
+    COND[Conductor<br/>Coordinador imparcial]
+    PANEL[Expert Panel<br/>7 especialistas]
+
+    %% Pipeline Phases
+    P0[Fase 0<br/>Stakeholder Mapping]
+    P1[Fase 1<br/>Análisis AS-IS]
+    P2[Fase 2<br/>Mapeo de Flujos]
+    P3[Fase 3<br/>Análisis de Escenarios]
+    P3B[Fase 3b<br/>Feasibility & Viability]
+    P4[Fase 4<br/>Solution Roadmap]
+    P4B[Fase 4b<br/>Commercial Model]
+    P5A[Fase 5a<br/>Especificación Funcional]
+    P5B[Fase 5b<br/>Executive Pitch]
+    P6[Fase 6<br/>Handover Operacional]
+
+    %% Quality Gates
+    G1[Gate 1<br/>Aprobación de Escenario]
+    G2[Gate 2<br/>Aprobación de Budget]
+    G3[Gate 3<br/>Aprobación Final]
+
+    %% Governance Cross-Cutting
+    GOV[pipeline-governance<br/>Gobernanza estructural]
+    RISK[risk-controlling-dynamics<br/>Control de riesgos]
+
+    %% Data Contracts
+    DC01[Contrato Datos<br/>P0 → P1]
+    DC12[Contrato Datos<br/>P1 → P2]
+    DC23[Contrato Datos<br/>P2 → P3]
+    DC34[Contrato Datos<br/>P3 → P4]
+    DC45[Contrato Datos<br/>P4 → P5]
+
+    %% Pipeline Variants
+    FULL[Variante: Full Pipeline<br/>4-6 semanas]
+    MINI[Variante: Minimal<br/>2-3 semanas]
+    QREF[Variante: Quick Reference<br/>1-2 semanas]
+
+    %% Engagement Modes
+    AUTO[Modo: piloto-auto<br/>Default inteligente]
+    DESA[Modo: desatendido<br/>Autonomía total]
+    PASO[Modo: paso-a-paso<br/>Control máximo]
+
+    %% Input Registry
+    INREG[Input Registry<br/>Registro vivo]
+    ALOG[Assumptions Log<br/>Supuestos documentados]
+
+    %% Core relationships
+    ORCH --> COND
+    ORCH --> PANEL
+    COND --> GOV
+    COND --> RISK
+
+    %% Phase sequence
+    ORCH --> P0
+    P0 --> DC01 --> P1
+    P1 --> DC12 --> P2
+    P2 --> DC23 --> P3
+    P3 --> G1 --> P3B
+    P3B --> DC34 --> P4
+    P4 --> P4B
+    P4B --> G2
+    G2 --> P5A
+    G2 --> P5B
+    P5A --> G3
+    P5B --> G3
+    G3 --> P6
+
+    %% Variants
+    ORCH --> FULL
+    ORCH --> MINI
+    ORCH --> QREF
+
+    %% Modes
+    ORCH --> AUTO
+    ORCH --> DESA
+    ORCH --> PASO
+
+    %% Input management
+    ORCH --> INREG
+    INREG --> ALOG
+
+    %% Governance active all phases
+    GOV -.->|activo en todas| P0
+    GOV -.->|activo en todas| P3
+    GOV -.->|activo en todas| P6
+    RISK -.->|activo en todas| G1
+    RISK -.->|activo en todas| G2
+    RISK -.->|activo en todas| G3
+
+    %% Classdefs
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef phase fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef gate fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+    classDef governance fill:#4A4A6A,stroke:#FFD700,color:#fff
+
+    class ORCH,COND,PANEL core
+    class P0,P1,P2,P3,P3B,P4,P4B,P5A,P5B,P6 phase
+    class G1,G2,G3 gate
+    class GOV,RISK,DC01,DC12,DC23,DC34,DC45,INREG,ALOG,FULL,MINI,QREF,AUTO,DESA,PASO governance
+```

@@ -1,0 +1,78 @@
+{
+  "skill_name": "responsive-design",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit the responsive design implementation and identify layout issues at mobile viewports",
+      "expected_output": "Findings with specific breakpoints, fixed pixel values, and CLS sources with remediation plan",
+      "assertions": [
+        {"text": "Output scans for fixed pixel widths using grep or codebase search", "type": "contains"},
+        {"text": "Output scans for hardcoded font sizes in px", "type": "contains"},
+        {"text": "Output checks for images without width/height attributes", "type": "contains"},
+        {"text": "Output tags findings with [HECHO] with file references", "type": "contains"},
+        {"text": "Output mentions viewport meta tag verification", "type": "contains"},
+        {"text": "Output mentions mobile-first vs desktop-first breakpoint approach", "type": "contains"},
+        {"text": "Output provides specific code fixes, not just descriptions", "type": "contains"},
+        {"text": "Output includes a testing strategy (Playwright or DevTools)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design a fluid typography system using clamp() for a 9-step type scale",
+      "expected_output": "Complete type scale with clamp() values, line heights, and measure settings",
+      "assertions": [
+        {"text": "Output uses clamp() syntax for all font sizes", "type": "contains"},
+        {"text": "Output provides at least 6 type steps", "type": "contains"},
+        {"text": "Output uses rem units (not px) for min/max clamp values", "type": "contains"},
+        {"text": "Output includes viewport-based preferred value (vw units)", "type": "contains"},
+        {"text": "Output provides line-height as unitless ratio", "type": "contains"},
+        {"text": "Output mentions ch units for max-width on prose", "type": "contains"},
+        {"text": "Output explains the fluid range (min viewport to max viewport)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Implement container queries to make the ProductCard component context-aware",
+      "expected_output": "Container query implementation with container-type, named containers, and component variants",
+      "assertions": [
+        {"text": "Output sets container-type on wrapper element", "type": "contains"},
+        {"text": "Output uses @container rule with condition", "type": "contains"},
+        {"text": "Output uses named container with container-name", "type": "contains"},
+        {"text": "Output mentions browser support (Chrome 105+, Firefox 110+, Safari 16+)", "type": "contains"},
+        {"text": "Output explains difference from viewport media queries", "type": "contains"},
+        {"text": "Output does NOT put container-type on the component itself", "type": "not_contains_pattern"},
+        {"text": "Output provides before/after code comparison", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Fix CLS of 0.28 caused by images and dynamic content on the homepage",
+      "expected_output": "Root cause analysis with specific elements causing CLS and code fixes for each",
+      "assertions": [
+        {"text": "Output mentions images without width/height as primary CLS source", "type": "contains"},
+        {"text": "Output provides aspect-ratio CSS or explicit dimensions solution", "type": "contains"},
+        {"text": "Output mentions font-display property for web font CLS", "type": "contains"},
+        {"text": "Output mentions reserving space for dynamic content (min-height)", "type": "contains"},
+        {"text": "Output mentions using transform instead of layout-affecting animations", "type": "contains"},
+        {"text": "Output provides WCAG/CWV threshold reference (0.1 for Good)", "type": "contains"},
+        {"text": "Output provides verification method (Lighthouse rerun)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Design responsive image strategy for a Next.js e-commerce site with 500+ product images",
+      "expected_output": "srcset/sizes strategy, LCP image optimization, Next.js Image component usage, and image build pipeline",
+      "assertions": [
+        {"text": "Output recommends Next.js Image component", "type": "contains"},
+        {"text": "Output explains srcset with w descriptors", "type": "contains"},
+        {"text": "Output explains sizes attribute with media conditions", "type": "contains"},
+        {"text": "Output identifies LCP image and marks it with priority/fetchpriority", "type": "contains"},
+        {"text": "Output warns against loading=lazy on LCP image", "type": "contains"},
+        {"text": "Output mentions WebP or AVIF format", "type": "contains"},
+        {"text": "Output mentions explicit width/height for CLS prevention", "type": "contains"},
+        {"text": "Output addresses image optimization build pipeline (sharp or similar)", "type": "contains"}
+      ]
+    }
+  ]
+}

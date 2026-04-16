@@ -1,0 +1,65 @@
+flowchart TD
+    %% Inputs
+    CD[Ceremony Design<br>Agendas y objetivos]
+    SR[Stakeholder Register<br>Participantes y dinamicas]
+    TC[Team Composition<br>Tamano y roles]
+    MF[Meeting Format<br>Virtual / Presencial / Hibrido]
+    FB[Feedback Historico<br>NCS de ceremonias previas]
+
+    %% Process
+    CF[Ceremony Facilitation<br>Skill]
+
+    %% Outputs
+    FG[Facilitation Guide<br>Paso a paso con tiempos]
+    ET[Engagement Techniques<br>Tecnicas seleccionadas]
+    AP[Anti-Pattern Alerts<br>Catalogo de respuestas]
+    CP[Conflict Protocol<br>De-escalacion]
+    FM[Feedback Mechanism<br>NCS + Action Tracking]
+
+    %% Downstream Skills
+    RE[Retrospective Engine]
+    CI[Continuous Improvement]
+    TP[Team Performance]
+    COM[Communication Plan]
+    CD2[Ceremony Design]
+
+    %% Agents
+    FA[Facilitator Agent]
+    TA[Team Coach Agent]
+
+    %% Input Flow
+    CD --> CF
+    SR --> CF
+    TC --> CF
+    MF --> CF
+    FB --> CF
+
+    %% Output Flow
+    CF --> FG
+    CF --> ET
+    CF --> AP
+    CF --> CP
+    CF --> FM
+
+    %% Downstream Flow
+    FG --> RE
+    FG --> TA
+    ET --> TP
+    FM --> CI
+    AP --> RE
+    CP --> COM
+    FM --> CD2
+
+    %% Agent Flow
+    FA --> CF
+    TA --> CF
+
+    %% Styles — APEX Branding
+    style CF fill:#2563EB,color:#fff
+    style FG fill:#F59E0B,color:#000
+    style ET fill:#F59E0B,color:#000
+    style AP fill:#F59E0B,color:#000
+    style CP fill:#F59E0B,color:#000
+    style FM fill:#F59E0B,color:#000
+    style FA fill:#0F172A,color:#fff
+    style TA fill:#0F172A,color:#fff

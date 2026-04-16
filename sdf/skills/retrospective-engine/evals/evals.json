@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Select format for fatigued team.",
+    "assertions": [
+      "identifies fatigue",
+      "selects fresh format",
+      "designs activities",
+      "avoids used formats"
+    ]
+  },
+  {
+    "prompt": "Generate 60-minute facilitation guide.",
+    "assertions": [
+      "structures activities",
+      "includes techniques",
+      "provides notes",
+      "plans extraction"
+    ]
+  },
+  {
+    "prompt": "Extract actions from 15 discussion items.",
+    "assertions": [
+      "prioritizes by impact",
+      "assigns owners",
+      "sets deadlines",
+      "limits WIP"
+    ]
+  },
+  {
+    "prompt": "30% action completion over 6 sprints.",
+    "assertions": [
+      "quantifies rate",
+      "investigates barriers",
+      "recommends changes",
+      "adjusts volume"
+    ]
+  }
+]

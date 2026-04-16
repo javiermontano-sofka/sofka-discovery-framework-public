@@ -1,0 +1,81 @@
+flowchart TD
+    subgraph Inputs["Entradas"]
+        A1[Discovery Deliverables]
+        A2[Session Changelog]
+        A3[Time Tracking Data]
+        A4[Stakeholder Feedback]
+        A5[Assumption Log]
+    end
+
+    subgraph Process["Discovery Retrospective"]
+        B1[Deliverable Inventory]
+        B2[Completeness Scoring]
+        B3[Timeline Analysis]
+        B4[Estimation Accuracy]
+        B5[Stakeholder Satisfaction]
+        B6[Assumption Validation]
+        B7[Pipeline Friction Analysis]
+        B8[Improvement Actions]
+        B9[Calibration Update]
+    end
+
+    subgraph Outputs["Salidas"]
+        C1[Retrospective Report]
+        C2[Quality Metrics Dashboard]
+        C3[Assumption Tracker]
+        C4[Improvement Backlog]
+        C5[Calibration Parameters]
+    end
+
+    subgraph Downstream["Downstream"]
+        D1[Next Discovery Cycle]
+        D2[Organizational Learning DB]
+        D3[Pipeline Optimization]
+    end
+
+    subgraph Agents["Agentes"]
+        E1[Retrospective Facilitator]
+        E2[Quality Analyst]
+    end
+
+    A1 --> B1
+    A2 --> B3
+    A3 --> B3
+    A4 --> B5
+    A5 --> B6
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 --> B7
+    B7 --> B8
+    B8 --> B9
+    B9 --> C1
+    B9 --> C2
+    B9 --> C3
+    B9 --> C4
+    B9 --> C5
+    C1 --> D2
+    C4 --> D3
+    C5 --> D1
+
+    E1 --> B5
+    E2 --> B2
+
+    style B1 fill:#2563EB,color:#fff
+    style B2 fill:#2563EB,color:#fff
+    style B3 fill:#2563EB,color:#fff
+    style B4 fill:#2563EB,color:#fff
+    style B5 fill:#2563EB,color:#fff
+    style B6 fill:#2563EB,color:#fff
+    style B7 fill:#2563EB,color:#fff
+    style B8 fill:#2563EB,color:#fff
+    style B9 fill:#2563EB,color:#fff
+    style C1 fill:#F59E0B,color:#000
+    style C2 fill:#F59E0B,color:#000
+    style C3 fill:#F59E0B,color:#000
+    style C4 fill:#F59E0B,color:#000
+    style C5 fill:#F59E0B,color:#000
+    style E1 fill:#0F172A,color:#fff
+    style E2 fill:#0F172A,color:#fff

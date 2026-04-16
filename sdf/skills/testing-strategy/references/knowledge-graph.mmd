@@ -1,0 +1,102 @@
+%% Knowledge Graph: Testing Strategy
+%% Autor: Javier Montaño | © Sofka Technologies
+%% Fecha: 13 de marzo de 2026
+%% Descripción: Grafo de conocimiento que conecta los conceptos fundamentales
+%% de estrategia de testing, sus relaciones y dependencias.
+
+graph TD
+    subgraph Estrategia["Estrategia de Testing"]
+        direction TB
+        TestStrategy["Testing Strategy<br/>Arquitectura de calidad"]
+        ShiftLeft["Shift-Left Testing<br/>Calidad temprana, costo 10-100x menor"]
+        TestPyramid["Test Pyramid<br/>Forma: pyramid, trophy, honeycomb"]
+    end
+
+    subgraph Niveles["Niveles de Testing"]
+        direction TB
+        UnitTest["Unit Tests<br/>Rápidos, aislados, 70% ratio"]
+        IntegrationTest["Integration Tests<br/>Boundaries, DB, APIs, 20% ratio"]
+        E2ETest["E2E Tests<br/>Journeys completos, 10% ratio"]
+        ContractTest["Contract Tests<br/>Consumer-driven, O(N+M)"]
+    end
+
+    subgraph Metodologías["Metodologías"]
+        direction TB
+        TDD["TDD<br/>Red-Green-Refactor"]
+        BDD["BDD<br/>Given-When-Then, Gherkin"]
+        PropertyBased["Property-Based Testing<br/>Propiedades universales, shrinking"]
+        MutationTest["Mutation Testing<br/>Calidad del test suite >80%"]
+    end
+
+    subgraph Automatización["Automatización & CI"]
+        direction TB
+        TestAutomation["Test Automation<br/>Frameworks, POM, factories"]
+        CIIntegration["CI Integration<br/>Gates, triggers, paralelismo"]
+        TestImpact["Test Impact Analysis<br/>Cobertura selectiva, 40-70% ahorro"]
+        VisualRegression["Visual Regression<br/>Screenshots, diff pixel/perceptual"]
+    end
+
+    subgraph Datos["Gestión de Datos"]
+        direction TB
+        TestDataMgmt["Test Data Management<br/>Factories, aislamiento, compliance"]
+        SyntheticData["Datos Sintéticos<br/>Faker, generadores custom"]
+        DataAnonymization["Anonimización<br/>PII scrubbing, GDPR"]
+        Testcontainers["Testcontainers<br/>DB real en contenedor"]
+    end
+
+    subgraph Métricas["Métricas de Calidad"]
+        direction TB
+        Coverage["Coverage<br/>Line, branch, mutation trends"]
+        FlakyTests["Flaky Tests<br/>Quarantine, fix, delete policy"]
+        DefectEscape["Defect Escape Rate<br/>Prod vs. pre-prod"]
+        QualityGates["Quality Gates<br/>PR merge criteria"]
+    end
+
+    %% Relaciones principales
+    TestStrategy --> TestPyramid
+    TestStrategy --> ShiftLeft
+    TestPyramid --> UnitTest
+    TestPyramid --> IntegrationTest
+    TestPyramid --> E2ETest
+    TestPyramid --> ContractTest
+
+    ShiftLeft --> TDD
+    ShiftLeft --> BDD
+    ShiftLeft --> CIIntegration
+
+    TDD --> UnitTest
+    BDD --> IntegrationTest
+    BDD --> E2ETest
+
+    UnitTest --> TestAutomation
+    IntegrationTest --> TestAutomation
+    E2ETest --> TestAutomation
+    ContractTest --> TestAutomation
+
+    TestAutomation --> CIIntegration
+    CIIntegration --> TestImpact
+    CIIntegration --> QualityGates
+
+    PropertyBased --> UnitTest
+    MutationTest --> Coverage
+    VisualRegression --> E2ETest
+
+    TestDataMgmt --> SyntheticData
+    TestDataMgmt --> DataAnonymization
+    TestDataMgmt --> Testcontainers
+    IntegrationTest --> Testcontainers
+
+    Coverage --> QualityGates
+    FlakyTests --> QualityGates
+    DefectEscape --> QualityGates
+
+    %% Estilos Sofka
+    classDef primary fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef secondary fill:#1A1A2E,stroke:#FF7E08,color:#fff,stroke-width:1px
+    classDef accent fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:1px
+    classDef neutral fill:#F3F4F6,stroke:#D1D5DB,color:#1F2937,stroke-width:1px
+
+    class TestStrategy,TestPyramid,ShiftLeft primary
+    class UnitTest,IntegrationTest,E2ETest,ContractTest secondary
+    class TDD,BDD,PropertyBased,MutationTest accent
+    class TestAutomation,CIIntegration,TestImpact,VisualRegression,TestDataMgmt,SyntheticData,DataAnonymization,Testcontainers,Coverage,FlakyTests,DefectEscape,QualityGates neutral

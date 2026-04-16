@@ -1,0 +1,51 @@
+[
+  {
+    "prompt": "Create a full budget baseline for a 12-month enterprise platform migration project with a 20-person cross-functional team (8 developers, 4 QA, 2 architects, 2 PMs, 2 DevOps, 1 UX, 1 BA). Include cost structure, bottom-up estimates, contingency reserves, and monthly cash flow.",
+    "assertions": [
+      "produces a cost breakdown structure with categories for labor, infrastructure, licenses, travel, and contingency",
+      "maps cost accounts to WBS work packages with unique identifiers",
+      "calculates labor costs using role-specific fully-loaded rates for all 20 team members",
+      "itemizes non-labor costs including cloud infrastructure, software licenses, and tooling",
+      "calculates contingency reserve using at least one quantitative method (EMV, percentage, or Monte Carlo)",
+      "separates contingency reserve (identified risks) from management reserve (unknown unknowns)",
+      "produces a monthly cash flow projection across all 12 months",
+      "generates an S-curve showing cumulative planned expenditure over time"
+    ]
+  },
+  {
+    "prompt": "Build a budget baseline for a 10-month digital transformation project where 40% of the work is outsourced to external vendors (offshore development team, SaaS integrator, and UX agency). Internal team is 12 people.",
+    "assertions": [
+      "distinguishes internal labor costs from external vendor/outsourcing costs",
+      "applies different rate structures for internal FTEs vs external contractors",
+      "accounts for vendor payment terms and milestone-based billing",
+      "models the 60/40 internal-external cost split with separate budget lines",
+      "includes vendor management overhead in indirect cost calculations",
+      "addresses currency or rate differential risks for offshore resources",
+      "produces cash flow that reflects vendor invoice timing vs internal payroll cycles"
+    ]
+  },
+  {
+    "prompt": "Create a budget baseline for a 6-sprint agile product development project (12 weeks) where scope is variable and the team commits to a fixed capacity of 8 developers and 2 QA. Use capacity-based budgeting.",
+    "assertions": [
+      "adopts capacity-based budgeting rather than scope-based estimation",
+      "calculates budget based on team size and sprint duration rather than feature-level estimates",
+      "includes per-sprint cost breakdown showing fixed team cost per iteration",
+      "accounts for sprint ceremonies and non-delivery overhead in capacity calculations",
+      "addresses how scope variability affects budget utilization without changing the baseline",
+      "provides a mechanism for tracking budget consumption by epic or theme",
+      "includes guidance on when re-baselining is warranted in an agile context"
+    ]
+  },
+  {
+    "prompt": "The project scope has changed: a new regulatory compliance module has been added (+3 months duration, +5 FTEs for 4 months, +$200K in compliance tooling). Perform a budget re-baseline showing before/after comparison and the change control impact.",
+    "assertions": [
+      "documents the scope change with traceability to change request or CR number",
+      "produces a before vs after budget comparison at the summary and category level",
+      "calculates the incremental cost of the new module (labor + non-labor + overhead)",
+      "updates the contingency reserve to reflect new risk profile from added scope",
+      "revises the monthly cash flow projection to incorporate the extended timeline",
+      "updates the S-curve with the new baseline overlaid against the original",
+      "includes a re-baseline approval workflow or recommendation for change control board"
+    ]
+  }
+]

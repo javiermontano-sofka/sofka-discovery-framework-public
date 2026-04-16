@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Design Jira board for a Scrum team.",
+    "assertions": [
+      "creates appropriate columns",
+      "configures swimlanes",
+      "sets WIP limits",
+      "adds quick filters"
+    ]
+  },
+  {
+    "prompt": "Configure workflow for change requests.",
+    "assertions": [
+      "defines statuses and transitions",
+      "adds required fields per status",
+      "configures approval gates",
+      "sets automation triggers"
+    ]
+  },
+  {
+    "prompt": "Build automation rules for sprint management.",
+    "assertions": [
+      "automates sprint transitions",
+      "creates notification rules",
+      "handles story point rollover",
+      "generates sprint reports"
+    ]
+  },
+  {
+    "prompt": "Create reporting dashboard for PMO.",
+    "assertions": [
+      "designs JQL queries for key metrics",
+      "creates velocity chart",
+      "builds burndown visualization",
+      "adds cross-project comparisons"
+    ]
+  }
+]

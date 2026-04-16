@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[hybrid-assessment] --> F
+        B[methodology-assessment] --> F
+        C[ceremony-design] --> F
+        D[governance-framework] --> F
+    end
+
+    subgraph Process
+        F[hybrid-methodology<br/>Design & Configure<br/>Hybrid Approach]:::skill
+        F --> G[Select Lifecycle Pattern]
+        G --> H[Define Integration Points]
+        H --> I[Calibrate Governance]
+    end
+
+    subgraph Outputs
+        I --> J[methodology-playbook]
+        I --> K[ceremony-design]
+        I --> L[jira-configuration]
+    end
+
+    subgraph Agents
+        M[methodology-designer-agent]:::agent --> F
+        N[process-coach-agent]:::agent --> H
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

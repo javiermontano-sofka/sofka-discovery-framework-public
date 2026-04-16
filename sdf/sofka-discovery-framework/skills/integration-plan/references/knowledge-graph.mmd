@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[dependency-mapping] --> F
+        B[devops-pm-alignment] --> F
+        C[cost-estimation] --> F
+        D[input-analysis] --> F
+    end
+
+    subgraph Process
+        F[integration-plan<br/>Define Integration<br/>Strategy & Sequence]:::skill
+        F --> G[Map Interfaces]
+        G --> H[Design Test Strategy]
+        H --> I[Plan Rollout Sequence]
+    end
+
+    subgraph Outputs
+        I --> J[jira-configuration]
+        I --> K[poc-lab]
+        I --> L[kickoff-package]
+    end
+
+    subgraph Agents
+        M[integration-architect-agent]:::agent --> F
+        N[test-strategy-agent]:::agent --> H
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

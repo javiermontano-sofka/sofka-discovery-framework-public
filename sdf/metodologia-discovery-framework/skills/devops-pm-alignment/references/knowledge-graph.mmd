@@ -1,0 +1,81 @@
+flowchart TD
+    subgraph Inputs["Entradas"]
+        A1[CI/CD Pipeline Architecture]
+        A2[PM Process & Ceremonies]
+        A3[DORA Metrics Baseline]
+        A4[PM KPIs Current]
+    end
+
+    subgraph Process["DevOps-PM Alignment"]
+        B1[Current State Mapping]
+        B2[Integration Point ID]
+        B3[Metric Alignment]
+        B4[Ceremony Integration]
+        B5[Tooling Bridge Design]
+        B6[Change Control Mapping]
+        B7[Release-Milestone Binding]
+        B8[Operating Model Doc]
+    end
+
+    subgraph Outputs["Salidas"]
+        C1[Pipeline-Milestone Map]
+        C2[DORA-PM Correlation Matrix]
+        C3[Integrated Ceremony Calendar]
+        C4[Automated Reporting Config]
+        C5[Operating Model Document]
+        C6[Escalation Protocol]
+    end
+
+    subgraph Downstream["Downstream"]
+        D1[Dashboard Tooling]
+        D2[Status Reports]
+        D3[Steering Review]
+        D4[Retrospective]
+    end
+
+    subgraph Agents["Agentes"]
+        E1[DevOps Architect]
+        E2[PM Governance Lead]
+    end
+
+    A1 --> B1
+    A2 --> B1
+    A3 --> B3
+    A4 --> B3
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 --> B7
+    B7 --> B8
+    B8 --> C1
+    B8 --> C2
+    B8 --> C3
+    B8 --> C4
+    B8 --> C5
+    B8 --> C6
+    C1 --> D1
+    C2 --> D2
+    C4 --> D3
+    C5 --> D4
+
+    E1 --> B5
+    E2 --> B6
+
+    style B1 fill:#2563EB,color:#fff
+    style B2 fill:#2563EB,color:#fff
+    style B3 fill:#2563EB,color:#fff
+    style B4 fill:#2563EB,color:#fff
+    style B5 fill:#2563EB,color:#fff
+    style B6 fill:#2563EB,color:#fff
+    style B7 fill:#2563EB,color:#fff
+    style B8 fill:#2563EB,color:#fff
+    style C1 fill:#F59E0B,color:#000
+    style C2 fill:#F59E0B,color:#000
+    style C3 fill:#F59E0B,color:#000
+    style C4 fill:#F59E0B,color:#000
+    style C5 fill:#F59E0B,color:#000
+    style C6 fill:#F59E0B,color:#000
+    style E1 fill:#0F172A,color:#fff
+    style E2 fill:#0F172A,color:#fff

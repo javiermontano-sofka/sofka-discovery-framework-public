@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ux Design Discovery — MAO · MetodologIA</title>
+<style>
+:root {
+  --mao-indigo: #6366F1;
+  --mao-indigo-light: #818CF8;
+  --mao-dark: #0F172A;
+  --mao-surface: #1E293B;
+  --mao-card: #334155;
+  --mao-text: #E2E8F0;
+  --mao-text-muted: #94A3B8;
+  --mao-accent: #A78BFA;
+  --mao-success: #22D3EE;
+  --mao-warning: #FBBF24;
+  --mao-font: 'Inter', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--mao-font); background: var(--mao-dark); color: var(--mao-text); line-height: 1.6; }
+.hero { background: linear-gradient(135deg, var(--mao-dark) 0%, var(--mao-surface) 100%); border-left: 6px solid var(--mao-indigo); padding: 2.5rem; margin-bottom: 2rem; }
+.hero h1 { font-size: 1.8rem; font-weight: 700; color: var(--mao-indigo-light); margin-bottom: 0.5rem; }
+.hero p { color: var(--mao-text-muted); font-size: 0.95rem; }
+.badge { display: inline-block; background: var(--mao-indigo); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-right: 0.5rem; }
+.container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+section { background: var(--mao-surface); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+section h2 { color: var(--mao-indigo-light); font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--mao-card); padding-bottom: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+th { background: var(--mao-card); color: var(--mao-indigo-light); text-align: left; padding: 0.6rem; font-size: 0.85rem; }
+td { padding: 0.6rem; border-bottom: 1px solid var(--mao-card); font-size: 0.85rem; }
+.ok { color: var(--mao-success); font-weight: 600; }
+.warn { color: var(--mao-warning); font-weight: 600; }
+ul { padding-left: 1.5rem; }
+li { margin-bottom: 0.4rem; font-size: 0.9rem; }
+.footer { text-align: center; padding: 2rem; color: var(--mao-text-muted); font-size: 0.8rem; border-top: 1px solid var(--mao-card); margin-top: 2rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <span class="badge">MAO</span> <span class="badge">MIT</span>
+    <h1>Ux Design Discovery</h1>
+    <p>></p>
+  </div>
+  <section>
+    <h2>TL;DR</h2>
+    <ul>
+      <li>Analisis completo de <strong>Ux Design Discovery</strong> para el proyecto Acme Corp</li>
+      <li>Se identificaron 8 hallazgos clave con priorizacion</li>
+      <li>3 recomendaciones inmediatas, 5 a mediano plazo</li>
+      <li>Nivel de madurez actual: <span class="warn">Intermedio</span></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Hallazgos Principales</h2>
+    <table>
+      <thead><tr><th>#</th><th>Hallazgo</th><th>Impacto</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Arquitectura actual cumple requisitos base</td><td>Alto</td><td class="ok">Validado</td></tr>
+        <tr><td>2</td><td>Gaps en documentacion tecnica</td><td>Medio</td><td class="warn">Pendiente</td></tr>
+        <tr><td>3</td><td>Oportunidades de optimizacion identificadas</td><td>Alto</td><td class="ok">Priorizado</td></tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2>Recomendaciones</h2>
+    <table>
+      <thead><tr><th>Prioridad</th><th>Accion</th><th>Esfuerzo</th><th>Horizonte</th></tr></thead>
+      <tbody>
+        <tr><td>P1</td><td>Implementar quick-wins identificados</td><td>S</td><td>Sprint 1-2</td></tr>
+        <tr><td>P2</td><td>Roadmap de mejora estructural</td><td>M</td><td>Q2</td></tr>
+        <tr><td>P3</td><td>Transformacion a largo plazo</td><td>L</td><td>Q3-Q4</td></tr>
+      </tbody>
+    </table>
+  </section>
+  <div class="footer">
+    MAO · MetodologIA de Aprovechamiento de Oportunidades · MIT License<br>
+    <em>Metodo + TecnologIA = Soberania. Para el profesional en la era de la IA.</em>
+  </div>
+</div>
+</body>
+</html>

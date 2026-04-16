@@ -1,0 +1,79 @@
+graph TB
+    subgraph Phases["SAP Activate Phases"]
+        D[Discover<br/>2-8 weeks]
+        P[Prepare<br/>4-8 weeks]
+        E[Explore<br/>6-16 weeks]
+        R[Realize<br/>8-20 weeks]
+        Dp[Deploy<br/>2-6 weeks]
+        Ru[Run<br/>Ongoing]
+    end
+
+    subgraph Gates["Quality Gates"]
+        GD[QG-D<br/>Business Case]
+        GP[QG-P<br/>Team Ready]
+        GE[QG-E<br/>Design Freeze]
+        GR[QG-R<br/>UAT Passed]
+        GG[QG-Go<br/>Go-Live Ready]
+    end
+
+    subgraph Accelerators["SAP Accelerators"]
+        A1[Best Practices Explorer]
+        A2[SAP Signavio]
+        A3[SAP Cloud ALM]
+        A4[Migration Cockpit]
+        A5[SAP Enable Now]
+        A6[SAP Model Company]
+    end
+
+    subgraph Skills["SDF SAP Skills"]
+        S1[sofka-sap-discovery]
+        S2[sofka-sap-fit-to-standard]
+        S3[sofka-sap-gap-analysis]
+        S4[sofka-sap-solution-design]
+        S5[sofka-sap-data-migration]
+        S6[sofka-sap-integration]
+        S7[sofka-sap-testing-validation]
+        S8[sofka-sap-change-adoption]
+    end
+
+    D --> GD --> P --> GP --> E --> GE --> R --> GR --> Dp --> GG --> Ru
+
+    A6 --> D
+    A2 --> D
+    A2 --> E
+    A1 --> P
+    A1 --> E
+    A3 --> P
+    A3 --> E
+    A3 --> R
+    A3 --> Dp
+    A4 --> R
+    A4 --> Dp
+    A5 --> R
+    A5 --> Dp
+    A5 --> Ru
+
+    S1 --> D
+    S2 --> E
+    S3 --> E
+    S4 --> P
+    S4 --> E
+    S5 --> R
+    S5 --> Dp
+    S6 --> R
+    S7 --> R
+    S7 --> Dp
+    S8 --> E
+    S8 --> R
+    S8 --> Dp
+    S8 --> Ru
+
+    classDef phase fill:#FF7E08,color:white,stroke:#1A1A2E
+    classDef gate fill:#1A1A2E,color:white,stroke:#FF7E08
+    classDef accel fill:#FFD700,color:#1A1A2E,stroke:#FF7E08
+    classDef skill fill:#EFEAE4,color:#1A1A2E,stroke:#FF7E08
+
+    class D,P,E,R,Dp,Ru phase
+    class GD,GP,GE,GR,GG gate
+    class A1,A2,A3,A4,A5,A6 accel
+    class S1,S2,S3,S4,S5,S6,S7,S8 skill

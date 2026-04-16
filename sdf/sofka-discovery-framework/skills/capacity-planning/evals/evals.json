@@ -1,0 +1,63 @@
+[
+  {
+    "id": "capacity-plan-concurrent-projects",
+    "title": "Capacity plan for 3 concurrent projects sharing a 20-person team",
+    "description": "A 20-person cross-functional team (6 backend, 5 frontend, 4 QA, 2 DevOps, 2 designers, 1 architect) must deliver 3 concurrent projects over the next 2 quarters. Project Alpha requires 60% backend-heavy effort with a hard go-live in 8 weeks. Project Beta is frontend-heavy at 50% with a soft deadline in 12 weeks. Project Gamma is a greenfield initiative requiring all skill types equally over 16 weeks. The team currently operates at 82% average utilization. Produce a capacity plan that allocates resources across all three projects, identifies skill-type bottlenecks, and recommends adjustments to prevent over-allocation.",
+    "expected_behaviors": [
+      "Demand forecast disaggregated by skill type (backend, frontend, QA, DevOps, design) per project per sprint",
+      "Supply model reflecting 20 team members with role-specific net availability after overhead",
+      "Identification of backend bottleneck during Alpha's peak weeks overlapping with Gamma ramp-up",
+      "Gap analysis showing frontend surplus during Alpha-heavy sprints and deficit during Beta peak",
+      "Utilization projections per person staying within 70-85% sustainable pace zone",
+      "Recommendations for staggering project phases or temporarily shifting resources between projects",
+      "Risk flags for the architect as single point of failure across all three projects"
+    ],
+    "agents_under_test": ["demand-forecaster", "supply-modeler", "gap-reconciler", "utilization-optimizer"]
+  },
+  {
+    "id": "capacity-gap-key-resignations",
+    "title": "Capacity gap when 2 key developers resign mid-project",
+    "description": "A delivery team of 12 is 60% through a critical migration project with a contractual go-live date in 10 weeks. The lead backend architect (sole owner of the legacy integration layer) and a senior full-stack developer (leading the new API design) both submit resignations with 2-week notice periods. The remaining team has partial knowledge of their domains but no one can independently own either workstream. Current velocity is 42 story points per sprint; the remaining backlog is 210 points. Assess the capacity impact, model recovery scenarios, and recommend a remediation plan.",
+    "expected_behaviors": [
+      "Supply model updated to reflect loss of 2 key resources with knowledge concentration risk",
+      "Velocity impact analysis projecting drop from 42 to approximately 28-32 points per sprint",
+      "Gap analysis showing the 210-point backlog is undeliverable in 10 weeks with reduced capacity",
+      "Knowledge transfer plan maximizing the 2-week notice period for critical domain handoff",
+      "Remediation options scored: emergency contractor hire, scope negotiation, deadline extension, team overtime (flagged as unsustainable)",
+      "Utilization optimizer flagging remaining team members at risk of exceeding 90% if absorbing extra load",
+      "Recommendation for composite approach: partial scope deferral + 1 contractor + structured knowledge transfer"
+    ],
+    "agents_under_test": ["supply-modeler", "gap-reconciler", "utilization-optimizer"]
+  },
+  {
+    "id": "seasonal-capacity-december-pto",
+    "title": "Seasonal capacity adjustment for a team with 30% PTO in December",
+    "description": "A 15-person product development team has a release scheduled for January 15. Historical data shows that December averages 30% PTO across the team, with the last two weeks of December seeing only 40% of normal staffing. Three team members have already requested the entire last two weeks off; two more plan a full week each. The current sprint velocity is 35 points, and 85 points of work remain including 25 points of critical-path items that must be completed before the holiday period to avoid blocking the January release. Model the seasonal capacity reduction and recommend a plan to protect the January release date.",
+    "expected_behaviors": [
+      "Supply model with weekly granularity showing December capacity declining from ~12 effective FTEs to ~6 FTEs in the last two weeks",
+      "Demand forecast front-loading critical-path items into early December sprints",
+      "Gap analysis identifying that 85 points at reduced velocity (~20 points/sprint in December) requires 4+ sprints but only 2 remain",
+      "Recommendation to pull critical-path work (25 points) into November's last sprint or first December sprint",
+      "Utilization optimizer ensuring early-December sprints don't push available staff above 90%",
+      "Contingency plan for January first week with skeleton crew handling any December carryover",
+      "Risk flag for integration testing dependencies that require multiple team members simultaneously"
+    ],
+    "agents_under_test": ["demand-forecaster", "supply-modeler", "gap-reconciler", "utilization-optimizer"]
+  },
+  {
+    "id": "safe-program-capacity-planning",
+    "title": "Capacity planning for a SAFe program with 5 teams across 4 PIs",
+    "description": "A SAFe program consists of 5 Agile Release Trains (ARTs) with teams of 8-10 members each (total 45 people). The program is planning across 4 Program Increments (PIs), each 10 weeks (5 sprints of 2 weeks). PI-1 features are committed; PI-2 features are planned with 80% confidence; PI-3 and PI-4 are roadmap items at 50% and 30% confidence respectively. Two teams share a common platform dependency. One team has 3 members rolling off after PI-2 due to contract end. The program targets an average load factor of 0.8 and innovation sprint allocation of 1 sprint per PI. Produce a program-level capacity plan across all 4 PIs with confidence-weighted demand and inter-team dependency management.",
+    "expected_behaviors": [
+      "Demand forecast with confidence weighting: PI-1 at 100%, PI-2 at 80%, PI-3 at 50%, PI-4 at 30%",
+      "Supply model for 45 people across 5 teams with load factor 0.8 and 1 innovation sprint reserved per PI",
+      "Effective capacity per PI calculated as: team_size * sprints_available * load_factor * velocity_factor",
+      "Identification of platform team as bottleneck due to 2-team dependency creating contention",
+      "Gap analysis for PI-3 onwards reflecting contract staff departure reducing one team from 10 to 7",
+      "Recommendation for PI planning to over-allocate PI-1/PI-2 capacity and create buffer for PI-3/PI-4 uncertainty",
+      "Cross-team utilization analysis ensuring no single team consistently above 85% while others sit below 70%",
+      "Program-level capacity roadmap visualization showing confidence bands widening across PIs"
+    ],
+    "agents_under_test": ["demand-forecaster", "supply-modeler", "gap-reconciler", "utilization-optimizer"]
+  }
+]

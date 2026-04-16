@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Architect — Prompt Library</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #6366F1;
+      --accent: #22D3EE;
+      --bg: #0F172A;
+      --card: #1E293B;
+      --card-hover: #263548;
+      --text: #F1F5F9;
+      --text-muted: #94A3B8;
+      --border: #334155;
+      --discovery: #6366F1;
+      --diagnosis: #F59E0B;
+      --design: #22D3EE;
+      --planning: #10B981;
+      --crosscutting: #EC4899;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 2.5rem 1.5rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; font-weight: 700; color: #fff;
+    }
+
+    .logo-text { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .controls {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+    }
+
+    .search-wrap {
+      position: relative; flex: 1; min-width: 240px;
+    }
+
+    .search-wrap svg {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      width: 18px; height: 18px; color: var(--text-muted); pointer-events: none;
+    }
+
+    #search {
+      width: 100%; padding: 0.7rem 0.75rem 0.7rem 2.5rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      color: var(--text); font-size: 0.95rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    #search:focus { border-color: var(--primary); }
+    #search::placeholder { color: var(--text-muted); }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .filter-btn {
+      padding: 0.45rem 1rem; border-radius: 20px; border: 1px solid var(--border);
+      background: transparent; color: var(--text-muted); font-size: 0.82rem;
+      cursor: pointer; transition: all 0.2s; font-family: inherit;
+    }
+    .filter-btn:hover { border-color: var(--text-muted); color: var(--text); }
+    .filter-btn.active { border-color: transparent; color: #fff; font-weight: 600; }
+    .filter-btn.active[data-filter="all"] { background: linear-gradient(135deg, var(--primary), var(--accent)); }
+    .filter-btn.active[data-filter="Discovery"] { background: var(--discovery); }
+    .filter-btn.active[data-filter="Diagnosis"] { background: var(--diagnosis); color: #0F172A; }
+    .filter-btn.active[data-filter="Design"] { background: var(--design); color: #0F172A; }
+    .filter-btn.active[data-filter="Planning"] { background: var(--planning); color: #0F172A; }
+    .filter-btn.active[data-filter="Cross-cutting"] { background: var(--crosscutting); }
+
+    .count { color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem 0; }
+
+    main {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 3rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px); box-shadow: var(--shadow);
+      border-color: var(--primary);
+    }
+    .card.hidden { display: none; }
+
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+
+    .skill-name { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+
+    .badge {
+      font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem;
+      border-radius: 12px; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge-Discovery { background: rgba(99,102,241,0.2); color: #818CF8; }
+    .badge-Diagnosis { background: rgba(245,158,11,0.2); color: #FBBF24; }
+    .badge-Design { background: rgba(34,211,238,0.2); color: #22D3EE; }
+    .badge-Planning { background: rgba(16,185,129,0.2); color: #34D399; }
+    .badge-Cross-cutting { background: rgba(236,72,153,0.2); color: #F472B6; }
+
+    .prompt-title { font-size: 0.95rem; font-weight: 600; line-height: 1.35; }
+
+    .prompt-text {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.82rem; line-height: 1.5; color: var(--text-muted);
+      background: rgba(0,0,0,0.25); border-radius: 8px; padding: 0.75rem;
+      white-space: pre-wrap; word-break: break-word; flex: 1;
+    }
+
+    .copy-btn {
+      align-self: flex-end; padding: 0.4rem 0.85rem;
+      background: transparent; border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-muted); font-size: 0.78rem; cursor: pointer;
+      font-family: inherit; display: flex; align-items: center; gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .copy-btn.copied { border-color: var(--planning); color: var(--planning); }
+
+    .copy-btn svg { width: 14px; height: 14px; }
+
+    .no-results {
+      grid-column: 1 / -1; text-align: center; padding: 3rem 1rem;
+      color: var(--text-muted); font-size: 1rem;
+    }
+    .no-results.hidden { display: none; }
+
+    footer {
+      text-align: center; padding: 2rem 1rem 2.5rem;
+      color: var(--text-muted); font-size: 0.8rem;
+      border-top: 1px solid var(--border); max-width: 1200px; margin: 0 auto;
+    }
+    footer span { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      header { padding: 1.5rem 1rem 1rem; }
+      main { padding: 0 1rem 2rem; grid-template-columns: 1fr; }
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-row">
+    <div class="logo-icon">SA</div>
+    <span class="logo-text">JM Labs</span>
+  </div>
+  <h1>Prompt Library</h1>
+  <p class="subtitle">Sovereign Architect — 40 curated prompts across 5 movements. Search, filter, copy.</p>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="Search prompts, skills, use cases..." autocomplete="off">
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Discovery">Discovery</button>
+      <button class="filter-btn" data-filter="Diagnosis">Diagnosis</button>
+      <button class="filter-btn" data-filter="Design">Design</button>
+      <button class="filter-btn" data-filter="Planning">Planning</button>
+      <button class="filter-btn" data-filter="Cross-cutting">Cross-cutting</button>
+    </div>
+  </div>
+  <p class="count" id="count">40 prompts</p>
+</header>
+
+<main id="grid"></main>
+
+<div class="no-results hidden" id="no-results">No prompts match your search.</div>
+
+<footer>
+  <strong>Sovereign Architect</strong> — Prompt Library<br>
+  <span>JM Labs</span> &middot; Built for autonomous architectural analysis
+</footer>
+
+<script>
+const PROMPTS = [
+  // ── Discovery ──
+  { skill: "repo-scanner", movement: "Discovery", title: "C4 Architecture Analysis", prompt: "Analyze the architecture of this repository using the C4 model. Identify system context, containers, components, and code-level structures. Output Mermaid diagrams for each level." },
+  { skill: "dependency-auditor", movement: "Discovery", title: "Dependency CVE Scan", prompt: "Scan all dependencies for known CVEs and version currency. Flag critical/high vulnerabilities, list outdated packages, and recommend upgrade paths with breaking-change warnings." },
+  { skill: "api-mapper", movement: "Discovery", title: "API Surface Mapping", prompt: "Map the full API surface — endpoints, HTTP methods, authentication mechanisms, rate limits, versioning strategy, and payload schemas. Output as a structured inventory." },
+  { skill: "complexity-profiler", movement: "Discovery", title: "Codebase Complexity Metrics", prompt: "Measure codebase complexity: cyclomatic complexity, cognitive complexity, afferent/efferent coupling, and instability per module. Highlight hotspots exceeding thresholds." },
+  { skill: "test-auditor", movement: "Discovery", title: "Test Coverage Audit", prompt: "Audit test coverage across the codebase. Find untested modules, dead tests, flaky tests, and coverage gaps in critical paths. Report coverage by layer (unit, integration, E2E)." },
+  { skill: "cicd-analyzer", movement: "Discovery", title: "CI/CD Pipeline Health", prompt: "Evaluate CI/CD pipeline health — average build time, failure rate, stage bottlenecks, deployment frequency, and lead time for changes. Benchmark against DORA metrics." },
+  { skill: "perf-profiler", movement: "Discovery", title: "Performance Profiling", prompt: "Profile application performance. Identify N+1 queries, slow endpoints (p95 > 500ms), memory leaks, connection pool exhaustion, and inefficient serialization. Rank by impact." },
+  { skill: "infra-mapper", movement: "Discovery", title: "Infrastructure Topology", prompt: "Map infrastructure topology — containers, services, networking, load balancers, databases, caches, message brokers, and IaC coverage. Output as a Mermaid deployment diagram." },
+
+  // ── Diagnosis ──
+  { skill: "incident-analyzer", movement: "Diagnosis", title: "Root Cause Analysis", prompt: "Identify root causes of recent production incidents. For each incident, trace the causal chain, classify as systemic or isolated, and recommend preventive controls." },
+  { skill: "risk-scorer", movement: "Diagnosis", title: "Risk Scoring Matrix", prompt: "Score all identified risks across four dimensions: security, performance, scalability, and maintainability. Use a 5-point severity scale with likelihood and impact ratings." },
+  { skill: "debt-classifier", movement: "Diagnosis", title: "Technical Debt Classification", prompt: "Classify technical debt by type (deliberate/inadvertent, reckless/prudent). Calculate interest rate for each item — how much slower does it make future changes? Prioritize by ROI of resolution." },
+  { skill: "smell-detector", movement: "Diagnosis", title: "Code Smell Detection", prompt: "Detect code smells and anti-patterns across the codebase: god classes, feature envy, shotgun surgery, primitive obsession, long parameter lists. Quantify each with affected file count." },
+  { skill: "observability-auditor", movement: "Diagnosis", title: "Observability Gap Analysis", prompt: "Analyze observability gaps — missing structured logs, absent custom metrics, incomplete distributed traces. Map coverage against critical user journeys and SLOs." },
+  { skill: "threat-modeler", movement: "Diagnosis", title: "STRIDE Threat Model", prompt: "Model security threats using STRIDE methodology. For each component, identify Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege vectors." },
+  { skill: "scalability-assessor", movement: "Diagnosis", title: "Scalability Limits Assessment", prompt: "Assess scalability limits — where will this system break first? Identify bottlenecks in compute, storage, network, and database layers. Model breaking points at 2x, 5x, and 10x current load." },
+  { skill: "maintainability-scorer", movement: "Diagnosis", title: "Maintainability Evaluation", prompt: "Evaluate maintainability per module: change risk score, test isolation, dependency depth, documentation coverage, and team knowledge distribution. Flag bus-factor-1 components." },
+
+  // ── Design ──
+  { skill: "target-architect", movement: "Design", title: "Microservices Migration Design", prompt: "Design the target architecture for migrating to microservices. Define service boundaries using DDD bounded contexts, data ownership, communication patterns (sync/async), and migration sequence." },
+  { skill: "adr-writer", movement: "Design", title: "ADR: REST vs GraphQL", prompt: "Write an Architecture Decision Record for choosing between REST and GraphQL. Include context, decision drivers, options considered, outcome, and consequences with trade-off analysis." },
+  { skill: "event-architect", movement: "Design", title: "Event-Driven CQRS Design", prompt: "Design an event-driven architecture with CQRS. Define aggregates, events, command handlers, projections, and event store. Address eventual consistency, idempotency, and event versioning." },
+  { skill: "auth-architect", movement: "Design", title: "Auth Architecture Design", prompt: "Design the authentication and authorization architecture. Cover identity provider selection, token strategy (JWT/opaque), RBAC/ABAC model, session management, and zero-trust boundaries." },
+  { skill: "cache-architect", movement: "Design", title: "Caching Strategy Design", prompt: "Design the caching strategy — define cache layers (L1 in-process, L2 distributed, CDN), invalidation patterns (TTL, event-based, write-through), and cache-aside vs read-through selection per use case." },
+  { skill: "deploy-architect", movement: "Design", title: "Deployment Strategy Design", prompt: "Design the deployment strategy: blue-green vs canary vs rolling. Define feature flag architecture, environment promotion flow, database migration approach, and rollback triggers." },
+  { skill: "observability-architect", movement: "Design", title: "Observability Architecture", prompt: "Design the observability architecture — structured logging standards, custom metrics taxonomy, distributed tracing propagation, dashboard hierarchy, and alert routing with escalation policies." },
+  { skill: "resilience-architect", movement: "Design", title: "Resilience Patterns Design", prompt: "Design resilience patterns for the system: circuit breakers with threshold tuning, retry policies with jitter, bulkhead isolation, timeout budgets, and graceful degradation strategies per service." },
+
+  // ── Planning ──
+  { skill: "roadmap-planner", movement: "Planning", title: "Phased Implementation Roadmap", prompt: "Create a phased implementation roadmap with dependency mapping. Define milestones, parallel workstreams, critical path, resource allocation per phase, and go/no-go criteria for each gate." },
+  { skill: "test-strategist", movement: "Planning", title: "Test Strategy Design", prompt: "Design the test strategy: define the test pyramid ratios, contract testing between services, E2E scenario coverage, performance test plans, and chaos engineering experiments." },
+  { skill: "cicd-planner", movement: "Planning", title: "CI/CD Pipeline Plan", prompt: "Plan the CI/CD pipeline end-to-end: source stages, build optimization, SAST/DAST gates, artifact promotion, environment provisioning, smoke tests, and production deployment with approval gates." },
+  { skill: "rollback-planner", movement: "Planning", title: "Rollback Strategy", prompt: "Generate the rollback strategy for each migration phase. Define rollback triggers, data reconciliation procedures, feature flag kill switches, communication templates, and maximum rollback time targets." },
+  { skill: "acceptance-writer", movement: "Planning", title: "Acceptance Criteria", prompt: "Write acceptance criteria for the authentication module using Given-When-Then format. Cover happy paths, error scenarios, edge cases, performance requirements, and security validations." },
+  { skill: "monitoring-planner", movement: "Planning", title: "Monitoring Setup Plan", prompt: "Plan the monitoring setup: define SLIs and SLOs per service, dashboard layout (golden signals), alert thresholds with severity levels, on-call rotation, and incident response runbooks." },
+  { skill: "dr-planner", movement: "Planning", title: "Disaster Recovery Plan", prompt: "Design the disaster recovery plan with explicit RPO and RTO targets per tier. Define backup strategies, cross-region failover procedures, data replication lag tolerance, and DR testing cadence." },
+  { skill: "perf-budget-planner", movement: "Planning", title: "Performance Budget", prompt: "Create the performance budget: Core Web Vitals targets (LCP, FID, CLS), API latency budgets (p50, p95, p99), bundle size limits, and database query time caps. Define measurement and enforcement." },
+
+  // ── Cross-cutting ──
+  { skill: "full-pipeline", movement: "Cross-cutting", title: "Full 5-Phase Analysis", prompt: "Run the full 5-phase Sovereign Architect analysis on this repository: Discovery, Diagnosis, Design, Planning, and Validation. Produce all deliverables with evidence tags and quality gates." },
+  { skill: "evidence-tagger", movement: "Cross-cutting", title: "Evidence Classification", prompt: "Classify all findings using evidence tags: [CODIGO] for code-verified facts, [CONFIG] for configuration evidence, [DOC] for documented claims, [INFERENCIA] for logical deductions, [SUPUESTO] for assumptions requiring validation." },
+  { skill: "diagram-generator", movement: "Cross-cutting", title: "Mermaid Diagram Generation", prompt: "Generate Mermaid diagrams for the system architecture: C4 context, container, component, sequence diagrams for critical flows, deployment topology, and entity-relationship models." },
+  { skill: "context-optimizer", movement: "Cross-cutting", title: "Context Window Optimization", prompt: "Optimize the context window for this analysis session. Prune irrelevant files, compress repeated patterns, apply lazy-loading for deep references, and calculate remaining token budget." },
+  { skill: "excellence-loop", movement: "Cross-cutting", title: "Excellence Loop Review", prompt: "Run the 10-point excellence loop on the latest deliverable: accuracy, completeness, evidence coverage, actionability, visual clarity, consistency, stakeholder alignment, risk disclosure, next steps, and format compliance." },
+  { skill: "maturity-benchmark", movement: "Cross-cutting", title: "Maturity Benchmarking", prompt: "Benchmark the system's maturity against industry frameworks: CMMI capability levels, DORA metrics (deployment frequency, lead time, MTTR, change failure rate), and test maturity model." },
+  { skill: "exec-summary", movement: "Cross-cutting", title: "Executive Summary", prompt: "Generate the executive findings summary (3 pages max). Include: strategic assessment, top 5 risks with mitigation status, recommended investment areas, quick wins, and decision points requiring stakeholder input." },
+  { skill: "handover-packager", movement: "Cross-cutting", title: "Handover Package", prompt: "Create the handover package for the delivery team: architecture overview, ADRs, risk register, implementation roadmap, acceptance criteria, environment setup guide, and open questions log." }
+];
+
+const grid = document.getElementById("grid");
+const searchInput = document.getElementById("search");
+const countEl = document.getElementById("count");
+const noResults = document.getElementById("no-results");
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+let activeFilter = "all";
+
+function renderCards() {
+  grid.innerHTML = "";
+  PROMPTS.forEach((p, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.movement = p.movement;
+    card.dataset.index = i;
+    card.innerHTML = `
+      <div class="card-head">
+        <span class="skill-name">${p.skill}</span>
+        <span class="badge badge-${p.movement.replace("-", "")}">${p.movement}</span>
+      </div>
+      <div class="prompt-title">${p.title}</div>
+      <div class="prompt-text">${p.prompt}</div>
+      <button class="copy-btn" data-index="${i}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy
+      </button>`;
+    grid.appendChild(card);
+  });
+}
+
+function applyFilters() {
+  const query = searchInput.value.toLowerCase().trim();
+  const cards = grid.querySelectorAll(".card");
+  let visible = 0;
+
+  cards.forEach(card => {
+    const i = parseInt(card.dataset.index);
+    const p = PROMPTS[i];
+    const matchesFilter = activeFilter === "all" || p.movement === activeFilter;
+    const matchesSearch = !query ||
+      p.skill.toLowerCase().includes(query) ||
+      p.movement.toLowerCase().includes(query) ||
+      p.title.toLowerCase().includes(query) ||
+      p.prompt.toLowerCase().includes(query);
+
+    if (matchesFilter && matchesSearch) {
+      card.classList.remove("hidden");
+      visible++;
+    } else {
+      card.classList.add("hidden");
+    }
+  });
+
+  countEl.textContent = `${visible} prompt${visible !== 1 ? "s" : ""}`;
+  noResults.classList.toggle("hidden", visible > 0);
+}
+
+function handleCopy(e) {
+  const btn = e.target.closest(".copy-btn");
+  if (!btn) return;
+  const i = parseInt(btn.dataset.index);
+  navigator.clipboard.writeText(PROMPTS[i].prompt).then(() => {
+    btn.classList.add("copied");
+    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Copied`;
+    setTimeout(() => {
+      btn.classList.remove("copied");
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy`;
+    }, 1500);
+  });
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    applyFilters();
+  });
+});
+
+searchInput.addEventListener("input", applyFilters);
+grid.addEventListener("click", handleCopy);
+
+renderCards();
+applyFilters();
+</script>
+</body>
+</html>

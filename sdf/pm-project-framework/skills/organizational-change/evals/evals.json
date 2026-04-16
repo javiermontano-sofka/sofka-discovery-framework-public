@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assess change readiness for a department of 50 people moving to a new ERP system.",
+    "assertions": [
+      "applies ADKAR assessment across the department",
+      "identifies readiness gaps per ADKAR dimension",
+      "segments audience by readiness level",
+      "recommends targeted interventions per segment"
+    ]
+  },
+  {
+    "prompt": "Map resistance for a process automation project that will eliminate 10 manual roles.",
+    "assertions": [
+      "identifies specific resistance sources and reasons",
+      "distinguishes rational concerns from emotional resistance",
+      "designs mitigation strategy per resistance type",
+      "addresses job security concerns transparently"
+    ]
+  },
+  {
+    "prompt": "Design change communication campaign for a 6-month digital transformation.",
+    "assertions": [
+      "creates phased communication plan aligned with project milestones",
+      "selects appropriate channels per audience",
+      "defines key messages for each phase",
+      "identifies change champions and spokespersons"
+    ]
+  },
+  {
+    "prompt": "Track adoption 3 months after new system go-live showing only 40% active usage.",
+    "assertions": [
+      "measures adoption against targets",
+      "investigates root causes for low adoption",
+      "recommends reinforcement actions",
+      "designs feedback mechanism to understand user barriers"
+    ]
+  }
+]

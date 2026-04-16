@@ -1,0 +1,58 @@
+[
+  {
+    "id": "waterfall-gov-compliance",
+    "title": "Design waterfall process for a government compliance project",
+    "prompt": "We need to deliver a tax reporting platform for a federal agency. The project must comply with FISMA and Section 508 accessibility standards. There are 6 stakeholder groups, a 14-month timeline, and a fixed-price contract. Design a complete waterfall phase-gate structure with entry/exit criteria for each gate that accounts for the regulatory compliance checkpoints.",
+    "expected_agent": "phase-gate-designer",
+    "expected_behavior": [
+      "Defines all 7 standard waterfall phases from initiation through close-out",
+      "Includes compliance-specific gates or checkpoints for FISMA and Section 508",
+      "Specifies measurable entry and exit criteria per gate",
+      "Accounts for fixed-price contract constraints in gate approvals",
+      "Produces a lifecycle diagram and gate calendar",
+      "Assigns gate review roles with separation of duties"
+    ]
+  },
+  {
+    "id": "waterfall-requirements-baseline-200",
+    "title": "Establish requirements baseline for 200+ requirements",
+    "prompt": "Our ERP modernization project has collected 217 requirements from 4 business units. We need to organize them into a formal requirements baseline with full traceability before we can proceed to the design phase. Many requirements overlap or conflict across business units, and 38 are marked as non-functional. Build the requirements baseline including the traceability matrix structure and signoff process.",
+    "expected_agent": "requirements-baseline-builder",
+    "expected_behavior": [
+      "Classifies all requirements as functional, non-functional, constraint, or assumption",
+      "Detects and resolves overlapping or conflicting requirements across business units",
+      "Creates a traceability matrix linking requirements to source, design, and test",
+      "Defines the formal signoff protocol with designated approvers per business unit",
+      "Establishes the change control process for post-baseline modifications",
+      "Prioritizes using MoSCoW or equivalent method"
+    ]
+  },
+  {
+    "id": "waterfall-gate-review-partial-fail",
+    "title": "Gate review where 2 of 5 exit criteria are not met",
+    "prompt": "We are at the Gate 3 review (end of Design phase) for our banking platform migration. The 5 exit criteria are: (1) Architecture document approved, (2) Database schema reviewed, (3) API specifications complete, (4) Security threat model validated, (5) Performance benchmarks established. Criteria 4 and 5 are not met — the security review is pending external auditor availability and performance benchmarks were deprioritized. Conduct the gate review and provide your recommendation.",
+    "expected_agent": "stage-deliverable-validator",
+    "expected_behavior": [
+      "Scores each of the 5 exit criteria as met, partially met, or not met",
+      "Provides specific evidence references for met criteria",
+      "Assesses severity and downstream impact of the 2 unmet criteria",
+      "Does NOT recommend unconditional gate approval with unmet security criteria",
+      "Recommends conditional approval or rejection with remediation plan",
+      "Documents the gate decision with conditions and deadlines"
+    ]
+  },
+  {
+    "id": "waterfall-change-control-mid-design",
+    "title": "Change control for a scope addition mid-design phase",
+    "prompt": "We are midway through the Design phase of our supply chain management system. The VP of Operations has requested adding real-time IoT sensor integration for warehouse temperature monitoring — this was not in the approved requirements baseline. The addition would affect the architecture, add 3 new API endpoints, require a new vendor integration, and potentially extend the timeline by 6 weeks. Process this change request through formal change control.",
+    "expected_agent": "change-control-enforcer",
+    "expected_behavior": [
+      "Creates a formal change request with all required fields populated",
+      "Conducts impact analysis across scope, schedule, cost, risk, and resources",
+      "Quantifies the 6-week schedule impact and vendor integration risk",
+      "Classifies the change as major magnitude requiring full CCB review",
+      "Identifies all affected baseline documents that would need updating",
+      "Provides a clear CCB recommendation with conditions for approval"
+    ]
+  }
+]

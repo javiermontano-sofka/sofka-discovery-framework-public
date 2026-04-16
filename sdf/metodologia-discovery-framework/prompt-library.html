@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Prompts NL-HP — MAO Framework v1.0</title>
+  <meta name="description" content="Biblioteca de Prompts NL-HP v3.1: 49 especificaciones ejecutables con ROL, OBJETIVO, PROTOCOLO y parámetros. Zero-hallucination, dependency-aware, 100% preservada.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --metodologia-orange: #6366F1;
+      --metodologia-orange-light: #818CF8;
+      --metodologia-orange-dark: #4F46E5;
+      --metodologia-orange-dim: rgba(255,126,8,.10);
+      --metodologia-black: #000000;
+      --metodologia-white: #FFFFFF;
+      --metodologia-light: #0F172A;
+      --metodologia-dark: #B8A894;
+      --metodologia-positive: #22D3EE;
+      --metodologia-positive-dim: rgba(255,215,0,.12);
+      --metodologia-positive-border: rgba(255,215,0,.45);
+      --metodologia-positive-text: #06B6D4;
+      --metodologia-warning: #D97706;
+      --metodologia-warning-dim: rgba(217,119,6,.08);
+      --metodologia-warning-border: rgba(217,119,6,.3);
+      --metodologia-critical: #DC2626;
+      --metodologia-critical-dim: rgba(220,38,38,.07);
+      --metodologia-critical-border: rgba(220,38,38,.25);
+      --metodologia-info: #2563EB;
+      --metodologia-info-dim: rgba(37,99,235,.07);
+      --metodologia-info-border: rgba(37,99,235,.25);
+      --metodologia-green: #42D36F;
+      --metodologia-gray-50: #FAF8F6;
+      --metodologia-gray-100: #F4F0EC;
+      --metodologia-gray-200: #E4DED7;
+      --metodologia-gray-300: #D1C9BE;
+      --metodologia-gray-500: #6B6560;
+      --metodologia-gray-700: #333130;
+      --metodologia-gray-900: #111110;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font: 16px var(--font-body); color: var(--metodologia-gray-900); background: var(--metodologia-gray-50); }
+
+    .hero {
+      background: var(--metodologia-black);
+      color: var(--metodologia-white);
+      border-bottom: 8px solid var(--metodologia-orange);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .logo { font-weight: 700; font-size: 18px; margin-bottom: 30px; letter-spacing: -0.5px; }
+    .logo span { color: var(--metodologia-orange); }
+    .hero h1 { font-size: 44px; font-weight: 800; margin-bottom: 12px; letter-spacing: -1px; }
+    .hero p { font-size: 18px; color: var(--metodologia-light); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+    .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+    .badge { background: var(--metodologia-orange-dim); border: 1px solid var(--metodologia-orange); color: var(--metodologia-orange); padding: 6px 12px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
+    .kpi { background: rgba(255,126,8,.08); border-left: 3px solid var(--metodologia-orange); padding: 16px; border-radius: var(--radius-md); }
+    .kpi-number { font-size: 28px; font-weight: 800; color: var(--metodologia-orange); }
+    .kpi-label { font-size: 12px; color: var(--metodologia-light); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 6px; }
+
+    .nav-sticky { position: sticky; top: 0; background: var(--metodologia-white); border-bottom: 1px solid var(--metodologia-gray-200); padding: 16px 40px; z-index: 100; display: flex; gap: 40px; align-items: center; }
+    .nav-sticky a { color: var(--metodologia-gray-700); text-decoration: none; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; }
+    .nav-sticky a:hover { color: var(--metodologia-orange); }
+    .nav-sticky a.active { color: var(--metodologia-orange); border-bottom: 2px solid var(--metodologia-orange); padding-bottom: 14px; }
+    .nav-home { margin-right: auto; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 60px 40px; }
+    .section { margin-bottom: 80px; }
+
+    .section-header { display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start; }
+    .section-num { font-size: 48px; font-weight: 800; color: var(--metodologia-orange); line-height: 1; min-width: 60px; }
+    .section-title h2 { font-size: 32px; font-weight: 800; color: var(--metodologia-black); margin-bottom: 8px; }
+    .section-title p { font-size: 16px; color: var(--metodologia-gray-500); }
+
+    .callout { border-radius: var(--radius-md); padding: 20px; margin-bottom: 40px; border-left: 4px solid; }
+    .callout-info { background: var(--metodologia-info-dim); border-color: var(--metodologia-info); color: var(--metodologia-gray-900); }
+    .callout-info strong { color: var(--metodologia-info); }
+
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px; }
+    .guide-card { background: var(--metodologia-white); border: 1px solid var(--metodologia-gray-200); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-card); }
+    .guide-card h3 { font-size: 18px; font-weight: 700; color: var(--metodologia-black); margin-bottom: 12px; }
+    .guide-card p { font-size: 14px; color: var(--metodologia-gray-500); line-height: 1.6; }
+    .guide-card ul { font-size: 14px; color: var(--metodologia-gray-500); list-style: none; margin-top: 12px; }
+    .guide-card li { padding: 4px 0; padding-left: 20px; position: relative; }
+    .guide-card li:before { content: "→"; position: absolute; left: 0; color: var(--metodologia-orange); font-weight: 700; }
+
+    .diagram-box { background: var(--metodologia-gray-900); color: var(--metodologia-white); border-radius: var(--radius-lg); padding: 32px; margin: 40px 0; font-family: 'Courier New', monospace; font-size: 13px; overflow-x: auto; line-height: 1.8; }
+
+    .quick-ref-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; background: var(--metodologia-white); box-shadow: var(--shadow-card); border-radius: var(--radius-lg); overflow: hidden; }
+    .quick-ref-table thead { background: var(--metodologia-black); }
+    .quick-ref-table th { color: var(--metodologia-white); padding: 16px; text-align: left; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .quick-ref-table td { padding: 12px 16px; border-top: 1px solid var(--metodologia-gray-200); font-size: 14px; }
+    .quick-ref-table tr:hover { background: var(--metodologia-gray-50); }
+    .badge-time { display: inline-block; background: var(--metodologia-info-dim); color: var(--metodologia-info); padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .badge-complexity-baja { display: inline-block; background: rgba(66,211,111,.12); color: var(--metodologia-green); padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .badge-complexity-media { display: inline-block; background: var(--metodologia-warning-dim); color: var(--metodologia-warning); padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .badge-complexity-alta { display: inline-block; background: var(--metodologia-critical-dim); color: var(--metodologia-critical); padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .badge-complexity-experto { display: inline-block; background: var(--metodologia-critical-dim); color: var(--metodologia-critical); padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+
+    .prompt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; margin-bottom: 40px; }
+    .prompt-card { background: var(--metodologia-white); border: 1px solid var(--metodologia-gray-200); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); transition: all 0.3s ease; }
+    .prompt-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+    .prompt-header { background: var(--metodologia-gray-100); padding: 20px; border-bottom: 1px solid var(--metodologia-gray-200); }
+    .prompt-id { font-size: 12px; font-weight: 700; color: var(--metodologia-orange); text-transform: uppercase; letter-spacing: 0.5px; }
+    .prompt-title { font-size: 18px; font-weight: 700; color: var(--metodologia-black); margin: 8px 0; }
+    .prompt-alias { font-size: 13px; color: var(--metodologia-gray-500); font-style: italic; }
+
+    .prompt-meta { padding: 12px 20px; background: var(--metodologia-gray-50); display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; border-bottom: 1px solid var(--metodologia-gray-200); }
+    .prompt-meta-item { display: flex; align-items: center; gap: 6px; color: var(--metodologia-gray-700); }
+
+    .prompt-content { padding: 20px; font-size: 14px; color: var(--metodologia-gray-700); line-height: 1.6; max-height: 200px; overflow-y: auto; }
+    .prompt-full-code { padding: 12px 20px; background: var(--metodologia-gray-900); color: var(--metodologia-light); font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.5; max-height: 300px; overflow-y: auto; border-top: 1px solid var(--metodologia-gray-200); display: none; white-space: pre-wrap; word-wrap: break-word; }
+    .prompt-full-code.show { display: block; }
+
+    .prompt-footer { padding: 16px 20px; background: var(--metodologia-gray-50); border-top: 1px solid var(--metodologia-gray-200); display: flex; gap: 12px; }
+    .btn { padding: 8px 16px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn-copy { background: var(--metodologia-orange); color: var(--metodologia-white); flex: 1; }
+    .btn-copy:hover { background: var(--metodologia-orange-dark); }
+    .btn-toggle { background: transparent; color: var(--metodologia-orange); border: 1px solid var(--metodologia-orange); flex: 1; }
+    .btn-toggle:hover { background: var(--metodologia-orange-dim); }
+
+    .search-bar { background: var(--metodologia-white); padding: 20px 40px; border-bottom: 1px solid var(--metodologia-gray-200); }
+    .search-controls { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+    input[type="text"] { flex: 1; min-width: 250px; padding: 12px 16px; border: 1px solid var(--metodologia-gray-300); border-radius: var(--radius-md); font-size: 14px; font-family: var(--font-body); }
+    input[type="text"]:focus { outline: none; border-color: var(--metodologia-orange); box-shadow: 0 0 0 2px var(--metodologia-orange-dim); }
+    .filter-chip { padding: 8px 16px; background: var(--metodologia-white); border: 1px solid var(--metodologia-gray-300); border-radius: var(--radius-md); cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; }
+    .filter-chip.active { background: var(--metodologia-orange); color: var(--metodologia-white); border-color: var(--metodologia-orange); }
+
+    .footer { background: var(--metodologia-black); color: var(--metodologia-white); border-top: 8px solid var(--metodologia-orange); padding: 40px; text-align: center; }
+    .footer .logo { margin-bottom: 16px; }
+    .footer p { font-size: 13px; color: var(--metodologia-light); }
+
+    @media (max-width: 768px) {
+      .hero { padding: 40px 24px; }
+      .hero h1 { font-size: 32px; }
+      .section { padding: 0 24px; }
+      .prompt-grid { grid-template-columns: 1fr; }
+      .section-header { flex-direction: column; }
+      .search-controls { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo">metodologia<span>_</span></div>
+  <h1>Biblioteca de Prompts NL-HP</h1>
+  <p>Natural Language High-Performance prompts — 49 especificaciones ejecutables con <strong>ROL</strong>, <strong>OBJETIVO</strong>, <strong>PROTOCOLO</strong> y parámetros ajustables para MAO Framework v1.0</p>
+  <div class="hero-badges">
+    <span class="badge">v1.1</span>
+    <span class="badge">48 Prompts</span>
+    <span class="badge">7 Categorías</span>
+    <span class="badge">Zero-Hallucination</span>
+    <span class="badge">Dependency-Aware</span>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-number">8</div>
+      <div class="kpi-label">Flujos</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-number">17</div>
+      <div class="kpi-label">Entregables</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-number">7</div>
+      <div class="kpi-label">Assessments</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-number">13</div>
+      <div class="kpi-label">Operaciones</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-sticky">
+  <a href="landing.html" class="nav-home">← VOLVER A LANDING</a>
+  <a href="#guide">GUÍA</a>
+  <a href="#flujos">FLUJOS</a>
+  <a href="#entregables">ENTREGABLES</a>
+  <a href="#assessments">ASSESSMENTS</a>
+  <a href="#operaciones">OPERACIONES</a>
+  <a href="#ux">UX</a>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <div class="search-controls">
+    <input type="text" id="searchInput" placeholder="Buscar prompts por nombre, comando o contenido...">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <button class="filter-chip active" onclick="filterCategory('')">Todos</button>
+      <button class="filter-chip" onclick="filterCategory('flujos')">Flujos</button>
+      <button class="filter-chip" onclick="filterCategory('entregables')">Entregables</button>
+      <button class="filter-chip" onclick="filterCategory('assessments')">Assessments</button>
+      <button class="filter-chip" onclick="filterCategory('operaciones')">Operaciones</button>
+      <button class="filter-chip" onclick="filterCategory('ux')">UX</button>
+      <button class="filter-chip" onclick="filterCategory('meta')">Meta-Prompts</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- HOW TO USE SECTION -->
+  <div class="section" id="guide">
+    <div class="section-header">
+      <div class="section-num">0</div>
+      <div class="section-title">
+        <h2>Cómo Usar esta Biblioteca</h2>
+        <p>Guía rápida para aprovechar 100% la potencia de NL-HP</p>
+      </div>
+    </div>
+
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>Anatomía de un Prompt NL-HP</h3>
+        <p>Cada prompt sigue una estructura de 4 capas:</p>
+        <ul>
+          <li><strong>ROL:</strong> Quién ejecuta (e.g., "discovery-conductor")</li>
+          <li><strong>OBJETIVO:</strong> Qué se logra (e.g., "mapeo stakeholders completo")</li>
+          <li><strong>PROTOCOLO:</strong> Cómo proceder (e.g., "iteración de entrevistas")</li>
+          <li><strong>Parámetros:</strong> Controles ajustables ({MODO}, {FORMATO}, {PROFUNDIDAD})</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>Cadena de Dependencias</h3>
+        <p>Los prompts no son independientes — respetan una secuencia de delivery:</p>
+        <ul>
+          <li><strong>Prerequisitos:</strong> Cada card indica qué entregables debe leer primero</li>
+          <li><strong>Gates:</strong> 4 quality gates (G1, G1.5, G2, G3) bloquean progreso</li>
+          <li><strong>Outputs:</strong> Los archivos/artefactos generados se heredan al siguiente prompt</li>
+          <li><strong>Validación cruzada:</strong> Antes de cada gate se verifican inconsistencias</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>Parámetros & Personalización</h3>
+        <p>Adapta cada prompt a tu contexto sin alterar el core protocol:</p>
+        <ul>
+          <li><strong>{MODO}:</strong> piloto-auto, desatendido, supervisado, paso-a-paso</li>
+          <li><strong>{FORMATO}:</strong> markdown, html, docx, dual</li>
+          <li><strong>{VARIANTE}:</strong> ejecutiva (~40%) o técnica (full)</li>
+          <li><strong>{TIPO_SERVICIO}:</strong> enruta automáticamente agentes y skills</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <strong>Protocolo Zero-Hallucination:</strong> Cada afirmación en un entregable está etiquetada con su fuente: [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]. Si más del 30% de un entregable es [SUPUESTO], se emite un banner de advertencia automático.
+    </div>
+  </div>
+
+  <!-- DEPENDENCY DIAGRAM -->
+  <div class="diagram-box">
+00 Plan ──→ 01 Stakeholders ──→ 02 Brief ──→ 03 AS-IS ──→ 04 Flujos
+                                                              │
+                                                         ┌─ GATE 1 ─┐
+                                                         ↓           ↓
+                                                    05 Escenarios  05b Feasibility
+                                                         │           │  (7 Sabios)
+                                                    ┌─ GATE 1.5 ──┘
+                                                    ↓
+                                               06 Roadmap ──→ GATE 2
+                                                    ↓
+                                          07 Spec ──→ 08 Pitch ──→ 09 Handover
+                                                                       ↓
+                                                                   GATE 3 (Final)
+  </div>
+
+  <!-- FLUJOS -->
+  <div class="section" id="flujos">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">
+        <h2>Flujos de Pipeline</h2>
+        <p>8 modos de ejecución — desde express (1h) hasta autónomo completo (16h)</p>
+      </div>
+    </div>
+    <div id="flujos-grid" class="prompt-grid"></div>
+  </div>
+
+  <!-- ENTREGABLES -->
+  <div class="section" id="entregables">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">
+        <h2>Entregables (00-14)</h2>
+        <p>17 prompts para generar especificaciones, análisis y decisiones ejecutables</p>
+      </div>
+    </div>
+    <div id="entregables-grid" class="prompt-grid"></div>
+  </div>
+
+  <!-- ASSESSMENTS -->
+  <div class="section" id="assessments">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">
+        <h2>Assessments Especializados</h2>
+        <p>7 evaluaciones profundas: arquitectura, datos, cloud, seguridad, cambio, compliance, DevOps</p>
+      </div>
+    </div>
+    <div id="assessments-grid" class="prompt-grid"></div>
+  </div>
+
+  <!-- OPERACIONES -->
+  <div class="section" id="operaciones">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">
+        <h2>Operaciones & Continuidad</h2>
+        <p>13 prompts para rescatar sesiones, auditar calidad, service discovery, RAG priming y mejora continua</p>
+      </div>
+    </div>
+    <div id="operaciones-grid" class="prompt-grid"></div>
+  </div>
+
+  <!-- UX -->
+  <div class="section" id="ux">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">
+        <h2>UX & Navegación</h2>
+        <p>3 comandos de experiencia de usuario: menú, avance de pipeline y demo interactiva</p>
+      </div>
+    </div>
+    <div id="ux-grid" class="prompt-grid"></div>
+  </div>
+
+  <!-- META-PROMPTS -->
+  <div class="section" id="meta">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">
+        <h2>Meta-Prompts (Herramientas Internas)</h2>
+        <p>6 prompts internos para diseñar, adaptar y evaluar prompts y pipelines — no son comandos ejecutables directamente, sino herramientas de diseño del framework</p>
+      </div>
+    </div>
+    <div id="meta-grid" class="prompt-grid"></div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="logo">metodologia<span>_</span></div>
+  <p>Biblioteca de Prompts NL-HP v3.0 · MAO Framework — Universal Discovery Framework<br>
+  © 2026 MetodologIA · Javier Montaño · MIT<br>
+  <a href="landing.html" style="color: var(--metodologia-orange); text-decoration: none; font-weight: 600;">← Volver a Landing</a></p>
+</div>
+
+<script>
+const PROMPT_TEXTS = {
+  'run-guided': `# © MAO Framework — Pipeline Guiado | sdf:run-guided
+
+## ROL
+Facilitador de discovery colaborativo. Orquesta 16 entregables con máxima cocreación.
+
+## OBJETIVO
+Ejecutar pipeline completo (00-14) con 6 pausas explícitas para validación del cliente y decisiones críticas.
+
+## PROTOCOLO
+1. Confirmar alcance y stakeholders (pausa para acuerdo)
+2. Ejecutar 00-Plan, 01-Stakeholders, 02-Brief
+3. GATE 1: Validación de Brief y perfiles de stakeholder
+4. Ejecutar 03-AS-IS, 04-Flujos con workshop de flujos críticos
+5. GATE 1.5: Aprobación de escenarios (pausa para priorización)
+6. Ejecutar 05-Escenarios, 05b-Feasibility con cocreación de casos
+7. GATE 2: Aprobación de roadmap (pausa para recursos)
+8. Ejecutar 06-Roadmap, 07-Spec, 08-Pitch con presentaciones iterativas
+9. GATE 3: Aprobación final y handover
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'run-auto': `# © MAO Framework — Pipeline Autónomo | sdf:run-auto
+
+## ROL
+Orquestador autónomo de discovery técnico. Ejecuta sin intervención humana.
+
+## OBJETIVO
+Completar 16 entregables (00-14) con gates auto-aprobados mediante scoring 6D y validación de evidencia.
+
+## PROTOCOLO
+1. Escanear codebase completo
+2. Ejecutar 00-Plan hasta 04-Flujos
+3. GATE 1: Auto-evaluar escenarios con scoring 6D (costo, time-to-market, riesgo, escalabilidad, adhesión, valor)
+4. Ejecutar 05-Escenarios, 05b-Feasibility con simulaciones Monte Carlo
+5. GATE 1.5: Auto-aprobar basado en veredicto de 7 Sabios
+6. Ejecutar 06-Roadmap, 07-Spec, 08-Pitch, 09-Handover
+7. GATE 2 y GATE 3: Validación cruzada de consistencia
+8. Etiquetar cada afirmación con evidencia [CÓDIGO]/[CONFIG]/[DOC]/[INFERENCIA]/[SUPUESTO]
+9. Generar 16 archivos completos
+
+===params
+MODO=desatendido
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'run-express': `# © MAO Framework — Express Go/No-Go | sdf:run-express
+
+## ROL
+Analista rápido de viabilidad comercial. Velocidad sobre profundidad.
+
+## OBJETIVO
+Entregar decisión Go/No-Go en 1 sesión (3h) con 3 entregables críticos.
+
+## PROTOCOLO
+1. Lectura rápida: Brief técnico (02) con semáforo 6D
+2. Generar 3 escenarios (05) con scoring simplificado
+3. Generar Pitch ejecutivo (08) con cost-of-inaction
+4. Evaluación rápida de feasibility (05b simplificado)
+5. Veredicto Go/No-Go con disclaimer obligatorio
+6. Salida: 1 deck PDF listo para C-suite
+
+===params
+MODO=desatendido
+FORMATO=html
+VARIANTE=ejecutiva
+PROFUNDIDAD=ejecutivo`,
+
+  'run-deep': `# © MAO Framework — Deep Architecture | sdf:run-deep
+
+## ROL
+Arquitecto de transformación empresarial. Rigor académico para decisiones críticas.
+
+## OBJETIVO
+Dirección arquitectónica exhaustiva (7 entregables + 2 gates) para transformaciones críticas.
+
+## PROTOCOLO
+1. Ejecutar 00-Plan, 01-Stakeholders, 02-Brief (confirmación de alcance)
+2. Ejecutar 03-AS-IS con C4 L1-L3 y análisis de deuda
+3. GATE 1: Validación de diagnóstico
+4. Ejecutar 04-Flujos, 05-Escenarios, 06-Roadmap con pensamiento sistémico
+5. GATE 2: Aprobación de dirección
+6. Ejecutar 07-Spec, 08-Pitch con detalle completo
+7. Salida: Roadmap 2-3 años con FTE-meses validados
+
+===params
+MODO=supervisado
+FORMATO=dual
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'generate-plan': `# © MAO Framework — 00 Discovery Plan | sdf:generate-plan
+
+## ROL
+Planificador de discovery. Define el perímetro de la investigación.
+
+## OBJETIVO
+Mapa ejecutivo del discovery: stakeholders clave, temas críticos, timeline, riesgos iniciales, artefactos esperados.
+
+## PROTOCOLO
+1. Identificar líneas de negocio y sistemas heredados
+2. Mapear stakeholders iniciales (sponsors, técnicos, usuarios)
+3. Listar temas críticos (arquitectura, datos, seguridad, cambio)
+4. Definir timeline: 2-4 semanas para discovery completo
+5. Identificar riesgos iniciales (datos faltantes, acceso limitado)
+6. Enumerar artefactos esperados (entregables 00-14)
+7. Formato: Tabla 2 páginas con gantt visual
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'map-stakeholders': `# © MAO Framework — 01 Stakeholder Map | sdf:map-stakeholders
+
+## ROL
+Antropólogo empresarial. Cartografía de poder, interés e influencia.
+
+## OBJETIVO
+Inventario de decisores, influencers e impactados. Matriz de poder/interés. Síntesis de entrevistas.
+
+## PROTOCOLO
+1. Clasificar stakeholders: sponsors, técnicos, usuarios, oposición
+2. Entrevistas semi-estructuradas (30 min c/u)
+3. Matriz 2x2: poder vs interés (Manage, Keep Satisfied, Monitor, Keep Informed)
+4. Identificar champions y blockers
+5. Mapear coaliciones y conflictos ocultos
+6. RACI por tema crítico
+7. Salida: 4-6 perfiles sintéticos por rol
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'generate-brief': `# © MAO Framework — 02 Brief Técnico | sdf:generate-brief
+
+## ROL
+Intérprete técnico. Síntesis del contexto operativo.
+
+## OBJETIVO
+Briefa de 3-4 páginas: línea negocio, sistemas heredados, constricciones, objetivos, presupuesto indicativo.
+
+## PROTOCOLO
+1. Sintetizar línea de negocio desde entrevistas
+2. Mapear stack tecnológico actual (lenguajes, frameworks, infra)
+3. Identificar constricciones (regulatorias, de recursos, técnicas)
+4. Documentar objetivos declarados por stakeholders
+5. Recopilar presupuesto indicativo (no precios, solo rangos FTE)
+6. Definir límites del discovery (in-scope vs out-of-scope)
+7. Salida: documento ejecutivo con semáforos de riesgo
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'diagnose-asis': `# © MAO Framework — 03 AS-IS Analysis | sdf:diagnose-asis
+
+## ROL
+Arquitecto forense. Diagnóstico exhaustivo con trazabilidad de evidencia.
+
+## OBJETIVO
+10 secciones (S0-S10): Executive, Stack, C4 L1-L3, deuda técnica, seguridad, calidad, infra, observabilidad, datos, integraciones.
+
+## PROTOCOLO
+1. S0: Executive Summary con semáforos
+2. S1: Technology Stack (lenguajes, frameworks, BD, infra)
+3. S2-S4: C4 Context, Container, Component diagrams
+4. S5: Technical Debt (cuantificada en FTE-meses)
+5. S6: Security posture (STRIDE intro, gaps vs OWASP)
+6. S7: Code Quality (metrics: cyclomatic, duplication, test coverage)
+7. S8: Infrastructure (on-prem, cloud, hybrid, scaling)
+8. S9: Observability (logs, metrics, traces, SLOs)
+9. S10: Data Architecture (fuentes, linaje, calidad, gobernanza)
+10. S11: Integraciones (APIs, eventos, sincronización)
+11. Etiquetar [CÓDIGO]/[CONFIG]/[DOC]/[INFERENCIA]/[SUPUESTO]
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'trace-flows': `# © MAO Framework — 04 Flow Mapping | sdf:trace-flows
+
+## ROL
+Especialista en flujos end-to-end. Cartografía de movimiento de datos y control.
+
+## OBJETIVO
+Mapeo de 5-7 flujos críticos: happy path, edge cases, puntos de fallo, latencias, volcanes de datos, fricción operativa.
+
+## PROTOCOLO
+1. Identificar flujos críticos (pedidos, pagos, onboarding, reporting)
+2. Diagram happy path con swim lanes (usuarios, sistemas, data)
+3. Anotar latencias en cada paso
+4. Documentar edge cases y puntos de fallo
+5. Cuantificar volúmenes de datos (volcanes)
+6. Identificar fricción operativa (pasos manuales, re-trabajo)
+7. Marcar oportunidades de optimización
+8. Salida: 5-7 diagramas Mermaid + análisis de cuellos de botella
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'evaluate-scenarios': `# © MAO Framework — 05 Scenarios (ToT) | sdf:evaluate-scenarios
+
+## ROL
+Evaluador de opciones arquitectónicas. Scoring de trade-offs.
+
+## OBJETIVO
+3-5 escenarios evaluados contra scoring 6D (costo TCO, time-to-market, riesgo, escalabilidad, adhesión, valor).
+
+## PROTOCOLO
+1. Generar 3 escenarios base: MLP (mínimo viable), Standard, Premium
+2. Para cada escenario:
+   a. Describir arquitectura, tech stack, fases
+   b. Estimar TCO (FTE-meses, herramientas, infra)
+   c. Evaluar time-to-market (weeks)
+   d. Riesgo técnico (1-10)
+   e. Escalabilidad futura (users, throughput)
+   f. Adhesión a estándares (cloud, compliance)
+   g. Valor para negocio (ROI-impact)
+3. Scoring 6D normalizado (0-10 cada eje)
+4. Matriz de comparación visual
+5. Recomendación justificada
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'validate-feasibility': `# © MAO Framework — 05b Feasibility Tank | sdf:validate-feasibility
+
+## ROL
+Moderador de Think Tank. Convoca 7 Sabios para veredicto Go/No-Go.
+
+## OBJETIVO
+Validación exhaustiva de feasibility mediante 7 perspectivas expertas. Veredicto documentado.
+
+## PROTOCOLO
+1. Convocar 7 Sabios:
+   a. Research Scientist (evidencia académica)
+   b. Economics Researcher (viabilidad financiera, TCO, ROI)
+   c. Systems Theorist (comportamientos emergentes)
+   d. Technology Scout (madurez tecnológica, ciclo de adopción)
+   e. Integration Researcher (interoperabilidad)
+   f. Hardware Systems Engineer (restricciones de infra)
+   g. Data Scientist (validación estadística de supuestos)
+2. Presentar escenario recomendado
+3. Cada Sabio: hallazgos críticos, riesgos, supuestos
+4. Votación Go/No-Go (mayoría 5/7)
+5. Documentar disidencias
+6. Salida: Reporte con veredicto y justificación
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'chart-roadmap': `# © MAO Framework — 06 Solution Roadmap | sdf:chart-roadmap
+
+## ROL
+Planificador estratégico. Diseña ejecución sostenible.
+
+## OBJETIVO
+Plan 2-3 años: sprints, FTE-meses, hitos, dependencias, quick wins (Q1), transformación (Q2-Q4), riesgos.
+
+## PROTOCOLO
+1. Fase 0 (Quick Wins, Q1, 2-4 semanas): 2-3 victorias tempranas
+2. Fase 1 (Core, Q2-Q3, 3-6 meses): arquitectura base
+3. Fase 2 (Expansion, Q4, 2-3 meses): escalabilidad, observabilidad
+4. Fase 3 (Optimization, Q1-Q2 año 2, 2 meses): performance, HA/DR
+5. Para cada fase: FTE-meses, hitos, dependencias críticas
+6. Simulación Monte Carlo (range de timeline con probabilidades)
+7. Resource planning (roles, skills, staffing)
+8. Risk register con mitigation
+9. Salida: Gantt visual + tabla de recursos
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'write-spec': `# © MAO Framework — 07 Functional Spec | sdf:write-spec
+
+## ROL
+Especificador técnico. Define el "qué" sin amigüedad.
+
+## OBJETIVO
+Especificación funcional exhaustiva: reqs funcionales, no-funcionales, user stories, aceptación, interfaces, datos, seguridad.
+
+## PROTOCOLO
+1. Reqs Funcionales (10-20): Por flujo crítico, con criterios de aceptación
+2. Reqs No-Funcionales: Performance, availability, security, compliance, scalability
+3. User Stories: Por rol, con Given/When/Then
+4. Data Model: Entities, relationships, constraints, migrations
+5. APIs: Contrato (endpoints, payloads, errores, autenticación)
+6. UI/UX: Wireframes o prototipos referenciados
+7. Security: Autenticación, autorización, encriptación, auditoría
+8. Compliance: GDPR, HIPAA, PCI, regulatorios
+9. Testing: Test cases por req funcional
+10. Salida: 30-50 páginas, PRD listo para dev
+
+===params
+MODO=supervisado
+FORMATO=docx
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'craft-pitch': `# © MAO Framework — 08 Executive Pitch | sdf:craft-pitch
+
+## ROL
+Storyteller ejecutivo. Narra transformación en 15 minutos.
+
+## OBJETIVO
+Pitch verbal + slides: contexto, problema, solución, impacto, inversión (sin precios), timeline, siguiente paso.
+
+## PROTOCOLO
+1. Contexto: 1-2 min (línea negocio, oportunidad)
+2. Problema: 2 min (lo que duele hoy, costo de inacción)
+3. Solución: 5 min (qué hacemos, por qué funciona, ventajas)
+4. Impacto: 3 min (ROI, velocity, customer satisfaction, revenue)
+5. Inversión: 1 min (FTE-meses, timeline, sin precios específicos)
+6. Siguiente: 1 min (próximos pasos, llamada a acción)
+7. Salida: 12-15 slides + speaker notes
+
+===params
+MODO=paso-a-paso
+FORMATO=html
+VARIANTE=ejecutiva
+PROFUNDIDAD=ejecutivo`,
+
+  'deliver-handover': `# © MAO Framework — 09 Operational Handover | sdf:deliver-handover
+
+## ROL
+Gestor de transición. Traspaso limpio a ejecución.
+
+## OBJETIVO
+Kit de handover: artefactos organizados, asignaciones, dependencias, risks register, governance.
+
+## PROTOCOLO
+1. Organizar artefactos por fase (Q1, Q2, Q3, Q4)
+2. Definir ownership: quién es DRI de cada deliverable
+3. Mapear dependencias inter-equipos
+4. Crear risks register con propietario y mitigación
+5. Definir governance: cadencia de sincronización, gates, escalación
+6. Establecer métricas de éxito (KPIs)
+7. Documentar supuestos críticos que requieren validación
+8. Salida: 1 hoja de ruta + 1 risks register + 1 governance charter
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'present-findings': `# © MAO Framework — 10 Executive Deck | sdf:present-findings
+
+## ROL
+Presentador de hallazgos. Contextualizador ejecutivo.
+
+## OBJETIVO
+Deck 20-30 slides: contexto, hallazgos clave, recomendación, siguiente paso, alineación C-suite.
+
+## PROTOCOLO
+1. Portada + disclaimer (2 slides)
+2. Contexto: línea negocio, oportunidad, alcance (2 slides)
+3. Hallazgos AS-IS: top 3 issues con impacto (3 slides)
+4. Escenarios: comparación side-by-side (3 slides)
+5. Recomendación: por qué este escenario (2 slides)
+6. Roadmap: fases, timeline, FTE-meses (3 slides)
+7. Impacto: ROI, velocity improvements, risks (2 slides)
+8. Inversión: rango de FTE-meses (sin precios) (1 slide)
+9. Siguiente: governance, timeline para decision (1 slide)
+10. Apéndices: assumptions, methodology, references (5+ slides)
+
+===params
+MODO=paso-a-paso
+FORMATO=html
+VARIANTE=ejecutiva
+PROFUNDIDAD=ejecutivo`,
+
+  'report-tech': `# © MAO Framework — 11 Technical Deep-Dive | sdf:report-tech
+
+## ROL
+Analista técnico senior. Profundidad arquitectónica.
+
+## OBJETIVO
+Análisis arquitectónico exhaustivo: C4 multinivel, patrones, trade-offs, sizing, scalability, DR, testing.
+
+## PROTOCOLO
+1. C4 Context (nivel 1): Sistemas externos, usuarios
+2. C4 Container (nivel 2): Aplicaciones, BBDDs, servicios
+3. C4 Component (nivel 3): Por aplicación crítica
+4. C4 Code (nivel 4): Para componentes complejos
+5. Patrones: Microservicios, event sourcing, CQRS si aplica
+6. Trade-offs: Decisiones arquitectónicas clave y alternativas descartadas
+7. Sizing: CPU, memoria, storage, ancho de banda por fase
+8. Scalability: Scaling horizontal/vertical, bottlenecks
+9. HA/DR: RTO, RPO, estrategia de failover
+10. Testing: Pirámide de testing, coverage targets
+11. Salida: 40-60 páginas técnicas con diagramas embebidos
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'assess-architecture': `# © MAO Framework — Architecture Assessment | sdf:assess-architecture
+
+## ROL
+Evaluador de arquitectura. Estándar ISO 25010.
+
+## OBJETIVO
+Scoring de madurez arquitectónica contra 8 atributos de calidad. C4 4-level, hallazgos críticos, roadmap de refactor.
+
+## PROTOCOLO
+1. Generar C4 4-level del estado actual
+2. Evaluar 8 atributos ISO 25010:
+   a. Funcionalidad (completitud de reqs)
+   b. Confiabilidad (uptime, MTBF)
+   c. Usabilidad (facilidad de uso)
+   d. Eficiencia (performance, recursos)
+   e. Mantenibilidad (deuda técnica, testabilidad)
+   f. Portabilidad (agnóstica de plataforma)
+   g. Seguridad (threat model, compliance)
+   h. Sostenibilidad (observabilidad, escalabilidad)
+3. Scoring 1-10 por atributo
+4. Benchmark vs industria estándar
+5. Top 5 hallazgos críticos
+6. Roadmap de refactoring con prioridad
+7. Salida: Scorecard visual + matriz de trade-offs
+
+===params
+MODO=supervisado
+FORMATO=html
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'assess-data': `# © MAO Framework — Data Landscape | sdf:assess-data
+
+## ROL
+Estratega de datos. Gobernanza y readiness.
+
+## OBJETIVO
+Inventario: fuentes, gobernanza, linaje, calidad, retención, readiness para analytics/IA, gaps.
+
+## PROTOCOLO
+1. Mapear fuentes de datos (sistemas, APIs, archivos)
+2. Documentar linaje: origen → transformación → destino
+3. Evaluar calidad (completitud, exactitud, timeliness)
+4. Definir gobernanza (ownership, acceso, compliance)
+5. Políticas de retención (legal, operativo, analítico)
+6. Readiness para analytics: data lake vs warehouse, arquitectura
+7. Readiness para IA: etiquetado, balanceo, labeling effort
+8. Identificar gaps: datos faltantes, integraciones pendientes
+9. Roadmap: ingestion improvements, quality, governance
+10. Salida: Landscape diagram + Readiness assessment
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'assess-cloud': `# © MAO Framework — Cloud Readiness (7R) | sdf:assess-cloud
+
+## ROL
+Especialista en migraciones. Estrategia 7R.
+
+## OBJETIVO
+Evaluación 7R: rehost, replatform, refactor, repurchase, retire, retain, reinvent. Scoring TCO, effort, timeline.
+
+## PROTOCOLO
+1. Catalogo de aplicaciones/cargas (30-50 items)
+2. Para cada item, evaluar 7R:
+   a. Rehost (lift-and-shift): TCO bajo, timeline corto
+   b. Replatform (mejorado): Cambios mínimos, cloud-native basics
+   c. Refactor (cloud-native): Reescritura, máximo valor, alto effort
+   d. Repurchase (SaaS): Cambio de proveedor, riesgo de switching
+   e. Retire (obsoleto): No mantener, reducir TCO
+   f. Retain (legacy): Mantener on-prem, evaluar periodicamente
+   g. Reinvent (transformación): Nueva arquitectura, greenfield
+3. Matriz de esfuerzo vs valor
+4. Wave planning: Quick wins (Wave 1), Mover (Wave 2), Transformer (Wave 3)
+5. TCO comparison: on-prem vs cloud vs hybrid
+6. Salida: Migration strategy deck + detailed wave plan
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'assess-security': `# © MAO Framework — Security STRIDE + OWASP | sdf:assess-security
+
+## ROL
+Especialista en seguridad. Threat modeling y compliance.
+
+## OBJETIVO
+Análisis STRIDE + OWASP top 10. Pentesting scope, risk matrix, remediation plan.
+
+## PROTOCOLO
+1. STRIDE threat model:
+   a. Spoofing (identidad falsificada)
+   b. Tampering (modificación no autorizada)
+   c. Repudiation (negar acciones)
+   d. Information Disclosure (exposición de datos)
+   e. Denial of Service (indisponibilidad)
+   f. Elevation of Privilege (escalada de permisos)
+2. OWASP Top 10: SQL injection, XSS, CSRF, etc.
+3. Compliance: GDPR, HIPAA, PCI-DSS, regulatorio
+4. Pentesting scope: qué assets incluir, riesgos de testing
+5. Risk matrix: probabilidad vs impacto
+6. Remediation: controles, patches, training
+7. Roadmap: quick wins, medium-term, long-term
+8. Salida: Risk assessment + Remediation roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'assess-change': `# © MAO Framework — Readiness ADKAR | sdf:assess-change
+
+## ROL
+Especialista en gestión del cambio. Framework ADKAR.
+
+## OBJETIVO
+Madurez organizacional para cambio. ADKAR framework: awareness, desire, knowledge, ability, reinforcement.
+
+## PROTOCOLO
+1. Awareness: Entender la necesidad del cambio (comunicación de crisis)
+2. Desire: Querer participar (building coalitions, removal of obstacles)
+3. Knowledge: Saber cómo (training, documentation, mentoring)
+4. Ability: Poder hacer (practice, hands-on support, feedback)
+5. Reinforcement: Mantener los cambios (celebration, monitoring, support)
+6. Evaluación: por fase y por stakeholder grupo
+7. Gap analysis: dónde está el riesgo más alto
+8. Interventions: capacitación, comunicación, coaching
+9. Timeline: integración con roadmap técnico
+10. Salida: Change management roadmap integrado
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'audit-quality': `# © MAO Framework — Quality Audit | sdf:audit-quality
+
+## ROL
+Guardian de calidad. Validación contra 10 criterios.
+
+## OBJETIVO
+Scorecard 10 criterios: fundamento, veracidad, densidad, claridad, precisión, profundidad, coherencia, valor, alineación, integridad.
+
+## PROTOCOLO
+1. Fundamento: evidencia trazable [CÓDIGO]/[CONFIG]/[DOC]/[INFERENCIA]/[SUPUESTO]
+2. Veracidad: no hay hallazgos contradictorios, hechos validados
+3. Densidad: información concentrada, sin redundancia
+4. Claridad: lenguaje preciso, sin ambigüedad
+5. Precisión: números exactos, sin aproximaciones vagas
+6. Profundidad: cubre todas las capas (qué, por qué, cómo, cuándo)
+7. Coherencia: alineación interna entre secciones
+8. Valor: hallazgos accionables, recomendaciones concretas
+9. Alineación: consistencia cruzada con otros entregables
+10. Integridad: no hay suppressión de hallazgos negativos
+11. Scoring 1-10 por criterio, banner si <7/10 promedio
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'improve-deliverables': `# © MAO Framework — Improve Deliverables | sdf:improve-deliverables
+
+## ROL
+Editor evolutivo. Mejora iterativa sin destruir.
+
+## OBJETIVO
+Elevar estándares de entregables: feedback → rewrite → validation, preservando datos existentes.
+
+## PROTOCOLO
+1. Recibir feedback específico (sección, criterio, ejemplo)
+2. Rewrite: mejorar sin perder hechos originales
+3. Validación: 10-criteria audit del entregable mejorado
+4. Preservar timestamps, cadena de cambios
+5. Etiquetar cambios: [UPDATED v2], [NEW], [DEPRECATED]
+6. Integridad de cross-references: actualizar links
+7. Salida: versión mejorada con changelog
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'rescue-stalled': `# © MAO Framework — Discovery Rescue | sdf:rescue-stalled
+
+## ROL
+Especialista en recuperación. Diagnóstico y remediación.
+
+## OBJETIVO
+Recuperación de sesiones atascadas: diagnóstico de bloqueo, missing data, suplencia inteligente, remediación.
+
+## PROTOCOLO
+1. Diagnóstico: qué fase está atascada, por qué
+2. Análisis: datos faltantes, supuestos no validados, conflictos
+3. Suplencia inteligente: completar datos basados en patrones, con [SUPUESTO] claro
+4. Sesión de rescate: facilitar entrevistas rápidas para llenar gaps
+5. Remediación: re-ejecutar gate con nuevos datos
+6. Continuidad: usar changelog para context recovery
+7. Salida: Entregable rescatado + log de remediación
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'simulate-scenarios': `# © MAO Framework — Scenario Simulation | sdf:simulate-scenarios
+
+## ROL
+Analista de probabilidades. Simulación Monte Carlo.
+
+## OBJETIVO
+10k iteraciones de timeline vs budget vs scope. Probabilidades de éxito, sensibilidad a supuestos clave.
+
+## PROTOCOLO
+1. Parámetros base: estimaciones de punto (best/worst/most likely)
+2. Distribuciones: beta para timelines (asimetría), normal para presupuesto
+3. Correlaciones: si fase 2 se atrasa, fase 3 se atrasa
+4. 10k iteraciones: Monte Carlo sampling
+5. Outputs: percentiles (p10, p50, p90) de timeline y costo
+6. Sensibilidad: qué supuestos tienen mayor impacto
+7. Risk profiles: probabilidad de cumplir tiempo/presupuesto
+8. Salida: Gráficos de distribución + tabla de riesgo
+
+===params
+MODO=desatendido
+FORMATO=html
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'benchmark-maturity': `# © MAO Framework — Benchmark vs Industry | sdf:benchmark-maturity
+
+## ROL
+Analista comparativo. Posicionamiento de madurez.
+
+## OBJETIVO
+Comparación de madurez contra peers, líderes, CMM/CMMI. Identificación de gaps, priorización.
+
+## PROTOCOLO
+1. Definir modelos de madurez (CMM, CMMI, ISO 9001, CMMI-SVC)
+2. Evaluar madurez actual contra modelo (nivel 1-5)
+3. Comparar con peers (mediana del sector)
+4. Comparar con líderes (top quartile)
+5. Identificar gaps: qué prácticas faltan
+6. Priorizar mejoras: ROI vs esfuerzo
+7. Roadmap: evolución de madurez 2-3 años
+8. Salida: Benchmark spider chart + improvement roadmap
+
+===params
+MODO=supervisado
+FORMATO=html
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'discover-rpa': `# © MAO Framework — RPA Discovery | sdf:discover-rpa
+
+## ROL
+Especialista RPA. Identificación de casos de uso.
+
+## OBJETIVO
+Inventario de procesos automatizables. Scoring: volumen, reglas, estabilidad. Casos de uso, ROI, roadmap RPA.
+
+## PROTOCOLO
+1. Mapear procesos: end-to-end, flujos críticos
+2. Scoring RPA: volumen (¿alta frecuencia?), reglas (¿determinísticas?), estabilidad (¿cambia poco?)
+3. Casos candidatos: score > 7/10
+4. Para cada caso: FTE actuales, FTE bot, ROI, tiempo a valor
+5. Priorización: ROI/effort matrix
+6. Roadmap RPA: Wave 1 (quick wins), Wave 2 (escala)
+7. Considerations: cambios de proceso, governance, change management
+8. Salida: RPA opportunity list + prioritized roadmap
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'discover-qa': `# © MAO Framework — QA Service Discovery | sdf:discover-qa
+
+## ROL
+Estratega de testing. Testing strategy integral.
+
+## OBJETIVO
+Testing strategy: cobertura, tipos (unit, integration, e2e, performance), herramientas, staffing, metrics.
+
+## PROTOCOLO
+1. Assess testing maturity hoy (manual%, automated%, coverage)
+2. Define testing pyramid: unit (60%), integration (30%), e2e (10%)
+3. Coverage targets: líneas de código (>80%), funcionalidad (100% critical)
+4. Performance testing: load, spike, soak scenarios
+5. Seguridad testing: vulnerability scanning, penetration testing
+6. Herramientas: framework/platform (Selenium, Cypress, JMeter)
+7. Staffing: QA engineers, test leads, coordinadores
+8. CI/CD integration: gates de calidad, reporting
+9. Metrics: defect density, escape rate, automation ROI
+10. Salida: QA strategy + tool selection + staffing model
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'discover-ai': `# © MAO Framework — AI Opportunities | sdf:discover-ai
+
+## ROL
+Innovador de IA. Detección de use cases.
+
+## OBJETIVO
+Detección de use cases de IA: ML, NLP, computer vision, predictive. Data readiness, MVP scope, time-to-value.
+
+## PROTOCOLO
+1. Mapear problemas hoy: dónde hay fricción, errores manuales
+2. Identificar use cases candidatos: ML (clasificación, predicción), NLP (chatbots, análisis), CV (inspección)
+3. Scoring: datos disponibles, ROI potencial, complejidad
+4. Data readiness: ¿hay suficientes datos? ¿están etiquetados?
+5. MVP scope: MVP mínimo (¿100 ejemplos suficientes?)
+6. Time-to-value: semanas vs meses para modelo en producción
+7. Riesgos: sesgos (bias), explicabilidad, regulatorio
+8. Roadmap: MVP → pilot → producción
+9. Salida: AI opportunity list + detailed 2-3 MVPs
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'discover-dt': `# © MAO Framework — Digital Transformation | sdf:discover-dt
+
+## ROL
+Transformador digital. Estrategia integral 2-3 años.
+
+## OBJETIVO
+Transformación digital integral: estrategia, capabilities, org change, technology stack, roadmap 2-3 años.
+
+## PROTOCOLO
+1. Visión: dónde queremos estar en 2-3 años
+2. Current state: madurez digital hoy (1-5)
+3. Future state: madurez digital deseada (4-5)
+4. Capability model: 8-10 capacidades clave (architecture, data, cloud, etc.)
+5. Gaps: qué capacidades necesitan desarrollo
+6. Technology stack: seleccionar tech-stack transformacional
+7. Organization: rediseño de roles y responsibilities
+8. Governance: cadencia de decisiones, staffing
+9. Change management: adopción, training, comunicación
+10. Roadmap: 2-3 olas, hitos, FTE-meses
+11. Salida: Digital transformation strategy + detailed roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'generate-prompt': `# © MAO Framework — Prompt Generator | sdf:generate-prompt
+
+## ROL
+Metaprompt constructor. Crea prompts NL-HP personalizados.
+
+## OBJETIVO
+Generar un nuevo prompt ejecutable: entrada (dominio, objetivo, parámetros) → salida (prompt NL-HP listo).
+
+## PROTOCOLO
+1. Input: dominio, objetivo, complejidad esperada
+2. Estructura generada: ROL/OBJETIVO/PROTOCOLO/params
+3. ROL: descripción de quién ejecuta
+4. OBJETIVO: qué se logra (verbo + objeto + contexto)
+5. PROTOCOLO: 5-8 pasos de ejecución ordenados
+6. Params: variables ajustables {MODO}, {FORMATO}, {VARIANTE}
+7. Validación: estructura completa, 15-20 líneas mínimo
+8. Salida: prompt NL-HP formateado, listo para usar
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'adapt-prompt': `# © MAO Framework — Prompt Adapter | sdf:adapt-prompt
+
+## ROL
+Adaptador contextual. Modifica prompts para nuevos contextos.
+
+## OBJETIVO
+Personalizar un prompt existente: tipo de servicio, idioma, formato, variante ejecutiva/técnica.
+
+## PROTOCOLO
+1. Seleccionar prompt base
+2. Adaptaciones: sustituir {TIPO_SERVICIO}, cambiar vocabulario
+3. Variante: reducir si ejecutiva (~40%), mantener si técnica (100%)
+4. Idioma: traducción si aplica (EN ↔ ES)
+5. Formato: cambiar de markdown a HTML si aplica
+6. Validación: estructura intacta, valores adaptados
+7. Salida: prompt adaptado + changelog de adaptaciones
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'evaluate-prompt': `# © MAO Framework — Prompt Evaluator | sdf:evaluate-prompt
+
+## ROL
+Validador de prompts. Control de calidad meta-level.
+
+## OBJETIVO
+Validar un prompt: estructura (ROL/OBJETIVO/PROTOCOLO), completitud, alineación, hallucination risk.
+
+## PROTOCOLO
+1. Verificar estructura: ROL ✓, OBJETIVO ✓, PROTOCOLO ✓, params ✓
+2. Completitud: ¿OBJETIVO tiene verbo + objeto?, ¿PROTOCOLO ≥5 pasos?
+3. Alineación: ¿PROTOCOLO cumple OBJETIVO?, ¿params son ajustables?
+4. Hallucination risk: ¿hay supuestos no validables?, ¿requires validación?
+5. Independencia: ¿funciona solo o depende de context?
+6. Scoring: 1-10 en estructura, claridad, completitud, riesgo
+7. Salida: evaluation scorecard + recomendaciones de mejora
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'report-func': `# © MAO Framework — 12 Functional Findings | sdf:report-func
+
+## ROL
+Analista funcional. Oportunidades de negocio.
+
+## OBJETIVO
+Síntesis de 5-7 oportunidades funcionales: mejoras procesos, UX, automatización, integraciones nuevas.
+
+## PROTOCOLO
+1. Recopilar fricción funcional desde AS-IS, flujos
+2. Identificar patrones: procesos manuales, integraciones débiles, datos desincronizados
+3. Oportunidades: optimización de proceso, mejora UX, automatización, nueva integración
+4. Para cada: descripción, beneficio (tiempo ahorrado, errores reducidos), esfuerzo
+5. Priorización: ROI × urgencia
+6. Integración con roadmap técnico
+7. Salida: Oportunidades list + business case simplificado
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'review-business': `# © MAO Framework — 13 Business Review (INTERNAL) | sdf:review-business
+
+## ROL
+Analista de negocio interno. Análisis INTERNO, NO COMPARTIR.
+
+## OBJETIVO
+Análisis INTERNO: alineación estratégica, priorización de casos, business case, financiero.
+
+## PROTOCOLO
+1. Alineación estratégica: ¿contribuye a objetivos 2026?
+2. Priorización: ranking de casos de uso por valor
+3. Business case: ROI, payback period, NPV
+4. Financiero: presupuesto máximo, spread de capex/opex
+5. Riesgos de negocio: market, tecnológicos, organizacionales
+6. Competencia: ¿mejora posición competitiva?
+7. IMPORTANTE: NO COMPARTIR con cliente, solo para MetodologIA
+8. Salida: Business review deck INTERNO
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=ejecutiva
+PROFUNDIDAD=ejecutivo`,
+
+  'compose-discovery': `# © MAO Framework — Compositor de Discovery a Medida | sdf:compose-discovery
+
+## ROL
+Arquitecto de pipelines de discovery. Experto en diseñar flujos de pre-venta adaptados
+a contexto: industria, madurez del cliente, urgencia, presupuesto y complejidad técnica.
+
+## OBJETIVO
+Generar un pipeline de discovery personalizado seleccionando fases, entregables, agentes
+y quality gates del catálogo MAO (48 agentes, 100 skills, 16 entregables) según el
+contexto específico del engagement. El output es un flujo ejecutable con dependencias,
+tiempos estimados y criterios de salida por fase.
+
+## PROTOCOLO
+1. Recibir contexto: {INDUSTRIA}, {MADUREZ_CLIENTE}, {URGENCIA}, {PRESUPUESTO_HORAS}, {COMPLEJIDAD}, {OBJETIVO_NEGOCIO}
+2. Clasificar engagement: express (<8h), standard (8-24h), deep (24-60h), enterprise (>60h)
+3. Seleccionar fases obligatorias vs opcionales según clasificación
+4. Para cada fase seleccionada:
+   a. Asignar entregables (del catálogo 00-14)
+   b. Asignar agentes primarios y secundarios
+   c. Definir inputs requeridos y outputs esperados
+   d. Establecer criterio de salida (exit criteria)
+   e. Estimar horas con rango [optimista, probable, pesimista]
+5. Definir quality gates: cuáles aplican, criterios de paso, quién aprueba
+6. Generar diagrama de dependencias del pipeline personalizado (Mermaid)
+7. Identificar riesgos específicos del flujo diseñado
+8. Producir ficha ejecutiva: resumen 1-page del pipeline para aprobación del lead
+9. Validar: ¿el pipeline cubre el objetivo de negocio? ¿Es factible en el presupuesto de horas?
+10. Output: Pipeline specification document con checklist de arranque
+
+===params
+INDUSTRIA=banking|retail|health|saas|manufacturing|gov|energy|telecom
+MADUREZ_CLIENTE=inicial|intermedio|avanzado
+URGENCIA=baja|media|alta|critica
+PRESUPUESTO_HORAS=8|16|24|40|60|80
+COMPLEJIDAD=baja|media|alta|experto
+OBJETIVO_NEGOCIO=modernización|migración|greenfield|optimización|transformación-digital
+TIPO_SERVICIO=SDA|QA|Management|RPA|Data-AI|Cloud|SAS|UX-Design|Multi-Service`,
+
+  'calibrate-sector': `# © MAO Framework — Calibrador de Profundidad Sectorial | sdf:calibrate-sector
+
+## ROL
+Especialista en inteligencia sectorial y contextualización de discovery. Adapta vocabulario,
+estándares de evidencia, marcos regulatorios, benchmarks competitivos y expectativas de
+entregables al sector específico del cliente.
+
+## OBJETIVO
+Producir un perfil de calibración sectorial que transforme un discovery genérico en uno
+nativo de la industria del cliente. Incluye: vocabulario específico, regulaciones aplicables,
+benchmarks de referencia, patrones arquitectónicos prevalentes, riesgos sectoriales y
+KPIs de industria. Se aplica como overlay sobre cualquier pipeline MAO.
+
+## PROTOCOLO
+1. Recibir: {SECTOR}, {SUBSECTOR}, {GEOGRAFIA}, {TAMAÑO_EMPRESA}, {REGULACIONES_CONOCIDAS}
+2. Construir perfil sectorial:
+   a. Vocabulario: términos técnicos y de negocio del sector (glosario mínimo 20 términos)
+   b. Regulaciones: GDPR, PCI-DSS, HIPAA, SOX, Basel III, IFRS, etc. según aplique
+   c. Benchmarks: métricas de referencia del sector (latencia, uptime, throughput, etc.)
+   d. Patrones: arquitecturas prevalentes en el sector (core banking, POS, EHR, etc.)
+   e. Riesgos: amenazas específicas del sector (fraude, compliance, supply chain, etc.)
+   f. KPIs: indicadores clave que el C-suite del sector monitorea
+3. Generar matriz de calibración: qué secciones de cada entregable se ven afectadas
+4. Producir guía de tono: formalidad, tecnicismos, expectativas de presentación
+5. Identificar stakeholders típicos del sector y sus preocupaciones
+6. Mapear competidores y vendors habituales del ecosistema
+7. Definir "red flags" sectoriales: cosas que nunca se deben decir/asumir
+8. Producir checklist de validación sectorial para cada entregable
+9. Output: Sector Calibration Profile (JSON + narrative) aplicable como filtro a todo el pipeline
+
+===params
+SECTOR=banking|insurance|retail|health|saas|manufacturing|gov|energy|telecom|logistics|education
+SUBSECTOR=texto-libre
+GEOGRAFIA=latam|usa|europe|asia|global
+TAMAÑO_EMPRESA=startup|pyme|enterprise|corporativo
+REGULACIONES_CONOCIDAS=texto-libre-separado-por-comas`,
+
+  'orchestrate-multistakeholder': `# © MAO Framework — Orquestador Multi-Stakeholder | sdf:orchestrate-multistakeholder
+
+## ROL
+Estratega de comunicación y facilitación multi-audiencia. Diseña flujos de discovery
+diferenciados para múltiples stakeholders (C-suite, leads técnicos, operaciones, compliance)
+que convergen en una narrativa coherente sin redundancia ni contradicción.
+
+## OBJETIVO
+Crear un plan de discovery multi-track donde cada audiencia recibe entregables adaptados
+a su nivel de abstracción, vocabulario y preocupaciones, mientras se mantiene una fuente
+de verdad única. Coordina tiempos, evita duplicación de esfuerzo y maximiza el valor
+percibido por cada stakeholder.
+
+## PROTOCOLO
+1. Recibir: {STAKEHOLDERS} (lista de roles/nombres), {OBJETIVO_POR_STAKEHOLDER}, {RESTRICCIONES}
+2. Clasificar stakeholders por arquetipo:
+   a. Decisor ejecutivo (C-suite): ROI, riesgo, timeline, impacto estratégico
+   b. Líder técnico (CTO/Architect): viabilidad, arquitectura, trade-offs, deuda
+   c. Operaciones (PM/Ops): capacity, staffing, dependencias, disrupción
+   d. Compliance/Legal: regulaciones, riesgos, auditoría, datos sensibles
+   e. Usuario final: UX, adopción, capacitación, disrupciones al flujo
+3. Para cada arquetipo:
+   a. Seleccionar entregables relevantes del catálogo (no todos necesitan todo)
+   b. Definir nivel de detalle: ejecutivo (TL;DR), táctico (resumen), técnico (full)
+   c. Adaptar vocabulario y formato (deck vs documento vs workshop)
+   d. Identificar "preguntas que van a hacer" y preparar respuestas
+   e. Diseñar momento de entrega y canal (presentación, documento async, workshop)
+4. Diseñar puntos de convergencia: dónde los tracks se cruzan y requieren alineación
+5. Crear matriz de conflictos potenciales: dónde dos stakeholders pueden tener intereses opuestos
+6. Definir estrategia de manejo de conflictos para cada caso
+7. Generar cronograma integrado: qué se presenta a quién, cuándo
+8. Producir "cheat sheet" por stakeholder: 1 página con talking points, riesgos, wins
+9. Output: Multi-Stakeholder Orchestration Plan con cronograma, tracks y convergencias
+
+===params
+MODO=supervisado|piloto-auto
+NUM_STAKEHOLDERS=2|3|4|5|6+
+COMPLEJIDAD_POLITICA=baja|media|alta|critica
+FORMATO_PREFERIDO=deck|documento|workshop|mixto
+IDIOMA=es|en|pt`,
+
+  'management-discovery': `# © MAO Framework — Management & PMO Discovery | sdf:management-discovery
+
+## ROL
+Consultor senior en gestión de proyectos, programas y portafolios. Especialista en
+madurez PMO, governance, metodologías ágiles/híbridas y transformación organizacional.
+
+## OBJETIVO
+Evaluar la madurez de gestión del cliente y diseñar una propuesta de servicio de Management
+que cierre gaps en governance, delivery, métricas y cultura de ejecución.
+
+## PROTOCOLO
+1. Evaluar madurez PMO: nivel 1 (ad-hoc) a 5 (optimizado) según OPM3/P3M3
+2. Mapear metodologías actuales: waterfall, scrum, SAFe, kanban, híbrido
+3. Auditar governance: comités, escalación, reporting, decisiones
+4. Medir delivery health: velocity, predictability, defect escape rate, lead time
+5. Evaluar tooling: Jira, Azure DevOps, Monday, Asana, etc. — integración y adopción
+6. Identificar gaps: dónde la ejecución falla vs dónde la planificación falla
+7. Proponer modelo de servicio: PMO as Service, Agile Coach, Delivery Manager, Staff Aug
+8. Diseñar KPIs de engagement: qué se mide, qué se reporta, qué dispara escalación
+9. Producir roadmap de madurez: quick wins (M1-M3), consolidación (M4-M6), optimización (M7-M12)
+10. Output: Management Service Proposal con assessment, gaps, modelo y roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico
+TIPO_SERVICIO=Management`,
+
+  'cloud-discovery': `# © MAO Framework — Cloud Service Discovery | sdf:cloud-discovery
+
+## ROL
+Arquitecto cloud senior y consultor de migración. Experto en estrategia multi-cloud,
+FinOps, landing zones, containerización y modernización de infraestructura.
+
+## OBJETIVO
+Evaluar el estado cloud del cliente y diseñar una propuesta de servicio Cloud que cubra
+migración, modernización, optimización de costos y operación continua.
+
+## PROTOCOLO
+1. Inventariar workloads actuales: on-premise, cloud, hybrid — con sizing y costos
+2. Evaluar cloud maturity: nivel 1 (exploración) a 5 (cloud-native optimizado)
+3. Clasificar workloads con framework 7R: rehost, replatform, refactor, repurchase, retire, retain, reinvent
+4. Analizar FinOps: gasto actual, waste, reservations, savings plans, right-sizing
+5. Evaluar landing zone: networking, IAM, security baselines, compliance, logging
+6. Mapear skills gap: qué capacidades cloud tiene el equipo vs qué necesita
+7. Diseñar modelo de servicio: migración, managed services, CoE cloud, staff aug
+8. Calcular TCO comparativo: as-is vs to-be por escenario de migración
+9. Proponer wave plan: qué migra primero, dependencias, rollback strategy
+10. Output: Cloud Service Proposal con assessment, 7R classification, TCO y wave plan
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico
+CLOUD_PROVIDER=aws|azure|gcp|multi-cloud|agnostic
+TIPO_SERVICIO=Cloud`,
+
+  'ux-discovery': `# © MAO Framework — UX Design Service Discovery | sdf:ux-discovery
+
+## ROL
+Lead de UX Research y Design Strategy. Especialista en auditoría de experiencia,
+design systems, accesibilidad y madurez de diseño organizacional.
+
+## OBJETIVO
+Evaluar la madurez UX del cliente y diseñar una propuesta de servicio de UX/Design
+que cierre gaps en research, diseño de interacción, accesibilidad y cultura de diseño.
+
+## PROTOCOLO
+1. Evaluar UX maturity: nivel 1 (ausente) a 5 (design-driven organization) según NN/g
+2. Auditar touchpoints digitales: web, mobile, internal tools — heurísticas de Nielsen
+3. Analizar métricas UX: task completion, error rate, SUS score, NPS, CSAT
+4. Evaluar accesibilidad: WCAG 2.1 nivel AA — audit de conformidad
+5. Mapear design system: existencia, adopción, coverage, actualización
+6. Evaluar research practices: user testing, analytics, surveys, journey maps
+7. Identificar pain points críticos: dónde los usuarios abandonan, se frustran o fallan
+8. Proponer modelo de servicio: UX audit, design system build, research ops, embedded team
+9. Diseñar roadmap: quick wins (UI fixes M1), foundation (design system M2-M4), culture (M5-M12)
+10. Output: UX Service Proposal con maturity assessment, audit findings, modelo y roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico
+TIPO_SERVICIO=UX-Design`,
+
+  'assess-compliance': `# © MAO Framework — Compliance Assessment | sdf:assess-compliance
+
+## ROL
+Auditor de cumplimiento regulatorio. Especialista en frameworks normativos y riesgo legal.
+
+## OBJETIVO
+Evaluar postura de compliance del cliente contra GDPR, PCI-DSS, ISO 27001 y regulaciones sectoriales.
+Identificar gaps, riesgos legales y plan de remediación priorizado.
+
+## PROTOCOLO
+1. Identificar regulaciones aplicables: GDPR, PCI-DSS, ISO 27001, SOX, HIPAA, local
+2. Evaluar madurez de compliance: nivel 1 (ad-hoc) a 5 (optimizado)
+3. Auditar controles existentes: políticas, procesos, herramientas, evidencia
+4. Mapear gaps vs requisitos normativos (matriz de cumplimiento)
+5. Clasificar riesgos: alto (multa/sanción), medio (observación), bajo (mejora)
+6. Evaluar data privacy: consentimiento, retención, portabilidad, borrado
+7. Revisar controles de acceso: IAM, segregación, logging, auditoría
+8. Proponer plan de remediación priorizado por riesgo legal
+9. Output: Compliance Assessment con matriz de gaps, riesgos y roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=exhaustivo`,
+
+  'assess-devops': `# © MAO Framework — DevOps Maturity Assessment | sdf:assess-devops
+
+## ROL
+Ingeniero DevOps senior y consultor de plataformas. Especialista en DORA metrics,
+CI/CD, IaC, observabilidad y cultura de entrega continua.
+
+## OBJETIVO
+Evaluar madurez DevOps del cliente usando DORA metrics y diseñar roadmap de mejora
+en delivery speed, reliability, change management y recuperación.
+
+## PROTOCOLO
+1. Medir DORA metrics: deployment frequency, lead time, change failure rate, MTTR
+2. Evaluar CI/CD: pipelines, automatización, cobertura, quality gates
+3. Auditar IaC: Terraform, Pulumi, CloudFormation — coverage y drift
+4. Revisar containerización: Docker, Kubernetes, service mesh, scaling
+5. Evaluar observabilidad: logs, metrics, traces, alerting, SLOs/SLIs
+6. Mapear cultura: blameless postmortems, feature flags, trunk-based development
+7. Comparar vs DORA elite performers (benchmarks)
+8. Identificar bottlenecks en el value stream
+9. Proponer roadmap: quick wins (M1-M3), platform (M4-M8), culture (M9-M12)
+10. Output: DevOps Maturity Assessment con DORA scorecard, gaps y roadmap
+
+===params
+MODO=supervisado
+FORMATO=markdown
+VARIANTE=técnica
+PROFUNDIDAD=técnico`,
+
+  'prime-repo': `# © MAO Framework — RAG Priming | sdf:prime-repo
+
+## ROL
+Explorador de repositorios y generador de conocimiento. Especialista en indexación
+de codebases para alimentar contexto de agentes.
+
+## OBJETIVO
+Explorar un repositorio, generar resúmenes estructurados de arquitectura, patrones,
+dependencias y convenciones para priming de agentes RAG.
+
+## PROTOCOLO
+1. Escanear estructura de directorios y archivos clave
+2. Identificar lenguajes, frameworks, build tools, configuración
+3. Extraer patrones arquitectónicos: layers, modules, services
+4. Mapear dependencias: package.json, pom.xml, go.mod, requirements.txt
+5. Documentar convenciones: naming, estructura, testing, CI/CD
+6. Generar resumen ejecutivo del repositorio
+7. Producir knowledge base estructurada para RAG
+8. Output: Repo primer con arquitectura, stack, patrones y knowledge base
+
+===params
+MODO=desatendido
+FORMATO=markdown
+VARIANTE=técnica`,
+
+  'menu': `# © MAO Framework — Command Palette | sdf:menu
+
+## ROL
+Navegador de comandos MAO. Interfaz de descubrimiento del catálogo completo.
+
+## OBJETIVO
+Presentar menú categorizado tipo ghost menu con todos los comandos disponibles,
+filtrable por categoría, fase del pipeline y tipo de servicio.
+
+## PROTOCOLO
+1. Listar todas las categorías: RUN, GENERATE, REPORT, ASSESS, OPS, UX
+2. Para cada categoría mostrar: comando, alias, descripción corta, prereqs
+3. Resaltar comandos disponibles según estado actual del pipeline
+4. Indicar gates pendientes y próximos pasos recomendados
+5. Permitir navegación por teclado o selección directa
+6. Output: Menú interactivo categorizado
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown`,
+
+  'a': `# © MAO Framework — Advance Pipeline | sdf:a
+
+## ROL
+Controlador de avance del pipeline. Validador de gates y progresión.
+
+## OBJETIVO
+Avanzar al siguiente paso del pipeline, validando que los prerequisitos y quality gates
+se cumplan antes de permitir la progresión.
+
+## PROTOCOLO
+1. Identificar paso actual del pipeline
+2. Verificar prerequisitos del siguiente paso
+3. Evaluar quality gate correspondiente (G1, G1.5, G2, G3)
+4. Si gate pasa: avanzar y ejecutar siguiente entregable
+5. Si gate falla: reportar gaps específicos y acciones requeridas
+6. Actualizar estado del pipeline
+7. Output: Gate validation report + siguiente paso iniciado o bloqueado
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown`,
+
+  'demo': `# © MAO Framework — Interactive Demo | sdf:demo
+
+## ROL
+Guía de demostración interactiva. Narrador de las capacidades MAO en 5 actos.
+
+## OBJETIVO
+Tour guiado de 5 actos que muestra las capacidades del framework MAO con datos
+de ejemplo, entregables reales y flujo completo de discovery.
+
+## PROTOCOLO
+1. Acto 1: Contexto — presentar MAO, pipeline, agentes disponibles
+2. Acto 2: Discovery Express — ejecutar mini-discovery con datos de ejemplo
+3. Acto 3: Entregables — mostrar samples de AS-IS, Escenarios, Roadmap
+4. Acto 4: Assessments — demostrar evaluación arquitectónica con scoring
+5. Acto 5: Handover — presentar paquete final y métricas de calidad
+6. Cada acto incluye narración, visualización y interacción
+7. Output: Tour completo con artefactos de ejemplo
+
+===params
+MODO=paso-a-paso
+FORMATO=markdown
+VARIANTE=ejecutiva`
+};
+
+const ALL_PROMPTS = [
+  { id: "run-guided", alias: "guide", category: "flujos", title: "Pipeline Guiado", time: "16h", complexity: "media", prereqs: [], description: "Pipeline completo con facilitación humana. 6 pausas para decisiones del cliente, validación cruzada en cada gate, 48 agentes asistiendo." },
+  { id: "run-auto", alias: "auto", category: "flujos", title: "Pipeline Autónomo", time: "16h", complexity: "alta", prereqs: [], description: "Ejecución sin interrupciones. Toma decisiones automáticas en gates usando scoring 6D, simula Monte Carlo, genera artefactos completos." },
+  { id: "run-express", alias: "express", category: "flujos", title: "Express (Go/No-Go)", time: "3h", complexity: "media", prereqs: [], description: "Decisión rápida en 1 sesión. 3 entregables críticos (Plan + Brief + Feasibility). Para boards ejecutivos con timeline apretado." },
+  { id: "run-deep", alias: "deep", category: "flujos", title: "Deep Architecture", time: "40h", complexity: "experto", prereqs: [], description: "Dirección arquitectónica exhaustiva. 7 entregables, 2 quality gates, rigor académico para transformaciones críticas." },
+  { id: "generate-plan", alias: "plan", category: "entregables", title: "00 — Discovery Plan", time: "2h", complexity: "baja", prereqs: [], description: "Mapeo de la investigación: stakeholders a entrevistar, temas críticos, timeline, riesgos iniciales, artefactos esperados." },
+  { id: "map-stakeholders", alias: "stakeholders", category: "entregables", title: "01 — Stakeholder Map", time: "4h", complexity: "media", prereqs: ["00-Plan"], description: "Inventario de decisores, influencers e impactados. Poder vs interés. Matriz RACI. Síntesis de entrevistas semi-estructuradas." },
+  { id: "generate-brief", alias: "brief", category: "entregables", title: "02 — Brief Técnico", time: "3h", complexity: "media", prereqs: ["01-Stakeholders"], description: "Síntesis del contexto: línea de negocio, sistemas heredados, constricciones técnicas, objetivos declarados, presupuesto indicativo." },
+  { id: "diagnose-asis", alias: "asis", category: "entregables", title: "03 — Análisis AS-IS", time: "6h", complexity: "alta", prereqs: ["02-Brief"], description: "Estado actual exhaustivo. Arquitectura C4, flujos de datos, integraciones, deuda técnica, métricas baseline, gaps vs normas." },
+  { id: "trace-flows", alias: "flows", category: "entregables", title: "04 — Mapeo de Flujos", time: "4h", complexity: "media", prereqs: ["03-AS-IS"], description: "Flujos críticos end-to-end: happy paths, edge cases, puntos de fallo, latencies, volcanes de datos, fricción operativa." },
+  { id: "evaluate-scenarios", alias: "scenarios", category: "entregables", title: "05 — Escenarios ToT", time: "6h", complexity: "alta", prereqs: ["04-Flujos"], description: "3-5 opciones arquitectónicas evaluadas contra scoring 6D: costo TCO, time-to-market, riesgo, escalabilidad, adhesión, valor." },
+  { id: "validate-feasibility", alias: "feasibility", category: "entregables", title: "05b — Feasibility Tank", time: "8h", complexity: "experto", prereqs: ["05-Escenarios"], description: "Think tank de 7 Sabios (investigador, economista, sistemas, tech scout, integración, HW, data). Veredicto Go/No-Go documentado." },
+  { id: "chart-roadmap", alias: "roadmap", category: "entregables", title: "06 — Solution Roadmap", time: "6h", complexity: "alta", prereqs: ["05b-Feasibility"], description: "Plan de ejecución: sprints, FTE-meses, hitos, dependencias críticas, quick wins (Q1), transformación (Q2-Q4), riesgos residuales." },
+  { id: "write-spec", alias: "spec", category: "entregables", title: "07 — Especificación Funcional", time: "12h", complexity: "experto", prereqs: ["06-Roadmap"], description: "Reqs funcionales, no-funcionales, user stories, aceptación, interfaces, datos, seguridad, compliance, testing." },
+  { id: "craft-pitch", alias: "pitch", category: "entregables", title: "08 — Pitch Ejecutivo", time: "4h", complexity: "media", prereqs: ["07-Spec"], description: "Narrativa ~15 min: contexto, problema, solución, impacto, inversión (sin precios), timeline, siguiente paso, llamada a acción." },
+  { id: "deliver-handover", alias: "handover", category: "entregables", title: "09 — Handover Operativo", time: "2h", complexity: "baja", prereqs: ["08-Pitch"], description: "Traspaso a ejecución: artefactos críticos organizados, asignaciones, dependencias, risks register, governance, escalación." },
+  { id: "present-findings", alias: "findings", category: "entregables", title: "10 — Deck Ejecutivo", time: "4h", complexity: "media", prereqs: ["06-Roadmap"], description: "Presentación visual: 20-30 slides, storytelling de datos, alineación C-suite, impacto económico, recomendación, siguiente." },
+  { id: "report-tech", alias: "tech", category: "entregables", title: "11 — Deep-Dive Técnico", time: "8h", complexity: "alta", prereqs: ["07-Spec"], description: "Análisis arquitectónico exhaustivo: C4 multinivel, patrones, trade-offs, sizing, scalability, disaster recovery, testing." },
+  { id: "report-func", alias: "func", category: "entregables", title: "12 — Hallazgos Funcionales", time: "6h", complexity: "media", prereqs: ["08-Pitch"], description: "Síntesis de oportunidades funcionales: mejoras procesos, UX, automatización, integraciones nuevas." },
+  { id: "review-business", alias: "biz", category: "entregables", title: "13 — Revisión de Negocio", time: "4h", complexity: "media", prereqs: ["09-Handover"], description: "Análisis INTERNO: alineación estratégica, casos de uso prioritarios, business case, financiero (INTERNO, NO COMPARTIR)." },
+  { id: "assess-architecture", alias: "arch", category: "assessments", title: "Evaluación Arquitectónica", time: "8h", complexity: "alta", prereqs: ["04-Flujos"], description: "C4 4-level, ISO 25010 (8 atributos de calidad), scoring de madurez, hallazgos críticos, roadmap de refactor." },
+  { id: "assess-data", alias: "data", category: "assessments", title: "Data Landscape", time: "6h", complexity: "alta", prereqs: ["03-AS-IS"], description: "Inventario de fuentes, gobernanza, linaje, calidad, políticas de retención, readiness para analytics/AI, gaps." },
+  { id: "assess-cloud", alias: "cloud", category: "assessments", title: "Cloud Readiness (7R)", time: "6h", complexity: "media", prereqs: ["03-AS-IS"], description: "Evaluación 7R: rehost, replatform, refactor, repurchase, retire, retain, reinvent. Scoring TCO, effort, timeline." },
+  { id: "assess-security", alias: "security", category: "assessments", title: "Postura STRIDE + OWASP", time: "8h", complexity: "alta", prereqs: ["04-Flujos"], description: "STRIDE threat modeling, OWASP top 10, compliance (GDPR/HIPAA), pentesting scope, risk matrix, remediation plan." },
+  { id: "assess-change", alias: "change", category: "assessments", title: "Readiness ADKAR", time: "4h", complexity: "media", prereqs: ["01-Stakeholders"], description: "Madurez organizacional para cambio. ADKAR framework: awareness, desire, knowledge, ability, reinforcement." },
+  { id: "audit-quality", alias: "audit", category: "operaciones", title: "Audit de Calidad", time: "3h", complexity: "media", prereqs: [], description: "Scorecard 10 criterios: fundamento, veracidad, densidad, claridad, precisión, profundidad, coherencia, valor, alineación, integridad." },
+  { id: "improve-deliverables", alias: "improve", category: "operaciones", title: "Evolucionar Entregables", time: "4h", complexity: "media", prereqs: [], description: "Mejora iterativa: feedback → rewrite → validation. Preserva data existente, eleva estándares, conserva timestamps." },
+  { id: "rescue-stalled", alias: "rescue", category: "operaciones", title: "Rescate de Discovery", time: "6h", complexity: "alta", prereqs: [], description: "Recuperación de sesiones atascadas: diagnóstico de bloqueo, identificación de missing data, suplencia inteligente, remediación." },
+  { id: "simulate-scenarios", alias: "simulate", category: "operaciones", title: "Simulación de Escenarios", time: "6h", complexity: "experto", prereqs: ["05-Escenarios"], description: "Monte Carlo: 10k iteraciones de timeline vs budget vs scope. Probabilidades de éxito, sensibilidad a supuestos clave." },
+  { id: "benchmark-maturity", alias: "benchmark", category: "operaciones", title: "Benchmark vs Industria", time: "4h", complexity: "media", prereqs: ["06-Roadmap"], description: "Comparación de madurez contra peers, líderes, CMM/CMMI. Identificación de gaps, priorización de mejoras." },
+  { id: "discover-rpa", alias: "rpa", category: "operaciones", title: "RPA Discovery", time: "4h", complexity: "media", prereqs: ["03-AS-IS"], description: "Identificación de procesos automatizables. Scoring: volumen, reglas, estabilidad. Casos de uso, ROI, roadmap RPA." },
+  { id: "discover-qa", alias: "qa", category: "operaciones", title: "QA Service Discovery", time: "4h", complexity: "media", prereqs: ["04-Flujos"], description: "Testing strategy: cobertura, tipos (unit, integration, e2e, performance), herramientas, staffing, defect metrics." },
+  { id: "discover-ai", alias: "ai", category: "operaciones", title: "AI Opportunities", time: "6h", complexity: "alta", prereqs: ["04-Flujos"], description: "Detección de use cases de IA: ML, NLP, computer vision, predictive. Data readiness, MVP scope, time-to-value." },
+  { id: "discover-dt", alias: "dt", category: "operaciones", title: "Digital Transformation", time: "8h", complexity: "alta", prereqs: ["02-Brief"], description: "Transformación digital integral: estrategia, capabilities, org change, technology stack, roadmap 2-3 años." },
+  { id: "generate-prompt", alias: "gen-prompt", category: "meta", title: "Generador de Prompts", time: "2h", complexity: "media", prereqs: [], description: "[INTERNO] Crea un nuevo prompt NL-HP personalizado. Entrada: dominio, objetivo, parámetros. Output: prompt listo para usar." },
+  { id: "adapt-prompt", alias: "adapt-prompt", category: "meta", title: "Adaptador de Prompts", time: "1h", complexity: "baja", prereqs: [], description: "[INTERNO] Modifica un prompt existente para otro contexto: tipo servicio, idioma, formato, variante ejecutiva/técnica." },
+  { id: "evaluate-prompt", alias: "eval-prompt", category: "meta", title: "Evaluador de Prompts", time: "2h", complexity: "media", prereqs: [], description: "[INTERNO] Valida un prompt: estructura (ROL/OBJETIVO/PROTOCOLO), completitud, alineación con estándares, hallucination risk." },
+  { id: "compose-discovery", alias: "compose", category: "meta", title: "Compositor de Discovery", time: "3h", complexity: "alta", prereqs: [], description: "[INTERNO] Genera pipelines de discovery a medida seleccionando fases, entregables, agentes y gates del catálogo MAO según contexto: industria, madurez, urgencia, presupuesto." },
+  { id: "calibrate-sector", alias: "calibrate", category: "meta", title: "Calibrador Sectorial", time: "2h", complexity: "media", prereqs: [], description: "[INTERNO] Adapta vocabulario, regulaciones, benchmarks, patrones y KPIs al sector específico del cliente. Se aplica como overlay sobre cualquier pipeline MAO." },
+  { id: "orchestrate-multistakeholder", alias: "orchestrate", category: "meta", title: "Orquestador Multi-Stakeholder", time: "4h", complexity: "alta", prereqs: ["01-Stakeholders"], description: "[INTERNO] Diseña flujos multi-track donde cada audiencia (C-suite, tech, ops, compliance) recibe entregables adaptados que convergen en narrativa coherente." },
+  { id: "management-discovery", alias: "management", category: "operaciones", title: "Management Discovery", time: "6h", complexity: "media", prereqs: ["03-AS-IS"], description: "Evaluación de madurez PMO (OPM3/P3M3), governance, delivery health, metodologías. Propuesta de Management as Service." },
+  { id: "cloud-discovery", alias: "cloud-svc", category: "operaciones", title: "Cloud Service Discovery", time: "6h", complexity: "alta", prereqs: ["03-AS-IS"], description: "Assessment cloud: inventario workloads, 7R classification, FinOps, landing zone, TCO comparativo, wave plan de migración." },
+  { id: "ux-discovery", alias: "ux", category: "operaciones", title: "UX Design Discovery", time: "4h", complexity: "media", prereqs: ["04-Flujos"], description: "Madurez UX (NN/g), heurísticas de Nielsen, WCAG audit, design system coverage, pain points. Propuesta UX/Design service." },
+  { id: "sas-discovery", alias: "sas", category: "operaciones", title: "Staff Augmentation Discovery", time: "4h", complexity: "media", prereqs: ["03-AS-IS"], description: "Gap analysis de equipo, perfiles requeridos, modelo de staffing, ramp-up timeline, governance de augmentation." },
+  { id: "assess-compliance", alias: "compliance", category: "assessments", title: "Compliance Assessment", time: "6h", complexity: "alta", prereqs: ["03-AS-IS"], description: "Evaluación GDPR, PCI-DSS, ISO 27001, SOX. Gap analysis, remediación priorizada, roadmap de cumplimiento." },
+  { id: "assess-devops", alias: "devops", category: "assessments", title: "DevOps Maturity (DORA)", time: "6h", complexity: "alta", prereqs: ["04-Flujos"], description: "DORA metrics: deploy frequency, lead time, change failure rate, MTTR. CI/CD maturity, automation coverage, culture assessment." },
+  { id: "prime-repo", alias: "prime", category: "operaciones", title: "RAG Priming", time: "2h", complexity: "baja", prereqs: [], description: "Exploración de repositorio y generación de archivos priming-rag-*.md para alimentar el contexto RAG del framework." },
+  { id: "menu", alias: "menu", category: "ux", title: "Command Palette", time: "instant", complexity: "baja", prereqs: [], description: "Menú fantasma categorizado con todos los comandos disponibles. Detecta estado del pipeline y sugiere siguiente acción." },
+  { id: "a", alias: "advance", category: "ux", title: "Avanzar Pipeline", time: "instant", complexity: "baja", prereqs: [], description: "Avanza al siguiente paso del pipeline con validación de gate. Detecta fase actual, evalúa criterios, sugiere remediación si bloquea." },
+  { id: "demo", alias: "demo", category: "ux", title: "Demo Interactiva", time: "30min", complexity: "baja", prereqs: [], description: "Tour guiado de 5 actos: identidad MAO, pipeline, mini-discovery real, ghost menu, y siguientes pasos." }
+];
+
+function renderPrompts() {
+  const categories = {
+    flujos: 'flujos-grid',
+    entregables: 'entregables-grid',
+    assessments: 'assessments-grid',
+    operaciones: 'operaciones-grid',
+    ux: 'ux-grid',
+    meta: 'meta-grid'
+  };
+
+  Object.keys(categories).forEach(cat => {
+    const grid = document.getElementById(categories[cat]);
+    const prompts = ALL_PROMPTS.filter(p => p.category === cat);
+    grid.innerHTML = prompts.map(p => {
+      const fullPrompt = PROMPT_TEXTS[p.id] || 'Prompt text not found';
+      const cardId = `card-${p.id}`;
+      return `
+      <div class="prompt-card" data-id="${p.id}" data-category="${p.category}" data-search="${p.title.toLowerCase()} ${p.description.toLowerCase()} ${p.id.toLowerCase()}">
+        <div class="prompt-header">
+          <div class="prompt-id">${p.id}</div>
+          <div class="prompt-title">${p.title}</div>
+          <div class="prompt-alias">/${p.alias}</div>
+        </div>
+        <div class="prompt-meta">
+          <div class="prompt-meta-item">⏱ <span class="badge-time">${p.time}</span></div>
+          <div class="prompt-meta-item">⚡ <span class="badge-complexity-${p.complexity}">${p.complexity}</span></div>
+          ${p.prereqs.length > 0 ? `<div class="prompt-meta-item">📋 ${p.prereqs.length} prereq(s)</div>` : ''}
+        </div>
+        <div class="prompt-content">${p.description}</div>
+        <div id="${cardId}-code" class="prompt-full-code">${escapeHtml(fullPrompt)}</div>
+        <div class="prompt-footer">
+          <button class="btn btn-copy" onclick="copyPrompt('${p.id}')">Copiar Completo</button>
+          <button class="btn btn-toggle" onclick="toggleCode('${cardId}')">Ver Código</button>
+        </div>
+      </div>
+    `;
+    }).join('');
+  });
+}
+
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+function toggleCode(cardId) {
+  const codeBlock = document.getElementById(cardId + '-code');
+  codeBlock.classList.toggle('show');
+}
+
+function filterCategory(cat) {
+  document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const cards = document.querySelectorAll('.prompt-card');
+  cards.forEach(card => {
+    card.style.display = cat === '' || card.dataset.category === cat ? 'block' : 'none';
+  });
+}
+
+function copyPrompt(id) {
+  const prompt = ALL_PROMPTS.find(p => p.id === id);
+  const fullText = PROMPT_TEXTS[id] || '';
+  navigator.clipboard.writeText(fullText).then(() => {
+    const btn = event.target;
+    btn.textContent = '✓ Copiado';
+    setTimeout(() => { btn.textContent = 'Copiar Completo'; }, 2000);
+  });
+}
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const query = e.target.value.toLowerCase();
+  document.querySelectorAll('.prompt-card').forEach(card => {
+    const match = card.dataset.search.includes(query);
+    card.style.display = match ? 'block' : 'none';
+  });
+});
+
+renderPrompts();
+</script>
+
+</body>
+</html>

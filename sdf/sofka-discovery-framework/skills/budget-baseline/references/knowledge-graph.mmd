@@ -1,0 +1,27 @@
+graph TD
+    subgraph Inputs
+        A[Cost Estimates] --> D
+        B[Risk Register] --> D
+        C[Schedule Baseline] --> D
+    end
+
+    subgraph "Budget Baseline Process"
+        D[Estimate Aggregation]:::skill --> E[Contingency Allocation]:::skill
+        E --> F[Time-Phasing]:::skill
+        F --> G[Baseline Approval]:::skill
+    end
+
+    subgraph Agents
+        H[Financial Analyst Agent]:::agent --> D
+        I[Risk Analyst Agent]:::agent --> E
+    end
+
+    subgraph Downstream
+        G --> J[Earned Value Analysis]
+        G --> K[Budget Tracking]
+        G --> L[Executive Dashboard]
+        G --> M[Change Control Board]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

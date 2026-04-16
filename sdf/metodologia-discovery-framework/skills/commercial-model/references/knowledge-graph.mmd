@@ -1,0 +1,95 @@
+%% Knowledge Graph — Commercial Model
+%% Dominio: Modelos de negocio, estructuras comerciales, estrategia de captura de valor — revenue models, pricing strategy, licensing, partnerships
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["commercial-model"]
+        direction TB
+        PR["Principio Rector:<br/>Modelo antes que precio —<br/>la estructura define la relación"]
+        FW["Framework: 6 Secciones"]
+        VG["Validation Gate: 7 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        COST["Cost Driver Analysis<br/>(Phase 4 output)"]
+        SCENARIO["Scenario Context<br/>(ToT output)"]
+        STAKEHOLDER["Stakeholder Map<br/>(influence, decision-makers)"]
+        MARKET["Market Intelligence<br/>(competitive landscape)"]
+        REGULATORY["Regulatory Constraints<br/>(pricing, licensing, compliance)"]
+    end
+
+    subgraph SECTIONS["6-Section Delivery"]
+        S1["S1: Client Value Map<br/>Value sources, quantification, horizons"]
+        S2["S2: Commercial Model Catalog<br/>T&M, Fixed, Earned Value, JV,<br/>Usage-Based, Licensing, Hybrid"]
+        S3["S3: Model Fit Analysis<br/>Scoring per dimension, weighted fit"]
+        S4["S4: Recommended Model<br/>Structure, KPIs, gates, governance"]
+        S5["S5: Deal Structure Canvas<br/>Fixed + variable components, IP, protections"]
+        S6["S6: Negotiation Preparation<br/>Objections, walk-away, approval path"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        A03["A-03 Commercial Model<br/>(HTML/Markdown)"]
+        CANVAS["Deal Structure Canvas"]
+        NEGPREP["Negotiation Playbook"]
+        DIAGRAMS["Value Flow &<br/>Model Fit Diagrams"]
+    end
+
+    subgraph STANDARDS["Standards & Frameworks"]
+        BMC["Business Model Canvas<br/>(Osterwalder)"]
+        VPC["Value Proposition Canvas<br/>(Osterwalder)"]
+        WARDLEY["Wardley Mapping<br/>(value chain evolution)"]
+        STP["Strategy & Tactics<br/>of Pricing (Nagle & Müller)"]
+        PLATFORM["Platform Economics<br/>(Parker, Van Alstyne, Choudary)"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        COSTSKILL["cost-estimation<br/>(usa S1 value map como input)"]
+        PITCH["executive-pitch<br/>(usa S4+S5 para business case)"]
+        ADOPTION["adoption-strategy<br/>(usa S4 para change framing)"]
+        ROADMAP["solution-roadmap<br/>(usa S5 gates para phasing)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        VD["value-model-designer<br/>(owner)"]
+        DS["deal-structurer<br/>(owner)"]
+        RC["risk-controller<br/>(support: validation)"]
+        DM["delivery-manager<br/>(support: feasibility)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|estructura| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    STANDARDS -.->|fundamentan| SECTIONS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Agent relationships
+    VD -->|diseña S1, S2, S3| SKILL
+    DS -->|estructura S4, S5, S6| SKILL
+    RC -.->|valida gates y riesgos| S3
+    DM -.->|viabilidad de delivery| S4
+
+    %% Internal traceability
+    S1 -.->|value sources inform| S2
+    S2 -.->|catalog enables| S3
+    S3 -.->|fit scores drive| S4
+    S4 -.->|recommendation structures| S5
+    S5 -.->|deal terms prepare| S6
+    S1 -.->|KPI candidates feed| S4
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+
+    class SKILL skill
+    class COST,SCENARIO,STAKEHOLDER,MARKET,REGULATORY input
+    class S1,S2,S3,S4,S5,S6 section
+    class A03,CANVAS,NEGPREP,DIAGRAMS output
+    class BMC,VPC,WARDLEY,STP,PLATFORM standard
+    class COSTSKILL,PITCH,ADOPTION,ROADMAP consumer
+    class VD,DS,RC,DM agent

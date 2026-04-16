@@ -1,0 +1,156 @@
+[
+  {
+    "id": "pmo-health-check-eval-001",
+    "name": "Mixed health — schedule behind, budget OK, 3 red risks",
+    "description": "Project with SPI=0.88 (schedule behind), CPI=1.02 (budget slightly under), and 3 high-severity open risks. Tests dimension-assessor's ability to correctly flag schedule as Red/Amber while keeping budget Green, and risk dimension as Red. Recovery-recommender should suggest schedule recovery strategies (fast-tracking or scope reduction) without jeopardizing the healthy budget position.",
+    "input": {
+      "project_name": "Project Atlas — ERP Migration Phase 2",
+      "reporting_period": "Sprint 14",
+      "metrics": {
+        "schedule": { "SPI": 0.88, "schedule_variance_days": -12, "milestones_on_track": 3, "milestones_total": 5 },
+        "budget": { "CPI": 1.02, "EAC_vs_BAC_pct": -1.5, "burn_rate_trend": "stable" },
+        "scope": { "change_requests_open": 4, "requirements_volatility_pct": 8, "scope_baseline_changes": 1 },
+        "quality": { "defect_density": 2.1, "test_coverage_pct": 78, "defect_escape_rate_pct": 5 },
+        "risk": { "open_high_risks": 3, "risk_exposure_total": 185000, "mitigation_completion_pct": 45 },
+        "team": { "utilization_pct": 82, "unplanned_absence_days": 3, "turnover_signals": "none" },
+        "stakeholder": { "engagement_score": 3.8, "escalations_this_period": 1, "response_latency_hours": 18 },
+        "governance": { "gate_compliance_pct": 90, "decision_latency_days": 4, "steering_attendance_pct": 85 }
+      }
+    },
+    "expected_output": {
+      "schedule_rag": "Amber or Red — SPI 0.88 is below 0.95 threshold",
+      "budget_rag": "Green — CPI 1.02 is within healthy range",
+      "risk_rag": "Red — 3 open high risks with only 45% mitigation completion",
+      "composite_health": "Amber at best — Red override rule may apply due to risk dimension",
+      "recovery_actions": "Schedule: fast-tracking or scope reduction; Risk: accelerate mitigation plans, escalate unmitigated risks",
+      "must_not": "Must NOT recommend budget cuts or crashing (which would hurt the healthy budget position)"
+    }
+  },
+  {
+    "id": "pmo-health-check-eval-002",
+    "name": "Team burnout — 95% utilization sustained 3 sprints",
+    "description": "Project showing team burnout signals: 95% utilization for 3 consecutive sprints, rising overtime, increasing unplanned absences, and ceremony skip rate climbing. Tests early-warning-detector's ability to identify the burnout pattern and trend-correlator's ability to predict downstream quality and risk degradation.",
+    "input": {
+      "project_name": "Project Beacon — Digital Onboarding Platform",
+      "reporting_period": "Sprint 9",
+      "metrics": {
+        "schedule": { "SPI": 0.97, "schedule_variance_days": -2, "velocity_trend": [42, 40, 38, 35] },
+        "budget": { "CPI": 0.95, "overtime_hours_trend": [20, 35, 48, 62], "contractor_spend_pct": 15 },
+        "scope": { "change_requests_open": 2, "requirements_volatility_pct": 5, "scope_baseline_changes": 0 },
+        "quality": { "defect_density": 1.8, "defect_trend": [1.2, 1.4, 1.6, 1.8], "rework_pct": 12 },
+        "risk": { "open_high_risks": 1, "team_risk_flagged": true, "knowledge_silo_concentration": "high" },
+        "team": {
+          "utilization_pct_trend": [88, 91, 95, 95, 95],
+          "unplanned_absence_trend": [1, 2, 3, 5],
+          "overtime_trend_hours": [20, 35, 48, 62],
+          "ceremony_skip_rate_pct": 18,
+          "retrospective_action_completion_pct": 40
+        },
+        "stakeholder": { "engagement_score": 3.5, "escalations_this_period": 0, "response_latency_hours": 24 },
+        "governance": { "gate_compliance_pct": 85, "decision_latency_days": 5, "steering_attendance_pct": 80 }
+      }
+    },
+    "expected_output": {
+      "team_rag": "Red — sustained 95% utilization with rising absences and overtime is a clear burnout pattern",
+      "early_warnings": [
+        "Velocity declining (-1.8σ from baseline over 4 sprints)",
+        "Overtime trending up (+2σ, tripled in 4 sprints)",
+        "Unplanned absences accelerating (+1.5σ)",
+        "Ceremony skip rate above threshold",
+        "Retrospective action completion dangerously low at 40%"
+      ],
+      "trend_correlations": [
+        "Team utilization -> quality degradation (defect density rising in lockstep with utilization)",
+        "Team burnout -> velocity decline (predicted schedule impact in 2-3 sprints)",
+        "Knowledge silo concentration -> risk amplification (single points of failure)"
+      ],
+      "recovery_actions": "Immediate utilization cap at 85%, redistribute workload, cancel non-critical ceremonies to free capacity, address knowledge silos through pairing, consider temporary staff augmentation",
+      "distress_probability": "High (>75%) — multiple correlated burnout signals sustained over 3+ sprints"
+    }
+  },
+  {
+    "id": "pmo-health-check-eval-003",
+    "name": "All-green project — validate healthy state across all dimensions",
+    "description": "A well-performing project with all dimensions in Green. Tests that the agents correctly validate a healthy state, do not generate false alarms, and provide a concise 'maintain course' recommendation rather than unnecessary recovery actions.",
+    "input": {
+      "project_name": "Project Crest — API Gateway Modernization",
+      "reporting_period": "Sprint 7",
+      "metrics": {
+        "schedule": { "SPI": 1.04, "schedule_variance_days": 3, "milestones_on_track": 4, "milestones_total": 4, "velocity_trend": [30, 31, 32, 33] },
+        "budget": { "CPI": 1.01, "EAC_vs_BAC_pct": -0.8, "burn_rate_trend": "stable" },
+        "scope": { "change_requests_open": 1, "requirements_volatility_pct": 3, "scope_baseline_changes": 0 },
+        "quality": { "defect_density": 0.8, "test_coverage_pct": 92, "defect_escape_rate_pct": 1.5 },
+        "risk": { "open_high_risks": 0, "risk_exposure_total": 25000, "mitigation_completion_pct": 90 },
+        "team": { "utilization_pct": 78, "unplanned_absence_days": 1, "turnover_signals": "none", "morale_score": 4.2 },
+        "stakeholder": { "engagement_score": 4.5, "escalations_this_period": 0, "response_latency_hours": 4 },
+        "governance": { "gate_compliance_pct": 100, "decision_latency_days": 1, "steering_attendance_pct": 95 }
+      }
+    },
+    "expected_output": {
+      "all_dimensions_rag": "Green — every dimension within healthy thresholds",
+      "composite_health": "Green — 85+ composite score",
+      "early_warnings": "None — no signals exceed Watch threshold",
+      "trend_correlations": "No concerning correlations — positive reinforcement loop (good team health -> good quality -> stable schedule)",
+      "recovery_actions": "None required — maintain current practices, document what is working well for portfolio-level lessons learned",
+      "must_not": "Must NOT generate false alarms, unnecessary recovery plans, or suggest changes to a healthy project"
+    }
+  },
+  {
+    "id": "pmo-health-check-eval-004",
+    "name": "Scope creep cascade — correlating scope growth with schedule and budget degradation",
+    "description": "Project experiencing uncontrolled scope creep that is cascading into schedule slip and budget overrun. Tests trend-correlator's ability to identify the scope-schedule-budget causal chain and recovery-recommender's ability to prescribe scope control as the root-cause intervention rather than treating symptoms.",
+    "input": {
+      "project_name": "Project Horizon — Customer 360 Platform",
+      "reporting_period": "Sprint 12",
+      "metrics": {
+        "schedule": {
+          "SPI_trend": [1.02, 0.98, 0.93, 0.87],
+          "schedule_variance_days": -18,
+          "milestones_on_track": 2,
+          "milestones_total": 5,
+          "velocity_trend": [45, 43, 40, 38]
+        },
+        "budget": {
+          "CPI_trend": [1.01, 0.97, 0.93, 0.89],
+          "EAC_vs_BAC_pct": 12.5,
+          "burn_rate_trend": "accelerating",
+          "unplanned_spend_pct": 18
+        },
+        "scope": {
+          "change_requests_open": 14,
+          "change_requests_trend": [3, 5, 9, 14],
+          "requirements_volatility_pct": 22,
+          "scope_baseline_changes": 4,
+          "features_added_post_baseline": 8,
+          "features_removed": 0
+        },
+        "quality": { "defect_density": 2.5, "test_coverage_pct": 68, "rework_pct": 20 },
+        "risk": { "open_high_risks": 2, "risk_exposure_total": 140000, "scope_related_risks": 2 },
+        "team": { "utilization_pct": 90, "overtime_trend_hours": [15, 25, 40, 55], "morale_score": 2.8 },
+        "stakeholder": { "engagement_score": 3.0, "sponsor_availability_pct": 40, "decision_backlog": 7 },
+        "governance": { "gate_compliance_pct": 70, "change_control_compliance_pct": 45, "decision_latency_days": 9 }
+      }
+    },
+    "expected_output": {
+      "scope_rag": "Red — 14 open CRs, 22% requirements volatility, 8 features added with 0 removed, 4 baseline changes",
+      "schedule_rag": "Red — SPI degraded from 1.02 to 0.87 over 4 sprints, 18 days behind",
+      "budget_rag": "Red — CPI degraded from 1.01 to 0.89, EAC 12.5% over BAC",
+      "trend_correlations": [
+        "Scope creep (r=0.95) driving schedule degradation — CR volume increase precedes SPI decline by 1 sprint",
+        "Scope creep (r=0.92) driving budget overrun — unplanned features consuming unplanned budget",
+        "Schedule pressure (r=0.88) driving team overtime — overtime tripled as SPI declined",
+        "Secondary: governance decay enabling scope creep — change control compliance at 45%"
+      ],
+      "root_cause": "Uncontrolled scope growth due to weak change control governance (45% compliance) and low sponsor availability (40%)",
+      "recovery_actions": [
+        "Immediate scope freeze — no new CRs accepted until backlog of 14 is triaged",
+        "Emergency change control board session to approve/reject/defer all 14 open CRs",
+        "Restore change control compliance to >90% — enforce governance gate",
+        "Negotiate scope reduction: identify 3-5 low-value features for deferral to Phase 2",
+        "Increase sponsor availability to >70% to clear decision backlog of 7 items",
+        "Only AFTER scope is controlled: reassess schedule and budget recovery options"
+      ],
+      "must_not": "Must NOT recommend crashing or fast-tracking as primary actions — those treat symptoms; scope control is the root cause intervention"
+    }
+  }
+]

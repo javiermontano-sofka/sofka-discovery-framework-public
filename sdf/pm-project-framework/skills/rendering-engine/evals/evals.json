@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Convert markdown deliverable to branded HTML.",
+    "assertions": [
+      "applies CSS design tokens",
+      "handles Mermaid diagrams",
+      "generates table of contents",
+      "produces responsive output"
+    ]
+  },
+  {
+    "prompt": "Render 5 Mermaid diagrams to PNG.",
+    "assertions": [
+      "produces valid PNG output",
+      "handles different diagram types",
+      "maintains readable resolution",
+      "preserves styling"
+    ]
+  },
+  {
+    "prompt": "Process report template with project data.",
+    "assertions": [
+      "substitutes all variables",
+      "handles conditional sections",
+      "validates completeness",
+      "preserves formatting"
+    ]
+  },
+  {
+    "prompt": "Export HTML report to PDF.",
+    "assertions": [
+      "produces print-ready output",
+      "handles page breaks",
+      "includes headers/footers",
+      "preserves branding"
+    ]
+  }
+]

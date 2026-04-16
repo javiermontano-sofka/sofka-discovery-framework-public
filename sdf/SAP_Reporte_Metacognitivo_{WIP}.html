@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte Metacognitivo — Consultas SAP FI/CO/FM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--o:#FF7E08;--ol:#FF9E42;--od:#CC6506;--odm:rgba(255,126,8,.1);--bk:#000;--wh:#FFF;--bg:#EFEAE4;--pos:#FFD700;--posd:rgba(255,215,0,.12);--post:#B8860B;--warn:#D97706;--warnd:rgba(217,119,6,.08);--crit:#DC2626;--critd:rgba(220,38,38,.07);--info:#2563EB;--infod:rgba(37,99,235,.07);--infob:rgba(37,99,235,.25);--teal:#06C8C8;--violet:#9747FF;--g50:#FAF8F6;--g100:#F4F0EC;--g200:#E4DED7;--g500:#6B6560;--g700:#333130;--g900:#111110;--r:12px;--sh:0 1px 3px rgba(0,0,0,.04),0 6px 16px rgba(0,0,0,.06);--f:'Inter',system-ui,sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--f);font-size:1rem;line-height:1.65;color:var(--g900);background:var(--bg)}
+    a{color:var(--o);text-decoration:none}a:hover{text-decoration:underline}
+    .skip{position:absolute;top:-50px;left:0;background:var(--o);color:var(--wh);padding:8px 16px;z-index:1000}.skip:focus{top:0}
+
+    /* HERO */
+    .hero{background:var(--bk);border-bottom:8px solid var(--o);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,126,8,.18) 0%,transparent 65%);pointer-events:none}
+    .hi{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+    .ey{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem}
+    .pill{padding:.18rem .6rem;border-radius:20px;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+    .pf{background:var(--o);color:var(--wh)}.pg{border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7)}
+    .hero h1{color:var(--wh);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;line-height:1.15;margin-bottom:.5rem}
+    .hero h1 em{font-style:normal;color:var(--o)}
+    .hero .ld{color:rgba(255,255,255,.55);font-size:.88rem;max-width:700px}
+    .sts{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-top:1.25rem}
+    .st{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.8rem;border-radius:var(--r);text-align:center}
+    .sv{font-size:1.4rem;font-weight:700;color:var(--o);line-height:1}.sl{font-size:.65rem;color:rgba(255,255,255,.4);margin-top:.15rem;text-transform:uppercase;letter-spacing:.4px}
+
+    /* NAV */
+    .nav{background:var(--wh);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--g200)}
+    .nav ul{list-style:none;display:flex;max-width:1100px;margin:0 auto;overflow-x:auto}
+    .nav a{display:block;padding:.7rem 1rem;font-size:.68rem;text-transform:uppercase;letter-spacing:.7px;color:var(--g500);font-weight:600;border-bottom:3px solid transparent;white-space:nowrap;transition:.15s}
+    .nav a:hover,.nav a:focus{color:var(--o);border-bottom-color:var(--o);text-decoration:none;background:var(--odm)}
+
+    /* LAYOUT */
+    .w{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .sec{padding:2.5rem 0;scroll-margin-top:52px}.sec+.sec{border-top:1px solid var(--g200)}
+
+    /* SECTION HEADER */
+    .sh{display:flex;align-items:flex-start;gap:.85rem;margin-bottom:1.5rem}
+    .sn{width:42px;height:42px;background:var(--bk);color:var(--o);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;border-radius:6px;flex-shrink:0}
+    .st2 h2{font-size:1.4rem;font-weight:700;line-height:1.2}.st2 .sub{font-size:.8rem;color:var(--g500);margin-top:.15rem}
+
+    /* ANSWER BOX */
+    .ab{background:var(--bk);color:var(--wh);border-radius:var(--r);padding:1.1rem 1.25rem;margin-bottom:1.5rem;border-left:5px solid var(--o);display:flex;gap:.75rem;align-items:flex-start}
+    .ab .ic{font-size:1.2rem;flex-shrink:0}.ab p{font-size:.88rem;line-height:1.5;margin:0}.ab strong{color:var(--o)}.ab code{background:rgba(255,126,8,.2);color:var(--ol);padding:.08rem .3rem;border-radius:3px;font-size:.82rem}
+
+    /* QUOTE BOX */
+    .qb{background:var(--g50);border-left:4px solid var(--o);padding:1rem 1.25rem;border-radius:0 var(--r) var(--r) 0;margin-bottom:1.25rem;font-style:italic;font-size:.9rem;color:var(--g700)}
+
+    /* HEADINGS */
+    h3{font-size:.95rem;font-weight:700;color:var(--g700);margin:1.75rem 0 .75rem;padding-bottom:.35rem;border-bottom:2px solid var(--g200);display:flex;align-items:center;gap:.4rem}
+    h3 .hi3{color:var(--o);font-size:.9rem}
+    h4{font-size:.85rem;font-weight:600;color:var(--od);margin:1.25rem 0 .5rem}
+    p{margin-bottom:.75rem;font-size:.88rem}
+
+    /* CARDS */
+    .card{background:var(--wh);padding:1.25rem;border-radius:var(--r);box-shadow:var(--sh);margin-bottom:.85rem}
+    .cl{font-size:.65rem;text-transform:uppercase;letter-spacing:.5px;color:var(--g500);font-weight:600;margin-bottom:.4rem}
+
+    /* CALLOUTS */
+    .co{padding:.85rem 1.1rem;border-radius:var(--r);margin:1rem 0;border-left:4px solid;font-size:.85rem}
+    .co-i{background:var(--infod);border-color:var(--info)}.co-w{background:var(--warnd);border-color:var(--warn)}
+    .co-c{background:var(--critd);border-color:var(--crit)}.co-p{background:var(--posd);border-color:var(--pos)}
+    .co b{display:block;margin-bottom:.1rem;font-size:.78rem}
+
+    /* TABLES */
+    .tw{overflow-x:auto;margin:.85rem 0;border-radius:6px;overflow:hidden}
+    table{width:100%;border-collapse:collapse;font-size:.82rem}
+    th{background:var(--g700);color:var(--wh);padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.65rem;text-transform:uppercase;letter-spacing:.4px}
+    td{padding:.55rem .75rem;border-bottom:1px solid var(--g200);background:var(--wh);vertical-align:top}
+    tr:hover td{background:var(--odm)}
+
+    /* TAGS */
+    .t{display:inline-block;padding:.06rem .32rem;border-radius:3px;font-size:.58rem;font-weight:700;letter-spacing:.3px;vertical-align:middle;margin-left:.15rem}
+    .t-doc{background:var(--infod);color:var(--info);border:1px solid var(--infob)}
+    .t-inf{background:var(--warnd);color:var(--warn);border:1px solid var(--warn)}
+    .t-sup{background:var(--critd);color:var(--crit);border:1px solid rgba(220,38,38,.25)}
+    .t-hilo{background:rgba(30,58,138,.08);color:#1e3a8a;border:1px solid rgba(30,58,138,.2)}
+    .t-web{background:rgba(6,200,200,.08);color:#0e7490;border:1px solid rgba(6,200,200,.25)}
+    .t-auto{background:rgba(151,71,255,.08);color:var(--violet);border:1px solid rgba(151,71,255,.25)}
+    .t-conf{background:var(--odm);color:var(--od);border:1px solid rgba(255,126,8,.3)}
+    .t-know{background:var(--infod);color:#1d4ed8;border:1px solid rgba(29,78,216,.2)}
+
+    /* TX CODE */
+    .tx{display:inline-block;padding:.08rem .4rem;background:var(--odm);color:var(--od);border-radius:4px;font-size:.78rem;font-weight:700;letter-spacing:.3px}
+
+    /* BADGES */
+    .br{display:inline-block;padding:.12rem .45rem;background:var(--pos);color:var(--post);border-radius:4px;font-size:.62rem;font-weight:700;text-transform:uppercase}
+    .bn{display:inline-block;padding:.12rem .45rem;background:var(--critd);color:var(--crit);border-radius:4px;font-size:.62rem;font-weight:700;text-transform:uppercase}
+
+    /* CONFIDENCE BAR */
+    .conf-bar{height:8px;background:var(--g200);border-radius:4px;overflow:hidden;margin:.4rem 0}
+    .conf-fill{height:100%;border-radius:4px;transition:width .3s}
+
+    /* GRID */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin:.85rem 0}
+
+    /* METACOG STEP */
+    .ms{display:flex;gap:.6rem;margin-bottom:.5rem;align-items:flex-start}
+    .ms-n{width:28px;height:28px;background:var(--g700);color:var(--o);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;border-radius:50%;flex-shrink:0}
+    .ms-b{flex:1;font-size:.85rem}
+
+    /* FOOTER */
+    .ft{background:var(--bk);border-top:6px solid var(--o);color:var(--wh);padding:2rem;margin-top:2.5rem}
+    .fi{max-width:1100px;margin:0 auto}
+    .ft .tl{color:rgba(255,255,255,.4);font-size:.75rem;font-style:italic;margin-top:.3rem}
+    .ft .mt{color:rgba(255,255,255,.35);font-size:.7rem;margin-top:1rem}
+    .meta-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.25rem;margin-top:1.25rem;font-size:.82rem;line-height:1.7}
+    .meta-box b{color:var(--o)}
+
+    @media(max-width:768px){.g2{grid-template-columns:1fr}.sts{grid-template-columns:repeat(2,1fr)}.hero,.w,.ft{padding-left:1rem;padding-right:1rem}}
+    @media print{.nav{display:none}.card{box-shadow:none;border:1px solid var(--g200)}body{background:white}}
+    *:focus-visible{outline:2px solid var(--o);outline-offset:2px}
+  </style>
+</head>
+<body>
+<a href="#main" class="skip">Ir al contenido</a>
+
+<!-- ══════ HERO ══════ -->
+<header class="hero">
+  <div class="hi">
+    <div class="ey">
+      <span class="pill pf">Reporte Metacognitivo</span>
+      <span class="pill pg">SAP FI / CO / FM</span>
+      <span class="pill pg">Fact-Checked x2</span>
+      <span class="pill pg">2026-04-16</span>
+    </div>
+    <h1>Consultas SAP<br><em>Analisis con Protocolo Metacognitivo</em></h1>
+    <p class="ld">Respuestas a 3 consultas funcionales SAP con razonamiento explicito, trazabilidad de procedencia, verificacion de confianza y transparencia total sobre supuestos e inferencias.</p>
+    <div class="sts">
+      <div class="st"><div class="sv">0.88</div><div class="sl">Confianza Global</div></div>
+      <div class="st"><div class="sv">15</div><div class="sl">Afirmaciones</div></div>
+      <div class="st"><div class="sv">15+</div><div class="sl">Fuentes</div></div>
+      <div class="st"><div class="sv">2</div><div class="sl">Rondas Fact-Check</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════ NAV ══════ -->
+<nav class="nav" aria-label="Secciones">
+  <ul>
+    <li><a href="#s0">Priming</a></li>
+    <li><a href="#s1">01 Bloqueo</a></li>
+    <li><a href="#s2">02 Tolerancias</a></li>
+    <li><a href="#s3">03 Tasas FX</a></li>
+    <li><a href="#s4">Sintesis</a></li>
+    <li><a href="#s5">Reflexion</a></li>
+  </ul>
+</nav>
+
+<!-- ══════ MAIN ══════ -->
+<main id="main" class="w">
+
+<!-- ═══ S0: PRIMING METACOGNITIVO ═══ -->
+<section id="s0" class="sec">
+  <div class="sh">
+    <div class="sn" style="background:var(--g700);">&#9881;</div>
+    <div class="st2">
+      <h2>PRIMING Metacognitivo</h2>
+      <div class="sub">Calibracion del razonamiento antes de responder</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-top:3px solid var(--o);">
+    <div class="cl">Resumen Calibrado del Problema</div>
+    <p style="font-size:.95rem;font-weight:600;margin-bottom:.25rem;"><b>Que:</b> Resolver 3 consultas de configuracion funcional SAP (bloqueos de pago, tolerancias presupuestales, tasas de cambio).</p>
+    <p style="font-size:.95rem;font-weight:600;margin-bottom:.25rem;"><b>Para Que:</b> Dar respuestas accionables a un equipo funcional/consultor que necesita certeza operativa.</p>
+    <p style="font-size:.95rem;font-weight:600;"><b>Para Quien:</b> Consultores SAP FI/CO y usuarios funcionales clave de un proyecto de implementacion o soporte. <span class="t t-auto">AUTOCOMPLETADO</span></p>
+  </div>
+
+  <h3><span class="hi3">&#128218;</span> Inventario de Contexto Capitalizado</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Fuente</th><th>Que se capitalizo</th><th>Tag</th></tr></thead>
+      <tbody>
+        <tr><td>Hilo de conversacion</td><td>3 preguntas originales, 2 rondas de fact-check previas, 15 veredictos emitidos, correcciones aplicadas (OKP1, OBA7, tipo P)</td><td><span class="t t-hilo">HILO</span></td></tr>
+        <tr><td>NotebookLM</td><td>Notebook con 10 fuentes oficiales SAP cargadas. 3 consultas ejecutadas con citas verificadas.</td><td><span class="t t-web">WEB</span></td></tr>
+        <tr><td>Busqueda web</td><td>8 busquedas independientes en Google. SAP Help Portal, SAP Community, CVOSOFT, Techlorean, SAP Notes.</td><td><span class="t t-web">WEB</span></td></tr>
+        <tr><td>Conocimiento del modelo</td><td>Estructura general de SAP ERP/S4HANA. Modulos FI, CO, FM. Conceptos de customizing vs operacion.</td><td><span class="t t-know">CONOCIMIENTO</span></td></tr>
+        <tr><td>Adjuntos</td><td>No se proporcionaron adjuntos. Las preguntas fueron texto plano.</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="hi3">&#128295;</span> Autocompletados Realizados</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Parametro</th><th>Valor Asignado</th><th>Evidencia</th><th>Tag</th></tr></thead>
+      <tbody>
+        <tr><td>Audiencia</td><td>Consultores SAP FI/CO y usuarios funcionales clave</td><td>Inferido del tipo de preguntas (mezcla de config y operacion)</td><td><span class="t t-auto">AUTOCOMPLETADO</span></td></tr>
+        <tr><td>Version SAP</td><td>SAP ECC 6.0 / S/4HANA (respuestas aplican a ambos)</td><td>No especificado. Respuestas cubren ambos sistemas.</td><td><span class="t t-auto">AUTOCOMPLETADO</span></td></tr>
+        <tr><td>Contexto de la P1</td><td>El proveedor de tarjeta de credito esta registrado como vendor en SAP</td><td>Supuesto razonable — sin TdC como vendor no aplican bloqueos de pago</td><td><span class="t t-sup">SUPUESTO</span></td></tr>
+        <tr><td>Modulo de la P2</td><td>CO (Controlling) y FM (Funds Management)</td><td>La pregunta dice "control presupuestal" — en SAP esto es CO Budget o FM AVC</td><td><span class="t t-inf">INFERENCIA</span></td></tr>
+        <tr><td>Moneda de la P3</td><td>El cliente opera en multi-moneda</td><td>La pregunta sobre tasas P y M solo tiene sentido en contexto multi-moneda</td><td><span class="t t-inf">INFERENCIA</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="hi3">&#9888;&#65039;</span> Ambiguedades Criticas</h3>
+
+  <div style="display:flex;flex-direction:column;gap:.6rem;">
+    <div class="co co-w">
+      <b>Ambiguedad 1: "Control presupuestal" — CO o FM?</b>
+      SAP tiene dos sistemas de control presupuestal: el de CO (Budget Availability Control para ordenes/centros de coste) y el de FM (Funds Management con BCS). Las respuestas cubren ambos, pero la configuracion difiere. <span class="t t-conf">POR CONFIRMAR</span>
+    </div>
+    <div class="co co-w">
+      <b>Ambiguedad 2: "Tasa promedio del mes" — tipo de tasa o frecuencia de carga?</b>
+      La pregunta puede referirse a: (a) usar un tipo de tasa que represente el promedio mensual, o (b) cambiar la frecuencia de actualizacion de la tasa M. Las respuestas cubren ambas interpretaciones. <span class="t t-conf">POR CONFIRMAR</span>
+    </div>
+    <div class="co co-w">
+      <b>Ambiguedad 3: Version de SAP del cliente</b>
+      Algunas transacciones y apps Fiori solo existen en S/4HANA. Si el cliente usa ECC 6.0, la app "Manage Cost Centers" no aplica. <span class="t t-conf">POR CONFIRMAR</span>
+    </div>
+  </div>
+
+  <h3><span class="hi3">&#128200;</span> Confianza Global Inicial</h3>
+
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div style="font-size:2.2rem;font-weight:700;color:var(--o);">0.88</div>
+      <div style="flex:1;">
+        <div class="conf-bar"><div class="conf-fill" style="width:88%;background:linear-gradient(90deg,var(--o),var(--ol));"></div></div>
+        <p style="font-size:.78rem;color:var(--g500);margin:0;">Umbral minimo: 0.85 | Objetivo: 0.95 | 3 autocompletados + 2 parcialmente verdaderos reducen de 0.95</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S1: BLOQUEO DE PAGO ═══ -->
+<section id="s1" class="sec">
+  <div class="sh">
+    <div class="sn">01</div>
+    <div class="st2">
+      <h2>Bloqueo de Pago para Tarjeta de Credito</h2>
+      <div class="sub">DECOMPOSE &rarr; SOLVE &rarr; VERIFY</div>
+    </div>
+  </div>
+
+  <div class="qb">
+    "Cual es el mejor procedimiento y tipo de bloqueo para que no se incluyan facturas en la programacion de pago automatica? Ejemplo: compras con Tarjeta credito, que opcion de Bloqueo para pago es recomendable utilizar?"
+  </div>
+
+  <h3><span class="hi3">&#128065;</span> Entendimiento</h3>
+
+  <div class="card">
+    <p><b>Interpreto:</b> Se necesita que facturas especificas (pagadas con tarjeta de credito corporativa) queden excluidas del programa de pago automatico F110, ya que el banco emisor de la TdC ya realizo el pago. <span class="t t-hilo">HILO</span></p>
+    <p><b>Supongo:</b> El proveedor de la tarjeta (Visa, Mastercard, Amex) esta registrado como vendor en SAP con datos de sociedad. <span class="t t-sup">SUPUESTO</span></p>
+    <p><b>Infiero:</b> Se busca una solucion sistematica (no manual caso a caso), idealmente automatizable. <span class="t t-inf">INFERENCIA</span></p>
+  </div>
+
+  <h3><span class="hi3">&#9881;</span> DECOMPOSE</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Sub-problema</th><th>Dependencia</th></tr></thead>
+      <tbody>
+        <tr><td>SP1.1 — Que claves de bloqueo existen en SAP y cuales son reservadas</td><td>Ninguna</td></tr>
+        <tr><td>SP1.2 — Como crear una clave personalizada y que parametros tiene</td><td>SP1.1</td></tr>
+        <tr><td>SP1.3 — Donde aplicar el bloqueo (vendor, documento, condiciones de pago)</td><td>SP1.2</td></tr>
+        <tr><td>SP1.4 — Como automatizar para no depender de accion manual</td><td>SP1.3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="hi3">&#9989;</span> SOLVE</h3>
+
+  <div class="ms"><div class="ms-n">1.1</div><div class="ms-b"><b>Claves reservadas:</b> <code>A</code> = anticipos (reservada). <code>R</code> = verificacion MIRO. <code>*</code> = skip account completo. <code>+</code> = sin metodo de pago. No usar ninguna de estas para TdC. <span class="t t-doc">DOC</span> Confianza: <b>0.98</b></div></div>
+  <div class="ms"><div class="ms-n">1.2</div><div class="ms-b"><b>Clave personalizada:</b> Crear clave <code>T</code> en <span class="tx">OB27</span> con 3 parametros: cambio en propuesta permitido (recomendado SI), bloqueado para manuales (evaluar), no modificable (evaluar). <span class="t t-doc">DOC</span> + <span class="t t-inf">INFERENCIA</span> Confianza: <b>0.92</b></div></div>
+  <div class="ms"><div class="ms-n">1.3</div><div class="ms-b"><b>Nivel de aplicacion:</b> Proveedor exclusivo TdC &rarr; <span class="tx">FK02</span> (dato maestro). Mixto &rarr; <span class="tx">FB02</span> (documento). <span class="t t-doc">DOC</span> Confianza: <b>0.95</b></div></div>
+  <div class="ms"><div class="ms-n">1.4</div><div class="ms-b"><b>Automatizacion:</b> Asignar clave T a condiciones de pago via <span class="tx">OBB8</span>. Al contabilizar con esas condiciones, el bloqueo se aplica automaticamente. <span class="t t-doc">DOC</span> Confianza: <b>0.94</b></div></div>
+
+  <h3><span class="hi3">&#128270;</span> VERIFY</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Verificacion</th><th>Resultado</th><th>Fuentes</th></tr></thead>
+      <tbody>
+        <tr><td>Clave A es reservada</td><td><span class="br">VERDADERO</span> (0.98)</td><td>SAP Help Portal + SAP Community (4 fuentes)</td></tr>
+        <tr><td>OB27 define claves de bloqueo</td><td><span class="br">VERDADERO</span> (0.98)</td><td>SAP Community Blog + SAP Help (3 fuentes)</td></tr>
+        <tr><td>OBB8 automatiza via condiciones de pago</td><td><span class="br">VERDADERO</span> (0.94)</td><td>SAP Community Blog (2 fuentes)</td></tr>
+        <tr><td>Clave "T" es recomendacion estandar SAP</td><td><span style="display:inline-block;padding:.12rem .45rem;background:var(--warnd);color:var(--warn);border-radius:4px;font-size:.62rem;font-weight:700;text-transform:uppercase;">PARCIAL</span> (0.82)</td><td>Inferencia de consultoria, no directriz SAP</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ab">
+    <div class="ic">&#9889;</div>
+    <p><strong>Respuesta:</strong> Crear clave de bloqueo <code>T</code> en <strong>OB27</strong> con parametro "cambio en propuesta permitido" activo. Para automatizar: asignar la clave T a condiciones de pago dedicadas a TdC en <strong>OBB8</strong>. Para proveedores exclusivos de TdC, alternativamente aplicar en dato maestro (<strong>FK02</strong>). F110 excluira esas partidas automaticamente. <b>Confianza: 0.92</b></p>
+  </div>
+</section>
+
+<!-- ═══ S2: TOLERANCIAS PRESUPUESTALES ═══ -->
+<section id="s2" class="sec">
+  <div class="sh">
+    <div class="sn">02</div>
+    <div class="st2">
+      <h2>Tolerancias del Control Presupuestal</h2>
+      <div class="sub">DECOMPOSE &rarr; SOLVE &rarr; VERIFY</div>
+    </div>
+  </div>
+
+  <div class="qb">
+    "Un usuario funcional puede parametrizar los limites de tolerancias de los grupos de cuentas del control presupuestal? o solo los consultores? , Cual es la aplicacion para hacer las respectivas configuraciones?"
+  </div>
+
+  <h3><span class="hi3">&#128065;</span> Entendimiento</h3>
+
+  <div class="card">
+    <p><b>Interpreto:</b> Se pregunta sobre los roles de acceso para configurar tolerancias presupuestales y las transacciones especificas. <span class="t t-hilo">HILO</span></p>
+    <p><b>Supongo:</b> Se refiere al modulo CO (Budget Availability Control) y/o FM (Funds Management), no a tolerancias de usuario de FI (que es otra cosa). <span class="t t-inf">INFERENCIA</span></p>
+    <p><b>Infiero:</b> Hay una necesidad de aclarar responsabilidades entre equipo funcional y equipo de configuracion/consultoria. <span class="t t-inf">INFERENCIA</span></p>
+  </div>
+
+  <h3><span class="hi3">&#9881;</span> DECOMPOSE</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Sub-problema</th><th>Dependencia</th></tr></thead>
+      <tbody>
+        <tr><td>SP2.1 — Que son las tolerancias y los Account Groups en control presupuestal</td><td>Ninguna</td></tr>
+        <tr><td>SP2.2 — Que transaccion/ruta se usa para configurarlas</td><td>SP2.1</td></tr>
+        <tr><td>SP2.3 — Quien tiene permiso de configurar (funcional vs consultor)</td><td>SP2.2</td></tr>
+        <tr><td>SP2.4 — Diferencia entre CO budget control y FM budget control</td><td>SP2.1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="hi3">&#9989;</span> SOLVE</h3>
+
+  <div class="ms"><div class="ms-n">2.1</div><div class="ms-b"><b>Tolerancias:</b> Definen % de uso del presupuesto que disparan advertencia (W) o error (E). Account Groups definen que cuentas de coste/gasto consumen presupuesto. Solo cuentas de P&L, no balance. <span class="t t-doc">DOC</span> Confianza: <b>0.96</b></div></div>
+  <div class="ms"><div class="ms-n">2.2</div><div class="ms-b"><b>Transaccion:</b> Via <span class="tx">SPRO</span>: Controlling &gt; Cost Center Accounting &gt; Budget Management &gt; Maintain Budget Availability Control Profile. No existe un T-code directo comun. <span class="t t-doc">DOC</span> Confianza: <b>0.93</b></div></div>
+  <div class="ms"><div class="ms-n">2.3</div><div class="ms-b"><b>Permisos:</b> <b>Generalmente solo consultores.</b> Es customizing (SPRO). En S/4HANA Cloud, un key user designado puede verificar settings y crear categorias de planificacion, pero no modificar perfiles de tolerancia. <span class="t t-doc">DOC</span> Confianza: <b>0.90</b></div></div>
+  <div class="ms"><div class="ms-n">2.4</div><div class="ms-b"><b>CO vs FM:</b> CO controla centros de coste y ordenes con perfiles simples. FM es mas robusto: BCS, multi-nivel, cover eligibility, earmarked funds. FM requiere master data separada (Commitment Items, Funds Centers). <span class="t t-doc">DOC</span> Confianza: <b>0.91</b></div></div>
+
+  <h3><span class="hi3">&#128270;</span> VERIFY</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Verificacion</th><th>Resultado</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td>Config es SPRO / customizing</td><td><span class="br">VERDADERO</span> (0.96)</td><td>4 fuentes independientes</td></tr>
+        <tr><td>Warning y Error por % de tolerancia</td><td><span class="br">VERDADERO</span> (0.96)</td><td>SAP Community + SAP Help</td></tr>
+        <tr><td>Account Groups solo cuentas de P&L</td><td><span class="br">VERDADERO</span> (0.94)</td><td>Textual en SAP Community</td></tr>
+        <tr><td>OKP1 para perfiles de presupuesto</td><td><span class="bn">FALSO</span></td><td>OKP1 = Period Lock. Corregido en Ronda 2.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="co co-c"><b>Correccion critica detectada en Ronda 2</b> <span class="tx">OKP1</span> fue inicialmente reportada como transaccion de perfiles de presupuesto. Tras fact-check con 5 fuentes, se confirmo que es <b>"Maintain Period Lock"</b>. La configuracion correcta se hace directamente en <b>SPRO</b>.</div>
+
+  <div class="ab">
+    <div class="ic">&#128274;</div>
+    <p><strong>Respuesta:</strong> Un usuario funcional estandar <strong>NO puede parametrizar</strong> tolerancias — es configuracion de customizing (<strong>SPRO</strong>), requiere perfil de consultor. Un <strong>key user</strong> designado en S/4HANA Cloud puede verificar settings. La ruta es: SPRO &gt; Controlling &gt; Cost Center Accounting &gt; Budget Management &gt; Maintain Budget Availability Control Profile. El usuario funcional opera dentro de los limites: presupuesta (<strong>FMBB</strong>), contabiliza, y recibe mensajes de warning/error. <b>Confianza: 0.88</b></p>
+  </div>
+</section>
+
+<!-- ═══ S3: TASAS DE CAMBIO ═══ -->
+<section id="s3" class="sec">
+  <div class="sh">
+    <div class="sn">03</div>
+    <div class="st2">
+      <h2>Tasas de Cambio: Tipo P vs Tipo M</h2>
+      <div class="sub">DECOMPOSE &rarr; SOLVE &rarr; VERIFY</div>
+    </div>
+  </div>
+
+  <div class="qb">
+    "Explicacion de las tasas de cambio P y M, cual tasa usa para reconocimiento, costos y gastos reales y que podemos hacer para que sea a tasa promedio del mes el reconocimiento."
+  </div>
+
+  <h3><span class="hi3">&#128065;</span> Entendimiento</h3>
+
+  <div class="card">
+    <p><b>Interpreto:</b> Se necesita (a) explicar la diferencia entre tipo P y M, (b) aclarar cual usa SAP para operaciones reales, y (c) dar opciones para usar tasa promedio mensual. <span class="t t-hilo">HILO</span></p>
+    <p><b>Supongo:</b> El cliente opera en multi-moneda y ya tiene tipo M configurado en OB08. <span class="t t-sup">SUPUESTO</span></p>
+    <p><b>Infiero:</b> Actualmente la tasa se carga diaria o a demanda (tasa spot), y se desea cambiar a promedio mensual para estabilizar el reconocimiento. <span class="t t-inf">INFERENCIA</span></p>
+  </div>
+
+  <h3><span class="hi3">&#9881;</span> DECOMPOSE</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Sub-problema</th><th>Dependencia</th></tr></thead>
+      <tbody>
+        <tr><td>SP3.1 — Que es tipo M y para que se usa</td><td>Ninguna</td></tr>
+        <tr><td>SP3.2 — Que es tipo P y para que se usa</td><td>Ninguna</td></tr>
+        <tr><td>SP3.3 — Cual usa SAP para costos y gastos reales</td><td>SP3.1, SP3.2</td></tr>
+        <tr><td>SP3.4 — Como configurar tasa promedio mensual</td><td>SP3.3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="hi3">&#9989;</span> SOLVE</h3>
+
+  <div class="ms"><div class="ms-n">3.1</div><div class="ms-b"><b>Tipo M</b> = Standard Translation / Average Rate. Es la tasa <b>por defecto</b> en SAP para posting y clearing. Textual en SAP Help: "the system uses the exchange rate type M (average rate)." <span class="t t-doc">DOC</span> Confianza: <b>0.98</b></div></div>
+  <div class="ms"><div class="ms-n">3.2</div><div class="ms-b"><b>Tipo P</b> = Convencion comun para planificacion en CO. <b>No es un tipo estandar entregado por SAP</b> — SAP documenta "Planning" como proposito generico, pero "P" como key es creacion del proyecto. Los tipos estandar documentados son: Buying, Selling, Average (M), Historical, Key date. <span class="t t-inf">INFERENCIA</span> + <span class="t t-web">WEB</span> Confianza: <b>0.82</b></div></div>
+  <div class="ms"><div class="ms-n">3.3</div><div class="ms-b"><b>Para costos y gastos reales:</b> SAP usa tipo <b>M</b>. Configurable por tipo de documento en <span class="tx">OBA7</span>. Si no se especifica, M es el default. <span class="t t-doc">DOC</span> Confianza: <b>0.96</b></div></div>
+  <div class="ms"><div class="ms-n">3.4</div><div class="ms-b"><b>Promedio mensual:</b> 3 opciones: (1) Cargar promedio en tipo M via <span class="tx">OB08</span> cada mes (sencillo, sin customizing). (2) Automatizar con <span class="tx">RFTBFF00</span> o servicio externo. (3) Crear tipo personalizado "PM" en <span class="tx">OB07</span> y asignarlo en <span class="tx">OBA7</span>. <span class="t t-inf">INFERENCIA</span> + <span class="t t-doc">DOC</span> Confianza: <b>0.90</b></div></div>
+
+  <h3><span class="hi3">&#128270;</span> VERIFY</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Verificacion</th><th>Resultado</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td>Tipo M es average rate por defecto</td><td><span class="br">VERDADERO</span> (0.98)</td><td>SAP Help Portal x2 + Techlorean</td></tr>
+        <tr><td>Tipo P es key estandar SAP</td><td><span style="display:inline-block;padding:.12rem .45rem;background:var(--warnd);color:var(--warn);border-radius:4px;font-size:.62rem;font-weight:700;text-transform:uppercase;">PARCIAL</span></td><td>Es convencion, no estandar. Verificar en OB07 del sistema.</td></tr>
+        <tr><td>OBA7 asigna tasa por tipo de documento</td><td><span class="br">VERDADERO</span> (0.95)</td><td>SAP Community + SAP Note 2959892</td></tr>
+        <tr><td>OBBS mantiene ratios de traduccion</td><td><span class="br">VERDADERO</span> (0.94)</td><td>Techlorean (tabla TCURF)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ab">
+    <div class="ic">&#128177;</div>
+    <p><strong>Respuesta:</strong> Tipo <strong>M</strong> (average rate) es la tasa que SAP usa por defecto para <strong>reconocimiento, costos y gastos reales</strong>. Tipo <strong>P</strong> es una convencion comun para planificacion en CO, pero no es un tipo estandar SAP — verificar en <strong>OB07</strong>. Para tasa promedio del mes: la opcion mas sencilla es cargar el promedio mensual como tipo M en <strong>OB08</strong>. Para automatizar: usar programa <strong>RFTBFF00</strong>. Para separar spot de promedio: crear tipo personalizado en <strong>OB07</strong> y asignarlo en <strong>OBA7</strong>. <b>Confianza: 0.85</b></p>
+  </div>
+</section>
+
+<!-- ═══ S4: SYNTHESIZE ═══ -->
+<section id="s4" class="sec">
+  <div class="sh">
+    <div class="sn" style="background:var(--g700);">&#931;</div>
+    <div class="st2">
+      <h2>SYNTHESIZE — Sintesis de Confianza</h2>
+      <div class="sub">Consolidacion ponderada de las 3 respuestas</div>
+    </div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Pregunta</th><th>Confianza</th><th>Verificados</th><th>Parciales</th><th>Falsos</th><th>Debilidad Principal</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>P1: Bloqueo de Pago</b></td>
+          <td><b style="color:var(--o);">0.92</b></td>
+          <td>5</td><td>1</td><td>0</td>
+          <td>Clave "T" es recomendacion, no estandar SAP</td>
+        </tr>
+        <tr>
+          <td><b>P2: Tolerancias</b></td>
+          <td><b style="color:var(--o);">0.88</b></td>
+          <td>3</td><td>0</td><td>1</td>
+          <td>OKP1 fue corregida. FM_SETS no verificada directamente.</td>
+        </tr>
+        <tr>
+          <td><b>P3: Tasas de Cambio</b></td>
+          <td><b style="color:var(--o);">0.85</b></td>
+          <td>3</td><td>1</td><td>0</td>
+          <td>Tipo P no es key estandar confirmada. OB22 no verificada.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="border-top:3px solid var(--o);margin-top:1rem;">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div style="font-size:2.5rem;font-weight:700;color:var(--o);">0.88</div>
+      <div style="flex:1;">
+        <div class="cl" style="margin-bottom:.3rem;">Confianza Global Ponderada</div>
+        <div class="conf-bar"><div class="conf-fill" style="width:88%;background:linear-gradient(90deg,var(--o),var(--ol));"></div></div>
+        <p style="font-size:.75rem;color:var(--g500);margin:0;">Por encima del umbral minimo (0.85). Por debajo del objetivo ideal (0.95).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S5: REFLECT ═══ -->
+<section id="s5" class="sec">
+  <div class="sh">
+    <div class="sn" style="background:var(--g700);">&#128161;</div>
+    <div class="st2">
+      <h2>REFLECT — Reflexion y Debilidades</h2>
+      <div class="sub">Que falta para subir la confianza a 0.95</div>
+    </div>
+  </div>
+
+  <h3><span class="hi3">&#128308;</span> Debilidades Residuales</h3>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>#</th><th>Debilidad</th><th>Impacto</th><th>Como Resolverla</th></tr></thead>
+      <tbody>
+        <tr><td>D1</td><td>Tipo P no confirmado como key estandar SAP</td><td>Medio</td><td>Verificar en <span class="tx">OB07</span> del sistema del cliente. Si no existe, crear.</td></tr>
+        <tr><td>D2</td><td>Version de SAP no confirmada (ECC vs S/4HANA)</td><td>Bajo</td><td>Preguntar al cliente. Afecta app Fiori de P2.</td></tr>
+        <tr><td>D3</td><td>Clave B no verificada en doc oficial</td><td>Bajo</td><td>Irrelevante si se usa clave personalizada T.</td></tr>
+        <tr><td>D4</td><td>FM_SETS y OKLP no verificadas en fuentes primarias</td><td>Bajo</td><td>Verificar en sistema del cliente.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="hi3">&#128640;</span> Recomendaciones de Siguiente Paso</h3>
+
+  <div style="display:flex;flex-direction:column;gap:.5rem;">
+    <div class="co co-p"><b>1. Confirmar version SAP</b> ECC 6.0 o S/4HANA — afecta la P2 (app Fiori) y disponibilidad de tipos de tasa en P3.</div>
+    <div class="co co-p"><b>2. Verificar tipo P en OB07</b> del sistema del cliente. Si no existe, documentar que es una convencion a crear.</div>
+    <div class="co co-p"><b>3. Validar modulo presupuestal</b> Confirmar si "control presupuestal" refiere a CO Budget, FM Budget, o ambos.</div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="ft">
+  <div class="fi">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <strong style="font-size:.95rem;">Reporte Metacognitivo — SAP FI / CO / FM</strong>
+        <div class="ey" style="margin-top:.35rem;">
+          <span class="pill pf">Metacognicion</span>
+          <span class="pill pg">Fact-Checked x2</span>
+        </div>
+        <p class="tl">Construido por profesionales, potenciado por la red agentica de Sofka.</p>
+      </div>
+      <div style="color:rgba(255,255,255,.35);font-size:.7rem;text-align:right;">
+        Sofka SAGE v12.0<br>Design System v5<br>2026-04-16
+      </div>
+    </div>
+
+    <div class="meta-box">
+      <b>METADATA DE RAZONAMIENTO</b><br><br>
+      &#128202; <b>Confianza global:</b> 0.88 (sobre umbral 0.85, bajo objetivo 0.95)<br>
+      &#128218; <b>Fuentes consultadas:</b> hilo (2 rondas previas) | NotebookLM (10 fuentes, 3 queries) | web (8 busquedas) | conocimiento (SAP ERP/S4HANA)<br>
+      &#128295; <b>Autocompletados:</b> audiencia (consultores+funcionales), version SAP (ECC/S4HANA), contexto multi-moneda, modulo presupuestal (CO/FM)<br>
+      &#9888;&#65039; <b>Debilidades:</b> tipo P no estandar (D1), version SAP no confirmada (D2), FM_SETS no verificada (D4)<br>
+      &#127919; <b>Nivel de rigidez:</b> Analitica<br>
+      &#128200; <b>Siguiente paso:</b> Confirmar version SAP del cliente y verificar tipo P en OB07 del sistema<br><br>
+      <b>Etiquetas usadas:</b>
+      <span class="t t-doc">DOC</span>
+      <span class="t t-inf">INFERENCIA</span>
+      <span class="t t-sup">SUPUESTO</span>
+      <span class="t t-hilo">HILO</span>
+      <span class="t t-web">WEB</span>
+      <span class="t t-auto">AUTOCOMPLETADO</span>
+      <span class="t t-conf">POR CONFIRMAR</span>
+      <span class="t t-know">CONOCIMIENTO</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

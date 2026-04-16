@@ -1,0 +1,58 @@
+[
+  {
+    "id": "gov-eval-001",
+    "title": "Enterprise governance for $5M project with 3 stakeholder groups",
+    "description": "Design a full governance framework for a $5M enterprise ERP implementation involving three stakeholder groups: business operations, IT infrastructure, and an external systems integrator. The project spans 18 months with 45 team members across 4 workstreams.",
+    "input": "We are launching a $5M ERP modernization program. Three stakeholder groups are involved: (1) Business Operations — 12 process owners across finance, HR, and supply chain; (2) IT Infrastructure — 8 engineers managing cloud migration and integrations; (3) External SI — a systems integrator with 25 consultants. The program runs 18 months with 4 parallel workstreams. We need a governance framework that keeps all three groups aligned, manages cross-workstream dependencies, and provides executive visibility without slowing delivery.",
+    "expected_output_keywords": ["steering committee", "CCB", "RAPID", "escalation", "decision rights", "quorum", "reporting cadence", "workstream leads", "executive sponsor"],
+    "agents_involved": ["governance-structure-designer", "decision-rights-mapper", "escalation-path-builder", "governance-health-monitor"],
+    "evaluation_criteria": {
+      "completeness": "Framework covers all 4 agents' outputs: structure, decision rights, escalation paths, and health metrics",
+      "proportionality": "Governance weight matches a $5M, 18-month, multi-vendor engagement",
+      "clarity": "No ambiguity in who decides what; single-point accountability for every decision type",
+      "actionability": "Escalation SLAs are specific and measurable; health KPIs have defined thresholds"
+    }
+  },
+  {
+    "id": "gov-eval-002",
+    "title": "Lightweight governance for a 6-person agile team",
+    "description": "Design minimal viable governance for a small agile team building an internal tool. The challenge is providing just enough governance structure without introducing ceremony that slows a fast-moving team.",
+    "input": "We have a 6-person cross-functional agile team (1 PO, 1 Scrum Master, 4 developers) building an internal productivity tool over 3 months. Budget is $120K. There is one business sponsor and no external vendors. The team uses 2-week sprints. We need lightweight governance that gives the sponsor visibility and decision authority on scope changes without adding overhead to the team's flow.",
+    "expected_output_keywords": ["product owner authority", "sponsor review", "sprint review", "scope change threshold", "lightweight", "minimal ceremony", "decision threshold", "async approval"],
+    "agents_involved": ["governance-structure-designer", "decision-rights-mapper", "escalation-path-builder"],
+    "evaluation_criteria": {
+      "proportionality": "Governance is minimal — no steering committee or CCB for a 6-person team; leverages existing Scrum ceremonies",
+      "clarity": "Clear thresholds for when PO can decide alone vs. when sponsor approval is needed",
+      "pragmatism": "Escalation path is simple (PO → sponsor) with no unnecessary intermediate layers",
+      "speed": "Decision cycle times are measured in hours, not days"
+    }
+  },
+  {
+    "id": "gov-eval-003",
+    "title": "Multi-vendor governance with shared accountability",
+    "description": "Design governance for a project where three vendors share delivery accountability. The core challenge is preventing finger-pointing, ensuring cross-vendor coordination, and maintaining a single source of truth for decisions.",
+    "input": "Our digital transformation program has three vendors: Vendor A handles front-end development, Vendor B handles back-end and integration, and Vendor C manages infrastructure and DevOps. Each vendor has its own PM and team of 10-15 people. Our internal PMO has 3 people. Total budget is $3.2M over 12 months. Integration points between vendors are a major risk area. We need governance that enforces shared accountability, prevents blame-shifting, handles cross-vendor dependencies, and gives our small PMO enough control without micromanaging.",
+    "expected_output_keywords": ["integration governance", "cross-vendor CCB", "shared accountability", "dependency management", "vendor PM council", "joint escalation", "SLA", "single source of truth", "RAPID across vendors"],
+    "agents_involved": ["governance-structure-designer", "decision-rights-mapper", "escalation-path-builder", "governance-health-monitor"],
+    "evaluation_criteria": {
+      "accountability": "Every integration point has a named owner; no decision falls between vendor boundaries",
+      "coordination": "Cross-vendor sync mechanisms are defined with clear cadence and escalation triggers",
+      "control": "PMO retains decision authority on scope, budget, and integration standards without becoming a bottleneck",
+      "measurability": "Governance health metrics include vendor-specific indicators like cross-vendor SLA compliance and dependency resolution time"
+    }
+  },
+  {
+    "id": "gov-eval-004",
+    "title": "Governance redesign after audit reveals decision bottlenecks",
+    "description": "Redesign an existing governance framework that an internal audit found to be causing decision bottlenecks, low meeting attendance, and stakeholder frustration. The agent must diagnose problems from audit findings and propose targeted fixes.",
+    "input": "An internal audit of our 14-month infrastructure modernization program ($4.1M, 35 people) found the following governance issues: (1) Average decision cycle time is 11 days vs. the 3-day target; (2) Steering committee attendance has dropped to 40% over the last 3 months; (3) 68% of escalated items are re-escalated at least once before resolution; (4) Team leads report that 'everything requires committee approval' even for low-impact changes; (5) There is no documented decision-rights matrix — decisions are made ad hoc based on seniority. Redesign the governance framework to fix these specific problems while maintaining appropriate oversight for a $4.1M program.",
+    "expected_output_keywords": ["decision rights matrix", "delegation thresholds", "streamlined approval", "attendance accountability", "re-escalation root cause", "tiered authority", "cycle time reduction", "governance health KPIs", "before/after comparison"],
+    "agents_involved": ["governance-health-monitor", "decision-rights-mapper", "escalation-path-builder", "governance-structure-designer"],
+    "evaluation_criteria": {
+      "diagnosis": "Each of the 5 audit findings is explicitly addressed with a root cause and specific fix",
+      "delegation": "Decision-rights matrix introduces tiered authority so low-impact decisions do not reach the steering committee",
+      "measurability": "New governance includes KPIs that would have caught these problems earlier (leading indicators)",
+      "pragmatism": "Redesign is incremental — fixes the specific dysfunctions without scrapping the entire framework"
+    }
+  }
+]

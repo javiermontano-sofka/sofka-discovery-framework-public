@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Aggregate risks across our 25-project portfolio. Individual project risk registers exist but nobody is looking at how these risks combine at the portfolio level.",
+    "assertions": [
+      "Must normalize risk data from individual project registers into a common taxonomy",
+      "Must calculate aggregate portfolio risk exposure beyond simple summation",
+      "Must identify risk concentrations where multiple projects share the same risk categories",
+      "Must compare aggregate exposure against organizational risk appetite thresholds"
+    ]
+  },
+  {
+    "prompt": "We have 3 projects that all depend on the same cloud migration completing on time, use the same external vendor, and share 2 key architects. Assess the cross-project risk correlation.",
+    "assertions": [
+      "Must identify the shared cloud migration dependency as a correlation risk factor",
+      "Must flag the common vendor as a single point of failure across all 3 projects",
+      "Must assess the impact of shared architect over-allocation on correlated delivery risk",
+      "Must model cascade scenarios showing how one project's failure propagates to others"
+    ]
+  },
+  {
+    "prompt": "Identify systemic risks in our portfolio. We recently had a security breach that impacted 8 projects simultaneously, suggesting our risk management misses portfolio-wide threats.",
+    "assertions": [
+      "Must identify shared infrastructure vulnerabilities as a systemic risk category",
+      "Must scan for other single points of failure that could cause similar widespread disruption",
+      "Must evaluate organizational resilience and recovery capability for systemic events",
+      "Must recommend early warning indicators and systemic risk monitoring mechanisms"
+    ]
+  },
+  {
+    "prompt": "Prepare a portfolio risk report for the quarterly steering committee. The audience is C-level executives who have 15 minutes for the risk section.",
+    "assertions": [
+      "Must produce an executive-level summary suitable for senior leadership consumption",
+      "Must quantify risk exposure in financial terms that resonate with C-level executives",
+      "Must present top portfolio risks with clear action recommendations for governance decisions",
+      "Must include trend analysis showing how portfolio risk posture has evolved over time"
+    ]
+  }
+]
