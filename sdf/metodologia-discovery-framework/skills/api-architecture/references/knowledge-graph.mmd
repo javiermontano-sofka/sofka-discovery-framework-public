@@ -1,0 +1,101 @@
+graph TD
+    %% ─── Núcleo ───────────────────────────────────────────────────────────────
+    apiArch["API Architecture\n(Disciplina)"]
+
+    %% ─── Estilos de API ────────────────────────────────────────────────────────
+    stylesGroup["Estilos de API"]
+    restStyle["REST\n(HTTP + Recursos)"]
+    graphqlStyle["GraphQL\n(SDL + Queries)"]
+    grpcStyle["gRPC\n(Protobuf + HTTP/2)"]
+    asyncApiStyle["AsyncAPI\n(Event-Driven)"]
+
+    %% ─── Diseño por Contrato ────────────────────────────────────────────────────
+    contractGroup["Contract-First Design"]
+    openApiSpec["OpenAPI 3.1\n(Especificación REST)"]
+    protobufSpec["Protocol Buffers\n(Especificación gRPC)"]
+    graphqlSdl["SDL\n(Especificación GraphQL)"]
+    asyncApiSpec["AsyncAPI 3.0\n(Especificación Eventos)"]
+    spectralLint["Spectral\n(Linting OpenAPI)"]
+    contractTest["Contract Testing\n(Pact / Dredd)"]
+
+    %% ─── Versionamiento ─────────────────────────────────────────────────────────
+    versionGroup["Versioning & Evolución"]
+    uriVersion["URI Path\n(/v1/, /v2/)"]
+    headerVersion["Header Versioning\n(Accept: vnd.v2)"]
+    deprecationPolicy["Política de Deprecación\n(RFC 8594 Sunset)"]
+    lifecycle["Ciclo de Vida\nalpha→beta→stable→sunset"]
+
+    %% ─── Seguridad ──────────────────────────────────────────────────────────────
+    securityGroup["Seguridad"]
+    oauth2["OAuth 2.0\n(Authorization Code + PKCE)"]
+    rateLimiting["Rate Limiting\n(Token Bucket / Sliding Window)"]
+    apiGatewaySec["API Gateway\n(WAF + mTLS)"]
+
+    %% ─── Developer Experience ───────────────────────────────────────────────────
+    dxGroup["Developer Experience"]
+    interactiveDocs["Documentación Interactiva\n(Swagger UI / GraphiQL)"]
+    sdkGeneration["SDK Generation\n(OpenAPI → JS/Python/Go)"]
+    sandboxEnv["Sandbox\n(Entorno de Prueba Aislado)"]
+    errorDesign["Diseño de Errores\n(RFC 9457 Problem Details)"]
+
+    %% ─── Gobierno ───────────────────────────────────────────────────────────────
+    governanceGroup["Gobernanza de APIs"]
+    apiCatalog["API Catalog\n(Registro + Metadata)"]
+    designReview["Design Review\n(API CoP / Architecture Board)"]
+    healthScore["API Health Score\n(0-100 pts)"]
+    breakingChangeDetect["Detección de\nBreaking Changes\n(Schema Diff en CI)"]
+
+    %% ─── Relaciones ─────────────────────────────────────────────────────────────
+    apiArch --> stylesGroup
+    apiArch --> contractGroup
+    apiArch --> versionGroup
+    apiArch --> securityGroup
+    apiArch --> dxGroup
+    apiArch --> governanceGroup
+
+    stylesGroup --> restStyle
+    stylesGroup --> graphqlStyle
+    stylesGroup --> grpcStyle
+    stylesGroup --> asyncApiStyle
+
+    contractGroup --> openApiSpec
+    contractGroup --> protobufSpec
+    contractGroup --> graphqlSdl
+    contractGroup --> asyncApiSpec
+    contractGroup --> spectralLint
+    contractGroup --> contractTest
+
+    versionGroup --> uriVersion
+    versionGroup --> headerVersion
+    versionGroup --> deprecationPolicy
+    versionGroup --> lifecycle
+
+    securityGroup --> oauth2
+    securityGroup --> rateLimiting
+    securityGroup --> apiGatewaySec
+
+    dxGroup --> interactiveDocs
+    dxGroup --> sdkGeneration
+    dxGroup --> sandboxEnv
+    dxGroup --> errorDesign
+
+    governanceGroup --> apiCatalog
+    governanceGroup --> designReview
+    governanceGroup --> healthScore
+    governanceGroup --> breakingChangeDetect
+
+    openApiSpec --> spectralLint
+    spectralLint --> breakingChangeDetect
+    lifecycle --> deprecationPolicy
+    oauth2 --> apiGatewaySec
+
+    %% ─── Estilos Visuales ───────────────────────────────────────────────────────
+    classDef core fill:#FF7E08,stroke:#CC6500,color:#fff,font-weight:bold
+    classDef group fill:#1A1A2E,stroke:#FF7E08,color:#fff,font-weight:bold
+    classDef technical fill:#2D3748,stroke:#718096,color:#E2E8F0
+    classDef governance fill:#744210,stroke:#F6AD55,color:#FED7AA
+
+    class apiArch core
+    class stylesGroup,contractGroup,versionGroup,securityGroup,dxGroup,governanceGroup group
+    class restStyle,graphqlStyle,grpcStyle,asyncApiStyle,openApiSpec,protobufSpec,graphqlSdl,asyncApiSpec,spectralLint,contractTest,uriVersion,headerVersion,deprecationPolicy,lifecycle,oauth2,rateLimiting,apiGatewaySec,interactiveDocs,sdkGeneration,sandboxEnv,errorDesign technical
+    class apiCatalog,designReview,healthScore,breakingChangeDetect governance

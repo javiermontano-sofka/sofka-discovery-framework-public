@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMO-APEX — Prompt Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --apex-primary: #2563EB;
+      --apex-dark: #0F172A;
+      --apex-bg: #F8FAFC;
+      --apex-success: #F59E0B;
+      --apex-gray-200: #E2E8F0;
+      --apex-gray-500: #64748B;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 8px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--apex-bg); color: var(--apex-dark); line-height: 1.6; }
+
+    .header { background: var(--apex-dark); color: white; padding: 2rem; text-align: center; }
+    .header h1 { font-size: 2rem; font-weight: 800; }
+    .header h1 span { color: #3B82F6; }
+    .header p { color: #CBD5E1; font-size: 0.9rem; margin-top: 0.5rem; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+
+    .search { width: 100%; padding: 0.75rem 1rem; font-size: 1rem; border: 2px solid var(--apex-gray-200); border-radius: var(--radius); margin-bottom: 2rem; font-family: var(--font-body); }
+    .search:focus { outline: none; border-color: var(--apex-primary); }
+
+    .category { margin-bottom: 2rem; }
+    .category h2 { font-size: 1.2rem; font-weight: 700; color: var(--apex-dark); padding-left: 0.75rem; border-left: 3px solid var(--apex-primary); margin-bottom: 1rem; }
+
+    .prompt-card { background: white; border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow-card); margin-bottom: 0.75rem; cursor: pointer; transition: border-left 0.2s; border-left: 3px solid transparent; }
+    .prompt-card:hover { border-left-color: var(--apex-primary); }
+    .prompt-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .prompt-card .desc { font-size: 0.8rem; color: var(--apex-gray-500); }
+    .prompt-card code { font-family: var(--font-mono); background: rgba(37,99,235,.08); color: var(--apex-primary); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.75rem; }
+    .prompt-card .tags { margin-top: 0.5rem; }
+    .prompt-card .tag { display: inline-block; background: var(--apex-bg); color: var(--apex-gray-500); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.7rem; margin-right: 0.25rem; }
+
+    .footer { text-align: center; padding: 2rem; color: var(--apex-gray-500); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>PMO-<span>APEX</span> — Prompt Library</h1>
+    <p>Catálogo searchable de prompts para gerencia de proyectos</p>
+  </div>
+
+  <div class="container">
+    <input type="text" class="search" id="search" placeholder="Buscar prompts por nombre, comando, o tipo de proyecto..." oninput="filterPrompts()">
+
+    <div class="category" data-category="pipeline">
+      <h2>Pipeline Commands</h2>
+      <div class="prompt-card" data-search="run guided pipeline full"><h3>Pipeline Guiado Completo</h3><p class="desc">Ejecuta las 10 fases con facilitación humana, 16 entregables, 4 gates con pausa.</p><code>/pm:run-guided</code><div class="tags"><span class="tag">All Types</span><span class="tag">16 deliverables</span></div></div>
+      <div class="prompt-card" data-search="run auto autonomous pipeline"><h3>Pipeline Autónomo</h3><p class="desc">Pipeline completo sin intervención humana. Gates se auto-validan.</p><code>/pm:run-auto</code><div class="tags"><span class="tag">All Types</span><span class="tag">16 deliverables</span></div></div>
+      <div class="prompt-card" data-search="run express quick charter schedule dashboard"><h3>Pipeline Express</h3><p class="desc">Charter + Schedule + Dashboard en una sola sesión.</p><code>/pm:run-express</code><div class="tags"><span class="tag">Quick Start</span><span class="tag">3 deliverables</span></div></div>
+      <div class="prompt-card" data-search="run deep governance"><h3>Pipeline Deep Governance</h3><p class="desc">Gobernanza profunda: 7 entregables enfocados en riesgos y metodología.</p><code>/pm:run-deep</code><div class="tags"><span class="tag">Governance</span><span class="tag">7 deliverables</span></div></div>
+    </div>
+
+    <div class="category" data-category="generate">
+      <h2>Generate — Entregables</h2>
+      <div class="prompt-card" data-search="charter project initiation"><h3>Project Charter</h3><p class="desc">Genera charter formal con business case, SMART objectives, scope, milestones.</p><code>/pm:generate-charter</code><div class="tags"><span class="tag">Phase 0</span><span class="tag">Initiation</span></div></div>
+      <div class="prompt-card" data-search="stakeholder register map"><h3>Stakeholder Register</h3><p class="desc">Mapea stakeholders con poder/interés, engagement strategy, RACI preliminar.</p><code>/pm:map-stakeholders</code><div class="tags"><span class="tag">Phase 0</span><span class="tag">Stakeholders</span></div></div>
+      <div class="prompt-card" data-search="scope wbs work breakdown"><h3>Scope & WBS</h3><p class="desc">Define scope statement + Work Breakdown Structure con diccionario.</p><code>/pm:define-scope</code><div class="tags"><span class="tag">Phase 1</span><span class="tag">Scope</span></div></div>
+      <div class="prompt-card" data-search="schedule gantt baseline critical path"><h3>Schedule Baseline</h3><p class="desc">Genera schedule con critical path, Gantt, milestones, dependencias.</p><code>/pm:plan-schedule</code><div class="tags"><span class="tag">Phase 2</span><span class="tag">Schedule</span></div></div>
+      <div class="prompt-card" data-search="resource plan team capacity"><h3>Resource Plan</h3><p class="desc">Plan de recursos con team topology, capacity planning, skills matrix.</p><code>/pm:plan-resources</code><div class="tags"><span class="tag">Phase 2</span><span class="tag">Resources</span></div></div>
+      <div class="prompt-card" data-search="risk register assessment"><h3>Risk Register</h3><p class="desc">Registro de riesgos con P×I matrix, RBS, cause-event-effect, response plans.</p><code>/pm:assess-risks</code><div class="tags"><span class="tag">Phase 3</span><span class="tag">Risk</span></div></div>
+      <div class="prompt-card" data-search="steering committee review"><h3>Steering Committee</h3><p class="desc">Convoca 7 advisors: portfolio, financial, risk, resource, compliance, methodology, stakeholder.</p><code>/pm:convene-steering</code><div class="tags"><span class="tag">Phase 3b</span><span class="tag">Governance</span></div></div>
+      <div class="prompt-card" data-search="methodology playbook"><h3>Methodology Playbook</h3><p class="desc">Diseña playbook con ceremonias, DoD, tool stack, cadencia.</p><code>/pm:design-methodology</code><div class="tags"><span class="tag">Phase 4</span><span class="tag">Methodology</span></div></div>
+      <div class="prompt-card" data-search="communication plan"><h3>Communication Plan</h3><p class="desc">Plan de comunicaciones con audiencias, canales, frecuencia, templates.</p><code>/pm:plan-communications</code><div class="tags"><span class="tag">Phase 5</span><span class="tag">Comms</span></div></div>
+      <div class="prompt-card" data-search="dashboard executive"><h3>Executive Dashboard</h3><p class="desc">Dashboard ejecutivo con KPIs, RAG status, trends, risk heatmap.</p><code>/pm:present-dashboard</code><div class="tags"><span class="tag">Phase 5</span><span class="tag">Reporting</span></div></div>
+      <div class="prompt-card" data-search="kickoff package"><h3>Kickoff Package</h3><p class="desc">Paquete de kickoff con agenda, slides, pre-reads, action items.</p><code>/pm:deliver-kickoff</code><div class="tags"><span class="tag">Phase 6</span><span class="tag">Launch</span></div></div>
+    </div>
+
+    <div class="category" data-category="report">
+      <h2>Report — Reportes</h2>
+      <div class="prompt-card" data-search="status report weekly"><h3>Status Report</h3><p class="desc">Reporte de estado con RAG, milestones, risks, decisions needed.</p><code>/pm:report-status</code><div class="tags"><span class="tag">Phase 7</span><span class="tag">Weekly</span></div></div>
+      <div class="prompt-card" data-search="evm earned value CPI SPI"><h3>Earned Value Analysis</h3><p class="desc">EVM completo: 11 métricas, CPI/SPI trends, S-curve, EAC forecast.</p><code>/pm:report-evm</code><div class="tags"><span class="tag">Phase 7</span><span class="tag">EVM</span></div></div>
+      <div class="prompt-card" data-search="lessons learned retrospective"><h3>Lessons Learned</h3><p class="desc">Registro de lecciones con root cause, impact, recommendations.</p><code>/pm:report-lessons</code><div class="tags"><span class="tag">Phase 7</span><span class="tag">Learning</span></div></div>
+      <div class="prompt-card" data-search="pmo health check maturity"><h3>PMO Health Check</h3><p class="desc">Evaluación de salud de la PMO: 8 dimensiones RAG.</p><code>/pm:review-pmo</code><div class="tags"><span class="tag">Phase 7</span><span class="tag">Internal</span></div></div>
+      <div class="prompt-card" data-search="closure close project"><h3>Closure Report</h3><p class="desc">Reporte de cierre con acceptance, benefits, archive, lessons.</p><code>/pm:close-project</code><div class="tags"><span class="tag">Phase 7</span><span class="tag">Closure</span></div></div>
+    </div>
+
+    <div class="category" data-category="ceremony">
+      <h2>Ceremony — Ceremonias Ágiles</h2>
+      <div class="prompt-card" data-search="standup daily"><h3>Daily Standup</h3><p class="desc">Facilita daily con blocker tracking y action items.</p><code>/pm:standup</code><div class="tags"><span class="tag">Agile</span><span class="tag">Daily</span></div></div>
+      <div class="prompt-card" data-search="retrospective retro"><h3>Retrospective</h3><p class="desc">Retrospectiva con formato Start/Stop/Continue + action items.</p><code>/pm:retro</code><div class="tags"><span class="tag">Agile</span><span class="tag">Sprint</span></div></div>
+      <div class="prompt-card" data-search="sprint review demo"><h3>Sprint Review</h3><p class="desc">Review con stakeholder feedback, acceptance, velocity update.</p><code>/pm:sprint-review</code><div class="tags"><span class="tag">Agile</span><span class="tag">Sprint</span></div></div>
+      <div class="prompt-card" data-search="sprint planning"><h3>Sprint Planning</h3><p class="desc">Planning con capacity check, sprint goal, commitment.</p><code>/pm:sprint-planning</code><div class="tags"><span class="tag">Agile</span><span class="tag">Sprint</span></div></div>
+      <div class="prompt-card" data-search="backlog refinement grooming"><h3>Backlog Refinement</h3><p class="desc">Refinamiento con estimation, acceptance criteria, dependencies.</p><code>/pm:backlog-refinement</code><div class="tags"><span class="tag">Agile</span><span class="tag">Ongoing</span></div></div>
+      <div class="prompt-card" data-search="pi planning safe"><h3>PI Planning</h3><p class="desc">PI Planning para SAFe: objectives, dependencies, risks, confidence vote.</p><code>/pm:pi-planning</code><div class="tags"><span class="tag">SAFe</span><span class="tag">Quarterly</span></div></div>
+    </div>
+
+    <div class="category" data-category="assess">
+      <h2>Assess — Evaluaciones</h2>
+      <div class="prompt-card" data-search="agile maturity assessment"><h3>Agile Maturity</h3><p class="desc">Evaluación de madurez ágil: 6 dimensiones, radar, anti-patterns.</p><code>/pm:assess-agile</code><div class="tags"><span class="tag">Assessment</span><span class="tag">Agile</span></div></div>
+      <div class="prompt-card" data-search="waterfall assessment traditional"><h3>Waterfall Assessment</h3><p class="desc">Evaluación de madurez en gestión tradicional.</p><code>/pm:assess-waterfall</code><div class="tags"><span class="tag">Assessment</span><span class="tag">Waterfall</span></div></div>
+      <div class="prompt-card" data-search="safe assessment scaled agile"><h3>SAFe Assessment</h3><p class="desc">Evaluación de readiness para SAFe: ART, PI, value streams.</p><code>/pm:assess-safe</code><div class="tags"><span class="tag">Assessment</span><span class="tag">SAFe</span></div></div>
+      <div class="prompt-card" data-search="pmo assessment governance"><h3>PMO Assessment</h3><p class="desc">Evaluación de madurez de la PMO.</p><code>/pm:assess-pmo</code><div class="tags"><span class="tag">Assessment</span><span class="tag">PMO</span></div></div>
+      <div class="prompt-card" data-search="portfolio assessment"><h3>Portfolio Assessment</h3><p class="desc">Evaluación de capacidad de gestión de portafolio.</p><code>/pm:assess-portfolio</code><div class="tags"><span class="tag">Assessment</span><span class="tag">Portfolio</span></div></div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <strong>PMO-APEX v1.0</strong> — Prompt Library · 109 Skills · 103 Comandos<br>
+    Sofka, your technology partner.
+  </div>
+
+  <script>
+    function filterPrompts() {
+      const q = document.getElementById('search').value.toLowerCase();
+      document.querySelectorAll('.prompt-card').forEach(card => {
+        const text = (card.dataset.search + ' ' + card.textContent).toLowerCase();
+        card.style.display = text.includes(q) ? '' : 'none';
+      });
+      document.querySelectorAll('.category').forEach(cat => {
+        const visible = cat.querySelectorAll('.prompt-card[style=""], .prompt-card:not([style])');
+        cat.style.display = visible.length ? '' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

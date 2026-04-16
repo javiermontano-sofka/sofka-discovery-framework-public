@@ -1,0 +1,44 @@
+graph TD
+    A[CSS Architecture] --> B[Cascade Control]
+    A --> C[Design Tokens]
+    A --> D[Component Scoping]
+    A --> E[Responsive Styling]
+    A --> F[Dark Mode]
+
+    B --> B1["@layer — explicit cascade order"]
+    B --> B2[":where() — zero specificity"]
+    B --> B3[":is() — specificity of args"]
+    B --> B4["!important — only in overrides layer"]
+    B1 --> B1a["Layer order: reset→base→tokens→components→utilities→overrides"]
+
+    C --> C1[Primitives — raw values]
+    C --> C2[Semantic — meaningful names]
+    C --> C3[Component — local vars]
+    C1 --> C2 --> C3
+    C --> C4[Style Dictionary — multi-platform]
+    C4 --> C4a[CSS output]
+    C4 --> C4b[iOS Swift output]
+    C4 --> C4c[Android XML output]
+
+    D --> D1[CSS Modules — build-time hashing]
+    D --> D2["@scope — native CSS scoping"]
+    D --> D3[Shadow DOM — full isolation]
+    D --> D4[BEM in layers — legacy]
+    D2 --> D2a["@scope (.root) to (.boundary)"]
+
+    E --> E1["Container queries — component level"]
+    E --> E2["Media queries — layout level only"]
+    E1 --> E1a["container-type: inline-size"]
+    E1 --> E1b["cqi / cqw units"]
+
+    F --> F1["@media prefers-color-scheme"]
+    F --> F2["[data-theme='dark'] — user controlled"]
+    F --> F3["color-scheme property — native elements"]
+    F1 --> F4[Token override — only semantic layer]
+    F2 --> F4
+
+    A --> G[Tailwind v4]
+    G --> G1["@theme directive — CSS config"]
+    G --> G2["@utility — custom utilities"]
+    G --> G3["@layer components — multi-prop classes"]
+    G --> G4["@source — content paths"]

@@ -1,0 +1,36 @@
+# OS generated files
+.DS_Store
+**/.DS_Store
+._*
+Thumbs.db
+
+# Version archive directories (accidental recursive copies)
+13.0.0/
+12.3.0/
+
+# Session and discovery artifacts (generated at runtime)
+discovery/
+.discovery/
+
+# Local settings (user-specific paths)
+.claude/settings.local.json
+
+# Node
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# Editor directories
+.idea/
+.vscode/
+*.sublime-*

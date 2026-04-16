@@ -1,0 +1,133 @@
+%% Knowledge Graph — Analytics Engineering
+%% Dominio: dbt transformations, data modeling, testing, documentation, lineage, metrics layer
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["analytics-engineering"]
+        direction TB
+        PR["Principio Rector:<br/>Un modelo sin tests es<br/>una opinion con formato de tabla"]
+        FW["Framework: 6 Secciones"]
+        VG["Validation Gate: 10 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        SOURCES["Source Systems<br/>(DBs, APIs, SaaS)"]
+        WAREHOUSE["Data Warehouse<br/>(Snowflake, BigQuery, Redshift)"]
+        REQS["Business Requirements<br/>(KPIs, reportes, SLAs)"]
+        EXISTING["Existing Pipelines<br/>(stored procs, ETL legacy)"]
+        TEAM["Team Capacity<br/>(SQL, dbt experience)"]
+    end
+
+    subgraph LAYERS["Layer Architecture"]
+        STG["Staging Layer<br/>stg_ — 1:1 source mapping<br/>rename, cast, dedup"]
+        INT["Intermediate Layer<br/>int_ — joins, pivots,<br/>business logic"]
+        MART["Marts Layer<br/>fct_ / dim_ — consumption<br/>models, star schema"]
+        METRICS["Metrics Layer<br/>Semantic definitions,<br/>time grains, dimensions"]
+    end
+
+    subgraph MODELING["Data Modeling Patterns"]
+        STAR["Star Schema<br/>Facts + Dimensions<br/>Grain explicito"]
+        OBT["One Big Table<br/>Denormalized, single-use"]
+        ACTIVITY["Activity Schema<br/>Event-centric modeling"]
+        SCD["Slowly Changing Dims<br/>Type 1, 2, 3"]
+    end
+
+    subgraph SECTIONS["6-Section Delivery"]
+        S1["S1: Source-to-Target<br/>Mapping"]
+        S2["S2: Data Modeling<br/>Patterns"]
+        S3["S3: Transformation<br/>Framework"]
+        S4["S4: Testing &<br/>Data Contracts"]
+        S5["S5: Documentation<br/>& Discovery"]
+        S6["S6: Performance &<br/>Cost Optimization"]
+    end
+
+    subgraph TESTING["Testing Pyramid"]
+        FRESH["Source Freshness<br/>dbt source freshness"]
+        SCHEMA["Schema Tests<br/>not_null, unique,<br/>accepted_values"]
+        CUSTOM["Custom Data Tests<br/>Business rule validation"]
+        UNIT["Unit Tests<br/>Macro logic, complex SQL"]
+        CONTRACT["Contract Tests<br/>Column types, constraints"]
+    end
+
+    subgraph TOOLS["Tooling"]
+        DBT["dbt Core / Cloud<br/>Transformation framework"]
+        SQLMESH["SQLMesh<br/>Alternative framework"]
+        METRICFLOW["MetricFlow<br/>Semantic layer"]
+        CATALOG["Data Catalog<br/>(Atlan, DataHub,<br/>OpenMetadata)"]
+        CICD["CI/CD<br/>Slim CI, deferred<br/>execution"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        PIPELINE["Pipeline Architecture<br/>(6-section report)"]
+        DAG["Model Dependency<br/>DAG (Mermaid)"]
+        NAMING["Naming Convention<br/>Guide"]
+        COVERAGE["Test Coverage<br/>Report Template"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        BIARCH["bi-architecture<br/>(consume marts layer)"]
+        DATASCI["data-science-architecture<br/>(consume features)"]
+        DATAENG["data-engineering<br/>(upstream pipelines)"]
+        DATAQUAL["data-quality<br/>(monitoring overlay)"]
+        DATAMESH["data-mesh-strategy<br/>(data products from marts)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        AANAL["analytics-architect<br/>(owner)"]
+        DENG["data-engineer<br/>(support: S1, S3)"]
+        TLEAD["technical-lead<br/>(support: S4, S6)"]
+        DARCH["data-architect<br/>(support: S2)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|estructura via| LAYERS
+    LAYERS -->|implementan| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    MODELING -.->|patron seleccionado en| S2
+    TESTING -.->|estrategia definida en| S4
+    TOOLS -.->|implementan| SECTIONS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Layer flow
+    STG -->|ref| INT
+    INT -->|ref| MART
+    MART -->|define| METRICS
+
+    %% Section traceability
+    S1 -.->|source inventory feeds| S3
+    S2 -.->|modeling pattern drives| S1
+    S3 -.->|materialization informs| S6
+    S4 -.->|contracts enforce| S2
+    S5 -.->|documentation covers| S2
+    S5 -.->|exposures link to| BIARCH
+    S6 -.->|cost optimization constrains| S3
+
+    %% Agent relationships
+    AANAL -->|opera| SKILL
+    DENG -.->|consulta S1, S3| SKILL
+    TLEAD -.->|aporta S4, S6| SKILL
+    DARCH -.->|aporta S2| S2
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef layer fill:#FFECB3,stroke:#FF8F00,color:#1A1A2E,stroke-width:2px
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef tool fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef testing fill:#FFF8E1,stroke:#F57F17,color:#1A1A2E
+    classDef modeling fill:#E8EAF6,stroke:#3F51B5,color:#1A1A2E
+
+    class SKILL skill
+    class SOURCES,WAREHOUSE,REQS,EXISTING,TEAM input
+    class STG,INT,MART,METRICS layer
+    class S1,S2,S3,S4,S5,S6 section
+    class PIPELINE,DAG,NAMING,COVERAGE output
+    class DBT,SQLMESH,METRICFLOW,CATALOG,CICD tool
+    class BIARCH,DATASCI,DATAENG,DATAQUAL,DATAMESH consumer
+    class AANAL,DENG,TLEAD,DARCH agent
+    class FRESH,SCHEMA,CUSTOM,UNIT,CONTRACT testing
+    class STAR,OBT,ACTIVITY,SCD modeling

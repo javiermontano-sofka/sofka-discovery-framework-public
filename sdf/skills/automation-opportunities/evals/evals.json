@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Identify opportunities in PMO with 20 projects.",
+    "assertions": [
+      "scans processes",
+      "categorizes by type",
+      "estimates savings",
+      "ranks potential"
+    ]
+  },
+  {
+    "prompt": "ROI for automating status reports.",
+    "assertions": [
+      "estimates manual effort",
+      "calculates cost",
+      "projects savings",
+      "includes error reduction"
+    ]
+  },
+  {
+    "prompt": "Map automation to Jira, Power BI, Slack.",
+    "assertions": [
+      "identifies integration points",
+      "evaluates capabilities",
+      "recommends integrations",
+      "designs architecture"
+    ]
+  },
+  {
+    "prompt": "Prioritize 8 automation candidates.",
+    "assertions": [
+      "scores each",
+      "sequences logically",
+      "identifies quick wins",
+      "creates timeline"
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+graph TD
+    VDB[Vector Database Design]
+
+    VDB --> EM[Embedding Models]
+    VDB --> CHUNK[Chunking Strategy]
+    VDB --> SCHEMA[pgvector Schema]
+    VDB --> IDX[Index Strategy]
+    VDB --> SRCH[Search Patterns]
+    VDB --> RAG[RAG Pipeline]
+    VDB --> MT[Multi-tenant]
+    VDB --> PERF[Performance]
+
+    EM --> OAI[OpenAI text-embedding-3]
+    EM --> LOCAL[nomic-embed-text Local]
+    EM --> DIMS[Dimension Reduction]
+    EM --> SAME[Same Model Query + Docs]
+
+    CHUNK --> FIXED[Fixed Token Chunks 512]
+    CHUNK --> SEM[Sentence-level Semantic]
+    CHUNK --> STRUCT[Structure-aware Markdown]
+    CHUNK --> PC[Parent-Child Chunking]
+
+    PC --> EMBED_CHILD[Embed Small Children]
+    PC --> RET_PARENT[Retrieve Large Parents]
+
+    SCHEMA --> VECEXT[CREATE EXTENSION vector]
+    SCHEMA --> VCOL[embedding vector 1536]
+    SCHEMA --> META[metadata JSONB]
+
+    IDX --> HNSW[HNSW Recommended]
+    IDX --> IVF[IVFFlat Alternative]
+
+    HNSW --> M[m = 16-64 connections]
+    HNSW --> EFC[ef_construction build quality]
+    HNSW --> EFS[ef_search query recall]
+
+    IVF --> LISTS[lists = sqrt row_count]
+    IVF --> PROBES[probes query accuracy]
+
+    SRCH --> COS[Cosine Distance]
+    SRCH --> L2[L2 Euclidean Distance]
+    SRCH --> IP[Inner Product]
+    SRCH --> HYBRID[Hybrid Semantic + BM25]
+
+    HYBRID --> RRF[Reciprocal Rank Fusion]
+    HYBRID --> FTSQ[plainto_tsquery Full-text]
+
+    RAG --> INDEX[1 Index Documents]
+    RAG --> RETR[2 Retrieve Top-K]
+    RAG --> GEN[3 Generate with Context]
+    RAG --> BATCH[Batch Embed API Calls]
+
+    MT --> TENANT[tenant_id Filter Column]
+    MT --> PRLS[Row-Level Security]
+    MT --> PIDX[Partial Index per Tenant]
+
+    PERF --> HASH[Content Hash Skip Re-embed]
+    PERF --> LIMIT[Always LIMIT clause]
+    PERF --> EXPLAIN[EXPLAIN verify Index Scan]

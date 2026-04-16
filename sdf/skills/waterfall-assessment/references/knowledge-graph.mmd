@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Project Artifacts<br/>Schedules, Plans, Reports] --> D
+        B[Stakeholder Interviews<br/>PM, PMO, Sponsors] --> D
+        C[Historical Data<br/>Past Project Performance] --> D
+    end
+    subgraph "Waterfall Assessment"
+        D[Evidence Collection<br/>& Artifact Review] --> E[Dimension Scoring<br/>& Gap Analysis]
+        E --> F[Root Cause<br/>Analysis]
+        F --> G[Improvement Roadmap<br/>& Baseline]
+    end
+    subgraph Outputs
+        G --> H[Steering Review]
+        G --> I[PMO Governance Update]
+        F --> J[Training Plan]
+        G --> K[Waterfall Framework]
+    end
+    subgraph Agents
+        L[Assessment Facilitator Agent] --> E
+        M[Methodology Advisor Agent] --> G
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

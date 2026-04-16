@@ -1,0 +1,130 @@
+[
+  {
+    "id": "pp-eval-001",
+    "title": "Prioritize 12 project proposals competing for limited budget and resources",
+    "description": "A mid-size financial services firm has 12 project proposals submitted for the next fiscal year but only budget for 7 and engineering capacity for 5 concurrent streams. Proposals range from regulatory mandates to innovation bets. The scoring model must produce a defensible ranking that satisfies the CFO (ROI focus), CTO (technical debt reduction), and Chief Risk Officer (compliance deadlines).",
+    "input": {
+      "context": "Financial services firm, $4.2M annual project budget, 38 engineers across 4 teams, 3 regulatory deadlines in Q2",
+      "projects": [
+        { "name": "Core Banking Migration", "type": "infrastructure", "estimated_cost": "$1.8M", "strategic_alignment": "high" },
+        { "name": "Mobile App Redesign", "type": "innovation", "estimated_cost": "$600K", "strategic_alignment": "high" },
+        { "name": "AML Compliance Upgrade", "type": "regulatory", "estimated_cost": "$400K", "strategic_alignment": "mandatory" },
+        { "name": "Data Warehouse Modernization", "type": "infrastructure", "estimated_cost": "$900K", "strategic_alignment": "medium" },
+        { "name": "Customer Onboarding Automation", "type": "efficiency", "estimated_cost": "$350K", "strategic_alignment": "high" },
+        { "name": "Fraud Detection ML Model", "type": "innovation", "estimated_cost": "$500K", "strategic_alignment": "medium" },
+        { "name": "PCI-DSS Recertification", "type": "regulatory", "estimated_cost": "$200K", "strategic_alignment": "mandatory" },
+        { "name": "API Gateway Modernization", "type": "infrastructure", "estimated_cost": "$450K", "strategic_alignment": "medium" },
+        { "name": "Employee Self-Service Portal", "type": "efficiency", "estimated_cost": "$300K", "strategic_alignment": "low" },
+        { "name": "Real-Time Payments Integration", "type": "growth", "estimated_cost": "$700K", "strategic_alignment": "high" },
+        { "name": "Legacy System Decommission", "type": "maintenance", "estimated_cost": "$250K", "strategic_alignment": "medium" },
+        { "name": "AI Chatbot for Support", "type": "innovation", "estimated_cost": "$400K", "strategic_alignment": "low" }
+      ],
+      "constraints": "Regulatory projects have hard Q2 deadlines. Core Banking Migration requires 12 senior engineers for 8 months."
+    },
+    "expected_behavior": [
+      "Scoring model includes at least 5 weighted criteria with stakeholder-agreed weights",
+      "Regulatory mandates (AML, PCI-DSS) rank at or near the top regardless of ROI",
+      "Sensitivity analysis shows which projects change rank under different weight scenarios",
+      "Clear funding cut-line recommendation with rationale for projects above and below",
+      "Resource contention identified for Core Banking Migration vs. other infrastructure projects"
+    ],
+    "agents_exercised": ["scoring-model-designer", "resource-portfolio-optimizer"]
+  },
+  {
+    "id": "pp-eval-002",
+    "title": "Portfolio rebalancing after strategic pivot — new CEO changes priorities",
+    "description": "A technology company's new CEO shifts strategy from 'growth at all costs' to 'profitable growth with operational excellence.' The existing portfolio is 60% innovation/growth and only 15% efficiency/operations. The portfolio balancer must assess the imbalance, recommend which projects to accelerate, defer, or cancel, and produce a rebalanced portfolio aligned to the new strategy.",
+    "input": {
+      "context": "B2B SaaS company, $12M annual project portfolio, new CEO announced strategic pivot 3 weeks ago, board expects rebalanced portfolio within 30 days",
+      "current_allocation": {
+        "innovation": "35%",
+        "growth": "25%",
+        "efficiency": "15%",
+        "maintenance": "15%",
+        "compliance": "10%"
+      },
+      "target_allocation": {
+        "innovation": "15%",
+        "growth": "20%",
+        "efficiency": "30%",
+        "maintenance": "20%",
+        "compliance": "15%"
+      },
+      "active_projects": 18,
+      "projects_in_flight_innovation": 7,
+      "projects_in_flight_efficiency": 2
+    },
+    "expected_behavior": [
+      "Current vs. target balance visualization across all 5 dimensions",
+      "Imbalance severity quantified with deviation percentages per dimension",
+      "Specific projects recommended for deferral or cancellation in innovation/growth categories",
+      "New efficiency/operations projects proposed or accelerated to fill the gap",
+      "Stakeholder communication plan for teams whose projects are affected",
+      "Transition timeline showing quarterly balance trajectory toward target"
+    ],
+    "agents_exercised": ["portfolio-balancer", "scoring-model-designer"]
+  },
+  {
+    "id": "pp-eval-003",
+    "title": "Dependency analysis revealing 3 projects blocked by 1 enabling project",
+    "description": "During portfolio planning, the dependency mapper discovers that the 'Cloud Platform Migration' project is a hard blocker for 3 high-value downstream projects: 'AI Analytics Platform,' 'Customer 360 Data Lake,' and 'Real-Time Event Processing.' The Cloud Platform Migration is currently understaffed and 6 weeks behind schedule. The analysis must quantify cascade risk and recommend mitigation.",
+    "input": {
+      "context": "Enterprise retailer, 24-project portfolio, cloud-first strategy approved 9 months ago",
+      "enabling_project": {
+        "name": "Cloud Platform Migration",
+        "status": "6 weeks behind schedule",
+        "staffing": "3 of 5 required cloud architects assigned",
+        "planned_completion": "Q2 2026",
+        "revised_estimate": "Q3 2026"
+      },
+      "blocked_projects": [
+        { "name": "AI Analytics Platform", "value": "$2.1M annual savings", "planned_start": "Q3 2026", "dependency_type": "finish-to-start" },
+        { "name": "Customer 360 Data Lake", "value": "$1.4M revenue uplift", "planned_start": "Q3 2026", "dependency_type": "finish-to-start" },
+        { "name": "Real-Time Event Processing", "value": "$800K efficiency gain", "planned_start": "Q4 2026", "dependency_type": "technology_enablement" }
+      ]
+    },
+    "expected_behavior": [
+      "Dependency graph clearly shows the enabling project as a high-fan-out node blocking 3 projects",
+      "Cascade delay calculated: 6-week slip propagates to $4.3M combined value-at-risk",
+      "Impact scenarios modeled for 2, 4, and 8-week additional slippage",
+      "Mitigation recommendations: fast-track staffing, parallel workstreams, or interface decoupling",
+      "Critical path analysis identifies this chain as the longest in the portfolio",
+      "Escalation recommendation to governance with specific resource ask (2 additional cloud architects)"
+    ],
+    "agents_exercised": ["dependency-mapper", "resource-portfolio-optimizer"]
+  },
+  {
+    "id": "pp-eval-004",
+    "title": "Portfolio optimization when 2 high-priority projects need the same architect",
+    "description": "Two top-5 priority projects — 'Payment Gateway Replatforming' and 'Zero Trust Security Implementation' — both require the organization's only enterprise security architect for overlapping 4-month periods. Neither project can substitute a junior resource for this role. The optimizer must resolve the contention without dropping either project from the portfolio.",
+    "input": {
+      "context": "Fintech company, 15-project portfolio, 1 enterprise security architect (Maria Chen), both projects board-approved",
+      "competing_projects": [
+        {
+          "name": "Payment Gateway Replatforming",
+          "priority_rank": 2,
+          "security_architect_need": "Months 3-6 of 9-month project",
+          "hard_deadline": "2026-09-30 (PCI compliance)",
+          "value": "$3.2M risk mitigation"
+        },
+        {
+          "name": "Zero Trust Security Implementation",
+          "priority_rank": 4,
+          "security_architect_need": "Months 1-4 of 6-month project",
+          "hard_deadline": "2026-12-31 (board mandate)",
+          "value": "$1.8M risk mitigation"
+        }
+      ],
+      "constraint": "No external hire possible within 3 months due to clearance requirements. Maria Chen is the sole enterprise security architect."
+    },
+    "expected_behavior": [
+      "Bottleneck clearly identified: Maria Chen as single-person dependency across 2 critical projects",
+      "At least 3 sequencing scenarios modeled with portfolio value curves",
+      "Scenario analysis includes: stagger projects, split Maria's time 50/50, or phase security architecture work",
+      "Recommended plan respects both hard deadlines (PCI in Sep, board mandate in Dec)",
+      "Fragile allocation flagged with risk mitigation: cross-training plan or contractor pipeline for future resilience",
+      "Re-optimization trigger defined if either project slips by more than 2 weeks"
+    ],
+    "agents_exercised": ["resource-portfolio-optimizer", "dependency-mapper"]
+  }
+]

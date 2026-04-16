@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Convert markdown deliverable to branded HTML.",
+    "assertions": [
+      "applies APEX design tokens",
+      "generates responsive layout",
+      "preserves all content",
+      "adds navigation elements"
+    ]
+  },
+  {
+    "prompt": "Inject ghost menu into a 15-page report.",
+    "assertions": [
+      "creates contextual navigation",
+      "links to related deliverables",
+      "adds export options",
+      "maintains clean design"
+    ]
+  },
+  {
+    "prompt": "Package 5 deliverables for stakeholder distribution.",
+    "assertions": [
+      "generates appropriate format per audience",
+      "maintains consistency across formats",
+      "creates distribution package",
+      "includes cover letter"
+    ]
+  },
+  {
+    "prompt": "Process template with project data.",
+    "assertions": [
+      "substitutes variables correctly",
+      "handles conditional sections",
+      "validates output completeness",
+      "preserves formatting"
+    ]
+  }
+]

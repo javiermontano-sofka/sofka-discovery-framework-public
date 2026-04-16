@@ -1,0 +1,84 @@
+{
+  "skill_name": "web-performance",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit Core Web Vitals for the production application. LCP is 5.2s, INP is 480ms, CLS is 0.24",
+      "expected_output": "Root cause diagnosis for each metric with specific code changes and expected improvements",
+      "assertions": [
+        {"text": "Output identifies LCP element type (image, text, etc.)", "type": "contains"},
+        {"text": "Output checks for loading=lazy on LCP image as cause", "type": "contains"},
+        {"text": "Output recommends fetchpriority=high for LCP image", "type": "contains"},
+        {"text": "Output addresses INP via long task identification", "type": "contains"},
+        {"text": "Output mentions scheduler.yield() or Web Workers for INP", "type": "contains"},
+        {"text": "Output identifies CLS source (images, dynamic content, fonts)", "type": "contains"},
+        {"text": "Output mentions width/height attributes for image CLS", "type": "contains"},
+        {"text": "Output provides metric-specific thresholds (Good/Needs/Poor)", "type": "contains"},
+        {"text": "Output prioritizes fixes by impact (LCP first, then CLS, then INP)", "type": "contains"},
+        {"text": "Output distinguishes lab data (Lighthouse) from field data (CrUX)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The main JavaScript bundle is 1.4 MB. Analyze and implement code splitting",
+      "expected_output": "Bundle analysis findings, code splitting implementation with React.lazy, and performance budget",
+      "assertions": [
+        {"text": "Output recommends running bundle analyzer tool first", "type": "contains"},
+        {"text": "Output identifies specific oversized chunks or dependencies", "type": "contains"},
+        {"text": "Output implements React.lazy() with dynamic import", "type": "contains"},
+        {"text": "Output wraps lazy components with Suspense and fallback", "type": "contains"},
+        {"text": "Output identifies heavy libraries (moment, lodash) as targets", "type": "contains"},
+        {"text": "Output provides lighter alternatives for heavy libraries", "type": "contains"},
+        {"text": "Output mentions tree-shaking and named exports requirement", "type": "contains"},
+        {"text": "Output defines a performance budget for CI enforcement", "type": "contains"},
+        {"text": "Output provides verification method (re-run analyzer)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Set up service worker caching for an e-commerce app. Static assets, API data, and product images",
+      "expected_output": "Workbox-based caching strategy with appropriate strategy per resource type and cache expiration",
+      "assertions": [
+        {"text": "Output uses Workbox library", "type": "contains"},
+        {"text": "Output applies Cache-first for static assets", "type": "contains"},
+        {"text": "Output applies Network-first for API responses", "type": "contains"},
+        {"text": "Output applies Stale-while-revalidate for images", "type": "contains"},
+        {"text": "Output sets cache expiration with ExpirationPlugin", "type": "contains"},
+        {"text": "Output uses cache: Cache-first only for versioned (hashed) URLs", "type": "contains"},
+        {"text": "Output mentions service worker registration only in production", "type": "contains"},
+        {"text": "Output mentions HTTPS requirement for service workers", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "INP is 650ms on a page with a search filter that re-renders 2000 items. Diagnose and fix.",
+      "expected_output": "Long task diagnosis with virtualization implementation and scheduler.yield() optimization",
+      "assertions": [
+        {"text": "Output recommends profiling with Chrome DevTools Performance panel first", "type": "contains"},
+        {"text": "Output identifies the long task causing INP (> 50ms)", "type": "contains"},
+        {"text": "Output recommends virtualizing the list of 2000 items", "type": "contains"},
+        {"text": "Output mentions @tanstack/react-virtual or similar library", "type": "contains"},
+        {"text": "Output mentions breaking up synchronous work with scheduler.yield()", "type": "contains"},
+        {"text": "Output mentions React startTransition for non-urgent updates", "type": "contains"},
+        {"text": "Output provides INP target (≤ 200ms for Good)", "type": "contains"},
+        {"text": "Output provides re-measurement method after fix", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set up performance budget CI enforcement to prevent regressions on every PR",
+      "expected_output": "Performance budget configuration with Lighthouse CI GitHub Actions workflow",
+      "assertions": [
+        {"text": "Output measures baseline before setting budget", "type": "contains"},
+        {"text": "Output provides performance-budget.json or equivalent config", "type": "contains"},
+        {"text": "Output includes CWV thresholds in budget (LCP, INP, CLS)", "type": "contains"},
+        {"text": "Output includes bundle size thresholds", "type": "contains"},
+        {"text": "Output provides GitHub Actions workflow YAML or equivalent", "type": "contains"},
+        {"text": "Output mentions PR comment with before/after comparison", "type": "contains"},
+        {"text": "Output mentions blocking merge on budget failure", "type": "contains"},
+        {"text": "Output uses realistic thresholds (not all metrics at 'Good' threshold immediately)", "type": "contains"}
+      ]
+    }
+  ]
+}

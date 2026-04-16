@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMO-APEX v1.0 — Agentic Project Excellence</title>
+  <meta name="description" content="PMO-APEX v1.0 — 109 Skills MOAT, 48 Agentes, 103 Comandos. Project Management Framework con protocolo zero-hallucination, orquestado por IA, operativo en Claude Code.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --apex-primary: #2563EB;
+      --apex-primary-light: #3B82F6;
+      --apex-primary-dark: #1D4ED8;
+      --apex-primary-dim: rgba(37,99,235,.10);
+      --apex-dark: #0F172A;
+      --apex-white: #FFFFFF;
+      --apex-bg: #F8FAFC;
+      --apex-success: #F59E0B;
+      --apex-success-dim: rgba(245,158,11,.12);
+      --apex-success-border: rgba(245,158,11,.45);
+      --apex-success-text: #92400E;
+      --apex-warning: #F97316;
+      --apex-warning-dim: rgba(249,115,22,.08);
+      --apex-danger: #DC2626;
+      --apex-danger-dim: rgba(220,38,38,.07);
+      --apex-info: #06B6D4;
+      --apex-info-dim: rgba(6,182,212,.07);
+      --apex-accent: #8B5CF6;
+      --apex-gray-50: #F8FAFC;
+      --apex-gray-100: #F1F5F9;
+      --apex-gray-200: #E2E8F0;
+      --apex-gray-300: #CBD5E1;
+      --apex-gray-500: #64748B;
+      --apex-gray-700: #334155;
+      --apex-gray-900: #0F172A;
+      --radius: 8px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--apex-bg); color: var(--apex-gray-900); line-height: 1.6; }
+
+    /* Header */
+    .header { background: var(--apex-dark); color: var(--apex-white); padding: 3rem 2rem; text-align: center; }
+    .header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .header h1 span { color: var(--apex-primary-light); }
+    .header .tagline { font-size: 1.1rem; color: var(--apex-gray-300); font-weight: 300; }
+    .header .version { display: inline-block; background: var(--apex-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-top: 1rem; }
+
+    /* Stats Bar */
+    .stats { display: flex; justify-content: center; gap: 2rem; padding: 1.5rem 2rem; background: white; border-bottom: 2px solid var(--apex-primary); flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat .number { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--apex-primary); }
+    .stat .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--apex-gray-500); }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    /* Section */
+    .section { margin-bottom: 3rem; }
+    .section h2 { font-size: 1.5rem; font-weight: 700; color: var(--apex-dark); margin-bottom: 1rem; padding-left: 1rem; border-left: 4px solid var(--apex-primary); }
+
+    /* Cards Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .card { background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-card); border-top: 3px solid var(--apex-primary); transition: transform 0.2s; }
+    .card:hover { transform: translateY(-2px); }
+    .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--apex-dark); }
+    .card p { font-size: 0.875rem; color: var(--apex-gray-500); }
+    .card .badge { display: inline-block; background: var(--apex-primary-dim); color: var(--apex-primary); padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-top: 0.5rem; }
+
+    /* Command Table */
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); }
+    th { background: var(--apex-dark); color: white; padding: 0.75rem 1rem; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--apex-gray-200); font-size: 0.875rem; }
+    td code { font-family: var(--font-mono); background: var(--apex-primary-dim); color: var(--apex-primary-dark); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.8rem; }
+    tr:hover td { background: var(--apex-gray-50); }
+
+    /* Footer */
+    .footer { background: var(--apex-dark); color: var(--apex-gray-300); text-align: center; padding: 2rem; margin-top: 3rem; font-size: 0.85rem; }
+    .footer strong { color: var(--apex-primary-light); }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>PMO-<span>APEX</span> v1.0</h1>
+    <p class="tagline">Agentic Project Excellence — Tu IDE se convierte en una oficina de proyectos inteligente</p>
+    <span class="version">© 2026 Sofka Technologies</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="number">109</div><div class="label">Skills MOAT</div></div>
+    <div class="stat"><div class="number">48</div><div class="label">Agentes</div></div>
+    <div class="stat"><div class="number">103</div><div class="label">Comandos</div></div>
+    <div class="stat"><div class="number">19</div><div class="label">Scripts</div></div>
+    <div class="stat"><div class="number">5</div><div class="label">Quality Gates</div></div>
+    <div class="stat"><div class="number">10</div><div class="label">Tipos Proyecto</div></div>
+  </div>
+
+  <div class="container">
+
+    <div class="section">
+      <h2>Inicio Rápido</h2>
+      <table>
+        <tr><th>Comando</th><th>Descripción</th></tr>
+        <tr><td><code>/pm:run-guided</code></td><td>Pipeline guiado — 16 entregables, 4 gates con pausa</td></tr>
+        <tr><td><code>/pm:run-auto</code></td><td>Pipeline autónomo completo</td></tr>
+        <tr><td><code>/pm:run-express</code></td><td>Charter + Schedule + Dashboard en 1 sesión</td></tr>
+        <tr><td><code>/pm:run-deep</code></td><td>Gobernanza profunda — 7 entregables, 2 gates</td></tr>
+        <tr><td><code>/pm:menu</code></td><td>Paleta de comandos interactiva</td></tr>
+        <tr><td><code>/pm:init</code></td><td>Wizard de inicialización para nuevo proyecto</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Pipeline — 10 Fases, 16 Entregables</h2>
+      <div class="grid">
+        <div class="card"><h3>Phase 0 — Initiation</h3><p>Project Charter + Stakeholder Map</p><span class="badge">2 Entregables</span></div>
+        <div class="card"><h3>Phase 1 — Scoping</h3><p>Scope Statement + WBS</p><span class="badge">1 Entregable</span></div>
+        <div class="card"><h3>Phase 2 — Planning</h3><p>Schedule + Resources + Budget Baseline</p><span class="badge">2 Entregables</span></div>
+        <div class="card"><h3>Phase 3 — Risk & Method</h3><p>Risk Register + Steering Committee</p><span class="badge">2 Entregables · Gate G1</span></div>
+        <div class="card"><h3>Phase 4 — Execution</h3><p>Methodology Playbook + DoD</p><span class="badge">1 Entregable · Gate G2</span></div>
+        <div class="card"><h3>Phase 5 — Communication</h3><p>Communication Plan + Executive Dashboard</p><span class="badge">2 Entregables</span></div>
+        <div class="card"><h3>Phase 6 — Kickoff</h3><p>Kickoff Package</p><span class="badge">1 Entregable · Gate G3</span></div>
+        <div class="card"><h3>Phase 7 — Reports</h3><p>Status, EVM, Lessons, PMO Health, Closure</p><span class="badge">5 Entregables</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tipos de Proyecto Soportados</h2>
+      <div class="grid">
+        <div class="card"><h3>🏃 Agile</h3><p>Scrum, XP, story points, velocity tracking</p></div>
+        <div class="card"><h3>📋 Kanban</h3><p>WIP limits, cycle time, flow metrics</p></div>
+        <div class="card"><h3>🚂 SAFe</h3><p>PI Planning, ARTs, value streams</p></div>
+        <div class="card"><h3>📐 Waterfall</h3><p>PMBOK, PRINCE2, stage-gate, Gantt</p></div>
+        <div class="card"><h3>🔀 Hybrid</h3><p>Mixed methods, phased + iterative</p></div>
+        <div class="card"><h3>🏛️ PMO</h3><p>Governance, maturity, standards</p></div>
+        <div class="card"><h3>📊 Portfolio</h3><p>Multi-project, PPM, strategic alignment</p></div>
+        <div class="card"><h3>🔄 Transformation</h3><p>Enterprise-wide, change management</p></div>
+        <div class="card"><h3>🚨 Recovery</h3><p>Troubled projects, turnaround, rescue</p></div>
+        <div class="card"><h3>🧩 Multi-Method</h3><p>Combinación de 2+ metodologías</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Comité de Agentes (48)</h2>
+      <table>
+        <tr><th>Nivel</th><th>Agentes</th><th>Rol</th></tr>
+        <tr><td><code>L1 Tríada</code></td><td>project-conductor, delivery-lead, risk-manager</td><td>Orquestación permanente + meta-cognición FULL</td></tr>
+        <tr><td><code>L2 Core</code></td><td>9 agentes</td><td>Quality, methodology, schedule, budget, scope, editorial, format, comms, change</td></tr>
+        <tr><td><code>L3 Specialists</code></td><td>36 agentes</td><td>Agile, Traditional, Risk, Resource, Finance, Technical, Stakeholder</td></tr>
+        <tr><td><code>L4 Steering</code></td><td>7 advisors</td><td>Portfolio, financial, risk, resource, compliance, methodology, stakeholder</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Protocolo de Evidencia</h2>
+      <table>
+        <tr><th>Tag</th><th>Significado</th><th>Confianza</th></tr>
+        <tr><td><code>[PLAN]</code></td><td>Documentado en plan/WBS aprobado</td><td>Alta</td></tr>
+        <tr><td><code>[SCHEDULE]</code></td><td>Verificado en schedule/Gantt baseline</td><td>Alta</td></tr>
+        <tr><td><code>[METRIC]</code></td><td>Datos medidos (velocity, CPI, SPI)</td><td>Alta</td></tr>
+        <tr><td><code>[STAKEHOLDER]</code></td><td>Declarado por stakeholder del proyecto</td><td>Variable</td></tr>
+        <tr><td><code>[DECISION]</code></td><td>Registro formal de decisión (CCB, steering)</td><td>Alta</td></tr>
+        <tr><td><code>[INFERENCIA]</code></td><td>Razonado de patrones observados</td><td>Media</td></tr>
+        <tr><td><code>[SUPUESTO]</code></td><td>Asunción no verificada — requiere validación</td><td>Baja</td></tr>
+        <tr><td><code>[HISTORICO]</code></td><td>Basado en datos históricos</td><td>Media</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <strong>PMO-APEX v1.0</strong> — Agentic Project Excellence<br>
+    109 Skills MOAT · 48 Agentes · 103 Comandos · 19 Scripts · 5 Quality Gates<br>
+    Sofka, your technology partner.
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+graph TD
+    A[Firebase Project] --> B[Firebase Auth]
+    A --> C[Firestore Database]
+    A --> D[Cloud Functions v2]
+    A --> E[Firebase Hosting]
+    A --> F[Cloud Storage]
+    A --> G[App Check]
+
+    B --> B1[Email/Password]
+    B --> B2[Google OAuth]
+    B --> B3[Custom Tokens]
+    B --> B4[Custom Claims]
+
+    C --> C1[Collections]
+    C --> C2[Security Rules]
+    C --> C3[Indexes]
+    C --> C4[Composite Indexes]
+
+    C1 --> C1a[Documents]
+    C1a --> C1b[Subcollections]
+    C1a --> C1c[Maps & Arrays]
+
+    C2 --> C2a[Helper Functions]
+    C2 --> C2b[Resource Validation]
+    C2 --> C2c[Auth Verification]
+
+    D --> D1[onDocumentCreated]
+    D --> D2[onCall Callable]
+    D --> D3[onSchedule]
+    D --> D4[onRequest HTTP]
+
+    D1 --> D1a[Fan-out Writes]
+    D1 --> D1b[Aggregation Updates]
+    D2 --> D2a[App Check Enforcement]
+    D2 --> D2b[Server-side Validation]
+
+    E --> E1[Static Assets]
+    E --> E2[SPA Rewrites]
+    E --> E3[Cache Headers]
+    E --> E4[Security Headers]
+
+    G --> G1[reCAPTCHA v3]
+    G --> G2[Play Integrity]
+
+    A --> H[Emulator Suite]
+    H --> H1[Auth Emulator :9099]
+    H --> H2[Firestore Emulator :8080]
+    H --> H3[Functions Emulator :5001]
+    H --> H4[Hosting Emulator :5000]
+    H --> H5[Emulator UI :4000]
+
+    A --> I[CI/CD Pipeline]
+    I --> I1[Rules Tests]
+    I --> I2[Functions Tests]
+    I --> I3[Deploy to Staging]
+    I --> I4[Deploy to Production]
+
+    B4 --> C2c
+    G --> D2a
+
+    style A fill:#FF7E08,color:#fff
+    style H fill:#FFD700,color:#000
+    style I fill:#FFD700,color:#000

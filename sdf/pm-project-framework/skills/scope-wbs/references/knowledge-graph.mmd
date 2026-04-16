@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Project Charter<br/>Scope Statement] --> D
+        B[Stakeholder Register<br/>Requirements] --> D
+        C[Strategic Alignment<br/>Objectives] --> D
+    end
+    subgraph "Scope WBS"
+        D[Scope Definition<br/>& Boundaries] --> E[Hierarchical<br/>Decomposition]
+        E --> F[WBS Dictionary<br/>Creation]
+        F --> G[Baseline Approval<br/>& Lock]
+    end
+    subgraph Outputs
+        G --> H[Schedule Baseline]
+        G --> I[Budget Baseline]
+        F --> J[RACI Matrix]
+        G --> K[Resource Plan]
+    end
+    subgraph Agents
+        L[Scope Analyst Agent] --> E
+        M[WBS Architect Agent] --> F
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

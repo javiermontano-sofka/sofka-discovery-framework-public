@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Project Charter<br/>Scope & Objectives] --> D
+        B[Resource Plan<br/>Team Allocation] --> D
+        C[Schedule Baseline<br/>Timeline & Dependencies] --> D
+    end
+
+    subgraph "Project Orchestrator"
+        D[Workflow Design<br/>& Sequencing] --> E[Team Coordination<br/>& Communication]
+        E --> F[Flow Monitoring<br/>& Adaptation]
+        F --> G[Integration &<br/>Delivery Management]
+    end
+
+    subgraph Outputs
+        G --> H[Status Report]
+        F --> I[Project Health Check]
+        G --> J[Steering Review]
+        E --> K[Retrospective Engine]
+    end
+
+    subgraph Agents
+        L[Orchestration Engine Agent] --> E
+        M[Flow Optimizer Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

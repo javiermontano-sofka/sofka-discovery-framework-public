@@ -1,0 +1,52 @@
+%% Knowledge Graph — Team Performance & Health Tracking
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        SPRINT[sprint-data<br/>Velocity/throughput]
+        HEALTH[health-survey<br/>Team feedback]
+        SCHEDULE[schedule-baseline<br/>SPI data]
+        QUALITY[quality-metrics<br/>Defect data]
+    end
+
+    subgraph "Team Performance (This Skill)"
+        VELOCITY[Velocity Tracking<br/>Points/items per sprint]
+        HEALTH_CHECK[Health Assessment<br/>11 dimensions]
+        TREND[Trend Analysis<br/>5+ sprint trends]
+        ACTION[Improvement Actions<br/>Targeted recommendations]
+    end
+
+    subgraph Downstream
+        STATUS[status-report<br/>Metrics for reporting]
+        CAPACITY[capacity-planning<br/>Velocity-based forecasting]
+        RISK[risk-register<br/>Team risks]
+        RETRO[discovery-retrospective<br/>Improvement input]
+    end
+
+    subgraph Agents
+        AGILE_COACH[agile-coach<br/>L2 Specialist]
+        PM_ANALYST[pm-analyst<br/>L2 Specialist]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    SPRINT --> VELOCITY
+    HEALTH --> HEALTH_CHECK
+    SCHEDULE --> VELOCITY
+    QUALITY --> TREND
+
+    VELOCITY --> TREND
+    HEALTH_CHECK --> TREND
+    TREND --> ACTION
+
+    ACTION --> STATUS
+    VELOCITY --> CAPACITY
+    HEALTH_CHECK --> RISK
+    ACTION --> RETRO
+
+    AGILE_COACH -.->|facilitates| HEALTH_CHECK
+    PM_ANALYST -.->|analyzes| TREND
+    CONDUCTOR -.->|orchestrates| ACTION
+
+    style ACTION fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style AGILE_COACH fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

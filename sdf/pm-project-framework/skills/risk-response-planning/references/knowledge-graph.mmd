@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Risk Monitoring<br/>Prioritized Risks] --> D
+        B[Risk Quantification<br/>Exposure Data] --> D
+        C[Risk Appetite Framework<br/>Response Thresholds] --> D
+    end
+
+    subgraph "Risk Response Planning"
+        D[Strategy Selection<br/>Per Risk] --> E[Action Design<br/>& Assignment]
+        E --> F[Contingency &<br/>Fallback Planning]
+        F --> G[Response Plan<br/>Publication]
+    end
+
+    subgraph Outputs
+        G --> H[Risk Monitoring Updates]
+        G --> I[Budget Baseline Reserve]
+        F --> J[Schedule Baseline Buffer]
+        G --> K[Stakeholder Communication]
+    end
+
+    subgraph Agents
+        L[Risk Strategist Agent] --> D
+        M[Contingency Planner Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

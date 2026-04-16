@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Scope WBS<br/>Work Packages] --> D
+        B[Schedule Baseline<br/>Timeline] --> D
+        C[Skills Gap Analysis<br/>Capability Needs] --> D
+    end
+
+    subgraph "Resource Plan"
+        D[Requirements<br/>Analysis] --> E[Staffing Strategy<br/>& Acquisition]
+        E --> F[Allocation &<br/>Calendar Setup]
+        F --> G[Plan Approval<br/>& Communication]
+    end
+
+    subgraph Outputs
+        G --> H[Budget Baseline]
+        G --> I[Resource Optimization]
+        F --> J[Staff Augmentation Plan]
+        G --> K[RACI Matrix]
+    end
+
+    subgraph Agents
+        L[Resource Planner Agent] --> E
+        M[Capacity Analyst Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

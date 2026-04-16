@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Scope WBS<br/>Work Packages] --> D
+        B[Stakeholder Register<br/>Roles & People] --> D
+        C[Project Charter<br/>Authority Levels] --> D
+    end
+
+    subgraph "RACI Matrix"
+        D[Activity &<br/>Role Identification] --> E[Responsibility<br/>Assignment]
+        E --> F[Validation &<br/>Conflict Resolution]
+        F --> G[Publication &<br/>Maintenance]
+    end
+
+    subgraph Outputs
+        G --> H[Communication Plan]
+        G --> I[Quality Plan]
+        F --> J[Resource Plan]
+        G --> K[Governance Framework]
+    end
+
+    subgraph Agents
+        L[Governance Architect Agent] --> E
+        M[Stakeholder Analyst Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

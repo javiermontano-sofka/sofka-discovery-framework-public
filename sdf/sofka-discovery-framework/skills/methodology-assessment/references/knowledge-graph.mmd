@@ -1,0 +1,25 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["📋 Project Charter<br/>Scope & Constraints"]:::primary --> B["🔍 Methodology Assessment<br/>Skill Entry Point"]:::primary
+    C["📊 Org Maturity<br/>Agile Readiness"]:::amber --> B
+    D["📜 Regulatory<br/>Compliance Needs"]:::amber --> B
+
+    B --> E["📐 8 Dimensions<br/>Scored 1-5"]:::primary
+    E --> F["⚖️ Weighted Scoring<br/>Per Methodology"]:::primary
+    E --> G["📊 Sensitivity<br/>Analysis"]:::amber
+
+    F --> H["🏆 Top 2 Options<br/>With Confidence Level"]:::dark
+    G --> H
+
+    H --> I["📝 Tailoring<br/>Guidance"]:::primary
+    H --> J["⚠️ Gap Analysis<br/>Readiness Gaps"]:::amber
+
+    I --> K["📦 Deliverables<br/>Assessment Report"]:::dark
+    J --> K
+
+    K --> L["✅ Validation Gate<br/>10 Criteria"]:::primary
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "quality-plan-iso9001-software",
+    "title": "Quality plan for a software development project with ISO 9001 requirements",
+    "prompt": "Create a quality management plan for a 12-month enterprise software development project building a claims processing system for an insurance company. The organization is ISO 9001:2015 certified and the quality plan must demonstrate conformance to clauses 8.1 (Operational Planning and Control), 8.2.3 (Review of Requirements), 8.3 (Design and Development), 8.5.1 (Control of Production), and 8.6 (Release of Products). The project uses a waterfall methodology with 5 phases: requirements, design, implementation, testing, deployment. Define quality criteria for each deliverable type, plan all QA activities including document reviews and code inspections, design metrics aligned with ISO management review requirements, and establish a corrective action process that feeds the organization's CAPA system.",
+    "expected_output_keywords": [
+      "ISO 9001:2015",
+      "quality criteria",
+      "acceptance standards",
+      "document review",
+      "code inspection",
+      "defect density",
+      "corrective action",
+      "CAPA",
+      "management review",
+      "quality gate",
+      "traceability",
+      "nonconformance",
+      "audit",
+      "quality objectives",
+      "process compliance"
+    ],
+    "agents_involved": [
+      "quality-criteria-definer",
+      "quality-activity-planner",
+      "metrics-framework-designer",
+      "continuous-improvement-engine"
+    ],
+    "validation_criteria": {
+      "must_include_deliverable_criteria": true,
+      "must_map_to_iso_clauses": true,
+      "must_include_qa_schedule": true,
+      "must_define_metrics_with_targets": true,
+      "must_include_capa_process": true
+    }
+  },
+  {
+    "id": "quality-plan-agile-dod",
+    "title": "Quality plan for an agile project with quality built into Definition of Done",
+    "prompt": "Design a quality plan for a 6-month agile software project using Scrum with 2-week sprints, a cross-functional team of 8, building a customer-facing mobile application. Quality must be embedded into the Definition of Done rather than treated as a separate phase. The plan should define quality criteria that map to DoD checklist items, plan continuous QA activities within each sprint (pair programming, TDD, automated testing, sprint reviews, retrospectives), design metrics that work at sprint cadence (escaped defects per sprint, test automation coverage, velocity stability, sprint goal achievement rate, Net Promoter Score from beta users), and establish a retrospective-driven improvement process that tightens the DoD over time as the team matures.",
+    "expected_output_keywords": [
+      "Definition of Done",
+      "sprint",
+      "Scrum",
+      "TDD",
+      "test automation",
+      "pair programming",
+      "retrospective",
+      "escaped defects",
+      "velocity",
+      "sprint review",
+      "continuous integration",
+      "code coverage",
+      "acceptance criteria",
+      "user story",
+      "NPS"
+    ],
+    "agents_involved": [
+      "quality-criteria-definer",
+      "quality-activity-planner",
+      "metrics-framework-designer",
+      "continuous-improvement-engine"
+    ],
+    "validation_criteria": {
+      "must_embed_quality_in_dod": true,
+      "must_plan_within_sprint_cadence": true,
+      "must_include_automation_strategy": true,
+      "must_use_agile_metrics": true,
+      "must_use_retrospectives_for_improvement": true
+    }
+  },
+  {
+    "id": "quality-plan-construction-safety",
+    "title": "Quality plan for a construction/infrastructure project with safety requirements",
+    "prompt": "Develop a quality management plan for an 18-month highway bridge construction project with strict safety and regulatory requirements. The plan must address both structural quality (concrete strength, steel reinforcement placement, load-bearing capacity) and safety quality (OSHA compliance, fall protection, excavation safety, crane operations). Define quality criteria tied to engineering specifications and building codes, plan inspection and testing activities (concrete cylinder tests, rebar placement inspections, load tests, weld inspections, safety audits), design metrics covering both construction quality (deficiency rate, rework percentage, inspection pass rate) and safety performance (incident rate, near-miss frequency, safety observation rate), and establish a non-conformance and corrective action process that prevents unsafe conditions from being built over.",
+    "expected_output_keywords": [
+      "inspection",
+      "hold point",
+      "witness point",
+      "concrete strength",
+      "rebar",
+      "load test",
+      "OSHA",
+      "safety audit",
+      "non-conformance report",
+      "rework",
+      "building code",
+      "engineering specification",
+      "incident rate",
+      "corrective action",
+      "as-built"
+    ],
+    "agents_involved": [
+      "quality-criteria-definer",
+      "quality-activity-planner",
+      "metrics-framework-designer",
+      "continuous-improvement-engine"
+    ],
+    "validation_criteria": {
+      "must_address_structural_quality": true,
+      "must_address_safety_requirements": true,
+      "must_include_hold_and_witness_points": true,
+      "must_define_physical_testing_methods": true,
+      "must_include_ncr_process": true
+    }
+  },
+  {
+    "id": "quality-plan-revision-audit-gaps",
+    "title": "Quality plan revision after quality audit reveals process gaps",
+    "prompt": "Revise an existing quality plan for an ongoing data platform migration project after an internal quality audit revealed the following gaps: (1) code reviews are happening but not being documented, leaving no evidence trail; (2) test coverage metrics are collected but have no defined targets, so nobody knows if coverage is adequate; (3) there is no formal process for handling non-conformances found during integration testing, leading to defects being informally fixed without root-cause analysis; (4) the quality plan has not been updated since project kickoff despite three scope changes. For each gap, update the quality criteria to close the gap, add or modify QA activities to enforce the new standards, adjust the metrics framework with explicit targets and alert thresholds, and establish PDCA improvement cycles to verify that the corrective actions are effective within 30 days.",
+    "expected_output_keywords": [
+      "audit finding",
+      "corrective action",
+      "code review documentation",
+      "test coverage target",
+      "non-conformance process",
+      "root-cause analysis",
+      "quality plan revision",
+      "scope change",
+      "evidence trail",
+      "alert threshold",
+      "PDCA",
+      "30-day verification",
+      "process gap",
+      "baseline update",
+      "change control"
+    ],
+    "agents_involved": [
+      "quality-criteria-definer",
+      "quality-activity-planner",
+      "metrics-framework-designer",
+      "continuous-improvement-engine"
+    ],
+    "validation_criteria": {
+      "must_address_all_four_gaps": true,
+      "must_include_corrective_actions": true,
+      "must_set_explicit_metric_targets": true,
+      "must_establish_ncr_process": true,
+      "must_include_verification_timeline": true
+    }
+  }
+]

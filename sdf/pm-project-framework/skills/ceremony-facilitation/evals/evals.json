@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Facilitate a daily standup for a 9-person team that consistently runs over 15 minutes.",
+    "assertions": [
+      "diagnoses reasons for overrun",
+      "applies timebox enforcement techniques",
+      "introduces parking lot for detailed discussions",
+      "measures improvement in standup duration"
+    ]
+  },
+  {
+    "prompt": "Design a retrospective for a team experiencing retro fatigue after 12 sprints.",
+    "assertions": [
+      "selects fresh retrospective format",
+      "creates psychological safety for honest feedback",
+      "extracts actionable improvement items",
+      "tracks action item follow-through from previous retros"
+    ]
+  },
+  {
+    "prompt": "Guide sprint planning for a team with 30% capacity reduction due to holidays.",
+    "assertions": [
+      "calculates adjusted capacity",
+      "selects appropriate number of stories",
+      "validates team commitment against reduced capacity",
+      "identifies risks from reduced team availability"
+    ]
+  },
+  {
+    "prompt": "Organize sprint review for executives who have never attended an agile ceremony.",
+    "assertions": [
+      "adapts demo format for executive audience",
+      "prepares context-setting introduction",
+      "designs feedback capture mechanism",
+      "manages expectations about what a sprint review is and isn't"
+    ]
+  }
+]

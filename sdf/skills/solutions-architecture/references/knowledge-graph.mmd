@@ -1,0 +1,104 @@
+graph TD
+    %% ─── Núcleo: Arquitectura de Soluciones ───
+    solutionsArchitecture["Arquitectura de Soluciones"]
+
+    %% ─── Capa de Visión de Solución ───
+    c4Model["Modelo C4 (Contexto → Contenedor)"]
+    systemBoundary["Límite del Sistema"]
+    externalDependencies["Dependencias Externas"]
+    containerDecomposition["Descomposición en Contenedores"]
+    userActors["Actores y Canales"]
+
+    %% ─── Capa de Integración ───
+    integrationArchitecture["Arquitectura de Integración"]
+    apiGateway["API Gateway"]
+    messageBroker["Message Broker / Event Bus"]
+    syncPatterns["Patrones Síncronos (REST, gRPC)"]
+    asyncPatterns["Patrones Asíncronos (Kafka, AMQP)"]
+    sagaPattern["Patrón Saga / Eventual Consistency"]
+    circuitBreaker["Circuit Breaker"]
+
+    %% ─── Capa de Canales y BFF ───
+    channelStrategy["Estrategia de Canales"]
+    bff["Backend for Frontend (BFF)"]
+    webChannel["Canal Web (SPA/PWA)"]
+    mobileChannel["Canal Móvil"]
+    apiChannel["Canal API (REST/GraphQL)"]
+
+    %% ─── Capa de Seguridad ───
+    zeroTrust["Zero Trust by Default"]
+    oauth2Oidc["OAuth2 / OIDC"]
+    rbacAbac["RBAC / ABAC / Policy-as-Code"]
+    dataProtection["Protección de Datos (PII, cifrado)"]
+    complianceMap["Mapeo de Cumplimiento (GDPR, PCI)"]
+
+    %% ─── Capa de Observabilidad ───
+    observability["Observabilidad"]
+    sliSloSla["SLI / SLO / SLA"]
+    structuredLogging["Logging Estructurado"]
+    distributedTracing["Trazabilidad Distribuida (OpenTelemetry)"]
+    metricsAlerting["Métricas y Alertas"]
+
+    %% ─── Capa de Transición ───
+    transitionPlan["Plan de Transición"]
+    stranglerFig["Strangler Fig Pattern"]
+    canaryRollout["Canary Rollout (5%→100%)"]
+    dataMigration["Migración de Datos"]
+
+    %% ─── Relaciones Núcleo ───
+    solutionsArchitecture --> c4Model
+    solutionsArchitecture --> integrationArchitecture
+    solutionsArchitecture --> channelStrategy
+    solutionsArchitecture --> zeroTrust
+    solutionsArchitecture --> observability
+    solutionsArchitecture --> transitionPlan
+
+    %% ─── Relaciones C4 ───
+    c4Model --> systemBoundary
+    c4Model --> containerDecomposition
+    c4Model --> externalDependencies
+    c4Model --> userActors
+
+    %% ─── Relaciones Integración ───
+    integrationArchitecture --> apiGateway
+    integrationArchitecture --> messageBroker
+    integrationArchitecture --> syncPatterns
+    integrationArchitecture --> asyncPatterns
+    asyncPatterns --> sagaPattern
+    apiGateway --> circuitBreaker
+
+    %% ─── Relaciones Canales ───
+    channelStrategy --> bff
+    channelStrategy --> webChannel
+    channelStrategy --> mobileChannel
+    channelStrategy --> apiChannel
+    bff --> webChannel
+    bff --> mobileChannel
+
+    %% ─── Relaciones Seguridad ───
+    zeroTrust --> oauth2Oidc
+    zeroTrust --> rbacAbac
+    zeroTrust --> dataProtection
+    dataProtection --> complianceMap
+
+    %% ─── Relaciones Observabilidad ───
+    observability --> sliSloSla
+    observability --> structuredLogging
+    observability --> distributedTracing
+    observability --> metricsAlerting
+
+    %% ─── Relaciones Transición ───
+    transitionPlan --> stranglerFig
+    transitionPlan --> canaryRollout
+    transitionPlan --> dataMigration
+
+    %% ─── Estilos (máx. 4 classDef) ───
+    classDef nucleo fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef integracion fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef seguridad fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef operacion fill:#F3F4F6,stroke:#1A1A2E,color:#1A1A2E
+
+    class solutionsArchitecture nucleo
+    class integrationArchitecture,apiGateway,messageBroker,syncPatterns,asyncPatterns,sagaPattern,circuitBreaker integracion
+    class zeroTrust,oauth2Oidc,rbacAbac,dataProtection,complianceMap,observability,sliSloSla,structuredLogging,distributedTracing,metricsAlerting seguridad
+    class c4Model,systemBoundary,containerDecomposition,externalDependencies,userActors,channelStrategy,bff,webChannel,mobileChannel,apiChannel,transitionPlan,stranglerFig,canaryRollout,dataMigration operacion

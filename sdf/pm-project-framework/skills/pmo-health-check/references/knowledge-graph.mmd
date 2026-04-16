@@ -1,0 +1,50 @@
+%% Knowledge Graph — PMO Health Check
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    HC["PMO Health Check"]:::blue
+
+    %% 8 Dimensions
+    D1["Governance Effectiveness"]:::amber
+    D2["Resource Utilization"]:::amber
+    D3["Methodology Compliance"]:::amber
+    D4["Reporting Accuracy"]:::amber
+    D5["Stakeholder Satisfaction"]:::amber
+    D6["Risk Management"]:::amber
+    D7["Financial Oversight"]:::amber
+    D8["Continuous Improvement"]:::amber
+
+    %% Inputs
+    KPI["Operational KPIs"]:::dark
+    SURV["Satisfaction Surveys"]:::dark
+    PREV["Previous Health Check"]:::dark
+
+    %% Outputs
+    DASH["RAG Health Dashboard"]:::blue
+    TREND["Trend Analysis"]:::blue
+    ACTIONS["Corrective Actions"]:::blue
+
+    %% Flow
+    KPI --> HC
+    SURV --> HC
+    PREV --> HC
+    HC --> D1
+    HC --> D2
+    HC --> D3
+    HC --> D4
+    HC --> D5
+    HC --> D6
+    HC --> D7
+    HC --> D8
+    D1 & D2 & D3 & D4 --> DASH
+    D5 & D6 & D7 & D8 --> DASH
+    DASH --> TREND
+    TREND --> ACTIONS
+
+    %% Cross-refs
+    PA["PMO Assessment"]:::dark
+    PA -.->|"strategic view"| HC

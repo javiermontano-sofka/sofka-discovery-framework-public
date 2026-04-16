@@ -1,0 +1,52 @@
+[
+  {
+    "prompt": "Design a hybrid methodology for ProjectNova, a regulatory fintech platform with agile development teams and waterfall compliance requirements. 12-month timeline, 4 dev squads, SOX and PCI-DSS audit obligations.",
+    "assertions": [
+      "assigns agile approach to development workstreams with clear rationale",
+      "assigns predictive approach to compliance/regulatory workstreams",
+      "defines integration seams between agile dev and predictive compliance",
+      "includes sprint-to-milestone mapping for unified timeline",
+      "addresses SOX and PCI-DSS audit trail requirements explicitly",
+      "provides a hybrid topology map or decision matrix",
+      "does not force a single methodology across all workstreams",
+      "evidence tags present on key decisions (not solely [SUPUESTO])"
+    ]
+  },
+  {
+    "prompt": "Our agile teams track velocity in story points and our PMO requires Earned Value Management reports with SPI and CPI. Map sprint velocity metrics to waterfall EVM for integrated reporting across both methodologies.",
+    "assertions": [
+      "defines Planned Value formula using story points and cost-per-point",
+      "defines Earned Value formula using accepted story points",
+      "explains SPI and CPI calculation from agile-derived EV/PV/AC",
+      "addresses the sprint cadence to reporting period alignment",
+      "warns about assumptions in story-point-to-cost conversion with [SUPUESTO] tags",
+      "provides a unified dashboard schema or table showing both agile and EVM metrics",
+      "does not recommend abandoning either velocity tracking or EVM"
+    ]
+  },
+  {
+    "prompt": "Our team does 2-week sprints but all requirements were gathered upfront in a 3-month analysis phase, testing happens only after the last sprint, and the product owner cannot re-prioritize the backlog. Assess our process for hybrid anti-patterns.",
+    "assertions": [
+      "identifies water-scrum-fall as primary anti-pattern with specific evidence",
+      "detects agile-in-name-only (AINO) due to PO lacking prioritization authority",
+      "flags sequential testing phase as contradicting agile principles",
+      "classifies severity for each finding (Critical, High, Medium, Low)",
+      "provides specific remediation actions, not generic advice",
+      "includes a health score or severity assessment for the overall implementation",
+      "references vertical slicing or incremental delivery as remediation"
+    ]
+  },
+  {
+    "prompt": "We are 4 months into a 12-month pure waterfall project and need to transition to hybrid mid-execution. Requirements phase is complete, design is 80% done, and construction has not started. How do we transition without losing existing work?",
+    "assertions": [
+      "preserves completed requirements and design artifacts as baseline",
+      "recommends introducing agile for construction phase forward",
+      "defines how existing waterfall artifacts translate to agile backlog items",
+      "addresses team readiness and potential need for agile coaching",
+      "creates a transition timeline with specific milestones",
+      "maintains governance continuity — existing stage gates remain valid",
+      "warns about risks of mid-project methodology change with evidence tags",
+      "does not recommend discarding completed waterfall deliverables"
+    ]
+  }
+]

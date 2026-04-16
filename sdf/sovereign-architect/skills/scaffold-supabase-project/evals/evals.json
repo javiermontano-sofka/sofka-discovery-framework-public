@@ -1,0 +1,77 @@
+{
+  "skill_name": "scaffold-supabase-project",
+  "version": "2.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "Multi-tenant schema and RLS scaffold",
+      "prompt": "Scaffold a Supabase project for a multi-tenant SaaS with organizations, organization members (owner/admin/member roles), and projects scoped to organizations. Generate full SQL migrations and RLS policies.",
+      "expected_output": "SQL migrations with schema, RLS policies for all tables, auto-profile trigger, and RLS coverage matrix",
+      "assertions": [
+        {"text": "Output includes ALTER TABLE ... ENABLE ROW LEVEL SECURITY for every table", "type": "contains"},
+        {"text": "Output includes RLS policies for profiles, organizations, and projects", "type": "contains"},
+        {"text": "Output uses auth.uid() in RLS policies for user-scoped access", "type": "contains"},
+        {"text": "Output includes auto-create profile trigger on auth.users", "type": "contains"},
+        {"text": "Output uses UUID primary keys with uuid_generate_v4() or gen_random_uuid()", "type": "contains"},
+        {"text": "Output includes INSERT policies with WITH CHECK clause", "type": "contains"},
+        {"text": "Output does NOT use FOR ALL USING (true) as a policy", "type": "not_contains"},
+        {"text": "Output includes RLS policy coverage matrix or equivalent table", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "RLS security audit",
+      "prompt": "Audit these Supabase RLS policies: (1) posts table has policy: USING (auth.role() = 'authenticated') FOR ALL. (2) payment_methods table has RLS enabled but no policies. (3) messages table has SELECT policy: USING (true).",
+      "expected_output": "Security audit identifying each policy flaw with severity and corrected SQL",
+      "assertions": [
+        {"text": "Output flags USING (auth.role() = 'authenticated') as too broad — any user can see any post", "type": "contains"},
+        {"text": "Output flags no policies on payment_methods as effectively blocking all access", "type": "contains"},
+        {"text": "Output flags USING (true) on messages as exposing all messages to all users", "type": "contains"},
+        {"text": "Output provides corrected SQL for each policy", "type": "contains"},
+        {"text": "Output rates severity for each finding", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Edge Function with Stripe webhook",
+      "prompt": "Write a Supabase Edge Function for Stripe webhook processing. Must verify Stripe-Signature header, handle checkout.session.completed event, update subscriptions table, and implement idempotency.",
+      "expected_output": "Deno TypeScript Edge Function with signature verification, event handling, and idempotency check",
+      "assertions": [
+        {"text": "Output verifies Stripe-Signature header before processing", "type": "contains"},
+        {"text": "Output uses service_role client for DB writes", "type": "contains"},
+        {"text": "Output verifies user JWT before privileged operations OR explicitly handles webhook auth differently", "type": "contains"},
+        {"text": "Output checks for duplicate event_id before processing (idempotency)", "type": "contains"},
+        {"text": "Output handles checkout.session.completed event type", "type": "contains"},
+        {"text": "Output reads STRIPE_WEBHOOK_SECRET from Deno.env.get()", "type": "contains"},
+        {"text": "Output does NOT hardcode any secrets", "type": "not_contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "TypeScript client setup for Next.js App Router",
+      "prompt": "Set up the Supabase TypeScript client for a Next.js 15 App Router project. Include: server client using @supabase/ssr, browser client, middleware for auth, and type generation commands.",
+      "expected_output": "supabase-server.ts with createServerClient, middleware.ts protecting /dashboard, package.json scripts for type generation",
+      "assertions": [
+        {"text": "Output uses @supabase/ssr createServerClient (not deprecated auth-helpers)", "type": "contains"},
+        {"text": "Output includes cookies getAll/setAll handlers in server client", "type": "contains"},
+        {"text": "Output includes middleware.ts that calls supabase.auth.getUser()", "type": "contains"},
+        {"text": "Output does NOT use service_role key in browser client or middleware", "type": "not_contains"},
+        {"text": "Output includes supabase gen types typescript command in package.json scripts", "type": "contains"},
+        {"text": "Output uses createClient<Database> generic type parameter", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Storage bucket RLS for private documents",
+      "prompt": "Configure Supabase Storage for a private document bucket where users can only access their own files. Files are organized as {userId}/{filename}. Generate bucket RLS policies.",
+      "expected_output": "Storage bucket RLS policies using storage.foldername() for path-based access control",
+      "assertions": [
+        {"text": "Output creates a private bucket (not public)", "type": "contains"},
+        {"text": "Output uses storage.foldername() or storage.filename() in policies", "type": "contains"},
+        {"text": "Output uses auth.uid()::text in storage policy USING clause", "type": "contains"},
+        {"text": "Output includes INSERT, SELECT, UPDATE, DELETE policies for storage.objects", "type": "contains"},
+        {"text": "Output does NOT set bucket public: true for private documents", "type": "not_contains"}
+      ]
+    }
+  ]
+}

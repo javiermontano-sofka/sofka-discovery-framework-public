@@ -1,0 +1,107 @@
+```mermaid
+graph TD
+    %% Core: Pipeline Governance
+    PG[pipeline-governance<br/>Tejido conectivo del pipeline]
+    CHARTER[Program Charter<br/>Marco de gobernanza]
+    QA[Proposal QA<br/>Validador final]
+
+    %% Seven Sections
+    S1[S1: Program Charter<br/>& Governance Framework]
+    S2[S2: Phase Gate<br/>Management]
+    S3[S3: Resource & Capacity<br/>Orchestration]
+    S4[S4: Cross-Phase<br/>Dependency Control]
+    S5[S5: Proposal QA<br/>Validation]
+    S6[S6: Status Reporting<br/>& Dashboard]
+    S7[S7: Continuous Governance<br/>& Lessons Learned]
+
+    %% Gates
+    G1[Gate 1<br/>Scenario Approval]
+    G2[Gate 2<br/>Budget Approval]
+    G3[Gate 3<br/>Final Approval]
+    G3B[Checkpoint 3b<br/>Feasibility Verdict]
+
+    %% QA Dimensions
+    QA_COH[Coherencia Técnica<br/>Roadmap vs AS-IS]
+    QA_COMP[Completitud<br/>Todos los entregables]
+    QA_VIA[Viabilidad<br/>Pitch vs Spec]
+    QA_ALIN[Alineación<br/>Hallazgos vs Propuesta]
+    QA_SCORE[Scorecard Compuesto<br/>≥3.5/5.0]
+
+    %% Resource Tracking
+    EXPERTS[Expert Committee<br/>30 agentes]
+    ALLOC[Allocation Matrix<br/>% por fase]
+    BOTTLE[Bottleneck Detection<br/>Alertas de capacidad]
+
+    %% Dependency Control
+    DEPMAT[Dependency Matrix<br/>Input/Output por fase]
+    DCONTRACT[Data Contracts<br/>Inter-fase verificados]
+    SCOPE[Scope Change Log<br/>Impacto evaluado]
+
+    %% Reporting
+    DASH[RAG Dashboard<br/>Por fase]
+    DECLOG[Decision Log<br/>Gates + rationale]
+    MILEST[Milestone Tracking<br/>Plan vs actual]
+
+    %% Risk connection
+    RISK[risk-controlling-dynamics<br/>Socio de gobernanza]
+    ORCH[discovery-orchestrator<br/>Orquestador padre]
+
+    %% Core structure
+    PG --> S1
+    PG --> S2
+    PG --> S3
+    PG --> S4
+    PG --> S5
+    PG --> S6
+    PG --> S7
+
+    %% S1 connections
+    S1 --> CHARTER
+
+    %% S2 connections
+    S2 --> G1
+    S2 --> G2
+    S2 --> G3
+    S2 --> G3B
+
+    %% S3 connections
+    S3 --> EXPERTS
+    S3 --> ALLOC
+    S3 --> BOTTLE
+
+    %% S4 connections
+    S4 --> DEPMAT
+    S4 --> DCONTRACT
+    S4 --> SCOPE
+
+    %% S5 connections
+    S5 --> QA
+    QA --> QA_COH
+    QA --> QA_COMP
+    QA --> QA_VIA
+    QA --> QA_ALIN
+    QA_COH --> QA_SCORE
+    QA_COMP --> QA_SCORE
+    QA_VIA --> QA_SCORE
+    QA_ALIN --> QA_SCORE
+
+    %% S6 connections
+    S6 --> DASH
+    S6 --> DECLOG
+    S6 --> MILEST
+
+    %% External dependencies
+    PG -.->|gobernanza transversal| ORCH
+    PG -.->|socio siempre activo| RISK
+
+    %% Classdefs
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef section fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef gate fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+    classDef qa fill:#4A4A6A,stroke:#FFD700,color:#fff
+
+    class PG,QA core
+    class S1,S2,S3,S4,S5,S6,S7 section
+    class G1,G2,G3,G3B gate
+    class QA_COH,QA_COMP,QA_VIA,QA_ALIN,QA_SCORE,CHARTER,EXPERTS,ALLOC,BOTTLE,DEPMAT,DCONTRACT,SCOPE,DASH,DECLOG,MILEST,RISK,ORCH qa
+```

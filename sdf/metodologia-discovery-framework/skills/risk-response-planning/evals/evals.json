@@ -1,0 +1,105 @@
+[
+  {
+    "id": "risk-response-planning-eval-001",
+    "name": "Full-spectrum strategy selection across 10 risks",
+    "description": "Validates that the strategy-selector agent can evaluate 10 risks spanning all 5 response strategy types (avoid, transfer, mitigate, accept, escalate) and produces a defensible rationale for each selection aligned with risk appetite and budget constraints.",
+    "input": "You are given a prioritized risk register with 10 risks for a 12-month enterprise ERP migration project (budget $2.4M, management reserve $360K). Organizational risk appetite is moderate. The risks are: R-001 Regulatory compliance gap (Critical, P=0.7, I=0.9), R-002 Key architect resignation (High, P=0.4, I=0.8), R-003 Legacy data corruption during migration (High, P=0.5, I=0.7), R-004 Vendor delays on middleware delivery (Medium, P=0.6, I=0.5), R-005 Scope creep from business unit requests (High, P=0.8, I=0.6), R-006 Currency fluctuation on offshore contracts (Medium, P=0.5, I=0.4), R-007 Test environment unavailability (Medium, P=0.3, I=0.5), R-008 Change resistance from end users (High, P=0.7, I=0.5), R-009 Third-party API deprecation (Low, P=0.2, I=0.3), R-010 Natural disaster affecting primary data center (Low, P=0.1, I=0.9). Select the optimal response strategy for each risk with full rationale, rejected alternatives, and budget alignment.",
+    "expected_output_contains": [
+      "Strategy Selection Report",
+      "Avoid",
+      "Transfer",
+      "Mitigate",
+      "Accept",
+      "Escalate",
+      "Rationale",
+      "Rejected Alternatives",
+      "Budget Alignment",
+      "EMV Reduction"
+    ],
+    "validation_criteria": [
+      "All 10 risks have an assigned strategy from the 5 canonical types",
+      "At least 3 different strategy types are used across the 10 risks",
+      "Each selection includes a cost-benefit rationale referencing EMV",
+      "Rejected alternatives are documented for each risk",
+      "Total response cost is validated against the $360K management reserve",
+      "Critical risk R-001 is flagged for escalation or avoidance, not passive acceptance"
+    ]
+  },
+  {
+    "id": "risk-response-planning-eval-002",
+    "name": "Detailed mitigation plan for critical vendor dependency",
+    "description": "Validates that the mitigation-plan-designer agent can produce a complete, executable mitigation action plan for a critical vendor dependency risk with tasks, RACI, schedule integration, and measurable success criteria.",
+    "input": "Design a detailed mitigation action plan for risk R-004: 'Critical dependency on single vendor for payment gateway integration.' Current assessment: Probability 0.7, Impact 0.8, EMV $280K. The vendor has missed 2 of 4 milestone deliveries by an average of 3 weeks. Project timeline has 6 months remaining. Mitigation budget allocated: $85K. The strategy selected is Mitigate. Target: reduce probability to 0.3 and impact to 0.5 (residual EMV <= $75K). Project team includes: PM, 2 senior developers, 1 integration architect, 1 vendor manager. Decompose into actionable tasks with full RACI, schedule, resource budget, and success criteria.",
+    "expected_output_contains": [
+      "Mitigation Action Plan",
+      "Task Register",
+      "RACI Matrix",
+      "Resource Budget",
+      "Schedule Integration",
+      "Success Criteria",
+      "Owner",
+      "Deadline"
+    ],
+    "validation_criteria": [
+      "Plan contains at least 5 discrete, actionable tasks",
+      "Every task has a named owner, start date, deadline, and effort estimate",
+      "RACI matrix covers all tasks with no missing assignments",
+      "Resource budget totals do not exceed the $85K allocation",
+      "Success criteria are measurable and binary (met/not met)",
+      "Plan addresses both probability reduction (e.g., alternative vendor qualification) and impact reduction (e.g., abstraction layer)",
+      "Schedule integration identifies critical path conflicts if any"
+    ]
+  },
+  {
+    "id": "risk-response-planning-eval-003",
+    "name": "Contingency plan with quantified trigger thresholds",
+    "description": "Validates that the contingency-trigger-definer agent can define precise, quantified trigger conditions with leading indicators, thresholds, monitoring protocols, and IF-THEN activation rules for a contingency plan.",
+    "input": "Define contingency trigger conditions for risk R-003: 'Cloud infrastructure provider experiences sustained service degradation impacting production SLA.' Primary response: Mitigate via multi-region deployment and automated failover. Contingency plan: Full migration to secondary cloud provider (pre-negotiated contract, 4-week execution). Current SLA target: 99.95% uptime. The team monitors via CloudWatch, PagerDuty, and monthly vendor performance reviews. Define at least 3 leading indicators with quantified thresholds, compound activation rules, an escalation matrix, and a decision tree.",
+    "expected_output_contains": [
+      "Contingency Trigger Specification",
+      "Trigger Cards",
+      "Leading indicator",
+      "Threshold",
+      "Monitoring frequency",
+      "Activation Rules",
+      "IF",
+      "THEN",
+      "Escalation Matrix",
+      "Decision Tree"
+    ],
+    "validation_criteria": [
+      "At least 3 distinct trigger cards with quantified thresholds (numeric values with units)",
+      "Each trigger has a named data source and measurement method",
+      "Monitoring frequency is specified for every indicator",
+      "At least one compound activation rule using AND/OR logic",
+      "Escalation matrix has at least 3 levels with clear authority boundaries",
+      "Time windows are specified for every activation and escalation step",
+      "Decision tree follows logical flow from monitoring to activation to escalation"
+    ]
+  },
+  {
+    "id": "risk-response-planning-eval-004",
+    "name": "Response plan revision after residual risk exceeds tolerance",
+    "description": "Validates that the residual-risk-assessor agent can reassess risks post-response, identify secondary risks, detect tolerance breaches, and recommend corrective actions including plan revision.",
+    "input": "Perform a residual risk assessment for the following 5 risks after their response plans have been designed. Organizational risk tolerance: residual EMV must not exceed $50K per risk, aggregate residual EMV must not exceed $200K. R-001 (Avoid: descoped feature) Pre: P=0.7 I=0.9 EMV=$315K, Post-response estimate: P=0.05 I=0.2 Residual EMV=$5K. R-002 (Mitigate: cross-training + retention bonus) Pre: P=0.4 I=0.8 EMV=$160K, Post: P=0.25 I=0.6 Residual EMV=$75K. R-003 (Transfer: vendor penalty clause) Pre: P=0.5 I=0.7 EMV=$175K, Post: P=0.5 I=0.3 Residual EMV=$75K. R-004 (Mitigate: automated testing) Pre: P=0.6 I=0.5 EMV=$150K, Post: P=0.2 I=0.3 Residual EMV=$30K. R-005 (Accept: low priority) Pre: P=0.3 I=0.4 EMV=$60K, Post: P=0.3 I=0.4 Residual EMV=$60K. Identify which risks exceed tolerance, flag secondary risks from the responses, and recommend corrective actions.",
+    "expected_output_contains": [
+      "Residual Risk Assessment Report",
+      "Pre/Post Comparison",
+      "Secondary Risk Register",
+      "Tolerance Compliance Matrix",
+      "Corrective Action",
+      "ABOVE",
+      "WITHIN",
+      "Approval Required"
+    ],
+    "validation_criteria": [
+      "All 5 risks show pre and post probability, impact, and EMV values",
+      "R-002 and R-003 are correctly flagged as above the $50K per-risk tolerance",
+      "R-005 is flagged as above tolerance ($60K > $50K)",
+      "Aggregate residual EMV ($245K) is flagged as exceeding $200K aggregate tolerance",
+      "At least 2 secondary risks are identified (e.g., descoping feature creates market risk, vendor penalty creates relationship risk)",
+      "Corrective actions are recommended for every out-of-tolerance risk",
+      "Report identifies risks requiring formal sponsor acceptance"
+    ]
+  }
+]

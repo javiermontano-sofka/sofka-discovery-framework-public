@@ -1,0 +1,54 @@
+[
+  {
+    "prompt": "Run a Monte Carlo simulation on a 50-activity construction schedule. Activities have PERT-beta distributions with three-point estimates provided by the site engineer. Target completion is 240 calendar days. Provide P50, P80, and P95 duration estimates.",
+    "assertions": [
+      "defines PERT-beta distributions for all 50 activities using optimistic/most-likely/pessimistic parameters",
+      "runs >= 10,000 simulation iterations",
+      "respects activity dependency logic (predecessor/successor relationships) during each iteration",
+      "reports P50, P80, and P95 duration values explicitly",
+      "calculates the probability of meeting the 240-day target",
+      "identifies top 5 activities by criticality index (% of iterations on critical path)",
+      "produces a cumulative probability (S-curve) visualization or specification",
+      "includes evidence tags on all quantitative claims"
+    ]
+  },
+  {
+    "prompt": "Perform a combined schedule and cost Monte Carlo simulation for a $2M software delivery project with 35 work packages. Each work package has duration uncertainty (triangular distributions) and cost uncertainty (lognormal distributions). Identify the joint probability of finishing on time AND within budget.",
+    "assertions": [
+      "models both duration and cost as separate uncertain variables per work package",
+      "uses triangular distributions for duration and lognormal for cost as specified",
+      "defines correlation structure between duration and cost variables (longer tasks cost more)",
+      "reports joint probability of meeting both schedule and cost targets simultaneously",
+      "provides separate CDFs for total duration and total cost",
+      "performs sensitivity analysis identifying top variance drivers for schedule and cost independently",
+      "calculates contingency reserves at P80 for both schedule buffer and cost contingency",
+      "output file follows naming convention with {WIP} tag"
+    ]
+  },
+  {
+    "prompt": "Compare 3 project scenarios using Monte Carlo simulation: (1) Aggressive — compressed schedule with overtime, (2) Baseline — standard plan, (3) Conservative — additional buffer and lower resource utilization. Show which scenario offers the best risk-adjusted outcome for a 12-month ERP implementation.",
+    "assertions": [
+      "defines distinct distribution parameters for each of the 3 scenarios",
+      "documents what changes in each scenario versus baseline (specific distribution modifications)",
+      "runs simulations with same random seed sequence across scenarios for fair comparison",
+      "produces side-by-side P50/P80/P95 comparison table for duration and cost",
+      "calculates probability of meeting the 12-month target for each scenario",
+      "performs dominance analysis to identify Pareto-optimal scenarios",
+      "provides a clear recommendation with quantified tradeoffs between scenarios",
+      "warns that Aggressive scenario likely has asymmetric downside risk (right-skewed distribution)"
+    ]
+  },
+  {
+    "prompt": "Our Monte Carlo simulation shows only 20% probability of meeting our contractual deadline of June 30. The client will impose liquidated damages of $50K/week for late delivery. What changes to the project plan would increase our probability to at least 80%? Run comparative simulations to quantify each option.",
+    "assertions": [
+      "acknowledges the 20% on-time probability as a critical finding requiring immediate action",
+      "identifies the top variance drivers from sensitivity analysis as targets for intervention",
+      "proposes at least 3 specific mitigation scenarios (e.g., add resources, fast-track, reduce scope, mitigate top risks)",
+      "runs comparative Monte Carlo simulations for each proposed mitigation",
+      "quantifies the schedule improvement (days gained) and cost of each mitigation",
+      "calculates expected liquidated damages exposure under baseline vs. each mitigation scenario",
+      "identifies which combination of mitigations achieves the 80% target at lowest incremental cost",
+      "frames the recommendation as investment vs. risk-reduction ROI using expected damage avoidance"
+    ]
+  }
+]

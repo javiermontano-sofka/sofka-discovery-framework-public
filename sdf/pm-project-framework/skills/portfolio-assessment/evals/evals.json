@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assess our portfolio management maturity. We have 60 active projects but no formal prioritization framework. Projects are approved based on who presents to the executive committee most convincingly.",
+    "assertions": [
+      "Must identify the absence of objective prioritization criteria as a critical maturity gap",
+      "Must detect HiPPO bias and political influence as decision quality risks",
+      "Must evaluate portfolio governance effectiveness beyond just prioritization",
+      "Must recommend a structured prioritization framework with objective scoring criteria"
+    ]
+  },
+  {
+    "prompt": "Our CTO says 70% of our project portfolio should support digital transformation, but analysis shows only 30% of budget is allocated to digital initiatives. Assess our strategic alignment.",
+    "assertions": [
+      "Must quantify the 40-point gap between stated strategic priority and actual investment",
+      "Must trace which projects consume budget that could be redirected to digital transformation",
+      "Must identify orphan projects that lack strategic alignment",
+      "Must recommend portfolio rebalancing actions to close the strategy-investment gap"
+    ]
+  },
+  {
+    "prompt": "Evaluate resource optimization across our portfolio. Key architects are allocated to 5+ projects simultaneously, delivery dates are slipping, and teams report constant context switching.",
+    "assertions": [
+      "Must identify over-allocation of key resources as the root cause of delivery slippage",
+      "Must quantify the productivity loss from context switching across multiple projects",
+      "Must assess capacity planning practices and their effectiveness",
+      "Must recommend resource rebalancing strategies including project staggering"
+    ]
+  },
+  {
+    "prompt": "Review our portfolio governance. The steering committee meets quarterly, decisions take 6-8 weeks, and project managers say governance slows everything down without adding value.",
+    "assertions": [
+      "Must evaluate whether quarterly governance cadence is sufficient for the portfolio dynamics",
+      "Must measure decision latency and its impact on project timelines and opportunity cost",
+      "Must assess whether governance forums produce clear actionable decisions",
+      "Must recommend governance model adjustments that improve timeliness without losing oversight"
+    ]
+  }
+]

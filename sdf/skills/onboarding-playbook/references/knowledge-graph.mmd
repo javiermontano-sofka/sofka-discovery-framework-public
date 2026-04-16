@@ -1,0 +1,25 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0F172A', 'lineColor': '#F59E0B', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#0F172A'}}}%%
+
+flowchart TD
+    A["👥 Team Structure<br/>Roles & Skills"]:::primary --> B["📖 Onboarding Playbook<br/>Skill Entry Point"]:::primary
+    C["📐 Methodology Playbook<br/>Process Context"]:::amber --> B
+
+    B --> D["🛤️ Learning Paths<br/>Role-Specific"]:::primary
+    B --> E["🗺️ Knowledge Map<br/>Topics & Owners"]:::amber
+    B --> F["🤝 Buddy System<br/>1:1 Pairing"]:::primary
+
+    D --> G["📅 Session Schedule<br/>KT Calendar"]:::amber
+    E --> G
+    F --> G
+
+    G --> H["✅ Access Checklist<br/>Tools & Systems"]:::dark
+    G --> I["📊 Milestones<br/>Day 1/Week 1/Month 1"]:::primary
+
+    H --> J["📦 Playbook<br/>Per Role"]:::dark
+    I --> J
+
+    J --> K["✅ Validation Gate<br/>10 Criteria"]:::primary
+
+    classDef primary fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF

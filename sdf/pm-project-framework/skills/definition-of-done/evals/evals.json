@@ -1,0 +1,54 @@
+[
+  {
+    "prompt": "Create a Definition of Done for a new Scrum team starting their first sprint. The team has 6 developers, 1 QA, and is building a B2B SaaS invoicing platform. They have basic CI but no CD pipeline yet.",
+    "assertions": [
+      "produces a story-level DoD with 5-8 criteria appropriate for a new team",
+      "criteria are objectively verifiable, not vague (e.g., 'unit tests passing' not 'code is good')",
+      "includes code review, testing, and acceptance criteria verification at minimum",
+      "does NOT include deployment or monitoring criteria given no CD pipeline",
+      "recommends a maturity roadmap for adding criteria in future sprints",
+      "every criterion uses 'All work must...' or checklist phrasing",
+      "tags criteria sources with evidence tags (not solely [SUPUESTO])",
+      "output file named with {WIP} tag per naming convention"
+    ]
+  },
+  {
+    "prompt": "Design a multi-level Definition of Done for a regulated healthcare software project building an EHR integration. Must comply with HIPAA, FDA 21 CFR Part 11, and SOC 2 Type II. Team of 12 across 3 squads.",
+    "assertions": [
+      "produces three distinct DoD levels: story, sprint, and release",
+      "story-level includes HIPAA-relevant criteria (PHI handling, encryption, access controls)",
+      "release-level includes FDA audit trail and electronic signature requirements",
+      "includes SOC 2 evidence collection criteria (logging, change management)",
+      "sprint-level includes cross-squad integration verification",
+      "provides a cascade/inheritance diagram (Mermaid or equivalent)",
+      "regulatory criteria cite specific regulation sections with [DOC] tags",
+      "distinguishes between automated checks and manual compliance reviews"
+    ]
+  },
+  {
+    "prompt": "Our sprint retrospective revealed that 40% of stories shipped in Sprint 8 did not meet our testing criteria — specifically, unit test coverage was below 80% and no integration tests were written. The team says time pressure is the cause. Audit this and recommend corrective actions.",
+    "assertions": [
+      "performs a structured compliance audit, not just opinion",
+      "calculates per-criterion compliance percentages",
+      "classifies violations (skip vs. partial vs. waived vs. impossible)",
+      "investigates root causes beyond 'time pressure' — checks tooling, criterion clarity, estimation",
+      "recommends specific corrective actions with owners and deadlines",
+      "does NOT recommend simply removing the testing criteria",
+      "suggests systemic fixes (e.g., test scaffolding investment, definition clarity)",
+      "includes trend comparison recommendation against previous sprints"
+    ]
+  },
+  {
+    "prompt": "Our team has been using the same 12-item DoD for 18 months. We recently adopted a full CI/CD pipeline with automated deployments, implemented SAST scanning, and our peer review compliance has been 100% for 10 straight sprints. How should our DoD evolve?",
+    "assertions": [
+      "recommends graduating peer review criterion since it is automated via branch protection",
+      "proposes adding deployment verification criteria now that CD exists",
+      "proposes adding SAST/security scan criteria leveraging new tooling",
+      "recommends adding observability/monitoring criteria for release-level DoD",
+      "warns against adding too many criteria at once — phases additions",
+      "provides a versioned evolution plan with target sprints",
+      "recommends a team consensus ceremony before changes take effect",
+      "maintains balance between raising the bar and avoiding bureaucratic bloat"
+    ]
+  }
+]

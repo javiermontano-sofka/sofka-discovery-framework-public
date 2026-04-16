@@ -1,0 +1,43 @@
+[
+  {
+    "prompt": "Create a schedule baseline for a 9-month software development project with 45 work packages across 5 phases. Include critical path analysis and Gantt chart.",
+    "assertions": [
+      "produces PERT 3-point estimates (O, M, P) for activities",
+      "executes forward and backward pass calculations",
+      "identifies the critical path with zero-float activities",
+      "identifies near-critical paths with float ≤5 days",
+      "generates a Mermaid Gantt chart with critical path highlighted",
+      "includes milestone markers at phase gates"
+    ]
+  },
+  {
+    "prompt": "The project has 3 external dependencies: vendor API delivery (week 8), regulatory approval (week 12), and client UAT environment (week 16). How do these affect the schedule?",
+    "assertions": [
+      "models external dependencies with expected dates",
+      "assesses schedule impact if external dependencies slip",
+      "flags external dependencies on or near the critical path",
+      "recommends contingency buffers for external dependencies",
+      "documents external dependency risk with mitigation options"
+    ]
+  },
+  {
+    "prompt": "The project is 2 weeks behind schedule on the critical path. What are our recovery options?",
+    "assertions": [
+      "analyzes fast-tracking opportunities with associated risks",
+      "evaluates crashing options with cost-time trade-offs",
+      "considers scope reduction for non-critical deliverables",
+      "presents options with impact analysis, not just one recommendation",
+      "identifies which specific critical path activities to target"
+    ]
+  },
+  {
+    "prompt": "Create a schedule for an agile project with 6 sprints of 2 weeks each. Map epics to sprint iterations.",
+    "assertions": [
+      "adapts scheduling approach for agile context",
+      "maps epics or features to sprint boundaries",
+      "includes sprint ceremonies (planning, review, retro) in the timeline",
+      "notes that sprint content may shift based on velocity",
+      "produces a release plan or PI roadmap alongside the sprint schedule"
+    ]
+  }
+]

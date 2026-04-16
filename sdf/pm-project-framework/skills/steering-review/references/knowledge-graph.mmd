@@ -1,0 +1,60 @@
+%% Knowledge Graph — Steering Review (7-Advisor Committee)
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        CHARTER[project-charter<br/>Phase 0]
+        SCHEDULE[schedule-baseline<br/>Phase 3]
+        RISK[risk-register<br/>Phase 2]
+        STAKEHOLDER[stakeholder-register<br/>Phase 1]
+        BUDGET[budget-baseline<br/>Phase 2]
+        ARCH[architecture-assessment<br/>Phase 2]
+        METHOD[methodology-assessment<br/>Phase 1]
+    end
+
+    subgraph "Steering Review (This Skill)"
+        PACKAGE[Evidence Package<br/>Compiled deliverables]
+        REVIEW[7-Advisor Review<br/>Domain assessments]
+        VOTE[Vote Compilation<br/>Go/Conditional/No-Go]
+        MINUTES[Steering Minutes<br/>Formal record]
+    end
+
+    subgraph Downstream
+        PROCEED[next-phase<br/>If Go]
+        REMEDIATE[remediation-plan<br/>If Conditional]
+        PAUSE[project-pause<br/>If No-Go]
+        LESSONS[lessons-learned<br/>Review insights]
+    end
+
+    subgraph Agents
+        STRATEGY_ADV[strategy-advisor<br/>Committee]
+        ARCH_ADV[architecture-advisor<br/>Committee]
+        RISK_ADV[risk-advisor<br/>Committee]
+        FINANCE_ADV[finance-advisor<br/>Committee]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    CHARTER --> PACKAGE
+    SCHEDULE --> PACKAGE
+    RISK --> PACKAGE
+    STAKEHOLDER --> PACKAGE
+    BUDGET --> PACKAGE
+    ARCH --> PACKAGE
+    METHOD --> PACKAGE
+
+    PACKAGE --> REVIEW --> VOTE --> MINUTES
+
+    MINUTES --> PROCEED
+    MINUTES --> REMEDIATE
+    MINUTES --> PAUSE
+    MINUTES --> LESSONS
+
+    STRATEGY_ADV -.->|votes| REVIEW
+    ARCH_ADV -.->|votes| REVIEW
+    RISK_ADV -.->|votes| REVIEW
+    FINANCE_ADV -.->|votes| REVIEW
+    CONDUCTOR -.->|orchestrates| VOTE
+
+    style MINUTES fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style STRATEGY_ADV fill:#F59E0B,color:#0F172A,stroke:#d97706

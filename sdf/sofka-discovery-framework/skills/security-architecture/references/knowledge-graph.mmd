@@ -1,0 +1,113 @@
+graph TD
+    %% ─── NÚCLEO ───────────────────────────────────────────────────────────────
+    secArch["Arquitectura de Seguridad"]
+
+    %% ─── PILAR 1: THREAT MODELING ─────────────────────────────────────────────
+    threatModeling["Threat Modeling"]
+    stride["STRIDE\n(por elemento)"]
+    pasta["PASTA\n(7 etapas, risk-centric)"]
+    dfd["Diagramas de Flujo\nde Datos (DFD)"]
+    attackSurface["Superficie de Ataque"]
+    riskScoring["Matriz Riesgo\nLikelihood × Impact"]
+
+    %% ─── PILAR 2: ZERO TRUST ──────────────────────────────────────────────────
+    zeroTrust["Zero Trust Architecture"]
+    nistSP800207["NIST SP 800-207\nZero Trust"]
+    microSegmentation["Micro-segmentación"]
+    continuousVerif["Verificación Continua"]
+    mTLS["mTLS / Service Mesh\n(Istio, Linkerd)"]
+    ztMaturity["Modelo de Madurez ZT\nCrawl → Walk → Run"]
+
+    %% ─── PILAR 3: IAM ─────────────────────────────────────────────────────────
+    iam["Identity & Access\nManagement (IAM)"]
+    oauth["OAuth 2.0 / OIDC"]
+    webAuthn["WebAuthn / FIDO2"]
+    authzModels["Modelos de Autorización\nRBAC / ABAC / ReBAC"]
+    secretMgmt["Gestión de Secretos\nVault / Secrets Manager"]
+    workloadIdentity["Workload Identity\nSPIFFE / SPIRE"]
+
+    %% ─── PILAR 4: DATA PROTECTION ─────────────────────────────────────────────
+    dataProtection["Protección de Datos"]
+    encryptionAtRest["Cifrado en Reposo\nAES-256 / TDE"]
+    encryptionInTransit["Cifrado en Tránsito\nTLS 1.3"]
+    keyMgmt["Gestión de Claves\nKMS / HSM"]
+    dataClassification["Clasificación de Datos\nRestricted → Public"]
+
+    %% ─── PILAR 5: APPLICATION SECURITY ────────────────────────────────────────
+    appSec["Application Security"]
+    sast["SAST\n(SonarQube, Semgrep)"]
+    dast["DAST\n(ZAP, Burp Suite)"]
+    sca["SCA / SBOM\n(Snyk, Syft)"]
+    slsa["SLSA Levels\n1 → 3"]
+    secChampions["Security Champions\nProgram"]
+
+    %% ─── PILAR 6: COMPLIANCE ──────────────────────────────────────────────────
+    compliance["Compliance & Audit"]
+    nistCSF["NIST CSF 2.0\nGovern→Recover"]
+    soc2["SOC 2 (TSC)"]
+    iso27001["ISO 27001\nAnnex A"]
+    pciDss["PCI-DSS 4.0"]
+    gdprHipaa["GDPR / HIPAA"]
+    continuousCompliance["Compliance Continuo\nOPA, Cloud Custodian"]
+
+    %% ─── RELACIONES ───────────────────────────────────────────────────────────
+    secArch --> threatModeling
+    secArch --> zeroTrust
+    secArch --> iam
+    secArch --> dataProtection
+    secArch --> appSec
+    secArch --> compliance
+
+    threatModeling --> stride
+    threatModeling --> pasta
+    threatModeling --> dfd
+    threatModeling --> attackSurface
+    threatModeling --> riskScoring
+
+    zeroTrust --> nistSP800207
+    zeroTrust --> microSegmentation
+    zeroTrust --> continuousVerif
+    zeroTrust --> mTLS
+    zeroTrust --> ztMaturity
+
+    iam --> oauth
+    iam --> webAuthn
+    iam --> authzModels
+    iam --> secretMgmt
+    iam --> workloadIdentity
+
+    dataProtection --> encryptionAtRest
+    dataProtection --> encryptionInTransit
+    dataProtection --> keyMgmt
+    dataProtection --> dataClassification
+
+    appSec --> sast
+    appSec --> dast
+    appSec --> sca
+    appSec --> slsa
+    appSec --> secChampions
+
+    compliance --> nistCSF
+    compliance --> soc2
+    compliance --> iso27001
+    compliance --> pciDss
+    compliance --> gdprHipaa
+    compliance --> continuousCompliance
+
+    %% ─── CROSS-LINKS ──────────────────────────────────────────────────────────
+    zeroTrust --> iam
+    appSec --> sca
+    sca --> slsa
+    compliance --> continuousCompliance
+    threatModeling --> riskScoring
+
+    %% ─── ESTILOS ──────────────────────────────────────────────────────────────
+    classDef core fill:#FF7E08,stroke:#C05A00,color:#fff,font-weight:bold
+    classDef pilar fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef control fill:#2D2D44,stroke:#6B7280,color:#E5E7EB
+    classDef framework fill:#3D1A00,stroke:#FF7E08,color:#FFD700
+
+    class secArch core
+    class threatModeling,zeroTrust,iam,dataProtection,appSec,compliance pilar
+    class stride,pasta,dfd,attackSurface,riskScoring,nistSP800207,microSegmentation,continuousVerif,mTLS,ztMaturity,oauth,webAuthn,authzModels,secretMgmt,workloadIdentity,encryptionAtRest,encryptionInTransit,keyMgmt,dataClassification,sast,dast,sca,slsa,secChampions,continuousCompliance control
+    class nistCSF,soc2,iso27001,pciDss,gdprHipaa framework

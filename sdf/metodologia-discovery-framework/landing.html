@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAO Framework v1.0 — Universal Discovery Framework</title>
+  <meta name="description" content="MAO Framework v1.0 — 100 Skills MOAT, 48 Agentes, 96 Comandos, 49 Prompts NL-HP. Discovery Framework con protocolo zero-hallucination, orquestado por IA, operativo en Claude Code.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --metodologia-orange: #6366F1;
+      --metodologia-orange-light: #818CF8;
+      --metodologia-orange-dark: #4F46E5;
+      --metodologia-orange-dim: rgba(255,126,8,.10);
+      --metodologia-black: #000000;
+      --metodologia-white: #FFFFFF;
+      --metodologia-light: #0F172A;
+      --metodologia-dark: #B8A894;
+      --metodologia-positive: #22D3EE;
+      --metodologia-positive-dim: rgba(255,215,0,.12);
+      --metodologia-positive-border: rgba(255,215,0,.45);
+      --metodologia-positive-text: #06B6D4;
+      --metodologia-warning: #D97706;
+      --metodologia-warning-dim: rgba(217,119,6,.08);
+      --metodologia-warning-border: rgba(217,119,6,.3);
+      --metodologia-critical: #DC2626;
+      --metodologia-critical-dim: rgba(220,38,38,.07);
+      --metodologia-critical-border: rgba(220,38,38,.25);
+      --metodologia-info: #2563EB;
+      --metodologia-info-dim: rgba(37,99,235,.07);
+      --metodologia-info-border: rgba(37,99,235,.25);
+      --metodologia-green: #42D36F;
+      --metodologia-teal: #06C8C8;
+      --metodologia-violet: #9747FF;
+      --metodologia-pink: #FE9CAB;
+      --metodologia-gray-50: #FAF8F6;
+      --metodologia-gray-100: #F4F0EC;
+      --metodologia-gray-200: #E4DED7;
+      --metodologia-gray-300: #D1C9BE;
+      --metodologia-gray-500: #6B6560;
+      --metodologia-gray-700: #333130;
+      --metodologia-gray-900: #111110;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.06);
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    *::before, *::after { margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--metodologia-light);
+      color: var(--metodologia-gray-900);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--metodologia-white);
+      border-bottom: 1px solid var(--metodologia-gray-200);
+      box-shadow: var(--shadow-sm);
+      padding: 0 2rem;
+    }
+
+    nav .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      gap: 2rem;
+    }
+
+    .nav-brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      color: var(--metodologia-black);
+    }
+
+    .nav-brand span {
+      color: var(--metodologia-orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--metodologia-gray-700);
+      text-decoration: none;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 3px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--metodologia-orange);
+    }
+
+    .nav-links a.active {
+      color: var(--metodologia-orange);
+      border-bottom-color: var(--metodologia-orange);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--metodologia-orange);
+      color: var(--metodologia-white);
+    }
+
+    .btn-primary:hover {
+      background: var(--metodologia-orange-dark);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--metodologia-orange);
+      border: 2px solid var(--metodologia-orange);
+    }
+
+    .btn-secondary:hover {
+      background: var(--metodologia-orange-dim);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: var(--metodologia-black);
+      border-bottom: 8px solid var(--metodologia-orange);
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 2rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 126, 8, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-logo {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      color: var(--metodologia-white);
+    }
+
+    .hero-logo span {
+      color: var(--metodologia-orange);
+    }
+
+    .hero-tagline {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge {
+      background: rgba(255, 126, 8, 0.12);
+      color: var(--metodologia-orange);
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-xl);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--metodologia-orange-dim);
+    }
+
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .kpi-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 126, 8, 0.2);
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .kpi-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--metodologia-orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .kpi-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ========== MAIN CONTAINER ========== */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--metodologia-black);
+      color: var(--metodologia-orange);
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--metodologia-gray-900);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--metodologia-gray-500);
+      margin: 0 0 2.5rem 0;
+      font-weight: 400;
+    }
+
+    /* ========== CARD VARIANTS ========== */
+    .card {
+      background: var(--metodologia-white);
+      border: 1px solid var(--metodologia-gray-200);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .card-accent {
+      border-top: 4px solid var(--metodologia-orange);
+    }
+
+    .card-critical {
+      border-left: 4px solid var(--metodologia-critical);
+      background: rgba(220, 38, 38, 0.02);
+    }
+
+    .card-warning {
+      border-left: 4px solid var(--metodologia-warning);
+      background: rgba(217, 119, 6, 0.02);
+    }
+
+    .card-success {
+      border-left: 4px solid var(--metodologia-positive);
+      background: rgba(255, 215, 0, 0.02);
+    }
+
+    .card-info {
+      border-left: 4px solid var(--metodologia-info);
+      background: rgba(37, 99, 235, 0.02);
+    }
+
+    .card-violet {
+      border-left: 4px solid var(--metodologia-violet);
+      background: rgba(151, 71, 255, 0.02);
+    }
+
+    .card-teal {
+      border-left: 4px solid var(--metodologia-teal);
+      background: rgba(6, 200, 200, 0.02);
+    }
+
+    .card-dark {
+      background: var(--metodologia-black);
+      color: var(--metodologia-white);
+      border-color: var(--metodologia-gray-700);
+    }
+
+    .card-dark h3 {
+      color: var(--metodologia-white);
+    }
+
+    .card-highlight {
+      background: var(--metodologia-gray-100);
+      border: 2px solid var(--metodologia-orange-dim);
+    }
+
+    /* ========== BADGES ========== */
+    .badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-orange {
+      background: var(--metodologia-orange-dim);
+      color: var(--metodologia-orange);
+      border: 1px solid var(--metodologia-orange);
+    }
+
+    .badge-outline {
+      background: transparent;
+      border: 1px solid var(--metodologia-gray-300);
+      color: var(--metodologia-gray-700);
+    }
+
+    .sev-critical {
+      background: var(--metodologia-critical-dim);
+      color: var(--metodologia-critical);
+      border: 1px solid var(--metodologia-critical-border);
+    }
+
+    .sev-high {
+      background: var(--metodologia-warning-dim);
+      color: var(--metodologia-warning);
+      border: 1px solid var(--metodologia-warning-border);
+    }
+
+    .sev-medium {
+      background: var(--metodologia-info-dim);
+      color: var(--metodologia-info);
+      border: 1px solid var(--metodologia-info-border);
+    }
+
+    /* ========== TABLES ========== */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background: var(--metodologia-gray-100);
+      border-bottom: 2px solid var(--metodologia-gray-200);
+    }
+
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--metodologia-gray-900);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--metodologia-gray-200);
+    }
+
+    tbody tr:hover {
+      background: var(--metodologia-gray-50);
+    }
+
+    /* ========== CALLOUTS ========== */
+    .callout {
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-left: 4px solid;
+    }
+
+    .callout-info {
+      background: var(--metodologia-info-dim);
+      border-left-color: var(--metodologia-info);
+      color: var(--metodologia-gray-900);
+    }
+
+    .callout-warning {
+      background: var(--metodologia-warning-dim);
+      border-left-color: var(--metodologia-warning);
+      color: var(--metodologia-gray-900);
+    }
+
+    .callout-critical {
+      background: var(--metodologia-critical-dim);
+      border-left-color: var(--metodologia-critical);
+      color: var(--metodologia-gray-900);
+    }
+
+    .callout-success {
+      background: var(--metodologia-positive-dim);
+      border-left-color: var(--metodologia-positive);
+      color: var(--metodologia-gray-900);
+    }
+
+    .callout h4 {
+      margin-top: 0;
+      font-weight: 700;
+    }
+
+    .callout p {
+      margin: 0.5rem 0 0 0;
+    }
+
+    /* ========== DIAGRAM BOXES ========== */
+    .diagram-box {
+      background: var(--metodologia-black);
+      color: #0f0;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      border: 1px solid var(--metodologia-gray-700);
+      margin: 2rem 0;
+    }
+
+    /* ========== TIMELINE ========== */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline li {
+      list-style: none;
+      padding-left: 2rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -1.25rem;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background: var(--metodologia-orange);
+      border-radius: 50%;
+      border: 3px solid var(--metodologia-white);
+      box-shadow: 0 0 0 2px var(--metodologia-orange);
+    }
+
+    .timeline li::after {
+      content: '';
+      position: absolute;
+      left: -0.95rem;
+      top: 20px;
+      width: 2px;
+      height: calc(100% + 1.5rem);
+      background: var(--metodologia-orange);
+    }
+
+    .timeline li:last-child::after {
+      display: none;
+    }
+
+    /* ========== CHECKLIST ========== */
+    ul.checklist {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    ul.checklist li {
+      padding-left: 2rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    ul.checklist li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.4rem;
+      width: 12px;
+      height: 12px;
+      background: var(--metodologia-orange);
+      border-radius: 2px;
+    }
+
+    /* ========== UTILITIES ========== */
+    .text-orange {
+      color: var(--metodologia-orange);
+    }
+
+    .text-muted {
+      color: var(--metodologia-gray-500);
+    }
+
+    .text-sm {
+      font-size: 0.9rem;
+    }
+
+    .text-xs {
+      font-size: 0.8rem;
+    }
+
+    .fw-700 {
+      font-weight: 700;
+    }
+
+    .fw-600 {
+      font-weight: 600;
+    }
+
+    .mt-1 { margin-top: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    .mb-2 { margin-bottom: 2rem; }
+    .gap-2 { gap: 2rem; }
+
+    h2, h3, h4, h5 {
+      margin: 1.5rem 0 1rem 0;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+    }
+
+    /* ========== GRIDS ========== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--metodologia-black);
+      border-top: 8px solid var(--metodologia-orange);
+      color: var(--metodologia-white);
+      padding: 3rem 2rem 2rem;
+    }
+
+    footer .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span {
+      color: var(--metodologia-orange);
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--metodologia-white);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-meta {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      nav .container {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0.5rem;
+      }
+
+      .nav-cta {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 3rem 2rem;
+      }
+
+      .hero-logo {
+        font-size: 2.5rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.1rem;
+      }
+
+      .hero-kpis {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      section {
+        padding: 2.5rem 1rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      footer .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .table-wrap {
+        font-size: 0.85rem;
+      }
+
+      th, td {
+        padding: 0.75rem 0.5rem;
+      }
+    }
+
+    @media print {
+      nav {
+        position: static;
+      }
+
+      .hero-ctas {
+        display: none;
+      }
+
+      .diagram-box {
+        color: var(--metodologia-gray-900);
+        background: var(--metodologia-gray-100);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+  <div class="container">
+    <div class="nav-brand">metodologia<span>_</span></div>
+    <ul class="nav-links">
+      <li><a href="#pipeline" class="nav-link">Pipeline</a></li>
+      <li><a href="#services" class="nav-link">Servicios</a></li>
+      <li><a href="#agents" class="nav-link">Agentes</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#commands" class="nav-link">Comandos</a></li>
+      <li><a href="#zero-hallucination" class="nav-link">ZH</a></li>
+      <li><a href="#getting-started" class="nav-link">Inicio</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="prompt-library.html" class="btn btn-primary">Ver Prompts</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-logo">metodologia<span>_</span>MAO</div>
+      <p class="hero-tagline">Agentic Discovery Framework — 48 Agentes + 100 Skills + 96 Comandos</p>
+
+      <div class="hero-badges">
+        <div class="hero-badge">Zero-Hallucination Protocol</div>
+        <div class="hero-badge">Orquestación IA</div>
+        <div class="hero-badge">16 Entregables</div>
+        <div class="hero-badge">4 Quality Gates</div>
+      </div>
+
+      <div class="hero-kpis">
+        <div class="kpi-box">
+          <div class="kpi-number">100</div>
+          <div class="kpi-label">Skills MOAT</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-number">48</div>
+          <div class="kpi-label">Agentes</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-number">84</div>
+          <div class="kpi-label">Comandos</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-number">16</div>
+          <div class="kpi-label">Entregables</div>
+        </div>
+      </div>
+
+      <div class="hero-ctas">
+        <button class="btn btn-primary" onclick="document.querySelector('#getting-started').scrollIntoView();">Iniciar Discovery</button>
+        <a href="prompt-library.html" class="btn btn-secondary">Biblioteca de Prompts</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 01. PIPELINE ========== -->
+<section id="pipeline">
+  <div class="container">
+    <div class="section-num">1</div>
+    <h2 class="section-title">Pipeline de Discovery</h2>
+    <p class="section-subtitle">16 Entregables, 4 Quality Gates, Protocolo Zero-Hallucination</p>
+
+    <div class="callout callout-info">
+      <h4>¿Qué es un Quality Gate?</h4>
+      <p>Un gate es un "alto obligatorio" en el pipeline. Si no pasas el criterio de aceptación, el proceso se detiene hasta validar con el cliente. No se continúa con entregables posteriores sin resolver.</p>
+    </div>
+
+    <h3>Flujo Visual: 16 Fases + 4 Gates</h3>
+    <div class="diagram-box">00 Plan
+ ↓
+ 01 Stakeholders → 02 Brief → 03 AS-IS → 04 Flows
+                                          ↓
+                                   ┌─── GATE 1 ───┐
+                                   ↓               ↓
+                              05 Escenarios → 05b Feasibility
+                                   ↓          (7 Sabios)
+                              ┌─ GATE 1.5 ─┐
+                              ↓             ↓
+                          06 Roadmap → GATE 2
+                              ↓
+                      07 Spec → 08 Pitch → 09 Handover
+                                                ↓
+                                           GATE 3 (Final)
+    </div>
+
+    <h3>Decisor: ¿Cuál Pipeline Usar?</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Modo</th>
+            <th>Duración</th>
+            <th>Entregables</th>
+            <th>Cuándo Usar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-orange">express</span></td>
+            <td>1-2 horas</td>
+            <td>3 (Brief, AS-IS, Escenarios)</td>
+            <td>Go/No-Go rápido, cliente apremiado, validación preliminar</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">guided</span></td>
+            <td>1-2 días</td>
+            <td>9 (00-09)</td>
+            <td>Conversación humana, sesiones facilitadas, iteración cliente</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">auto</span></td>
+            <td>4-8 horas</td>
+            <td>9 (00-09)</td>
+            <td>Discovery autónomo, sin intervención, cliente review final</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">deep</span></td>
+            <td>3-5 días</td>
+            <td>14 (00-14 + reportes)</td>
+            <td>Dirección arquitectónica, decisiones críticas, análisis exhaustivo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Quality Gates: Criterios Duros</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Gate</th>
+            <th>Fase</th>
+            <th>Criterios de Pase</th>
+            <th>¿Hard Stop?</th>
+            <th>Evidencia Requerida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge sev-critical">G1</span></td>
+            <td>Post-Escenarios</td>
+            <td>Scoring 6D completo, escenario recomendado justificado, 3+ opciones evaluadas</td>
+            <td>SÍ</td>
+            <td>Matriz decisional, trade-offs documentados</td>
+          </tr>
+          <tr>
+            <td><span class="badge sev-critical">G1.5</span></td>
+            <td>Post-Feasibility</td>
+            <td>7 Sabios: veredicto Go (≥5/7) o No-Go, con justificación por dimensión</td>
+            <td>SÍ</td>
+            <td>Acta de 7 Sabios, 2+ riesgos mitigados</td>
+          </tr>
+          <tr>
+            <td><span class="badge sev-high">G2</span></td>
+            <td>Post-Roadmap</td>
+            <td>FTE-meses validados, Monte Carlo ejecutado, 3+ quick wins definidos</td>
+            <td>SÍ</td>
+            <td>Roadmap de 18-24 meses, sprints fase 1 desagregados</td>
+          </tr>
+          <tr>
+            <td><span class="badge sev-high">G3</span></td>
+            <td>Final (Handover)</td>
+            <td>Consistencia cruzada, excellence-loop pasado (10 criterios), changelog completo</td>
+            <td>SÍ</td>
+            <td>Cross-references entre 09-14, sign-off stakeholders</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Casos Especiales: Sin Codebase</h3>
+    <div class="card card-accent">
+      <h4>¿Qué pasa si el cliente NO tiene codebase?</h4>
+      <p><strong>Fase 03 (AS-IS)</strong> se adapta: procesos actuales, stack de herramientas, integración manual. <strong>Fase 04 (Flows)</strong> documenta flujos de negocio en lugar de flujos de código. Las skills de Data & Architecture se orientan a greenfield. Roadmap propone tecnología desde cero en lugar de migraciones.</p>
+    </div>
+
+    <h3>Casos Especiales: Solo Documentación</h3>
+    <div class="card card-accent">
+      <h4>¿Qué pasa si solo hay documentación, sin acceso al código?</h4>
+      <p><strong>Fase 03</strong> se basa en docs arquítectonicos. <strong>Assessment</strong> es [SUPUESTO] high-risk: requiere validación posterior con acceso. Se marcan secciones con tag <span class="text-orange fw-700">[INFERENCIA]</span> o <span class="text-orange fw-700">[SUPUESTO]</span> según el protocolo ZH.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 02. LÍNEAS DE SERVICIO ========== -->
+<section id="services">
+  <div class="container">
+    <div class="section-num">2</div>
+    <h2 class="section-title">Líneas de Servicio</h2>
+    <p class="section-subtitle">8 Especializaciones + Combo Multi-Service</p>
+
+    <div class="callout callout-warning">
+      <h4>Routing Automático</h4>
+      <p>Cada línea de servicio activa agentes específicos, skills especializadas y deliverables priorizados. Selecciona <span class="text-orange fw-700">{TIPO_SERVICIO}</span> al iniciar: SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design, Digital-Transformation, Multi-Service.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Línea</th>
+            <th>Agents Activos</th>
+            <th>Entregs. Prioritarios</th>
+            <th>Sectores</th>
+            <th>Cuándo Usar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SDA</strong> (Software Development &amp; Architecture)</td>
+            <td>technical-architect, solutions-architect, backend-developer</td>
+            <td>03, 04, 05, 07</td>
+            <td>Tech, Banking, Retail</td>
+            <td>Modernización, refactoring, nuevas capacidades</td>
+          </tr>
+          <tr>
+            <td><strong>QA</strong></td>
+            <td>qa-strategist, quality-engineer, technical-architect</td>
+            <td>03, 04, 07, 11 (testing-strategy)</td>
+            <td>Compliance-heavy industries</td>
+            <td>Estrategia de testing, ciclos de calidad</td>
+          </tr>
+          <tr>
+            <td><strong>Data-AI</strong></td>
+            <td>data-architect, ai-architect, research-scientist</td>
+            <td>03, 04, 05, 14 (AI discovery)</td>
+            <td>Banking, Retail, Healthcare</td>
+            <td>Proyectos de IA, data lakes, analytics</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud</strong></td>
+            <td>cloud-architect, platform-engineer, economics-researcher</td>
+            <td>03, 04, 06, 11 (cloud-readiness)</td>
+            <td>Enterprise</td>
+            <td>Migración cloud, finops, capacity</td>
+          </tr>
+          <tr>
+            <td><strong>Management</strong></td>
+            <td>delivery-manager, change-catalyst, risk-controller</td>
+            <td>01, 02, 06, 13 (business review)</td>
+            <td>Program PMO</td>
+            <td>Governance, roadmap, transformación</td>
+          </tr>
+          <tr>
+            <td><strong>RPA</strong></td>
+            <td>process-automation-specialist, technical-architect, domain-analyst</td>
+            <td>03, 04, 05, 07</td>
+            <td>Banking, Retail</td>
+            <td>Automatización de procesos</td>
+          </tr>
+          <tr>
+            <td><strong>UX-Design</strong></td>
+            <td>ux-strategist, ux-researcher, frontend-developer</td>
+            <td>03, 04, 08, 09</td>
+            <td>Digital-first</td>
+            <td>Rediseño de experiencia, user research</td>
+          </tr>
+          <tr>
+            <td><strong>Digital-Transformation</strong></td>
+            <td>change-catalyst, delivery-manager, domain-analyst, all core team</td>
+            <td>01-09 full</td>
+            <td>All sectors</td>
+            <td>Transformación digital end-to-end</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>¿SDA vs Digital Transformation?</h3>
+    <div class="card card-info">
+      <p><strong>SDA:</strong> Enfoque técnico puro. Arquitectura, integración, tecnología. Supone que el negocio ya sabe qué quiere.</p>
+      <p><strong>Digital Transformation:</strong> Descubrimiento integral. Procesos → tecnología → cambio. Valida hipótesis de negocio, rediseña procesos. Mucho más profundo y largo.</p>
+    </div>
+
+    <h3>Multi-Service: Combos Comunes</h3>
+    <div class="grid-2">
+      <div class="card card-highlight">
+        <strong>Data-AI + SDA</strong><br/>
+        Arquitectura + pipelines de datos + modelos. Típico en banking/retail.
+      </div>
+      <div class="card card-highlight">
+        <strong>Cloud + SDA</strong><br/>
+        Migración a cloud + diseño de infraestructura. Common enterprise move.
+      </div>
+      <div class="card card-highlight">
+        <strong>Digital-Transformation + QA</strong><br/>
+        Cambio de procesos + testing strategy. Compliance-heavy.
+      </div>
+      <div class="card card-highlight">
+        <strong>Management + UX-Design</strong><br/>
+        Transformación + rediseño de experiencia. Customer-centric.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 03. AGENTES ========== -->
+<section id="agents">
+  <div class="container">
+    <div class="section-num">3</div>
+    <h2 class="section-title">48 Agentes Especializados</h2>
+    <p class="section-subtitle">Orquestación Inteligente por Fase + Línea de Servicio</p>
+
+    <h3>Tríada Permanente (Siempre Activos)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Agente</th>
+            <th>Responsabilidad</th>
+            <th>Fases Activas</th>
+            <th>Patrón</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>discovery-conductor</strong></td>
+            <td>Orquestador imparcial. Secuencia, gates, contratos de datos</td>
+            <td>00-16</td>
+            <td>Verifica dependencias, previene dead-ends</td>
+          </tr>
+          <tr>
+            <td><strong>delivery-manager</strong></td>
+            <td>Timelines, alcance, riesgos, recursos, handover</td>
+            <td>00, 06, 09, 13</td>
+            <td>Responde "cuándo", "cuánto cuesta en FTE"</td>
+          </tr>
+          <tr>
+            <td><strong>risk-controller</strong></td>
+            <td>Gobernanza continua, calidad, compliance, excellence-loop</td>
+            <td>01-16 (audit)</td>
+            <td>Emite scorecard 10-criterios al final</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Core Team (9 Especialistas Base)</h3>
+    <div class="grid-3">
+      <div class="card card-accent">
+        <h4>quality-guardian</h4>
+        <p>Validación contra criterios de aceptación. Scorecard diario.</p>
+      </div>
+      <div class="card card-accent">
+        <h4>subject-matter-expert</h4>
+        <p>Contexto sectorial dinámico. Lente de industria (Banking, Retail, etc.)</p>
+      </div>
+      <div class="card card-accent">
+        <h4>technical-architect</h4>
+        <p>Diseño, trade-offs, decisiones arquitectónicas. C4 + ISO 25010.</p>
+      </div>
+      <div class="card card-accent">
+        <h4>data-engineer</h4>
+        <p>Pipelines de datos, infraestructura, gobernanza.</p>
+      </div>
+      <div class="card card-accent">
+        <h4>change-catalyst</h4>
+        <p>Gestión del cambio, adopción, ADKAR, readiness.</p>
+      </div>
+      <div class="card card-accent">
+        <h4>editorial-director</h4>
+        <p>Coherencia narrativa, calidad editorial, storytelling.</p>
+      </div>
+      <div class="card card-accent">
+        <h4>format-specialist</h4>
+        <p>Producción multi-formato: HTML, DOCX, XLSX, PDF.</p>
+      </div>
+      <div class="card card-accent">
+        <h4>content-strategist</h4>
+        <p>Narrativa de datos, mapa mental, síntesis ejecutiva.</p>
+      </div>
+      <div class="card card-accent">
+        <h4>implementation-analyst</h4>
+        <p>Viabilidad de implementación, trade-offs prácticos.</p>
+      </div>
+    </div>
+
+    <h3>Think Tank de 7 Sabios (Fase 05b: Feasibility)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sabio</th>
+            <th>Dimensión Validada</th>
+            <th>Go/No-Go Criterio</th>
+            <th>Estándar de Evidencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Research Scientist</strong></td>
+            <td>Evidencia académica</td>
+            <td>¿Existe paper o caso de uso similar?</td>
+            <td>Cita de acta doctoral o IEEE</td>
+          </tr>
+          <tr>
+            <td><strong>Economics Researcher</strong></td>
+            <td>Viabilidad financiera (TCO, ROI)</td>
+            <td>¿Payback ≤ 36 meses?</td>
+            <td>Modelo financiero Monte Carlo</td>
+          </tr>
+          <tr>
+            <td><strong>Systems Theorist</strong></td>
+            <td>Comportamientos emergentes, cascadas</td>
+            <td>¿Riesgos sistémicos mitigables?</td>
+            <td>Matriz RACI de integraciones</td>
+          </tr>
+          <tr>
+            <td><strong>Technology Scout</strong></td>
+            <td>Madurez tecnológica, curva de adopción Gartner</td>
+            <td>¿Stack en Q2-Q3 de madurez (no Q1/Q4)?</td>
+            <td>Gartner Magic Quadrant + comunidad</td>
+          </tr>
+          <tr>
+            <td><strong>Integration Researcher</strong></td>
+            <td>Interoperabilidad, feasibility de integración</td>
+            <td>¿APIs documentadas? ¿Conectores probados?</td>
+            <td>PoC code repo + logs</td>
+          </tr>
+          <tr>
+            <td><strong>Hardware Systems Engineer</strong></td>
+            <td>Restricciones de infraestructura</td>
+            <td>¿On-prem, cloud, edge? Todas opcionales?</td>
+            <td>Bill of Materials + capacity planning</td>
+          </tr>
+          <tr>
+            <td><strong>Data Scientist</strong></td>
+            <td>Validación estadística, feasibility de datos</td>
+            <td>¿Datos suficientes? ¿Calidad aceptable?</td>
+            <td>DQ scorecard (Informatica, Great Expectations)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Modelo de Voto</h3>
+    <div class="callout callout-success">
+      <h4>Consenso: ≥5/7 Go = PROCEED</h4>
+      <p>Si 5+ Sabios votan "Go", el proyecto continúa. Si &lt;5, se marca NO-GO y se documentan riesgos críticos. Cada Sabio puede emitir condiciones: "Go si..." (e.g., "Go si presupuesto +20%").</p>
+    </div>
+
+    <h3>Activación por Fase</h3>
+    <div class="diagram-box">Fase 00-01: Tríada + subject-matter-expert
+Fase 02-03: + technical-architect + content-strategist
+Fase 04-05: + data-engineer + implementation-analyst
+Fase 05b:   7 Sabios VOTA (gate crítico)
+Fase 06-07: + change-catalyst + editorial-director
+Fase 08-09: + format-specialist (outputs multi-formato)
+Fase 10-14: + risk-controller audita todos los entregables
+    </div>
+
+    <p class="text-sm text-muted">36 Especialistas adicionales se activan según línea de servicio (SDA, QA, Data-AI, Cloud, Management, RPA, UX, Digital-Transformation). Cada uno aporta skills específicas de su dominio.</p>
+  </div>
+</section>
+
+<!-- ========== 04. 100 SKILLS MOAT ========== -->
+<section id="skills">
+  <div class="container">
+    <div class="section-num">4</div>
+    <h2 class="section-title">100 Skills MOAT</h2>
+    <p class="section-subtitle">Modernization-Oriented Acceleration Technology — Carga Automática por Fase + Línea de Servicio</p>
+
+    <div class="callout callout-info">
+      <h4>¿Qué es MOAT?</h4>
+      <p><strong>MOAT = Modernization-Oriented Acceleration Technology.</strong> En MetodologIA —cuyo nombre nace de SOFTWARE + KAIZEN— la modernización y la mejora continua son ADN. Los skills MOAT son propiedad intelectual que NO están disponibles en ChatGPT o Claude base: entrenamientos especializados, templates verificados y workflows operativos construidos desde la experiencia real de +1.200 Sofkianos en 8 países. Cada skill codifica conocimiento acumulado en una barrera competitiva (moat) que hace de MAO un diferenciador único.</p>
+    </div>
+
+    <h3>Distribución de 100 Skills</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dominio</th>
+            <th># Skills</th>
+            <th>Ejemplos (Top 3-4)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Arquitectura</strong></td>
+            <td>14</td>
+            <td>software-architecture, solutions-architecture, api-architecture, C4-modeling, TOGAF-governance</td>
+          </tr>
+          <tr>
+            <td><strong>Data & Analytics</strong></td>
+            <td>10</td>
+            <td>data-engineering, data-governance, bi-architecture, analytics-design, data-quality-framework</td>
+          </tr>
+          <tr>
+            <td><strong>Análisis & Discovery</strong></td>
+            <td>12</td>
+            <td>asis-analysis, flow-mapping, scenario-analysis, input-analysis, process-mining</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud & Platform</strong></td>
+            <td>5</td>
+            <td>cloud-migration, finops, capacity-planning, multi-cloud-strategy</td>
+          </tr>
+          <tr>
+            <td><strong>Calidad & Ops</strong></td>
+            <td>10</td>
+            <td>testing-strategy, performance-engineering, observability, SRE-design, chaos-engineering</td>
+          </tr>
+          <tr>
+            <td><strong>Gestión & Estrategia</strong></td>
+            <td>10</td>
+            <td>project-program-mgmt, risk-controlling, cost-estimation, roadmap-planning, OKR-alignment</td>
+          </tr>
+          <tr>
+            <td><strong>Editorial & Comms</strong></td>
+            <td>9</td>
+            <td>executive-pitch, copywriting, storytelling, output-engineering, presentation-design</td>
+          </tr>
+          <tr>
+            <td><strong>Cambio & Adopción</strong></td>
+            <td>5</td>
+            <td>change-readiness, adoption-strategy, workshop-design, stakeholder-management, ADKAR</td>
+          </tr>
+          <tr>
+            <td><strong>Innovación</strong></td>
+            <td>5</td>
+            <td>hypothesis-driven-dev, technology-vigilance, poc-lab, innovation-metrics</td>
+          </tr>
+          <tr>
+            <td><strong>Herramientas & DX</strong></td>
+            <td>6</td>
+            <td>html-brand, design-system, mermaid-diagramming, figma-automation, markdown-ops</td>
+          </tr>
+          <tr>
+            <td><strong>Service Discovery</strong></td>
+            <td>14</td>
+            <td>ai-center, qa-service, rpa, digital-transformation, banking-fintech, retail-ecommerce, healthcare-compliance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Carga Automática por Fase</h3>
+    <div class="diagram-box">Fase 00-01: Discovery skills (asis-analysis, stakeholder-mgmt)
+Fase 02-03: Technical skills (architecture, data-design)
+Fase 04-05: Solution skills (scenario-analysis, feasibility)
+Fase 06-07: Roadmap + Spec skills (cost-estimation, impl-planning)
+Fase 08-09: Output skills (executive-pitch, copywriting)
+Fase 10-14: Reporting skills (storytelling, output-engineering)
+    </div>
+
+    <h3>Skills por Línea de Servicio (Activación Selectiva)</h3>
+    <ul class="checklist">
+      <li><strong>SDA:</strong> architecture (14) + data (10) + ops (10) + innovation (5)</li>
+      <li><strong>Data-AI:</strong> data (10) + analytics (8) + innovation (5)</li>
+      <li><strong>Cloud:</strong> cloud-platform (5) + architecture (8) + ops (10)</li>
+      <li><strong>QA:</strong> ops-calidad (10) + testing-strategy (2) + change (3)</li>
+      <li><strong>Management:</strong> strategy (10) + change (5) + editorial (9)</li>
+      <li><strong>Digital-Transformation:</strong> Todas (100)</li>
+    </ul>
+
+    <h3>¿Cómo Funcionan las Skills?</h3>
+    <div class="card card-highlight">
+      <p>Cada skill es una carpeta MOAT en `/skills/{skill-name}/` con:</p>
+      <ul class="checklist">
+        <li><strong>SKILL.md</strong> — Documentación y protocolo</li>
+        <li><strong>references/</strong> — Templates, checklists, guías</li>
+        <li><strong>examples/</strong> — Casos de uso reales verificados</li>
+        <li><strong>prompts/</strong> — Prompts nativos para activación</li>
+      </ul>
+      <p>Se cargan automáticamente en RAG-priming al iniciar sesión, según {TIPO_SERVICIO} y fase actual.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 05. COMANDOS ========== -->
+<section id="commands">
+  <div class="container">
+    <div class="section-num">5</div>
+    <h2 class="section-title">96 Comandos</h2>
+    <p class="section-subtitle">Comandos Primarios + Aliases + 4 Service Discovery + 3 UX</p>
+
+    <div class="callout callout-warning">
+      <h4>Parámetros Globales</h4>
+      <p>Todos los comandos aceptan: <span class="fw-700">{MODO}</span>, <span class="fw-700">{FORMATO}</span>, <span class="fw-700">{PROFUNDIDAD}</span>, <span class="fw-700">{TIPO_SERVICIO}</span>. Ejemplo: <code>/mao:run-auto --tipo-servicio=data-ai --formato=docx --profundidad=técnico</code></p>
+    </div>
+
+    <h3>Parámetros Estándar</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Parámetro</th>
+            <th>Valores</th>
+            <th>Default</th>
+            <th>Cuándo Cambiar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>{MODO}</code></td>
+            <td>piloto-auto, desatendido, supervisado, paso-a-paso</td>
+            <td>piloto-auto</td>
+            <td>paso-a-paso si necesitas control manual cada entregable</td>
+          </tr>
+          <tr>
+            <td><code>{FORMATO}</code></td>
+            <td>markdown, html, docx, dual</td>
+            <td>markdown</td>
+            <td>docx si el cliente requiere Word; html si es web</td>
+          </tr>
+          <tr>
+            <td><code>{VARIANTE}</code></td>
+            <td>ejecutiva (~40%), técnica (100%)</td>
+            <td>técnica</td>
+            <td>ejecutiva si la audiencia es C-level</td>
+          </tr>
+          <tr>
+            <td><code>{PROFUNDIDAD}</code></td>
+            <td>ejecutivo, técnico, exhaustivo</td>
+            <td>técnico</td>
+            <td>exhaustivo si hay múltiples stakeholders técnicos</td>
+          </tr>
+          <tr>
+            <td><code>{TIPO_SERVICIO}</code></td>
+            <td>SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX, Digital-Transformation, Multi-Service</td>
+            <td>SDA</td>
+            <td>Data-AI si hay AI/ML; Cloud si es migración; Digital-Transformation si es full-journey</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Flujos Principales (Pipeline Commands)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Comando</th>
+            <th>Alias</th>
+            <th>Descripción</th>
+            <th>Output Típico</th>
+            <th>Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>/mao:run-guided</code></td>
+            <td>/guide</td>
+            <td>Pipeline completo con facilitación humana</td>
+            <td>9 entregables + decision gates interactivos</td>
+            <td>1-2 días</td>
+          </tr>
+          <tr>
+            <td><code>/mao:run-auto</code></td>
+            <td>/auto</td>
+            <td>Pipeline autónomo (0 interrupciones hasta gates)</td>
+            <td>9 entregables markdown + changelog</td>
+            <td>4-8 horas</td>
+          </tr>
+          <tr>
+            <td><code>/mao:run-express</code></td>
+            <td>/express</td>
+            <td>Go/No-Go en 1 sesión</td>
+            <td>3 entregables (02, 03, 05)</td>
+            <td>1-2 horas</td>
+          </tr>
+          <tr>
+            <td><code>/mao:run-deep</code></td>
+            <td>/deep</td>
+            <td>Dirección arquitectónica (7 entregables)</td>
+            <td>00-07 + assessments internos</td>
+            <td>3-5 días</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Generación de Entregables (00-09)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Comando</th>
+            <th>Alias</th>
+            <th>Entregable</th>
+            <th>Dependencias</th>
+            <th>Tiempo Est.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>/mao:generate-plan</td>
+            <td>/plan</td>
+            <td>00 — Discovery Plan</td>
+            <td>—</td>
+            <td>15 min</td>
+          </tr>
+          <tr>
+            <td>/mao:map-stakeholders</td>
+            <td>/stakeholders</td>
+            <td>01 — Stakeholder Map</td>
+            <td>00</td>
+            <td>20 min</td>
+          </tr>
+          <tr>
+            <td>/mao:generate-brief</td>
+            <td>/brief</td>
+            <td>02 — Brief Técnico</td>
+            <td>00, 01</td>
+            <td>30 min</td>
+          </tr>
+          <tr>
+            <td>/mao:diagnose-asis</td>
+            <td>/asis</td>
+            <td>03 — Análisis AS-IS</td>
+            <td>00-02</td>
+            <td>1.5 horas</td>
+          </tr>
+          <tr>
+            <td>/mao:trace-flows</td>
+            <td>/flows</td>
+            <td>04 — Mapeo de Flujos</td>
+            <td>00-03</td>
+            <td>1.5 horas</td>
+          </tr>
+          <tr>
+            <td>/mao:evaluate-scenarios</td>
+            <td>/scenarios</td>
+            <td>05 — Escenarios ToT</td>
+            <td>00-04, GATE 1</td>
+            <td>2 horas</td>
+          </tr>
+          <tr>
+            <td>/mao:validate-feasibility</td>
+            <td>/feasibility</td>
+            <td>05b — Feasibility Think Tank</td>
+            <td>05, GATE 1.5</td>
+            <td>3 horas</td>
+          </tr>
+          <tr>
+            <td>/mao:chart-roadmap</td>
+            <td>/roadmap</td>
+            <td>06 — Solution Roadmap</td>
+            <td>05b, GATE 2</td>
+            <td>2 horas</td>
+          </tr>
+          <tr>
+            <td>/mao:write-spec</td>
+            <td>/spec</td>
+            <td>07 — Especificación Funcional</td>
+            <td>00-06</td>
+            <td>3 horas</td>
+          </tr>
+          <tr>
+            <td>/mao:craft-pitch</td>
+            <td>/pitch</td>
+            <td>08 — Pitch Ejecutivo</td>
+            <td>00-07</td>
+            <td>1 hora</td>
+          </tr>
+          <tr>
+            <td>/mao:deliver-handover</td>
+            <td>/handover</td>
+            <td>09 — Handover Operativo</td>
+            <td>00-08, GATE 3</td>
+            <td>1 hora</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Reportes & Assessments (10-14)</h3>
+    <ul class="checklist">
+      <li><strong>/mao:present-findings | /findings</strong> — 10. Deck ejecutivo (15 min)</li>
+      <li><strong>/mao:report-tech | /tech</strong> — 11. Deep-dive técnico (30 min)</li>
+      <li><strong>/mao:report-func | /func</strong> — 12. Hallazgos funcionales (30 min)</li>
+      <li><strong>/mao:review-business | /biz</strong> — 13. Revisión negocio INTERNO (45 min)</li>
+      <li><strong>/mao:discover-ai | /ai</strong> — 14. Oportunidades IA (1 hora)</li>
+      <li><strong>/mao:assess-architecture | /arch</strong> — C4 + ISO 25010 (1 hora)</li>
+      <li><strong>/mao:assess-data | /data</strong> — Landscape de datos (45 min)</li>
+      <li><strong>/mao:assess-cloud | /cloud</strong> — Cloud readiness 7R (1 hora)</li>
+      <li><strong>/mao:assess-security | /security</strong> — STRIDE + OWASP (1.5 horas)</li>
+      <li><strong>/mao:assess-change | /change</strong> — ADKAR + readiness (45 min)</li>
+    </ul>
+
+    <h3>Operaciones Críticas</h3>
+    <ul class="checklist">
+      <li><strong>/mao:audit-quality | /audit</strong> — Scorecard 10 criterios (excellence-loop)</li>
+      <li><strong>/mao:improve-deliverables | /improve</strong> — Evolucionar entregables existentes</li>
+      <li><strong>/mao:rescue-stalled | /rescue</strong> — Diagnóstico + replanning si discovery quedó atorada</li>
+      <li><strong>/mao:simulate-scenarios | /simulate</strong> — Monte Carlo what-if análisis</li>
+      <li><strong>/mao:benchmark-maturity</strong> — Benchmark vs industria (sector-specific)</li>
+    </ul>
+
+    <h3>Alias vs Primarios</h3>
+    <div class="card card-info">
+      <p><strong>Primarios (21):</strong> Comandos maestros que orquestan flujos complejos: /mao:run-*, /mao:generate-*, /mao:assess-*, /mao:report-*, /mao:audit-*, /mao:rescue-*.</p>
+      <p><strong>Aliases (63):</strong> Versiones cortas: /plan, /guide, /auto, /brief, /asis, /flows, /scenarios, /feasibility, /roadmap, /spec, /pitch, /handover, /findings, /tech, /func, /biz, /ai, /arch, /data, /cloud, /security, /change, /audit, /improve, /rescue, /simulate.</p>
+      <p>Ambos funcionan igual. Los aliases son para rapidez en sesiones interactivas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 06. PROTOCOLO ZERO-HALLUCINATION ========== -->
+<section id="zero-hallucination">
+  <div class="container">
+    <div class="section-num">6</div>
+    <h2 class="section-title">Protocolo Zero-Hallucination</h2>
+    <p class="section-subtitle">Etiquetado de Evidencia en Cada Afirmación</p>
+
+    <div class="callout callout-critical">
+      <h4>Regla Absoluta</h4>
+      <p>Toda afirmación en un entregable DEBE estar etiquetada con su fuente de evidencia. Si no tiene evidencia clara → se marca <span class="text-orange fw-700">[SUPUESTO]</span> + requiere validación posterior.</p>
+    </div>
+
+    <h3>Tabla de Tags de Evidencia</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Significado</th>
+            <th>Confianza</th>
+            <th>Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-orange">[CÓDIGO]</span></td>
+            <td>Verificado en código fuente</td>
+            <td>Alta</td>
+            <td>"La API usa GraphQL [CÓDIGO: main/api/gateway.ts]"</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">[CONFIG]</span></td>
+            <td>Verificado en configuración</td>
+            <td>Alta</td>
+            <td>"Timeout 30s [CONFIG: docker-compose.yml]"</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">[DOC]</span></td>
+            <td>Documentado en fuentes del proyecto</td>
+            <td>Alta</td>
+            <td>"Soporta OAuth2 [DOC: docs/security.md]"</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">[INFERENCIA]</span></td>
+            <td>Razonado desde patrones observados</td>
+            <td>Media</td>
+            <td>"Probablemente usa JWT [INFERENCIA: estructura de tokens en logs]"</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">[SUPUESTO]</span></td>
+            <td>Asunción no verificable</td>
+            <td>Baja</td>
+            <td>"Se asume 2k TPS capacity [SUPUESTO: requiere load-test]"</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">[STAKEHOLDER]</span></td>
+            <td>Declarado por stakeholder</td>
+            <td>Variable</td>
+            <td>"Migración en Q3 [STAKEHOLDER: CEO roadmap]"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Reglas de Aplicación</h3>
+    <ul class="checklist">
+      <li>Si NO puedes etiquetar una afirmación → NO la incluyas sin marcar <span class="text-orange fw-700">[SUPUESTO]</span>.</li>
+      <li>Si &gt;30% de un entregable es <span class="text-orange fw-700">[SUPUESTO]</span> → emitir <strong>banner de advertencia</strong> al inicio.</li>
+      <li>Si un hallazgo es <span class="text-orange fw-700">CRÍTICO</span> + <span class="text-orange fw-700">[SUPUESTO]</span> → <strong>flag obligatorio</strong> para validación con stakeholder.</li>
+      <li>NUNCA presentar <span class="text-orange fw-700">[INFERENCIA]</span> como hechos verificados.</li>
+      <li>Ante duda → siempre <span class="text-orange fw-700">[SUPUESTO]</span> con nota: "requiere validación con {stakeholder}".</li>
+    </ul>
+
+    <h3>Ejemplo: Entregable 03 (AS-IS) con Etiquetado</h3>
+    <div class="diagram-box">ARCHITECTURE [CÓDIGO: repo-index, archi.md]
+├── Frontend: React 18.2 [CÓDIGO: package.json]
+├── Backend: Node.js 18 [CONFIG: Dockerfile]
+├── DB: PostgreSQL 14 [CONFIG: docker-compose.yml]
+├── Cache: Redis [SUPUESTO: requiere confirmar con ops]
+├── API Gateway: Kong [DOC: infrastructure/diagrams.md]
+├── Message Queue: RabbitMQ [INFERENCIA: declaraciones de broker en logs]
+└── Monitoring: Prometheus [STAKEHOLDER: DevOps lead confirms]
+    </div>
+
+    <h3>Checklist Pre-Entrega</h3>
+    <div class="card card-highlight">
+      <ul class="checklist">
+        <li>¿Cada afirmación técnica tiene tag [CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]?</li>
+        <li>¿Hay notas al pie para cada [SUPUESTO] indicando "requiere validación"?</li>
+        <li>¿Porcentaje [SUPUESTO] &lt; 30%?</li>
+        <li>¿Hallazgos CRÍTICOS tienen evidencia [CÓDIGO] o [CONFIG], no [SUPUESTO]?</li>
+        <li>¿changelog registra qué fue validado y qué requiere post-discovery?</li>
+      </ul>
+    </div>
+
+    <h3>Impacto en Credibilidad</h3>
+    <div class="card card-success">
+      <p><strong>Protocolo ZH diferencia a MAO Framework:</strong></p>
+      <p>Los clientes ven EXACTAMENTE dónde vino cada afirmación. No es "confianza en Claude" — es "evidencia trazable en el código cliente". Aumenta credibilidad 10×. Permite que cliente VERIFIQUE de forma independiente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 07. ARQUITECTURA ========== -->
+<section id="architecture">
+  <div class="container">
+    <div class="section-num">7</div>
+    <h2 class="section-title">Arquitectura del Ecosistema</h2>
+    <p class="section-subtitle">Estructura de Directorios + Sesión Automática</p>
+
+    <h3>Árbol de Directorios</h3>
+    <div class="diagram-box">metodologia-discovery-framework/
+├── agents/           # 48 agentes especializados
+│   ├── discovery-conductor/
+│   ├── delivery-manager/
+│   ├── risk-controller/
+│   └── ... (45 más)
+├── commands/         # 96 comandos (primarios + aliases + service discovery)
+├── skills/           # 100 skills MOAT
+│   ├── {skill-name}/
+│   │   ├── SKILL.md
+│   │   ├── references/
+│   │   ├── examples/
+│   │   └── prompts/
+│   ├── software-architecture/
+│   ├── data-engineering/
+│   └── ... (97 más)
+├── references/       # 20+ priming-RAG + matrices
+│   ├── service-type-matrix.md
+│   ├── banking-intel.md
+│   ├── retail-intel.md
+│   └── ... (17 más)
+├── prompts/          # Biblioteca NL-HP
+│   ├── flows/        # Flujos end-to-end
+│   ├── deliverables/ # Templates 00-14
+│   ├── assessments/   # Evaluaciones
+│   ├── ops/          # Operaciones
+│   └── meta/         # Orquestación
+├── hooks/            # Ghost menu + changelog + session context
+├── scripts/          # Indexación, escaneo, validación
+├── landing.html      # Este archivo
+├── prompt-library.html
+└── .claude-plugin/
+    └── plugin.json   # v1.0.0 — MAO Framework
+    </div>
+
+    <h3>Estructura `.discovery/` (Por Repo Cliente)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Archivo/Carpeta</th>
+            <th>Propósito</th>
+            <th>Generado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>repo-index.json</code></td>
+            <td>Inventario estructurado del repositorio (extensiones, conteos, rutas clave)</td>
+            <td>Auto en sesión init</td>
+          </tr>
+          <tr>
+            <td><code>SESSION-README.md</code></td>
+            <td>Contexto del proyecto para orquestador (brief, objetivos, restricciones)</td>
+            <td>Auto</td>
+          </tr>
+          <tr>
+            <td><code>SESSION-CLAUDE.md</code></td>
+            <td>Instrucciones específicas de sesión (tipo servicio, profundidad, formato)</td>
+            <td>Auto</td>
+          </tr>
+          <tr>
+            <td><code>ghost-menu.md</code></td>
+            <td>Navegación contextual actual (fase, entregables faltantes, siguiente paso)</td>
+            <td>Auto + actualizado</td>
+          </tr>
+          <tr>
+            <td><code>session-changelog.md</code></td>
+            <td>Registro de acciones para continuidad ante crash de sesión</td>
+            <td>Auto + incrementado</td>
+          </tr>
+          <tr>
+            <td><code>session-state.json</code></td>
+            <td>Estado JSON de fase, gates pasados, archivos generados</td>
+            <td>Auto + actualizado</td>
+          </tr>
+          <tr>
+            <td><code>insights/</code></td>
+            <td>Hallazgos durante discovery (snippets, patterns, red flags)</td>
+            <td>Manual + auto</td>
+          </tr>
+          <tr>
+            <td><code>transcripts/</code></td>
+            <td>Transcripciones de entrevistas con stakeholders (si procede)</td>
+            <td>Manual</td>
+          </tr>
+          <tr>
+            <td><code>rag-priming/</code></td>
+            <td>Extractos de adjuntos para RAG (specs, org charts, presupuestos)</td>
+            <td>Auto al recibir</td>
+          </tr>
+          <tr>
+            <td><code>deliverables/</code></td>
+            <td>Entregables generados (00-14), versionados con timestamps</td>
+            <td>Auto</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Sesión Automática: Qué Ocurre al Iniciar</h3>
+    <ul class="checklist">
+      <li><strong>1. Escanear entregables</strong> — Detectar progreso del pipeline (0-16).</li>
+      <li><strong>2. Generar contexto</strong> — SESSION-README.md + SESSION-CLAUDE.md en `.discovery/`.</li>
+      <li><strong>3. Activar ghost menu</strong> — Navegación contextual persistente.</li>
+      <li><strong>4. Iniciar changelog</strong> — Registro automático para continuidad.</li>
+      <li><strong>5. Cargar priming-RAG</strong> — 20+ archivos de conocimiento base en `references/`.</li>
+      <li><strong>6. Seleccionar agentes</strong> — Activar tríada + core team según {TIPO_SERVICIO} y fase.</li>
+      <li><strong>7. Verificar gates</strong> — Si hay gates pendientes, pausar hasta resolución.</li>
+    </ul>
+
+    <h3>Ghost Menu Pattern</h3>
+    <div class="diagram-box">🗂️ MAO | Fase: 05 (Escenarios) | 5/16 entregables | Skill: scenario-analysis
+├── Estado: 🟡 IN PROGRESS (GATE 1 pendiente)
+├── Siguiente: Ejecutar /mao:evaluate-scenarios → pase GATE 1 → fase 05b
+├── Pendiente: Feasibility (05b), Roadmap (06), Spec (07)
+└── Archivos: SESSION-README | session-changelog | repo-index | 00-04 completados
+    </div>
+
+    <h3>RAG-Priming: Qué Se Carga</h3>
+    <ul class="checklist">
+      <li><strong>Capacidades por línea</strong> — SDA, QA, RPA, Data-AI, Cloud, SAS, Management (descripciones de cada servicio).</li>
+      <li><strong>Inteligencia sectorial</strong> — Banking, Retail, Healthcare, Tech (estándares, riesgos, oportunidades).</li>
+      <li><strong>Modelos de servicio</strong> — Tipos de contrato, SLAs, RASCI patterns.</li>
+      <li><strong>Certificaciones</strong> — ISO 27001, SOC 2, GDPR, PCI-DSS checklist.</li>
+      <li><strong>Métricas de impacto</strong> — AI SCALE framework, CoE Management, cost-benefit templates.</li>
+      <li><strong>Matriz de routing</strong> — Por tipo servicio: qué agents, qué skills, qué deliverables.</li>
+    </ul>
+
+    <h3>Persistencia: Recuperación ante Crisis</h3>
+    <div class="card card-info">
+      <p><strong>Changelog + Session State = crash recovery.</strong></p>
+      <p>Si sesión se cae, el siguiente prompt simplemente referencia `.discovery/session-changelog.md`: "continúa desde...". Los agentes leen el changelog, verifican qué se completó, qué requiere revalidación, y continúan sin repetir trabajo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 08. PRIMEROS PASOS ========== -->
+<section id="getting-started">
+  <div class="container">
+    <div class="section-num">8</div>
+    <h2 class="section-title">Primeros Pasos</h2>
+    <p class="section-subtitle">Setup, Prerequisitos, Troubleshooting</p>
+
+    <h3>Pre-Discovery: Checklist de Entrada</h3>
+    <div class="card card-highlight">
+      <h4>Antes de `/mao:run-*`, asegúrate de:</h4>
+      <ul class="checklist">
+        <li>Acceso a código fuente cliente (repo, URL, descarga)</li>
+        <li>Documentación disponible (README, architecture docs, roadmap)</li>
+        <li>Lista de stakeholders: roles, emails, horarios (si guided/supervisado)</li>
+        <li>Presupuesto / FTE disponible (para roadmap)</li>
+        <li>Objetivo claro: qué decisión necesita? (arquitectura, roadmap, go/no-go)</li>
+        <li>Restricciones: tecnología legacy, compliance, time-to-market</li>
+      </ul>
+    </div>
+
+    <h3>Paso a Paso: Pipeline Express (1-2h)</h3>
+    <ol class="timeline">
+      <li>
+        <strong>Inicia sesión en Claude Code</strong><br/>
+        Carga el framework: `/mao:run-express --tipo-servicio=SDA`
+      </li>
+      <li>
+        <strong>Proporciona el brief</strong><br/>
+        Comparte: descripción proyecto, 2-3 archivo claves (código o docs)
+      </li>
+      <li>
+        <strong>Espera 02-Brief</strong> (15 min)<br/>
+        Framework extrae contexto, genera brief técnico automático
+      </li>
+      <li>
+        <strong>Revisión AS-IS</strong> (30 min)<br/>
+        Fase 03: arquitectura actual, stack, dependencias, deuda técnica
+      </li>
+      <li>
+        <strong>Escenarios & Go/No-Go</strong> (30 min)<br/>
+        Fase 05: 3+ opciones evaluadas, scoring 6D, recomendación
+      </li>
+      <li>
+        <strong>Entrega: Pitch + Documento</strong> (15 min)<br/>
+        Resumen ejecutivo + profundización técnica. Listo para cliente.
+      </li>
+    </ol>
+
+    <h3>Troubleshooting: Problemas Comunes</h3>
+    <div class="grid-2">
+      <div class="card card-warning">
+        <h4>❌ "El discovery quedó atorado en fase X"</h4>
+        <p>Ejecuta: <code>/mao:rescue-stalled --fase=X</code>. Framework diagnostica por qué el gate no pasó, sugiere mitigaciones.</p>
+      </div>
+      <div class="card card-warning">
+        <h4>❌ "Cliente no aprobó gate 1.5"</h4>
+        <p>7 Sabios votaron No-Go en alguna dimensión. Revisa acta, valida la objeción (financiera, técnica, etc.), itera escenario, re-ejecuta.</p>
+      </div>
+      <div class="card card-warning">
+        <h4>❌ "Tengo >30% [SUPUESTO] en entregable"</h4>
+        <p>Banner de advertencia aparece. Marca qué requiere validación, envía a cliente, pausa discovery hasta respuesta.</p>
+      </div>
+      <div class="card card-warning">
+        <h4>❌ "Sesión se cayó a mitad del discovery"</h4>
+        <p>No hay problema. El changelog está en `.discovery/session-changelog.md`. Reinicia sesión, referencia el changelog, continúa desde donde se pausó.</p>
+      </div>
+      <div class="card card-warning">
+        <h4>❌ "Necesito cambiar {TIPO_SERVICIO} a medio camino"</h4>
+        <p>Es posible. Ejecuta: <code>/mao:improve-deliverables --nuevo-tipo=Data-AI</code>. Framework actualiza agentes, re-evalúa deliverables, propone ajustes.</p>
+      </div>
+      <div class="card card-warning">
+        <h4>❌ "No tengo acceso al código"</h4>
+        <p>Usa documentación disponible. Fase 03 marca todo como [SUPUESTO] o [INFERENCIA]. Pausa discovery, solicita acceso o código samples. No continúes con gates sin evidencia.</p>
+      </div>
+    </div>
+
+    <h3>Session Persistence: Crash Recovery</h3>
+    <div class="callout callout-success">
+      <h4>Los 3 Archivos Mágicos de Recuperación</h4>
+      <p><strong>1. `.discovery/session-changelog.md`</strong> — Log de cada acción, timestamp, resultado. Si sesión cae, Lee esto primero.</p>
+      <p><strong>2. `.discovery/session-state.json`</strong> — Estado actual: fase, gates pasados, entregables generados.</p>
+      <p><strong>3. `.discovery/ghost-menu.md`</strong> — Dónde estamos ahora, qué sigue.</p>
+      <p>Manda estos 3 archivos en el siguiente prompt. Claude reconoce el contexto y continúa SIN repetir trabajo.</p>
+    </div>
+
+    <h3>Consejos Prácticos</h3>
+    <ul class="checklist">
+      <li>Usa <strong>{MODO}=piloto-auto</strong> para eficiencia máxima, pero <strong>{MODO}=supervisado</strong> si cliente quiere controlar cada entregable.</li>
+      <li>Si cliente es no-técnico, usa <strong>{VARIANTE}=ejecutiva</strong> (40% tamaño, resúmenes ejecutivos).</li>
+      <li>Guarda los 9 primeros entregables (00-09) antes de avanzar a reportes (10-14). Los reportes usan los anteriores como base.</li>
+      <li>Para proyectos complejos (multi-servicio), alloca <strong>3-5 días</strong> con <strong>/mao:run-deep</strong>. Vale cada hora.</li>
+      <li>Siempre marca [SUPUESTO] si duda. Credibilidad &gt;&gt; velocidad.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-col">
+      <div class="footer-logo">metodologia<span>_</span>MAO</div>
+      <p>Framework agentico de discovery empresarial. 100 Skills MOAT, 48 Agentes, protocolo zero-hallucination.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a href="prompt-library.html" style="color:inherit;">Biblioteca de Prompts</a></li>
+        <li><a href="#pipeline" style="color:inherit;">Pipeline</a></li>
+        <li><a href="#agents" style="color:inherit;">Agentes</a></li>
+        <li><a href="#skills" style="color:inherit;">Skills</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <p>MAO Framework v1.0 — Universal Discovery Framework | © 2026 MetodologIA · Javier Montaño | MIT</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll spy para nav links
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  function setActiveLink() {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 100) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').slice(1) === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', setActiveLink);
+
+  // Inicialización
+  document.addEventListener('DOMContentLoaded', () => {
+    setActiveLink();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+{
+  "skill_name": "scaffold-firebase-project",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Scaffold a Firebase project for a multi-tenant SaaS app with Google Auth, Firestore, Cloud Functions v2, and Firebase Hosting. Include Security Rules with role-based access.",
+      "expected_output": "Complete scaffold with firestore.rules, firebase.json, Cloud Functions TypeScript, and emulator config",
+      "assertions": [
+        {"text": "Output contains firestore.rules with Security Rules content", "type": "contains"},
+        {"text": "Output contains helper functions like isSignedIn() or isOwner()", "type": "contains"},
+        {"text": "Output contains Cloud Functions v2 imports (firebase-functions/v2)", "type": "contains"},
+        {"text": "Output contains emulators configuration block", "type": "contains"},
+        {"text": "Output does NOT contain 'allow read, write: if true'", "type": "not_contains"},
+        {"text": "Output contains evidence tags [HECHO], [INFERENCIA], or [SUPUESTO]", "type": "contains"},
+        {"text": "Output contains firestore.indexes.json reference or content", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design a Firestore data model for a social app with users, posts, comments, and followers. Explain embed vs. reference decisions.",
+      "expected_output": "Collection structure with rationale for each embed vs. reference decision",
+      "assertions": [
+        {"text": "Output contains collection structure with field definitions", "type": "contains"},
+        {"text": "Output explains embed vs. reference trade-offs", "type": "contains"},
+        {"text": "Output mentions document size limits or array growth concern", "type": "contains"},
+        {"text": "Output includes index requirements for query patterns", "type": "contains"},
+        {"text": "Output mentions fan-out write pattern or aggregation pattern", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Audit the Security Rules: 'match /posts/{postId} { allow read, write: if request.auth != null; }' — what's wrong and how to fix it?",
+      "expected_output": "Security analysis with specific vulnerabilities and corrected rules",
+      "assertions": [
+        {"text": "Output identifies that any authenticated user can write any post", "type": "contains"},
+        {"text": "Output identifies missing field validation", "type": "contains"},
+        {"text": "Output provides corrected rules with ownership check", "type": "contains"},
+        {"text": "Output mentions request.resource.data validation", "type": "contains"},
+        {"text": "Output mentions separation of read and write permissions", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Set up the Firebase Emulator Suite for a project with Auth, Firestore, and Functions. Include the environment-aware SDK initialization code.",
+      "expected_output": "firebase.json emulator block + TypeScript SDK init with emulator connection",
+      "assertions": [
+        {"text": "Output contains emulators block with port numbers", "type": "contains"},
+        {"text": "Output contains connectFirestoreEmulator() call", "type": "contains"},
+        {"text": "Output contains connectAuthEmulator() call", "type": "contains"},
+        {"text": "Output checks NODE_ENV or import.meta.env.DEV before connecting to emulators", "type": "contains"},
+        {"text": "Output contains firebase emulators:exec command for CI", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Implement a Cloud Functions v2 callable function that creates a Stripe checkout session, enforcing App Check and authenticating the user.",
+      "expected_output": "TypeScript Cloud Function v2 with proper auth checks, App Check, and error handling",
+      "assertions": [
+        {"text": "Output uses onCall from firebase-functions/v2/https", "type": "contains"},
+        {"text": "Output sets enforceAppCheck: true in options", "type": "contains"},
+        {"text": "Output checks request.auth before proceeding", "type": "contains"},
+        {"text": "Output throws HttpsError for unauthorized access", "type": "contains"},
+        {"text": "Output uses defineSecret() for Stripe API key", "type": "contains"},
+        {"text": "Output does NOT import Admin SDK in client-side code", "type": "contains"},
+        {"text": "Output has TypeScript types on request.data", "type": "contains"}
+      ]
+    }
+  ]
+}

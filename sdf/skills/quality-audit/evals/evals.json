@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Plan a quality audit for a software project against ISO 9001 requirements.",
+    "assertions": [
+      "defines audit scope aligned with ISO 9001 clauses",
+      "creates audit schedule with activities and duration",
+      "assigns auditors with required competencies",
+      "prepares notification and communication plan"
+    ]
+  },
+  {
+    "prompt": "Classify 12 audit findings from a process audit.",
+    "assertions": [
+      "distinguishes major vs minor nonconformities",
+      "identifies observations and improvement opportunities",
+      "provides evidence reference for each finding",
+      "assesses systemic vs isolated nature of findings"
+    ]
+  },
+  {
+    "prompt": "3 major nonconformities found. Design corrective action plan.",
+    "assertions": [
+      "performs root cause analysis for each finding",
+      "designs corrective actions addressing root causes",
+      "sets implementation timeline with owners",
+      "plans verification of corrective action effectiveness"
+    ]
+  },
+  {
+    "prompt": "Follow-up audit to verify corrective actions from previous audit.",
+    "assertions": [
+      "reviews evidence of corrective action implementation",
+      "verifies root cause was actually addressed",
+      "assesses effectiveness of corrections",
+      "closes findings with sufficient evidence or escalates"
+    ]
+  }
+]

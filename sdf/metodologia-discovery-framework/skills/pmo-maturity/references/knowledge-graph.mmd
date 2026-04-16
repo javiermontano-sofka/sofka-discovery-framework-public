@@ -1,0 +1,53 @@
+%% Knowledge Graph — PMO Maturity
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    MAT["PMO Maturity Assessment"]:::blue
+
+    %% Frameworks
+    OPM3["OPM3 (PMI)"]:::dark
+    P3M3["P3M3 (Axelos)"]:::dark
+
+    %% Dimensions
+    PROC["Processes"]:::amber
+    PEOPLE["People"]:::amber
+    TOOLS["Tools"]:::amber
+    GOV["Governance"]:::amber
+    CULTURE["Culture"]:::amber
+
+    %% Levels
+    L1["Level 1: Awareness"]:::dark
+    L2["Level 2: Repeatable"]:::amber
+    L3["Level 3: Defined"]:::amber
+    L4["Level 4: Managed"]:::blue
+    L5["Level 5: Optimized"]:::blue
+
+    %% Outputs
+    RADAR["Maturity Radar Chart"]:::blue
+    GAP["Gap Analysis"]:::blue
+    ROAD["Improvement Roadmap"]:::blue
+    INV["Investment Estimate"]:::blue
+
+    %% Relations
+    OPM3 --> MAT
+    P3M3 --> MAT
+    MAT --> PROC
+    MAT --> PEOPLE
+    MAT --> TOOLS
+    MAT --> GOV
+    MAT --> CULTURE
+    L1 --> L2 --> L3 --> L4 --> L5
+    PROC & PEOPLE & TOOLS & GOV & CULTURE --> RADAR
+    RADAR --> GAP
+    GAP --> ROAD
+    ROAD --> INV
+
+    %% Cross-refs
+    SETUP["PMO Setup"]:::dark
+    ASSESS["PMO Assessment"]:::dark
+    ROAD -.->|"informs"| SETUP
+    ASSESS -.->|"strategic layer"| MAT

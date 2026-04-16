@@ -1,0 +1,59 @@
+graph TD
+    A[Technical SEO] --> B[Crawlability]
+    A --> C[Metadata]
+    A --> D[Structured Data]
+    A --> E[Core Web Vitals]
+    A --> F[Sitemap & robots.txt]
+
+    B --> B1[robots.txt]
+    B --> B2[Meta robots noindex]
+    B --> B3[Canonical Tags]
+    B --> B4[Crawl Budget]
+    B3 --> B3a[Self-referential]
+    B3 --> B3b[Pagination handling]
+    B3 --> B3c[Faceted nav]
+
+    C --> C1[title tag]
+    C --> C2[meta description]
+    C --> C3[Open Graph]
+    C --> C4[Twitter Cards]
+    C --> C5[hreflang]
+    C3 --> C3a[og:title]
+    C3 --> C3b[og:image 1200x630]
+    C3 --> C3c[og:type]
+
+    D --> D1[JSON-LD preferred]
+    D1 --> D1a[Organization]
+    D1 --> D1b[Article]
+    D1 --> D1c[Product + Rating]
+    D1 --> D1d[FAQPage]
+    D1 --> D1e[BreadcrumbList]
+    D --> D2[Rich Results Test]
+    D --> D3[Search Console]
+
+    E --> E1[LCP < 2.5s]
+    E --> E2[INP < 200ms]
+    E --> E3[CLS < 0.1]
+    E1 --> E1a[Preload hero image]
+    E1 --> E1b[fetchPriority high]
+    E2 --> E2a[Defer non-critical JS]
+    E2 --> E2b[Yield for long tasks]
+    E3 --> E3a[Image dimensions]
+    E3 --> E3b[font-display swap]
+
+    F --> F1[sitemap.xml]
+    F --> F2[sitemap-index.xml]
+    F --> F3[robots.txt]
+    F1 --> F1a[Only 200 URLs]
+    F1 --> F1b[lastmod accurate]
+    F3 --> F3a[Disallow admin]
+    F3 --> F3b[Disallow search params]
+
+    A --> G[Measurement]
+    G --> G1[Google Search Console]
+    G --> G2[PageSpeed Insights API]
+    G --> G3[Lighthouse CI]
+
+    style A fill:#FF7E08,color:#fff
+    style E fill:#FFD700,color:#000
+    style D fill:#FFD700,color:#000

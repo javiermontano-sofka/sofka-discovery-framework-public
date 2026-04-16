@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Design LeSS implementation for 3 teams.",
+    "assertions": [
+      "structures multi-team coordination",
+      "defines integration approach",
+      "establishes shared Definition of Done",
+      "plans cross-team ceremonies"
+    ]
+  },
+  {
+    "prompt": "Plan integration sprint for 4 teams.",
+    "assertions": [
+      "maps cross-team dependencies",
+      "designs integration testing approach",
+      "coordinates release activities",
+      "identifies integration risks"
+    ]
+  },
+  {
+    "prompt": "Facilitate cross-team refinement for shared backlog.",
+    "assertions": [
+      "designs multi-team refinement format",
+      "manages shared backlog priorities",
+      "handles cross-team dependencies",
+      "produces actionable sprint backlogs"
+    ]
+  },
+  {
+    "prompt": "Detect anti-patterns in scaled Scrum.",
+    "assertions": [
+      "identifies coordination overhead",
+      "detects siloed teams",
+      "finds integration bottlenecks",
+      "recommends corrections"
+    ]
+  }
+]

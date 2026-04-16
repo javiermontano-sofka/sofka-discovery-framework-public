@@ -1,0 +1,82 @@
+{
+  "skill_name": "accessibility-implementation",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run a WCAG 2.2 AA accessibility audit on the application and produce a compliance report",
+      "expected_output": "Violations sorted by impact with WCAG criteria references, fix code, and remediation roadmap",
+      "assertions": [
+        {"text": "Output mentions automated tool (axe-core) with WCAG 2.2 tags", "type": "contains"},
+        {"text": "Output notes that automated tools catch only 30-40% of issues", "type": "contains"},
+        {"text": "Output provides manual testing checklist items", "type": "contains"},
+        {"text": "Output categorizes findings by WCAG success criterion", "type": "contains"},
+        {"text": "Output provides severity levels (critical/serious/moderate/minor)", "type": "contains"},
+        {"text": "Output addresses color contrast specifically", "type": "contains"},
+        {"text": "Output addresses keyboard accessibility", "type": "contains"},
+        {"text": "Output provides specific code fixes with before/after examples", "type": "contains"},
+        {"text": "Output includes WCAG 2.2 new criteria (focus appearance, target size)", "type": "contains"},
+        {"text": "Output provides screen reader testing guidance", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Make the custom dropdown component accessible with ARIA roles and keyboard navigation",
+      "expected_output": "ARIA combobox/listbox implementation with keyboard interaction pattern and screen reader announcements",
+      "assertions": [
+        {"text": "Output recommends using native HTML select first", "type": "contains"},
+        {"text": "Output uses role=combobox on input or trigger", "type": "contains"},
+        {"text": "Output uses role=listbox for options container", "type": "contains"},
+        {"text": "Output uses role=option for individual options", "type": "contains"},
+        {"text": "Output uses aria-expanded on trigger", "type": "contains"},
+        {"text": "Output uses aria-activedescendant for active option", "type": "contains"},
+        {"text": "Output implements arrow key navigation for options", "type": "contains"},
+        {"text": "Output implements Escape key to close", "type": "contains"},
+        {"text": "Output addresses focus management on open/close", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Fix the modal dialog to trap focus and be properly announced by screen readers",
+      "expected_output": "Focus trap implementation with aria-modal, labelledby, and open/close focus management",
+      "assertions": [
+        {"text": "Output uses role=dialog on modal element", "type": "contains"},
+        {"text": "Output uses aria-modal=true", "type": "contains"},
+        {"text": "Output uses aria-labelledby referencing dialog title", "type": "contains"},
+        {"text": "Output implements focus trap (Tab cycles inside modal)", "type": "contains"},
+        {"text": "Output moves focus to first focusable element on open", "type": "contains"},
+        {"text": "Output returns focus to trigger element on close", "type": "contains"},
+        {"text": "Output implements Escape key to close", "type": "contains"},
+        {"text": "Output provides JavaScript focus trap implementation code", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "All text in this design system fails color contrast. Propose fixes that maintain brand identity",
+      "expected_output": "Contrast ratio measurements for all failing pairs with adjusted token values that pass WCAG",
+      "assertions": [
+        {"text": "Output measures current contrast ratios with calculation or tool reference", "type": "contains"},
+        {"text": "Output references WCAG 1.4.3 thresholds (4.5:1 normal, 3:1 large)", "type": "contains"},
+        {"text": "Output references WCAG 1.4.11 for UI component contrast (3:1)", "type": "contains"},
+        {"text": "Output provides specific adjusted color values that pass", "type": "contains"},
+        {"text": "Output adjusts at token level (not component level)", "type": "contains"},
+        {"text": "Output tests both light and dark mode", "type": "contains"},
+        {"text": "Output labels proposed values as [SUPUESTO] requiring designer approval", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Implement focus management for SPA navigation — users report screen reader announces wrong content after route change",
+      "expected_output": "Route change focus management, screen reader announcer, and skip link implementation",
+      "assertions": [
+        {"text": "Output implements focus movement to h1 or main content on route change", "type": "contains"},
+        {"text": "Output provides aria-live region for route change announcement", "type": "contains"},
+        {"text": "Output mentions tabindex=-1 on h1 to allow programmatic focus", "type": "contains"},
+        {"text": "Output implements skip-to-content link as first focusable element", "type": "contains"},
+        {"text": "Output addresses skip link visibility pattern (visible on focus)", "type": "contains"},
+        {"text": "Output addresses setTimeout requirement for announcement firing", "type": "contains"},
+        {"text": "Output provides testing guidance for screen reader navigation", "type": "contains"}
+      ]
+    }
+  ]
+}

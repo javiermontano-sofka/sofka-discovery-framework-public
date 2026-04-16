@@ -1,0 +1,180 @@
+[
+  {
+    "id": "steering-review-eval-001",
+    "title": "Standard steering review with full advisor panel and complete data",
+    "description": "All 7 advisors are present, project data is complete across every dimension (portfolio, financial, risk, resource, compliance, methodology, stakeholder). Tests the happy-path flow: briefing preparation, evidence presentation, unanimous Go vote, minutes generation.",
+    "input": {
+      "project_name": "Phoenix Platform Migration",
+      "gate": "G2 — End of Elaboration",
+      "advisors_present": 7,
+      "advisors": [
+        "Portfolio Advisor",
+        "Financial Advisor",
+        "Risk Advisor",
+        "Resource Advisor",
+        "Compliance Advisor",
+        "Methodology Advisor",
+        "Stakeholder Advisor"
+      ],
+      "data_completeness": "100%",
+      "project_health": "Green across all dimensions",
+      "budget_variance": "+2% under budget",
+      "schedule_variance": "On track",
+      "open_risks": 3,
+      "critical_risks": 0
+    },
+    "expected_behavior": [
+      "advisor-briefing-preparer produces 7 individualized briefing packages",
+      "go-nogo-facilitator presents consolidated gate scorecard and collects 7 Go votes",
+      "condition-tracker confirms no conditions to track",
+      "steering-minutes-recorder produces formal minutes with unanimous Go decision and next review date"
+    ],
+    "expected_outputs": [
+      "7 advisor briefing packages with role-specific insights",
+      "Vote tally record showing 7/7 Go",
+      "Gate decision summary with Go verdict",
+      "Formal steering committee minutes",
+      "Action item register (may be empty or minimal)"
+    ],
+    "pass_criteria": "All 4 agents execute without errors; minutes reflect unanimous Go; no conditions registered; next review date set."
+  },
+  {
+    "id": "steering-review-eval-002",
+    "title": "Steering review with 3 No-Go votes triggering escalation",
+    "description": "3 of 7 advisors (Financial, Risk, Resource) vote No-Go due to budget overrun, unmitigated critical risk, and resource shortfall. Tests split-decision handling, dissent recording, escalation triggers, and remediation action assignment.",
+    "input": {
+      "project_name": "Legacy ERP Modernization",
+      "gate": "G1.5 — Architecture Validation",
+      "advisors_present": 7,
+      "votes": {
+        "Portfolio Advisor": "Go",
+        "Financial Advisor": "No-Go — 18% budget overrun with no recovery plan",
+        "Risk Advisor": "No-Go — Critical vendor lock-in risk unmitigated",
+        "Resource Advisor": "No-Go — Missing 3 key architects, no hiring pipeline",
+        "Compliance Advisor": "Go",
+        "Methodology Advisor": "Go",
+        "Stakeholder Advisor": "Go"
+      },
+      "budget_variance": "-18% over budget",
+      "critical_risks": 2,
+      "resource_gap": "3 senior architects missing"
+    },
+    "expected_behavior": [
+      "advisor-briefing-preparer highlights financial overrun, critical risks, and resource gaps prominently in relevant advisor packages",
+      "go-nogo-facilitator records 4 Go and 3 No-Go votes, applies decision rule, declares No-Go verdict",
+      "go-nogo-facilitator flags escalation trigger due to split decision (3/7 dissent)",
+      "condition-tracker has no conditions to track since verdict is No-Go",
+      "steering-minutes-recorder documents each dissenting opinion verbatim, captures remediation actions, sets re-review date"
+    ],
+    "expected_outputs": [
+      "7 advisor briefing packages with risk/financial/resource warnings",
+      "Vote tally record showing 4 Go / 3 No-Go with rationale per advisor",
+      "Gate decision summary with No-Go verdict and escalation flag",
+      "Formal minutes with dissent record and 3 remediation action items",
+      "Re-review date within 2-4 weeks"
+    ],
+    "pass_criteria": "No-Go verdict correctly determined; all 3 dissenting rationales captured verbatim; escalation triggered; remediation actions assigned with owners and deadlines; re-review scheduled."
+  },
+  {
+    "id": "steering-review-eval-003",
+    "title": "Conditional Go with 4 conditions requiring active tracking",
+    "description": "Steering committee approves a Conditional Go with 4 conditions imposed by different advisors. Tests condition capture, classification, ownership assignment, deadline setting, and tracking setup.",
+    "input": {
+      "project_name": "Cloud-Native Payments Hub",
+      "gate": "G2 — End of Elaboration",
+      "advisors_present": 7,
+      "verdict": "Conditional Go",
+      "conditions": [
+        {
+          "source": "Resource Advisor",
+          "text": "Hire 2 additional senior developers before Phase 3 kickoff",
+          "category": "resource",
+          "criticality": "high",
+          "deadline": "2026-04-15"
+        },
+        {
+          "source": "Financial Advisor",
+          "text": "Secure additional $120K contingency budget approval from CFO",
+          "category": "financial",
+          "criticality": "high",
+          "deadline": "2026-04-01"
+        },
+        {
+          "source": "Compliance Advisor",
+          "text": "Complete PCI-DSS gap assessment and submit remediation plan",
+          "category": "compliance",
+          "criticality": "critical",
+          "deadline": "2026-04-10"
+        },
+        {
+          "source": "Risk Advisor",
+          "text": "Establish fallback vendor agreement for payment gateway provider",
+          "category": "risk",
+          "criticality": "medium",
+          "deadline": "2026-04-20"
+        }
+      ]
+    },
+    "expected_behavior": [
+      "advisor-briefing-preparer includes pre-identified concerns that led to conditions in each relevant advisor's briefing",
+      "go-nogo-facilitator collects Conditional Go votes with conditions captured during roll call",
+      "condition-tracker registers all 4 conditions with verbatim text, source advisor, category, criticality, owner, deadline, and acceptance criteria",
+      "condition-tracker sets interim checkpoints for each condition before the next steering review",
+      "steering-minutes-recorder includes full condition register in the minutes and references tracking process"
+    ],
+    "expected_outputs": [
+      "Vote tally record showing Conditional Go with conditions per advisor",
+      "Condition register with 4 entries fully populated",
+      "Condition status dashboard showing 4 open conditions",
+      "Interim checkpoint schedule for each condition",
+      "Formal minutes documenting Conditional Go verdict and all 4 conditions",
+      "Action item register with condition-related tasks"
+    ],
+    "pass_criteria": "All 4 conditions captured with correct source, text, category, criticality, owner, and deadline; acceptance criteria defined for each; checkpoints scheduled; minutes reflect Conditional Go with full condition detail."
+  },
+  {
+    "id": "steering-review-eval-004",
+    "title": "Emergency steering review triggered by critical risk materialization",
+    "description": "A critical risk (primary cloud provider outage affecting production) materializes mid-sprint, triggering an emergency steering review outside the regular cadence. Tests expedited briefing preparation, accelerated voting, urgent condition tracking, and emergency minutes with compressed timelines.",
+    "input": {
+      "project_name": "Digital Banking Transformation",
+      "gate": "Emergency Gate — Critical Risk Materialization",
+      "trigger": "Primary cloud provider (AWS) experienced 72-hour regional outage affecting production environment",
+      "advisors_present": 5,
+      "advisors_absent": ["Methodology Advisor", "Compliance Advisor"],
+      "proxies": {
+        "Methodology Advisor": "Lead Technical Architect (proxy)",
+        "Compliance Advisor": "Legal Counsel (proxy)"
+      },
+      "time_constraint": "Decision required within 4 hours",
+      "impact": {
+        "revenue_impact": "$340K/day",
+        "affected_users": "120,000 active customers",
+        "sla_breach": "99.9% SLA violated after hour 4",
+        "regulatory_exposure": "Potential notification to banking regulator within 48 hours"
+      },
+      "options_on_table": [
+        "Option A: Activate multi-cloud failover to Azure (cost: $85K, timeline: 48 hours)",
+        "Option B: Wait for AWS recovery with customer communication plan",
+        "Option C: Pause project and invoke force majeure clause with client"
+      ]
+    },
+    "expected_behavior": [
+      "advisor-briefing-preparer produces expedited briefing packages within compressed timeline, focusing on impact data and decision options rather than full project review",
+      "advisor-briefing-preparer handles proxy attendees by adapting briefings to proxy expertise level",
+      "go-nogo-facilitator runs accelerated voting on the 3 options rather than standard Go/No-Go",
+      "go-nogo-facilitator documents quorum validity with 5 direct advisors + 2 proxies",
+      "condition-tracker captures any conditions attached to the chosen option with compressed deadlines",
+      "steering-minutes-recorder produces emergency minutes with trigger event, impact summary, decision rationale, and 24-hour follow-up checkpoint"
+    ],
+    "expected_outputs": [
+      "5 expedited advisor briefings + 2 proxy-adapted briefings",
+      "Vote tally on selected option with urgency rationale",
+      "Emergency decision record with quorum validation",
+      "Condition register for any conditions on chosen option",
+      "Emergency steering minutes with trigger, impact, decision, and 24-hour follow-up date",
+      "Escalation notification draft for banking regulator (if applicable)"
+    ],
+    "pass_criteria": "Emergency briefings produced within compressed format; proxy attendance documented; option-based vote conducted and recorded; quorum validated; emergency minutes include trigger event and impact quantification; 24-hour follow-up checkpoint set; regulatory notification addressed."
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Analyze utilization for 20-person team.",
+    "assertions": [
+      "calculates per-person utilization",
+      "identifies over-utilized",
+      "finds under-utilized",
+      "recommends rebalancing"
+    ]
+  },
+  {
+    "prompt": "All work blocked by single architect.",
+    "assertions": [
+      "quantifies impact",
+      "identifies root cause",
+      "recommends fixes",
+      "calculates ROI"
+    ]
+  },
+  {
+    "prompt": "Rebalance 3 teams with different workloads.",
+    "assertions": [
+      "maps demand vs capacity",
+      "identifies opportunities",
+      "considers skills",
+      "proposes adjustments"
+    ]
+  },
+  {
+    "prompt": "95% utilization for 4 sprints.",
+    "assertions": [
+      "flags unsustainable rate",
+      "calculates burnout risk",
+      "recommends reduction",
+      "proposes target"
+    ]
+  }
+]

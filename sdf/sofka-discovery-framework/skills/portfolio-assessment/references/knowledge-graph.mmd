@@ -1,0 +1,37 @@
+%% Knowledge Graph — Portfolio Assessment
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    PA["Portfolio Assessment"]:::blue
+
+    %% Dimensions
+    SA["Strategic Alignment"]:::amber
+    PG["Portfolio Governance"]:::amber
+    PRI["Prioritization"]:::amber
+    RO["Resource Optimization"]:::amber
+    RA["Risk Aggregation"]:::amber
+    VR["Value Realization"]:::amber
+
+    %% Outputs
+    SCORE["Maturity Scorecard"]:::blue
+    GAP["Gap Analysis"]:::blue
+    ROAD["Improvement Roadmap"]:::blue
+
+    %% Flow
+    PA --> SA & PG & PRI
+    PA --> RO & RA & VR
+    SA & PG & PRI --> SCORE
+    RO & RA & VR --> SCORE
+    SCORE --> GAP --> ROAD
+
+    %% Cross-refs
+    DASH["Portfolio Dashboard"]:::dark
+    PRIOR["Portfolio Prioritization"]:::dark
+    RISK["Portfolio Risk"]:::dark
+    ROAD -.->|"improves"| DASH
+    ROAD -.->|"improves"| PRIOR
+    ROAD -.->|"improves"| RISK

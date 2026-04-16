@@ -1,0 +1,35 @@
+{
+  "skill_name": "migration-planner",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run migration-planner on this repository and produce a full assessment report",
+      "expected_output": "Structured report with evidence-tagged findings, prioritized recommendations, and next steps",
+      "assertions": [
+        {"text": "Output contains evidence tags [HECHO], [INFERENCIA], or [SUPUESTO]", "type": "contains"},
+        {"text": "Output contains a TL;DR or Executive Summary section", "type": "contains"},
+        {"text": "Output contains prioritized recommendations (P0/P1/P2)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Quick migration-planner health check — focus on critical issues only, 1-page max",
+      "expected_output": "Concise 1-page summary with top 3 critical findings and immediate actions",
+      "assertions": [
+        {"text": "Output is concise (under 100 lines)", "type": "length"},
+        {"text": "Output identifies at least 1 critical finding", "type": "contains"},
+        {"text": "Output provides actionable next steps", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Compare current migration-planner state against industry best practices and identify gaps",
+      "expected_output": "Gap analysis with current vs target state, remediation roadmap",
+      "assertions": [
+        {"text": "Output contains gap analysis or comparison", "type": "contains"},
+        {"text": "Output references industry standards or best practices", "type": "contains"},
+        {"text": "Output provides improvement roadmap or remediation plan", "type": "contains"}
+      ]
+    }
+  ]
+}

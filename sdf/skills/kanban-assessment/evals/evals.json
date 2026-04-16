@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assess Kanban maturity for a software support team that has been using Kanban for 2 years but still struggles with unpredictable lead times and frequent expedite requests.",
+    "assertions": [
+      "Must analyze WIP limit adherence and whether limits are properly calibrated",
+      "Must evaluate flow metrics including lead time distribution and throughput stability",
+      "Must assess expedite class abuse and its impact on standard work predictability",
+      "Must recommend specific continuous improvement actions based on flow data"
+    ]
+  },
+  {
+    "prompt": "Our Kanban board has 6 columns but we never hit our WIP limits because they are set too high. Throughput varies wildly week to week. What is wrong with our system?",
+    "assertions": [
+      "Must identify WIP limits as miscalibrated based on the described symptoms",
+      "Must correlate high WIP with throughput variability using Little's Law",
+      "Must recommend specific WIP limit reductions with a method for finding optimal limits",
+      "Must suggest using control charts or CFDs to diagnose flow problems"
+    ]
+  },
+  {
+    "prompt": "Evaluate our Kanban service classes. We have Standard, Urgent, and Critical. About 40% of items are marked Critical, 35% Urgent, and only 25% Standard.",
+    "assertions": [
+      "Must flag the inverted distribution as a sign of service class misuse",
+      "Must assess whether clear classification criteria exist for each service class",
+      "Must evaluate the impact of this distribution on overall system flow and SLAs",
+      "Must recommend rebalancing with objective classification criteria tied to cost of delay"
+    ]
+  },
+  {
+    "prompt": "We want to measure our Kanban continuous improvement maturity. We do retrospectives monthly but rarely implement the action items. We have no formal Kanban cadences beyond standup.",
+    "assertions": [
+      "Must audit the presence and absence of the seven Kanban cadences",
+      "Must identify the gap between generating improvement ideas and executing them",
+      "Must assess whether improvement decisions are data-driven or opinion-based",
+      "Must provide a maturity score with a roadmap to advance to the next level"
+    ]
+  }
+]

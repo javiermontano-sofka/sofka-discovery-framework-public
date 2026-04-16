@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[SAFe Framework<br/>Reference Model] --> D
+        B[Team Performance<br/>Current Metrics] --> D
+        C[Agile Assessment<br/>Baseline] --> D
+    end
+    subgraph "SAFe Assessment"
+        D[Data Collection<br/>& Survey] --> E[Dimension Scoring<br/>& Analysis]
+        E --> F[Gap Identification<br/>& Prioritization]
+        F --> G[Improvement<br/>Roadmap]
+    end
+    subgraph Outputs
+        G --> H[Continuous Improvement]
+        G --> I[Scrum Framework Tuning]
+        F --> J[Steering Review]
+        G --> K[Skills Gap Analysis]
+    end
+    subgraph Agents
+        L[Agile Coach Agent] --> E
+        M[Transformation Agent] --> G
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

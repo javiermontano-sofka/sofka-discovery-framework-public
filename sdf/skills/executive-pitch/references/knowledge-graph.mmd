@@ -1,0 +1,71 @@
+%% Knowledge Graph — executive-pitch
+%% Skill: C-level executive pitch with financial modeling and persuasion architecture
+%% Owner Agent: delivery-manager (reassigned from change-catalyst)
+
+graph LR
+    SKILL["executive-pitch<br/>C-Level Business Case"]
+
+    %% INPUTS
+    IN_DECISION["Decision-Maker Type<br/>CFO | CTO | CEO | Board"]
+    IN_BUDGET["Budget Range<br/>under1M | 1m-5m | over5m"]
+    IN_DISCOVERY["Prior Discovery Phases<br/>AS-IS, Flows, Scenarios"]
+    IN_BENCHMARKS["Industry Benchmarks<br/>Gartner, Forrester"]
+
+    IN_DECISION -->|"audience lens"| SKILL
+    IN_BUDGET -->|"depth calibration"| SKILL
+    IN_DISCOVERY -->|"evidence base"| SKILL
+    IN_BENCHMARKS -->|"social proof"| SKILL
+
+    %% CORE SECTIONS
+    SKILL -->|"Section 1"| HERO["Executive Summary<br/>Hero KPIs"]
+    SKILL -->|"Section 2"| PROBLEM["Problem Statement<br/>Quantified Pain"]
+    SKILL -->|"Section 3"| VALUE["4-Pillar Value<br/>Proposition"]
+    SKILL -->|"Section 4"| OPTIONS["3-Option<br/>Comparison"]
+    SKILL -->|"Section 5"| INVEST["Investment Summary<br/>FTE-months, Phases"]
+    SKILL -->|"Section 6"| CTA["Call to Action<br/>Decision Framework"]
+    SKILL -->|"Section 7"| RISK["Risk Assessment<br/>& Mitigation"]
+
+    %% ANALYTICAL COMPONENTS
+    PROBLEM -->|"burn rate"| COI["Cost of Inaction<br/>4D Analysis"]
+    COI -->|"technical debt"| COI_TECH["Technical<br/>Dimension"]
+    COI -->|"ops waste"| COI_OPS["Operational<br/>Dimension"]
+    COI -->|"market loss"| COI_COMP["Competitive<br/>Dimension"]
+    COI -->|"compliance gap"| COI_REG["Regulatory<br/>Dimension"]
+
+    VALUE -->|"financial model"| FIN["NPV / IRR<br/>Payback Period"]
+    FIN -->|"variance"| SENSITIVITY["Sensitivity<br/>Analysis"]
+    OPTIONS -->|"anchoring"| PAS["PAS Persuasion<br/>Architecture"]
+
+    %% OUTPUTS
+    SKILL -->|"generates"| OUT_MD["06_Pitch_Ejecutivo<br/>.md"]
+    SKILL -->|"generates"| OUT_HTML["06_Pitch_Ejecutivo<br/>.html"]
+    SKILL -->|"generates"| OUT_BC["06b_Business_Case<br/>Financial Detail"]
+    SKILL -->|"generates"| OUT_PPTX["Steering Committee<br/>Slide Deck"]
+
+    %% STANDARDS
+    STD_PAS["PAS Framework<br/>Problem-Agitate-Solve"] -.->|"persuasion structure"| SKILL
+    STD_MINTO["Pyramid Principle<br/>Barbara Minto"] -.->|"narrative logic"| SKILL
+    STD_FINANCE["Corporate Finance<br/>NPV, IRR, DCF"] -.->|"financial rigor"| SKILL
+    STD_SOFKA["Sofka Branding<br/>#FF7E08, #1A1A2E, #FFD700"] -.->|"visual identity"| OUT_HTML
+
+    %% CONSUMERS
+    OUT_MD -->|"approves"| CEO["CEO / C-Suite"]
+    OUT_MD -->|"validates"| CFO["CFO<br/>Financial Review"]
+    OUT_PPTX -->|"presented to"| BOARD["Board / Steering<br/>Committee"]
+    OUT_BC -->|"deep-dive"| PROCUREMENT["Procurement<br/>Process"]
+
+    %% AGENT OWNERSHIP
+    AGENT_DM["delivery-manager<br/>(Lead Agent)"] ==>|"orchestrates"| SKILL
+    AGENT_CC["change-catalyst<br/>(Support)"] -.->|"narrative support"| SKILL
+    AGENT_UX["ux-strategist<br/>(Support)"] -.->|"presentation design"| OUT_HTML
+
+    %% Styles
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef section fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+
+    class SKILL skill
+    class IN_DECISION,IN_BUDGET,IN_DISCOVERY,IN_BENCHMARKS input
+    class HERO,PROBLEM,VALUE,OPTIONS,INVEST,CTA,RISK,COI,COI_TECH,COI_OPS,COI_COMP,COI_REG,FIN,SENSITIVITY,PAS section
+    class OUT_MD,OUT_HTML,OUT_BC,OUT_PPTX output

@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Build a RACI matrix for a mobile app development project with these roles: Product Owner, Scrum Master, Tech Lead, 3 Developers, QA Lead, UX Designer, and Project Sponsor. Key activities include requirements definition, sprint planning, development, code review, testing, deployment, and stakeholder demos.",
+    "assertions": [
+      "Output assigns exactly one Accountable party per activity",
+      "Output includes all listed roles as columns and all listed activities as rows in the matrix",
+      "Output differentiates between R, A, C, and I assignments logically based on role responsibilities",
+      "Output flags or validates that no role is overloaded with disproportionate assignments"
+    ]
+  },
+  {
+    "prompt": "Validate this RACI matrix: Requirements — PM(A), BA(R), Dev(C); Design — UX(R,A), PM(C); Development — Dev(R), Tech Lead(A), PM(I); Testing — QA(R), Dev(C); Deployment — DevOps(R), PM(A), QA(C). Identify any structural issues.",
+    "assertions": [
+      "Output identifies that UX having both R and A on Design violates the separation principle or flags it as a concern",
+      "Output checks for missing Informed assignments on activities where stakeholders should be notified",
+      "Output validates the single-A rule across all activities",
+      "Output assesses workload balance and flags any role with excessive assignments"
+    ]
+  },
+  {
+    "prompt": "A new data engineering team of 4 is joining the project in phase 2. Update the RACI matrix to incorporate their roles for data pipeline activities without disrupting existing assignments for the 8-person application team.",
+    "assertions": [
+      "Output adds new activities specific to data engineering (pipeline development, data quality, ETL) to the matrix",
+      "Output assigns RACI roles to the new team members without modifying existing application team assignments",
+      "Output identifies handoff points between data engineering and application teams with appropriate C/I assignments",
+      "Output validates the expanded matrix for conflicts or gaps at the integration boundaries"
+    ]
+  },
+  {
+    "prompt": "The project has a vendor team responsible for API integration. The vendor reports to their own management but the project PM needs visibility. Design the RACI assignments that properly handle the vendor boundary.",
+    "assertions": [
+      "Output assigns the vendor team as Responsible for API integration work without making them Accountable for internal project decisions",
+      "Output ensures internal project roles retain Accountability for deliverables that depend on vendor work",
+      "Output includes Consulted or Informed assignments that give the PM appropriate visibility into vendor activities",
+      "Output addresses the dual-reporting dynamic with clear escalation or coordination assignments"
+    ]
+  }
+]

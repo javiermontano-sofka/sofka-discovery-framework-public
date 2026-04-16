@@ -1,0 +1,31 @@
+graph LR
+    subgraph Inputs
+        A[Project Health Check<br/>Sprint Metrics] --> D
+        B[Team Performance<br/>Engagement Data] --> D
+        C[Status Report<br/>Sprint Summary] --> D
+    end
+
+    subgraph "Retrospective Engine"
+        D[Data Collection<br/>& Preparation] --> E[Facilitated<br/>Discussion]
+        E --> F[Insight Generation<br/>& Root Cause]
+        F --> G[Action Planning<br/>& Experiments]
+    end
+
+    subgraph Outputs
+        G --> H[Continuous Improvement]
+        G --> I[Quality Plan Updates]
+        F --> J[Lessons Learned]
+        G --> K[Process Changes]
+    end
+
+    subgraph Agents
+        L[Retro Facilitator Agent] --> E
+        M[Improvement Analyst Agent] --> F
+    end
+
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

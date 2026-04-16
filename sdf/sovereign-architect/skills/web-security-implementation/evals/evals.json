@@ -1,0 +1,86 @@
+{
+  "skill_name": "web-security-implementation",
+  "version": "2.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit the web application security posture and produce a risk-sorted findings report",
+      "expected_output": "OWASP-aligned findings with severity, evidence, and remediation code for each issue",
+      "assertions": [
+        {"text": "Output scans HTTP headers with curl or references securityheaders.com", "type": "contains"},
+        {"text": "Output checks for CSP header presence and strength", "type": "contains"},
+        {"text": "Output checks CORS configuration for wildcard or Origin reflection", "type": "contains"},
+        {"text": "Output checks cookie flags (SameSite, HttpOnly, Secure)", "type": "contains"},
+        {"text": "Output scans for dangerous patterns (dangerouslySetInnerHTML, eval)", "type": "contains"},
+        {"text": "Output runs npm audit or equivalent dependency check", "type": "contains"},
+        {"text": "Output provides CRITICAL/HIGH/MEDIUM/LOW severity classification", "type": "contains"},
+        {"text": "Output provides code-level fixes with before/after examples", "type": "contains"},
+        {"text": "Output tags confirmed findings as [HECHO] with evidence", "type": "contains"},
+        {"text": "Output provides a prioritized remediation timeline", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Implement Content Security Policy for an Express.js app. Currently using inline scripts for Google Analytics and a React app",
+      "expected_output": "Nonce-based CSP implementation with report-only first, enforcement second, and GTM/Analytics handling",
+      "assertions": [
+        {"text": "Output starts with Content-Security-Policy-Report-Only mode", "type": "contains"},
+        {"text": "Output generates nonce per request using crypto.randomBytes", "type": "contains"},
+        {"text": "Output uses nonce in CSP header: nonce-{value}", "type": "contains"},
+        {"text": "Output injects nonce into HTML templates/props", "type": "contains"},
+        {"text": "Output builds from default-src 'none'", "type": "contains"},
+        {"text": "Output includes frame-ancestors 'none' for clickjacking protection", "type": "contains"},
+        {"text": "Output includes base-uri 'self'", "type": "contains"},
+        {"text": "Output warns against unsafe-inline", "type": "contains"},
+        {"text": "Output recommends 2-week report-only phase before enforcement", "type": "contains"},
+        {"text": "Output provides csp-evaluator.withgoogle.com for validation", "type": "contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The CORS implementation allows any origin with credentials. Fix it.",
+      "expected_output": "Allowlist-based CORS fix with Vary header, credentials handling, and tests to verify fix",
+      "assertions": [
+        {"text": "Output finds the Origin reflection vulnerability in code", "type": "contains"},
+        {"text": "Output uses Set for allowlist lookup (not regex)", "type": "contains"},
+        {"text": "Output adds Vary: Origin header when CORS is conditional", "type": "contains"},
+        {"text": "Output explicitly blocks wildcard with credentials combination", "type": "contains"},
+        {"text": "Output handles localhost/development origin separately", "type": "contains"},
+        {"text": "Output provides curl test commands to verify fix", "type": "contains"},
+        {"text": "Output tests attacker origin is rejected", "type": "contains"},
+        {"text": "Output explains why Vary: Origin is required (CDN cache poisoning)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Found dangerouslySetInnerHTML used with user display names throughout the React app. Fix XSS.",
+      "expected_output": "XSS remediation using DOMPurify or React auto-escaping, with Trusted Types for future prevention",
+      "assertions": [
+        {"text": "Output scans all occurrences before fixing", "type": "contains"},
+        {"text": "Output determines if HTML rendering is actually needed for display names", "type": "contains"},
+        {"text": "Output recommends removing dangerouslySetInnerHTML if HTML is not needed", "type": "contains"},
+        {"text": "Output provides DOMPurify implementation where HTML is genuinely needed", "type": "contains"},
+        {"text": "Output specifies ALLOWED_TAGS allowlist in DOMPurify config", "type": "contains"},
+        {"text": "Output mentions Trusted Types as additional layer", "type": "contains"},
+        {"text": "Output mentions CSP as defense-in-depth layer", "type": "contains"},
+        {"text": "Output provides Playwright test to verify XSS payload is encoded", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Implement CSRF protection for a banking application with session cookies and 15 state-mutating API endpoints",
+      "expected_output": "SameSite cookies + CSRF token implementation with timing-safe comparison and frontend integration",
+      "assertions": [
+        {"text": "Output implements SameSite=Strict on session cookie first", "type": "contains"},
+        {"text": "Output notes SameSite=Lax may be needed for OAuth flows", "type": "contains"},
+        {"text": "Output generates CSRF token using crypto.randomBytes", "type": "contains"},
+        {"text": "Output stores CSRF token in server session", "type": "contains"},
+        {"text": "Output validates CSRF token on all POST/PUT/PATCH/DELETE routes", "type": "contains"},
+        {"text": "Output uses crypto.timingSafeEqual for token comparison", "type": "contains"},
+        {"text": "Output provides frontend code to include X-CSRF-Token header", "type": "contains"},
+        {"text": "Output provides test to verify cross-origin POST is rejected", "type": "contains"},
+        {"text": "Output mentions banking context requires SameSite=Strict (not Lax)", "type": "contains"}
+      ]
+    }
+  ]
+}

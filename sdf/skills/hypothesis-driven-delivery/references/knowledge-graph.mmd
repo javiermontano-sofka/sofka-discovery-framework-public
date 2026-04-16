@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[poc-lab] --> F
+        B[input-analysis] --> F
+        C[definition-of-done] --> F
+        D[assumption-log] --> F
+    end
+
+    subgraph Process
+        F[hypothesis-driven-delivery<br/>Formulate & Test<br/>Business Hypotheses]:::skill
+        F --> G[Design Experiments]
+        G --> H[Execute & Measure]
+        H --> I[Decide: Pivot/Persevere/Kill]
+    end
+
+    subgraph Outputs
+        I --> J[benefits-realization-plan]
+        I --> K[lessons-register]
+        I --> L[continuous-improvement]
+    end
+
+    subgraph Agents
+        M[experiment-designer-agent]:::agent --> G
+        N[data-analyst-agent]:::agent --> H
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

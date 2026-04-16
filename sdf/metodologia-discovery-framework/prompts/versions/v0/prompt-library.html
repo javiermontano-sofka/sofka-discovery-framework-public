@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Prompts — MetodologIA Discovery Framework</title>
+  <meta name="description" content="Cat&aacute;logo completo de prompts optimizados para el MetodologIA Discovery Framework. Flujos, entregables, assessments, operaciones y metaprompts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #6366F1;
+      --orange-glow: rgba(255, 126, 8, 0.15);
+      --orange-bright: #818CF8;
+      --gold: #22D3EE;
+      --gold-dim: rgba(255, 215, 0, 0.12);
+      --dark: #1A1A2E;
+      --dark-surface: #16213E;
+      --dark-card: #1C2541;
+      --dark-border: rgba(255, 255, 255, 0.06);
+      --text-primary: #F0F0F0;
+      --text-secondary: rgba(240, 240, 240, 0.6);
+      --text-tertiary: rgba(240, 240, 240, 0.35);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --radius-xl: 24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26, 26, 46, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      font-weight: 700; font-size: 1.1rem; color: var(--text-primary); text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 32px; height: 32px; background: var(--orange); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.85rem; color: var(--dark);
+    }
+
+    .nav-back {
+      color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+
+    /* Hero compact */
+    .hero-compact {
+      padding: 7rem 2rem 3rem; text-align: center;
+    }
+
+    .hero-compact h1 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+      letter-spacing: -0.03em; margin-bottom: 0.75rem;
+    }
+
+    .hero-compact h1 .accent { color: var(--orange); }
+
+    .hero-compact p {
+      font-size: 1.05rem; font-weight: 300; color: var(--text-secondary);
+      max-width: 600px; margin: 0 auto; line-height: 1.7;
+    }
+
+    .count-badge {
+      display: inline-block; margin-top: 1rem;
+      font-size: 0.75rem; font-weight: 600; padding: 6px 16px;
+      border-radius: 20px; background: var(--orange-glow); color: var(--orange);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem 2rem;
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+    }
+
+    .filter-search {
+      flex: 1; min-width: 250px; padding: 10px 16px;
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm); color: var(--text-primary);
+      font-size: 0.85rem; font-family: inherit; outline: none;
+    }
+    .filter-search:focus { border-color: var(--orange); }
+    .filter-search::placeholder { color: var(--text-tertiary); }
+
+    .filter-select {
+      padding: 10px 16px; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: var(--radius-sm);
+      color: var(--text-primary); font-size: 0.82rem; font-family: inherit;
+      outline: none; cursor: pointer;
+    }
+    .filter-select:focus { border-color: var(--orange); }
+
+    .filter-count {
+      font-size: 0.78rem; color: var(--text-tertiary); padding: 0 0.5rem;
+    }
+
+    /* Prompt Grid */
+    .prompts-container {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem;
+    }
+
+    .category-section {
+      margin-bottom: 3rem;
+    }
+
+    .category-title {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--dark-border);
+    }
+
+    .prompt-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem;
+    }
+
+    .prompt-card {
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+      border-radius: var(--radius); padding: 1.75rem; transition: all 0.25s;
+    }
+    .prompt-card:hover { border-color: rgba(255, 126, 8, 0.2); }
+
+    .prompt-card-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 0.75rem; gap: 0.5rem;
+    }
+
+    .prompt-card-title {
+      font-size: 0.95rem; font-weight: 700; line-height: 1.3;
+    }
+
+    .prompt-card-badge {
+      font-size: 0.6rem; font-weight: 600; padding: 3px 8px;
+      border-radius: 10px; background: var(--orange-glow); color: var(--orange);
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    .prompt-card-desc {
+      font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5;
+    }
+
+    .prompt-card-code {
+      background: rgba(0, 0, 0, 0.3); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm); padding: 1rem;
+      font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75rem;
+      color: var(--orange); line-height: 1.6; white-space: pre-wrap;
+      max-height: 200px; overflow-y: auto; margin-bottom: 0.75rem;
+    }
+
+    .prompt-card-params {
+      display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 0.75rem;
+    }
+
+    .param-chip {
+      font-size: 0.62rem; padding: 2px 7px; border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04); color: var(--text-tertiary);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .prompt-card-actions {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .prompt-card-cmd {
+      font-size: 0.72rem; color: var(--text-tertiary);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .btn-copy {
+      font-size: 0.72rem; font-weight: 600; padding: 6px 14px;
+      border-radius: 4px; background: var(--gold-dim); color: var(--gold);
+      border: none; cursor: pointer; transition: all 0.2s; font-family: inherit;
+    }
+    .btn-copy:hover { background: rgba(255, 215, 0, 0.25); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--dark-border); padding: 3rem 2rem; text-align: center;
+    }
+
+    .footer-philosophy {
+      font-size: 1.1rem; font-weight: 300; font-style: italic; color: var(--text-secondary); margin-bottom: 1rem;
+    }
+    .footer-philosophy .highlight { color: var(--gold); font-weight: 600; font-style: normal; }
+
+    .footer-meta { font-size: 0.75rem; color: var(--text-tertiary); }
+    .footer-meta a { color: var(--orange); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .prompt-grid { grid-template-columns: 1fr; }
+      .filter-bar { flex-direction: column; }
+      .filter-search { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="landing.html" class="nav-brand">
+        <span class="logo-mark">S</span>
+        Discovery Framework
+      </a>
+      <a href="landing.html" class="nav-back">&larr; Volver al landing</a>
+    </div>
+  </nav>
+
+  <section class="hero-compact">
+    <h1>Biblioteca de <span class="accent">Prompts</span></h1>
+    <p>
+      Prompts optimizados para m&aacute;ximo rendimiento. Compactos, tipo spec,
+      con par&aacute;metros ajustables. Copia y pega en Claude Code.
+    </p>
+    <span class="count-badge" id="countBadge">Cargando...</span>
+  </section>
+
+  <div class="filter-bar">
+    <input type="text" class="filter-search" id="searchInput" placeholder="Buscar prompts...">
+    <select class="filter-select" id="categoryFilter">
+      <option value="all">Todas las categor&iacute;as</option>
+      <option value="flujo">Flujos de Pipeline</option>
+      <option value="entregable">Entregables (00-14)</option>
+      <option value="assessment">Assessments</option>
+      <option value="operacion">Operaciones</option>
+      <option value="service">Service Discovery</option>
+      <option value="metaprompt">Metaprompts</option>
+    </select>
+    <span class="filter-count" id="filterCount"></span>
+  </div>
+
+  <div class="prompts-container" id="promptsContainer">
+    <!-- Rendered by JS -->
+  </div>
+
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <p class="footer-philosophy">MetodologIA, your <span class="highlight">technology partner.</span></p>
+      <p class="footer-meta">
+        MetodologIA Discovery Framework v10.0.0 &mdash;
+        <a href="https://metodologia.info" target="_blank" rel="noopener">Comunidad MetodologIA</a>
+        &mdash; 2024&ndash;2026
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const ALL_PROMPTS = [
+      // ═══════════════════════════════════════
+      // FLUJOS (8)
+      // ═══════════════════════════════════════
+      { cat:"flujo", title:"Aut\u00f3nomo Total", desc:"Codebase disponible, sin stakeholders. 16 entregables sin intervenci\u00f3n. Gates auto-aprobados, supuestos etiquetados.", cmd:"/mao:run-auto", prompt:"/mao:run-auto\n\nEjecutar discovery completo sin interrupciones.\nGates auto-aprobados. Supuestos etiquetados [SUPUESTO]. 16 entregables.\nCriterio de aceptaci\u00f3n: pipeline completo con 16 archivos en output/,\ncada entregable pasa excellence-loop (\u22657/10), trazabilidad de evidencia.\n\nMODO=desatendido | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO=desatendido","FORMATO","VARIANTE","PROFUNDIDAD"], badge:"Desatendido" },
+      { cat:"flujo", title:"Piloto Autom\u00e1tico", desc:"Discovery est\u00e1ndar. M\u00e1xima autonom\u00eda con control en gates (G1\u2013G3) y hallazgos severity=critical.", cmd:"/mao:run-auto", prompt:"/mao:run-auto\n\nDiscovery completo en piloto-auto.\nPausa en gates (G1, G1.5, G2, G3) y hallazgos severity=critical. 16 entregables.\nCriterio de aceptaci\u00f3n: 16 entregables, consistencia cruzada verificada,\nsem\u00e1foro 6D sin rojos sin justificaci\u00f3n expl\u00edcita.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO=piloto-auto","FORMATO","VARIANTE","PROFUNDIDAD"], badge:"Piloto-Auto" },
+      { cat:"flujo", title:"Express Go/No-Go", desc:"Decisi\u00f3n comercial urgente. 1 sesi\u00f3n: Brief (02) + Escenarios (05) + Pitch (08). Velocidad vs profundidad.", cmd:"/mao:run-express", prompt:"/mao:run-express\n\nGo/No-Go en 1 sesi\u00f3n: Brief (02) + Escenarios (05) + Pitch (08).\n3 entregables. Orientado a decisi\u00f3n comercial r\u00e1pida.\nCriterio de aceptaci\u00f3n: sem\u00e1foro 6D, \u22653 escenarios con scoring,\npitch con cost-of-inaction y CTA claro. Disclaimer obligatorio.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=ejecutiva\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE=ejecutiva"], badge:"Express" },
+      { cat:"flujo", title:"Intermedio con Roadmap", desc:"7 entregables: AS-IS + Flujos + Escenarios + Feasibility + Roadmap + Pitch + Handover. Direcci\u00f3n arquitect\u00f3nica con plan.", cmd:"/mao:run-deep", prompt:"/mao:run-deep\n\nDiscovery intermedio: AS-IS (03) + Flujos (04) + Escenarios (05) +\nFeasibility (05b) + Roadmap (06) + Pitch (08) + Handover (09).\n7 entregables. Direcci\u00f3n arquitect\u00f3nica con plan de ejecuci\u00f3n.\nCriterio de aceptaci\u00f3n: C4 L1-L2, \u22658 flujos E2E,\nroadmap Monte Carlo, feasibility \u22655/7.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=t\u00e9cnico\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE","PROFUNDIDAD"], badge:"Intermedio" },
+      { cat:"flujo", title:"Guiado Cocreado", desc:"M\u00e1xima cocreaci\u00f3n. Confirma antes de cada fase. 16 entregables validados por el operador.", cmd:"/mao:run-guided", prompt:"/mao:run-guided\n\nDiscovery completo con facilitaci\u00f3n humana.\nConfirma antes de cada fase y gate. M\u00e1xima cocreaci\u00f3n. 16 entregables.\nCriterio de aceptaci\u00f3n: 16 entregables validados por el operador,\n0 supuestos no confirmados, evidencia trazable en cada hallazgo.\n\nMODO=paso-a-paso | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO=paso-a-paso","FORMATO","VARIANTE","PROFUNDIDAD"], badge:"Paso-a-Paso" },
+      { cat:"flujo", title:"Aut\u00f3nomo con Adjuntos", desc:"Pipeline completo procesando docs externos (specs, org charts, presupuestos). Cada adjunto mapeado a \u22651 entregable.", cmd:"/mao:run-auto", prompt:"/mao:run-auto\n\nDiscovery completo procesando adjuntos en {ADJUNTOS_DIR}.\nClasificar docs como inputs (specs\u2192funcional, org charts\u2192stakeholders,\npresupuestos\u2192roadmap, contratos\u2192restricciones).\nCriterio: cada adjunto mapeado a \u22651 entregable, trazabilidad adjunto\u2192hallazgo.\n\nMODO=desatendido | FORMATO=markdown | ADJUNTOS=procesar-todo | PROFUNDIDAD=exhaustivo\n{RUTA}: . | {ADJUNTOS_DIR}: ./docs", params:["MODO","ADJUNTOS=procesar-todo","PROFUNDIDAD"], badge:"Con Adjuntos" },
+      { cat:"flujo", title:"Express HTML", desc:"Entregables visuales listos para navegador con branding MetodologIA Design System. Presentaci\u00f3n inmediata.", cmd:"/mao:run-express", prompt:"/mao:run-express\n\nGo/No-Go con entregables en HTML MetodologIA Design System v5.\n3 entregables visuales para presentaci\u00f3n inmediata.\nCriterio: HTML autocontenido, responsive,\nbranding MetodologIA (#6366F1, #1A1A2E, #22D3EE), WCAG AA.\n\nMODO=piloto-auto | FORMATO=html | VARIANTE=ejecutiva\n{RUTA}: .", params:["FORMATO=html","VARIANTE=ejecutiva"], badge:"HTML" },
+      { cat:"flujo", title:"Por Tipo de Servicio", desc:"Pipeline ajustado al dominio: comit\u00e9 de expertos, m\u00e9tricas, priming-RAG espec\u00edfico del tipo de servicio.", cmd:"/mao:run-auto", prompt:"/mao:run-auto\n\nDiscovery completo adaptado al tipo de servicio {TIPO}.\nPipeline, comit\u00e9 de expertos, m\u00e9tricas y priming ajustados al dominio.\nCriterio: entregables reflejan vocabulario y m\u00e9tricas\ndel tipo de servicio, comit\u00e9 incluye expertos del dominio.\n\nMODO=piloto-auto | TIPO_SERVICIO={TIPO} | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: . | {TIPO}: SDA|QA|RPA|Data-AI|Cloud|SAS|Management|UX-Design|Digital-Transformation|Multi-Service", params:["TIPO_SERVICIO","MODO","FORMATO"], badge:"Service Type" },
+
+      // ═══════════════════════════════════════
+      // ENTREGABLES (17)
+      // ═══════════════════════════════════════
+      { cat:"entregable", title:"00 \u2014 Discovery Plan", desc:"Gobernanza, alcance con exclusiones, comit\u00e9 de expertos con roles, cronograma con gates, registro de inputs.", cmd:"/mao:generate-plan", prompt:"/mao:generate-plan\n\nGenerar 00_Discovery_Plan: gobernanza del discovery, alcance con exclusiones,\ncomit\u00e9 de expertos (roles + justificaci\u00f3n), cronograma con gates (G1\u2013G3),\nregistro de inputs clasificados por tipo y fuente.\nSi hay adjuntos, clasificarlos como inputs formales.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Fase 00" },
+      { cat:"entregable", title:"01 \u2014 Stakeholder Map", desc:"Matriz influencia/inter\u00e9s (\u22658 stakeholders), RACI, plan de comunicaci\u00f3n con cadencia, readiness assessment.", cmd:"/mao:map-stakeholders", prompt:"/mao:map-stakeholders\n\nGenerar 01_Stakeholder_Map: matriz influencia/inter\u00e9s (4 cuadrantes),\nRACI para decisiones arquitect\u00f3nicas y comerciales,\nplan de comunicaci\u00f3n (canal + cadencia + mensaje por grupo),\nreadiness assessment (sponsor, champion, resistor, neutral).\n\nMODO=piloto-auto | FORMATO=markdown\n{RUTA}: .", params:["MODO","FORMATO"], badge:"Fase 01" },
+      { cat:"entregable", title:"02 \u2014 Brief T\u00e9cnico", desc:"Snapshot \u22643 p\u00e1gs. Sem\u00e1foro 6D con justificaci\u00f3n, top 5 hallazgos/riesgos, recomendaci\u00f3n Go/Pivot/No-Go.", cmd:"/mao:generate-brief", prompt:"/mao:generate-brief\n\nGenerar 02_Brief_Tecnico: snapshot ejecutivo \u22643 p\u00e1ginas.\nSem\u00e1foro 6D con justificaci\u00f3n por dimensi\u00f3n,\ntop 5 hallazgos (severidad + evidencia), top 5 riesgos (probabilidad \u00d7 impacto),\nrecomendaci\u00f3n ejecutiva con siguiente paso concreto.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=ejecutiva\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE=ejecutiva"], badge:"Fase 02" },
+      { cat:"entregable", title:"03 \u2014 An\u00e1lisis AS-IS", desc:"10 secciones con evidencia etiquetada. C4 L1\u2013L3 Mermaid. Deuda cuantificada. \u22655 recomendaciones.", cmd:"/mao:diagnose-asis", prompt:"/mao:diagnose-asis\n\nGenerar 03_Analisis_AS-IS exhaustivo: 10 secciones con evidencia de c\u00f3digo.\nS0-Executive, S1-Stack Radar, S2-C4 (L1-L3 Mermaid),\nS3-Deuda (cuantificada), S4-Seguridad, S5-Calidad,\nS6-Infra, S7-Observabilidad, S8-Datos, S9-Integraciones, S10-Recomendaciones.\nCada hallazgo etiquetado [CODIGO]/[CONFIG]/[DOC]/[INFERENCIA]/[SUPUESTO].\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE","PROFUNDIDAD=exhaustivo"], badge:"Fase 03" },
+      { cat:"entregable", title:"04 \u2014 Mapeo de Flujos", desc:"Taxonom\u00eda DDD (dominios \u2192 bounded contexts \u2192 aggregates), 8\u201312 flujos E2E, matriz integraciones, top 10 fallas.", cmd:"/mao:trace-flows", prompt:"/mao:trace-flows\n\nGenerar 04_Mapeo_Flujos: taxonom\u00eda DDD (dominios \u2192 bounded contexts \u2192 aggregates),\n8\u201312 flujos E2E con diagramas de secuencia Mermaid,\nmatriz de integraciones (protocolo + SLA + acoplamiento),\ntop 10 puntos de falla (severidad + probabilidad + mitigaci\u00f3n).\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Fase 04" },
+      { cat:"entregable", title:"05 \u2014 Escenarios ToT", desc:"\u22653 escenarios Tree-of-Thought. Scoring 6D normalizado, SWOT, \u00e1rbol de decisi\u00f3n, l\u00f3gica de switching.", cmd:"/mao:evaluate-scenarios", prompt:"/mao:evaluate-scenarios\n\nGenerar 05_Escenarios: \u22653 escenarios de evoluci\u00f3n con Tree-of-Thought.\nScoring 6D normalizado (0\u201310), SWOT por escenario,\n\u00e1rbol de decisi\u00f3n Mermaid, l\u00f3gica de switching entre escenarios,\nescenario recomendado con justificaci\u00f3n basada en evidencia.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Fase 05" },
+      { cat:"entregable", title:"05b \u2014 Feasibility Think Tank", desc:"7 Sabios. 7 dimensiones con score, validaci\u00f3n cruzada, veredicto Go/No-Go (\u22655/7), riesgos residuales.", cmd:"/mao:validate-feasibility", prompt:"/mao:validate-feasibility\n\nGenerar 05b_Feasibility: Think Tank de 7 Sabios.\n7 dimensiones con score independiente y justificaci\u00f3n,\nvalidaci\u00f3n cruzada (contraargumentos entre expertos),\nveredicto consolidado (Go si \u22655/7, No-Go si <5/7),\ncondiciones de \u00e9xito y riesgos residuales por dimensi\u00f3n.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO","FORMATO","PROFUNDIDAD=exhaustivo"], badge:"Gate 1.5" },
+      { cat:"entregable", title:"06 \u2014 Solution Roadmap", desc:"5 fases con Monte Carlo (P50/P80/P95) FTE-meses. Pivot points, burndown, team model. CERO precios.", cmd:"/mao:chart-roadmap", prompt:"/mao:chart-roadmap\n\nGenerar 06_Solution_Roadmap: 5 fases con entregables y dependencias.\nMonte Carlo (P50/P80/P95) en FTE-meses \u2014 CERO precios.\nPivot points con criterios cuantitativos,\nburndown proyectado, modelo de equipo (roles \u00d7 fases),\nquick wins para primeros 30 d\u00edas.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Fase 06" },
+      { cat:"entregable", title:"07 \u2014 Spec Funcional", desc:"M\u00f3dulos con responsabilidades, \u22658 casos de uso detallados, \u22656 reglas de negocio, NFRs cuantificados.", cmd:"/mao:write-spec", prompt:"/mao:write-spec\n\nGenerar 07_Especificacion_Funcional: m\u00f3dulos con responsabilidades,\n\u22658 casos de uso (actor, precondici\u00f3n, flujo, excepciones, postcondici\u00f3n),\n\u22656 reglas de negocio (condici\u00f3n \u2192 acci\u00f3n \u2192 excepci\u00f3n),\nmatriz complejidad-riesgo, NFRs cuantificados.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE","PROFUNDIDAD"], badge:"Fase 07" },
+      { cat:"entregable", title:"08 \u2014 Pitch Ejecutivo", desc:"C-level \u22645 p\u00e1gs. Cost-of-inaction, 4 pilares de valor, FTE-meses (CERO precios), CTA, disclaimer.", cmd:"/mao:craft-pitch", prompt:"/mao:craft-pitch\n\nGenerar 08_Pitch_Ejecutivo \u22645 p\u00e1ginas, lenguaje C-level.\nCost-of-inaction cuantificado, 4 pilares de valor (antes \u2192 despu\u00e9s),\ninversi\u00f3n FTE-meses \u2014 CERO precios ni tarifas,\nCTA con siguiente paso concreto. Disclaimer obligatorio.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=ejecutiva\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE=ejecutiva"], badge:"Fase 08" },
+      { cat:"entregable", title:"09 \u2014 Handover Operativo", desc:"Cierre del discovery. Plan 90 d\u00edas, gobernanza post-discovery, risk tracker, criterios kill. Requiere todos los anteriores.", cmd:"/mao:deliver-handover", prompt:"/mao:deliver-handover\n\nGenerar 09_Handover: resumen de transici\u00f3n (decisiones + compromisos),\nplan 90 d\u00edas (semanas 1\u20134, 5\u20138, 9\u201312),\ngobernanza post-discovery (roles + cadencia + escalamiento),\nrisk tracker, criterios kill con umbrales cuantitativos,\nstakeholder transition (de discovery a ejecuci\u00f3n).\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Fase 09" },
+      { cat:"entregable", title:"10 \u2014 Hallazgos (Deck)", desc:"Deck ejecutivo con storytelling. Arco narrativo: contexto \u2192 hallazgos \u2192 impacto \u2192 recomendaci\u00f3n \u2192 CTA.", cmd:"/mao:present-findings", prompt:"/mao:present-findings\n\nGenerar 10_Presentacion_Hallazgos: deck ejecutivo con storytelling.\nArco narrativo: contexto \u2192 hallazgos \u2192 impacto \u2192 recomendaci\u00f3n \u2192 CTA.\nData viz para m\u00e9tricas clave (sem\u00e1foro 6D, scoring escenarios),\ntop hallazgos con impacto cuantificado.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=ejecutiva\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE=ejecutiva"], badge:"Report" },
+      { cat:"entregable", title:"11 \u2014 Hallazgos T\u00e9cnicos", desc:"Deep-dive para ingenier\u00eda. \u22653 ADRs formales, trade-offs expl\u00edcitos, C4 TO-BE, deuda priorizada.", cmd:"/mao:report-tech", prompt:"/mao:report-tech\n\nGenerar 11_Hallazgos_Tecnicos: deep-dive para audiencia t\u00e9cnica.\n\u22653 ADRs formales (contexto \u2192 opciones \u2192 decisi\u00f3n \u2192 consecuencias),\ntrade-offs expl\u00edcitos, C4 TO-BE en Mermaid,\ndeuda priorizada (impacto \u00d7 esfuerzo de remediaci\u00f3n).\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO","FORMATO","PROFUNDIDAD=exhaustivo"], badge:"Report" },
+      { cat:"entregable", title:"12 \u2014 Hallazgos Funcionales", desc:"User journeys (happy path + pain points), gaps funcionales, UX findings, implicaciones de proceso.", cmd:"/mao:report-func", prompt:"/mao:report-func\n\nGenerar 12_Hallazgos_Funcionales: an\u00e1lisis orientado a producto y UX.\nUser journeys (happy path + pain points),\ngaps funcionales (feature esperada vs realidad),\nUX findings con severidad, implicaciones de proceso.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Report" },
+      { cat:"entregable", title:"13 \u2014 Revisi\u00f3n Negocio", desc:"\u26a0\ufe0f INTERNO. Estructura del deal, riesgos comerciales, modelo de engagement, rentabilidad por fase.", cmd:"/mao:review-business", prompt:"/mao:review-business\n\nGenerar 13_Revision_Negocio: validaci\u00f3n comercial INTERNA MetodologIA.\nEstructura del deal (contrato + facturaci\u00f3n + SLAs),\nriesgos comerciales (probabilidad \u00d7 impacto financiero),\nmodelo de engagement (equipo \u00d7 duraci\u00f3n \u00d7 governance),\nrentabilidad por fase.\n\u26a0\ufe0f NUNCA compartir con el cliente.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO"], badge:"Interno" },
+      { cat:"entregable", title:"14 \u2014 Oportunidades IA", desc:"Use cases priorizados (valor \u00d7 factibilidad), AI readiness SCALE, quick wins <30d, governance IA.", cmd:"/mao:discover-ai", prompt:"/mao:discover-ai\n\nGenerar 14_Oportunidades_IA: mapa de oportunidades de IA/ML.\nUse cases priorizados (valor \u00d7 factibilidad \u00d7 riesgo),\nAI readiness SCALE (5 dimensiones, score 1\u20135),\npuntos de integraci\u00f3n, quick wins <30 d\u00edas,\ngovernance de IA (\u00e9tica, bias, explicabilidad, compliance).\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Report" },
+
+      // ═══════════════════════════════════════
+      // ASSESSMENTS (5)
+      // ═══════════════════════════════════════
+      { cat:"assessment", title:"Architecture Deep-Dive", desc:"C4 multinivel (L1\u2013L3) Mermaid, quality attributes ISO 25010, deuda cuantificada, \u22653 ADRs, TO-BE con transici\u00f3n.", cmd:"/mao:assess-architecture", prompt:"/mao:assess-architecture\n\nEvaluaci\u00f3n profunda de arquitectura del sistema en {RUTA}.\nC4 multinivel (L1\u2013L3) Mermaid, quality attributes ISO 25010,\ndeuda arquitect\u00f3nica cuantificada (severidad \u00d7 impacto \u00d7 esfuerzo),\n\u22653 ADRs formales, TO-BE target state con milestones.\nEvidencia etiquetada: [CODIGO], [CONFIG], [INFERENCIA], [SUPUESTO].\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO","FORMATO","PROFUNDIDAD=exhaustivo"], badge:"Assess" },
+      { cat:"assessment", title:"Data Landscape", desc:"Gobernanza, pipelines (ingesta\u2192consumo), modelo de datos, MDM, calidad, data mesh readiness (4 principios).", cmd:"/mao:assess-data", prompt:"/mao:assess-data\n\nLandscape completo de datos del sistema en {RUTA}.\nGobernanza (ownership \u00d7 clasificaci\u00f3n \u00d7 pol\u00edticas),\npipelines (ingesta \u2192 transformaci\u00f3n \u2192 consumo),\nmodelo de datos (ER Mermaid, anomal\u00edas), MDM, calidad por entidad,\nintegraciones (ETL/ELT/CDC/streaming),\ndata mesh readiness (4 principios).\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO","FORMATO","PROFUNDIDAD"], badge:"Assess" },
+      { cat:"assessment", title:"Cloud Readiness", desc:"Framework 7R por workload, DORA metrics baseline, 12-factor, FinOps readiness, migration path priorizado.", cmd:"/mao:assess-cloud", prompt:"/mao:assess-cloud\n\nReadiness cloud del sistema en {RUTA}.\nFramework 7R por componente/workload,\nDORA metrics baseline, cloud-native maturity (12-factor),\nFinOps readiness (cost visibility, allocation, optimization),\nmigration path priorizado (quick wins primero).\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=t\u00e9cnico\n{RUTA}: .", params:["MODO","FORMATO","PROFUNDIDAD"], badge:"Assess" },
+      { cat:"assessment", title:"Security Posture", desc:"Threat model STRIDE, OWASP Top 10 con evidencia, zero trust, supply chain SLSA, remediaci\u00f3n priorizada.", cmd:"/mao:assess-security", prompt:"/mao:assess-security\n\nPostura de seguridad del sistema en {RUTA}.\nThreat model STRIDE por componente (Mermaid),\nOWASP Top 10 (hallazgo \u00d7 evidencia \u00d7 severidad CVSS),\nzero trust (identity, network, data, workload),\nsupply chain (SLSA, CVEs, SBom gaps),\nremediaci\u00f3n priorizada por riesgo residual.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=exhaustivo\n{RUTA}: .", params:["MODO","FORMATO","PROFUNDIDAD=exhaustivo"], badge:"Assess" },
+      { cat:"assessment", title:"Change Readiness", desc:"ADKAR por grupo (score 1\u20135), mapa de resistencia, curva de adopci\u00f3n, plan de training, intervenciones por fase.", cmd:"/mao:assess-change", prompt:"/mao:assess-change\n\nReadiness organizacional para el cambio propuesto.\nADKAR por grupo de stakeholders (score 1\u20135 por dimensi\u00f3n),\nmapa de resistencia (fuentes \u00d7 intensidad \u00d7 mitigaci\u00f3n),\ncurva de adopci\u00f3n, plan de training,\nintervenciones por fase de cambio.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=ejecutiva\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE=ejecutiva"], badge:"Assess" },
+
+      // ═══════════════════════════════════════
+      // OPERACIONES (5)
+      // ═══════════════════════════════════════
+      { cat:"operacion", title:"Rescatar Discovery", desc:"Triage (completo/incompleto/faltante/corrupto), diagn\u00f3stico de causa ra\u00edz, reparar, restablecer pipeline.", cmd:"/mao:rescue-stalled", prompt:"/mao:rescue-stalled\n\nDiagnosticar y rescatar discovery estancado en {RUTA}.\nTriage: clasificar entregables (completo/incompleto/faltante/corrupto).\nDiagn\u00f3stico de punto de falla y causa ra\u00edz.\nReparar incompletos, generar faltantes cr\u00edticos.\nRestablecer pipeline con cronograma actualizado.\nSi no hay entregables previos \u2192 recomendar /mao:run-auto.\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=t\u00e9cnico\n{RUTA}: .", params:["MODO","PROFUNDIDAD"], badge:"Ops" },
+      { cat:"operacion", title:"Auditar Calidad", desc:"Scorecard por entregable (10 criterios), consistencia cruzada, gaps con severidad, recomendaciones priorizadas.", cmd:"/mao:audit-quality", prompt:"/mao:audit-quality\n\nAuditor\u00eda de calidad sobre entregables en {RUTA}.\nScorecard por entregable (10 criterios: completitud, evidencia,\nconsistencia, trazabilidad, claridad, accionabilidad, formato,\ndiagramas, cobertura, rigor).\nConsistencia cruzada entre entregables.\nGaps con severidad, recomendaciones priorizadas por impacto.\n\nMODO=piloto-auto | FORMATO=markdown\n{RUTA}: .", params:["MODO","FORMATO"], badge:"Ops" },
+      { cat:"operacion", title:"Mejorar Entregables", desc:"Diagnosticar debilidades, evolucionar (no reescribir), mantener consistencia cruzada, generar changelog.", cmd:"/mao:improve-deliverables", prompt:"/mao:improve-deliverables\n\nEvolucionar entregables existentes en {RUTA}.\nDiagnosticar debilidades (profundidad, evidencia, formato, redacci\u00f3n).\nAplicar mejoras preservando contenido valioso \u2014 evolucionar, no reescribir.\nMantener consistencia cruzada post-mejora.\nChangelog: [entregable] \u2192 [cambio] \u2192 [justificaci\u00f3n].\n\nMODO=piloto-auto | FORMATO=markdown | PROFUNDIDAD=t\u00e9cnico\n{RUTA}: .", params:["MODO","PROFUNDIDAD"], badge:"Ops" },
+      { cat:"operacion", title:"Simulaci\u00f3n What-If", desc:"Monte Carlo con variables declaradas. P50/P80/P95, an\u00e1lisis de sensibilidad, escenarios extremos.", cmd:"/mao:simulate-scenarios", prompt:"/mao:simulate-scenarios\n\nSimulaci\u00f3n Monte Carlo what-if sobre escenarios en {RUTA}.\nVariables con rangos (optimista/probable/pesimista).\nP50/P80/P95 por escenario, top 5 variables con mayor impacto,\nescenarios extremos (best/worst/most likely),\nrecomendaci\u00f3n por perfil de riesgo. Asunciones etiquetadas [SUPUESTO].\n\nMODO=piloto-auto | FORMATO=markdown\n{RUTA}: .", params:["MODO","FORMATO"], badge:"Ops" },
+      { cat:"operacion", title:"Benchmark Madurez", desc:"2\u20133 frameworks relevantes (CMMI, TMMi, DORA, DCAM), current vs target, gap analysis, roadmap de madurez.", cmd:"/mao:benchmark-maturity", prompt:"/mao:benchmark-maturity\n\nBenchmark de madurez del sistema en {RUTA}.\nFrameworks: seleccionar 2\u20133 relevantes (CMMI, TMMi, DORA, DCAM, ISO 25010).\nScore current vs target por dimensi\u00f3n,\ngap analysis con esfuerzo estimado en FTE-meses,\nbenchmarks de industria (mismo sector y tama\u00f1o),\nroadmap de madurez priorizado por valor de negocio.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Ops" },
+
+      // ═══════════════════════════════════════
+      // SERVICE DISCOVERY (4)
+      // ═══════════════════════════════════════
+      { cat:"service", title:"RPA Discovery", desc:"Landscape de procesos, scoring de automatizaci\u00f3n, arquitectura de bots, ROI estimado por proceso.", cmd:"/mao:rpa-discovery", prompt:"/mao:rpa-discovery\n\nDiscovery RPA: landscape de procesos candidatos,\nscoring de automatizaci\u00f3n (volumen \u00d7 reglas \u00d7 estabilidad),\narquitectura de bots (attended/unattended/hybrid),\nROI estimado por proceso (horas ahorradas \u00d7 frecuencia).\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"RPA" },
+      { cat:"service", title:"QA Discovery", desc:"TMMi maturity, PITT methodology, test factory design, cobertura actual, roadmap de transformaci\u00f3n QA.", cmd:"/mao:qa-discovery", prompt:"/mao:qa-discovery\n\nDiscovery QA-as-a-Service: TMMi maturity por \u00e1rea,\nPITT methodology assessment, test factory design,\ncobertura actual (unit/integration/E2E),\nroadmap de transformaci\u00f3n QA con quick wins.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"QA" },
+      { cat:"service", title:"AI Center Discovery", desc:"AI readiness SCALE (5 dimensiones), portfolio de use cases priorizados, model governance, data readiness.", cmd:"/mao:ai-discovery", prompt:"/mao:ai-discovery\n\nDiscovery AI Center: readiness AI SCALE (5 dimensiones),\nportfolio de use cases priorizados (valor \u00d7 factibilidad),\ninventario de modelos existentes, data readiness por use case,\nAI governance (ética, bias, explicabilidad).\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Data-AI" },
+      { cat:"service", title:"Transformaci\u00f3n Digital", desc:"Madurez digital (5 ejes), service portfolio mapping, programa multi-servicio, roadmap de transformaci\u00f3n.", cmd:"/mao:transformation", prompt:"/mao:transformation\n\nDiscovery Transformaci\u00f3n Digital: madurez digital (5 ejes),\nservice portfolio mapping (current vs target),\nprograma multi-servicio (sinergias, dependencias),\nroadmap de transformaci\u00f3n con governance program-level.\n\nMODO=piloto-auto | FORMATO=markdown | VARIANTE=t\u00e9cnica\n{RUTA}: .", params:["MODO","FORMATO","VARIANTE"], badge:"Digital-Tx" },
+
+      // ═══════════════════════════════════════
+      // METAPROMPTS (5)
+      // ═══════════════════════════════════════
+      { cat:"metaprompt", title:"Generador por Engagement", desc:"Prompt custom para engagement espec\u00edfico. Considera industria, tipo de servicio, objetivo y restricciones.", cmd:null, prompt:"Necesito un prompt de discovery optimizado para un engagement espec\u00edfico.\n\nCliente: {CLIENTE}\nIndustria: {INDUSTRIA} (banking, retail, health, SaaS, manufacturing, gov, energy, telecom)\nTipo de servicio: {TIPO_SERVICIO} (SDA|QA|RPA|Data-AI|Cloud|SAS|Management|UX-Design)\nObjetivo: {OBJETIVO}\n\nGenerar un prompt ejecutable que:\n1. Active el pipeline adecuado seg\u00fan complejidad del objetivo\n2. Configure comit\u00e9 de expertos para {INDUSTRIA}\n3. Ajuste params para m\u00e1xima relevancia\n4. Incluya priming espec\u00edfico del sector\n5. Defina criterios de aceptaci\u00f3n alineados al {OBJETIVO}\n\nFormato: prompt compacto tipo spec, <15 l\u00edneas, params al final.", params:["{CLIENTE}","{INDUSTRIA}","{TIPO_SERVICIO}","{OBJETIVO}"], badge:"Meta" },
+      { cat:"metaprompt", title:"Generador Entregable Custom", desc:"Prompt para entregable fuera del pipeline est\u00e1ndar. Reutiliza skills del SDF con estructura custom.", cmd:null, prompt:"Necesito un prompt para generar un entregable custom fuera del pipeline.\n\nEntregable: {NOMBRE_ENTREGABLE}\nAudiencia: {AUDIENCIA} (C-level, dev team, PMs, external stakeholders)\nSecciones requeridas: {SECCIONES}\nInputs disponibles: {INPUTS}\nRestricciones: {RESTRICCIONES}\n\nGenerar prompt que:\n1. Active los skills del SDF necesarios\n2. Adapte lenguaje y profundidad a {AUDIENCIA}\n3. Estructure output seg\u00fan {SECCIONES}\n4. Incluya criterios de aceptaci\u00f3n verificables\n\nFormato: prompt compacto tipo spec, <15 l\u00edneas, params al final.", params:["{NOMBRE_ENTREGABLE}","{AUDIENCIA}","{SECCIONES}","{INPUTS}"], badge:"Meta" },
+      { cat:"metaprompt", title:"Generador de Recovery", desc:"Prompt para rescatar/pivotar discovery en curso. Preserva entregables v\u00e1lidos, redirige faltantes al nuevo objetivo.", cmd:null, prompt:"Discovery en curso necesita intervenci\u00f3n estrat\u00e9gica.\n\nEstado actual: {ESTADO} (estancado, desviado, pivoteando)\nEntregables completados: {ENTREGABLES_OK}\nFaltantes: {ENTREGABLES_FALTANTES}\nProblema: {PROBLEMA}\nRestricci\u00f3n: {DEADLINE}\n\nGenerar prompt de recovery que:\n1. Diagnostique si entregables existentes son reutilizables\n2. Triage prioridades dado {DEADLINE}\n3. Proponga ruta cr\u00edtica para completar\n4. Mantenga consistencia con entregables existentes\n5. Documente el pivot (qu\u00e9 cambi\u00f3, por qu\u00e9, impacto)\n\nFormato: prompt compacto tipo spec, <15 l\u00edneas, params al final.", params:["{ESTADO}","{ENTREGABLES_OK}","{ENTREGABLES_FALTANTES}","{PROBLEMA}"], badge:"Meta" },
+      { cat:"metaprompt", title:"Generador Multi-Discovery", desc:"Coordinar discoveries paralelos. Sinergias cross-proyecto, dependencias ocultas, portfolio view consolidado.", cmd:null, prompt:"Coordinar discoveries paralelos para un portafolio de proyectos.\n\nProyectos: {LISTA_PROYECTOS}\nTipo de servicio dominante: {TIPO_SERVICIO}\nRecursos compartidos: {RECURSOS}\nTimeline: {TIMELINE}\n\nGenerar prompt que:\n1. Ejecute discoveries individuales en paralelo\n2. Identifique sinergias cross-proyecto\n3. Detecte dependencias ocultas entre proyectos\n4. Consolide en portfolio view (executive summary + heat map)\n5. Proponga secuenciaci\u00f3n de ejecuci\u00f3n post-discovery\n\nFormato: prompt compacto tipo spec, <15 l\u00edneas, params al final.", params:["{LISTA_PROYECTOS}","{TIPO_SERVICIO}","{RECURSOS}","{TIMELINE}"], badge:"Meta" },
+      { cat:"metaprompt", title:"Generador por Service Type", desc:"Prompt con priming profundo del dominio, m\u00e9tricas especializadas y comit\u00e9 ajustado al tipo de servicio.", cmd:null, prompt:"Prompt de discovery especializado para servicio {TIPO_SERVICIO}.\n\nContexto: {CONTEXTO} (industria, tama\u00f1o, madurez, dolor principal)\nAssessment requerido: {ASSESSMENT}\nEntregables esperados: {ENTREGABLES}\n\nGenerar prompt que:\n1. Active service discovery con priming-RAG de {TIPO_SERVICIO}\n2. Configure comit\u00e9 con roles relevantes al dominio\n3. Ajuste m\u00e9tricas (DORA para Cloud, OWASP para Security, etc.)\n4. Priorice {ENTREGABLES} en el pipeline\n5. Incluya vocabulario y marcos del dominio\n\nFormato: prompt compacto tipo spec, <15 l\u00edneas, params al final.", params:["{TIPO_SERVICIO}","{CONTEXTO}","{ASSESSMENT}","{ENTREGABLES}"], badge:"Meta" },
+    ];
+
+    const CAT_LABELS = {
+      flujo: "Flujos de Pipeline",
+      entregable: "Entregables del Discovery (00-14)",
+      assessment: "Assessments Especializados",
+      operacion: "Operaciones",
+      service: "Service Discovery",
+      metaprompt: "Metaprompts (Generadores)"
+    };
+
+    function escapeHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function render() {
+      const container = document.getElementById('promptsContainer');
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const cat = document.getElementById('categoryFilter').value;
+
+      const filtered = ALL_PROMPTS.filter(p => {
+        const matchCat = cat === 'all' || p.cat === cat;
+        const matchSearch = !q || (p.title + ' ' + p.desc + ' ' + p.prompt + ' ' + (p.cmd || '')).toLowerCase().includes(q);
+        return matchCat && matchSearch;
+      });
+
+      document.getElementById('countBadge').textContent = filtered.length + ' prompts disponibles';
+      document.getElementById('filterCount').textContent = filtered.length + ' resultados';
+
+      // Group by category
+      const groups = {};
+      filtered.forEach(p => {
+        if (!groups[p.cat]) groups[p.cat] = [];
+        groups[p.cat].push(p);
+      });
+
+      container.innerHTML = '';
+      const catOrder = ['flujo','entregable','assessment','operacion','service','metaprompt'];
+      catOrder.forEach(catKey => {
+        if (!groups[catKey]) return;
+        const section = document.createElement('div');
+        section.className = 'category-section';
+        section.innerHTML = `<h2 class="category-title">${CAT_LABELS[catKey]}</h2>`;
+        const grid = document.createElement('div');
+        grid.className = 'prompt-grid';
+        groups[catKey].forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'prompt-card';
+          card.innerHTML = `
+            <div class="prompt-card-header">
+              <span class="prompt-card-title">${p.title}</span>
+              <span class="prompt-card-badge">${p.badge}</span>
+            </div>
+            <div class="prompt-card-desc">${p.desc}</div>
+            <div class="prompt-card-code">${escapeHtml(p.prompt)}</div>
+            <div class="prompt-card-params">${p.params.map(pa => '<span class="param-chip">'+pa+'</span>').join('')}</div>
+            <div class="prompt-card-actions">
+              <span class="prompt-card-cmd">${p.cmd || 'metaprompt'}</span>
+              <button class="btn-copy" onclick="copyText(this, \`${p.prompt.replace(/`/g,'\\`').replace(/\\/g,'\\\\')}\`)">Copiar</button>
+            </div>`;
+          grid.appendChild(card);
+        });
+        section.appendChild(grid);
+        container.appendChild(section);
+      });
+
+      if (!filtered.length) {
+        container.innerHTML = '<p style="text-align:center;color:var(--text-tertiary);padding:4rem;">No se encontraron prompts.</p>';
+      }
+    }
+
+    function copyText(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiado';
+        setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
+      });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', render);
+    document.getElementById('categoryFilter').addEventListener('change', render);
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+[
+  {
+    "id": "closure-report-eval-001",
+    "title": "Full closure report — on-time, on-budget project",
+    "description": "Generate a complete closure report for a project that finished on schedule and within budget, verifying that all four agents produce comprehensive outputs.",
+    "input": {
+      "project_name": "ERP Migration — Phase 2",
+      "status": "completed",
+      "schedule_variance": "0 days",
+      "budget_variance": "-2%",
+      "scope_completion": "100%",
+      "deliverables_accepted": "24/24",
+      "active_contracts": 3,
+      "team_size": 18,
+      "duration_months": 9,
+      "context": "All deliverables accepted by steering committee. Three vendor contracts (infrastructure, QA tooling, data migration) all fulfilled. Operations team onboarded via 4-week shadowing. No open risks or issues."
+    },
+    "expected_outputs": {
+      "deliverable_acceptance_audit": "Complete acceptance matrix showing 24/24 deliverables accepted with sign-off references and zero remediation items.",
+      "performance_summary": "SPI and CPI both near 1.0, scope at 100%, quality KPIs met. Minimal variance analysis required. Positive trend narrative.",
+      "contract_closure": "All 3 contracts closed with completion certificates, final invoices reconciled, vendor performance scorecards rated satisfactory or above.",
+      "knowledge_transfer": "Handoff package delivered, operations team sign-off obtained, lessons learned captured including factors that contributed to on-time delivery."
+    },
+    "evaluation_criteria": [
+      "All four agent outputs are present and complete",
+      "Performance metrics accurately reflect on-time, on-budget status",
+      "Acceptance matrix shows 100% acceptance with no gaps",
+      "Contract closure matrix shows all contracts formally closed",
+      "Knowledge transfer plan includes validation evidence",
+      "Lessons learned capture positive practices for replication"
+    ]
+  },
+  {
+    "id": "closure-report-eval-002",
+    "title": "Closure for descoped project — partial delivery",
+    "description": "Generate a closure report for a project that was descoped mid-execution due to budget constraints, resulting in partial delivery of originally committed scope.",
+    "input": {
+      "project_name": "Customer Portal Modernization",
+      "status": "completed-partial",
+      "schedule_variance": "+14 days (re-baselined after descope)",
+      "budget_variance": "-18% (savings from descoped items)",
+      "scope_completion": "68%",
+      "deliverables_accepted": "17/25",
+      "deliverables_descoped": 8,
+      "active_contracts": 5,
+      "team_size": 22,
+      "duration_months": 12,
+      "context": "At month 7, steering committee approved CR-041 removing the mobile app module and advanced analytics dashboard due to budget reallocation. 8 deliverables formally descoped. 2 vendor contracts required amendment. Remaining 17 deliverables accepted. Operations handoff complicated by reduced functionality requiring updated documentation."
+    },
+    "expected_outputs": {
+      "deliverable_acceptance_audit": "Matrix showing 17/25 accepted, 8 explicitly marked as descoped with CR-041 reference. Zero items in ambiguous state.",
+      "performance_summary": "Pre-descope and post-descope baselines compared. CPI favorable due to savings. SPI shows delay before re-baseline. Variance analysis explains descope decision and its cascading effects.",
+      "contract_closure": "3 contracts closed normally, 2 contracts amended and closed with revised scope. Financial reconciliation reflects contract value adjustments.",
+      "knowledge_transfer": "Handoff documentation reflects delivered (reduced) scope. Explicit documentation of what was NOT delivered and why, to prevent operational confusion."
+    },
+    "evaluation_criteria": [
+      "Descoped items are explicitly tracked, not silently omitted",
+      "Change request CR-041 is referenced as the authorizing artifact",
+      "Performance metrics show both original and re-baselined comparisons",
+      "Contract amendments are documented with financial impact",
+      "Knowledge transfer materials accurately reflect reduced scope",
+      "Report clearly communicates what remains undelivered for future planning"
+    ]
+  },
+  {
+    "id": "closure-report-eval-003",
+    "title": "Closure for cancelled project — proper documentation",
+    "description": "Generate a closure report for a project that was cancelled at 40% completion due to a strategic pivot, ensuring all administrative, financial, and contractual obligations are properly documented and closed.",
+    "input": {
+      "project_name": "Legacy Warehouse Management Replacement",
+      "status": "cancelled",
+      "cancellation_reason": "Strategic pivot to SaaS acquisition model — build decision reversed by CTO",
+      "schedule_progress": "40% (Phase 1 of 3 complete, Phase 2 in progress)",
+      "budget_spent": "USD 1.2M of USD 3.1M approved",
+      "deliverables_accepted": "6/32",
+      "deliverables_in_progress": 9,
+      "active_contracts": 4,
+      "team_size": 15,
+      "duration_months": "6 of planned 18",
+      "context": "CTO decision memo dated 2026-01-15 cancels the project effective 2026-02-01. Two vendors have early termination clauses; two do not and require negotiation. 9 deliverables in progress have partial work products. Architecture and design artifacts from Phase 1 have reuse value for the SaaS evaluation."
+    },
+    "expected_outputs": {
+      "deliverable_acceptance_audit": "6 accepted, 9 in-progress with partial work product inventory, 17 not started. All work products cataloged for potential reuse.",
+      "performance_summary": "Performance at cancellation point: metrics through 40% completion. Sunk cost analysis. Salvageable asset inventory with estimated reuse value.",
+      "contract_closure": "2 contracts closed via early termination clause, 2 contracts requiring negotiated exit with estimated settlement costs. Financial exposure summary.",
+      "knowledge_transfer": "Capture of Phase 1 architecture decisions and design artifacts for SaaS evaluation team. Lessons learned focused on build-vs-buy decision factors."
+    },
+    "evaluation_criteria": [
+      "Cancellation is treated as a formal closure event, not an abandonment",
+      "CTO decision memo is referenced as the authorizing artifact",
+      "In-progress work products are inventoried with reuse potential assessed",
+      "Contracts without early termination clauses are flagged with financial exposure",
+      "Sunk cost is calculated and reported without judgment",
+      "Knowledge transfer focuses on preserving reusable assets and informing the SaaS evaluation"
+    ]
+  },
+  {
+    "id": "closure-report-eval-004",
+    "title": "Agile project closure with benefits realization tracking setup",
+    "description": "Generate a closure report for an Agile project delivered iteratively, including setup of post-project benefits realization tracking to measure whether intended business outcomes are achieved.",
+    "input": {
+      "project_name": "AI-Powered Claims Processing Platform",
+      "status": "completed",
+      "methodology": "SAFe (Scaled Agile Framework)",
+      "program_increments_completed": 5,
+      "total_stories_delivered": 287,
+      "total_stories_planned": 302,
+      "stories_deprioritized": 15,
+      "velocity_average": "58 points/sprint",
+      "schedule_variance": "On-time (5 PIs as planned)",
+      "budget_variance": "+4%",
+      "active_contracts": 2,
+      "team_size": 35,
+      "duration_months": 15,
+      "expected_benefits": [
+        "40% reduction in claims processing time within 6 months",
+        "25% reduction in manual review workload within 3 months",
+        "15% improvement in claims accuracy within 12 months",
+        "Net cost savings of USD 2.8M annually by month 18"
+      ],
+      "context": "Delivered via 5 Program Increments with quarterly inspect-and-adapt cycles. 15 low-priority stories deprioritized by Product Owner and deferred to BAU backlog. All epics and capabilities completed. Two vendor contracts (AI/ML platform license, cloud infrastructure). Benefits realization requires post-project measurement plan with defined KPIs, data sources, measurement frequency, and accountable owners."
+    },
+    "expected_outputs": {
+      "deliverable_acceptance_audit": "Capability-level acceptance (not story-level) mapped to epic completion. 287/302 stories delivered; 15 deferred to BAU backlog with Product Owner acknowledgment.",
+      "performance_summary": "Agile metrics: velocity trends, PI predictability scores, defect rates, story completion ratios. Budget variance of +4% explained. Scope managed through backlog prioritization rather than formal change requests.",
+      "contract_closure": "AI/ML platform license transitioned to operational subscription. Cloud infrastructure contract closed with handoff to FinOps team.",
+      "knowledge_transfer": "Benefits Realization Tracking Plan with KPI definitions, baseline measurements, target values, data sources, measurement schedule, and accountable business owners for each benefit. Operational handoff for BAU backlog management."
+    },
+    "evaluation_criteria": [
+      "Agile metrics are used instead of traditional EVM where appropriate",
+      "Story-level tracking is aggregated to capability or epic level for closure",
+      "Deprioritized stories are tracked as backlog deferrals, not scope failures",
+      "Benefits realization plan includes measurable KPIs with baselines and targets",
+      "Each benefit has an accountable owner and measurement schedule defined",
+      "Contract closure addresses subscription and operational cost transitions",
+      "Knowledge transfer includes BAU backlog handoff to product management"
+    ]
+  }
+]

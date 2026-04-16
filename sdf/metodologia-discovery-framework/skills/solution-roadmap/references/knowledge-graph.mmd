@@ -1,0 +1,112 @@
+```mermaid
+graph TD
+    ROADMAP["Solution Roadmap\n(Transformation Blueprint)"]
+
+    %% Cinco fases
+    PH1["Phase 1: Foundation\n(3-4 months)"]
+    PH2["Phase 2: Build\n(6-8 months)"]
+    PH3["Phase 3: Integrate\n(4-6 months)"]
+    PH4["Phase 4: Optimize\n(4-6 months)"]
+    PH5["Phase 5: Scale\n(6-12 months)"]
+
+    %% Mecanismos de control
+    GATE["Go / No-Go Gates\n(Phase Gates)"]
+    KILL["Kill Criteria\n(Hard & Soft Stops)"]
+    PIVOT["Estimation Pivot Points\n(PoC Validation)"]
+    MONTE["Monte Carlo\n(P10 / P50 / P90)"]
+    CONE["Cone of Uncertainty\n(±15–25% ranges)"]
+
+    %% Inversión y financiamiento
+    TCO["3-Year TCO\nProjection"]
+    ROI["ROI Modeling\n(Break-even Timeline)"]
+    PHASEDFUND["Phased Funding\nRelease Points"]
+    BUDGET["Budget Range\n(Under 2M → Over 10M)"]
+
+    %% Equipo y capacidades
+    TEAM["Team Ramp-Up\n(Month-by-Month)"]
+    SKILLS["Skill Gap\nAnalysis"]
+    TOPOLOGY["Team Topology\n(Inverse Conway's Law)"]
+    KT["Knowledge Transfer\nMilestones"]
+
+    %% Gestión de riesgos
+    RISK["Risk Management\n(Timeline by Phase)"]
+    CASCADE["Cascade Failure\nChains"]
+    EARLYWARNING["Early Warning\nIndicators (G/Y/R)"]
+    CHANGE["Change Management\nTrack"]
+
+    %% Gobernanza
+    GOVERN["Governance Plan"]
+    STEERING["Steering Committee\n(Quarterly)"]
+    ARCH_FORUM["Technical Architecture\nForum"]
+    CHANGECONTROL["Change Control\n(3-Tier Process)"]
+    RACI["RACI Matrix"]
+
+    %% Supuestos y visión
+    VISION["Transformation Vision\n(North Star)"]
+    SCENARIO["Approved Scenario\n(Input)"]
+    ASSUMPTIONS["Key Assumptions\n(5+ documented)"]
+    METRICS["Success Metrics\n(18M & 36M targets)"]
+
+    %% Edges — estructura del roadmap
+    ROADMAP --> VISION
+    ROADMAP --> PH1
+    ROADMAP --> TCO
+    ROADMAP --> TEAM
+    ROADMAP --> PIVOT
+    ROADMAP --> RISK
+    ROADMAP --> GOVERN
+
+    VISION --> SCENARIO
+    VISION --> METRICS
+
+    PH1 --> PH2
+    PH2 --> PH3
+    PH3 --> PH4
+    PH4 --> PH5
+
+    PH1 --> GATE
+    PH2 --> GATE
+    PH3 --> GATE
+    GATE --> KILL
+
+    %% Inversión
+    TCO --> ROI
+    TCO --> PHASEDFUND
+    TCO --> BUDGET
+    PHASEDFUND --> GATE
+
+    %% Estimación
+    PIVOT --> MONTE
+    PIVOT --> CONE
+    PIVOT --> ASSUMPTIONS
+    ASSUMPTIONS --> GATE
+
+    %% Equipo
+    TEAM --> SKILLS
+    TEAM --> TOPOLOGY
+    TEAM --> KT
+    SKILLS --> CHANGE
+
+    %% Riesgos
+    RISK --> CASCADE
+    RISK --> EARLYWARNING
+    RISK --> KILL
+
+    %% Gobernanza
+    GOVERN --> STEERING
+    GOVERN --> ARCH_FORUM
+    GOVERN --> CHANGECONTROL
+    GOVERN --> RACI
+    STEERING --> GATE
+
+    %% Classes
+    classDef core fill:#FF7E08,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+    classDef phase fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef control fill:#1A1A2E,stroke:#FF7E08,color:#FFFFFF
+    classDef invest fill:#2E4057,stroke:#FF7E08,color:#FFFFFF
+
+    class ROADMAP,VISION,GOVERN,RISK,PIVOT core
+    class PH1,PH2,PH3,PH4,PH5 phase
+    class GATE,KILL,MONTE,CONE,EARLYWARNING,CASCADE,KILL control
+    class TCO,ROI,PHASEDFUND,BUDGET,TEAM,SKILLS,TOPOLOGY,KT invest
+```

@@ -1,0 +1,45 @@
+%% Knowledge Graph — Project Charter
+graph TB
+    subgraph Inputs
+        BRIEF[Project Brief<br/>External input]
+        STRATEGY[Organizational OKRs<br/>Strategic context]
+        STAKE_ID[Stakeholder identification<br/>Sponsor + key players]
+    end
+
+    subgraph "Project Charter (This Skill)"
+        ANALYZE[Analyze Request<br/>Extract need]
+        OBJECTIVES[Define Objectives<br/>SMART format]
+        BUSINESS[Build Business Case<br/>Strategic justification]
+        CHARTER[Compile Charter<br/>Formal document]
+    end
+
+    subgraph Downstream
+        STAKE_REG[stakeholder-register<br/>Phase 1]
+        SCOPE[scope-wbs<br/>Phase 2]
+        ASSUME[assumption-log<br/>Phase 0]
+        RISK[risk-register<br/>Phase 3]
+        STEERING[steering-review<br/>Gate G1]
+    end
+
+    subgraph Agents
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+        SCOPE_ANALYST[scope-analyst<br/>L2 Core]
+    end
+
+    BRIEF --> ANALYZE
+    STRATEGY --> BUSINESS
+    STAKE_ID --> CHARTER
+
+    ANALYZE --> OBJECTIVES --> BUSINESS --> CHARTER
+
+    CHARTER --> STAKE_REG
+    CHARTER --> SCOPE
+    CHARTER --> ASSUME
+    CHARTER --> RISK
+    CHARTER --> STEERING
+
+    CONDUCTOR -.->|orchestrates| CHARTER
+    SCOPE_ANALYST -.->|validates scope| CHARTER
+
+    style CHARTER fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

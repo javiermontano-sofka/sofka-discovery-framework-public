@@ -1,0 +1,52 @@
+%% Knowledge Graph — Team Topology Design
+%% Shows skill dependencies, data flows, and agent relationships
+
+graph TB
+    subgraph Inputs
+        ORG[organizational-structure<br/>Current teams]
+        ARCH[architecture-assessment<br/>System architecture]
+        VALUE[value-streams<br/>Business domains]
+        CAPACITY[capacity-planning<br/>Resource data]
+    end
+
+    subgraph "Team Topology Design (This Skill)"
+        VALUE_MAP[Value Stream Mapping<br/>Delivery flows]
+        CLASSIFY[Team Classification<br/>4 team types]
+        INTERACT[Interaction Design<br/>3 modes]
+        COGNITIVE[Cognitive Load<br/>Assessment]
+    end
+
+    subgraph Downstream
+        SPOTIFY[spotify-model<br/>Cultural layer]
+        CEREMONY[ceremony-design<br/>Team cadences]
+        PERF[team-performance<br/>Health tracking]
+        RISK[risk-register<br/>Team risks]
+        STEERING[steering-review<br/>Go/No-Go]
+    end
+
+    subgraph Agents
+        ORG_DESIGNER[org-designer<br/>L2 Specialist]
+        ARCH_LEAD[architecture-lead<br/>L2 Specialist]
+        CONDUCTOR[project-conductor<br/>L1 Triad]
+    end
+
+    ORG --> VALUE_MAP
+    ARCH --> CLASSIFY
+    VALUE --> VALUE_MAP
+    CAPACITY --> COGNITIVE
+
+    VALUE_MAP --> CLASSIFY --> INTERACT --> COGNITIVE
+
+    COGNITIVE --> SPOTIFY
+    CLASSIFY --> CEREMONY
+    COGNITIVE --> PERF
+    INTERACT --> RISK
+    COGNITIVE --> STEERING
+
+    ORG_DESIGNER -.->|executes| CLASSIFY
+    ARCH_LEAD -.->|validates| INTERACT
+    CONDUCTOR -.->|orchestrates| COGNITIVE
+
+    style COGNITIVE fill:#2563EB,color:#fff,stroke:#1d4ed8
+    style ORG_DESIGNER fill:#F59E0B,color:#0F172A,stroke:#d97706
+    style CONDUCTOR fill:#F59E0B,color:#0F172A,stroke:#d97706

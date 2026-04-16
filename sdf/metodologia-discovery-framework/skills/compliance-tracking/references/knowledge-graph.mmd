@@ -1,0 +1,22 @@
+graph TD
+    subgraph Inputs
+        A[Regulatory Requirements] --> D
+        B[Contract Terms] --> D
+        C[Org Policies] --> D
+    end
+    subgraph "Compliance Tracking Process"
+        D[Requirement Mapping]:::skill --> E[Monitoring Setup]:::skill
+        E --> F[Status Assessment]:::skill
+        F --> G[Remediation Tracking]:::skill
+    end
+    subgraph Agents
+        H[Compliance Agent]:::agent --> E
+        I[Audit Agent]:::agent --> F
+    end
+    subgraph Downstream
+        G --> J[Executive Dashboard]
+        G --> K[Risk Register]
+        G --> L[Closure Report]
+    end
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

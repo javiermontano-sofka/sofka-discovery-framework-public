@@ -1,0 +1,77 @@
+{
+  "skill_name": "scaffold-nextjs-app",
+  "version": "2.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "Full-stack SaaS scaffold with auth and database",
+      "prompt": "Scaffold a Next.js 15 SaaS app with App Router route groups, Auth.js v5 GitHub OAuth, Drizzle ORM + Neon PostgreSQL, Server Actions, middleware protection, and Vercel deployment.",
+      "expected_output": "Complete scaffold with auth config, middleware, drizzle schema, server actions, next.config.ts, and Playwright auth tests",
+      "assertions": [
+        {"text": "Output includes middleware.ts protecting /dashboard routes", "type": "contains"},
+        {"text": "Output includes auth.config.ts as edge-compatible (no DB adapter)", "type": "contains"},
+        {"text": "Output includes drizzle schema with users and accounts tables", "type": "contains"},
+        {"text": "Output includes Server Action with Zod validation before DB operation", "type": "contains"},
+        {"text": "Output includes next.config.ts with output: 'standalone'", "type": "contains"},
+        {"text": "Output includes security headers in next.config.ts", "type": "contains"},
+        {"text": "Output includes src/env.ts with split server/client Zod schemas", "type": "contains"},
+        {"text": "Output uses App Router route groups (auth), (dashboard), (marketing)", "type": "contains"},
+        {"text": "Output does NOT use Pages Router (getServerSideProps, pages/ directory)", "type": "not_contains"},
+        {"text": "Output includes Playwright test for unauthenticated redirect", "type": "contains"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Server vs Client Component boundary decisions",
+      "prompt": "This page has a static sidebar nav, a real-time counter updated via WebSocket, a data table that fetches from the database, and a theme toggle button. Which components should be Server Components and which should be Client Components?",
+      "expected_output": "Component boundary analysis with Server/Client classification and rationale for each component",
+      "assertions": [
+        {"text": "Sidebar nav classified as Server Component", "type": "contains"},
+        {"text": "Real-time counter classified as Client Component", "type": "contains"},
+        {"text": "Data table fetching from DB classified as Server Component", "type": "contains"},
+        {"text": "Theme toggle classified as Client Component", "type": "contains"},
+        {"text": "Output provides rationale for each classification", "type": "contains"},
+        {"text": "Output does NOT recommend use client on layout files", "type": "not_contains"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Pages Router to App Router migration plan",
+      "prompt": "Plan migration of 8 pages using getServerSideProps and a custom _app.tsx with Redux + QueryClient providers to Next.js App Router. Team needs incremental migration with zero downtime.",
+      "expected_output": "Phased migration plan with getServerSideProps patterns, provider migration, and useRouter replacement guide",
+      "assertions": [
+        {"text": "Output confirms pages/ and app/ can coexist during migration", "type": "contains"},
+        {"text": "Output maps getServerSideProps to Server Components pattern", "type": "contains"},
+        {"text": "Output documents useRouter from next/router → next/navigation migration", "type": "contains"},
+        {"text": "Output explains how to move providers from _app.tsx to app/layout.tsx", "type": "contains"},
+        {"text": "Output provides a migration order (lower risk pages first)", "type": "contains"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Security audit of Next.js scaffold",
+      "prompt": "Audit this Next.js project: no security headers, AUTH_SECRET is 8 characters, NEXT_PUBLIC_DATABASE_URL exposes DB credentials, Server Action has no input validation, output is not standalone.",
+      "expected_output": "Security audit with [FAIL] items for each vulnerability and specific fixes",
+      "assertions": [
+        {"text": "Output flags AUTH_SECRET length as [FAIL]", "type": "contains"},
+        {"text": "Output flags NEXT_PUBLIC_DATABASE_URL as [FAIL] — secrets must not be NEXT_PUBLIC_", "type": "contains"},
+        {"text": "Output flags missing Server Action Zod validation as [FAIL]", "type": "contains"},
+        {"text": "Output flags missing security headers as [WARN] or [FAIL]", "type": "contains"},
+        {"text": "Output provides specific fix for each [FAIL] item", "type": "contains"}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Partial Pre-rendering with streaming",
+      "prompt": "Design a product page using Next.js 15 PPR: static shell with product name and images served from CDN instantly, dynamic inventory count and recommended products streamed from server.",
+      "expected_output": "PPR-designed page with Suspense boundaries, loading skeletons, and explanation of static vs dynamic parts",
+      "assertions": [
+        {"text": "Output uses Suspense to wrap dynamic inventory section", "type": "contains"},
+        {"text": "Output uses Suspense to wrap recommended products section", "type": "contains"},
+        {"text": "Output explains that static shell (name, images) is served from CDN", "type": "contains"},
+        {"text": "Output includes loading.tsx or inline fallback skeleton", "type": "contains"},
+        {"text": "Output references experimental ppr: true in next.config.ts", "type": "contains"}
+      ]
+    }
+  ]
+}

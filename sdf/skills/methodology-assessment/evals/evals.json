@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "We are starting a 24-month ERP implementation with a fixed-price contract, 3 vendor teams across 2 time zones, and strict SOX compliance requirements. Which methodology should we use?",
+    "assertions": [
+      "Must analyze context factors including contract type, compliance, team distribution, and project duration",
+      "Must evaluate multiple methodology candidates against the identified context factors",
+      "Must address SOX compliance as a constraint that influences documentation and governance requirements",
+      "Must provide a scored recommendation with trade-offs rather than a single unsupported opinion"
+    ]
+  },
+  {
+    "prompt": "Our startup wants to evaluate whether Scrum is still the right methodology. We have grown from 2 to 8 teams, our product is now mission-critical for enterprise clients, and we face increasing regulatory pressure.",
+    "assertions": [
+      "Must assess how the changed context factors affect Scrum fitness at the new scale",
+      "Must evaluate scaled frameworks and hybrid alternatives alongside continuing with Scrum",
+      "Must identify adoption risks for transitioning away from Scrum",
+      "Must recommend methodology tailoring options that address scale and regulatory needs"
+    ]
+  },
+  {
+    "prompt": "Assess methodology fitness for a research and development project with high uncertainty, a small co-located team of experts, no regulatory constraints, and an exploratory timeline.",
+    "assertions": [
+      "Must classify the project in the complex or chaotic Cynefin domain given high uncertainty",
+      "Must favor adaptive methodologies that handle uncertainty well in the fitness scoring",
+      "Must recognize the small co-located expert team as favoring lightweight processes",
+      "Must recommend a methodology that maximizes learning and pivoting capability"
+    ]
+  },
+  {
+    "prompt": "We chose SAFe but need to tailor it for our organization. We only have 2 ARTs, no portfolio level, and our teams resist the ceremony overhead. How should we tailor?",
+    "assertions": [
+      "Must distinguish between negotiable SAFe practices and non-negotiable core principles",
+      "Must address ceremony overhead concerns with specific simplification recommendations",
+      "Must evaluate whether Essential SAFe is sufficient for 2 ARTs without portfolio practices",
+      "Must document tailoring rationale and establish review cadence for tailoring decisions"
+    ]
+  }
+]

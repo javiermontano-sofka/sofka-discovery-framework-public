@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Quantify the cost of delay for our mobile banking app launch. We estimate $500K monthly revenue once launched, a competitor is launching in 4 months, and we have a regulatory deadline in 6 months.",
+    "assertions": [
+      "Must calculate monthly revenue loss from delayed launch using the $500K figure",
+      "Must model the competitive impact of the competitor launching first in 4 months",
+      "Must factor in the regulatory deadline as a hard cost-of-delay threshold at 6 months",
+      "Must classify the urgency profile considering both the competitive window and regulatory cliff"
+    ]
+  },
+  {
+    "prompt": "Calculate WSJF scores for these 5 features: payment processing, reporting dashboard, user onboarding, API integration, and mobile notifications. We need to decide the development sequence.",
+    "assertions": [
+      "Must score all 5 features across user-business value, time criticality, and risk reduction dimensions",
+      "Must estimate relative job duration for each feature using consistent sizing",
+      "Must calculate WSJF as cost of delay divided by job duration for each feature",
+      "Must produce a prioritized sequence with rationale for the recommended order"
+    ]
+  },
+  {
+    "prompt": "Our platform migration is 3 months delayed. Six other projects depend on it completing. Model the total downstream impact of this delay across the portfolio.",
+    "assertions": [
+      "Must map all 6 dependent projects and their specific dependency on the platform migration",
+      "Must model how the 3-month delay cascades through the dependency chain",
+      "Must quantify both direct costs and downstream opportunity costs of the accumulated delay",
+      "Must produce an acceleration business case showing the ROI of investing to reduce the delay"
+    ]
+  },
+  {
+    "prompt": "Prioritize our backlog of 15 items by urgency. Some have regulatory deadlines, others are competitive responses, and some are internal improvements with no external pressure.",
+    "assertions": [
+      "Must classify each item into urgency archetypes (standard, urgent, fixed-date, intangible)",
+      "Must map cost of delay curves showing different decay patterns for each archetype",
+      "Must identify items with hard deadlines as highest priority regardless of other scores",
+      "Must recommend a delivery sequence that minimizes total portfolio cost of delay"
+    ]
+  }
+]

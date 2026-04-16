@@ -1,0 +1,6 @@
+[
+  {"prompt":"Create contingency plans for top 5 risks in a critical infrastructure project.","assertions":["designs trigger conditions with measurable thresholds","builds detailed fallback plans with resource requirements","calculates contingency reserves using risk-based methods","includes pre-positioned resources needed before activation"]},
+  {"prompt":"Calculate contingency reserve using EMV and Monte Carlo methods for 20 quantified risks.","assertions":["calculates EMV-based reserve by summing probability x impact","compares with Monte Carlo-derived confidence gap","recommends reserve amount with method justification","documents assumptions and limitations"]},
+  {"prompt":"Key vendor fails to deliver 3 weeks before milestone. Activate contingency.","assertions":["validates trigger conditions are met","activates pre-defined fallback plan","assesses schedule and cost impact","communicates activation to stakeholders"]},
+  {"prompt":"Design a tabletop exercise to test the data breach contingency plan.","assertions":["creates realistic scenario with timed injects","defines participant roles and evaluation criteria","identifies key decision points","plans after-action review"]}
+]

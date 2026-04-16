@@ -1,0 +1,146 @@
+%% Knowledge Graph — Observability Architecture
+%% Dominio: Observabilidad — logging, tracing, metrics, alerting, SLO/SLI, incident response, OpenTelemetry
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    subgraph SKILL["observability"]
+        direction TB
+        PR["Principio Rector:<br/>Si no se puede observar,<br/>no se puede operar"]
+        FW["Framework: 6 Secciones"]
+        VG["Validation Gate: 10 criterios"]
+    end
+
+    subgraph INPUTS["Inputs"]
+        SYSTEM["Sistema/Plataforma<br/>($ARGUMENTS)"]
+        CONFIGS["Configs existentes<br/>(YAML, Docker, Terraform)"]
+        OTEL["OTel Collector Configs<br/>(otel-*.yaml)"]
+        SLAS["SLAs de negocio<br/>(disponibilidad, latencia)"]
+    end
+
+    subgraph PILLARS["Tres Pilares"]
+        LOGS["Logs<br/>Structured JSON, correlation IDs"]
+        METRICS["Métricas<br/>RED, USE, histograms"]
+        TRACES["Traces<br/>Distributed tracing, spans"]
+    end
+
+    subgraph SECTIONS["6-Section Delivery"]
+        S1["S1: Observability Strategy<br/>OTel adoption, collector topology, sampling"]
+        S2["S2: Logging Architecture<br/>Structured logs, aggregation, retention"]
+        S3["S3: Distributed Tracing<br/>Propagation, span design, exemplars"]
+        S4["S4: Metrics & Dashboards<br/>RED/USE, naming, cardinality, hierarchy"]
+        S5["S5: Alerting Framework<br/>SLO-based, burn rate, runbooks"]
+        S6["S6: Incident Response<br/>On-call, classification, post-mortem"]
+    end
+
+    subgraph OTELSTACK["OpenTelemetry"]
+        OTEL_SDK["OTel SDK<br/>Auto-instrumentation"]
+        OTEL_COLLECTOR["OTel Collector<br/>Agent + Gateway"]
+        OTLP["OTLP Protocol<br/>Vendor-agnostic export"]
+        SAMPLING["Sampling Strategies<br/>Head, tail, hybrid"]
+    end
+
+    subgraph SLOS["SLOs / SLIs"]
+        SLI["SLIs<br/>Latency, availability, throughput"]
+        SLO["SLOs<br/>Targets (99.9%, p99 < 200ms)"]
+        ERRBUDGET["Error Budget<br/>Burn rate windows"]
+        BURNRATE["Burn Rate Alerting<br/>14.4x/6x/1x multi-window"]
+    end
+
+    subgraph DASHBOARDS["Dashboard Hierarchy"]
+        EXEC["Executive<br/>SLO status, error budget"]
+        SERVICE["Service<br/>RED metrics, dependencies"]
+        COMPONENT["Component<br/>USE metrics, GC, pools"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        A01["A-01 Observability<br/>Architecture"]
+        OTELCFG["OTel Collector Config<br/>(agent + gateway)"]
+        GRAFANA["Grafana Dashboard<br/>JSON/Jsonnet"]
+        ALERTRULES["Burn Rate Alert<br/>Rules"]
+        RUNBOOKS["Runbook Templates"]
+    end
+
+    subgraph STANDARDS["Standards & Frameworks"]
+        GOOGLE_SRE["Google SRE Book<br/>(SLO/SLI, error budgets)"]
+        OTEL_SPEC["OpenTelemetry Spec<br/>(CNCF graduated)"]
+        W3C["W3C Trace Context<br/>(propagation standard)"]
+        DORA["DORA Metrics<br/>(deployment frequency)"]
+    end
+
+    subgraph CONSUMERS["Skills Dependientes"]
+        INFRA["infrastructure-architecture<br/>(usa S4/S5 como input)"]
+        DEVSEC["devsecops-architecture<br/>(usa S5 para alerting)"]
+        PERF["performance-engineering<br/>(usa S3/S4 como input)"]
+        QUALITY["quality-engineering<br/>(usa S1 como baseline)"]
+    end
+
+    subgraph AGENTS["Agentes"]
+        QE["quality-engineer<br/>(owner)"]
+        DE["devops-engineer<br/>(support)"]
+        PE["platform-engineer<br/>(support: S1)"]
+        TL["technical-lead<br/>(support: S2/S3)"]
+    end
+
+    %% Primary flows
+    INPUTS -->|contextualizan| SKILL
+    SKILL -->|estructura| SECTIONS
+    PILLARS -->|fundamentan| SECTIONS
+    SECTIONS -->|producen| OUTPUTS
+    STANDARDS -.->|fundamentan| SECTIONS
+    OUTPUTS -->|alimentan| CONSUMERS
+
+    %% Pillar to section mapping
+    LOGS -.->|fundamenta| S2
+    METRICS -.->|fundamenta| S4
+    TRACES -.->|fundamenta| S3
+
+    %% OTel flows
+    OTELSTACK -.->|instrumenta| PILLARS
+    OTEL_SDK -->|envía a| OTEL_COLLECTOR
+    OTEL_COLLECTOR -->|exporta via| OTLP
+    SAMPLING -.->|controla volumen| OTEL_COLLECTOR
+
+    %% SLO flows
+    SLOS -.->|fundamentan| S5
+    SLI -->|define target| SLO
+    SLO -->|calcula| ERRBUDGET
+    ERRBUDGET -->|genera| BURNRATE
+
+    %% Dashboard flows
+    DASHBOARDS -.->|visualizan| S4
+    S3 -.->|exemplars conectan| S4
+
+    %% Internal traceability
+    S1 -.->|strategy drives| S2
+    S1 -.->|topology enables| S3
+    S3 -.->|exemplars link to| S4
+    S4 -.->|metrics trigger| S5
+    S5 -.->|alerts feed| S6
+    S6 -.->|post-mortem improves| S1
+
+    %% Agent relationships
+    QE -->|opera| SKILL
+    DE -.->|consulta S5, S6| SKILL
+    PE -.->|aporta S1| S1
+    TL -.->|aporta S2, S3| S2
+
+    %% Styling
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,stroke-width:2px
+    classDef input fill:#E8F5E9,stroke:#2E7D32,color:#1A1A2E
+    classDef section fill:#FFF3E0,stroke:#FF7E08,color:#1A1A2E
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,stroke-width:2px
+    classDef standard fill:#E3F2FD,stroke:#1565C0,color:#1A1A2E
+    classDef consumer fill:#F3E5F5,stroke:#7B1FA2,color:#1A1A2E
+    classDef agent fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef pillar fill:#FFCCBC,stroke:#E64A19,color:#1A1A2E
+
+    class SKILL skill
+    class SYSTEM,CONFIGS,OTEL,SLAS input
+    class S1,S2,S3,S4,S5,S6 section
+    class A01,OTELCFG,GRAFANA,ALERTRULES,RUNBOOKS output
+    class GOOGLE_SRE,OTEL_SPEC,W3C,DORA standard
+    class INFRA,DEVSEC,PERF,QUALITY consumer
+    class QE,DE,PE,TL agent
+    class LOGS,METRICS,TRACES,OTEL_SDK,OTEL_COLLECTOR,OTLP,SAMPLING pillar
+    class SLI,SLO,ERRBUDGET,BURNRATE section
+    class EXEC,SERVICE,COMPONENT section

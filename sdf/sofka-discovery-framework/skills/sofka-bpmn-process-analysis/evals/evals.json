@@ -1,0 +1,47 @@
+{
+  "skill_name": "sofka-bpmn-process-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Necesito documentar el proceso AS-IS de facturacion mensual en Sofka. Actualmente hay +1000 empleados, el proceso involucra recoger timesheets de Awards, validar datos manualmente en Excel (ASIGNACION_DALE, ASIGNACION_SURA, ASIGNACION_PICHINCHA, etc.), calcular montos, generar factura. Hay mucho retrabajo. Dame el BPMN completo con pain points.",
+      "expected_output": "Diagrama BPMN del ciclo de facturacion AS-IS con pools (Employee, PM, Finance, System), pain points clasificados (bottleneck en validacion manual, data quality en Excel, key person dependency en CTC), metricas baseline, y RACI per step.",
+      "files": [],
+      "expectations": [
+        "Diagrama BPMN con pools/lanes correctos y notacion BPMN 2.0",
+        "Pain points clasificados por categoria (bottleneck, manual workaround, data quality, dependency)",
+        "RACI asignado por step",
+        "Identifica que ASIGNACION_* son Excel por cuenta (DALE, SURA, PICHINCHA)",
+        "Metricas baseline (cycle time, rework rate, automation rate actual ~15%)",
+        "Menciona la meta de automatizacion TO-BE (~72%)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Tengo 4 variantes de servicio en una empresa IT (T&M fijo 180h, horas variables USD, precio fijo por hitos, y bench sin facturacion). Necesito modelar cada una como flujo BPMN separado, no como excepciones. Incluir donde SAP entra en cada flujo y donde hay gaps con el estandar.",
+      "expected_output": "4 flujos BPMN distintos (Dale T&M, Ecuador, Fix Price, Talent Zone) con alineacion SAP por step. Gap analysis por variante usando scoring model (effort x risk x upgrade impact x business value). Fix Price marcado como roto y post-MVP.",
+      "files": [],
+      "expectations": [
+        "4 variantes modeladas como flujos INDEPENDIENTES, no como un flujo con excepciones",
+        "Cada variante tiene SAP module mapping (CO, SD, PS, FI-RA)",
+        "Fix Price identificado como roto (hitos forzados a horas ficticias)",
+        "Talent Zone como cost-only (Internal Orders, sin SD)",
+        "Gap classification usando scoring model (Effort + Risk + Upgrade Impact - Business Value)",
+        "Referencia a sofka-sap-implementation para config SAP detallada"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Quiero evaluar la madurez de nuestros procesos operativos (timesheet, facturacion, staffing, revenue recognition, intercompany) y calcular el ROI de automatizar la validacion de timesheets que hoy hacen 2 personas manuales 4 horas por semana.",
+      "expected_output": "Assessment de madurez por proceso (Level 1-5), target levels, gaps. ROI de automatizacion: cost manual anual vs desarrollo vs mantenimiento vs savings. Template aplicable a otros pasos.",
+      "files": [],
+      "expectations": [
+        "Maturity assessment con 5 niveles para al menos 5 procesos",
+        "Cada proceso tiene current level, target level, gap, y prioridad",
+        "ROI calculado con formula explicita (Annual Manual Cost, Dev Cost, Maintenance, Savings, Payback)",
+        "Ejemplo numerico concreto con cifras en COP",
+        "Template reusable para otros candidatos de automatizacion",
+        "Referencia a metricas HENKA: automatizacion 15% -> 72%"
+      ]
+    }
+  ]
+}

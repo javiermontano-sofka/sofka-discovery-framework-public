@@ -1,0 +1,124 @@
+graph TD
+    %% ─── NÚCLEO ───────────────────────────────────────────────────────────────
+    devSecOps["DevSecOps Architecture"]
+
+    %% ─── PILAR 1: CI/CD PIPELINE ──────────────────────────────────────────────
+    cicd["CI/CD Pipeline\nArchitecture"]
+    commitStage["Commit Stage\n5-10 min"]
+    buildStage["Build Stage\n5 min"]
+    acceptanceStage["Acceptance Testing\n10-30 min"]
+    productionDeploy["Production Deploy"]
+    artifactMgmt["Artifact Management\nSemVer + Immutable"]
+    envPromotion["Promoción de\nEntornos Dev→Prod"]
+
+    %% ─── PILAR 2: SHIFT-LEFT SECURITY ────────────────────────────────────────
+    shiftLeft["Shift-Left Security"]
+    sastPipeline["SAST\n(SonarQube, Semgrep)"]
+    scaPipeline["SCA\n(Snyk, Dependabot)"]
+    containerScan["Container Scanning\n(Trivy, Aqua)"]
+    dastPipeline["DAST\n(ZAP, Burp Suite)"]
+    secretsScanning["Secrets Scanning\n(GitGuardian, TruffleHog)"]
+    iacScanning["IaC Scanning\n(Checkov, TFLint)"]
+
+    %% ─── PILAR 3: SUPPLY CHAIN ────────────────────────────────────────────────
+    supplyChain["Supply Chain Security"]
+    sbom["SBOM\n(SPDX / CycloneDX)"]
+    artifactSigning["Artifact Signing\n(cosign / Sigstore)"]
+    dependencyVerif["Dependency Verification\nChecksum + Provenance"]
+    buildReprod["Build Reproducibility"]
+    slsaLevels["SLSA Levels 1→3"]
+
+    %% ─── PILAR 4: RELEASE MANAGEMENT ─────────────────────────────────────────
+    releaseMgmt["Release Management"]
+    blueGreen["Blue-Green Deploy\nInstant rollback"]
+    canaryDeploy["Canary Deploy\n5%→25%→100%"]
+    featureFlags["Feature Flags\n(LaunchDarkly, Unleash)"]
+    hotfixProcess["Hotfix Process\nEmergency branch"]
+
+    %% ─── PILAR 5: OBSERVABILIDAD / DORA ──────────────────────────────────────
+    observability["Pipeline Observability\n& DORA Metrics"]
+    deployFreq["Deployment Frequency\nTarget: on-demand"]
+    leadTime["Lead Time\nTarget: < 1 hora"]
+    changeFailRate["Change Failure Rate\nTarget: < 15%"]
+    mttr["MTTR\nTarget: < 1 hora"]
+
+    %% ─── PILAR 6: COMPLIANCE AUTOMATION ──────────────────────────────────────
+    complianceAuto["Compliance Automation"]
+    policyAsCode["Policy-as-Code\n(OPA, Kyverno, Sentinel)"]
+    auditTrail["Audit Trail\nImmutable + Signed"]
+    evidenceCollection["Evidence Collection\nVuln scans + Approvals"]
+    complianceDashboard["Compliance Dashboard\nRAG por aplicación"]
+
+    %% ─── PILAR 7: MINIMUM CONTROLS ────────────────────────────────────────────
+    minimumControls["Minimum Controls\n& Risk Matrix"]
+    riskLow["Risk: Low\nAutomated gates only"]
+    riskMedium["Risk: Medium\nTech lead approval"]
+    riskHigh["Risk: High\nCAB + Security review"]
+
+    %% ─── RELACIONES ───────────────────────────────────────────────────────────
+    devSecOps --> cicd
+    devSecOps --> shiftLeft
+    devSecOps --> supplyChain
+    devSecOps --> releaseMgmt
+    devSecOps --> observability
+    devSecOps --> complianceAuto
+    devSecOps --> minimumControls
+
+    cicd --> commitStage
+    cicd --> buildStage
+    cicd --> acceptanceStage
+    cicd --> productionDeploy
+    cicd --> artifactMgmt
+    cicd --> envPromotion
+
+    shiftLeft --> sastPipeline
+    shiftLeft --> scaPipeline
+    shiftLeft --> containerScan
+    shiftLeft --> dastPipeline
+    shiftLeft --> secretsScanning
+    shiftLeft --> iacScanning
+
+    supplyChain --> sbom
+    supplyChain --> artifactSigning
+    supplyChain --> dependencyVerif
+    supplyChain --> buildReprod
+    supplyChain --> slsaLevels
+
+    releaseMgmt --> blueGreen
+    releaseMgmt --> canaryDeploy
+    releaseMgmt --> featureFlags
+    releaseMgmt --> hotfixProcess
+
+    observability --> deployFreq
+    observability --> leadTime
+    observability --> changeFailRate
+    observability --> mttr
+
+    complianceAuto --> policyAsCode
+    complianceAuto --> auditTrail
+    complianceAuto --> evidenceCollection
+    complianceAuto --> complianceDashboard
+
+    minimumControls --> riskLow
+    minimumControls --> riskMedium
+    minimumControls --> riskHigh
+
+    %% ─── CROSS-LINKS ──────────────────────────────────────────────────────────
+    commitStage --> secretsScanning
+    buildStage --> containerScan
+    buildStage --> artifactSigning
+    acceptanceStage --> dastPipeline
+    scaPipeline --> sbom
+    slsaLevels --> buildReprod
+    complianceAuto --> auditTrail
+
+    %% ─── ESTILOS ──────────────────────────────────────────────────────────────
+    classDef core fill:#FF7E08,stroke:#C05A00,color:#fff,font-weight:bold
+    classDef pilar fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef control fill:#2D2D44,stroke:#6B7280,color:#E5E7EB
+    classDef metric fill:#3D1A00,stroke:#FF7E08,color:#FFD700
+
+    class devSecOps core
+    class cicd,shiftLeft,supplyChain,releaseMgmt,observability,complianceAuto,minimumControls pilar
+    class commitStage,buildStage,acceptanceStage,productionDeploy,artifactMgmt,envPromotion,sastPipeline,scaPipeline,containerScan,dastPipeline,secretsScanning,iacScanning,sbom,artifactSigning,dependencyVerif,buildReprod,slsaLevels,blueGreen,canaryDeploy,featureFlags,hotfixProcess,policyAsCode,auditTrail,evidenceCollection,complianceDashboard,riskLow,riskMedium,riskHigh control
+    class deployFreq,leadTime,changeFailRate,mttr metric

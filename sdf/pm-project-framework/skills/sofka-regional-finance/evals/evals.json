@@ -1,0 +1,46 @@
+{
+  "skill_name": "sofka-regional-finance",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Necesito calcular el CTC completo de un desarrollador senior en Ecuador que gana USD 2,500 base, y compararlo con su equivalente en Colombia que gana COP 6,000,000. Incluye todos los componentes legales y no salariales. Necesito el cost rate por hora para ambos.",
+      "expected_output": "CTC Ecuador (~USD 3,517, cost rate ~USD 22/hr) vs CTC Colombia (~COP 9,632,000, cost rate ~COP 58,376/hr). Desglose de componentes legales por pais. Conversion a hora productiva con horas tipicas por pais.",
+      "files": [],
+      "expectations": [
+        "CTC Ecuador desglosado: IESS 11.15%, XIII sueldo, XIV sueldo, Fondos Reserva, Utilidades",
+        "CTC Colombia desglosado: Salud 8.5%, Pension 12%, ARL, prestaciones, cesantias",
+        "Hourly rate conversion con horas productivas distintas por pais",
+        "Menciona que Ecuador es dollarizado (sin riesgo cambiario para contratos USD)",
+        "Compara payroll factors (~32% EC vs ~49.7% CO)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Sofka tiene un recurso en Colombia trabajando para un cliente en Ecuador. El CTC del recurso es COP 9,632,000/mes. Necesito disenar el esquema intercompany: como factura CO a EC, que markup aplica, como se maneja el tipo de cambio, y que retenciones aplican en ambas direcciones.",
+      "expected_output": "Escenario CO->EC completo: IC Price = CTC x 1.08 (Cost-Plus 8%), conversion COP->USD a tasa del dia (NIC 21), withholding matrix bidireccional, referencia CAN Decision 578, IC clearing accounts.",
+      "files": [],
+      "expectations": [
+        "Aplica Cost-Plus 8% sobre CTC como TP method",
+        "Conversion FX a tasa de transaccion per NIC 21",
+        "Menciona withholding en ambas direcciones (ReteFuente CO, retencion EC)",
+        "Referencia CAN Decision 578 para doble tributacion",
+        "Incluye IC clearing account design o referencia",
+        "Justifica el 8% dentro del rango OECD-defensible (5-12%)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Estamos eliminando la 'Tarifa Purina' en Sofka. Necesito la tabla de los 8 Activity Types con Cost Rate (basado en CTC) y Sales Price (tarifa cliente) para poder ver el margen real por recurso. Explica como se carga esto en SAP.",
+      "expected_output": "Tabla 8 Activity Types (AT-01 Architect a AT-08 Junior Newbie) con rangos de Cost Rate y Sales Rate en COP. Explicacion de Manage Cost Rates vs Manage Sales Prices en SAP CO. Margen automatico via CO-PA.",
+      "files": [],
+      "expectations": [
+        "Tabla completa de 8 ATs con Cost Rate y Sales Rate ranges",
+        "Explica Layer 1 (CTC->Cost Rate) y Layer 2 (Sales Price) y Layer 3 (margen automatico)",
+        "Referencia a SAP apps: Manage Cost Rates y Manage Sales Prices",
+        "Menciona que rol funcional (DevOps, QA) NO es dimension de AT",
+        "Identifica validez temporal (+1.9% indexacion anual)",
+        "Menciona GAP-02 como prerequisito"
+      ]
+    }
+  ]
+}

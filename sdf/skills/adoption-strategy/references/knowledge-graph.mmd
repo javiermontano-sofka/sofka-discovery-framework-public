@@ -1,0 +1,97 @@
+%% Knowledge Graph — adoption-strategy
+%% Autor: Javier Montaño | Última actualización: 13 de marzo de 2026
+
+graph LR
+    SKILL["🚀 adoption-strategy"]
+
+    %% Inputs
+    IN_READINESS["📥 Readiness Assessment"]
+    IN_ROADMAP["📥 Solution Roadmap"]
+    IN_STAKEHOLDER["📥 Stakeholder Map"]
+    IN_CHANNELS["📥 Communication Channels"]
+
+    %% 8-Section Framework
+    S1["S1: Adoption Context & Goals"]
+    S2["S2: Rollout Strategy"]
+    S3["S3: Communication Plan"]
+    S4["S4: Training Curriculum"]
+    S5["S5: Resistance Management"]
+    S6["S6: Champion Network"]
+    S7["S7: Reinforcement Mechanisms"]
+    S8["S8: Adoption KPIs"]
+
+    %% Standards
+    STD_ROGERS["📚 Diffusion of Innovations"]
+    STD_MOORE["📚 Crossing the Chasm"]
+    STD_PROSCI["📚 Prosci CM"]
+    STD_KIRK["📚 Kirkpatrick Eval"]
+    STD_NUDGE["📚 Nudge Theory"]
+    STD_TAM["📚 Technology Acceptance Model"]
+
+    %% Outputs
+    OUT_STRATEGY["📤 Adoption Strategy"]
+    OUT_COMMS["📤 Communication Calendar"]
+    OUT_TRAINING["📤 Training Curriculum"]
+    OUT_DASHBOARD["📤 Adoption Dashboard Spec"]
+
+    %% Consumers
+    CON_PITCH["🎯 pitch-ejecutivo"]
+    CON_HANDOVER["🎯 handover-operaciones"]
+    CON_ROADMAP["🎯 solution-roadmap"]
+
+    %% Agents
+    AGT_CHANGE["🤖 change-catalyst"]
+    AGT_DELIVERY["🤖 delivery-manager"]
+    AGT_UX["🤖 ux-strategist"]
+
+    %% Input → Skill
+    IN_READINESS -->|"ADKAR scores + resistance"| SKILL
+    IN_ROADMAP -->|"phases + timeline"| SKILL
+    IN_STAKEHOLDER -->|"grupos afectados"| SKILL
+    IN_CHANNELS -->|"canales disponibles"| SKILL
+
+    %% Skill → Sections
+    SKILL -->|"define contexto"| S1
+    S1 -->|"goals → phases"| S2
+    S2 -->|"phases → timing"| S3
+    S2 -->|"phases → schedule"| S4
+    S3 -->|"messaging → resistance"| S5
+    S4 -->|"training → champions"| S6
+    S5 -->|"unresolved → reinforce"| S7
+    S7 -->|"sustain → measure"| S8
+    S1 -->|"goals → KPIs"| S8
+
+    %% Standards → Sections
+    STD_ROGERS -->|"adoption curve"| S2
+    STD_MOORE -->|"chasm crossing"| S2
+    STD_PROSCI -->|"ADKAR messaging"| S3
+    STD_KIRK -->|"4-level evaluation"| S4
+    STD_NUDGE -->|"choice architecture"| S5
+    STD_TAM -->|"perceived usefulness"| S3
+
+    %% Sections → Outputs
+    S1 -->|"genera"| OUT_STRATEGY
+    S3 -->|"genera"| OUT_COMMS
+    S4 -->|"genera"| OUT_TRAINING
+    S8 -->|"especifica"| OUT_DASHBOARD
+
+    %% Outputs → Consumers
+    OUT_STRATEGY -->|"business case"| CON_PITCH
+    OUT_STRATEGY -->|"transition plan"| CON_HANDOVER
+    OUT_DASHBOARD -->|"adoption risk"| CON_ROADMAP
+
+    %% Agents
+    AGT_CHANGE -->|"lidera"| SKILL
+    AGT_DELIVERY -->|"soporta"| SKILL
+    AGT_UX -->|"soporta"| SKILL
+
+    %% Styles
+    classDef skill fill:#FF7E08,stroke:#1A1A2E,color:#fff,font-weight:bold
+    classDef standard fill:#1A1A2E,stroke:#FF7E08,color:#FFD700
+    classDef section fill:#2D2D4E,stroke:#FF7E08,color:#fff
+    classDef output fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E,font-weight:bold
+
+    class SKILL skill
+    class STD_ROGERS,STD_MOORE,STD_PROSCI,STD_KIRK,STD_NUDGE,STD_TAM standard
+    class S1,S2,S3,S4,S5,S6,S7,S8 section
+    class OUT_STRATEGY,OUT_COMMS,OUT_TRAINING,OUT_DASHBOARD output

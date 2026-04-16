@@ -1,0 +1,78 @@
+flowchart TD
+    subgraph Inputs["Entradas"]
+        A1[Dashboard Design Specs]
+        A2[Data Source APIs]
+        A3[Refresh Requirements]
+        A4[Alert Thresholds]
+        A5[Access Control Matrix]
+    end
+
+    subgraph Process["Dashboard Tooling"]
+        B1[Data Source Mapping]
+        B2[Feed Configuration]
+        B3[Transformation Rules]
+        B4[Widget Selection]
+        B5[Alert Configuration]
+        B6[Access Control Setup]
+        B7[Testing & Validation]
+    end
+
+    subgraph Outputs["Salidas"]
+        C1[Configured Data Feeds]
+        C2[Alert Rule Set]
+        C3[Refresh Schedule]
+        C4[Access Permissions]
+        C5[Maintenance Plan]
+        C6[Feed Health Monitor]
+    end
+
+    subgraph Downstream["Downstream"]
+        D1[Executive Dashboard]
+        D2[Portfolio Dashboard]
+        D3[Status Reports]
+    end
+
+    subgraph Agents["Agentes"]
+        E1[Dashboard Architect]
+        E2[Data Integration Specialist]
+    end
+
+    A1 --> B1
+    A2 --> B2
+    A3 --> B2
+    A4 --> B5
+    A5 --> B6
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 --> B7
+    B7 --> C1
+    B7 --> C2
+    B7 --> C3
+    B7 --> C4
+    B7 --> C5
+    B7 --> C6
+    C1 --> D1
+    C1 --> D2
+    C2 --> D3
+
+    E1 --> B4
+    E2 --> B2
+
+    style B1 fill:#2563EB,color:#fff
+    style B2 fill:#2563EB,color:#fff
+    style B3 fill:#2563EB,color:#fff
+    style B4 fill:#2563EB,color:#fff
+    style B5 fill:#2563EB,color:#fff
+    style B6 fill:#2563EB,color:#fff
+    style B7 fill:#2563EB,color:#fff
+    style C1 fill:#F59E0B,color:#000
+    style C2 fill:#F59E0B,color:#000
+    style C3 fill:#F59E0B,color:#000
+    style C4 fill:#F59E0B,color:#000
+    style C5 fill:#F59E0B,color:#000
+    style C6 fill:#F59E0B,color:#000
+    style E1 fill:#0F172A,color:#fff
+    style E2 fill:#0F172A,color:#fff

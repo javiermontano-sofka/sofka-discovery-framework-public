@@ -1,0 +1,26 @@
+{
+  "name": "sdf",
+  "version": "12.0.0",
+  "description": "Sofka SAGE v12.0 — Agentic PreSales as Service. Living ontology (CLAUDE.md hub + 12 sub-files), UX commands (menu palette, advance, demo), canonical Bancoomeva token set, 3-brand orchestration. 48 agentes, 100 skills MOAT (Modernization-Oriented Acceleration Technology), 96 comandos, 42 prompts NL-HP, 4 quality gates, Think Tank de 7 Sabios. Zero-hallucination protocol. Evidence tagging obligatorio. NUNCA precios — solo FTE-meses.",
+  "author": {
+    "name": "Javier Montaño · Equipo PreSales Sofka",
+    "url": "https://sofka.com.co"
+  },
+  "homepage": "https://sofka.com.co",
+  "repository": "https://github.com/sofka-technologies/discovery-framework",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "sage", "agentic-presales", "discovery", "consulting", "architecture",
+    "zero-hallucination", "rag-priming", "ghost-menu", "session-changelog",
+    "evidence-tagging", "expert-committee", "orchestration",
+    "NL-HP", "checkpoint-model", "quality-gates", "markdown-excellence",
+    "think-tank", "seven-sages", "feasibility",
+    "universal-services", "service-type-routing",
+    "rpa", "qa-as-a-service", "ai-center", "cloud-readiness",
+    "digital-transformation", "staff-augmentation", "management",
+    "bi-analytics", "ux-design", "mentoring-training", "mini-apps",
+    "priming-rag", "knowledge-base", "hypothesis-driven-development",
+    "technology-vigilance", "productivity-model",
+    "design-system", "sofka-brand", "html-generation"
+  ]
+}

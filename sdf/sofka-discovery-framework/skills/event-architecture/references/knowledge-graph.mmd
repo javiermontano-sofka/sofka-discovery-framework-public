@@ -1,0 +1,102 @@
+graph TD
+    %% ─── Nucleo ───────────────────────────────────────────────────────────────
+    eventArch["Event Architecture\n(Disciplina)"]
+
+    %% ─── INPUTS ──────────────────────────────────────────────────────────────
+    subgraph INPUTS["Inputs"]
+        systemContext["Contexto del Sistema\n(servicios, dominios)"]
+        brokerConfig["Configuracion Broker\n(Kafka, RabbitMQ, Pulsar)"]
+        eventDefs["Definiciones de Eventos\n(schemas, specs existentes)"]
+    end
+
+    %% ─── S1: Event Catalog ───────────────────────────────────────────────────
+    subgraph CATALOG["S1: Event Catalog & Taxonomy"]
+        eventNaming["Naming Convention\nDomain.Entity.Action"]
+        eventTypes["Tipos de Evento\nDomain / Integration / System"]
+        cloudEvents["CloudEvents 1.0\n(Envelope CNCF)"]
+        granularity["Granularidad\nThin / Fat / Delta"]
+    end
+
+    %% ─── S4-S5: CQRS & Event Sourcing ───────────────────────────────────────
+    subgraph CQRS_ES["S5: CQRS & Event Sourcing"]
+        commandSide["Command Side\n(Aggregates, Validation)"]
+        querySide["Query Side\n(Projections, Views)"]
+        eventStore["Event Store\n(EventStoreDB, Kafka, PG)"]
+        snapshots["Snapshots\n(cada N eventos)"]
+    end
+
+    %% ─── S4: Consistency Patterns ────────────────────────────────────────────
+    subgraph SAGAS["S4: Consistency Patterns"]
+        orchestration["Saga Orchestration\n(4+ servicios, central)"]
+        choreography["Saga Choreography\n(2-3 servicios, distribuida)"]
+        outboxPattern["Outbox Pattern\n(DB tx + event relay)"]
+        idempotency["Idempotency\n(dedup keys, inbox pattern)"]
+    end
+
+    %% ─── OUTPUTS ─────────────────────────────────────────────────────────────
+    subgraph OUTPUTS["Outputs"]
+        catalogArtifact["Event Catalog\nDocumentado"]
+        sagaDiagrams["Diagramas de Saga\n(sequence, state)"]
+        operationalRunbook["Runbook Operacional\n(DLQ, replay, scaling)"]
+    end
+
+    %% ─── STANDARDS ───────────────────────────────────────────────────────────
+    subgraph STANDARDS["Estandares & Registros"]
+        schemaRegistry["Schema Registry\n(Confluent, Glue, Apicurio)"]
+        compatModes["Modos de Compatibilidad\nBackward / Forward / Full"]
+        asyncApiSpec["AsyncAPI 3.0\n(Spec Event-Driven)"]
+    end
+
+    %% ─── CONSUMERS (S6 Ops) ──────────────────────────────────────────────────
+    subgraph CONSUMERS["S6: Operational Excellence"]
+        consumerLag["Consumer Lag Monitoring\n(warning: 1K, critical: 10K)"]
+        deadLetterTopic["Dead Letter Topics\n(retry + categorize + replay)"]
+        eventReplay["Event Replay\n(selective, isolated)"]
+    end
+
+    %% ─── AGENTS ──────────────────────────────────────────────────────────────
+    subgraph AGENTS["Agentes del Comite"]
+        middleIntDev["middle-integrations\n-developer"]
+        backendDev["backend-developer"]
+        platformEng["platform-engineer"]
+        dataArch["data-architect"]
+    end
+
+    %% ─── Relaciones ──────────────────────────────────────────────────────────
+    eventArch --> INPUTS
+    eventArch --> CATALOG
+    eventArch --> CQRS_ES
+    eventArch --> SAGAS
+    eventArch --> STANDARDS
+    eventArch --> CONSUMERS
+    eventArch --> OUTPUTS
+
+    INPUTS --> CATALOG
+    CATALOG --> STANDARDS
+    CATALOG --> SAGAS
+    STANDARDS --> CQRS_ES
+    SAGAS --> CONSUMERS
+    CQRS_ES --> CONSUMERS
+    CONSUMERS --> OUTPUTS
+    CATALOG --> OUTPUTS
+
+    schemaRegistry --> compatModes
+    outboxPattern --> idempotency
+    commandSide --> eventStore
+    eventStore --> snapshots
+    eventStore --> querySide
+    consumerLag --> deadLetterTopic
+    deadLetterTopic --> eventReplay
+
+    AGENTS -.-> eventArch
+
+    %% ─── Estilos Visuales ────────────────────────────────────────────────────
+    classDef core fill:#FF7E08,stroke:#CC6500,color:#fff,font-weight:bold
+    classDef group fill:#1A1A2E,stroke:#FF7E08,color:#fff,font-weight:bold
+    classDef technical fill:#2D3748,stroke:#718096,color:#E2E8F0
+    classDef output fill:#744210,stroke:#F6AD55,color:#FED7AA
+
+    class eventArch core
+    class INPUTS,CATALOG,CQRS_ES,SAGAS,STANDARDS,CONSUMERS,AGENTS group
+    class systemContext,brokerConfig,eventDefs,eventNaming,eventTypes,cloudEvents,granularity,commandSide,querySide,eventStore,snapshots,orchestration,choreography,outboxPattern,idempotency,schemaRegistry,compatModes,asyncApiSpec,consumerLag,deadLetterTopic,eventReplay,middleIntDev,backendDev,platformEng,dataArch technical
+    class catalogArtifact,sagaDiagrams,operationalRunbook output

@@ -1,0 +1,28 @@
+graph TD
+    subgraph Inputs
+        A[Project Context] --> D
+        B[PM Knowledge Base] --> D
+        C[Stakeholder Requests] --> D
+    end
+
+    subgraph "AI PM Assistant Process"
+        D[Intent Classification]:::skill --> E[Context Retrieval RAG]:::skill
+        E --> F[Response Generation]:::skill
+        F --> G[Quality Validation]:::skill
+    end
+
+    subgraph Agents
+        H[Orchestrator Agent]:::agent --> D
+        I[Knowledge Agent]:::agent --> E
+        J[Quality Agent]:::agent --> G
+    end
+
+    subgraph Downstream
+        G --> K[Status Reports]
+        G --> L[Risk Alerts]
+        G --> M[Stakeholder Comms]
+        G --> N[Decision Support]
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#fff
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#000

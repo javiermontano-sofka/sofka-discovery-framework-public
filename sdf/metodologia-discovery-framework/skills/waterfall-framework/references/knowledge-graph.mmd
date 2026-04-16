@@ -1,0 +1,27 @@
+graph LR
+    subgraph Inputs
+        A[Waterfall Assessment<br/>Maturity Gaps] --> D
+        B[Organizational Standards<br/>PMO Policies] --> D
+        C[Project Portfolio<br/>Types & Sizes] --> D
+    end
+    subgraph "Waterfall Framework"
+        D[Template Design<br/>& Gate Architecture] --> E[Process Group<br/>Standardization]
+        E --> F[EVM Baseline<br/>& Change Control]
+        F --> G[Rollout &<br/>Training Plan]
+    end
+    subgraph Outputs
+        G --> H[PMO Governance]
+        G --> I[Project Managers]
+        F --> J[Steering Review]
+        G --> K[Schedule Baseline]
+    end
+    subgraph Agents
+        L[Framework Designer Agent] --> E
+        M[Governance Advisor Agent] --> G
+    end
+    style D fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style E fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style F fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style G fill:#2563EB,stroke:#1E40AF,color:#FFFFFF
+    style L fill:#F59E0B,stroke:#D97706,color:#0F172A
+    style M fill:#F59E0B,stroke:#D97706,color:#0F172A

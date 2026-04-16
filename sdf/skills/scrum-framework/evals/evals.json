@@ -1,0 +1,63 @@
+[
+  {
+    "id": "scrum-new-team-implementation",
+    "title": "Design Scrum implementation for a new 7-person team",
+    "prompt": "We are forming a brand-new cross-functional team of 7 people (3 backend devs, 2 frontend devs, 1 QA engineer, 1 UX designer) to build a customer-facing mobile banking app. None of them have worked together before, and only 2 have prior Scrum experience. Design a complete Scrum implementation: sprint structure, ceremony schedule, Definition of Done, and initial backlog framework. The first release is expected in 3 months.",
+    "expected_agents": ["sprint-mechanics-designer", "backlog-architect", "velocity-calibrator"],
+    "evaluation_criteria": [
+      "Recommends 2-week sprints with justification for a new team",
+      "Provides a ceremony calendar with specific timeboxes",
+      "Defines DoD at task, story, and sprint levels",
+      "Uses capacity-based forecasting since team has no historical velocity",
+      "Includes a ramp-up plan for the first 2-3 sprints with adjusted expectations",
+      "Establishes a backlog hierarchy starting from product vision to epics",
+      "Addresses onboarding risk for team members new to Scrum"
+    ]
+  },
+  {
+    "id": "scrum-velocity-decline-diagnosis",
+    "title": "Diagnose why a Scrum team's velocity is declining over 4 sprints",
+    "prompt": "Our established Scrum team (running for 18 months) has seen velocity drop from 42 to 38 to 31 to 25 story points over the last 4 sprints. Team composition hasn't changed. The Product Owner says the work complexity is similar. Sprint commitments are being missed, and the team seems disengaged during ceremonies. Diagnose the likely causes and recommend a recovery plan.",
+    "expected_agents": ["velocity-calibrator", "scrum-anti-pattern-detector"],
+    "evaluation_criteria": [
+      "Performs variance analysis showing the decline exceeds normal fluctuation",
+      "Investigates multiple root cause hypotheses beyond just 'the team is slow'",
+      "Checks for estimate inflation as a possible masking factor",
+      "Identifies potential anti-patterns: zombie Scrum, ceremony fatigue, technical debt accumulation",
+      "Correlates velocity decline with engagement signals from ceremonies",
+      "Recommends specific diagnostic steps before jumping to solutions",
+      "Proposes a phased recovery plan with measurable milestones over 3-4 sprints"
+    ]
+  },
+  {
+    "id": "scrum-backlog-structure-15-epics",
+    "title": "Set up backlog structure for a product with 15 epics",
+    "prompt": "We have a new enterprise SaaS product with 15 epics identified from our discovery phase: User Management, Role-Based Access Control, Dashboard Analytics, Report Builder, Data Import/Export, Notification Engine, Billing & Subscriptions, API Gateway, Audit Trail, Multi-Tenancy, Workflow Automation, Document Management, Search & Filtering, Integrations Marketplace, and White-Label Configuration. Structure the backlog with proper hierarchy, prioritization, and refinement zones. The team runs 2-week sprints and has a velocity of ~35 story points.",
+    "expected_agents": ["backlog-architect", "velocity-calibrator"],
+    "evaluation_criteria": [
+      "Decomposes at least 3 epics into feature and story levels as examples",
+      "Applies a prioritization framework (WSJF or MoSCoW) with visible scoring",
+      "Organizes backlog into Sprint-Ready, Near-Term, and Strategic zones",
+      "Provides acceptance criteria examples in Given-When-Then format",
+      "Identifies dependencies between epics that affect sequencing",
+      "Uses velocity baseline to project rough timeline for top-priority epics",
+      "Includes a Definition of Ready checklist for story promotion"
+    ]
+  },
+  {
+    "id": "scrum-anti-pattern-unpredictable-delivery",
+    "title": "Detect anti-patterns in a team that 'does Scrum' but delivers unpredictably",
+    "prompt": "Our team claims to follow Scrum but delivery is unpredictable: sprints rarely finish all committed work, the Product Owner attends only Sprint Planning and is unreachable otherwise, Daily Standups run 30+ minutes with deep technical discussions, the team hasn't changed their Definition of Done in a year, retrospective action items are tracked but never completed, and stakeholders stopped attending Sprint Reviews because 'nothing is ever demo-ready.' Identify the anti-patterns and create a remediation plan.",
+    "expected_agents": ["scrum-anti-pattern-detector", "sprint-mechanics-designer"],
+    "evaluation_criteria": [
+      "Identifies at least 5 distinct anti-patterns from the scenario description",
+      "Classifies each anti-pattern by severity and blast radius",
+      "Diagnoses absent Product Owner as a critical organizational anti-pattern",
+      "Flags Daily Standup dysfunction with specific corrective timebox enforcement",
+      "Connects stale Definition of Done to unpredictable delivery",
+      "Links unfinished retrospective actions to continuous improvement failure",
+      "Proposes maximum 3 prioritized interventions to avoid change fatigue",
+      "Includes measurable success criteria for each intervention"
+    ]
+  }
+]

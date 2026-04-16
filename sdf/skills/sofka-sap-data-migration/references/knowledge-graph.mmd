@@ -1,0 +1,55 @@
+graph TB
+    subgraph Strategy["Migration Strategy"]
+        S1[Strangler Fig<br/>Incremental]
+        S2[Wave Planning<br/>4 Waves]
+    end
+
+    subgraph Quality["Data Quality"]
+        Q1[Profile<br/>6 Dimensions]
+        Q2[Cleanse<br/>Fix Before Load]
+        Q3[Validate<br/>vs Source]
+    end
+
+    subgraph Tools["SAP Tools"]
+        T1[Migration Cockpit<br/>Templates]
+        T2[Master Data Governance<br/>MDG]
+    end
+
+    subgraph Execution["Migration Execution"]
+        E1[Wave 0: Foundation<br/>Org + CoA]
+        E2[Wave 1: Master Data<br/>CC + AT + BP]
+        E3[Wave 2: Config<br/>WBS + Pricing]
+        E4[Wave 3: Transactions<br/>AR/AP + SO]
+        E5[Wave 4: History<br/>Archive]
+    end
+
+    subgraph Validation["Cutover & Validation"]
+        V1[Rehearsal 1<br/>Dry Run + Timing]
+        V2[Rehearsal 2<br/>Go-Live Team]
+        V3[Parallel Run<br/>1-2 Periods]
+        V4[Go/No-Go<br/>Steering Decision]
+    end
+
+    S1 --> S2
+    S2 --> E1
+    Q1 --> Q2 --> Q3
+    Q3 --> T1
+
+    T1 --> E1
+    T2 --> E2
+
+    E1 --> E2 --> E3 --> E4 --> E5
+
+    E5 --> V1 --> V2 --> V3 --> V4
+
+    classDef strategy fill:#FF7E08,color:white
+    classDef quality fill:#FFD700,color:#1A1A2E
+    classDef tool fill:#EFEAE4,color:#1A1A2E
+    classDef exec fill:#1A1A2E,color:white
+    classDef valid fill:#FF7E08,color:white
+
+    class S1,S2 strategy
+    class Q1,Q2,Q3 quality
+    class T1,T2 tool
+    class E1,E2,E3,E4,E5 exec
+    class V1,V2,V3,V4 valid

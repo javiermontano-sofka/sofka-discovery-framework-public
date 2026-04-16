@@ -1,0 +1,28 @@
+graph LR
+    subgraph Inputs
+        A[hybrid-methodology] --> F
+        B[ceremony-design] --> F
+        C[definition-of-done] --> F
+        D[dashboard-tooling] --> F
+    end
+
+    subgraph Process
+        F[jira-configuration<br/>Configure Jira for<br/>Project Methodology]:::skill
+        F --> G[Design Workflows]
+        G --> H[Configure Boards & Fields]
+        H --> I[Setup Automation & Reports]
+    end
+
+    subgraph Outputs
+        I --> J[kanban-system]
+        I --> K[executive-dashboard]
+        I --> L[budget-tracking]
+    end
+
+    subgraph Agents
+        M[jira-admin-agent]:::agent --> F
+        N[workflow-designer-agent]:::agent --> G
+    end
+
+    classDef skill fill:#2563EB,stroke:#0F172A,color:#FFFFFF
+    classDef agent fill:#F59E0B,stroke:#0F172A,color:#0F172A

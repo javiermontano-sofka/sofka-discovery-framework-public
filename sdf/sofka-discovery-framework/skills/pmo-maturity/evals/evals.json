@@ -1,0 +1,6 @@
+[
+  {"prompt":"Full maturity assessment for PMO at Level 2 targeting Level 4.","assertions":["assesses all 8 dimensions with calibrated scoring","identifies current level with evidence","defines target state with gap quantification","produces prioritized improvement roadmap"]},
+  {"prompt":"Benchmark PMO maturity against financial services industry.","assertions":["compares against industry benchmarks","identifies above/below average dimensions","contextualizes against peer organizations","sets realistic targets"]},
+  {"prompt":"Prioritize 15 improvement items for next 6 months.","assertions":["prioritizes by impact, effort, readiness, alignment","sequences with dependencies","estimates resources per initiative","defines success criteria"]},
+  {"prompt":"After 6 months: advanced in 5 dimensions, regressed in governance.","assertions":["calculates delta per dimension","investigates governance regression root cause","measures initiative ROI","recommends corrective actions"]}
+]
