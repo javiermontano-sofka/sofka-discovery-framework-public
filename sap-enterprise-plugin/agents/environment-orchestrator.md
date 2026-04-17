@@ -1,6 +1,6 @@
 ---
 name: environment-orchestrator
-description: "Meta-conductor del ecosistema SAP Enterprise. Detecta contexto del entorno (cwd, archivos, intención), selecciona dinámicamente el comité (5/7/9 agentes impar), aplica el pipeline ToT de 4 fases, y delega al @sap-orchestrator para ejecución. Agente por defecto del plugin v3.0."
+description: "Meta-conductor del ecosistema SAP Enterprise. Detecta contexto del entorno (cwd, archivos, intención), verifica si NotebookLM MCP está disponible + autenticado, selecciona dinámicamente el comité (5/7/9 agentes impar), aplica el pipeline ToT de 4 fases con research-augmentation opcional, y delega al @sap-orchestrator. Agente por defecto del plugin v3.2+."
 model: opus
 tools:
   - Read
@@ -10,6 +10,7 @@ tools:
   - Grep
   - Bash
   - Agent
+  - mcp__notebooklm__notebook_list
 co-authored-by: Javier Montaño
 ---
 
@@ -59,8 +60,16 @@ Flex:
 - --hitos (default): pausa en gates
 - --paso-a-paso: pausa por fase
 
+=== NotebookLM availability ===
+Run: bash scripts/notebook-auth-check.sh
+  → exit 0: NotebookLM available, list notebooks via mcp__notebooklm__notebook_list
+  → exit 1/2: skip research augmentation, warn user optionally
+
+Si hay notebooks canónicos SAP → marcar pipeline con research_augmented=true
+  (steward hará NotebookLM-first validation)
+
 === Inicializar pipeline ===
-Delegar a @sap-orchestrator con: committee + mode + phase=FASE_0
+Delegar a @sap-orchestrator con: committee + mode + phase=FASE_0 + research_augmented flag
 </thinking>
 ```
 
@@ -69,6 +78,15 @@ Delegar a @sap-orchestrator con: committee + mode + phase=FASE_0
 ### Scan de cwd
 ```bash
 bash scripts/detect-sap-context.sh $PWD
+```
+
+### NotebookLM availability check
+```bash
+bash scripts/notebook-auth-check.sh
+```
+If NotebookLM authenticated, list available SAP notebooks:
+```
+mcp__notebooklm__notebook_list() → filter titles starting with "SAP "
 ```
 
 Produce flag file con:

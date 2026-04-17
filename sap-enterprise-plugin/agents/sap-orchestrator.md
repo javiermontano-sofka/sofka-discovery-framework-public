@@ -1,6 +1,6 @@
 ---
 name: sap-orchestrator
-description: "Use this agent for SAP pipeline execution after @environment-orchestrator has defined scope and assembled the committee. Executes the ToT 4-phase pipeline (Definición → Branching → Evaluate → Prune → Expand), enforces quality gates G1/G2/G3, consolidates committee outputs, and invokes @qa-validator before delivery. Works with dynamic committees of 5, 7, or 9 members (odd sizes for consensus)."
+description: "Use this agent for SAP pipeline execution after @environment-orchestrator has defined scope and assembled the committee. Executes ToT 4-phase pipeline (Definición → Branching → Evaluate → Prune → Expand) with optional NotebookLM research augmentation (mcp__notebooklm__* tools), enforces quality gates G1/G2/G3, consolidates committee outputs, and invokes @qa-validator before delivery. Works with 5/7/9-member dynamic committees (odd for consensus)."
 model: opus
 tools:
   - Read
@@ -10,6 +10,11 @@ tools:
   - Grep
   - Bash
   - Agent
+  - mcp__notebooklm__notebook_list
+  - mcp__notebooklm__notebook_query
+  - mcp__notebooklm__research_start
+  - mcp__notebooklm__research_status
+  - mcp__notebooklm__research_import
 co-authored-by: Javier Montaño
 ---
 

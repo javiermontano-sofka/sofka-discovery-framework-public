@@ -69,6 +69,26 @@ Cada rama recibe:
 - Cada afirmación factual lleva evidence tag
 - `@qa-validator` ejecuta `scripts/validate-tot-output.sh` antes de delivery
 
+### FASE R — Research-Augmented Validation (NEW, OPTIONAL)
+
+Cuando `research_augmented=true` (env-orchestrator detectó notebooks NotebookLM activos):
+
+- Antes de FASE 2 (Evaluate), `@sap-docs-steward` ejecuta research augmentation:
+  - `mcp__notebooklm__notebook_query(notebook_id=<canónico>, query="validar <claims>")`
+  - Resultados se agregan como evidencia al evaluador con tag `[NOTEBOOKLM]`
+- Si `@sap-orchestrator` detecta gaps en evidencia durante FASE 3:
+  - Opción 1: Trigger `mcp__notebooklm__research_start` para expandir notebook
+  - Opción 2: Escalar a usuario con `[VACIO_CRITICO]` marked
+- `@sap-docs-steward` cruza cada claim `[INFERENCIA]` con `mcp__notebooklm__notebook_query`
+  para promoverlo a `[DOC]` o confirmarlo como `[SUPUESTO]`
+
+### FASE A — Audio Briefing (NEW, OPTIONAL)
+
+Post-FASE 4, si el deliverable es estratégico (adopción, plan implementación, solution design):
+- Generar audio briefing vía `mcp__notebooklm__audio_overview_create`
+- Formato: `deep_dive` español por defecto
+- Útil para difusión asincrónica a steering committee / stakeholders
+
 ---
 
 ## Sistema de Etiquetas de Procedencia (OBLIGATORIO)
@@ -88,6 +108,7 @@ Cada afirmación o dato debe llevar **al menos una etiqueta**:
 | `[AUTOCOMPLETADO]` | Campo diligenciado por el agente para reducir fricción |
 | `[POR_CONFIRMAR]` | Dato usado provisionalmente, requiere validación humana |
 | `[VACIO_CRITICO]` | Falta de información que impide avanzar con confianza |
+| `[NOTEBOOKLM]` | **NEW**: Dato validado via NotebookLM MCP notebook_query con source_id citada |
 
 ### Tags SAP-específicos (heredados de v2.1)
 | Tag | Significado |
@@ -96,6 +117,22 @@ Cada afirmación o dato debe llevar **al menos una etiqueta**:
 | `[CONFIG]` | Extraído de archivos de configuración |
 | `[DOC]` | Documentación oficial SAP (help.sap.com, rapid.sap.com) |
 | `[STAKEHOLDER]` | Input de entrevista a stakeholder |
+
+### Jerarquía de Confianza (v3.2)
+
+Cuando un claim tiene múltiples tags posibles, usar este ranking de confianza:
+
+```
+[DOC] ≈ [CÓDIGO] ≈ [CONFIG] ≈ [NOTEBOOKLM]   →  Confianza alta (0.85-1.0)
+[STAKEHOLDER] ≈ [ADJUNTO]                     →  Confianza media (0.6-0.85)
+[INFERENCIA] ≈ [WEB] sin validar              →  Confianza media-baja (0.5-0.75)
+[CONOCIMIENTO] ≈ [MEMORIA] ≈ [EXTRAIDO_HILO] →  Confianza baja-media (0.4-0.7)
+[SUPUESTO] ≈ [AUTOCOMPLETADO]                 →  Confianza baja (0.2-0.6)
+[POR_CONFIRMAR]                               →  Marcador: requiere validación humana
+[VACIO_CRITICO]                               →  Bloqueante: NO avanzar sin datos
+```
+
+**Regla NotebookLM-first**: Si steward puede consultar notebook del proyecto, **preferir `[NOTEBOOKLM]` sobre `[CONOCIMIENTO]`** para SAP objects. Sources curadas tienen mayor precisión contextual.
 
 **Regla de densidad**: Si >30% del texto lleva `[SUPUESTO]` → banner de advertencia obligatorio.
 
