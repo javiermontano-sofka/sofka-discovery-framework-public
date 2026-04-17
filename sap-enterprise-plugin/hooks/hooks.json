@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/detect-sap-context.sh\" \"$PWD\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$PLUGIN_DIR/scripts/validate-deliverable.sh\" \"$PWD\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

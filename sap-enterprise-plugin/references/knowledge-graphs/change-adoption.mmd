@@ -1,0 +1,57 @@
+graph TB
+    subgraph ADKAR["ADKAR Framework"]
+        A[Awareness<br/>Why SAP?]
+        D[Desire<br/>What's in it for me?]
+        K[Knowledge<br/>How to use it]
+        Ab[Ability<br/>Can I do my job?]
+        R[Reinforcement<br/>Sustain adoption]
+    end
+
+    subgraph Network["Super-User Network"]
+        N1[Selection<br/>5 Criteria]
+        N2[Training<br/>5-Day Program]
+        N3[Activation<br/>Go-Live Support]
+    end
+
+    subgraph Training["Training Design"]
+        TR1[Persona Matrix<br/>7 Personas]
+        TR2[Enable Now<br/>5 Content Types]
+        TR3[Sandbox<br/>Hands-On Practice]
+    end
+
+    subgraph Readiness["Go-Live Readiness"]
+        GL1[Scorecard<br/>10 Dimensions]
+        GL2{Score >= 70%?}
+        GL3[GO]
+        GL4[NO-GO]
+    end
+
+    subgraph Hypercare["Hypercare"]
+        H1[L0-L3 Support<br/>4-6 Weeks]
+        H2[Exit Criteria<br/>6 Metrics]
+        H3[Adoption Dashboard<br/>5 KPIs]
+    end
+
+    A --> D --> K --> Ab --> R
+
+    K --> N1 --> N2 --> N3
+    K --> TR1 --> TR2
+    K --> TR3
+
+    Ab --> GL1 --> GL2
+    GL2 -->|Yes| GL3
+    GL2 -->|No| GL4
+    GL3 --> H1 --> H2 --> H3
+    R --> H3
+
+    classDef adkar fill:#FF7E08,color:white
+    classDef network fill:#FFD700,color:#1A1A2E
+    classDef training fill:#EFEAE4,color:#1A1A2E
+    classDef readiness fill:#1A1A2E,color:white
+    classDef hypercare fill:#FF7E08,color:white
+
+    class A,D,K,Ab,R adkar
+    class N1,N2,N3 network
+    class TR1,TR2,TR3 training
+    class GL1,GL2,GL3,GL4 readiness
+    class H1,H2,H3 hypercare

@@ -1,0 +1,31 @@
+{
+  "name": "sap-enterprise-plugin",
+  "version": "2.1.0",
+  "description": "SAP Enterprise Plugin v2.1 — Standalone multi-agent ecosystem for SAP S/4HANA Cloud discovery, implementation, and operations. Zero-API base mode. 6 specialist agents (@sap-orchestrator, @abap-expert, @functional-lead, @module-specialist, @sap-docs-steward, @qa-validator), 10 delegator commands, 12 deterministic templates, 5 local validation scripts, 11 skills, 22 knowledge references. Clean Core enforced. Evidence-tagged outputs.",
+  "author": {
+    "name": "Javier Montaño",
+    "email": "javier.montano.guz@gmail.com",
+    "url": "https://sofka.com.co"
+  },
+  "license": "All Rights Reserved",
+  "keywords": [
+    "sap",
+    "s4hana",
+    "s4hana-cloud",
+    "sap-activate",
+    "clean-core",
+    "fit-to-standard",
+    "abap-cloud",
+    "rap",
+    "cds",
+    "btp",
+    "multi-agent",
+    "deterministic",
+    "standalone",
+    "zero-api",
+    "gap-analysis",
+    "discovery",
+    "migration-cockpit",
+    "javier-montano"
+  ]
+}
