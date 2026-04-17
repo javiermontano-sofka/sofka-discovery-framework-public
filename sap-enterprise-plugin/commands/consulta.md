@@ -1,7 +1,7 @@
 ---
-description: "Consulta simple SAP — 1-3 agentes, respuesta directa sin ToT completo"
+description: "Consulta simple SAP — 1-3 agentes, respuesta directa sin ToT completo. Acepta --adjuntos (csv/xlsx/docx/pdf/pptx/html/py/tsx/sql) y --html para brand render."
 user-invocable: true
-argument-hint: "<pregunta>"
+argument-hint: "<pregunta> [--adjuntos path1,path2,...] [--html]"
 ---
 
 # /sap:consulta — Query Simple

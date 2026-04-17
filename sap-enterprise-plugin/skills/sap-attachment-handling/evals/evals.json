@@ -1,0 +1,102 @@
+{
+  "skill_name": "sap-attachment-handling",
+  "description": "Test cases for multi-format attachment ingestion.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "csv-ingestion",
+      "prompt": "Ingest sample.csv and produce priming-rag doc with schema and head.",
+      "files": ["sample.csv"],
+      "expected_output": "priming-rag-sample.md with frontmatter, schema, head 20 rows, [ADJUNTO:sample.csv:col=X] tags",
+      "assertions": [
+        "priming doc generated",
+        "schema section present",
+        "[ADJUNTO:sample.csv:col=...] tags present",
+        "redaction applied if any secret-like cells"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "xlsx-multi-sheet",
+      "prompt": "Ingest report.xlsx (3 sheets, 1 named range).",
+      "files": ["report.xlsx"],
+      "expected_output": "priming doc with per-sheet blocks, named ranges listed, [ADJUNTO:report.xlsx:sheet=NAME]",
+      "assertions": [
+        "one block per sheet (cap 20)",
+        "named ranges enumerated",
+        "sheet locators in evidence tags"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pdf-multi-page",
+      "prompt": "Ingest whitepaper.pdf (15 pages).",
+      "files": ["whitepaper.pdf"],
+      "expected_output": "priming doc with text per page + table section, [ADJUNTO:whitepaper.pdf:page=N]",
+      "assertions": [
+        "text extracted page by page",
+        "page locators in tags",
+        "pdfplumber tables section present if tables exist"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "docx-headings-tables",
+      "prompt": "Ingest spec.docx with headings and 2 tables.",
+      "files": ["spec.docx"],
+      "expected_output": "priming doc preserving heading hierarchy + table contents",
+      "assertions": [
+        "headings captured",
+        "tables rendered markdown",
+        "[ADJUNTO:spec.docx:heading=...] tags present"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "pptx-slides-notes",
+      "prompt": "Ingest kickoff.pptx (20 slides with speaker notes).",
+      "files": ["kickoff.pptx"],
+      "expected_output": "priming doc with per-slide block + notes section",
+      "assertions": [
+        "slide titles captured",
+        "speaker notes included",
+        "slide locators in tags"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "html-page",
+      "prompt": "Ingest landing.html with tables and links.",
+      "files": ["landing.html"],
+      "expected_output": "priming doc with clean text + tables + links sections",
+      "assertions": [
+        "script/style stripped",
+        "tables + links enumerated"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "code-python",
+      "prompt": "Ingest pipeline.py (200 lines).",
+      "files": ["pipeline.py"],
+      "expected_output": "priming doc with imports + signatures + head",
+      "assertions": [
+        "ast signatures captured",
+        "imports listed",
+        "[ADJUNTO:pipeline.py:sig=FN] tags"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "unknown-fallback",
+      "prompt": "Ingest binary.dat (unknown type).",
+      "files": ["binary.dat"],
+      "expected_output": "priming doc via extract-generic.sh with file-type + strings + hexdump",
+      "assertions": [
+        "generic extractor used",
+        "file-type line present",
+        "strings + hexdump sections present"
+      ]
+    }
+  ]
+}

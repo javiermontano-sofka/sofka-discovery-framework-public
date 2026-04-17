@@ -1,0 +1,54 @@
+%% Knowledge Graph — PMO Assessment
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    PA["PMO Assessment"]:::blue
+
+    %% Dimensions
+    SA["Strategic Alignment"]:::amber
+    GQ["Governance Quality"]:::amber
+    SD["Service Delivery"]:::amber
+    SS["Stakeholder Satisfaction"]:::amber
+    RM["Resource Management"]:::amber
+    VR["Value Realization"]:::amber
+
+    %% Inputs
+    CHARTER["PMO Charter"]:::dark
+    SURVEY["Perception Survey"]:::dark
+    DATA["Performance Data"]:::dark
+    BENCH["Industry Benchmarks"]:::dark
+
+    %% Outputs
+    SCORE["Effectiveness Scorecard"]:::blue
+    ROADMAP["Transformation Roadmap"]:::blue
+    GAPS["Gap Analysis"]:::blue
+
+    %% Relations
+    CHARTER --> PA
+    SURVEY --> PA
+    DATA --> PA
+    BENCH --> PA
+    PA --> SA
+    PA --> GQ
+    PA --> SD
+    PA --> SS
+    PA --> RM
+    PA --> VR
+    SA --> SCORE
+    GQ --> SCORE
+    SD --> SCORE
+    SS --> SCORE
+    RM --> SCORE
+    VR --> SCORE
+    SCORE --> GAPS
+    GAPS --> ROADMAP
+
+    %% Cross-refs
+    MAT["PMO Maturity"]:::dark
+    SETUP["PMO Setup"]:::dark
+    ROADMAP -.->|"informs"| SETUP
+    MAT -.->|"baseline"| PA

@@ -1,0 +1,40 @@
+%% Knowledge Graph — Portfolio Prioritization
+%% PMO-APEX Skill · Colores: #2563EB (blue), #F59E0B (amber), #0F172A (dark)
+
+graph TD
+    classDef blue fill:#2563EB,stroke:#0F172A,color:#FFFFFF,stroke-width:2px
+    classDef amber fill:#F59E0B,stroke:#0F172A,color:#0F172A,stroke-width:2px
+    classDef dark fill:#0F172A,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+
+    PP["Portfolio Prioritization"]:::blue
+
+    %% Inputs
+    STRAT["Organizational Strategy"]:::dark
+    FIN["Financial Data (NPV/ROI)"]:::dark
+    RES["Resource Constraints"]:::dark
+    RISK["Risk Assessments"]:::dark
+
+    %% Process
+    CRIT["Criteria Definition"]:::amber
+    WEIGHT["Weight Assignment"]:::amber
+    SCORE["Project Scoring"]:::blue
+    CALC["Weighted Calculation"]:::blue
+    FRONT["Efficient Frontier"]:::blue
+    SENS["Sensitivity Analysis"]:::amber
+
+    %% Outputs
+    RANK["Ranked Portfolio"]:::blue
+    REC["Investment Recommendation"]:::blue
+
+    %% Flow
+    STRAT --> CRIT
+    FIN --> SCORE
+    RES --> FRONT
+    RISK --> SCORE
+    CRIT --> WEIGHT --> SCORE --> CALC --> FRONT --> SENS --> RANK --> REC
+
+    %% Cross-refs
+    DASH["Portfolio Dashboard"]:::dark
+    PA["Portfolio Assessment"]:::dark
+    REC -.->|"funds"| DASH
+    PA -.->|"maturity input"| PP

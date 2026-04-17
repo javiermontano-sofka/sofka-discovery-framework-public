@@ -1,7 +1,7 @@
 ---
 description: "Comité de expertos simplificado (5/7/9 agentes impar) con pipeline ToT de 4 fases"
 user-invocable: true
-argument-hint: "<pregunta> [--auto|--hitos|--paso-a-paso]"
+argument-hint: "<pregunta> [--auto|--hitos|--paso-a-paso] [--adjuntos path1,path2,...] [--html]"
 ---
 
 # /sap:comite — Expert Committee ToT
@@ -21,7 +21,8 @@ Resolver query mediante comité ToT con 4 fases: Definición → Branching → E
 
 Según `_metacognitive-rules.md`:
 
-### FASE 0 · Definición (env-orchestrator)
+### FASE 0 · Adjuntos + Definición (env-orchestrator + attachment-processor)
+- Si `--adjuntos` o archivos en `./adjuntos/` → `bash scripts/ingest-attachments.sh ...` genera `.discovery/priming-rag-*.md` para .csv/.xlsx/.docx/.pdf/.pptx/.html/.py/.tsx/.sql/.json/.yaml/.xml
 - Resumen Qué + Para Qué + Para Quién
 - Autocompletados con tags
 - [VACIO_CRITICO] → detener
@@ -54,13 +55,15 @@ Según `_metacognitive-rules.md`:
 - `--auto`: sin pausas
 - `--hitos` (default): pausa tras FASE 2 y FASE 3
 - `--paso-a-paso`: pausa tras cada FASE
+- `--adjuntos path1,path2`: activa FASE 0 attachment ingestion (csv/xlsx/docx/pdf/pptx/html/py/tsx/sql)
+- `--html`: tras cerrar, correr `/sap:render-html <last.md> --style comite`
 
 ## RESTRICCIONES
 
-- Evidence tags obligatorios en cada fase
-- `@qa-validator` ejecuta `scripts/validate-tot-output.sh` antes de cierre
+- Evidence tags obligatorios en cada fase. Prioridad: `[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]`
+- `@qa-validator` ejecuta `scripts/validate-tot-output.sh` + verifica priming-rag por `[ADJUNTO]`
 - Confianza global < 0.7 → banner de advertencia
 - >30% [SUPUESTO] → banner obligatorio
 
 ---
-*SAP Enterprise Plugin v3.0 — Diseñado por Javier Montaño.*
+*SAP Enterprise Plugin v4.0 — Diseñado por Javier Montaño.*

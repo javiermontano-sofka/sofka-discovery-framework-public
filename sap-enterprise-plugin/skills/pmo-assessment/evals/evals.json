@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "Assess our PMO effectiveness. Project managers complain the PMO creates too much paperwork, executives say they do not get useful insights, and project success rates have not improved in 2 years.",
+    "assertions": [
+      "Must evaluate PMO process efficiency and identify bureaucratic overhead",
+      "Must assess stakeholder satisfaction across both PM and executive segments",
+      "Must measure PMO value delivery against project success rate trends",
+      "Must recommend specific actions to reduce overhead while improving executive visibility"
+    ]
+  },
+  {
+    "prompt": "Our PMO was established 3 years ago as a controlling PMO. The organization has since adopted agile for most projects. Is our PMO model still appropriate?",
+    "assertions": [
+      "Must evaluate the fit between a controlling PMO model and an agile delivery organization",
+      "Must assess whether PMO governance creates friction with agile team autonomy",
+      "Must recommend an alternative PMO model better suited to agile environments",
+      "Must provide a transition plan from controlling to the recommended model"
+    ]
+  },
+  {
+    "prompt": "Calculate the ROI of our PMO. We spend $2M annually on PMO operations supporting a $50M project portfolio. How do we know if this is justified?",
+    "assertions": [
+      "Must calculate PMO cost as a percentage of portfolio budget and benchmark it",
+      "Must identify measurable value contributions of PMO services to project outcomes",
+      "Must assess whether the PMO prevents cost overruns or schedule delays that exceed its cost",
+      "Must recommend metrics for ongoing PMO ROI tracking"
+    ]
+  },
+  {
+    "prompt": "Survey our PMO stakeholders. We need to understand satisfaction levels across project managers, sponsors, and delivery teams to improve our services.",
+    "assertions": [
+      "Must design a multi-dimensional satisfaction framework covering different PMO service areas",
+      "Must segment analysis by stakeholder group to identify differing needs and perceptions",
+      "Must identify specific pain points and dissatisfaction drivers with actionable root causes",
+      "Must provide an improvement action plan prioritized by stakeholder impact"
+    ]
+  }
+]

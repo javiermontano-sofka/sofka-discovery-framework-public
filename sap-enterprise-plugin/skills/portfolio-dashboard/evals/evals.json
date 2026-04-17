@@ -1,0 +1,6 @@
+[
+  {"prompt":"Portfolio dashboard for 8 active projects at quarterly review.","assertions":["aggregates project-level metrics into portfolio KPIs","builds health heatmap across projects","scores strategic alignment per project","generates executive narrative"]},
+  {"prompt":"2 red projects dragging portfolio performance.","assertions":["quantifies impact on portfolio metrics","visualizes resource drain","assesses continue/pivot/cancel options","recommends portfolio-level corrections"]},
+  {"prompt":"No projects address digital transformation strategic theme.","assertions":["identifies strategic alignment gap","visualizes portfolio coverage across themes","quantifies risk of misalignment","recommends actions to close gap"]},
+  {"prompt":"5 projects competing for same cloud architect.","assertions":["maps resource demand across projects by period","identifies conflict severity","recommends resolution options","shows impact of each option on timelines"]}
+]

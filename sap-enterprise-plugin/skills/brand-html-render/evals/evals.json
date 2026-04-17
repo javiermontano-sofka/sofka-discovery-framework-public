@@ -1,0 +1,26 @@
+{
+  "skill_name": "brand-html-render",
+  "evals": [
+    {
+      "id": 1,
+      "name": "comite-render",
+      "prompt": "Render this committee markdown into Sofka DS v5 HTML.",
+      "files": ["comite.md"],
+      "assertions": ["var(--o) present", "no green colors", ".verdict rendered if markdown had verdict", "tables wrapped in .tw"]
+    },
+    {
+      "id": 2,
+      "name": "consulta-render",
+      "prompt": "Convert this consulta response into brand HTML.",
+      "files": ["consulta.md"],
+      "assertions": ["hero class=comite/consulta pill visible", "evidence tags wrapped", "meta-box with confidence"]
+    },
+    {
+      "id": 3,
+      "name": "discovery-landscape-render",
+      "prompt": "Render discovery landscape assessment into HTML.",
+      "files": ["landscape.md"],
+      "assertions": ["tables render correctly", ".sts stat cards if provided", "ghost menu at bottom"]
+    }
+  ]
+}

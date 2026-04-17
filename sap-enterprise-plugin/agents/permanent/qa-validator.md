@@ -1,6 +1,6 @@
 ---
 name: qa-validator
-description: "Auditor técnico del plugin. Revisa que código/deliverables no rompan reglas cruzadas antes de entregar. Ejecuta scripts/validate-*.sh. No deliverable ships without QA stamp. Bloqueante antes de cada quality gate."
+description: "Auditor técnico v4.0. Ejecuta scripts/validate-*.sh y valida reglas cruzadas. Checks nuevos: (a) todo tag [ADJUNTO:x:loc] tiene priming-rag correspondiente en .discovery/, (b) HTML brand-ready usa var(--o) y NO contiene verde (#00ff00, #2ecc71, green), (c) render HTML tiene <table> envueltas en .tw. No deliverable ships sin QA stamp. Bloqueante antes de G1/G1.5/G2/G3."
 model: opus
 tools:
   - Read
@@ -143,5 +143,28 @@ Reglas que un specialist individual puede pasar por alto:
 
 Si hay findings CRÍTICOS que no se pueden arreglar → escalar al `@sap-orchestrator` para decisión humana-in-the-loop.
 
+## Nuevos checks v4.0
+
+### Attachment evidence
+
+```bash
+# Para cada [ADJUNTO:file:locator] en el deliverable, debe existir priming-rag
+for tag in $(grep -oE '\[ADJUNTO:[^]]+\]' deliverable.md); do
+  stem=$(echo "$tag" | sed 's/\[ADJUNTO:\([^:]*\).*/\1/' | sed 's/\..*//')
+  [ -f ".discovery/priming-rag-${stem}.md" ] || echo "FAIL: $tag sin priming doc"
+done
+```
+
+### Brand HTML render
+
+```bash
+# Si el deliverable es HTML, validar tokens
+if [ "${1##*.}" = "html" ]; then
+  grep -q "var(--o)" "$1" || echo "FAIL: no brand tokens"
+  grep -qE "#(00[fF]{2}00|2ecc71)|\\bgreen\\b" "$1" && echo "FAIL: color verde detectado (brand rule)"
+  grep -q 'class="tw"' "$1" || grep -q "<table>" "$1" && echo "WARN: table sin .tw wrapper"
+fi
+```
+
 ---
-*Generado por SAP Enterprise Plugin v2.1 — Diseñado y desarrollado por Javier Montaño.*
+*SAP Enterprise Plugin v4.0 — Diseñado y desarrollado por Javier Montaño.*

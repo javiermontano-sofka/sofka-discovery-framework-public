@@ -23,9 +23,18 @@ Para toda tarea de complejidad media o alta, los agentes de este plugin ejecutan
 
 ## Pipeline ToT de 4 Fases
 
-### FASE 0 — Definición y Autocompletado
-**Agente responsable**: `@environment-orchestrator`
+### FASE 0 — Definición, Autocompletado & Attachment Ingestion (v4.0)
+**Agente responsable**: `@environment-orchestrator` + `@attachment-processor`
 
+**Sub-fase 0.a — Attachments (si aplica)**
+- Si el usuario pasó `--adjuntos` o dejó archivos en `./adjuntos/`, `./inputs/`, `./.discovery/inbox/`:
+  - Delegar a `@attachment-processor`
+  - Ejecutar `bash scripts/ingest-attachments.sh <paths...>`
+  - Verificar que cada attachment tiene su `.discovery/priming-rag-*.md`
+  - Habilitar tag `[ADJUNTO:filename.ext:locator]` para el comité
+- Si no hay adjuntos → skip
+
+**Sub-fase 0.b — Definición**
 - Resumen calibrado: **Qué** + **Para Qué** + **Para Quién**
 - Detección de slots vacíos:
   - Cliente, país, módulos, versión S/4HANA
@@ -33,6 +42,8 @@ Para toda tarea de complejidad media o alta, los agentes de este plugin ejecutan
   - Fase SAP Activate actual
 - Autocompletado con tags `[AUTOCOMPLETADO]` justificando origen
 - Si `[VACIO_CRITICO]` → **DETENER** y preguntar al usuario
+
+**Gate G1**: `@qa-validator` verifica priming-rag por cada adjunto referenciado. Si falla → no avanzar a FASE R/1.
 
 ### FASE 1 — Branching (Divergent)
 **Agente responsable**: `@environment-orchestrator` orquesta al comité

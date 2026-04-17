@@ -1,0 +1,94 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FF7E08', 'primaryTextColor': '#1A1A2E', 'lineColor': '#FF7E08', 'secondaryColor': '#FFD700'}}}%%
+
+graph TD
+    subgraph MLPipeline["ML Pipeline"]
+        dataIngestion["Data Ingestion<br/>CDC, batch, streaming"]
+        featureEng["Feature Engineering<br/>transforms, aggregaciones"]
+        training["Model Training<br/>experimentos, hyperparams"]
+        evaluation["Model Evaluation<br/>métricas, bias checks"]
+    end
+
+    subgraph FeatureStore["Feature Store"]
+        offlineStore["Offline Store<br/>Parquet, Delta, BigQuery"]
+        onlineStore["Online Store<br/>Redis, DynamoDB, RonDB"]
+        featureRegistry["Feature Registry<br/>discovery, lineage, versión"]
+        trainingServingSkew["Training-Serving Consistency<br/>point-in-time correctness"]
+    end
+
+    subgraph ModelRegistry["Model Registry"]
+        versionControl["Versionamiento de Modelos<br/>checkpoints, artefactos"]
+        promotionWorkflow["Workflow de Promoción<br/>staging → production"]
+        lineageTracking["Lineage Tracking<br/>data, code, params, metrics"]
+    end
+
+    subgraph ExperimentTracking["Experiment Tracking"]
+        paramLogging["Logging de Parámetros<br/>hyperparams, configs"]
+        metricTracking["Tracking de Métricas<br/>accuracy, loss, AUC"]
+        artifactStorage["Almacenamiento de Artefactos<br/>modelos, datasets, plots"]
+        reproducibility["Reproducibilidad<br/>seeds, environment capture"]
+    end
+
+    subgraph MLOps["MLOps"]
+        cicdML["CI/CD para ML<br/>pipelines automatizados"]
+        retrainingTriggers["Triggers de Reentrenamiento<br/>schedule, drift, degradación"]
+        pipelineOrchestration["Orquestación de Pipelines<br/>DAGs, dependencias, fallos"]
+        costOptimization["Optimización de Costos<br/>spot instances, quantization"]
+    end
+
+    subgraph ModelServing["Model Serving"]
+        realtimeEndpoints["Endpoints Real-Time<br/>REST/gRPC, sub-100ms"]
+        batchScoring["Batch Scoring<br/>predicciones programadas"]
+        streamingInference["Streaming Inference<br/>Kafka, Flink, continuo"]
+        abTesting["A/B Testing<br/>traffic splitting, guardrails"]
+    end
+
+    subgraph Monitoring["Monitoring"]
+        dataDrift["Data Drift Detection<br/>distribución de features"]
+        modelDrift["Model Drift Detection<br/>degradación de performance"]
+        performanceMetrics["Performance Metrics<br/>latencia, throughput, errores"]
+        responsibleAI["Responsible AI<br/>bias, explainability, audit"]
+    end
+
+    subgraph ABTesting["A/B Testing & Deployment"]
+        canaryDeploy["Canary Deployment<br/>1% → 5% → 25% → 100%"]
+        shadowMode["Shadow Mode<br/>inferencia paralela sin servir"]
+        rollback["Rollback Automático<br/>p < 0.05 con 95% CI"]
+    end
+
+    %% Conexiones principales
+    dataIngestion --> featureEng
+    featureEng --> offlineStore
+    featureEng --> onlineStore
+    offlineStore --> training
+    onlineStore --> realtimeEndpoints
+    featureRegistry --> trainingServingSkew
+    training --> evaluation
+    evaluation --> versionControl
+    versionControl --> promotionWorkflow
+    promotionWorkflow --> realtimeEndpoints
+    promotionWorkflow --> batchScoring
+    paramLogging --> lineageTracking
+    metricTracking --> lineageTracking
+    cicdML --> training
+    cicdML --> evaluation
+    cicdML --> promotionWorkflow
+    retrainingTriggers --> cicdML
+    dataDrift --> retrainingTriggers
+    modelDrift --> retrainingTriggers
+    realtimeEndpoints --> performanceMetrics
+    batchScoring --> performanceMetrics
+    abTesting --> canaryDeploy
+    canaryDeploy --> rollback
+    shadowMode --> performanceMetrics
+    responsibleAI --> evaluation
+
+    %% Estilos
+    classDef pipeline fill:#FF7E08,stroke:#1A1A2E,color:#fff
+    classDef store fill:#FFD700,stroke:#1A1A2E,color:#1A1A2E
+    classDef ops fill:#1A1A2E,stroke:#FF7E08,color:#fff
+    classDef monitor fill:#D97706,stroke:#1A1A2E,color:#fff
+
+    class dataIngestion,featureEng,training,evaluation pipeline
+    class offlineStore,onlineStore,featureRegistry,trainingServingSkew,versionControl,promotionWorkflow,lineageTracking store
+    class cicdML,retrainingTriggers,pipelineOrchestration,costOptimization,realtimeEndpoints,batchScoring,streamingInference,abTesting ops
+    class dataDrift,modelDrift,performanceMetrics,responsibleAI,canaryDeploy,shadowMode,rollback monitor

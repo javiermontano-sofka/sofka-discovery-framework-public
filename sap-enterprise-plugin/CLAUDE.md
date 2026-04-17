@@ -1,136 +1,165 @@
-# SAP Enterprise Plugin v3.0 — ToT Committee Architecture
+# SAP Enterprise Plugin v4.0 — SAGE-Grade Expansion
 
 > **Diseñado y desarrollado por Javier Montaño**
-> Plugin standalone para Claude Code — Zero-API, Multi-Agent, Metacognitive
+> 104 skills · 58 agentes · 29 comandos · Sofka DS v5 brand HTML · FASE 0 attachments
 
 ## Identity
 
 - **Plugin**: `sap-enterprise-plugin`
-- **Versión**: 3.0.0
+- **Versión**: 4.0.0
 - **Prefijo comandos**: `/sap:`
 - **Agente por defecto**: `@environment-orchestrator`
-- **Arquitectura**: Standalone + ToT Committee + Dynamic Expert Pool
+- **Arquitectura**: Standalone + ToT Committee + Dynamic Expert Pool + Attachment Pipeline + Brand HTML Render
 
 ---
 
-## What's New in v3.0
+## What's New in v4.0
 
 | Cambio | Detalle |
 |--------|---------|
-| 🧠 ToT Committee | Pipeline metacognitivo 4 fases inspirado en "Orquestador Metacognitivo" |
-| 👥 58 agentes | 6 permanentes + 40 temáticos + 12 módulos (ratio 3.33x) |
-| 🎲 Comité dinámico 5/7/9 | Siempre impar, seleccionado por query |
-| 🎚️ 3 Modos HITL | `--auto`, `--hitos` (default), `--paso-a-paso` |
-| 🇪🇸 14 comandos en español | Casos de uso estándar SAP |
-| 📋 22 templates totales | 12 v2.1 + 10 nuevos v3.0 |
-| 🔍 7 scripts validación | +select-committee, +validate-tot-output |
-| 🏷️ Sistema de etiquetas extendido | 14 tags (10 ToT + 4 SAP-específicos) |
+| 📎 FASE 0 attachment handling | `@attachment-processor` + 8 extractors (csv, xlsx, docx, pdf, pptx, html, code, structured) |
+| 🎨 HTML brand-ready render | `brand-html-render` skill + `/sap:render-html` + Sofka DS v5 tokens |
+| 📚 104 skills | +90 importadas desde SDF (finance, architecture, AI, data, PM, agile, risk, methodology) |
+| 🗂️ Ontología replicada | `references/ontology/` con 9 archivos (skills-catalog, agent-committee, commands-reference, pipeline, attachments, output-standards, canonical-tokens, protocol, master-index) |
+| 🏷️ Tag `[ADJUNTO]` formal | Prioridad evidencia: CÓDIGO > ADJUNTO > CONFIG > DOC > NOTEBOOKLM > STAKEHOLDER > INFERENCIA > SUPUESTO |
+| 🚦 Gate G1 estricto | `@qa-validator` verifica priming-rag por cada `[ADJUNTO]` |
 
 ---
 
-## Arquitectura v3.0
+## Índice de Ontología
+
+Read on demand — NEVER load all at once:
+
+| Necesidad | Leer |
+|-----------|------|
+| Protocolo zero-hallucination | `references/ontology/protocol-zero-hallucination.md` |
+| Catálogo de 104 skills | `references/ontology/skills-catalog.md` |
+| Roster de 58 agentes + comité 5/7/9 | `references/ontology/agent-committee.md` |
+| Referencia de comandos | `references/ontology/commands-reference.md` |
+| Fases ToT + HITL + gates | `references/ontology/pipeline-orchestration.md` |
+| Adjuntos + extractores | `references/ontology/attachment-taxonomy.md` |
+| Estándares de output | `references/ontology/output-standards.md` |
+| Tokens CSS Sofka DS v5 | `references/ontology/canonical-tokens.md` |
+| Master index | `references/ontology/master-index.md` |
+
+---
+
+## Arquitectura v4.0
 
 ```
 @environment-orchestrator (meta-conductor, default)
     │
-    ├── Detecta intención + complejidad (baja/media/alta)
-    ├── Selecciona comité 5/7/9 via scripts/select-committee.sh
+    ├── Lee references/ontology/skills-catalog.md + agent-committee.md
+    ├── Si adjuntos → delega a @attachment-processor (FASE 0)
+    ├── Selecciona comité 5/7/9 via select-committee.sh
     ├── Aplica pipeline ToT según _metacognitive-rules.md
-    └── Delega a @sap-orchestrator con comité pre-armado
+    └── Delega a @sap-orchestrator
             │
-            ├── FASE 0: Definición (autocompletados + slots)
-            ├── FASE 1: Branching (cada miembro propone 1 rama)
-            ├── FASE 2: Evaluate (@qa-validator + @sap-docs-steward)
-            ├── FASE 3: Prune & Synthesize (ganadora con confianza >= 0.6)
-            └── FASE 4: Expand (consenso + template + entrega)
+            ├── FASE 0: Ingesta adjuntos + Definición (Gate G1)
+            ├── FASE R: Research NotebookLM/Web (Gate G1.5)
+            ├── FASE 1: Branching
+            ├── FASE 2: Evaluate (Gate G2)
+            ├── FASE 3: Prune & Synthesize
+            └── FASE 4: Expand + Cierre metacognitivo (Gate G3)
                     │
-                    └── Cierre metacognitivo obligatorio
+                    └── Ghost menu: /sap:render-html <last.md> --style ...
 ```
-
-### Composición del Comité
-
-**Permanentes (4 siempre)**:
-- `@sap-docs-steward` — validación oficial
-- `@functional-lead` — perspectiva funcional
-- `@abap-expert` — perspectiva técnica
-- `@qa-validator` — auditoría
-
-**Flex (1/3/5 según complejidad)**:
-- Temáticos (40 disponibles)
-- Módulos (12 disponibles)
-
-**Ratio flex por tamaño**:
-- Comité 5: 1 flex
-- Comité 7: 2 temáticos + 1 módulo
-- Comité 9: 3 temáticos + 2 módulos
 
 ---
 
-## 10 Casos de Uso Estándar + 14 Comandos
+## Attachment Pipeline (FASE 0)
 
-| # | Caso | Comando Español | Modos |
-|---|------|----------------|-------|
-| 1 | Consulta simple | `/sap:consulta <pregunta>` | auto |
-| 2 | Comité ToT | `/sap:comite <pregunta>` | 3 modos |
-| 3 | Deep research | `/sap:investigar <tema>` | 3 modos |
-| 4 | Adopción SAP | `/sap:adopcion <cliente>` | 3 modos |
-| 5 | Fit-to-Standard | `/sap:ajuste-estandar <scope>` | 3 modos |
-| 6a | Plan implementación | `/sap:plan-implementacion` | 3 modos |
-| 6b | Plan mantenimiento | `/sap:plan-mantenimiento` | 3 modos |
-| 6c | Plan evolución | `/sap:plan-evolucion` | 3 modos |
-| 6d | Plan personalización | `/sap:plan-personalizacion` | 3 modos |
-| 7 | Auditar | `/sap:auditar <plan>` | auto, hitos |
-| 8 | Diagrama funcional | `/sap:diagrama-funcional <obj>` | auto, hitos |
-| 9 | Diagrama técnico | `/sap:diagrama-tecnico <obj>` | auto, hitos |
-| 10 | Mapa Integración | `/sap:mapa-integracion <scope>` | 3 modos |
-| 11 | Clean Core Blueprint | `/sap:clean-core <scope>` | 3 modos |
+Formatos soportados nativamente:
+
+| Ext | Extractor | Locator |
+|-----|-----------|---------|
+| `.csv` | pandas | `col=NAME` |
+| `.xlsx .xlsm .xls` | openpyxl | `sheet=NAME` |
+| `.docx` | python-docx | `heading=TEXT` |
+| `.pdf` | pypdf + pdfplumber | `page=N` |
+| `.pptx` | python-pptx | `slide=N` |
+| `.html` | beautifulsoup | `h=TEXT` |
+| `.py .ts .tsx .js .sql .abap` | ast + regex | `sig=NAME` |
+| `.json .yaml .xml` | stdlib + lxml | `root` |
+| otros | file + strings + hexdump | `generic` |
+
+Uso:
+
+```bash
+# Bootstrap once (venv + deps)
+bash scripts/setup-attachments.sh
+
+# Ingesta manual o vía --adjuntos
+bash scripts/ingest-attachments.sh file1.xlsx file2.pdf file3.sql
+# → genera .discovery/priming-rag-*.md para cada uno
+```
+
+Evidence tag: `[ADJUNTO:filename.ext:locator]`. `@qa-validator` falla si un tag no tiene priming doc.
 
 ---
 
-## Pipeline Metacognitivo ToT
+## Brand HTML Render
 
-Ver `agents/_metacognitive-rules.md` para detalle completo.
+Entregables markdown → HTML Sofka Design System v5 (tokens `--o #FF7E08`, `--bk #000`, `--bg #EFEAE4`, `--pos #FFD700`, Inter).
 
-### Criterio de activación
-- Decisión arquitectónica → ToT obligatorio
-- >= 2 módulos involucrados → ToT obligatorio
-- Plan, diseño o artefacto no trivial → ToT obligatorio
-- Comandos `/sap:comite`, `/sap:investigar` → ToT obligatorio
-- Consulta factual simple → ToT opcional
-
-### Sistema de Etiquetas (14 tags)
-
-**ToT (10)**: `[SUPUESTO]`, `[INFERENCIA]`, `[EXTRAIDO_HILO]`, `[MEMORIA]`, `[CONOCIMIENTO]`, `[WEB]`, `[ADJUNTO]`, `[AUTOCOMPLETADO]`, `[POR_CONFIRMAR]`, `[VACIO_CRITICO]`
-
-**SAP (4)**: `[CÓDIGO]`, `[CONFIG]`, `[DOC]`, `[STAKEHOLDER]`
-
-### Cierre Metacognitivo Obligatorio
-
+```bash
+bash scripts/render-brand-html.sh entregable.md \
+    --out entregable.html \
+    --style comite|reporte|consultas|specs|discovery \
+    --meta "Confianza=0.88"
 ```
+
+Validado por `@qa-validator`: `var(--o)` presente, colores verdes prohibidos.
+
 ---
-📊 METADATA DE RAZONAMIENTO
-• Confianza global: [0.0-1.0] (target >= 0.95)
-• Comité activo: [lista con nombres]
-• Fuentes consultadas: [hilo | memoria | adjuntos | conocimiento | web | SAP docs | templates]
-• Autocompletados realizados: [lista]
-• Ambigüedades residuales: [máx 3 o "Ninguna"]
-• Recomendación siguiente paso: [comando sugerido]
-```
+
+## Comandos (29)
+
+Principales v3.0+:
+- `/sap:menu` — paleta interactiva
+- `/sap:consulta <pregunta>` — 1-3 agentes sin ToT `[--adjuntos] [--html]`
+- `/sap:comite <pregunta>` — comité 5/7/9 ToT `[--adjuntos] [--html] [--auto|--hitos|--paso-a-paso]`
+- `/sap:investigar <tema>` — deep research + NotebookLM `[--adjuntos] [--html]`
+- `/sap:adopcion <cliente>` — plan estratégico
+- `/sap:ajuste-estandar <scope>` — F2S
+- `/sap:plan-{implementacion,mantenimiento,evolucion,personalizacion}`
+- `/sap:diagrama-{funcional,tecnico}`, `/sap:mapa-integracion`, `/sap:clean-core`
+- `/sap:notebook-{create,research,query,audio}` — NotebookLM MCP
+- **NUEVO v4.0**: `/sap:render-html <file.md> [--style ...]` — brand HTML
+
+Ver `references/ontology/commands-reference.md` para lista completa.
 
 ---
 
 ## Hard Rules (Inviolables)
 
 1. **Autoría Javier Montaño** en cada archivo generado
-2. **Evidence tags** obligatorios en toda afirmación
-3. **Clean Core compliance** >= 5/6 (Level D rechazado)
-4. **Templates mandatory** antes de generar output
-5. **NUNCA precios** — solo FTE-meses
-6. **QA bloqueante** — `@qa-validator` antes de delivery
-7. **Anti-hallucination** — `@sap-docs-steward` valida objetos SAP
-8. **Spanish (LatAm)** default
-9. **Comité impar** siempre (5, 7, 9) — evita empates
+2. **Evidence tags** obligatorios: `[CÓDIGO] [ADJUNTO] [CONFIG] [DOC] [NOTEBOOKLM] [STAKEHOLDER] [INFERENCIA] [SUPUESTO]`
+3. **Clean Core compliance** >= 5/6
+4. **NUNCA precios** — solo FTE-meses P50/P80/P95
+5. **NUNCA verde** — brand rule Sofka; usar `--pos` dorado para success
+6. **FASE 0 obligatoria** si hay adjuntos — hard fail en G1 si falta priming doc
+7. **QA bloqueante** — `@qa-validator` antes de G1/G1.5/G2/G3
+8. **Comité impar** 5, 7 o 9
+9. **Spanish (LatAm)** default
 10. **Cierre metacognitivo** obligatorio en outputs ToT
+
+---
+
+## Quick Start
+
+```bash
+# Paleta
+/sap:menu
+
+# Con adjuntos + brand HTML
+/sap:comite "Evaluar Clean Core post-migración" \
+    --adjuntos ./readiness-check.xlsx,./contract.pdf \
+    --hitos --html
+
+# Render de markdown existente
+/sap:render-html .discovery/comite-acme-{WIP}.md --style comite
+```
 
 ---
 
@@ -139,78 +168,46 @@ Ver `agents/_metacognitive-rules.md` para detalle completo.
 ```
 sap-enterprise-plugin/
 ├── .claude-plugin/plugin.json
+├── plugin.json
+├── requirements.txt                          # v4.0: deps extractors + jinja2
+├── CLAUDE.md                                 # Este documento
 ├── agents/
-│   ├── _defaults.md                       # Reglas base
-│   ├── _metacognitive-rules.md            # Pipeline ToT
-│   ├── environment-orchestrator.md        # Default agent
-│   ├── sap-orchestrator.md                # Pipeline executor
+│   ├── _defaults.md, _metacognitive-rules.md
+│   ├── environment-orchestrator.md           # default
+│   ├── sap-orchestrator.md                   # pipeline exec
 │   ├── permanent/
 │   │   ├── sap-docs-steward.md
 │   │   ├── functional-lead.md
 │   │   ├── abap-expert.md
 │   │   ├── qa-validator.md
+│   │   ├── attachment-processor.md           # NUEVO v4.0
 │   │   └── module-specialist-legacy.md
-│   ├── thematic/                          # 40 expertos
-│   │   └── {40 *.md files}
-│   └── modules/                           # 12 especialistas
-│       └── {12 *.md files}
-├── commands/                              # 24 comandos (14 v3.0 + 10 legacy)
-├── skills/                                # 11 skills
-├── templates/                             # 22 templates
-├── scripts/                               # 7 validators
-├── references/
-│   ├── body-of-knowledge/                 # 10 files
-│   ├── knowledge-graphs/                  # 10 files
-│   └── sap-object-catalog.md
-├── hooks/hooks.json
-├── settings.json                          # default: environment-orchestrator
-├── CLAUDE.md                              # Este documento
-└── README.md
+│   ├── thematic/ (40 agentes)
+│   └── modules/ (12 agentes)
+├── commands/ (29 comandos)
+├── skills/ (104 skills)
+│   ├── sap-*/ (12 core SAP)
+│   ├── sap-attachment-handling/              # NUEVO v4.0
+│   ├── brand-html-render/                    # NUEVO v4.0
+│   └── {90 importadas SDF}
+├── templates/
+│   ├── brand-html-base.html                  # NUEVO v4.0 jinja2
+│   └── {20+ md templates}
+├── scripts/
+│   ├── setup-attachments.sh                  # NUEVO
+│   ├── ingest-attachments.sh                 # NUEVO
+│   ├── extract-{csv,xlsx,docx,pdf,pptx,html,code,structured}.py  # NUEVO
+│   ├── extract-generic.sh                    # NUEVO
+│   ├── render-brand-html.sh                  # NUEVO
+│   ├── render_brand_html.py                  # NUEVO
+│   └── {7 validators v3.x}
+└── references/
+    ├── ontology/                             # NUEVO v4.0 (9 archivos)
+    ├── body-of-knowledge/
+    └── knowledge-graphs/
 ```
 
 ---
 
-## Quick Start
-
-```bash
-# Paleta v3.0
-/sap:menu
-
-# Casos frecuentes
-/sap:consulta "¿Qué es el Scope Item J11?"
-/sap:comite "¿Cómo integrar CATS sin violar Clean Core?" --hitos
-/sap:investigar "SAP Joule capabilities 2025"
-/sap:adopcion AcmeCorp --paso-a-paso
-/sap:ajuste-estandar CO
-/sap:plan-implementacion --hitos
-/sap:auditar ./plans/plan-v2.md
-/sap:diagrama-tecnico "Timesheet integration" --tipo sequence
-/sap:mapa-integracion AcmeCorp
-/sap:clean-core AcmeCorp
-```
-
----
-
-## Agent Pool Reference
-
-### 40 Thematic Experts
-Ver `agents/thematic/` para detalle. Incluye:
-- **Core (25)**: finance, tax, compliance, security, grc, data-mdg, data-migration, integration-patterns, cloud-btp, analytics-bi, ai-ml, change-ocm, performance, esg, localization, licensing, devops, testing, enterprise-arch, solution-arch, workshop-facilitator, pm-traditional, pm-agile, risk, cost-value
-- **SAP-specific (5)**: clean-core-strategist ⭐, sap-activate-methodologist, cutover-mgmt, hypercare, extensibility
-- **Industry (5)**: services, manufacturing, retail, bfsi, public-sector
-- **Operativos (5)**: observability, finops-btp, central-finance, bpm-signavio, ux-fiori-design
-
-### 12 Module Specialists
-Ver `agents/modules/`:
-fi, co, sd, mm, pp, ps, pm-eam, qm, wm-ewm, hcm-sf, treasury, ariba-successfactors
-
----
-
-## Inspirado En
-
-Plugin inspirado en el meta-prompt "Orquestador Metacognitivo y Gestor de Contexto" (ToT Committee con 3 nodos) — adaptado a dominio SAP con comité expandido 5/7/9 impar y pool de expertos dinámico.
-
----
-
-*SAP Enterprise Plugin v3.0 — Diseñado y desarrollado por Javier Montaño.*
+*SAP Enterprise Plugin v4.0 — SAGE-Grade Expansion. Diseñado y desarrollado por Javier Montaño.*
 *© 2026 — All Rights Reserved.*

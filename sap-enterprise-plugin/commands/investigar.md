@@ -1,7 +1,7 @@
 ---
-description: "Deep research SAP — comité + búsqueda web + NotebookLM research si disponible"
+description: "Deep research SAP v4.0 — comité + web + NotebookLM. Acepta --adjuntos para alimentar la investigación con archivos del usuario (csv/xlsx/docx/pdf/pptx/html/py/tsx/sql) y --html para render brand-ready al final."
 user-invocable: true
-argument-hint: "<tema> [--auto|--hitos|--paso-a-paso]"
+argument-hint: "<tema> [--auto|--hitos|--paso-a-paso] [--adjuntos path1,...] [--html]"
 ---
 
 # /sap:investigar — Deep Research Committee

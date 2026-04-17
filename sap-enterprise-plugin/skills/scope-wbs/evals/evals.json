@@ -1,0 +1,53 @@
+[
+  {
+    "prompt": "Create a WBS for a 6-month ERP implementation project with 4 modules (Finance, HR, Supply Chain, CRM). The charter identifies 12 high-level deliverables.",
+    "assertions": [
+      "produces a hierarchical WBS with at least 3 levels of decomposition",
+      "applies the 100% rule at every decomposition level",
+      "generates WBS codes following hierarchical numbering (e.g., 1.1.1)",
+      "terminal work packages satisfy the 8-80 hour rule",
+      "includes a WBS dictionary with acceptance criteria per work package",
+      "covers all 4 ERP modules as Level-1 or Level-2 branches"
+    ]
+  },
+  {
+    "prompt": "The project charter says 'improve customer experience' but doesn't specify which channels, systems, or metrics. Create the scope statement and WBS.",
+    "assertions": [
+      "flags the vague charter scope before attempting decomposition",
+      "identifies specific gray zones requiring stakeholder clarification",
+      "documents explicit exclusions to bound the ambiguity",
+      "produces a scope boundary document with inclusions, exclusions, gray zones",
+      "does NOT fabricate specific deliverables without evidence"
+    ]
+  },
+  {
+    "prompt": "We're running a Scrum project with 8 epics in the backlog. Create a WBS that aligns with agile practices.",
+    "assertions": [
+      "adapts WBS structure for agile context (epics → features → stories)",
+      "maps epics as Level-1 WBS elements",
+      "work packages correspond to user stories or story clusters",
+      "includes estimation in story points alongside person-hours",
+      "notes that WBS will evolve with backlog refinement"
+    ]
+  },
+  {
+    "prompt": "After creating the WBS, validate that all 47 requirements from the requirements document are covered and no gold-plating exists.",
+    "assertions": [
+      "produces a Requirements Traceability Matrix (RTM)",
+      "identifies orphan requirements with zero WBS coverage",
+      "flags gold-plated work packages without requirement justification",
+      "calculates coverage percentage for requirements, WBS justification, and objective alignment",
+      "provides a prioritized gap action list"
+    ]
+  },
+  {
+    "prompt": "Estimate effort for a WBS with 35 work packages across 5 deliverable branches. Use at least two estimation techniques.",
+    "assertions": [
+      "applies at least two estimation techniques per work package",
+      "provides P50, P80, and P95 confidence ranges",
+      "flags high-uncertainty packages where P95/P50 ratio exceeds 3.0",
+      "rolls up estimates from work packages to branch summaries",
+      "documents estimation assumptions for each package"
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 {
   "name": "sap-enterprise-plugin",
-  "version": "3.4.0",
-  "description": "SAP Enterprise Plugin v3.2 (MCP-INTEGRATED) — Standalone multi-agent ecosystem with ToT Committee + NotebookLM MCP integration for SAP S/4HANA Cloud. 58 agentes (6 permanentes + 40 temáticos + 12 módulos), pool ratio 3.33x, comité dinámico 5/7/9 impar, pipeline metacognitivo de 4 fases + FASE R research-augmentation, 28 comandos en español con 3 modos HITL, 25 templates deterministas, 9 scripts de validación. NotebookLM-first validation via @sap-docs-steward. [NOTEBOOKLM] provenance tag. Clean Core enforced. Bundled MCP server (notebooklm). Designed by Javier Montaño.",
+  "version": "4.0.0",
+  "description": "SAP Enterprise Plugin v4.0 (SAGE-GRADE) — Standalone multi-agent ecosystem para SAP S/4HANA Cloud. 58 agentes (7 permanentes incl. @attachment-processor + 40 temáticos + 12 módulos) + 104 skills (12 core SAP + 90 importadas SDF + sap-attachment-handling + brand-html-render), comité dinámico 5/7/9, pipeline ToT 4 fases + FASE 0 attachment handling (csv/xlsx/docx/pdf/pptx/html/py/tsx/sql/json/yaml/xml) + FASE R NotebookLM research. 29 comandos en español con 3 modos HITL, 9 archivos de ontología (skills-catalog, agent-committee, commands-reference, pipeline, attachment-taxonomy, output-standards, canonical-tokens, protocol-zero-hallucination, master-index), brand HTML render Sofka DS v5 (tokens --o #FF7E08). Evidence tags priority CÓDIGO > ADJUNTO > CONFIG > DOC > NOTEBOOKLM > STAKEHOLDER > INFERENCIA > SUPUESTO. Designed by Javier Montaño.",
   "author": {
     "name": "Javier Montaño",
     "email": "javier.montano.guz@gmail.com",
