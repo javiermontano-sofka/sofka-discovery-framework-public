@@ -1,6 +1,6 @@
 {
   "name": "sap-enterprise-plugin",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "SAP Enterprise Plugin v3.2 (MCP-INTEGRATED) — Standalone multi-agent ecosystem with ToT Committee + NotebookLM MCP integration for SAP S/4HANA Cloud. 58 agentes (6 permanentes + 40 temáticos + 12 módulos), pool ratio 3.33x, comité dinámico 5/7/9 impar, pipeline metacognitivo de 4 fases + FASE R research-augmentation, 28 comandos en español con 3 modos HITL, 25 templates deterministas, 9 scripts de validación. NotebookLM-first validation via @sap-docs-steward. [NOTEBOOKLM] provenance tag. Clean Core enforced. Bundled MCP server (notebooklm). Designed by Javier Montaño.",
   "author": {
     "name": "Javier Montaño",

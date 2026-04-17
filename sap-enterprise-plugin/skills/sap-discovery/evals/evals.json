@@ -1,0 +1,64 @@
+{
+  "skill_name": "sap-discovery",
+  "description": "Test cases for SAP Discovery pipeline skill — landscape assessment, scope, module selection, readiness, migration path decision.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "greenfield-new-entity",
+      "prompt": "Discovery SAP S/4HANA Cloud para AcmeCorp, nuevo holding retail, 3 países LatAm, 200 usuarios, sin ERP previo. ¿Qué pipeline ejecuto?",
+      "files": [],
+      "expected_output": "Full discovery plan with CP-0..CP-8 phases, recommends Greenfield, high readiness score",
+      "assertions": [
+        "Recommends Greenfield with rationale",
+        "All 8 landscape dimensions addressed (some as [SUPUESTO] if no data)",
+        "5D readiness scoring applied",
+        "Module selection decision tree for retail",
+        "FTE-meses estimates, NOT prices",
+        "SAP Activate Discover phase alignment",
+        "Phase Zero governance mentioned"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "brownfield-ecc-migration",
+      "prompt": "Discovery para BetaCorp — ECC 6.0 EhP7 actual, 500 Z-objects, 8 países, 2000 usuarios. Evaluar migración a S/4HANA.",
+      "files": [],
+      "expected_output": "Landscape with Clean Core readiness, custom code analysis, likely Brownfield or Bluefield recommendation",
+      "assertions": [
+        "Clean Core readiness evaluated (Z-objects > 500 is high debt)",
+        "Migration path scoring applied (tech debt + transformation ambition + data complexity)",
+        "Brownfield or Bluefield recommended (not Greenfield)",
+        "Simplification Items impact mentioned",
+        "Custom Code Migration Worklist referenced",
+        "No final prices, only FTE-meses",
+        "Phase Zero governance mandatory before Discover"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "incomplete-context-handling",
+      "prompt": "Haz discovery SAP para mi empresa.",
+      "files": [],
+      "expected_output": "Skill identifies [VACIO_CRITICO], asks clarifying questions (industry, countries, user count, current ERP)",
+      "assertions": [
+        "Output uses [VACIO_CRITICO] tag",
+        "Asks clarifying questions BEFORE proceeding",
+        "Does NOT fabricate client context",
+        "Lists minimum info required to start discovery"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "low-readiness-warning",
+      "prompt": "Cliente quiere hacer SAP, pero CEO no está engaged, procesos no documentados, data quality mala. ¿Procedo?",
+      "files": [],
+      "expected_output": "Readiness score < 2.5, HIGH RISK banner, recommend defer or descope",
+      "assertions": [
+        "Readiness score calculated and shown as < 2.5",
+        "HIGH RISK banner present",
+        "Recommendation: defer or focus on Phase Zero first",
+        "Mitigation plan suggested per dimension"
+      ]
+    }
+  ]
+}

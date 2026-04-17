@@ -1,6 +1,6 @@
 {
   "name": "sap-enterprise-plugin",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "SAP Enterprise Plugin v3.2 (MCP-INTEGRATED) — ToT Committee + NotebookLM MCP integration + FASE R research augmentation. 58 agents + bundled notebooklm MCP server. 28 Spanish commands (+4 /sap:notebook-*). 11 skills + sap-research-notebooks. [NOTEBOOKLM] provenance tag in steward/orchestrators. Designed by Javier Montaño.",
   "author": "Javier Montaño",
   "license": "All Rights Reserved",

@@ -1,0 +1,41 @@
+{
+  "skill_name": "{SKILL_NAME}",
+  "description": "Test cases for {SKILL_NAME} — replace with real prompts + assertions",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-main-use-case",
+      "prompt": "{realistic user prompt — main happy path}",
+      "files": [],
+      "expected_output": "{expected output format description}",
+      "assertions": [
+        "Output contains TL;DR section",
+        "Evidence tags >= 5 total",
+        "Metacognitive closing block present",
+        "Ghost menu at end"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-missing-context",
+      "prompt": "{prompt with missing context — skill should flag [VACIO_CRITICO]}",
+      "files": [],
+      "expected_output": "Skill detects gap and asks for info",
+      "assertions": [
+        "Output contains [VACIO_CRITICO] tag",
+        "Skill does NOT fabricate missing data"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "cross-module-dependency",
+      "prompt": "{prompt that requires cross-module coordination}",
+      "files": [],
+      "expected_output": "Skill escalates / delegates to relevant module-specialist",
+      "assertions": [
+        "Output references correct module specialist",
+        "Cross-module dependency documented"
+      ]
+    }
+  ]
+}

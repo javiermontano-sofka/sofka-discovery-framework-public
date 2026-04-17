@@ -1,0 +1,40 @@
+graph TB
+    subgraph Bootstrap["Bootstrap Phase"]
+        B1[Client project start]
+        B2[scripts/notebook-bootstrap.sh]
+        B3[6 canonical notebooks created]
+    end
+
+    subgraph Populate["Populate Phase"]
+        P1[/sap:notebook-research]
+        P2[mcp__notebooklm__research_start]
+        P3[research_import ~40 sources/notebook]
+        P4[Steward classifies sources]
+    end
+
+    subgraph Consume["Consume Phase"]
+        C1[Agent requests validation]
+        C2[mcp__notebooklm__notebook_query]
+        C3[Citations NOTEBOOKLM + DOC]
+    end
+
+    subgraph Disseminate["Dissemination Phase"]
+        D1[/sap:notebook-audio]
+        D2[audio_overview_create]
+        D3[Podcast 15-25 min to steering]
+    end
+
+    B1 --> B2 --> B3
+    B3 --> P1 --> P2 --> P3 --> P4
+    P4 --> C1 --> C2 --> C3
+    P4 --> D1 --> D2 --> D3
+
+    classDef bootstrap fill:#FFD700,color:#1A1A2E
+    classDef populate fill:#FF7E08,color:white
+    classDef consume fill:#EFEAE4,color:#1A1A2E
+    classDef disseminate fill:#1A1A2E,color:#FFD700
+
+    class B1,B2,B3 bootstrap
+    class P1,P2,P3,P4 populate
+    class C1,C2,C3 consume
+    class D1,D2,D3 disseminate

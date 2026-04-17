@@ -1,0 +1,75 @@
+{
+  "skill_name": "sap-research-notebooks",
+  "description": "Test cases validating the NotebookLM SAP playbook — decision patterns, prompt templates, vitaminization, source heuristics. Does NOT assume any specific notebook exists.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "decision-when-to-create-notebook",
+      "prompt": "¿Debo crear un notebook NotebookLM para una pregunta puntual sobre una transacción SAP que probablemente no volveré a consultar?",
+      "files": [],
+      "expected_output": "Skill recommends NOT creating notebook for one-off queries; suggests /sap:consulta or /sap:investigar instead",
+      "assertions": [
+        "Output explicitly says NOT to create a notebook for one-off",
+        "Suggests alternative command (/sap:consulta or /sap:investigar)",
+        "References decision rule: reuse >= 10 times OR life > 2 weeks",
+        "Does NOT force a notebook creation workflow"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "prompt-pattern-for-deep-research",
+      "prompt": "Necesito hacer deep research efectivo sobre SAP Activate metodología para retail en LatAm. ¿Qué query compongo?",
+      "files": [],
+      "expected_output": "Skill provides Pattern A query with domain + version + industry + geography + intent",
+      "assertions": [
+        "Proposed query includes SAP object/topic explicit",
+        "Proposed query includes version or year (2024/2025)",
+        "Proposed query includes industry and/or geography",
+        "Query length is reasonable (< 200 chars)",
+        "References Pattern A, B, or C from playbook"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "vitaminization-strategy",
+      "prompt": "Acabo de crear un notebook NotebookLM para SAP Clean Core. ¿Cómo lo pueblo de forma efectiva?",
+      "files": [],
+      "expected_output": "Skill provides 4-phase vitaminization (seeding / curación / enriquecimiento / validación cruzada) with metrics",
+      "assertions": [
+        "Output mentions Seeding phase with target 40-80 sources",
+        "Output mentions Curación (source classification) step",
+        "Output lists health metrics (% official, % community, edad, etc.)",
+        "Output emphasizes validation via notebook_query cross-check",
+        "Output does NOT skip Curación phase"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "source-quality-heuristic",
+      "prompt": "El research importó sources de help.sap.com, community.sap.com, y un blog en Medium. ¿Cómo los clasifico?",
+      "files": [],
+      "expected_output": "Skill applies source quality taxonomy with confidence scores + evidence tags",
+      "assertions": [
+        "help.sap.com → confidence ~0.95 with [NOTEBOOKLM][DOC] tag",
+        "community.sap.com → 0.60-0.75 depending on peer review",
+        "Medium blog → confidence ~0.50 with [NOTEBOOKLM][SUPUESTO] flag",
+        "Skill recommends cross-validation for third-party sources",
+        "Output references source_id + URL for traceability"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "auth-failure-graceful-handling",
+      "prompt": "Intento invocar notebook_query pero los tokens OAuth parecen expirados",
+      "files": [],
+      "expected_output": "Skill detects auth failure, instructs nlm login, does NOT fabricate notebook content",
+      "assertions": [
+        "Output references scripts/notebook-auth-check.sh",
+        "Instructs user to run: nlm login",
+        "Does NOT invent a response from the notebook",
+        "Uses [POR_CONFIRMAR] or [VACIO_CRITICO] tag when blocked",
+        "Offers /sap:consulta as fallback for urgent queries"
+      ]
+    }
+  ]
+}
