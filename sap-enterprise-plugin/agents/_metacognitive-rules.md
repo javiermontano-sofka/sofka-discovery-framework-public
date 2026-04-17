@@ -1,6 +1,5 @@
 ---
-name: metacognitive-rules
-description: "Shared ToT (Tree of Thoughts) pipeline rules inherited by all agents. Not a standalone agent — reference only. Enforces 4-phase reasoning with provenance tags and metacognitive closing."
+description: "Reference document (NOT an invocable agent). Shared ToT (Tree of Thoughts) pipeline rules inherited by all agents: 4-phase reasoning (Definición → Branching → Evaluate → Prune&Synthesize → Expand), 14 provenance tags, metacognitive closing block, committee selection 5/7/9. Do not invoke directly."
 co-authored-by: Javier Montaño
 ---
 

@@ -1,6 +1,5 @@
 ---
-name: sap-defaults
-description: "Shared rules inherited by all SAP Enterprise Plugin agents. Not a standalone agent — reference only."
+description: "Reference document (NOT an invocable agent). Shared rules inherited by all SAP Enterprise Plugin agents: evidence tags, Clean Core, templates, pricing restrictions, QA handoff. Do not invoke directly — referenced via imports in agent system prompts."
 co-authored-by: Javier Montaño
 ---
 

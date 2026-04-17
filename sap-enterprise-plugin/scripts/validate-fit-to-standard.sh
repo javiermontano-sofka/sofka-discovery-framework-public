@@ -39,16 +39,24 @@ else
   echo "  ✅ PASS ($SCOPE_DOC Scope Items with [DOC])"
 fi
 
-# Check 3: Gap scoring dimensions are 1-3
+# Check 3: Gap scoring dimensions are 1-3 (hardened awk separator)
 echo "[3/5] Scoring dimensions range (1-3)..."
-INVALID_SCORES=$(grep -oE "Effort[ ]*[:=][ ]*[0-9]+" "$FILE" | awk -F'[:= ]' '{if($NF<1 || $NF>3) print}' || true)
+INVALID_SCORES=$(grep -oE "Effort[[:space:]]*[:=][[:space:]]*[0-9]+" "$FILE" | awk -F'[ :=]+' '{v=$NF; if(v<1 || v>3) print $0}' || true)
 if [ -n "$INVALID_SCORES" ]; then
-  echo "  ❌ FAIL: Invalid scoring dimension values (must be 1-3)"
+  echo "  ❌ FAIL: Invalid Effort dimension values (must be 1-3)"
   echo "$INVALID_SCORES" | head -3
   ERRORS=$((ERRORS + 1))
 else
   echo "  ✅ PASS"
 fi
+# Also check Risk, Upgrade Impact, Business Value
+for DIM in "Risk" "Upgrade Impact" "Business Value"; do
+  BAD=$(grep -oE "${DIM}[[:space:]]*[:=][[:space:]]*[0-9]+" "$FILE" | awk -F'[ :=]+' '{v=$NF; if(v<1 || v>3) print $0}' 2>/dev/null || true)
+  if [ -n "$BAD" ]; then
+    echo "  ⚠️  WARNING: ${DIM} values out of range (1-3): $(echo "$BAD" | head -1)"
+    WARNINGS=$((WARNINGS + 1))
+  fi
+done
 
 # Check 4: Business Value from stakeholder
 echo "[4/5] Business Value stakeholder evidence..."

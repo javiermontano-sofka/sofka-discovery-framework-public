@@ -20,29 +20,57 @@ echo ""
 ERRORS=0
 WARNINGS=0
 
-# Check 1: GAP IDs follow pattern GAP-{MODULE}-{NNN}
+# Check 1: GAP IDs follow pattern GAP-{MODULE}-{NNN} (TIGHTENED)
 echo "[1/5] GAP ID format check..."
-INVALID_IDS=$(grep -oE "GAP-[A-Za-z0-9_]+-[^ |]+" "$FILE" | grep -vE "^GAP-(CO|SD|PS|FI|MM|HCM|XFN)-[0-9]{3}$" || true)
-if [ -n "$INVALID_IDS" ]; then
-  echo "  ❌ FAIL: Invalid GAP IDs found:"
-  echo "$INVALID_IDS" | head -5
+# Valid module codes + exactly 3 digits
+ALL_IDS=$(grep -oE "GAP-[A-Z]{2,4}-[0-9]{3}" "$FILE" 2>/dev/null || true)
+# Detect IDs that look like GAP-* but don't match strict pattern
+LOOSE_IDS=$(grep -oE "GAP-[A-Za-z0-9_-]+" "$FILE" 2>/dev/null | grep -vE "^GAP-(CO|SD|PS|FI|MM|HCM|PP|PM|QM|WM|EWM|TRM|XFN)-[0-9]{3}$" || true)
+if [ -n "$LOOSE_IDS" ]; then
+  echo "  ❌ FAIL: Invalid GAP IDs found (expected GAP-{MODULE}-{NNN} with 3 digits):"
+  echo "$LOOSE_IDS" | head -5
   ERRORS=$((ERRORS + 1))
 else
-  echo "  ✅ PASS"
+  VALID_COUNT=$(echo "$ALL_IDS" | grep -c . || echo 0)
+  echo "  ✅ PASS (${VALID_COUNT} valid GAP IDs)"
 fi
 
-# Check 2: Required fields per gap
-echo "[2/5] Required fields check..."
+# Check 2: Required fields per gap (PER-GAP VALIDATION via block parsing)
+echo "[2/5] Required fields check (per-gap)..."
 REQUIRED=("Module" "Score" "Classification" "Business Value" "Blocking")
+MISSING_FIELDS=""
 for field in "${REQUIRED[@]}"; do
   count=$(grep -c "$field" "$FILE" || true)
   if [ "$count" -lt 1 ]; then
-    echo "  ❌ FAIL: Missing field '$field'"
+    MISSING_FIELDS="$MISSING_FIELDS $field"
     ERRORS=$((ERRORS + 1))
   fi
 done
-if [ "$ERRORS" -eq 0 ]; then
-  echo "  ✅ PASS (all required fields present)"
+if [ -z "$MISSING_FIELDS" ]; then
+  echo "  ✅ PASS (all required fields present globally)"
+else
+  echo "  ❌ FAIL: Missing fields:$MISSING_FIELDS"
+fi
+
+# Check 2b: Per-gap field density (awk block parser)
+GAP_COUNT=$(echo "$ALL_IDS" | grep -c . || echo 0)
+if [ "$GAP_COUNT" -gt 0 ]; then
+  # Each gap should have Module + Score + Classification nearby (within 20 lines)
+  ORPHAN_GAPS=$(awk -v pattern="GAP-[A-Z]{2,4}-[0-9]{3}" '
+    /GAP-[A-Z]{2,4}-[0-9]{3}/ {
+      gap_id = $0
+      has_score = 0; has_class = 0
+      for (i = 1; i <= 20 && (getline line) > 0; i++) {
+        if (line ~ /Score/) has_score = 1
+        if (line ~ /Classification|Clasif/) has_class = 1
+        if (line ~ /GAP-[A-Z]{2,4}-[0-9]{3}/) break
+      }
+      if (!has_score || !has_class) print gap_id
+    }' "$FILE" 2>/dev/null | head -3 || true)
+  if [ -n "$ORPHAN_GAPS" ]; then
+    echo "  ⚠️  WARNING: Gaps without nearby Score/Classification: $(echo "$ORPHAN_GAPS" | head -1)"
+    WARNINGS=$((WARNINGS + 1))
+  fi
 fi
 
 # Check 3: Classification values are valid

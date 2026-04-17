@@ -11,6 +11,13 @@ VIOLATIONS=0
 CHECKS_PASSED=0
 TOTAL_CHECKS=6
 
+# Validate target exists
+if [ ! -e "$TARGET" ]; then
+  echo "ERROR: Target not found: $TARGET"
+  echo "Usage: $0 <path-to-directory-or-file>"
+  exit 1
+fi
+
 echo "=== Clean Core Compliance Check ==="
 echo "Target: $TARGET"
 echo ""
@@ -43,8 +50,9 @@ else
 fi
 
 # Criterion 3: Upgrade-safe mechanism (no classic BADIs in SAP namespace)
+# Tightened: match BADI definitions/implementations specifically, not prose
 echo "[3/6] Upgrade-safe extension mechanism..."
-if grep -rEn "BADI.*/SAP/" "$TARGET" 2>/dev/null | grep -v "^[[:space:]]*\"" | head -1 | grep -q . ; then
+if grep -rEn "(GET BADI|DEFINE-SECTION.*BADI|BADI[[:space:]]+IN[[:space:]]+/SAP/)" "$TARGET" 2>/dev/null | grep -v "^[[:space:]]*\"" | head -1 | grep -q . ; then
   echo "  ❌ FAIL: Classic BADI in SAP namespace"
   VIOLATIONS=$((VIOLATIONS + 1))
 else

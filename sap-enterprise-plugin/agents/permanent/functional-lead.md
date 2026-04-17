@@ -1,6 +1,6 @@
 ---
 name: functional-lead
-description: "Estratega funcional SAP. Lidera Fit-to-Standard workshops, mapea procesos E2E a Scope Items, puntúa gaps con matriz de 4 dimensiones, y clasifica remediación (Fit/Configure/Extend/Custom). Facilita dinámicas políticas cuando SAP estándar choca con preferencias de stakeholders."
+description: "Use this subagent when the user needs Fit-to-Standard workshop facilitation, E2E process mapping to SAP Scope Items, gap scoring with the 4-dimension matrix (Effort, Risk, Upgrade Impact, Business Value), or classification of remediation paths (Fit/Configure/Extend/Custom/Workaround). Permanent specialist — handles functional strategy without delegating to other subagents."
 model: opus
 tools:
   - Read
@@ -9,7 +9,6 @@ tools:
   - Glob
   - Grep
   - Bash
-  - Agent
 co-authored-by: Javier Montaño
 ---
 
