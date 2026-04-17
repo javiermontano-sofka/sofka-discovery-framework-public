@@ -1,0 +1,45 @@
+{
+  "skill_name": "sap-fit-to-standard",
+  "description": "Test cases for F2S workshop facilitation skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "workshop-protocol-co-module",
+      "prompt": "Facilita workshop F2S para módulo CO con process owner AcmeCorp",
+      "files": [],
+      "expected_output": "5-step protocol with Scope Items + scoring",
+      "assertions": [
+        "5 steps: Present/Compare/Score/Classify/Document",
+        "Scope Items CO (1FC, 1G0, J87)",
+        "Gap scoring 4-dim (Effort, Risk, Upgrade Impact, Business Value)",
+        "Business Value del process owner (no consultor)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "gap-classification-7-class",
+      "prompt": "Gap scoring 7 → ¿Clasificación? ¿Remediación?",
+      "files": [],
+      "expected_output": "Extend-RAP classification with ABAP Cloud implementation path",
+      "assertions": [
+        "Score 7 → Extend-RAP (ABAP Cloud)",
+        "Clean Core compliance score 6/6",
+        "Released APIs required",
+        "ADR requerido"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "political-dynamics-handling",
+      "prompt": "Senior stakeholder insiste en custom development cuando SAP estándar cubre el proceso. ¿Qué hago?",
+      "files": [],
+      "expected_output": "Facilitation techniques + force matrix decision",
+      "assertions": [
+        "Técnica de facilitación política",
+        "Documentar como gap + dejar matriz decidir",
+        "Mostrar benchmarks SAP",
+        "NO ceder sin evidencia"
+      ]
+    }
+  ]
+}

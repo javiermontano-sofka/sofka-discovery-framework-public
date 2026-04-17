@@ -1,0 +1,45 @@
+{
+  "skill_name": "sap-gap-analysis",
+  "description": "Test cases for gap analysis + classification skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "taxonomy-classification",
+      "prompt": "Clasifica 10 gaps según taxonomy 7-clase",
+      "files": [],
+      "expected_output": "Classification with scores + Clean Core status",
+      "assertions": [
+        "7 classes: Fit/Configure/Extend-KU/Extend-RAP/Extend-BTP/Custom/Workaround",
+        "Score ranges documented",
+        "Clean Core status por clase",
+        "Custom (score 11-12) requiere ADR + SDA approval"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "dependency-graph",
+      "prompt": "Construye dependency graph para 15 gaps cross-módulo CO/SD/FI",
+      "files": [],
+      "expected_output": "Mermaid graph with blocking gaps highlighted",
+      "assertions": [
+        "Mermaid diagram",
+        "Blocking gaps identificados (>= 3 dependientes o critical path)",
+        "Depends-on, enables, shares-data-with",
+        "Clusters identificados"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "wave-assignment-priority",
+      "prompt": "Prioriza gaps con Priority Score formula",
+      "files": [],
+      "expected_output": "Wave 1-4 assignment with rationale",
+      "assertions": [
+        "Priority = (BV×2) + (Block×3) - (E+R+U)",
+        "Wave 1 Blocking + dependencies",
+        "Wave 4 defer < 2 priority",
+        "Gap clusters como package"
+      ]
+    }
+  ]
+}

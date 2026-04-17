@@ -1,0 +1,45 @@
+{
+  "skill_name": "sap-btp-extensibility",
+  "description": "Test cases for SAP BTP + ABAP Cloud extensibility skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "rap-vs-cap-decision",
+      "prompt": "Necesito crear una extensión custom para approval workflow de timesheet. ¿ABAP Cloud RAP o CAP en BTP?",
+      "files": [],
+      "expected_output": "Decision matrix RAP vs CAP con rationale",
+      "assertions": [
+        "RAP criteria: tightly coupled, same S/4HANA system",
+        "CAP criteria: loosely coupled, external users, independent lifecycle",
+        "Recomendación justificada",
+        "Clean Core Level A compliance"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "key-user-first",
+      "prompt": "Usuario quiere agregar campo custom a Sales Order. ¿Key User o RAP?",
+      "files": [],
+      "expected_output": "Key User Extensibility first — no code needed",
+      "assertions": [
+        "Recomienda Key User",
+        "Custom Fields app referenciada",
+        "NO recomienda RAP para este caso simple",
+        "Evidence [DOC]"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "btp-subaccount-architecture",
+      "prompt": "Diseña arquitectura BTP subaccounts para AcmeCorp multi-país",
+      "files": [],
+      "expected_output": "DEV/QAS/PRD + SANDBOX structure with connectivity",
+      "assertions": [
+        "DEV/QAS/PRD subaccounts",
+        "Destination Service para conectividad",
+        "Communication Arrangements mencionadas",
+        "Cloud Connector si on-prem"
+      ]
+    }
+  ]
+}

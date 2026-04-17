@@ -1,0 +1,48 @@
+{
+  "skill_name": "sap-activate-methodology",
+  "description": "Test cases for SAP Activate methodology skill — 6 phases, gates, accelerators.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "phase-deliverables-explore",
+      "prompt": "¿Qué deliverables debo producir en la fase Explore de SAP Activate para un proyecto S/4HANA Cloud?",
+      "files": [],
+      "expected_output": "List of Explore phase deliverables with quality gate criteria",
+      "assertions": [
+        "Lista Fit-to-Standard workshops",
+        "Gap Analysis Report",
+        "ADRs for blocking gaps",
+        "Quality Gate Explore → Realize criteria",
+        "References SAP Best Practices Explorer"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "agile-vs-waterfall-selection",
+      "prompt": "¿Cuándo uso SAP Activate waterfall vs agile vs híbrido?",
+      "files": [],
+      "expected_output": "Decision matrix based on scope, industry, team maturity",
+      "assertions": [
+        "Trade-off matrix con dimensiones (scope, duration, team size, documentation)",
+        "Hybrid como default recomendado para enterprise",
+        "Waterfall para regulatory-heavy",
+        "Evidence tags [DOC]"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "accelerators-usage",
+      "prompt": "Lista los aceleradores SAP Activate disponibles y cuándo usar cada uno",
+      "files": [],
+      "expected_output": "Accelerator catalog with phase mapping",
+      "assertions": [
+        "SAP Best Practices Explorer mencionado",
+        "SAP Cloud ALM",
+        "SAP Signavio",
+        "Migration Cockpit",
+        "SAP Enable Now",
+        "Phase mapping por accelerator"
+      ]
+    }
+  ]
+}

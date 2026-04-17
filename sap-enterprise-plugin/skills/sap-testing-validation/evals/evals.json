@@ -1,0 +1,47 @@
+{
+  "skill_name": "sap-testing-validation",
+  "description": "Test cases for SAP testing strategy skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "testing-pyramid",
+      "prompt": "Diseña testing pyramid para proyecto S/4HANA 5 módulos",
+      "files": [],
+      "expected_output": "Unit/Integration/UAT/Regression/Performance levels",
+      "assertions": [
+        "5 levels: Unit, Integration, UAT, Regression, Performance",
+        "Per-level ownership (functional, integration, business, QA, perf engineer)",
+        "Per-level timing in project"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "uat-scenarios-sd-module",
+      "prompt": "Escribe UAT scenarios para SD module (T&M + Fixed Price + Retainer)",
+      "files": [],
+      "expected_output": "3 test scenarios with expected results",
+      "assertions": [
+        "T&M scenario con timesheet confirmation",
+        "Fixed Price con milestone billing",
+        "Retainer con periodic billing",
+        "Revenue recognition linkage"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "go-live-readiness-scorecard",
+      "prompt": "Go-live readiness scorecard con 10 criterios",
+      "files": [],
+      "expected_output": "10-criteria scorecard with thresholds",
+      "assertions": [
+        "UAT pass >= 95%",
+        "0 critical defects",
+        "Data variance <= 0.1%",
+        "Training >= 90%",
+        "Rollback tested",
+        "Hypercare team staffed",
+        "Readiness >= 70%"
+      ]
+    }
+  ]
+}

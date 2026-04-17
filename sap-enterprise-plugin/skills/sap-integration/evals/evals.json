@@ -1,0 +1,46 @@
+{
+  "skill_name": "sap-integration",
+  "description": "Test cases for SAP integration architecture skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "sync-vs-async-decision",
+      "prompt": "External system necesita notificaciones de SAP sales order creation. ¿Sync API o async event?",
+      "files": [],
+      "expected_output": "Event Mesh async pattern with fan-out",
+      "assertions": [
+        "Event Mesh recomendado (fan-out, decoupled)",
+        "Topic naming convention sap/s4/event/*",
+        "Subscribers pattern",
+        "NO sync para notificaciones"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "cpi-iflow-design",
+      "prompt": "Diseña iFlow CPI para CATS BAPI timesheet integration",
+      "files": [],
+      "expected_output": "iFlow architecture with error handling",
+      "assertions": [
+        "One iFlow per interface (no bundling)",
+        "Communication Arrangement en S/4",
+        "Error handling 5 categorías",
+        "BAPI field mapping"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "error-handling-strategy",
+      "prompt": "Define error handling para 5 categorías",
+      "files": [],
+      "expected_output": "Per-category strategy with monitoring",
+      "assertions": [
+        "Transient: retry exponential backoff max 3",
+        "Data: DLQ + alert",
+        "Auth: credential refresh",
+        "Business: user notification",
+        "System: circuit breaker"
+      ]
+    }
+  ]
+}

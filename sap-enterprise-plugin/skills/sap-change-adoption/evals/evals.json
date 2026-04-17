@@ -1,0 +1,46 @@
+{
+  "skill_name": "sap-change-adoption",
+  "description": "Test cases for organizational change management SAP skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "adkar-assessment-stakeholder-groups",
+      "prompt": "Evalúa ADKAR readiness para AcmeCorp — CEO engaged, middle management skeptical, end users resistentes",
+      "files": [],
+      "expected_output": "ADKAR assessment per group with mitigation plan",
+      "assertions": [
+        "ADKAR scoring L/M/H per stakeholder group",
+        "Focus areas identificadas (middle mgmt Desire; users Awareness)",
+        "Mitigation por dimensión",
+        "Evidence tags [STAKEHOLDER]"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "super-user-network-design",
+      "prompt": "Diseña super-user network para proyecto 500 usuarios",
+      "files": [],
+      "expected_output": "Network design with roles, selection criteria, training plan",
+      "assertions": [
+        "Ratio 1:15-20 end users (33 super-users target)",
+        "Selection criteria (5 dimensiones)",
+        "5-day training curriculum",
+        "Floor walker role para go-live week"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "hypercare-planning",
+      "prompt": "Plan de hypercare post go-live para 6 semanas",
+      "files": [],
+      "expected_output": "L0-L3 support structure with exit criteria",
+      "assertions": [
+        "L0 self-service Enable Now",
+        "L1 super-users < 2h",
+        "L2 functional < 4h",
+        "L3 technical < 8h",
+        "Exit criteria: 0 critical tickets + NPS >= 3.5"
+      ]
+    }
+  ]
+}

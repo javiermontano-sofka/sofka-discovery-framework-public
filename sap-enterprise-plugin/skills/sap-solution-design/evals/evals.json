@@ -1,0 +1,53 @@
+{
+  "skill_name": "sap-solution-design",
+  "description": "Test cases for Clean Core solution architecture skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "clean-core-a-d-levels",
+      "prompt": "Explica A-D extensibility levels y cuándo usar cada uno",
+      "files": [],
+      "expected_output": "Matrix with descriptions + examples per level",
+      "assertions": [
+        "Level A: Released APIs only (BEST)",
+        "Level B: Classic APIs (BAPI, IDoc)",
+        "Level C: Internal objects (REVIEW)",
+        "Level D: FORBIDDEN",
+        "ATC check variants mencionadas"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "extension-decision-tree",
+      "prompt": "Gap requires custom logic. Apply Extension Decision Tree.",
+      "files": [],
+      "expected_output": "Tree traversal: Standard → Key User → RAP → BTP → Redesign",
+      "assertions": [
+        "Standard first check",
+        "Key User Extensibility evaluation",
+        "ABAP Cloud RAP si tightly coupled",
+        "BTP side-by-side si loosely coupled",
+        "Process redesign si nada funciona"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "sad-10-sections",
+      "prompt": "Produce Solution Architecture Document outline",
+      "files": [],
+      "expected_output": "10 sections structure",
+      "assertions": [
+        "Executive Summary",
+        "Solution Overview (module landscape)",
+        "Module Architecture",
+        "Extension Architecture",
+        "Integration Architecture",
+        "Data Architecture",
+        "Security",
+        "NFRs",
+        "ADRs",
+        "Risks"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "skill_name": "sap-data-migration",
+  "description": "Test cases for SAP data migration skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "strangler-fig-protocol",
+      "prompt": "Cliente quiere migración incremental para reducir riesgo. ¿Qué protocolo aplico?",
+      "files": [],
+      "expected_output": "Strangler Fig 8-step protocol per data domain",
+      "assertions": [
+        "8 pasos: Map/Design/Cleanse/Load/Validate/Shadow/Cutover/Document",
+        "Variance tolerance ≤ 0.1%",
+        "Parallel run 1-2 periodos",
+        "Referencia Migration Cockpit"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "wave-planning",
+      "prompt": "Diseña wave plan para BetaCorp 8 países S/4HANA Cloud",
+      "files": [],
+      "expected_output": "Wave 0-4 with dependencies + duration",
+      "assertions": [
+        "Wave 0 Foundation (Org + CoA)",
+        "Wave 1 Master Data",
+        "Wave 2 Config",
+        "Wave 3 Transactions",
+        "Dependencies documented"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "cutover-rehearsal",
+      "prompt": "Plan de cutover rehearsal con Go/No-Go criteria",
+      "files": [],
+      "expected_output": "Minimum 2 rehearsals + 5 criteria",
+      "assertions": [
+        "Mínimo 2 rehearsals (R1 dry + R2 con go-live team)",
+        "Go/No-Go: variance <=0.1%, 0 critical errors, rollback tested",
+        "Parallel run para financial data"
+      ]
+    }
+  ]
+}
