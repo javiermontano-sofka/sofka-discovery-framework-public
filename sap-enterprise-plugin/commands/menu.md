@@ -1,111 +1,152 @@
 ---
-description: "Paleta interactiva de comandos SAP Enterprise Plugin v2.1"
+description: "Paleta interactiva de comandos SAP Enterprise Plugin v3.0"
 user-invocable: true
 ---
 
-# /sap:menu — Command Palette
+# /sap:menu — Command Palette v3.0
 
-> Diseñado y desarrollado por **Javier Montaño**. Plugin: sap-enterprise-plugin v2.1
+> Diseñado por **Javier Montaño**. Plugin: sap-enterprise-plugin v3.0
 
-## SAP Enterprise Plugin v2.1 — Comandos Disponibles
+## 🎯 10 Casos de Uso Estándar
 
-### 🚀 Pipeline Completo
-| Comando | Descripción |
-|---------|-------------|
-| `/sap:discovery <cliente>` | Pipeline completo end-to-end (9 deliverables) |
-| `/sap:sap <cliente>` | Alias → discovery |
-| `/sap:assess` | Landscape assessment (maturity + readiness scoring) |
+### Categoría 1 — Consulta
+| # | Comando | Descripción |
+|---|---------|-------------|
+| 1 | `/sap:consulta <pregunta>` | Query simple (1-3 agentes, sin ToT) |
+| 2 | `/sap:comite <pregunta>` | Comité 5/7/9 con pipeline ToT completo |
+| 3 | `/sap:investigar <tema>` | Deep research + web + NotebookLM |
 
-### 🔬 Workshops & Analysis
-| Comando | Descripción |
-|---------|-------------|
-| `/sap:fit-to-standard <scope>` | Workshop F2S por Scope Item o módulo |
-| `/sap:gap-analysis` | Clasificación, dependencias, ADRs |
+### Categoría 2 — Planificación Estratégica
+| # | Comando | Descripción |
+|---|---------|-------------|
+| 4 | `/sap:adopcion <cliente>` | Plan de adopción SAP (strategic roadmap) |
+| 5 | `/sap:ajuste-estandar <scope>` | Análisis Fit-to-Standard |
 
-### 🏛️ Arquitectura
-| Comando | Descripción |
-|---------|-------------|
-| `/sap:solution-design` | SAD Clean Core target-state |
+### Categoría 3 — Planes de Proyecto
+| # | Comando | Descripción |
+|---|---------|-------------|
+| 6a | `/sap:plan-implementacion` | Plan implementación (nuevo proyecto) |
+| 6b | `/sap:plan-mantenimiento` | Plan AMS (post go-live) |
+| 6c | `/sap:plan-evolucion` | Plan evolución (roadmap innovación) |
+| 6d | `/sap:plan-personalizacion` | Plan extensiones Clean Core |
 
-### ⚙️ Configuración & Desarrollo
-| Comando | Descripción |
-|---------|-------------|
-| `/sap:module-config <módulo>` | Config detallada CO/SD/PS/FI/MM/HCM |
-| `/sap:generate-abap <req>` | Genera código ABAP Cloud (QA obligatorio) |
+### Categoría 4 — Auditoría & Diagramas
+| # | Comando | Descripción |
+|---|---------|-------------|
+| 7 | `/sap:auditar <plan>` | Auditar plan existente |
+| 8 | `/sap:diagrama-funcional <obj>` | Diagrama funcional Mermaid |
+| 9 | `/sap:diagrama-tecnico <obj>` | Diagrama técnico Mermaid / C4 |
 
-### 🚚 Migración
-| Comando | Descripción |
-|---------|-------------|
-| `/sap:migration-plan` | Strangler Fig + Wave Plan + Cutover |
-
----
-
-## 🤖 Agentes Especialistas
-
-| Agente | Rol |
-|--------|-----|
-| `@sap-orchestrator` | Master conductor (default) |
-| `@functional-lead` | Fit-to-Standard + gap scoring |
-| `@module-specialist` | CO / SD / PS / FI / MM / HCM granular |
-| `@abap-expert` | ABAP Cloud + RAP + CDS + OData |
-| `@sap-docs-steward` | Validación contra referencias oficiales |
-| `@qa-validator` | Auditor + scripts/validate-*.sh |
+### Categoría 5 — Claves Diferenciadoras
+| # | Comando | Descripción |
+|---|---------|-------------|
+| 10 | `/sap:mapa-integracion <scope>` | Integration Architecture Map |
+| 11 | `/sap:clean-core <scope>` | Clean Core Blueprint estratégico |
 
 ---
 
-## 📋 Templates Disponibles (12)
+## 🎚️ Modos Operativos (HITL)
 
-`templates/`:
-- `gap-registry.md`
-- `fit-to-standard-output.md`
-- `solution-design-document.md`
-- `bpdd-template.md`
-- `migration-wave-plan.md`
-- `module-config-{co,sd,ps,fi}.md`
-- `adr-template.md`
-- `landscape-assessment.md`
-- `readiness-scorecard.md`
+Todos los comandos (excepto `consulta`) aceptan:
+
+| Flag | HITL | Comportamiento |
+|------|------|---------------|
+| `--auto` | Sin HITL | Pipeline completo sin pausas |
+| `--hitos` | On-the-loop | Pausa en gates (**default**) |
+| `--paso-a-paso` | In-the-loop | Aprobación por fase |
 
 ---
 
-## 🔍 Scripts de Validación (5)
+## 🤖 Arquitectura Multi-Agente (58 agentes)
 
-`scripts/`:
-- `validate-clean-core.sh` — 6-criteria compliance
-- `validate-gap-registry.sh` — formato GAP-{MODULE}-{NNN}
-- `validate-fit-to-standard.sh` — scoring matrix
-- `validate-deliverable.sh` — evidence tags + template
-- `detect-sap-context.sh` — auto-detect SAP keywords
+### 6 Permanentes
+- `@environment-orchestrator` (default agent, meta-conductor)
+- `@sap-orchestrator` (pipeline executor)
+- `@sap-docs-steward` (reference validator)
+- `@functional-lead` (F2S + gap scoring)
+- `@abap-expert` (ABAP Cloud + RAP + CDS)
+- `@qa-validator` (auditor, scripts runner)
+
+### 40 Temáticos
+`finance-expert`, `tax-expert`, `compliance-regulatory-expert`, `security-expert`, `grc-authorizations-expert`, `data-mdg-expert`, `data-migration-expert`, `integration-patterns-expert`, `cloud-btp-expert`, `analytics-bi-expert`, `ai-ml-expert`, `change-ocm-expert`, `performance-engineering-expert`, `esg-sustainability-expert`, `localization-expert`, `licensing-commercial-expert`, `devops-cicd-expert`, `testing-strategy-expert`, `enterprise-architect`, `solution-architect`, `workshop-facilitator`, `pm-traditional-expert`, `pm-agile-expert`, `risk-management-expert`, `cost-value-engineering-expert`, **`clean-core-strategist`** ⭐, `sap-activate-methodologist`, `cutover-management-expert`, `hypercare-expert`, `extensibility-expert`, `industry-services-expert`, `industry-manufacturing-expert`, `industry-retail-expert`, `industry-bfsi-expert`, `industry-public-sector-expert`, `observability-expert`, `finops-btp-expert`, `central-finance-specialist`, `bpm-signavio-expert`, `ux-fiori-design-expert`
+
+### 12 Módulos
+`fi-specialist`, `co-specialist`, `sd-specialist`, `mm-specialist`, `pp-specialist`, `ps-specialist`, `pm-eam-specialist`, `qm-specialist`, `wm-ewm-specialist`, `hcm-sf-specialist`, `treasury-specialist`, `ariba-successfactors-specialist`
 
 ---
 
-## 📚 Quick Start
+## 🧠 Pipeline ToT (4 Fases)
 
-```bash
-# Discovery nuevo cliente
-/sap:discovery MiCliente
+Inspirado en "Orquestador Metacognitivo" — aplicado por comités 5/7/9:
 
-# Workshop F2S módulo CO
-/sap:fit-to-standard CO
-
-# Gap analysis después de workshops
-/sap:gap-analysis
-
-# Solution design
-/sap:solution-design
-
-# Configurar módulo FI
-/sap:module-config FI
-
-# Generar extensión ABAP
-/sap:generate-abap "Custom timesheet approval workflow"
-
-# Plan de migración
-/sap:migration-plan
-
-# Assessment standalone
-/sap:assess
+```
+FASE 0: Definición + Autocompletado
+    ↓
+FASE 1: Branching (cada miembro propone 1 rama)
+    ↓
+FASE 2: Evaluate (QA + Steward asignan confianza 0-1)
+    ↓
+FASE 3: Prune & Synthesize (descartar <0.6, seleccionar ganadora)
+    ↓
+FASE 4: Expand (comité consenso + template)
+    ↓
+Cierre metacognitivo obligatorio
 ```
 
 ---
-*Generado por SAP Enterprise Plugin v2.1 — Diseñado y desarrollado por Javier Montaño.*
+
+## 📋 Templates (22 totales)
+
+12 v2.1 heredados + 10 nuevos v3.0:
+- `tot-committee-output.md`
+- `research-report.md`
+- `adoption-plan.md`
+- `project-plan-implementacion.md`
+- `project-plan-mantenimiento.md`
+- `project-plan-evolucion.md`
+- `project-plan-personalizacion.md`
+- `audit-report.md`
+- `diagrama-funcional.md`
+- `diagrama-tecnico.md`
+- `mapa-integracion.md`
+- `clean-core-blueprint.md`
+
+---
+
+## 🔍 Scripts (7 totales)
+
+5 v2.1 + 2 nuevos v3.0:
+- `select-committee.sh` (dispatch dinámico 5/7/9)
+- `validate-tot-output.sh` (verificar 4 fases + metadata)
+
+---
+
+## 🌎 Comandos Legacy v2.1 (siguen funcionando)
+
+Aliases en inglés mantenidos por backward compat:
+`/sap:discovery`, `/sap:fit-to-standard`, `/sap:gap-analysis`, `/sap:solution-design`, `/sap:generate-abap`, `/sap:module-config`, `/sap:migration-plan`, `/sap:assess`, `/sap:sap`
+
+---
+
+## 🚀 Quick Start v3.0
+
+```bash
+# Paleta
+/sap:menu
+
+# Casos frecuentes
+/sap:consulta "¿Qué es el Scope Item J11?"
+/sap:comite "¿Cómo integrar CATS sin violar Clean Core?"
+/sap:investigar "SAP Joule capabilities 2025"
+/sap:adopcion AcmeCorp --hitos
+/sap:ajuste-estandar CO
+/sap:plan-implementacion --paso-a-paso
+/sap:auditar ./plans/current-plan.md
+/sap:diagrama-funcional "Order-to-Cash"
+/sap:diagrama-tecnico "CATS integration" --tipo sequence
+/sap:mapa-integracion AcmeCorp
+/sap:clean-core AcmeCorp
+```
+
+---
+*SAP Enterprise Plugin v3.0 — Diseñado y desarrollado por Javier Montaño.*

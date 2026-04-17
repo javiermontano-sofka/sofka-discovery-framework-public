@@ -1,124 +1,60 @@
 {
   "name": "sap-enterprise-plugin",
-  "version": "2.1.0",
-  "description": "SAP Enterprise Plugin v2.1 — Standalone multi-agent ecosystem for SAP S/4HANA Cloud discovery, implementation, and operations. Zero-API base mode. Deterministic templates, local validation scripts, Clean Core enforced. Designed by Javier Montaño.",
-  "author": {
-    "name": "Javier Montaño",
-    "email": "javier.montano.guz@gmail.com"
-  },
+  "version": "3.0.0",
+  "description": "SAP Enterprise Plugin v3.0 — ToT Committee + Expanded Expert Pool. 58 agents (6 permanent + 40 thematic + 12 module). Multi-agent orchestration with 4-phase metacognitive pipeline. Clean Core enforced. Zero-API standalone. Designed by Javier Montaño.",
+  "author": "Javier Montaño",
   "license": "All Rights Reserved",
-  "homepage": "https://sofka.com.co",
   "changelog": {
-    "2.1.0": "Standalone plugin extracted from SDF v12.0. Multi-agent delegation framework with 6 specialists (sap-orchestrator, abap-expert, functional-lead, module-specialist, sap-docs-steward, qa-validator). 10 delegator commands. 12 deterministic templates. 5 local validation scripts. Zero-API base mode."
+    "3.0.0": "ToT Committee architecture. 58 agents pool (ratio 3.33x thematic:module). Dynamic committee 5/7/9 (odd). @environment-orchestrator meta-conductor. _metacognitive-rules shared. 14 Spanish commands with 3 HITL modes. 10 new templates (ToT, adoption, 4x project-plans, audit, diagrams, maps, clean-core blueprint). Scripts: select-committee.sh + validate-tot-output.sh.",
+    "2.1.0": "Standalone extraction from SDF. 6 specialist agents. 10 English commands. 12 deterministic templates. 5 validation scripts. Clean Core enforcement.",
+    "2.0.0": "Initial SAP v2 integrated in SDF plugin."
   },
   "commands": {
-    "sap:discovery": {
-      "description": "Pipeline completo de SAP discovery (CP-0 → CP-8)",
-      "file": "commands/discovery.md"
-    },
-    "sap:fit-to-standard": {
-      "description": "Workshop Fit-to-Standard por Scope Item o módulo",
-      "file": "commands/fit-to-standard.md"
-    },
-    "sap:gap-analysis": {
-      "description": "Análisis y clasificación de gaps con ADRs",
-      "file": "commands/gap-analysis.md"
-    },
-    "sap:solution-design": {
-      "description": "Arquitectura SAP target-state Clean Core",
-      "file": "commands/solution-design.md"
-    },
-    "sap:generate-abap": {
-      "description": "Genera código ABAP Cloud (RAP + CDS + OData) con QA obligatorio",
-      "file": "commands/generate-abap.md"
-    },
-    "sap:module-config": {
-      "description": "Configuración detallada por módulo (CO/SD/PS/FI/MM/HCM)",
-      "file": "commands/module-config.md"
-    },
-    "sap:migration-plan": {
-      "description": "Plan de migración Strangler Fig + Wave Plan + Cutover",
-      "file": "commands/migration-plan.md"
-    },
-    "sap:assess": {
-      "description": "Assessment de landscape SAP con 5D readiness scoring",
-      "file": "commands/assess.md"
-    },
-    "sap:menu": {
-      "description": "Paleta interactiva de comandos SAP Enterprise",
-      "file": "commands/menu.md"
-    },
-    "sap:sap": {
-      "description": "Alias → /sap:discovery",
-      "file": "commands/sap.md"
-    }
+    "sap:menu": { "description": "Paleta interactiva v3.0", "file": "commands/menu.md" },
+    "sap:consulta": { "description": "Query simple (1-3 agentes, sin ToT)", "file": "commands/consulta.md" },
+    "sap:comite": { "description": "Comité 5/7/9 con pipeline ToT completo", "file": "commands/comite.md" },
+    "sap:investigar": { "description": "Deep research + web + NotebookLM", "file": "commands/investigar.md" },
+    "sap:adopcion": { "description": "Plan de adopción SAP (strategic roadmap)", "file": "commands/adopcion.md" },
+    "sap:ajuste-estandar": { "description": "Análisis Fit-to-Standard con ToT", "file": "commands/ajuste-estandar.md" },
+    "sap:plan-implementacion": { "description": "Plan implementación nuevo proyecto (6a)", "file": "commands/plan-implementacion.md" },
+    "sap:plan-mantenimiento": { "description": "Plan AMS post go-live (6b)", "file": "commands/plan-mantenimiento.md" },
+    "sap:plan-evolucion": { "description": "Plan evolución/innovación (6c)", "file": "commands/plan-evolucion.md" },
+    "sap:plan-personalizacion": { "description": "Plan extensiones Clean Core (6d)", "file": "commands/plan-personalizacion.md" },
+    "sap:auditar": { "description": "Auditar plan SAP existente", "file": "commands/auditar.md" },
+    "sap:diagrama-funcional": { "description": "Diagrama funcional Mermaid", "file": "commands/diagrama-funcional.md" },
+    "sap:diagrama-tecnico": { "description": "Diagrama técnico C4/Mermaid", "file": "commands/diagrama-tecnico.md" },
+    "sap:mapa-integracion": { "description": "Integration Architecture Map completo", "file": "commands/mapa-integracion.md" },
+    "sap:clean-core": { "description": "Clean Core Blueprint estratégico", "file": "commands/clean-core.md" },
+    "sap:discovery": { "description": "[v2.1 legacy] Pipeline completo discovery", "file": "commands/discovery.md" },
+    "sap:fit-to-standard": { "description": "[v2.1 legacy] Workshop F2S", "file": "commands/fit-to-standard.md" },
+    "sap:gap-analysis": { "description": "[v2.1 legacy] Gap analysis", "file": "commands/gap-analysis.md" },
+    "sap:solution-design": { "description": "[v2.1 legacy] Solution design", "file": "commands/solution-design.md" },
+    "sap:generate-abap": { "description": "[v2.1 legacy] ABAP Cloud generation", "file": "commands/generate-abap.md" },
+    "sap:module-config": { "description": "[v2.1 legacy] Module config", "file": "commands/module-config.md" },
+    "sap:migration-plan": { "description": "[v2.1 legacy] Migration plan", "file": "commands/migration-plan.md" },
+    "sap:assess": { "description": "[v2.1 legacy] Assessment", "file": "commands/assess.md" },
+    "sap:sap": { "description": "Alias → /sap:discovery", "file": "commands/sap.md" }
   },
   "agents": {
-    "sap-orchestrator": {
-      "description": "Master conductor. Rutea a 5 especialistas, enforza quality gates G1/G2/G3.",
-      "file": "agents/sap-orchestrator.md"
-    },
-    "abap-expert": {
-      "description": "ABAP Cloud + RAP + CDS + OData V4. Clean Core Level A enforcer.",
-      "file": "agents/abap-expert.md"
-    },
-    "functional-lead": {
-      "description": "Fit-to-Standard facilitator + gap scoring matrix owner.",
-      "file": "agents/functional-lead.md"
-    },
-    "module-specialist": {
-      "description": "Consultor granular por módulo SAP con templates específicos.",
-      "file": "agents/module-specialist.md"
-    },
-    "sap-docs-steward": {
-      "description": "Curador de referencias oficiales SAP. Rechaza hallucinations.",
-      "file": "agents/sap-docs-steward.md"
-    },
-    "qa-validator": {
-      "description": "Auditor cross-módulo + scripts/validate-*.sh runner. Bloqueante.",
-      "file": "agents/qa-validator.md"
-    }
+    "environment-orchestrator": { "description": "Meta-conductor, default agent v3.0", "file": "agents/environment-orchestrator.md" },
+    "sap-orchestrator": { "description": "Pipeline executor", "file": "agents/sap-orchestrator.md" },
+    "sap-docs-steward": { "description": "Reference validator (permanent)", "file": "agents/permanent/sap-docs-steward.md" },
+    "functional-lead": { "description": "F2S + gap scoring (permanent)", "file": "agents/permanent/functional-lead.md" },
+    "abap-expert": { "description": "ABAP Cloud + RAP (permanent)", "file": "agents/permanent/abap-expert.md" },
+    "qa-validator": { "description": "Auditor + scripts runner (permanent)", "file": "agents/permanent/qa-validator.md" }
   },
   "scripts": {
-    "validate-clean-core": {
-      "description": "Clean Core 6-criteria compliance check",
-      "file": "scripts/validate-clean-core.sh"
-    },
-    "validate-gap-registry": {
-      "description": "Gap registry format + required fields",
-      "file": "scripts/validate-gap-registry.sh"
-    },
-    "validate-fit-to-standard": {
-      "description": "F2S scoring matrix + consistency",
-      "file": "scripts/validate-fit-to-standard.sh"
-    },
-    "validate-deliverable": {
-      "description": "General deliverable QA (evidence tags, template, ghost menu)",
-      "file": "scripts/validate-deliverable.sh"
-    },
-    "detect-sap-context": {
-      "description": "Auto-detect SAP keywords in cwd, set TIPO_SERVICIO flag",
-      "file": "scripts/detect-sap-context.sh"
-    }
+    "select-committee": { "description": "Dynamic committee selection 5/7/9 impar", "file": "scripts/select-committee.sh" },
+    "validate-tot-output": { "description": "Verify 4 ToT phases + metadata closing", "file": "scripts/validate-tot-output.sh" },
+    "validate-clean-core": { "description": "6-criteria Clean Core compliance", "file": "scripts/validate-clean-core.sh" },
+    "validate-gap-registry": { "description": "Gap registry format validator", "file": "scripts/validate-gap-registry.sh" },
+    "validate-fit-to-standard": { "description": "F2S scoring matrix validator", "file": "scripts/validate-fit-to-standard.sh" },
+    "validate-deliverable": { "description": "General deliverable QA", "file": "scripts/validate-deliverable.sh" },
+    "detect-sap-context": { "description": "Auto-detect SAP keywords in cwd", "file": "scripts/detect-sap-context.sh" }
   },
   "keywords": [
-    "sap",
-    "s4hana",
-    "s4hana-cloud",
-    "sap-activate",
-    "clean-core",
-    "fit-to-standard",
-    "abap-cloud",
-    "rap",
-    "cds",
-    "btp",
-    "multi-agent",
-    "deterministic",
-    "standalone",
-    "zero-api",
-    "gap-analysis",
-    "discovery",
-    "migration-cockpit",
-    "javier-montano"
+    "sap", "s4hana", "tot-committee", "metacognitive", "multi-agent",
+    "clean-core", "sap-activate", "abap-cloud", "btp", "fit-to-standard",
+    "standalone", "zero-api", "spanish-commands", "hitl", "javier-montano"
   ]
 }

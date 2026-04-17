@@ -1,7 +1,7 @@
 {
   "name": "sap-enterprise-plugin",
-  "version": "2.1.0",
-  "description": "SAP Enterprise Plugin v2.1 — Standalone multi-agent ecosystem for SAP S/4HANA Cloud discovery, implementation, and operations. Zero-API base mode. 6 specialist agents (@sap-orchestrator, @abap-expert, @functional-lead, @module-specialist, @sap-docs-steward, @qa-validator), 10 delegator commands, 12 deterministic templates, 5 local validation scripts, 11 skills, 22 knowledge references. Clean Core enforced. Evidence-tagged outputs.",
+  "version": "3.0.0",
+  "description": "SAP Enterprise Plugin v3.0 — Standalone multi-agent ecosystem with ToT (Tree of Thoughts) Committee for SAP S/4HANA Cloud. 58 agentes (6 permanentes + 40 temáticos + 12 módulos), pool ratio 3.33x, comité dinámico 5/7/9 impar, pipeline metacognitivo de 4 fases (Definición → Branching → Evaluate → Prune&Synthesize → Expand), 14 comandos en español con 3 modos HITL (auto/hitos/paso-a-paso), 22 templates deterministas, 7 scripts de validación. Clean Core enforced. Zero-API base mode. Designed by Javier Montaño.",
   "author": {
     "name": "Javier Montaño",
     "email": "javier.montano.guz@gmail.com",
@@ -12,6 +12,11 @@
     "sap",
     "s4hana",
     "s4hana-cloud",
+    "multi-agent",
+    "tot-committee",
+    "tree-of-thoughts",
+    "metacognitive",
+    "deterministic",
     "sap-activate",
     "clean-core",
     "fit-to-standard",
@@ -19,13 +24,13 @@
     "rap",
     "cds",
     "btp",
-    "multi-agent",
-    "deterministic",
     "standalone",
     "zero-api",
-    "gap-analysis",
-    "discovery",
-    "migration-cockpit",
+    "expert-committee",
+    "thematic-experts",
+    "module-specialists",
+    "spanish-commands",
+    "hitl",
     "javier-montano"
   ]
 }
