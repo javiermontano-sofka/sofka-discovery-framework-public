@@ -5,15 +5,14 @@ description: >
   Generates a comprehensive QA report in Markdown combining findings from all validation
   and audit skills, with executive summary, categorized findings, and prioritized recommendations.
   Trigger: generate QA report, full report, plugin report, qa summary.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
   - Bash
 ---
-
 # Generate QA Report
 
 > "What gets measured gets managed; what gets reported gets improved."

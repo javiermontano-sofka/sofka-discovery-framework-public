@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Profiling-based identification of hot paths, resource constraints, and throughput limiters.
   Trigger: "find bottlenecks", "hot paths", "performance profiling", "throughput limits".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Performance Bottleneck Identifier
 
 Identify performance bottlenecks through code-level profiling analysis, hot path detection, resource constraint mapping, and throughput limiter identification.

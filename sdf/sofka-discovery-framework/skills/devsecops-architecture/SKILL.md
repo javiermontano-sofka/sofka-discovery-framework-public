@@ -8,8 +8,8 @@ description: >
   "automate compliance", "measure DORA metrics", or mentions SAST, SCA, DAST, secrets scanning, IaC scanning, canary deployment, or policy-as-code.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 > **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Cloud`. Los pipelines CI/CD y la seguridad en el ciclo de desarrollo son inherentes a estas líneas de servicio. Para seguridad en otros contextos, consulte `security-architecture`.
 
 # DevSecOps Architecture: Delivery & Security Pipeline

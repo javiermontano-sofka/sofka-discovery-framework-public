@@ -5,15 +5,14 @@ description: >
   Generate production-ready agent .md and command .md files from designs. Enforces plugin subagent constraints and alias linkage.
   Trigger: spec agent, spec command, generate agent file, write command file, create agent specification.
 argument-hint: "<agent-design-path>"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
   - Bash
 ---
-
 # Spec Agent Command
 
 > "An agent without a clear role is a meeting without an agenda -- everyone is busy, nothing gets done."

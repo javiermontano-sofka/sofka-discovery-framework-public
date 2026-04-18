@@ -5,14 +5,13 @@ description: >
   Produces a compact executive scorecard grading a plugin across 7 quality dimensions
   with a letter grade, numeric score, and top 3 priority actions.
   Trigger: generate scorecard, qa scorecard, plugin grade, executive summary.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Generate QA Scorecard
 
 > "A dashboard is only as good as the decisions it enables."

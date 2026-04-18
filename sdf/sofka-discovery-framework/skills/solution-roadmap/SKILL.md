@@ -8,8 +8,8 @@ description: >
   "plan the transformation", "build an investment case", "team sizing",
   "risk-adjusted timeline", or mentions "Phase 4", "solution roadmap", "transformation plan",
   "phased execution", "PoC validation criteria", "kill criteria", "go/no-go gates".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Solution Roadmap — Transformation Blueprint
 
 Defines the complete transformation plan AFTER scenario approval but BEFORE PoC validation. Covers transformation vision, phased execution (Foundation > Build > Integrate > Optimize > Scale), investment horizon with TCO/ROI, team ramp-up curve, estimation pivot points with PoC validation, risk management with cascade failure analysis, and governance framework.

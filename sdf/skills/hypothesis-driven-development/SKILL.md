@@ -1,13 +1,7 @@
 ---
 name: metodologia-hypothesis-driven-development
 author: Javier Montaño · Comunidad MetodologIA
-description: >
-  Hypothesis-Driven Development (HDD) framework for structuring modernization proposals as
-  testable hypotheses with Lean Startup cycles (Build-Measure-Learn). Transforms features into
-  hypotheses with metrics, experiments, and kill/pivot/persevere thresholds. Use when formulating
-  scenarios as hypotheses, designing validation experiments, applying Lean Startup to discovery,
-  or when "HDD", "hypothesis", "hipótesis", "lean startup", "build-measure-learn", "experiment",
-  "kill/pivot/persevere", or "validación de hipótesis" is mentioned.
+description: "Use this skill when the user asks about hypothesis driven development: Hypothesis-Driven Development (HDD) framework for structuring modernization proposals as testable hypotheses with Lean Startup cycles (Build-Measure-Learn)."
 argument-hint: "[project-name]"
 allowed-tools:
   - Read
@@ -17,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Hypothesis-Driven Development: Lean Startup for Technical Discovery
 
 Transforms modernization proposals into testable hypotheses with Build-Measure-Learn cycles.

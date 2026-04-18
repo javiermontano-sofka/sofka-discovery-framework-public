@@ -5,9 +5,9 @@ description: >
   "define risk treatments", "design contingency plans", "assign risk owners",
   or mentions risk mitigation, risk transfer, risk avoidance, risk acceptance,
   response strategies, trigger-response mapping.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-risk-response-planning"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-risk-resp
   - Grep
   - Bash
 ---
-
 # Risk Response Planning
 
 **TL;DR**: Develops specific response strategies for each identified risk: avoid, transfer, mitigate, or accept for threats; exploit, share, enhance, or accept for opportunities. Each response includes action plans, trigger conditions, responsible owners, and cost/schedule impact. Updates the project plan with risk-related activities.

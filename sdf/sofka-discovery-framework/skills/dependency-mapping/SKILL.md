@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to catalog inter-project dependencies, visualize dependency
   networks, identify critical dependency chains, detect circular dependencies, or establish
   cross-project coordination protocols for dependency management.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Cross-Project Dependency Mapping
 
 **TL;DR**: Maps and visualizes dependencies between projects, teams, and external entities. Identifies dependency chains, critical paths across projects, circular dependencies, and unmanaged dependencies. Produces dependency matrices and network diagrams for portfolio-level coordination.

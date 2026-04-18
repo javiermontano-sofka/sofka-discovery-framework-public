@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Identifies, assesses, and manages technical and project risks with mitigation strategies,
   monitoring plans, and contingency protocols. Trigger: "risk analysis", "risk register", "mitigation plan".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Risk Controlling
 
 Systematically identifies, quantifies, and manages risks across technical, organizational,

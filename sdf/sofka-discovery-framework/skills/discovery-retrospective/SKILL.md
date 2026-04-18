@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to conduct a quantitative post-discovery review, measure
   pipeline execution quality, assess deliverable completeness, evaluate estimation accuracy,
   or update APEX pipeline parameters based on retrospective findings.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Discovery Retrospective
 
 **TL;DR**: Conducts a quantitative post-discovery retrospective analyzing pipeline execution quality, deliverable completeness, stakeholder satisfaction, estimation accuracy, and methodology fit. Produces measurable insights that improve future discovery cycles and calibrate APEX pipeline parameters.

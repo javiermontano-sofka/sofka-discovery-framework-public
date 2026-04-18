@@ -5,9 +5,9 @@ description: >
   "track OKRs", "identify strategic orphans", "verify portfolio-strategy fit",
   or mentions strategic alignment, strategy-to-project traceability, OKR tracking,
   balanced scorecard alignment, portfolio investment alignment.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-strategic-alignment"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-strategic
   - Grep
   - Bash
 ---
-
 # Strategy-to-Project Traceability & OKR Alignment
 
 **TL;DR**: Maps project portfolios to organizational strategy ensuring every project contributes to strategic objectives. Uses OKR (Objectives and Key Results) framework or balanced scorecard to create traceable links from strategic goals to portfolio investment to project deliverables. Identifies strategic orphans (projects without strategic justification) and coverage gaps (strategic goals without project support).

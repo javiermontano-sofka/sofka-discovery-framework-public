@@ -51,20 +51,7 @@ Este archivo es la fuente de verdad para toda decisión de routing.
 | **Variante AS-IS** | Secciones y profundidad ajustadas al servicio |
 | **Método de sizing** | FTE-meses, story points, bot hours, etc. según tipo |
 | **Comité experto** | Composición ajustada (ver `agent-committee.md`) |
-| **Sufijo de naming** | `_SDA`, `_QA`, `_Cloud`, `_SAP`, etc. en nombres de entregables |
-
----
-
-## SAP como tipo de servicio (11vo)
-
-| Tipo | Descripción | Señales de auto-detección |
-|------|-------------|--------------------------|
-| **SAP** | SAP S/4HANA implementation, discovery, fit-to-standard, BTP extensibility | "SAP", "S/4HANA", "fit-to-standard", "SAP modules", "BTP", "ABAP", "SAP Activate", "Clean Core", "CATS", "Migration Cockpit" |
-
-**Comité SAP**: 8 agentes especializados + SDF triad (ver `agent-committee.md`).
-**Skills SAP**: 11 skills en dominio 12 (ver `skills-catalog.md`).
-**Comandos SAP**: 10 comandos (ver `commands-reference.md`).
-**Sufijo naming**: `_SAP` en entregables (ej. `03_Gap_Analysis_SAP_ClientName.md`).
+| **Sufijo de naming** | `_SDA`, `_QA`, `_Cloud`, etc. en nombres de entregables |
 
 ---
 

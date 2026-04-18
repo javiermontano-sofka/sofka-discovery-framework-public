@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to measure agile adoption level, evaluate Scrum maturity,
   diagnose agile anti-patterns, compare agile readiness across teams, or baseline agile capability
   before a transformation initiative.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Agile Maturity Assessment
 
 **TL;DR**: Assesses organizational agile maturity across six dimensions: mindset and culture, practices and processes, team structure, tooling, leadership support, and delivery outcomes. Produces a maturity radar with current vs. target state, a gap analysis per dimension, and an improvement roadmap grounded in agile principles rather than ceremony checklists.

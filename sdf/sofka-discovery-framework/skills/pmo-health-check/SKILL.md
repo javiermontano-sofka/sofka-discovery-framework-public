@@ -7,8 +7,8 @@ description: >
   PMO internal audit. Triggers on: conducts 8-dimension PMO health check, compiles
   RAG health dashboard, identifies corrective actions for underperforming dimensions,
   tracks quarter-over-quarter trends, produces PMO operational improvement plan.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # PMO Health Check (Internal)
 
 **TL;DR**: Phase 7 internal deliverable that conducts a structured health check across 8 PMO operational dimensions: governance effectiveness, resource utilization, methodology compliance, reporting accuracy, stakeholder satisfaction, risk management, financial oversight, and continuous improvement. Designed as an INTERNAL diagnostic — not for client delivery but for PMO self-improvement and operational excellence.

@@ -13,6 +13,18 @@ El pipeline de discovery de Sofka SAGE transforma un engagement de pre-venta en 
 
 ## Diagrama del pipeline
 
+## FASE 0 — Attachment Ingestion (v13)
+
+Antes del Discovery Plan (P0), si el usuario pasa `--adjuntos` o deja archivos en `./adjuntos/` `./inputs/` `./.discovery/inbox/`, `@attachment-processor` ejecuta:
+
+```bash
+bash scripts/ingest-attachments.sh <path1> <path2> ...
+```
+
+Genera `.discovery/priming-rag-*.md` por archivo. Habilita tags `[ADJUNTO:file:locator]` para el resto del pipeline. Sin esta fase, cualquier `[ADJUNTO]` subsiguiente es hallucination y falla en Gate 1.
+
+---
+
 ```mermaid
 flowchart TD
     P0[00 Discovery Plan] --> P1[01 Stakeholder Map]

@@ -1,12 +1,6 @@
 ---
 name: apex-portfolio-assessment
-description: >
-  Use when the user asks to "assess portfolio management maturity", "evaluate portfolio governance",
-  "review portfolio practices", "benchmark portfolio capability", "score portfolio management",
-  or mentions portfolio assessment, portfolio maturity, portfolio management capability,
-  portfolio governance evaluation. Triggers on: assesses portfolio management maturity across
-  6 dimensions, evaluates strategic alignment effectiveness, reviews prioritization model
-  quality, quantifies portfolio governance gaps, produces portfolio improvement roadmap.
+description: "Use when the user asks to 'assess portfolio management maturity', 'evaluate portfolio governance', 'review portfolio practices', 'benchmark portfolio capability', 'score portfolio management', or mentions portfolio assessment, portfolio maturity, portfolio management capability, portfolio governance evaluation."
 allowed-tools:
   - Read
   - Write
@@ -15,7 +9,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Portfolio Management Maturity Assessment
 
 **TL;DR**: Assesses organizational portfolio management maturity across strategic alignment, portfolio governance, resource optimization, risk aggregation, value realization, and portfolio reporting. Evaluates whether the organization selects the right projects (not just executes projects right). Produces a maturity scorecard, capability gap analysis, and a portfolio management improvement roadmap.

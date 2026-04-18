@@ -8,8 +8,8 @@ argument-hint: "<system-or-project-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # TO-BE Architecture Design
 
 Designs future-state architecture enabling legacy system gradual retirement while maintaining zero data loss and regulatory compliance. Produces C4 L2 container diagram, 6+ ADRs, nightmare scenario mitigations, MVP component design, and phased Strangler Fig migration plan.

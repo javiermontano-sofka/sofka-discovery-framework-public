@@ -1,18 +1,7 @@
 ---
 name: sofka-regional-finance
 author: JM Labs (Javier Montano)
-description: >
-  Regional finance and accounting standards skill covering Colombia (NIIF/DIAN/CTC),
-  Ecuador (SRI/USD dollarization), Mexico (SAT/CFDI), United States (GAAP/ASC 606),
-  Spain (AEAT/SII), and pan-Americas considerations. Use whenever the user mentions
-  financial regulations, tax compliance, electronic invoicing, transfer pricing, CTC
-  calculation, intercompany billing, multi-currency management, localization requirements,
-  withholding taxes, or labor cost structures for IT services companies operating across
-  these regions. Essential for SAP localization configuration and fit-to-standard financial
-  workshops. Also trigger when discussing cost-vs-sale segregation, Activity Type cost
-  rates, margin visibility, arm's length pricing, or any cross-border billing.
-  Trigger: CTC calculation, transfer pricing, intercompany billing, tax compliance,
-  e-invoicing, SAP localization, withholding taxes, Activity Type rates, margin visibility.
+description: "Use this skill when the user asks about sofka regional finance: Regional finance and accounting standards skill covering Colombia (NIIF/DIAN/CTC), Ecuador (SRI/USD dollarization), Mexico (SAT/CFDI), United States (GAAP/ASC 606), Spain (AEAT/SII), and pan-Americas considerations."
 argument-hint: "<country-or-topic> [--scenario domestic|intercompany|shared-services]"
 allowed-tools:
   - Read
@@ -22,7 +11,6 @@ allowed-tools:
   - Bash
   - Agent
 ---
-
 # Regional Finance & Accounting Standards Skill
 
 > "You cannot manage margin if cost and price live in the same number."

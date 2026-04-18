@@ -5,9 +5,9 @@ description: >
   "export Mermaid diagrams", "generate printable deliverables", "create branded exports",
   or mentions rendering engine, Mermaid-to-PNG, markdown-to-PDF, format rendering,
   export engine, visual format conversion.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-rendering-engine"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-rendering
   - Grep
   - Bash
 ---
-
 # Rendering Engine (Mermaid-to-PNG, Markdown-to-PDF)
 
 **TL;DR**: Converts project deliverables between formats: Mermaid diagrams to PNG/SVG images, Markdown to styled PDF with APEX branding, and HTML to print-ready PDF. Ensures visual fidelity across format conversions while maintaining brand consistency.

@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to design a C-level dashboard showing project/portfolio
   health, select and configure KPI visualizations, create drill-down capability for areas
   of concern, or establish dashboard refresh cadence and governance.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Executive Dashboard (C-Level)
 
 **TL;DR**: Designs and populates a C-level executive dashboard showing project/portfolio health through KPIs, RAG indicators, trend charts, and decision summaries. Optimized for executive consumption: maximum insight in minimum time, with drill-down capability for areas of concern.

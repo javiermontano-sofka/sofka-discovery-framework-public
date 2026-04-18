@@ -5,14 +5,13 @@ description: >
   Brainstorm individual plugin components (skill, agent, command, hook) for existing or planned plugins.
   Trigger: ideate component, brainstorm skill, new agent idea, component concept, add skill to plugin.
 argument-hint: "<component-type> [plugin-path]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Ideate Component
 
 > "A component earns its place by doing one thing that no other component does."

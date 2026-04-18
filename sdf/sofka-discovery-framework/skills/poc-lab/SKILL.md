@@ -7,8 +7,8 @@ description: >
   controlled experiment. Triggers on: designs controlled PoC experiments, defines
   measurable success criteria, creates evaluation frameworks for tool comparison,
   facilitates evidence-based go/no-go decisions, documents scale-up risks.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # PoC Lab for PM Tool & Methodology Evaluation
 
 **TL;DR**: Designs and executes Proofs of Concept for PM tool evaluation (Jira vs. Azure DevOps vs. Monday.com), methodology pilot testing (2-sprint Scrum pilot, Kanban board pilot), and process innovation experiments. Defines PoC scope, success criteria, evaluation framework, time-box, and decision protocol. Prevents full-scale commitment to unproven approaches by validating hypotheses at small scale with controlled variables.

@@ -1,12 +1,6 @@
 ---
 name: metodologia-cost-estimation
-description: >
-  Cost driver identification — effort inductors, scope drivers, magnitude estimation, team composition
-  modeling, risk-adjusted timeline ranges, service engagement sizing, consulting effort, automation ROI,
-  and staffing model. Use when the user asks to "estimate effort", "identify
-  cost drivers", "size the project", "plan team composition", "identify effort inductors", or mentions
-  WBS, sizing, contingency, burn rate, PERT, Monte Carlo, or "Phase 4" cost work. NEVER produces
-  final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
+description: "Use this skill when the user asks about cost estimation: Cost driver identification — effort inductors, scope drivers, magnitude estimation, team composition modeling, risk-adjusted timeline ranges, service engagement sizing, consulting effort, automation ROI, and staffing model."
 argument-hint: "<project-or-initiative-name>"
 author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
@@ -17,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Cost Estimation: Effort Drivers, Magnitude Indicators & Investment Framing
 
 Translates technical scope into effort drivers, magnitude indicators, team composition models, and

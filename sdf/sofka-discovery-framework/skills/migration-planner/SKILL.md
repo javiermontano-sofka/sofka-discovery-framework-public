@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Plans system migrations using strangler fig, blue-green, data migration, and re-platforming strategies.
   Trigger: "plan migration", "strangler fig", "re-platform", "data migration", "legacy modernization".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Migration Planner
 
 Produces detailed migration plans for legacy modernization, platform changes, and data migrations, using proven patterns like Strangler Fig, Blue-Green, and incremental parallel-run strategies.

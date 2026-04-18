@@ -8,8 +8,8 @@ argument-hint: "<migration-program-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Cloud Migration: Assessment, Planning & Execution
 
 Cloud migration moves workloads from on-premises or legacy environments to cloud platforms. This skill produces comprehensive migration plans covering 7R assessment, workload analysis, wave planning, landing zone design, execution patterns, and post-migration optimization.

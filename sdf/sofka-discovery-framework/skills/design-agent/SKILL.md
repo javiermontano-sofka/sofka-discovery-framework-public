@@ -6,15 +6,14 @@ description: >
   Trigger: design agent, agent design, create agent spec, plan agent, draft agent.
   Enforces plugin subagent constraints (no hooks/mcpServers/permissionMode in frontmatter).
 argument-hint: "<agent-name> [plugin-path]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
   - Bash
 ---
-
 # Design Agent
 
 > "An agent is a role, not a god -- it owns a boundary, delegates within it, and never crosses it."

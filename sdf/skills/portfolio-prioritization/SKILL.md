@@ -1,12 +1,6 @@
 ---
 name: apex-portfolio-prioritization
-description: >
-  Use when the user asks to "prioritize projects", "score portfolio", "rank investments",
-  "build scoring model", "optimize portfolio mix", or mentions portfolio prioritization,
-  scoring models, strategic alignment scoring, portfolio ranking, investment prioritization.
-  Triggers on: builds weighted scoring models for project prioritization, calculates
-  efficient frontier for portfolio optimization, runs sensitivity analysis on rankings,
-  facilitates data-driven investment decisions, produces ranked portfolio with transparent scoring.
+description: "Use when the user asks to 'prioritize projects', 'score portfolio', 'rank investments', 'build scoring model', 'optimize portfolio mix', or mentions portfolio prioritization, scoring models, strategic alignment scoring, portfolio ranking, investment prioritization."
 allowed-tools:
   - Read
   - Write
@@ -15,7 +9,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Portfolio Prioritization & Scoring Models
 
 **TL;DR**: Applies weighted scoring models to prioritize projects within a portfolio based on strategic alignment, financial return, risk, resource requirements, and urgency. Produces ranked portfolio with transparent scoring rationale enabling data-driven investment decisions.

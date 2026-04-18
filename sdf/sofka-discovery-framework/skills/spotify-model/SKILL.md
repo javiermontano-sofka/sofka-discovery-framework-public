@@ -5,9 +5,9 @@ description: >
   "organize chapters and guilds", "create autonomous team structure", "apply Spotify engineering culture",
   or mentions Spotify, squads, tribes, chapters, guilds, autonomous teams, matrix organization,
   squad health check model.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-spotify-model"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-spotify-m
   - Grep
   - Bash
 ---
-
 # Spotify Model: Squads, Tribes, Chapters, Guilds
 
 **TL;DR**: Designs an organizational model inspired by Spotify's approach: autonomous squads aligned to missions, tribes for coordination, chapters for functional excellence, and guilds for cross-cutting knowledge sharing. Emphasizes autonomy with alignment, not prescriptive process.

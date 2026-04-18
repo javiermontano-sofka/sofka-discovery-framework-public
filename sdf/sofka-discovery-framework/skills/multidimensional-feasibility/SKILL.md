@@ -9,8 +9,8 @@ description: >
   feasibility, and economic viability. Use when validating approved scenarios before roadmap
   commitment, when stakeholders need confidence in technical achievability, or when "Phase 3b"
   / "feasibility" / "think tank" / "7 sabios" is mentioned.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -21,7 +21,6 @@ version: "13.0.0"
   - WebSearch
   - WebFetch
 ---
-
 # Multidimensional Feasibility: Think Tank of 7 Sages
 
 Validates approved modernization scenarios with postdoctoral-level research rigor across 7 dimensions.

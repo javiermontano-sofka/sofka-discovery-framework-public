@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to link deliverables to business outcomes, define measurable
   KPIs with targets, design post-project benefit tracking, create a benefits ownership matrix,
   or establish a sustainability plan for realized benefits.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Benefits Realization Plan
 
 **TL;DR**: Produces a benefits realization plan linking project deliverables to measurable business outcomes. Defines KPIs, success metrics, measurement methods, target values, and a tracking framework that extends beyond project closure to ensure the organization captures the intended value.

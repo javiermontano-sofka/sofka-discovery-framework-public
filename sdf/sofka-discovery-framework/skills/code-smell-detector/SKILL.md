@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Identifies code smells, anti-patterns, and structural decay in codebases using systematic pattern matching.
   Trigger: detect smells, find anti-patterns, review code quality, check code hygiene.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Code Smell Detector
 
 Systematic identification of code smells and anti-patterns that signal structural decay, maintainability risk, or design violations.

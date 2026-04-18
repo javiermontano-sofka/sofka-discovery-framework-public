@@ -8,8 +8,8 @@ argument-hint: "<service-or-platform-name>"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # SLA Design: Service Level Objectives, Indicators & Agreements
 
 SLA design establishes measurable reliability targets that balance user expectations with engineering investment. The skill produces SLO catalogs, error budget policies, and SLA templates following Google SRE principles for sustainable reliability management.

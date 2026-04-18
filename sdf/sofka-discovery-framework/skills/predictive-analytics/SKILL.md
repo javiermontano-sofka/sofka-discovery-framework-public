@@ -7,8 +7,8 @@ description: >
   risk materialization prediction. Triggers on: produces probabilistic schedule forecasts,
   calculates cost-at-completion with confidence ranges, models risk materialization probability,
   identifies early warning indicators, generates P50/P80/P95 confidence intervals.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Predictive Analytics for Project Management
 
 **TL;DR**: Applies ML-based forecasting and statistical modeling to project data for schedule completion prediction, cost-at-completion forecasting, risk materialization probability, and resource demand projection. Uses historical trends, earned value data, velocity patterns, and Monte Carlo simulation to produce probabilistic forecasts with explicit confidence intervals — replacing hope-based planning with evidence-based prediction.

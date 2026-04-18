@@ -9,8 +9,8 @@ description: >
   or mentions GDPR, CCPA, LGPD, data stewardship, PII, data lineage, or federated governance.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Data Governance: Catalog, Ownership, Classification & Compliance
 
 Data governance defines how data assets are discovered, owned, classified, retained, and protected across an organization. This skill produces governance frameworks that enable trust in data, regulatory compliance, and scalable self-serve data access.

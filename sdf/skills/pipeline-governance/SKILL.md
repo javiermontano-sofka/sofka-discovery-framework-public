@@ -2,15 +2,7 @@
 name: metodologia-pipeline-governance
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<project-or-program-name>"
-description: >
-  Discovery pipeline governance — phase gate management, resource orchestration,
-  dependency control, and proposal QA validation across the entire discovery pipeline.
-  Replaces former project-program-management (not generic PM, specific to discovery pipeline).
-  Use when the user asks to "track the discovery", "govern the pipeline", "validate the proposal",
-  "run governance check", "check phase dependencies", "coordinate resources", or mentions
-  pipeline governance, phase gates, proposal readiness, milestone tracking, or cross-phase
-  dependency management. Works as the structural glue that holds the entire discovery pipeline
-  together — from Phase 0 through Handover.
+description: "Use this skill when the user asks about pipeline governance: Discovery pipeline governance — phase gate management, resource orchestration, dependency control, and proposal QA validation across the entire discovery pipeline."
 allowed-tools:
   - Read
   - Write
@@ -19,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Pipeline Governance: Discovery Pipeline Governance Backbone
 
 Structural governance layer that manages the discovery pipeline as a formal program —

@@ -8,8 +8,8 @@ description: >
   "configure CDN", "define SLAs", "find bottlenecks", or mentions latency, throughput, p95, saturation, cache hit ratio, edge compute.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Performance Engineering: Assessment, Optimization & Capacity Strategy
 
 Performance engineering ensures systems meet latency, throughput, and reliability targets under current and projected load. The skill produces actionable performance baselines, load testing strategies, capacity models, caching architectures, CDN configurations, and SLA/SLO definitions that translate technical metrics into business guarantees.

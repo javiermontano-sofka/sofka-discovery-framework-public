@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to configure PM dashboard tooling, set up automated data
   feeds from PM tools, design visualization components, configure alert thresholds, or establish
   dashboard refresh cadence and access control.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Dashboard Tooling & Data Feeds
 
 **TL;DR**: Configures project management dashboard tooling including data feed setup, visualization component selection, refresh cadence, and alert configuration. Ensures dashboards are automatically updated with live project data rather than requiring manual input.

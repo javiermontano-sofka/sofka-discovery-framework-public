@@ -5,15 +5,14 @@ description: >
   Generate plugin architecture plan with agent roles, skill-movement mapping, hook strategy, and command routing.
   Trigger: plan architecture, design plugin structure, architect plugin, plugin architecture, plan plugin layout.
 argument-hint: "<plugin-brief-path>"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
   - Bash
 ---
-
 # Plan Architecture
 
 > "Architecture is the art of making decisions you will not regret when the plugin grows."

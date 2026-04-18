@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Severity times likelihood risk matrix generation with mitigation priorities.
   Trigger: "score risks", "risk matrix", "risk assessment", "severity analysis".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Risk Scorer
 
 Systematically identify, score, and prioritize technical risks using a severity x likelihood matrix, producing actionable mitigation plans.

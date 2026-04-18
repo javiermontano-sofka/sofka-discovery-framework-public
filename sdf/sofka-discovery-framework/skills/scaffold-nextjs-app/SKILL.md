@@ -3,8 +3,8 @@ name: scaffold-nextjs-app
 author: "Javier Montaño (JM Labs)"
 description: >
   Generate Next.js 15 App Router project with auth, database, API routes. Use when user asks to "scaffold a Next.js app".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -13,7 +13,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Scaffold Next.js App
 
 Generate Next.js 15 App Router project with server-first architecture, full-stack auth, database integration, and type-safe API routes.

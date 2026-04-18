@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Systematic root cause tracing from symptoms through causal chains to actual causes.
   Trigger: "root cause analysis", "why is this failing", "trace the cause", "5 whys".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Root Cause Analyzer
 
 Trace observable symptoms through causal chains to identify actual root causes, distinguishing symptoms from contributing factors and true origins.

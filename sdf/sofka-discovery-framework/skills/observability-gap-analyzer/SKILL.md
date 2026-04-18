@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Logging, metrics, and tracing completeness analysis across the system.
   Trigger: "observability gaps", "logging analysis", "metrics coverage", "tracing completeness".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Observability Gap Analyzer
 
 Assess the three pillars of observability — logging, metrics, and tracing — for completeness, quality, and actionability.

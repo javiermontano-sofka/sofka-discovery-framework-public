@@ -8,8 +8,8 @@ description: >
   feasibility", "fact-check the scenario", "verify technical claims", "run feasibility analysis",
   "stress-test the approach", or mentions technical due diligence, feasibility study, risk validation,
   or "Phase 3b" verification work.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Technical Feasibility: Fact-Checking & Multidimensional Feasibility Analysis
 
 Validates the approved modernization scenario against hard evidence before committing resources.

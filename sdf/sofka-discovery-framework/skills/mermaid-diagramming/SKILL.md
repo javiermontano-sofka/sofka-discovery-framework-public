@@ -8,8 +8,8 @@ description: >
   "add visual diagrams", or mentions diagramming, visualization, flowcharts, sequence diagrams,
   Mermaid syntax, architecture diagrams, or visual documentation. Use this skill to embed
   precise, syntactically valid Mermaid diagrams in any discovery deliverable.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Mermaid Diagramming Engine
 
 Generates syntactically valid, semantically precise Mermaid diagrams for discovery deliverables. Every diagram earns its place — no decorative visuals. Each diagram must compress complexity into clarity, replacing paragraphs of prose with a single visual that a reader grasps in seconds.

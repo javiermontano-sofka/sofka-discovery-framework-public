@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   C4 model diagrams, component relationships, and architectural pattern identification.
   Trigger: "map architecture", "C4 diagram", "component diagram", "system context".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Architecture Mapper
 
 Generate multi-level architectural views (C4 model) from codebase analysis, revealing system context, containers, components, and their relationships.

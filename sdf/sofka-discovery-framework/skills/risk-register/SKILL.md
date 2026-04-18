@@ -5,9 +5,9 @@ description: >
   Use when the user asks to "create a risk register", "identify risks", "categorize risks",
   "build risk list", "assess project risks", or mentions risk identification, risk categorization, RBS,
   risk breakdown structure, risk inventory, probability-impact matrix, risk scoring.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-risk-register"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-risk-regi
   - Grep
   - Bash
 ---
-
 # Risk Register & Identification
 
 Produces a comprehensive risk register through systematic identification using multiple techniques (brainstorming, checklists, SWOT, assumption analysis, root cause analysis). Each risk is categorized by RBS category, assessed for probability and impact, and assigned an owner. Integrates with assumption log for assumption-based risks.

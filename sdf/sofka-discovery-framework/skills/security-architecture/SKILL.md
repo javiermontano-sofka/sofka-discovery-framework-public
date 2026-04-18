@@ -8,8 +8,8 @@ description: >
   "plan encryption strategy", "map compliance requirements", or mentions STRIDE, OWASP, OAuth, RBAC, SOC2, ISO27001, PCI-DSS.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Security Architecture: Threat Modeling, Identity & Compliance Design
 
 Security architecture defines how systems protect data, verify identity, enforce access, and maintain compliance across the entire technology stack. The skill produces comprehensive security designs covering threat modeling, zero trust implementation, identity management, data protection, application security pipelines, and compliance mapping.

@@ -8,8 +8,8 @@ argument-hint: "<project-or-system-name>"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Compliance Assessment: Regulatory & Standards Gap Analysis
 
 Compliance assessment identifies gaps between an organization's current practices and applicable regulatory or standards requirements. The skill produces compliance gap matrices, remediation roadmaps, and risk heat maps that enable informed prioritization of compliance investments.

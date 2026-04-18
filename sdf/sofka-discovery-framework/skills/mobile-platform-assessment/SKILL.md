@@ -11,8 +11,8 @@ description: >
   "review app dependencies", or mentions Flutter, React Native, KMP, MVVM, crash rate, ANR, app size, cold start time, or mobile tech debt.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -20,7 +20,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Mobile Platform Assessment: Strategy, Health & Remediation
 
 Mobile platform assessment unifies two formerly separate concerns — designing mobile architecture and evaluating existing mobile app health — into a single comprehensive skill. It produces deliverables covering platform strategy, architecture patterns, offline-first design, performance optimization, store compliance, dependency security, code quality, and prioritized remediation.

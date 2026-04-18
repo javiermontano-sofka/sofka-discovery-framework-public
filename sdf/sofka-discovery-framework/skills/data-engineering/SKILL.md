@@ -8,8 +8,8 @@ argument-hint: "<system-or-project-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Data Engineering: Pipeline Architecture & Data Platform Design
 
 Data engineering architecture defines how data is ingested, orchestrated, stored, validated, and observed — the backbone infrastructure that feeds analytics, ML, and operational systems. This skill produces data engineering documentation that enables teams to build reliable, scalable, and cost-efficient data platforms.

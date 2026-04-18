@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs resilience patterns including circuit breakers, retries, bulkheads, timeouts, and chaos engineering practices.
   Trigger: "resilience design", "circuit breaker", "fault tolerance", "chaos engineering", "bulkhead pattern", "retry strategy".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Resilience Design
 
 Designs fault-tolerant architectures using circuit breakers, retry policies, bulkheads, timeouts, and chaos engineering practices to ensure systems degrade gracefully under failure conditions.

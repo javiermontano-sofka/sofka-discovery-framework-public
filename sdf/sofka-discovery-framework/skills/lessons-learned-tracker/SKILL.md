@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Captures corrections, applies learnings across sessions, and prevents regression of past mistakes.
   Trigger: "lesson learned", "capture correction", "track mistake", "prevent regression", "apply learnings".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Lessons Learned Tracker
 
 Captures, catalogs, and applies lessons learned from user corrections, failed approaches, and process improvements — creating an institutional memory that prevents the same mistakes from recurring.

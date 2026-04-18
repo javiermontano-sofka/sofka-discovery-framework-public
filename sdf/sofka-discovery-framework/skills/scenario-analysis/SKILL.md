@@ -7,8 +7,8 @@ description: >
   Use when the user asks to "compare scenarios", "evaluate options", "run scenario analysis",
   "Tree of Thought", "which approach should we take", "compare architectures", or mentions
   "Phase 3", "strategic analysis", "trade-off analysis", "SWOT comparison".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Strategic Scenario Analysis — Tree of Thought
 
 Develops 3+ parallel technology/approach scenarios, scores each across 6 weighted dimensions, performs SWOT per scenario, builds cross-scenario comparative analysis, and recommends the strongest path with documented trade-offs and conditional switching logic.

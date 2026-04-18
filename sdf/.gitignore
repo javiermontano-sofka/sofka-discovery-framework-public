@@ -1,8 +1,15 @@
-.DS_Store
-*.zip
-discovery/
+# Python venv + caches
+scripts/.venv/
+scripts/__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Runtime artifacts
 .discovery/
-project/
-sa/
-diagnostics/
-.claude/
+*.local.md
+.env
+
+# OS
+.DS_Store
+Thumbs.db

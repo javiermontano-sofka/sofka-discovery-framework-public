@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to analyze resource supply vs demand, identify capacity gaps,
   detect over-allocations, build time-phased capacity models, or plan proactive hiring
   and cross-training decisions before bottlenecks impact delivery.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Resource Capacity Planning & Demand Forecasting
 
 **TL;DR**: Analyzes resource supply against demand to identify capacity gaps, over-allocations, and optimization opportunities. Produces time-phased capacity models that forecast resource needs, enabling proactive hiring, training, or reallocation decisions before bottlenecks impact delivery.

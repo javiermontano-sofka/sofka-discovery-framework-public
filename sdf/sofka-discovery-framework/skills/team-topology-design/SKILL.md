@@ -5,9 +5,9 @@ description: >
   "optimize team boundaries", "reduce cognitive load", "map team interaction modes",
   or mentions Team Topologies, Conway's Law, stream-aligned teams, platform teams,
   enabling teams, cognitive load, team interaction patterns.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-team-topology-design"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-team-topo
   - Grep
   - Bash
 ---
-
 # Team Topology Design
 
 **TL;DR**: Designs optimal team structures using Team Topologies framework (stream-aligned, platform, enabling, complicated-subsystem). Considers Conway's Law, cognitive load, and interaction modes (collaboration, X-as-a-Service, facilitating) to create teams that minimize coordination overhead and maximize delivery flow.

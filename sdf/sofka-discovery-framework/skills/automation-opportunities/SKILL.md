@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to scan PM processes for automation potential, calculate
   automation ROI, design automation specifications, prioritize automation backlog, or plan
   phased automation rollout across the PMO.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # PM Process Automation Opportunities
 
 **TL;DR**: Systematically identifies PM process automation candidates across reporting, tracking, alerts, approvals, and data collection. Evaluates each candidate by ROI (hours saved vs. implementation effort), risk (automation failure impact), and feasibility (tool capability). Produces a prioritized automation backlog with specifications for the top candidates and a phased implementation roadmap.

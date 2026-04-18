@@ -7,15 +7,14 @@ description: >
   evidence attribution, and reproducible analysis. Use when writing AS-IS analyses,
   functional specs, architecture documents, handover guides, or any deliverable
   requiring technical rigor and documentation standards.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
 ---
-
 # Technical Writing — Documentation Precision & Progressive Disclosure
 
 Ensures technical deliverables are precise, reproducible, and progressively disclosed. Owns terminology consistency, evidence attribution, structural patterns, and anti-pattern enforcement across all discovery documentation.

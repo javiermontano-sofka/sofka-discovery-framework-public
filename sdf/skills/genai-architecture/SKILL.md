@@ -1,11 +1,6 @@
 ---
 name: metodologia-genai-architecture
-description: >
-  Generative AI architecture — RAG patterns, LLM orchestration, multi-model tiering, agent workflow design, vector database
-  architecture, knowledge connectors, and GenAI quality assurance. This skill should be used when the user asks to "design RAG
-  architecture", "architect LLM system", "select vector database", "design AI agents", "implement knowledge retrieval",
-  "plan GenAI quality", or mentions RAG, embeddings, vector search, LLM orchestration, agent framework, context-aware
-  generation, hallucination reduction, or multi-model routing.
+description: "Use this skill when the user asks about genai architecture: Generative AI architecture — RAG patterns, LLM orchestration, multi-model tiering, agent workflow design, vector database architecture, knowledge connectors, and GenAI quality assurance."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # GenAI Architecture: Architecture for Generative AI Systems
 
 GenAI architecture defines how LLM-powered systems retrieve knowledge, orchestrate models, execute agent workflows, and ensure quality. This skill produces comprehensive architecture documentation covering RAG design, LLM orchestration with multi-model tiering, agent workflows, vector database selection, knowledge connector integration, and quality assurance for generative AI systems.

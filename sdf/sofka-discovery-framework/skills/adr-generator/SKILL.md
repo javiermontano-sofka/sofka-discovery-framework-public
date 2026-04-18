@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 description: >
   Produces Architecture Decision Records following the Nygard/MADR template with full context, consequences, and traceability.
   Trigger: "generate ADR", "document decision", "architecture decision record", "record this decision".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # ADR Generator
 
 Produces structured Architecture Decision Records that capture the context, options evaluated, decision rationale, and downstream consequences of significant architectural choices.

@@ -1,12 +1,6 @@
 ---
 name: apex-predictive-analytics
-description: >
-  Use when the user asks to "forecast project completion", "predict cost overrun",
-  "model risk probability", "run Monte Carlo on schedule", "generate confidence intervals",
-  or mentions predictive analytics, ML forecasting, schedule prediction, cost forecasting,
-  risk materialization prediction. Triggers on: produces probabilistic schedule forecasts,
-  calculates cost-at-completion with confidence ranges, models risk materialization probability,
-  identifies early warning indicators, generates P50/P80/P95 confidence intervals.
+description: "Use when the user asks to 'forecast project completion', 'predict cost overrun', 'model risk probability', 'run Monte Carlo on schedule', 'generate confidence intervals', or mentions predictive analytics, ML forecasting, schedule prediction, cost forecasting, risk materialization prediction."
 allowed-tools:
   - Read
   - Write
@@ -15,7 +9,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Predictive Analytics for Project Management
 
 **TL;DR**: Applies ML-based forecasting and statistical modeling to project data for schedule completion prediction, cost-at-completion forecasting, risk materialization probability, and resource demand projection. Uses historical trends, earned value data, velocity patterns, and Monte Carlo simulation to produce probabilistic forecasts with explicit confidence intervals — replacing hope-based planning with evidence-based prediction.

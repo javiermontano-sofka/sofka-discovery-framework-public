@@ -5,14 +5,13 @@ description: >
   Audits all SKILL.md files in a plugin against a 6-criteria excellence rubric, producing
   per-skill scores, plugin averages, and actionable improvement recommendations.
   Trigger: audit content quality, score skills, check skill quality, content rubric.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Audit Content Quality
 
 > "Quality is never an accident; it is always the result of intelligent effort." -- John Ruskin

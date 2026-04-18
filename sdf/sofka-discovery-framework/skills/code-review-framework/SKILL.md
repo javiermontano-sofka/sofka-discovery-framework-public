@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs code review checklists, severity classification, and automated check integration for consistent PR reviews.
   Trigger: "code review checklist", "review framework", "PR review standards", "review automation".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Code Review Framework
 
 Establishes a structured, repeatable code review process with severity-classified checklists, automated checks, and feedback standards that improve code quality without creating bottlenecks.

@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to classify conflict types, apply resolution techniques,
   facilitate interest-based negotiation, build coalitions for alignment, or design structural
   prevention measures to avoid recurring conflicts.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Stakeholder Conflict Management
 
 **TL;DR**: Provides conflict resolution frameworks and protocols for managing stakeholder and team conflicts. Identifies conflict types (task, relationship, process), applies appropriate resolution techniques (collaboration, compromise, accommodation, avoidance, competition), and documents agreements and prevention measures.

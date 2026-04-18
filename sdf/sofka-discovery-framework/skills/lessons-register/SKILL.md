@@ -7,8 +7,8 @@ description: >
   lessons register, project learning, organizational memory. Triggers on: captures
   lessons from retrospectives, categorizes lessons by domain, creates searchable
   lessons register, distributes knowledge to future projects, rates lesson impact.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Lessons Learned Capture & Register
 
 **TL;DR**: Systematically captures, categorizes, and stores lessons learned from project experiences (successes and failures). Maintains a living lessons register that feeds into organizational knowledge management, ensuring future projects benefit from past experiences.

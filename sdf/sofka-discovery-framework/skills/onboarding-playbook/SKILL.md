@@ -7,8 +7,8 @@ description: >
   team integration. Triggers on: creates role-specific onboarding paths, designs knowledge
   transfer sessions, establishes buddy system, defines ramp-up milestones, captures
   institutional knowledge for preservation.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Team Onboarding & Knowledge Transfer Playbook
 
 **TL;DR**: Creates structured onboarding playbooks for new team members including role-specific learning paths, knowledge transfer sessions, buddy system design, and ramp-up milestones. Reduces time-to-productivity and preserves institutional knowledge through systematic knowledge transfer protocols.

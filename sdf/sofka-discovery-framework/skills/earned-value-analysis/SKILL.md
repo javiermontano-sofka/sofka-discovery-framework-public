@@ -5,9 +5,9 @@ description: >
   Use when the user asks to "run EVM analysis", "calculate CPI/SPI", "forecast EAC",
   "track earned value", "measure project performance", or mentions earned value management,
   CPI, SPI, EAC, ETC, TCPI, BAC, cost performance, schedule performance, variance analysis.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-earned-value-analysis"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-earned-va
   - Grep
   - Bash
 ---
-
 # Earned Value Management (EVM) Analysis
 
 Performs Earned Value Management analysis calculating PV, EV, AC, CV, SV, CPI, SPI, EAC, ETC, TCPI, and VAC. Produces performance indices, forecasts, and trend analysis to provide objective, data-driven project performance assessment. EVM is the only technique that integrates scope, schedule, and cost in a single measurement framework.

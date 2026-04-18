@@ -5,15 +5,14 @@ description: >
   "check for exposed passwords", "run security gate G0", or mentions secret detection,
   credential scanning, security gate G0, sensitive data masking, API key exposure,
   token detection.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-secrets-sanitization"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Secrets Sanitization (Gate G0)
 
 **TL;DR**: Scans project artifacts for exposed credentials, API keys, passwords, tokens, and sensitive data. Implements Gate G0: no pipeline execution proceeds with unmasked secrets. Detects patterns across configuration files, documents, and code artifacts, then masks or flags findings for remediation.

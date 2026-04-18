@@ -7,8 +7,8 @@ description: >
   cost confidence. Triggers on: executes probabilistic schedule simulation, generates
   cost confidence curves, calculates contingency reserves from P-values, identifies
   sensitivity drivers via tornado diagram, produces S-curves with confidence levels.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Monte Carlo Simulation (Schedule & Cost)
 
 **TL;DR**: Executes Monte Carlo simulation for schedule and cost uncertainty analysis. Uses 3-point estimates and probability distributions to generate thousands of possible outcomes, producing confidence-level curves (P10, P50, P80, P90) for project completion date and total cost. Provides the statistical basis for contingency reserve calculations.

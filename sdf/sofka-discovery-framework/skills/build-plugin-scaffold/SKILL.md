@@ -5,8 +5,8 @@ description: >
   Scaffold a complete plugin directory from architecture plans and specs. Creates all files, then validates structure.
   Trigger: build plugin, scaffold plugin, create plugin directory, assemble plugin, generate plugin files.
 argument-hint: "<architecture-plan-path> <target-directory>"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Build Plugin Scaffold
 
 > "A scaffold is not the building -- it is the promise that a building will stand."

@@ -6,8 +6,8 @@ description: >
   or "design release-milestone binding". Activates when a stakeholder needs to map CI/CD
   pipelines to milestone tracking, align release cadences with sprint ceremonies, correlate
   DORA metrics with project KPIs, or design an integrated DevOps-PM operating model.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # DevOps-PM Alignment
 
 **TL;DR**: Bridges DevOps engineering practices with PM governance by mapping CI/CD pipelines to milestone tracking, release cadences to sprint ceremonies, deployment metrics to project KPIs, and infrastructure changes to change control. Produces an integrated operating model where engineering velocity and project visibility reinforce each other.

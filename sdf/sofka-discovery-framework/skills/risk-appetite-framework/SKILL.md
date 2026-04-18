@@ -5,9 +5,9 @@ description: >
   "establish risk thresholds", "calibrate organizational risk levels", "create risk acceptance criteria",
   or mentions organizational risk tolerance, risk appetite statement, risk capacity,
   risk attitude, risk threshold matrix.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-risk-appetite-framework"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-risk-appe
   - Grep
   - Bash
 ---
-
 # Risk Appetite & Tolerance Framework
 
 **TL;DR**: Establishes the organizational risk appetite framework for the project including risk appetite statements, tolerance thresholds, risk capacity assessment, and decision criteria for risk acceptance. Ensures risk management decisions align with stakeholder expectations and organizational risk culture.

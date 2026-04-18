@@ -2,14 +2,7 @@
 name: metodologia-project-program-management
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<project-or-program-name>"
-description: >
-  PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
-  dependency control, and proposal QA validation across the entire discovery pipeline. Use when
-  the user asks to "track the discovery", "manage the portfolio", "validate the proposal",
-  "run governance check", "check phase dependencies", "coordinate resources", or mentions
-  PMO, program management, portfolio governance, phase gates, proposal readiness, milestone
-  tracking, or cross-phase dependency management. Works as the structural glue that holds
-  the entire discovery pipeline together — from Phase 0 through Handover.
+description: "Use this skill when the user asks about project program management: PMO governance backbone — portfolio tracking, phase gate management, resource orchestration, dependency control, and proposal QA validation across the entire discovery pipeline."
 allowed-tools:
   - Read
   - Write
@@ -18,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Project & Program Management: PMO Governance Backbone
 
 Structural governance layer that manages the discovery pipeline as a formal program —

@@ -5,9 +5,9 @@ description: >
   "conduct Go/No-Go gate", "orchestrate advisory vote", "prepare gate review package",
   or mentions steering committee, steering review, Go/No-Go decision, advisory vote,
   project gate review, steering minutes, 7-advisor evaluation.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-steering-review"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-steering-
   - Grep
   - Bash
 ---
-
 # Steering Review (7-Advisor Committee)
 
 **TL;DR**: Phase 3b deliverable that orchestrates a formal steering review where 7 specialized advisors evaluate project readiness and vote Go/No-Go. Each advisor assesses from their domain lens (Strategy, Architecture, Risk, Finance, Methodology, Delivery, Stakeholders). Produces structured steering minutes with individual votes, dissent reasoning, conditions for Go, and actionable next steps.

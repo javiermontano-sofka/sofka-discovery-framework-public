@@ -16,11 +16,23 @@ Toda afirmación incluida en un entregable de discovery DEBE estar respaldada po
 | Tag | Significado | Nivel de confianza | Cuándo usar |
 |-----|-------------|-------------------|-------------|
 | `[CÓDIGO]` | Verificado directamente en código fuente | **Alta** | Hallazgo confirmado en archivos del codebase (.py, .java, .ts, etc.) |
+| `[ADJUNTO]` | Extraído de archivo ingestado por `@attachment-processor` (FASE 0) | **Alta** | v13: formato `[ADJUNTO:file.ext:locator]` (sheet=, page=, heading=, slide=, sig=, row=, col=) |
 | `[CONFIG]` | Verificado en archivos de configuración | **Alta** | Hallazgo en .yml, .env, .toml, .json, docker-compose, terraform, etc. |
 | `[DOC]` | Documentado en fuentes del proyecto | **Alta** | Información extraída de specs, contratos, wikis, READMEs oficiales |
+| `[NOTEBOOKLM]` | Respuesta MCP `notebook_query` contra knowledge base curada | **Alta** | v13: resultado de `mcp__notebooklm__notebook_query`; incluir notebook_id + query |
 | `[INFERENCIA]` | Razonado desde patrones observados | **Media** | Conclusión derivada de evidencia parcial; lógica explícita requerida |
 | `[SUPUESTO]` | Asunción no verificable — requiere validación | **Baja** | Toda afirmación sin evidencia directa; siempre incluir nota de validación |
 | `[STAKEHOLDER]` | Declarado por un interlocutor del proyecto | **Variable** | Información proporcionada verbalmente, por email o chat por un stakeholder |
+
+### Prioridad jerárquica (v13)
+
+En caso de conflicto entre fuentes, la prioridad es:
+
+```
+[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]
+```
+
+`@quality-guardian` falla si un `[ADJUNTO:...]` aparece sin priming-rag doc correspondiente en `.discovery/`.
 
 ### Tags extendidos (RAG-Priming)
 

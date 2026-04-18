@@ -8,8 +8,8 @@ description: >
   "bot architecture design", "RPA platform comparison", "automation roadmap", "process mining analysis",
   "identify automation candidates", "RPA ROI analysis", or mentions "robotic process automation",
   "attended/unattended bots", "automation CoE", "process digitization".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # RPA Discovery — Process Automation Assessment & Roadmap
 
 Genera un assessment de 7 secciones para iniciativas de RPA y automatizacion de procesos: inventario de procesos (BPMN), scoring de oportunidades de automatizacion, arquitectura de bots, evaluacion de plataformas, resultados de process mining, proyeccion de ROI, y hoja de ruta de automatizacion. Cada hallazgo respaldado por evidencia del landscape de procesos del cliente.

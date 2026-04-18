@@ -8,8 +8,8 @@ argument-hint: "<system-or-organization-name>"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Disaster Recovery: Business Continuity & Recovery Planning
 
 Disaster recovery planning ensures organizational resilience through defined recovery objectives, failover designs, and tested recovery procedures. The skill produces DR plans, recovery runbooks, and test schedules that minimize downtime and data loss during disruptive events.

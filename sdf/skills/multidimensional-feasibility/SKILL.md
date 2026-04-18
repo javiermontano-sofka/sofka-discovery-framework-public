@@ -2,13 +2,7 @@
 name: metodologia-multidimensional-feasibility
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[scenario-path] [depth: full-7d|fast-4d|single-dimension] — e.g. './05_Escenarios.md full-7d'"
-description: >
-  Deep feasibility validation across 7 dimensions by a Council of Seven Sages (Think Tank).
-  Postdoctoral-level research rigor applied to scenario validation. Validates technical claims,
-  quantitative assumptions, systemic risks, technology maturity, infrastructure limits, integration
-  feasibility, and economic viability. Use when validating approved scenarios before roadmap
-  commitment, when stakeholders need confidence in technical achievability, or when "Phase 3b"
-  / "feasibility" / "think tank" / "7 sabios" is mentioned.
+description: "Use this skill when the user asks about multidimensional feasibility: Deep feasibility validation across 7 dimensions by a Council of Seven Sages (Think Tank)."
 allowed-tools:
   - Read
   - Write
@@ -20,7 +14,6 @@ allowed-tools:
   - WebSearch
   - WebFetch
 ---
-
 # Multidimensional Feasibility: Think Tank of 7 Sages
 
 Validates approved modernization scenarios with postdoctoral-level research rigor across 7 dimensions.

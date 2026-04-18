@@ -3,8 +3,8 @@ name: scaffold-api-rest
 author: "Javier Montaño (JM Labs)"
 description: >
   Generate REST API with Express/Fastify, OpenAPI spec, validation, tests. Use when user asks to "scaffold a REST API".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -13,7 +13,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Scaffold REST API
 
 Generate production-ready REST API with TypeScript, OpenAPI 3.1, Zod validation, JWT auth, database integration, and comprehensive testing.

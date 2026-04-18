@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs monitoring dashboards, alerting rules, SLOs, and error budgets for production systems.
   Trigger: "monitoring setup", "dashboards", "alerts", "SLOs", "error budgets", "observability".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Monitoring Setup
 
 Designs comprehensive monitoring strategies including dashboards, alerting rules, SLO definitions, and error budgets — turning raw metrics into actionable operational intelligence.

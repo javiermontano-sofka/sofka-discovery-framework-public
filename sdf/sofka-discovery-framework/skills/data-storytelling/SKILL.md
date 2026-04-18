@@ -7,15 +7,14 @@ description: >
   metrics-to-meaning conversion, comparison framing, and magnitude communication.
   Use when presenting scoring matrices, coverage metrics, performance data, cost
   estimates, or any quantitative finding that needs interpretation and context.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
 ---
-
 # Data Storytelling — Metrics to Meaning
 
 Transforms raw metrics, scores, and quantitative findings into meaningful narratives that drive understanding and action. Owns insight extraction, comparison framing, magnitude communication, and the bridge between numbers and decisions.

@@ -5,9 +5,9 @@ description: >
   "conduct Start-Stop-Continue", "run a 4Ls retro", "facilitate a Sailboat retro",
   "analyze sprint improvement data", or mentions retrospective engine, structured
   retrospective, sprint retro, team reflection, improvement commitment tracking.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-retrospective-engine"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-retrospec
   - Grep
   - Bash
 ---
-
 # Structured Retrospective Engine
 
 **TL;DR**: Facilitates structured retrospectives using multiple formats (Start-Stop-Continue, 4Ls, Sailboat, Mad-Sad-Glad, Starfish, DAKI) combined with quantitative metrics analysis. Selects format based on team context and retrospective objective. Produces actionable improvement commitments backed by both data patterns and team sentiment, with follow-through tracking across retrospective cycles.

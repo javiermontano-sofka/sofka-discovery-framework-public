@@ -1,10 +1,6 @@
 ---
 name: metodologia-ai-software-architecture
-description: >
-  AI software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy
-  for AI-enabled systems. This skill should be used when the user asks to "design AI system structure", "define AI module boundaries",
-  "select AI architecture patterns", "document AI architecture decisions", "evaluate AI code architecture", or mentions AI pipelines,
-  feature stores, model serving, drift detection, ML quality attributes, explainability architecture, or AI technical debt.
+description: "Use this skill when the user asks about ai software architecture: AI software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy for AI-enabled systems."
 model: opus
 context: fork
 allowed-tools:
@@ -15,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AI Software Architecture: Internal Structure & Design Decisions for AI-Enabled Systems
 
 AI software architecture defines how code is organized internally in systems that combine traditional software components with AI/ML capabilities — module boundaries spanning data pipelines, model serving, and feature stores; layer separation across the 6-layer AI stack; design patterns bridging traditional and AI-specific concerns; and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand, maintain, and evolve AI-enabled systems.

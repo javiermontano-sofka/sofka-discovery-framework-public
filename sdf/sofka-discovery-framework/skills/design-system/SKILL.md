@@ -7,8 +7,8 @@ description: >
   "brand config", "page template".
 argument-hint: "[action] [brand-config-path]"
 author: Javier Montano · Comunidad MetodologIA
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Design System v4 (Brand-Configurable)
 
 Foundation system for building styled HTML documents. All colors, typography, layout patterns, and component specs. **CRITICAL:** All brand tokens are configurable via `brand-config.json` — no hardcoded brand colors. Works for ANY brand.

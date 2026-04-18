@@ -1,14 +1,6 @@
 ---
 name: metodologia-bi-analytics-discovery
-description: >
-  BI and analytics service discovery — data maturity assessment (DCAM/DMM), dashboard landscape inventory,
-  semantic layer evaluation, self-service analytics readiness, data literacy assessment, analytics use case
-  portfolio, and BI transformation roadmap. Distinct from bi-architecture (design skill); this is the
-  discovery/assessment for BI-as-a-service engagements.
-  Use when the user asks to "assess BI maturity", "evaluate analytics capabilities", "dashboard inventory",
-  "data literacy assessment", "semantic layer review", "self-service analytics readiness",
-  "analytics use case prioritization", "BI transformation roadmap", or mentions BI-as-a-service,
-  analytics maturity, dashboard consolidation, data democratization, DCAM, DMM, or data literacy.
+description: "BI and analytics service discovery — data maturity assessment (DCAM/DMM), dashboard landscape inventory, semantic layer evaluation, self-service analytics readiness, data literacy assessment, analytics use case portfolio, and BI transformation roadmap."
 argument-hint: "<project-or-client-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
@@ -21,7 +13,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # BI & Analytics Discovery — Data Maturity Assessment & Transformation Roadmap
 
 Genera un discovery integral de BI & Analytics que cubre data maturity assessment (DCAM/DMM), dashboard landscape inventory, semantic layer evaluation, self-service analytics readiness, data literacy assessment, analytics use case portfolio, y BI transformation roadmap. Distinto de bi-architecture (skill de diseño de arquitectura BI); este skill es el discovery/assessment para engagements de BI-as-a-service.

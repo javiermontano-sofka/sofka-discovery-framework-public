@@ -8,8 +8,8 @@ description: >
   "design learning paths", "plan knowledge transfer", "evaluate mentoring program", "training gap analysis",
   "capability assessment", "upskilling plan", or mentions "training discovery", "mentoring readiness",
   "talent development", "MetodologIA University".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Mentoring & Training Discovery — Capability Development Assessment
 
 Generates a 6-section mentoring and training discovery covering capability assessment, learning path design, knowledge transfer planning, training delivery model, measurement framework, and a phased training roadmap. Produces actionable findings with gap analysis, delivery recommendations, and measurable success criteria.

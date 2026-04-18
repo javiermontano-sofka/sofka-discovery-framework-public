@@ -9,8 +9,8 @@ argument-hint: "<system_or_platform_name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Event Architecture: Catalog, Consistency Patterns & Operational Excellence
 
 Event-driven architecture decouples producers from consumers through asynchronous messaging — enabling scalability, resilience, and temporal flexibility. The skill covers event catalog design, broker selection, schema governance, consistency patterns (sagas, CQRS, event sourcing), and the operational practices that keep event systems reliable.

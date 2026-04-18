@@ -7,8 +7,8 @@ description: >
   Use when the user asks to "design adoption strategy", "plan change adoption", "communication plan", "training needs analysis",
   "resistance management", "adoption roadmap", "change communication", or mentions "post-implementation adoption",
   "user onboarding strategy", "technology adoption plan".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Adoption Strategy
 
 Designs a comprehensive adoption strategy: phased rollout plan, stakeholder communication strategy, training needs analysis and curriculum design, resistance management tactics, reinforcement mechanisms, and adoption KPIs with measurement cadence.

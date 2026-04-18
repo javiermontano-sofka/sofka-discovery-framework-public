@@ -7,8 +7,8 @@ description: >
   DoD, project rituals. Triggers on: codifies methodology into actionable playbook, designs
   ceremonies with agendas and durations, creates Definition of Done per deliverable type,
   maps roles to ceremonies, produces ceremony calendar.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Methodology Playbook
 
 **TL;DR**: Core Phase 4 deliverable that codifies the selected methodology into an actionable playbook: ceremonies with agendas and durations, cadences with frequencies and participants, Definition of Done per deliverable type, escalation protocols, and role responsibilities. Transforms methodology selection from a slide deck decision into an operational contract the team can execute.

@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to design a communication matrix, define channel strategy,
   create reporting templates, establish escalation communication paths, or measure communication
   effectiveness across the project.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Communication Plan & Matrix
 
 **TL;DR**: Designs a comprehensive communication management plan including communication matrix (who-what-when-how), channel strategy, reporting cadence, escalation communication protocols, and templates for recurring communications. Ensures the right information reaches the right stakeholder at the right time through the right channel.

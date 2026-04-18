@@ -3,8 +3,8 @@ name: scaffold-supabase-project
 author: "Javier Montaño (JM Labs)"
 description: >
   Generate Supabase project with auth, RLS policies, edge functions, type generation. Use when user asks to "scaffold a Supabase project".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -13,7 +13,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Scaffold Supabase Project
 
 Generate production-ready Supabase project with PostgreSQL schema, Row Level Security policies, auth configuration, type-safe client, Edge Functions, and local development setup.

@@ -1,12 +1,6 @@
 ---
 name: metodologia-digital-transformation-discovery
-description: >
-  Program-level digital transformation discovery — digital maturity assessment, service portfolio mapping,
-  program architecture, change readiness, multi-service integration, program governance, and transformation roadmap.
-  Use when the user asks to "assess digital maturity", "plan digital transformation", "design transformation program",
-  "evaluate change readiness", "map service portfolio", "program governance", "transformation roadmap",
-  or mentions digital transformation, maturity assessment, multi-workstream, program architecture,
-  change management, or transformation program.
+description: "Use this skill when the user asks about digital transformation discovery: Program-level digital transformation discovery — digital maturity assessment, service portfolio mapping, program architecture, change readiness, multi-service integration, program governance, and transformation roadmap."
 argument-hint: "<program_or_client_name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
@@ -19,7 +13,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Digital Transformation Discovery — Program-Level Assessment & Roadmap
 
 Genera un discovery integral a nivel de programa de transformación digital que cubre digital maturity assessment, service portfolio mapping, program architecture, change readiness, multi-service integration, program governance, y transformation roadmap. Diseñado para engagements complejos donde múltiples servicios MetodologIA convergen en un programa unificado de transformación.

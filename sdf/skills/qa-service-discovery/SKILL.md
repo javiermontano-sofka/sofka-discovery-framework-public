@@ -2,13 +2,7 @@
 name: metodologia-qa-service-discovery
 argument-hint: "<project-workspace-path>"
 author: Javier Montaño · Comunidad MetodologIA
-description: >
-  QA-as-a-Service discovery — quality maturity assessment (TMMi), test coverage analysis, tool landscape
-  evaluation, PITT methodology alignment, team composition modeling, test factory design, and QA transformation roadmap.
-  Use when the user asks to "assess QA maturity", "evaluate testing practices", "QA service discovery",
-  "test factory design", "TMMi assessment", "QA transformation", "testing maturity evaluation",
-  "PITT methodology", "QA team composition", "test automation assessment", "quality engineering assessment",
-  or mentions "independent testing", "QA-as-a-Service", "test industrialization", "ISTQB".
+description: "Use this skill when the user asks about qa service discovery: QA-as-a-Service discovery — quality maturity assessment (TMMi), test coverage analysis, tool landscape evaluation, PITT methodology alignment, team composition modeling, test factory design, and QA transformation roadmap."
 allowed-tools:
   - Read
   - Write
@@ -17,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # QA Service Discovery — Quality Maturity Assessment & Transformation Roadmap
 
 Genera un assessment de 7 secciones para servicios de QA: evaluacion de madurez de calidad (TMMi), analisis de cobertura de testing, evaluacion del landscape de herramientas, alineacion con metodologia PITT, modelado de composicion de equipo, diseno de test factory, y roadmap de transformacion de QA. Orientado a construir servicios de calidad que prevengan defectos, no solo los detecten.

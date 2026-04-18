@@ -9,8 +9,8 @@ argument-hint: "[source-file.md] [output_path.docx]"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # MetodologIA Brand DOCX — Neo-Swiss Document Generator
 
 Generates production-ready Word documents following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every document uses navy-themed headers, gold accents, Poppins headings, Trebuchet MS body text, and branded cover pages.

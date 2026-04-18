@@ -9,8 +9,8 @@ description: >
   "manage test data", "define quality gates", or mentions test pyramid, Pact, Playwright, Cypress, coverage targets, flaky tests, chaos engineering.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Testing Strategy: Quality Assurance Architecture & Automation Design
 
 Testing strategy defines how quality is verified, automated, and measured across the software delivery lifecycle. The skill produces comprehensive test architectures covering shape selection, automation frameworks, contract testing, performance and chaos testing, test data management, and quality metrics that shift quality left while maintaining production confidence.

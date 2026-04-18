@@ -13,8 +13,8 @@ description: >
   Trigger: BPMN, process mapping, AS-IS TO-BE, process flow, swimlane, process maturity,
   automation ROI, RACI, fit-to-standard, process improvement, operational workflow.
 argument-hint: "<process-name-or-area> [--mode asis|tobe|fts]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
@@ -22,7 +22,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # BPMN Process Analysis & Modeling Skill
 
 > "A process you can't see is a process you can't improve."

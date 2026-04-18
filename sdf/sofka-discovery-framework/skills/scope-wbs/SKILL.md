@@ -5,9 +5,9 @@ description: >
   "document scope statement", "set project boundaries", "identify deliverables",
   or mentions scope definition, deliverable decomposition, work packages,
   scope baseline, exclusions, 100% rule.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-scope-wbs"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-scope-wbs
   - Grep
   - Bash
 ---
-
 # WBS Decomposition & Scope Management
 
 **TL;DR**: Produces a comprehensive Work Breakdown Structure (WBS) with scope statement, boundaries, exclusions, and work package definitions. Decomposes project deliverables using the 100% rule to ensure complete coverage without overlap, generating a hierarchical structure that serves as the foundation for schedule, cost, and resource planning.

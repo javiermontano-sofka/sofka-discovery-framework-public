@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to produce decision-focused executive briefings, distill
   complex project data into 5-minute reads, present RAG status with strategic alignment,
   frame decisions with options and recommendations, or prepare steering committee materials.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Executive Briefing & Sponsor Updates
 
 **TL;DR**: Produces executive-level briefings optimized for senior leadership audiences. Distills complex project information into concise, decision-focused summaries with RAG status, key metrics, strategic alignment, decisions needed, and risk highlights. Designed for 5-minute reads or 15-minute presentations.

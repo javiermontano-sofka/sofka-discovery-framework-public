@@ -8,8 +8,8 @@ argument-hint: "<system-or-platform-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Cloud-Native Architecture: Containers, Mesh, Serverless & Cost Optimization
 
 Cloud-native architecture designs applications to fully exploit cloud platforms -- containers, orchestration, service mesh, serverless, infrastructure as code, and cost-aware engineering. This skill produces architecture documentation guiding teams from cloud readiness assessment through production-grade deployment.

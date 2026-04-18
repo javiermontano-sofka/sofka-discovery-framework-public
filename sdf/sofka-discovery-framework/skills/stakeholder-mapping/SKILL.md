@@ -7,8 +7,8 @@ description: >
   or mentions stakeholder analysis, power/interest grid, engagement strategy, or adoption curve.
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-or-initiative-name]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Stakeholder Mapping: Analysis, Engagement & Change Readiness
 
 Stakeholder mapping identifies who matters for a project or transformation, how much influence and interest they hold, what communication they need, and how ready they are for change. Produces actionable stakeholder maps that prevent surprises, accelerate adoption, and align decision-making.

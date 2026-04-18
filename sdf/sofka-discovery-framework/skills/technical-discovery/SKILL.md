@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Repository scanning, tech stack identification, architecture signal extraction, and domain mapping.
   Trigger: analyze repository, scan codebase, map architecture, identify tech stack, discover structure.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Technical Discovery
 
 Systematic repository analysis that maps what exists before any diagnosis or recommendation.

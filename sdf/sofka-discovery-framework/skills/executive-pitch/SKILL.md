@@ -7,8 +7,8 @@ description: >
   Use when the user asks to "create a pitch", "build a business case", "justify the investment",
   "present to executives", "ROI analysis", "executive summary", or mentions "C-level presentation",
   "budget approval", "NPV", "IRR", "payback period", "business case", "Phase 5b".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Executive Pitch & Business Case
 
 Generates C-level presentations with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models (NPV, IRR, payback), and decision frameworks. Uses Problem-Agitate-Solve (PAS) persuasion architecture.

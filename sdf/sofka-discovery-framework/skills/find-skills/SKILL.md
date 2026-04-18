@@ -7,8 +7,8 @@ description: >
   Trigger: find a skill, how do I do X, is there a skill for, can you do X, extend capabilities,
   search skills, install skill, discover skill, skill marketplace, skills.sh.
 argument-hint: "[query] [--source local|remote|all] [--min-installs 1000]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
@@ -16,7 +16,6 @@ version: "13.0.0"
   - WebFetch
   - Agent
 ---
-
 # Find Skills
 
 Discover and install specialized agent skills from both the open ecosystem and local plugin catalogs.

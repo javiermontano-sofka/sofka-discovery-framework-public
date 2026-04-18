@@ -6,8 +6,8 @@ description: >
   requirement extraction, project brief analysis. Triggers on: analyzes project input documents,
   extracts structured requirements from briefs, detects contradictions in source documents,
   normalizes project inputs for planning, produces input completeness scorecard.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Bash
   - WebFetch
 ---
-
 # Project Input Processing & Document Analysis
 
 **TL;DR**: Analyzes project input documents (briefs, RFPs, SOWs, emails, meeting notes) to extract structured requirements, constraints, assumptions, stakeholders, and key decisions. Produces a normalized input digest that feeds the project charter and planning phases.

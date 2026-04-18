@@ -14,8 +14,8 @@ description: >
   Trigger: SAP implementation, S/4HANA configuration, fit-to-standard, SAP modules,
   SAP localization, CATS integration, Strangler Fig, Activity Types, revenue recognition.
 argument-hint: "<module-or-topic> [--variant tm|fixprice|retainer|managed]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
@@ -23,7 +23,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # SAP S/4HANA Implementation Skill
 
 > "Fit-to-Standard is not about bending the business to SAP — it's about finding where SAP already solved the problem."

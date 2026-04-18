@@ -8,9 +8,9 @@ description: >
   AI value matrix, or AI system vision.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for metodologia-ai-conops"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ argument-hint: "Context, project name, or specific focus area for metodologia-ai
   - Grep
   - Bash
 ---
-
 # AI CONOPS: Operational Concept for AI-Enabled Systems
 
 CONOPS for AI systems defines *what the system does, for whom, and under what conditions* — before architecture begins. Aligned with IEEE 1362-2022, this skill produces the operational concept document that drives all downstream architectural decisions: stakeholder identification, interaction autonomy levels, business value assessment, measurable success metrics, and operational modes with their state transitions.

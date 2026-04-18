@@ -7,8 +7,8 @@ description: >
   assessment, Kanban readiness. Triggers on: scores Kanban maturity against KMM levels,
   evaluates flow health metrics, assesses WIP limit enforcement, detects Kanban anti-patterns,
   produces evolutionary improvement roadmap.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Kanban Maturity Assessment
 
 **TL;DR**: Assesses organizational Kanban maturity across the Kanban Maturity Model (KMM) dimensions: workflow visualization, WIP management, flow measurement, explicit policies, feedback loops, and evolutionary improvement. Produces a maturity level determination (ML0-ML6), flow health analysis, and an improvement roadmap grounded in Kanban's evolutionary change principles.

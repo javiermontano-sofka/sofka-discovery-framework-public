@@ -1,11 +1,6 @@
 ---
 name: metodologia-ai-testing-strategy
-description: >
-  Comprehensive testing strategy for AI systems — testing scope matrix (6 types x 6 layers), model prediction testing,
-  data quality testing, compliance and fairness testing, integration approaches, and CI/CD test automation. This skill
-  should be used when the user asks to "define AI testing strategy", "test ML models", "design data quality tests",
-  "plan fairness testing", "test AI pipelines", "design integration tests for ML", or mentions adversarial testing,
-  drift simulation, model regression testing, bias testing, explainability testing, or AI test automation.
+description: "Use this skill when the user asks about ai testing strategy: Comprehensive testing strategy for AI systems — testing scope matrix (6 types x 6 layers), model prediction testing, data quality testing, compliance and fairness testing, integration approaches, and CI/CD test automation."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AI Testing Strategy: Comprehensive Verification for AI-Enabled Systems
 
 AI testing strategy defines how to verify that an AI system behaves correctly, fairly, securely, and reliably across all layers — from data ingestion through model inference to production monitoring. This skill produces a testing strategy document covering the testing scope matrix, model and prediction tests, data quality tests, compliance and fairness tests, integration approaches, and CI/CD test automation for AI pipelines.

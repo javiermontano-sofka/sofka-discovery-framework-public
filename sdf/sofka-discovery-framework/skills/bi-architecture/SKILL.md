@@ -8,8 +8,8 @@ description: >
   "design dashboard hierarchy", "create a semantic layer", or mentions metric trees, drill-down patterns, or reporting strategy.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # BI Architecture: Business Intelligence Solution Design & Analytics Strategy
 
 BI architecture defines how organizations consume data for decision-making — KPI frameworks, semantic layers, dashboard hierarchies, self-service analytics, and governance. This skill produces BI documentation that enables teams to deliver trustworthy, scalable, and accessible analytics.

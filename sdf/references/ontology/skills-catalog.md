@@ -178,22 +178,6 @@
 | `user-representative` | Representación del usuario final | 0-2 |
 | `accessibility-audit` | Auditoría de accesibilidad | 3-4 |
 
-### 12. SAP & ERP (11 skills)
-
-| Skill | Propósito | Fases |
-|-------|-----------|-------|
-| `sofka-sap-discovery` | Orquestación pipeline SAP completo | 0-6 |
-| `sofka-sap-activate-methodology` | SAP Activate: 6 fases, gates, governance | 0-6 |
-| `sofka-sap-fit-to-standard` | Workshop facilitation, scoring, Clean Core | 2-3 |
-| `sofka-sap-gap-analysis` | Clasificación gaps, dependencias, ADRs | 2-3 |
-| `sofka-sap-solution-design` | Arquitectura Clean Core target-state | 4-5 |
-| `sofka-sap-btp-extensibility` | BTP, ABAP Cloud, RAP, CAP, SAP Build | 4-5 |
-| `sofka-sap-data-migration` | Strangler Fig, Migration Cockpit, MDG | 3-5 |
-| `sofka-sap-integration` | CPI, OData, CATS BAPI, Event Mesh | 3-5 |
-| `sofka-sap-testing-validation` | UAT, regression, cutover rehearsal | 4-6 |
-| `sofka-sap-change-adoption` | ADKAR, Enable Now, super-users, hypercare | 4-6 |
-| `sofka-sap-implementation` | Referencia config módulos SAP (v1) | 2-5 |
-
 ---
 
 *Sofka SAGE — La excelencia no se improvisa, se diseña.*

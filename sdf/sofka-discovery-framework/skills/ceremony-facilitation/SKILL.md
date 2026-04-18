@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs facilitation guides for project ceremonies, engagement
   techniques for team workshops, conflict navigation protocols for heated discussions,
   anti-pattern recognition during ceremony execution, or ceremony effectiveness measurement.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Ceremony Facilitation Guides
 
 **TL;DR**: Provides detailed facilitation guides for project ceremonies including opening/closing rituals, facilitation techniques, engagement activities, time management, and anti-pattern recognition. Each guide enables any team member to facilitate effectively, not just the Scrum Master or PM.

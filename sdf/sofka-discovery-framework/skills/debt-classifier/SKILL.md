@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Multi-dimensional technical debt classification across architecture, code, test, doc, and infra.
   Trigger: "classify debt", "debt types", "categorize tech debt", "debt dimensions".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Debt Classifier
 
 Classify technical debt across five dimensions — architecture, code, test, documentation, and infrastructure — using a consistent taxonomy to enable targeted remediation.

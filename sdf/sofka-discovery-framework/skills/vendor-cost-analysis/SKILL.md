@@ -5,9 +5,9 @@ description: >
   "calculate total cost of ownership", "normalize vendor pricing",
   or mentions vendor comparison, total cost of ownership, vendor TCO, proposal evaluation,
   vendor scoring matrix, hidden cost analysis.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-vendor-cost-analysis"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-vendor-co
   - Grep
   - Bash
 ---
-
 # Vendor Cost Analysis & TCO
 
 **TL;DR**: Performs total cost of ownership (TCO) analysis across vendor options including acquisition costs, implementation costs, operating costs, switching costs, and hidden costs. Produces normalized vendor comparison enabling evidence-based vendor selection decisions.

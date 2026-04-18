@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 description: >
   Architecture proposals with trade-off analysis, alternatives matrix, and decision rationale.
   Trigger: design architecture, propose solution, evaluate alternatives, create ADR.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Architecture Design
 
 Evidence-based architecture proposals with explicit trade-offs and alternatives.

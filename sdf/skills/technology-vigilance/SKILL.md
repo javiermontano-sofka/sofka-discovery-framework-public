@@ -2,14 +2,7 @@
 name: metodologia-technology-vigilance
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[sector] [tech-stack] [horizon: 6m|12m|24m] — e.g. 'banking microservices 12m'"
-description: >
-  Structured technology monitoring across analyst firms (Gartner, Forrester, IDC), academic sources
-  (Stanford HAI, IEEE, ACM), editorial platforms (O'Reilly Radar, ThoughtWorks Tech Radar), and
-  individual thought leaders (Martin Fowler, Paulo Caroli, Gregor Hohpe, Jez Humble). Produces
-  vigilance reports with signals classified by urgency and impact. Use when evaluating technology
-  trends, preparing sector-specific tech intelligence, validating technology choices against current
-  landscape, or when "vigilancia tecnológica", "tech watch", "Gartner", "Forrester", "tech radar",
-  "Stanford HAI", "IEEE", or "tendencias tecnológicas" is mentioned.
+description: "Use this skill when the user asks about technology vigilance: Structured technology monitoring across analyst firms (Gartner, Forrester, IDC), academic sources (Stanford HAI, IEEE, ACM), editorial platforms (O'Reilly Radar, ThoughtWorks Tech Radar), and individual thought leaders (Martin Fowler, Paulo Caroli, Gregor Hohpe, Jez Humble)."
 allowed-tools:
   - Read
   - Write
@@ -21,7 +14,6 @@ allowed-tools:
   - WebSearch
   - WebFetch
 ---
-
 # Technology Vigilance: Proactive Technology Intelligence
 
 Structured monitoring of the technology landscape to inform discovery decisions with up-to-date data on trends, maturity, adoption, and risks of proposed technologies.

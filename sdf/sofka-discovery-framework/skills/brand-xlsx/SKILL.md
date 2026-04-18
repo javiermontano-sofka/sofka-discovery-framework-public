@@ -9,8 +9,8 @@ argument-hint: "[source-file.md] [output_path.xlsx]"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # MetodologIA Brand XLSX — Neo-Swiss Spreadsheet Generator
 
 Generates production-ready Excel spreadsheets following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every spreadsheet uses navy header fills, gold accent rows, Poppins header text, Trebuchet MS body text, and semantic conditional formatting.

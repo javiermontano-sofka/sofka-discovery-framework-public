@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to establish Definition of Done criteria at story/feature/release
   levels, create Definition of Ready checklists, design acceptance criteria templates, define
   exception handling processes, or plan DoD evolution protocols.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Definition of Done / Definition of Ready Standards
 
 **TL;DR**: Establishes comprehensive Definition of Done (DoD) and Definition of Ready (DoR) standards for the project. DoD defines when work is truly complete (quality, testing, documentation, deployment criteria). DoR defines when a work item is ready to be pulled into execution. Both are living agreements that evolve with team maturity.

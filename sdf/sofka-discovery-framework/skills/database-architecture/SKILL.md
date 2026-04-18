@@ -8,8 +8,8 @@ argument-hint: "<system_or_database_name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 > **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Data-AI`. El diseño de bases de datos es relevante para desarrollo de software y para estrategia de datos. Para otros contextos de datos, consulte `data-engineering`, `data-governance`, o `bi-architecture`.
 
 # Database Architecture: Schema Design, Storage Strategy & Data Evolution

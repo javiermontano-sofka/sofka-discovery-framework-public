@@ -7,8 +7,8 @@ description: >
   Triggers on: builds weighted scoring models for project prioritization, calculates
   efficient frontier for portfolio optimization, runs sensitivity analysis on rankings,
   facilitates data-driven investment decisions, produces ranked portfolio with transparent scoring.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Portfolio Prioritization & Scoring Models
 
 **TL;DR**: Applies weighted scoring models to prioritize projects within a portfolio based on strategic alignment, financial return, risk, resource requirements, and urgency. Produces ranked portfolio with transparent scoring rationale enabling data-driven investment decisions.

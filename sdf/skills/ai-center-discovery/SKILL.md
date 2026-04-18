@@ -1,13 +1,6 @@
 ---
 name: metodologia-ai-center-discovery
-description: >
-  AI Center services discovery — AI readiness assessment using MetodologIA AI SCALE methodology, use case portfolio
-  prioritization, data readiness evaluation, model inventory, AI governance assessment, infrastructure evaluation,
-  MetodologIA AI product integration, and AI adoption roadmap.
-  Use when the user asks to "assess AI readiness", "evaluate AI maturity", "AI discovery", "AI use case prioritization",
-  "MLOps assessment", "AI governance evaluation", "AI adoption roadmap", "AI strategy assessment",
-  "evaluate AI infrastructure", "AI product fit", or mentions "AI SCALE", "responsible AI",
-  "AI pilots", "ML pipeline", "AI Center of Excellence", "LLM adoption", "generative AI strategy".
+description: "AI Center services discovery — AI readiness assessment using MetodologIA AI SCALE methodology, use case portfolio prioritization, data readiness evaluation, model inventory, AI governance assessment, infrastructure evaluation, MetodologIA AI product integration, and AI adoption roadmap."
 argument-hint: "<project-or-client-name>"
 author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
@@ -18,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AI Center Discovery — AI Readiness Assessment & Adoption Roadmap
 
 Genera un assessment de 8 secciones para servicios del AI Center: evaluacion de readiness con metodologia AI SCALE de MetodologIA, portafolio de use cases, evaluacion de data readiness, inventario de modelos, governance de AI, infraestructura, integracion con productos AI de MetodologIA, y roadmap de adopcion. Diseñado para maximizar la probabilidad de que los pilotos de AI lleguen a produccion y generen valor sostenible.

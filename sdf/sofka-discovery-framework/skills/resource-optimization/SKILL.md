@@ -5,9 +5,9 @@ description: >
   "run what-if scenarios", "resolve over-allocations", "balance resource demand",
   or mentions resource leveling, resource smoothing, optimization, what-if analysis,
   resource allocation optimization, capacity balancing.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-resource-optimization"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-resource-
   - Grep
   - Bash
 ---
-
 # Resource Optimization & What-If Scenarios
 
 **TL;DR**: Performs resource optimization through leveling and smoothing techniques, resolving over-allocations while minimizing schedule impact. Runs what-if scenarios to evaluate the impact of resource changes (additions, removals, reallocation) on schedule, cost, and quality.

@@ -11,8 +11,8 @@ description: >
   augmentation, nearshore, offshore, or staffing plan.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -20,7 +20,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Staff Augmentation Discovery — Talent Gap Analysis & Staffing Roadmap
 
 Genera un análisis integral de necesidades de staff augmentation que cubre talent gap analysis, skills matrix profiling, team composition modeling, onboarding & ramp-up design, retention framework, y staffing roadmap. Diseñado para engagements donde el cliente necesita aumentar su capacidad con profesionales externos, ya sea nearshore, offshore, o on-site.
