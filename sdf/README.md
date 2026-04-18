@@ -1,237 +1,217 @@
 # Sofka SAGE — Agentic PreSales as Service
 
-> **SAGE** = Sofka Agentic Gateway to Excellence.
-> Tu IDE se convierte en una agencia de discovery empresarial.
+**SAGE** (Sofka Agentic Gateway to Excellence) turns Claude Code into a rigorous pre-sales discovery agency. It is not a prompt template; it's a complete agentic ecosystem with an evidence protocol, quality gates, a 4-layer architecture, and a testing suite that fails CI when the rules are broken.
 
----
+## Current state — v13.4.0
 
-## Qué hace
+| Resource | Count |
+|----------|------:|
+| Agents | 49 |
+| Skills (7/7 INSIGNIA) | 215 |
+| Commands | 101 |
+| Ontology sub-files | 15 |
+| NL-HP prompts | 42 |
+| Quality gates | G0/G1/G1.5/G2/G3 (5) |
+| Pytest tests | 57 (100% pass) |
+| Functional extractors | 9 (csv/xlsx/docx/pdf/pptx/html/code/structured/generic) |
+| Embedded MCP servers | 1 (NotebookLM, 35 tools) |
 
-Sofka SAGE transforma Claude Code en el consultor técnico más riguroso del mercado.
-No es un prompt — es un ecosistema agéntico completo con:
+See `CLAUDE.md` for the version history (v13.0 → v13.4) and what each bump changed.
 
-- **48 agentes** especializados (12 core + 36 domain)
-- **100 skills MOAT** — Modernization-Oriented Acceleration Technology (SKILL.md + references + examples + prompts)
-- **96 comandos** (primarios + aliases + service discovery + UX)
-- **4 quality gates** (G1 → G1.5 → G2 → G3)
-- **Think Tank de 7 Sabios** para validación de factibilidad
-- **Protocolo zero-hallucination** con evidence tagging obligatorio
-- **Ghost menu** persistente para navegación contextual
-- **Changelog automático** para continuidad ante crisis de sesión
-- **RAG-priming** con 20+ archivos de conocimiento base
-- **10 tipos de servicio** con routing automático
+## What SAGE does (and what it is not)
 
----
+**Does**: Drives a full pre-sales engagement from cold-repo intake to executive roadmap. Ingests heterogeneous attachments (FASE 0) → orchestrates a 7-expert committee through 4 ToT phases → enforces evidence tagging → emits brand-compliant deliverables (markdown + HTML) → maintains a session changelog for recovery.
 
-## Instalación
+**Is not**: A general-purpose coding assistant, a code generator, or a business advisor. Don't use SAGE for implementation tasks; hand off to the relevant specialist plugin (SAP, MAO, PM-APEX, etc.) once scope is locked.
+
+**Cost / scope**: A full `/sdf:run-deep` pipeline produces ~7 deliverables, burns substantial tokens (committee = 7 agents × multiple turns), and typically takes 2-4 hours of wall-clock including human reviews at gates. Use `/sdf:run-express` (3 deliverables, ~90 min) for Go/No-Go triage.
+
+## Install
 
 ```bash
+# Option 1 — via marketplace (recommended)
+cp -r <this-repo>/sdf ~/.claude/plugins/marketplaces/local-desktop-app-uploads/
+
+# Option 2 — via git clone (if you're syncing upstream)
 git clone https://github.com/sofka-technologies/discovery-framework.git \
-  ~/skills/plugins/sofka-discovery-framework
+  ~/.claude/plugins/marketplaces/local-desktop-app-uploads/sdf
+
+# Bootstrap Python venv (3.10+ required, 3.13 tested) — extractors depend on it
+bash ~/.claude/plugins/marketplaces/local-desktop-app-uploads/sdf/scripts/setup-attachments.sh
+
+# NotebookLM CLI+MCP (unified package) — optional but recommended
+bash <sdf-path>/scripts/nlm-install.sh && nlm login && nlm doctor
 ```
 
-Al reiniciar Claude Code, el plugin se activa automáticamente.
+Restart Claude Code; `/sdf:menu` confirms activation.
 
----
+## Entry points (which command to use when)
 
-## Uso rápido
+| Scenario | Command | Produces | Typical duration |
+|----------|---------|----------|------------------|
+| Uncertain, want to explore | `/sdf:menu` | Interactive command palette | — |
+| Cold-repo intake | `/sdf:prime-repo` | `priming-rag-*.md` knowledge base | ~15 min |
+| Go/No-Go decision | `/sdf:run-express` | Brief + AS-IS + Roadmap (3 deliverables) | ~90 min |
+| Full facilitated engagement | `/sdf:run-guided` | 16 deliverables, human gate approvals | 2-4 days |
+| Autonomous prototype | `/sdf:run-auto` | 16 deliverables, no pauses | ~3 h (real-time) |
+| Architecture direction only | `/sdf:run-deep` | 7 deliverables (arch + spec + handover) | ~3 h |
+| SAGE demo on current repo | `/sdf:demo` | Guided walkthrough, sample deliverable | ~20 min |
+| Advance pipeline after gate | `/sdf:a` | Next phase artefacts | per-phase |
 
-```bash
-# Pipeline completo autónomo
-/sdf:run-auto
-
-# Go/No-Go en 1 sesión (3 entregables)
-/sdf:run-express
-
-# Pipeline guiado con facilitación
-/sdf:run-guided
-
-# Dirección arquitectónica (7 entregables)
-/sdf:run-deep
-
-# Paleta de comandos interactiva
-/sdf:menu
-
-# Avanzar al siguiente paso del pipeline
-/sdf:a
-
-# Demo guiado de SAGE
-/sdf:demo
-```
-
----
-
-## Qué pasa cuando activas el plugin
-
-1. Los hooks escanean el directorio de trabajo
-2. Se genera contexto de sesión en `.discovery/`
-3. Se activa ghost menu para navegación contextual
-4. Se inicia changelog automático
-5. El orquestador (`discovery-conductor`) toma control del pipeline
-6. Cada afirmación se etiqueta: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFERENCIA]` `[SUPUESTO]`
-
----
-
-## Arquitectura
+## Architecture (4-layer)
 
 ```
-sofka-discovery-framework/
-├── agents/           # 48 agentes especializados
-├── commands/         # 96 comandos
-├── skills/           # 100 skills MOAT
-├── references/       # 20+ priming-RAG + design system + service matrix
-├── prompts/          # Biblioteca NL-HP (42 prompts)
-├── hooks/            # Ghost menu + changelog + session context
-├── scripts/          # Indexación, escaneo, validación
-├── landing.html      # Landing page interactiva
-├── prompt-library.html
-├── CLAUDE.md         # Guía completa del orquestador
-└── .claude-plugin/
-    └── plugin.json   # v12.0.0
+sdf/
+├── agents/              49 subagents + 2 orchestrators · `name:` = filename · no Agent tool in subagents
+├── commands/            101 /sdf:* commands · no foreign prefix refs (audit enforces)
+├── skills/              215 skill dirs · all 7/7 INSIGNIA · SKILL.md auto-activates
+├── references/
+│   ├── ontology/        15 hub children — read on demand, not upfront
+│   ├── skill-robustness-template/   Scaffold for new skills
+│   └── priming-rag-*.md Auto-generated per ingested source
+├── hooks/hooks.json     SessionStart + PostToolUse — ghost menu, changelog, context
+├── scripts/             Audits, extractors, renderers, ecosystem batch tools
+├── templates/           Jinja2 brand HTML base + markdown deliverable templates
+├── .mcp.json            NotebookLM MCP stdio config (notebooklm-mcp binary)
+├── landing.html         Interactive ecosystem landing (Sofka DS v5)
+└── prompt-library.html  Searchable NL-HP prompt catalog
 ```
 
----
+4 sibling plugins (`metodologia-discovery-framework` GPL-3.0, `pm-project-framework`, `sovereign-architect`, `plugin-qa`) live inside `sdf/` and ship via `.claude-plugin/marketplace.json`. They follow their own release cycles — don't sync their files when working on SDF core.
 
-## Pipeline de Discovery
+## The pipeline (phases + gates)
 
 ```
-00 Plan → 01 Stakeholders → 02 Brief → 03 AS-IS → 04 Flujos
-                                                       ↓
-                                             ┌─── G1 ───┐
-                                             ↓           ↓
-                                       05 Escenarios → 05b Feasibility (7 Sabios)
-                                             ↓
-                                       ┌─ G1.5 ─┐
-                                       ↓         ↓
-                                  06 Roadmap → G2
-                                       ↓
-                             07 Spec → 08 Pitch → 09 Handover → G3
+FASE 0: Attachment ingestion (@attachment-processor)     ──┐
+  ↓  priming-rag-*.md generated                            │
+FASE R: Research augmentation (@research-scientist +        │
+  ↓     NotebookLM MCP)                                    │ G0 · Security (secrets scan)
+P0 Plan → P1 Stakeholders → P2 Brief → P3 AS-IS → P4 Flows │ G1 · Discovery Readiness (post-P4)
+  ↓                                                          │
+P5 Scenarios (ToT) → P5b Feasibility (Think Tank 7 Sabios)  │ G1.5 · Feasibility (post-P5b)
+  ↓                                                          │
+P6 Roadmap + Cost Estimation                                │ G2 · Budget & Scope (post-P6)
+  ↓                                                          │
+P7 Spec → P8 Pitch → P9 Handover                            │ G3 · Delivery (pre-handoff)
 ```
 
----
+Each gate has a defined pass/fail checklist in `references/ontology/quality-gates.md`. Gates are hard stops — the orchestrator refuses to advance until criteria are met.
 
-## Tipos de Servicio
+## Service-type routing
 
-El parámetro `{TIPO_SERVICIO}` activa routing automático:
+`{TIPO_SERVICIO}` is classified in FASE 0 and activates the right committee composition + skill set:
 
-| Tipo | Alias | Comando directo |
+| Type | Alias | Direct command |
 |------|-------|----------------|
-| Software Development & Architecture | `SDA` | Default (auto-detect) |
+| Software Development & Architecture | `SDA` | default (auto-detect) |
 | Quality Assurance | `QA` | `/sdf:qa-discovery` |
 | Robotic Process Automation | `RPA` | `/sdf:rpa-discovery` |
-| Data & Artificial Intelligence | `Data-AI` | `/sdf:ai-discovery` |
+| Data & AI | `Data-AI` | `/sdf:ai-discovery` |
 | Cloud Infrastructure | `Cloud` | `/sdf:cloud-discovery` |
 | Staff Augmentation | `SAS` | `/sdf:sas-discovery` |
 | Management & PMO | `Management` | `/sdf:management-discovery` |
 | UX Design | `UX-Design` | `/sdf:ux-discovery` |
 | Digital Transformation | `Digital-Transformation` | `/sdf:transformation` |
-| Multi-Service Program | `Multi-Service` | Auto (2+ types detected) |
+| Multi-service program | `Multi-Service` | auto (2+ types detected) |
 
----
+Full routing matrix → `references/ontology/service-routing.md`.
 
-## Protocolo Zero-Hallucination
+## Committee of 49 agents
 
-| Tag | Significado | Confianza |
-|-----|-------------|-----------|
-| `[CÓDIGO]` | Verificado en código fuente | Alta |
-| `[CONFIG]` | Verificado en configuración | Alta |
-| `[DOC]` | Documentado en fuentes del proyecto | Alta |
-| `[INFERENCIA]` | Razonado desde patrones observados | Media |
-| `[SUPUESTO]` | Asunción no verificable | Baja |
+**Permanent triad** — active in every engagement:
+- `@discovery-conductor` — impartial orchestrator, sequences phases, enforces gates (never performs analysis itself)
+- `@delivery-manager` — timeline, scope, risks, stakeholder comms
+- `@risk-controller` — continuous governance, escalation path
 
-Si >30% es `[SUPUESTO]` → banner de advertencia obligatorio.
+**Think Tank of 7 Sabios** — feasibility validation at G1.5:
+Research Scientist · Economics Researcher · Systems Theorist · Technology Scout · Integration Researcher · Hardware Systems Engineer · Data Scientist
 
----
+**~39 Specialists** — activated per `{TIPO_SERVICIO}` and phase (architecture, data, AI, security, UX, PMO, change management, finance, etc.)
 
-## Ontología Viva (v12.0)
+Full roster → `references/ontology/agent-committee.md`.
 
-CLAUDE.md es un hub de ~120 líneas que enruta a 13 sub-archivos en `references/ontology/`:
+## Evidence protocol
 
-| Sub-archivo | Contenido |
-|-------------|-----------|
-| `protocol-zero-hallucination.md` | Reglas de evidencia |
-| `pipeline-orchestration.md` | Fases, gates, diagrama |
-| `agent-committee.md` | 48 agentes por nivel |
-| `skills-catalog.md` | 100 skills por dominio |
-| `commands-reference.md` | 96 comandos categorizados |
-| `quality-gates.md` | G1-G3 + Think Tank |
-| `canonical-tokens.md` | CSS design system |
-| `brand-orchestration.md` | 3 marcas (Sofka, MetodologIA, JM Labs) |
-| `lessons-learned.md` | Documento viviente |
+Every factual claim carries exactly one tag. Priority (v13.3+):
 
----
+```
+[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]
+```
 
-## Branding (Design System v5)
+Enforcement:
+- `[ADJUNTO:file:loc]` without a matching `.discovery/priming-rag-*.md` → `@quality-guardian` fails the deliverable.
+- `>30% [SUPUESTO]` → mandatory warning banner at the top of the document.
+- `severity=CRÍTICO + [SUPUESTO]` → mandatory validation flag; pipeline cannot advance.
 
-| Token | Valor | Regla |
-|-------|-------|-------|
-| Primary | `#FF7E08` | Naranja Sofka — acción, CTA |
-| Background | `#EFEAE4` | Beige cálido — NUNCA blanco puro |
-| Success | `#FFD700` | **Gold — NUNCA verde** |
-| Font | Inter | 300/400/500/600/700 |
+Full catalog → `references/ontology/protocol-zero-hallucination.md`.
 
----
+## Brand contract (Design System v5)
 
-## Sesión Automática
+| Token | Value | Rule |
+|-------|-------|------|
+| Primary | `#FF7E08` | Orange Sofka — CTA, accents, hero |
+| Background | `#EFEAE4` | Warm beige — never pure white |
+| Success | `#FFD700` | **Gold — green is forbidden** |
+| Font | Inter (300/400/500/600/700) | No other typeface in brand deliverables |
 
-Al activar el plugin, los hooks crean en `.discovery/`:
+The brand-render smoke test greps for `#00ff00`, `#2ecc71`, `: green` and fails CI if any appear. Use `--pos` (`#FFD700`) for success signals.
 
-| Archivo | Propósito |
-|---------|-----------|
-| `SESSION-README.md` | Contexto del proyecto |
-| `SESSION-CLAUDE.md` | Instrucciones del orquestador para este repo |
-| `ghost-menu.md` | Navegación contextual |
-| `session-changelog.md` | Registro para continuidad |
-| `repo-index.json` | Inventario del repositorio |
+Full tokens → `references/ontology/canonical-tokens.md`.
 
----
+## Session automation
 
-## Comité de 48 Agentes
+On `SessionStart`, hooks populate `.discovery/` with:
 
-### Tríada Permanente
-- `discovery-conductor` — Orquestador imparcial
-- `delivery-manager` — Timelines, alcance, riesgos
-- `risk-controller` — Gobernanza continua
+| File | Purpose |
+|------|---------|
+| `SESSION-README.md` | Context summary Claude reads first |
+| `SESSION-CLAUDE.md` | Session-specific orchestrator instructions |
+| `calibration-digest.md` | Priming + calibration state |
+| `ghost-menu.md` | Contextual nav for the active deliverable |
+| `session-changelog.md` | Running log for recovery / handoff |
+| `session-state.json` | Pipeline state (phase, committee, gates passed) |
+| `repo-index.json` | Repo inventory |
 
-### Think Tank de 7 Sabios
-Research Scientist · Economics Researcher · Systems Theorist · Technology Scout ·
-Integration Researcher · Hardware Systems Engineer · Data Scientist
+If no `priming-rag-*.md` exists, a `.needs-priming` marker prompts `/sdf:prime-repo`. Each attachment ingested or URL researched triggers recalibration.
 
-### 36 Especialistas
-Se activan según `{TIPO_SERVICIO}` y fase del pipeline.
+Full flow → `references/ontology/session-automation.md`.
 
----
+## Testing + CI
 
-## 100 Skills por Dominio
+```bash
+source scripts/.venv/bin/activate
+pytest scripts/tests/ -v                          # 57 tests, 100% pass expected
+python scripts/tests/validate_yaml.py             # 1,783 frontmatters parse OK
+bash   scripts/audit-sdk-compliance.sh            # no Agent tool in subagents, etc.
+bash   scripts/audit-command-prefixes.sh          # /sdf: only
+python scripts/ecosystem/audit-compliance.py      # placeholder vs ai-generated tally
+python scripts/ecosystem/run-skill-evals.py --sample 20 --mock   # end-to-end harness
+```
 
-| Dominio | # |
-|---------|---|
-| Arquitectura | 14 |
-| Data & Analytics | 10 |
-| Análisis & Discovery | 12 |
-| Cloud & Platform | 5 |
-| Calidad & Operaciones | 10 |
-| Gestión & Estrategia | 10 |
-| Editorial & Comunicación | 9 |
-| Cambio & Adopción | 5 |
-| Innovación & Validación | 5 |
-| Herramientas & DX | 6 |
-| Service Discovery | 11 |
+`.github/workflows/test.yml` runs the same five checks on every push.
 
----
+## Known limits
 
-## Licencia
+- `validate_yaml.py` checks parseability, not schema (`tools: [NotARealTool]` parses but fails at runtime).
+- `heuristic-evals.py` produces deterministic skill-specific graders/evals — the floor, not the ceiling. Plan LLM polish per skill for v13.5+.
+- End-to-end harness requires `claude` CLI for real-mode runs; CI uses `--mock` where most assertions fail by design (signal, not regression).
+- NotebookLM uses Google's internal APIs; tool availability can change without notice. `nlm doctor` diagnoses auth/version issues.
+- Sibling plugins (MAO GPL, PM, SA, plugin-qa) are shipped under `sdf/` but have independent release cycles; do not refactor them as part of SDF-core work.
 
-All Rights Reserved — © 2026 Sofka Technologies.
+## Decisions and trade-offs
 
-## Autor
+- **Spanish as default language** — audience is LatAm enterprise. Evidence tags (`[CÓDIGO]` etc.) stay in Spanish for UI consistency; English comments stay in code.
+- **Markdown-Excellence as output contract** — TL;DR + dense bullets + Mermaid + ghost menu. No wall-of-text prose. Rationale: pre-sales readers skim; density wins.
+- **Filename convention `{phase}_{deliverable}_{client}_{WIP|Aprobado}.{ext}`** — drives auto-rendering in `landing.html` and enables session recovery. Renaming breaks the hooks.
+- **MCP stdio for NotebookLM** — lower latency than HTTP, simpler DevOps, works in CI. Cost: requires `notebooklm-mcp` binary on PATH.
+- **Heuristic-first evals/graders** — LLM generation doesn't scale to 1,100 skills economically. Heuristic sets a floor; human/LLM polish raises the ceiling over time.
+- **Hub-and-spoke ontology (15 files, not one mega-doc)** — progressive disclosure keeps every session's context lean. Reading all 15 upfront wastes tokens.
 
-**Javier Montaño** · Equipo PreSales Sofka
+## License + attribution
 
-**Author**: Javier Montaño  
-**Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo  
-**Co-authored with**: Claude Code  
-**Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+- **License**: All Rights Reserved — © 2026 Sofka Technologies
+- **Author**: Javier Montaño
+- **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
+- **Co-authored with**: Claude Code
 
-*Sofka, your technology partner.*
-*La excelencia no se improvisa, se diseña.*
+*Sofka, your technology partner. — La excelencia no se improvisa, se diseña.*
