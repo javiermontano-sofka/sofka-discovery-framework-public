@@ -1,6 +1,5 @@
 ---
 name: build-plugin-scaffold
-author: JM Labs (Javier Montaño)
 description: >
   Scaffold a complete plugin directory from architecture plans and specs. Creates all files, then validates structure.
   Trigger: build plugin, scaffold plugin, create plugin directory, assemble plugin, generate plugin files.
@@ -13,6 +12,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Build Plugin Scaffold
 

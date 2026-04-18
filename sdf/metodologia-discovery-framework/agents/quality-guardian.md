@@ -3,6 +3,10 @@ name: quality-guardian
 description: >
   QA Lead — validates all deliverables against acceptance criteria, catches inconsistencies across phases,
   enforces framework standards. The final checkpoint before any deliverable is released.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Quality Guardian — Deliverable Validation Expert

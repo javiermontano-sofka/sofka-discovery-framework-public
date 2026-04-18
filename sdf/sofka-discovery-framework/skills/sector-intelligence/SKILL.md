@@ -1,6 +1,5 @@
 ---
 name: metodologia-sector-intelligence
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   Industry/sector intelligence analysis — context-adaptive expert that provides sector-specific insights,
   regulatory context, benchmarks, and risk overlays. Replaces former dynamic-sme.
@@ -16,6 +15,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Sector Intelligence
 

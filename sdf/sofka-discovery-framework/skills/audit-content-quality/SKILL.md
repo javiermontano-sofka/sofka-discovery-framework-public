@@ -1,6 +1,5 @@
 ---
 name: audit-content-quality
-author: JM Labs (Javier Montaño)
 description: >
   Audits all SKILL.md files in a plugin against a 6-criteria excellence rubric, producing
   per-skill scores, plugin averages, and actionable improvement recommendations.
@@ -11,6 +10,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Audit Content Quality
 

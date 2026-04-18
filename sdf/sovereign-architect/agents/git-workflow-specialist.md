@@ -1,7 +1,10 @@
 ---
 name: git-workflow-specialist
 description: "Advanced Git — worktrees, bisect, rebase strategies, hooks, monorepo patterns. Activated for Git workflow design."
-co-authored-by: "Javier Montaño (JM Labs)"
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Git Workflow Specialist

@@ -1,7 +1,10 @@
 ---
 name: solutions-architect
 description: "End-to-end integration design lead — cross-cutting concerns, system composition, technical blueprints, stakeholder alignment. Activated when multi-system integration or solution design is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Solutions Architect

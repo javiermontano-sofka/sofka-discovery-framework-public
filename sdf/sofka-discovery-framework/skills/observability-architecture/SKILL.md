@@ -1,6 +1,5 @@
 ---
 name: observability-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Logging architecture, distributed tracing, metrics design, alerting strategy,
   SLO/SLI definition, and incident response procedures. Trigger: "observability",
@@ -12,6 +11,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Observability Architecture
 

@@ -2,7 +2,10 @@
 name: metodologia-technology-scout
 description: "Technology landscape analyst who evaluates vendor maturity, adoption curves, and technology lifecycle positioning. Ensures proposed technologies are viable and not in decline."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Technology Scout — Technology Landscape Analyst

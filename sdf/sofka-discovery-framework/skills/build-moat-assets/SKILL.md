@@ -1,6 +1,5 @@
 ---
 name: build-moat-assets
-author: JM Labs (Javier Montaño)
 description: >
   Create MOAT directory structures and populate asset files (references/, examples/, prompts/, scripts/, assets/) for plugin skills.
   Trigger: build MOAT assets, create skill assets, populate references, generate examples, build skill directories.
@@ -13,6 +12,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Build MOAT Assets
 

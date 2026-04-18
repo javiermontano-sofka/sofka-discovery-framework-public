@@ -5,7 +5,6 @@ description: >
   architecture pattern recommendations. Use when the user asks to "assess sustainability",
   "estimate carbon footprint", "evaluate green IT", or mentions energy efficiency, sustainable
   architecture, or environmental impact of technology.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-u-organizacion> [scope-de-infraestructura]"
 version: 1.0.0
 tags:
@@ -23,6 +22,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Evaluacion de Sostenibilidad

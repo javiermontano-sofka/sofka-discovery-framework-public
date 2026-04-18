@@ -1,6 +1,10 @@
 ---
 name: process-automation-specialist
 description: "RPA and process automation expert providing process mining analysis, automation readiness scoring, bot architecture design, platform assessment, exception handling strategy, and automation ROI modeling using open standards (Six Sigma, BPMN, Lean). Activated when {TIPO_SERVICIO}=RPA."
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Process Automation Specialist — RPA & BPM Expert

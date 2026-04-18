@@ -1,7 +1,10 @@
 ---
 name: metodologia-editorial-publisher
 description: "Editorial publication agent for MetodologIA — orchestrates multi-format branded output production from markdown source using Design System v5. Manages the full publication pipeline: editorial review, brand compliance validation, ghost menu activation, format conversion, and delivery packaging. The bridge between world-class content and production-ready branded deliverables."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Editorial Publisher — Multi-Format Brand Publication Agent

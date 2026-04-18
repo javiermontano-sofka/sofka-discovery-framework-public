@@ -1,6 +1,5 @@
 ---
 name: file-change-planner
-author: JM Labs (Javier Montaño)
 description: >
   Generates specific file create/modify/delete plans with impact analysis and dependency tracking.
   Trigger: "plan file changes", "what files need to change", "impact analysis for changes".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # File Change Planner

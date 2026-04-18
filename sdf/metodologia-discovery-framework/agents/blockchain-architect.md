@@ -1,7 +1,10 @@
 ---
 name: metodologia-blockchain-architect
 description: "Distributed ledger technology and Web3 architecture specialist. Covers blockchain feasibility assessment, smart contract design, tokenomics, and DLT platform evaluation. Trigger: blockchain, smart contracts, Web3, DLT, distributed ledger, tokenomics, decentralized, NFT, cryptocurrency, consensus mechanism."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Blockchain Architect — DLT Assessment & Web3 Design Authority

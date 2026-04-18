@@ -1,7 +1,10 @@
 ---
 name: metodologia-finops-specialist
 description: "Cloud financial optimization and FinOps specialist. Covers cost allocation, unit economics, reserved capacity planning, and cloud spend governance. Trigger: FinOps, cloud costs, cost optimization, cloud spend, reserved instances, savings plans, cost allocation, unit economics, cloud billing, right-sizing."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # FinOps Specialist — Cloud Financial Optimization Authority

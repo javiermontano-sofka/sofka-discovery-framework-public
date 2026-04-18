@@ -8,7 +8,6 @@ description: >
   or mentions digital transformation, maturity assessment, multi-workstream, program architecture,
   change management, or transformation program.
 argument-hint: "<program_or_client_name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -19,6 +18,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Digital Transformation Discovery — Program-Level Assessment & Roadmap
 

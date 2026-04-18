@@ -1,6 +1,5 @@
 ---
 name: web-performance
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Audit and optimize Core Web Vitals (LCP, INP, CLS), bundle size, loading strategy,
@@ -16,6 +15,10 @@ allowed-tools:
   - Agent
 tags: [core-web-vitals, LCP, INP, CLS, bundle-analysis, lazy-loading, code-splitting]
 moat-level: L3
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Web Performance

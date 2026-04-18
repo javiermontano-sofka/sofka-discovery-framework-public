@@ -1,6 +1,5 @@
 ---
 name: bi-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Semantic layer design, dashboard architecture, self-service analytics patterns, and
   KPI framework engineering. Trigger: "BI architecture", "semantic layer", "dashboard",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # BI Architecture

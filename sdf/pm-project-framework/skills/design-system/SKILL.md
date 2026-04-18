@@ -6,7 +6,6 @@ description: >
   "configure brand colors", or mentions "design system", "design tokens", "component library",
   "brand config", "page template".
 argument-hint: "[action] [brand-config-path]"
-author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -14,6 +13,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Design System v4 (Brand-Configurable)

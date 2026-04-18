@@ -1,6 +1,5 @@
 ---
 name: accessibility-implementation
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Implement WCAG 2.1 AA / 2.2 accessibility: semantic HTML audit, ARIA implementation,
@@ -16,6 +15,10 @@ allowed-tools:
   - Agent
 tags: [accessibility, WCAG, ARIA, keyboard-navigation, screen-readers, color-contrast, a11y]
 moat-level: L3
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Accessibility Implementation

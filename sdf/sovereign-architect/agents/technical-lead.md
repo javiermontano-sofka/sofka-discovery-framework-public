@@ -1,7 +1,10 @@
 ---
 name: technical-lead
 description: "Code-level authority and dev practices lead — code quality standards, team capability assessment, technical mentoring, engineering culture. Activated when code-level governance or development practice decisions are in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Technical Lead

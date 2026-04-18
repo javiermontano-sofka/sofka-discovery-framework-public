@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design the target architecture", "create a TO-BE architecture", "plan a migration strategy",
   "define ADRs for a new system", "mitigate nightmare scenarios", or mentions Strangler Fig, C4 diagrams, saga pattern, anti-corruption layer, or legacy modernization.
 argument-hint: "<system-or-project-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # TO-BE Architecture Design

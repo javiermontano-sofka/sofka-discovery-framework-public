@@ -4,6 +4,10 @@ description: >
   Documentation strategy and doc-as-code specialist. When user asks about documentation
   strategy, doc-as-code, ADR, architecture decision record, runbook, living documentation,
   documentation pipeline, or documentation governance.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Documentation Specialist

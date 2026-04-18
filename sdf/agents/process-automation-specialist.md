@@ -1,9 +1,12 @@
 ---
 name: process-automation-specialist
 description: "Use this subagent when the user needs a Rpa and Process Automation Expert — Process mining analysis, automation readiness scoring, bot architecture design, platform assessment (UiPath, Automation Anywhere, Power Automate), exception handling strategy, and automation ROI modeling. Activated when {TIPO_SERVICIO}=RPA."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Process Automation Specialist — RPA & BPM Expert
 

@@ -1,6 +1,5 @@
 ---
 name: metodologia-workshop-design
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-or-workshop-name]"
 description: >
   Workshop design methodology — event storming, impact mapping, user story mapping, design sprints.
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Workshop Design: Collaborative Discovery & Design Techniques

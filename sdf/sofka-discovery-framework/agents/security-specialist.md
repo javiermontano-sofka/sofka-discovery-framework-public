@@ -1,9 +1,12 @@
 ---
 name: security-specialist
 description: "Security review — OWASP top 10, threat modeling, auth/authz, secrets management, supply chain. Activated when security concerns are detected."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Security Specialist

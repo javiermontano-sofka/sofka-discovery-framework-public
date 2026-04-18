@@ -1,7 +1,10 @@
 ---
 name: accessibility-auditor
 description: "Accessibility compliance expert — WCAG 2.1 AA/AAA auditing, assistive technology testing, inclusive design. Activated when a11y requirements are in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Accessibility Auditor

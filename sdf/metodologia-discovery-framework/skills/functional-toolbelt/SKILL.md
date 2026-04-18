@@ -1,6 +1,5 @@
 ---
 name: metodologia-functional-toolbelt
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[tool-name-or-number] [context]"
 description: >
   Functional analysis toolkit with 6 tools for requirements engineering.
@@ -14,6 +13,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Functional Toolbelt

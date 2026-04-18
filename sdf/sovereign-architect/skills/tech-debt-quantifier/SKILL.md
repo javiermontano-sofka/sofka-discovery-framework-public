@@ -1,6 +1,5 @@
 ---
 name: tech-debt-quantifier
-author: JM Labs (Javier Montaño)
 description: >
   Technical debt classification, interest estimation, and payoff prioritization.
   Trigger: "quantify tech debt", "debt inventory", "debt interest", "technical debt".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Tech Debt Quantifier

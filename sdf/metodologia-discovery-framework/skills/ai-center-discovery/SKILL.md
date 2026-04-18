@@ -9,7 +9,6 @@ description: >
   "evaluate AI infrastructure", "AI product fit", or mentions "AI SCALE", "responsible AI",
   "AI pilots", "ML pipeline", "AI Center of Excellence", "LLM adoption", "generative AI strategy".
 argument-hint: "<project-or-client-name>"
-author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # AI Center Discovery — AI Readiness Assessment & Adoption Roadmap

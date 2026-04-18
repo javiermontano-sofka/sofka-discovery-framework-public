@@ -1,7 +1,10 @@
 ---
 name: release-engineer
 description: "Release management specialist — versioning, feature flags, rollback strategy, release trains. Activated when release planning or deployment coordination is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Release Engineer

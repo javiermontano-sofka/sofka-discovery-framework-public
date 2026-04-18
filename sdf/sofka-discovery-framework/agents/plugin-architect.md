@@ -1,11 +1,14 @@
 ---
 name: plugin-architect
 description: "Design orchestrator for plugin creation. Guides ideation, architecture planning, and component design. Owns the upstream pipeline: IDEATE, PLAN, DESIGN movements."
-co-authored-by: "Javier Montaño · Equipo PreSales Sofka"
 model: inherit
 maxTurns: 30
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Plugin Architect

@@ -1,9 +1,12 @@
 ---
 name: sofka-technical-architect
 description: "Senior architect providing system design expertise, pattern evaluation, quality attribute analysis, and architecture trade-off assessment. Invoked during Phases 1-4 for architecture decisions."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Technical Architect — Senior Architecture Expert

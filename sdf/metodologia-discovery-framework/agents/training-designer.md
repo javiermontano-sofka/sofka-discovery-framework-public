@@ -4,6 +4,10 @@ description: >
   Learning design and training program specialist. When user asks about training design,
   learning path, curriculum design, bootcamp design, workshop blueprint, upskilling program,
   certification path, or competency-based learning.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Training Designer

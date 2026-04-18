@@ -1,7 +1,10 @@
 ---
 name: metodologia-api-designer
 description: "API-first design specialist covering OpenAPI, GraphQL, gRPC, REST best practices, versioning, and developer experience. Trigger: API design, OpenAPI spec, GraphQL schema, gRPC, REST API, API versioning, API gateway, developer experience, API-first, contract-first."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # API Designer — API-First Design & Developer Experience Authority

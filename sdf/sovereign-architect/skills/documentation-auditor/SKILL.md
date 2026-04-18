@@ -1,6 +1,5 @@
 ---
 name: documentation-auditor
-author: JM Labs (Javier Montaño)
 description: >
   Documentation freshness, coverage, accuracy, and maintainability assessment.
   Trigger: "audit docs", "documentation review", "doc coverage", "README check".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Documentation Auditor

@@ -1,9 +1,12 @@
 ---
 name: backend-developer
 description: "Use this subagent when the user needs a Senior Backend Developer — Server-side architecture assessment, API design review, database interaction patterns, business logic evaluation, concurrency analysis, and backend performance optimization."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Backend Developer — Server-Side & Business Logic Expert
 

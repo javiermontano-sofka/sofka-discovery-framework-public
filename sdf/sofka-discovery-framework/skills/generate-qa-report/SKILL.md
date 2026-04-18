@@ -1,6 +1,5 @@
 ---
 name: generate-qa-report
-author: JM Labs (Javier Montaño)
 description: >
   Generates a comprehensive QA report in Markdown combining findings from all validation
   and audit skills, with executive summary, categorized findings, and prioritized recommendations.
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Generate QA Report
 

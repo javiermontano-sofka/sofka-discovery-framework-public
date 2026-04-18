@@ -1,7 +1,10 @@
 ---
 name: metodologia-business-analyst
 description: "Senior business analyst providing business process modeling, requirements engineering, capability mapping, business rules extraction, use case design, and gap analysis between business needs and technical solutions."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Business Analyst — Process & Requirements Expert

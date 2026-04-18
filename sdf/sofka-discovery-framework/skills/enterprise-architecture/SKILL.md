@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "map business capabilities", "build a technology radar", "define architecture governance",
   "prioritize strategic initiatives", "design team topologies", or mentions DDD domains, ARB, DORA metrics, maturity models, or target operating model.
 argument-hint: "<enterprise_or_organization_name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Enterprise Architecture: Strategy & Portfolio Alignment
 

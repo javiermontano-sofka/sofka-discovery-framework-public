@@ -1,7 +1,10 @@
 ---
 name: metodologia-release-manager
 description: "Release management specialist covering release trains, feature flags, rollback strategies, deployment gates, and progressive delivery. Trigger: release management, feature flags, deployment strategy, release train, rollback strategy, blue-green deployment, canary release, progressive delivery, deployment gates."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Release Manager — Release Strategy & Progressive Delivery Authority

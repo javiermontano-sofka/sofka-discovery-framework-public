@@ -1,8 +1,11 @@
 ---
 name: apex-pmbok-specialist
 description: "PMBOK 7th edition expert covering performance domains, project principles, tailoring guidance, and knowledge area integration for traditional and hybrid project management."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # PMBOK Specialist — PMBOK 7th Edition & Process Groups Expert

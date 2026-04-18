@@ -3,6 +3,10 @@ name: full-stack-generalist
 description: "Use this subagent when the user needs a Full-stack Engineer — Code-level, infrastructure, data, and DevOps perspective. Identifies practical implementation concerns, catches theoretical plans that won't survive contact with reality."
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Full-Stack Generalist — Practical Implementation Expert
 

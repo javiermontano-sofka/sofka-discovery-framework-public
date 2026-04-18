@@ -1,9 +1,12 @@
 ---
 name: backend-specialist
 description: "Server-side architecture — API design, data modeling, business logic, concurrency, database patterns. Activated for server-side analysis."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Backend Specialist

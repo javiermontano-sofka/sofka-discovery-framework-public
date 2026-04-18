@@ -1,6 +1,5 @@
 ---
 name: risk-controlling
-author: JM Labs (Javier Montaño)
 description: >
   Identifies, assesses, and manages technical and project risks with mitigation strategies,
   monitoring plans, and contingency protocols. Trigger: "risk analysis", "risk register", "mitigation plan".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Risk Controlling
 

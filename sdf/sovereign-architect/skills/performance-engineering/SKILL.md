@@ -1,6 +1,5 @@
 ---
 name: performance-engineering
-author: JM Labs (Javier Montaño)
 description: >
   Load testing design, capacity planning, bottleneck analysis, caching strategies,
   and SLA engineering. Trigger: "performance engineering", "load testing", "capacity planning",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Performance Engineering

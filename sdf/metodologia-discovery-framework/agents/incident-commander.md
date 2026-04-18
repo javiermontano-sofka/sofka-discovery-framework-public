@@ -4,6 +4,10 @@ description: >
   Incident response leadership and crisis management specialist. When user asks about incident
   command, war room coordination, crisis management, incident response, major incident
   management, post-incident review, blameless postmortem, or on-call strategy.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Incident Commander

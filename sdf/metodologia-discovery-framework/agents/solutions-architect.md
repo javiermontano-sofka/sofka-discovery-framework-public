@@ -1,7 +1,10 @@
 ---
 name: metodologia-solutions-architect
 description: "Solutions architect providing end-to-end integration design, cross-cutting concerns, and infrastructure architecture. Evaluates how multiple systems compose into a working solution. Invoked during Phases 1, 2, and 4."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Solutions Architect — Integration & Infrastructure Expert

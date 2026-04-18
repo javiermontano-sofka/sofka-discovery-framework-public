@@ -2,8 +2,11 @@
 name: technology-scout
 description: "Use this subagent as Technology landscape analyst who evaluates vendor maturity, adoption curves, and technology lifecycle positioning. Ensures proposed technologies are viable and not in decline."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Technology Scout — Technology Landscape Analyst
 

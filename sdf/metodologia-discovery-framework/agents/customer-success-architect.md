@@ -4,6 +4,10 @@ description: >
   Customer experience and success strategy specialist. When user asks about customer success,
   NPS strategy, customer journey mapping, retention strategy, churn analysis, customer
   lifetime value, CX optimization, onboarding experience, or voice of customer.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Customer Success Architect

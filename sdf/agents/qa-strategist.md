@@ -1,9 +1,12 @@
 ---
 name: qa-strategist
 description: "Use this subagent when the user needs a qa-as-a-service strategy expert — TMMi maturity assessment, PITT methodology alignment, test factory design, QA CoE structure, ISTQB-aligned test process improvement, automation strategy, and quality governance frameworks. Activated when {TIPO_SERVICIO}=QA."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # QA Strategist — Quality Assurance Service Expert
 

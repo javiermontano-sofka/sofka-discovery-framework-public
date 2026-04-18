@@ -1,8 +1,11 @@
 ---
 name: apex-vendor-relationship-manager
 description: "Vendor performance and relationship management expert who monitors SLAs, manages contract compliance, conducts vendor reviews, and maintains productive vendor partnerships."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Vendor Relationship Manager — Vendor Performance & SLA Expert

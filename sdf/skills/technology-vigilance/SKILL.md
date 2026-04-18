@@ -1,6 +1,5 @@
 ---
 name: metodologia-technology-vigilance
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[sector] [tech-stack] [horizon: 6m|12m|24m] — e.g. 'banking microservices 12m'"
 description: "Use this skill when the user asks about technology vigilance: Structured technology monitoring across analyst firms (Gartner, Forrester, IDC), academic sources (Stanford HAI, IEEE, ACM), editorial platforms (O'Reilly Radar, ThoughtWorks Tech Radar), and individual thought leaders (Martin Fowler, Paulo Caroli, Gregor Hohpe, Jez Humble)."
 allowed-tools:
@@ -13,6 +12,10 @@ allowed-tools:
   - Agent
   - WebSearch
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Technology Vigilance: Proactive Technology Intelligence
 

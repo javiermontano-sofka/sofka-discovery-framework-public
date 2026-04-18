@@ -4,6 +4,10 @@ description: >
   Competitive intelligence and benchmarking specialist. When user asks about competitive analysis,
   SWOT analysis, market positioning, Porter's 5 forces, competitive benchmarking, competitor
   profiling, strategic group mapping, or differentiation strategy.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Competitive Analyst

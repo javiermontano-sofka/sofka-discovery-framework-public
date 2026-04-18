@@ -1,6 +1,5 @@
 ---
 name: copywriting
-author: JM Labs (Javier Montaño)
 description: >
   Crafts value propositions, calls to action, and technical summaries that drive
   decisions. Trigger: "value proposition", "call to action", "elevator pitch", "technical summary".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Copywriting

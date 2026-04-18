@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "plan migration", "design cutover", "build migration playbook",
   "define rollback strategy", or mentions strangler fig, parallel run, data migration, legacy modernization.
 argument-hint: "<migration-or-project-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Migration Playbook: Execution Strategy & Cutover Planning

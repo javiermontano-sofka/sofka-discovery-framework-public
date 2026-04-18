@@ -3,6 +3,10 @@ name: domain-analyst
 description: >
   Subject Matter Expert — industry lens, business context, regulatory constraints, DDD domain modeling.
   Owns Phase 2 (Flow Mapping) and provides industry context across all phases.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Domain Analyst — Business & Industry Expert

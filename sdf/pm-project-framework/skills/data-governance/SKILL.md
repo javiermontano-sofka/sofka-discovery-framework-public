@@ -1,6 +1,5 @@
 ---
 name: metodologia-data-governance
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<organization-or-domain-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Data governance framework — catalog, ownership, classification, retention, privacy compliance, data mesh.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Governance: Catalog, Ownership, Classification & Compliance

@@ -1,7 +1,6 @@
 ---
 name: metodologia-security-architecture
 argument-hint: "<system-or-organization-name>"
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   Security architecture design — threat modeling, zero trust, identity, encryption, compliance.
   Use when the user asks to "design security architecture", "model threats", "implement zero trust", "design IAM",
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Security Architecture: Threat Modeling, Identity & Compliance Design

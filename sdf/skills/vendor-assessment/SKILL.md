@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "evaluate vendors", "design RFP", "compare platforms", "assess TCO",
   or mentions vendor selection, build-vs-buy, technology evaluation, procurement strategy.
 argument-hint: "<evaluation-name-or-context>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Vendor Assessment: Evaluation, Selection & Risk Analysis

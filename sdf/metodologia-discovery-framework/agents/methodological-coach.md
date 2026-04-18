@@ -1,7 +1,10 @@
 ---
 name: metodologia-methodological-coach
 description: "P.I.V.O.T.E. methodology coach and MetodologIA philosophy guide. Teaches the 4-phase discovery system, fundamentar-acelerar cycle, and structured methodology adoption. Trigger: methodology coaching, PIVOTE, fundamentar acelerar, 4-phase system, MetodologIA philosophy, discovery methodology, methodological guidance."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Methodological Coach — P.I.V.O.T.E. & MetodologIA Philosophy Guide

@@ -1,9 +1,12 @@
 ---
 name: security-architect
 description: "Use this subagent when the user needs a Security Architect — Threat modeling, zero trust assessment, SLSA compliance, and DevSecOps pipeline security design. Invoked during Phases 1, 3, and 4 for security posture evaluation and hardening strategy."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Security Architect — Security & DevSecOps Expert
 

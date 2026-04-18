@@ -1,6 +1,5 @@
 ---
 name: metodologia-project-program-management
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<project-or-program-name>"
 description: >
   PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Project & Program Management: PMO Governance Backbone

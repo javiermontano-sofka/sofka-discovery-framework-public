@@ -1,6 +1,5 @@
 ---
 name: test-coverage-analyzer
-author: JM Labs (Javier Montaño)
 description: >
   Test coverage gaps, test quality metrics, and testing strategy assessment.
   Trigger: "analyze test coverage", "test quality", "coverage gaps", "testing strategy".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Test Coverage Analyzer
 

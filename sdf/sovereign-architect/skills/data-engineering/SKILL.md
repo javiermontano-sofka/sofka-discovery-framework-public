@@ -1,6 +1,5 @@
 ---
 name: data-engineering
-author: JM Labs (Javier Montaño)
 description: >
   Data pipeline architecture, ingestion patterns, orchestration design, data quality
   frameworks, and lineage tracking. Trigger: "data engineering", "data pipeline",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Data Engineering

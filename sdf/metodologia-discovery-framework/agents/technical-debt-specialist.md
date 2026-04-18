@@ -1,7 +1,10 @@
 ---
 name: metodologia-technical-debt-specialist
 description: "Technical debt quantification and reduction specialist. Covers debt classification, interest calculation, reduction roadmaps, and code quality improvement strategies. Trigger: technical debt, code quality, debt reduction, refactoring roadmap, code smell, maintainability index, debt interest, tech debt quantification."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Technical Debt Specialist — Debt Quantification & Reduction Authority

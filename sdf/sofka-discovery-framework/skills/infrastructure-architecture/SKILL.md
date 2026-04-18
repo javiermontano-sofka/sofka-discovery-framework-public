@@ -1,6 +1,5 @@
 ---
 name: metodologia-infrastructure-architecture
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<platform-or-system-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Infrastructure and platform architecture — compute, network, storage, HA/DR, IAM, cloud landing zones, and cost optimization.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Infrastructure Architecture: Platform & Runtime Design
 

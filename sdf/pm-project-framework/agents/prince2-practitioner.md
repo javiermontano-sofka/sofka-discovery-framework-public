@@ -1,8 +1,11 @@
 ---
 name: apex-prince2-practitioner
 description: "PRINCE2 framework expert specializing in stage-based management, business case justification, exception management, and product-based planning for controlled project delivery."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # PRINCE2 Practitioner — Stage Management & Business Case Expert

@@ -3,6 +3,10 @@ name: full-stack-generalist
 description: "Full-stack engineer providing code-level, infrastructure, data, and DevOps perspective. Identifies practical implementation concerns, catches theoretical plans that won't survive contact with reality."
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 > **DEPRECATED v12.0** — This agent has been replaced by `implementation-analyst.md`.

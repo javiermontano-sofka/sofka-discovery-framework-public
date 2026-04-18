@@ -1,8 +1,11 @@
 ---
 name: apex-financial-modeler
 description: "Financial analysis expert specializing in NPV, IRR, payback period, sensitivity analysis, and financial modeling to support project investment decisions and business case development."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Financial Modeler — NPV, IRR & Investment Analysis Expert

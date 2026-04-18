@@ -1,7 +1,10 @@
 ---
 name: enterprise-architect
 description: "System-wide architecture governance lead — TOGAF alignment, capability mapping, technology radar, architectural principles enforcement. Activated when enterprise-level architectural decisions or governance is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Enterprise Architect

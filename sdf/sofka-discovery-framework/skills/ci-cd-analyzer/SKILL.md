@@ -1,6 +1,5 @@
 ---
 name: ci-cd-analyzer
-author: JM Labs (Javier Montaño)
 description: >
   Pipeline health, build times, flakiness, and deployment strategy analysis.
   Trigger: "analyze CI/CD", "pipeline health", "build times", "deployment strategy".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # CI/CD Analyzer
 

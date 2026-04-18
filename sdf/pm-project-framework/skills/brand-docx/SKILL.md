@@ -6,7 +6,6 @@ description: >
   headers, gold accents, Poppins headings, and Trebuchet MS body text. Use when
   the user requests a Word document, DOCX output, or when the ghost menu routes to DOCX.
 argument-hint: "[source-file.md] [output_path.docx]"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # MetodologIA Brand DOCX — Neo-Swiss Document Generator

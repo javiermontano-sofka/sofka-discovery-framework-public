@@ -1,6 +1,5 @@
 ---
 name: cost-estimation
-author: JM Labs (Javier Montaño)
 description: >
   Effort inductors analysis, scope driver identification, team composition planning,
   and risk-adjusted timeline estimation. Trigger: "cost estimation", "effort estimation",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Cost Estimation

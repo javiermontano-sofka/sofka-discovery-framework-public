@@ -6,7 +6,6 @@ description: >
   "design saga patterns", "set up schema registry", "implement event sourcing",
   or mentions Kafka, RabbitMQ, Pulsar, event bus, dead-letter queue, consumer groups, or event replay.
 argument-hint: "<system_or_platform_name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Event Architecture: Catalog, Consistency Patterns & Operational Excellence
 

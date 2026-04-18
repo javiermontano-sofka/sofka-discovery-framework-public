@@ -1,8 +1,11 @@
 ---
 name: apex-quality-engineer
 description: "QA processes and continuous improvement expert specializing in quality planning, quality control, Six Sigma tools, and process capability assessment for project deliverables."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Quality Engineer — QA Processes & Continuous Improvement Expert

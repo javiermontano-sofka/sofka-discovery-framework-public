@@ -1,6 +1,5 @@
 ---
 name: friction-detector
-author: JM Labs (Javier Montaño)
 description: >
   Systematic scan across 10 friction categories affecting development velocity.
   Trigger: "detect friction", "what's slowing us down", "friction analysis", "velocity blockers".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Friction Detector

@@ -1,13 +1,16 @@
 ---
 name: validate-cross-refs
 description: "Validates cross-reference integrity across all plugin components. Detects broken references, orphaned skills, missing aliases, and settings.json inconsistencies. Triggers: validate cross-refs, check references, dependency audit, orphan detection."
-author: JM Labs (Javier Montaño)
 version: "13.0.0"
 allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Validate Cross-References
 

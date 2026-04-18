@@ -1,8 +1,11 @@
 ---
 name: apex-editorial-director
 description: "Narrative coherence and editorial quality expert who ensures all project documents maintain consistent voice, structure, and professional standards across the entire deliverable portfolio."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Editorial Director — Narrative Coherence & Document Quality Expert

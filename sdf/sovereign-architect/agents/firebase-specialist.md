@@ -1,7 +1,10 @@
 ---
 name: firebase-specialist
 description: "Firebase platform — Firestore, Auth, Cloud Functions, Hosting, Security Rules, RTDB. Activated for Firebase projects."
-co-authored-by: "Javier Montaño (JM Labs)"
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Firebase Specialist

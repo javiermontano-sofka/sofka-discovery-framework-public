@@ -2,8 +2,11 @@
 name: economics-researcher
 description: "Use this subagent when the user needs a Technical Economics Researcher Who Validates Financial Feasibility — Academic rigor. Models TCO, ROI, and opportunity costs using evidence-based techniques, not gut feelings."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Economics Researcher — Technical Economics Specialist
 

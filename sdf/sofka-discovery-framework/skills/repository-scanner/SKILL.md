@@ -1,6 +1,5 @@
 ---
 name: repository-scanner
-author: JM Labs (Javier Montaño)
 description: >
   Automated tech stack, framework, and entry point detection from repository structure.
   Trigger: "scan repo", "detect stack", "what technologies", "analyze repository".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Repository Scanner
 

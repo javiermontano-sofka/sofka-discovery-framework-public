@@ -5,7 +5,6 @@ description: >
   architecture. Use when the user asks to "design documentation strategy", "build knowledge base",
   "create doc-as-code pipeline", or mentions documentation governance, content taxonomy, or
   technical writing standards.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-u-organizacion> [scope-de-documentacion]"
 version: 1.0.0
 tags:
@@ -23,6 +22,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Arquitectura de Documentacion

@@ -1,8 +1,11 @@
 ---
 name: apex-budget-controller
 description: "Budget baseline expert managing EVM calculations, cost tracking, variance analysis, and financial forecasting. Ensures projects stay within approved financial boundaries."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Budget Controller — Cost Tracking & Financial Forecasting Expert

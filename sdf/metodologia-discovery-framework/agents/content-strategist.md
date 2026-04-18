@@ -1,7 +1,10 @@
 ---
 name: metodologia-content-strategist
 description: "Content strategy expert providing metodologia-copywriting, metodologia-storytelling, data metodologia-storytelling, data visualization metodologia-storytelling, and narrative design for discovery deliverables. Part of the Editorial Committee (with editorial-director and format-specialist). Activated ONLY at markdown production time — NOT during ingesta, analysis, or confirmation phases."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Content Strategist — Narrative Design & Storytelling

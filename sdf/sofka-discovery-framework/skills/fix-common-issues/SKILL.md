@@ -1,6 +1,5 @@
 ---
 name: fix-common-issues
-author: JM Labs (Javier Montaño)
 description: >
   Automatically fixes mechanical issues found during plugin validation, including JSON
   formatting, missing shebangs, file permissions, hook types, frontmatter gaps, and
@@ -14,6 +13,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Fix Common Issues
 

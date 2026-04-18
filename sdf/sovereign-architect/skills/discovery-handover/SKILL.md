@@ -1,6 +1,5 @@
 ---
 name: discovery-handover
-author: JM Labs (Javier Montaño)
 description: >
   Produces structured handover packages that bridge analysis to implementation,
   ensuring zero knowledge loss. Trigger: "handover", "transition to implementation", "delivery package".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Discovery Handover

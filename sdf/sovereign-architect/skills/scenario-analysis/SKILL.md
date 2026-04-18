@@ -1,6 +1,5 @@
 ---
 name: scenario-analysis
-author: JM Labs (Javier Montaño)
 description: >
   Tree of Thought evaluation, multi-dimensional weighted scoring, trade-off analysis,
   and decision matrix generation for technical decisions. Trigger: "scenario analysis",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Scenario Analysis

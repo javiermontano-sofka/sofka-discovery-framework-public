@@ -1,9 +1,12 @@
 ---
 name: mobile-architect
 description: "Use this subagent when the user needs a Mobile Architect — Cross-platform vs native assessment, store compliance, app vitals analysis, and mobile CI/CD design. Activated only when scope includes mobile applications. Invoked during Phases 1 and 3."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Mobile Architect — Mobile Strategy & Assessment Expert
 

@@ -1,7 +1,10 @@
 ---
 name: test-strategist
 description: "Testing strategy — test pyramid, coverage analysis, test design, CI validation. Activated when testing gaps or quality concerns are detected."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Test Strategist

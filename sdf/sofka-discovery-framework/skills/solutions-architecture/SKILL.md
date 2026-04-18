@@ -1,6 +1,5 @@
 ---
 name: metodologia-solutions-architecture
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<solution-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   End-to-end solution design — system integration, channel orchestration, identity management, observability, and cross-cutting concerns.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Solutions Architecture: End-to-End Capability Delivery
 

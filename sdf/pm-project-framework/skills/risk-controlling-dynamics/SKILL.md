@@ -1,7 +1,6 @@
 ---
 name: metodologia-risk-controlling-dynamics
 argument-hint: "<project-or-program-name>"
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   Proactive risk controller and financial vigilance — operates as an anxious CPA/PM hybrid
   that anticipates worst-case scenarios at every discovery step, stress-tests assumptions,
@@ -18,6 +17,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Risk & Controlling Dynamics: The Anxious Controller Who Makes Everything Reliable

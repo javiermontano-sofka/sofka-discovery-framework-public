@@ -1,6 +1,5 @@
 ---
 name: software-viability
-author: "Javier Montaño (JM Labs)"
 description: >
   Software and technology viability validation — deep forensic analysis of maintainability, scalability, security posture. Use when user asks to "validate software viability".
 allowed-tools:
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Software Viability

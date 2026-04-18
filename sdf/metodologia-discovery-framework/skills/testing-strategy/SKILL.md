@@ -1,7 +1,6 @@
 ---
 name: metodologia-testing-strategy
 argument-hint: "<project-or-system-name>"
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management,
   QA-as-a-service strategy, test factory design, PITT methodology, QA CoE design.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Testing Strategy: Quality Assurance Architecture & Automation Design

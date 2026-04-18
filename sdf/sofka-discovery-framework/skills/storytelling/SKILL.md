@@ -1,6 +1,5 @@
 ---
 name: metodologia-storytelling
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<story-type: transformation|scenario|risk|success|cross-deliverable> <audience: executive|technical|mixed>"
 description: >
   Narrative arc design and transformation metodologia-storytelling for discovery deliverables.
@@ -14,6 +13,10 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Storytelling — Narrative Arc & Transformation Stories
 

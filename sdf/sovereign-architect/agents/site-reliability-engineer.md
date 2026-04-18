@@ -1,7 +1,10 @@
 ---
 name: site-reliability-engineer
 description: "SRE practices lead — SLO/SLI definition, error budgets, toil reduction, incident response automation, capacity planning. Activated when site reliability engineering or production stability decisions are in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Site Reliability Engineer

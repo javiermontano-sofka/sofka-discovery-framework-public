@@ -1,8 +1,11 @@
 ---
 name: apex-risk-analyst
 description: "Quantitative risk analysis expert specializing in Monte Carlo simulation, decision trees, expected monetary value, sensitivity analysis, and probabilistic risk modeling for informed project decisions."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Risk Analyst — Quantitative Risk Analysis & Simulation Expert

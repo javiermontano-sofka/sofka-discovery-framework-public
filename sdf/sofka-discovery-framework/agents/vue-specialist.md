@@ -1,9 +1,12 @@
 ---
 name: vue-specialist
 description: "Vue 3+ expert — Composition API, Nuxt 4, Pinia, VueUse, SSR/SSG. Activated for Vue development."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Vue Specialist

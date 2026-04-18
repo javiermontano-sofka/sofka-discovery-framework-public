@@ -1,9 +1,12 @@
 ---
 name: sofka-risk-controller
 description: "Risk and quality controller providing continuous governance, gate enforcement, deliverable validation, and risk monitoring. Part of the permanent triad (with discovery-conductor and delivery-manager). Present in EVERY step of the discovery pipeline. Votes on all expert committee decisions."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: FULL
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Risk Controller — Quality & Risk Governance

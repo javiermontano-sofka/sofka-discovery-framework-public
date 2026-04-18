@@ -1,6 +1,5 @@
 ---
 name: metodologia-mermaid-diagramming
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[context: deliverable content or data to visualize] [diagram-type: flowchart|sequence|C4|ER|gantt|mindmap|quadrant] [audience: executive|technical|operational]"
 description: >
   This skill should be used when the user asks to "create diagrams", "generate Mermaid",
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Mermaid Diagramming Engine

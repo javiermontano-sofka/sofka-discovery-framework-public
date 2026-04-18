@@ -1,9 +1,12 @@
 ---
 name: sofka-ux-strategist
 description: "UX strategist providing persona-based user experience review, accessibility auditing (WCAG), design system specification, and brand-compliant visual deliverables. Invoked during Phases 2, 5a, and 5b."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # UX Strategist — User Experience & Visual Delivery Expert

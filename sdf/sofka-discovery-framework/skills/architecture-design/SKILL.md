@@ -1,6 +1,5 @@
 ---
 name: architecture-design
-author: JM Labs (Javier Montaño)
 description: >
   Architecture proposals with trade-off analysis, alternatives matrix, and decision rationale.
   Trigger: design architecture, propose solution, evaluate alternatives, create ADR.
@@ -13,6 +12,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Architecture Design
 

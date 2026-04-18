@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "audit accessibility", "assess WCAG compliance", "evaluate a11y",
   "review inclusive design", or mentions screen readers, ARIA, color contrast, keyboard navigation.
 argument-hint: "<product-or-application-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Accessibility Audit: WCAG Compliance & Inclusive Design Assessment
 

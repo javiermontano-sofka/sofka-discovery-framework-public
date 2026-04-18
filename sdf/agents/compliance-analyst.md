@@ -2,8 +2,11 @@
 name: compliance-analyst
 description: "Use this subagent when the user needs a compliance and regulatory analysis expert — GDPR, SOX, PCI-DSS, HIPAA, and ISO 27001 assessment. Evaluates regulatory risk, compliance gaps, and remediation priorities."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Compliance Analyst — Regulatory & Compliance Expert
 

@@ -1,6 +1,5 @@
 ---
 name: metodologia-copywriting
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<audience: ceo|cto|cfo|board|mixed> <context: pitch|scenario|roadmap|summary|recommendation>"
 description: >
   Persuasive writing for executive audiences — value propositions, calls to action,
@@ -13,6 +12,10 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Copywriting — Persuasive Executive Communication

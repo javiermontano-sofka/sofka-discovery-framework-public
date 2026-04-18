@@ -1,8 +1,11 @@
 ---
 name: apex-stakeholder-engagement-specialist
 description: "Stakeholder engagement expert who maps influence networks, designs engagement strategies, navigates organizational politics, and ensures stakeholder alignment throughout the project lifecycle."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Stakeholder Engagement Specialist — Engagement Strategies & Political Navigation Expert

@@ -4,7 +4,6 @@ description: >
   Product roadmap prioritization, backlog strategy, value stream mapping, product-market fit validation.
   Use when the user asks to "define product roadmap", "prioritize backlog", "map value streams",
   "validate product-market fit", or mentions product vision, RICE scoring, opportunity trees, dual-track agile.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<product-or-initiative-name> [etapa: inception|growth|maturity]"
 model: opus
 context: fork
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Product Strategy: Roadmap, Prioritization & Value Stream Design

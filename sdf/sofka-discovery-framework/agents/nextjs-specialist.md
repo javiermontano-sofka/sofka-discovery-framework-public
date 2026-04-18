@@ -1,9 +1,12 @@
 ---
 name: nextjs-specialist
 description: "Next.js 15+ expert — App Router, Server Actions, Middleware, ISR, Edge Runtime. Activated for Next.js projects."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Next.js Specialist

@@ -1,6 +1,5 @@
 ---
 name: pwa-architecture
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Design and implement Progressive Web App architecture: service worker caching
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - Agent
 tags: [pwa, service-worker, workbox, offline, push-notifications, install-prompt, web-app-manifest]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # PWA Architecture

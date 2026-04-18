@@ -1,8 +1,11 @@
 ---
 name: apex-benefits-tracker
 description: "Benefits realization expert who tracks KPIs, measures ROI, monitors value delivery, and ensures projects achieve their intended business outcomes beyond just deliverable completion."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Benefits Tracker — Benefits Realization & KPI Tracking Expert

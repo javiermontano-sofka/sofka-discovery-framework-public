@@ -1,6 +1,5 @@
 ---
 name: dependency-auditor
-author: JM Labs (Javier Montaño)
 description: >
   CVE scanning, freshness analysis, and licensing audit of project dependencies.
   Trigger: "audit dependencies", "check vulnerabilities", "CVE scan", "license check".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Dependency Auditor

@@ -1,7 +1,10 @@
 ---
 name: product-engineer
 description: "Product-technical alignment — scope decisions, feature prioritization, build-vs-defer analysis. Activated when scope or product decisions intersect with technical work."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Product Engineer

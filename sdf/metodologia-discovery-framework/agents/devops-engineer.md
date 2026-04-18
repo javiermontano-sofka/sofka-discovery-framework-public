@@ -1,7 +1,10 @@
 ---
 name: metodologia-devops-engineer
 description: "Senior DevOps engineer providing CI/CD pipeline architecture, branching strategy assessment (GitFlow, trunk-based, GitHub Flow), artifact management, environment promotion, deployment automation (blue-green, canary, rolling), infrastructure-as-code orchestration, and developer experience optimization."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # DevOps Engineer — CI/CD & Delivery Pipeline Expert

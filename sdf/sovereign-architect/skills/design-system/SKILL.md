@@ -1,6 +1,5 @@
 ---
 name: design-system
-author: JM Labs (Javier Montaño)
 description: >
   Defines design tokens, component libraries, and page structures for consistent
   technical deliverables. Trigger: "design system", "design tokens", "component library", "page structure".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Design System

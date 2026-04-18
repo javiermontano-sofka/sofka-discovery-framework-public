@@ -1,12 +1,15 @@
 ---
 name: cli-init
 description: CLI interactivo de inicialización que configura el entorno del cliente, pre-puebla discovery/, ejecuta G0 security scan y prepara el contexto para discovery.
-author: Equipo MetodologIA
 version: 1.0.0
 license: MIT
 category: Herramientas & DX
 tags: [cli, init, wizard, setup, onboarding, automation]
 allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # cli-init

@@ -2,9 +2,12 @@
 name: sofka-research-scientist
 description: "Deep technology researcher with postdoctoral academic rigor. Conducts literature reviews, state-of-the-art validation, and PoC design methodology. The think tank's evidence hunter."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Research Scientist — Deep Technology Researcher

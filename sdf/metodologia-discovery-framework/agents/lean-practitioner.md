@@ -4,6 +4,10 @@ description: >
   Lean thinking and waste elimination specialist. When user asks about lean thinking, waste
   elimination, value stream mapping, 5S methodology, muda muri mura, continuous improvement,
   kaizen, lean management, or process optimization.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Lean Practitioner

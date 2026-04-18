@@ -1,6 +1,5 @@
 ---
 name: monitoring-setup
-author: JM Labs (Javier Montaño)
 description: >
   Designs monitoring dashboards, alerting rules, SLOs, and error budgets for production systems.
   Trigger: "monitoring setup", "dashboards", "alerts", "SLOs", "error budgets", "observability".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Monitoring Setup

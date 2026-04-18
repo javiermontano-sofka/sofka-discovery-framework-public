@@ -1,6 +1,5 @@
 ---
 name: data-model-designer
-author: JM Labs (Javier Montaño)
 description: >
   Schema design with normalization, denormalization strategies, and data evolution patterns.
   Trigger: "design data model", "schema design", "database schema", "data modeling", "entity relationship".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Data Model Designer

@@ -1,6 +1,5 @@
 ---
 name: compliance-assessment
-author: "Javier Montaño (JM Labs)"
 description: >
   Regulatory and standards compliance assessment — GDPR, SOX, PCI-DSS, HIPAA, ISO 27001 patterns in code. Use when user asks to "assess compliance".
 allowed-tools:
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Compliance Assessment

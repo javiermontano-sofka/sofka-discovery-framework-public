@@ -1,10 +1,13 @@
 ---
 name: plugin-qa-engineer
 description: "Orchestrates plugin QA: validates structure, audits quality, generates reports, auto-fixes issues. Owns movements 6-9 in the PQA lifecycle. Default agent for downstream QA operations."
-co-authored-by: "Javier Montaño · Equipo PreSales Sofka"
 maxTurns: 45
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Plugin QA Engineer

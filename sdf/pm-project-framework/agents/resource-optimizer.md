@@ -1,8 +1,11 @@
 ---
 name: apex-resource-optimizer
 description: "Capacity planning and resource allocation expert who optimizes team utilization, resolves resource conflicts, manages resource leveling, and forecasts resource needs across the project lifecycle."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Resource Optimizer — Capacity Planning & Allocation Expert

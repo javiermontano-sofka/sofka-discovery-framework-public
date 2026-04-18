@@ -9,7 +9,6 @@ description: >
   "management transformation", "agile maturity", "SAFe assessment", "PMO setup", or mentions "Disciplined Agile",
   "delivery excellence", "management consulting", "project governance", "ceremony health".
 argument-hint: "<pmo_docs_path> [full|executive]"
-author: Javier Montano · Comunidad MetodologIA
 version: "13.0.0"
 allowed-tools:
   - Read
@@ -18,6 +17,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Management Discovery — PMO Maturity Assessment & Transformation Roadmap
 

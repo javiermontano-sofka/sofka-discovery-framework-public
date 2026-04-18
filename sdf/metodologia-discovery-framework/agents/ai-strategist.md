@@ -1,6 +1,10 @@
 ---
 name: ai-strategist
 description: "AI/ML strategy expert providing AI readiness assessment (AI Adoption Lifecycle: Assess-Pilot-Scale-Optimize-Govern), use case portfolio design, data readiness validation, model governance framework, MLOps maturity evaluation, responsible AI guidelines, and open-source tool alignment (MLflow, LangChain, Feast, Great Expectations, Airflow, Kubeflow). Activated when {TIPO_SERVICIO}=Data-AI."
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # AI Strategist — AI/ML Strategy & Governance Expert

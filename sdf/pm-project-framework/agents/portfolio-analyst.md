@@ -1,8 +1,11 @@
 ---
 name: apex-portfolio-analyst
 description: "Portfolio optimization expert who analyzes project prioritization, resource allocation across projects, portfolio balance, strategic alignment, and cross-project dependencies."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Portfolio Analyst — Portfolio Optimization & Project Prioritization Expert

@@ -4,6 +4,10 @@ description: >
   Knowledge management and organizational memory specialist. When user asks about knowledge
   management, knowledge base, Zettelkasten, organizational memory, knowledge graph, wiki
   strategy, information architecture, knowledge sharing, or tacit knowledge capture.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Knowledge Manager

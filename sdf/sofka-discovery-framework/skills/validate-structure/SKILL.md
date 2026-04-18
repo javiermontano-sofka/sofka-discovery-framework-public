@@ -1,13 +1,16 @@
 ---
 name: validate-structure
 description: "Validates plugin directory layout against the official Claude Code plugin spec. Triggers: validate structure, check layout, directory audit, plugin skeleton check."
-author: JM Labs (Javier Montaño)
 version: "13.0.0"
 allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Validate Structure
 

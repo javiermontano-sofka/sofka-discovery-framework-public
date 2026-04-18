@@ -2,8 +2,11 @@
 name: hardware-systems-engineer
 description: "Use this subagent as Infrastructure and hardware feasibility specialist. Validates compute, network, storage, and physical infrastructure requirements against real-world constraints and scaling ceilings."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Hardware Systems Engineer — Infrastructure Feasibility Specialist
 

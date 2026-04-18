@@ -3,6 +3,10 @@ name: domain-analyst
 description: "Use this subagent when the user needs a Subject Matter Expert — Industry-specific context, regulatory flags, competitive benchmarks, and business domain analysis. Adapts lens based on client sector (banking, retail, health, SaaS, manufacturing, gov, energy)."
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Domain Analyst — Subject Matter Expert
 

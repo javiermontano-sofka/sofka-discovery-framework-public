@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "map stakeholders", "build influence matrix", "create communication plan",
   "assign RACI", "assess change readiness", "identify champions",
   or mentions stakeholder analysis, power/interest grid, engagement strategy, or adoption curve.
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-or-initiative-name]"
 version: "13.0.0"
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Stakeholder Mapping: Analysis, Engagement & Change Readiness
 

@@ -1,6 +1,5 @@
 ---
 name: metodologia-ux-design-discovery
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[path-to-design-assets] [depth: full|executive]"
 description: "Use this skill when the user asks about ux design discovery: UX/UI design discovery — design maturity assessment, design system inventory, user research capability evaluation, usability baseline, information architecture assessment, design process governance, and design transformation roadmap."
 allowed-tools:
@@ -10,6 +9,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # UX Design Discovery — Design Maturity & Transformation Assessment
 

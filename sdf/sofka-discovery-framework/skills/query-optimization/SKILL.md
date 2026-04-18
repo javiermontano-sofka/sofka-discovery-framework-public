@@ -1,6 +1,5 @@
 ---
 name: query-optimization
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Analyze and optimize database queries: EXPLAIN ANALYZE plan reading, index
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - Agent
 tags: [postgres, query-optimization, explain-analyze, indexes, n-plus-one, pganalyze, connection-pooling]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Query Optimization

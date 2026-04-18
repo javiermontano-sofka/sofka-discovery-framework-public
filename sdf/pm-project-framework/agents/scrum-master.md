@@ -1,8 +1,11 @@
 ---
 name: apex-scrum-master
 description: "Scrum framework expert who facilitates sprint ceremonies, coaches the team on Scrum values, manages the sprint backlog, and removes impediments to maintain sustainable delivery pace."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Scrum Master — Scrum Ceremonies & Team Coaching Expert

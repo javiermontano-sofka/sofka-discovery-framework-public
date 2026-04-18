@@ -1,6 +1,5 @@
 ---
 name: metodologia-technology-vigilance
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[sector] [tech-stack] [horizon: 6m|12m|24m] — e.g. 'banking microservices 12m'"
 description: >
   Structured technology monitoring across analyst firms (Gartner, Forrester, IDC), academic sources
@@ -20,6 +19,10 @@ allowed-tools:
   - Agent
   - WebSearch
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Technology Vigilance: Proactive Technology Intelligence

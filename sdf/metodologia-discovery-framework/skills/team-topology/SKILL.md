@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design team structure", "assess cognitive load", "map team interactions",
   "apply Conway's Law", or mentions stream-aligned teams, platform teams, enabling teams, team-first thinking.
 argument-hint: "<organization-or-department-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Team Topology: Organizational Design for Fast Flow

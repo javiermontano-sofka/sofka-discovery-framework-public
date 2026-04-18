@@ -1,8 +1,11 @@
 ---
 name: apex-delivery-lead
 description: "Senior delivery expert managing timeline, scope, resources, velocity, and burndown. Ensures the project stays on track, stakeholders stay informed, and teams deliver predictably."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob, Agent]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Delivery Lead — Timeline, Scope & Resource Expert

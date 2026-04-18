@@ -1,6 +1,5 @@
 ---
 name: metodologia-dynamic-sme
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[industry] [phase/task] [depth] — e.g. 'banking architecture review' or 'retail quick risks'"
 description: >
   Context-adaptive industry expert that dynamically adopts the right SME lens based on client sector.
@@ -14,6 +13,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Dynamic Subject Matter Expert

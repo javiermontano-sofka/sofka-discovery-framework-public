@@ -1,7 +1,10 @@
 ---
 name: metodologia-prompt-engineer
 description: "Prompt design, evaluation, and optimization specialist. NL-HP methodology expert for system prompts, chain-of-thought structures, and output formatting. Trigger: design prompt, optimize prompt, prompt engineering, system prompt, few-shot, chain-of-thought, NL-HP, prompt evaluation, prompt template."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Prompt Engineer — Prompt Design & Optimization Authority

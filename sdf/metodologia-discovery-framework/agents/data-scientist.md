@@ -2,7 +2,10 @@
 name: metodologia-data-scientist
 description: "Statistical validation specialist and quantitative evidence analyst. Validates data feasibility, ML/AI viability, and ensures all quantitative claims are statistically sound."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Data Scientist — Statistical Validation Specialist

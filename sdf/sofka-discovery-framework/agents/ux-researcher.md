@@ -1,9 +1,12 @@
 ---
 name: sofka-ux-researcher
 description: "UX researcher providing user research synthesis, persona development, usability assessment, user journey mapping, adoption readiness evaluation, and accessibility audit coordination. Ensures technical solutions serve actual user needs."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # UX Researcher — User Research & Advocacy Expert

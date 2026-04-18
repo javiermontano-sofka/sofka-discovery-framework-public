@@ -1,7 +1,10 @@
 ---
 name: metodologia-low-code-architect
 description: "Low-code and no-code platform assessment specialist. Covers citizen development governance, platform evaluation, and hybrid pro-code/low-code architecture. Trigger: low-code platform, no-code, citizen developer, Power Platform, OutSystems, Mendix, low-code governance, citizen development, rapid application development."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Low-Code Architect — Low-Code/No-Code Platform & Governance Authority

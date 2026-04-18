@@ -8,7 +8,6 @@ description: >
   "cloud readiness", "design maturity", "talent gap analysis", or mentions "Phase 1", "current state",
   "legacy system review", "technical health check".
 argument-hint: "<codebase-path-or-project-name>"
-author: Javier Montano · Comunidad MetodologIA
 version: "13.0.0"
 allowed-tools:
   - Read
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # AS-IS Analysis — Universal Current-State Assessment
 

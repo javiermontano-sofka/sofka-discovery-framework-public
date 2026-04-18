@@ -1,7 +1,6 @@
 ---
 name: metodologia-mobile-assessment
 argument-hint: "<app-name>"
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   AS-IS assessment for mobile apps -- performance, compliance, dependency health, UX metrics.
   Use when the user asks to "assess the mobile app", "audit app health", "review app dependencies",
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Mobile Assessment: App Health, Compliance & Remediation

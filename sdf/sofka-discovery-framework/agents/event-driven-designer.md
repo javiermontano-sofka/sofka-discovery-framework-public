@@ -1,9 +1,12 @@
 ---
 name: event-driven-designer
 description: "Event architecture specialist — event sourcing, CQRS, message broker design, async patterns. Activated when event-driven architecture is being designed or reviewed."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Event-Driven Designer

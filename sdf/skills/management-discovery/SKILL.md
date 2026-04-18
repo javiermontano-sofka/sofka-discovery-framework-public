@@ -2,7 +2,6 @@
 name: metodologia-management-discovery
 description: "Use this skill when the user asks about management discovery: Management and consulting discovery — PMO maturity assessment, methodology fitness evaluation, team capability analysis, governance model assessment, delivery performance baseline, Factor WOW assessment, and management transformation roadmap."
 argument-hint: "<pmo_docs_path> [full|executive]"
-author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -10,6 +9,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Management Discovery — PMO Maturity Assessment & Transformation Roadmap
 

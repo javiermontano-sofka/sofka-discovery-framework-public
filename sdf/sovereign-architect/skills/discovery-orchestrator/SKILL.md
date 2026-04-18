@@ -1,6 +1,5 @@
 ---
 name: discovery-orchestrator
-author: JM Labs (Javier Montaño)
 description: >
   Orchestrates full technical analysis pipelines, coordinating multiple skills and
   agents into coherent discovery workflows. Trigger: "run discovery", "full analysis", "orchestrate pipeline".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Discovery Orchestrator

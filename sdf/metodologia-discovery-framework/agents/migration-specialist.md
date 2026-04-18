@@ -1,7 +1,10 @@
 ---
 name: metodologia-migration-specialist
 description: "Legacy modernization and migration strategy specialist. Covers strangler fig pattern, data migration, cloud migration, platform re-platforming, and incremental modernization. Trigger: legacy migration, modernization strategy, strangler fig, re-platforming, cloud migration, monolith decomposition, data migration, legacy modernization."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Migration Specialist — Legacy Modernization & Migration Authority

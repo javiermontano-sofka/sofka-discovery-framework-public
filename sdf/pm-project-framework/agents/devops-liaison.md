@@ -1,8 +1,11 @@
 ---
 name: apex-devops-liaison
 description: "CI/CD alignment expert who coordinates release cadence with PM processes, ensures deployment readiness, and bridges the gap between development velocity and project governance."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # DevOps Liaison — CI/CD Alignment & Release Coordination Expert

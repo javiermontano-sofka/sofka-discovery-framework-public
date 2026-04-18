@@ -1,8 +1,11 @@
 ---
 name: apex-cost-estimator
 description: "Cost estimation expert specializing in parametric, analogous, and bottom-up estimation techniques with uncertainty ranges and confidence levels for project budgeting."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Cost Estimator — Estimation Techniques & Budget Forecasting Expert

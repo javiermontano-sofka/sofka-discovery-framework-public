@@ -1,9 +1,12 @@
 ---
 name: ci-cd-architect
 description: "CI/CD pipeline architect — build optimization, artifact management, environment strategy, pipeline security. Activated when CI/CD design or optimization is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # CI/CD Architect

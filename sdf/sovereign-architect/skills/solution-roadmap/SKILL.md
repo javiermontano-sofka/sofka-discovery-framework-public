@@ -1,6 +1,5 @@
 ---
 name: solution-roadmap
-author: JM Labs (Javier Montaño)
 description: >
   Creates phased execution roadmaps with investment horizons, risk-adjusted timelines,
   and dependency management. Trigger: "roadmap", "execution plan", "phased delivery", "timeline".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Solution Roadmap

@@ -1,6 +1,5 @@
 ---
 name: software-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Module design, layer boundaries, design patterns, ADR generation, and quality attribute
   analysis for software systems. Trigger: "software architecture", "module design",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Software Architecture

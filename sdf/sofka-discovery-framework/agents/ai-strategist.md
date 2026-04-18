@@ -1,9 +1,12 @@
 ---
 name: sofka-ai-strategist
 description: "AI/ML strategy expert providing AI readiness assessment (AI SCALE methodology), use case portfolio design, data readiness validation, model governance framework, MLOps maturity evaluation, responsible AI guidelines, and Sofka AI product alignment (SKAI, IRIS, ATLAS, CRONOS). Activated when {TIPO_SERVICIO}=Data-AI."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # AI Strategist — AI/ML Strategy & Governance Expert

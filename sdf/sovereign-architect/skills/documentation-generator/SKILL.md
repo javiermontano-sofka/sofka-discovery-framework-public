@@ -1,6 +1,5 @@
 ---
 name: documentation-generator
-author: JM Labs (Javier Montaño)
 description: >
   Generates README files, API documentation, operational runbooks, and Architecture Decision Records (ADRs).
   Trigger: "generate docs", "write README", "create runbook", "write ADR", "API documentation".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Documentation Generator

@@ -1,6 +1,5 @@
 ---
 name: team-topology
-author: "Javier Montaño (JM Labs)"
 description: >
   Conway's Law analysis, team interaction modes, cognitive load assessment, organizational design for delivery. Use when user asks to "analyze team topology".
 allowed-tools:
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Team Topology

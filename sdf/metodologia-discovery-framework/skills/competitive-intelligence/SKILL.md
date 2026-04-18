@@ -5,7 +5,6 @@ description: >
   analysis, and market positioning evaluation. Use when the user asks to "analyze competition",
   "compare technology options", "build vs buy analysis", or mentions competitive matrix,
   differentiation map, or market positioning.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-o-producto> [mercado-o-categoria]"
 version: 1.0.0
 tags:
@@ -23,6 +22,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Inteligencia Competitiva Tecnologica

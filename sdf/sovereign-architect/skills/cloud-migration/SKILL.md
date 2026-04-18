@@ -1,6 +1,5 @@
 ---
 name: cloud-migration
-author: JM Labs (Javier Montaño)
 description: >
   7R assessment, workload classification, wave planning, and cutover strategy for cloud
   migration programs. Trigger: "cloud migration", "7R", "workload migration", "wave planning",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Cloud Migration
