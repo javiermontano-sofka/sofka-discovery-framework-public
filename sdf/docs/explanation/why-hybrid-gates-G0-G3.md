@@ -34,7 +34,7 @@ Seven or more gates would multiply friction without material additional protecti
 
 Most pre-sales failure modes cluster at the "can this be built?" question. Options explored without feasibility review produce beautiful roadmaps for scenarios that collapse in design. The cost is high: rework, embarrassment in the client meeting, loss of credibility.
 
-G1.5 dedicates a checkpoint to feasibility **before** any roadmap or cost exists. The 7 Sabios panel ([ADR-0003](../adr/0003-quality-gates-G0-G3.md)) is fixed, not rotated — consistency matters here, and the roster has learned to deliberate together.
+G1.5 dedicates a checkpoint to feasibility **before** any roadmap or cost exists. The 7 Sabios panel ([ADR-0003](../adr/0003-quality-gates-g0-g3.md)) is fixed, not rotated — consistency matters here, and the roster has learned to deliberate together.
 
 In lessons-learned captured from pre-SAGE SAP engagements, every engagement that skipped a feasibility review needed either rework or de-scoping. G1.5 is the architectural form of "we learned our lesson".
 
@@ -59,6 +59,6 @@ Why mode override exists (`--auto` flips to advisory): sometimes autonomy is app
 
 ## Related
 
-- [ADR-0003](../adr/0003-quality-gates-G0-G3.md)
+- [ADR-0003](../adr/0003-quality-gates-g0-g3.md)
 - [`../reference/gates/`](../reference/gates/README.md)
 - `references/ontology/quality-gates.md` (operational spec)

@@ -81,4 +81,4 @@ Open the resulting `.html` in your browser. Confirm orange + black + gold, no gr
 ## What's next
 
 - [Tutorial 02 — Feed attachments via FASE 0](02-feed-attachments.md)
-- [`/docs/how-to/run-pipeline-with-gates.md`](../how-to/run-pipeline-with-gates.md) — for deeper engagements
+- [`docs/how-to/run-pipeline-with-gates.md`](../how-to/run-pipeline-with-gates.md) — for deeper engagements

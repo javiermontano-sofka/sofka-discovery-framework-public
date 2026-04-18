@@ -105,7 +105,7 @@ touch sdf/skills/$SKILL/references/.gitkeep
 ## Step 6 — Audit
 
 ```bash
-bash sdf/scripts/audit-compliance.sh | grep $SKILL
+bash sdf/scripts/audit-sdk-compliance.sh | grep $SKILL
 ```
 
 Expect `greet-client: INSIGNIA (7/7)`.
@@ -135,5 +135,5 @@ You wouldn't remove a real skill; this was a throwaway.
 ## What's next
 
 - [Tutorial 06 — Write an ADR](06-write-an-adr.md)
-- [`/docs/how-to/author-new-skill.md`](../how-to/author-new-skill.md)
-- [`/docs/explanation/why-insignia-7of7.md`](../explanation/why-insignia-7of7.md)
+- [`docs/how-to/author-new-skill.md`](../how-to/author-new-skill.md)
+- [`docs/explanation/why-insignia-7of7.md`](../explanation/why-insignia-7of7.md)

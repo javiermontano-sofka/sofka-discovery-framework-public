@@ -89,5 +89,5 @@ rm sdf/docs/adr/9999-tutorial-spanish-register.md
 ## What's next
 
 - [Tutorial 07 — Handle a regression](07-handle-a-regression.md)
-- [`/docs/how-to/write-new-adr.md`](../how-to/write-new-adr.md)
-- [`/docs/how-to/supersede-existing-adr.md`](../how-to/supersede-existing-adr.md)
+- [`docs/how-to/write-new-adr.md`](../how-to/write-new-adr.md)
+- [`docs/how-to/supersede-existing-adr.md`](../how-to/supersede-existing-adr.md)

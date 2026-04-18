@@ -26,7 +26,7 @@ skills/<skill-name>/
 └── prompts/                     (7) NL-HP composable prompt fragments
 ```
 
-The `audit-compliance.sh` script classifies each skill as 7/7 (INSIGNIA) or less and surfaces drift.
+The `audit-sdk-compliance.sh` script classifies each skill as 7/7 (INSIGNIA) or less and surfaces drift.
 
 ## Consequences
 
@@ -51,6 +51,6 @@ The `audit-compliance.sh` script classifies each skill as 7/7 (INSIGNIA) or less
 
 ## References
 
-- `scripts/audit-compliance.sh` — 7/7 classifier
+- `scripts/audit-sdk-compliance.sh` — 7/7 classifier
 - ADR-0022 (validator stack)
 - `docs/explanation/why-insignia-7of7.md` (B5)
