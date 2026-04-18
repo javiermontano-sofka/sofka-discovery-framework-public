@@ -2,6 +2,10 @@
 name: brand-html-render
 description: "Use this skill whenever the user asks to 'entregar en HTML', 'render brand HTML', 'convertir a HTML', or wants a /sap:* deliverable packaged with Sofka Design System v5 tokens (--o #FF7E08, --bk #000, --bg #EFEAE4, --pos #FFD700, Inter). Converts markdown deliverables into production-ready HTML that matches the 5 canonical brand samples (Comité, Respuestas, Consultas, Reporte Metacognitivo, Capítulo Specs)."
 allowed-tools: [Read, Bash, Write, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Brand HTML Render — Sofka DS v5 packaging

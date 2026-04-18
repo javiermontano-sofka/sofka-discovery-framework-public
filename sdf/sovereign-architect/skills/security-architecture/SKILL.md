@@ -1,6 +1,5 @@
 ---
 name: security-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Threat modeling, zero trust design, identity architecture, encryption strategy, and
   compliance mapping for software systems. Trigger: "security architecture", "threat model",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Security Architecture

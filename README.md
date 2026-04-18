@@ -120,3 +120,13 @@ Includes KEEP / STOP / START lessons, architectural decisions, metrics (0→104 
 ## Author
 
 **Javier Montaño** · Sofka Technologies · javier.montano@sofka.com.co
+
+---
+
+## Authorship & Attribution
+
+- **Author**: Javier Montaño
+- **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
+- **Co-authored with**: Claude Code
+- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+

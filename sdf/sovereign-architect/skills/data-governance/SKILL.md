@@ -1,6 +1,5 @@
 ---
 name: data-governance
-author: JM Labs (Javier Montaño)
 description: >
   Data catalog design, ownership models, classification schemes, retention policies,
   and privacy compliance for data platforms. Trigger: "data governance", "data catalog",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Data Governance

@@ -1,6 +1,5 @@
 ---
 name: metodologia-bi-architecture
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   BI solution design — semantic layers, dashboard patterns, self-service analytics, KPI frameworks.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # BI Architecture: Business Intelligence Solution Design & Analytics Strategy
 

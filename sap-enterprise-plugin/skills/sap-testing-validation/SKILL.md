@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-testing-validation
-author: JM Labs (Javier Montano)
 description: >
   SAP testing and validation skill covering the SAP testing pyramid (unit, integration,
   UAT, regression, performance), sandbox validation, cutover rehearsal protocols, go-live
@@ -17,6 +16,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Testing & Cutover Validation

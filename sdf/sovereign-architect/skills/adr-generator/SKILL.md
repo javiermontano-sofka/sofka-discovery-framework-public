@@ -1,6 +1,5 @@
 ---
 name: adr-generator
-author: JM Labs (Javier Montaño)
 description: >
   Produces Architecture Decision Records following the Nygard/MADR template with full context, consequences, and traceability.
   Trigger: "generate ADR", "document decision", "architecture decision record", "record this decision".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # ADR Generator

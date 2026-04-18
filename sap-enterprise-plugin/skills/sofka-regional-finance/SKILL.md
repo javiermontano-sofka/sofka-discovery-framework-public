@@ -1,6 +1,5 @@
 ---
 name: sofka-regional-finance
-author: JM Labs (Javier Montano)
 description: "> SAP-applicable: use as cross-cutting input for /sap:comite and /sap:investigar."
   Regional finance and accounting standards skill covering Colombia (NIIF/DIAN/CTC),
   Ecuador (SRI/USD dollarization), Mexico (SAT/CFDI), United States (GAAP/ASC 606),
@@ -21,6 +20,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Regional Finance & Accounting Standards Skill

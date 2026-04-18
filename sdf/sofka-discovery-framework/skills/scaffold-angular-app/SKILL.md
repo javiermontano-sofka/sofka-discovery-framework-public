@@ -1,6 +1,5 @@
 ---
 name: scaffold-angular-app
-author: "Javier Montaño (JM Labs)"
 description: >
   Generate Angular 18+ project with Signals, standalone components, SSR, testing. Use when user asks to "scaffold an Angular app".
 version: "13.0.0"
@@ -12,6 +11,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Scaffold Angular App
 

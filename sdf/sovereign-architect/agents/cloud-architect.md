@@ -1,7 +1,10 @@
 ---
 name: cloud-architect
 description: "Multi-cloud strategy lead — AWS, GCP, Azure service selection, cloud-native patterns, cost governance. Activated when cloud platform decisions are in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Cloud Architect

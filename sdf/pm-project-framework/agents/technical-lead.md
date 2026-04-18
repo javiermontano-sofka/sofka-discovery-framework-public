@@ -1,8 +1,11 @@
 ---
 name: apex-technical-lead
 description: "Technical decision authority who ensures architecture alignment, technical feasibility, technology selection, and engineering standards throughout project delivery."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Technical Lead — Technical Decisions & Architecture Alignment Expert

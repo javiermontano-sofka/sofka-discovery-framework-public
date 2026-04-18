@@ -1,6 +1,5 @@
 ---
 name: functional-spec
-author: JM Labs (Javier Montaño)
 description: >
   Produces structured functional specifications including use cases, business rules,
   and complexity/risk matrices. Trigger: "write the spec", "functional requirements", "use case analysis".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Functional Specification

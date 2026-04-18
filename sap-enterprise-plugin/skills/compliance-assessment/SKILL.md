@@ -5,7 +5,6 @@ description: "> SAP-applicable: use as cross-cutting input for /sap:comite and /
   Use when the user asks to "evaluate compliance", "audit regulatory gaps", "assess GDPR readiness",
   "review PCI-DSS compliance", or mentions regulatory frameworks, data protection, compliance matrix.
 argument-hint: "<project-or-system-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Compliance Assessment: Regulatory & Standards Gap Analysis

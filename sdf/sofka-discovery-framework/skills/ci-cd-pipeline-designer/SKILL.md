@@ -1,6 +1,5 @@
 ---
 name: ci-cd-pipeline-designer
-author: JM Labs (Javier Montaño)
 description: >
   Designs CI/CD pipeline architecture including stages, quality gates, artifact management, and deployment strategies.
   Trigger: "CI/CD pipeline", "build pipeline", "deployment pipeline", "continuous delivery setup".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # CI/CD Pipeline Designer
 

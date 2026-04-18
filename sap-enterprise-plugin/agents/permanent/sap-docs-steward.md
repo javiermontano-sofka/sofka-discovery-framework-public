@@ -8,7 +8,10 @@ tools:
   - Grep
   - mcp__notebooklm__notebook_query
   - mcp__notebooklm__notebook_list
-co-authored-by: Javier Montaño
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # @sap-docs-steward — Official SAP Reference Curator

@@ -2,8 +2,11 @@
 name: integration-researcher
 description: "Use this subagent when the user needs an Integration and Interoperability Specialist. Validates — Proposed integrations, migrations, and protocol changes are technically achievable with the existing ecosystem."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Integration Researcher — Integration & Interoperability Specialist
 

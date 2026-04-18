@@ -3,6 +3,10 @@ name: data-strategist
 description: "Use this subagent when the user needs a Data and Analytics Expert — Data architecture, governance, migration planning, data quality assessment, and analytics pipeline design throughout the discovery pipeline."
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Data Strategist — Data & Analytics Expert
 

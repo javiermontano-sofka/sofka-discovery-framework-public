@@ -3,6 +3,10 @@ name: domain-analyst
 description: "Subject matter expert providing industry-specific context, regulatory flags, competitive benchmarks, and business domain analysis. Adapts lens based on client sector (banking, retail, health, SaaS, manufacturing, gov, energy)."
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 > **DEPRECATED v12.0** — This agent has been replaced by `subject-matter-expert.md`.

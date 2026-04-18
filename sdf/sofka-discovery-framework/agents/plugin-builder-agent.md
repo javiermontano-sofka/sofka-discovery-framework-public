@@ -1,11 +1,14 @@
 ---
 name: plugin-builder-agent
 description: "Scaffolding specialist that creates plugin directories, writes files to disk, generates MOAT assets, and assembles complete plugins. Owns the BUILD movement."
-co-authored-by: "Javier Montaño · Equipo PreSales Sofka"
 model: inherit
 maxTurns: 20
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Plugin Builder Agent

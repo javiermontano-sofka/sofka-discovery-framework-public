@@ -1,6 +1,5 @@
 ---
 name: microservices-decomposer
-author: JM Labs (Javier Montaño)
 description: >
   Decomposes monoliths into microservices using bounded contexts, DDD, and service boundary analysis.
   Trigger: "decompose microservices", "bounded contexts", "service boundaries", "DDD decomposition", "split monolith".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Microservices Decomposer
 

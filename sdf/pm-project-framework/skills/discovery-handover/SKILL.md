@@ -7,7 +7,6 @@ description: >
   "hand off discovery", "prepare operations package", "close discovery engagement",
   or mentions handover, transition, delivery kickoff, proposal preparation, or discovery close-out.
 argument-hint: "<project_name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Discovery Handover — Phase 6: Transición a Ejecución

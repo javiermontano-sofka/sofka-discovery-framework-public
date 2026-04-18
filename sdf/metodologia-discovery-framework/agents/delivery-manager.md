@@ -3,6 +3,10 @@ name: delivery-manager
 description: >
   Project Manager — timelines, scope management, risk quantification, stakeholder communication, budget modeling.
   Owns Phase 4 (Solution Roadmap) and Phase 5 (Cost Estimation) deliverables.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Delivery Manager — Execution Planning Expert

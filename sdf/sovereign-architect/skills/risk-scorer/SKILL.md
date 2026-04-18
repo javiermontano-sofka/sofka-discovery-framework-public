@@ -1,6 +1,5 @@
 ---
 name: risk-scorer
-author: JM Labs (Javier Montaño)
 description: >
   Severity times likelihood risk matrix generation with mitigation priorities.
   Trigger: "score risks", "risk matrix", "risk assessment", "severity analysis".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Risk Scorer

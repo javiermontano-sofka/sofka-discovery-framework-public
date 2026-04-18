@@ -1,6 +1,5 @@
 ---
 name: audit-security
-author: JM Labs (Javier Montaño)
 description: >
   Performs a comprehensive security audit on a Claude Code plugin, detecting leaked secrets,
   unsafe paths, shell injection risks, sensitive files, and insecure scripts.
@@ -11,6 +10,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Audit Security
 

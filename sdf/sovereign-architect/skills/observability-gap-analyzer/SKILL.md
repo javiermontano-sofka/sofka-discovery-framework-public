@@ -1,6 +1,5 @@
 ---
 name: observability-gap-analyzer
-author: JM Labs (Javier Montaño)
 description: >
   Logging, metrics, and tracing completeness analysis across the system.
   Trigger: "observability gaps", "logging analysis", "metrics coverage", "tracing completeness".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Observability Gap Analyzer

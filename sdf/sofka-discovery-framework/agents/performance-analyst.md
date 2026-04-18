@@ -1,9 +1,12 @@
 ---
 name: performance-analyst
 description: "Performance analysis — latency, throughput, scaling, memory, observability. Activated when performance concerns are detected."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Performance Analyst

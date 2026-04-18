@@ -1,7 +1,10 @@
 ---
 name: ux-engineer
 description: "Frontend UX engineering lead — design system implementation, accessibility (WCAG), component architecture, performance-perceived UX, responsive patterns. Activated when frontend UX engineering or design system decisions are in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # UX Engineer

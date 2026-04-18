@@ -1,6 +1,5 @@
 ---
 name: spec-skill-moat
-author: JM Labs (Javier Montaño)
 description: >
   Generate production-ready SKILL.md and MOAT asset files from a skill design. Enforces MOAT quality dimensions (>=7 on all 6), 500-line body limit, progressive disclosure.
   Trigger: spec skill, generate skill spec, write SKILL.md, create skill specification, produce skill MOAT.
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Spec Skill MOAT
 

@@ -3,7 +3,10 @@ name: attachment-processor
 description: "Use this subagent as FASE 0 whenever the user invokes any /sdf:* command with --adjuntos or attaches files (.csv .xlsx .docx .pdf .pptx .html .py .tsx .sql .json .yaml .xml .md). Detects format by extension + magic bytes, dispatches to the right extractor script, and emits normalized priming-rag-{filename}.md docs that the Think Tank and Discovery Conductor will consume as evidence tagged [ADJUNTO]."
 tools: [Read, Bash, Write, Grep, Glob]
 model: sonnet
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # @attachment-processor — Multi-format ingestion gateway (FASE 0)

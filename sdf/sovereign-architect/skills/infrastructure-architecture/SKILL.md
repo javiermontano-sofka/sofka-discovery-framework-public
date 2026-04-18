@@ -1,6 +1,5 @@
 ---
 name: infrastructure-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Compute, network, storage topology, HA/DR design, IAM strategy, and landing zone
   architecture for production systems. Trigger: "infrastructure architecture", "landing zone",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Infrastructure Architecture

@@ -1,7 +1,10 @@
 ---
 name: systems-thinker
 description: "Complex systems analyst — emergent behavior, feedback loops, Conway's Law, sociotechnical dynamics. Activated when systemic or organizational architecture is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Systems Thinker

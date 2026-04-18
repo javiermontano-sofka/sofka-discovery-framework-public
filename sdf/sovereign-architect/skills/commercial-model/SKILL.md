@@ -1,6 +1,5 @@
 ---
 name: commercial-model
-author: JM Labs (Javier Montaño)
 description: >
   Analyzes build vs buy decisions, licensing models, TCO calculations, and value
   capture strategies. Trigger: "build or buy", "licensing analysis", "TCO", "commercial model".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Commercial Model

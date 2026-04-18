@@ -1,7 +1,10 @@
 ---
 name: metodologia-pricing-analyst
 description: "Pricing models and commercial strategy analyst. Covers cost driver analysis, margin modeling, pricing architecture, and competitive pricing intelligence. Trigger: pricing model, cost analysis, commercial model, margin analysis, pricing strategy, unit pricing, subscription pricing, value-based pricing, competitive pricing."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Pricing Analyst — Pricing Models & Commercial Strategy Authority

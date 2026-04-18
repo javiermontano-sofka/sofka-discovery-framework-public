@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design cloud-native architecture", "containerize the application", "evaluate service mesh",
   "plan serverless migration", "implement multi-cloud strategy", "optimize cloud costs", or mentions Kubernetes, Istio, Docker, Helm, Terraform, FinOps, or 12-factor.
 argument-hint: "<system-or-platform-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Cloud-Native Architecture: Containers, Mesh, Serverless & Cost Optimization

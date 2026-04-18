@@ -1,9 +1,12 @@
 ---
 name: transformation-architect
 description: "Use this subagent when the user needs a Program-level Multi-service Transformation Architect — Digital transformation strategy, multi-service program design, change management integration, cross-workstream dependency management, program governance, and transformation KPI frameworks. Activated when {TIPO_SERVICIO}=Digital-Transformation or Multi-Service."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Transformation Architect — Multi-Service Program Expert
 

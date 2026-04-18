@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-solution-design
-author: JM Labs (Javier Montano)
 description: >
   SAP solution architecture design skill following Clean Core principles. Produces
   target-state architecture: module landscape, extension strategy (Key User vs ABAP Cloud
@@ -18,6 +17,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Solution Architecture Design — Clean Core

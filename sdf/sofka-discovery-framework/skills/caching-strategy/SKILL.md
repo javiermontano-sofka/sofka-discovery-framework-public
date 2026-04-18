@@ -1,6 +1,5 @@
 ---
 name: caching-strategy
-author: JM Labs (Javier Montaño)
 description: >
   Designs cache architectures using cache-aside, write-through, write-back patterns with invalidation and CDN strategies.
   Trigger: "caching strategy", "cache architecture", "cache invalidation", "CDN design", "cache patterns".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Caching Strategy
 

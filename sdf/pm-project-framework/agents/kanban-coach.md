@@ -1,8 +1,11 @@
 ---
 name: apex-kanban-coach
 description: "Kanban flow expert who optimizes work-in-progress limits, cycle time, throughput, and flow efficiency. Designs and maintains Kanban boards and coaches teams on pull-based delivery."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Kanban Coach — Flow Optimization & WIP Management Expert

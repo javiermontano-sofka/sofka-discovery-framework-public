@@ -1,6 +1,5 @@
 ---
 name: metodologia-commercial-model
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-name]"
 description: >
   Business model and value capture strategy — identifies optimal commercial structures for
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Commercial Model: Value Capture & Deal Structure Strategy

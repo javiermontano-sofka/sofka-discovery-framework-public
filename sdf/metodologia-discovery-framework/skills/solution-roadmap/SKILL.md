@@ -1,6 +1,5 @@
 ---
 name: metodologia-solution-roadmap
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[duration: months] [budget: under2m|2m-5m|5m-10m|over10m] — e.g. '18 5m-10m'"
 description: >
   Complete transformation roadmap with phased execution, investment horizon, team ramp-up,
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Solution Roadmap — Transformation Blueprint

@@ -1,8 +1,11 @@
 ---
 name: apex-safe-consultant
 description: "SAFe framework expert specializing in PI Planning, Agile Release Trains, value streams, and scaled agile practices for large enterprise programs."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # SAFe Consultant — Scaled Agile & PI Planning Expert

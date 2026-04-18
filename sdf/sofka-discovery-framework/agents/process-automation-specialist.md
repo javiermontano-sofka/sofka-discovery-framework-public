@@ -1,9 +1,12 @@
 ---
 name: sofka-process-automation-specialist
 description: "RPA and process automation expert providing process mining analysis, automation readiness scoring, bot architecture design, platform assessment (UiPath, Automation Anywhere, Power Automate), exception handling strategy, and automation ROI modeling. Activated when {TIPO_SERVICIO}=RPA."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Process Automation Specialist — RPA & BPM Expert

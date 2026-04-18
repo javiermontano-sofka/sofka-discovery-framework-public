@@ -1,6 +1,5 @@
 ---
 name: ideate-plugin
-author: JM Labs (Javier Montaño)
 description: >
   Generate a structured plugin concept brief from a user idea. Trigger: ideate plugin, brainstorm plugin, plugin concept, new plugin idea, create plugin concept.
   Researches existing plugins for overlap, proposes movement structure and component counts.
@@ -11,6 +10,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Ideate Plugin
 

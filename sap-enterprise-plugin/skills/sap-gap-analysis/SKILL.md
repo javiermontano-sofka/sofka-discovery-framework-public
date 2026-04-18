@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-gap-analysis
-author: JM Labs (Javier Montano)
 description: >
   SAP gap analysis and classification skill. Consolidates gaps from fit-to-standard
   workshops, classifies them (Fit/Configure/Extend/Custom/Workaround), maps inter-gap
@@ -18,6 +17,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Gap Analysis & Classification

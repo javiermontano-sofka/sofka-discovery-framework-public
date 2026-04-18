@@ -1,9 +1,12 @@
 ---
 name: docker-compose-specialist
 description: "Docker local dev — multi-service compose, dev containers, hot reload, networking. Activated for local dev environment setup."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Docker Compose Specialist

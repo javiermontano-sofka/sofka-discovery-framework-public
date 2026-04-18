@@ -1,6 +1,5 @@
 ---
 name: metodologia-api-architecture
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<system-or-platform-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   API design & governance — REST/GraphQL/gRPC, versioning, rate limiting, DX, contract-first.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # API Architecture: Design, Governance & Developer Experience

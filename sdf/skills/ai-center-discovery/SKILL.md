@@ -2,7 +2,6 @@
 name: metodologia-ai-center-discovery
 description: "AI Center services discovery — AI readiness assessment using MetodologIA AI SCALE methodology, use case portfolio prioritization, data readiness evaluation, model inventory, AI governance assessment, infrastructure evaluation, MetodologIA AI product integration, and AI adoption roadmap."
 argument-hint: "<project-or-client-name>"
-author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -10,6 +9,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # AI Center Discovery — AI Readiness Assessment & Adoption Roadmap
 

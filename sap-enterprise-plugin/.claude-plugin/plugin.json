@@ -32,5 +32,15 @@
     "spanish-commands",
     "hitl",
     "javier-montano"
-  ]
+  ],
+  "contributors": [
+    {
+      "name": "Jean Ruiz Granda",
+      "role": "ad-hoc feedback & review"
+    },
+    {
+      "name": "Catherine Rodrigo"
+    }
+  ],
+  "copyright": "© 2026 Sofka Technologies. All Rights Reserved."
 }

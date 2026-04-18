@@ -1,6 +1,5 @@
 ---
 name: metodologia-roadmap-poc
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[scope] [duration] [team-model]"
 description: >
   Execution roadmap generator with sprint breakdown, prerequisites, gates, team/budget, and risk register.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Roadmap & PoC Execution Planning: Sprint-Level Delivery Architecture
 

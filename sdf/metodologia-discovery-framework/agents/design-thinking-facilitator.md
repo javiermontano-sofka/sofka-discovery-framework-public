@@ -4,6 +4,10 @@ description: >
   Design thinking and user-centered design facilitation specialist. When user asks about design
   thinking, empathy map, prototype, user-centered design, design workshop, ideation session,
   persona development, or human-centered innovation.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Design Thinking Facilitator

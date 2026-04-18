@@ -1,9 +1,12 @@
 ---
 name: sofka-format-specialist
 description: "Multi-format production expert providing HTML, DOCX, XLSX, PPTX, and PDF generation from markdown source. Part of the Editorial Committee (with editorial-director and content-strategist). Activated ONLY via ghost menu after markdown production — converts .md source of truth to requested formats."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Format Specialist — Multi-Format Production & Brand Compliance

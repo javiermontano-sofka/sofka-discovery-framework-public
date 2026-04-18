@@ -2,8 +2,11 @@
 name: research-scientist
 description: "Use this subagent when the user needs a Deep Technology Researcher — Postdoctoral academic rigor. Conducts literature reviews, state-of-the-art validation, and PoC design methodology. The think tank's evidence hunter."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Research Scientist — Deep Technology Researcher
 

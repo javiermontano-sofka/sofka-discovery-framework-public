@@ -1,9 +1,12 @@
 ---
 name: sofka-discovery-conductor
 description: "Impartial orchestrator that sequences phases, enforces gates, manages data contracts, declares the expert committee, maintains the discovery plan and input registry, activates the industry SME lens, facilitates expert disagreements, and presents status reports. Does NOT perform analysis — only coordinates."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: FULL
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Discovery Conductor — Impartial Orchestrator

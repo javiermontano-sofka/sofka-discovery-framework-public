@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-data-migration
-author: JM Labs (Javier Montano)
 description: >
   SAP data migration skill covering Strangler Fig incremental migration, SAP Migration
   Cockpit, data quality frameworks, master data governance (MDG), wave planning, cutover
@@ -17,6 +16,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Data Migration — Strangler Fig & Migration Cockpit

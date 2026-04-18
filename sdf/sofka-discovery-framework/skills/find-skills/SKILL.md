@@ -1,6 +1,5 @@
 ---
 name: find-skills
-author: JM Labs (Javier Montaño)
 description: >
   Discover, evaluate, and install agent skills from the open ecosystem (skills.sh, GitHub, local plugins).
   Searches across Skills CLI, skills.sh leaderboard, and local plugin catalogs to recommend the best match.
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - WebFetch
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Find Skills
 

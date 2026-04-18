@@ -1,6 +1,5 @@
 ---
 name: security-surface-scanner
-author: JM Labs (Javier Montaño)
 description: >
   OWASP vulnerability patterns, secret detection, and authentication/authorization analysis.
   Trigger: "security scan", "OWASP check", "secret detection", "auth analysis".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Security Surface Scanner
 

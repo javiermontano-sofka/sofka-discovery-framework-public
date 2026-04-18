@@ -1,7 +1,10 @@
 ---
 name: delivery-lead
 description: "Engineering delivery lead — sprint planning, velocity analysis, risk management, stakeholder communication, delivery metrics. Activated when engineering delivery governance or process optimization is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Delivery Lead

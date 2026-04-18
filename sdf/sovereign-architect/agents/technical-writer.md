@@ -1,7 +1,10 @@
 ---
 name: technical-writer
 description: "Documentation — ADRs, specs, API docs, runbooks, README. Activated when documentation artifacts are needed."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Technical Writer

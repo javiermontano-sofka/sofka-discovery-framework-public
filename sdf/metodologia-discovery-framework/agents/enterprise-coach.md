@@ -1,7 +1,10 @@
 ---
 name: metodologia-enterprise-coach
 description: "Enterprise agility and organizational transformation coaching specialist. Guides scaling agile across portfolios, value streams, and business units. Trigger: enterprise coaching, organizational agility, scaling agile, portfolio management, value stream, business agility, enterprise transformation, organizational design."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Enterprise Coach — Organizational Agility & Transformation Authority

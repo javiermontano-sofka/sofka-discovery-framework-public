@@ -4,6 +4,10 @@ description: >
   Vendor evaluation and management specialist. When user asks about vendor evaluation, RFP
   process, vendor management, SLA negotiation, vendor risk assessment, supplier selection,
   request for proposal, vendor scorecard, or multi-vendor strategy.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Vendor Manager

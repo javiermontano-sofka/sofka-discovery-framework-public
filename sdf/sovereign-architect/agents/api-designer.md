@@ -1,7 +1,10 @@
 ---
 name: api-designer
 description: "API contract specialist — REST, GraphQL, gRPC design, versioning strategy, contract-first development. Activated when API surface is being designed or reviewed."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # API Designer

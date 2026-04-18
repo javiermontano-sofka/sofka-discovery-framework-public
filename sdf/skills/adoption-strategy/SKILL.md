@@ -1,6 +1,5 @@
 ---
 name: metodologia-adoption-strategy
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[context-path] [scope: full|communication|training] — e.g. './readiness-assessment.md full'"
 description: >
   Adoption strategy design producing communication plan, training roadmap, resistance management tactics, and reinforcement mechanisms.
@@ -14,6 +13,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Adoption Strategy

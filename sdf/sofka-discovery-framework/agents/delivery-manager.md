@@ -1,9 +1,12 @@
 ---
 name: sofka-delivery-manager
 description: "Project manager handling timelines, scope, risks, stakeholder communication, budget management, and resource allocation. Ensures the discovery pipeline stays on track and stakeholders stay informed."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: FULL
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Delivery Manager — Project Management Expert

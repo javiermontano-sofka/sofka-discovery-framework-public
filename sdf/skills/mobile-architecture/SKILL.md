@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design mobile architecture", "choose between native and cross-platform", "implement offline-first",
   "plan mobile CI/CD", "optimize app performance", or mentions Flutter, React Native, KMP, MVVM, SwiftUI, Jetpack Compose, or app store deployment.
 argument-hint: "<app_or_project_name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Mobile Architecture: Platform Strategy, Patterns & Release Management

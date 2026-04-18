@@ -1,6 +1,5 @@
 ---
 name: security-threat-modeler
-author: JM Labs (Javier Montaño)
 description: >
   STRIDE threat modeling, attack surface mapping, and threat tree generation.
   Trigger: "threat model", "STRIDE analysis", "attack surface", "threat assessment".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Security Threat Modeler
 

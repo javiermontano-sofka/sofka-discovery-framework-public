@@ -1,7 +1,10 @@
 ---
 name: code-analyst
 description: "Code-level analysis — patterns, technical debt, complexity, refactoring opportunities. Activated when analyzing source code."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Code Analyst

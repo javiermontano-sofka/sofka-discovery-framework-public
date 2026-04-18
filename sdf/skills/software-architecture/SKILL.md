@@ -1,6 +1,5 @@
 ---
 name: metodologia-software-architecture
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy.
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 > **Alcance:** Este skill es específico para `{TIPO_SERVICIO}=SDA` (Software Development & Architecture). Para arquitectura en otros tipos de servicio, consulte `enterprise-architecture` (visión empresarial), `solutions-architecture` (integración E2E), `infrastructure-architecture` (infraestructura), o el skill de discovery específico del tipo de servicio.

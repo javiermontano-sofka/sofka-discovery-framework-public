@@ -1,6 +1,5 @@
 ---
 name: api-architecture
-author: JM Labs (Javier Montaño)
 description: >
   REST, GraphQL, and gRPC API governance, versioning strategy, rate limiting,
   and developer experience design. Trigger: "API architecture", "API design",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # API Architecture

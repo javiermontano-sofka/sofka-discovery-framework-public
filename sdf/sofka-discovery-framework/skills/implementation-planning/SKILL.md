@@ -1,6 +1,5 @@
 ---
 name: implementation-planning
-author: JM Labs (Javier Montaño)
 description: >
   Phased execution plans with dependencies, checkpoints, rollback strategies, and file change plans.
   Trigger: plan implementation, create phases, design rollback, file change plan.
@@ -13,6 +12,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Implementation Planning
 

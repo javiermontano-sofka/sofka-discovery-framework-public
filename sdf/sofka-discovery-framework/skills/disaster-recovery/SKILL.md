@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "plan disaster recovery", "define RPO/RTO", "design failover",
   "create BCP", or mentions business continuity, backup strategy, recovery runbook, tabletop exercise.
 argument-hint: "<system-or-organization-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Disaster Recovery: Business Continuity & Recovery Planning
 

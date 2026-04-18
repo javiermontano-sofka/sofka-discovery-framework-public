@@ -1,7 +1,10 @@
 ---
 name: metodologia-subject-matter-expert
 description: "Industry and domain subject matter expert providing sector-specific context, regulatory constraints, competitive benchmarks, market dynamics, and business domain analysis. Adapts lens based on client sector (banking, retail, health, SaaS, manufacturing, government, energy, telecom, insurance, logistics)."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Subject Matter Expert — Industry & Domain Specialist

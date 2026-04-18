@@ -7,7 +7,6 @@ description: >
   Use when generating branded outputs, converting between formats, creating HTML deliverables,
   building DOCX/PPTX/XLSX from markdown, or establishing brand compliance for any output.
 argument-hint: "<format: html|docx|xlsx|pptx|md|all> <deliverable-type>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # MetodologIA Design System Brand — Neo-Swiss Multi-Format Output Templates

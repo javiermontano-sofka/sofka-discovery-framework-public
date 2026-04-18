@@ -211,3 +211,13 @@ sap-enterprise-plugin/
 
 *SAP Enterprise Plugin v4.0 — SAGE-Grade Expansion. Diseñado y desarrollado por Javier Montaño.*
 *© 2026 — All Rights Reserved.*
+
+---
+
+## Authorship & Attribution
+
+- **Author**: Javier Montaño
+- **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
+- **Co-authored with**: Claude Code
+- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+

@@ -1,8 +1,11 @@
 ---
 name: apex-procurement-manager
 description: "Procurement expert managing RFPs, vendor evaluation, contract management, make-or-buy decisions, and procurement planning for projects requiring external goods or services."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Procurement Manager — RFP, Vendor Evaluation & Contract Expert

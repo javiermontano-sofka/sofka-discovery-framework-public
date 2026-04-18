@@ -1,6 +1,5 @@
 ---
 name: workshop-design
-author: JM Labs (Javier Montaño)
 description: >
   Designs collaborative workshops including event storming, impact mapping,
   and design sprints with agendas, facilitation guides, and output templates.
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Workshop Design

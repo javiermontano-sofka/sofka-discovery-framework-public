@@ -3,6 +3,10 @@ name: data-strategist
 description: >
   Data Expert — data architecture, governance, analytics strategy, migration planning, data quality assessment.
   Provides data-specific expertise across all phases.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Data Strategist — Data Architecture & Governance Expert

@@ -1,8 +1,11 @@
 ---
 name: apex-pmo-architect
 description: "PMO setup and governance expert who designs PMO structures, governance models, maturity assessments, and standardized processes for organizational project management capability."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # PMO Architect — PMO Setup & Governance Design Expert

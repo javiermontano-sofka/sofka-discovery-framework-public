@@ -5,7 +5,6 @@ description: >
   and onboarding friction analysis. Use when the user asks to "assess developer experience",
   "optimize inner loop", "evaluate toolchain", or mentions DX scorecard, developer productivity,
   or cognitive load reduction.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-u-organizacion> [equipo-o-plataforma]"
 version: 1.0.0
 tags:
@@ -23,6 +22,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Evaluacion de Developer Experience

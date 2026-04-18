@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-btp-extensibility
-author: JM Labs (Javier Montano)
 description: >
   SAP BTP and ABAP Cloud extensibility skill. Covers BTP service selection, ABAP Cloud
   and RAP development patterns, CAP application development, Fiori Elements extensions,
@@ -18,6 +17,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP BTP & ABAP Cloud Extensibility

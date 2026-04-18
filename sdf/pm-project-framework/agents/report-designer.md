@@ -1,8 +1,11 @@
 ---
 name: apex-report-designer
 description: "Dashboard design and data storytelling expert who creates KPI visualizations, executive reports, and project dashboards that communicate project health and drive informed decisions."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Report Designer — Dashboard Design, KPI Visualization & Data Storytelling Expert

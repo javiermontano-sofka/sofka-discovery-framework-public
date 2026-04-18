@@ -1,8 +1,11 @@
 ---
 name: apex-change-controller
 description: "Change request management expert who processes change requests, conducts impact analysis, facilitates the Change Control Board (CCB), and ensures no uncontrolled changes enter approved baselines."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Change Controller — Change Request & CCB Management Expert

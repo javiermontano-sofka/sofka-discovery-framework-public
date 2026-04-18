@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "define SLAs", "design SLOs", "set reliability targets",
   "create error budget policy", or mentions SLI, service level, uptime, nines, error budgets.
 argument-hint: "<service-or-platform-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # SLA Design: Service Level Objectives, Indicators & Agreements

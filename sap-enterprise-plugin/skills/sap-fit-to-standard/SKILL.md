@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-fit-to-standard
-author: JM Labs (Javier Montano)
 description: >
   SAP Fit-to-Standard workshop facilitation skill. Structures and executes workshops
   per SAP module/process area: present SAP best practice, compare with AS-IS, score
@@ -19,6 +18,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Fit-to-Standard Workshop Framework

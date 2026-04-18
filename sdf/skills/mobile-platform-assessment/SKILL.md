@@ -1,6 +1,5 @@
 ---
 name: metodologia-mobile-platform-assessment
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<app-or-project-name>"
 description: "Use this skill when the user asks about mobile platform assessment: Unified mobile platform assessment — merges former mobile-architecture and mobile-assessment into one skill."
 model: opus
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Mobile Platform Assessment: Strategy, Health & Remediation
 

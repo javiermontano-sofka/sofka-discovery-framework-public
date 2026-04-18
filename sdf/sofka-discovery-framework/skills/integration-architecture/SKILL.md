@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design integrations", "map system connections", "define API contracts",
   "plan event-driven integration", or mentions ESB, iPaaS, MuleSoft, API gateway, event mesh, data mapping.
 argument-hint: "<system-or-integration-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Integration Architecture: System Connectivity & API Contract Design
 

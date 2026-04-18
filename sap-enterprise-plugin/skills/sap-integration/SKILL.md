@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-integration
-author: JM Labs (Javier Montano)
 description: >
   SAP integration architecture skill covering SAP Integration Suite (CPI) patterns,
   OData V2/V4 API reference, CATS BAPI integration, Event Mesh for async patterns,
@@ -17,6 +16,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Integration Architecture

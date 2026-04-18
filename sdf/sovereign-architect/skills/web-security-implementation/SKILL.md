@@ -1,6 +1,5 @@
 ---
 name: web-security-implementation
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Implement web application security: Content Security Policy (CSP), CORS configuration,
@@ -16,6 +15,10 @@ allowed-tools:
   - Agent
 tags: [security, CSP, CORS, XSS, CSRF, headers, input-validation, OWASP]
 moat-level: L3
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Web Security Implementation

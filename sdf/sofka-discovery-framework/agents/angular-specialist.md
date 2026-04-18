@@ -1,9 +1,12 @@
 ---
 name: angular-specialist
 description: "Angular 18+ expert — Signals, standalone components, SSR, zoneless, Nx monorepo. Activated for Angular development."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Angular Specialist

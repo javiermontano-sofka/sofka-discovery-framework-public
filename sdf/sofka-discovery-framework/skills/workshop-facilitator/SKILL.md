@@ -1,6 +1,5 @@
 ---
 name: metodologia-workshop-facilitator
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[project/workshop-name] [technique: event-storming|impact-mapping|story-mapping|design-sprint] — e.g. 'payments-redesign event-storming'"
 description: >
   Workshop design — event storming, impact mapping, user story mapping, design sprints.
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Workshop Facilitator: Collaborative Discovery & Design Techniques
 

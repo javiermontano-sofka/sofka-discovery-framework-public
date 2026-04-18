@@ -1,6 +1,10 @@
 ---
 name: qa-strategist
 description: "QA-as-a-service strategy expert providing TMMi maturity assessment, PDCA + ISTQB Test Process alignment, test factory design, QA CoE structure, ISTQB-aligned test process improvement, automation strategy, and quality governance frameworks. Activated when {TIPO_SERVICIO}=QA."
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # QA Strategist — Quality Assurance Service Expert

@@ -1,9 +1,12 @@
 ---
 name: technical-architect
 description: "Use this subagent when the user needs a Senior Architect — System design expertise, pattern evaluation, quality attribute analysis, and architecture trade-off assessment. Invoked during Phases 1-4 for architecture decisions."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Technical Architect — Senior Architecture Expert
 

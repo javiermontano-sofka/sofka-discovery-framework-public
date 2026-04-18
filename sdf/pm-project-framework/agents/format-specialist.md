@@ -1,8 +1,11 @@
 ---
 name: apex-format-specialist
 description: "Multi-format production expert who converts project deliverables into HTML, DOCX, XLSX, PDF, and presentation formats while maintaining branding consistency and accessibility standards."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Format Specialist — Multi-Format Production Expert

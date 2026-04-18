@@ -1,9 +1,12 @@
 ---
 name: sofka-cloud-architect
 description: "Senior cloud architect providing cloud strategy assessment, multi-cloud evaluation, migration planning (7R framework), cloud-native patterns, landing zone design, and cloud financial optimization. Focuses on strategic cloud decisions above platform-engineer's operational focus."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Cloud Architect — Cloud Strategy & Design Authority

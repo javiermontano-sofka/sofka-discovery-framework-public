@@ -2,7 +2,6 @@
 name: metodologia-digital-transformation-discovery
 description: "Use this skill when the user asks about digital transformation discovery: Program-level digital transformation discovery — digital maturity assessment, service portfolio mapping, program architecture, change readiness, multi-service integration, program governance, and transformation roadmap."
 argument-hint: "<program_or_client_name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Digital Transformation Discovery — Program-Level Assessment & Roadmap
 

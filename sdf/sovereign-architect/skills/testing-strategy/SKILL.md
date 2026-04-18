@@ -1,6 +1,5 @@
 ---
 name: testing-strategy
-author: JM Labs (Javier Montaño)
 description: >
   Test pyramid design, automation architecture, E2E testing, contract testing,
   shift-left practices, and test data management. Trigger: "testing strategy",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Testing Strategy

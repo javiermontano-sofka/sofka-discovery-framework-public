@@ -1,6 +1,5 @@
 ---
 name: event-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Event catalog design, schema registry management, eventual consistency patterns,
   saga orchestration, and CQRS implementation. Trigger: "event architecture", "event-driven",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Event Architecture

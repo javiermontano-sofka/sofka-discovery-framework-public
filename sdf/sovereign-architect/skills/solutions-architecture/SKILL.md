@@ -1,6 +1,5 @@
 ---
 name: solutions-architecture
-author: JM Labs (Javier Montaño)
 description: >
   End-to-end integration design, cross-cutting concerns resolution, and system composition
   for complex software solutions. Trigger: "solutions architecture", "integration design",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Solutions Architecture

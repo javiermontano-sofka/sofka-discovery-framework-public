@@ -1,7 +1,10 @@
 ---
 name: caching-strategist
 description: "Caching architecture specialist — cache patterns, invalidation strategy, CDN configuration, cache consistency. Activated when caching or content delivery optimization is needed."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Caching Strategist

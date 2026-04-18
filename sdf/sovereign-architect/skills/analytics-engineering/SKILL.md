@@ -1,6 +1,5 @@
 ---
 name: analytics-engineering
-author: JM Labs (Javier Montaño)
 description: >
   dbt-style transformations, dimensional data modeling, testing strategies, and
   documentation generation for analytics platforms. Trigger: "analytics engineering",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Analytics Engineering

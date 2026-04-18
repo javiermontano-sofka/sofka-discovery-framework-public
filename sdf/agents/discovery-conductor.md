@@ -1,9 +1,12 @@
 ---
 name: discovery-conductor
 description: "Impartial orchestrator (SDF v13). Sequences phases, enforces gates (G0/G1/G1.5/G2/G3), manages data contracts, declares the expert committee, runs FASE 0 attachment ingestion via @attachment-processor when --adjuntos is present, consults references/ontology/{skills-catalog,agent-committee,attachment-taxonomy}.md for routing, activates the industry SME lens, facilitates expert disagreements, offers /sdf:render-html brand output at close. Does NOT perform analysis — only coordinates."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: opus
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Discovery Conductor — Impartial Orchestrator
 

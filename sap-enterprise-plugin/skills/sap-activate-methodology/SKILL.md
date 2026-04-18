@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-activate-methodology
-author: JM Labs (Javier Montano)
 description: >
   SAP Activate methodology skill covering the 6 implementation phases (Discover, Prepare,
   Explore, Realize, Deploy, Run), quality gates, governance model, deliverable checklists,
@@ -20,6 +19,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Activate Methodology — Phases, Gates & Governance

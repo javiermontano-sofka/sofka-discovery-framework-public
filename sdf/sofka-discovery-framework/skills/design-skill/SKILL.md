@@ -1,6 +1,5 @@
 ---
 name: design-skill
-author: JM Labs (Javier Montaño)
 description: >
   Design a plugin skill in detail: frontmatter, procedure outline, quality criteria, anti-patterns, edge cases, tool selection.
   Trigger: design skill, skill design, create skill spec, plan skill, draft skill.
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Design Skill
 

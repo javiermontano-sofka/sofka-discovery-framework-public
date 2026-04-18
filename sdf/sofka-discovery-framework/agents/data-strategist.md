@@ -3,6 +3,10 @@ name: data-strategist
 description: "Data and analytics expert providing data architecture, governance, migration planning, data quality assessment, and analytics pipeline design throughout the discovery pipeline."
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 > **DEPRECATED v12.0** — This agent has been replaced by `data-engineer.md` + `analytics-architect.md`.

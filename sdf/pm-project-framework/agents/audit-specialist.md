@@ -1,8 +1,11 @@
 ---
 name: apex-audit-specialist
 description: "Internal and external audit preparation expert who designs audit programs, gathers evidence, conducts readiness assessments, and manages audit findings through remediation."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Audit Specialist — Audit Preparation & Evidence Gathering Expert

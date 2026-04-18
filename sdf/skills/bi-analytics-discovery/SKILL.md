@@ -2,7 +2,6 @@
 name: metodologia-bi-analytics-discovery
 description: "BI and analytics service discovery — data maturity assessment (DCAM/DMM), dashboard landscape inventory, semantic layer evaluation, self-service analytics readiness, data literacy assessment, analytics use case portfolio, and BI transformation roadmap."
 argument-hint: "<project-or-client-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # BI & Analytics Discovery — Data Maturity Assessment & Transformation Roadmap
 

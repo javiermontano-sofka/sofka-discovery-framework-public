@@ -11,7 +11,10 @@ tools:
   - Bash
   - Agent
   - mcp__notebooklm__notebook_list
-co-authored-by: Javier Montaño
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # @environment-orchestrator — Meta-Conductor del Ecosistema

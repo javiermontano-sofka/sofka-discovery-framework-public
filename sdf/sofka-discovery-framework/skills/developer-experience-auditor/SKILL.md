@@ -1,6 +1,5 @@
 ---
 name: developer-experience-auditor
-author: JM Labs (Javier Montaño)
 description: >
   Developer experience friction analysis, onboarding quality, and tooling assessment.
   Trigger: "audit DX", "developer experience", "onboarding quality", "developer friction".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Developer Experience Auditor
 

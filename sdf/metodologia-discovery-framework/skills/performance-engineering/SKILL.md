@@ -1,7 +1,6 @@
 ---
 name: metodologia-performance-engineering
 argument-hint: "<system-or-service-name>"
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   Performance assessment — load testing, capacity planning, bottleneck analysis, caching, CDN, SLAs.
   Use when the user asks to "analyze performance", "design load tests", "plan capacity", "optimize caching",
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Performance Engineering: Assessment, Optimization & Capacity Strategy

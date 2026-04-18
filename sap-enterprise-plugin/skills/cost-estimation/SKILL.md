@@ -8,7 +8,6 @@ description: "> SAP-applicable: use as cross-cutting input for /sap:comite and /
   WBS, sizing, contingency, burn rate, PERT, Monte Carlo, or "Phase 4" cost work. NEVER produces
   final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
 argument-hint: "<project-or-initiative-name>"
-author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Cost Estimation: Effort Drivers, Magnitude Indicators & Investment Framing

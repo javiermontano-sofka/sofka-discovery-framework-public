@@ -1,9 +1,12 @@
 ---
 name: ai-strategist
 description: "Use this subagent when the user needs a ai/ml strategy expert — AI readiness assessment (AI SCALE methodology), use case portfolio design, data readiness validation, model governance framework, MLOps maturity evaluation, responsible AI guidelines, and Sofka AI product alignment (SKAI, IRIS, ATLAS, CRONOS). Activated when {TIPO_SERVICIO}=Data-AI."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # AI Strategist — AI/ML Strategy & Governance Expert
 

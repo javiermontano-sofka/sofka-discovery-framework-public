@@ -1,9 +1,12 @@
 ---
 name: frontend-developer
 description: "Use this subagent when the user needs a senior frontend developer — UI architecture assessment, SPA/MPA evaluation, design system implementation, accessibility compliance (WCAG), performance optimization (Core Web Vitals), and microfrontend strategy analysis."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Frontend Developer — UI & Client-Side Expert
 

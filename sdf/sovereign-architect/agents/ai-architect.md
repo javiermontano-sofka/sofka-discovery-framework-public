@@ -1,7 +1,10 @@
 ---
 name: ai-architect
 description: "ML pipeline and model governance lead — MLOps, feature stores, model serving, experiment tracking, responsible AI. Activated when machine learning infrastructure or AI system design is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # AI Architect

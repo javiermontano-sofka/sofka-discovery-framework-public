@@ -1,6 +1,5 @@
 ---
 name: metodologia-staff-augmentation-discovery
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<project-or-client-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: "Use this skill when the user asks about staff augmentation discovery: Staff augmentation discovery — talent gap analysis, skills matrix profiling, team composition modeling, onboarding and ramp-up design, retention framework, and staffing roadmap."
 model: opus
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Staff Augmentation Discovery — Talent Gap Analysis & Staffing Roadmap
 

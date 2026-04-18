@@ -4,6 +4,10 @@ description: >
   Negotiation strategy and contract design specialist. When user asks about negotiation strategy,
   BATNA analysis, contract negotiation, win-win negotiation, deal structuring, negotiation
   preparation, concession strategy, or ZOPA identification.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Negotiation Strategist

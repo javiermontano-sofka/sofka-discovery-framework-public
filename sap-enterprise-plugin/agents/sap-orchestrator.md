@@ -15,7 +15,10 @@ tools:
   - mcp__notebooklm__research_start
   - mcp__notebooklm__research_status
   - mcp__notebooklm__research_import
-co-authored-by: Javier Montaño
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # @sap-orchestrator — Pipeline Executor

@@ -1,8 +1,11 @@
 ---
 name: apex-talent-assessor
 description: "Skills inventory and gap analysis expert who assesses team competencies, identifies skill gaps, designs training plans, and ensures the project has the right capabilities for delivery."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Talent Assessor — Skills Inventory & Gap Analysis Expert

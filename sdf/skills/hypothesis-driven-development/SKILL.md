@@ -1,6 +1,5 @@
 ---
 name: metodologia-hypothesis-driven-development
-author: Javier Montaño · Comunidad MetodologIA
 description: "Use this skill when the user asks about hypothesis driven development: Hypothesis-Driven Development (HDD) framework for structuring modernization proposals as testable hypotheses with Lean Startup cycles (Build-Measure-Learn)."
 argument-hint: "[project-name]"
 allowed-tools:
@@ -10,6 +9,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Hypothesis-Driven Development: Lean Startup for Technical Discovery
 

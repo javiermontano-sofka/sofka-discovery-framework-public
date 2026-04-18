@@ -1,6 +1,5 @@
 ---
 name: excellence-loop
-author: JM Labs (Javier Montaño)
 description: >
   Applies a 10-point quality rubric to every artifact with iterative refinement until excellence criteria are met.
   Trigger: "excellence check", "quality rubric", "review artifact", "quality loop", "refine output".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Excellence Loop
 

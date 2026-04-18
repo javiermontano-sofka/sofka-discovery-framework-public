@@ -1,6 +1,5 @@
 ---
 name: metodologia-flow-mapping
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<codebase-path> [flow-count:4-12] [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--tipo-servicio SDA|QA|Management|RPA|Data-AI|Cloud]"
 description: >
   DDD domain taxonomy + 8-12 end-to-end business flows with trama specifications,
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Flow Mapping — DDD Domains & Business Flows
 

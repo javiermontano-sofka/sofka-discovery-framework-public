@@ -7,7 +7,6 @@ description: >
   data contracts, expert committee, dream team, or consulting pipeline. Always use this skill
   as the entry point for any discovery engagement — it coordinates all other skills.
 argument-hint: "<project_name> [full-pipeline|minimal|quick-reference] [codebase_path]"
-author: Javier Montano · Comunidad MetodologIA
 version: "13.0.0"
 allowed-tools:
   - Read
@@ -17,6 +16,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # MetodologIA Discovery Orchestrator
 

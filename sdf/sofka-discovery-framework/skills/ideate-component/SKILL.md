@@ -1,6 +1,5 @@
 ---
 name: ideate-component
-author: JM Labs (Javier Montaño)
 description: >
   Brainstorm individual plugin components (skill, agent, command, hook) for existing or planned plugins.
   Trigger: ideate component, brainstorm skill, new agent idea, component concept, add skill to plugin.
@@ -11,6 +10,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Ideate Component
 

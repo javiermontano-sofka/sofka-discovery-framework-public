@@ -5,7 +5,6 @@ description: "> SAP-applicable: use as cross-cutting input for /sap:comite and /
   and rollback procedure definition. Use when the user asks to "design release strategy",
   "define deployment patterns", "plan rollback procedures", or mentions trunk-based development,
   GitFlow, feature flags, or CI/CD pipeline strategy.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto> [sistema-o-plataforma]"
 version: 1.0.0
 tags:
@@ -23,6 +22,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Estrategia de Release

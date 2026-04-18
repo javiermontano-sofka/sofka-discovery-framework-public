@@ -4,6 +4,10 @@ description: >
   Market research and sizing specialist. When user asks about market research, market sizing,
   TAM analysis, SAM/SOM estimation, addressable market, trend analysis, market segmentation,
   industry growth rates, or market opportunity assessment.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Market Researcher

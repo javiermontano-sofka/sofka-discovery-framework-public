@@ -1,7 +1,10 @@
 ---
 name: node-specialist
 description: "Node.js expert — runtime internals, streams, workers, V8 optimization, ESM. Activated for Node.js backend work."
-co-authored-by: "Javier Montaño (JM Labs)"
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Node.js Specialist

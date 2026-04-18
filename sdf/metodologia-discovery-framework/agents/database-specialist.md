@@ -1,7 +1,10 @@
 ---
 name: metodologia-database-specialist
 description: "Database modeling, tuning, migration, and sharding specialist. Covers relational, NoSQL, NewSQL, query optimization, indexing, and data migration strategies. Trigger: database design, query optimization, data migration, sharding, indexing, database tuning, schema design, database modeling, partitioning, replication."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Database Specialist — Data Modeling & Database Engineering Authority

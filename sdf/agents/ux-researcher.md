@@ -1,9 +1,12 @@
 ---
 name: ux-researcher
 description: "Use this subagent when the user needs an UX Researcher — User research synthesis, persona development, usability assessment, user journey mapping, adoption readiness evaluation, and accessibility audit coordination. Ensures technical solutions serve actual user needs."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # UX Researcher — User Research & Advocacy Expert
 

@@ -4,6 +4,10 @@ description: >
   Capacity modeling and demand forecasting specialist. When user asks about capacity planning,
   demand forecast, resource modeling, infrastructure sizing, load projection, scalability
   planning, resource optimization, or workload management.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Capacity Planner

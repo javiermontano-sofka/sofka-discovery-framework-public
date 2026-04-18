@@ -1,7 +1,10 @@
 ---
 name: metodologia-platform-engineer
 description: "Platform engineer providing cloud readiness assessment, migration strategy (7R), API governance, and event-driven architecture design. Invoked during Phases 1, 3, and 4 for platform and integration decisions."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Platform Engineer — Cloud, API & Events Expert

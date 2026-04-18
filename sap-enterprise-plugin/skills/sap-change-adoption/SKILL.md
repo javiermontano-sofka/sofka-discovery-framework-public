@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-change-adoption
-author: JM Labs (Javier Montano)
 description: >
   SAP organizational change management and adoption skill. Covers ADKAR framework
   adapted for SAP implementations, SAP Enable Now training design, super-user network,
@@ -18,6 +17,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Organizational Change & Adoption

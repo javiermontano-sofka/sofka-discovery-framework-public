@@ -1,7 +1,10 @@
 ---
 name: metodologia-iot-architect
 description: "IoT systems and edge computing architect. Covers MQTT, edge protocols, digital twins, device management, and IoT platform design. Trigger: IoT architecture, edge computing, digital twin, MQTT, device management, sensor networks, IoT platform, telemetry, embedded systems, industrial IoT."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # IoT Architect — IoT Systems & Edge Computing Authority

@@ -6,7 +6,6 @@ description: >
   headers, gold accent rows, and semantic conditional formatting. Use when the user
   requests a spreadsheet, XLSX output, or when the ghost menu routes to XLSX.
 argument-hint: "[source-file.md] [output_path.xlsx]"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # MetodologIA Brand XLSX — Neo-Swiss Spreadsheet Generator
 

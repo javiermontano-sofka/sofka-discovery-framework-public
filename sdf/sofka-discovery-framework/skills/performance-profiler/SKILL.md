@@ -1,6 +1,5 @@
 ---
 name: performance-profiler
-author: JM Labs (Javier Montaño)
 description: >
   N+1 query detection, bottleneck identification, and resource usage analysis.
   Trigger: "profile performance", "find bottlenecks", "N+1 queries", "resource usage".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Performance Profiler
 

@@ -1,6 +1,5 @@
 ---
 name: metodologia-data-storytelling
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<data-context: metrics|scoring|financial|performance|coverage> <audience: executive|technical|mixed>"
 description: >
   Transforms metrics and findings into meaningful narratives — insight extraction,
@@ -13,6 +12,10 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Storytelling — Metrics to Meaning

@@ -1,7 +1,10 @@
 ---
 name: metodologia-middle-integrations-developer
 description: "Senior middleware and integrations developer providing API integration assessment, ESB/iPaaS evaluation, message broker analysis, data transformation pipeline review, and cross-system interoperability validation."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Middle & Integrations Developer — Middleware & Integration Expert

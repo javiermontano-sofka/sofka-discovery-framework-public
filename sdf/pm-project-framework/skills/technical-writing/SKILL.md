@@ -1,6 +1,5 @@
 ---
 name: metodologia-technical-writing
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<doc-type: analysis|spec|handover|architecture|assessment> <depth: ejecutivo|tecnico|exhaustivo>"
 description: >
   Technical documentation precision — progressive disclosure, terminology consistency,
@@ -13,6 +12,10 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Technical Writing — Documentation Precision & Progressive Disclosure

@@ -4,6 +4,10 @@ description: >
   Innovation frameworks and ideation facilitation specialist. When user asks about innovation
   workshop, ideation session, design sprint, innovation pipeline, creative problem solving,
   disruptive innovation, innovation portfolio, or rapid experimentation.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Innovation Catalyst

@@ -1,6 +1,5 @@
 ---
 name: technical-feasibility
-author: JM Labs (Javier Montaño)
 description: >
   Fact-checking technical claims, multidimensional feasibility validation across
   performance, integration, scalability, security, and team capability. Trigger:
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Technical Feasibility

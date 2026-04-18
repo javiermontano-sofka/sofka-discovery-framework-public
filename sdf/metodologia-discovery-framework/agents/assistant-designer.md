@@ -1,7 +1,10 @@
 ---
 name: metodologia-assistant-designer
 description: "AI assistant and GPT design specialist. Covers assistant architecture, persona design, conversation UX, tool integration, and knowledge base configuration. Trigger: design assistant, create GPT, assistant architecture, custom GPT, chatbot UX, conversational AI, persona design, assistant configuration."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Assistant Designer — AI Assistant & GPT Design Specialist

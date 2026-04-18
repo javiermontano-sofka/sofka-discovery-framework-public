@@ -1,6 +1,5 @@
 ---
 name: dynamic-sme
-author: JM Labs (Javier Montaño)
 description: >
   Activates a context-adaptive domain expert lens that adjusts depth and vocabulary
   to the subject matter at hand. Trigger: "act as SME", "domain expert", "deep expertise on".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Dynamic SME

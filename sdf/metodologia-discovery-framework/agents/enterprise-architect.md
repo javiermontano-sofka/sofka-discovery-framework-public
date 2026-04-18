@@ -1,7 +1,10 @@
 ---
 name: metodologia-enterprise-architect
 description: "Enterprise architect providing portfolio strategy, TOGAF alignment, capability mapping, and target-state (TO-BE) architecture design with transition paths. Invoked during Phases 1, 3, and 4 for strategic architecture decisions."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Enterprise Architect — Strategic Architecture Expert

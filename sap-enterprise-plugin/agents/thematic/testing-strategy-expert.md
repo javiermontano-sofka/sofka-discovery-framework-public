@@ -7,7 +7,10 @@ tools:
   - Glob
   - Grep
   - Bash
-co-authored-by: Javier Montaño
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # @testing-strategy-expert

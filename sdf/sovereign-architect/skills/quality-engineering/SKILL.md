@@ -1,6 +1,5 @@
 ---
 name: quality-engineering
-author: JM Labs (Javier Montaño)
 description: >
   Test strategy architecture, automation infrastructure, quality gates, quality metrics
   dashboards, and shift-left quality practices. Trigger: "quality engineering",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Quality Engineering

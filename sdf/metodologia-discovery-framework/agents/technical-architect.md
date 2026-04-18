@@ -3,6 +3,10 @@ name: technical-architect
 description: >
   Senior Architect — system design, patterns, quality attributes, C4 modeling, technology evaluation.
   Owns Phase 1 (AS-IS) and Phase 4 (Architecture Design) deliverables.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Technical Architect — Senior System Architect

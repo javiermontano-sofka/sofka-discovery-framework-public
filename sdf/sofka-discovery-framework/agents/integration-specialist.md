@@ -1,9 +1,12 @@
 ---
 name: integration-specialist
 description: "API integration and messaging lead — iPaaS, ESB patterns, message brokers, event-driven integration, contract testing. Activated when system integration or inter-service communication design is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Integration Specialist

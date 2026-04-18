@@ -1,8 +1,11 @@
 ---
 name: apex-ceremony-facilitator
 description: "Meeting facilitation expert who designs and facilitates project ceremonies, retrospectives, workshops, and decision-making sessions with structured techniques and clear outcomes."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Ceremony Facilitator — Meeting Facilitation, Retrospectives & Workshop Expert

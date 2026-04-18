@@ -1,8 +1,11 @@
 ---
 name: apex-project-conductor
 description: "Impartial orchestrator that sequences phases, enforces gates, manages contracts, declares the expert committee, maintains the project plan and input registry. Does NOT analyze — only coordinates."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob, Agent]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Project Conductor — Impartial Orchestrator

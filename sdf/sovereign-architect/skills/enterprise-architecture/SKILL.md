@@ -1,6 +1,5 @@
 ---
 name: enterprise-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Capability mapping, domain decomposition, technology radar, and strategic roadmap generation
   for enterprise-scale software systems. Trigger: "enterprise architecture", "capability map",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Enterprise Architecture

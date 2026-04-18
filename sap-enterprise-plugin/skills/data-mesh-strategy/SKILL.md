@@ -1,6 +1,5 @@
 ---
 name: metodologia-data-mesh-strategy
-author: Javier Montaño · Comunidad MetodologIA
 description: "> SAP-applicable: use as cross-cutting input for /sap:comite and /sap:investigar."
   Data mesh readiness assessment and strategy using Zhamak Dehghani's 4 principles.
   Use when the user asks to "assess data mesh readiness", "design data mesh strategy",
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Mesh Strategy

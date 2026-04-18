@@ -153,3 +153,13 @@ All Rights Reserved © 2026 Javier Montaño.
 ---
 
 *SAP Enterprise Plugin v2.1 — Diseñado y desarrollado por Javier Montaño.*
+
+---
+
+## Authorship & Attribution
+
+- **Author**: Javier Montaño
+- **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
+- **Co-authored with**: Claude Code
+- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+

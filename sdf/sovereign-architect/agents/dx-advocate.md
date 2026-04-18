@@ -1,7 +1,10 @@
 ---
 name: dx-advocate
 description: "Developer experience champion — tooling optimization, onboarding friction, inner loop speed, ergonomic workflows. Activated when developer productivity is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # DX Advocate

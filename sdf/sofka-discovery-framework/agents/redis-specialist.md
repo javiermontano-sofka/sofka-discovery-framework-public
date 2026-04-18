@@ -1,9 +1,12 @@
 ---
 name: redis-specialist
 description: "Redis expert — caching patterns, pub/sub, Lua scripting, Redis Stack. Activated for Redis/caching work."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Redis Specialist

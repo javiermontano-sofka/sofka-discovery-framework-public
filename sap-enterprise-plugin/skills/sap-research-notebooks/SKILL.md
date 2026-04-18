@@ -1,7 +1,6 @@
 ---
 name: sap-research-notebooks
 description: "Use this skill when you need to build, query, or leverage NotebookLM-based knowledge bases for SAP research augmentation. Covers notebook bootstrap (6 canonical notebooks per project), deep research orchestration, source validation, audio briefing generation, and NotebookLM-first validation patterns integrated with the ToT committee."
-author: JM Labs (Javier Montano)
 allowed-tools:
   - Read
   - Glob
@@ -16,6 +15,10 @@ allowed-tools:
   - mcp__notebooklm__research_import
   - mcp__notebooklm__audio_overview_create
   - mcp__notebooklm__studio_status
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # SAP Research Notebooks — NotebookLM Integration

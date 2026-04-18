@@ -1,6 +1,5 @@
 ---
 name: evidence-classifier
-author: JM Labs (Javier Montaño)
 description: >
   Tags every claim with [HECHO]/[INFERENCIA]/[SUPUESTO] evidence classification for zero-hallucination output.
   Trigger: "classify evidence", "tag claims", "evidence levels", "zero hallucination", "fact check output".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Evidence Classifier

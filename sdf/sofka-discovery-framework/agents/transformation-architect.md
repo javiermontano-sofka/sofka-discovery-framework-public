@@ -1,9 +1,12 @@
 ---
 name: sofka-transformation-architect
 description: "Program-level multi-service transformation architect providing digital transformation strategy, multi-service program design, change management integration, cross-workstream dependency management, program governance, and transformation KPI frameworks. Activated when {TIPO_SERVICIO}=Digital-Transformation or Multi-Service."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Transformation Architect — Multi-Service Program Expert

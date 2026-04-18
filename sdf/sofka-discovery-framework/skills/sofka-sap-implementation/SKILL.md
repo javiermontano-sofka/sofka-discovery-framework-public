@@ -1,6 +1,5 @@
 ---
 name: sofka-sap-implementation
-author: JM Labs (Javier Montano)
 description: >
   SAP S/4HANA implementation skill covering module selection (CO, SD, PS, FI, HCM),
   SAP Activate methodology, fit-to-standard workshops, multi-country localization,
@@ -22,6 +21,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # SAP S/4HANA Implementation Skill
 

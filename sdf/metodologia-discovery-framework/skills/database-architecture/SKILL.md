@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design the database schema", "plan indexing strategy", "set up replication",
   "partition large tables", "migrate database schema", "tune query performance", or mentions normalization, sharding, B-tree indexes, zero-downtime migration, or connection pooling.
 argument-hint: "<system_or_database_name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 > **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Data-AI`. El diseño de bases de datos es relevante para desarrollo de software y para estrategia de datos. Para otros contextos de datos, consulte `data-engineering`, `data-governance`, o `bi-architecture`.

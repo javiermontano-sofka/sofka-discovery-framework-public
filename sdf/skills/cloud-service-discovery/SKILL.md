@@ -2,7 +2,6 @@
 name: metodologia-cloud-service-discovery
 description: "Use this skill when the user asks about cloud service discovery: Cloud-as-a-Service discovery — cloud readiness assessment, DevOps maturity (DORA), cloud operations model, FinOps assessment, cloud security posture, and cloud services roadmap."
 argument-hint: "<project-or-client-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Cloud Service Discovery — Cloud Operations Assessment & Roadmap
 

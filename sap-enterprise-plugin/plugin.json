@@ -2,7 +2,9 @@
   "name": "sap-enterprise-plugin",
   "version": "4.0.1",
   "description": "SAP Enterprise Plugin v4.0 (SAGE-GRADE) — ToT Committee + NotebookLM MCP + FASE 0 attachment handling (csv/xlsx/docx/pdf/pptx/html/py/tsx/sql) + Sofka DS v5 brand HTML render. 58 agents + 104 skills (12 core + 90 SDF imported + sap-attachment-handling + brand-html-render). 29 Spanish commands. 9 ontology indexes (skills-catalog, agent-committee, commands-reference, pipeline, attachments, output-standards, canonical-tokens, protocol, master). Designed by Javier Montaño.",
-  "author": "Javier Montaño",
+  "author": {
+    "name": "Javier Montaño"
+  },
   "license": "All Rights Reserved",
   "changelog": {
     "4.0.1": "BEST-PRACTICES PATCH. (1) hooks/hooks.json: $PLUGIN_DIR → ${CLAUDE_PLUGIN_ROOT} (oficial). (2) commands/render-html.md: ${PLUGIN_ROOT} → ${CLAUDE_PLUGIN_ROOT}. (3) scripts setup/ingest/render: añadido fallback ${CLAUDE_PLUGIN_ROOT:-$(cd … && pwd)}. (4) 5 agentes permanentes con descripción normalizada 'Use this subagent when…'. (5) .gitignore añadido (venv, pycache, .discovery). (6) Validated via plugin-validator agent: 0 critical.",
@@ -191,5 +193,15 @@
     "spanish-commands",
     "hitl",
     "javier-montano"
-  ]
+  ],
+  "contributors": [
+    {
+      "name": "Jean Ruiz Granda",
+      "role": "ad-hoc feedback & review"
+    },
+    {
+      "name": "Catherine Rodrigo"
+    }
+  ],
+  "copyright": "© 2026 Sofka Technologies. All Rights Reserved."
 }

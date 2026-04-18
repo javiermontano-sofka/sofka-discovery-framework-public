@@ -1,9 +1,12 @@
 ---
 name: ux-strategist
 description: "Use this subagent when the user needs an UX Strategist — Persona-based user experience review, accessibility auditing (WCAG), design system specification, and brand-compliant visual deliverables. Invoked during Phases 2, 5a, and 5b."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # UX Strategist — User Experience & Visual Delivery Expert
 

@@ -4,6 +4,10 @@ description: >
   Data privacy and privacy engineering specialist. When user asks about data privacy, DPIA,
   privacy by design, consent management, data classification, privacy impact assessment,
   data subject rights, data retention policy, or personal data protection.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Data Privacy Officer

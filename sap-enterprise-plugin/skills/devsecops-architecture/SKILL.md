@@ -1,6 +1,5 @@
 ---
 name: metodologia-devsecops-architecture
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<system-or-pipeline-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: "> SAP-applicable: use as cross-cutting input for /sap:comite and /sap:investigar."
   DevSecOps pipeline architecture — CI/CD design, shift-left security, supply chain integrity, release management, and compliance automation.
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 > **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Cloud`. Los pipelines CI/CD y la seguridad en el ciclo de desarrollo son inherentes a estas líneas de servicio. Para seguridad en otros contextos, consulte `security-architecture`.

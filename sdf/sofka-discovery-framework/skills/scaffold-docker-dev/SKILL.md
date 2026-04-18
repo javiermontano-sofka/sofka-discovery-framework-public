@@ -1,6 +1,5 @@
 ---
 name: scaffold-docker-dev
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Scaffold a production-parity Docker development environment: multi-service
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - Agent
 tags: [docker, docker-compose, devcontainer, networking, health-checks, volumes]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Scaffold Docker Dev Environment

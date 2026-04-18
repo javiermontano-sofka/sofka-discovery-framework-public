@@ -1,6 +1,5 @@
 ---
 name: metodologia-software-viability
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-name] [technology-to-validate]"
 description: "Use this skill when the user asks about software viability: Software and technology viability validator — deep forensic analysis of whether proposed software solutions, AI/ML components, and technology choices are viable substance or speculative smoke."
 allowed-tools:
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Service & Technology Viability: Substance vs Smoke Validator
 

@@ -1,7 +1,10 @@
 ---
 name: metodologia-conscious-business-coach
 description: "Conscious leadership and values-driven business coaching inspired by Fred Kofman. Facilitates authentic communication, responsible leadership, ontological coaching, and purpose-driven organizational culture. Trigger: conscious business, authentic communication, responsible leadership, Fred Kofman, ontological coaching, conscious leadership, values-driven, organizational purpose."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Conscious Business Coach — Values-Driven Leadership Authority

@@ -2,6 +2,10 @@
 name: sap-attachment-handling
 description: "Use this skill whenever the user drops files (.csv .xlsx .docx .pdf .pptx .html .py .tsx .sql .json .yaml .xml .md) as context for SAP work, or passes --adjuntos to any /sap:* command. It normalizes heterogeneous attachments into priming-rag docs with evidence tags [ADJUNTO], making them first-class inputs for the ToT committee."
 allowed-tools: [Read, Bash, Write, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # SAP Attachment Handling — FASE 0 ingestion
