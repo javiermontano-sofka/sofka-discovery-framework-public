@@ -1,30 +1,23 @@
 # Tutorials — learning by doing
 
-**Diátaxis quadrant**: learning-oriented. Assumes zero prior knowledge. Hands-on, step-by-step, always successful.
+**Diátaxis quadrant**: learning-oriented. Zero prior knowledge assumed. Hands-on, step-by-step, always successful.
 
-A good tutorial produces a working result at every step. If you're stuck, the tutorial is buggy — not you.
+## Index
 
-## Planned tutorials (B7)
+| # | Tutorial | Outcome |
+|---|----------|---------|
+| 01 | [first-discovery](01-first-discovery.md) | Run `/sdf:run-express` end-to-end; get 3 deliverables |
+| 02 | [feed-attachments](02-feed-attachments.md) | Ingest a CSV + PDF via FASE 0; see `[ADJUNTO]` tags |
+| 03 | [notebooklm-research](03-notebooklm-research.md) | Deep research via NLM; import as priming-rag |
+| 04 | [brand-html-render](04-brand-html-render.md) | Render a deliverable to branded HTML |
+| 05 | [author-a-new-skill](05-author-a-new-skill.md) | Create a 7/7 INSIGNIA skill from scratch |
+| 06 | [write-an-adr](06-write-an-adr.md) | Author a proposed ADR using the template |
+| 07 | [handle-a-regression](07-handle-a-regression.md) | Walk through the antifragile loop |
 
-| # | File | Outcome |
-|---|------|---------|
-| 01 | `01-first-discovery.md` | Run `/sdf:run-express` end-to-end on a sample repo, produce 3 deliverables |
-| 02 | `02-feed-attachments.md` | Add a CSV + a PDF via FASE 0, see extraction become evidence |
-| 03 | `03-notebooklm-research.md` | Kick off an NLM deep research and inject its summary as priming |
-| 04 | `04-brand-html-render.md` | Take a markdown deliverable and render it with DS v5 tokens |
-| 05 | `05-author-a-new-skill.md` | Create a MOAT skill with frontmatter + grader + evals from scratch |
-| 06 | `06-write-an-adr.md` | Author an ADR using the template, link it from a deliverable |
-| 07 | `07-handle-a-regression.md` | Simulate a doc regression, apply the antifragile loop |
+## How to read
 
-## Tutorial guarantees
+- **In order** — tutorials build on each other.
+- **Actively** — copy-paste commands, observe outputs, read the files produced.
+- **Trust the tutorial** — if a step fails, the tutorial has a bug (report it); don't debug your setup first.
 
-1. **Works out of the box** — every step is copy-pasteable.
-2. **No forks in the road** — decisions are made for you.
-3. **Small scope** — one concept per tutorial, ≤30 min end-to-end.
-4. **Final state is visible** — screenshots or file-listings confirm success.
-
-If a tutorial needs background context, link to `docs/explanation/` rather than explaining inline. Keep it action-first.
-
----
-
-**Status**: scaffolded in B2. Content ships in B7 of the v13.4.1 cycle.
+Once you've completed 01-07, you have working knowledge of SAGE end-to-end and can navigate [how-to/](../how-to/README.md) for specific tasks, [reference/](../reference/README.md) for lookups, and [explanation/](../explanation/README.md) for understanding.
