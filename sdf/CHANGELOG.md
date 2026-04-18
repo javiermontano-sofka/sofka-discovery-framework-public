@@ -585,3 +585,17 @@ Beyond the MCP tools already exposed (`notebook_query`, `notebook_list`, `resear
 - `pytest sdf/scripts/tests/` → 57/57 PASS ✓
 - All `contributors` arrays and `copyright` fields present in plugin.json files
 - All 1,617 updated markdown files parse as valid YAML frontmatter
+
+## [13.4.1] — 2026-04-17 · Counts parity patch (adversarial-review driven)
+
+Documentation-only patch. Runtime behaviour unchanged.
+
+### Fixed
+- **Skill count**: all 4 elevated docs said "215 skills" but filesystem has 214. Corrected in root `README.md`, `sdf/README.md`, `sdf/CLAUDE.md`.
+- **SAP agent count** (root README only; SAP plugin docs deferred to separate cycle): "58" → "58 specialists + 2 orchestrators + 2 shared rules = 62 total .md" to disambiguate "invocable count".
+
+### Context
+Triggered by adversarial review that verified claims against filesystem. Full findings: 4 Critical / 10 Major / 9 Minor / 14 documentary gaps. This patch closes only the Critical count errors; remaining items tracked in the upcoming `sdf/docs/` meta-system cycle.
+
+### Follows
+Ultra plan at `~/.claude/plans/crystalline-herding-pebble.md` — "Antifragile Documentation Meta-System" (v13.4.1 cycle).

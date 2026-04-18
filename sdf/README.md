@@ -7,7 +7,7 @@
 | Resource | Count |
 |----------|------:|
 | Agents | 49 |
-| Skills (7/7 INSIGNIA) | 215 |
+| Skills (7/7 INSIGNIA) | 214 |
 | Commands | 101 |
 | Ontology sub-files | 15 |
 | NL-HP prompts | 42 |
@@ -64,7 +64,7 @@ Restart Claude Code; `/sdf:menu` confirms activation.
 sdf/
 ├── agents/              49 subagents + 2 orchestrators · `name:` = filename · no Agent tool in subagents
 ├── commands/            101 /sdf:* commands · no foreign prefix refs (audit enforces)
-├── skills/              215 skill dirs · all 7/7 INSIGNIA · SKILL.md auto-activates
+├── skills/              214 skill dirs · all 7/7 INSIGNIA · SKILL.md auto-activates
 ├── references/
 │   ├── ontology/        15 hub children — read on demand, not upfront
 │   ├── skill-robustness-template/   Scaffold for new skills
