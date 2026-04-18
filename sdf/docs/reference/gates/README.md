@@ -1,6 +1,6 @@
 # Quality gates — reference
 
-The 5 gates that structure the SDF pipeline. Governed by [ADR-0003](../../adr/0003-quality-gates-G0-G3.md).
+The 5 gates that structure the SDF pipeline. Governed by [ADR-0003](../../adr/0003-quality-gates-g0-g3.md).
 
 | Gate | Name | Runs at | Blocks if... | Spec |
 |------|------|---------|--------------|------|

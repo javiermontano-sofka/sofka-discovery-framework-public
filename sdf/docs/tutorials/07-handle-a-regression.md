@@ -77,8 +77,8 @@ Open `sdf/references/ontology/lessons-learned.md`. Read the entry dated 2026-04-
 You've completed the tutorial series. Next steps:
 
 - Run your first real engagement with `/sdf:run-guided`.
-- Read [`/docs/explanation/architecture-overview.md`](../explanation/architecture-overview.md) for breadth.
-- Browse [`/docs/adr/`](../adr/README.md) for the decision space.
-- Contribute: start with [`/docs/how-to/author-new-skill.md`](../how-to/author-new-skill.md).
+- Read [`docs/explanation/architecture-overview.md`](../explanation/architecture-overview.md) for breadth.
+- Browse [`docs/adr/`](../adr/README.md) for the decision space.
+- Contribute: start with [`docs/how-to/author-new-skill.md`](../how-to/author-new-skill.md).
 
 Welcome to SAGE.

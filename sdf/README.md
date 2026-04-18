@@ -190,6 +190,10 @@ python scripts/ecosystem/run-skill-evals.py --sample 20 --mock   # end-to-end ha
 
 `.github/workflows/test.yml` runs the same five checks on every push.
 
+## Documentation
+
+Operational ontology (agent-read) lives in [`references/ontology/`](references/ontology/). Pedagogical docs (human-read) live in [`docs/`](docs/README.md) — Diátaxis four-quadrant tree (tutorials · how-to · reference · explanation) plus 25 ADRs and C4 diagrams. Start at [`docs/README.md`](docs/README.md). Governance entry points: [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md) · [`GLOSSARY.md`](GLOSSARY.md).
+
 ## Known limits
 
 - `validate_yaml.py` checks parseability, not schema (`tools: [NotARealTool]` parses but fails at runtime).

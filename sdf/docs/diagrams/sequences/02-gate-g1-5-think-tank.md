@@ -61,6 +61,6 @@ Sabios are independent experts; sequentially they'd anchor each other. Parallel 
 
 ## Related
 
-- [ADR-0003](../../adr/0003-quality-gates-G0-G3.md)
+- [ADR-0003](../../adr/0003-quality-gates-g0-g3.md)
 - [`../../reference/gates/G1.5.md`](../../reference/gates/G1.5.md)
 - [`../../explanation/why-hybrid-gates-G0-G3.md`](../../explanation/why-hybrid-gates-G0-G3.md)

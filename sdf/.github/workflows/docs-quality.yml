@@ -41,7 +41,9 @@ jobs:
         run: pip install pyyaml
       - name: Run ${{ matrix.validator }}
         id: run_validator
-        continue-on-error: true   # advisory until B10 converges baseline
+        # continue-on-error flipped to false after B10 baseline converged.
+        # diataxis-purity remains advisory (heuristic, not mechanical).
+        continue-on-error: ${{ matrix.validator == 'diataxis-purity' }}
         run: python sdf/scripts/validators/${{ matrix.validator }}.py
       - name: Report
         run: |
@@ -57,4 +59,4 @@ jobs:
     needs: validators
     if: always()
     steps:
-      - run: echo "All 6 validators ran. Status per validator above; aggregate blocking flips ON after B10."
+      - run: echo "All 6 validators ran. 5 are blocking; diataxis-purity is advisory-only (heuristic). See ADR-0023."

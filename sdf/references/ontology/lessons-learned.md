@@ -78,3 +78,31 @@ Ten lecciones destiladas del viaje SAP v2.0 → v4.0 (ver retrospectiva en `Desk
 - `sap-enterprise-plugin/templates/brand-html-base.html`
 - `sap-enterprise-plugin/.mcp.json`
 - Retrospectiva deliverable (md + html brand-ready)
+
+---
+
+## 2026-04-17 — Antifragile docs cycle (v13.4.1)
+
+### Mistake
+Adversarial review found "215 skills" in 4 elevated docs when filesystem had 214. Other drift: SAP agent count (58 vs actual 62), ambiguous "phase" vocabulary (pipeline stages P0-P9 vs ToT meta-phases), several undefined acronyms (ToT, NL-HP, INSIGNIA, F2S, HITL) propagated across documents.
+
+### Root cause
+Numbers and acronyms were hand-maintained across multiple elevated docs without programmatic verification. When one shifted, the others didn't.
+
+### Fix
+1. Count corrections landed in B0 commit `6067fc8`.
+2. Full antifragile-docs cycle (v13.4.1): governance trio + Diátaxis four-quadrant docs tree + 25 ADRs + 6 validators + CI matrix.
+
+### Validator added
+`count-parity.py` (B9) — reads declarative `_manifest.yaml`, runs shell measures, fails CI on drift. Companion validators: cross-refs, acronym-gate, adr-integrity, link-check, diataxis-purity.
+
+### Concept made explicit
+- **Antifragile corrections loop** — ADR-0020 + `docs/explanation/antifragile-docs.md`. Every stressor → fix + lesson + validator + (maybe) ADR + CHANGELOG.
+- **Filesystem-as-architecture** — ADR-0021 + manifesto in `docs/explanation/`.
+- **Diátaxis adoption** — ADR-0017.
+
+### Scope discipline
+SAP plugin kept out of scope, tracked in ADR-0024 for the next cycle. Site generator (MkDocs) deliberately not adopted (ADR-0025) — flat markdown + GitHub navigation sufficient at current scale.
+
+### Takeaway
+If a fact is claimed in more than one place, it's a validator-shaped hole. Write the manifest entry; the validator is cheap.

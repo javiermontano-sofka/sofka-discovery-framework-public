@@ -586,16 +586,71 @@ Beyond the MCP tools already exposed (`notebook_query`, `notebook_list`, `resear
 - All `contributors` arrays and `copyright` fields present in plugin.json files
 - All 1,617 updated markdown files parse as valid YAML frontmatter
 
-## [13.4.1] — 2026-04-17 · Counts parity patch (adversarial-review driven)
+## [13.4.1] — 2026-04-17 · Antifragile Documentation Meta-System
 
-Documentation-only patch. Runtime behaviour unchanged.
+Documentation-only cycle. Runtime behaviour unchanged. `plugin.json` stays at v13.4.0; this is a patch-level enhancement to the docs substrate + CI.
 
-### Fixed
+### Summary
+
+An adversarial review of v13.4.0 found 4 Critical errors, 10 Major gaps, 9 Minor issues, and 14 documentary gaps. Rather than a one-shot fix, this cycle rebuilds the documentation system on two principles: **robust** (violations caught automatically by CI) and **antifragile** (each stressor produces a permanent strengthening). File-system-as-architecture: `ls` is now a table of contents.
+
+### New
+
+**Governance trio (at root + sdf/)** — 6 files
+- `CONTRIBUTING.md` · `SECURITY.md` · `GLOSSARY.md` at both monorepo root and sdf/ level
+- Defines ~30 acronyms (SAGE, SDF, SAP, MOAT, INSIGNIA, ToT, NL-HP, HITL, F2S, SDA, SAS, DS v5, MCP, etc.)
+
+**Diátaxis docs tree** under `sdf/docs/` — ~125 files
+- Tutorials (7) — hands-on learning path 01 → 07
+- How-to (22) — goal-oriented recipes
+- Reference (32) — 8 evidence-tag specs + 5 gate specs + 10 service-type specs + 6 meta refs
+- Explanation (14) — arc42-lite architecture + 10 "why-*" essays + manifesto + antifragile loop
+- ADRs (27) — 25 numbered decisions + TEMPLATE + index, Nygard-style immutable
+- Diagrams (9) — C4 L1/L2/L3 + 6 sequence diagrams (Mermaid)
+
+**Six docs validators** under `sdf/scripts/validators/` + CI matrix
+- `count-parity.py` — numeric claims vs filesystem
+- `cross-refs.py` — referenced paths exist
+- `acronym-gate.py` — all-caps tokens defined in GLOSSARY
+- `adr-integrity.py` — accepted ADRs immutable
+- `link-check.py` — internal markdown links resolve
+- `diataxis-purity.py` (advisory) — quadrant content hygiene
+- `_manifest.yaml` — declarative source of truth
+- `_lib.py` — shared helpers
+- `run-all.sh` — CI-parity local runner
+- `.github/workflows/docs-quality.yml` — 6-job matrix
+
+### Fixed (from adversarial review)
+
 - **Skill count**: all 4 elevated docs said "215 skills" but filesystem has 214. Corrected in root `README.md`, `sdf/README.md`, `sdf/CLAUDE.md`.
-- **SAP agent count** (root README only; SAP plugin docs deferred to separate cycle): "58" → "58 specialists + 2 orchestrators + 2 shared rules = 62 total .md" to disambiguate "invocable count".
+- **SAP agent count** (root README only; SAP plugin docs deferred): "58" → "58 specialists + 2 orchestrators + 2 shared rules = 62 total .md".
+- **Phase vocabulary ambiguity** — "phase" used for both pipeline stages (P0–P9) and ToT meta-phases (Branching/Evaluate/Prune/Expand). Now disambiguated: [ADR-0006](docs/adr/0006-tot-meta-phases.md) + `docs/reference/phases-vs-stages.md`.
+- **Skill count disambiguation** — ecosystem-wide (~1,100) vs SDF core (214). New ref: `docs/reference/skill-counts-per-tree.md`.
+- **Undefined acronyms** — ToT, NL-HP, INSIGNIA, F2S, HITL, DS v5 now in GLOSSARY.
 
-### Context
-Triggered by adversarial review that verified claims against filesystem. Full findings: 4 Critical / 10 Major / 9 Minor / 14 documentary gaps. This patch closes only the Critical count errors; remaining items tracked in the upcoming `sdf/docs/` meta-system cycle.
+### ADR set (25 accepted)
+
+Foundational (0001–0010): agent committee · evidence tags · gates G0-G3 · HITL modes · INSIGNIA 7/7 · ToT meta-phases · service-type routing · FASE 0 · NotebookLM MCP · brand HTML determinism
+
+Governance + meta (0011–0025): never-prices · Spanish default · Markdown-Excellence · zero-hallucination · changelog discipline · ghost menu invariant · Diátaxis adoption · arc42-lite · C4 L1-L3 · antifragile loop · filesystem-as-architecture · validator stack · CI advisory ramp · SAP deferral · no site generator
+
+### CI
+
+- 6 new docs-quality jobs ship **advisory** (`continue-on-error: true`) during cycle.
+- At B10, flipped to **blocking** once baseline converges ([ADR-0023](docs/adr/0023-ci-advisory-ramp-b10-strict.md)).
+
+### Deferred
+
+- SAP plugin docs overhaul → next cycle ([ADR-0024](docs/adr/0024-defer-sap-docs-to-next-cycle.md)).
+- Auto-generated per-agent/command/skill reference pages → B11 of this cycle (~364 files).
+- Site generator (MkDocs) → future ([ADR-0025](docs/adr/0025-no-site-generator-for-now.md)).
+
+### Metrics
+
+- **~160 new files** in docs/ + governance + validators.
+- **Validator suite**: <17s total runtime (CI budget <30s with margin).
+- **Test suite**: 57 pytest tests unchanged, passing.
 
 ### Follows
-Ultra plan at `~/.claude/plans/crystalline-herding-pebble.md` — "Antifragile Documentation Meta-System" (v13.4.1 cycle).
+
+Ultra plan at `~/.claude/plans/crystalline-herding-pebble.md` — "Antifragile Documentation Meta-System" (SDF-only, ~11 commits).
