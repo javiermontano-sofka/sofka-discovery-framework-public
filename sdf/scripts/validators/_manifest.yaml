@@ -1,0 +1,184 @@
+# Declarative source-of-truth for count-parity validator.
+#
+# Each entry: `claim_pattern` → `source` (how to measure from filesystem).
+# count-parity.py greps docs for the pattern and compares with the measured value.
+#
+# Adding a new claim: add an entry here. The validator will start enforcing it.
+# If you want a claim NOT validated (e.g. approximate duration), omit it.
+
+schema_version: 1
+
+# --- SDF core counts -----------------------------------------------------------
+counts:
+  sdf_agents:
+    description: "SDF invocable agents (top-level .md, excluding _*.md shared rules)"
+    patterns:
+      - "\\b49 agents?\\b"
+      - "\\b49 subagents?\\b"
+    measure: "find sdf/agents -maxdepth 1 -name '*.md' -not -name '_*' | wc -l"
+    expected: 49
+
+  sdf_skills:
+    description: "SDF skill directories with SKILL.md"
+    patterns:
+      - "\\b214 skills?\\b"
+      - "\\b214 skill dirs?\\b"
+    measure: "find sdf/skills -maxdepth 2 -name SKILL.md | wc -l"
+    expected: 214
+    # Antifragile: if filesystem grows to 215, the validator fails and forces
+    # the doc update; it never silently drifts.
+
+  sdf_commands:
+    description: "SDF /sdf:* commands"
+    patterns:
+      - "\\b101 commands?\\b"
+      - "\\b101 /sdf:.* commands?\\b"
+    measure: "find sdf/commands -maxdepth 1 -name '*.md' | wc -l"
+    expected: 101
+
+  sdf_ontology:
+    description: "SDF ontology sub-files"
+    patterns:
+      - "\\b15 ontology files?\\b"
+      - "\\b15 sub-files?\\b"
+      - "\\b15 specialised sub-files?\\b"
+    measure: "find sdf/references/ontology -maxdepth 1 -name '*.md' | wc -l"
+    expected: 15
+
+  sdf_pytest:
+    description: "SDF pytest tests"
+    patterns:
+      - "\\b57 pytest\\b"
+      - "\\b57 tests?\\b"
+      - "\\b57/57\\b"
+    measure: "grep -h '    def test_' sdf/scripts/tests/test_*.py | wc -l"
+    expected: 57
+
+  sdf_extractors:
+    description: "SDF attachment extractors (.py + generic.sh)"
+    patterns:
+      - "\\b9 extractors?\\b"
+    measure: "ls sdf/scripts/extract-*.py sdf/scripts/extract-generic.sh 2>/dev/null | wc -l"
+    expected: 9
+
+  evidence_tags:
+    description: "Evidence tag catalog size"
+    patterns:
+      - "\\b8 evidence tags?\\b"
+      - "\\b8 tags? in priority\\b"
+    # Expected list, not a file count. Hardcoded until docs/reference/evidence-tags/ ships.
+    expected: 8
+    static: true
+
+  quality_gates:
+    description: "Quality gates (G0/G1/G1.5/G2/G3)"
+    patterns:
+      - "\\b5 quality gates?\\b"
+      - "\\b5 gates?\\b"
+    # Also list-based. After B4 ships gates/, validator can measure.
+    expected: 5
+    static: true
+
+  service_types:
+    description: "Service-type routing labels"
+    patterns:
+      - "\\b10 service types?\\b"
+      - "\\b10 TIPO_SERVICIO\\b"
+    expected: 10
+    static: true
+
+# --- Acronym whitelist (for acronym-gate validator) ----------------------------
+# Any UPPERCASE token >= 2 chars appearing in an elevated doc must be in GLOSSARY.md
+# OR appear in this whitelist (common English + international abbreviations).
+acronym_whitelist:
+  - AI
+  - API
+  - ATC        # ABAP Test Cockpit
+  - BAPI
+  - BDEF       # behavior definition (SAP)
+  - CDS        # SAP CDS view
+  - CEO
+  - CI
+  - CO         # SAP CO module
+  - CSS
+  - DS         # Design System
+  - EUR
+  - FI         # SAP FI module
+  - HCM
+  - HTML
+  - HR
+  - HTTP
+  - IDE
+  - INSIGNIA   # internal but defined in GLOSSARY
+  - JSON
+  - LLM
+  - MCP
+  - MM         # SAP MM module
+  - NLM
+  - OData
+  - OS
+  - P50
+  - P80
+  - P95
+  - PM         # SAP PM module
+  - PS         # SAP PS module
+  - QA
+  - RAG
+  - RAP        # SAP RESTful ABAP Programming
+  - RPA
+  - SAP
+  - SDK
+  - SD         # SAP SD module
+  - SKILL
+  - TBD
+  - TOC
+  - ToT
+  - UI
+  - URL
+  - USD
+  - UX
+  - WIP
+  - XML
+  - YAML
+  # Evidence tags (all caps)
+  - CÓDIGO
+  - ADJUNTO
+  - CONFIG
+  - DOC
+  - NOTEBOOKLM
+  - STAKEHOLDER
+  - INFERENCIA
+  - SUPUESTO
+  - VACIO_CRITICO
+  # File format extensions as acronym-looking
+  - CSV
+  - XLSX
+  - DOCX
+  - PDF
+  - PPTX
+
+# --- ADR lifecycle -------------------------------------------------------------
+adr:
+  path: "sdf/docs/adr"
+  valid_statuses:
+    - Proposed
+    - Accepted
+    - Deprecated
+    - Superseded
+  filename_pattern: '^\d{4}-[a-z0-9-]+\.md$'
+  require_fields:
+    - Title
+    - Status
+    - Context
+    - Decision
+    - Consequences
+  immutable_after: Accepted
+
+# --- Files elevated in prior cycle (must stay consistent) ----------------------
+elevated_docs:
+  - README.md                             # monorepo root
+  - CLAUDE.md                             # monorepo root
+  - sdf/README.md
+  - sdf/CLAUDE.md
+  - sap-enterprise-plugin/README.md       # out of this cycle but still scanned
+  - sap-enterprise-plugin/CLAUDE.md

@@ -1,0 +1,60 @@
+name: Docs Quality
+
+# Separate workflow from test.yml so the docs pipeline can iterate independently.
+# Advisory (continue-on-error) until baseline converges in B10; flips to strict
+# after that batch lands. This is the antifragile ramp: surface drift first,
+# enforce later.
+
+on:
+  push:
+    branches: [main, develop, "release/**", "feat/**"]
+    paths:
+      - "**/*.md"
+      - "sdf/scripts/validators/**"
+      - "sdf/docs/**"
+      - "sdf/references/ontology/**"
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  validators:
+    name: Run docs validators (${{ matrix.validator }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        validator:
+          - count-parity
+          - cross-refs
+          - acronym-gate
+          - adr-integrity
+          - link-check
+          - diataxis-purity
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 50  # needed for adr-integrity git-log immutability check
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - name: Install dependencies
+        run: pip install pyyaml
+      - name: Run ${{ matrix.validator }}
+        id: run_validator
+        continue-on-error: true   # advisory until B10 converges baseline
+        run: python sdf/scripts/validators/${{ matrix.validator }}.py
+      - name: Report
+        run: |
+          echo "Validator: ${{ matrix.validator }}"
+          echo "Outcome: ${{ steps.run_validator.outcome }}"
+          if [ "${{ steps.run_validator.outcome }}" = "failure" ]; then
+            echo "::warning::${{ matrix.validator }} reported ERRORs (advisory — not blocking until B10)."
+          fi
+
+  run-all-summary:
+    name: Docs validators summary
+    runs-on: ubuntu-latest
+    needs: validators
+    if: always()
+    steps:
+      - run: echo "All 6 validators ran. Status per validator above; aggregate blocking flips ON after B10."
