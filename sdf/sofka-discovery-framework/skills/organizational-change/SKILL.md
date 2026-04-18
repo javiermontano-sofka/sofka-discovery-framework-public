@@ -7,8 +7,8 @@ description: >
   adoption planning. Triggers on: designs ADKAR-based change interventions,
   assesses change readiness, creates communication campaigns, builds training plans,
   manages resistance through structured interventions, measures adoption KPIs.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Organizational Change Management (OCM)
 
 **TL;DR**: Designs and implements organizational change management using the ADKAR model (Awareness, Desire, Knowledge, Ability, Reinforcement). Covers change impact assessment, stakeholder readiness, communication campaigns, training plans, resistance management, and adoption measurement to ensure project deliverables are actually used.

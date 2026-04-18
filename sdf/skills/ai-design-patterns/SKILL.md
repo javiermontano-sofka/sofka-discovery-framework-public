@@ -1,11 +1,6 @@
 ---
 name: metodologia-ai-design-patterns
-description: >
-  AI-specific design patterns and system tactics — Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection,
-  Explainability Wrapper, Canary Deployment, Bulkhead, and traditional patterns adapted for AI. This skill should be used
-  when the user asks to "select AI design patterns", "apply ML patterns", "design drift detection", "implement feature store",
-  "plan shadow deployment", "design champion-challenger", "select availability tactics for AI", or mentions AI anti-patterns,
-  maintainability tactics, fault recovery for models, or pattern selection for ML systems.
+description: "Use this skill when the user asks about ai design patterns: AI-specific design patterns and system tactics — Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection, Explainability Wrapper, Canary Deployment, Bulkhead, and traditional patterns adapted for AI."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AI Design Patterns: Patterns & Tactics for AI-Enabled Systems
 
 AI design patterns define reusable solutions to recurring architectural problems in AI systems. This skill produces a pattern selection analysis covering maintainability tactics, availability tactics, AI-specific patterns (Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection), traditional patterns adapted for AI, anti-pattern detection, and a decision framework that maps system requirements to recommended patterns.

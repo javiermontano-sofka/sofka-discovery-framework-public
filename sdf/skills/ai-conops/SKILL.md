@@ -1,11 +1,6 @@
 ---
 name: metodologia-ai-conops
-description: >
-  Concept of Operations (CONOPS) for AI systems — system vision, stakeholder mapping, AI-human interaction spectrum,
-  business value assessment, success metrics, and operational modes. This skill should be used when the user asks to
-  "define the AI operational concept", "map AI stakeholders", "design AI-human interaction levels", "assess AI business value",
-  "define AI success metrics", "plan AI operational modes", or mentions CONOPS, IEEE 1362, AI autonomy levels,
-  AI value matrix, or AI system vision.
+description: "Use this skill when the user asks about ai conops: Concept of Operations (CONOPS) for AI systems — system vision, stakeholder mapping, AI-human interaction spectrum, business value assessment, success metrics, and operational modes."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AI CONOPS: Operational Concept for AI-Enabled Systems
 
 CONOPS for AI systems defines *what the system does, for whom, and under what conditions* — before architecture begins. Aligned with IEEE 1362-2022, this skill produces the operational concept document that drives all downstream architectural decisions: stakeholder identification, interaction autonomy levels, business value assessment, measurable success metrics, and operational modes with their state transitions.

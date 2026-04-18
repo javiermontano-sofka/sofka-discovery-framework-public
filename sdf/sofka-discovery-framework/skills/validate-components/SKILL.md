@@ -2,14 +2,13 @@
 name: validate-components
 description: "Validates frontmatter and body structure of all skills, agents, and commands in a plugin. Triggers: validate components, check frontmatter, component audit, skill validation."
 author: JM Labs (Javier Montaño)
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Validate Components
 
 > "Frontmatter is the API contract of a skill. Without it, the runtime cannot discover, route, or constrain."

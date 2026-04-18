@@ -7,8 +7,8 @@ description: >
   assessment, PMO value assessment. Triggers on: evaluates PMO operating model effectiveness,
   measures stakeholder value perception, assesses PMO service catalog maturity, quantifies
   PMO impact on project success rates, produces PMO transformation roadmap.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # PMO Assessment
 
 **TL;DR**: Evaluates PMO effectiveness across strategic alignment, governance quality, service delivery, stakeholder satisfaction, and value realization. Assesses the PMO's operating model (supportive, controlling, directive), its service catalog maturity, and its perceived value by both project teams and executive sponsors. Produces a PMO effectiveness scorecard and a transformation roadmap.

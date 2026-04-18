@@ -9,8 +9,8 @@ description: >
   "legacy system review", "technical health check".
 argument-hint: "<codebase-path-or-project-name>"
 author: Javier Montano · Comunidad MetodologIA
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AS-IS Analysis — Universal Current-State Assessment
 
 Generates a 10-section current-state assessment for ANY MetodologIA service type (SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design). For software codebases (SDA), produces: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. For other service types, sections S1-S8 adapt to domain-specific dimensions while S0 (Executive Dashboard), S9 (Risk Register), and S10 (Recommendations) remain universal.

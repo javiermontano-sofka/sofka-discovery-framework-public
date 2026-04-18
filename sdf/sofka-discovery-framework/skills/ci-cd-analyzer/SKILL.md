@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Pipeline health, build times, flakiness, and deployment strategy analysis.
   Trigger: "analyze CI/CD", "pipeline health", "build times", "deployment strategy".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # CI/CD Analyzer
 
 Evaluate continuous integration and deployment pipelines for reliability, speed, security practices, and deployment strategy maturity.

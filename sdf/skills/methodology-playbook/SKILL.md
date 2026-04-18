@@ -1,12 +1,6 @@
 ---
 name: apex-methodology-playbook
-description: >
-  Use when the user asks to "create a methodology playbook", "define project ceremonies",
-  "design cadences and rituals", "build a Definition of Done", "operationalize methodology",
-  or mentions methodology playbook, ceremony design, cadence definition, methodology selection,
-  DoD, project rituals. Triggers on: codifies methodology into actionable playbook, designs
-  ceremonies with agendas and durations, creates Definition of Done per deliverable type,
-  maps roles to ceremonies, produces ceremony calendar.
+description: "Use when the user asks to 'create a methodology playbook', 'define project ceremonies', 'design cadences and rituals', 'build a Definition of Done', 'operationalize methodology', or mentions methodology playbook, ceremony design, cadence definition, methodology selection, DoD, project rituals."
 allowed-tools:
   - Read
   - Write
@@ -15,7 +9,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Methodology Playbook
 
 **TL;DR**: Core Phase 4 deliverable that codifies the selected methodology into an actionable playbook: ceremonies with agendas and durations, cadences with frequencies and participants, Definition of Done per deliverable type, escalation protocols, and role responsibilities. Transforms methodology selection from a slide deck decision into an operational contract the team can execute.

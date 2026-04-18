@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to design targeted engagement strategies, move stakeholders
   from current to desired engagement levels, build champion coalitions, analyze and respond
   to resistance, or track engagement effectiveness over time.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Stakeholder Engagement Strategy
 
 **TL;DR**: Designs targeted engagement strategies to move each stakeholder from their current engagement level to the desired level. Includes influence tactics, engagement activities, coalition building, and resistance management approaches tailored to stakeholder power, interest, and current disposition.

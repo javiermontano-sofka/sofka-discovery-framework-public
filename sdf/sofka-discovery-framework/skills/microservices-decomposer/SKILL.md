@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Decomposes monoliths into microservices using bounded contexts, DDD, and service boundary analysis.
   Trigger: "decompose microservices", "bounded contexts", "service boundaries", "DDD decomposition", "split monolith".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Microservices Decomposer
 
 Applies Domain-Driven Design techniques to identify bounded contexts and service boundaries, producing a decomposition plan that balances autonomy with coordination cost.

@@ -8,8 +8,8 @@ argument-hint: "<system-or-project-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Data Science Architecture: ML/AI System Design & Model Lifecycle
 
 Data science architecture defines how machine learning systems are structured end-to-end — from feature engineering through model training, serving, monitoring, and governance. This skill produces ML system documentation that enables teams to build reproducible, scalable, and responsible AI systems.

@@ -7,8 +7,8 @@ description: >
   risk management. Triggers on: identifies upside potential in project execution,
   applies exploit/share/enhance/accept strategies, quantifies opportunity value,
   integrates opportunity actions into project plan, tracks opportunity realization.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Opportunity Management (Positive Risk)
 
 **TL;DR**: Manages positive risks (opportunities) using exploit, share, enhance, and accept strategies. Identifies upside potential in project execution that could deliver additional value, accelerate timelines, or reduce costs beyond baseline expectations.

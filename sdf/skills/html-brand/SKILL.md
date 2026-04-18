@@ -1,15 +1,6 @@
 ---
 name: sofka-html-brand
-description: >
-  This skill should be used when the user asks to "create a Sofka HTML document",
-  "generate a branded report", "build an executive deliverable", "upgrade HTML to
-  brand standards", "fix broken Sofka styles", "convert markdown to HTML",
-  "batch convert deliverables to HTML", or mentions Sofka HTML, entregable,
-  brand deliverable, Design System v5, Dark Authority, or any combination of
-  Sofka + document/report/summary/analysis/roadmap. Also use when batch-upgrading
-  existing HTML files to Sofka brand compliance, even if the user does not
-  explicitly say "brand". Triggers on: convert to HTML, branded HTML, DS v5,
-  markdown to HTML pipeline, Mermaid diagrams in HTML.
+description: "This skill should be used when the user asks to 'create a Sofka HTML document', 'generate a branded report', 'build an executive deliverable', 'upgrade HTML to brand standards', 'fix broken Sofka styles', 'convert markdown to HTML', 'batch convert deliverables to HTML', or mentions Sofka HTML, entregable, brand deliverable, Design System v5, Dark Authority, or any combination of Sofka + document/report/summary/analysis/roadmap."
 model: opus
 context: fork
 allowed-tools:
@@ -20,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Sofka HTML Brand — Document Generator
 
 Generate beautiful, accessible, on-brand HTML deliverables following the Sofka Design System v5 ("Dark Authority" for hero/footer, high-contrast light content). Every output is a self-contained single-file HTML document with all CSS inline, no external dependencies beyond font CDNs, and full WCAG AA accessibility.

@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Applies a 10-point quality rubric to every artifact with iterative refinement until excellence criteria are met.
   Trigger: "excellence check", "quality rubric", "review artifact", "quality loop", "refine output".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Excellence Loop
 
 Applies a rigorous 10-point quality rubric to every deliverable artifact, identifying gaps and iterating until all criteria score above threshold — transforming good work into excellent work.

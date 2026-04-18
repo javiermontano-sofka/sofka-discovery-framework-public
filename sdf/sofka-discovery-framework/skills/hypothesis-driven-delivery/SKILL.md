@@ -7,8 +7,8 @@ description: >
   build-measure-learn. Triggers on: converts assumptions into testable hypotheses, designs
   minimum viable experiments, facilitates pivot-or-persevere decisions, documents validated
   learning, ranks hypotheses by risk and impact.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Hypothesis-Driven Delivery (HDD)
 
 **TL;DR**: Applies hypothesis-driven delivery to project decisions, transforming assumptions into testable hypotheses with clear success/failure criteria. Uses build-measure-learn cycles to validate project assumptions before committing full investment, reducing risk through validated learning.

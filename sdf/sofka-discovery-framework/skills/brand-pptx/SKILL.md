@@ -9,8 +9,8 @@ argument-hint: "[executive|technical] [source-file.md] [output_path.pptx]"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # MetodologIA Brand PPTX — Neo-Swiss Presentation Generator
 
 Generates production-ready PowerPoint presentations following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every deck uses navy backgrounds, gold accents, Poppins typography, and professional slide layouts optimized for executive and technical audiences.

@@ -6,8 +6,8 @@ description: >
   or mentions project governance, steering committee, decision framework, authority levels,
   escalation matrix. Triggers on: builds a governance charter, designs escalation paths,
   defines decision-making authority, creates steering committee structure, maps authority levels.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Governance Framework & Escalation Paths
 
 **TL;DR**: Designs the project governance model including decision-making authority levels, steering committee structure, escalation paths, reporting cadence, and governance ceremonies. Ensures clear authority, timely decisions, and appropriate oversight without bureaucratic overhead.

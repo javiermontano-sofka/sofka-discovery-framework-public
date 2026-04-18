@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Post-incident analysis, timeline reconstruction, contributing factor identification, and prevention recommendations.
   Trigger: analyze incident, post-mortem, outage review, incident timeline, blameless review.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Incident Analyzer
 
 Structured post-incident analysis that reconstructs timelines, identifies contributing factors, and produces actionable prevention recommendations.

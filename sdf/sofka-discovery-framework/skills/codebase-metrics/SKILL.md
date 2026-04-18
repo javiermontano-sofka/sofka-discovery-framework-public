@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Cyclomatic complexity, coupling, cohesion, and size metrics measurement.
   Trigger: "measure complexity", "code metrics", "coupling analysis", "cohesion".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Codebase Metrics
 
 Measure structural quality through cyclomatic complexity, afferent/efferent coupling, cohesion indices, and size distribution to identify hotspots and health trends.

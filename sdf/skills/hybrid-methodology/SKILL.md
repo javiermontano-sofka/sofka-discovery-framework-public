@@ -1,12 +1,6 @@
 ---
 name: apex-hybrid-methodology
-description: >
-  Use when the user asks to "design a hybrid approach", "combine agile and waterfall",
-  "create hybrid methodology", "integrate iterative and sequential delivery",
-  "build adaptive lifecycle", or mentions hybrid PM, water-scrum-fall, bimodal,
-  agile-traditional blend, adaptive lifecycle. Triggers on: designs a hybrid methodology,
-  maps components to delivery approaches, creates interface agreements between agile and
-  waterfall, unifies governance across methodologies, blends iterative and predictive planning.
+description: "Use when the user asks to 'design a hybrid approach', 'combine agile and waterfall', 'create hybrid methodology', 'integrate iterative and sequential delivery', 'build adaptive lifecycle', or mentions hybrid PM, water-scrum-fall, bimodal, agile-traditional blend, adaptive lifecycle."
 allowed-tools:
   - Read
   - Write
@@ -15,7 +9,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Hybrid Methodology Design
 
 **TL;DR**: Designs a hybrid project management approach that combines agile and traditional practices based on project characteristics. Maps which components use predictive planning (fixed scope, compliance) and which use adaptive delivery (uncertain scope, rapid feedback), creating a coherent integrated methodology.

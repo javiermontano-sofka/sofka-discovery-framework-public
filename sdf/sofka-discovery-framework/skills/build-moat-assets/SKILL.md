@@ -5,8 +5,8 @@ description: >
   Create MOAT directory structures and populate asset files (references/, examples/, prompts/, scripts/, assets/) for plugin skills.
   Trigger: build MOAT assets, create skill assets, populate references, generate examples, build skill directories.
 argument-hint: "<spec-package-path> <target-plugin-path>"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Build MOAT Assets
 
 > "Structure without content is an empty house; content without structure is a pile of bricks."

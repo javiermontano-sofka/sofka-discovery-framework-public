@@ -5,15 +5,14 @@ description: >
   Generate production-ready SKILL.md and MOAT asset files from a skill design. Enforces MOAT quality dimensions (>=7 on all 6), 500-line body limit, progressive disclosure.
   Trigger: spec skill, generate skill spec, write SKILL.md, create skill specification, produce skill MOAT.
 argument-hint: "<skill-design-path>"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
   - Bash
 ---
-
 # Spec Skill MOAT
 
 > "A skill without structure is a prompt with delusions of grandeur."

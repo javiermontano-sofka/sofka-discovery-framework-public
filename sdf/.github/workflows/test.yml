@@ -1,0 +1,111 @@
+name: SDF Quality
+
+on:
+  push:
+    branches: [main, develop, "release/**"]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  audits:
+    name: Structural audits
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit SDK compliance (no Agent in subagents, etc.)
+        run: bash scripts/audit-sdk-compliance.sh
+      - name: Audit command prefixes (only /sdf:)
+        run: bash scripts/audit-command-prefixes.sh
+
+  yaml-validity:
+    name: YAML validity (1,104 SKILL.md + agents)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - name: Install pyyaml
+        run: pip install pyyaml
+      - name: Validate frontmatter parses
+        run: python scripts/tests/validate_yaml.py
+
+  pytest:
+    name: Functional tests (extractors + brand HTML + ecosystem)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - name: Install plugin requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Run pytest suite
+        run: |
+          export PYTHONPATH="$GITHUB_WORKSPACE/scripts:$GITHUB_WORKSPACE/scripts/ecosystem:$PYTHONPATH"
+          # Replicate venv path the tests expect
+          mkdir -p scripts/.venv/bin
+          ln -sf "$(which python)" scripts/.venv/bin/python
+          pytest scripts/tests/ -v
+
+  smoke-render:
+    name: Brand HTML render smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Bootstrap venv
+        run: |
+          mkdir -p scripts/.venv/bin
+          ln -sf "$(which python)" scripts/.venv/bin/python
+      - name: Render sample markdown
+        run: |
+          cat > /tmp/demo.md <<'EOF'
+          # Comité SAGE — CI Smoke
+
+          > TL;DR: render test in CI
+
+          ## Hallazgos
+          - Custom code debt alto [CÓDIGO]
+          - Datos incompletos [ADJUNTO:customers.csv:col=Country]
+          - Recomendación [INFERENCIA]
+
+          ## Tabla
+          | Fase | P50 | P80 |
+          |------|-----|-----|
+          | Prepare | 24 | 32 |
+          EOF
+          bash scripts/render-brand-html.sh /tmp/demo.md --out /tmp/out.html --style discovery
+      - name: Verify brand tokens present
+        run: grep -q "var(--o)" /tmp/out.html
+      - name: Verify no green colors (brand rule)
+        run: |
+          if grep -qE "#(00[fF]{2}00|2ecc71)|: green\\b" /tmp/out.html; then
+            echo "❌ Green color detected — brand rule violation" >&2
+            exit 1
+          fi
+      - name: Verify tables wrapped in .tw
+        run: grep -q '<div class="tw"><table' /tmp/out.html
+      - name: Verify evidence tags highlighted
+        run: |
+          grep -q 'class="t td"' /tmp/out.html  # CÓDIGO
+          grep -q 'class="t tx"' /tmp/out.html  # ADJUNTO
+          grep -q 'class="t ti"' /tmp/out.html  # INFERENCIA
+
+  compliance-audit:
+    name: Semantic compliance audit
+    runs-on: ubuntu-latest
+    needs: [audits, yaml-validity]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - name: Audit grader/eval semantic content
+        run: |
+          export PYTHONPATH="$GITHUB_WORKSPACE/scripts/ecosystem:$PYTHONPATH"
+          python scripts/ecosystem/audit-compliance.py

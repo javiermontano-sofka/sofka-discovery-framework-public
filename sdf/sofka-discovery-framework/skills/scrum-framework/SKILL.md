@@ -5,9 +5,9 @@ description: >
   "set up Scrum artifacts", "design sprint cadence", or mentions Scrum, sprint planning,
   daily standup, sprint review, retrospective, product backlog, sprint backlog,
   Definition of Done, velocity tracking.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-scrum-framework"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-scrum-fra
   - Grep
   - Bash
 ---
-
 # Scrum Framework Implementation
 
 **TL;DR**: Designs and tailors a Scrum implementation including sprint cadence, ceremony definitions, artifact templates, role assignments, and Definition of Done. Adapts Scrum to the organization's context while preserving the empirical pillars of transparency, inspection, and adaptation.

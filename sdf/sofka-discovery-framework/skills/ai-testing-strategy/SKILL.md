@@ -8,9 +8,9 @@ description: >
   drift simulation, model regression testing, bias testing, explainability testing, or AI test automation.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for metodologia-ai-testing-strategy"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ argument-hint: "Context, project name, or specific focus area for metodologia-ai
   - Grep
   - Bash
 ---
-
 # AI Testing Strategy: Comprehensive Verification for AI-Enabled Systems
 
 AI testing strategy defines how to verify that an AI system behaves correctly, fairly, securely, and reliably across all layers — from data ingestion through model inference to production monitoring. This skill produces a testing strategy document covering the testing scope matrix, model and prediction tests, data quality tests, compliance and fairness tests, integration approaches, and CI/CD test automation for AI pipelines.

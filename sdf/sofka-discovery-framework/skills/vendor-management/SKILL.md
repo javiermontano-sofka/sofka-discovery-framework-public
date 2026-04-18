@@ -5,9 +5,9 @@ description: >
   "monitor SLAs", "evaluate supplier compliance", "create vendor scorecards",
   or mentions vendor management, supplier performance, SLA monitoring,
   contract compliance, vendor governance, vendor scorecard.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-vendor-management"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-vendor-ma
   - Grep
   - Bash
 ---
-
 # Vendor Performance & SLA Monitoring
 
 **TL;DR**: Manages vendor relationships through performance tracking, SLA monitoring, contract compliance verification, and vendor governance. Produces vendor scorecards, SLA dashboards, and escalation protocols to ensure vendors deliver per contractual commitments.

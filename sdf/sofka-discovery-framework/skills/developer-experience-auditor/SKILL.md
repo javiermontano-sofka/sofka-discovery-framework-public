@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Developer experience friction analysis, onboarding quality, and tooling assessment.
   Trigger: "audit DX", "developer experience", "onboarding quality", "developer friction".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Developer Experience Auditor
 
 Evaluate the developer experience across setup, development workflow, testing, debugging, and deployment for friction points that slow teams down.

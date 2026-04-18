@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs logging, metrics, and distributed tracing architectures using OpenTelemetry and observability platforms.
   Trigger: "observability design", "logging architecture", "metrics strategy", "distributed tracing", "OpenTelemetry".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Observability Design
 
 Architects comprehensive observability systems covering the three pillars — logs, metrics, and traces — with correlation strategies, alerting rules, and dashboard design for operational excellence.

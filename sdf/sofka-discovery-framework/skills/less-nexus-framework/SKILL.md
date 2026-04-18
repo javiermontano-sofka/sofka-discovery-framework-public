@@ -6,8 +6,8 @@ description: >
   Nexus, multi-team Scrum, cross-team coordination, integrated increment. Triggers on: designs
   multi-team Scrum scaling, configures shared product backlog, establishes cross-team coordination
   events, creates integration strategy for 2-8 teams, produces scaling metrics dashboard.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # LeSS / Nexus Multi-Team Scaling
 
 **TL;DR**: Designs a multi-team Scrum scaling approach using LeSS (Large-Scale Scrum) or Nexus. Configures shared product backlog, cross-team coordination events, integration practices, and dependency management for 2-8 teams working on a single product.

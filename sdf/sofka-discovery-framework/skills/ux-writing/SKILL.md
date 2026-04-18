@@ -9,8 +9,8 @@ description: >
   "Flesch-Kincaid", "escritura UX", "legibilidad", "cognitive load".
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # UX Writing: Information Design & Cognitive Accessibility Standards
 
 Ensures deliverables are business-readable, scannable, and cognitively accessible. Provides 5 standards: information hierarchy, cognitive load reduction, scannability, microcopy, and readability heuristics. Spanish-first bilingual support.

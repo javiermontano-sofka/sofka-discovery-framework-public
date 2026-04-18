@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 description: >
   REST, GraphQL, and gRPC contract analysis including versioning, consistency, and completeness.
   Trigger: "analyze API", "API surface", "endpoint audit", "contract analysis".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # API Surface Analyzer
 
 Discover, catalog, and evaluate all API contracts exposed by the system — REST endpoints, GraphQL schemas, gRPC services — for consistency, completeness, and design quality.

@@ -1,10 +1,6 @@
 ---
 name: metodologia-aws-architecture-design
-description: >
-  Designs AWS cloud architectures for AI and GenAI workloads applying the Well-Architected Framework
-  GenAI Lens (6 pillars: GENOPS, GENSEC, GENREL, GENPERF, GENCOST, GENSUS), AWS service selection
-  matrices, RAG/Agent/Fine-Tuning patterns, cost optimization strategies, and enterprise reference
-  architectures. Activated when designing, evaluating, or migrating AI systems on AWS.
+description: "Use this skill when the user asks about aws architecture design: Designs AWS cloud architectures for AI and GenAI workloads applying the Well-Architected Framework GenAI Lens (6 pillars: GENOPS, GENSEC, GENREL, GENPERF, GENCOST, GENSUS), AWS service selection matrices, RAG/Agent/Fine-Tuning patterns, cost optimization strategies, and enterprise reference architectures. Activated when designing, evaluating, or migrating AI systems on AWS."
 model: opus
 context: fork
 allowed-tools:
@@ -15,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AWS Architecture Design for AI/GenAI Workloads
 
 Diseñar, evaluar y optimizar arquitecturas AWS para sistemas de inteligencia artificial y AI generativa,

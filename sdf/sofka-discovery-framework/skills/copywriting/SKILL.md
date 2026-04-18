@@ -7,15 +7,14 @@ description: >
   cost-of-inaction narratives, and compelling summaries. Use when generating executive
   summaries, pitch narratives, scenario value propositions, recommendation justifications,
   or any prose that must drive a decision.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
 ---
-
 # Copywriting — Persuasive Executive Communication
 
 Transforms technical findings into decision-driving prose. Owns value propositions, calls to action, cost-of-inaction narratives, executive summaries, and recommendation justifications across all discovery deliverables.

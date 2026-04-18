@@ -8,8 +8,8 @@ argument-hint: "<enterprise_or_organization_name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Enterprise Architecture: Strategy & Portfolio Alignment
 
 Enterprise architecture aligns technology initiatives with business strategy. It defines what capabilities the enterprise needs, what technologies support them, how decisions are governed, and how investments are prioritized.

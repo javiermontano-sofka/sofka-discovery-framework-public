@@ -2,13 +2,7 @@
 name: metodologia-staff-augmentation-discovery
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<project-or-client-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
-description: >
-  Staff augmentation discovery — talent gap analysis, skills matrix profiling, team composition modeling,
-  onboarding and ramp-up design, retention framework, and staffing roadmap.
-  Use when the user asks to "assess staffing needs", "analyze talent gaps", "design team composition",
-  "plan staff augmentation", "evaluate team skills", "create staffing roadmap", "onboarding plan",
-  "ramp-up strategy", "retention framework", or mentions talent gap, skills matrix, team topology,
-  augmentation, nearshore, offshore, or staffing plan.
+description: "Use this skill when the user asks about staff augmentation discovery: Staff augmentation discovery — talent gap analysis, skills matrix profiling, team composition modeling, onboarding and ramp-up design, retention framework, and staffing roadmap."
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +13,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Staff Augmentation Discovery — Talent Gap Analysis & Staffing Roadmap
 
 Genera un análisis integral de necesidades de staff augmentation que cubre talent gap analysis, skills matrix profiling, team composition modeling, onboarding & ramp-up design, retention framework, y staffing roadmap. Diseñado para engagements donde el cliente necesita aumentar su capacidad con profesionales externos, ya sea nearshore, offshore, o on-site.

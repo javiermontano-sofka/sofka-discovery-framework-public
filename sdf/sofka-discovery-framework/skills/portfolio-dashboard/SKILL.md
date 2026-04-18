@@ -7,8 +7,8 @@ description: >
   Triggers on: aggregates project health into portfolio heatmap, produces resource utilization
   views, creates budget rollup summaries, visualizes risk concentration across portfolio,
   generates governance action items for steering committee.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Portfolio-Level Dashboard & Reporting
 
 **TL;DR**: Produces portfolio-level reporting including aggregated health heatmaps, resource utilization across projects, budget rollup, risk exposure, and strategic alignment visualization. Provides executives with a single view of portfolio health enabling governance decisions.

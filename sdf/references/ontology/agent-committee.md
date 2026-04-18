@@ -143,26 +143,7 @@ Se activan exclusivamente en la fase 05b (Feasibility Think Tank). Cada sabio em
 | Especialistas | 36 | Por {TIPO_SERVICIO} + fase | Bajo demanda |
 | Think Tank | 7 (subset de especialistas) | Solo Feasibility | Fase 05b |
 
-**Total base:** 48 agentes únicos (los 7 Sabios son un subset de los 36 especialistas).
-
----
-
-## SAP Specialists (8 agentes adicionales)
-
-Activados cuando `{TIPO_SERVICIO}=SAP` o se invoca `/sdf:sap-discovery`.
-
-| Agente | Especialidad | Skills Asignados | Activación |
-|--------|-------------|-----------------|------------|
-| `sap-discovery-conductor` | Orquestación pipeline SAP | sap-discovery, sap-activate, sap-fit-to-standard | Lead SAP |
-| `sap-co-specialist` | Controlling: cost centers, ATs, CO-PA | sap-implementation, sap-gap-analysis, regional-finance | F2S CO |
-| `sap-sd-specialist` | Sales & Distribution: billing, pricing | sap-implementation, sap-fit-to-standard | F2S SD |
-| `sap-ps-specialist` | Project System: WBS, milestones | sap-implementation, sap-fit-to-standard | F2S PS |
-| `sap-fi-specialist` | Financial: company codes, intercompany | sap-implementation, sap-gap-analysis, regional-finance | F2S FI |
-| `sap-integration-architect` | BTP, CPI, API management | sap-integration, sap-btp-extensibility | Integration |
-| `sap-migration-lead` | Strangler Fig, Migration Cockpit | sap-data-migration, sap-testing-validation | Migration |
-| `sap-change-management-lead` | ADKAR, Enable Now, training | sap-change-adoption, change-readiness-assessment | OCM |
-
-**Total con SAP:** 56 agentes (48 base + 8 SAP specialists).
+**Total:** 48 agentes únicos (los 7 Sabios son un subset de los 36 especialistas).
 
 ---
 

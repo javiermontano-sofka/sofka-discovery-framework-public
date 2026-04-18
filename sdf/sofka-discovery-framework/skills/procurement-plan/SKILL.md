@@ -7,8 +7,8 @@ description: >
   Triggers on: produces make-or-buy decision matrices, drafts RFP templates with evaluation
   scorecards, recommends contract types per procurement item, creates procurement timelines,
   designs vendor evaluation criteria.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Procurement Planning & Make-or-Buy Analysis
 
 **TL;DR**: Produces a procurement management plan including make-or-buy decisions for each work package, RFP templates, vendor evaluation criteria, contract type recommendations (FFP, T&M, CPFF), and procurement timeline aligned with the project schedule.

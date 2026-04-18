@@ -6,8 +6,8 @@ description: >
   flow diagram, pull system, WIP limits, cycle time. Triggers on: designs Kanban board layout,
   calculates initial WIP limits, defines pull policies, establishes flow measurement framework,
   produces Kanban system design document.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Kanban System Design
 
 **TL;DR**: Designs a Kanban system including board layout, WIP limits, flow policies, cadences, and metrics (lead time, cycle time, throughput, CFD). Optimizes for flow efficiency and predictability without imposing iteration boundaries.

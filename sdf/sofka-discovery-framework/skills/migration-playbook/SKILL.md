@@ -8,8 +8,8 @@ argument-hint: "<migration-or-project-name>"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Migration Playbook: Execution Strategy & Cutover Planning
 
 Migration playbook provides detailed execution guidance for system migrations, covering strategy selection, data migration, cutover choreography, and rollback procedures. The skill produces migration playbooks, cutover checklists, and rollback plans that minimize risk during system transitions.

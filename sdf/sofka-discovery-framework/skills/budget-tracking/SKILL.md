@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to analyze cost variances against baseline, monitor
   contingency reserve consumption, update budget forecasts, generate burn rate analysis,
   or produce corrective action recommendations for cost overruns.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Budget Tracking & Cost Variance
 
 **TL;DR**: Monitors budget execution against baseline including cost variance analysis, contingency burn rate, forecast updates, and budget health indicators. Provides early warning of cost overruns through trend analysis and recommends corrective actions when variances exceed thresholds.

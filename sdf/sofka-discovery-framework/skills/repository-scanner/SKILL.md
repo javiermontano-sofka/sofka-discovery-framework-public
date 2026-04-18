@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Automated tech stack, framework, and entry point detection from repository structure.
   Trigger: "scan repo", "detect stack", "what technologies", "analyze repository".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Repository Scanner
 
 Identify the complete technology stack, frameworks, build systems, and entry points of any codebase through structural and content analysis.

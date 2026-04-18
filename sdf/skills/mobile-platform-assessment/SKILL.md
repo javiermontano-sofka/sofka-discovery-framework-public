@@ -2,13 +2,7 @@
 name: metodologia-mobile-platform-assessment
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<app-or-project-name>"
-description: >
-  Unified mobile platform assessment — merges former mobile-architecture and mobile-assessment into one skill.
-  Covers cross-platform vs native strategy, store compliance, app vitals, architecture patterns, offline-first design,
-  performance optimization, dependency health, and remediation roadmaps.
-  Use when the user asks to "assess mobile architecture", "evaluate mobile platform", "audit app health",
-  "choose between native and cross-platform", "check store compliance", "optimize mobile performance",
-  "review app dependencies", or mentions Flutter, React Native, KMP, MVVM, crash rate, ANR, app size, cold start time, or mobile tech debt.
+description: "Use this skill when the user asks about mobile platform assessment: Unified mobile platform assessment — merges former mobile-architecture and mobile-assessment into one skill."
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +13,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Mobile Platform Assessment: Strategy, Health & Remediation
 
 Mobile platform assessment unifies two formerly separate concerns — designing mobile architecture and evaluating existing mobile app health — into a single comprehensive skill. It produces deliverables covering platform strategy, architecture patterns, offline-first design, performance optimization, store compliance, dependency security, code quality, and prioritized remediation.

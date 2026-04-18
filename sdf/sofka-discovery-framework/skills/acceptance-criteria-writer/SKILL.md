@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Writes testable acceptance criteria in Given/When/Then format, covering happy paths, edge cases, and error scenarios.
   Trigger: "acceptance criteria", "given when then", "write AC", "define done", "user story criteria".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Acceptance Criteria Writer
 
 Transforms vague requirements into precise, testable acceptance criteria using structured Given/When/Then format — covering happy paths, edge cases, error handling, and non-functional requirements.

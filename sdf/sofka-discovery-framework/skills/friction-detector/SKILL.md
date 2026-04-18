@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Systematic scan across 10 friction categories affecting development velocity.
   Trigger: "detect friction", "what's slowing us down", "friction analysis", "velocity blockers".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Friction Detector
 
 Systematically identify friction across 10 categories that reduce development velocity, code quality, and team effectiveness.

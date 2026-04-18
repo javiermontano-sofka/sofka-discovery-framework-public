@@ -5,9 +5,9 @@ description: >
   "build a business case", "document success criteria", "formalize project authorization",
   or mentions charter, project initiation, sponsor approval, project justification,
   SMART objectives, project kickoff document.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-project-charter"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ argument-hint: "Context, project name, or specific focus area for apex-project-c
   - Bash
   - WebFetch
 ---
-
 # Project Charter Generation
 
 **TL;DR**: Produces a formal project charter document including business case justification, measurable objectives, success criteria, high-level scope, key milestones, assumptions, constraints, and sponsor authorization. The charter is the single authorizing document that formally initiates the project and grants the PM authority to apply organizational resources.

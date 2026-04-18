@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to optimize context window usage, configure progressive
   MOAT loading levels, design intelligent pruning strategies, manage session state persistence,
   or implement token-efficient skill routing across the agent framework.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Context Window Optimization
 
 **TL;DR**: Optimizes context window usage through progressive MOAT loading (L1/L2/L3), intelligent pruning, session state management, and token-efficient skill routing. Ensures the AI agent operates within context limits while maintaining access to the knowledge needed for the current task.

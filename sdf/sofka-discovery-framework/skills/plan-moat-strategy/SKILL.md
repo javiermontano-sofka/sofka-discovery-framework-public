@@ -5,15 +5,14 @@ description: >
   Design MOAT asset strategy per skill: which subdirectories needed, what content they contain, naming conventions.
   Trigger: plan MOAT, MOAT strategy, asset planning, reference planning, plan skill assets.
 argument-hint: "<architecture-plan-path>"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
   - Bash
 ---
-
 # Plan MOAT Strategy
 
 > "A skill without references is a skill that hallucinates. A skill without examples is a skill that guesses."

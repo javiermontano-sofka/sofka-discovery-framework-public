@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 description: >
   Phased execution plans with dependencies, checkpoints, rollback strategies, and file change plans.
   Trigger: plan implementation, create phases, design rollback, file change plan.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Implementation Planning
 
 Translates architecture decisions into actionable, phased execution plans.

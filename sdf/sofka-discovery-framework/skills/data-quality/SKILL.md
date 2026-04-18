@@ -8,8 +8,8 @@ description: >
   "detect data anomalies", "define data SLAs", or mentions data profiling, quarantine patterns, or remediation workflows.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Data Quality: Framework Design for Validation, Contracts & Monitoring
 
 Data quality architecture defines how organizations detect, prevent, and remediate data issues through profiling, validation rules, anomaly detection, contracts between teams, and SLA monitoring. This skill produces data quality documentation that enables teams to build trust in their data through systematic quality management.

@@ -8,8 +8,8 @@ description: >
   SageMaker review, AWS GenAI security assessment, or AWS AI cost optimization review.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AWS Architecture Audit for AI/GenAI Workloads
 
 Auditar arquitecturas AWS para workloads de AI/GenAI contra el Well-Architected Framework GenAI Lens,

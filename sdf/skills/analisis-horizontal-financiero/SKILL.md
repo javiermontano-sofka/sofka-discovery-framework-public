@@ -1,17 +1,7 @@
 ---
 name: analisis-horizontal-financiero
 author: JM Labs (Javier Montano)
-description: >
-  Análisis horizontal de estados financieros (P&L, Balance General, Flujo de Caja,
-  notas/anexos) con comparación YoY de 2 períodos. Genera informes ejecutivos
-  estandarizados para Junta Directiva y C-Level con variaciones absolutas, relativas,
-  drivers de cambio, alertas y recomendaciones estratégicas. Usa esta skill SIEMPRE
-  que el usuario mencione análisis horizontal, comparar estados financieros, variación
-  año contra año, YoY, análisis de tendencias financieras, comparación de períodos,
-  evolución financiera, cambios interanuales, delta financiero, o adjunte cualquier
-  estado financiero y pida análisis comparativo.
-  Trigger: análisis horizontal, comparar estados financieros, YoY, variación interanual,
-  evolución financiera, delta financiero, comparar períodos.
+description: "Use this skill when the user asks about analisis horizontal financiero: Análisis horizontal de estados financieros (P&L, Balance General, Flujo de Caja, notas/anexos) con comparación YoY de 2 períodos."
 argument-hint: "<archivo-financiero.xlsx|csv> [--periodos 2023,2024]"
 allowed-tools:
   - Read
@@ -21,7 +11,6 @@ allowed-tools:
   - Bash
   - Agent
 ---
-
 # Análisis Horizontal de Estados Financieros
 
 ## Propósito

@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Database schema, migration history, and entity relationship analysis.
   Trigger: "analyze data model", "schema review", "database structure", "entity relationships".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Data Model Analyzer
 
 Reverse-engineer and evaluate database schemas, ORM models, migration histories, and entity relationships for correctness, normalization, and evolution patterns.

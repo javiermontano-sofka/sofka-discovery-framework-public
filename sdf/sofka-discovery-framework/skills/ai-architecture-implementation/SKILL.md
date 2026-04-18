@@ -8,8 +8,8 @@ description: >
   RAG implementation, or agent framework setup.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AI Architecture Implementation: From Design to Production
 
 Guiar la implementación de arquitecturas AI desde el diseño hasta producción — selección de tecnología,

@@ -8,8 +8,8 @@ argument-hint: "<system-or-project-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Analytics Engineering: Transformation Pipeline Design & Data Modeling
 
 Analytics engineering defines how raw data is transformed into reliable, documented, and tested analytical models — source-to-target mapping, modeling patterns, transformation frameworks, testing, and documentation. This skill produces analytics engineering documentation that enables teams to build maintainable, trustworthy data transformation pipelines.

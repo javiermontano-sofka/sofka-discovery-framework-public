@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Plans release trains, semantic versioning strategy, changelog generation, and release coordination.
   Trigger: "release plan", "versioning strategy", "changelog", "release train", "shipping schedule".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Release Planner
 
 Designs release strategies that balance velocity with stability — including versioning schemes, release trains, changelog automation, and coordination across teams and services.

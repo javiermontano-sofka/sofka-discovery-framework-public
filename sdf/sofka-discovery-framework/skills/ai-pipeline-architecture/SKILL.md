@@ -7,9 +7,9 @@ description: >
   or mentions MLOps, training pipeline, inference pipeline, feature pipeline, Blue and Gold deployment, or pipeline patterns.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for metodologia-ai-pipeline-architecture"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ argument-hint: "Context, project name, or specific focus area for metodologia-ai
   - Grep
   - Bash
 ---
-
 # AI Pipeline Architecture: Development & Production Pipelines for AI Systems
 
 AI pipeline architecture defines how data flows through AI systems — from raw ingestion through model training and serving to production monitoring. This skill produces comprehensive pipeline architecture documentation covering development pipelines (experimentation to model artifact), production pipelines (data ingestion to prediction delivery), data store selection, model registry design, CI/CD strategy, and measurable requirements.

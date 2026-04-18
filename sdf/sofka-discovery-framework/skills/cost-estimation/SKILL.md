@@ -9,8 +9,8 @@ description: >
   final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
 argument-hint: "<project-or-initiative-name>"
 author: Javier Montano · Comunidad MetodologIA
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Cost Estimation: Effort Drivers, Magnitude Indicators & Investment Framing
 
 Translates technical scope into effort drivers, magnitude indicators, team composition models, and

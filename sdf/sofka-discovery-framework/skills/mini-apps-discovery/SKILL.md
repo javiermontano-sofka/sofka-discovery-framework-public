@@ -8,8 +8,8 @@ description: >
   low-code adoption roadmap. Use when the user asks to "evaluate low-code platforms", "assess citizen developer readiness",
   "mini apps strategy", "Power Platform assessment", "low-code governance", "no-code evaluation",
   "automation apps discovery", or mentions "citizen development", "low-code adoption", "mini apps".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Mini Apps & Low-Code Discovery — Citizen Development Readiness Assessment
 
 Generates a 6-section Mini Apps and Low-Code discovery covering citizen developer readiness, platform assessment, use case identification and prioritization, governance model, integration architecture, and a phased low-code adoption roadmap. Produces actionable findings with readiness scoring, platform comparison, and governed adoption strategy.

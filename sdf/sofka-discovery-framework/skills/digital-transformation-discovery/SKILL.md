@@ -11,8 +11,8 @@ argument-hint: "<program_or_client_name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -20,7 +20,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Digital Transformation Discovery — Program-Level Assessment & Roadmap
 
 Genera un discovery integral a nivel de programa de transformación digital que cubre digital maturity assessment, service portfolio mapping, program architecture, change readiness, multi-service integration, program governance, y transformation roadmap. Diseñado para engagements complejos donde múltiples servicios MetodologIA convergen en un programa unificado de transformación.

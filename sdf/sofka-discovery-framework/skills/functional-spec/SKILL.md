@@ -8,8 +8,8 @@ description: >
   Use when the user asks to "write functional specs", "document use cases", "define business rules",
   "create requirements", "specification document", or mentions "Phase 5a", "functional specification",
   "MVP scope", "acceptance criteria", "casos de uso", "reglas de negocio".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Functional Specification — Universal Deliverable Specification
 
 Generates detailed functional specifications: MVP modules, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrix, explicit scope boundaries, data model overview, integration specs, and per-module acceptance criteria.

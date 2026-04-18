@@ -10,8 +10,8 @@ argument-hint: "<format: html|docx|xlsx|pptx|md|all> <deliverable-type>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -19,7 +19,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # MetodologIA Design System Brand — Neo-Swiss Multi-Format Output Templates
 
 Produces production-ready deliverables in 5 formats (HTML, DOCX, XLSX, PPTX, MD) using the canonical **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every output is brand-compliant, accessible, self-contained, and ready for client delivery without manual intervention.

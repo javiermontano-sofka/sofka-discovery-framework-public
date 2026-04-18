@@ -7,8 +7,8 @@ description: >
   maturity model, PM capability assessment. Triggers on: scores PM maturity against
   established frameworks, produces capability heat maps, identifies improvement priorities,
   creates strategic maturity roadmap, benchmarks against industry standards.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Overall PM Maturity Assessment
 
 **TL;DR**: Assesses organizational project management maturity using established frameworks (OPM3, P3M3, or custom APEX model). Evaluates capability across project, program, and portfolio management domains, covering process standardization, measurement, control, and continuous improvement. Produces a maturity level determination, capability heat map, and a strategic improvement roadmap.

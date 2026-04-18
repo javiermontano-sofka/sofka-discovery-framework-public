@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to identify AI augmentation opportunities for PM,
   build predictive scheduling models, automate status report parsing with NLP, design
   intelligent resource allocation, or create a human-AI collaboration model for project governance.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AI-Augmented PM Assistant
 
 **TL;DR**: Identifies and designs AI augmentation opportunities across PM practices: predictive scheduling using historical velocity/EVM data, risk materialization prediction via ML pattern matching, NLP-based status report parsing for automated health scoring, and intelligent resource allocation recommendations. Produces a human-AI collaboration model where AI handles pattern recognition and data synthesis while humans retain judgment on stakeholder decisions.

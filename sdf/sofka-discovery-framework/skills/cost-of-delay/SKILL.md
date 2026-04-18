@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to quantify the economic cost of delaying features,
   apply Weighted Shortest Job First prioritization, transform subjective prioritization
   into data-driven economic sequencing, or perform sensitivity analysis on priority rankings.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Cost of Delay & WSJF Prioritization
 
 **TL;DR**: Quantifies the Cost of Delay (CoD) for project features, releases, and decisions. Applies Weighted Shortest Job First (WSJF) to prioritize work by economic value divided by job size. Transforms subjective prioritization into data-driven economic sequencing.

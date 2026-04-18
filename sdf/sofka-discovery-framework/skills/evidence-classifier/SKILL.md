@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Tags every claim with [HECHO]/[INFERENCIA]/[SUPUESTO] evidence classification for zero-hallucination output.
   Trigger: "classify evidence", "tag claims", "evidence levels", "zero hallucination", "fact check output".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Evidence Classifier
 
 Systematically tags every claim, recommendation, and assertion in a document with its evidence level — [HECHO], [INFERENCIA], or [SUPUESTO] — enabling readers to assess confidence and identify gaps requiring validation.

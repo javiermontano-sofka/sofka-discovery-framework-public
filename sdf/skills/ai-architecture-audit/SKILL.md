@@ -1,11 +1,6 @@
 ---
 name: metodologia-ai-architecture-audit
-description: >
-  Audits existing AI system architectures against best practices — structural integrity, AI quality attributes,
-  pattern adherence, anti-pattern detection, security compliance, and technical debt inventory. This skill should
-  be used when the user asks to "audit AI architecture", "review ML system quality", "assess AI technical debt",
-  "evaluate AI compliance", "detect AI anti-patterns", "review AI security posture", or mentions AI architecture
-  review, AI system assessment, AI quality audit, drift monitoring audit, or AI governance review.
+description: "Use this skill when the user asks about ai architecture audit: Audits existing AI system architectures against best practices — structural integrity, AI quality attributes, pattern adherence, anti-pattern detection, security compliance, and technical debt inventory."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AI Architecture Audit: Systematic Assessment of AI-Enabled Systems
 
 Auditar arquitecturas de sistemas de IA existentes contra mejores prácticas, identificando gaps en calidad,

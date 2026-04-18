@@ -8,8 +8,8 @@ description: >
   "set up cloud landing zones", "optimize cloud costs", or mentions VPC, Kubernetes, serverless, multi-AZ, IAM, reserved instances, or chaos testing.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Infrastructure Architecture: Platform & Runtime Design
 
 Infrastructure architecture designs where and how software runs — compute resources, network topology, data storage, high availability, disaster recovery, identity management, and cost optimization. It answers: "How do we provide a platform for applications?"

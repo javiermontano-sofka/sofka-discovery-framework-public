@@ -5,15 +5,14 @@ description: >
   Logging architecture, distributed tracing, metrics design, alerting strategy,
   SLO/SLI definition, and incident response procedures. Trigger: "observability",
   "logging", "tracing", "metrics", "alerting", "SLO", "SLI", "incident response".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Observability Architecture
 
 Design observability systems: structured logging, distributed tracing, metrics collection, alerting strategies, SLO/SLI frameworks, and incident response procedures.

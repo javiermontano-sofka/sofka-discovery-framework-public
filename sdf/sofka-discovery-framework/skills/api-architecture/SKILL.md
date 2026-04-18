@@ -9,8 +9,8 @@ description: >
   or mentions REST, GraphQL, gRPC, AsyncAPI, OpenAPI, API gateway, rate limiting, or API catalog.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # API Architecture: Design, Governance & Developer Experience
 
 API architecture defines how services expose capabilities to consumers — internal teams, partners, and third parties. The skill covers style selection, contract-first design, versioning strategy, security, developer experience, and lifecycle governance for APIs that scale and evolve gracefully.

@@ -8,8 +8,8 @@ argument-hint: "<system-or-integration-name>"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Integration Architecture: System Connectivity & API Contract Design
 
 Integration architecture defines how systems communicate, share data, and maintain consistency across the enterprise landscape. The skill produces integration landscape maps, contract registries, and sequence diagrams that enable reliable, maintainable system connectivity.

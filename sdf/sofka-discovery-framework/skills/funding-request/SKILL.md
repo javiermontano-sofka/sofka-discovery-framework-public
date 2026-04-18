@@ -6,8 +6,8 @@ description: >
   justification, capital request, investment proposal. Triggers on: prepares an investment case,
   drafts a budget approval package, justifies project funding, builds a capital expenditure request,
   creates a funding drawdown schedule.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Funding Request & Investment Proposal
 
 **TL;DR**: Produces a structured funding request document that combines financial business case with strategic alignment narrative. Designed for budget approval committees and executive decision-makers, presenting investment requirements, expected returns, risk assessment, and implementation timeline in a decision-ready format.

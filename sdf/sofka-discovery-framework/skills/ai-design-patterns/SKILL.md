@@ -8,9 +8,9 @@ description: >
   maintainability tactics, fault recovery for models, or pattern selection for ML systems.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for metodologia-ai-design-patterns"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ argument-hint: "Context, project name, or specific focus area for metodologia-ai
   - Grep
   - Bash
 ---
-
 # AI Design Patterns: Patterns & Tactics for AI-Enabled Systems
 
 AI design patterns define reusable solutions to recurring architectural problems in AI systems. This skill produces a pattern selection analysis covering maintainability tactics, availability tactics, AI-specific patterns (Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection), traditional patterns adapted for AI, anti-pattern detection, and a decision framework that maps system requirements to recommended patterns.

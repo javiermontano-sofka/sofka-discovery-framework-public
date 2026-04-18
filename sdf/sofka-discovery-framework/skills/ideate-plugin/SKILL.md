@@ -5,14 +5,13 @@ description: >
   Generate a structured plugin concept brief from a user idea. Trigger: ideate plugin, brainstorm plugin, plugin concept, new plugin idea, create plugin concept.
   Researches existing plugins for overlap, proposes movement structure and component counts.
 argument-hint: "<plugin-idea or problem-statement>"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Ideate Plugin
 
 > "Every great plugin begins as a clear problem statement, not a feature list."

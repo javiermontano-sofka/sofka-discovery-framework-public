@@ -8,8 +8,8 @@ description: >
   Use when the user asks to "design a workshop", "plan event storming", "design impact mapping session",
   "design a sprint", "create user story map", "design discovery session",
   or mentions workshop design, design sprint, event storming, story mapping, or collaborative design.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Workshop Design: Collaborative Discovery & Design Techniques
 
 Workshop design creates structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints.

@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs RPO/RTO targets, failover procedures, backup strategies, and tabletop exercises for disaster recovery.
   Trigger: "disaster recovery", "DR plan", "RPO RTO", "failover", "backup strategy", "business continuity".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Disaster Recovery Planner
 
 Produces disaster recovery plans that define RPO/RTO targets, failover mechanisms, backup strategies, and validation exercises — ensuring business continuity when the worst happens.

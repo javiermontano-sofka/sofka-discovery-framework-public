@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs cache architectures using cache-aside, write-through, write-back patterns with invalidation and CDN strategies.
   Trigger: "caching strategy", "cache architecture", "cache invalidation", "CDN design", "cache patterns".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Caching Strategy
 
 Designs multi-layer caching architectures selecting appropriate patterns (aside, through, back), invalidation strategies, TTL policies, and CDN configurations to optimize latency and reduce backend load.

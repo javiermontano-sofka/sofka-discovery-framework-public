@@ -7,8 +7,8 @@ description: >
   Use when the user asks to "add industry context", "analyze sector", "give me the banking/retail/health perspective",
   or mentions "sector intelligence", "industry analysis", "industry lens", "sector analysis", "regulatory context".
 argument-hint: "[industry] [phase/task] [depth]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Bash
   - WebFetch
 ---
-
 # Sector Intelligence
 
 ## Purpose

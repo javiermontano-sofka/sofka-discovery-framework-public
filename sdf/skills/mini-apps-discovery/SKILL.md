@@ -2,12 +2,7 @@
 name: metodologia-mini-apps-discovery
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<path-to-artifacts> [full|executive] [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual]"
-description: >
-  Mini Apps and Low-Code discovery — citizen developer readiness, platform assessment (Power Platform, OutSystems,
-  Mendix, Retool), use case identification and prioritization, governance model, integration architecture, and
-  low-code adoption roadmap. Use when the user asks to "evaluate low-code platforms", "assess citizen developer readiness",
-  "mini apps strategy", "Power Platform assessment", "low-code governance", "no-code evaluation",
-  "automation apps discovery", or mentions "citizen development", "low-code adoption", "mini apps".
+description: "Mini Apps and Low-Code discovery — citizen developer readiness, platform assessment (Power Platform, OutSystems, Mendix, Retool), use case identification and prioritization, governance model, integration architecture, and low-code adoption roadmap."
 allowed-tools:
   - Read
   - Write
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Mini Apps & Low-Code Discovery — Citizen Development Readiness Assessment
 
 Generates a 6-section Mini Apps and Low-Code discovery covering citizen developer readiness, platform assessment, use case identification and prioritization, governance model, integration architecture, and a phased low-code adoption roadmap. Produces actionable findings with readiness scoring, platform comparison, and governed adoption strategy.

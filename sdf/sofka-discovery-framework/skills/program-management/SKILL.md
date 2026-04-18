@@ -5,9 +5,9 @@ description: >
   "track program benefits", "align program governance", "consolidate program risks",
   or mentions program management, multi-project coordination, program benefits,
   program governance, cross-project dependencies, benefits realization tracking.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-program-management"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-program-m
   - Grep
   - Bash
 ---
-
 # Program Management & Coordination
 
 **TL;DR**: Coordinates multiple related projects as a unified program to achieve benefits beyond what individual projects deliver alone. Manages program-level dependencies, resource sharing, governance, and benefits realization across constituent projects.

@@ -8,8 +8,8 @@ argument-hint: "<organization-or-service-name>"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Incident Management: Response Framework & Postmortem Culture
 
 Incident management establishes structured response processes that minimize the impact of production incidents through clear severity classification, defined escalation paths, and blameless postmortem practices. The skill produces incident playbooks, severity matrices, and communication templates.

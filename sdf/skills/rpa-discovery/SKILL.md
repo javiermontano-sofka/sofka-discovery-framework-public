@@ -1,13 +1,7 @@
 ---
 name: metodologia-rpa-discovery
 argument-hint: "<path-to-process-docs> [full|executive] [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual]"
-description: >
-  RPA and process automation discovery — process landscape assessment, automation opportunity scoring,
-  bot design architecture, platform evaluation, process mining, ROI projection, and automation roadmap.
-  Use when the user asks to "evaluate RPA readiness", "assess automation opportunities", "process automation discovery",
-  "bot architecture design", "RPA platform comparison", "automation roadmap", "process mining analysis",
-  "identify automation candidates", "RPA ROI analysis", or mentions "robotic process automation",
-  "attended/unattended bots", "automation CoE", "process digitization".
+description: "Use this skill when the user asks about rpa discovery: RPA and process automation discovery — process landscape assessment, automation opportunity scoring, bot design architecture, platform evaluation, process mining, ROI projection, and automation roadmap."
 allowed-tools:
   - Read
   - Write
@@ -16,7 +10,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # RPA Discovery — Process Automation Assessment & Roadmap
 
 Genera un assessment de 7 secciones para iniciativas de RPA y automatizacion de procesos: inventario de procesos (BPMN), scoring de oportunidades de automatizacion, arquitectura de bots, evaluacion de plataformas, resultados de process mining, proyeccion de ROI, y hoja de ruta de automatizacion. Cada hallazgo respaldado por evidencia del landscape de procesos del cliente.

@@ -5,9 +5,9 @@ description: >
   "plan milestones", "establish timeline", "estimate durations with PERT",
   or mentions scheduling, dependencies, float, lead/lag, fast-tracking,
   crashing, schedule baseline, 3-point estimation.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-schedule-baseline"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-schedule-
   - Grep
   - Bash
 ---
-
 # Schedule Baseline & Critical Path
 
 **TL;DR**: Produces a comprehensive schedule baseline including activity sequencing, duration estimation (3-point), critical path analysis, milestone chart, and Gantt visualization in Mermaid. Identifies float, near-critical paths, and schedule risks. Serves as the time baseline for Earned Value Management.

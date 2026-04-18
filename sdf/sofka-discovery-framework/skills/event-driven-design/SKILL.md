@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs event-driven architectures using event sourcing, CQRS, and message broker selection.
   Trigger: "event-driven architecture", "event sourcing", "CQRS", "message broker", "pub/sub design".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Event-Driven Design
 
 Architects event-driven systems selecting appropriate messaging patterns, event stores, CQRS projections, and broker topologies for scalable, decoupled, and auditable architectures.

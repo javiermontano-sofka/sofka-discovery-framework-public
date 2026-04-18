@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Docker, Kubernetes, IaC topology, and deployment architecture mapping.
   Trigger: "map infrastructure", "Docker analysis", "K8s topology", "IaC review".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Infrastructure Mapper
 
 Map the complete infrastructure topology from IaC definitions, container configs, and orchestration manifests to produce a deployment architecture view.

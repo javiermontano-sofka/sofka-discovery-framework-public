@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Technical debt classification, interest estimation, and payoff prioritization.
   Trigger: "quantify tech debt", "debt inventory", "debt interest", "technical debt".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Tech Debt Quantifier
 
 Identify, classify, and quantify technical debt across architecture, code, tests, documentation, and infrastructure, estimating the ongoing cost (interest) of carrying each debt item.

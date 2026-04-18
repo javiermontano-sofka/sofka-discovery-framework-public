@@ -11,8 +11,8 @@ description: >
   or mentions technology due diligence, software validation, AI feasibility, vendor evaluation, or
   tech-stack viability. This is the devoted software-specific validator — separate and more critical
   than the multidimensional feasibility analysis.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -21,7 +21,6 @@ version: "13.0.0"
   - Bash
   - WebFetch
 ---
-
 # Service & Technology Viability: Substance vs Smoke Validator
 
 Forensic validation of whether proposed software solutions, technology choices, and AI/ML

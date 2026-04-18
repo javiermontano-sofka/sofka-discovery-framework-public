@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to convert MOAT skills from Claude Code format to Cursor rules,
   GitHub Codex AGENTS.md, Google Gemini system instructions, or other AI coding assistant formats
   while preserving skill logic and evidence protocols.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Cross-Platform Skill Conversion
 
 **TL;DR**: Converts PMO-APEX skills from Claude Code format (SKILL.md) to equivalent formats for other AI coding assistants: Cursor (.cursorrules), GitHub Codex (AGENTS.md), Google Gemini (system instructions), and others. Preserves skill logic, evidence protocols, and methodology content across platforms.

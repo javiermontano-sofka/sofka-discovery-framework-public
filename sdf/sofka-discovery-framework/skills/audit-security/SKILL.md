@@ -5,14 +5,13 @@ description: >
   Performs a comprehensive security audit on a Claude Code plugin, detecting leaked secrets,
   unsafe paths, shell injection risks, sensitive files, and insecure scripts.
   Trigger: audit security, security scan, check for secrets, find vulnerabilities.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Audit Security
 
 > "Security is not a feature -- it is a property of the entire system."

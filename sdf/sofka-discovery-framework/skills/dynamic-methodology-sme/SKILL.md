@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs adaptive methodology guidance, framework-specific practice
   recommendations, methodology debate resolution, anti-pattern diagnosis and remediation,
   or contextual advice that shifts persona based on declared project methodology.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Dynamic Methodology SME
 
 **TL;DR**: An adaptive methodology expert that shifts persona and knowledge base according to the declared TIPO_PROYECTO. When the project is Agile, it thinks in sprints and increments; when Waterfall, in phases and baselines; when SAFe, in ARTs and PIs. Provides contextual methodology guidance, answers questions, resolves debates, and recommends practices — always from the perspective of the active methodology.

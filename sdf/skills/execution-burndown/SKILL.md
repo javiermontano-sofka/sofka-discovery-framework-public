@@ -2,12 +2,7 @@
 name: metodologia-execution-burndown
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<project-name> <team-size>"
-description: >
-  Execution tracking with 1-day sprints per developer, burndown charts (Atlassian-style),
-  velocity tracking using the MetodologIA productivity model (1 FTE = 1 shippable feature/day from Sprint 2).
-  Sprint 1 = onboarding. Produces burndown dashboards, velocity reports, and completion projections.
-  Use when dimensioning execution effort, tracking delivery velocity, creating burndown projections,
-  or when "burndown", "velocity", "sprints diarios", "1 feature por día", or "tracking de ejecución" is mentioned.
+description: "Use this skill when the user asks about execution burndown: Execution tracking with 1-day sprints per developer, burndown charts (Atlassian-style), velocity tracking using the MetodologIA productivity model (1 FTE = 1 shippable feature/day from Sprint 2)."
 allowed-tools:
   - Read
   - Write
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Execution Burndown: MetodologIA Execution Model
 
 Instruments the MetodologIA productivity model (1 FTE = 1 shippable feature/day) into burndown dashboards,

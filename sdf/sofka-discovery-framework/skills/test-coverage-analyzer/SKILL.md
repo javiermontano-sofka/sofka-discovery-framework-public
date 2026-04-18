@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Test coverage gaps, test quality metrics, and testing strategy assessment.
   Trigger: "analyze test coverage", "test quality", "coverage gaps", "testing strategy".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Test Coverage Analyzer
 
 Evaluate test coverage depth, identify gaps in critical paths, assess test quality beyond line coverage, and recommend testing strategy improvements.

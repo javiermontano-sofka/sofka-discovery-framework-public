@@ -5,9 +5,9 @@ description: >
   "inspect deliverable conformance", "check regulatory adherence",
   or mentions quality audit, compliance verification, process audit, quality review,
   non-conformance assessment, corrective action planning.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-quality-audit"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-quality-a
   - Grep
   - Bash
 ---
-
 # Quality Audit & Compliance Verification
 
 **TL;DR**: Conducts quality audits to verify compliance with quality plan, organizational standards, and regulatory requirements. Reviews processes and deliverables against established criteria, identifies non-conformances, and recommends corrective and preventive actions.

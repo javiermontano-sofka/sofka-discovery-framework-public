@@ -8,8 +8,8 @@ argument-hint: "<evaluation-name-or-context>"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Vendor Assessment: Evaluation, Selection & Risk Analysis
 
 Vendor assessment provides structured evaluation of technology vendors and platforms. The skill produces vendor scorecards, comparison matrices, and recommendation reports that support objective, defensible procurement decisions.

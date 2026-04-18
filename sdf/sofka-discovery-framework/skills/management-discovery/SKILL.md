@@ -10,8 +10,8 @@ description: >
   "delivery excellence", "management consulting", "project governance", "ceremony health".
 argument-hint: "<pmo_docs_path> [full|executive]"
 author: Javier Montano · Comunidad MetodologIA
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -19,7 +19,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Management Discovery — PMO Maturity Assessment & Transformation Roadmap
 
 Genera un assessment de 7 secciones para servicios de management y consultoria: evaluacion de madurez del PMO, fitness metodologico, capacidades del equipo, modelo de governance, baseline de performance de delivery, assessment de Factor WOW, y roadmap de transformacion. Diseñado para encontrar el punto exacto donde la disciplina metodologica se adapta al contexto organizacional sin perder rigor.

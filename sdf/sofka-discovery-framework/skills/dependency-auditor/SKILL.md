@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   CVE scanning, freshness analysis, and licensing audit of project dependencies.
   Trigger: "audit dependencies", "check vulnerabilities", "CVE scan", "license check".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Dependency Auditor
 
 Analyze project dependencies for known vulnerabilities, staleness, licensing conflicts, and supply chain risks.

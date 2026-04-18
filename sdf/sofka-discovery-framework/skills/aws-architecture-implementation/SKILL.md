@@ -8,8 +8,8 @@ description: >
   SageMaker endpoint deployment, AWS GenAI implementation, or AWS AI CI/CD pipeline.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AWS Architecture Implementation for AI/GenAI Workloads
 
 Guiar la implementación de arquitecturas AI/GenAI en AWS — desde la configuración de servicios

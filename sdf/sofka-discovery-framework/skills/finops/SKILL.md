@@ -8,8 +8,8 @@ description: >
   "cloud unit economics", "cost allocation", or mentions "cloud financial management",
   "cost optimization", "FinOps maturity".
 argument-hint: "[cloud-provider] [scope: full|assessment|optimization]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # FinOps — Cloud Financial Operations
 
 Generates cloud financial operations assessment and strategy: FinOps maturity evaluation (Crawl/Walk/Run), cost visibility analysis, optimization opportunity identification, governance model design, and unit economics framework.

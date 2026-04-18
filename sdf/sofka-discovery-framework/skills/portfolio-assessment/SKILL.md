@@ -7,8 +7,8 @@ description: >
   portfolio governance evaluation. Triggers on: assesses portfolio management maturity across
   6 dimensions, evaluates strategic alignment effectiveness, reviews prioritization model
   quality, quantifies portfolio governance gaps, produces portfolio improvement roadmap.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Portfolio Management Maturity Assessment
 
 **TL;DR**: Assesses organizational portfolio management maturity across strategic alignment, portfolio governance, resource optimization, risk aggregation, value realization, and portfolio reporting. Evaluates whether the organization selects the right projects (not just executes projects right). Produces a maturity scorecard, capability gap analysis, and a portfolio management improvement roadmap.

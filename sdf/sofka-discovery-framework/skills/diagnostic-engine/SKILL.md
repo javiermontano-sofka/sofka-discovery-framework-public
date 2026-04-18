@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Root cause analysis, risk detection, technical debt quantification, and friction identification.
   Trigger: diagnose issue, find root cause, assess risk, quantify debt, detect friction.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Diagnostic Engine
 
 Systematic identification of root causes, risks, and friction points using evidence classification.

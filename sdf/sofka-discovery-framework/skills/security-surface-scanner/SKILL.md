@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   OWASP vulnerability patterns, secret detection, and authentication/authorization analysis.
   Trigger: "security scan", "OWASP check", "secret detection", "auth analysis".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Security Surface Scanner
 
 Systematic analysis of the codebase's security posture: OWASP Top 10 patterns, hardcoded secrets, authentication/authorization design, and input validation.
