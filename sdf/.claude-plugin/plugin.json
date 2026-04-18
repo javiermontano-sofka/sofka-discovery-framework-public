@@ -1,9 +1,9 @@
 {
   "name": "sdf",
-  "version": "13.3.0",
-  "description": "Sofka SAGE v13.3 — Best Practices Validation + Testing Strategy + Gap Closure. 100% INSIGNIA structural compliance from v13.2 plus 1,103 graders + 477 evals upgraded from placeholders to ai-generated skill-specific content. 57 functional pytest tests (extractors + brand HTML render + ecosystem). End-to-end skill execution harness with 20-skill sample. GitHub Actions CI (5 jobs). 49 agents · 215 skills · 101 commands · 14 ontology files. NotebookLM MCP embebido · brand HTML render DS v5. NUNCA precios — solo FTE-meses.",
+  "version": "13.4.0",
+  "description": "Sofka SAGE v13.4 — Attribution refactor + NotebookLM CLI integration. Separated author (Javier Montaño) from copyright (Sofka Technologies). Added contributors Jean Ruiz Granda (ad-hoc feedback & review) + Catherine Rodrigo. Added full notebooklm-mcp-cli capabilities: 35 MCP tools + nlm CLI + nlm-install.sh + references/ontology/notebooklm-capabilities.md. Builds on v13.3: 100% INSIGNIA compliance, 57 pytest tests, end-to-end harness, GitHub Actions CI.",
   "author": {
-    "name": "Javier Montaño · Equipo PreSales Sofka",
+    "name": "Javier Montaño",
     "url": "https://sofka.com.co"
   },
   "homepage": "https://sofka.com.co",
@@ -50,5 +50,15 @@
     "design-system",
     "sofka-brand",
     "html-generation"
-  ]
+  ],
+  "contributors": [
+    {
+      "name": "Jean Ruiz Granda",
+      "role": "ad-hoc feedback & review"
+    },
+    {
+      "name": "Catherine Rodrigo"
+    }
+  ],
+  "copyright": "© 2026 Sofka Technologies. All Rights Reserved."
 }
