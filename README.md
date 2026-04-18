@@ -1,132 +1,110 @@
 # SAP Discovery Plugin — Monorepo
 
-> Two Claude Code plugins developed in parallel as part of the **Sofka SAGE agentic PreSales** ecosystem. Ships SAP Enterprise coverage and the general-purpose Sofka Discovery Framework.
+Two Claude Code plugins for the **Sofka SAGE agentic PreSales** discipline: one SAP-specific, one general-purpose. Shipped together because they share infrastructure (attachment pipeline, brand HTML render, evidence protocol) and diverge cleanly at the `/sap:` vs `/sdf:` prefix.
 
-## What's in this repo
+## The short version
 
-```
-sap-discovery-plugin-WIP/
-├── sap-enterprise-plugin/            # SAP S/4HANA Cloud discovery plugin
-├── sdf/                              # Sofka SAGE discovery framework
-├── RETROSPECTIVA-SAP-v2-a-v4.md      # Journey retrospective (v2.0 → v4.0)
-├── RETROSPECTIVA-SAP-v2-a-v4.html    # Brand-rendered version (Sofka DS v5)
-└── README.md                         # You are here
-```
+| Plugin | Version | Agents | Skills | Commands | Prefix | License |
+|--------|--------:|-------:|-------:|---------:|--------|---------|
+| `sap-enterprise-plugin/` | 4.0.1 | 58 | 104 | 29 | `/sap:` | All Rights Reserved |
+| `sdf/` (Sofka SAGE) | 13.4.0 | 49 | 215 | 101 | `/sdf:` | Mixed (see `sdf/LICENSE`) |
 
-Historical zips (`sap-enterprise-plugin-v*.zip`, `sdf-v*.zip`) live at the root as release artifacts. They're excluded from git via `.gitignore` and shipped through GitHub Releases instead.
+Numbers count only primary plugins. `sdf/` also hosts four sibling plugins under its tree (`metodologia-discovery-framework` GPL-3.0, `pm-project-framework`, `sovereign-architect`, `plugin-qa`) that ship via the bundled `.claude-plugin/marketplace.json` — those aren't part of the totals above and follow their own release cycles.
 
----
+## Why this repo exists (and what it is not)
 
-## Plugin 1 — `sap-enterprise-plugin/` · v4.0.1
+- **Is**: the authoritative source for both plugins plus the retrospective of how SAP went from v2.0 → v4.0. Commits land here; GitHub Releases ship the zipped artefacts.
+- **Is not**: a runtime. Installing the plugins means copying the relevant subdirectory into `~/.claude/plugins/...` and letting Claude Code auto-discover.
+- **Is not**: a general-purpose CLI or library. The Python scripts are plugin internals; they expect `${CLAUDE_PLUGIN_ROOT}` to be set (or fall back to `dirname`-based resolution when run standalone).
 
-SAP S/4HANA Cloud discovery framework with:
-
-- **58 agents** (6 permanent + 40 thematic + 12 module specialists) in a ToT committee 5/7/9
-- **104 skills** (12 core SAP + 90 imported from SDF + attachment + brand-html-render)
-- **29 commands** in Spanish, all `/sap:*` prefixed
-- **9 ontology files** (skills-catalog, agent-committee, commands-reference, pipeline-orchestration, attachment-taxonomy, output-standards, canonical-tokens, protocol-zero-hallucination, master-index)
-- **FASE 0 attachment pipeline** — 8 extractors for .csv/.xlsx/.docx/.pdf/.pptx/.html/.py/.tsx/.sql/.json/.yaml/.xml
-- **NotebookLM MCP embedded** via `.mcp.json`
-- **Brand HTML render** with Sofka Design System v5 tokens
-
-See `sap-enterprise-plugin/README.md` for installation and usage.
-
-## Plugin 2 — `sdf/` · v13.3.0 (Sofka SAGE)
-
-Universal agentic PreSales framework:
-
-- **49 agents** + **215 skills** MOAT + **101 commands** + **14 ontology files**
-- **100% INSIGNIA structural compliance** (every skill has SKILL.md + grader + evals + references + examples + scripts + prompts)
-- **100% non-placeholder graders + evals** (AI-generated skill-specific content in v13.3.0)
-- **57 pytest tests** covering extractors, brand HTML render, ecosystem batch tools
-- **End-to-end skill execution harness** (mock + real `claude` CLI modes)
-- **GitHub Actions CI** with 5 jobs (structural audits + YAML validity + pytest + render smoke + compliance audit)
-- **4 sibling plugins** under `sdf/`: MetodologIA (MAO, GPL-3.0), PM APEX, Sovereign Architect, Plugin QA
-
-See `sdf/README.md`, `sdf/CLAUDE.md`, and `sdf/CHANGELOG.md` for details. Branded assets: `sdf/landing.html`, `sdf/prompt-library.html`.
-
----
-
-## Shared principles (both plugins)
-
-- **Zero-hallucination protocol** — every claim carries an evidence tag
-- **Evidence priority** — `[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]`
-- **Never prices** — only FTE-meses (P50/P80/P95)
-- **Never green** — brand rule (use `--pos` #FFD700 gold for success)
-- **Attachment handling as FASE 0** — no hallucinations on user-supplied files
-- **Brand HTML render** — deterministic jinja2 + Sofka DS v5 tokens
-- **Best-practice portability** — all hooks/commands use `${CLAUDE_PLUGIN_ROOT}`
-
----
-
-## Installation (local)
-
-### SDF plugin
-```bash
-cp -r sdf ~/.claude/plugins/marketplaces/local-desktop-app-uploads/
-# Or: use this directory as a plugin source in Claude Code settings
-```
-
-### SAP plugin
-```bash
-cp -r sap-enterprise-plugin ~/.claude/plugins/data/
-# Then enable in Claude Code via /plugins
-```
-
-Both plugins bundle a Python venv bootstrap for the attachment extractors — run once per plugin:
+## Install (plugin-agnostic)
 
 ```bash
+# Bootstrap Python venv (3.10+ required, 3.13 tested) — FASE 0 extractors depend on it
 bash <plugin>/scripts/setup-attachments.sh
+
+# Install into the local Claude Code marketplace
+cp -r sdf ~/.claude/plugins/marketplaces/local-desktop-app-uploads/
+cp -r sap-enterprise-plugin ~/.claude/plugins/data/
+
+# NotebookLM MCP (ships with both plugins — single unified package)
+bash sdf/scripts/nlm-install.sh && nlm login && nlm doctor
 ```
 
-Python 3.10+ required (3.13 tested). See each plugin's `requirements.txt`.
+Enable via `/plugins` inside Claude Code.
 
----
+## Engineering contract (shared by both plugins)
 
-## Tests
+These aren't preferences; violations fail CI and block delivery. They're listed here because they shape every file you'll touch.
+
+- **Evidence tagging is mandatory**. Priority (v13.3+): `[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]`. Deliverables with >30% `[SUPUESTO]` require a warning banner; `@qa-validator` refuses output that quotes `[ADJUNTO:file:loc]` without a matching priming-rag doc.
+- **Portability**: paths use `${CLAUDE_PLUGIN_ROOT}` (with `${CLAUDE_PLUGIN_ROOT:-$(cd … && pwd)}` fallback). `$PLUGIN_DIR` / `${PLUGIN_ROOT}` are legacy and rejected by `audit-command-prefixes.sh`.
+- **Brand contract**: orange `#FF7E08` primary, gold `#FFD700` for success, black `#000` structure. Green is forbidden — `grep -qE "#(00[fF]{2}00|2ecc71)|:\s*green\b"` fails CI.
+- **No prices, ever**. Estimates are FTE-meses with P50/P80/P95 and a variance disclaimer.
+- **FASE 0 attachment handling** runs before the committee branches. If the user drops `.csv/.xlsx/.docx/.pdf/.pptx/.html/.py/.tsx/.sql/.json/.yaml/.xml`, `@attachment-processor` normalises them to `.discovery/priming-rag-*.md` and the committee cites via `[ADJUNTO:file:locator]`. No ingest = hallucination risk.
+
+## Testing gate (4 commands — CI runs the same)
 
 ```bash
-# SDF pytest suite (57 tests)
-cd sdf
-source scripts/.venv/bin/activate
-pytest scripts/tests/ -v
-
-# SDF end-to-end skill harness (mock or real)
-python scripts/ecosystem/run-skill-evals.py --sample 20 --mock
-
-# SDF compliance audit
-python scripts/ecosystem/audit-compliance.py
+python sdf/scripts/tests/validate_yaml.py         # 1,783 frontmatters parse
+bash   sdf/scripts/audit-sdk-compliance.sh        # no Agent tool in subagents, etc.
+bash   sdf/scripts/audit-command-prefixes.sh      # /sdf: only, no foreign prefixes
+cd     sdf/scripts/tests && pytest -q             # 57 functional tests
 ```
 
-CI runs automatically on push via `.github/workflows/test.yml` (inside `sdf/`).
+All four must exit 0 before pushing. `.github/workflows/test.yml` re-runs them on every push.
 
----
+## Architecture cheat sheet
+
+Both plugins share a 4-layer shape. Knowing one gives you the other:
+
+1. **`agents/*.md`** — Claude subagents. Frontmatter `name` matches filename stem; `tools:` never includes `Agent` except in orchestrators.
+2. **`skills/<name>/SKILL.md`** — auto-activating skills. Full INSIGNIA structure is `SKILL.md + agents/grader.md + evals/evals.json + references/ + examples/ + scripts/ + prompts/`. Lift placeholders to AI-generated content with `scripts/ecosystem/heuristic-evals.py` (deterministic, no LLM required).
+3. **`commands/*.md`** — slash commands, all prefixed with the plugin's own namespace.
+4. **`references/ontology/*.md`** — progressive-disclosure hub. `CLAUDE.md` is intentionally short (~120 lines) and points to 9 (SAP) or 15 (SDF) specialised sub-files.
+
+## Release artefacts
+
+Historical `*.zip` bundles at the repo root are the point-in-time install payloads. They're excluded from git via `.gitignore` and ship through GitHub Releases. Regenerate with:
+
+```bash
+zip -rq sdf-v<new>.zip sdf \
+  -x 'sdf/scripts/.venv/*' 'sdf/**/__pycache__/*' 'sdf/**/*.pyc' \
+     'sdf/**/.discovery/*' 'sdf/evals-workspace/*' \
+     'sdf/scripts/ecosystem/logs/*' \
+     'sdf/sofka-discovery-framework/*' 'sdf/metodologia-discovery-framework/*' \
+     'sdf/pm-project-framework/*' 'sdf/sovereign-architect/*' 'sdf/plugin-qa/*'
+```
+
+The exclude list is load-bearing: venv is ~200 MB; sibling plugin trees ship separately; `evals-workspace/` grows with every harness run.
 
 ## Retrospective
 
-Full journey v2.0 → v4.0 captured in:
-- `RETROSPECTIVA-SAP-v2-a-v4.md` — markdown source
-- `RETROSPECTIVA-SAP-v2-a-v4.html` — Sofka brand-rendered version
+`RETROSPECTIVA-SAP-v2-a-v4.md` (and its `.html` brand-rendered sibling) traces the SAP plugin from 0 skills → 104 skills across 8 versions. Read it when proposing a major bump: it encodes the KEEP/STOP/START decisions that shaped the architecture (e.g. why subagents can't carry the `Agent` tool; why `${CLAUDE_PLUGIN_ROOT}` replaced `$PLUGIN_DIR`; why MAO stays GPL).
 
-Includes KEEP / STOP / START lessons, architectural decisions, metrics (0→104 skills, 0→58 agents), and recommendations for sibling plugins.
+## Decisions and trade-offs (the why)
 
----
+- **Monorepo, not two repos**: the plugins share a brand, an evidence protocol, and ~90 cross-imported skills. Splitting adds sync ceremony for little isolation benefit. Cost: larger clone; `.gitignore` must exclude venv/pycache/zips carefully.
+- **Sibling plugins inside `sdf/` vs peers**: they shipped as a bundle from the start, the marketplace lives at `sdf/.claude-plugin/marketplace.json`, and each tree has its own license. Moving them to peers would break the marketplace contract. Cost: the zip build must explicitly exclude them.
+- **Deterministic heuristic over LLM for grader/eval generation**: LLM calls don't scale to 1,100 skills without heavy cost and reviewer fatigue. The heuristic reads SKILL.md and produces skill-specific assertions that are the floor, not the ceiling. Trade-off: assertions are templated; a v13.5+ LLM-polish pass will raise the ceiling per-skill.
+- **MCP stdio for NotebookLM (not HTTP)**: lower latency, no daemon management, works in CI. Cost: requires `notebooklm-mcp` binary on PATH (hence `scripts/nlm-install.sh`).
+
+## Known limits
+
+- YAML linter (`validate_yaml.py`) flags 0 failures on the 1,783 tracked files but doesn't validate schemas (only parseability).
+- `audit-compliance.py` classifies graders/evals by frontmatter markers; it can't tell whether AI-generated content is semantically correct — only that it's not a placeholder. Quality is human-reviewed during the robustness cycle.
+- The end-to-end skill harness runs real `claude -p` only when the CLI is on PATH. CI uses `--mock` mode; the mocked output intentionally fails most assertions, which is expected signal, not a regression.
 
 ## License
 
-- `sap-enterprise-plugin/` — All Rights Reserved (Javier Montaño · Sofka Technologies)
-- `sdf/` — See `sdf/LICENSE` (per-plugin: SAGE proprietary, MAO GPL-3.0, etc.)
+- `sap-enterprise-plugin/` — All Rights Reserved.
+- `sdf/` — per-tree: SAGE proprietary, MAO GPL-3.0, others proprietary. See `sdf/LICENSE`.
 
-## Author
-
-**Javier Montaño** · Sofka Technologies · javier.montano@sofka.com.co
-
----
-
-## Authorship & Attribution
+## Authorship
 
 - **Author**: Javier Montaño
 - **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
 - **Co-authored with**: Claude Code
-- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+- **Copyright**: © 2026 Sofka Technologies (SAP, SDF core), Comunidad MetodologIA (MAO), JM Labs (personal skills).
 
+Contact: javier.montano@sofka.com.co
