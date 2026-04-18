@@ -1,6 +1,5 @@
 ---
 name: mermaid-diagramming
-author: JM Labs (Javier Montaño)
 description: >
   Generates C4, sequence, flow, and architecture diagrams in Mermaid syntax for technical documentation.
   Trigger: "diagram", "mermaid", "C4 diagram", "sequence diagram", "flowchart", "architecture diagram".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Mermaid Diagramming

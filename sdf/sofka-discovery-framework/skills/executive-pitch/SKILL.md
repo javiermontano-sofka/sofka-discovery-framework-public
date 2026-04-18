@@ -1,6 +1,5 @@
 ---
 name: metodologia-executive-pitch
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[decision-maker: cfo|cto|ceo|board] [budget: under1m|1m-5m|over5m] — e.g. 'cfo over5m'"
 description: >
   C-level executive pitch with financial modeling and persuasion architecture.
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Executive Pitch & Business Case
 

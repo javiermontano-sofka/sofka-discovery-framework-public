@@ -1,7 +1,10 @@
 ---
 name: metodologia-sre-engineer
 description: "Site reliability engineering specialist covering SLO/SLI/SLA design, error budgets, toil reduction, incident management, and reliability practices. Trigger: SRE practices, error budget, reliability engineering, SLO, SLI, SLA, toil reduction, incident response, on-call, postmortem."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # SRE Engineer — Site Reliability & Service Level Authority

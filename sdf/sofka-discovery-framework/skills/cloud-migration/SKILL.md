@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "plan cloud migration", "assess workloads for migration", "design landing zone",
   "create migration waves", "plan cutover strategy", or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory.
 argument-hint: "<migration-program-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 version: "13.0.0"
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Cloud Migration: Assessment, Planning & Execution
 

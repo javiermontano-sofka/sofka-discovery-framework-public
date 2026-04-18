@@ -1,6 +1,5 @@
 ---
 name: resilience-design
-author: JM Labs (Javier Montaño)
 description: >
   Designs resilience patterns including circuit breakers, retries, bulkheads, timeouts, and chaos engineering practices.
   Trigger: "resilience design", "circuit breaker", "fault tolerance", "chaos engineering", "bulkhead pattern", "retry strategy".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Resilience Design
 

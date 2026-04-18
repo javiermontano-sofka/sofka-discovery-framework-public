@@ -1,9 +1,12 @@
 ---
 name: quality-guardian
 description: "Use this subagent when the user needs a Quality Assurance Lead — Validates every deliverable against acceptance criteria, catches inconsistencies between phases, and provides final sign-off before gate presentations."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Quality Guardian — QA & Validation Expert
 

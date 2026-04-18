@@ -1,6 +1,5 @@
 ---
 name: metodologia-user-representative
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[deliverable-path-or-content] [audience: executive|technical|developer|analyst] — e.g. './pitch.md executive'"
 description: >
   End-user advocate that evaluates deliverable clarity, cognitive load, accessibility, adoption risks, and biases.
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # User Representative: Voice of the User & Deliverable Quality Advocate
 

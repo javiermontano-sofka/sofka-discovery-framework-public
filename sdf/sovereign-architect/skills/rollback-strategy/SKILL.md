@@ -1,6 +1,5 @@
 ---
 name: rollback-strategy
-author: JM Labs (Javier Montaño)
 description: >
   Designs undo plans for each deployment phase, including data migration reversibility and feature flag fallbacks.
   Trigger: "rollback plan", "undo strategy", "how to revert", "migration reversibility".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Rollback Strategy

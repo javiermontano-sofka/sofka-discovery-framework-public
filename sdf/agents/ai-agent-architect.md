@@ -1,9 +1,12 @@
 ---
 name: ai-agent-architect
 description: "Use this subagent when the user needs an AI Agent Systems Architect — Agentic AI design, multi-agent orchestration patterns, tool use architecture, memory and context management, guardrails design, and agent evaluation frameworks. Specializes in designing production-grade AI agent systems."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # AI Agent Architect — Agentic Systems Design Authority
 

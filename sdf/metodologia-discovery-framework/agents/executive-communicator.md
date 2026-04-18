@@ -4,6 +4,10 @@ description: >
   C-level communication and executive storytelling specialist. When user asks about executive
   presentation, board deck, C-level communication, executive summary, stakeholder presentation,
   strategic narrative, leadership briefing, or investment pitch.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Executive Communicator

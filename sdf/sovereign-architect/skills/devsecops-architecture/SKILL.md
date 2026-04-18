@@ -1,6 +1,5 @@
 ---
 name: devsecops-architecture
-author: JM Labs (Javier Montaño)
 description: >
   CI/CD security hardening, SLSA supply chain levels, secrets management, SAST/DAST
   integration, and shift-left security practices. Trigger: "devsecops", "CI/CD security",
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # DevSecOps Architecture

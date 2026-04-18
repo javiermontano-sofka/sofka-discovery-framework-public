@@ -1,6 +1,5 @@
 ---
 name: metodologia-multidimensional-feasibility
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[scenario-path] [depth: full-7d|fast-4d|single-dimension] — e.g. './05_Escenarios.md full-7d'"
 description: >
   Deep feasibility validation across 7 dimensions by a Council of Seven Sages (Think Tank).
@@ -19,6 +18,10 @@ allowed-tools:
   - Agent
   - WebSearch
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Multidimensional Feasibility: Think Tank of 7 Sages

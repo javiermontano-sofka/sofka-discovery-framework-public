@@ -1,6 +1,5 @@
 ---
 name: codebase-metrics
-author: JM Labs (Javier Montaño)
 description: >
   Cyclomatic complexity, coupling, cohesion, and size metrics measurement.
   Trigger: "measure complexity", "code metrics", "coupling analysis", "cohesion".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Codebase Metrics

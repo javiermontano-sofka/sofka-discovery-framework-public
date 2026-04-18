@@ -4,6 +4,10 @@ description: >
   Industry-specific regulatory compliance specialist. When user asks about regulatory
   compliance, GDPR, HIPAA, SOX, PCI-DSS, industry regulations, data protection regulation,
   financial compliance, healthcare compliance, or regulatory audit.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Regulatory Specialist

@@ -1,6 +1,5 @@
 ---
 name: lessons-learned-tracker
-author: JM Labs (Javier Montaño)
 description: >
   Captures corrections, applies learnings across sessions, and prevents regression of past mistakes.
   Trigger: "lesson learned", "capture correction", "track mistake", "prevent regression", "apply learnings".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Lessons Learned Tracker
 

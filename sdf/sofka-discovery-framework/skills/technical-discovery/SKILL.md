@@ -1,6 +1,5 @@
 ---
 name: technical-discovery
-author: JM Labs (Javier Montaño)
 description: >
   Repository scanning, tech stack identification, architecture signal extraction, and domain mapping.
   Trigger: analyze repository, scan codebase, map architecture, identify tech stack, discover structure.
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Technical Discovery
 

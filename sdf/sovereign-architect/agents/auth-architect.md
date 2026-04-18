@@ -1,7 +1,10 @@
 ---
 name: auth-architect
 description: "Identity and access specialist — authentication flows, authorization models, identity federation, zero-trust. Activated when auth architecture is being designed or audited."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Auth Architect

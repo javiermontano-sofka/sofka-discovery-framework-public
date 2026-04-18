@@ -1,6 +1,5 @@
 ---
 name: debt-classifier
-author: JM Labs (Javier Montaño)
 description: >
   Multi-dimensional technical debt classification across architecture, code, test, doc, and infra.
   Trigger: "classify debt", "debt types", "categorize tech debt", "debt dimensions".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Debt Classifier
 

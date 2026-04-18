@@ -1,6 +1,5 @@
 ---
 name: css-architecture
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Design and implement production-grade CSS architecture: design token systems,
@@ -17,6 +16,10 @@ allowed-tools:
   - Agent
 tags: [css, design-tokens, tailwind, cascade-layers, container-queries, dark-mode]
 moat-level: L3
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # CSS Architecture

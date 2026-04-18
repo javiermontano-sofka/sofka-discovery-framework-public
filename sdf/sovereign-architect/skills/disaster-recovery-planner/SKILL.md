@@ -1,6 +1,5 @@
 ---
 name: disaster-recovery-planner
-author: JM Labs (Javier Montaño)
 description: >
   Designs RPO/RTO targets, failover procedures, backup strategies, and tabletop exercises for disaster recovery.
   Trigger: "disaster recovery", "DR plan", "RPO RTO", "failover", "backup strategy", "business continuity".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Disaster Recovery Planner

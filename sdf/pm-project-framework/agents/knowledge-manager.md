@@ -1,8 +1,11 @@
 ---
 name: apex-knowledge-manager
 description: "Lessons learned and organizational memory expert who captures project knowledge, maintains knowledge repositories, facilitates knowledge sharing, and prevents repeat mistakes."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Knowledge Manager — Lessons Learned, Organizational Memory & Wiki Expert

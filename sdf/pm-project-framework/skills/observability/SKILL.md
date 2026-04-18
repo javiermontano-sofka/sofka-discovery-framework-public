@@ -1,7 +1,6 @@
 ---
 name: metodologia-observability
 argument-hint: "<system-or-platform-name>"
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   Observability architecture — logging, tracing, metrics, alerting, SLO/SLI, incident response.
   Use when the user asks to "design observability", "set up monitoring", "implement tracing", "configure alerting",
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Observability Architecture: Instrumentation, Detection & Response

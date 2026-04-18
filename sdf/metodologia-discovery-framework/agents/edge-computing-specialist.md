@@ -1,7 +1,10 @@
 ---
 name: metodologia-edge-computing-specialist
 description: "Edge and fog computing specialist covering latency optimization, CDN strategy, edge deployment patterns, and distributed computing architectures. Trigger: edge computing, fog computing, CDN strategy, edge deployment, latency optimization, edge functions, edge caching, content delivery, distributed computing."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Edge Computing Specialist — Edge/Fog Computing & Latency Optimization Authority

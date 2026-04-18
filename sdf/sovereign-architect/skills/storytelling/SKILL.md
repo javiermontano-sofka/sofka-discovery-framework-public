@@ -1,6 +1,5 @@
 ---
 name: storytelling
-author: JM Labs (Javier Montaño)
 description: >
   Designs narrative arcs for technical deliverables that transform data and findings
   into compelling, memorable stories. Trigger: "tell the story", "narrative arc", "make it compelling".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Storytelling

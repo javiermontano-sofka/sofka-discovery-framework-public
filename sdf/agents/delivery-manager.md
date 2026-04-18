@@ -1,9 +1,12 @@
 ---
 name: delivery-manager
 description: "Use this subagent when the user needs a Project Manager — Timelines, scope, risks, stakeholder communication, budget management, and resource allocation. Ensures the discovery pipeline stays on track and stakeholders stay informed."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Delivery Manager — Project Management Expert
 

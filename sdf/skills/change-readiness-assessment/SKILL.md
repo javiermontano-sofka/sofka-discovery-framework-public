@@ -1,6 +1,5 @@
 ---
 name: metodologia-change-readiness-assessment
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[context-path] [scope: full|pulse|continuous] — e.g. './discovery-artifacts/ full'"
 description: >
   Organizational change readiness assessment producing readiness scorecard, resistance map, and intervention plan.
@@ -14,6 +13,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Change Readiness Assessment

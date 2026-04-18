@@ -1,8 +1,11 @@
 ---
 name: apex-tools-administrator
 description: "PM tools configuration expert who manages Jira, Azure DevOps, Monday.com, and other project management tools — workflows, automation, permissions, and integration with PM processes."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Tools Administrator — PM Tools Configuration & Automation Expert

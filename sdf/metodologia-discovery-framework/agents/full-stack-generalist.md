@@ -3,6 +3,10 @@ name: full-stack-generalist
 description: >
   Full-Stack Engineer — code analysis, infrastructure assessment, DevOps evaluation, implementation feasibility.
   Provides hands-on technical validation across all phases.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Full-Stack Generalist — Implementation Expert

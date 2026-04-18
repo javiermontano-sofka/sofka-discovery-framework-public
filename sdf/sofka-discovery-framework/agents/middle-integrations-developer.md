@@ -1,9 +1,12 @@
 ---
 name: sofka-middle-integrations-developer
 description: "Senior middleware and integrations developer providing API integration assessment, ESB/iPaaS evaluation, message broker analysis, data transformation pipeline review, and cross-system interoperability validation."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Middle & Integrations Developer — Middleware & Integration Expert

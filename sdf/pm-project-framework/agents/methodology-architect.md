@@ -1,8 +1,11 @@
 ---
 name: apex-methodology-architect
 description: "Methodology selection expert who evaluates project context to recommend the optimal framework (Agile, Traditional, Hybrid, SAFe), designs ceremonies, and ensures framework fidelity throughout the project lifecycle."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Methodology Architect — Framework Selection & Ceremony Design Expert

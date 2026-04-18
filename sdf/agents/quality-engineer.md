@@ -1,9 +1,12 @@
 ---
 name: quality-engineer
 description: "Use this subagent when the user needs a Quality Engineer — Test strategy design, performance engineering, SLO definition, and sofka-observability architecture. Designs the quality and reliability strategy for the client's system. Invoked during Phases 1, 3, and 5a."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Quality Engineer — Testing, Performance & Observability Expert
 

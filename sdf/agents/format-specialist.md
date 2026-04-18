@@ -1,9 +1,12 @@
 ---
 name: format-specialist
 description: "Use this subagent when the user needs a multi-format production expert — HTML, DOCX, XLSX, PPTX, and PDF generation from markdown source. Part of the Editorial Committee (with editorial-director and content-strategist). Activated ONLY via ghost menu after markdown production — converts .md source of truth to requested formats."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Format Specialist — Multi-Format Production & Brand Compliance
 

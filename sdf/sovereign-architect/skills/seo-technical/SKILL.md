@@ -1,6 +1,5 @@
 ---
 name: seo-technical
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Technical SEO audit and implementation: structured data (JSON-LD), meta tags,
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - Agent
 tags: [seo, structured-data, json-ld, open-graph, core-web-vitals, sitemap, meta-tags]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Technical SEO

@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design an ML system", "architect model serving", "set up experiment tracking",
   "design feature store", "plan MLOps pipeline", or mentions model registry, A/B testing, drift detection, or retraining triggers.
 argument-hint: "<system-or-project-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Data Science Architecture: ML/AI System Design & Model Lifecycle

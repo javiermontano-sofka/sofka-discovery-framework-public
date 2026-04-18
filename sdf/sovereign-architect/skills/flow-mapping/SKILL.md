@@ -1,6 +1,5 @@
 ---
 name: flow-mapping
-author: JM Labs (Javier Montaño)
 description: >
   Maps business processes, data flows, and integration points into visual sequence diagrams
   and dependency graphs. Trigger: "map the flow", "show me how data moves", "integration diagram".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Flow Mapping

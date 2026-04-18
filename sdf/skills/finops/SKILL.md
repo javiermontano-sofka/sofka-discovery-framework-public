@@ -1,6 +1,5 @@
 ---
 name: metodologia-finops
-author: Javier Montaño · Comunidad MetodologIA
 description: >
   Cloud financial operations assessment and strategy using FinOps Foundation framework.
   Use when the user asks to "assess cloud costs", "optimize cloud spending", "FinOps assessment",
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # FinOps — Cloud Financial Operations

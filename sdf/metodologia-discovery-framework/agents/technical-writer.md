@@ -4,6 +4,10 @@ description: >
   Technical documentation and API documentation specialist. When user asks about technical
   documentation, API docs, developer guide, SDK documentation, reference documentation,
   user manual, technical writing, or documentation quality.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Technical Writer

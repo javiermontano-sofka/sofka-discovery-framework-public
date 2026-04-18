@@ -1,8 +1,11 @@
 ---
 name: apex-xp-practitioner
 description: "Extreme Programming practices expert who coaches teams on pair programming, TDD, continuous integration, collective code ownership, and sustainable pace for high-quality software delivery."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # XP Practitioner — Extreme Programming & Engineering Practices Expert

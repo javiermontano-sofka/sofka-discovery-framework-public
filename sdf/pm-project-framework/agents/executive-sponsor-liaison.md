@@ -1,8 +1,11 @@
 ---
 name: apex-executive-sponsor-liaison
 description: "Sponsor management expert who maintains executive alignment, manages escalation protocols, prepares sponsor briefings, and ensures sustained executive commitment to project success."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Executive Sponsor Liaison — Sponsor Management & Escalation Expert

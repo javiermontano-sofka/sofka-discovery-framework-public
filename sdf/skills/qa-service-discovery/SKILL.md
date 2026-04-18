@@ -1,7 +1,6 @@
 ---
 name: metodologia-qa-service-discovery
 argument-hint: "<project-workspace-path>"
-author: Javier Montaño · Comunidad MetodologIA
 description: "Use this skill when the user asks about qa service discovery: QA-as-a-Service discovery — quality maturity assessment (TMMi), test coverage analysis, tool landscape evaluation, PITT methodology alignment, team composition modeling, test factory design, and QA transformation roadmap."
 allowed-tools:
   - Read
@@ -10,6 +9,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # QA Service Discovery — Quality Maturity Assessment & Transformation Roadmap
 

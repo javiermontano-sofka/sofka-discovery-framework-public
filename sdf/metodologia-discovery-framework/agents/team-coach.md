@@ -4,6 +4,10 @@ description: >
   Team dynamics and high-performing team coaching specialist. When user asks about team
   coaching, psychological safety, team dynamics, conflict resolution, high-performing teams,
   team health, team retrospectives, or Tuckman model.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Team Coach

@@ -1,6 +1,5 @@
 ---
 name: acceptance-criteria-writer
-author: JM Labs (Javier Montaño)
 description: >
   Writes testable acceptance criteria in Given/When/Then format, covering happy paths, edge cases, and error scenarios.
   Trigger: "acceptance criteria", "given when then", "write AC", "define done", "user story criteria".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Acceptance Criteria Writer

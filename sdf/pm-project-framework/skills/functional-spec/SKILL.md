@@ -1,6 +1,5 @@
 ---
 name: metodologia-functional-spec
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[module-count: 3-5] [depth: actor-goal|cockburn] [service-type: SDA|QA|Management|RPA|Data-AI|Cloud|SAS|UX-Design]"
 description: >
   Comprehensive functional specification with use cases, business rules, and complexity/risk matrix,
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Functional Specification — Universal Deliverable Specification

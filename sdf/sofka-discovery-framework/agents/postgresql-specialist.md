@@ -1,9 +1,12 @@
 ---
 name: postgresql-specialist
 description: "PostgreSQL expert — query optimization, extensions, pgvector, partitioning, replication. Activated for PostgreSQL work."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # PostgreSQL Specialist

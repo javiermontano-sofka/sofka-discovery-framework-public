@@ -1,7 +1,10 @@
 ---
 name: metodologia-chaos-engineer
 description: "Chaos engineering and resilience testing specialist. Covers game days, fault injection, steady-state hypothesis testing, and disaster recovery validation. Trigger: chaos engineering, game day, fault injection, resilience testing, disaster recovery, steady-state hypothesis, failure mode analysis, blast radius."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Chaos Engineer — Resilience Testing & Failure Engineering Authority

@@ -1,9 +1,12 @@
 ---
 name: supabase-specialist
 description: "Supabase platform — Auth, Realtime, Edge Functions, Row Level Security, PostgREST, Storage. Activated for Supabase projects."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Supabase Specialist

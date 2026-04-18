@@ -1,6 +1,5 @@
 ---
 name: realtime-data-sync
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Design and implement real-time data synchronization: WebSocket vs SSE vs long
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - Agent
 tags: [realtime, websocket, sse, supabase-realtime, firebase, optimistic-updates, conflict-resolution, crdt]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Realtime Data Sync

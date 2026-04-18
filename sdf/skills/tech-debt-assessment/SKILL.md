@@ -5,7 +5,6 @@ description: >
   remediation prioritization, and paydown roadmap generation. Use when the user asks to "assess technical debt",
   "quantify debt", "classify tech debt", "prioritize remediation", or mentions debt inventory, impact scoring,
   or paydown planning.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto> [repositorio-o-sistema]"
 version: 1.0.0
 tags:
@@ -22,6 +21,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Evaluacion de Deuda Tecnica

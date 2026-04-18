@@ -9,7 +9,6 @@ description: >
   "cloud service roadmap", or mentions cloud-as-a-service, platform engineering, toil reduction,
   FinOps, cloud cost optimization, or cloud operations.
 argument-hint: "<project-or-client-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -19,6 +18,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Cloud Service Discovery — Cloud Operations Assessment & Roadmap

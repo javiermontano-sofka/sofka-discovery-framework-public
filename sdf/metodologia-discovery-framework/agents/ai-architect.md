@@ -1,7 +1,10 @@
 ---
 name: metodologia-ai-architect
 description: "Senior AI/ML architect providing AI strategy assessment, ML pipeline design, MLOps maturity evaluation, model governance, responsible AI framework, LLM integration patterns, and AI infrastructure sizing. Bridges data science and production engineering."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # AI Architect — AI/ML Systems Design Authority

@@ -1,6 +1,5 @@
 ---
 name: analisis-horizontal-financiero
-author: JM Labs (Javier Montano)
 description: "Use this skill when the user asks about analisis horizontal financiero: Análisis horizontal de estados financieros (P&L, Balance General, Flujo de Caja, notas/anexos) con comparación YoY de 2 períodos."
 argument-hint: "<archivo-financiero.xlsx|csv> [--periodos 2023,2024]"
 allowed-tools:
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Análisis Horizontal de Estados Financieros
 

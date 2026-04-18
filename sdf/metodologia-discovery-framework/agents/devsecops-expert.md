@@ -1,7 +1,10 @@
 ---
 name: metodologia-devsecops-expert
 description: "DevSecOps expert providing CI/CD security assessment, supply chain security (SLSA), secrets management, container security, SAST/DAST/SCA evaluation, and shift-left security strategy. Focuses on embedding security into the development lifecycle."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # DevSecOps Expert — Security in Development Lifecycle

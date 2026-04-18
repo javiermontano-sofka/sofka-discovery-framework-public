@@ -1,6 +1,5 @@
 ---
 name: design-agent
-author: JM Labs (Javier Montaño)
 description: >
   Design a plugin agent: role, tool allowlist, skill assignments, execution flows, operating principles.
   Trigger: design agent, agent design, create agent spec, plan agent, draft agent.
@@ -13,6 +12,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Design Agent
 

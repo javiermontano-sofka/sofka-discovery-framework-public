@@ -1,6 +1,5 @@
 ---
 name: metodologia-mentoring-training-discovery
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[path-to-team-docs] [depth: full|executive]"
 description: >
   Mentoring and training discovery — capability assessment, learning path design, knowledge transfer planning,
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Mentoring & Training Discovery — Capability Development Assessment
 

@@ -1,6 +1,5 @@
 ---
 name: state-management-design
-author: JM Labs (Javier Montaño)
 description: >
   Designs frontend and backend state management patterns, caching layers, and synchronization strategies.
   Trigger: "state management", "frontend state", "backend state", "state synchronization", "global state".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # State Management Design

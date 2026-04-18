@@ -1,7 +1,10 @@
 ---
 name: metodologia-automation-architect
 description: "Workflow automation and RPA design specialist for n8n, Make, Zapier, Power Automate, and custom integration pipelines. Trigger: automate workflow, n8n, Make automation, RPA design, Zapier, workflow orchestration, process automation, integration pipeline, Power Automate."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Automation Architect — Workflow & RPA Design Authority

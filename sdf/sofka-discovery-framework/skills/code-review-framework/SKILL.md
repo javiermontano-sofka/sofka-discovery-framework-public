@@ -1,6 +1,5 @@
 ---
 name: code-review-framework
-author: JM Labs (Javier Montaño)
 description: >
   Designs code review checklists, severity classification, and automated check integration for consistent PR reviews.
   Trigger: "code review checklist", "review framework", "PR review standards", "review automation".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Code Review Framework
 

@@ -1,7 +1,10 @@
 ---
 name: metodologia-ai-agent-architect
 description: "AI agent systems architect providing agentic AI design, multi-agent orchestration patterns, tool use architecture, memory and context management, guardrails design, and agent evaluation frameworks. Specializes in designing production-grade AI agent systems."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # AI Agent Architect — Agentic Systems Design Authority

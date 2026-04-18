@@ -3,6 +3,10 @@ name: change-catalyst
 description: >
   Change Management Expert — organizational readiness, adoption strategy, training planning, resistance management.
   Owns stakeholder engagement and change readiness across all phases.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Change Catalyst — Organizational Change Expert

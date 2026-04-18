@@ -1,6 +1,5 @@
 ---
 name: ux-writing
-author: JM Labs (Javier Montaño)
 description: >
   Optimizes document accessibility, readability, and information hierarchy for
   technical audiences. Trigger: "improve readability", "document UX", "information design".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # UX Writing

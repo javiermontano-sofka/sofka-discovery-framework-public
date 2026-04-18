@@ -1,6 +1,5 @@
 ---
 name: metodologia-ux-writing
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[standard-number-or-name] [target-content-or-path]"
 description: >
   UX writing and document accessibility standards for technical deliverables.
@@ -16,6 +15,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # UX Writing: Information Design & Cognitive Accessibility Standards

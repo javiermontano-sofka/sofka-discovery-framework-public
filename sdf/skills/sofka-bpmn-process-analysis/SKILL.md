@@ -1,6 +1,5 @@
 ---
 name: sofka-bpmn-process-analysis
-author: JM Labs (Javier Montano)
 description: "Use this skill when the user asks about sofka bpmn process analysis: BPMN 2.0 process modeling and analysis skill for AS-IS/TO-BE business process documentation, bottleneck identification, automation opportunity assessment, process maturity scoring, and process improvement design."
 argument-hint: "<process-name-or-area> [--mode asis|tobe|fts]"
 allowed-tools:
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # BPMN Process Analysis & Modeling Skill
 

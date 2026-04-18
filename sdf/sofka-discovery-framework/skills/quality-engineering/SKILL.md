@@ -1,6 +1,5 @@
 ---
 name: metodologia-quality-engineering
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
 description: >
   Strategic quality engineering framework covering test strategy, automation architecture, quality gates, metrics, and shift-left practices.
@@ -17,6 +16,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Quality Engineering: Strategic Quality Architecture & Shift-Left Practices
 

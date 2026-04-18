@@ -2,6 +2,10 @@
 name: sdf-attachment-handling
 description: "Use this skill whenever the user drops files (.csv .xlsx .docx .pdf .pptx .html .py .tsx .sql .json .yaml .xml .md) as context for a Sofka SAGE discovery, or passes --adjuntos to any /sdf:* command. It normalizes heterogeneous attachments into priming-rag docs with evidence tags [ADJUNTO], making them first-class inputs for the Think Tank of 7 Sages and the full pipeline G0→G3."
 allowed-tools: [Read, Bash, Write, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # SDF Attachment Handling — FASE 0 ingestion

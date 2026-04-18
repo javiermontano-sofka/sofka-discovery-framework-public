@@ -1,6 +1,5 @@
 ---
 name: analisis-horizontal-financiero
-author: JM Labs (Javier Montano)
 description: >
   Análisis horizontal de estados financieros (P&L, Balance General, Flujo de Caja,
   notas/anexos) con comparación YoY de 2 períodos. Genera informes ejecutivos
@@ -20,6 +19,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Análisis Horizontal de Estados Financieros

@@ -1,7 +1,10 @@
 ---
 name: metodologia-productivity-coach
 description: "Personal and team productivity coaching specialist. Applies atomic habits, systems thinking, GTD, deep work, and time management frameworks. Trigger: productivity, habits, atomic habits, GTD, deep work, time management, systems thinking, personal effectiveness, focus strategies, habit stacking."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Productivity Coach — Habits & Systems Thinking for Effectiveness

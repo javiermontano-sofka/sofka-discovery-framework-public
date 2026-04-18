@@ -1,6 +1,5 @@
 ---
 name: root-cause-analyzer
-author: JM Labs (Javier Montaño)
 description: >
   Systematic root cause tracing from symptoms through causal chains to actual causes.
   Trigger: "root cause analysis", "why is this failing", "trace the cause", "5 whys".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Root Cause Analyzer

@@ -1,6 +1,5 @@
 ---
 name: observability-design
-author: JM Labs (Javier Montaño)
 description: >
   Designs logging, metrics, and distributed tracing architectures using OpenTelemetry and observability platforms.
   Trigger: "observability design", "logging architecture", "metrics strategy", "distributed tracing", "OpenTelemetry".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Observability Design

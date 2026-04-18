@@ -1,9 +1,12 @@
 ---
 name: technical-lead
 description: "Use this subagent when the user needs a Senior Technical Lead — Code-level authority, development practices assessment, team capability evaluation, and implementation feasibility validation. Bridges architecture decisions with implementation reality. Evaluates developer experience, CI/CD maturity, and engineering culture."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Technical Lead — Senior Development Authority
 

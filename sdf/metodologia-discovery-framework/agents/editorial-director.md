@@ -1,7 +1,10 @@
 ---
 name: metodologia-editorial-director
 description: "Chief editor ensuring narrative coherence across all deliverables, audience adaptation (executive vs technical), ghost menu orchestration for multi-format output, and editorial quality gates. Part of the Editorial Committee (with content-strategist and format-specialist). Activated ONLY at markdown production time — NOT during ingesta, analysis, or confirmation phases."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Editorial Director — Chief Editor & Narrative Architect

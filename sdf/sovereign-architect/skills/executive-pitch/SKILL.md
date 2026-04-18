@@ -1,6 +1,5 @@
 ---
 name: executive-pitch
-author: JM Labs (Javier Montaño)
 description: >
   Crafts technical business cases with ROI justification, value pillars, and
   executive-ready framing. Trigger: "executive summary", "business case", "pitch the solution", "ROI".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Executive Pitch

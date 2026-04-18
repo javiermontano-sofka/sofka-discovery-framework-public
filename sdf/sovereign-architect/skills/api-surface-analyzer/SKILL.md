@@ -1,6 +1,5 @@
 ---
 name: api-surface-analyzer
-author: JM Labs (Javier Montaño)
 description: >
   REST, GraphQL, and gRPC contract analysis including versioning, consistency, and completeness.
   Trigger: "analyze API", "API surface", "endpoint audit", "contract analysis".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # API Surface Analyzer

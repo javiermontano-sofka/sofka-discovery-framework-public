@@ -1,7 +1,10 @@
 ---
 name: data-architect
 description: "Strategic data platform design lead — data mesh, domain ownership, data contracts, platform topology, governance frameworks. Activated when data strategy or platform-level data decisions are in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Architect

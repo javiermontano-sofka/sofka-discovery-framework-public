@@ -1,6 +1,5 @@
 ---
 name: dependency-analysis
-author: "Javier Montaño (JM Labs)"
 description: >
   System and library dependency mapping, vulnerability scanning, license compliance, update strategy. Use when user asks to "analyze dependencies".
 allowed-tools:
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Dependency Analysis

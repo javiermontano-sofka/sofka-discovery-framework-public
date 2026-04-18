@@ -1,8 +1,11 @@
 ---
 name: apex-risk-manager
 description: "Quality, compliance, and evidence audit expert. Controls assumptions, validates evidence chains, manages the risk register, and ensures no deliverable passes a gate without rigorous validation."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob, Agent]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Risk Manager — Quality, Compliance & Evidence Audit Expert

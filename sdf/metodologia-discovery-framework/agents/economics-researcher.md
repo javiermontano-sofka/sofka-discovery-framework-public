@@ -2,7 +2,10 @@
 name: metodologia-economics-researcher
 description: "Technical economics researcher who validates financial feasibility with academic rigor. Models TCO, ROI, and opportunity costs using evidence-based techniques, not gut feelings."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Economics Researcher — Technical Economics Specialist

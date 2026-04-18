@@ -1,8 +1,11 @@
 ---
 name: apex-contingency-planner
 description: "Business continuity and disaster recovery expert for projects who designs contingency plans, fallback strategies, and recovery protocols to ensure project resilience against disruptions."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Contingency Planner — Business Continuity & Recovery Expert

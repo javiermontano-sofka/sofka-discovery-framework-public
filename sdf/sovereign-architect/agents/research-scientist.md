@@ -1,7 +1,10 @@
 ---
 name: research-scientist
 description: "Technical research lead — state-of-the-art validation, proof-of-concept design, technology radar, feasibility assessment. Activated when novel technologies need evaluation."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Research Scientist

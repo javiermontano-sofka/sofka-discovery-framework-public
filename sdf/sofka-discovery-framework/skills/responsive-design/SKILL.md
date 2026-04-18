@@ -1,6 +1,5 @@
 ---
 name: responsive-design
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Implement production-grade responsive design: breakpoint strategy, fluid typography
@@ -17,6 +16,10 @@ allowed-tools:
   - Agent
 tags: [responsive, container-queries, fluid-typography, responsive-images, breakpoints, testing]
 moat-level: L3
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Responsive Design

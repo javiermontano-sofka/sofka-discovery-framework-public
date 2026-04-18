@@ -1,6 +1,5 @@
 ---
 name: metodologia-data-viz-storytelling
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[context: analysis|presentation|dashboard|comparison|flow] [format: markdown|html|pptx] — e.g. 'presentation html'"
 description: >
   Visual data narrative design — chart selection, Mermaid diagram metodologia-storytelling,
@@ -13,6 +12,10 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Visualization Storytelling — Visual Narrative Design

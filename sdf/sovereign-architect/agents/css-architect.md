@@ -1,7 +1,10 @@
 ---
 name: css-architect
 description: "CSS architecture — Tailwind v4, CSS Layers, @scope, container queries, design tokens. Activated for CSS/styling work."
-co-authored-by: "Javier Montaño (JM Labs)"
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # CSS Architect

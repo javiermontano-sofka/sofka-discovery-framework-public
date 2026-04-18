@@ -1,6 +1,5 @@
 ---
 name: code-smell-detector
-author: JM Labs (Javier Montaño)
 description: >
   Identifies code smells, anti-patterns, and structural decay in codebases using systematic pattern matching.
   Trigger: detect smells, find anti-patterns, review code quality, check code hygiene.
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Code Smell Detector

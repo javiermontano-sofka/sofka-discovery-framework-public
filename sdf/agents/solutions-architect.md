@@ -1,9 +1,12 @@
 ---
 name: solutions-architect
 description: "Use this subagent when the user needs a Solutions Architect — End-to-end integration design, cross-cutting concerns, and infrastructure architecture. Evaluates how multiple systems compose into a working solution. Invoked during Phases 1, 2, and 4."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Solutions Architect — Integration & Infrastructure Expert
 

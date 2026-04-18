@@ -1,6 +1,5 @@
 ---
 name: schema-migration-strategy
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Plan and execute database schema migrations with up/down scripts, zero-downtime
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - Agent
 tags: [migrations, postgres, zero-downtime, prisma, flyway, rollback, seed-data, ddl]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Schema Migration Strategy

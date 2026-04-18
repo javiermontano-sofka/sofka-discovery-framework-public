@@ -1,6 +1,5 @@
 ---
 name: spec-agent-command
-author: JM Labs (Javier Montaño)
 description: >
   Generate production-ready agent .md and command .md files from designs. Enforces plugin subagent constraints and alias linkage.
   Trigger: spec agent, spec command, generate agent file, write command file, create agent specification.
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Spec Agent Command
 

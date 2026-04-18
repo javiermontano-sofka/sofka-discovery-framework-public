@@ -1,6 +1,5 @@
 ---
 name: metodologia-pipeline-governance
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<project-or-program-name>"
 description: >
   Discovery pipeline governance — phase gate management, resource orchestration,
@@ -18,6 +17,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Pipeline Governance: Discovery Pipeline Governance Backbone

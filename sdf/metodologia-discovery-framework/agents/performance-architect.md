@@ -1,7 +1,10 @@
 ---
 name: metodologia-performance-architect
 description: "Performance engineering specialist covering load testing, latency optimization, capacity planning, profiling, and throughput tuning. Trigger: performance tuning, load testing, latency optimization, capacity planning, throughput, profiling, stress testing, performance bottleneck, response time."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Performance Architect — Performance Engineering & Optimization Authority

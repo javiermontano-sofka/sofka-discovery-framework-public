@@ -1,9 +1,12 @@
 ---
 name: sofka-analytics-architect
 description: "Analytics architect providing analytics engineering, BI design, data science architecture, and data mesh strategy expertise. Owns the analytics consumption layer: how data is transformed into insights. Invoked during Phases 1, 3, and 4."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Analytics Architect — Analytics & AI Expert

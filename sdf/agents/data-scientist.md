@@ -2,8 +2,11 @@
 name: data-scientist
 description: "Use this subagent as Statistical validation specialist and quantitative evidence analyst. Validates data feasibility, ML/AI viability, and ensures all quantitative claims are statistically sound."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Data Scientist — Statistical Validation Specialist
 

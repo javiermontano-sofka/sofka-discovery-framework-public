@@ -1,6 +1,5 @@
 ---
 name: metodologia-scenario-analysis
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[scenario-count: 3+] [weight-override-path] — e.g. '4' or '3 weights.yaml'"
 description: >
   Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension weighted scoring.
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Strategic Scenario Analysis — Tree of Thought
 

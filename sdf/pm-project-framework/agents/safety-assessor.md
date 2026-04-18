@@ -1,8 +1,11 @@
 ---
 name: apex-safety-assessor
 description: "Safety-critical project expert specializing in FMEA, hazard analysis, safety integrity levels, and regulatory safety compliance for projects where failures can cause harm."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Safety Assessor — Safety-Critical Projects & Hazard Analysis Expert

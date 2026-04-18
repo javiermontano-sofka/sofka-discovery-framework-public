@@ -1,8 +1,11 @@
 ---
 name: apex-team-topology-designer
 description: "Team Topologies framework expert who designs team structures, applies Conway's Law, defines team interaction modes, and optimizes organizational design for effective project delivery."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Team Topology Designer — Team Structure & Organizational Design Expert

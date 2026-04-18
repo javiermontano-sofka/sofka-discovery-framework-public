@@ -1,13 +1,16 @@
 ---
 name: validate-manifest
 description: "Validates plugin.json completeness, field correctness, and consistency with actual plugin contents. Triggers: validate manifest, check plugin.json, manifest audit."
-author: JM Labs (Javier Montaño)
 version: "13.0.0"
 allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Validate Manifest
 

@@ -1,6 +1,5 @@
 ---
 name: plan-moat-strategy
-author: JM Labs (Javier Montaño)
 description: >
   Design MOAT asset strategy per skill: which subdirectories needed, what content they contain, naming conventions.
   Trigger: plan MOAT, MOAT strategy, asset planning, reference planning, plan skill assets.
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Plan MOAT Strategy
 

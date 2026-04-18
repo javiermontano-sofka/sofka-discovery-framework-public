@@ -1,6 +1,5 @@
 ---
 name: technical-writing
-author: JM Labs (Javier Montaño)
 description: >
   Applies progressive disclosure, precise terminology, and evidence attribution
   to technical documents. Trigger: "write the document", "technical documentation", "progressive disclosure".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Technical Writing

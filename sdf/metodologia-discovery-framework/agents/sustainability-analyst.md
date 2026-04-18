@@ -4,6 +4,10 @@ description: >
   ESG and sustainability assessment specialist. When user asks about sustainability, ESG
   assessment, green IT, carbon footprint, circular economy, environmental impact, social
   responsibility, sustainable development goals, or climate risk.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Sustainability Analyst

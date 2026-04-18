@@ -1,6 +1,5 @@
 ---
 name: input-analysis
-author: JM Labs (Javier Montaño)
 description: >
   Pre-processes raw inputs through error detection, intent amplification, and
   structured interpretation layers. Trigger: "analyze this input", "interpret requirements", "clarify intent".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Input Analysis

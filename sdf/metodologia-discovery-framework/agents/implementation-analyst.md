@@ -1,7 +1,10 @@
 ---
 name: metodologia-implementation-analyst
 description: "Implementation analysis expert providing code-level assessment, infrastructure evaluation, DevOps analysis, and implementation feasibility validation. Replaces the former full-stack-generalist agent with focused implementation analysis expertise."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Implementation Analyst — Practical Implementation Expert

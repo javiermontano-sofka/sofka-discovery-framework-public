@@ -4,6 +4,10 @@ description: >
   Digital twin modeling and simulation specialist. When user asks about digital twin, simulation
   model, physical-digital bridge, IoT integration, digital replica, predictive simulation,
   cyber-physical systems, or real-time monitoring twin.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Digital Twin Architect

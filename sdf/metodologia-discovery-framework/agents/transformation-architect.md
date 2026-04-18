@@ -1,6 +1,10 @@
 ---
 name: transformation-architect
 description: "Program-level multi-service transformation architect providing digital transformation strategy, multi-service program design, change management integration, cross-workstream dependency management, program governance, and transformation KPI frameworks. Activated when {TIPO_SERVICIO}=Digital-Transformation or Multi-Service."
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Transformation Architect — Multi-Service Program Expert

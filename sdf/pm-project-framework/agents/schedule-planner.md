@@ -1,8 +1,11 @@
 ---
 name: apex-schedule-planner
 description: "Schedule baseline expert who builds and maintains Gantt charts, identifies critical paths, manages dependencies, and produces schedule forecasts using CPM and Monte Carlo techniques."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Schedule Planner — Critical Path & Dependencies Expert

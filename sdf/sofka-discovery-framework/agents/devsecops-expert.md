@@ -1,9 +1,12 @@
 ---
 name: sofka-devsecops-expert
 description: "DevSecOps expert providing CI/CD security assessment, supply chain security (SLSA), secrets management, container security, SAST/DAST/SCA evaluation, and shift-left security strategy. Focuses on embedding security into the development lifecycle."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # DevSecOps Expert — Security in Development Lifecycle

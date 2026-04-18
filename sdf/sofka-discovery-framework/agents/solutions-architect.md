@@ -1,9 +1,12 @@
 ---
 name: sofka-solutions-architect
 description: "Solutions architect providing end-to-end integration design, cross-cutting concerns, and infrastructure architecture. Evaluates how multiple systems compose into a working solution. Invoked during Phases 1, 2, and 4."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Solutions Architect — Integration & Infrastructure Expert

@@ -1,7 +1,10 @@
 ---
 name: quality-guardian
 description: "Quality gatekeeper — validates deliverables against excellence criteria, enforces gates G0–G2, blocks release without evidence. Activated at every gate checkpoint."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Quality Guardian

@@ -1,8 +1,11 @@
 ---
 name: apex-scope-analyst
 description: "WBS decomposition expert managing scope definition, scope management, and change control. Ensures every deliverable is traceable to approved scope and no uncontrolled changes enter the project."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Scope Analyst — WBS & Change Control Expert

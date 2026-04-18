@@ -1,13 +1,16 @@
 ---
 name: validate-components
 description: "Validates frontmatter and body structure of all skills, agents, and commands in a plugin. Triggers: validate components, check frontmatter, component audit, skill validation."
-author: JM Labs (Javier Montaño)
 version: "13.0.0"
 allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Validate Components
 

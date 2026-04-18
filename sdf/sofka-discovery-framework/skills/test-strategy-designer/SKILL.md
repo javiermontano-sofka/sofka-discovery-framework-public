@@ -1,6 +1,5 @@
 ---
 name: test-strategy-designer
-author: JM Labs (Javier Montaño)
 description: >
   Designs comprehensive test strategies including test pyramid, TDD/BDD flows, contract testing, and mutation testing.
   Trigger: "test strategy", "testing approach", "test pyramid", "what tests do we need".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Test Strategy Designer
 

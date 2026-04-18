@@ -1,9 +1,12 @@
 ---
 name: subject-matter-expert
 description: "Use this subagent when the user needs an Industry and Domain Subject Matter Expert — Sector-specific context, regulatory constraints, competitive benchmarks, market dynamics, and business domain analysis. Adapts lens based on client sector (banking, retail, health, SaaS, manufacturing, government, energy, telecom, insurance, logistics)."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Subject Matter Expert — Industry & Domain Specialist
 

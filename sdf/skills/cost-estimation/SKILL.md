@@ -2,7 +2,6 @@
 name: metodologia-cost-estimation
 description: "Use this skill when the user asks about cost estimation: Cost driver identification — effort inductors, scope drivers, magnitude estimation, team composition modeling, risk-adjusted timeline ranges, service engagement sizing, consulting effort, automation ROI, and staffing model."
 argument-hint: "<project-or-initiative-name>"
-author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -10,6 +9,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Cost Estimation: Effort Drivers, Magnitude Indicators & Investment Framing
 

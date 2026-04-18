@@ -2,7 +2,6 @@
 name: metodologia-asis-analysis
 description: "Use this skill when the user asks about asis analysis: Universal current-state assessment producing 10-section analysis for ANY MetodologIA service type."
 argument-hint: "<codebase-path-or-project-name>"
-author: Javier Montano · Comunidad MetodologIA
 allowed-tools:
   - Read
   - Write
@@ -10,6 +9,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # AS-IS Analysis — Universal Current-State Assessment
 

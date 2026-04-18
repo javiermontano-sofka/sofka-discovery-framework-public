@@ -1,6 +1,5 @@
 ---
 name: deployment-strategy
-author: JM Labs (Javier Montaño)
 description: >
   Designs deployment strategies including blue-green, canary, rolling, feature flags, and progressive delivery.
   Trigger: "deployment strategy", "blue-green", "canary deployment", "feature flags", "progressive delivery", "rolling update".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Deployment Strategy

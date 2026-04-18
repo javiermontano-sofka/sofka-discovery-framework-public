@@ -1,6 +1,5 @@
 ---
 name: data-modeling-patterns
-author: "Javier Montaño (JM Labs)"
 version: "2.0.0"
 description: >
   Design relational schemas using normalization forms, strategic denormalization,
@@ -15,6 +14,10 @@ allowed-tools:
   - Bash
   - Agent
 tags: [data-modeling, normalization, denormalization, polymorphic, soft-delete, audit-trail, temporal-data]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Data Modeling Patterns

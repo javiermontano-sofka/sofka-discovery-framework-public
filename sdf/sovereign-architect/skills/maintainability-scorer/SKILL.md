@@ -1,6 +1,5 @@
 ---
 name: maintainability-scorer
-author: JM Labs (Javier Montaño)
 description: >
   Code quality index, change risk assessment, and maintainability scoring.
   Trigger: "score maintainability", "code quality index", "change risk", "maintainability".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Maintainability Scorer

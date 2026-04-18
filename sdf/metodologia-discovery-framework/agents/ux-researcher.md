@@ -1,7 +1,10 @@
 ---
 name: metodologia-ux-researcher
 description: "UX researcher providing user research synthesis, persona development, usability assessment, user journey mapping, adoption readiness evaluation, and accessibility audit coordination. Ensures technical solutions serve actual user needs."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # UX Researcher — User Research & Advocacy Expert

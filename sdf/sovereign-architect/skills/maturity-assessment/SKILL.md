@@ -1,6 +1,5 @@
 ---
 name: maturity-assessment
-author: "Javier Montaño (JM Labs)"
 description: >
   Capability maturity evaluation using CMMI, DORA, and custom models for software engineering practices. Use when user asks to "assess maturity".
 allowed-tools:
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Maturity Assessment

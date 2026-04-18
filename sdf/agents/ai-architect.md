@@ -1,9 +1,12 @@
 ---
 name: ai-architect
 description: "Use this subagent when the user needs a senior ai/ml architect — AI strategy assessment, ML pipeline design, MLOps maturity evaluation, model governance, responsible AI framework, LLM integration patterns, and AI infrastructure sizing. Bridges data science and production engineering."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # AI Architect — AI/ML Systems Design Authority
 

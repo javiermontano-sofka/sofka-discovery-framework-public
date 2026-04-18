@@ -4,6 +4,10 @@ description: >
   Open source governance and licensing strategy specialist. When user asks about open source
   strategy, OSS governance, InnerSource, licensing strategy, open source compliance, community
   management, FOSS contribution policy, or copyleft vs permissive licensing.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Open Source Strategist

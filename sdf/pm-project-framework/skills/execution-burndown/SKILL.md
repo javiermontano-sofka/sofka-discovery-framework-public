@@ -1,6 +1,5 @@
 ---
 name: metodologia-execution-burndown
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<project-name> <team-size>"
 description: >
   Execution tracking with 1-day sprints per developer, burndown charts (Atlassian-style),
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Execution Burndown: MetodologIA Execution Model

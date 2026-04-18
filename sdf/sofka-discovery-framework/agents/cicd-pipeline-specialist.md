@@ -1,9 +1,12 @@
 ---
 name: cicd-pipeline-specialist
 description: "CI/CD pipeline implementation expert — GitHub Actions, GitLab CI, Jenkins, CircleCI, deployment automation, matrix builds, caching. Activated for pipeline implementation."
-co-authored-by: "Javier Montaño (JM Labs)"
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # CI/CD Pipeline Specialist

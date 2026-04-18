@@ -5,7 +5,6 @@ description: >
   license compliance analysis. Use when the user asks to "map dependencies", "analyze dependency risk",
   "check license compliance", "assess upgrade risk", or mentions dependency graph, vulnerability scanning,
   or supply chain security.
-author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto> [repositorio-o-sistema]"
 version: 1.0.0
 tags:
@@ -23,6 +22,10 @@ allowed-tools:
   - Grep
   - Bash
   - WebFetch
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Analisis de Dependencias

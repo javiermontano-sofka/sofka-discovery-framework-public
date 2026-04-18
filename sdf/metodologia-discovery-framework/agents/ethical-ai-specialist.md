@@ -4,6 +4,10 @@ description: >
   AI ethics and responsible AI governance specialist. When user asks about AI ethics, bias
   detection, responsible AI, fairness metrics, algorithmic accountability, AI transparency,
   explainable AI, AI governance framework, or ethical AI audit.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Ethical AI Specialist

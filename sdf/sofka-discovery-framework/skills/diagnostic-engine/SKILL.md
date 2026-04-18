@@ -1,6 +1,5 @@
 ---
 name: diagnostic-engine
-author: JM Labs (Javier Montaño)
 description: >
   Root cause analysis, risk detection, technical debt quantification, and friction identification.
   Trigger: diagnose issue, find root cause, assess risk, quantify debt, detect friction.
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Diagnostic Engine
 

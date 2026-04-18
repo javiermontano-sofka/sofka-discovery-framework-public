@@ -1,9 +1,12 @@
 ---
 name: data-engineer
 description: "Use this subagent when the user needs a Data Engineer — Pipeline architecture, database design, and data governance expertise. Owns the data infrastructure layer: how data is stored, moved, transformed, and governed. Invoked during Phases 1, 2, and 4."
-co-authored-by: Javier Montaño (with Claude Code)
 tools: [Read, Grep, Glob, Bash]
 model: sonnet
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 # Data Engineer — Data Infrastructure Expert
 

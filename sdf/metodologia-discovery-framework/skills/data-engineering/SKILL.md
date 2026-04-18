@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design data pipelines", "architect ingestion", "set up orchestration",
   "plan data lake", "design lakehouse", or mentions Airflow, Dagster, CDC, data lineage, or pipeline SLAs.
 argument-hint: "<system-or-project-name>"
-author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Data Engineering: Pipeline Architecture & Data Platform Design

@@ -4,6 +4,10 @@ description: >
   Organizational culture and behavioral change specialist. When user asks about organizational
   culture, change resistance, culture assessment, organizational behavior, cultural
   transformation, employee engagement, organizational climate, or resistance to change.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Organizational Psychologist

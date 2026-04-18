@@ -1,8 +1,11 @@
 ---
 name: apex-evm-analyst
 description: "Earned Value Management specialist who calculates CPI/SPI, produces EVM dashboards, forecasts project financial outcomes, and provides early warning of cost and schedule variances."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # EVM Analyst — Earned Value Management & Performance Forecasting Expert

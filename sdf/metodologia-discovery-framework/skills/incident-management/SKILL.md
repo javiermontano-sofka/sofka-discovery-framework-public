@@ -5,7 +5,6 @@ description: >
   Use when the user asks to "design incident process", "define severity levels", "create escalation paths",
   "build postmortem template", or mentions incident response, on-call, war room, blameless postmortem.
 argument-hint: "<organization-or-service-name>"
-author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Incident Management: Response Framework & Postmortem Culture

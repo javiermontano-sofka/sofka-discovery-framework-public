@@ -1,9 +1,12 @@
 ---
 name: sofka-security-architect
 description: "Security architect providing threat modeling, zero trust assessment, SLSA compliance, and DevSecOps pipeline security design. Invoked during Phases 1, 3, and 4 for security posture evaluation and hardening strategy."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Security Architect — Security & DevSecOps Expert

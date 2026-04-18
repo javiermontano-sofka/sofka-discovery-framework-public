@@ -1,6 +1,5 @@
 ---
 name: output-engineering
-author: JM Labs (Javier Montaño)
 description: >
   Engineers quality formatting with ghost menus, progressive disclosure, and excellence standards for technical artifacts.
   Trigger: "format output", "ghost menu", "progressive disclosure", "output quality", "excellence standards".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Output Engineering

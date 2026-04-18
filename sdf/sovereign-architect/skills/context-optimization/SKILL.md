@@ -1,6 +1,5 @@
 ---
 name: context-optimization
-author: JM Labs (Javier Montaño)
 description: >
   Manages session context, token budgeting, and strategic information loading for AI-assisted engineering sessions.
   Trigger: "optimize context", "token budget", "context management", "session context", "priming strategy".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Context Optimization

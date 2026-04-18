@@ -1,7 +1,10 @@
 ---
 name: metodologia-accessibility-specialist
 description: "WCAG compliance and inclusive design specialist. Covers accessibility auditing, a11y testing, assistive technology compatibility, and universal design principles. Trigger: accessibility audit, WCAG, a11y compliance, inclusive design, screen reader, assistive technology, color contrast, keyboard navigation, ARIA."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Accessibility Specialist — WCAG Compliance & Inclusive Design Authority

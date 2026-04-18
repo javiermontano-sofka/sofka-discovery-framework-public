@@ -1,6 +1,5 @@
 ---
 name: component-designer
-author: JM Labs (Javier Montaño)
 description: >
   Designs modular architecture with clear boundaries, interface contracts, and dependency rules.
   Trigger: "design components", "module boundaries", "interface contracts", "component architecture".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Component Designer
 

@@ -1,7 +1,10 @@
 ---
 name: metodologia-observability-architect
 description: "Observability strategy specialist covering monitoring, distributed tracing, logging, alerting, and metrics architecture. Trigger: observability strategy, monitoring stack, distributed tracing, logging architecture, alerting design, metrics pipeline, OpenTelemetry, Grafana, Prometheus."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Observability Architect — Monitoring & Distributed Tracing Authority

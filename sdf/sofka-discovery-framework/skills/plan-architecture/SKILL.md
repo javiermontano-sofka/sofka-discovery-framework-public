@@ -1,6 +1,5 @@
 ---
 name: plan-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Generate plugin architecture plan with agent roles, skill-movement mapping, hook strategy, and command routing.
   Trigger: plan architecture, design plugin structure, architect plugin, plugin architecture, plan plugin layout.
@@ -12,6 +11,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Plan Architecture
 

@@ -1,7 +1,10 @@
 ---
 name: metodologia-agile-coach
 description: "Scrum, Kanban, and SAFe coaching specialist. Facilitates sprint health reviews, retrospectives, team velocity analysis, and agile transformation. Trigger: agile coaching, scrum master, sprint retrospective, kanban flow, SAFe, agile transformation, velocity analysis, sprint planning, daily standup."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Agile Coach — Scrum/Kanban/SAFe Coaching Authority

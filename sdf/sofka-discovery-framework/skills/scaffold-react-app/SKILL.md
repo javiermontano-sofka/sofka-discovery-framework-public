@@ -1,6 +1,5 @@
 ---
 name: scaffold-react-app
-author: "Javier Montaño (JM Labs)"
 description: >
   Generate production-ready React project with TypeScript, Tailwind, testing, CI/CD. Use when user asks to "scaffold a React app".
 version: "13.0.0"
@@ -12,6 +11,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Scaffold React App
 

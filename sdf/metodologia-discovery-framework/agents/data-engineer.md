@@ -1,7 +1,10 @@
 ---
 name: metodologia-data-engineer
 description: "Data engineer providing pipeline architecture, database design, and data governance expertise. Owns the data infrastructure layer: how data is stored, moved, transformed, and governed. Invoked during Phases 1, 2, and 4."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Data Engineer — Data Infrastructure Expert

@@ -1,7 +1,10 @@
 ---
 name: data-engineer
 description: "Pipeline architecture and data quality lead — ETL/ELT design, orchestration, data quality gates, streaming vs batch, idempotency. Activated when data pipeline implementation or data quality engineering is in scope."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Engineer

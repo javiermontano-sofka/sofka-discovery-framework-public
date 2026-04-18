@@ -1,9 +1,12 @@
 ---
 name: documentation-architect
 description: "Documentation systems specialist — docs-as-code, ADR governance, knowledge management, technical writing standards. Activated when documentation strategy or ADR systems are needed."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Documentation Architect

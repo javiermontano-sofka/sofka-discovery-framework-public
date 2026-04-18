@@ -1,6 +1,5 @@
 ---
 name: auth-architecture
-author: JM Labs (Javier Montaño)
 description: >
   Designs authentication and authorization architectures using OAuth2, OIDC, RBAC, ABAC, and identity provider integration.
   Trigger: "auth architecture", "authentication design", "authorization patterns", "OAuth2", "OIDC", "identity provider".
@@ -11,6 +10,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Auth Architecture
 

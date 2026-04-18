@@ -1,6 +1,5 @@
 ---
 name: roadmap-poc
-author: JM Labs (Javier Montaño)
 description: >
   Designs proof-of-concept roadmaps with sprint breakdowns, prerequisites, gates,
   team composition, budget, and risk registers. Trigger: "PoC plan", "proof of concept", "sprint breakdown".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Roadmap PoC

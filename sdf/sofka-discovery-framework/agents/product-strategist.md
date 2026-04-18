@@ -2,9 +2,12 @@
 name: sofka-product-strategist
 description: "Product strategy expert providing roadmap prioritization, value stream mapping, product-market fit validation, backlog strategy, and competitive positioning. Bridges business needs with technical capabilities."
 model: opus
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Product Strategist — Product Strategy & Positioning Expert

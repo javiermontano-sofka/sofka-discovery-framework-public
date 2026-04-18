@@ -1,6 +1,5 @@
 ---
 name: generate-qa-scorecard
-author: JM Labs (Javier Montaño)
 description: >
   Produces a compact executive scorecard grading a plugin across 7 quality dimensions
   with a letter grade, numeric score, and top 3 priority actions.
@@ -11,6 +10,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 # Generate QA Scorecard
 

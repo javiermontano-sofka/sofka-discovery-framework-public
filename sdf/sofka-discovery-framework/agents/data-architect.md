@@ -1,9 +1,12 @@
 ---
 name: sofka-data-architect
 description: "Senior data architect providing strategic data modeling, enterprise data strategy, data platform design, data mesh/fabric evaluation, and cross-domain data governance. Operates at strategic level above data-engineer (infrastructure) and analytics-architect (consumption)."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Glob, Grep, Bash, Agent]
 meta-cognition: LIGHT
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Architect — Strategic Data Design Authority

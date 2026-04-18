@@ -1,6 +1,5 @@
 ---
 name: metodologia-mini-apps-discovery
-author: Javier Montano · Comunidad MetodologIA
 argument-hint: "<path-to-artifacts> [full|executive] [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual]"
 description: >
   Mini Apps and Low-Code discovery — citizen developer readiness, platform assessment (Power Platform, OutSystems,
@@ -15,6 +14,10 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Mini Apps & Low-Code Discovery — Citizen Development Readiness Assessment

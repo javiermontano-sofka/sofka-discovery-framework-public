@@ -1,7 +1,10 @@
 ---
 name: metodologia-testing-strategist
 description: "Test strategy and quality engineering specialist. Covers test pyramid, TDD, BDD, contract testing, mutation testing, and test automation architecture. Trigger: test strategy, test automation, TDD, BDD, contract testing, mutation testing, test pyramid, quality engineering, test coverage, regression testing."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Testing Strategist — Test Strategy & Quality Engineering Authority

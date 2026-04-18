@@ -4,6 +4,10 @@ description: >
   Architecture visualization and diagramming specialist. When user asks about architecture
   diagram, C4 model, Mermaid diagram, UML diagram, sequence diagram, system context diagram,
   container diagram, component diagram, or visual architecture documentation.
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # Diagram Specialist

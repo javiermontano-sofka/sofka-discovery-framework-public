@@ -1,6 +1,5 @@
 ---
 name: sector-intelligence
-author: JM Labs (Javier Montaño)
 description: >
   Provides industry context, regulatory landscape analysis, competitive benchmarks,
   and sector-specific technology trends. Trigger: "industry context", "sector analysis", "regulatory landscape", "benchmarks".
@@ -10,6 +9,10 @@ allowed-tools:
   - Grep
   - Bash
   - Agent
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 JM Labs. Personal knowledge project."
+co-authored-with: Claude Code
 ---
 
 # Sector Intelligence

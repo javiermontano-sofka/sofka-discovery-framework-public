@@ -1,7 +1,10 @@
 ---
 name: metodologia-ai-native-architect
 description: "AI-first solutions architect specializing in LLM-native application patterns, agentic systems design, and AI-native infrastructure. Trigger: AI-native, LLM architecture, agentic design, AI-first, multi-agent systems, RAG architecture, LLM orchestration, foundation model strategy."
-co-authored-by: Javier Montaño (with Claude Code)
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Comunidad MetodologIA. Licensed under GPL-3.0."
+co-authored-with: Claude Code
 ---
 
 # AI-Native Architect — LLM-First Solutions Design Authority

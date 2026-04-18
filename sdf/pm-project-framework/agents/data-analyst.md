@@ -1,8 +1,11 @@
 ---
 name: apex-data-analyst
 description: "Project metrics and analytics expert who designs dashboards, analyzes project data trends, produces data-driven insights, and enables evidence-based project decision-making."
-co-authored-by: Javier Montaño (with Claude Code)
 allowed-tools: [Read, Bash, Grep, Glob]
+author: Javier Montaño
+contributors: "Jean Ruiz Granda (ad-hoc feedback & review), Catherine Rodrigo"
+copyright: "© 2026 Sofka Technologies. All Rights Reserved."
+co-authored-with: Claude Code
 ---
 
 # Data Analyst — Project Metrics, Dashboards & Trend Analysis Expert
