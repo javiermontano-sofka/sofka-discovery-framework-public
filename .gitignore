@@ -1,0 +1,33 @@
+# Build artifacts — zips are shipped via GitHub Releases, not committed
+*.zip
+!sap-discovery-plugin-v2.0-legacy.zip
+
+# Python venv + caches (created by setup-attachments.sh)
+**/scripts/.venv/
+**/__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Runtime / session artifacts
+**/.discovery/
+**/evals-workspace/
+**/*.local.md
+.env
+.env.*
+!.env.example
+
+# Logs
+**/scripts/ecosystem/logs/
+*.log
+!CHANGELOG.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
