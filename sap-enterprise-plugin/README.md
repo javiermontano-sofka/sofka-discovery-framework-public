@@ -1,136 +1,145 @@
-# SAP Enterprise Plugin v2.1
+# SAP Enterprise Plugin — v4.0.1
 
-> Standalone multi-agent plugin for SAP S/4HANA Cloud discovery, implementation, and operations in Claude Code.
-> **Author**: Javier Montaño
+Standalone Claude Code plugin for SAP S/4HANA Cloud discovery, implementation, and post-go-live operations. Ships as a dynamic 5/7/9-member ToT committee over a 4-phase metacognitive pipeline, with FASE 0 attachment ingestion, NotebookLM MCP, and a deterministic Sofka DS v5 brand HTML renderer.
 
-## Features
+## Current state — v4.0.1
 
-- 🧠 **6 specialist agents** with delegation framework
-- 🎯 **10 delegator commands** with `/sap:` prefix
-- 📋 **12 deterministic templates** (no hallucinated format)
-- 🛡️ **5 local validation scripts** (bash, zero-API)
-- 📚 **11 SAP skills** + **22 reference files**
-- ⚡ **Clean Core enforced** — Level D violations rejected
-- 🔬 **Evidence-tagged outputs** — mandatory `[CÓDIGO]` `[CONFIG]` `[DOC]` `[SUPUESTO]` tags
-- 🚫 **Zero-API mode** — no external tokens required
+| Resource | Count |
+|----------|------:|
+| Agents | 58 (6 permanent + 40 thematic + 12 module specialists) |
+| Skills | 104 (12 SAP-core + 90 SDF-imported + 2 v4.0 additions) |
+| Commands | 29 (all `/sap:*`) |
+| Ontology sub-files | 9 |
+| Extractors (FASE 0) | 9 (csv/xlsx/docx/pdf/pptx/html/code/structured/generic) |
+| MCP servers embedded | 1 (NotebookLM) |
+| Languages | Spanish (LatAm) default |
 
-## Installation
+## What the plugin does
 
-### Option 1: Symlink (Development)
+Drives a SAP engagement from cold-repo intake to roadmap + ABAP Cloud scaffolding. Key capabilities:
+
+- Normalizes heterogeneous attachments (contracts, readiness-check exports, scope docs) into evidence-tagged priming docs.
+- Runs a dynamic 5/7/9-member ToT committee over Definición → Branching → Evaluate → Prune → Expand, with 3 HITL modes (`--auto`, `--hitos`, `--paso-a-paso`).
+- Enforces Clean Core compliance (≥5/6 criteria per extension; Level D rejected).
+- Emits 9 brand-compliant deliverables per full `/sap:discovery` run, plus optional HTML render via `/sap:render-html`.
+- Validates SAP objects against curated NotebookLM knowledge bases (NotebookLM-first validation before fallback to general knowledge).
+
+## What it is not
+
+- Not a code executor — generated ABAP Cloud extensions need human review and SAP-side deployment.
+- Not a general consultant — stay within SAP S/4HANA Cloud + BTP scope; hand off non-SAP work to the SDF plugin.
+- Not free of cost — a full `/sap:discovery` burns substantial tokens (committee = up to 9 agents × ToT phases).
+
+## Install
 
 ```bash
-# Clone or download the plugin
-cd ~/Downloads
-unzip sap-enterprise-plugin-v2.1.zip
+# Option 1 — copy into marketplace
+cp -r sap-enterprise-plugin ~/.claude/plugins/data/
 
-# Link to Claude Code plugins directory
+# Option 2 — symlink for development
 ln -s "$PWD/sap-enterprise-plugin" ~/.claude/plugins/data/sap-enterprise-plugin
 
-# Restart Claude Code → plugin loads automatically
+# Bootstrap Python venv (3.10+ required, 3.13 tested) for FASE 0 extractors
+bash ~/.claude/plugins/data/sap-enterprise-plugin/scripts/setup-attachments.sh
+
+# NotebookLM MCP — optional but recommended
+bash sap-enterprise-plugin/scripts/nlm-install.sh 2>/dev/null || nlm --version
+nlm login && nlm doctor
 ```
 
-### Option 2: Copy to Plugins Directory
+Restart Claude Code → `/sap:menu` confirms activation.
 
-```bash
-unzip sap-enterprise-plugin-v2.1.zip -d ~/.claude/plugins/data/
-```
+## Entry points
 
-### Verify Installation
+| Scenario | Command | Produces |
+|----------|---------|----------|
+| Uncertain — explore | `/sap:menu` | Interactive palette |
+| Quick query (1-3 agents, no ToT) | `/sap:consulta "<question>"` | Short structured answer |
+| Full committee with ToT | `/sap:comite "<question>" [--auto\|--hitos\|--paso-a-paso] [--adjuntos] [--html]` | Deliberation + verdict |
+| Full SAP discovery pipeline | `/sap:discovery <client>` | 9 deliverables (landscape → handover) |
+| Deep research | `/sap:investigar "<topic>"` | Research doc + NotebookLM citations |
+| Adoption strategy roadmap | `/sap:adopcion <client>` | Adoption plan |
+| Fit-to-Standard workshop | `/sap:ajuste-estandar <module>` | F2S scoring + gaps |
+| ABAP Cloud extension | `/sap:generate-abap "<requirement>"` | CDS + BDEF + service + tests |
+| Clean Core blueprint | `/sap:clean-core <client>` | Strategic blueprint |
+| Markdown → branded HTML | `/sap:render-html <file.md> --style comite\|reporte\|discovery` | HTML (Sofka DS v5) |
 
-In Claude Code:
-```
-/sap:menu
-```
+Full list (29 commands) → `references/ontology/commands-reference.md`.
 
-Should display the command palette.
-
-## Quick Start
-
-```bash
-# Full SAP discovery pipeline
-/sap:discovery AcmeCorp
-
-# Assessment standalone
-/sap:assess
-
-# Workshop Fit-to-Standard
-/sap:fit-to-standard CO
-
-# Generate ABAP Cloud extension
-/sap:generate-abap "Custom approval workflow"
-```
-
-## Architecture
+## Architecture (4-layer)
 
 ```
 sap-enterprise-plugin/
-├── .claude-plugin/plugin.json      # Plugin manifest
-├── agents/                          # 6 specialist agents
-│   ├── _defaults.md                # Shared rules
-│   ├── sap-orchestrator.md         # Master conductor
-│   ├── abap-expert.md              # ABAP Cloud + RAP
-│   ├── functional-lead.md          # F2S + scoring
-│   ├── module-specialist.md        # CO/SD/PS/FI/MM/HCM
-│   ├── sap-docs-steward.md         # Reference validator
-│   └── qa-validator.md             # Auditor
-├── commands/                        # 10 commands (/sap:*)
-├── skills/                          # 11 SAP skills
-├── templates/                       # 12 deterministic templates
-├── scripts/                         # 5 bash validators
-├── references/                      # body-of-knowledge + knowledge-graphs
-├── hooks/hooks.json                # SessionStart + PostToolUse hooks
-├── settings.json                    # Default agent: sap-orchestrator
-├── CLAUDE.md                        # Documentation hub
-└── README.md                        # This file
+├── .claude-plugin/plugin.json    # Manifest
+├── CLAUDE.md                     # Orchestration hub (read this first)
+├── plugin.json                   # Legacy manifest (kept for backward-compat)
+├── agents/                       # 58 agents
+│   ├── _defaults.md              # Shared rules (no `name:` — not invocable)
+│   ├── _metacognitive-rules.md   # ToT 4-phase pipeline spec
+│   ├── environment-orchestrator.md   # Default meta-conductor
+│   ├── sap-orchestrator.md       # Pipeline executor
+│   ├── permanent/                # 6: docs-steward, functional-lead, abap-expert,
+│   │                             #    qa-validator, attachment-processor,
+│   │                             #    module-specialist-legacy
+│   ├── thematic/                 # 40 domain experts
+│   └── modules/                  # 12 module specialists (FI/CO/SD/MM/...)
+├── commands/                     # 29 /sap:* commands
+├── skills/                       # 104 skills (12 SAP + 90 imported + 2 v4.0)
+├── templates/                    # 20+ deliverable templates + brand HTML base
+├── scripts/                      # Extractors, renderer, validators, audits
+├── references/
+│   ├── ontology/                 # 9 hub children (read on demand)
+│   ├── body-of-knowledge/
+│   └── knowledge-graphs/
+└── .mcp.json                     # NotebookLM MCP stdio config
 ```
 
-## Multi-Agent Delegation
+## Committee composition (dynamic)
+
+`@environment-orchestrator` picks the committee at FASE 0 based on query complexity:
+
+| Complexity | Size | Composition |
+|------------|------|-------------|
+| Low | 5 | 4 permanent + 1 flex (thematic or module) |
+| Medium | 7 | 4 permanent + 3 flex (typically 2 thematic + 1 module) |
+| High | 9 | 4 permanent + 5 flex (3 thematic + 2 module) |
+
+Permanent 4: `@sap-docs-steward`, `@functional-lead`, `@abap-expert`, `@qa-validator`. `@attachment-processor` joins when attachments are present.
+
+Committee size is always odd so majority voting resolves ties during ToT prune.
+
+Full roster → `references/ontology/agent-committee.md`.
+
+## Hard rules
+
+1. **Evidence tags mandatory**. Priority: `[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]`.
+2. **Clean Core ≥5/6** per extension. Level D violations rejected by `@qa-validator`.
+3. **No prices** — FTE-meses P50/P80/P95 with disclaimer.
+4. **No green** — Sofka brand rule. Use `--pos` (`#FFD700`) for success.
+5. **QA gate blocking** — `@qa-validator` runs `scripts/validate-*.sh`; failing scripts halt delivery.
+6. **Templates load before generation** — agents pull from `templates/` instead of inventing structure.
+7. **SAP-object validation** — `@sap-docs-steward` verifies tables, BAPIs, CDS views, Fiori apps, Scope Items against NotebookLM first, then fallback knowledge. If no validated reference exists, responds "No tengo referencia validada" rather than fabricating.
+8. **Spanish (LatAm) default** — evidence tags and section headings stay in Spanish.
+
+## Sample deliverable set (full `/sap:discovery`)
 
 ```
-@sap-orchestrator (default)
-    ├─ @abap-expert         → /sap:generate-abap
-    ├─ @functional-lead     → /sap:fit-to-standard, /sap:gap-analysis
-    ├─ @module-specialist   → /sap:module-config
-    ├─ @sap-docs-steward    → consulted by all (reference validation)
-    └─ @qa-validator        → consulted by all (blocking QA)
+00_SAP_Landscape_AcmeCorp_{WIP}.md
+01_SAP_Scope_AcmeCorp_{WIP}.md
+02_FitToStandard_AcmeCorp_{WIP}.md
+03_Gap_Registry_AcmeCorp_{WIP}.md
+04_Solution_Architecture_AcmeCorp_{WIP}.md
+05_Migration_Plan_AcmeCorp_{WIP}.md
+06_SAP_Roadmap_AcmeCorp_{WIP}.md
+07_SAP_Pitch_AcmeCorp.html            # rendered via /sap:render-html
+08_SAP_Handover_AcmeCorp.md
 ```
 
-## Hard Rules
+Filename convention `{phase}_{deliverable}_{client}_{WIP|Aprobado}.{ext}` drives session hooks and auto-rendering — renaming breaks tracking.
 
-1. All generated files bear author: **Javier Montaño**
-2. Evidence tags mandatory on every factual claim
-3. Clean Core compliance >= 5/6 per extension (else rejected)
-4. Templates mandatory — agents load from `templates/` before output
-5. QA from `@qa-validator` blocks delivery if violations found
-6. No prices — only FTE-months (P50/P80/P95)
-7. Spanish (Latin American) as default output language
+### ABAP Cloud generation output
 
-## Usage Examples
-
-### Full Discovery Pipeline
-
-```
-/sap:discovery AcmeCorp --mode guided
-```
-
-Produces 9 deliverables aligned to SAP Activate Discover + Prepare phases:
-- `00_SAP_Landscape_AcmeCorp_WIP.md`
-- `01_SAP_Scope_AcmeCorp_WIP.md`
-- `02_FitToStandard_AcmeCorp_WIP.md`
-- `03_Gap_Registry_AcmeCorp_WIP.md`
-- `04_Solution_Architecture_AcmeCorp_WIP.md`
-- `05_Migration_Plan_AcmeCorp_WIP.md`
-- `06_SAP_Roadmap_AcmeCorp_WIP.md`
-- `07_SAP_Pitch_AcmeCorp.html`
-- `08_SAP_Handover_AcmeCorp.md`
-
-### ABAP Cloud Generation
-
-```
-/sap:generate-abap "Custom timesheet approval workflow for PS projects"
-```
-
-Generates `.abap-cloud-extension/` with:
+`/sap:generate-abap "<requirement>"` writes `.abap-cloud-extension/` with:
 - CDS entities (root + projection)
 - Behavior definition with draft handling
 - Service definition + OData V4 binding
@@ -138,28 +147,34 @@ Generates `.abap-cloud-extension/` with:
 - ABAP Unit tests
 - Communication Arrangement documentation
 
-All validated by `@qa-validator` against `scripts/validate-clean-core.sh`.
+All validated against `scripts/validate-clean-core.sh` before delivery.
 
-## License
+## Known limits
 
-All Rights Reserved © 2026 Javier Montaño.
+- Clean Core validation is static (regex + ATC patterns); runtime ATC still needs SAP-side verification.
+- `@sap-docs-steward` NotebookLM lookup requires `nlm login` to have succeeded and a SAP-relevant notebook to exist for the client; otherwise it falls back to general knowledge (flagged `[SUPUESTO]`).
+- `/sap:generate-abap` produces scaffolding, not tested in a real SAP system — always dry-run ATC locally before committing.
+- Committee size is capped at 9; queries requiring broader expertise should decompose into multiple invocations rather than forcing size 11+.
+
+## Decisions and trade-offs
+
+- **90 skills imported from SDF vs writing SAP-specific ones from scratch** — cross-cutting skills (cost-estimation, risk-monitoring, compliance-tracking, etc.) are identical between contexts; duplicating creates drift. Trade-off: breaks if SDF renames a skill — mitigated by `audit-command-prefixes.sh`.
+- **Odd committee sizes (5/7/9)** — eliminate tie-break ambiguity during ToT prune voting. Cost: no 6-member "default" fits cleanly.
+- **NotebookLM-first validation** — curated project knowledge beats general-knowledge fabrication. Cost: requires upstream NotebookLM auth + client-specific notebooks.
+- **Spanish default** — audience is LatAm enterprise (Sofka's market). Evidence tags stay Spanish for UI consistency.
+- **Zero-API mode for validators** — `scripts/validate-*.sh` use local grep/awk only; no SAP API calls required. This keeps the pipeline usable in air-gapped demos but prevents live SAP system introspection.
 
 ## Support
 
 - Documentation hub: [`CLAUDE.md`](./CLAUDE.md)
 - Command palette: `/sap:menu`
-- Author: javier.montano.guz@gmail.com
+- Ontology: `references/ontology/`
 
----
+## License + attribution
 
-*SAP Enterprise Plugin v2.1 — Diseñado y desarrollado por Javier Montaño.*
-
----
-
-## Authorship & Attribution
+All Rights Reserved © 2026 Sofka Technologies.
 
 - **Author**: Javier Montaño
 - **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
 - **Co-authored with**: Claude Code
-- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
-
+- Contact: javier.montano@sofka.com.co

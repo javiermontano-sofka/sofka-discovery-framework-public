@@ -1,78 +1,98 @@
-# SAP Enterprise Plugin v4.0 — SAGE-Grade Expansion
+# SAP Enterprise Plugin v4.0.1 — Orchestration Hub
 
-> **Diseñado y desarrollado por Javier Montaño**
-> 104 skills · 58 agentes · 29 comandos · Sofka DS v5 brand HTML · FASE 0 attachments
+Standalone Claude Code plugin for SAP S/4HANA Cloud discovery + implementation + operations. This `CLAUDE.md` is the ops hub: it states the invariants, names the commands, and routes to the detailed ontology sub-files. Read the sub-files only for the current task — reading all of them upfront wastes context.
 
 ## Identity
 
-- **Plugin**: `sap-enterprise-plugin`
-- **Versión**: 4.0.0
-- **Prefijo comandos**: `/sap:`
-- **Agente por defecto**: `@environment-orchestrator`
-- **Arquitectura**: Standalone + ToT Committee + Dynamic Expert Pool + Attachment Pipeline + Brand HTML Render
+- **Plugin**: `sap-enterprise-plugin` · `/sap:` prefix
+- **Version**: 4.0.1 (patch: portability + description polish on top of v4.0 SAGE-Grade)
+- **Default agent**: `@environment-orchestrator`
+- **Default language**: Spanish (LatAm)
+- **Architecture**: Standalone + ToT Committee 5/7/9 + Dynamic Expert Pool + FASE 0 Attachment Pipeline + Brand HTML Render
 
----
+## Version history
 
-## What's New in v4.0
+| Version | Headline |
+|---------|----------|
+| **4.0.1** | Portability patch: `${CLAUDE_PLUGIN_ROOT}` convention, description polish, `.gitignore` |
+| 4.0.0 | SAGE-Grade expansion: FASE 0 attachments, brand HTML render, 90 skills imported from SDF, 9 ontology files |
+| 3.4.0 | Robustness cycle complete (12 skills at 7/7 INSIGNIA) |
+| 3.2.0 | NotebookLM MCP integrated, `/sap:notebook-*` commands, [NOTEBOOKLM] provenance tag |
+| 3.1.0 | Hardening: `Agent` tool removed from subagents, shared-rules frontmatter cleaned, action-oriented descriptions |
+| 3.0.0 | ToT Committee 5/7/9 architecture, 58 agents, 14 Spanish commands with HITL modes |
+| 2.1.0 | Standalone extraction from SDF, 6 specialists, 10 English commands |
+| 2.0.0 | Initial SAP v2 integrated in SDF plugin |
 
-| Cambio | Detalle |
-|--------|---------|
-| 📎 FASE 0 attachment handling | `@attachment-processor` + 8 extractors (csv, xlsx, docx, pdf, pptx, html, code, structured) |
-| 🎨 HTML brand-ready render | `brand-html-render` skill + `/sap:render-html` + Sofka DS v5 tokens |
-| 📚 104 skills | +90 importadas desde SDF (finance, architecture, AI, data, PM, agile, risk, methodology) |
-| 🗂️ Ontología replicada | `references/ontology/` con 9 archivos (skills-catalog, agent-committee, commands-reference, pipeline, attachments, output-standards, canonical-tokens, protocol, master-index) |
-| 🏷️ Tag `[ADJUNTO]` formal | Prioridad evidencia: CÓDIGO > ADJUNTO > CONFIG > DOC > NOTEBOOKLM > STAKEHOLDER > INFERENCIA > SUPUESTO |
-| 🚦 Gate G1 estricto | `@qa-validator` verifica priming-rag por cada `[ADJUNTO]` |
+Full delta → `plugin.json` `changelog` field.
 
----
+## Ontology index (9 sub-files)
 
-## Índice de Ontología
+`CLAUDE.md` is a hub. Read sub-files on demand:
 
-Read on demand — NEVER load all at once:
+| Need | File |
+|------|------|
+| Evidence-tag catalog + priority | `references/ontology/protocol-zero-hallucination.md` |
+| Master index (entry points per intent) | `references/ontology/master-index.md` |
+| Catalog of 104 skills by domain | `references/ontology/skills-catalog.md` |
+| Roster of 58 agents + committee composition | `references/ontology/agent-committee.md` |
+| Reference of 29 commands | `references/ontology/commands-reference.md` |
+| Pipeline phases (FASE 0/R/1-4) + gates | `references/ontology/pipeline-orchestration.md` |
+| Attachment taxonomy + extractors | `references/ontology/attachment-taxonomy.md` |
+| Output standards + filename convention | `references/ontology/output-standards.md` |
+| Canonical CSS tokens (Sofka DS v5) | `references/ontology/canonical-tokens.md` |
 
-| Necesidad | Leer |
-|-----------|------|
-| Protocolo zero-hallucination | `references/ontology/protocol-zero-hallucination.md` |
-| Catálogo de 104 skills | `references/ontology/skills-catalog.md` |
-| Roster de 58 agentes + comité 5/7/9 | `references/ontology/agent-committee.md` |
-| Referencia de comandos | `references/ontology/commands-reference.md` |
-| Fases ToT + HITL + gates | `references/ontology/pipeline-orchestration.md` |
-| Adjuntos + extractores | `references/ontology/attachment-taxonomy.md` |
-| Estándares de output | `references/ontology/output-standards.md` |
-| Tokens CSS Sofka DS v5 | `references/ontology/canonical-tokens.md` |
-| Master index | `references/ontology/master-index.md` |
-
----
-
-## Arquitectura v4.0
+## Architecture
 
 ```
 @environment-orchestrator (meta-conductor, default)
-    │
-    ├── Lee references/ontology/skills-catalog.md + agent-committee.md
-    ├── Si adjuntos → delega a @attachment-processor (FASE 0)
-    ├── Selecciona comité 5/7/9 via select-committee.sh
-    ├── Aplica pipeline ToT según _metacognitive-rules.md
-    └── Delega a @sap-orchestrator
-            │
-            ├── FASE 0: Ingesta adjuntos + Definición (Gate G1)
-            ├── FASE R: Research NotebookLM/Web (Gate G1.5)
-            ├── FASE 1: Branching
-            ├── FASE 2: Evaluate (Gate G2)
-            ├── FASE 3: Prune & Synthesize
-            └── FASE 4: Expand + Cierre metacognitivo (Gate G3)
-                    │
-                    └── Ghost menu: /sap:render-html <last.md> --style ...
+│   reads: skills-catalog.md + agent-committee.md
+│   decides: {TIPO_SERVICIO}, committee size, HITL mode
+│
+├── FASE 0: @attachment-processor          ← if --adjuntos or files in ./adjuntos/
+│    produces .discovery/priming-rag-*.md
+│
+└── delegates to @sap-orchestrator
+        │
+        ├── FASE R: NotebookLM research via mcp__notebooklm__*     [Gate G1.5]
+        ├── FASE 1: Branching (3+ divergent proposals, 1 per committee member)
+        ├── FASE 2: Evaluate (QA + Steward score each branch)       [Gate G1]
+        ├── FASE 3: Prune & Synthesize (winner needs confidence ≥0.7) [Gate G2]
+        └── FASE 4: Expand + metacognitive closing                  [Gate G3]
+                │
+                └── Ghost menu: /sap:render-html <last.md> --style comite
 ```
 
----
+### Committee composition (dynamic)
 
-## Attachment Pipeline (FASE 0)
+| Complexity | Size | Permanent (always 4) | Flex |
+|------------|------|---------------------|------|
+| Low | 5 | steward + functional-lead + abap-expert + qa-validator | 1 (thematic OR module) |
+| Medium | 7 | same 4 | 3 (e.g. 2 thematic + 1 module) |
+| High | 9 | same 4 | 5 (3 thematic + 2 module) |
 
-Formatos soportados nativamente:
+`@attachment-processor` joins when attachments are present but does NOT count toward voting quorum. Committee size is always odd to eliminate ties during ToT prune.
 
-| Ext | Extractor | Locator |
-|-----|-----------|---------|
+Full roster + composition rules → `references/ontology/agent-committee.md`.
+
+## Hard rules (violations block delivery)
+
+1. **Evidence tags mandatory** — priority `[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]`. Untagged claims are demoted to `[SUPUESTO]` or removed.
+2. **Clean Core ≥5/6** per extension. Level D violations rejected. Validator: `scripts/validate-clean-core.sh`.
+3. **No prices** — FTE-meses P50/P80/P95 + variance disclaimer. USD/COP/EUR fails review.
+4. **No green** — Sofka brand rule. `#00ff00`, `#2ecc71`, bare `green` all fail the brand-render smoke test. Use `--pos` (`#FFD700`) for success.
+5. **FASE 0 hard fail** — `[ADJUNTO:file:loc]` without matching `.discovery/priming-rag-*.md` blocks Gate G1.
+6. **QA bloqueante** — `@qa-validator` runs before every gate (G1/G1.5/G2/G3). Its refusal halts pipeline.
+7. **Comité impar** — 5/7/9 only. 6 or 8 is not a valid size.
+8. **Cierre metacognitivo** obligatorio — every ToT output ends with `📊 METADATA DE RAZONAMIENTO` block.
+9. **SAP-object validation** — `@sap-docs-steward` verifies tables/BAPIs/CDS/Fiori apps against NotebookLM first, then fallback knowledge. If no source validates, responds "No tengo referencia validada" rather than fabricating.
+10. **Spanish (LatAm)** default output language; evidence tags stay Spanish.
+
+## FASE 0 — Attachment pipeline
+
+Supported formats (9 extractors + generic fallback):
+
+| Ext | Extractor | Locator pattern |
+|-----|-----------|-----------------|
 | `.csv` | pandas | `col=NAME` |
 | `.xlsx .xlsm .xls` | openpyxl | `sheet=NAME` |
 | `.docx` | python-docx | `heading=TEXT` |
@@ -81,143 +101,114 @@ Formatos soportados nativamente:
 | `.html` | beautifulsoup | `h=TEXT` |
 | `.py .ts .tsx .js .sql .abap` | ast + regex | `sig=NAME` |
 | `.json .yaml .xml` | stdlib + lxml | `root` |
-| otros | file + strings + hexdump | `generic` |
-
-Uso:
+| other | `file` + `strings` + `hexdump` | `generic` |
 
 ```bash
-# Bootstrap once (venv + deps)
-bash scripts/setup-attachments.sh
+# One-time setup
+bash scripts/setup-attachments.sh           # Python 3.10+ venv + deps
 
-# Ingesta manual o vía --adjuntos
-bash scripts/ingest-attachments.sh file1.xlsx file2.pdf file3.sql
-# → genera .discovery/priming-rag-*.md para cada uno
+# Ingest attachments → .discovery/priming-rag-*.md
+bash scripts/ingest-attachments.sh contract.pdf readiness-check.xlsx
+
+# Pipe in via command
+/sap:comite "<pregunta>" --adjuntos contract.pdf,readiness-check.xlsx --hitos
 ```
 
-Evidence tag: `[ADJUNTO:filename.ext:locator]`. `@qa-validator` falla si un tag no tiene priming doc.
+Evidence tag format: `[ADJUNTO:contract.pdf:page=4]`. `@qa-validator` fails the deliverable if any tag lacks its priming doc.
 
----
+Detail → `references/ontology/attachment-taxonomy.md`.
 
-## Brand HTML Render
+## Brand HTML render
 
-Entregables markdown → HTML Sofka Design System v5 (tokens `--o #FF7E08`, `--bk #000`, `--bg #EFEAE4`, `--pos #FFD700`, Inter).
+Markdown → Sofka DS v5 HTML via jinja2 (deterministic, no LLM):
 
 ```bash
-bash scripts/render-brand-html.sh entregable.md \
-    --out entregable.html \
+bash scripts/render-brand-html.sh <input.md> \
+    --out <output.html> \
     --style comite|reporte|consultas|specs|discovery \
-    --meta "Confianza=0.88"
+    --meta "Confianza=0.88" --meta "Comité=7"
 ```
 
-Validado por `@qa-validator`: `var(--o)` presente, colores verdes prohibidos.
+Validation is grep-based and runs in CI: `var(--o)` must appear, no green hex values, `<table>` must be wrapped in `.tw`, evidence tags wrapped in `<span class="t …">`.
 
----
+Tokens reference → `references/ontology/canonical-tokens.md`.
 
-## Comandos (29)
-
-Principales v3.0+:
-- `/sap:menu` — paleta interactiva
-- `/sap:consulta <pregunta>` — 1-3 agentes sin ToT `[--adjuntos] [--html]`
-- `/sap:comite <pregunta>` — comité 5/7/9 ToT `[--adjuntos] [--html] [--auto|--hitos|--paso-a-paso]`
-- `/sap:investigar <tema>` — deep research + NotebookLM `[--adjuntos] [--html]`
-- `/sap:adopcion <cliente>` — plan estratégico
-- `/sap:ajuste-estandar <scope>` — F2S
-- `/sap:plan-{implementacion,mantenimiento,evolucion,personalizacion}`
-- `/sap:diagrama-{funcional,tecnico}`, `/sap:mapa-integracion`, `/sap:clean-core`
-- `/sap:notebook-{create,research,query,audio}` — NotebookLM MCP
-- **NUEVO v4.0**: `/sap:render-html <file.md> [--style ...]` — brand HTML
-
-Ver `references/ontology/commands-reference.md` para lista completa.
-
----
-
-## Hard Rules (Inviolables)
-
-1. **Autoría Javier Montaño** en cada archivo generado
-2. **Evidence tags** obligatorios: `[CÓDIGO] [ADJUNTO] [CONFIG] [DOC] [NOTEBOOKLM] [STAKEHOLDER] [INFERENCIA] [SUPUESTO]`
-3. **Clean Core compliance** >= 5/6
-4. **NUNCA precios** — solo FTE-meses P50/P80/P95
-5. **NUNCA verde** — brand rule Sofka; usar `--pos` dorado para success
-6. **FASE 0 obligatoria** si hay adjuntos — hard fail en G1 si falta priming doc
-7. **QA bloqueante** — `@qa-validator` antes de G1/G1.5/G2/G3
-8. **Comité impar** 5, 7 o 9
-9. **Spanish (LatAm)** default
-10. **Cierre metacognitivo** obligatorio en outputs ToT
-
----
-
-## Quick Start
+## Quick start
 
 ```bash
-# Paleta
+# Interactive palette (start here if uncertain)
 /sap:menu
 
-# Con adjuntos + brand HTML
-/sap:comite "Evaluar Clean Core post-migración" \
+# Quick query without ToT overhead
+/sap:consulta "¿Cuál es el Scope Item recomendado para intercompany billing?"
+
+# Full committee ToT with attachments + HTML output
+/sap:comite "Evaluar Clean Core post-migración de AcmeCorp" \
     --adjuntos ./readiness-check.xlsx,./contract.pdf \
     --hitos --html
 
-# Render de markdown existente
-/sap:render-html .discovery/comite-acme-{WIP}.md --style comite
+# Render an existing markdown deliverable to branded HTML
+/sap:render-html .discovery/01_SAP_Scope_AcmeCorp_{WIP}.md --style comite
 ```
 
----
-
-## Directory Structure
+## Repository shape
 
 ```
 sap-enterprise-plugin/
-├── .claude-plugin/plugin.json
-├── plugin.json
-├── requirements.txt                          # v4.0: deps extractors + jinja2
-├── CLAUDE.md                                 # Este documento
+├── .claude-plugin/plugin.json     # Manifest with structured author/contributors/copyright
+├── plugin.json                    # Legacy manifest (kept for backward-compat)
+├── CLAUDE.md                      # This hub
+├── requirements.txt               # pandas, openpyxl, python-docx, pypdf, pdfplumber,
+│                                  # python-pptx, beautifulsoup4, lxml, jinja2, markdown
+├── .mcp.json                      # NotebookLM MCP stdio config
 ├── agents/
-│   ├── _defaults.md, _metacognitive-rules.md
-│   ├── environment-orchestrator.md           # default
-│   ├── sap-orchestrator.md                   # pipeline exec
-│   ├── permanent/
-│   │   ├── sap-docs-steward.md
-│   │   ├── functional-lead.md
-│   │   ├── abap-expert.md
-│   │   ├── qa-validator.md
-│   │   ├── attachment-processor.md           # NUEVO v4.0
-│   │   └── module-specialist-legacy.md
-│   ├── thematic/ (40 agentes)
-│   └── modules/ (12 agentes)
-├── commands/ (29 comandos)
-├── skills/ (104 skills)
-│   ├── sap-*/ (12 core SAP)
-│   ├── sap-attachment-handling/              # NUEVO v4.0
-│   ├── brand-html-render/                    # NUEVO v4.0
-│   └── {90 importadas SDF}
-├── templates/
-│   ├── brand-html-base.html                  # NUEVO v4.0 jinja2
-│   └── {20+ md templates}
+│   ├── _defaults.md               # Shared rules — no `name:` (not invocable)
+│   ├── _metacognitive-rules.md    # ToT 4-phase pipeline spec
+│   ├── environment-orchestrator.md  # Default meta-conductor
+│   ├── sap-orchestrator.md        # Pipeline executor
+│   ├── permanent/                 # 6 (docs-steward, functional-lead, abap-expert,
+│   │                              #    qa-validator, attachment-processor, module-specialist-legacy)
+│   ├── thematic/                  # 40 domain experts
+│   └── modules/                   # 12 module specialists (FI/CO/SD/MM/...)
+├── commands/                      # 29 /sap:* commands
+├── skills/                        # 104 skills (12 sap-* + 90 imported + 2 v4.0)
+├── templates/                     # brand-html-base.html + 20 deliverable templates
 ├── scripts/
-│   ├── setup-attachments.sh                  # NUEVO
-│   ├── ingest-attachments.sh                 # NUEVO
-│   ├── extract-{csv,xlsx,docx,pdf,pptx,html,code,structured}.py  # NUEVO
-│   ├── extract-generic.sh                    # NUEVO
-│   ├── render-brand-html.sh                  # NUEVO
-│   ├── render_brand_html.py                  # NUEVO
-│   └── {7 validators v3.x}
+│   ├── setup-attachments.sh       # venv bootstrap
+│   ├── ingest-attachments.sh      # FASE 0 dispatcher
+│   ├── extract-{csv,xlsx,docx,pdf,pptx,html,code,structured}.py
+│   ├── extract-generic.sh         # Fallback for unknown types
+│   ├── render-brand-html.sh       # Jinja2 wrapper
+│   ├── render_brand_html.py
+│   ├── notebook-auth-check.sh     # Verify nlm auth
+│   ├── notebook-bootstrap.sh      # Create canonical SAP notebooks
+│   └── validate-*.sh              # Clean Core, gap registry, F2S scoring (zero-API)
 └── references/
-    ├── ontology/                             # NUEVO v4.0 (9 archivos)
+    ├── ontology/                  # 9 hub children (listed above)
     ├── body-of-knowledge/
     └── knowledge-graphs/
 ```
 
----
+## Known limits
 
-*SAP Enterprise Plugin v4.0 — SAGE-Grade Expansion. Diseñado y desarrollado por Javier Montaño.*
-*© 2026 — All Rights Reserved.*
+- `validate-clean-core.sh` is static (regex + ATC pattern matching); runtime ATC verification requires a real SAP system.
+- `@sap-docs-steward` NotebookLM lookup requires `nlm login` success + a SAP-relevant client notebook; without these it falls back to general knowledge (flagged `[SUPUESTO]`).
+- Committee size capped at 9 — queries needing >9 distinct expertises should decompose into multiple `/sap:comite` invocations.
+- `/sap:generate-abap` produces scaffolding validated statically; always dry-run ATC locally before committing to an SAP system.
+- `scripts/validate-*.sh` are zero-API (grep/awk only) by design, keeping the pipeline usable in air-gapped demos but preventing live system introspection.
 
----
+## Decisions and trade-offs
 
-## Authorship & Attribution
+- **`${CLAUDE_PLUGIN_ROOT}` over `$PLUGIN_DIR`** — official Anthropic convention. Migration was v4.0.1. Scripts include a fallback so they work standalone.
+- **Odd committee sizes** — eliminate tie-break ambiguity. No 6/8-member option fits cleanly.
+- **90 skills imported from SDF, not duplicated** — cross-cutting skills (cost-estimation, risk-monitoring, etc.) are identical; duplicating creates drift. Risk: SDF rename breaks imports — mitigated by `audit-command-prefixes.sh`.
+- **NotebookLM-first validation** — curated client knowledge beats general-knowledge fabrication. Cost: requires upstream auth + client-specific notebooks.
+- **Spanish default** — audience is LatAm SAP customers. Tags stay Spanish for UI consistency.
+- **Zero-API validators** — keeps demos air-gap-safe but prevents live SAP introspection. Use SAP-side tooling (ATC, Inspector, …) for runtime checks.
+
+## Author + attribution
 
 - **Author**: Javier Montaño
 - **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
 - **Co-authored with**: Claude Code
 - **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
-
