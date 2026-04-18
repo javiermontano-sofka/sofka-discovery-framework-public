@@ -6,8 +6,8 @@ Two Claude Code plugins for the **Sofka SAGE agentic PreSales** discipline: one 
 
 | Plugin | Version | Agents | Skills | Commands | Prefix | License |
 |--------|--------:|-------:|-------:|---------:|--------|---------|
-| `sap-enterprise-plugin/` | 4.0.1 | 58 | 104 | 29 | `/sap:` | All Rights Reserved |
-| `sdf/` (Sofka SAGE) | 13.4.0 | 49 | 215 | 101 | `/sdf:` | Mixed (see `sdf/LICENSE`) |
+| `sap-enterprise-plugin/` | 4.0.1 | 58 specialists + 2 orchestrators + 2 shared rules = 62 total .md files (invocable count: 60) | 104 | 29 | `/sap:` | All Rights Reserved |
+| `sdf/` (Sofka SAGE) | 13.4.0 | 49 | 214 | 101 | `/sdf:` | Mixed (see `sdf/LICENSE`) |
 
 Numbers count only primary plugins. `sdf/` also hosts four sibling plugins under its tree (`metodologia-discovery-framework` GPL-3.0, `pm-project-framework`, `sovereign-architect`, `plugin-qa`) that ship via the bundled `.claude-plugin/marketplace.json` — those aren't part of the totals above and follow their own release cycles.
 
