@@ -1,151 +1,154 @@
-# Sofka SAGE v13.0 — Agentic PreSales as Service
+# Sofka SAGE v13.4 — Agentic PreSales as Service
 
-> **SAGE** = Sofka Agentic Gateway to Excellence.
-> Tu IDE se convierte en una agencia de discovery empresarial.
-> 49 agentes · 215 skills MOAT · 101 comandos · 42 prompts NL-HP · FASE 0 attachments · NotebookLM MCP embebido · Brand HTML render DS v5.
-> © 2026 Sofka Technologies. All Rights Reserved.
+**SAGE** (Sofka Agentic Gateway to Excellence) turns your IDE into a pre-sales discovery agency: 49 agents, 215 skills, 101 commands, a 4-phase ToT pipeline with G0–G3 quality gates, FASE 0 attachment ingestion, NotebookLM CLI+MCP unified access, and a deterministic Sofka DS v5 brand renderer.
 
-## What's new in v13.0
+This `CLAUDE.md` is a **hub**, not a manual. It states the inviolable rules, the entry-point commands, and the reading path. Each section ends with a pointer; read sub-files only when the task demands them.
 
-| Capacidad | Detalle |
-|-----------|---------|
-| 📎 FASE 0 attachment handling | `@attachment-processor` + 8 extractores (csv/xlsx/docx/pdf/pptx/html/code/structured). Evidence tag `[ADJUNTO:file:locator]` con prioridad 2 |
-| 🔌 NotebookLM MCP embebido | `.mcp.json` stdio + `scripts/notebook-{auth-check,bootstrap}.sh` + 4 comandos `/sdf:notebook-{create,research,query,audio}` |
-| 🎨 Brand HTML render determinístico | `templates/brand-html-base.html` jinja2 + `scripts/render_brand_html.py` + `/sdf:render-html`. Auto-highlight de evidence tags |
-| 🗂️ Ontología expandida | Nuevo `attachment-taxonomy.md` + prioridad evidencia actualizada + 10 lecciones portadas desde SAP v4.0 |
-| ✅ Audits SDK | `scripts/audit-{command-prefixes,sdk-compliance}.sh` verifican best practices |
+## What changed recently
 
-> **Global orchestration**: `~/.claude/orchestration/` — metacognition, input amplification, workflow discipline, auto-calibration, RAG priming, self-improvement.
+| Version | Date | Headline |
+|---------|------|----------|
+| **13.4.0** | 2026-04-17 | Separated author (Javier) from copyright (Sofka) + added contributors; unified `notebooklm-mcp-cli` documented (35 tools, CLI+MCP) |
+| 13.3.0 | 2026-04-17 | Testing strategy shipped (57 pytest, end-to-end harness, GitHub Actions CI); 1,103 graders + 477 evals lifted from placeholder to ai-generated |
+| 13.2.0 | 2026-04-17 | 100% structural INSIGNIA across 1,104 skills |
+| 13.1.0 | 2026-04-17 | Ecosystem quality lift: 358 agents frontmatter, 227 name reconciliations, 291 YAML structural bugs fixed |
+| 13.0.0 | 2026-04-17 | SAP-grade hardening: FASE 0 attachments, NotebookLM MCP, brand HTML render |
 
----
+Full delta → `CHANGELOG.md`.
 
-## Zero-Hallucination Protocol
-
-Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[ADJUNTO]` `[CONFIG]` `[DOC]` `[NOTEBOOKLM]` `[STAKEHOLDER]` `[INFERENCIA]` `[SUPUESTO]`
-Prioridad v13: `[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]`
-- Si >30% es `[SUPUESTO]` → banner de advertencia obligatorio
-- Si `severity=CRÍTICO` + `[SUPUESTO]` → flag para validación
-- NUNCA presentar inferencias como hechos
-
-> Detalle completo → `references/ontology/protocol-zero-hallucination.md`
-
----
-
-## Inicio Rápido
+## Quick start (3 happy paths)
 
 ```bash
-/sdf:run-auto          # Pipeline autónomo completo
-/sdf:run-express       # Go/No-Go en 1 sesión (3 entregables)
-/sdf:run-guided        # Pipeline guiado con facilitación humana
-/sdf:run-deep          # Dirección arquitectónica (7 entregables, 2 gates)
-/sdf:menu              # Paleta de comandos interactiva
-/sdf:a                 # Avanzar al siguiente paso del pipeline
-/sdf:demo              # Demo guiado de SAGE en el repo actual
+/sdf:menu              # Interactive palette — always start here if uncertain
+/sdf:run-auto          # End-to-end pipeline, no pauses (prototype / low-stakes)
+/sdf:run-guided        # Pipeline with human facilitation at each gate (default for real engagements)
 ```
 
----
+Less common but load-bearing:
 
-## Ontología Viva — Índice de Navegación
+```bash
+/sdf:a                 # Advance to the next phase (only if current gate passed)
+/sdf:run-express       # Go/No-Go in one session (3 deliverables, ~90 min)
+/sdf:run-deep          # Architecture direction (7 deliverables, 2 gates, ~3h)
+/sdf:demo              # Guided walkthrough of SAGE against the current repo
+/sdf:prime-repo        # Build priming-rag-*.md for a cold repo
+```
 
-Este CLAUDE.md es un hub. El conocimiento profundo vive en 14 sub-archivos especializados que el orquestador consulta según contexto:
+## Zero-hallucination protocol (non-negotiable)
 
-| Necesidad | Leer |
-|-----------|------|
-| Reglas de etiquetado de evidencia | `references/ontology/protocol-zero-hallucination.md` |
-| Fases del pipeline y quality gates | `references/ontology/pipeline-orchestration.md` |
-| Roster de 49 agentes y roles | `references/ontology/agent-committee.md` |
-| Catálogo de 215 skills por dominio | `references/ontology/skills-catalog.md` |
-| Referencia de 101 comandos | `references/ontology/commands-reference.md` |
-| Política de RAG-priming y adjuntos | `references/ontology/rag-priming-policy.md` |
-| **Adjuntos + extractores (v13)** | **`references/ontology/attachment-taxonomy.md`** |
-| Estándares de output y branding | `references/ontology/output-standards.md` |
-| Routing por tipo de servicio | `references/ontology/service-routing.md` |
-| Automatización de sesión | `references/ontology/session-automation.md` |
-| Lecciones aprendidas (viviente) | `references/ontology/lessons-learned.md` |
-| Criterios de quality gates | `references/ontology/quality-gates.md` |
-| Orquestación multi-marca | `references/ontology/brand-orchestration.md` |
-| Tokens CSS canónicos | `references/ontology/canonical-tokens.md` |
-| **NotebookLM CLI + MCP (v13.4)** | **`references/ontology/notebooklm-capabilities.md`** |
-
----
-
-## Reglas de Orquestación (Hard Rules)
-
-1. **Evidence first** — Sin evidencia → `[SUPUESTO]`
-2. **Pipeline secuencial** — Respetar dependencias de fases
-3. **Gates son hard stops** — G1, G1.5, G2, G3. Pausa para aprobación
-4. **NUNCA precios** — Solo FTE-meses + disclaimers
-5. **Ghost menu** — En cada artefacto importante
-6. **Changelog** — Cada acción significativa registrada
-7. **RAG priming** — Cargar contexto al inicio de sesión
-8. **{TIPO_SERVICIO}** — Routing automático de agentes y skills
-9. **Consistencia cruzada** — Verificar alineación entre entregables
-10. **Excellence loop** — 10 criterios en cada entregable
-
----
-
-## Output Standards
-
-- **Formato**: Markdown-Excellence (TL;DR + bullets, prosa densa, Mermaid, ghost menu)
-- **Idioma**: Español (registro empresarial latinoamericano)
-- **Branding**: #FF7E08 orange · #FFD700 gold (NUNCA verde) · #EFEAE4 fondo · Inter
-- **HTML**: Usar tokens canónicos de `references/ontology/canonical-tokens.md`
-- **Artefactos**: Guardar como archivos, no inline
-- **Naming**: Usar `{WIP}` en archivos en progreso, `{Aprobado}` cuando estén aprobados
-- **Slugging**: `{fase}_{entregable}_{cliente}_{WIP|Aprobado}.{ext}` — ej: `03_ASIS_Bancoomeva_{WIP}.md`
-
-> Detalle completo → `references/ontology/output-standards.md`
-
----
-
-## Arquitectura
+Every factual claim in a deliverable carries exactly one evidence tag:
 
 ```
-sofka-discovery-framework/
-├── agents/              # 49 agentes especializados (todos con frontmatter completo v13.1)
-├── commands/            # 101 comandos (primarios + aliases + service discovery + render-html + 4 notebook-*)
-├── skills/              # 215 skills MOAT — 100% INSIGNIA-structured v13.1 (SKILL.md + agents/grader.md + evals/evals.json + references/ + examples/ + prompts/)
+[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]
+```
+
+- `[ADJUNTO:file.ext:locator]` requires a matching `.discovery/priming-rag-*.md` or `@quality-guardian` refuses the deliverable.
+- `>30% [SUPUESTO]` triggers a mandatory warning banner at the top of the document.
+- `severity=CRÍTICO + [SUPUESTO]` triggers a mandatory validation flag — pipeline cannot advance until resolved.
+- Inferences are never presented as facts. `[INFERENCIA]` must name the evidence it derives from.
+
+Full rules → `references/ontology/protocol-zero-hallucination.md`.
+
+## Ontology index (read on demand)
+
+| Need | File |
+|------|------|
+| Evidence-tag catalog + priority order | `references/ontology/protocol-zero-hallucination.md` |
+| Pipeline phases (FASE 0/R/1-4) + gate criteria | `references/ontology/pipeline-orchestration.md` |
+| Quality-gate pass/fail thresholds | `references/ontology/quality-gates.md` |
+| Agent roster, roles, committee composition | `references/ontology/agent-committee.md` |
+| Skill catalog by domain | `references/ontology/skills-catalog.md` |
+| Command reference | `references/ontology/commands-reference.md` |
+| RAG-priming policy + attachment intake | `references/ontology/rag-priming-policy.md` |
+| Attachment taxonomy + extractors | `references/ontology/attachment-taxonomy.md` |
+| Output format + naming (`{WIP}`/`{Aprobado}`) | `references/ontology/output-standards.md` |
+| Service-type routing (SDA/QA/RPA/Data-AI/…) | `references/ontology/service-routing.md` |
+| Session auto-artefacts in `.discovery/` | `references/ontology/session-automation.md` |
+| Multi-brand orchestration (Sofka/MAO/JM) | `references/ontology/brand-orchestration.md` |
+| Canonical CSS tokens (DS v5) | `references/ontology/canonical-tokens.md` |
+| **NotebookLM CLI + MCP (35 tools)** | `references/ontology/notebooklm-capabilities.md` |
+| Lessons learned (append here after corrections) | `references/ontology/lessons-learned.md` |
+
+Global orchestration rules (metacognition, input amplification, workflow discipline, auto-calibration, RAG priming, self-improvement) live at `~/.claude/orchestration/`. Consult them for cross-plugin behaviour.
+
+## Hard rules (violations block delivery)
+
+1. **Evidence first** — a claim without a tag becomes `[SUPUESTO]` or is removed.
+2. **Gates are hard stops** — G0 (security), G1 (discovery), G1.5 (analysis), G2 (feasibility), G3 (delivery). No phase skipping.
+3. **No prices** — FTE-meses P50/P80/P95 with variance disclaimer. USD/COP/EUR amounts fail review.
+4. **No green** — brand rule. `#00ff00`, `#2ecc71`, `: green` all fail CI brand-render smoke. Use `--pos` (`#FFD700`) for success states.
+5. **Ghost menu** on every significant deliverable — readers need a next-step path.
+6. **Session changelog** — every significant action logged in `.discovery/session-changelog.md`.
+7. **RAG priming before branching** — if `.discovery/priming-rag-*.md` is missing, the orchestrator must create it or refuse to proceed.
+8. **`{TIPO_SERVICIO}` routing** — the first step is classifying the engagement so the right agents/skills activate.
+9. **Cross-deliverable consistency** — AS-IS, flow map, scenarios, and roadmap must agree. Discrepancies trigger `@quality-guardian` escalation.
+10. **Excellence loop** — 10 criteria per deliverable (see `references/ontology/output-standards.md`).
+
+## Output standards (short form)
+
+- **Format**: Markdown-Excellence — TL;DR + dense bullets + Mermaid diagrams + ghost menu. No wall-of-text prose.
+- **Language**: Spanish, LatAm business register. Evidence tags stay in Spanish (`[CÓDIGO]` not `[CODE]`).
+- **Brand**: orange `#FF7E08` · gold `#FFD700` · background `#EFEAE4` · font Inter. Never green.
+- **Filenames**: `{phase}_{deliverable}_{client}_{WIP|Aprobado}.{ext}` — e.g. `03_ASIS_Bancoomeva_{WIP}.md`. Filenames drive auto-rendering in `landing.html`.
+- **Deliverables are files**, not inline messages. Write to `.discovery/` or `project/` so the session hooks can track them.
+
+Full spec → `references/ontology/output-standards.md`.
+
+## Repository shape
+
+```
+sdf/
+├── agents/                    # 49 subagents (+ 2 orchestrators); `name:` = filename stem
+├── commands/                  # 101 /sdf:* commands (including 4 notebook-*, render-html, menu, a, demo)
+├── skills/                    # 215 skills, each a 7/7 INSIGNIA directory
 ├── references/
-│   ├── ontology/        # 14 sub-archivos de ontología viva (incl. attachment-taxonomy)
-│   ├── skill-robustness-template/  # Template canónico para nuevas skills (v13.1)
-│   ├── priming-rag-*/   # 8 docs de conocimiento RAG
-│   └── *.md             # Service matrix, design system, etc.
-├── hooks/               # Ghost menu + changelog + session context
-├── scripts/             # Indexación, escaneo, validación
-├── landing.html         # Landing interactivo del ecosistema
-└── prompt-library.html  # Catálogo searchable de prompts
+│   ├── ontology/              # 15 specialised sub-files (this hub's children)
+│   ├── skill-robustness-template/   # Scaffold for new skills
+│   ├── priming-rag-*.md       # RAG priming knowledge, auto-generated per source
+│   └── *.md                   # Service matrix, design system, other cross-cutting docs
+├── hooks/hooks.json           # SessionStart + PostToolUse (ghost menu, changelog, context gen)
+├── scripts/                   # Audits, extractors, renderers, ecosystem batch tools
+├── templates/                 # Jinja2 brand HTML base + markdown deliverable templates
+├── .mcp.json                  # NotebookLM MCP stdio config
+├── landing.html               # Interactive ecosystem landing (Sofka DS v5)
+└── prompt-library.html        # Searchable NL-HP prompt catalog
 ```
 
+Four sibling plugins live under `sdf/` (`metodologia-discovery-framework` GPL-3.0, `pm-project-framework`, `sovereign-architect`, `plugin-qa`). They're shipped via `.claude-plugin/marketplace.json` and follow their own release cycles — do not sync their files when working on SDF core.
+
+## Session automation (what the hooks do for you)
+
+On `SessionStart`, the hooks populate `.discovery/` with:
+
+| Artefact | Purpose |
+|----------|---------|
+| `SESSION-README.md` | Project context summary Claude reads first |
+| `SESSION-CLAUDE.md` | Session-specific instructions layered on top of this file |
+| `calibration-digest.md` | Priming + calibration state |
+| `ghost-menu.md` | Contextual nav for the current deliverable |
+| `session-changelog.md` | Running log for recovery / handoff |
+| `session-state.json` | Pipeline state (phase, committee, gates passed) |
+
+If no `priming-rag-*.md` exists, a `.needs-priming` marker prompts `/sdf:prime-repo`. Every attachment ingested or URL researched generates a fresh `priming-rag-{name}.md` and triggers recalibration.
+
+Full flow → `references/ontology/session-automation.md`.
+
+## Lessons learned (living doc)
+
+When the user corrects the orchestrator's behaviour, append the correction to `references/ontology/lessons-learned.md` with a timestamp. Read it at the start of every session to avoid recurring mistakes. This is the mechanism by which SAGE compounds knowledge across engagements.
+
+## Known limits
+
+- `validate_yaml.py` checks parseability, not schema correctness. A SKILL.md with `tools: [NotARealTool]` parses but still fails at runtime.
+- `heuristic-evals.py` produces skill-specific graders/evals deterministically but without human judgement — suitable as a floor, not a ceiling. Plan an LLM-polish pass per skill for v13.5+.
+- The end-to-end harness (`run-skill-evals.py`) depends on `claude` CLI being on PATH for real mode. CI uses `--mock` and expects most assertions to fail — that's signal, not regression.
+- NotebookLM uses internal Google APIs (disclosed upstream); availability and tool shape can change without notice.
+
 ---
 
-## Sesión Automática
-
-Al activar el plugin, los hooks generan en `.discovery/`:
-- `SESSION-README.md` — Contexto del proyecto
-- `SESSION-CLAUDE.md` — Instrucciones de sesión
-- `calibration-digest.md` — Estado de priming y calibración
-- `ghost-menu.md` — Navegación contextual
-- `session-changelog.md` — Registro para continuidad
-- `session-state.json` — Estado del pipeline
-
-Auto-priming: si no hay archivos `priming-rag-*.md`, se crea marker `.needs-priming` y se sugiere `/sdf:prime-repo`.
-Cada adjunto o URL investigada genera `priming-rag-{nombre}.md` y recalibra automáticamente.
-
-> Detalle completo → `references/ontology/session-automation.md`
-
----
-
-## Lecciones Aprendidas
-
-Ante correcciones del usuario, actualizar `references/ontology/lessons-learned.md`.
-Revisarlo al inicio de cada sesión para no repetir errores.
-
----
-
-*Sofka SAGE v12.0 — Agentic PreSales as Service.*
-**Author**: Javier Montaño  
-**Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo  
-**Co-authored with**: Claude Code  
-**Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+- **Author**: Javier Montaño
+- **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
+- **Co-authored with**: Claude Code
+- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
 
 *Sofka, your technology partner.*
