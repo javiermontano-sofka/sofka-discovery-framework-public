@@ -1,6 +1,6 @@
 # Sofka SAGE v13.4 — Agentic PreSales as Service
 
-**SAGE** (Sofka Agentic Gateway to Excellence) turns your IDE into a pre-sales discovery agency: 49 agents, 215 skills, 101 commands, a 4-phase ToT pipeline with G0–G3 quality gates, FASE 0 attachment ingestion, NotebookLM CLI+MCP unified access, and a deterministic Sofka DS v5 brand renderer.
+**SAGE** (Sofka Agentic Gateway to Excellence) turns your IDE into a pre-sales discovery agency: 49 agents, 214 skills, 101 commands, a 4-phase ToT pipeline with G0–G3 quality gates, FASE 0 attachment ingestion, NotebookLM CLI+MCP unified access, and a deterministic Sofka DS v5 brand renderer.
 
 This `CLAUDE.md` is a **hub**, not a manual. It states the inviolable rules, the entry-point commands, and the reading path. Each section ends with a pointer; read sub-files only when the task demands them.
 
@@ -100,7 +100,7 @@ Full spec → `references/ontology/output-standards.md`.
 sdf/
 ├── agents/                    # 49 subagents (+ 2 orchestrators); `name:` = filename stem
 ├── commands/                  # 101 /sdf:* commands (including 4 notebook-*, render-html, menu, a, demo)
-├── skills/                    # 215 skills, each a 7/7 INSIGNIA directory
+├── skills/                    # 214 skills, each a 7/7 INSIGNIA directory
 ├── references/
 │   ├── ontology/              # 15 specialised sub-files (this hub's children)
 │   ├── skill-robustness-template/   # Scaffold for new skills
