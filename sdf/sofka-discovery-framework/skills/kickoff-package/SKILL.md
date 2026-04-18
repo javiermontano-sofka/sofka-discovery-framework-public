@@ -7,8 +7,8 @@ description: >
   team charter. Triggers on: creates kickoff presentation deck, designs team alignment
   agenda, facilitates ground rules agreement, produces communication quick-reference,
   compiles team charter from kickoff outcomes.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Kickoff Package & Team Alignment
 
 **TL;DR**: Produces a complete kickoff package including presentation deck, agenda, team charter, ground rules, communication protocols, and action items. The kickoff sets the tone for the entire project — it aligns the team around objectives, methodology, expectations, and ways of working.

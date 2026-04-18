@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Schema design with normalization, denormalization strategies, and data evolution patterns.
   Trigger: "design data model", "schema design", "database schema", "data modeling", "entity relationship".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Data Model Designer
 
 Designs data schemas that balance normalization for integrity with denormalization for performance, producing entity-relationship models, migration strategies, and data evolution guidelines.

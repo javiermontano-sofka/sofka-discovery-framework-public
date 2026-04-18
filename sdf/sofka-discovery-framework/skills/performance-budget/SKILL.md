@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Defines Core Web Vitals targets, latency budgets, bundle size limits, and performance regression gates.
   Trigger: "performance budget", "core web vitals", "bundle size", "latency budget", "performance targets".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Performance Budget
 
 Establishes quantitative performance targets for frontend and backend systems — including Core Web Vitals, API latency budgets, bundle size limits, and CI gates that prevent performance regression.

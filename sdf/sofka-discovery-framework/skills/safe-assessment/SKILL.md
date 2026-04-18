@@ -5,9 +5,9 @@ description: >
   "check SAFe readiness", "audit ART health", "measure business agility",
   or mentions SAFe assessment, SAFe maturity, SAFe adoption evaluation,
   ART readiness, SAFe implementation review, SAFe competency radar.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-safe-assessment"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-safe-asse
   - Grep
   - Bash
 ---
-
 # SAFe Maturity Assessment
 
 **TL;DR**: Assesses organizational SAFe implementation maturity across SAFe's core competencies: Lean-Agile Leadership, Team and Technical Agility, Agile Product Delivery, Enterprise Solution Delivery, Lean Portfolio Management, Organizational Agility, and Continuous Learning Culture. Produces a competency radar, ART health analysis, and an improvement roadmap aligned with SAFe's implementation roadmap.

@@ -2,15 +2,7 @@
 name: metodologia-risk-controlling-dynamics
 argument-hint: "<project-or-program-name>"
 author: Javier Montaño · Comunidad MetodologIA
-description: >
-  Proactive risk controller and financial vigilance — operates as an anxious CPA/PM hybrid
-  that anticipates worst-case scenarios at every discovery step, stress-tests assumptions,
-  tracks risk exposure, and feeds better insights back into each phase. Use when the user
-  asks to "assess risks", "stress-test the plan", "validate assumptions", "run worst-case
-  analysis", "check what could go wrong", "audit the discovery", or mentions risk register,
-  contingency planning, assumption validation, exposure analysis, risk appetite, worst-case
-  scenarios, financial controls, or "what keeps you up at night". The paranoid voice that
-  makes the discovery reliable and the proposal trustworthy.
+description: "Use this skill when the user asks about risk controlling dynamics: Proactive risk controller and financial vigilance — operates as an anxious CPA/PM hybrid that anticipates worst-case scenarios at every discovery step, stress-tests assumptions, tracks risk exposure, and feeds better insights back into each phase."
 allowed-tools:
   - Read
   - Write
@@ -19,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Risk & Controlling Dynamics: The Anxious Controller Who Makes Everything Reliable
 
 Proactive risk management and financial controlling layer that operates with the mindset

@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Multi-criteria decision framework using weighted scoring matrices, ATAM scenarios, and sensitivity analysis.
   Trigger: "analyze trade-offs", "compare options", "weighted scoring", "ATAM", "decision matrix".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Trade-Off Analyzer
 
 Applies structured multi-criteria analysis to architectural decisions, producing weighted scoring matrices, sensitivity analyses, and ATAM-style scenario evaluations that make trade-offs explicit and defensible.

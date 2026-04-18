@@ -5,9 +5,9 @@ description: >
   "define stage gates", "design predictive lifecycle", "configure change control",
   or mentions waterfall, traditional PM, predictive lifecycle,
   stage-gate, PMBOK, PRINCE2, earned value management.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-waterfall-framework"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-waterfall
   - Grep
   - Bash
 ---
-
 # Waterfall / Traditional Framework
 
 **TL;DR**: Designs a traditional predictive project management framework based on PMBOK and PRINCE2 principles. Implements sequential stage-gate lifecycle with comprehensive planning, formal baselines, change control, and earned value management. Appropriate for projects with well-defined scope, regulatory requirements, or fixed-price contracts.

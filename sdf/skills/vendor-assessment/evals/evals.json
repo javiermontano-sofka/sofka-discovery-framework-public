@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "status": "ai-generated",
+    "review_required": false,
+    "generated_at": "2026-04-17",
+    "generated_by": "sdf-v13.3-heuristic-lift"
+  },
+  "skill_name": "vendor-assessment",
+  "description": "Test cases for metodologia-vendor-assessment — happy path, edge case, failure.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-standard-invocation",
+      "prompt": "Apply the `vendor-assessment` skill for AcmeCorp (LatAm retail client, 200 users). Generate the standard deliverable.",
+      "expected_output": "Complete vendor assessment deliverable with standard sections, evidence tags, and ghost menu.",
+      "assertions": [
+        "Output mentions 'Vendor Assessment' (skill primary concept)",
+        "Output includes evidence tags",
+        "Output has ghost menu or next-step recommendation"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-incomplete-context",
+      "prompt": "Apply `vendor-assessment` with incomplete context: I only have the client name and nothing else. How do you proceed?",
+      "expected_output": "Skill detects [VACIO_CRITICO] and requests minimum inputs before proceeding.",
+      "assertions": [
+        "Output uses [VACIO_CRITICO] tag",
+        "Output requests clarifying questions BEFORE proceeding",
+        "Output does NOT fabricate context"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "failure-no-validated-source",
+      "prompt": "Apply `vendor-assessment` for a client where I have no validated information. Don't fabricate.",
+      "expected_output": "Skill responds with [SUPUESTO] tags and validation banner; no fabrication.",
+      "assertions": [
+        "Output uses [SUPUESTO] or refuses with banner",
+        "Output explicitly notes data needs validation",
+        "Output does NOT proceed with fabricated facts"
+      ]
+    }
+  ]
+}

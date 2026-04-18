@@ -11,8 +11,8 @@ description: >
   contingency planning, assumption validation, exposure analysis, risk appetite, worst-case
   scenarios, financial controls, or "what keeps you up at night". The paranoid voice that
   makes the discovery reliable and the proposal trustworthy.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -20,7 +20,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Risk & Controlling Dynamics: The Anxious Controller Who Makes Everything Reliable
 
 Proactive risk management and financial controlling layer that operates with the mindset

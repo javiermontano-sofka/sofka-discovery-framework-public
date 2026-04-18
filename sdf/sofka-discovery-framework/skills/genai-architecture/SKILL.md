@@ -8,9 +8,9 @@ description: >
   generation, hallucination reduction, or multi-model routing.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for metodologia-genai-architecture"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ argument-hint: "Context, project name, or specific focus area for metodologia-ge
   - Grep
   - Bash
 ---
-
 # GenAI Architecture: Architecture for Generative AI Systems
 
 GenAI architecture defines how LLM-powered systems retrieve knowledge, orchestrate models, execute agent workflows, and ensure quality. This skill produces comprehensive architecture documentation covering RAG design, LLM orchestration with multi-model tiering, agent workflows, vector database selection, knowledge connector integration, and quality assurance for generative AI systems.

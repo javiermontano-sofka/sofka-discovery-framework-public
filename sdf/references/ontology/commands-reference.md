@@ -181,21 +181,4 @@ Los siguientes aliases adicionales mapean verbos alternativos a los mismos coman
 
 ---
 
-## SAP DISCOVERY — Comandos SAP-específicos (10)
-
-| Comando | Alias | Skill Primario | Descripción |
-|---------|-------|---------------|-------------|
-| `/sdf:sap-discovery` | `sap` | sofka-sap-discovery | Pipeline completo SAP discovery |
-| `/sdf:sap-fit-to-standard` | `fit` | sofka-sap-fit-to-standard | Workshop Fit-to-Standard |
-| `/sdf:sap-gap` | `gap` | sofka-sap-gap-analysis | Gap analysis y clasificación |
-| `/sdf:sap-solution-design` | `sap-design` | sofka-sap-solution-design | Arquitectura Clean Core |
-| `/sdf:sap-migration-plan` | `sap-migrate` | sofka-sap-data-migration | Migración de datos |
-| `/sdf:sap-integration-design` | `sap-integrate` | sofka-sap-integration | Arquitectura de integración |
-| `/sdf:sap-btp-extend` | `sap-btp` | sofka-sap-btp-extensibility | Extensibilidad BTP |
-| `/sdf:sap-cutover` | `sap-golive` | sofka-sap-testing-validation | Cutover y go-live |
-| `/sdf:sap-assess` | `sap-audit` | sofka-sap-discovery | Assessment de landscape |
-| `/sdf:sap` | — | Alias → sap-discovery | Alias rápido |
-
----
-
 *Sofka SAGE — La excelencia no se improvisa, se diseña.*

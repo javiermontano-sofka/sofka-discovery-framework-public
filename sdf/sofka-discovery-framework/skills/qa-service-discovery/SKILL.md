@@ -9,8 +9,8 @@ description: >
   "test factory design", "TMMi assessment", "QA transformation", "testing maturity evaluation",
   "PITT methodology", "QA team composition", "test automation assessment", "quality engineering assessment",
   or mentions "independent testing", "QA-as-a-Service", "test industrialization", "ISTQB".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # QA Service Discovery — Quality Maturity Assessment & Transformation Roadmap
 
 Genera un assessment de 7 secciones para servicios de QA: evaluacion de madurez de calidad (TMMi), analisis de cobertura de testing, evaluacion del landscape de herramientas, alineacion con metodologia PITT, modelado de composicion de equipo, diseno de test factory, y roadmap de transformacion de QA. Orientado a construir servicios de calidad que prevengan defectos, no solo los detecten.

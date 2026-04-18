@@ -8,8 +8,8 @@ description: >
   "federated data governance", "data mesh migration", or mentions "data decentralization",
   "data domain ownership", "data product thinking".
 argument-hint: "[path-to-data-architecture] [scope: full|readiness|pilot]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Data Mesh Strategy
 
 Generates data mesh readiness assessment and adoption strategy based on Zhamak Dehghani's 4 foundational principles: domain ownership, data as a product, self-serve data platform, and federated computational governance. Produces readiness scorecard, domain decomposition map, data product catalog design, platform requirements, and phased adoption roadmap.

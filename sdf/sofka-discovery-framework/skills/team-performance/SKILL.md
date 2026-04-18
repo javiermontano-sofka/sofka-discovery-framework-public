@@ -5,9 +5,9 @@ description: >
   "assess team health", "monitor team morale", "analyze productivity trends",
   or mentions team performance, velocity tracking, team health, morale,
   burndown, team metrics, sprint predictability.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-team-performance"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-team-perf
   - Grep
   - Bash
 ---
-
 # Team Performance & Health Tracking
 
 **TL;DR**: Tracks team performance through velocity/throughput metrics, burndown/burnup charts, and team health indicators. Monitors both productivity (output metrics) and sustainability (health, morale, cognitive load) to ensure the team delivers consistently without burning out.

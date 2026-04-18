@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs authentication and authorization architectures using OAuth2, OIDC, RBAC, ABAC, and identity provider integration.
   Trigger: "auth architecture", "authentication design", "authorization patterns", "OAuth2", "OIDC", "identity provider".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Auth Architecture
 
 Designs authentication (AuthN) and authorization (AuthZ) architectures selecting appropriate protocols, identity providers, access control models, and token strategies for secure, scalable systems.

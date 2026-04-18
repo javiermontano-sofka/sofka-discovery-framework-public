@@ -5,9 +5,9 @@ description: >
   "evaluate project status", "generate RAG scorecard", "diagnose project problems",
   or mentions health check, project diagnostics, RAG status, project vital signs,
   project wellness, leading indicator assessment.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-project-health-check"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-project-h
   - Grep
   - Bash
 ---
-
 # Project Health Check Scorecard
 
 **TL;DR**: Conducts a comprehensive project health assessment across 10 vital dimensions: schedule, budget, scope, quality, risk, team, stakeholders, governance, methodology adherence, and strategic alignment. Produces a RAG (Red/Amber/Blue) scorecard with specific findings and remediation recommendations per dimension.

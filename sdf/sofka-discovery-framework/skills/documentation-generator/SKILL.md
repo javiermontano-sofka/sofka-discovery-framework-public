@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 description: >
   Generates README files, API documentation, operational runbooks, and Architecture Decision Records (ADRs).
   Trigger: "generate docs", "write README", "create runbook", "write ADR", "API documentation".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Documentation Generator
 
 Produces structured, maintainable documentation artifacts — READMEs, API docs, runbooks, and ADRs — by analyzing the codebase and inferring intent from code structure.

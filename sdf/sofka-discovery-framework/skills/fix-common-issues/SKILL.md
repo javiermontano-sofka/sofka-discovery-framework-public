@@ -6,8 +6,8 @@ description: >
   formatting, missing shebangs, file permissions, hook types, frontmatter gaps, and
   settings.json defaults. ALWAYS asks for confirmation before modifying any files.
   Trigger: fix issues, auto-fix, fix common problems, repair plugin.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Fix Common Issues
 
 > "Automate the mechanical so humans can focus on the meaningful."

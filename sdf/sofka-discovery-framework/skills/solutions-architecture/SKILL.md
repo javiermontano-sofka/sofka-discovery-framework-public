@@ -8,8 +8,8 @@ description: >
   "define identity and security architecture", "set up observability", or mentions C4 containers, BFF, Zero Trust, SLI/SLO, circuit breaker, or migration planning.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Solutions Architecture: End-to-End Capability Delivery
 
 Solutions architecture designs the complete system that solves a business problem — how multiple systems connect, how users interact, how data flows, how security is enforced, and how the solution is observed and operated. It bridges business requirements and technical implementation.

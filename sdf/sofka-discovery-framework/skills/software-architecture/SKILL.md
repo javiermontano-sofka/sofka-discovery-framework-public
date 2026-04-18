@@ -8,8 +8,8 @@ description: >
   "document architecture decisions", "evaluate code architecture", or mentions CQRS, Hexagonal, Event Sourcing, Clean Architecture, ADRs, or technical debt.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 > **Alcance:** Este skill es específico para `{TIPO_SERVICIO}=SDA` (Software Development & Architecture). Para arquitectura en otros tipos de servicio, consulte `enterprise-architecture` (visión empresarial), `solutions-architecture` (integración E2E), `infrastructure-architecture` (infraestructura), o el skill de discovery específico del tipo de servicio.
 
 # Software Architecture: Internal System Structure & Design Decisions

@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Documentation freshness, coverage, accuracy, and maintainability assessment.
   Trigger: "audit docs", "documentation review", "doc coverage", "README check".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Documentation Auditor
 
 Assess documentation quality across the codebase: freshness, coverage, accuracy against actual code, and maintainability of doc infrastructure.

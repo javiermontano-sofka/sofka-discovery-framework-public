@@ -7,8 +7,8 @@ description: >
   iterative-sequential integration maturity. Triggers on: evaluates hybrid methodology maturity,
   detects hybrid anti-patterns, scores integration capability, assesses dual-governance readiness,
   produces hybrid adoption roadmap.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Hybrid Methodology Maturity Assessment
 
 **TL;DR**: Evaluates organizational readiness and maturity for hybrid methodology adoption — the deliberate integration of iterative (Agile/Kanban) and sequential (Waterfall/phase-gate) practices. Assesses the organization's ability to manage dual governance, context-switching, and integrated reporting. Produces a maturity score, integration gap analysis, and a phased adoption roadmap.

@@ -9,8 +9,8 @@ description: >
   "clarity review", "cognitive load check".
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # User Representative: Voice of the User & Deliverable Quality Advocate
 
 Represents the end user and business reader. Evaluates every deliverable for: comprehension, cognitive load, accessibility, adoption risk, and bias. Proposes specific micro-adjustments to copy and structure. Produces a scored verdict: PASS / CONDITIONAL / FAIL.

@@ -5,9 +5,9 @@ description: >
   "plan contractor onboarding", "design nearshore team integration", "manage vendor staffing",
   or mentions staff augmentation, contractor sourcing, augmentation needs, external staffing,
   nearshore/offshore, resource augmentation strategy.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-staff-augmentation-plan"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-staff-aug
   - Grep
   - Bash
 ---
-
 # Staff Augmentation Planning
 
 **TL;DR**: Plans staff augmentation needs including role definitions, sourcing strategy, onboarding requirements, governance model, and exit criteria. Ensures augmented staff integrate seamlessly with internal teams while maintaining knowledge transfer and IP protection.

@@ -8,8 +8,8 @@ description: >
   as the entry point for any discovery engagement — it coordinates all other skills.
 argument-hint: "<project_name> [full-pipeline|minimal|quick-reference] [codebase_path]"
 author: Javier Montano · Comunidad MetodologIA
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Bash
   - WebFetch
 ---
-
 # MetodologIA Discovery Orchestrator
 
 The single entry point for every MetodologIA discovery engagement. Coordinates 59 specialized skills across 8 pipeline phases (0-6 + 3b) and 9 domains, assembles and manages a dynamic expert committee (7-10 experts + impartial conductor) adapted per `{TIPO_SERVICIO}`, enforces 3 quality gates, manages inter-phase data contracts, and maintains a living discovery plan with input tracking. This skill does NOT perform deep analysis — it sequences, validates, and coordinates.

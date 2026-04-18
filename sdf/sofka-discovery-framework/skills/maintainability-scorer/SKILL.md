@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Code quality index, change risk assessment, and maintainability scoring.
   Trigger: "score maintainability", "code quality index", "change risk", "maintainability".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Maintainability Scorer
 
 Produce a composite maintainability score by analyzing code quality, change risk, modularity, and documentation coverage to predict the cost of future changes.

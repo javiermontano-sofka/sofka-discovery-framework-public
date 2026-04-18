@@ -1,9 +1,19 @@
-# Sofka SAGE v12.0 — Agentic PreSales as Service
+# Sofka SAGE v13.0 — Agentic PreSales as Service
 
 > **SAGE** = Sofka Agentic Gateway to Excellence.
 > Tu IDE se convierte en una agencia de discovery empresarial.
-> 56 agentes · 110 skills MOAT · 106 comandos · 42 prompts NL-HP · Protocolo zero-hallucination.
+> 49 agentes · 215 skills MOAT · 101 comandos · 42 prompts NL-HP · FASE 0 attachments · NotebookLM MCP embebido · Brand HTML render DS v5.
 > © 2026 Sofka Technologies. All Rights Reserved.
+
+## What's new in v13.0
+
+| Capacidad | Detalle |
+|-----------|---------|
+| 📎 FASE 0 attachment handling | `@attachment-processor` + 8 extractores (csv/xlsx/docx/pdf/pptx/html/code/structured). Evidence tag `[ADJUNTO:file:locator]` con prioridad 2 |
+| 🔌 NotebookLM MCP embebido | `.mcp.json` stdio + `scripts/notebook-{auth-check,bootstrap}.sh` + 4 comandos `/sdf:notebook-{create,research,query,audio}` |
+| 🎨 Brand HTML render determinístico | `templates/brand-html-base.html` jinja2 + `scripts/render_brand_html.py` + `/sdf:render-html`. Auto-highlight de evidence tags |
+| 🗂️ Ontología expandida | Nuevo `attachment-taxonomy.md` + prioridad evidencia actualizada + 10 lecciones portadas desde SAP v4.0 |
+| ✅ Audits SDK | `scripts/audit-{command-prefixes,sdk-compliance}.sh` verifican best practices |
 
 > **Global orchestration**: `~/.claude/orchestration/` — metacognition, input amplification, workflow discipline, auto-calibration, RAG priming, self-improvement.
 
@@ -11,7 +21,8 @@
 
 ## Zero-Hallucination Protocol
 
-Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFERENCIA]` `[SUPUESTO]` `[STAKEHOLDER]`
+Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[ADJUNTO]` `[CONFIG]` `[DOC]` `[NOTEBOOKLM]` `[STAKEHOLDER]` `[INFERENCIA]` `[SUPUESTO]`
+Prioridad v13: `[CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]`
 - Si >30% es `[SUPUESTO]` → banner de advertencia obligatorio
 - Si `severity=CRÍTICO` + `[SUPUESTO]` → flag para validación
 - NUNCA presentar inferencias como hechos
@@ -36,16 +47,17 @@ Toda afirmación etiquetada con evidencia: `[CÓDIGO]` `[CONFIG]` `[DOC]` `[INFE
 
 ## Ontología Viva — Índice de Navegación
 
-Este CLAUDE.md es un hub. El conocimiento profundo vive en 12 sub-archivos especializados que el orquestador consulta según contexto:
+Este CLAUDE.md es un hub. El conocimiento profundo vive en 14 sub-archivos especializados que el orquestador consulta según contexto:
 
 | Necesidad | Leer |
 |-----------|------|
 | Reglas de etiquetado de evidencia | `references/ontology/protocol-zero-hallucination.md` |
 | Fases del pipeline y quality gates | `references/ontology/pipeline-orchestration.md` |
-| Roster de 48 agentes y roles | `references/ontology/agent-committee.md` |
-| Catálogo de 100 skills por dominio | `references/ontology/skills-catalog.md` |
-| Referencia de 96 comandos | `references/ontology/commands-reference.md` |
+| Roster de 49 agentes y roles | `references/ontology/agent-committee.md` |
+| Catálogo de 215 skills por dominio | `references/ontology/skills-catalog.md` |
+| Referencia de 101 comandos | `references/ontology/commands-reference.md` |
 | Política de RAG-priming y adjuntos | `references/ontology/rag-priming-policy.md` |
+| **Adjuntos + extractores (v13)** | **`references/ontology/attachment-taxonomy.md`** |
 | Estándares de output y branding | `references/ontology/output-standards.md` |
 | Routing por tipo de servicio | `references/ontology/service-routing.md` |
 | Automatización de sesión | `references/ontology/session-automation.md` |
@@ -89,11 +101,12 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 12 sub-archivos espec
 
 ```
 sofka-discovery-framework/
-├── agents/              # 48 agentes especializados
-├── commands/            # 96 comandos (primarios + aliases + service discovery)
-├── skills/              # 100 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
+├── agents/              # 49 agentes especializados (todos con frontmatter completo v13.1)
+├── commands/            # 101 comandos (primarios + aliases + service discovery + render-html + 4 notebook-*)
+├── skills/              # 215 skills MOAT — 100% INSIGNIA-structured v13.1 (SKILL.md + agents/grader.md + evals/evals.json + references/ + examples/ + prompts/)
 ├── references/
-│   ├── ontology/        # 13 sub-archivos de ontología viva
+│   ├── ontology/        # 14 sub-archivos de ontología viva (incl. attachment-taxonomy)
+│   ├── skill-robustness-template/  # Template canónico para nuevas skills (v13.1)
 │   ├── priming-rag-*/   # 8 docs de conocimiento RAG
 │   └── *.md             # Service matrix, design system, etc.
 ├── hooks/               # Ghost menu + changelog + session context

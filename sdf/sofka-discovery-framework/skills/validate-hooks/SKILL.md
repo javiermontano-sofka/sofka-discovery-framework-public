@@ -2,14 +2,13 @@
 name: validate-hooks
 description: "THE CRITICAL SKILL -- validates hooks.json structure, event names, and type-event compatibility. Detects prompt/agent hooks on events lacking ToolUseContext. Triggers: validate hooks, check hooks.json, hooks audit, hook safety check."
 author: JM Labs (Javier Montaño)
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-
 # Validate Hooks
 
 > "A prompt hook on SessionStart is a silent bomb -- it fires without context and the plugin fails with no error message."

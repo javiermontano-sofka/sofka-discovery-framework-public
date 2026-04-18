@@ -1,13 +1,6 @@
 ---
 name: metodologia-cloud-service-discovery
-description: >
-  Cloud-as-a-Service discovery — cloud readiness assessment, DevOps maturity (DORA), cloud operations model,
-  FinOps assessment, cloud security posture, and cloud services roadmap. Distinct from cloud-migration
-  (which covers migration strategy); this covers Cloud as an ongoing service offering.
-  Use when the user asks to "assess cloud operations", "evaluate DevOps maturity", "DORA assessment",
-  "FinOps evaluation", "cloud security posture", "SRE maturity", "cloud operations model",
-  "cloud service roadmap", or mentions cloud-as-a-service, platform engineering, toil reduction,
-  FinOps, cloud cost optimization, or cloud operations.
+description: "Use this skill when the user asks about cloud service discovery: Cloud-as-a-Service discovery — cloud readiness assessment, DevOps maturity (DORA), cloud operations model, FinOps assessment, cloud security posture, and cloud services roadmap."
 argument-hint: "<project-or-client-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
@@ -20,7 +13,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Cloud Service Discovery — Cloud Operations Assessment & Roadmap
 
 Genera un discovery integral de Cloud-as-a-Service que cubre cloud readiness assessment, DevOps maturity (DORA), cloud operations model, FinOps assessment, cloud security posture, y cloud services roadmap. Distinto de cloud-migration (que cubre estrategia de migración); este skill cubre Cloud como oferta de servicio continuo — operaciones, optimización, y madurez de la plataforma cloud.

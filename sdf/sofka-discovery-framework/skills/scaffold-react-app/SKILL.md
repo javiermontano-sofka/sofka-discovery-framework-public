@@ -3,8 +3,8 @@ name: scaffold-react-app
 author: "Javier Montaño (JM Labs)"
 description: >
   Generate production-ready React project with TypeScript, Tailwind, testing, CI/CD. Use when user asks to "scaffold a React app".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -13,7 +13,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Scaffold React App
 
 Generate production-ready React project with TypeScript, Tailwind, Vitest, Playwright, and GitHub Actions CI/CD — scaffolded from decisions, not defaults.

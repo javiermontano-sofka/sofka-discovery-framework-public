@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to produce a project closure report, compare final
   actuals vs baseline, compile lessons learned, obtain formal sponsor acceptance, or execute
   administrative closure including resource release and documentation archiving.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Project Closure Report
 
 **TL;DR**: Produces a comprehensive project closure report including final metrics vs. baseline, benefits realization assessment, lessons learned summary, formal acceptance documentation, and administrative closure checklist. Ensures organizational knowledge capture and formal project termination.

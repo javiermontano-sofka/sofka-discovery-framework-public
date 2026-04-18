@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs CI/CD pipeline architecture including stages, quality gates, artifact management, and deployment strategies.
   Trigger: "CI/CD pipeline", "build pipeline", "deployment pipeline", "continuous delivery setup".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # CI/CD Pipeline Designer
 
 Architects end-to-end CI/CD pipelines that balance speed, safety, and observability — from commit to production with appropriate gates at every stage.

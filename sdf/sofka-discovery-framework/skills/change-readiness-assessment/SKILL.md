@@ -7,8 +7,8 @@ description: >
   Use when the user asks to "assess change readiness", "evaluate organizational readiness", "change impact analysis",
   "resistance mapping", "ADKAR assessment", "readiness scorecard", or mentions "Phase 5b", "adoption risk",
   "organizational capacity for change".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Change Readiness Assessment
 
 Generates a structured organizational readiness evaluation: stakeholder impact analysis, ADKAR-based readiness scoring, resistance heat map, change capacity assessment, and prioritized intervention plan.

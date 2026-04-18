@@ -7,8 +7,8 @@ description: >
   Triggers on: maps integration points between components, defines interface data contracts,
   creates dependency matrices, designs cross-project coordination protocols, produces
   integration verification checklists.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Integration Plan & Cross-Project Dependencies
 
 **TL;DR**: Produces an integration management plan documenting cross-project dependencies, interface agreements, integration points, and coordination protocols. Ensures that changes in one project area are reflected across all affected areas, maintaining coherence across the project management plan components.

@@ -8,8 +8,8 @@ description: >
   "define SLOs", "design incident response", or mentions OpenTelemetry, Prometheus, Grafana, ELK, correlation IDs, burn rate, runbooks.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Observability Architecture: Instrumentation, Detection & Response
 
 Observability architecture enables teams to understand system behavior from external outputs — logs, traces, and metrics. The skill produces comprehensive observability strategies covering the three pillars, alerting frameworks, and incident response integration that transform raw telemetry into actionable operational intelligence.

@@ -5,15 +5,14 @@ description: >
   Design a plugin skill in detail: frontmatter, procedure outline, quality criteria, anti-patterns, edge cases, tool selection.
   Trigger: design skill, skill design, create skill spec, plan skill, draft skill.
 argument-hint: "<skill-name> [plugin-path]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
   - Bash
 ---
-
 # Design Skill
 
 > "A well-designed skill is a contract: it promises a procedure, guarantees quality criteria, and warns about anti-patterns."

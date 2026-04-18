@@ -6,9 +6,9 @@ description: >
   "manage project inputs", "sequence project phases", or mentions project orchestration,
   phase sequencing, quality gates, data contracts, expert committee, PMO pipeline,
   consulting engagement. Always use this skill as the entry point for any PMO-APEX engagement.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-project-orchestrator"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ argument-hint: "Context, project name, or specific focus area for apex-project-o
   - Bash
   - WebFetch
 ---
-
 # PMO-APEX Project Orchestrator
 
 **TL;DR**: The single entry point for every PMO-APEX project engagement. Coordinates 100 specialized skills across 12 domains, assembles a dynamic expert committee adapted per `{TIPO_PROYECTO}`, enforces quality gates, manages inter-phase data contracts, and maintains a living project plan with input tracking. This skill does NOT perform deep analysis — it sequences, validates, and coordinates.

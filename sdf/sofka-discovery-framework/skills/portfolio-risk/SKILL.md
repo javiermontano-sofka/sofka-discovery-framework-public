@@ -7,8 +7,8 @@ description: >
   portfolio risk management. Triggers on: aggregates risk exposure across project portfolio,
   identifies correlated risks across projects, detects vendor/technology/resource concentration,
   models portfolio-level risk scenarios, produces portfolio risk heatmap for governance.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Portfolio Risk Aggregation
 
 **TL;DR**: Aggregates and analyzes risk exposure across the project portfolio to identify systemic risks, risk concentration, correlated risks, and portfolio-level threats. Produces portfolio risk heatmaps and recommendations for portfolio-level risk mitigation.

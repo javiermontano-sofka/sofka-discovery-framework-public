@@ -12,8 +12,8 @@ description: >
   markdown to HTML pipeline, Mermaid diagrams in HTML.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -21,7 +21,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Sofka HTML Brand — Document Generator
 
 Generate beautiful, accessible, on-brand HTML deliverables following the Sofka Design System v5 ("Dark Authority" for hero/footer, high-contrast light content). Every output is a self-contained single-file HTML document with all CSS inline, no external dependencies beyond font CDNs, and full WCAG AA accessibility.

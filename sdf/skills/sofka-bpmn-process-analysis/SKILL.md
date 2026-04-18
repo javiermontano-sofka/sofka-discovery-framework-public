@@ -1,17 +1,7 @@
 ---
 name: sofka-bpmn-process-analysis
 author: JM Labs (Javier Montano)
-description: >
-  BPMN 2.0 process modeling and analysis skill for AS-IS/TO-BE business process
-  documentation, bottleneck identification, automation opportunity assessment, process
-  maturity scoring, and process improvement design. Use whenever the user mentions
-  process mapping, BPMN, business process, process flow, swimlane, AS-IS process,
-  TO-BE process, process improvement, operational workflow, delivery monitoring, process
-  maturity, or needs to model how work flows through an organization. Especially relevant
-  for SAP fit-to-standard workshops, IT services company operations, and service variant
-  analysis. Also trigger for RACI assignment, automation ROI, or compliance audit trail.
-  Trigger: BPMN, process mapping, AS-IS TO-BE, process flow, swimlane, process maturity,
-  automation ROI, RACI, fit-to-standard, process improvement, operational workflow.
+description: "Use this skill when the user asks about sofka bpmn process analysis: BPMN 2.0 process modeling and analysis skill for AS-IS/TO-BE business process documentation, bottleneck identification, automation opportunity assessment, process maturity scoring, and process improvement design."
 argument-hint: "<process-name-or-area> [--mode asis|tobe|fts]"
 allowed-tools:
   - Read
@@ -21,7 +11,6 @@ allowed-tools:
   - Bash
   - Agent
 ---
-
 # BPMN Process Analysis & Modeling Skill
 
 > "A process you can't see is a process you can't improve."

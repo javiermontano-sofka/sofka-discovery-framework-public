@@ -6,8 +6,8 @@ description: >
   Context-adaptive industry expert that dynamically adopts the right SME lens based on client sector.
   Use when the user asks to "add industry context", "act as domain expert", "give me the banking/retail/health perspective",
   or mentions "SME", "subject matter expert", "industry lens", "sector analysis", "regulatory context".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Bash
   - WebFetch
 ---
-
 # Dynamic Subject Matter Expert
 
 ## Purpose

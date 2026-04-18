@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs frontend and backend state management patterns, caching layers, and synchronization strategies.
   Trigger: "state management", "frontend state", "backend state", "state synchronization", "global state".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # State Management Design
 
 Designs comprehensive state management architectures for frontend applications, backend services, and the synchronization layer between them, selecting appropriate patterns for each state category.

@@ -1,11 +1,6 @@
 ---
 name: metodologia-aws-architecture-implementation
-description: >
-  Guides implementation of AI/GenAI architectures on AWS — Bedrock setup, SageMaker pipelines, OpenSearch vector stores,
-  API Gateway configuration, security hardening, cost controls, and deployment automation. This skill should be used when
-  the user asks to "implement AI on AWS", "set up Bedrock", "deploy SageMaker pipeline", "configure OpenSearch for RAG",
-  "implement AWS AI security", "set up AWS AI monitoring", or mentions AWS AI deployment, Bedrock Knowledge Base setup,
-  SageMaker endpoint deployment, AWS GenAI implementation, or AWS AI CI/CD pipeline.
+description: "Use this skill when the user asks about aws architecture implementation: Guides implementation of AI/GenAI architectures on AWS — Bedrock setup, SageMaker pipelines, OpenSearch vector stores, API Gateway configuration, security hardening, cost controls, and deployment automation."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AWS Architecture Implementation for AI/GenAI Workloads
 
 Guiar la implementación de arquitecturas AI/GenAI en AWS — desde la configuración de servicios

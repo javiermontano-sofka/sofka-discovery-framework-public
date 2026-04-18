@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Generates specific file create/modify/delete plans with impact analysis and dependency tracking.
   Trigger: "plan file changes", "what files need to change", "impact analysis for changes".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # File Change Planner
 
 Produces a precise, auditable manifest of every file that must be created, modified, or deleted to implement a given change — including dependency chains, blast-radius analysis, and ordering constraints.

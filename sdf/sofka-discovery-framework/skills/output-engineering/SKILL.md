@@ -7,8 +7,8 @@ description: >
   multi-format generation. Triggers on: converts markdown to branded HTML, applies evidence
   tagging to deliverables, enforces naming conventions, manages version tagging (WIP/Aprobado),
   produces deliverables in multiple formats simultaneously.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Multi-Format Deliverable Production
 
 **TL;DR**: Produces project deliverables in multiple formats (Markdown, HTML, Mermaid diagrams) while maintaining brand consistency, evidence tagging, and quality standards. Manages the deliverable production pipeline from draft through review to approved final versions.

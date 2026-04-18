@@ -7,8 +7,8 @@ description: >
   evaluation. Triggers on: evaluates project characteristics against methodology criteria,
   produces weighted scoring matrix, recommends best-fit methodology with confidence level,
   identifies organizational readiness gaps, generates tailoring guidance.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Methodology Fit Assessment & Selection
 
 **TL;DR**: Evaluates project characteristics against methodology criteria to recommend the best-fit approach (Scrum, Kanban, SAFe, Waterfall, Hybrid, LeSS/Nexus, Spotify). Uses a weighted scoring model based on scope certainty, team size, feedback frequency, regulatory constraints, organizational maturity, and stakeholder expectations.

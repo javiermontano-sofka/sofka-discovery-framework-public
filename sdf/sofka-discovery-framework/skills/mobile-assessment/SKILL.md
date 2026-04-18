@@ -8,8 +8,8 @@ description: >
   "check app store compliance", "measure app performance", or mentions crash rate, ANR, app size, cold start time, or mobile tech debt.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Mobile Assessment: App Health, Compliance & Remediation
 
 Mobile assessment evaluates an existing mobile application across six dimensions: runtime health, dependency security, platform compliance, code quality, user experience metrics, and remediation planning. This skill produces a comprehensive AS-IS assessment that identifies risks, quantifies technical debt, and prioritizes fixes.

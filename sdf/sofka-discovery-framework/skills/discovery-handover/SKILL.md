@@ -10,8 +10,8 @@ argument-hint: "<project_name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -19,7 +19,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Discovery Handover — Phase 6: Transición a Ejecución
 
 Genera el paquete de transición operativa que traduce los entregables de descubrimiento (Fases 0-5) en artefactos de ejecución listos para Operaciones y/o Comercial.

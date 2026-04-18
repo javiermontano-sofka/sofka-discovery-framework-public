@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to catalog applicable regulations, map requirements to
   project activities, design evidence collection processes, track compliance gaps, or prepare
   documentation packages for external audits and certifications.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Regulatory Compliance Tracking
 
 **TL;DR**: Tracks compliance with regulatory requirements, organizational policies, and industry standards throughout the project lifecycle. Maintains a compliance matrix mapping requirements to project activities, evidence of compliance, and audit trails for regulatory review.

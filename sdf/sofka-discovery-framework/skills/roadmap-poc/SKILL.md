@@ -8,8 +8,8 @@ description: >
   or mentions "proof of concept", "MVP plan", "milestones", "sprint breakdown", "iteracion", "go/no-go".
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Roadmap & PoC Execution Planning: Sprint-Level Delivery Architecture
 
 Generates 4-8 week execution roadmaps with sprint-level planning, prerequisite validation, measurable go/no-go gate criteria, team composition, budget ranges, and risk registers.

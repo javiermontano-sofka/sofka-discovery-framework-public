@@ -5,23 +5,23 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/scan-deliverables.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/scan-deliverables.sh\" \"$PWD\" 2>/dev/null || true"
           },
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/session-context-gen.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/session-context-gen.sh\" \"$PWD\" 2>/dev/null || true"
           },
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/auto-prime-check.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/auto-prime-check.sh\" \"$PWD\" 2>/dev/null || true"
           },
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/ghost-menu-inject.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/ghost-menu-inject.sh\" \"$PWD\" 2>/dev/null || true"
           },
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
           }
         ]
       }
@@ -31,11 +31,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/session-changelog.sh\" \"$PWD\" 2>/dev/null || true"
           },
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/post-prime-calibrate.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/post-prime-calibrate.sh\" \"$PWD\" 2>/dev/null || true"
           }
         ],
         "matcher": "Write|Edit"

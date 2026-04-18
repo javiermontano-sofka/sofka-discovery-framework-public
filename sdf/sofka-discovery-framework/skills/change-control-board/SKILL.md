@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to establish a change control process, create change
   request templates, define CCB composition and decision criteria, evaluate change impact
   on scope/schedule/cost, or track change request trends across the project.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Change Control Board (CCB) Process
 
 **TL;DR**: Establishes the change control process including change request templates, impact assessment protocol, CCB composition and decision criteria, and baseline update procedures. Ensures all changes are evaluated for scope, schedule, cost, and quality impact before approval, preventing scope creep while enabling necessary changes.

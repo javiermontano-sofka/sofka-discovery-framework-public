@@ -5,9 +5,9 @@ description: >
   "plan training", "evaluate competency readiness", "identify capability shortfalls",
   or mentions skills inventory, capability assessment, competency gap, training needs
   analysis, skill proficiency mapping.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-skills-gap-analysis"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-skills-ga
   - Grep
   - Bash
 ---
-
 # Skills Gap Analysis & Training Plan
 
 **TL;DR**: Assesses current team skills against project requirements to identify capability gaps. Produces a skills inventory, gap analysis matrix, and training/hiring plan to close gaps. Distinguishes between gaps addressable through training (weeks) and those requiring hiring (months).

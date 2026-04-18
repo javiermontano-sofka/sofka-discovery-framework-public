@@ -13,8 +13,8 @@ argument-hint: "<project-or-client-name>"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -22,7 +22,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # BI & Analytics Discovery — Data Maturity Assessment & Transformation Roadmap
 
 Genera un discovery integral de BI & Analytics que cubre data maturity assessment (DCAM/DMM), dashboard landscape inventory, semantic layer evaluation, self-service analytics readiness, data literacy assessment, analytics use case portfolio, y BI transformation roadmap. Distinto de bi-architecture (skill de diseño de arquitectura BI); este skill es el discovery/assessment para engagements de BI-as-a-service.

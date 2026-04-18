@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to produce a financial business case with NPV/IRR/payback
   analysis, build discounted cash flow models, perform sensitivity analysis on key assumptions,
   model best/most-likely/worst-case scenarios, or present go/no-go financial recommendations.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Financial Business Case Analysis
 
 **TL;DR**: Produces a financial business case including NPV, IRR, payback period, and cost-benefit analysis. Quantifies project investment requirements and expected returns using discounted cash flow models. Provides decision-makers with financial justification for project approval or continuation.

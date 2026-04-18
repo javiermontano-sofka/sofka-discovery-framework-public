@@ -8,8 +8,8 @@ description: >
   design transformation roadmap. Use when the user asks to "evaluate design maturity", "assess UX capability",
   "audit design system", "usability assessment", "information architecture review", "design ops evaluation",
   "UX transformation plan", or mentions "design discovery", "UX readiness", "design governance".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # UX Design Discovery — Design Maturity & Transformation Assessment
 
 Generates a 7-section UX/UI design discovery covering design maturity assessment, design system inventory, UX research capability, usability baseline, information architecture, design process governance, and a phased design transformation roadmap. Produces actionable findings with evidence-based scoring and prioritized recommendations.

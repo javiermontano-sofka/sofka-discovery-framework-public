@@ -7,8 +7,8 @@ description: >
   capture screenshot evidence of misconfigurations, compare tool setup against methodology
   best practices, identify workflow anti-patterns in PM tools, or produce a remediation
   roadmap for tool optimization.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Client Browser Audit (MCP Playwright)
 
 **TL;DR**: Uses MCP Playwright to perform visual audits of client PM tools (Jira, Azure DevOps, Monday.com, Asana, ClickUp). Captures screenshots, evaluates configuration against best practices, identifies misconfigurations, and produces an actionable remediation report with annotated evidence.

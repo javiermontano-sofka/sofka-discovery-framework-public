@@ -8,8 +8,8 @@ author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<product-or-initiative-name> [etapa: inception|growth|maturity]"
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Product Strategy: Roadmap, Prioritization & Value Stream Design
 
 Product strategy translates business objectives into actionable product plans. The skill produces product vision documents, prioritization matrices, and value hypothesis canvases that align development effort with measurable customer and business outcomes.

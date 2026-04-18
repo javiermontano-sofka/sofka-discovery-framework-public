@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs undo plans for each deployment phase, including data migration reversibility and feature flag fallbacks.
   Trigger: "rollback plan", "undo strategy", "how to revert", "migration reversibility".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Rollback Strategy
 
 Produces a comprehensive rollback plan for every phase of a deployment, ensuring that any change can be safely reversed without data loss, service disruption, or orphaned state.

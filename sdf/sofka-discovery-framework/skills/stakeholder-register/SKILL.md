@@ -5,9 +5,9 @@ description: >
   "map stakeholder power/interest", "analyze stakeholders", "design engagement strategies",
   or mentions stakeholder identification, power-interest matrix, influence mapping,
   stakeholder analysis, engagement level assessment.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-stakeholder-register"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-stakehold
   - Grep
   - Bash
 ---
-
 # Stakeholder Register & Analysis
 
 **TL;DR**: Identifies and analyzes all project stakeholders using power/interest matrix, influence/impact grid, and salience model. Produces a stakeholder register with engagement levels, communication preferences, and management strategies tailored to each stakeholder's position and needs.

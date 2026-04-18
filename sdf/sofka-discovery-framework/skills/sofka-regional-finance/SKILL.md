@@ -14,8 +14,8 @@ description: >
   Trigger: CTC calculation, transfer pricing, intercompany billing, tax compliance,
   e-invoicing, SAP localization, withholding taxes, Activity Type rates, margin visibility.
 argument-hint: "<country-or-topic> [--scenario domestic|intercompany|shared-services]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Glob
@@ -23,7 +23,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Regional Finance & Accounting Standards Skill
 
 > "You cannot manage margin if cost and price live in the same number."

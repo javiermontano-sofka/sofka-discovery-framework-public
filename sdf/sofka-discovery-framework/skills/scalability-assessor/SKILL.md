@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Horizontal/vertical scaling analysis, stateless/stateful assessment, and capacity planning.
   Trigger: "assess scalability", "can this scale", "scaling strategy", "capacity planning".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Scalability Assessor
 
 Evaluate a system's ability to scale horizontally and vertically by analyzing statefulness, resource dependencies, and architectural constraints.

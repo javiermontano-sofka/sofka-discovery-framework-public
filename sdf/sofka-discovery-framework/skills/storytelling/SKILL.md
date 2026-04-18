@@ -7,15 +7,14 @@ description: >
   Use when structuring the overall narrative across deliverables, building scenario
   narratives, crafting transformation stories (current pain → decision → future state),
   or designing risk narratives and success reference stories.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
 ---
-
 # Storytelling — Narrative Arc & Transformation Stories
 
 Designs the narrative architecture that transforms raw analysis into compelling transformation stories. Owns story arcs across deliverables, scenario narratives, risk stories, and evidence-based transformation narratives.

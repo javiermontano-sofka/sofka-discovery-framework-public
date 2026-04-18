@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to create an assumption register, document project constraints,
   link assumptions to risks, establish assumption validation cadence, or audit planning
   hypotheses across the project lifecycle.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Assumption Tracking & Constraint Documentation
 
 **TL;DR**: Maintains a living assumption log that captures, categorizes, and tracks all project assumptions and constraints. Each assumption is tagged with confidence level, impact if wrong, validation method, and responsible owner. Integrates with the risk register since invalidated assumptions become risks.

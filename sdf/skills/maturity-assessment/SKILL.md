@@ -1,12 +1,6 @@
 ---
 name: apex-maturity-assessment
-description: >
-  Use when the user asks to "assess PM maturity", "evaluate project management capability",
-  "run OPM3 assessment", "check P3M3 level", "benchmark organizational PM capability",
-  or mentions PM maturity, organizational PM maturity, OPM3, P3M3, project management
-  maturity model, PM capability assessment. Triggers on: scores PM maturity against
-  established frameworks, produces capability heat maps, identifies improvement priorities,
-  creates strategic maturity roadmap, benchmarks against industry standards.
+description: "Use when the user asks to 'assess PM maturity', 'evaluate project management capability', 'run OPM3 assessment', 'check P3M3 level', 'benchmark organizational PM capability', or mentions PM maturity, organizational PM maturity, OPM3, P3M3, project management maturity model, PM capability assessment."
 allowed-tools:
   - Read
   - Write
@@ -15,7 +9,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Overall PM Maturity Assessment
 
 **TL;DR**: Assesses organizational project management maturity using established frameworks (OPM3, P3M3, or custom APEX model). Evaluates capability across project, program, and portfolio management domains, covering process standardization, measurement, control, and continuous improvement. Produces a maturity level determination, capability heat map, and a strategic improvement roadmap.

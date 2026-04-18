@@ -7,8 +7,8 @@ description: >
   PMO governance, PMO implementation. Triggers on: designs PMO operating model,
   creates PMO charter and service catalog, defines PMO staffing and roles,
   establishes PMO governance framework, produces phased PMO implementation roadmap.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # PMO Design & Setup
 
 **TL;DR**: Designs and plans the implementation of a Project Management Office including PMO type selection (supportive, controlling, directive), operating model, service catalog, staffing, governance framework, tools, and maturity roadmap. The PMO is the organizational engine that standardizes, governs, and improves project delivery.

@@ -9,8 +9,8 @@ description: >
   "CI/CD quality", "automation architecture", "quality engineering".
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Quality Engineering: Strategic Quality Architecture & Shift-Left Practices
 
 Strategic quality engineering framework. Designs the system — QA teams execute it. For architects, engineering leads, and quality strategists who define *how* quality works.

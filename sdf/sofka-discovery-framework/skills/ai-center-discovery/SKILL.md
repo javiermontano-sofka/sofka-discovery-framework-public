@@ -10,8 +10,8 @@ description: >
   "AI pilots", "ML pipeline", "AI Center of Excellence", "LLM adoption", "generative AI strategy".
 argument-hint: "<project-or-client-name>"
 author: Javier Montano · Comunidad MetodologIA
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -19,7 +19,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AI Center Discovery — AI Readiness Assessment & Adoption Roadmap
 
 Genera un assessment de 8 secciones para servicios del AI Center: evaluacion de readiness con metodologia AI SCALE de MetodologIA, portafolio de use cases, evaluacion de data readiness, inventario de modelos, governance de AI, infraestructura, integracion con productos AI de MetodologIA, y roadmap de adopcion. Diseñado para maximizar la probabilidad de que los pilotos de AI lleguen a produccion y generen valor sostenible.

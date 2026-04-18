@@ -6,8 +6,8 @@ description: >
   blocker management, impediment removal, issue escalation. Triggers on: creates issue
   tracking workflow, assigns issue resolution owners, enforces resolution SLAs, captures
   root cause analysis, produces issue trend analysis.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Issue Management & Resolution
 
 **TL;DR**: Implements issue tracking and resolution workflow for project issues (risks that have materialized, blockers, impediments, and problems). Establishes classification, priority assignment, resolution workflow, escalation paths, and closure criteria. Issues are risks that happened — they demand immediate action, not analysis.

@@ -7,8 +7,8 @@ description: >
   OPM3, P3M3. Triggers on: scores PMO maturity against OPM3 or P3M3 frameworks,
   produces maturity radar charts, identifies improvement priorities by strategic impact,
   designs multi-year maturity roadmap, estimates improvement investment in FTE-months.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # PMO Maturity Assessment (OPM3 / P3M3)
 
 **TL;DR**: Assesses organizational project management maturity using OPM3 (Organizational Project Management Maturity Model) and P3M3 (Portfolio, Programme, and Project Management Maturity Model) frameworks. Evaluates maturity across project, program, and portfolio levels, identifies improvement priorities, and produces a maturity roadmap.

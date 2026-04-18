@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to develop fallback strategies for high-priority risks,
   calculate schedule and cost reserves from quantitative analysis, define trigger protocols
   for rapid contingency activation, or track reserve consumption over time.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Contingency Planning & Reserve Management
 
 **TL;DR**: Develops contingency plans and fallback strategies for high-priority risks. Calculates and manages contingency reserves (schedule and cost) based on quantitative risk analysis. Defines trigger-response protocols that enable rapid activation of pre-planned responses when risks materialize.

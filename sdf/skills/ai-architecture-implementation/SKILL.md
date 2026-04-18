@@ -1,11 +1,6 @@
 ---
 name: metodologia-ai-architecture-implementation
-description: >
-  Guides implementation of AI system architectures — technology selection, pipeline implementation, model serving setup,
-  monitoring deployment, and CI/CD automation. This skill should be used when the user asks to "implement AI architecture",
-  "build ML pipeline", "set up model serving", "deploy AI system", "implement MLOps", "configure drift monitoring",
-  "set up feature store", or mentions AI implementation plan, ML infrastructure setup, model deployment guide,
-  RAG implementation, or agent framework setup.
+description: "Use this skill when the user asks about ai architecture implementation: Guides implementation of AI system architectures — technology selection, pipeline implementation, model serving setup, monitoring deployment, and CI/CD automation."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AI Architecture Implementation: From Design to Production
 
 Guiar la implementación de arquitecturas AI desde el diseño hasta producción — selección de tecnología,

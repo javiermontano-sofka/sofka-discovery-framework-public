@@ -5,9 +5,9 @@ description: >
   "establish quality metrics", "design quality control activities", "set acceptance criteria",
   or mentions quality management, QA plan, quality assurance, quality control,
   quality standards, continuous quality improvement.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-quality-plan"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-quality-p
   - Grep
   - Bash
 ---
-
 # Quality Management Plan
 
 **TL;DR**: Produces a quality management plan covering QA processes, quality metrics, quality control activities, acceptance criteria, and continuous improvement mechanisms. Defines what "quality" means for the project and how it will be measured, verified, and improved throughout the lifecycle.

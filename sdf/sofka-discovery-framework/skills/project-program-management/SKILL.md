@@ -10,8 +10,8 @@ description: >
   PMO, program management, portfolio governance, phase gates, proposal readiness, milestone
   tracking, or cross-phase dependency management. Works as the structural glue that holds
   the entire discovery pipeline together — from Phase 0 through Handover.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -19,7 +19,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Project & Program Management: PMO Governance Backbone
 
 Structural governance layer that manages the discovery pipeline as a formal program —

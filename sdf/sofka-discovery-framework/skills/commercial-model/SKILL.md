@@ -8,8 +8,8 @@ description: >
   "structure the deal", "identify value capture", "design pricing strategy", "explore
   commercial models", or mentions earned value, joint venture, revenue share, outcome-based,
   licensing model, or commercial structure.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Commercial Model: Value Capture & Deal Structure Strategy
 
 Identifies the optimal commercial model for a technology transformation engagement. Goes beyond

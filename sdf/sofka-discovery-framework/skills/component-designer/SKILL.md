@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   Designs modular architecture with clear boundaries, interface contracts, and dependency rules.
   Trigger: "design components", "module boundaries", "interface contracts", "component architecture".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Component Designer
 
 Designs modular software architecture by defining component boundaries, public interfaces, dependency direction rules, and integration contracts that enable independent development and deployment.

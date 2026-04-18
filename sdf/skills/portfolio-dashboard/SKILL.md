@@ -1,12 +1,6 @@
 ---
 name: apex-portfolio-dashboard
-description: >
-  Use when the user asks to "create portfolio dashboard", "report portfolio status",
-  "generate portfolio heatmap", "build executive portfolio view", "aggregate project metrics",
-  or mentions portfolio reporting, portfolio view, portfolio metrics, multi-project dashboard.
-  Triggers on: aggregates project health into portfolio heatmap, produces resource utilization
-  views, creates budget rollup summaries, visualizes risk concentration across portfolio,
-  generates governance action items for steering committee.
+description: "Use when the user asks to 'create portfolio dashboard', 'report portfolio status', 'generate portfolio heatmap', 'build executive portfolio view', 'aggregate project metrics', or mentions portfolio reporting, portfolio view, portfolio metrics, multi-project dashboard."
 allowed-tools:
   - Read
   - Write
@@ -15,7 +9,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # Portfolio-Level Dashboard & Reporting
 
 **TL;DR**: Produces portfolio-level reporting including aggregated health heatmaps, resource utilization across projects, budget rollup, risk exposure, and strategic alignment visualization. Provides executives with a single view of portfolio health enabling governance decisions.

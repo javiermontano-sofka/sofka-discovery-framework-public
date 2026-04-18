@@ -5,9 +5,9 @@ description: >
   "check PMBOK adherence", "review predictive methodology readiness", "audit phase-gate compliance",
   or mentions waterfall assessment, traditional PM maturity, PMBOK compliance,
   PRINCE2 maturity, predictive PM evaluation, earned value adoption.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-waterfall-assessment"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-waterfall
   - Grep
   - Bash
 ---
-
 # Waterfall / Traditional PM Maturity Assessment
 
 **TL;DR**: Assesses organizational maturity in traditional/predictive project management across PMBOK knowledge areas and PRINCE2 principles. Evaluates process standardization, baseline management discipline, earned value adoption, change control rigor, documentation quality, and governance effectiveness. Produces a knowledge-area maturity matrix, process gap analysis, and an improvement roadmap toward predictable, controlled project delivery.

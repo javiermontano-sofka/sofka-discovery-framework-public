@@ -5,9 +5,9 @@ description: >
   "design value streams", "configure portfolio Kanban", or mentions SAFe,
   PI Planning, Agile Release Train, portfolio Kanban, value stream mapping,
   program increment, scaled agile implementation.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-safe-framework"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-safe-fram
   - Grep
   - Bash
 ---
-
 # SAFe Framework Implementation
 
 **TL;DR**: Designs SAFe (Scaled Agile Framework) implementation including ART configuration, PI Planning structure, value stream identification, portfolio Kanban, and essential SAFe roles. Tailors SAFe to organizational scale (Essential, Large Solution, Portfolio, Full) based on complexity and team count.

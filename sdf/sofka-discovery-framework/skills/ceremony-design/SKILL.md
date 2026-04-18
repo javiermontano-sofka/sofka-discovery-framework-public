@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to design a complete ceremony calendar, define time-boxes
   and agendas per ceremony, create facilitation guides, identify ceremony anti-patterns,
   or measure ceremony effectiveness across the project lifecycle.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Ceremony Cadence & Facilitation Design
 
 **TL;DR**: Designs the complete ceremony calendar including cadence, time-boxes, agendas, facilitation guides, and templates for all project ceremonies. Adapts to selected methodology (Scrum events, Kanban cadences, SAFe ceremonies, or waterfall reviews) while ensuring each ceremony has a clear purpose, defined participants, and measurable outcomes.

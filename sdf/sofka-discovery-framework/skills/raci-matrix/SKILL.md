@@ -5,9 +5,9 @@ description: >
   "assign decision rights", "clarify roles", "map accountability",
   or mentions RACI, responsibility assignment, accountability matrix, decision rights,
   RASCI, role ambiguity resolution, authority mapping.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-raci-matrix"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-raci-matr
   - Grep
   - Bash
 ---
-
 # RACI Matrix & Decision Rights
 
 **TL;DR**: Produces a RACI (Responsible, Accountable, Consulted, Informed) matrix mapping roles to deliverables and decisions. Ensures every deliverable has exactly one Accountable party, clarifies decision rights, and eliminates role ambiguity that causes delays and conflicts.

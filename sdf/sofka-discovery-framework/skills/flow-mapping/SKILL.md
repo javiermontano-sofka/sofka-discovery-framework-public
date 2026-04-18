@@ -9,8 +9,8 @@ description: >
   "identify failure points", "domain mapping", "DDD analysis", or mentions "Phase 2",
   "flow mapping", "integration matrix", "dependency graph", "swimlane diagrams",
   "business process documentation".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Flow Mapping — DDD Domains & Business Flows
 
 Translates AS-IS architecture findings into business flow documentation. Delivers DDD domain taxonomy, 8-12 primary E2E business flows with sequence diagrams and trama specifications, integration matrix, critical failure point analysis, and system dependency graph.

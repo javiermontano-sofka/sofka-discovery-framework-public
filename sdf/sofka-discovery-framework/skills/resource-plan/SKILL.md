@@ -5,9 +5,9 @@ description: >
   "define team structure", "capacity planning", "staff the project",
   or mentions resource allocation, team roles, staffing, organizational chart,
   responsibility matrix, resource histogram, capacity management.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-resource-plan"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-resource-
   - Grep
   - Bash
 ---
-
 # Resource Allocation & Capacity Planning
 
 **TL;DR**: Produces a resource management plan including team structure, role definitions, RACI matrix, capacity allocation, and resource calendar. Identifies resource conflicts, over-allocations, and skill gaps. Ensures every work package has an assigned responsible party with verified availability.

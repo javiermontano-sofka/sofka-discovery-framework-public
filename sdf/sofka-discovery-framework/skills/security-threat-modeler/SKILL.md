@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   STRIDE threat modeling, attack surface mapping, and threat tree generation.
   Trigger: "threat model", "STRIDE analysis", "attack surface", "threat assessment".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Security Threat Modeler
 
 Apply STRIDE methodology to systematically identify threats, map attack surfaces, and generate threat trees for the system under analysis.

@@ -7,8 +7,8 @@ description: >
   board configuration. Triggers on: designs PM tool project structure, creates workflow
   state machines, configures board columns and swimlanes, maps methodology ceremonies
   to tool features, produces tool user guides.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Jira / Azure DevOps Configuration
 
 **TL;DR**: Designs PM tool configuration (Jira, Azure DevOps, or equivalent) including project structure, workflow design, field configuration, board setup, automation rules, and reporting dashboards. Ensures the tool supports the selected methodology rather than constraining it.

@@ -5,9 +5,9 @@ description: >
   "perform sensitivity analysis", "estimate contingency reserves", or mentions
   risk quantification, expected monetary value, decision tree, tornado diagram,
   probabilistic analysis, confidence intervals.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-risk-quantification"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-risk-quan
   - Grep
   - Bash
 ---
-
 # Risk Quantification & Analysis
 
 **TL;DR**: Performs quantitative risk analysis using Monte Carlo simulation, Expected Monetary Value (EMV), sensitivity analysis, and decision trees. Transforms qualitative risk assessments into numerical impacts on schedule and budget, providing data-driven confidence levels for project outcomes.

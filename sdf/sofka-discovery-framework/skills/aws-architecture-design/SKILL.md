@@ -7,8 +7,8 @@ description: >
   architectures. Activated when designing, evaluating, or migrating AI systems on AWS.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AWS Architecture Design for AI/GenAI Workloads
 
 Diseñar, evaluar y optimizar arquitecturas AWS para sistemas de inteligencia artificial y AI generativa,

@@ -7,8 +7,8 @@ description: >
   Use when the user asks to "plan a workshop", "run event storming", "facilitate impact mapping",
   "design a sprint", "create user story map", "facilitate discovery session",
   or mentions workshop facilitation, design sprint, event storming, story mapping, or collaborative design.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Workshop Facilitator: Collaborative Discovery & Design Techniques
 
 Workshop facilitation designs and runs structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints.

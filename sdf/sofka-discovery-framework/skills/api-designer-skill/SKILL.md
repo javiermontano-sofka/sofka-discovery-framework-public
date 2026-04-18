@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 description: >
   Contract-first API design producing OpenAPI specs, GraphQL schemas, or protobuf definitions with versioning strategy.
   Trigger: "design API", "OpenAPI spec", "GraphQL schema", "protobuf definition", "API contract".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -14,7 +14,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # API Designer
 
 Produces contract-first API designs using OpenAPI 3.1, GraphQL SDL, or Protocol Buffers, with complete resource modeling, error handling conventions, versioning strategy, and consumer documentation.

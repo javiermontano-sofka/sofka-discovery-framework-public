@@ -5,9 +5,9 @@ description: >
   "assess project viability", "screen project proposals", "prioritize project investments",
   or mentions project selection, feasibility gate, go/no-go decision, project screening,
   investment gate, weighted scoring model.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-project-selection"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-project-s
   - Grep
   - Bash
 ---
-
 # Project Selection & Go/No-Go Gates
 
 **TL;DR**: Evaluates project proposals against feasibility criteria to make informed go/no-go decisions. Assesses strategic fit, financial viability, technical feasibility, resource availability, and risk tolerance to determine whether a project should proceed, be modified, or be rejected.

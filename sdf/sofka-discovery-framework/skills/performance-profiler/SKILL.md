@@ -4,15 +4,14 @@ author: JM Labs (Javier Montaño)
 description: >
   N+1 query detection, bottleneck identification, and resource usage analysis.
   Trigger: "profile performance", "find bottlenecks", "N+1 queries", "resource usage".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
   - Agent
 ---
-
 # Performance Profiler
 
 Identify performance anti-patterns in code: N+1 queries, unbounded loops, missing pagination, memory leaks, and inefficient algorithms through static analysis.

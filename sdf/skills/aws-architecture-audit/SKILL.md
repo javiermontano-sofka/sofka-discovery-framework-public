@@ -1,11 +1,6 @@
 ---
 name: metodologia-aws-architecture-audit
-description: >
-  Audits AWS AI/GenAI architectures against the Well-Architected GenAI Lens — operational excellence, security,
-  reliability, performance, cost optimization, and sustainability. This skill should be used when the user asks to
-  "audit AWS AI architecture", "review Bedrock configuration", "assess SageMaker security", "optimize AWS AI costs",
-  "evaluate AWS GenAI compliance", "review AWS Well-Architected for AI", or mentions AWS AI audit, Bedrock audit,
-  SageMaker review, AWS GenAI security assessment, or AWS AI cost optimization review.
+description: "Use this skill when the user asks about aws architecture audit: Audits AWS AI/GenAI architectures against the Well-Architected GenAI Lens — operational excellence, security, reliability, performance, cost optimization, and sustainability."
 model: opus
 context: fork
 allowed-tools:
@@ -16,7 +11,6 @@ allowed-tools:
   - Grep
   - Bash
 ---
-
 # AWS Architecture Audit for AI/GenAI Workloads
 
 Auditar arquitecturas AWS para workloads de AI/GenAI contra el Well-Architected Framework GenAI Lens,

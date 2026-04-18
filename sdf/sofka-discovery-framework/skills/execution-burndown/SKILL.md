@@ -8,8 +8,8 @@ description: >
   Sprint 1 = onboarding. Produces burndown dashboards, velocity reports, and completion projections.
   Use when dimensioning execution effort, tracking delivery velocity, creating burndown projections,
   or when "burndown", "velocity", "sprints diarios", "1 feature por día", or "tracking de ejecución" is mentioned.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Execution Burndown: MetodologIA Execution Model
 
 Instruments the MetodologIA productivity model (1 FTE = 1 shippable feature/day) into burndown dashboards,

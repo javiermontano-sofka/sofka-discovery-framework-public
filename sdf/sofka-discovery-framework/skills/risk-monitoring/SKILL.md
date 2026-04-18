@@ -5,9 +5,9 @@ description: >
   "review risk status", "assess risk response effectiveness",
   or mentions risk monitoring, risk tracking, trigger tracking, risk dashboard,
   risk escalation, emerging risk detection.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-risk-monitoring"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-risk-moni
   - Grep
   - Bash
 ---
-
 # Risk Monitoring & Dashboard
 
 **TL;DR**: Implements ongoing risk monitoring through dashboards, trigger tracking, and escalation protocols. Tracks risk status changes, monitors trigger conditions, evaluates response effectiveness, and identifies emerging risks throughout project execution.

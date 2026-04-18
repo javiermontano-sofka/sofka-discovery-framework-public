@@ -9,8 +9,8 @@ description: >
   or when "HDD", "hypothesis", "hipótesis", "lean startup", "build-measure-learn", "experiment",
   "kill/pivot/persevere", or "validación de hipótesis" is mentioned.
 argument-hint: "[project-name]"
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -18,7 +18,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Hypothesis-Driven Development: Lean Startup for Technical Discovery
 
 Transforms modernization proposals into testable hypotheses with Build-Measure-Learn cycles.

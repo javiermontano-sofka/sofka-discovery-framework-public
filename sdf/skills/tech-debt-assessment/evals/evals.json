@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "status": "ai-generated",
+    "review_required": false,
+    "generated_at": "2026-04-17",
+    "generated_by": "sdf-v13.3-heuristic-lift"
+  },
+  "skill_name": "tech-debt-assessment",
+  "description": "Test cases for metodologia-tech-debt-assessment — happy path, edge case, failure.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-standard-invocation",
+      "prompt": "Aplica la skill `tech-debt-assessment` para AcmeCorp (cliente retail LatAm, 200 usuarios). Genera el entregable estándar.",
+      "expected_output": "Entregable completo de tech debt assessment con secciones estándar, evidencia tags, y ghost menu.",
+      "assertions": [
+        "Output mentions 'Evaluacion' (skill primary concept)",
+        "Output includes evidence tags",
+        "Output has ghost menu or next-step recommendation"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-incomplete-context",
+      "prompt": "Aplica `tech-debt-assessment` con contexto incompleto: sólo tengo el nombre del cliente y nada más. ¿Cómo procedes?",
+      "expected_output": "Skill detecta [VACIO_CRITICO] y solicita inputs mínimos antes de proceder.",
+      "assertions": [
+        "Output uses [VACIO_CRITICO] tag",
+        "Output requests clarifying questions BEFORE proceeding",
+        "Output does NOT fabricate context"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "failure-no-validated-source",
+      "prompt": "Aplica `tech-debt-assessment` para un cliente del que no tengo información validada. Asegúrate de no fabricar datos.",
+      "expected_output": "Skill responde con [SUPUESTO] tags y banner de validación; no fabrica datos.",
+      "assertions": [
+        "Output uses [SUPUESTO] or refuses with banner",
+        "Output explicitly notes data needs validation",
+        "Output does NOT proceed with fabricated facts"
+      ]
+    }
+  ]
+}

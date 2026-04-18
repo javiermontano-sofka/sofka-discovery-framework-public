@@ -7,15 +7,14 @@ description: >
   visual hierarchy, dashboard narratives, and annotation strategy. Use when
   selecting chart types, designing diagram narratives, building visual sequences
   for presentations, or annotating data visualizations for maximum comprehension.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
 ---
-
 # Data Visualization Storytelling — Visual Narrative Design
 
 Designs visual narratives that transform data into comprehension through chart selection, Mermaid diagram metodologia-storytelling, annotation strategy, and dashboard sequencing. Owns the visual layer of data communication across all discovery deliverables.

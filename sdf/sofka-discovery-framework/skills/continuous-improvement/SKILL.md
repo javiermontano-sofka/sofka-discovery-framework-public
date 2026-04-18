@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to identify improvement opportunities from project data,
   apply root cause analysis techniques, prioritize improvements by effort-impact ratio,
   implement PDCA cycles, or embed improvements into standard processes.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Continuous Improvement & Kaizen
 
 **TL;DR**: Implements systematic continuous improvement through retrospective analysis, PDCA cycles, kaizen events, and process optimization. Identifies improvement opportunities from project data, quality audits, team feedback, and lessons learned. Prioritizes improvements by effort-impact ratio and tracks implementation.

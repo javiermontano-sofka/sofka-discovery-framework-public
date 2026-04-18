@@ -3,8 +3,8 @@ name: scaffold-angular-app
 author: "Javier Montaño (JM Labs)"
 description: >
   Generate Angular 18+ project with Signals, standalone components, SSR, testing. Use when user asks to "scaffold an Angular app".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -13,7 +13,6 @@ version: "13.0.0"
   - Bash
   - Agent
 ---
-
 # Scaffold Angular App
 
 Generate Angular 19+ project with Signals-first reactivity, standalone components, optional SSR via Angular Universal, and a production-ready testing and CI setup.

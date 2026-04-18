@@ -6,8 +6,8 @@ description: >
   Activates when a stakeholder needs to produce a cost baseline, aggregate bottom-up estimates,
   calculate contingency and management reserves, generate a time-phased budget with S-curve,
   or define cost accounts for earned value tracking.
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Budget Baseline & Cost Breakdown
 
 **TL;DR**: Produces a cost baseline including bottom-up cost estimation from WBS work packages, cost breakdown structure (CBS), contingency reserves (known risks), management reserves (unknown risks), and time-phased budget with S-curve. Serves as the cost baseline for Earned Value Management.

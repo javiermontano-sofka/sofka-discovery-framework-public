@@ -5,9 +5,9 @@ description: >
   "create sprint report", "produce executive summary", "compile progress report",
   or mentions status report, weekly report, sprint summary, project update,
   progress report, RAG status update.
-allowed-tools:
 version: "13.0.0"
 argument-hint: "Context, project name, or specific focus area for apex-status-report"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -15,7 +15,6 @@ argument-hint: "Context, project name, or specific focus area for apex-status-re
   - Grep
   - Bash
 ---
-
 # Status Report Generation
 
 **TL;DR**: Generates structured project status reports (weekly, sprint, or milestone-based) including RAG status, accomplishments, upcoming activities, risks/issues, metrics, and decisions needed. Adapts format to audience (team, management, steering committee) and methodology (sprint review, phase report).

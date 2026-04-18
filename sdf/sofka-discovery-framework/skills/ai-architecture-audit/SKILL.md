@@ -8,8 +8,8 @@ description: >
   review, AI system assessment, AI quality audit, drift monitoring audit, or AI governance review.
 model: opus
 context: fork
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -17,7 +17,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # AI Architecture Audit: Systematic Assessment of AI-Enabled Systems
 
 Auditar arquitecturas de sistemas de IA existentes contra mejores prácticas, identificando gaps en calidad,

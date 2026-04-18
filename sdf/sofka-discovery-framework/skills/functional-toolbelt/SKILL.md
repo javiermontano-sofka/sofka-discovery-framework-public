@@ -7,8 +7,8 @@ description: >
   Use when the user asks to "run event storming", "create a story map", "extract business rules",
   "write acceptance criteria", "build traceability matrix", "detect anti-patterns",
   or mentions "Given/When/Then", "functional toolbelt", "requirements quality".
-allowed-tools:
 version: "13.0.0"
+allowed-tools:
   - Read
   - Write
   - Edit
@@ -16,7 +16,6 @@ version: "13.0.0"
   - Grep
   - Bash
 ---
-
 # Functional Toolbelt
 
 Mental models, techniques, and validation tools for producing better functional analysis. NOT a deliverable skill — a **toolbelt** that enhances output quality of any requirements or specification work.
