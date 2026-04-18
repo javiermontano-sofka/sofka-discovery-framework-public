@@ -1,37 +1,38 @@
 # Diagrams
 
-Mermaid source, rendered inline by GitHub. Keep source in markdown so diffs are readable and validators can lint them.
+Mermaid source, committed as markdown. GitHub renders inline; PR diffs are text, reviewable.
 
-## Contents (B8)
+## Contents
 
-### C4 model (Simon Brown)
+### C4 model
 
-| Level | File | What it shows |
-|-------|------|---------------|
-| L1 — System Context | `c4/L1-system-context.md` | SAGE as a black box in the user's ecosystem (Claude Code, MCP servers, Git, NotebookLM, filesystem) |
-| L2 — Containers | `c4/L2-containers.md` | Plugin components: agents · skills · commands · hooks · validators · generators · MCP glue |
-| L3 — Components | `c4/L3-components.md` | Inside the orchestrator: discovery-conductor + attachment-processor + gate enforcement |
+| Level | File | Shows |
+|-------|------|-------|
+| L1 | [c4/L1-system-context.md](c4/L1-system-context.md) | SAGE as a black box, external systems around it |
+| L2 | [c4/L2-containers.md](c4/L2-containers.md) | Plugin components inside SAGE |
+| L3 | [c4/L3-components.md](c4/L3-components.md) | Inside discovery-conductor |
 
-L4 (code-level) deliberately omitted — the code is small enough to read directly; a diagram would rot faster than it informs.
+L4 (code diagrams) — deliberately omitted ([ADR-0019](../adr/0019-c4-levels-1-2-3-mermaid.md)).
 
 ### Sequence diagrams
 
 | File | Flow |
 |------|------|
-| `sequences/01-fase-0-attachment-ingestion.md` | User drops files → extractor dispatch → priming-rag emission |
-| `sequences/02-gate-g1-5-think-tank.md` | 7 Sabios deliberation + feasibility verdict |
-| `sequences/03-tot-scenario-branching.md` | 4 ToT phases across candidate scenarios |
-| `sequences/04-hitl-modes.md` | --auto vs --hitos vs --paso-a-paso control flow |
-| `sequences/05-brand-html-render.md` | Markdown → jinja2 template → DS v5 HTML |
-| `sequences/06-antifragile-correction-loop.md` | User reports doc error → lesson + validator emitted |
+| [sequences/01-fase-0-attachment-ingestion.md](sequences/01-fase-0-attachment-ingestion.md) | User drops files → extractor → priming-rag → `[ADJUNTO]` citations |
+| [sequences/02-gate-g1-5-think-tank.md](sequences/02-gate-g1-5-think-tank.md) | 7 Sabios parallel evaluation + feasibility verdict |
+| [sequences/03-tot-scenario-branching.md](sequences/03-tot-scenario-branching.md) | 4 ToT meta-phases across candidate scenarios |
+| [sequences/04-hitl-modes.md](sequences/04-hitl-modes.md) | Same pipeline, three pause cadences |
+| [sequences/05-brand-html-render.md](sequences/05-brand-html-render.md) | Markdown → jinja2 + tokens → DS v5 HTML |
+| [sequences/06-antifragile-correction-loop.md](sequences/06-antifragile-correction-loop.md) | Reporter → fix → lesson → validator → (ADR?) → CHANGELOG |
 
 ## Rules for diagrams
 
-- **One concept per diagram** — resist combining. If you need both context and sequence, make two diagrams and link them.
-- **No colors beyond brand** — default Mermaid theme is fine; if styling, use `#FF7E08` / `#000` / `#FFD700`. Never green.
-- **Label every arrow** — unlabelled arrows rot into "somehow X talks to Y".
-- **Co-locate with explanation** — every diagram is linked from at least one explanation essay that tells its story.
+- **One concept per diagram.** Resist combining.
+- **Labels on every arrow.** Unlabelled arrows rot.
+- **Brand colors only when styled.** `#FF7E08`, `#000`, `#FFD700`, `#EFEAE4`. Never green.
+- **Co-locate with explanation.** Every diagram is linked from at least one explanation essay or tutorial.
 
----
+## Related
 
-**Status**: scaffolded in B2. Content ships in B8.
+- [ADR-0019](../adr/0019-c4-levels-1-2-3-mermaid.md)
+- [`../explanation/why-c4.md`](../explanation/why-c4.md)
