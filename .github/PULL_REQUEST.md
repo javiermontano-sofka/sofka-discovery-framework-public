@@ -1,19 +1,39 @@
-# feat: SDF v13.3.0 + SAP v4.0.1 — Quality Lift, Testing Strategy, 100% Compliance
+# feat: SDF v13.4.0 + SAP v4.0.1 — Quality Lift + Testing + Attribution + NotebookLM CLI
 
 **Branch**: `feat/sdf-v13.3-quality-lift` → `main`
 
 ## Summary
 
-Three logical commits bring the monorepo from SAP v4.0 / SDF v12.x to **SAP v4.0.1 + SDF v13.3.0**, closing the semantic compliance gap (graders + evals) and adding the first end-to-end testing infrastructure (57 pytest tests + CI workflow).
+Six logical commits bring the monorepo from SAP v4.0 / SDF v12.x to **SAP v4.0.1 + SDF v13.4.0**:
 
 | # | Commit | Scope | Files |
 |---|--------|-------|-------|
 | 1 | `feat(sap): v4.0.1 best-practices patch` | portability (`${CLAUDE_PLUGIN_ROOT}`), description polish | 14 |
 | 2 | `feat(sdf): v12.x → v13.3.0` | hardening + quality lift + testing (cumulative 4 minor releases) | 1,158 |
 | 3 | `docs: monorepo README + retrospective` | root README + v2→v4 retrospective (md + brand HTML) | 3 |
-| **Total** | — | — | **1,175** |
+| 4 | `docs: add PR template` | `.github/PULL_REQUEST.md` | 1 |
+| 5 | `docs: separate Sofka copyright from Javier Montaño authorship + contributors` | attribution refactor (3 json + 1,617 md + 7 docs) | 1,623 |
+| 6 | `feat(sdf): v13.4.0 — full notebooklm-mcp-cli integration` | `nlm` CLI surface + new ontology doc + installer + bump | 7 |
+| **Total** | — | — | **~2,806** |
 
-Net diff: **+28,269 / -11,954 lines** across 1,175 files.
+## Attribution model (v13.4)
+
+- **Author**: Javier Montaño
+- **Contributors**:
+  - Jean Ruiz Granda — ad-hoc feedback & review
+  - Catherine Rodrigo
+- **Co-authored with**: Claude Code
+- **Copyright**: © 2026 Sofka Technologies (SAGE/SDF/SAP), Comunidad MetodologIA (MAO, GPL-3.0), JM Labs (personal skills)
+
+Applied consistently across 3 plugin.json + 1,617 markdown frontmatters + 7 high-level docs.
+
+## NotebookLM CLI + MCP unified (v13.4)
+
+The upstream `notebooklm-mcp-cli` package (github.com/jacob-bd/notebooklm-mcp-cli) unified CLI (`nlm`) and MCP server (`notebooklm-mcp`) into a single install. v13.4 fully documents the 35-tool surface:
+
+- `sdf/references/ontology/notebooklm-capabilities.md` — capability matrix (MCP ↔ CLI)
+- `sdf/scripts/nlm-install.sh` — installer auto-detecting uv/pipx/pip
+- CLAUDE.md index updated (15 ontology files now)
 
 ---
 
