@@ -65,6 +65,7 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 14 sub-archivos espec
 | Criterios de quality gates | `references/ontology/quality-gates.md` |
 | Orquestación multi-marca | `references/ontology/brand-orchestration.md` |
 | Tokens CSS canónicos | `references/ontology/canonical-tokens.md` |
+| **NotebookLM CLI + MCP (v13.4)** | **`references/ontology/notebooklm-capabilities.md`** |
 
 ---
 
@@ -142,4 +143,9 @@ Revisarlo al inicio de cada sesión para no repetir errores.
 ---
 
 *Sofka SAGE v12.0 — Agentic PreSales as Service.*
+**Author**: Javier Montaño  
+**Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo  
+**Co-authored with**: Claude Code  
+**Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+
 *Sofka, your technology partner.*
