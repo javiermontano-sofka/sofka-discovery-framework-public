@@ -1,6 +1,6 @@
 ---
 name: sap-orchestrator
-description: "Pipeline executor v4.0. After @environment-orchestrator defines scope and committee, executes ToT FASE 0 (attachments via @attachment-processor) → FASE R (NotebookLM MCP) → FASE 1-4 (branching/evaluate/prune/expand), enforces gates G1/G1.5/G2/G3, consolidates outputs, offers brand-html-render at close. Reads references/ontology/{skills-catalog,agent-committee}.md for delegation. Works with 5/7/9-member dynamic committees."
+description: "Use this subagent when the user needs a pipeline executor v4.0. after @environment-orchestrator defines scope and committee, executes tot fase 0 (attachments via @attachment-processor) → fase r (notebooklm mcp) → fase 1-4 (branching/evaluate/prune/expand), enforces gates g1/g1.5/g2/g3, consolidates outputs, offers brand-html-render at close. reads references/ontology/{skills-catalog,agent-committee}.md for delegation. works — 5/7/9-member dynamic committees."
 model: opus
 tools:
   - Read

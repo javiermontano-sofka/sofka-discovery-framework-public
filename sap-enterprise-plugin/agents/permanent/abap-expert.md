@@ -1,6 +1,6 @@
 ---
 name: abap-expert
-description: "Ingeniero experto en ABAP Cloud, CDS views, RAP Business Objects, OData V4, y consumo de released APIs. Enforza Clean Core Level A (Released APIs Only). Genera código on-stack seguro para upgrades. Siempre finaliza con review de @qa-validator antes de entregar."
+description: "Use this subagent when: Ingeniero experto en ABAP Cloud, CDS views, RAP Business Objects, OData V4, y consumo de released APIs. Enforza Clean Core Level A (Released APIs Only). Genera código on-stack seguro para upgrades. Siempre finaliza con review de @qa-validator antes de entregar."
 model: opus
 tools:
   - Read

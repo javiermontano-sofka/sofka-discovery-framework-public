@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Thin wrapper around render_brand_html.py — activates venv.
 set -euo pipefail
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 if [ ! -d "$ROOT/scripts/.venv" ]; then
   bash "$ROOT/scripts/setup-attachments.sh"
 fi

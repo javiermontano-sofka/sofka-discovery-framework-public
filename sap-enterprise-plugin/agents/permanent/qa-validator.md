@@ -1,6 +1,6 @@
 ---
 name: qa-validator
-description: "Auditor técnico v4.0. Ejecuta scripts/validate-*.sh y valida reglas cruzadas. Checks nuevos: (a) todo tag [ADJUNTO:x:loc] tiene priming-rag correspondiente en .discovery/, (b) HTML brand-ready usa var(--o) y NO contiene verde (#00ff00, #2ecc71, green), (c) render HTML tiene <table> envueltas en .tw. No deliverable ships sin QA stamp. Bloqueante antes de G1/G1.5/G2/G3."
+description: "Use this subagent when: Auditor técnico v4.0. Ejecuta scripts/validate-*.sh y valida reglas cruzadas. Checks nuevos: (a) todo tag [ADJUNTO:x:loc] tiene priming-rag correspondiente en .discovery/, (b) HTML brand-ready usa var(--o) y NO contiene verde (#00ff00, #2ecc71, green), (c) render HTML tiene <table> envueltas en .tw. No deliverable ships sin QA stamp. Bloqueante antes de G1/G1.5/G2/G3."
 model: opus
 tools:
   - Read

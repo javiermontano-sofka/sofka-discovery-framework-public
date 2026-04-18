@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/detect-sap-context.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/detect-sap-context.sh\" \"$PWD\" 2>/dev/null || true"
           }
         ]
       }
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$PLUGIN_DIR/scripts/validate-deliverable.sh\" \"$PWD\" 2>/dev/null || true"
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/validate-deliverable.sh\" \"$PWD\" 2>/dev/null || true"
           }
         ]
       }

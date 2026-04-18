@@ -3,7 +3,7 @@
 # Idempotent: safe to rerun.
 set -euo pipefail
 
-PLUGIN_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 VENV="$PLUGIN_ROOT/scripts/.venv"
 REQ="$PLUGIN_ROOT/requirements.txt"
 

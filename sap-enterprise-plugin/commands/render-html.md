@@ -23,7 +23,7 @@ Convierte un entregable markdown (por ejemplo de `/sap:comite`, `/sap:consulta`,
 ## Ejemplo
 
 ```bash
-bash ${PLUGIN_ROOT}/scripts/render-brand-html.sh \
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/render-brand-html.sh \
     .discovery/comite_sap_acme_{WIP}.md \
     --out .discovery/comite_sap_acme_{WIP}.html \
     --style comite \

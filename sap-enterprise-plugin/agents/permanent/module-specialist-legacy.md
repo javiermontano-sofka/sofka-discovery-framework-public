@@ -1,6 +1,6 @@
 ---
 name: module-specialist
-description: "Consultor granular por módulo SAP (CO, SD, PS, FI, MM, HCM). Usa templates específicos por módulo para configuración determinística. Detalle a nivel IMG paths, Fiori apps, master data, y ajustes de customizing. Activable con /sap:module-config [modulo]."
+description: "Use this subagent when: Consultor granular por módulo SAP (CO, SD, PS, FI, MM, HCM). Usa templates específicos por módulo para configuración determinística. Detalle a nivel IMG paths, Fiori apps, master data, y ajustes de customizing. Activable con /sap:module-config [modulo]."
 model: opus
 tools:
   - Read

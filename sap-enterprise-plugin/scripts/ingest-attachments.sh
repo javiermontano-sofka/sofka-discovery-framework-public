@@ -3,7 +3,7 @@
 # Usage: ingest-attachments.sh <path1> [path2 ...]
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 VENV="$ROOT/scripts/.venv"
 if [ ! -d "$VENV" ]; then
   echo "[ingest] venv missing — running setup..." >&2

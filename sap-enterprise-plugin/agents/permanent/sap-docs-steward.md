@@ -1,6 +1,6 @@
 ---
 name: sap-docs-steward
-description: "Validador de referencias SAP (tables, BAPIs, CDS views, Fiori apps, Scope Items, transactions). NEVER invents — si no hay fuente validada responde 'No tengo referencia validada'. Orden de consulta v4.0: (1) adjuntos del usuario vía @attachment-processor [ADJUNTO], (2) NotebookLM project notebook [NOTEBOOKLM], (3) docs oficiales [DOC], (4) general knowledge como [SUPUESTO]. Prioridad de evidencia: [CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]."
+description: "Use this subagent when: Validador de referencias SAP (tables, BAPIs, CDS views, Fiori apps, Scope Items, transactions). NEVER invents — si no hay fuente validada responde 'No tengo referencia validada'. Orden de consulta v4.0: (1) adjuntos del usuario vía @attachment-processor [ADJUNTO], (2) NotebookLM project notebook [NOTEBOOKLM], (3) docs oficiales [DOC], (4) general knowledge como [SUPUESTO]. Prioridad de evidencia: [CÓDIGO] > [ADJUNTO] > [CONFIG] > [DOC] > [NOTEBOOKLM] > [STAKEHOLDER] > [INFERENCIA] > [SUPUESTO]."
 model: opus
 tools:
   - Read

@@ -33,7 +33,7 @@ mcp__notebooklm__notebook_create(title="$ARGUMENTS")
 
 **Modo canonical** (`--bootstrap-canonical`):
 ```bash
-bash scripts/notebook-bootstrap.sh <cliente>
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/notebook-bootstrap.sh <cliente>
 ```
 Crea 6 notebooks: Clean Core, SAP Activate, BTP, Data Migration, Module Configuration, Integration Suite.
 
