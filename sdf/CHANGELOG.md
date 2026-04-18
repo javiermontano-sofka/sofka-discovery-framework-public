@@ -528,3 +528,60 @@ Cross-plugin batch quality remediation across the full SAGE ecosystem (5 plugin 
 - `python scripts/ecosystem/audit-compliance.py` → 0 placeholder graders ✓
 - `python scripts/ecosystem/run-skill-evals.py --sample 20 --mock` → benchmark generated ✓
 - `.github/workflows/test.yml` → valid YAML ✓
+
+## [13.4.0] — 2026-04-17 · Attribution Refactor + NotebookLM CLI Integration
+
+### Attribution refactor (separating authorship from copyright)
+
+Previously, SAGE files blended "Javier Montaño · Equipo PreSales Sofka" into a single `author` field. v13.4 separates these concerns across the ecosystem:
+
+- **Author**: Javier Montaño (the person)
+- **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
+- **Co-authored with**: Claude Code
+- **Copyright**: © 2026 Sofka Technologies (or MetodologIA / JM Labs per plugin)
+
+Applied to:
+- **3 plugin.json** files (SAP `.claude-plugin`, SAP root, SDF `.claude-plugin`) — structured `contributors: [{name, role}]` + `copyright` fields
+- **1,617 markdown frontmatter** files (agents + skills across all 5 plugin trees inside `sdf/`) — consistent `author` / `contributors` / `copyright` / `co-authored-with` lines
+- **7 high-level docs**: root README, `sdf/CLAUDE.md`, `sdf/README.md`, `sdf/LICENSE`, `sdf/landing.html` footer, `sap-enterprise-plugin/README.md` + `CLAUDE.md`
+
+All files now carry the same attribution block so contributors are credited consistently across the ecosystem.
+
+### NotebookLM CLI + MCP unified integration
+
+Upstream `notebooklm-mcp-cli` (github.com/jacob-bd/notebooklm-mcp-cli) unified the previously-separate `notebooklm-cli` and `notebooklm-mcp-server` packages into a single install that ships **both** the `nlm` CLI and the `notebooklm-mcp` MCP server.
+
+v13.4 surfaces and documents the full capability set:
+
+- **New ontology file**: `references/ontology/notebooklm-capabilities.md` — 35-tool matrix with MCP name ↔ CLI command equivalents, install options (uv / pipx / pip / uvx), auth flow (`nlm login`, `nlm doctor`, account switching), evidence tag contract, upstream references.
+- **New installer**: `scripts/nlm-install.sh` — detects uv / pipx / pip and installs or upgrades the package. Verifies both `nlm` and `notebooklm-mcp` appear on PATH. Suggests next steps.
+- **Updated `.mcp.json`**: unchanged on wire (still points to `notebooklm-mcp` binary), but now clearly documented as coming from the unified package.
+- **`CLAUDE.md` ontology index**: added row for `notebooklm-capabilities.md` (now 15 ontology files total).
+- **Attribution note**: upstream author Jacob BD credited in the new ontology doc.
+
+### New capabilities now discoverable for the committee
+
+Beyond the MCP tools already exposed (`notebook_query`, `notebook_list`, `research_start`, etc.), SDF agents and skills can now invoke these via CLI for ad-hoc work:
+
+- `nlm setup add {claude-code,gemini,cursor,cline,antigravity}` — auto-configure AI tools
+- `nlm skill install <name>` / `nlm skill update` — skill package management
+- `nlm pipeline run/list` — multi-step workflows
+- `nlm cross query` — cross-notebook queries
+- `nlm tag add/list/select` — smart tagging + selection
+- `nlm batch query/create/delete` — batch operations
+- `nlm doctor` — authentication + environment diagnosis
+
+### Files changed
+- 1,617 `.md` frontmatters (agent + skill attribution)
+- 3 `plugin.json` files (structured contributors + copyright)
+- 7 high-level docs (README, CLAUDE.md, LICENSE, landing, prompt-library)
+- 1 new ontology file (notebooklm-capabilities.md)
+- 1 new script (nlm-install.sh)
+- 1 CLAUDE.md ontology index row
+
+### Validation
+- `bash sdf/scripts/audit-sdk-compliance.sh` → 0 fails ✓
+- `bash sdf/scripts/audit-command-prefixes.sh` → 0 violations ✓
+- `pytest sdf/scripts/tests/` → 57/57 PASS ✓
+- All `contributors` arrays and `copyright` fields present in plugin.json files
+- All 1,617 updated markdown files parse as valid YAML frontmatter

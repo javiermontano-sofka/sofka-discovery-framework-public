@@ -228,5 +228,10 @@ All Rights Reserved — © 2026 Sofka Technologies.
 
 **Javier Montaño** · Equipo PreSales Sofka
 
+**Author**: Javier Montaño  
+**Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo  
+**Co-authored with**: Claude Code  
+**Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+
 *Sofka, your technology partner.*
 *La excelencia no se improvisa, se diseña.*
