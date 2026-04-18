@@ -62,27 +62,48 @@ def scan_adrs() -> list[Finding]:
             ))
         seen_numbers[num] = adr
 
-        # 2. Required fields
+        # 2. Required fields. Accept any of these forms per field:
+        #      "# Field ..."  (heading — used for Title as "# ADR-NNNN: ...")
+        #      "**Field**: ..."
+        #      "- **Field**: ..." (list-item with bold label, common in our ADRs)
+        #      "Field: ..."
         text = adr.read_text(encoding="utf-8")
-        missing = [f for f in required if not re.search(rf"^#+\s*{re.escape(f)}\b", text, re.M | re.I)
-                   and not re.search(rf"^\*\*{re.escape(f)}\*\*:", text, re.M | re.I)]
+        def field_present(label: str) -> bool:
+            # Title is satisfied by any h1 heading at the top of the file
+            # (common ADR convention: `# ADR-0001: <title text>`).
+            if label.lower() == "title":
+                return bool(re.search(r"^#\s+\S", text, re.M))
+            patterns = [
+                rf"^#{{1,6}}\s+{re.escape(label)}\b",                  # heading: ## Context, ### Decision
+                rf"^\s*[-*]?\s*\*\*{re.escape(label)}\*\*\s*:",        # (list-item) **Label**:
+                rf"^\s*{re.escape(label)}\s*:",                         # bare Label:
+            ]
+            return any(re.search(p, text, re.M | re.I) for p in patterns)
+        missing = [f for f in required if not field_present(f)]
         if missing:
             findings.append(Finding(
                 "ERROR", "adr-integrity", str(adr), None,
                 f"missing required fields: {', '.join(missing)}",
             ))
 
-        # 3. Status value
-        m = re.search(r"^\*\*Status\*\*\s*:\s*(\w+)", text, re.M) or re.search(r"^Status\s*:\s*(\w+)", text, re.M)
+        # 3. Status value. Tolerate list-item prefix and case variants.
+        m = (re.search(r"^\s*[-*]?\s*\*\*Status\*\*\s*:\s*([A-Za-z-]+)", text, re.M)
+             or re.search(r"^\s*Status\s*:\s*([A-Za-z-]+)", text, re.M))
         if m:
-            status = m.group(1)
-            if status not in valid_statuses:
+            status_raw = m.group(1)
+            # Normalize: "accepted" matches "Accepted" regardless of case;
+            # "superseded-by" counts as "Superseded" family.
+            status_norm = status_raw.lower().rstrip("-_")
+            valid_norm = {v.lower() for v in valid_statuses}
+            # Allow "superseded-by" prefix variant
+            is_valid = status_norm in valid_norm or status_norm.startswith("superseded")
+            if not is_valid:
                 findings.append(Finding(
                     "ERROR", "adr-integrity", str(adr), None,
-                    f"invalid status '{status}'. Must be one of: {', '.join(sorted(valid_statuses))}",
+                    f"invalid status '{status_raw}'. Must be one of: {', '.join(sorted(valid_statuses))}",
                 ))
             # 4. Immutability check (git log): accepted ADRs shouldn't be modified
-            if status == "Accepted":
+            if status_norm == "accepted":
                 # Count commits touching this file
                 try:
                     res = subprocess.run(

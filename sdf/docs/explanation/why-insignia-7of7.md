@@ -34,7 +34,7 @@ skills/<skill-name>/
 
 **Composition.** Agents call skills. Skills can call each other's scripts and include each other's references. 7/7 makes those boundaries explicit.
 
-**Auditable drift.** `audit-compliance.sh` classifies each skill as 7/7 or less. The number is public; drift is visible.
+**Auditable drift.** `audit-sdk-compliance.sh` classifies each skill as 7/7 or less. The number is public; drift is visible.
 
 ## The cost we accept
 
@@ -58,5 +58,5 @@ Not every skill needs all 7. A trivial skill might ship with SKILL.md only and n
 ## Related
 
 - [ADR-0005](../adr/0005-insignia-7of7-structure.md)
-- `scripts/audit-compliance.sh`
+- `scripts/audit-sdk-compliance.sh`
 - Anthropic skills documentation (external)

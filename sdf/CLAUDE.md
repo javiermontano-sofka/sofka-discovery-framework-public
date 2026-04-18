@@ -69,6 +69,10 @@ Full rules → `references/ontology/protocol-zero-hallucination.md`.
 | **NotebookLM CLI + MCP (35 tools)** | `references/ontology/notebooklm-capabilities.md` |
 | Lessons learned (append here after corrections) | `references/ontology/lessons-learned.md` |
 
+## Pedagogical docs (for humans, outside a session)
+
+The operational ontology above is read by agents mid-session. For human-facing understanding, use [`docs/`](docs/README.md) — Diátaxis four-quadrant tree (tutorials · how-to · reference · explanation) + ADRs + diagrams. Start at [`docs/README.md`](docs/README.md). Concepts like HITL, INSIGNIA, ToT, DS v5, evidence tags all have a [`GLOSSARY.md`](GLOSSARY.md) entry.
+
 Global orchestration rules (metacognition, input amplification, workflow discipline, auto-calibration, RAG priming, self-improvement) live at `~/.claude/orchestration/`. Consult them for cross-plugin behaviour.
 
 ## Hard rules (violations block delivery)

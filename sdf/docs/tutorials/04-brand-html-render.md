@@ -74,4 +74,4 @@ Compare. Note the nav + pills differences per style.
 ## What's next
 
 - [Tutorial 05 — Author a new skill](05-author-a-new-skill.md)
-- [`/docs/explanation/why-brand-html-is-deterministic.md`](../explanation/why-brand-html-is-deterministic.md)
+- [`docs/explanation/why-brand-html-is-deterministic.md`](../explanation/why-brand-html-is-deterministic.md)

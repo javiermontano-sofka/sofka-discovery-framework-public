@@ -73,4 +73,4 @@ Run or re-run a pipeline stage. Claims now cite `[NOTEBOOKLM:acme-retail-moderni
 ## What's next
 
 - [Tutorial 04 — Brand HTML render](04-brand-html-render.md)
-- [`/docs/explanation/why-notebooklm-mcp.md`](../explanation/why-notebooklm-mcp.md)
+- [`docs/explanation/why-notebooklm-mcp.md`](../explanation/why-notebooklm-mcp.md)

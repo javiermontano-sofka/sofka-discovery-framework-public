@@ -52,6 +52,45 @@ ALLOW_MISSING = {
     "sap-enterprise-sdk-app", "sdf-agent-sdk",
     # Upstream skill-creator plugin paths (not in this repo)
     "eval-viewer/generate_review.py",
+    # Documentation examples — filename conventions shown as text, not real files
+    "SKILL.md", "README.md", "TEMPLATE.md",
+    "0017-diataxis-four-quadrants.md", "01-first-discovery.md",
+    "9999-tutorial-spanish-register.md",  # tutorial-only throwaway
+    "kebab-case.sh",
+    # Evidence-tag examples — common filenames clients might have
+    "pom.xml", "package.json", "settings.py", "application.properties",
+    ".env.prod", "k8s/deploy.yaml", "k8s/payments.yaml",
+    "src/auth/login.py", "src/core/pipeline.py", "src/core/retry.py",
+    "src/core/throttle.py",
+    "transactions.xlsx", "ztransactions.csv", "master-agreement.pdf",
+    "arch-spec.pdf", "etl-spec.pdf", "contracts.pdf",
+    "process-map.docx",
+    # B11 generator (ships later in this cycle)
+    "scripts/ecosystem/generate-reference-pages.py",
+    # Deliverable naming examples in prose
+    "03_ASIS_Bancoomeva_{WIP}.md", "06_Roadmap_Bancoomeva_{Aprobado}.md",
+    "08_Pitch_Bancoomeva_{WIP}.pptx",
+    # Eval harness runtime artefacts
+    "grading.json", "timing.json", "benchmark.md", "benchmark.json",
+    # Manifestly-gitignored runtime + antipattern examples
+    ".discovery/repo-index.json", "sdf/.discovery/ghost-menu.md",
+    ".discovery/ghost-menu.md",
+    "misc.md",  # explicitly named as an anti-pattern in filesystem-as-architecture
+    # Path patterns used as examples in essays (not real files)
+    "docs/how-to/render-html.md",
+    "sdf/skills/brand-html-render/SKILL.md",  # brand-html-render lives in sap-enterprise-plugin/
+    # Hypothetical future ADR numbering in README supersede example
+    "0026-xxx.md",
+    # Site-generator example config (no site generator adopted)
+    "mkdocs.yml",
+    # SAP-specific files tracked as known-missing; SAP cycle is deferred (ADR-0024)
+    "sap-enterprise-plugin/scripts/nlm-install.sh",
+    "sap-enterprise-plugin/CONTRIBUTING.md",
+    # Path patterns referring to "inside any skill" generically
+    "grader.md", "agents/grader.md", "evals/evals.json",
+    # Historical CHANGELOG entries for files that were later relocated
+    "markdown-excellence.md", "template-catalog.md",
+    "references/full-specification.md",
 }
 
 # Extra search roots a bare filename could live under
@@ -70,6 +109,12 @@ SEARCH_ROOTS = [
     "sdf/.claude-plugin/",
     "sdf/hooks/",
     "sdf/docs/",
+    "sdf/docs/adr/",
+    "sdf/docs/explanation/",
+    "sdf/docs/how-to/",
+    "sdf/docs/reference/",
+    "sdf/docs/tutorials/",
+    "sdf/docs/diagrams/",
     "sap-enterprise-plugin/",
     "sap-enterprise-plugin/scripts/",
     "sap-enterprise-plugin/references/ontology/",
@@ -92,11 +137,34 @@ def is_file_ref(token: str) -> bool:
     # Strip leading "./" but NOT leading "." (which would break .mcp.json)
     if t.startswith("./"):
         t = t[2:]
-    if not t or t.startswith(("http://", "https://", "mailto:", "#", "${", "<", "$", "@")):
+    if not t or t.startswith(("http://", "https://", "mailto:", "#", "${", "<", "$", "@", "~")):
         return False
     if " " in t or "\t" in t or "," in t:
         return False  # prose with multiple tokens
+    if "<" in t or ">" in t:
+        return False  # template placeholders like `skills/<name>/SKILL.md`
+    # Placeholder patterns: NNNN (4 Ns), `<anything>`, path-templates with all-caps
+    if re.search(r"\bNNNN\b|\bMMMM\b|<[^>]+>", t):
+        return False
+    # Extension-list prose: `.csv/.xlsx/.docx/...` — multiple leading-dot segments
+    if re.match(r"^(\.[a-z0-9]+/){2,}", t.lower()):
+        return False
+    # Bare extension alone is not a real path reference
+    if t in {".md", ".py", ".sh", ".json", ".yaml", ".yml", ".html",
+             ".csv", ".xlsx", ".docx", ".pdf", ".pptx", ".xml", ".tsx",
+             ".ts", ".js", ".sql", ".abap", ".txt", ".log"}:
+        return False
+    # Runtime priming-rag artefacts live in gitignored .discovery/
+    if t.startswith("priming-rag-") or re.match(r".*priming-rag-[a-z0-9-]+\.md$", t.lower()):
+        return False
+    # RAG example output filenames (documented but not committed as real files)
+    if "_extracto.md" in t:
+        return False
     if t in ALLOW_MISSING:
+        return False
+    # If basename is a template like `NNNN-slug.md` (no dots in slug), skip
+    base = t.split("/")[-1]
+    if re.match(r"^[A-Z]{2,}", base.split(".")[0]) and "-" in base:
         return False
     return any(t.lower().endswith(e) for e in FILE_EXTS)
 

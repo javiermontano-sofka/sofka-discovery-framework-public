@@ -8,7 +8,7 @@
 
 ## Steps
 
-1. **Write an ADR** superseding [ADR-0003](../adr/0003-quality-gates-G0-G3.md). State:
+1. **Write an ADR** superseding [ADR-0003](../adr/0003-quality-gates-g0-g3.md). State:
 
    - The new gate's number (e.g. G2.5).
    - What it blocks against (specific failure patterns).
@@ -41,5 +41,5 @@
 
 ## See also
 
-- [ADR-0003](../adr/0003-quality-gates-G0-G3.md)
+- [ADR-0003](../adr/0003-quality-gates-g0-g3.md)
 - [`../explanation/why-hybrid-gates-G0-G3.md`](../explanation/why-hybrid-gates-G0-G3.md)

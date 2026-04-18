@@ -101,7 +101,7 @@ CI runs on every push/PR via GitHub Actions (`.github/workflows/docs-quality.yml
 ## 8. Cross-cutting concepts
 
 - **Evidence tags** ([ADR-0002](../adr/0002-evidence-tag-priority-chain.md))
-- **Quality gates** ([ADR-0003](../adr/0003-quality-gates-G0-G3.md))
+- **Quality gates** ([ADR-0003](../adr/0003-quality-gates-g0-g3.md))
 - **HITL modes** ([ADR-0004](../adr/0004-hitl-three-modes.md))
 - **Service-type routing** ([ADR-0007](../adr/0007-service-type-routing.md))
 - **FASE 0 ingestion** ([ADR-0008](../adr/0008-fase-0-attachment-ingestion.md))

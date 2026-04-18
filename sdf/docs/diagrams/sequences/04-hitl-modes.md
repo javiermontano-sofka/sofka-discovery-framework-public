@@ -51,4 +51,4 @@ Covered in [`../../explanation/why-hitl-modes.md`](../../explanation/why-hitl-mo
 ## Related
 
 - [ADR-0004](../../adr/0004-hitl-three-modes.md)
-- [ADR-0003](../../adr/0003-quality-gates-G0-G3.md)
+- [ADR-0003](../../adr/0003-quality-gates-g0-g3.md)

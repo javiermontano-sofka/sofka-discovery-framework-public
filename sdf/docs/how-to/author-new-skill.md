@@ -38,14 +38,14 @@
 6. Run audit:
 
    ```bash
-   bash sdf/scripts/audit-compliance.sh | grep <slug>
+   bash sdf/scripts/audit-sdk-compliance.sh | grep <slug>
    ```
 
    Target: 7/7.
 
 ## Verification
 
-- `audit-compliance.sh` reports `<slug>: INSIGNIA (7/7)`.
+- `audit-sdk-compliance.sh` reports `<slug>: INSIGNIA (7/7)`.
 - `validate_yaml.py` passes on the skill's frontmatter.
 - Running the 3-5 evals with Claude + skill produces reasonable output (subjective).
 

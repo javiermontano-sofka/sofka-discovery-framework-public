@@ -60,4 +60,4 @@ This is the zero-hallucination protocol in action.
 ## What's next
 
 - [Tutorial 03 — NotebookLM research](03-notebooklm-research.md)
-- [`/docs/how-to/feed-large-pdf-via-fase-0.md`](../how-to/feed-large-pdf-via-fase-0.md) — for large PDFs
+- [`docs/how-to/feed-large-pdf-via-fase-0.md`](../how-to/feed-large-pdf-via-fase-0.md) — for large PDFs
