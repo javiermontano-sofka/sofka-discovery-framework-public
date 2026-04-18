@@ -86,6 +86,7 @@ ALLOW_MISSING = {
     # SAP-specific files tracked as known-missing; SAP cycle is deferred (ADR-0024)
     "sap-enterprise-plugin/scripts/nlm-install.sh",
     "sap-enterprise-plugin/CONTRIBUTING.md",
+    "brand-config.json",  # example filename inside a skill frontmatter description
     # Path patterns referring to "inside any skill" generically
     "grader.md", "agents/grader.md", "evals/evals.json",
     # Historical CHANGELOG entries for files that were later relocated
