@@ -106,5 +106,6 @@ The exclude list is load-bearing: venv is ~200 MB; sibling plugin trees ship sep
 - **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
 - **Co-authored with**: Claude Code
 - **Copyright**: © 2026 Sofka Technologies (SAP, SDF core), Comunidad MetodologIA (MAO), JM Labs (personal skills).
+- **Tagline**: Tecnología para sofkianos.
 
 Contact: javier.montano@sofka.com.co

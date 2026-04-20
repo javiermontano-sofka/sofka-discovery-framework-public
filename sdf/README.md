@@ -214,8 +214,9 @@ Operational ontology (agent-read) lives in [`references/ontology/`](references/o
 ## License + attribution
 
 - **License**: All Rights Reserved — © 2026 Sofka Technologies
+- **Tagline**: Tecnología para sofkianos.
 - **Author**: Javier Montaño
 - **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
 - **Co-authored with**: Claude Code
 
-*Sofka, your technology partner. — La excelencia no se improvisa, se diseña.*
+*Sofka, your technology partner. Tecnología para sofkianos. — La excelencia no se improvisa, se diseña.*

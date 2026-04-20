@@ -165,4 +165,5 @@ Members of the Think Tank that validates feasibility at Gate G1.5: Research Scie
 
 ---
 
-**Author**: Javier Montaño · **Contributors**: Jean Ruiz Granda, Catherine Rodrigo · **Co-authored with**: Claude Code · **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+**Author**: Javier Montaño · **Contributors**: Jean Ruiz Granda, Catherine Rodrigo · **Co-authored with**: Claude Code · **Copyright**: © 2026 Sofka Technologies. All Rights Reserved. Tecnología para sofkianos.  
+**Tagline**: Tecnología para sofkianos.
