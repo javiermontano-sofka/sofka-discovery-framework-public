@@ -153,6 +153,7 @@ When the user corrects the orchestrator's behaviour, append the correction to `r
 - **Author**: Javier Montaño
 - **Contributors**: Jean Ruiz Granda (ad-hoc feedback & review) · Catherine Rodrigo
 - **Co-authored with**: Claude Code
-- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved.
+- **Copyright**: © 2026 Sofka Technologies. All Rights Reserved. Tecnología para sofkianos.  
+**Tagline**: Tecnología para sofkianos.
 
 *Sofka, your technology partner.*
